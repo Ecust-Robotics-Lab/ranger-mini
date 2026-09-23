@@ -1,0 +1,111 @@
+[
+  {
+    "command": [
+      "modinfo",
+      "-n",
+      "yt6801"
+    ],
+    "exit": 1,
+    "output": "modinfo: ERROR: Module alias yt6801 not found.\n"
+  },
+  {
+    "command": [
+      "modinfo",
+      "-F",
+      "signer",
+      "yt6801"
+    ],
+    "exit": 1,
+    "output": "modinfo: ERROR: Module alias yt6801 not found.\n"
+  },
+  {
+    "command": [
+      "modinfo",
+      "-F",
+      "vermagic",
+      "yt6801"
+    ],
+    "exit": 1,
+    "output": "modinfo: ERROR: Module alias yt6801 not found.\n"
+  },
+  {
+    "command": [
+      "modinfo",
+      "-F",
+      "version",
+      "yt6801"
+    ],
+    "exit": 1,
+    "output": "modinfo: ERROR: Module alias yt6801 not found.\n"
+  },
+  {
+    "command": [
+      "cat",
+      "/etc/modules-load.d/ranger-nav-yt6801.conf"
+    ],
+    "exit": 0,
+    "output": "yt6801\n"
+  },
+  {
+    "command": [
+      "nmcli",
+      "-g",
+      "connection.uuid,connection.autoconnect,ipv4.addresses,ipv4.never-default,ipv4.gateway",
+      "connection",
+      "show",
+      "ranger-mid360-8745"
+    ],
+    "exit": 0,
+    "output": "7d3735fd-229f-4461-bebd-421146eb06d2\nyes\n192.168.1.50/24\nyes\n\n"
+  },
+  {
+    "command": [
+      "ip",
+      "-brief",
+      "address"
+    ],
+    "exit": 0,
+    "output": "lo               UNKNOWN        127.0.0.1/8 ::1/128 \ncan0             DOWN           \nwlo1             UP             192.168.3.18/24 fd42:abaf:db6b:c400:a585:3370:b75f:e782/64 fd42:abaf:db6b:c400:ad7c:ba5f:b78d:6bc9/64 fe80::cc39:8ce9:b3e9:44e2/64 \nenp2s0           DOWN           \n"
+  },
+  {
+    "command": [
+      "ip",
+      "route"
+    ],
+    "exit": 0,
+    "output": "default via 192.168.3.1 dev wlo1 proto dhcp metric 600 \n169.254.0.0/16 dev wlo1 scope link metric 1000 \n192.168.3.0/24 dev wlo1 proto kernel scope link src 192.168.3.18 metric 600 \n"
+  },
+  {
+    "command": [
+      "ip",
+      "-d",
+      "-s",
+      "link",
+      "show",
+      "can0"
+    ],
+    "exit": 0,
+    "output": "2: can0: <NOARP,ECHO> mtu 16 qdisc noop state DOWN mode DEFAULT group default qlen 10\n    link/can  promiscuity 0 minmtu 0 maxmtu 0 \n    can state STOPPED restart-ms 0 \n\t  gs_usb: tseg1 1..16 tseg2 1..8 sjw 1..4 brp 1..1024 brp-inc 1\n\t  clock 48000000 \n\t  re-started bus-errors arbit-lost error-warn error-pass bus-off\n\t  0          0          0          0          0          0         numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535 parentbus usb parentdev 1-11:1.0 \n    RX:  bytes packets errors dropped  missed   mcast           \n             0       0      0       0       0       0 \n    TX:  bytes packets errors dropped carrier collsns           \n             0       0      0       0       0       0 \n"
+  },
+  {
+    "command": [
+      "mokutil",
+      "--sb-state"
+    ],
+    "exit": 0,
+    "output": "SecureBoot enabled\n"
+  },
+  {
+    "command": [
+      "modprobe",
+      "--dry-run",
+      "--verbose",
+      "yt6801"
+    ],
+    "exit": 1,
+    "output": "modprobe: FATAL: Module yt6801 not found in directory /lib/modules/6.8.0-40-generic\n"
+  },
+  {
+    "installed_module_sha256": "a5d081317fee1e0dcf71c99c3171d0b17b53fcd9ade928b87549d245b94d94c7"
+  }
+]

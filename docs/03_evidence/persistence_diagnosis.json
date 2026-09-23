@@ -1,0 +1,45 @@
+[
+  {
+    "command": [
+      "modinfo",
+      "-F",
+      "signer",
+      "/lib/modules/6.8.0-40-generic/updates/ranger-nav/yt6801.ko"
+    ],
+    "exit": 0,
+    "output": "ranger-nav YT6801 module signing\n"
+  },
+  {
+    "command": [
+      "modinfo",
+      "-F",
+      "version",
+      "/lib/modules/6.8.0-40-generic/updates/ranger-nav/yt6801.ko"
+    ],
+    "exit": 0,
+    "output": "1.0.34\n"
+  },
+  {
+    "command": [
+      "stat",
+      "-c",
+      "%a %n",
+      "/lib/modules/6.8.0-40-generic/modules.dep.bin",
+      "/lib/modules/6.8.0-40-generic/modules.alias.bin"
+    ],
+    "exit": 0,
+    "output": "600 /lib/modules/6.8.0-40-generic/modules.dep.bin\n600 /lib/modules/6.8.0-40-generic/modules.alias.bin\n"
+  },
+  {
+    "command": [
+      "nmcli",
+      "-f",
+      "GENERAL.STATE,GENERAL.REASON,WIRED-PROPERTIES.CARRIER",
+      "device",
+      "show",
+      "enp2s0"
+    ],
+    "exit": 0,
+    "output": "GENERAL.STATE:                          20\uff08\u4e0d\u53ef\u7528\uff09\nGENERAL.REASON:                         40\uff08\u8f7d\u6ce2/\u94fe\u8def\u5df2\u66f4\u6539\uff09\nWIRED-PROPERTIES.CARRIER:               \u5173\u95ed\n"
+  }
+]

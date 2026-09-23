@@ -1,0 +1,60 @@
+['git', '-C', '/home/lab307/ranger_nav/ws_base/src/ranger_ros2', 'remote', 'get-url', 'origin']
+https://github.com/agilexrobotics/ranger_ros2.git
+
+EXIT=0
+['git', '-C', '/home/lab307/ranger_nav/ws_base/src/ranger_ros2', 'rev-parse', 'HEAD']
+b6ea21a275ca5e7168130cc6470e61474681d679
+
+EXIT=0
+['git', '-C', '/home/lab307/ranger_nav/ws_base/src/ranger_ros2', 'symbolic-ref', '-q', '--short', 'HEAD']
+
+EXIT=1
+['git', '-C', '/home/lab307/ranger_nav/ws_base/src/ranger_ros2', 'status', '--porcelain=v1', '--untracked-files=all']
+ M ranger_base/src/ranger_messenger.cpp
+
+EXIT=0
+['git', '-C', '/home/lab307/ranger_nav/ws_base/src/ranger_ros2', 'diff', '--no-ext-diff']
+diff --git a/ranger_base/src/ranger_messenger.cpp b/ranger_base/src/ranger_messenger.cpp
+index e7ef852..d317f5c 100644
+--- a/ranger_base/src/ranger_messenger.cpp
++++ b/ranger_base/src/ranger_messenger.cpp
+@@ -113,7 +113,7 @@ void RangerROSMessenger::LoadParameters() {
+       robot_params_.max_steer_angle_ackermann =
+           RangerMiniV2Params::max_steer_angle_ackermann;
+     }
+-    if (robot_model_ == "ranger_mini_v3") {
++    else if (robot_model_ == "ranger_mini_v3") {
+       robot_type_ = RangerSubType::kRangerMiniV3;
+ 
+       robot_params_.track = RangerMiniV3Params::track;
+
+EXIT=0
+['git', '-C', '/home/lab307/ranger_nav/ws_base/src/ranger_ros2', 'show', '-s', '--format=%H%n%cs%n%s', 'HEAD']
+b6ea21a275ca5e7168130cc6470e61474681d679
+2026-04-10
+update readme
+
+EXIT=0
+['git', '-C', '/home/lab307/ranger_nav/ws_base/src/ugv_sdk', 'remote', 'get-url', 'origin']
+https://github.com/agilexrobotics/ugv_sdk.git
+
+EXIT=0
+['git', '-C', '/home/lab307/ranger_nav/ws_base/src/ugv_sdk', 'rev-parse', 'HEAD']
+f2704eacdc90357078cd93ec60aae08bb4baab35
+
+EXIT=0
+['git', '-C', '/home/lab307/ranger_nav/ws_base/src/ugv_sdk', 'symbolic-ref', '-q', '--short', 'HEAD']
+
+EXIT=1
+['git', '-C', '/home/lab307/ranger_nav/ws_base/src/ugv_sdk', 'status', '--porcelain=v1', '--untracked-files=all']
+
+EXIT=0
+['git', '-C', '/home/lab307/ranger_nav/ws_base/src/ugv_sdk', 'diff', '--no-ext-diff']
+
+EXIT=0
+['git', '-C', '/home/lab307/ranger_nav/ws_base/src/ugv_sdk', 'show', '-s', '--format=%H%n%cs%n%s', 'HEAD']
+f2704eacdc90357078cd93ec60aae08bb4baab35
+2026-08-11
+Fixed bugs in the Bunker series.
+
+EXIT=0

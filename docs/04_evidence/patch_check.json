@@ -1,0 +1,13 @@
+{
+  "command": [
+    "git",
+    "-C",
+    "/home/lab307/ranger_nav/ws_slam/src/lightning",
+    "apply",
+    "--reverse",
+    "--check",
+    "/home/lab307/ranger_nav/patches/stage4_lightning_integration.patch"
+  ],
+  "exit": 0,
+  "output": ""
+}

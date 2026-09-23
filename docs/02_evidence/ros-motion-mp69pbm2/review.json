@@ -1,0 +1,325 @@
+{
+  "direction_note": "Raw SocketCAN records include local TX loopback; not all are RX. Counters from ip snapshots.",
+  "can_id_counts": {
+    "0x221": 716,
+    "0x281": 716,
+    "0x271": 716,
+    "0x241": 716,
+    "0x251": 716,
+    "0x252": 716,
+    "0x253": 716,
+    "0x254": 716,
+    "0x255": 716,
+    "0x265": 144,
+    "0x256": 716,
+    "0x257": 716,
+    "0x258": 716,
+    "0x231": 716,
+    "0x311": 716,
+    "0x312": 716,
+    "0x211": 716,
+    "0x291": 716,
+    "0x262": 143,
+    "0x267": 143,
+    "0x264": 143,
+    "0x261": 143,
+    "0x266": 143,
+    "0x263": 143,
+    "0x268": 143,
+    "0x421": 1,
+    "0x141": 415,
+    "0x111": 416
+  },
+  "ros_publications_by_phase": {
+    "static": 315,
+    "forward": 34,
+    "explicit_zero": 83,
+    "cleanup_zero": 50
+  },
+  "nonzero_ros_count": 34,
+  "nonzero_can_count": 34,
+  "nonzero_can_values": [
+    [
+      0.05,
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "ros_first_nonzero_to_first_zero_seconds": 0.8024647839920362,
+  "can_first_nonzero_to_first_zero_seconds": 0.8016042600065703,
+  "motion_feedback_ranges": [
+    [
+      -0.425,
+      0.066
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ]
+  ],
+  "can_zero_to_exact_zero_stable_observed_seconds": 3.7272165619942825,
+  "timing_note": "Userspace reception monotonic timestamps, not physical stop latency or kernel CAN timestamps.",
+  "system_transitions": [
+    {
+      "seconds": 5.557500116992742e-05,
+      "phase": "preflight",
+      "vehicle_control_fault_reserved0": [
+        2,
+        0,
+        0,
+        2
+      ]
+    },
+    {
+      "seconds": 3.587140907009598,
+      "phase": "static",
+      "vehicle_control_fault_reserved0": [
+        2,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "seconds": 3.608600289997412,
+      "phase": "static",
+      "vehicle_control_fault_reserved0": [
+        0,
+        1,
+        0,
+        0
+      ]
+    },
+    {
+      "seconds": 13.415214534004917,
+      "phase": "after_driver_exit",
+      "vehicle_control_fault_reserved0": [
+        0,
+        1,
+        0,
+        2
+      ]
+    },
+    {
+      "seconds": 13.436074447003193,
+      "phase": "after_driver_exit",
+      "vehicle_control_fault_reserved0": [
+        2,
+        0,
+        0,
+        2
+      ]
+    }
+  ],
+  "odom_first_position": {
+    "x": 0.0,
+    "y": 0.0,
+    "z": 0.0
+  },
+  "odom_last_position": {
+    "x": 0.031435528105398805,
+    "y": 0.0,
+    "z": 0.0
+  },
+  "stats_delta": {
+    "rx": {
+      "bytes": 109042,
+      "packets": 14168,
+      "errors": 0,
+      "dropped": 0,
+      "over_errors": 0,
+      "multicast": 0
+    },
+    "tx": {
+      "bytes": 6656,
+      "packets": 832,
+      "errors": 0,
+      "dropped": 0,
+      "carrier_errors": 0,
+      "collisions": 0
+    }
+  },
+  "can_error_counter_delta": {
+    "restarts": 0,
+    "bus_error": 0,
+    "arbitration_lost": 0,
+    "error_warning": 0,
+    "error_passive": 0,
+    "bus_off": 0
+  },
+  "human_observation": "用户明确表示本轮没来得及观察，不是观察到车辆静止。",
+  "safety_status": "BLOCKED for further motion/navigation: post-exit nonzero feedback transient, physical cause unresolved. Original runner exit 0 did not check full post-exit trajectory.",
+  "explicit_zero_to_exact_zero_stable_observed_seconds": 0.4937564699939685,
+  "motion_feedback_ranges_by_phase": {
+    "preflight": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "static": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "forward": [
+      [
+        0.0,
+        0.056
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "explicit_zero": [
+      [
+        0.0,
+        0.066
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "cleanup_zero": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "after_driver_exit": [
+      [
+        -0.425,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "post_exit_nonzero_samples": [
+    {
+      "seconds_from_first_frame": 13.453343101005885,
+      "data": "ffab000000000000",
+      "values": [
+        -0.085,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "seconds_from_first_frame": 13.474415532997227,
+      "data": "fe57000000000000",
+      "values": [
+        -0.425,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "seconds_from_first_frame": 13.495445246997406,
+      "data": "ff7a000000000000",
+      "values": [
+        -0.134,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "seconds_from_first_frame": 13.516485152009409,
+      "data": "ffdb000000000000",
+      "values": [
+        -0.037,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "seconds_from_first_frame": 13.537489384005312,
+      "data": "fff7000000000000",
+      "values": [
+        -0.009,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "seconds_last_can_command_to_state_reversion": 0.45091717899776995
+}

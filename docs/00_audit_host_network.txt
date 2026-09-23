@@ -1,0 +1,186 @@
+## usb
+Command: ['lsusb']
+Exit: 0
+Bus 002 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub
+Bus 001 Device 005: ID 8087:0033 Intel Corp. 
+Bus 001 Device 008: ID 1d50:606f OpenMoko, Inc. Geschwister Schneider CAN adapter
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub
+
+
+## can
+Command: ['ip', '-details', '-statistics', 'link', 'show', 'can0']
+Exit: 0
+3: can0: <NOARP,ECHO> mtu 16 qdisc noop state DOWN mode DEFAULT group default qlen 10
+    link/can  promiscuity 0 minmtu 0 maxmtu 0 
+    can state STOPPED restart-ms 0 
+	  gs_usb: tseg1 1..16 tseg2 1..8 sjw 1..4 brp 1..1024 brp-inc 1
+	  clock 48000000 
+	  re-started bus-errors arbit-lost error-warn error-pass bus-off
+	  0          0          0          0          0          0         numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535 parentbus usb parentdev 1-11:1.0 
+    RX:  bytes packets errors dropped  missed   mcast           
+             0       0      0       0       0       0 
+    TX:  bytes packets errors dropped carrier collsns           
+             0       0      0       0       0       0 
+
+
+## addresses
+Command: ['ip', '-brief', 'address']
+Exit: 0
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+wlo1             UP             192.168.3.18/24 fd42:abaf:db6b:c400:ec6a:d366:7348:a415/64 fd42:abaf:db6b:c400:d377:1111:aee5:5b03/64 fd42:abaf:db6b:c400:ad7c:ba5f:b78d:6bc9/64 fe80::cc39:8ce9:b3e9:44e2/64 
+can0             DOWN           
+
+
+## routes
+Command: ['ip', 'route', 'show', 'table', 'all']
+Exit: 0
+default via 192.168.3.1 dev wlo1 proto dhcp metric 600 
+169.254.0.0/16 dev wlo1 scope link metric 1000 
+192.168.3.0/24 dev wlo1 proto kernel scope link src 192.168.3.18 metric 600 
+local 127.0.0.0/8 dev lo table local proto kernel scope host src 127.0.0.1 
+local 127.0.0.1 dev lo table local proto kernel scope host src 127.0.0.1 
+broadcast 127.255.255.255 dev lo table local proto kernel scope link src 127.0.0.1 
+local 192.168.3.18 dev wlo1 table local proto kernel scope host src 192.168.3.18 
+broadcast 192.168.3.255 dev wlo1 table local proto kernel scope link src 192.168.3.18 
+::1 dev lo proto kernel metric 256 pref medium
+fd42:abaf:db6b:c400::/64 dev wlo1 proto ra metric 600 pref medium
+fe80::/64 dev wlo1 proto kernel metric 1024 pref medium
+default via fe80::3296:10ff:fec4:6bdb dev wlo1 proto ra metric 600 pref high
+local ::1 dev lo table local proto kernel metric 0 pref medium
+local fd42:abaf:db6b:c400:ad7c:ba5f:b78d:6bc9 dev wlo1 table local proto kernel metric 0 pref medium
+local fd42:abaf:db6b:c400:d377:1111:aee5:5b03 dev wlo1 table local proto kernel metric 0 pref medium
+local fd42:abaf:db6b:c400:ec6a:d366:7348:a415 dev wlo1 table local proto kernel metric 0 pref medium
+local fe80::cc39:8ce9:b3e9:44e2 dev wlo1 table local proto kernel metric 0 pref medium
+multicast ff00::/8 dev wlo1 table local proto kernel metric 256 pref medium
+
+
+## ipv6 routes
+Command: ['ip', '-6', 'route', 'show', 'table', 'all']
+Exit: 0
+::1 dev lo proto kernel metric 256 pref medium
+fd42:abaf:db6b:c400::/64 dev wlo1 proto ra metric 600 pref medium
+fe80::/64 dev wlo1 proto kernel metric 1024 pref medium
+default via fe80::3296:10ff:fec4:6bdb dev wlo1 proto ra metric 600 pref high
+local ::1 dev lo table local proto kernel metric 0 pref medium
+local fd42:abaf:db6b:c400:ad7c:ba5f:b78d:6bc9 dev wlo1 table local proto kernel metric 0 pref medium
+local fd42:abaf:db6b:c400:d377:1111:aee5:5b03 dev wlo1 table local proto kernel metric 0 pref medium
+local fd42:abaf:db6b:c400:ec6a:d366:7348:a415 dev wlo1 table local proto kernel metric 0 pref medium
+local fe80::cc39:8ce9:b3e9:44e2 dev wlo1 table local proto kernel metric 0 pref medium
+multicast ff00::/8 dev wlo1 table local proto kernel metric 256 pref medium
+
+
+## neighbors
+Command: ['ip', 'neigh', 'show']
+Exit: 0
+192.168.3.7 dev wlo1 lladdr 6c:1f:f7:4a:b9:98 REACHABLE
+192.168.3.1 dev wlo1 lladdr 30:96:10:c4:6b:db REACHABLE
+fe80::3296:10ff:fec4:6bdb dev wlo1 lladdr 30:96:10:c4:6b:db router STALE
+
+
+## NM devices
+Command: ['nmcli', '-t', '-f', 'DEVICE,TYPE,STATE,CONNECTION', 'device', 'status']
+Exit: 0
+wlo1:wifi:connected:10-307
+p2p-dev-wlo1:wifi-p2p:disconnected:
+can0:can:unmanaged:
+lo:loopback:unmanaged:
+
+
+## NM connections
+Command: ['nmcli', '-t', '-f', 'NAME,TYPE,DEVICE', 'connection', 'show']
+Exit: 0
+10-307:802-11-wireless:wlo1
+
+
+## services
+Command: ['systemctl', 'is-active', 'NetworkManager', 'systemd-networkd']
+Exit: 0
+active
+inactive
+
+
+## listeners
+Command: ['ss', '-lntu']
+Exit: 0
+Netid State  Recv-Q Send-Q                    Local Address:Port  Peer Address:PortProcess
+udp   UNCONN 0      0                         127.0.0.53%lo:53         0.0.0.0:*          
+udp   UNCONN 0      0                               0.0.0.0:631        0.0.0.0:*          
+udp   UNCONN 0      0                               0.0.0.0:5353       0.0.0.0:*          
+udp   UNCONN 0      0                               0.0.0.0:41720      0.0.0.0:*          
+udp   UNCONN 0      0      [fe80::cc39:8ce9:b3e9:44e2]%wlo1:546           [::]:*          
+udp   UNCONN 0      0                                  [::]:52262         [::]:*          
+udp   UNCONN 0      0                                  [::]:5353          [::]:*          
+tcp   LISTEN 0      4096                      127.0.0.53%lo:53         0.0.0.0:*          
+tcp   LISTEN 0      128                           127.0.0.1:7897       0.0.0.0:*          
+tcp   LISTEN 0      128                           127.0.0.1:631        0.0.0.0:*          
+tcp   LISTEN 0      1024                          127.0.0.1:36263      0.0.0.0:*          
+tcp   LISTEN 0      128                             0.0.0.0:22         0.0.0.0:*          
+tcp   LISTEN 0      128                               [::1]:7897          [::]:*          
+tcp   LISTEN 0      128                               [::1]:631           [::]:*          
+tcp   LISTEN 0      128                                [::]:22            [::]:*          
+
+
+## firewall
+Command: ['sudo', '-n', 'ufw', 'status', 'verbose']
+Exit: 1
+sudo: 需要密码
+
+
+## HTTP configured proxy https://mirrors.ustc.edu.cn/ros2/ubuntu/dists/jammy/InRelease
+Command: ['curl', '-q', '-L', '-sS', '-o', '/dev/null', '--connect-timeout', '8', '--max-time', '18', '-w', 'http=%{http_code} remote=%{remote_ip} time=%{time_total}\n', 'https://mirrors.ustc.edu.cn/ros2/ubuntu/dists/jammy/InRelease']
+Exit: 0
+http=200 remote=127.0.0.1 time=0.114775
+
+
+## HTTP direct https://mirrors.ustc.edu.cn/ros2/ubuntu/dists/jammy/InRelease
+Command: ['curl', '-q', '-L', '-sS', '-o', '/dev/null', '--connect-timeout', '8', '--max-time', '18', '-w', 'http=%{http_code} remote=%{remote_ip} time=%{time_total}\n', '--noproxy', '*', 'https://mirrors.ustc.edu.cn/ros2/ubuntu/dists/jammy/InRelease']
+Exit: 0
+http=200 remote=202.141.160.110 time=0.110550
+
+
+## HTTP configured proxy https://packages.ros.org/ros2/ubuntu/dists/jammy/InRelease
+Command: ['curl', '-q', '-L', '-sS', '-o', '/dev/null', '--connect-timeout', '8', '--max-time', '18', '-w', 'http=%{http_code} remote=%{remote_ip} time=%{time_total}\n', 'https://packages.ros.org/ros2/ubuntu/dists/jammy/InRelease']
+Exit: 60
+curl: (60) SSL: no alternative certificate subject name matches target host name 'packages.ros.org'
+More details here: https://curl.se/docs/sslcerts.html
+
+curl failed to verify the legitimacy of the server and therefore could not
+establish a secure connection to it. To learn more about this situation and
+how to fix it, please visit the web page mentioned above.
+http=000 remote=127.0.0.1 time=0.856719
+
+
+## HTTP direct https://packages.ros.org/ros2/ubuntu/dists/jammy/InRelease
+Command: ['curl', '-q', '-L', '-sS', '-o', '/dev/null', '--connect-timeout', '8', '--max-time', '18', '-w', 'http=%{http_code} remote=%{remote_ip} time=%{time_total}\n', '--noproxy', '*', 'https://packages.ros.org/ros2/ubuntu/dists/jammy/InRelease']
+Exit: 60
+curl: (60) SSL: no alternative certificate subject name matches target host name 'packages.ros.org'
+More details here: https://curl.se/docs/sslcerts.html
+
+curl failed to verify the legitimacy of the server and therefore could not
+establish a secure connection to it. To learn more about this situation and
+how to fix it, please visit the web page mentioned above.
+http=000 remote=2605:bc80:3010::134 time=1.486346
+
+
+## HTTP configured proxy https://github.com
+Command: ['curl', '-q', '-L', '-sS', '-o', '/dev/null', '--connect-timeout', '8', '--max-time', '18', '-w', 'http=%{http_code} remote=%{remote_ip} time=%{time_total}\n', 'https://github.com']
+Exit: 0
+http=200 remote=127.0.0.1 time=2.603025
+
+
+## HTTP direct https://github.com
+Command: ['curl', '-q', '-L', '-sS', '-o', '/dev/null', '--connect-timeout', '8', '--max-time', '18', '-w', 'http=%{http_code} remote=%{remote_ip} time=%{time_total}\n', '--noproxy', '*', 'https://github.com']
+Exit: 0
+http=200 remote=20.205.243.166 time=1.075161
+
+
+## HTTP configured proxy https://raw.githubusercontent.com/gaoxiang12/lightning-lm/HEAD/README.md
+Command: ['curl', '-q', '-L', '-sS', '-o', '/dev/null', '--connect-timeout', '8', '--max-time', '18', '-w', 'http=%{http_code} remote=%{remote_ip} time=%{time_total}\n', 'https://raw.githubusercontent.com/gaoxiang12/lightning-lm/HEAD/README.md']
+Exit: 0
+http=200 remote=127.0.0.1 time=0.946215
+
+
+## HTTP direct https://raw.githubusercontent.com/gaoxiang12/lightning-lm/HEAD/README.md
+Command: ['curl', '-q', '-L', '-sS', '-o', '/dev/null', '--connect-timeout', '8', '--max-time', '18', '-w', 'http=%{http_code} remote=%{remote_ip} time=%{time_total}\n', '--noproxy', '*', 'https://raw.githubusercontent.com/gaoxiang12/lightning-lm/HEAD/README.md']
+Exit: 0
+http=200 remote=185.199.109.133 time=0.536540

@@ -1,0 +1,166 @@
+--- /tmp/stage5_snapshot/src/core/system/loc_system.h	2026-09-23 20:58:12.162178795 +0800
++++ /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/system/loc_system.h	2026-09-23 20:58:47.739163349 +0800
+@@ -9,6 +9,8 @@
+ #include <rclcpp/rclcpp.hpp>
+ #include <sensor_msgs/msg/imu.hpp>
+ #include <sensor_msgs/msg/point_cloud2.hpp>
++#include <std_msgs/msg/float32.hpp>
++#include <std_msgs/msg/int32.hpp>
+ 
+ #include "livox_ros_driver2/msg/custom_msg.hpp"
+ 
+@@ -25,7 +27,8 @@
+ class LocSystem {
+    public:
+     struct Options {
+-        bool pub_tf_ = true;  // 是否发布tf
++        bool pub_tf_ = true;                   // 是否发布tf
++        std::string tf_child_frame_ = "base_link";  // tf child frame（上游默认把传感器位姿标成base_link）
+     };
+ 
+     explicit LocSystem(Options options);
+@@ -59,6 +62,9 @@
+     rclcpp::Node::SharedPtr node_;
+     std::shared_ptr<tf2_ros::TransformBroadcaster> tf_broadcaster_ = nullptr;
+ 
++    rclcpp::Publisher<std_msgs::msg::Int32>::SharedPtr loc_state_pub_ = nullptr;
++    rclcpp::Publisher<std_msgs::msg::Float32>::SharedPtr loc_confidence_pub_ = nullptr;
++
+     std::string imu_topic_;
+     std::string cloud_topic_;
+     std::string livox_topic_;
+--- /tmp/stage5_snapshot/src/core/system/loc_system.cc	2026-09-23 20:58:12.167178647 +0800
++++ /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/system/loc_system.cc	2026-09-23 20:58:50.758080849 +0800
+@@ -59,10 +59,26 @@
+ 
+     if (options_.pub_tf_) {
+         tf_broadcaster_ = std::make_shared<tf2_ros::TransformBroadcaster>(node_);
+-        loc_->SetTFCallback(
+-            [this](const geometry_msgs::msg::TransformStamped &pose) { tf_broadcaster_->sendTransform(pose); });
++        loc_->SetTFCallback([this](const geometry_msgs::msg::TransformStamped &pose) {
++            geometry_msgs::msg::TransformStamped msg = pose;
++            /// 上游ToGeoMsg把传感器位姿标成base_link；此处允许显式更名
++            msg.child_frame_id = options_.tf_child_frame_;
++            tf_broadcaster_->sendTransform(msg);
++        });
+     }
+ 
++    loc_state_pub_ = node_->create_publisher<std_msgs::msg::Int32>("/lightning/loc_status", qos);
++    loc_->SetLocStateCallback(
++        [this](const std_msgs::msg::Int32 &state) { loc_state_pub_->publish(state); });
++
++    loc_confidence_pub_ = node_->create_publisher<std_msgs::msg::Float32>("/lightning/loc_confidence", qos);
++    loc_->SetConfidenceCallback(
++        [this](const double &confidence) {
++            std_msgs::msg::Float32 msg;
++            msg.data = static_cast<float>(confidence);
++            loc_confidence_pub_->publish(msg);
++        });
++
+     bool ret = loc_->Init(yaml_path, map_path);
+     if (ret) {
+         LOG(INFO) << "online loc node has been created.";
+--- /tmp/stage5_snapshot/src/core/localization/localization.h	2026-09-23 20:58:12.171178528 +0800
++++ /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/localization/localization.h	2026-09-23 20:58:24.182826631 +0800
+@@ -77,15 +77,17 @@
+ 
+     using TFCallback = std::function<void(const geometry_msgs::msg::TransformStamped& odom)>;
+     using LocStateCallback = std::function<void(const std_msgs::msg::Int32& state)>;
++    using ConfidenceCallback = std::function<void(const double& confidence)>;
+     using PointcloudBodyCallback = std::function<void(const sensor_msgs::msg::PointCloud2& pointcloud)>;
+     using PointcloudWorldCallback = std::function<void(const sensor_msgs::msg::PointCloud2& pointcloud)>;
+ 
+     void SetTFCallback(TFCallback&& callback);
++    void SetLocStateCallback(LocStateCallback&& callback);
++    void SetConfidenceCallback(ConfidenceCallback&& callback);
+ 
+     // void SetPathCallback(std::function<void(const nav_msgs::msg::Path& path)>&& callback);
+     // void SetPointcloudWorldCallback(std::function<void(const sensor_msgs::msg::PointCloud2& pointcloud)>&& callback);
+     // void SetPointcloudBodyCallback(std::function<void(const sensor_msgs::msg::PointCloud2& pointcloud)>&& callback);
+-    // void SetLocStateCallback(std::function<void(const std_msgs::msg::Int32& state)>&& callback);
+     // void SetHealthDiagNormalCallback(interface::health_diag_normal_callback&& callback);
+ 
+    private:
+@@ -119,6 +121,7 @@
+     /// 框架相关
+     TFCallback tf_callback_;
+     LocStateCallback loc_state_callback_;
++    ConfidenceCallback confidence_callback_;
+     PointcloudBodyCallback pointcloud_body_callback_;
+     PointcloudWorldCallback pointcloud_world_callback_;
+ 
+--- /tmp/stage5_snapshot/src/core/localization/localization.cpp	2026-09-23 20:58:12.176178380 +0800
++++ /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/localization/localization.cpp	2026-09-23 21:43:43.278173498 +0800
+@@ -99,6 +99,10 @@
+             tf_callback_(loc_result_.ToGeoMsg());
+         }
+ 
++        if (confidence_callback_ && loc_result_.valid_) {
++            confidence_callback_(loc_result_.confidence_);
++        }
++
+         if (ui_) {
+             ui_->UpdateNavState(loc_result_.ToNavState());
+             ui_->UpdateRecentPose(loc_result_.pose_);
+@@ -329,6 +333,11 @@
+ // }
+ 
+ void Localization::Finish() {
++    /// Init 失败时 lidar_loc_/ui_ 可能仍为空，退出路径不得解引用空指针
++    if (lidar_loc_ == nullptr) {
++        return;
++    }
++
+     lidar_loc_->Finish();
+     if (ui_) {
+         ui_->Quit();
+@@ -348,4 +357,8 @@
+ 
+ void Localization::SetTFCallback(Localization::TFCallback&& callback) { tf_callback_ = callback; }
+ 
++void Localization::SetLocStateCallback(Localization::LocStateCallback&& callback) { loc_state_callback_ = callback; }
++
++void Localization::SetConfidenceCallback(Localization::ConfidenceCallback&& callback) { confidence_callback_ = callback; }
++
+ }  // namespace lightning::loc
+--- /tmp/stage5_snapshot/src/app/run_loc_online.cc	2026-09-23 20:58:12.181178232 +0800
++++ /home/lab307/ranger_nav/ws_slam/src/lightning/src/app/run_loc_online.cc	2026-09-23 21:43:44.111195373 +0800
+@@ -10,6 +10,15 @@
+ #include "wrapper/ros_utils.h"
+ 
+ DEFINE_string(config, "./config/default.yaml", "配置文件");
++DEFINE_double(init_x, 0.0, "初始位姿平移x");
++DEFINE_double(init_y, 0.0, "初始位姿平移y");
++DEFINE_double(init_z, 0.0, "初始位姿平移z");
++DEFINE_double(init_qx, 0.0, "初始位姿四元数x");
++DEFINE_double(init_qy, 0.0, "初始位姿四元数y");
++DEFINE_double(init_qz, 0.0, "初始位姿四元数z");
++DEFINE_double(init_qw, 1.0, "初始位姿四元数w");
++DEFINE_bool(pub_tf, true, "是否发布TF");
++DEFINE_string(tf_child, "imu_link", "TF child frame（位姿为传感器/IMU系）");
+ 
+ /// 运行定位的测试
+ int main(int argc, char** argv) {
+@@ -23,14 +32,20 @@
+     rclcpp::init(argc, argv);
+ 
+     LocSystem::Options opt;
++    opt.pub_tf_ = FLAGS_pub_tf;
++    opt.tf_child_frame_ = FLAGS_tf_child;
+     LocSystem loc(opt);
+ 
+     if (!loc.Init(FLAGS_config)) {
+         LOG(ERROR) << "failed to init loc";
++        rclcpp::shutdown();
++        return 1;
+     }
+ 
+-    /// 默认起点开始定位
+-    loc.SetInitPose(SE3());
++    /// 人工确认的固定启动点（默认单位阵=建图起点同朝向）
++    Quatd q(FLAGS_init_qw, FLAGS_init_qx, FLAGS_init_qy, FLAGS_init_qz);
++    q.normalize();
++    loc.SetInitPose(SE3(q, Vec3d(FLAGS_init_x, FLAGS_init_y, FLAGS_init_z)));
+     loc.Spin();
+ 
+     rclcpp::shutdown();

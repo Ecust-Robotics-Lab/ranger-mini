@@ -1,0 +1,26 @@
+{
+  "supply": "12 V",
+  "cable": "original 1-to-3 splitter",
+  "fixed": true,
+  "window_unobstructed": true,
+  "can_remain_stationary": true,
+  "source": "user confirmation in this session",
+  "restore_first": {
+    "exit": 1,
+    "backup": "/var/lib/ranger-nav-yt6801/stage3-restore-qo1CoVSt",
+    "cause": "script symlink-versus-resolved PCI path comparison"
+  },
+  "restore_second": {
+    "exit": 0,
+    "backup": "/var/lib/ranger-nav-yt6801/stage3-restore-V2tsu0kS"
+  },
+  "persistence": {
+    "user_reported_exit": 0,
+    "backup": "/var/lib/ranger-nav-yt6801/stage3-persist-FxqdJUHF",
+    "restore_backup": "/var/lib/ranger-nav-yt6801/stage3-restore-qGbDPqL5",
+    "reboot_test": "not performed",
+    "index_permission_repair": "user confirmed execution; final read-only verification passed"
+  },
+  "lidar_model": "Mid-360S",
+  "model_correction": "User corrected Mid-360 assumption; prior driver attempts produced no messages and are not accepted."
+}

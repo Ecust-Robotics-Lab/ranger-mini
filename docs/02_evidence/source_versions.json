@@ -1,0 +1,46 @@
+{
+  "recorded_at": "2026-09-14T21:52:49.823763+08:00",
+  "repositories": {
+    "ranger_ros2": {
+      "origin": "https://github.com/agilexrobotics/ranger_ros2.git",
+      "origin_exit": 0,
+      "commit": "b6ea21a275ca5e7168130cc6470e61474681d679",
+      "commit_exit": 0,
+      "branch": "",
+      "branch_exit": 1,
+      "status": "M ranger_base/src/ranger_messenger.cpp",
+      "status_exit": 0,
+      "diff": "diff --git a/ranger_base/src/ranger_messenger.cpp b/ranger_base/src/ranger_messenger.cpp\nindex e7ef852..d317f5c 100644\n--- a/ranger_base/src/ranger_messenger.cpp\n+++ b/ranger_base/src/ranger_messenger.cpp\n@@ -113,7 +113,7 @@ void RangerROSMessenger::LoadParameters() {\n       robot_params_.max_steer_angle_ackermann =\n           RangerMiniV2Params::max_steer_angle_ackermann;\n     }\n-    if (robot_model_ == \"ranger_mini_v3\") {\n+    else if (robot_model_ == \"ranger_mini_v3\") {\n       robot_type_ = RangerSubType::kRangerMiniV3;\n \n       robot_params_.track = RangerMiniV3Params::track;",
+      "diff_exit": 0,
+      "commit_info": "b6ea21a275ca5e7168130cc6470e61474681d679\n2026-04-10\nupdate readme",
+      "commit_info_exit": 0,
+      "selected_upstream_branch": "humble",
+      "checkout": "detached HEAD"
+    },
+    "ugv_sdk": {
+      "origin": "https://github.com/agilexrobotics/ugv_sdk.git",
+      "origin_exit": 0,
+      "commit": "f2704eacdc90357078cd93ec60aae08bb4baab35",
+      "commit_exit": 0,
+      "branch": "",
+      "branch_exit": 1,
+      "status": "",
+      "status_exit": 0,
+      "diff": "",
+      "diff_exit": 0,
+      "commit_info": "f2704eacdc90357078cd93ec60aae08bb4baab35\n2026-08-11\nFixed bugs in the Bunker series.",
+      "commit_info_exit": 0,
+      "selected_upstream_branch": "main",
+      "checkout": "detached HEAD"
+    }
+  },
+  "artifacts": {
+    "patches/ranger_ros2_humble_v2_model.patch": "0bc00f105dae42f15bfc973814cfc624d49d315fd196d7f01f5f1c86dd2d694c",
+    "config/base_sources.repos": "12e1c63bb9e5ab1a2db28bde6ab2b1f10d13edfcfb7cb7b1167cdceac3ca50c0",
+    "config/base_mini_v2.yaml": "1a8b916ccb2a49d4b2878175255cdf53c713aeb3e26022521cfa9062966e4249",
+    "config/base_mini_v2.launch.py": "a090cc857f8a620247fee0ee50bef01e5bb4180c468c50daff45b347a8c9da36",
+    "ws_base/install/ranger_base/lib/ranger_base/ranger_base_node": "883791c3b3411e16af2a5f0c9978b8be5f61475ee721b6a7373f138f412213f9",
+    "vendor/base_deps/downloads/can-utils_2020.11.0-1_amd64.deb": "3bdc5ddfc7d41a8ec0f3deb23f8365ac7a96e39c20900da821b485dda4222503",
+    "vendor/base_deps/downloads/libasio-dev_1%3a1.18.1-1_all.deb": "765fe7bff62134db942c00953544f62f483cebc6ccf2b9153fb6fd40570e6b9c"
+  }
+}

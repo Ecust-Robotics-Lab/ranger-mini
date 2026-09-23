@@ -1,0 +1,24 @@
+# Raw rosbags: too large for git; kept on disk only (irreplaceable evidence)
+bags/
+
+# Third-party pinned sources with their own git history.
+# Local modifications are tracked as patch files under patches/.
+ws_slam/
+ws_base/
+ws_livox/
+vendor/
+
+# Colcon/workspace build artifacts
+build/
+install/
+log/
+
+# Large raw evidence dumps (stage-2 CAN message streams, ~15 MB each)
+docs/02_evidence/*/ros_messages.jsonl
+
+# Upstream manuals (kept on disk, fetched artifacts)
+*.pdf
+
+# OS noise
+.DDS/
+*.swp

@@ -1,0 +1,21 @@
+{
+  "date": "2026-09-22",
+  "scope": "Single-address network verification after user-reported Mid-360S replacement; no driver, ROS, CAN, motion, network reconfiguration, or subnet scan.",
+  "reported_serial_suffix": "3801",
+  "address_rule": "192.168.1.(100 + final two decimal SN digits)",
+  "derived_lidar_ip": "192.168.1.101",
+  "host_interface": "enp2s0",
+  "host_ipv4": "192.168.1.50/24",
+  "default_route": "default via 192.168.3.1 dev wlo1 proto dhcp metric 600",
+  "link": "UP, LOWER_UP, MAC 84:f7:58:40:1f:ce",
+  "probe": {
+    "target": "192.168.1.101",
+    "packets_transmitted": 3,
+    "packets_received": 3,
+    "packet_loss_percent": 0,
+    "rtt_ms": {"min": 0.857, "avg": 2.104, "max": 2.934, "mdev": 0.897},
+    "neighbor_mac": "4c:43:f6:f4:9d:c2",
+    "route": "192.168.1.101 dev enp2s0 src 192.168.1.50"
+  },
+  "conclusion": "IP reachability PASS only. Mid-360S device type, full SN, firmware, UDP/ROS message flow, timing, and installation remain unverified for the replacement hardware."
+}

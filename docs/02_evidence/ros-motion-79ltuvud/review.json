@@ -1,0 +1,103 @@
+{
+  "system_transitions": [
+    {
+      "elapsed": 0.0,
+      "phase": "preflight",
+      "data": "000001f400000000",
+      "state": [
+        0,
+        0,
+        "0000"
+      ]
+    },
+    {
+      "elapsed": 2.064,
+      "phase": "static",
+      "data": "000101f500000000",
+      "state": [
+        0,
+        1,
+        "0000"
+      ]
+    },
+    {
+      "elapsed": 2.612,
+      "phase": "static",
+      "data": "020001f500000200",
+      "state": [
+        2,
+        0,
+        "0000"
+      ]
+    },
+    {
+      "elapsed": 9.038,
+      "phase": "cleanup_zero",
+      "data": "020101f400000000",
+      "state": [
+        2,
+        1,
+        "0000"
+      ]
+    },
+    {
+      "elapsed": 9.056,
+      "phase": "cleanup_zero",
+      "data": "000101f500000000",
+      "state": [
+        0,
+        1,
+        "0000"
+      ]
+    },
+    {
+      "elapsed": 10.631,
+      "phase": "after_driver_exit",
+      "data": "020001f400000200",
+      "state": [
+        2,
+        0,
+        "0000"
+      ]
+    }
+  ],
+  "ros_commands": 50,
+  "nonzero_ros_commands": 0,
+  "CAN_command_payload_counts": {
+    "0x421": {
+      "0100000000000000": 1
+    },
+    "0x111": {
+      "0000000000000000": 51
+    },
+    "0x141": {
+      "0000000000000000": 50
+    }
+  },
+  "counter_delta": {
+    "rx": {
+      "bytes": 84500,
+      "packets": 11002,
+      "errors": 0,
+      "dropped": 0,
+      "over_errors": 0,
+      "multicast": 0
+    },
+    "tx": {
+      "bytes": 816,
+      "packets": 102,
+      "errors": 0,
+      "dropped": 0,
+      "carrier_errors": 0,
+      "collisions": 0
+    }
+  },
+  "can_error_counter_delta": {
+    "restarts": 0,
+    "bus_error": 0,
+    "arbitration_lost": 0,
+    "error_warning": 0,
+    "error_passive": 0,
+    "bus_off": 0
+  }
+}

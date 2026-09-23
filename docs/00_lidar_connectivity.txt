@@ -1,0 +1,28 @@
+User confirmed: Mid-360 serial suffix 8745, connected to onboard Ethernet. Factory-IP candidate: 192.168.1.145; not a verified actual device address.
+
+Command: ['ip', 'route', 'get', '192.168.1.145']
+Exit: 0
+192.168.1.145 via 192.168.3.1 dev wlo1 src 192.168.3.18 uid 1000 
+    cache 
+
+
+Command: ['ping', '-n', '-c', '3', '-W', '1', '192.168.1.145']
+Exit: 1
+PING 192.168.1.145 (192.168.1.145) 56(84) bytes of data.
+
+--- 192.168.1.145 ping statistics ---
+3 packets transmitted, 0 received, 100% packet loss, time 2050ms
+
+
+
+Command: ['ip', '-brief', 'link']
+Exit: 0
+lo               UNKNOWN        00:00:00:00:00:00 <LOOPBACK,UP,LOWER_UP> 
+wlo1             UP             80:13:16:72:ed:b8 <BROADCAST,MULTICAST,UP,LOWER_UP> 
+can0             DOWN           <NOARP,ECHO> 
+
+
+Command: ['lspci', '-nnk', '-s', '02:00.0']
+Exit: 0
+02:00.0 Ethernet controller [0200]: Device [1f0a:6801] (rev 03)
+	Subsystem: Device [1b61:8105]

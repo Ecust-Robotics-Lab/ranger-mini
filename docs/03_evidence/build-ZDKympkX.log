@@ -1,0 +1,246 @@
+LOG=/home/lab307/ranger_nav/docs/03_evidence/build-ZDKympkX.log
+-- main project dir: /home/lab307/ranger_nav/vendor/livox/Livox-SDK2
+-- main project dir: /home/lab307/ranger_nav/vendor/livox/Livox-SDK2/samples
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/lab307/ranger_nav/ws_livox/sdk_build
+Consolidate compiler generated dependencies of target livox_lidar_sdk_static
+Consolidate compiler generated dependencies of target livox_lidar_sdk_shared
+[ 40%] Built target livox_lidar_sdk_static
+[ 81%] Built target livox_lidar_sdk_shared
+Consolidate compiler generated dependencies of target multi_lidars_upgrade
+Consolidate compiler generated dependencies of target livox_lidar_quick_start
+Consolidate compiler generated dependencies of target logger
+Consolidate compiler generated dependencies of target debug_point_cloud
+[ 83%] Built target livox_lidar_quick_start
+[ 85%] Built target multi_lidars_upgrade
+[ 87%] Built target logger
+[ 90%] Built target debug_point_cloud
+Consolidate compiler generated dependencies of target lidar_cmd_observer
+Consolidate compiler generated dependencies of target livox_lidar_ip_set
+Consolidate compiler generated dependencies of target livox_lidar_rmc_time_sync
+Consolidate compiler generated dependencies of target livox_lidar_info_get
+[ 92%] Built target lidar_cmd_observer
+[ 94%] Built target livox_lidar_info_get
+[ 96%] Built target livox_lidar_ip_set
+[100%] Built target livox_lidar_rmc_time_sync
+-- Install configuration: "Release"
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/sdk_install/lib/liblivox_lidar_sdk_static.a
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/sdk_install/include/livox_lidar_def.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/sdk_install/include/livox_lidar_api.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/sdk_install/include/livox_lidar_cfg.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/sdk_install/lib/liblivox_lidar_sdk_shared.so
+Starting >>> livox_ros_driver2
+[  1%] Built target livox_interfaces2__rs
+[  3%] Built target livox_interfaces2__cpp
+[ 10%] Built target livox_interfaces2__rosidl_generator_c
+[ 13%] Built target livox_ros_driver2_node
+[ 13%] Built target ament_cmake_python_copy_livox_ros_driver2
+[ 20%] Built target livox_interfaces2__rosidl_typesupport_cpp
+[ 27%] Built target livox_interfaces2__rosidl_typesupport_c
+[ 34%] Built target livox_interfaces2__rosidl_typesupport_fastrtps_cpp
+[ 41%] Built target livox_interfaces2__rosidl_typesupport_introspection_cpp
+[ 48%] Built target livox_interfaces2__rosidl_typesupport_fastrtps_c
+[ 55%] Built target livox_interfaces2__rosidl_typesupport_introspection_c
+[ 55%] Built target livox_interfaces2
+[ 56%] Built target livox_interfaces2__py
+[ 58%] Building CXX object CMakeFiles/livox_ros_driver2.dir/src/comm/pub_handler.cpp.o
+[ 60%] Building CXX object CMakeFiles/livox_ros_driver2.dir/src/call_back/livox_lidar_callback.cpp.o
+[ 65%] Built target livox_interfaces2__rosidl_generator_py
+[ 68%] Built target livox_ros_driver2__rosidl_typesupport_introspection_c__pyext
+[ 72%] Built target livox_ros_driver2__rosidl_typesupport_fastrtps_c__pyext
+[ 75%] Built target livox_ros_driver2__rosidl_typesupport_c__pyext
+running egg_info
+writing livox_ros_driver2.egg-info/PKG-INFO
+writing dependency_links to livox_ros_driver2.egg-info/dependency_links.txt
+writing top-level names to livox_ros_driver2.egg-info/top_level.txt
+reading manifest file 'livox_ros_driver2.egg-info/SOURCES.txt'
+writing manifest file 'livox_ros_driver2.egg-info/SOURCES.txt'
+[ 75%] Built target ament_cmake_python_build_livox_ros_driver2_egg
+/home/lab307/ranger_nav/ws_livox/src/livox_ros_driver2/src/comm/pub_handler.cpp: In member function ‘void livox_ros::LidarPubHandler::ProcessDoubleEchoPoint(livox_ros::RawPacket&)’:
+/home/lab307/ranger_nav/ws_livox/src/livox_ros_driver2/src/comm/pub_handler.cpp:480:12: warning: unused variable ‘index’ [-Wunused-variable]
+  480 |   uint32_t index = 0;
+      |            ^~~~~
+[ 77%] Linking CXX shared library liblivox_ros_driver2.so
+[100%] Built target livox_ros_driver2
+-- Install configuration: "Release"
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/ament_index/resource_index/rosidl_interfaces/livox_ros_driver2
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_msg__functions.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_msg__functions.c
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_point__functions.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_msg__struct.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_point__functions.c
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_msg__type_support.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_point__struct.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_point__type_support.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/custom_msg.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/custom_point.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/rosidl_generator_c__visibility_control.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/environment/library_path.sh
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/environment/library_path.dsv
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/lib/liblivox_ros_driver2__rosidl_generator_c.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_msg__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_point__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/lib/liblivox_ros_driver2__rosidl_typesupport_fastrtps_c.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_msg__type_support.c
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_point__type_support.c
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_point__rosidl_typesupport_introspection_c.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_msg__rosidl_typesupport_introspection_c.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/rosidl_typesupport_introspection_c__visibility_control.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/lib/liblivox_ros_driver2__rosidl_typesupport_introspection_c.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/lib/liblivox_ros_driver2__rosidl_typesupport_c.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_point__type_support.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_msg__struct.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_point__traits.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_point__builder.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_msg__builder.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_msg__traits.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_point__struct.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_msg__type_support.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/custom_point.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/custom_msg.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/rosidl_generator_cpp__visibility_control.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_msg__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/dds_fastrtps
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_point__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/lib/liblivox_ros_driver2__rosidl_typesupport_fastrtps_cpp.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_msg__type_support.cpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_point__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_point__type_support.cpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/include/livox_ros_driver2/livox_ros_driver2/msg/detail/custom_msg__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/lib/liblivox_ros_driver2__rosidl_typesupport_introspection_cpp.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/lib/liblivox_ros_driver2__rosidl_typesupport_cpp.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/environment/pythonpath.sh
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/environment/pythonpath.dsv
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages/livox_ros_driver2-1.0.0-py3.10.egg-info
+-- Installing: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages/livox_ros_driver2-1.0.0-py3.10.egg-info/SOURCES.txt
+-- Installing: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages/livox_ros_driver2-1.0.0-py3.10.egg-info/top_level.txt
+-- Installing: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages/livox_ros_driver2-1.0.0-py3.10.egg-info/dependency_links.txt
+-- Installing: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages/livox_ros_driver2-1.0.0-py3.10.egg-info/PKG-INFO
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages/livox_ros_driver2
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages/livox_ros_driver2/liblivox_interfaces2__rosidl_generator_py.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages/livox_ros_driver2/_livox_ros_driver2_s.ep.rosidl_typesupport_introspection_c.c
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages/livox_ros_driver2/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages/livox_ros_driver2/msg/_custom_point_s.c
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages/livox_ros_driver2/msg/__init__.py
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages/livox_ros_driver2/msg/_custom_point.py
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages/livox_ros_driver2/msg/_custom_msg.py
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages/livox_ros_driver2/msg/_custom_msg_s.c
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages/livox_ros_driver2/livox_ros_driver2_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages/livox_ros_driver2/livox_ros_driver2_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages/livox_ros_driver2/_livox_ros_driver2_s.ep.rosidl_typesupport_c.c
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages/livox_ros_driver2/livox_ros_driver2_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages/livox_ros_driver2/__init__.py
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages/livox_ros_driver2/_livox_ros_driver2_s.ep.rosidl_typesupport_fastrtps_c.c
+Listing '/home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages/livox_ros_driver2'...
+Listing '/home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages/livox_ros_driver2/msg'...
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages/livox_ros_driver2/livox_ros_driver2_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages/livox_ros_driver2/livox_ros_driver2_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/local/lib/python3.10/dist-packages/livox_ros_driver2/livox_ros_driver2_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/lib/liblivox_interfaces2__rosidl_generator_py.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/ament_index/resource_index/rust_packages/livox_ros_driver2
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/rust
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/rust/src
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/rust/src/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/rust/src/msg/rmw.rs
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/rust/src/msg.rs
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/rust/src/lib.rs
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/rust/Cargo.toml
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/rust/build.rs
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/msg/CustomPoint.idl
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/msg/CustomMsg.idl
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/msg/CustomPoint.msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/msg/CustomMsg.msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/lib/livox_ros_driver2/livox_ros_driver2_node
+-- Installing: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/lib/liblivox_ros_driver2.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/lib/liblivox_ros_driver2.so" to "/home/lab307/ranger_nav/ws_livox/sdk_install/lib"
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/config
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/config/mixed_HAP_MID360_config.json
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/config/display_point_cloud_ROS1.rviz
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/config/MID360s_config.json
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/config/AVIA2_config.json
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/config/HAP_config.json
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/config/display_point_cloud_ROS2.rviz
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/config/MID360_config.json
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/launch_ROS2
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/launch_ROS2/rviz_MID360s_launch.py
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/launch_ROS2/rviz_AVIA2_launch.py
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/launch_ROS2/rviz_mixed.py
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/launch_ROS2/rviz_MID360_launch.py
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/launch_ROS2/rviz_HAP_launch.py
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/launch_ROS2/msg_MID360_launch.py
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/launch_ROS2/msg_AVIA2_launch.py
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/launch_ROS2/msg_MID360s_launch.py
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/launch_ROS2/msg_HAP_launch.py
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/ament_index/resource_index/package_run_dependencies/livox_ros_driver2
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/ament_index/resource_index/parent_prefix_path/livox_ros_driver2
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/environment/ament_prefix_path.sh
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/environment/path.sh
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/environment/path.dsv
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/local_setup.bash
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/local_setup.sh
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/local_setup.zsh
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/local_setup.dsv
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/package.dsv
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/ament_index/resource_index/packages/livox_ros_driver2
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/ament_index/resource_index/rclcpp_components/livox_ros_driver2
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/export_livox_interfaces2__rosidl_generator_cExport.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/export_livox_interfaces2__rosidl_generator_cExport-release.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/export_livox_interfaces2__rosidl_typesupport_fastrtps_cExport.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/export_livox_interfaces2__rosidl_typesupport_fastrtps_cExport-release.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/livox_interfaces2__rosidl_typesupport_introspection_cExport.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/livox_interfaces2__rosidl_typesupport_introspection_cExport-release.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/livox_interfaces2__rosidl_typesupport_cExport.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/livox_interfaces2__rosidl_typesupport_cExport-release.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/export_livox_interfaces2__rosidl_generator_cppExport.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/export_livox_interfaces2__rosidl_typesupport_fastrtps_cppExport.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/export_livox_interfaces2__rosidl_typesupport_fastrtps_cppExport-release.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/livox_interfaces2__rosidl_typesupport_introspection_cppExport.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/livox_interfaces2__rosidl_typesupport_introspection_cppExport-release.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/livox_interfaces2__rosidl_typesupport_cppExport.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/livox_interfaces2__rosidl_typesupport_cppExport-release.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/export_livox_interfaces2__rosidl_generator_pyExport.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/export_livox_interfaces2__rosidl_generator_pyExport-release.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/rosidl_cmake-extras.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/ament_cmake_export_libraries-extras.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/ament_cmake_export_targets-extras.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/rosidl_cmake_aggregate_target-extras.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/livox_ros_driver2Config.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake/livox_ros_driver2Config-version.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/package.xml
+--- stderr: livox_ros_driver2
+/home/lab307/ranger_nav/ws_livox/src/livox_ros_driver2/src/comm/pub_handler.cpp: In member function ‘void livox_ros::LidarPubHandler::ProcessDoubleEchoPoint(livox_ros::RawPacket&)’:
+/home/lab307/ranger_nav/ws_livox/src/livox_ros_driver2/src/comm/pub_handler.cpp:480:12: warning: unused variable ‘index’ [-Wunused-variable]
+  480 |   uint32_t index = 0;
+      |            ^~~~~
+---
+Finished <<< livox_ros_driver2 [0.98s]
+
+Summary: 1 package finished [1.10s]
+  1 package had stderr output: livox_ros_driver2
+BUILD_EXIT=0

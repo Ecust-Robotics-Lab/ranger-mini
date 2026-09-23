@@ -1,0 +1,102 @@
+['ros2', 'pkg', 'executables', 'ranger_base']
+ranger_base ranger_base_node
+
+EXIT=0
+['ros2', 'interface', 'show', 'ranger_msgs/msg/SystemState']
+uint8 VEHICLE_STATE_NORMAL = 0
+uint8 VEHICLE_STATE_ESTOP = 1
+uint8 VEHICLE_STATE_EXCEPTION = 2
+
+uint8 CONTROL_MODE_RC = 0
+uint8 CONTROL_MODE_CAN = 1
+
+uint8 MOTION_MODE_DUAL_ACKERMAN = 0
+uint8 MOTION_MODE_PARALLEL = 1
+uint8 MOTION_MODE_SPINNING = 2
+uint8 MOTION_MODE_SIDE_SLIP = 3
+
+########################################
+
+std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
+
+# system state
+uint8 vehicle_state
+uint8 control_mode
+uint16 error_code
+float64 battery_voltage
+
+# motion state
+uint8 motion_mode
+
+EXIT=0
+['ros2', 'interface', 'show', 'ranger_msgs/msg/MotionState']
+uint8 MOTION_MODE_DUAL_ACKERMAN = 0
+uint8 MOTION_MODE_PARALLEL = 1
+uint8 MOTION_MODE_SPINNING = 2
+uint8 MOTION_MODE_SIDE_SLIP = 3
+
+########################################
+
+std_msgs/Header header
+	builtin_interfaces/Time stamp
+		int32 sec
+		uint32 nanosec
+	string frame_id
+
+# motion state
+uint8 motion_mode
+
+
+
+EXIT=0
+['ldd', 'ws_base/install/ranger_base/lib/ranger_base/ranger_base_node']
+	linux-vdso.so.1 (0x00007ffff899f000)
+	libnav_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_cpp.so (0x00007b1e8c48d000)
+	libranger_msgs__rosidl_typesupport_cpp.so => /home/lab307/ranger_nav/ws_base/install/ranger_msgs/lib/libranger_msgs__rosidl_typesupport_cpp.so (0x00007b1e8c487000)
+	libsensor_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_cpp.so (0x00007b1e8c47c000)
+	libtf2_ros.so => /opt/ros/humble/lib/libtf2_ros.so (0x00007b1e8c3e4000)
+	librclcpp.so => /opt/ros/humble/lib/librclcpp.so (0x00007b1e8c1ec000)
+	liblibstatistics_collector.so => /opt/ros/humble/lib/liblibstatistics_collector.so (0x00007b1e8c1e5000)
+	libstatistics_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/libstatistics_msgs__rosidl_typesupport_cpp.so (0x00007b1e8c1e0000)
+	librcl.so => /opt/ros/humble/lib/librcl.so (0x00007b1e8c1a2000)
+	libtracetools.so => /opt/ros/humble/lib/libtracetools.so (0x00007b1e8c19d000)
+	librmw.so => /opt/ros/humble/lib/librmw.so (0x00007b1e8c191000)
+	libtf2_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/libtf2_msgs__rosidl_typesupport_cpp.so (0x00007b1e8c189000)
+	libgeometry_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_cpp.so (0x00007b1e8c17b000)
+	librcutils.so => /opt/ros/humble/lib/librcutils.so (0x00007b1e8c163000)
+	libstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007b1e8be00000)
+	libm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007b1e8c05c000)
+	libgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007b1e8c03c000)
+	libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007b1e8ba00000)
+	librosidl_typesupport_cpp.so => /opt/ros/humble/lib/librosidl_typesupport_cpp.so (0x00007b1e8c034000)
+	librclcpp_action.so => /opt/ros/humble/lib/librclcpp_action.so (0x00007b1e8bddd000)
+	libtf2.so => /opt/ros/humble/lib/libtf2.so (0x00007b1e8bdbb000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007b1e8c527000)
+	librcl_yaml_param_parser.so => /opt/ros/humble/lib/librcl_yaml_param_parser.so (0x00007b1e8bdaf000)
+	librosgraph_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/librosgraph_msgs__rosidl_typesupport_cpp.so (0x00007b1e8c02e000)
+	librmw_implementation.so => /opt/ros/humble/lib/librmw_implementation.so (0x00007b1e8bda2000)
+	libament_index_cpp.so => /opt/ros/humble/lib/libament_index_cpp.so (0x00007b1e8bd97000)
+	librcl_logging_interface.so => /opt/ros/humble/lib/librcl_logging_interface.so (0x00007b1e8bd92000)
+	librcl_interfaces__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_cpp.so (0x00007b1e8bd87000)
+	librcpputils.so => /opt/ros/humble/lib/librcpputils.so (0x00007b1e8bd79000)
+	librcl_logging_spdlog.so => /opt/ros/humble/lib/librcl_logging_spdlog.so (0x00007b1e8bd6f000)
+	librcl_interfaces__rosidl_typesupport_c.so => /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_c.so (0x00007b1e8bd66000)
+	librcl_interfaces__rosidl_generator_c.so => /opt/ros/humble/lib/librcl_interfaces__rosidl_generator_c.so (0x00007b1e8bd4a000)
+	librosidl_runtime_c.so => /opt/ros/humble/lib/librosidl_runtime_c.so (0x00007b1e8bd3f000)
+	libaction_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/libaction_msgs__rosidl_typesupport_cpp.so (0x00007b1e8bd39000)
+	librcl_action.so => /opt/ros/humble/lib/librcl_action.so (0x00007b1e8bd24000)
+	libconsole_bridge.so.1.0 => /lib/x86_64-linux-gnu/libconsole_bridge.so.1.0 (0x00007b1e8bd1e000)
+	libyaml.so => /opt/ros/humble/lib/libyaml.so (0x00007b1e8bcfc000)
+	libspdlog.so.1 => /lib/x86_64-linux-gnu/libspdlog.so.1 (0x00007b1e8bc81000)
+	librosidl_typesupport_c.so => /opt/ros/humble/lib/librosidl_typesupport_c.so (0x00007b1e8bc7b000)
+	libbuiltin_interfaces__rosidl_generator_c.so => /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_c.so (0x00007b1e8bc74000)
+	libfmt.so.8 => /lib/x86_64-linux-gnu/libfmt.so.8 (0x00007b1e8bc53000)
+
+EXIT=0
+SystemState Python/C type support load PASS; no rclpy.init, no node, no CAN.
+MotionState Python/C type support load PASS; no rclpy.init, no node, no CAN.
+Twist Python/C type support load PASS; no rclpy.init, no node, no CAN.

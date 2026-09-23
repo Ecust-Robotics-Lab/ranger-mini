@@ -1,0 +1,179 @@
+{
+  "nonzero_ros_count": 33,
+  "nonzero_can_count": 33,
+  "nonzero_can_payloads": [
+    "0032000000000000"
+  ],
+  "ros_pulse_seconds": 0.8002555880084401,
+  "can_pulse_seconds": 0.8002912789961556,
+  "explicit_zero_to_stable_exact_zero_seconds": 0.5769857349951053,
+  "can_id_counts": {
+    "0x221": 719,
+    "0x281": 718,
+    "0x271": 718,
+    "0x241": 718,
+    "0x251": 718,
+    "0x261": 144,
+    "0x252": 718,
+    "0x253": 718,
+    "0x254": 718,
+    "0x255": 718,
+    "0x256": 718,
+    "0x266": 144,
+    "0x257": 718,
+    "0x258": 718,
+    "0x231": 718,
+    "0x311": 718,
+    "0x312": 718,
+    "0x211": 718,
+    "0x291": 718,
+    "0x263": 144,
+    "0x268": 144,
+    "0x265": 144,
+    "0x262": 143,
+    "0x267": 143,
+    "0x264": 143,
+    "0x421": 1,
+    "0x141": 472,
+    "0x111": 473
+  },
+  "motion_ranges_by_phase": {
+    "preflight": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "static": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "forward": [
+      [
+        0.0,
+        0.056
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "explicit_zero": [
+      [
+        -0.009,
+        0.066
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "cleanup_zero": [
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ],
+    "after_driver_exit": [
+      [
+        -0.392,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0
+      ]
+    ]
+  },
+  "stats_delta": {
+    "rx": {
+      "bytes": 110246,
+      "packets": 14320,
+      "errors": 0,
+      "dropped": 0,
+      "over_errors": 0,
+      "multicast": 0
+    },
+    "tx": {
+      "bytes": 7568,
+      "packets": 946,
+      "errors": 0,
+      "dropped": 0,
+      "carrier_errors": 0,
+      "collisions": 0
+    }
+  },
+  "can_error_counter_delta": {
+    "restarts": 0,
+    "bus_error": 0,
+    "arbitration_lost": 0,
+    "error_warning": 0,
+    "error_passive": 0,
+    "bus_off": 0
+  },
+  "human_observation": "用户确认“确实运行了”；确认车体实际运动，尚未明确确认主动停车、退出后是否回动及是否人工干预。",
+  "assessment": "PARTIAL; post-exit reverse feedback reproduced, stopping safety not passed",
+  "timing_note": "Userspace read timestamps, not physical stop latency; frames include TX loopback."
+}

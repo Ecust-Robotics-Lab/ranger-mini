@@ -1,0 +1,35 @@
+['bash', '-n', '/home/lab307/ranger_nav/scripts/prepare_yt6801_secureboot.sh']
+EXIT=0
+
+
+['bash', '/home/lab307/ranger_nav/scripts/prepare_yt6801_secureboot.sh', '--dry-run']
+EXIT=0
+Validated YT6801 1.0.34 for kernel 6.8.0-40-generic and PCI 1f0a:6801.
+Apply will:
+  1. Create root-only /var/lib/ranger-nav-yt6801 and save pre-change state.
+  2. Generate a dedicated module-signing key (private key stays root-only).
+  3. Copy the pinned module there and sign the copy.
+  4. Run mokutil --import for the public certificate; enter a temporary
+     enrollment password ONLY in this local terminal when prompted.
+No module is loaded or installed, no network settings changed, no reboot.
+After successful import, save your work and reboot manually. In MokManager:
+Enroll MOK -> Continue -> Yes -> enter the temporary password -> Reboot.
+Expected certificate CN: ranger-nav YT6801 module signing
+DRY-RUN PASS: no changes made.
+
+
+['modinfo', '/home/lab307/ranger_nav/vendor/yt6801/source/yt6801-1.0.34/yt6801.ko']
+EXIT=0
+filename:       /home/lab307/ranger_nav/vendor/yt6801/source/yt6801-1.0.34/yt6801.ko
+license:        GPL
+license:        GPL
+author:         Motorcomm Electronic Tech. Co., Ltd.
+version:        1.0.34
+description:    Motorcomm YT6801 Gigabit Ethernet Driver
+srcversion:     A3B1ED3EA1E69BCEBC8A686
+alias:          pci:v00001F0Ad00006801sv*sd*bc*sc*i*
+depends:        
+retpoline:      Y
+name:           yt6801
+vermagic:       6.8.0-40-generic SMP preempt mod_unload modversions 
+parm:           debug:FUXI ethernet debug level (0=none,...,16=all) (int)

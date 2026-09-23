@@ -1,0 +1,9 @@
+I0915 20:50:06.903723 16179 laser_mapping.cc:20] init laser mapping from /home/lab307/ranger_nav/config/slam/ranger_mid360s.yaml
+I0915 20:50:06.904212 16179 laser_mapping.cc:93] lidar_type 1
+I0915 20:50:06.904214 16179 laser_mapping.cc:96] Using AVIA Lidar
+I0915 20:50:06.904512 16179 slam.cc:42] slam with loop closing
+[INFO] [1789476606.905980566] [rosbag2_storage]: Opened database '/home/lab307/ranger_nav/docs/04_evidence/save-guards-yxkfchvz/empty_input/empty_input_0.db3' for READ_ONLY.
+I0915 20:50:06.906019 16179 bag_io.cc:36] bag /home/lab307/ranger_nav/docs/04_evidence/save-guards-yxkfchvz/empty_input finished.
+I0915 20:50:06.906090 16179 slam.cc:160] slam map saving to ./data/new_map/
+[0;31mE0915 20:50:06.906133 16179 run_slam_offline.cc:78] Map save rejected: Refusing to overwrite existing map: ./data/new_map/
+[mI0915 20:50:06.906224 16179 laser_mapping.h:61] laser mapping deconstruct

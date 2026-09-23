@@ -1,0 +1,78 @@
+[
+  {
+    "command": [
+      "ip",
+      "-j",
+      "address",
+      "show",
+      "enp2s0"
+    ],
+    "exit": 0,
+    "output": "[{\"ifindex\":4,\"ifname\":\"enp2s0\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"UP\",\"LOWER_UP\"],\"mtu\":1500,\"qdisc\":\"mq\",\"operstate\":\"UP\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"ether\",\"address\":\"84:f7:58:40:1f:ce\",\"broadcast\":\"ff:ff:ff:ff:ff:ff\",\"addr_info\":[{\"family\":\"inet\",\"local\":\"192.168.1.50\",\"prefixlen\":24,\"broadcast\":\"192.168.1.255\",\"scope\":\"global\",\"noprefixroute\":true,\"label\":\"enp2s0\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]}]\n"
+  },
+  {
+    "command": [
+      "ip",
+      "route"
+    ],
+    "exit": 0,
+    "output": "default via 192.168.3.1 dev wlo1 proto dhcp metric 600 \n169.254.0.0/16 dev wlo1 scope link metric 1000 \n192.168.1.0/24 dev enp2s0 proto kernel scope link src 192.168.1.50 metric 100 \n192.168.3.0/24 dev wlo1 proto kernel scope link src 192.168.3.18 metric 600 \n"
+  },
+  {
+    "command": [
+      "ip",
+      "neigh",
+      "show",
+      "dev",
+      "enp2s0"
+    ],
+    "exit": 0,
+    "output": "192.168.1.145 lladdr ec:72:f7:da:cf:c8 STALE\n"
+  },
+  {
+    "command": [
+      "ip",
+      "route",
+      "get",
+      "255.255.255.255",
+      "from",
+      "192.168.1.50"
+    ],
+    "exit": 0,
+    "output": "broadcast 255.255.255.255 from 192.168.1.50 dev enp2s0 uid 1000 \n    cache <local,brd> \n"
+  },
+  {
+    "command": [
+      "cat",
+      "/sys/class/net/enp2s0/carrier",
+      "/sys/class/net/enp2s0/speed",
+      "/sys/class/net/enp2s0/duplex"
+    ],
+    "exit": 0,
+    "output": "1\n100\nfull\n"
+  },
+  {
+    "command": [
+      "timedatectl",
+      "show",
+      "-p",
+      "NTPSynchronized",
+      "-p",
+      "TimeUSec"
+    ],
+    "exit": 0,
+    "output": "NTPSynchronized=yes\nTimeUSec=Tue 2026-09-15 20:23:56 CST\n"
+  },
+  {
+    "command": [
+      "ip",
+      "-d",
+      "-s",
+      "link",
+      "show",
+      "can0"
+    ],
+    "exit": 0,
+    "output": "2: can0: <NOARP,ECHO> mtu 16 qdisc noop state DOWN mode DEFAULT group default qlen 10\n    link/can  promiscuity 0 minmtu 0 maxmtu 0 \n    can state STOPPED restart-ms 0 \n\t  gs_usb: tseg1 1..16 tseg2 1..8 sjw 1..4 brp 1..1024 brp-inc 1\n\t  clock 48000000 \n\t  re-started bus-errors arbit-lost error-warn error-pass bus-off\n\t  0          0          0          0          0          0         numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535 parentbus usb parentdev 1-11:1.0 \n    RX:  bytes packets errors dropped  missed   mcast           \n             0       0      0       0       0       0 \n    TX:  bytes packets errors dropped carrier collsns           \n             0       0      0       0       0       0 \n"
+  }
+]

@@ -1,0 +1,43 @@
+Snapshot before any system/network change: 2026-09-13T21:43:52.830534
+
+['ip', '-j', 'address']
+exit=0
+[{"ifindex":1,"ifname":"lo","flags":["LOOPBACK","UP","LOWER_UP"],"mtu":65536,"qdisc":"noqueue","operstate":"UNKNOWN","group":"default","txqlen":1000,"link_type":"loopback","address":"00:00:00:00:00:00","broadcast":"00:00:00:00:00:00","addr_info":[{"family":"inet","local":"127.0.0.1","prefixlen":8,"scope":"host","label":"lo","valid_life_time":4294967295,"preferred_life_time":4294967295},{"family":"inet6","local":"::1","prefixlen":128,"scope":"host","valid_life_time":4294967295,"preferred_life_time":4294967295}]},{"ifindex":2,"ifname":"wlo1","flags":["BROADCAST","MULTICAST","UP","LOWER_UP"],"mtu":1500,"qdisc":"noqueue","operstate":"UP","group":"default","txqlen":1000,"link_type":"ether","address":"80:13:16:72:ed:b8","broadcast":"ff:ff:ff:ff:ff:ff","altnames":["wlp0s20f3"],"addr_info":[{"family":"inet","local":"192.168.3.18","prefixlen":24,"broadcast":"192.168.3.255","scope":"global","dynamic":true,"noprefixroute":true,"label":"wlo1","valid_life_time":84425,"preferred_life_time":84425},{"family":"inet6","local":"fd42:abaf:db6b:c400:ec6a:d366:7348:a415","prefixlen":64,"scope":"global","temporary":true,"dynamic":true,"valid_life_time":7043,"preferred_life_time":3443},{"family":"inet6","local":"fd42:abaf:db6b:c400:d377:1111:aee5:5b03","prefixlen":64,"scope":"global","temporary":true,"deprecated":true,"dynamic":true,"valid_life_time":7043,"preferred_life_time":0},{"family":"inet6","local":"fd42:abaf:db6b:c400:ad7c:ba5f:b78d:6bc9","prefixlen":64,"scope":"global","dynamic":true,"mngtmpaddr":true,"noprefixroute":true,"valid_life_time":7043,"preferred_life_time":3443},{"family":"inet6","local":"fe80::cc39:8ce9:b3e9:44e2","prefixlen":64,"scope":"link","noprefixroute":true,"valid_life_time":4294967295,"preferred_life_time":4294967295}]},{"ifindex":3,"ifname":"can0","flags":["NOARP","ECHO"],"mtu":16,"qdisc":"noop","operstate":"DOWN","group":"default","txqlen":10,"link_type":"can","addr_info":[]}]
+
+
+['ip', '-j', 'route', 'show', 'table', 'all']
+exit=0
+[{"dst":"default","gateway":"192.168.3.1","dev":"wlo1","protocol":"dhcp","metric":600,"flags":[]},{"dst":"169.254.0.0/16","dev":"wlo1","scope":"link","metric":1000,"flags":[]},{"dst":"192.168.3.0/24","dev":"wlo1","protocol":"kernel","scope":"link","prefsrc":"192.168.3.18","metric":600,"flags":[]},{"type":"local","dst":"127.0.0.0/8","dev":"lo","table":"local","protocol":"kernel","scope":"host","prefsrc":"127.0.0.1","flags":[]},{"type":"local","dst":"127.0.0.1","dev":"lo","table":"local","protocol":"kernel","scope":"host","prefsrc":"127.0.0.1","flags":[]},{"type":"broadcast","dst":"127.255.255.255","dev":"lo","table":"local","protocol":"kernel","scope":"link","prefsrc":"127.0.0.1","flags":[]},{"type":"local","dst":"192.168.3.18","dev":"wlo1","table":"local","protocol":"kernel","scope":"host","prefsrc":"192.168.3.18","flags":[]},{"type":"broadcast","dst":"192.168.3.255","dev":"wlo1","table":"local","protocol":"kernel","scope":"link","prefsrc":"192.168.3.18","flags":[]},{"dst":"::1","dev":"lo","protocol":"kernel","metric":256,"flags":[],"pref":"medium"},{"dst":"fd42:abaf:db6b:c400::/64","dev":"wlo1","protocol":"ra","metric":600,"flags":[],"pref":"medium"},{"dst":"fe80::/64","dev":"wlo1","protocol":"kernel","metric":1024,"flags":[],"pref":"medium"},{"dst":"default","gateway":"fe80::3296:10ff:fec4:6bdb","dev":"wlo1","protocol":"ra","metric":600,"flags":[],"pref":"high"},{"type":"local","dst":"::1","dev":"lo","table":"local","protocol":"kernel","metric":0,"flags":[],"pref":"medium"},{"type":"local","dst":"fd42:abaf:db6b:c400:ad7c:ba5f:b78d:6bc9","dev":"wlo1","table":"local","protocol":"kernel","metric":0,"flags":[],"pref":"medium"},{"type":"local","dst":"fd42:abaf:db6b:c400:d377:1111:aee5:5b03","dev":"wlo1","table":"local","protocol":"kernel","metric":0,"flags":[],"pref":"medium"},{"type":"local","dst":"fd42:abaf:db6b:c400:ec6a:d366:7348:a415","dev":"wlo1","table":"local","protocol":"kernel","metric":0,"flags":[],"pref":"medium"},{"type":"local","dst":"fe80::cc39:8ce9:b3e9:44e2","dev":"wlo1","table":"local","protocol":"kernel","metric":0,"flags":[],"pref":"medium"},{"type":"multicast","dst":"ff00::/8","dev":"wlo1","table":"local","protocol":"kernel","metric":256,"flags":[],"pref":"medium"}]
+
+
+['nmcli', '-t', '-f', 'NAME,UUID,TYPE,DEVICE', 'connection', 'show']
+exit=0
+10-307:793ad98f-388b-496a-9343-eea24935b112:802-11-wireless:wlo1
+
+
+['mokutil', '--sb-state']
+exit=0
+SecureBoot enabled
+
+
+['modinfo', 'yt6801']
+exit=1
+modinfo: ERROR: Module yt6801 not found.
+
+
+['dpkg-query', '-W', 'gcc-12']
+exit=1
+dpkg-query: 没有找到与 gcc-12 相匹配的软件包
+
+
+['apt-cache', 'policy', 'gcc-12']
+exit=0
+gcc-12:
+  已安装：(无)
+  候选： 12.3.0-1ubuntu1~22.04.3
+  版本列表：
+     12.3.0-1ubuntu1~22.04.3 500
+        500 https://mirrors.ustc.edu.cn/ubuntu jammy-updates/main amd64 Packages
+        500 https://mirrors.ustc.edu.cn/ubuntu jammy-security/main amd64 Packages
+     12-20220319-1ubuntu1 500
+        500 https://mirrors.ustc.edu.cn/ubuntu jammy/universe amd64 Packages

@@ -1,0 +1,14 @@
+# Documentation only, Mid-360S User Manual 2026-06-01, IMU Data section.
+imu_in_lidar:
+  status: manufacturer_nominal_not_field_calibrated
+  convention: p_L = R_LI * p_I + t_LI
+  translation_m: [0.011, 0.02329, -0.04412]
+  rotation: aligned_axes_per_mid360s_manual
+  source: docs/03_evidence/upstream/Mid360S_User_Manual_EN.pdf
+lidar_in_base_link:
+  status: NOT_MEASURED
+  translation_m: null
+  rotation_rpy_rad: null
+  publish_tf: false
+# Driver identity preserves native point coordinates, not an installation calibration.
+# Do not copy t_LI into Lightning without checking its transform direction.

@@ -1,0 +1,128 @@
+[
+  {
+    "command": [
+      "uname",
+      "-a"
+    ],
+    "exit": 0,
+    "stdout": "Linux lab307-Thunderobot-MIX-G2 6.8.0-40-generic #40~22.04.3-Ubuntu SMP PREEMPT_DYNAMIC Tue Jul 30 17:30:19 UTC 2 x86_64 x86_64 x86_64 GNU/Linux\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "systemd-detect-virt"
+    ],
+    "exit": 1,
+    "stdout": "none\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "ip",
+      "-json",
+      "-details",
+      "address"
+    ],
+    "exit": 0,
+    "stdout": "[{\"ifindex\":1,\"ifname\":\"lo\",\"flags\":[\"LOOPBACK\",\"UP\",\"LOWER_UP\"],\"mtu\":65536,\"qdisc\":\"noqueue\",\"operstate\":\"UNKNOWN\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"loopback\",\"address\":\"00:00:00:00:00:00\",\"broadcast\":\"00:00:00:00:00:00\",\"promiscuity\":0,\"min_mtu\":0,\"max_mtu\":0,\"num_tx_queues\":1,\"num_rx_queues\":1,\"gso_max_size\":65536,\"gso_max_segs\":65535,\"addr_info\":[{\"family\":\"inet\",\"local\":\"127.0.0.1\",\"prefixlen\":8,\"scope\":\"host\",\"label\":\"lo\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295},{\"family\":\"inet6\",\"local\":\"::1\",\"prefixlen\":128,\"scope\":\"host\",\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]},{\"ifindex\":2,\"ifname\":\"can0\",\"flags\":[\"NOARP\",\"ECHO\"],\"mtu\":16,\"qdisc\":\"noop\",\"operstate\":\"DOWN\",\"group\":\"default\",\"txqlen\":10,\"link_type\":\"can\",\"promiscuity\":0,\"min_mtu\":0,\"max_mtu\":0,\"linkinfo\":{\"info_kind\":\"can\",\"info_data\":{\"state\":\"STOPPED\",\"restart_ms\":0,\"bittiming_const\":{\"name\":\"gs_usb\",\"tseg1\":{\"min\":1,\"max\":16},\"tseg2\":{\"min\":1,\"max\":8},\"sjw\":{\"min\":1,\"max\":4},\"brp\":{\"min\":1,\"max\":1024},\"brp_inc\":1},\"clock\":48000000}},\"num_tx_queues\":1,\"num_rx_queues\":1,\"gso_max_size\":65536,\"gso_max_segs\":65535,\"parentbus\":\"usb\",\"parentdev\":\"1-11:1.0\",\"addr_info\":[]},{\"ifindex\":3,\"ifname\":\"wlo1\",\"flags\":[\"BROADCAST\",\"MULTICAST\",\"UP\",\"LOWER_UP\"],\"mtu\":1500,\"qdisc\":\"noqueue\",\"operstate\":\"UP\",\"group\":\"default\",\"txqlen\":1000,\"link_type\":\"ether\",\"address\":\"80:13:16:72:ed:b8\",\"broadcast\":\"ff:ff:ff:ff:ff:ff\",\"promiscuity\":0,\"min_mtu\":256,\"max_mtu\":2304,\"num_tx_queues\":1,\"num_rx_queues\":1,\"gso_max_size\":65536,\"gso_max_segs\":65535,\"parentbus\":\"pci\",\"parentdev\":\"0000:00:14.3\",\"altnames\":[\"wlp0s20f3\"],\"addr_info\":[{\"family\":\"inet\",\"local\":\"192.168.3.18\",\"prefixlen\":24,\"broadcast\":\"192.168.3.255\",\"scope\":\"global\",\"dynamic\":true,\"noprefixroute\":true,\"label\":\"wlo1\",\"valid_life_time\":80989,\"preferred_life_time\":80989},{\"family\":\"inet6\",\"local\":\"fd42:abaf:db6b:c400:a585:3370:b75f:e782\",\"prefixlen\":64,\"scope\":\"global\",\"temporary\":true,\"dynamic\":true,\"valid_life_time\":6944,\"preferred_life_time\":3344},{\"family\":\"inet6\",\"local\":\"fd42:abaf:db6b:c400:ad7c:ba5f:b78d:6bc9\",\"prefixlen\":64,\"scope\":\"global\",\"dynamic\":true,\"mngtmpaddr\":true,\"noprefixroute\":true,\"valid_life_time\":6944,\"preferred_life_time\":3344},{\"family\":\"inet6\",\"local\":\"fe80::cc39:8ce9:b3e9:44e2\",\"prefixlen\":64,\"scope\":\"link\",\"noprefixroute\":true,\"valid_life_time\":4294967295,\"preferred_life_time\":4294967295}]}]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "ip",
+      "-json",
+      "route"
+    ],
+    "exit": 0,
+    "stdout": "[{\"dst\":\"default\",\"gateway\":\"192.168.3.1\",\"dev\":\"wlo1\",\"protocol\":\"dhcp\",\"metric\":600,\"flags\":[]},{\"dst\":\"169.254.0.0/16\",\"dev\":\"wlo1\",\"scope\":\"link\",\"metric\":1000,\"flags\":[]},{\"dst\":\"192.168.3.0/24\",\"dev\":\"wlo1\",\"protocol\":\"kernel\",\"scope\":\"link\",\"prefsrc\":\"192.168.3.18\",\"metric\":600,\"flags\":[]}]\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "ip",
+      "neigh"
+    ],
+    "exit": 0,
+    "stdout": "192.168.3.1 dev wlo1 lladdr 30:96:10:c4:6b:db REACHABLE\n192.168.3.21 dev wlo1 lladdr 70:a6:cc:36:2a:cc REACHABLE\nfe80::3296:10ff:fec4:6bdb dev wlo1 lladdr 30:96:10:c4:6b:db router STALE\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "nmcli",
+      "-f",
+      "all",
+      "connection",
+      "show",
+      "ranger-mid360-8745"
+    ],
+    "exit": 0,
+    "stdout": "connection.id:                          ranger-mid360-8745\nconnection.uuid:                        7d3735fd-229f-4461-bebd-421146eb06d2\nconnection.stable-id:                   --\nconnection.type:                        802-3-ethernet\nconnection.interface-name:              enp2s0\nconnection.autoconnect:                 \u5426\nconnection.autoconnect-priority:        0\nconnection.autoconnect-retries:         -1 (default)\nconnection.multi-connect:               0\uff08default\uff09\nconnection.auth-retries:                -1\nconnection.timestamp:                   1789396516\nconnection.read-only:                   \u5426\nconnection.permissions:                 --\nconnection.zone:                        --\nconnection.master:                      --\nconnection.slave-type:                  --\nconnection.autoconnect-slaves:          -1\uff08default\uff09\nconnection.secondaries:                 --\nconnection.gateway-ping-timeout:        0\nconnection.metered:                     \u672a\u77e5\nconnection.lldp:                        default\nconnection.mdns:                        -1\uff08default\uff09\nconnection.llmnr:                       -1\uff08default\uff09\nconnection.dns-over-tls:                -1\uff08default\uff09\nconnection.wait-device-timeout:         -1\n802-3-ethernet.port:                    --\n802-3-ethernet.speed:                   0\n802-3-ethernet.duplex:                  --\n802-3-ethernet.auto-negotiate:          \u5426\n802-3-ethernet.mac-address:             --\n802-3-ethernet.cloned-mac-address:      --\n802-3-ethernet.generate-mac-address-mask:--\n802-3-ethernet.mac-address-blacklist:   --\n802-3-ethernet.mtu:                     \u81ea\u52a8\n802-3-ethernet.s390-subchannels:        --\n802-3-ethernet.s390-nettype:            --\n802-3-ethernet.s390-options:            --\n802-3-ethernet.wake-on-lan:             default\n802-3-ethernet.wake-on-lan-password:    --\n802-3-ethernet.accept-all-mac-addresses:-1\uff08default\uff09\nipv4.method:                            manual\nipv4.dns:                               --\nipv4.dns-search:                        --\nipv4.dns-options:                       --\nipv4.dns-priority:                      0\nipv4.addresses:                         192.168.1.50/24\nipv4.gateway:                           --\nipv4.routes:                            --\nipv4.route-metric:                      -1\nipv4.route-table:                       0 (unspec)\nipv4.routing-rules:                     --\nipv4.ignore-auto-routes:                \u5426\nipv4.ignore-auto-dns:                   \u662f\nipv4.dhcp-client-id:                    --\nipv4.dhcp-iaid:                         --\nipv4.dhcp-timeout:                      0 (default)\nipv4.dhcp-send-hostname:                \u662f\nipv4.dhcp-hostname:                     --\nipv4.dhcp-fqdn:                         --\nipv4.dhcp-hostname-flags:               0x0\uff08none\uff09\nipv4.never-default:                     \u662f\nipv4.may-fail:                          \u662f\nipv4.required-timeout:                  -1 (default)\nipv4.dad-timeout:                       -1 (default)\nipv4.dhcp-vendor-class-identifier:      --\nipv4.dhcp-reject-servers:               --\nipv6.method:                            disabled\nipv6.dns:                               --\nipv6.dns-search:                        --\nipv6.dns-options:                       --\nipv6.dns-priority:                      0\nipv6.addresses:                         --\nipv6.gateway:                           --\nipv6.routes:                            --\nipv6.route-metric:                      -1\nipv6.route-table:                       0 (unspec)\nipv6.routing-rules:                     --\nipv6.ignore-auto-routes:                \u5426\nipv6.ignore-auto-dns:                   \u5426\nipv6.never-default:                     \u5426\nipv6.may-fail:                          \u662f\nipv6.required-timeout:                  -1 (default)\nipv6.ip6-privacy:                       -1\uff08unknown\uff09\nipv6.addr-gen-mode:                     stable-privacy\nipv6.ra-timeout:                        0 (default)\nipv6.dhcp-duid:                         --\nipv6.dhcp-iaid:                         --\nipv6.dhcp-timeout:                      0 (default)\nipv6.dhcp-send-hostname:                \u662f\nipv6.dhcp-hostname:                     --\nipv6.dhcp-hostname-flags:               0x0\uff08none\uff09\nipv6.token:                             --\nproxy.method:                           none\nproxy.browser-only:                     \u5426\nproxy.pac-url:                          --\nproxy.pac-script:                       --\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "nmcli",
+      "-f",
+      "NAME,UUID,TYPE,DEVICE",
+      "connection",
+      "show"
+    ],
+    "exit": 0,
+    "stdout": "NAME                UUID                                  TYPE      DEVICE \n10-307              793ad98f-388b-496a-9343-eea24935b112  wifi      wlo1   \nranger-mid360-8745  7d3735fd-229f-4461-bebd-421146eb06d2  ethernet  --     \n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "lsusb",
+      "-d",
+      "1d50:606f"
+    ],
+    "exit": 0,
+    "stdout": "Bus 001 Device 002: ID 1d50:606f OpenMoko, Inc. Geschwister Schneider CAN adapter\n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "ss",
+      "-ulnp"
+    ],
+    "exit": 0,
+    "stdout": "State  Recv-Q Send-Q                    Local Address:Port  Peer Address:PortProcess\nUNCONN 0      0                               0.0.0.0:46599      0.0.0.0:*          \nUNCONN 0      0                         127.0.0.53%lo:53         0.0.0.0:*          \nUNCONN 0      0                               0.0.0.0:631        0.0.0.0:*          \nUNCONN 0      0                               0.0.0.0:5353       0.0.0.0:*          \nUNCONN 0      0      [fe80::cc39:8ce9:b3e9:44e2]%wlo1:546           [::]:*          \nUNCONN 0      0                                  [::]:5353          [::]:*          \nUNCONN 0      0                                  [::]:43019         [::]:*          \n",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "ps",
+      "-eo",
+      "pid,comm,args"
+    ],
+    "exit": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  {
+    "command": [
+      "dpkg-query",
+      "-W",
+      "ros-humble-rosbag2*",
+      "ros-humble-rmw*",
+      "libpcl-dev",
+      "libapr1-dev"
+    ],
+    "exit": 1,
+    "stdout": "libpcl-dev\t1.12.1+dfsg-3build1\nros-humble-rmw\t6.1.3-1jammy.20260716.100059\nros-humble-rmw-connextdds\t\nros-humble-rmw-cyclonedds-cpp\t\nros-humble-rmw-dds-common\t1.6.0-2jammy.20260718.001401\nros-humble-rmw-fastrtps-cpp\t6.2.10-1jammy.20260724.002510\nros-humble-rmw-fastrtps-shared-cpp\t6.2.10-1jammy.20260724.000641\nros-humble-rmw-implementation\t2.8.5-1jammy.20260724.003446\nros-humble-rmw-implementation-cmake\t6.1.3-1jammy.20260716.060509\nros-humble-rosbag2\t0.15.16-1jammy.20260726.135454\nros-humble-rosbag2-compression\t0.15.16-1jammy.20260726.130318\nros-humble-rosbag2-compression-zstd\t0.15.16-1jammy.20260726.130828\nros-humble-rosbag2-cpp\t0.15.16-1jammy.20260726.123559\nros-humble-rosbag2-interfaces\t0.15.16-1jammy.20260718.010834\nros-humble-rosbag2-py\t0.15.16-1jammy.20260726.134021\nros-humble-rosbag2-storage\t0.15.16-1jammy.20260726.122141\nros-humble-rosbag2-storage-default-plugins\t0.15.16-1jammy.20260726.122936\nros-humble-rosbag2-transport\t0.15.16-1jammy.20260726.131107\n",
+    "stderr": "dpkg-query: \u6ca1\u6709\u627e\u5230\u4e0e libapr1-dev \u76f8\u5339\u914d\u7684\u8f6f\u4ef6\u5305\n"
+  },
+  {
+    "command": [
+      "sudo",
+      "-n",
+      "ufw",
+      "status",
+      "verbose"
+    ],
+    "exit": 1,
+    "stdout": "",
+    "stderr": "sudo: \u9700\u8981\u5bc6\u7801\n"
+  }
+]

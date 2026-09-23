@@ -1,0 +1,15 @@
+{
+  "time": "2026-09-14T22:29:28+08:00",
+  "script_sha256": "be4c148f8f80c4649963d0db279b7ddd98214d60038c62a2bfb1dce533f12bc8",
+  "old_limit_mps": 0.1,
+  "new_limit_mps": 0.12,
+  "duration_seconds": 5.0,
+  "command_speed_mps": 0.05,
+  "hardware_executed": false,
+  "checks": {
+    "test_motion_interlocks.py": "exit 0; 0.101 accepted during forward, stationary still rejects; +/-0.12 accepted; +/-0.121 and -0.801 rejected",
+    "test_post_exit_feedback.py": "exit 0; recorded post-exit anomaly and prior failure preserved",
+    "dry_run": "exit 0; 5 s and 0.12 m/s limit displayed",
+    "invalid_limits": "zero/negative/NaN/infinity/string/None rejected before ROS imports"
+  }
+}

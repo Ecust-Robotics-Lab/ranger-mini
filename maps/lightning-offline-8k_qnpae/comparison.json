@@ -1,0 +1,42 @@
+{
+  "structural_check": "PASS",
+  "chunks": [
+    {
+      "file": "1.pcd",
+      "points": 1
+    },
+    {
+      "file": "0.pcd",
+      "points": 33933
+    }
+  ],
+  "global_points": 33936,
+  "keyframes": 49,
+  "bounds_min_m": [
+    -4.309652805328369,
+    -14.440481185913086,
+    -0.6296746730804443
+  ],
+  "bounds_max_m": [
+    65.49667358398438,
+    11.159910202026367,
+    15.245362281799316
+  ],
+  "centroid_m": [
+    0.45029351115226746,
+    0.6906745433807373,
+    1.5169309377670288
+  ],
+  "geometric_acceptance": "PENDING_MANUAL_AND_REPRODUCTION",
+  "reproduction": {
+    "other": "maps/lightning-offline-k2i9n8qw",
+    "points": [
+      33936,
+      27340
+    ],
+    "symmetric_nn_median_m": 0.04389563590080128,
+    "symmetric_nn_p95_m": 0.11920761019778087,
+    "symmetric_nn_max_m": 0.6415396914698976,
+    "acceptance": "REVIEW_REQUIRED"
+  }
+}

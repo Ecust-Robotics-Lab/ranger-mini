@@ -1,0 +1,164 @@
+diff --git a/include/ugv_sdk/details/async_port/async_can.hpp b/include/ugv_sdk/details/async_port/async_can.hpp
+index 85ec989..7736306 100644
+--- a/include/ugv_sdk/details/async_port/async_can.hpp
++++ b/include/ugv_sdk/details/async_port/async_can.hpp
+@@ -4,9 +4,8 @@
+  * Created on: Sep 10, 2020 13:22
+  * Description:
+  *
+- * Note: CAN TX is not buffered and only the latest frame will be transmitted.
+- *  Buffered transmission will need to be added if a message has to be divided
+- *  into multiple frames and in applications where no frame should be dropped.
++ * CAN TX uses an immediate nonblocking send, with no user-space queue.
++ * A failed send is reported; callers must not assume a failed command arrived.
+  *
+  * Copyright (c) 2020 Weston Robot Pte. Ltd.
+  */
+@@ -20,6 +19,7 @@
+ #include <memory>
+ #include <thread>
+ #include <functional>
++#include <mutex>
+ 
+ #include "asio.hpp"
+ #include "asio/posix/basic_stream_descriptor.hpp"
+@@ -57,7 +57,8 @@ class AsyncCAN : public std::enable_shared_from_this<AsyncCAN> {
+ 
+   std::thread io_thread_;
+ 
+-  int can_fd_;
++  int can_fd_ = -1;
++  std::mutex tx_mutex_;
+   asio::posix::basic_stream_descriptor<> socketcan_stream_;
+ 
+   struct can_frame rcv_frame_;
+diff --git a/include/ugv_sdk/details/robot_base/agilex_base.hpp b/include/ugv_sdk/details/robot_base/agilex_base.hpp
+index a5e130b..a2036e0 100644
+--- a/include/ugv_sdk/details/robot_base/agilex_base.hpp
++++ b/include/ugv_sdk/details/robot_base/agilex_base.hpp
+@@ -197,15 +197,15 @@ class AgilexBase : public RobotCommonInterface {
+ 
+   /* feedback group 1: core state */
+   std::mutex core_state_mtx_;
+-  CoreStateMsgGroup core_state_msgs_;
++  CoreStateMsgGroup core_state_msgs_{};
+ 
+   /* feedback group 2: actuator state */
+   std::mutex actuator_state_mtx_;
+-  ActuatorStateMsgGroup actuator_state_msgs_;
++  ActuatorStateMsgGroup actuator_state_msgs_{};
+ 
+   /* feedback group 3: common sensor */
+   std::mutex common_sensor_state_mtx_;
+-  CommonSensorStateMsgGroup common_sensor_state_msgs_;
++  CommonSensorStateMsgGroup common_sensor_state_msgs_{};
+ 
+   std::mutex version_str_buf_mtx_;
+   std::string version_string_buffer_;
+@@ -222,7 +222,7 @@ class AgilexBase : public RobotCommonInterface {
+   }
+ 
+   void DisconnectPort() {
+-    if (can_ != nullptr && can_->IsOpened()) can_->Close();
++    if (can_ != nullptr) can_->Close();
+   }
+ 
+   void SetBrakeMode(AgxBrakeMode mode) {
+diff --git a/src/async_port/async_can.cpp b/src/async_port/async_can.cpp
+index b04d012..69734ed 100644
+--- a/src/async_port/async_can.cpp
++++ b/src/async_port/async_can.cpp
+@@ -15,6 +15,8 @@
+ #include <unistd.h>
+ #include <sys/ioctl.h>
+ #include <linux/can.h>
++#include <sys/socket.h>
++#include <cerrno>
+ 
+ #include <iostream>
+ 
+@@ -82,15 +84,24 @@ bool AsyncCAN::Open() {
+ }
+ 
+ void AsyncCAN::Close() {
++  port_opened_ = false;
+   io_context_.stop();
+   if (io_thread_.joinable()) io_thread_.join();
++  {
++    std::lock_guard<std::mutex> lock(tx_mutex_);
++    // Once assigned, Asio owns the descriptor; do not close it twice.
++    if (socketcan_stream_.is_open()) {
++      asio::error_code ignored;
++      socketcan_stream_.close(ignored);
++    } else if (can_fd_ >= 0) {
++      ::close(can_fd_);
++    }
++    can_fd_ = -1;
++  }
++  // Retire cancelled handlers before any subsequent Open().
++  io_context_.reset();
++  io_context_.poll();
+   io_context_.reset();
+-  
+-  // release port fd
+-  const int close_result = ::close(can_fd_);
+-  can_fd_ = -1;
+-
+-  port_opened_ = false;
+ }
+ 
+ bool AsyncCAN::IsOpened() const { return port_opened_; }
+@@ -104,34 +115,34 @@ void AsyncCAN::DefaultReceiveCallback(can_frame *rx_frame) {
+ 
+ void AsyncCAN::ReadFromPort(struct can_frame &rec_frame,
+                             asio::posix::basic_stream_descriptor<> &stream) {
+-  auto sthis = shared_from_this();
+   stream.async_read_some(
+       asio::buffer(&rec_frame, sizeof(rec_frame)),
+-      [sthis](asio::error_code error, size_t bytes_transferred) {
+-        if (error) {
+-          sthis->Close();
++      [this](asio::error_code error, size_t bytes_transferred) {
++        if (error || bytes_transferred != sizeof(can_frame)) {
++          // This callback runs on io_thread_: never join that same thread.
++          port_opened_ = false;
++          io_context_.stop();
+           return;
+         }
+ 
+-        if (sthis->rcv_cb_ != nullptr)
+-          sthis->rcv_cb_(&sthis->rcv_frame_);
++        if (rcv_cb_ != nullptr)
++          rcv_cb_(&rcv_frame_);
+         else
+-          sthis->DefaultReceiveCallback(&sthis->rcv_frame_);
++          DefaultReceiveCallback(&rcv_frame_);
+ 
+-        sthis->ReadFromPort(std::ref(sthis->rcv_frame_),
+-                            std::ref(sthis->socketcan_stream_));
++        if (port_opened_)
++          ReadFromPort(std::ref(rcv_frame_), std::ref(socketcan_stream_));
+       });
+ }
+ 
+ void AsyncCAN::SendFrame(const struct can_frame &frame) {
+-  socketcan_stream_.async_write_some(
+-      asio::buffer(&frame, sizeof(frame)),
+-      [](asio::error_code error, size_t bytes_transferred) {
+-        if (error) {
+-          std::cerr << "Failed to send CAN frame" << std::endl;
+-        }
+-        // std::cout << "frame sent" << std::endl;
+-      });
++  std::lock_guard<std::mutex> lock(tx_mutex_);
++  if (!port_opened_ || can_fd_ < 0) return;
++  const auto sent = ::send(can_fd_, &frame, sizeof(frame), MSG_DONTWAIT | MSG_NOSIGNAL);
++  if (sent != sizeof(frame)) {
++    std::cerr << "Failed to send complete CAN frame: " << sent
++              << " errno=" << errno << std::endl;
++  }
+ }
+ 
+-}  // namespace westonrobot
+\ No newline at end of file
++}  // namespace westonrobot

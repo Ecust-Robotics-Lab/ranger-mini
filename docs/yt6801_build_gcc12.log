@@ -1,0 +1,23 @@
+make -C /lib/modules/6.8.0-40-generic/build M=/home/lab307/ranger_nav/vendor/yt6801/source/yt6801-1.0.34 modules
+make[1]: 进入目录“/usr/src/linux-headers-6.8.0-40-generic”
+warning: the compiler differs from the one used to build the kernel
+  The kernel was built by: x86_64-linux-gnu-gcc-12 (Ubuntu 12.3.0-1ubuntu1~22.04) 12.3.0
+  You are using:           gcc-12 (Ubuntu 12.3.0-1ubuntu1~22.04.3) 12.3.0
+  CC [M]  /home/lab307/ranger_nav/vendor/yt6801/source/yt6801-1.0.34/fuxi-gmac-common.o
+  CC [M]  /home/lab307/ranger_nav/vendor/yt6801/source/yt6801-1.0.34/fuxi-gmac-desc.o
+  CC [M]  /home/lab307/ranger_nav/vendor/yt6801/source/yt6801-1.0.34/fuxi-gmac-ethtool.o
+  CC [M]  /home/lab307/ranger_nav/vendor/yt6801/source/yt6801-1.0.34/fuxi-gmac-hw.o
+  CC [M]  /home/lab307/ranger_nav/vendor/yt6801/source/yt6801-1.0.34/fuxi-gmac-net.o
+  CC [M]  /home/lab307/ranger_nav/vendor/yt6801/source/yt6801-1.0.34/fuxi-gmac-pci.o
+  CC [M]  /home/lab307/ranger_nav/vendor/yt6801/source/yt6801-1.0.34/fuxi-gmac-phy.o
+  CC [M]  /home/lab307/ranger_nav/vendor/yt6801/source/yt6801-1.0.34/fuxi-efuse.o
+  CC [M]  /home/lab307/ranger_nav/vendor/yt6801/source/yt6801-1.0.34/fuxi-gmac-ioctl.o
+  LD [M]  /home/lab307/ranger_nav/vendor/yt6801/source/yt6801-1.0.34/yt6801.o
+  MODPOST /home/lab307/ranger_nav/vendor/yt6801/source/yt6801-1.0.34/Module.symvers
+  CC [M]  /home/lab307/ranger_nav/vendor/yt6801/source/yt6801-1.0.34/yt6801.mod.o
+  LD [M]  /home/lab307/ranger_nav/vendor/yt6801/source/yt6801-1.0.34/yt6801.ko
+  BTF [M] /home/lab307/ranger_nav/vendor/yt6801/source/yt6801-1.0.34/yt6801.ko
+Skipping BTF generation for /home/lab307/ranger_nav/vendor/yt6801/source/yt6801-1.0.34/yt6801.ko due to unavailability of vmlinux
+make[1]: 离开目录“/usr/src/linux-headers-6.8.0-40-generic”
+
+EXIT=0

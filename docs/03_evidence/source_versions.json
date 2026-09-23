@@ -1,0 +1,37 @@
+[
+  {
+    "path": "vendor/livox/Livox-SDK2",
+    "sha": "08f523c930b2f0ba1e98a6afaa8d7476bf479908",
+    "branch": "HEAD",
+    "origin": "https://github.com/Livox-SDK/Livox-SDK2",
+    "status": ""
+  },
+  {
+    "path": "ws_livox/src/livox_ros_driver2",
+    "sha": "4a1def929e5b59c7a8122d19fce6efba581ce9f7",
+    "branch": "HEAD",
+    "origin": "https://github.com/Livox-SDK/livox_ros_driver2",
+    "status": "M src/call_back/livox_lidar_callback.cpp\n M src/comm/pub_handler.cpp"
+  },
+  {
+    "path": "vendor/livox/lightning-lm-review",
+    "sha": "1325fed8fa97a2506878360fc23427ea00a767da",
+    "branch": "HEAD",
+    "origin": "https://github.com/gaoxiang12/lightning-lm",
+    "status": ""
+  },
+  {
+    "path": "ws_base/src/ranger_ros2",
+    "sha": "b6ea21a275ca5e7168130cc6470e61474681d679",
+    "branch": "HEAD",
+    "origin": "https://github.com/agilexrobotics/ranger_ros2.git",
+    "status": "M ranger_base/include/ranger_base/ranger_messenger.hpp\n M ranger_base/src/ranger_base_node.cpp\n M ranger_base/src/ranger_messenger.cpp"
+  },
+  {
+    "path": "ws_base/src/ugv_sdk",
+    "sha": "f2704eacdc90357078cd93ec60aae08bb4baab35",
+    "branch": "HEAD",
+    "origin": "https://github.com/agilexrobotics/ugv_sdk.git",
+    "status": "M include/ugv_sdk/details/async_port/async_can.hpp\n M include/ugv_sdk/details/robot_base/agilex_base.hpp\n M src/async_port/async_can.cpp"
+  }
+]

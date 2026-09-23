@@ -1,0 +1,70 @@
+{
+  "time": "2026-09-14T22:07:16.142146+08:00",
+  "results": [
+    {
+      "label": "before",
+      "command": [
+        "ip",
+        "-details",
+        "-statistics",
+        "link",
+        "show",
+        "can0"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "before-json",
+      "command": [
+        "ip",
+        "-json",
+        "-details",
+        "-statistics",
+        "link",
+        "show",
+        "can0"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "candump",
+      "command": [
+        "timeout",
+        "--signal=TERM",
+        "--kill-after=2s",
+        "5s",
+        "/usr/bin/candump",
+        "-e",
+        "-x",
+        "can0,0:0,#FFFFFFFF"
+      ],
+      "exit": 124
+    },
+    {
+      "label": "after",
+      "command": [
+        "ip",
+        "-details",
+        "-statistics",
+        "link",
+        "show",
+        "can0"
+      ],
+      "exit": 0
+    },
+    {
+      "label": "after-json",
+      "command": [
+        "ip",
+        "-json",
+        "-details",
+        "-statistics",
+        "link",
+        "show",
+        "can0"
+      ],
+      "exit": 0
+    }
+  ],
+  "assessment": "UNASSESSED: timeout exit 124 is not a communication PASS; review received frames, direction, IDs, rate and error-counter deltas."
+}

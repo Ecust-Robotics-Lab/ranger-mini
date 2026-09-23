@@ -1,0 +1,115 @@
+{
+  "start": "2026-09-14T22:05:29.823709+08:00",
+  "authorized_scope": "one driver start; static checks; vx <= 0.05 m/s for <= 1 s and explicit zeros",
+  "motion_executed": false,
+  "assessment": "PARTIAL/ABORTED: RuntimeError(\"Motion interlock: {'vehicle': 2, 'control': 0, 'fault': 0, 'v': 0.0, 'w': 0.0, 'steer': 0.0, 'mode': 0, 'changing': 0}\")",
+  "driver_command": [
+    "/home/lab307/ranger_nav/ws_base/install/ranger_base/lib/ranger_base/ranger_base_node",
+    "--ros-args",
+    "--params-file",
+    "/home/lab307/ranger_nav/config/base_mini_v2.yaml",
+    "-r",
+    "/cmd_vel:=/base/safe_cmd_vel"
+  ],
+  "driver_pid": 23241,
+  "parameters": {
+    "values": [
+      {
+        "type": 4,
+        "bool_value": false,
+        "integer_value": 0,
+        "double_value": 0.0,
+        "string_value": "ranger_mini_v2",
+        "byte_array_value": [],
+        "bool_array_value": [],
+        "integer_array_value": [],
+        "double_array_value": [],
+        "string_array_value": []
+      },
+      {
+        "type": 4,
+        "bool_value": false,
+        "integer_value": 0,
+        "double_value": 0.0,
+        "string_value": "can0",
+        "byte_array_value": [],
+        "bool_array_value": [],
+        "integer_array_value": [],
+        "double_array_value": [],
+        "string_array_value": []
+      },
+      {
+        "type": 4,
+        "bool_value": false,
+        "integer_value": 0,
+        "double_value": 0.0,
+        "string_value": "/wheel/odom",
+        "byte_array_value": [],
+        "bool_array_value": [],
+        "integer_array_value": [],
+        "double_array_value": [],
+        "string_array_value": []
+      },
+      {
+        "type": 1,
+        "bool_value": false,
+        "integer_value": 0,
+        "double_value": 0.0,
+        "string_value": "",
+        "byte_array_value": [],
+        "bool_array_value": [],
+        "integer_array_value": [],
+        "double_array_value": [],
+        "string_array_value": []
+      },
+      {
+        "type": 2,
+        "bool_value": false,
+        "integer_value": 50,
+        "double_value": 0.0,
+        "string_value": "",
+        "byte_array_value": [],
+        "bool_array_value": [],
+        "integer_array_value": [],
+        "double_array_value": [],
+        "string_array_value": []
+      }
+    ]
+  },
+  "command_subscriptions": [
+    {
+      "node": "ranger_base_node",
+      "type": "geometry_msgs/msg/Twist"
+    }
+  ],
+  "static_ros_checks": "PASS for parameters/remap and four live streams; BMS separately counted",
+  "static_can": {
+    "vehicle": 2,
+    "control": 0,
+    "fault": 0,
+    "v": 0.0,
+    "w": 0.0,
+    "steer": 0.0,
+    "mode": 0,
+    "changing": 0
+  },
+  "driver_exit": 0,
+  "after_driver_exit_can": {
+    "vehicle": 2,
+    "control": 0,
+    "fault": 0,
+    "v": 0.0,
+    "w": 0.0,
+    "steer": 0.0,
+    "mode": 0,
+    "changing": 0
+  },
+  "ros_message_counts": {
+    "/system_state": 398,
+    "/motion_state": 398,
+    "/actuator_state": 398,
+    "/wheel/odom": 398
+  },
+  "tf_edges": {},
+  "end": "2026-09-14T22:05:42.123360+08:00"
+}

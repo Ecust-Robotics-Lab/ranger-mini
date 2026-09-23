@@ -1,0 +1,44 @@
+{
+  "lightning": {
+    "path": "/home/lab307/ranger_nav/ws_slam/src/lightning",
+    "origin": "https://github.com/gaoxiang12/lightning-lm",
+    "commit": "1325fed8fa97a2506878360fc23427ea00a767da",
+    "head": "HEAD",
+    "status": "M CMakeLists.txt\n M cmake/packages.cmake\n M package.xml\n M src/CMakeLists.txt\n M src/app/run_slam_offline.cc\n M src/core/lio/laser_mapping.cc\n M src/core/lio/pointcloud_preprocess.cc\n M src/core/miao/core/CMakeLists.txt\n M src/core/system/slam.cc\n?? src/core/lio/extrinsic_cloud.h",
+    "diff_sha256": "fd490c95aa1c20b790243e9da959626cb8dde78eed37a12a359804aa54c05c96"
+  },
+  "livox_driver": {
+    "path": "/home/lab307/ranger_nav/ws_livox/src/livox_ros_driver2",
+    "origin": "https://github.com/Livox-SDK/livox_ros_driver2",
+    "commit": "4a1def929e5b59c7a8122d19fce6efba581ce9f7",
+    "head": "HEAD",
+    "status": "M src/call_back/livox_lidar_callback.cpp\n M src/comm/pub_handler.cpp",
+    "diff_sha256": "8855ae4a21f30d134e8014977e8e81b87bf33dfa3b6d09b98f2cf224f414e164"
+  },
+  "livox_sdk": {
+    "path": "/home/lab307/ranger_nav/vendor/livox/Livox-SDK2",
+    "origin": "https://github.com/Livox-SDK/Livox-SDK2",
+    "commit": "08f523c930b2f0ba1e98a6afaa8d7476bf479908",
+    "head": "HEAD",
+    "status": "",
+    "diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "lightning_review": {
+    "path": "/home/lab307/ranger_nav/vendor/livox/lightning-lm-review",
+    "origin": "https://github.com/gaoxiang12/lightning-lm",
+    "commit": "1325fed8fa97a2506878360fc23427ea00a767da",
+    "head": "HEAD",
+    "status": "",
+    "diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "patches": {
+    "stage4_lightning_integration.patch": "dd8c0ed3229636695b55e7f17ac0c20a4d780427989cdf9420276fffa1e201dd",
+    "stage4_glog_local_prefix.patch": "d638a9da006d189ae1a6b6d3ca55b1d5af2b412de45628a5d8ebb91d63bbfb1e"
+  },
+  "pangolin": {
+    "version": "0.9.3",
+    "source": "upstream bundled zip at fixed Lightning commit",
+    "archive_sha256": "bd22e2f7cbf7093fcc8e20927157dccd5a82057ab187c1450af37a112bce5807"
+  },
+  "updated_at": "2026-09-15T20:56:27.095604+08:00"
+}

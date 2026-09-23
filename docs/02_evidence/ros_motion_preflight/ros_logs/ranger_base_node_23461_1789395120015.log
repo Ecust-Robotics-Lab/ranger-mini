@@ -1,0 +1,10 @@
+[INFO] [1789395120.024524400] [ranger_base_node]: Successfully loaded the following parameters: 
+ port_name: can0
+ robot_model: ranger_mini_v2
+ odom_frame: odom
+ base_frame: base_link
+ update_rate: 50
+ odom_topic_name: /wheel/odom
+ publish_odom_tf: 0
+
+[INFO] [1789395130.869574772] [rclcpp]: signal_handler(SIGINT/SIGTERM)

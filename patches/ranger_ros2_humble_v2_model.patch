@@ -1,0 +1,13 @@
+diff --git a/ranger_base/src/ranger_messenger.cpp b/ranger_base/src/ranger_messenger.cpp
+index e7ef852..d317f5c 100644
+--- a/ranger_base/src/ranger_messenger.cpp
++++ b/ranger_base/src/ranger_messenger.cpp
+@@ -113,7 +113,7 @@ void RangerROSMessenger::LoadParameters() {
+       robot_params_.max_steer_angle_ackermann =
+           RangerMiniV2Params::max_steer_angle_ackermann;
+     }
+-    if (robot_model_ == "ranger_mini_v3") {
++    else if (robot_model_ == "ranger_mini_v3") {
+       robot_type_ = RangerSubType::kRangerMiniV3;
+ 
+       robot_params_.track = RangerMiniV3Params::track;

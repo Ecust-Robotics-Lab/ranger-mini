@@ -1,0 +1,53 @@
+[
+  {
+    "command": [
+      "cmake",
+      "-S",
+      "/home/lab307/ranger_nav/ws_slam/deps/src/Pangolin-0.9.3",
+      "-B",
+      "/home/lab307/ranger_nav/ws_slam/deps/pangolin_build",
+      "-DCMAKE_BUILD_TYPE=Release",
+      "-DCMAKE_INSTALL_PREFIX=/home/lab307/ranger_nav/ws_slam/deps/pangolin_install",
+      "-DCMAKE_PREFIX_PATH=/home/lab307/ranger_nav/ws_slam/deps/root/usr",
+      "-DCMAKE_EXPORT_NO_PACKAGE_REGISTRY=ON",
+      "-DBUILD_TOOLS=OFF",
+      "-DBUILD_EXAMPLES=OFF",
+      "-DBUILD_TESTS=OFF",
+      "-Depoxy_LIBRARIES=/usr/lib/x86_64-linux-gnu/libepoxy.so.0",
+      "-DBUILD_PANGOLIN_PYTHON=OFF",
+      "-DBUILD_PANGOLIN_LIBDC1394=OFF",
+      "-DBUILD_PANGOLIN_V4L=OFF",
+      "-DBUILD_PANGOLIN_FFMPEG=OFF",
+      "-DBUILD_PANGOLIN_REALSENSE=OFF",
+      "-DBUILD_PANGOLIN_REALSENSE2=OFF",
+      "-DBUILD_PANGOLIN_OPENNI=OFF",
+      "-DBUILD_PANGOLIN_OPENNI2=OFF",
+      "-DBUILD_PANGOLIN_LIBUVC=OFF",
+      "-DBUILD_PANGOLIN_UVC_MEDIAFOUNDATION=OFF",
+      "-DBUILD_PANGOLIN_DEPTHSENSE=OFF",
+      "-DBUILD_PANGOLIN_TELICAM=OFF",
+      "-DBUILD_PANGOLIN_PLEORA=OFF",
+      "-DBUILD_PANGOLIN_LIBOPENEXR=OFF",
+      "-DBUILD_PANGOLIN_LIBRAW=OFF"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "cmake",
+      "--build",
+      "/home/lab307/ranger_nav/ws_slam/deps/pangolin_build",
+      "--parallel",
+      "2"
+    ],
+    "exit": 0
+  },
+  {
+    "command": [
+      "cmake",
+      "--install",
+      "/home/lab307/ranger_nav/ws_slam/deps/pangolin_build"
+    ],
+    "exit": 0
+  }
+]

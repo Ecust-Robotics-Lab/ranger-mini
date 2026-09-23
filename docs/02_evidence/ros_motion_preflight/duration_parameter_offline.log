@@ -1,0 +1,3 @@
+DRY-RUN: no ROS node or CAN access. One Mini V2 driver start; static checks; optional vx=0.05 m/s for 0.8 s; then zeros. No timeout, RC takeover, ESTOP or CAN disconnect injection.
+DRY-RUN: no ROS node or CAN access. One Mini V2 driver start; static checks; optional vx=0.05 m/s for 2.5 s; then zeros. No timeout, RC takeover, ESTOP or CAN disconnect injection.
+PASS: default/custom duration dry-run; zero/negative/NaN/infinity/invalid input rejected before ROS imports or CAN access.

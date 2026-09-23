@@ -1,0 +1,31 @@
+['ip', '-brief', 'address']
+Exit=0
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+wlo1             UP             192.168.3.18/24 fd42:abaf:db6b:c400:35b2:2943:9ad5:aa37/64 fd42:abaf:db6b:c400:ad7c:ba5f:b78d:6bc9/64 fe80::cc39:8ce9:b3e9:44e2/64 
+
+
+['ip', 'route']
+Exit=0
+default via 192.168.3.1 dev wlo1 proto dhcp metric 600 
+169.254.0.0/16 dev wlo1 scope link metric 1000 
+192.168.3.0/24 dev wlo1 proto kernel scope link src 192.168.3.18 metric 600 
+
+
+['nmcli', '-t', '-f', 'NAME,UUID,TYPE,DEVICE', 'connection', 'show']
+Exit=0
+10-307:793ad98f-388b-496a-9343-eea24935b112:802-11-wireless:wlo1
+
+
+['sudo', '-n', 'mokutil', '--test-key', '/var/lib/ranger-nav-yt6801/MOK.der']
+Exit=1
+sudo: 需要密码
+
+
+['sudo', '-n', 'modinfo', '/var/lib/ranger-nav-yt6801/yt6801.ko']
+Exit=1
+sudo: 需要密码
+
+
+['sudo', '-n', 'sha256sum', '-c', '/var/lib/ranger-nav-yt6801/signed-module.sha256']
+Exit=1
+sudo: 需要密码

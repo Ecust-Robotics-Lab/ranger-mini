@@ -1,0 +1,16 @@
+{
+  "time": "2026-09-14T22:05:29.559304+08:00",
+  "authorization": "User confirmed this one driver start and <=0.05 m/s, <=1s pulse followed by explicit zero; human with hardware stop present. No timeout/RC/ESTOP/CAN interruption injection authorized here.",
+  "ranger_ros2": {
+    "commit": "b6ea21a275ca5e7168130cc6470e61474681d679",
+    "status": "M ranger_base/include/ranger_base/ranger_messenger.hpp\n M ranger_base/src/ranger_base_node.cpp\n M ranger_base/src/ranger_messenger.cpp"
+  },
+  "ugv_sdk": {
+    "commit": "f2704eacdc90357078cd93ec60aae08bb4baab35",
+    "status": "M include/ugv_sdk/details/async_port/async_can.hpp\n M include/ugv_sdk/details/robot_base/agilex_base.hpp\n M src/async_port/async_can.cpp"
+  },
+  "patches/ugv_sdk_stage2_transport.patch": "ba4525f044369980cb43bdd0d3b727c40eb5f846fcb82b1e855d655d4a20fca7",
+  "patches/ranger_ros2_stage2_test.patch": "38d9e1b3c1e6c31bc55f30dbada7193e69f31188e8675bf0caed6f5142ae93ce",
+  "ws_base/install/ranger_base/lib/ranger_base/ranger_base_node": "36c56486b018d87a785260710b770da25d91af613807d71d23bc7d33007f23f9",
+  "scripts/base_ros_motion_test.py": "14d37e4954a5f86cc1ea8621d1237b7e9d285fe5d6994e68f028a328bb2069ef"
+}

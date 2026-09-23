@@ -1,0 +1,48 @@
+{
+  "CustomMsg.msg": {
+    "fields_identical": true,
+    "internal_fields": [
+      "std_msgs/Header header",
+      "uint64 timebase",
+      "uint32 point_num",
+      "uint8 lidar_id",
+      "uint8[3] rsvd",
+      "CustomPoint[] points"
+    ],
+    "external_fields": [
+      "std_msgs/Header header",
+      "uint64 timebase",
+      "uint32 point_num",
+      "uint8 lidar_id",
+      "uint8[3] rsvd",
+      "CustomPoint[] points"
+    ]
+  },
+  "CustomPoint.msg": {
+    "fields_identical": true,
+    "internal_fields": [
+      "uint32 offset_time",
+      "float32 x",
+      "float32 y",
+      "float32 z",
+      "uint8 reflectivity",
+      "uint8 tag",
+      "uint8 line"
+    ],
+    "external_fields": [
+      "uint32 offset_time",
+      "float32 x",
+      "float32 y",
+      "float32 z",
+      "uint8 reflectivity",
+      "uint8 tag",
+      "uint8 line"
+    ]
+  },
+  "duplicate_generated_livox_headers": [],
+  "missing_libraries": false,
+  "livox_libraries": [
+    "liblivox_ros_driver2__rosidl_typesupport_cpp.so => /home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/lib/liblivox_ros_driver2__rosidl_typesupport_cpp.so (0x0000781c052cf000)"
+  ],
+  "internal_generated_include_used": false
+}

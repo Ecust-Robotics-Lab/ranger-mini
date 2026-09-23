@@ -1,0 +1,6 @@
+PASS: immediate send retains frame bytes/order after caller overwrite
+Failed to send complete CAN frame: -1 errno=11
+PASS: full socket does not block or retain commands
+PASS: repeated Close/destructor does not close a reused descriptor
+PASS: receive error exits IO thread without self-join
+PASS: close with pending receive; no CAN device was opened

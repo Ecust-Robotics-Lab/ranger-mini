@@ -1,0 +1,8 @@
+preflight: PASS; zero-heartbeat publishes=0
+static: PASS; zero-heartbeat publishes=10
+forward: PASS; zero-heartbeat publishes=0
+explicit_zero: PASS; zero-heartbeat publishes=0
+cleanup_zero: PASS; zero-heartbeat publishes=0
+after_driver_exit: PASS; zero-heartbeat publishes=0
+exited driver: PASS; no heartbeat publication
+Pure offline pump extraction with fake time/ROS/child; no driver started.

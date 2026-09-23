@@ -1,0 +1,26 @@
+[
+  {
+    "name": "empty_keyframes",
+    "command": [
+      "/home/lab307/ranger_nav/ws_slam/build/lightning/bin/run_slam_offline",
+      "--input_bag=/home/lab307/ranger_nav/docs/04_evidence/save-guards-yxkfchvz/empty_input",
+      "--config=/home/lab307/ranger_nav/config/slam/ranger_mid360s.yaml"
+    ],
+    "exit": -6,
+    "expected_rejection": "Cannot save map without keyframes",
+    "test_pass": true,
+    "log": "/home/lab307/ranger_nav/docs/04_evidence/save-guards-yxkfchvz/empty_keyframes/run.log"
+  },
+  {
+    "name": "existing_map",
+    "command": [
+      "/home/lab307/ranger_nav/ws_slam/build/lightning/bin/run_slam_offline",
+      "--input_bag=/home/lab307/ranger_nav/docs/04_evidence/save-guards-yxkfchvz/empty_input",
+      "--config=/home/lab307/ranger_nav/config/slam/ranger_mid360s.yaml"
+    ],
+    "exit": -6,
+    "expected_rejection": "Refusing to overwrite existing map",
+    "test_pass": true,
+    "log": "/home/lab307/ranger_nav/docs/04_evidence/save-guards-yxkfchvz/existing_map/run.log"
+  }
+]

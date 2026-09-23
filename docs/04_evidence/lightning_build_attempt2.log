@@ -1,0 +1,529 @@
+Starting >>> lightning
+-- Found livox_ros_driver2: 1.0.0 (/home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake)
+-- Found rosidl_generator_c: 3.1.9 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+-- Found rosidl_adapter: 3.1.9 (/opt/ros/humble/share/rosidl_adapter/cmake)
+-- Found rosidl_generator_cpp: 3.1.9 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 6.1.3 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 6.2.10 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Eigen found (include: /usr/include/eigen3, version: 3.4.0)
+-- FLANN found (include: /usr/include, lib: /usr/lib/x86_64-linux-gnu/libflann_cpp.so)
+-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+-- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+-- Eigen found (include: /usr/include/eigen3, version: 3.4.0)
+-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+-- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+-- Found Qhull version 8.0.2
+-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+-- Found OpenGL: /usr/lib/x86_64-linux-gnu/libOpenGL.so  found components: OpenGL 
+-- Found OpenGL: /usr/lib/x86_64-linux-gnu/libOpenGL.so   
+-- Found nav_msgs: 4.9.2 (/opt/ros/humble/share/nav_msgs/cmake)
+-- Found std_srvs: 4.9.2 (/opt/ros/humble/share/std_srvs/cmake)
+-- Found tf2: 0.25.22 (/opt/ros/humble/share/tf2/cmake)
+-- Found tf2_ros: 0.25.22 (/opt/ros/humble/share/tf2_ros/cmake)
+-- Found rosbag2_cpp: 0.15.16 (/opt/ros/humble/share/rosbag2_cpp/cmake)
+-- Found rosidl_default_generators: 1.2.1 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+-- Configuring done
+CMake Warning at src/CMakeLists.txt:1 (add_library):
+  Cannot generate a safe runtime search path for target lightning.libs
+  because files in some directories may conflict with libraries in implicit
+  directories:
+
+    runtime library [libunwind.so] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/lab307/ranger_nav/ws_slam/deps/root/usr/lib/x86_64-linux-gnu
+
+  Some of these libraries may not be found correctly.
+
+
+CMake Warning at src/core/miao/core/CMakeLists.txt:1 (add_library):
+  Cannot generate a safe runtime search path for target miao.core because
+  files in some directories may conflict with libraries in implicit
+  directories:
+
+    runtime library [libunwind.so] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/lab307/ranger_nav/ws_slam/deps/root/usr/lib/x86_64-linux-gnu
+
+  Some of these libraries may not be found correctly.
+
+
+CMake Warning at src/app/CMakeLists.txt:1 (add_executable):
+  Cannot generate a safe runtime search path for target run_frontend_offline
+  because files in some directories may conflict with libraries in implicit
+  directories:
+
+    runtime library [libunwind.so] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/lab307/ranger_nav/ws_slam/deps/root/usr/lib/x86_64-linux-gnu
+
+  Some of these libraries may not be found correctly.
+
+
+CMake Warning at src/app/CMakeLists.txt:10 (add_executable):
+  Cannot generate a safe runtime search path for target run_loop_offline
+  because files in some directories may conflict with libraries in implicit
+  directories:
+
+    runtime library [libunwind.so] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/lab307/ranger_nav/ws_slam/deps/root/usr/lib/x86_64-linux-gnu
+
+  Some of these libraries may not be found correctly.
+
+
+CMake Warning at src/app/CMakeLists.txt:19 (add_executable):
+  Cannot generate a safe runtime search path for target run_slam_offline
+  because files in some directories may conflict with libraries in implicit
+  directories:
+
+    runtime library [libunwind.so] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/lab307/ranger_nav/ws_slam/deps/root/usr/lib/x86_64-linux-gnu
+
+  Some of these libraries may not be found correctly.
+
+
+CMake Warning at src/app/CMakeLists.txt:28 (add_executable):
+  Cannot generate a safe runtime search path for target run_slam_online
+  because files in some directories may conflict with libraries in implicit
+  directories:
+
+    runtime library [libunwind.so] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/lab307/ranger_nav/ws_slam/deps/root/usr/lib/x86_64-linux-gnu
+
+  Some of these libraries may not be found correctly.
+
+
+CMake Warning at src/app/CMakeLists.txt:37 (add_executable):
+  Cannot generate a safe runtime search path for target run_loc_offline
+  because files in some directories may conflict with libraries in implicit
+  directories:
+
+    runtime library [libunwind.so] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/lab307/ranger_nav/ws_slam/deps/root/usr/lib/x86_64-linux-gnu
+
+  Some of these libraries may not be found correctly.
+
+
+CMake Warning at src/app/CMakeLists.txt:46 (add_executable):
+  Cannot generate a safe runtime search path for target run_loc_online
+  because files in some directories may conflict with libraries in implicit
+  directories:
+
+    runtime library [libunwind.so] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/lab307/ranger_nav/ws_slam/deps/root/usr/lib/x86_64-linux-gnu
+
+  Some of these libraries may not be found correctly.
+
+
+CMake Warning at src/app/CMakeLists.txt:55 (add_executable):
+  Cannot generate a safe runtime search path for target test_ui because files
+  in some directories may conflict with libraries in implicit directories:
+
+    runtime library [libunwind.so] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/lab307/ranger_nav/ws_slam/deps/root/usr/lib/x86_64-linux-gnu
+
+  Some of these libraries may not be found correctly.
+
+
+-- Generating done
+-- Build files have been written to: /home/lab307/ranger_nav/ws_slam/build/lightning
+Consolidate compiler generated dependencies of target lightning__rosidl_generator_c
+[  1%] Built target lightning__rs
+[  5%] Built target lightning__rosidl_generator_c
+[  6%] Built target lightning__cpp
+Consolidate compiler generated dependencies of target miao.utils
+[  6%] Built target ament_cmake_python_copy_lightning
+[  8%] Built target miao.utils
+[  9%] Building CXX object src/core/miao/core/CMakeFiles/miao.core.dir/graph/graph.cc.o
+[ 10%] Generating C type support for eProsima Fast-RTPS
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.cc:5:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h: In member function ‘virtual int lightning::miao::Graph::Optimize(int)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h:80:30: warning: unused parameter ‘interations’ [-Wunused-parameter]
+   80 |     virtual int Optimize(int interations) { return 0; }
+      |                          ~~~~^~~~~~~~~~~
+[ 11%] Building CXX object CMakeFiles/lightning__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/lightning/srv/detail/loc_cmd__type_support_c.cpp.o
+[ 12%] Building CXX object CMakeFiles/lightning__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/lightning/srv/detail/save_map__type_support_c.cpp.o
+[ 13%] Linking CXX shared library liblightning__rosidl_typesupport_fastrtps_c.so
+[ 14%] Building CXX object src/core/miao/core/CMakeFiles/miao.core.dir/graph/optimizer.cc.o
+[ 14%] Built target lightning__rosidl_typesupport_fastrtps_c
+[ 15%] Generating C++ type support for eProsima Fast-RTPS
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.h:8,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.cc:5:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h: In constructor ‘lightning::miao::OptimizerConfig::OptimizerConfig(lightning::miao::AlgorithmType, lightning::miao::LinearSolverType, bool)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:44:10: warning: ‘lightning::miao::OptimizerConfig::is_dense_’ will be initialized after [-Wreorder]
+   44 |     bool is_dense_ = true;
+      |          ^~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:39:22: warning:   ‘lightning::miao::LinearSolverType lightning::miao::OptimizerConfig::linear_solver_type_’ [-Wreorder]
+   39 |     LinearSolverType linear_solver_type_ = LinearSolverType::LINEAR_SOLVER_SPARSE_EIGEN;
+      |                      ^~~~~~~~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:31:14: warning:   when initialized here [-Wreorder]
+   31 |     explicit OptimizerConfig(AlgorithmType algo_type,
+      |              ^~~~~~~~~~~~~~~
+[ 16%] Building CXX object CMakeFiles/lightning__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/lightning/srv/detail/dds_fastrtps/loc_cmd__type_support.cpp.o
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.h:9,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.cc:5:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h: In member function ‘virtual int lightning::miao::Graph::Optimize(int)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h:80:30: warning: unused parameter ‘interations’ [-Wunused-parameter]
+   80 |     virtual int Optimize(int interations) { return 0; }
+      |                          ~~~~^~~~~~~~~~~
+[ 17%] Building CXX object CMakeFiles/lightning__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/lightning/srv/detail/dds_fastrtps/save_map__type_support.cpp.o
+[ 18%] Linking CXX shared library liblightning__rosidl_typesupport_fastrtps_cpp.so
+[ 18%] Built target lightning__rosidl_typesupport_fastrtps_cpp
+[ 19%] Generating C introspection for ROS interfaces
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.cc: In member function ‘virtual bool lightning::miao::Optimizer::AddVertex(std::shared_ptr<lightning::miao::Vertex>)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.cc:288:62: warning: comparison of integer expressions of different signedness: ‘std::unordered_map<int, std::shared_ptr<lightning::miao::Vertex> >::size_type’ {aka ‘long unsigned int’} and ‘int’ [-Wsign-compare]
+  288 |         if (config_.max_vertex_size_ > 0 && vertices_.size() == config_.max_vertex_size_) {
+      |                                             ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+[ 20%] Building C object CMakeFiles/lightning__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/lightning/srv/detail/loc_cmd__type_support.c.o
+[ 21%] Building C object CMakeFiles/lightning__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/lightning/srv/detail/save_map__type_support.c.o
+[ 22%] Linking C shared library liblightning__rosidl_typesupport_introspection_c.so
+[ 22%] Built target lightning__rosidl_typesupport_introspection_c
+[ 23%] Generating C type support dispatch for ROS interfaces
+[ 24%] Building CXX object CMakeFiles/lightning__rosidl_typesupport_c.dir/rosidl_typesupport_c/lightning/srv/loc_cmd__type_support.cpp.o
+[ 25%] Building CXX object CMakeFiles/lightning__rosidl_typesupport_c.dir/rosidl_typesupport_c/lightning/srv/save_map__type_support.cpp.o
+[ 26%] Linking CXX shared library liblightning__rosidl_typesupport_c.so
+[ 26%] Built target lightning__rosidl_typesupport_c
+[ 27%] Generating C++ introspection for ROS interfaces
+[ 28%] Building CXX object src/core/miao/core/CMakeFiles/miao.core.dir/common/string_tools.cc.o
+[ 29%] Building CXX object CMakeFiles/lightning__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/lightning/srv/detail/loc_cmd__type_support.cpp.o
+[ 30%] Building CXX object CMakeFiles/lightning__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/lightning/srv/detail/save_map__type_support.cpp.o
+[ 31%] Building CXX object src/core/miao/core/CMakeFiles/miao.core.dir/math/marginal_covariance_cholesky.cc.o
+[ 32%] Linking CXX shared library liblightning__rosidl_typesupport_introspection_cpp.so
+[ 32%] Built target lightning__rosidl_typesupport_introspection_cpp
+[ 33%] Generating C++ type support dispatch for ROS interfaces
+[ 34%] Building CXX object CMakeFiles/lightning__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/lightning/srv/loc_cmd__type_support.cpp.o
+[ 35%] Building CXX object CMakeFiles/lightning__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/lightning/srv/save_map__type_support.cpp.o
+[ 36%] Linking CXX shared library liblightning__rosidl_typesupport_cpp.so
+[ 36%] Built target lightning__rosidl_typesupport_cpp
+running egg_info
+creating lightning.egg-info
+writing lightning.egg-info/PKG-INFO
+writing dependency_links to lightning.egg-info/dependency_links.txt
+writing top-level names to lightning.egg-info/top_level.txt
+writing manifest file 'lightning.egg-info/SOURCES.txt'
+reading manifest file 'lightning.egg-info/SOURCES.txt'
+writing manifest file 'lightning.egg-info/SOURCES.txt'
+[ 36%] Built target ament_cmake_python_build_lightning_egg
+[ 36%] Built target lightning
+[ 37%] Generating Python code for ROS interfaces
+[ 38%] Building CXX object src/core/miao/core/CMakeFiles/miao.core.dir/opti_algo/optimization_algorithm.cc.o
+[ 38%] Built target lightning__py
+[ 39%] Building C object CMakeFiles/lightning__rosidl_generator_py.dir/rosidl_generator_py/lightning/srv/_loc_cmd_s.c.o
+[ 40%] Building C object CMakeFiles/lightning__rosidl_generator_py.dir/rosidl_generator_py/lightning/srv/_save_map_s.c.o
+[ 41%] Linking C shared library rosidl_generator_py/lightning/liblightning__rosidl_generator_py.so
+[ 41%] Built target lightning__rosidl_generator_py
+[ 42%] Building C object CMakeFiles/lightning__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/lightning/_lightning_s.ep.rosidl_typesupport_fastrtps_c.c.o
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.h:8,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/opti_algo/optimization_algorithm.cc:6:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h: In constructor ‘lightning::miao::OptimizerConfig::OptimizerConfig(lightning::miao::AlgorithmType, lightning::miao::LinearSolverType, bool)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:44:10: warning: ‘lightning::miao::OptimizerConfig::is_dense_’ will be initialized after [-Wreorder]
+   44 |     bool is_dense_ = true;
+      |          ^~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:39:22: warning:   ‘lightning::miao::LinearSolverType lightning::miao::OptimizerConfig::linear_solver_type_’ [-Wreorder]
+   39 |     LinearSolverType linear_solver_type_ = LinearSolverType::LINEAR_SOLVER_SPARSE_EIGEN;
+      |                      ^~~~~~~~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:31:14: warning:   when initialized here [-Wreorder]
+   31 |     explicit OptimizerConfig(AlgorithmType algo_type,
+      |              ^~~~~~~~~~~~~~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.h:9,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/opti_algo/optimization_algorithm.cc:6:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h: In member function ‘virtual int lightning::miao::Graph::Optimize(int)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h:80:30: warning: unused parameter ‘interations’ [-Wunused-parameter]
+   80 |     virtual int Optimize(int interations) { return 0; }
+      |                          ~~~~^~~~~~~~~~~
+[ 43%] Linking C shared library rosidl_generator_py/lightning/lightning_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[ 43%] Built target lightning__rosidl_typesupport_fastrtps_c__pyext
+[ 44%] Building C object CMakeFiles/lightning__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/lightning/_lightning_s.ep.rosidl_typesupport_introspection_c.c.o
+[ 45%] Linking C shared library rosidl_generator_py/lightning/lightning_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[ 46%] Building CXX object src/core/miao/core/CMakeFiles/miao.core.dir/opti_algo/opti_algo_gauss_newton.cc.o
+[ 46%] Built target lightning__rosidl_typesupport_introspection_c__pyext
+[ 47%] Building C object CMakeFiles/lightning__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/lightning/_lightning_s.ep.rosidl_typesupport_c.c.o
+[ 48%] Linking C shared library rosidl_generator_py/lightning/lightning_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[ 48%] Built target lightning__rosidl_typesupport_c__pyext
+[ 49%] Building CXX object src/core/miao/core/CMakeFiles/miao.core.dir/opti_algo/opti_algo_lm.cc.o
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.h:8,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/opti_algo/opti_algo_gauss_newton.cc:5:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h: In constructor ‘lightning::miao::OptimizerConfig::OptimizerConfig(lightning::miao::AlgorithmType, lightning::miao::LinearSolverType, bool)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:44:10: warning: ‘lightning::miao::OptimizerConfig::is_dense_’ will be initialized after [-Wreorder]
+   44 |     bool is_dense_ = true;
+      |          ^~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:39:22: warning:   ‘lightning::miao::LinearSolverType lightning::miao::OptimizerConfig::linear_solver_type_’ [-Wreorder]
+   39 |     LinearSolverType linear_solver_type_ = LinearSolverType::LINEAR_SOLVER_SPARSE_EIGEN;
+      |                      ^~~~~~~~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:31:14: warning:   when initialized here [-Wreorder]
+   31 |     explicit OptimizerConfig(AlgorithmType algo_type,
+      |              ^~~~~~~~~~~~~~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.h:9,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/opti_algo/opti_algo_gauss_newton.cc:5:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h: In member function ‘virtual int lightning::miao::Graph::Optimize(int)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h:80:30: warning: unused parameter ‘interations’ [-Wunused-parameter]
+   80 |     virtual int Optimize(int interations) { return 0; }
+      |                          ~~~~^~~~~~~~~~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.h:8,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/opti_algo/opti_algo_lm.cc:7:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h: In constructor ‘lightning::miao::OptimizerConfig::OptimizerConfig(lightning::miao::AlgorithmType, lightning::miao::LinearSolverType, bool)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:44:10: warning: ‘lightning::miao::OptimizerConfig::is_dense_’ will be initialized after [-Wreorder]
+   44 |     bool is_dense_ = true;
+      |          ^~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:39:22: warning:   ‘lightning::miao::LinearSolverType lightning::miao::OptimizerConfig::linear_solver_type_’ [-Wreorder]
+   39 |     LinearSolverType linear_solver_type_ = LinearSolverType::LINEAR_SOLVER_SPARSE_EIGEN;
+      |                      ^~~~~~~~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:31:14: warning:   when initialized here [-Wreorder]
+   31 |     explicit OptimizerConfig(AlgorithmType algo_type,
+      |              ^~~~~~~~~~~~~~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.h:9,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/opti_algo/opti_algo_lm.cc:7:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h: In member function ‘virtual int lightning::miao::Graph::Optimize(int)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h:80:30: warning: unused parameter ‘interations’ [-Wunused-parameter]
+   80 |     virtual int Optimize(int interations) { return 0; }
+      |                          ~~~~^~~~~~~~~~~
+[ 50%] Building CXX object src/core/miao/core/CMakeFiles/miao.core.dir/opti_algo/opti_algo_dogleg.cc.o
+gmake[2]: *** 没有规则可制作目标“/usr/lib/x86_64-linux-gnu/libunwind.so”，由“src/core/miao/core/libmiao.core.so” 需求。 停止。
+gmake[2]: *** 正在等待未完成的任务....
+[ 51%] Building CXX object src/core/miao/core/CMakeFiles/miao.core.dir/solver/solver.cc.o
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.h:8,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/opti_algo/opti_algo_dogleg.cc:6:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h: In constructor ‘lightning::miao::OptimizerConfig::OptimizerConfig(lightning::miao::AlgorithmType, lightning::miao::LinearSolverType, bool)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:44:10: warning: ‘lightning::miao::OptimizerConfig::is_dense_’ will be initialized after [-Wreorder]
+   44 |     bool is_dense_ = true;
+      |          ^~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:39:22: warning:   ‘lightning::miao::LinearSolverType lightning::miao::OptimizerConfig::linear_solver_type_’ [-Wreorder]
+   39 |     LinearSolverType linear_solver_type_ = LinearSolverType::LINEAR_SOLVER_SPARSE_EIGEN;
+      |                      ^~~~~~~~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:31:14: warning:   when initialized here [-Wreorder]
+   31 |     explicit OptimizerConfig(AlgorithmType algo_type,
+      |              ^~~~~~~~~~~~~~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.h:9,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/opti_algo/opti_algo_dogleg.cc:6:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h: In member function ‘virtual int lightning::miao::Graph::Optimize(int)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h:80:30: warning: unused parameter ‘interations’ [-Wunused-parameter]
+   80 |     virtual int Optimize(int interations) { return 0; }
+      |                          ~~~~^~~~~~~~~~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/solver/solver.h:9,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/solver/solver.cc:5:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h: In member function ‘virtual int lightning::miao::Graph::Optimize(int)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h:80:30: warning: unused parameter ‘interations’ [-Wunused-parameter]
+   80 |     virtual int Optimize(int interations) { return 0; }
+      |                          ~~~~^~~~~~~~~~~
+gmake[1]: *** [CMakeFiles/Makefile2:788：src/core/miao/core/CMakeFiles/miao.core.dir/all] 错误 2
+gmake: *** [Makefile:146：all] 错误 2
+--- stderr: lightning
+CMake Warning at src/CMakeLists.txt:1 (add_library):
+  Cannot generate a safe runtime search path for target lightning.libs
+  because files in some directories may conflict with libraries in implicit
+  directories:
+
+    runtime library [libunwind.so] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/lab307/ranger_nav/ws_slam/deps/root/usr/lib/x86_64-linux-gnu
+
+  Some of these libraries may not be found correctly.
+
+
+CMake Warning at src/core/miao/core/CMakeLists.txt:1 (add_library):
+  Cannot generate a safe runtime search path for target miao.core because
+  files in some directories may conflict with libraries in implicit
+  directories:
+
+    runtime library [libunwind.so] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/lab307/ranger_nav/ws_slam/deps/root/usr/lib/x86_64-linux-gnu
+
+  Some of these libraries may not be found correctly.
+
+
+CMake Warning at src/app/CMakeLists.txt:1 (add_executable):
+  Cannot generate a safe runtime search path for target run_frontend_offline
+  because files in some directories may conflict with libraries in implicit
+  directories:
+
+    runtime library [libunwind.so] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/lab307/ranger_nav/ws_slam/deps/root/usr/lib/x86_64-linux-gnu
+
+  Some of these libraries may not be found correctly.
+
+
+CMake Warning at src/app/CMakeLists.txt:10 (add_executable):
+  Cannot generate a safe runtime search path for target run_loop_offline
+  because files in some directories may conflict with libraries in implicit
+  directories:
+
+    runtime library [libunwind.so] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/lab307/ranger_nav/ws_slam/deps/root/usr/lib/x86_64-linux-gnu
+
+  Some of these libraries may not be found correctly.
+
+
+CMake Warning at src/app/CMakeLists.txt:19 (add_executable):
+  Cannot generate a safe runtime search path for target run_slam_offline
+  because files in some directories may conflict with libraries in implicit
+  directories:
+
+    runtime library [libunwind.so] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/lab307/ranger_nav/ws_slam/deps/root/usr/lib/x86_64-linux-gnu
+
+  Some of these libraries may not be found correctly.
+
+
+CMake Warning at src/app/CMakeLists.txt:28 (add_executable):
+  Cannot generate a safe runtime search path for target run_slam_online
+  because files in some directories may conflict with libraries in implicit
+  directories:
+
+    runtime library [libunwind.so] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/lab307/ranger_nav/ws_slam/deps/root/usr/lib/x86_64-linux-gnu
+
+  Some of these libraries may not be found correctly.
+
+
+CMake Warning at src/app/CMakeLists.txt:37 (add_executable):
+  Cannot generate a safe runtime search path for target run_loc_offline
+  because files in some directories may conflict with libraries in implicit
+  directories:
+
+    runtime library [libunwind.so] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/lab307/ranger_nav/ws_slam/deps/root/usr/lib/x86_64-linux-gnu
+
+  Some of these libraries may not be found correctly.
+
+
+CMake Warning at src/app/CMakeLists.txt:46 (add_executable):
+  Cannot generate a safe runtime search path for target run_loc_online
+  because files in some directories may conflict with libraries in implicit
+  directories:
+
+    runtime library [libunwind.so] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/lab307/ranger_nav/ws_slam/deps/root/usr/lib/x86_64-linux-gnu
+
+  Some of these libraries may not be found correctly.
+
+
+CMake Warning at src/app/CMakeLists.txt:55 (add_executable):
+  Cannot generate a safe runtime search path for target test_ui because files
+  in some directories may conflict with libraries in implicit directories:
+
+    runtime library [libunwind.so] in /usr/lib/x86_64-linux-gnu may be hidden by files in:
+      /home/lab307/ranger_nav/ws_slam/deps/root/usr/lib/x86_64-linux-gnu
+
+  Some of these libraries may not be found correctly.
+
+
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.cc:5:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h: In member function ‘virtual int lightning::miao::Graph::Optimize(int)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h:80:30: warning: unused parameter ‘interations’ [-Wunused-parameter]
+   80 |     virtual int Optimize(int interations) { return 0; }
+      |                          ~~~~^~~~~~~~~~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.h:8,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.cc:5:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h: In constructor ‘lightning::miao::OptimizerConfig::OptimizerConfig(lightning::miao::AlgorithmType, lightning::miao::LinearSolverType, bool)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:44:10: warning: ‘lightning::miao::OptimizerConfig::is_dense_’ will be initialized after [-Wreorder]
+   44 |     bool is_dense_ = true;
+      |          ^~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:39:22: warning:   ‘lightning::miao::LinearSolverType lightning::miao::OptimizerConfig::linear_solver_type_’ [-Wreorder]
+   39 |     LinearSolverType linear_solver_type_ = LinearSolverType::LINEAR_SOLVER_SPARSE_EIGEN;
+      |                      ^~~~~~~~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:31:14: warning:   when initialized here [-Wreorder]
+   31 |     explicit OptimizerConfig(AlgorithmType algo_type,
+      |              ^~~~~~~~~~~~~~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.h:9,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.cc:5:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h: In member function ‘virtual int lightning::miao::Graph::Optimize(int)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h:80:30: warning: unused parameter ‘interations’ [-Wunused-parameter]
+   80 |     virtual int Optimize(int interations) { return 0; }
+      |                          ~~~~^~~~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.cc: In member function ‘virtual bool lightning::miao::Optimizer::AddVertex(std::shared_ptr<lightning::miao::Vertex>)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.cc:288:62: warning: comparison of integer expressions of different signedness: ‘std::unordered_map<int, std::shared_ptr<lightning::miao::Vertex> >::size_type’ {aka ‘long unsigned int’} and ‘int’ [-Wsign-compare]
+  288 |         if (config_.max_vertex_size_ > 0 && vertices_.size() == config_.max_vertex_size_) {
+      |                                             ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.h:8,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/opti_algo/optimization_algorithm.cc:6:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h: In constructor ‘lightning::miao::OptimizerConfig::OptimizerConfig(lightning::miao::AlgorithmType, lightning::miao::LinearSolverType, bool)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:44:10: warning: ‘lightning::miao::OptimizerConfig::is_dense_’ will be initialized after [-Wreorder]
+   44 |     bool is_dense_ = true;
+      |          ^~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:39:22: warning:   ‘lightning::miao::LinearSolverType lightning::miao::OptimizerConfig::linear_solver_type_’ [-Wreorder]
+   39 |     LinearSolverType linear_solver_type_ = LinearSolverType::LINEAR_SOLVER_SPARSE_EIGEN;
+      |                      ^~~~~~~~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:31:14: warning:   when initialized here [-Wreorder]
+   31 |     explicit OptimizerConfig(AlgorithmType algo_type,
+      |              ^~~~~~~~~~~~~~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.h:9,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/opti_algo/optimization_algorithm.cc:6:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h: In member function ‘virtual int lightning::miao::Graph::Optimize(int)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h:80:30: warning: unused parameter ‘interations’ [-Wunused-parameter]
+   80 |     virtual int Optimize(int interations) { return 0; }
+      |                          ~~~~^~~~~~~~~~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.h:8,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/opti_algo/opti_algo_gauss_newton.cc:5:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h: In constructor ‘lightning::miao::OptimizerConfig::OptimizerConfig(lightning::miao::AlgorithmType, lightning::miao::LinearSolverType, bool)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:44:10: warning: ‘lightning::miao::OptimizerConfig::is_dense_’ will be initialized after [-Wreorder]
+   44 |     bool is_dense_ = true;
+      |          ^~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:39:22: warning:   ‘lightning::miao::LinearSolverType lightning::miao::OptimizerConfig::linear_solver_type_’ [-Wreorder]
+   39 |     LinearSolverType linear_solver_type_ = LinearSolverType::LINEAR_SOLVER_SPARSE_EIGEN;
+      |                      ^~~~~~~~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:31:14: warning:   when initialized here [-Wreorder]
+   31 |     explicit OptimizerConfig(AlgorithmType algo_type,
+      |              ^~~~~~~~~~~~~~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.h:9,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/opti_algo/opti_algo_gauss_newton.cc:5:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h: In member function ‘virtual int lightning::miao::Graph::Optimize(int)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h:80:30: warning: unused parameter ‘interations’ [-Wunused-parameter]
+   80 |     virtual int Optimize(int interations) { return 0; }
+      |                          ~~~~^~~~~~~~~~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.h:8,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/opti_algo/opti_algo_lm.cc:7:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h: In constructor ‘lightning::miao::OptimizerConfig::OptimizerConfig(lightning::miao::AlgorithmType, lightning::miao::LinearSolverType, bool)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:44:10: warning: ‘lightning::miao::OptimizerConfig::is_dense_’ will be initialized after [-Wreorder]
+   44 |     bool is_dense_ = true;
+      |          ^~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:39:22: warning:   ‘lightning::miao::LinearSolverType lightning::miao::OptimizerConfig::linear_solver_type_’ [-Wreorder]
+   39 |     LinearSolverType linear_solver_type_ = LinearSolverType::LINEAR_SOLVER_SPARSE_EIGEN;
+      |                      ^~~~~~~~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:31:14: warning:   when initialized here [-Wreorder]
+   31 |     explicit OptimizerConfig(AlgorithmType algo_type,
+      |              ^~~~~~~~~~~~~~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.h:9,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/opti_algo/opti_algo_lm.cc:7:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h: In member function ‘virtual int lightning::miao::Graph::Optimize(int)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h:80:30: warning: unused parameter ‘interations’ [-Wunused-parameter]
+   80 |     virtual int Optimize(int interations) { return 0; }
+      |                          ~~~~^~~~~~~~~~~
+gmake[2]: *** 没有规则可制作目标“/usr/lib/x86_64-linux-gnu/libunwind.so”，由“src/core/miao/core/libmiao.core.so” 需求。 停止。
+gmake[2]: *** 正在等待未完成的任务....
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.h:8,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/opti_algo/opti_algo_dogleg.cc:6:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h: In constructor ‘lightning::miao::OptimizerConfig::OptimizerConfig(lightning::miao::AlgorithmType, lightning::miao::LinearSolverType, bool)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:44:10: warning: ‘lightning::miao::OptimizerConfig::is_dense_’ will be initialized after [-Wreorder]
+   44 |     bool is_dense_ = true;
+      |          ^~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:39:22: warning:   ‘lightning::miao::LinearSolverType lightning::miao::OptimizerConfig::linear_solver_type_’ [-Wreorder]
+   39 |     LinearSolverType linear_solver_type_ = LinearSolverType::LINEAR_SOLVER_SPARSE_EIGEN;
+      |                      ^~~~~~~~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:31:14: warning:   when initialized here [-Wreorder]
+   31 |     explicit OptimizerConfig(AlgorithmType algo_type,
+      |              ^~~~~~~~~~~~~~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.h:9,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/opti_algo/opti_algo_dogleg.cc:6:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h: In member function ‘virtual int lightning::miao::Graph::Optimize(int)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h:80:30: warning: unused parameter ‘interations’ [-Wunused-parameter]
+   80 |     virtual int Optimize(int interations) { return 0; }
+      |                          ~~~~^~~~~~~~~~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/solver/solver.h:9,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/solver/solver.cc:5:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h: In member function ‘virtual int lightning::miao::Graph::Optimize(int)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h:80:30: warning: unused parameter ‘interations’ [-Wunused-parameter]
+   80 |     virtual int Optimize(int interations) { return 0; }
+      |                          ~~~~^~~~~~~~~~~
+gmake[1]: *** [CMakeFiles/Makefile2:788：src/core/miao/core/CMakeFiles/miao.core.dir/all] 错误 2
+gmake: *** [Makefile:146：all] 错误 2
+---
+Failed   <<< lightning [7.38s, exited with code 2]
+
+Summary: 0 packages finished [7.52s]
+  1 package failed: lightning
+  1 package had stderr output: lightning

@@ -1,0 +1,405 @@
+Starting >>> lightning
+[  1%] Built target lightning__rs
+[  5%] Built target lightning__rosidl_generator_c
+[  6%] Built target lightning__cpp
+[  6%] Built target ament_cmake_python_copy_lightning
+[  8%] Built target miao.utils
+[ 18%] Built target miao.core
+[ 22%] Built target lightning__rosidl_typesupport_fastrtps_c
+[ 26%] Built target lightning__rosidl_typesupport_fastrtps_cpp
+[ 30%] Built target lightning__rosidl_typesupport_introspection_c
+[ 34%] Built target lightning__rosidl_typesupport_c
+[ 38%] Built target lightning__rosidl_typesupport_introspection_cpp
+[ 42%] Built target lightning__rosidl_typesupport_cpp
+[ 42%] Built target lightning
+Consolidate compiler generated dependencies of target lightning.libs
+running egg_info
+writing lightning.egg-info/PKG-INFO
+writing dependency_links to lightning.egg-info/dependency_links.txt
+writing top-level names to lightning.egg-info/top_level.txt
+reading manifest file 'lightning.egg-info/SOURCES.txt'
+writing manifest file 'lightning.egg-info/SOURCES.txt'
+[ 42%] Built target ament_cmake_python_build_lightning_egg
+[ 43%] Building CXX object src/CMakeFiles/lightning.libs.dir/core/system/slam.cc.o
+[ 44%] Built target lightning__py
+[ 47%] Built target lightning__rosidl_generator_py
+[ 49%] Built target lightning__rosidl_typesupport_fastrtps_c__pyext
+[ 51%] Built target lightning__rosidl_typesupport_introspection_c__pyext
+[ 53%] Built target lightning__rosidl_typesupport_c__pyext
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/system/slam.h:18,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/system/slam.cc:5:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/common/keyframe.h: In constructor ‘lightning::Keyframe::Keyframe(long unsigned int, lightning::CloudPtr, lightning::NavState)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/common/keyframe.h:74:14: warning: ‘lightning::Keyframe::state_’ will be initialized after [-Wreorder]
+   74 |     NavState state_;  // 卡尔曼滤波器状态
+      |              ^~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/common/keyframe.h:71:9: warning:   ‘lightning::SE3 lightning::Keyframe::pose_lio_’ [-Wreorder]
+   71 |     SE3 pose_lio_;  // 前端的pose
+      |         ^~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/common/keyframe.h:22:5: warning:   when initialized here [-Wreorder]
+   22 |     Keyframe(unsigned long id, CloudPtr cloud, NavState state)
+      |     ^~~~~~~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/laser_mapping.h:12,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/system/slam.cc:7:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/common/options.h: In function ‘void lightning::debug::SigHandle(int)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/common/options.h:27:27: warning: unused parameter ‘sig’ [-Wunused-parameter]
+   27 | inline void SigHandle(int sig) {
+      |                       ~~~~^~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/imu_processing.hpp:18,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/laser_mapping.h:15,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/system/slam.cc:7:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/imu_filter.h: In member function ‘double lightning::IMUFilter::processAxis(double, std::deque<double>&, int)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/imu_filter.h:92:28: warning: comparison of integer expressions of different signedness: ‘std::deque<double>::size_type’ {aka ‘long unsigned int’} and ‘int’ [-Wsign-compare]
+   92 |         if (history.size() >= config_.median_window_size && sample_count_ > 100) {
+      |             ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/imu_filter.h: In member function ‘void lightning::IMUFilter::updateBuffer(const lightning::IMU&)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/imu_filter.h:114:39: warning: comparison of integer expressions of different signedness: ‘std::deque<double>::size_type’ {aka ‘long unsigned int’} and ‘int’ [-Wsign-compare]
+  114 |         while (gyro_x_history_.size() > max_history) {
+      |                ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/imu_filter.h: In member function ‘double lightning::IMUFilter::detectAndRemoveSpike(double, std::deque<double>&, int)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/imu_filter.h:123:28: warning: comparison of integer expressions of different signedness: ‘std::deque<double>::size_type’ {aka ‘long unsigned int’} and ‘int’ [-Wsign-compare]
+  123 |         if (history.size() < config_.median_window_size) {
+      |             ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/imu_filter.h: In member function ‘double lightning::IMUFilter::medianFilter(double, std::deque<double>&)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/imu_filter.h:152:28: warning: comparison of integer expressions of different signedness: ‘std::deque<double>::size_type’ {aka ‘long unsigned int’} and ‘int’ [-Wsign-compare]
+  152 |         if (history.size() < config_.median_window_size) {
+      |             ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/imu_filter.h: In member function ‘double lightning::IMUFilter::movingAverage(double, std::deque<double>&)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/imu_filter.h:164:28: warning: comparison of integer expressions of different signedness: ‘std::deque<double>::size_type’ {aka ‘long unsigned int’} and ‘int’ [-Wsign-compare]
+  164 |         if (history.size() < config_.moving_avg_window) {
+      |             ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/imu_filter.h: In member function ‘void lightning::IMUFilter::updateStatistics(const lightning::IMU&)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/imu_filter.h:200:20: warning: unused variable ‘prev_mean’ [-Wunused-variable]
+  200 |             double prev_mean[3] = {gyro_mean_[0], gyro_mean_[1], gyro_mean_[2]};
+      |                    ^~~~~~~~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.h:8,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/loop_closing/loop_closing.h:12,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/system/slam.cc:8:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h: In constructor ‘lightning::miao::OptimizerConfig::OptimizerConfig(lightning::miao::AlgorithmType, lightning::miao::LinearSolverType, bool)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:44:10: warning: ‘lightning::miao::OptimizerConfig::is_dense_’ will be initialized after [-Wreorder]
+   44 |     bool is_dense_ = true;
+      |          ^~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:39:22: warning:   ‘lightning::miao::LinearSolverType lightning::miao::OptimizerConfig::linear_solver_type_’ [-Wreorder]
+   39 |     LinearSolverType linear_solver_type_ = LinearSolverType::LINEAR_SOLVER_SPARSE_EIGEN;
+      |                      ^~~~~~~~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:31:14: warning:   when initialized here [-Wreorder]
+   31 |     explicit OptimizerConfig(AlgorithmType algo_type,
+      |              ^~~~~~~~~~~~~~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.h:9,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/loop_closing/loop_closing.h:12,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/system/slam.cc:8:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h: In member function ‘virtual int lightning::miao::Graph::Optimize(int)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h:80:30: warning: unused parameter ‘interations’ [-Wunused-parameter]
+   80 |     virtual int Optimize(int interations) { return 0; }
+      |                          ~~~~^~~~~~~~~~~
+[ 54%] Linking CXX shared library liblightning.libs.so
+[ 85%] Built target lightning.libs
+[ 86%] Linking CXX executable ../../bin/run_frontend_offline
+[ 87%] Linking CXX executable ../../bin/run_loop_offline
+[ 88%] Built target run_loop_offline
+[ 89%] Building CXX object src/app/CMakeFiles/run_slam_offline.dir/run_slam_offline.cc.o
+[ 90%] Built target run_frontend_offline
+[ 91%] Linking CXX executable ../../bin/run_slam_online
+[ 92%] Built target run_slam_online
+[ 93%] Linking CXX executable ../../bin/run_loc_offline
+[ 94%] Built target run_loc_offline
+[ 95%] Linking CXX executable ../../bin/run_loc_online
+[ 96%] Built target run_loc_online
+[ 97%] Linking CXX executable ../../bin/test_ui
+[ 98%] Built target test_ui
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/system/slam.h:18,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/app/run_slam_offline.cc:8:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/common/keyframe.h: In constructor ‘lightning::Keyframe::Keyframe(long unsigned int, lightning::CloudPtr, lightning::NavState)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/common/keyframe.h:74:14: warning: ‘lightning::Keyframe::state_’ will be initialized after [-Wreorder]
+   74 |     NavState state_;  // 卡尔曼滤波器状态
+      |              ^~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/common/keyframe.h:71:9: warning:   ‘lightning::SE3 lightning::Keyframe::pose_lio_’ [-Wreorder]
+   71 |     SE3 pose_lio_;  // 前端的pose
+      |         ^~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/common/keyframe.h:22:5: warning:   when initialized here [-Wreorder]
+   22 |     Keyframe(unsigned long id, CloudPtr cloud, NavState state)
+      |     ^~~~~~~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lightning_math.hpp:22,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/wrapper/bag_io.h:25,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/app/run_slam_offline.cc:11:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/common/options.h: In function ‘void lightning::debug::SigHandle(int)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/common/options.h:27:27: warning: unused parameter ‘sig’ [-Wunused-parameter]
+   27 | inline void SigHandle(int sig) {
+      |                       ~~~~^~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/app/run_slam_offline.cc:11:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/wrapper/bag_io.h: In constructor ‘lightning::RosbagIO::RosbagIO(std::string, lightning::DatasetType)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/wrapper/bag_io.h:38:57: warning: unused parameter ‘dataset_type’ [-Wunused-parameter]
+   38 |     explicit RosbagIO(std::string bag_file, DatasetType dataset_type = DatasetType::NCLT)
+      |                                             ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[100%] Linking CXX executable ../../bin/run_slam_offline
+[100%] Built target run_slam_offline
+-- Install configuration: "Release"
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/ament_index/resource_index/rosidl_interfaces/lightning
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/msg/rosidl_generator_c__visibility_control.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/loc_cmd__functions.c
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/loc_cmd__type_support.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/loc_cmd__functions.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/loc_cmd__struct.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/save_map__struct.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/save_map__type_support.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/save_map__functions.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/save_map__functions.c
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/loc_cmd.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/save_map.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/environment/library_path.sh
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/environment/library_path.dsv
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/lib/liblightning__rosidl_generator_c.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/loc_cmd__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/save_map__rosidl_typesupport_fastrtps_c.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/lib/liblightning__rosidl_typesupport_fastrtps_c.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/msg/rosidl_generator_cpp__visibility_control.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/save_map__type_support.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/save_map__struct.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/save_map__builder.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/save_map__traits.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/loc_cmd__builder.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/loc_cmd__struct.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/loc_cmd__type_support.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/loc_cmd__traits.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/save_map.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/loc_cmd.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/save_map__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/loc_cmd__rosidl_typesupport_fastrtps_cpp.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/dds_fastrtps
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/lib/liblightning__rosidl_typesupport_fastrtps_cpp.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/msg/rosidl_typesupport_introspection_c__visibility_control.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/save_map__type_support.c
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/loc_cmd__type_support.c
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/loc_cmd__rosidl_typesupport_introspection_c.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/save_map__rosidl_typesupport_introspection_c.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/lib/liblightning__rosidl_typesupport_introspection_c.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/lib/liblightning__rosidl_typesupport_c.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/loc_cmd__type_support.cpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/loc_cmd__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/save_map__rosidl_typesupport_introspection_cpp.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/include/lightning/lightning/srv/detail/save_map__type_support.cpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/lib/liblightning__rosidl_typesupport_introspection_cpp.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/lib/liblightning__rosidl_typesupport_cpp.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/environment/pythonpath.sh
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/environment/pythonpath.dsv
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/local/lib/python3.10/dist-packages/lightning-0.0.0-py3.10.egg-info
+-- Installing: /home/lab307/ranger_nav/ws_slam/install/lightning/local/lib/python3.10/dist-packages/lightning-0.0.0-py3.10.egg-info/SOURCES.txt
+-- Installing: /home/lab307/ranger_nav/ws_slam/install/lightning/local/lib/python3.10/dist-packages/lightning-0.0.0-py3.10.egg-info/top_level.txt
+-- Installing: /home/lab307/ranger_nav/ws_slam/install/lightning/local/lib/python3.10/dist-packages/lightning-0.0.0-py3.10.egg-info/dependency_links.txt
+-- Installing: /home/lab307/ranger_nav/ws_slam/install/lightning/local/lib/python3.10/dist-packages/lightning-0.0.0-py3.10.egg-info/PKG-INFO
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/local/lib/python3.10/dist-packages/lightning
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/local/lib/python3.10/dist-packages/lightning/lightning_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/local/lib/python3.10/dist-packages/lightning/srv
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/local/lib/python3.10/dist-packages/lightning/srv/_save_map.py
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/local/lib/python3.10/dist-packages/lightning/srv/__init__.py
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/local/lib/python3.10/dist-packages/lightning/srv/_loc_cmd.py
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/local/lib/python3.10/dist-packages/lightning/srv/_save_map_s.c
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/local/lib/python3.10/dist-packages/lightning/srv/_loc_cmd_s.c
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/local/lib/python3.10/dist-packages/lightning/_lightning_s.ep.rosidl_typesupport_fastrtps_c.c
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/local/lib/python3.10/dist-packages/lightning/_lightning_s.ep.rosidl_typesupport_introspection_c.c
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/local/lib/python3.10/dist-packages/lightning/__init__.py
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/local/lib/python3.10/dist-packages/lightning/lightning_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/local/lib/python3.10/dist-packages/lightning/_lightning_s.ep.rosidl_typesupport_c.c
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/local/lib/python3.10/dist-packages/lightning/liblightning__rosidl_generator_py.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/local/lib/python3.10/dist-packages/lightning/lightning_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+Listing '/home/lab307/ranger_nav/ws_slam/install/lightning/local/lib/python3.10/dist-packages/lightning'...
+Listing '/home/lab307/ranger_nav/ws_slam/install/lightning/local/lib/python3.10/dist-packages/lightning/srv'...
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/local/lib/python3.10/dist-packages/lightning/lightning_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/local/lib/python3.10/dist-packages/lightning/lightning_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/local/lib/python3.10/dist-packages/lightning/lightning_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/lib/liblightning__rosidl_generator_py.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/ament_index/resource_index/rust_packages/lightning
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/rust
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/rust/src
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/rust/src/srv
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/rust/src/srv/rmw.rs
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/rust/src/lib.rs
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/rust/src/srv.rs
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/rust/Cargo.toml
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/rust/build.rs
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/srv/LocCmd.idl
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/srv/SaveMap.idl
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/srv/LocCmd.srv
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/srv/LocCmd_Request.msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/srv/LocCmd_Response.msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/srv/SaveMap.srv
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/srv/SaveMap_Request.msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/srv/SaveMap_Response.msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/lib/lightning//config
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/lib/lightning//config/default_robosense.yaml
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/lib/lightning//config/default_nclt.yaml
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/lib/lightning//config/default_livox.yaml
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/lib/lightning//config/default_vbr.yaml
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/lib/lightning//config/default.yaml
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/lib/lightning//config/default_utbm.yaml
+-- Installing: /home/lab307/ranger_nav/ws_slam/install/lightning/lib/liblightning.libs.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_slam/install/lightning/lib/liblightning.libs.so" to ""
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/lib/libmiao.core.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/lib/libmiao.utils.so
+-- Installing: /home/lab307/ranger_nav/ws_slam/install/lightning/lib/lightning/run_slam_offline
+-- Set runtime path of "/home/lab307/ranger_nav/ws_slam/install/lightning/lib/lightning/run_slam_offline" to ""
+-- Installing: /home/lab307/ranger_nav/ws_slam/install/lightning/lib/lightning/run_slam_online
+-- Set runtime path of "/home/lab307/ranger_nav/ws_slam/install/lightning/lib/lightning/run_slam_online" to ""
+-- Installing: /home/lab307/ranger_nav/ws_slam/install/lightning/lib/lightning/run_loc_offline
+-- Set runtime path of "/home/lab307/ranger_nav/ws_slam/install/lightning/lib/lightning/run_loc_offline" to ""
+-- Installing: /home/lab307/ranger_nav/ws_slam/install/lightning/lib/lightning/run_loc_online
+-- Set runtime path of "/home/lab307/ranger_nav/ws_slam/install/lightning/lib/lightning/run_loc_online" to ""
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/ament_index/resource_index/package_run_dependencies/lightning
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/ament_index/resource_index/parent_prefix_path/lightning
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/environment/ament_prefix_path.sh
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/environment/path.sh
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/environment/path.dsv
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/local_setup.bash
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/local_setup.sh
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/local_setup.zsh
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/local_setup.dsv
+-- Installing: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/package.dsv
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/ament_index/resource_index/packages/lightning
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/export_lightning__rosidl_generator_cExport.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/export_lightning__rosidl_generator_cExport-release.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/export_lightning__rosidl_typesupport_fastrtps_cExport.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/export_lightning__rosidl_typesupport_fastrtps_cExport-release.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/export_lightning__rosidl_generator_cppExport.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/export_lightning__rosidl_typesupport_fastrtps_cppExport.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/export_lightning__rosidl_typesupport_fastrtps_cppExport-release.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/lightning__rosidl_typesupport_introspection_cExport.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/lightning__rosidl_typesupport_introspection_cExport-release.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/lightning__rosidl_typesupport_cExport.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/lightning__rosidl_typesupport_cExport-release.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/lightning__rosidl_typesupport_introspection_cppExport.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/lightning__rosidl_typesupport_introspection_cppExport-release.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/lightning__rosidl_typesupport_cppExport.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/lightning__rosidl_typesupport_cppExport-release.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/export_lightning__rosidl_generator_pyExport.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/export_lightning__rosidl_generator_pyExport-release.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/rosidl_cmake-extras.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/ament_cmake_export_libraries-extras.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/ament_cmake_export_targets-extras.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/rosidl_cmake_aggregate_target-extras.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/lightningConfig.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/cmake/lightningConfig-version.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_slam/install/lightning/share/lightning/package.xml
+--- stderr: lightning
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/system/slam.h:18,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/system/slam.cc:5:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/common/keyframe.h: In constructor ‘lightning::Keyframe::Keyframe(long unsigned int, lightning::CloudPtr, lightning::NavState)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/common/keyframe.h:74:14: warning: ‘lightning::Keyframe::state_’ will be initialized after [-Wreorder]
+   74 |     NavState state_;  // 卡尔曼滤波器状态
+      |              ^~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/common/keyframe.h:71:9: warning:   ‘lightning::SE3 lightning::Keyframe::pose_lio_’ [-Wreorder]
+   71 |     SE3 pose_lio_;  // 前端的pose
+      |         ^~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/common/keyframe.h:22:5: warning:   when initialized here [-Wreorder]
+   22 |     Keyframe(unsigned long id, CloudPtr cloud, NavState state)
+      |     ^~~~~~~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/laser_mapping.h:12,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/system/slam.cc:7:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/common/options.h: In function ‘void lightning::debug::SigHandle(int)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/common/options.h:27:27: warning: unused parameter ‘sig’ [-Wunused-parameter]
+   27 | inline void SigHandle(int sig) {
+      |                       ~~~~^~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/imu_processing.hpp:18,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/laser_mapping.h:15,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/system/slam.cc:7:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/imu_filter.h: In member function ‘double lightning::IMUFilter::processAxis(double, std::deque<double>&, int)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/imu_filter.h:92:28: warning: comparison of integer expressions of different signedness: ‘std::deque<double>::size_type’ {aka ‘long unsigned int’} and ‘int’ [-Wsign-compare]
+   92 |         if (history.size() >= config_.median_window_size && sample_count_ > 100) {
+      |             ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/imu_filter.h: In member function ‘void lightning::IMUFilter::updateBuffer(const lightning::IMU&)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/imu_filter.h:114:39: warning: comparison of integer expressions of different signedness: ‘std::deque<double>::size_type’ {aka ‘long unsigned int’} and ‘int’ [-Wsign-compare]
+  114 |         while (gyro_x_history_.size() > max_history) {
+      |                ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/imu_filter.h: In member function ‘double lightning::IMUFilter::detectAndRemoveSpike(double, std::deque<double>&, int)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/imu_filter.h:123:28: warning: comparison of integer expressions of different signedness: ‘std::deque<double>::size_type’ {aka ‘long unsigned int’} and ‘int’ [-Wsign-compare]
+  123 |         if (history.size() < config_.median_window_size) {
+      |             ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/imu_filter.h: In member function ‘double lightning::IMUFilter::medianFilter(double, std::deque<double>&)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/imu_filter.h:152:28: warning: comparison of integer expressions of different signedness: ‘std::deque<double>::size_type’ {aka ‘long unsigned int’} and ‘int’ [-Wsign-compare]
+  152 |         if (history.size() < config_.median_window_size) {
+      |             ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/imu_filter.h: In member function ‘double lightning::IMUFilter::movingAverage(double, std::deque<double>&)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/imu_filter.h:164:28: warning: comparison of integer expressions of different signedness: ‘std::deque<double>::size_type’ {aka ‘long unsigned int’} and ‘int’ [-Wsign-compare]
+  164 |         if (history.size() < config_.moving_avg_window) {
+      |             ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/imu_filter.h: In member function ‘void lightning::IMUFilter::updateStatistics(const lightning::IMU&)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lio/imu_filter.h:200:20: warning: unused variable ‘prev_mean’ [-Wunused-variable]
+  200 |             double prev_mean[3] = {gyro_mean_[0], gyro_mean_[1], gyro_mean_[2]};
+      |                    ^~~~~~~~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.h:8,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/loop_closing/loop_closing.h:12,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/system/slam.cc:8:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h: In constructor ‘lightning::miao::OptimizerConfig::OptimizerConfig(lightning::miao::AlgorithmType, lightning::miao::LinearSolverType, bool)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:44:10: warning: ‘lightning::miao::OptimizerConfig::is_dense_’ will be initialized after [-Wreorder]
+   44 |     bool is_dense_ = true;
+      |          ^~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:39:22: warning:   ‘lightning::miao::LinearSolverType lightning::miao::OptimizerConfig::linear_solver_type_’ [-Wreorder]
+   39 |     LinearSolverType linear_solver_type_ = LinearSolverType::LINEAR_SOLVER_SPARSE_EIGEN;
+      |                      ^~~~~~~~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/common/config.h:31:14: warning:   when initialized here [-Wreorder]
+   31 |     explicit OptimizerConfig(AlgorithmType algo_type,
+      |              ^~~~~~~~~~~~~~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/optimizer.h:9,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/loop_closing/loop_closing.h:12,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/system/slam.cc:8:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h: In member function ‘virtual int lightning::miao::Graph::Optimize(int)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/core/miao/core/graph/graph.h:80:30: warning: unused parameter ‘interations’ [-Wunused-parameter]
+   80 |     virtual int Optimize(int interations) { return 0; }
+      |                          ~~~~^~~~~~~~~~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/system/slam.h:18,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/app/run_slam_offline.cc:8:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/common/keyframe.h: In constructor ‘lightning::Keyframe::Keyframe(long unsigned int, lightning::CloudPtr, lightning::NavState)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/common/keyframe.h:74:14: warning: ‘lightning::Keyframe::state_’ will be initialized after [-Wreorder]
+   74 |     NavState state_;  // 卡尔曼滤波器状态
+      |              ^~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/common/keyframe.h:71:9: warning:   ‘lightning::SE3 lightning::Keyframe::pose_lio_’ [-Wreorder]
+   71 |     SE3 pose_lio_;  // 前端的pose
+      |         ^~~~~~~~~
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/common/keyframe.h:22:5: warning:   when initialized here [-Wreorder]
+   22 |     Keyframe(unsigned long id, CloudPtr cloud, NavState state)
+      |     ^~~~~~~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/core/lightning_math.hpp:22,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/wrapper/bag_io.h:25,
+                 from /home/lab307/ranger_nav/ws_slam/src/lightning/src/app/run_slam_offline.cc:11:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/common/options.h: In function ‘void lightning::debug::SigHandle(int)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/common/options.h:27:27: warning: unused parameter ‘sig’ [-Wunused-parameter]
+   27 | inline void SigHandle(int sig) {
+      |                       ~~~~^~~
+In file included from /home/lab307/ranger_nav/ws_slam/src/lightning/src/app/run_slam_offline.cc:11:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/wrapper/bag_io.h: In constructor ‘lightning::RosbagIO::RosbagIO(std::string, lightning::DatasetType)’:
+/home/lab307/ranger_nav/ws_slam/src/lightning/src/wrapper/bag_io.h:38:57: warning: unused parameter ‘dataset_type’ [-Wunused-parameter]
+   38 |     explicit RosbagIO(std::string bag_file, DatasetType dataset_type = DatasetType::NCLT)
+      |                                             ~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---
+Finished <<< lightning [22.7s]
+
+Summary: 1 package finished [22.8s]
+  1 package had stderr output: lightning

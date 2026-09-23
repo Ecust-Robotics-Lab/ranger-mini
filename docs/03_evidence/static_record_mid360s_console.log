@@ -1,0 +1,205 @@
+BAG_RUN=/home/lab307/ranger_nav/bags/mid360-static-qg8qtyiv
+[INFO] [1789475235.932542635] [rosbag2_storage]: Opened database '/home/lab307/ranger_nav/bags/mid360-static-qg8qtyiv/raw/raw_0.db3' for READ_ONLY.
+{
+  "scope": "Static raw data and bag validation; not calibration, hardware synchronization, SLAM or motion safety",
+  "data_check": "PARTIAL",
+  "anomalies": [
+    "Point offset order reversals"
+  ],
+  "sqlite_integrity": {
+    "raw_0.db3": [
+      [
+        "ok"
+      ]
+    ]
+  },
+  "metadata_count_match": true,
+  "total_deserialized": 6260,
+  "topics": {
+    "/livox/imu": {
+      "type": "sensor_msgs/msg/Imu",
+      "count": 5962,
+      "frame_ids": [
+        "livox_frame"
+      ],
+      "bag_arrival_hz": 200.00060513519782,
+      "header_first_ns": 1789475205887256871,
+      "header_last_ns": 1789475235692400355,
+      "header_dt_seconds": {
+        "min": 0.003859861,
+        "max": 0.006060676,
+        "mean": 0.005000024070457977,
+        "p50": 0.004653103,
+        "p99": 0.0059292364
+      },
+      "header_backwards": 0,
+      "header_duplicates": 0,
+      "header_hz": 199.999037186316,
+      "arrival_minus_header_seconds": {
+        "min": 3.8663e-05,
+        "max": 0.000950717,
+        "mean": 0.0003129490758134854,
+        "p50": 0.00031258200000000005,
+        "p99": 0.00049872841
+      }
+    },
+    "/livox/lidar": {
+      "type": "livox_ros_driver2/msg/CustomMsg",
+      "count": 298,
+      "frame_ids": [
+        "livox_frame"
+      ],
+      "bag_arrival_hz": 10.000816481136816,
+      "header_first_ns": 1789475205872323735,
+      "header_last_ns": 1789475235571418011,
+      "header_dt_seconds": {
+        "min": 0.098688519,
+        "max": 0.101473126,
+        "mean": 0.09999695042424242,
+        "p50": 0.099960567,
+        "p99": 0.10112030508000001
+      },
+      "header_backwards": 0,
+      "header_duplicates": 0,
+      "header_hz": 10.000304966875953,
+      "arrival_minus_header_seconds": {
+        "min": 0.099920535,
+        "max": 0.104613974,
+        "mean": 0.1028886948020134,
+        "p50": 0.1029325995,
+        "p99": 0.1043744172
+      }
+    }
+  },
+  "point_cloud": {
+    "total_points": 5959776,
+    "points_per_frame": {
+      "min": 19872.0,
+      "max": 20160.0,
+      "mean": 19999.24832214765,
+      "p50": 19968.0,
+      "p99": 20160.0
+    },
+    "offset_unit": "ns",
+    "offset_min_ns": {
+      "min": 0.0,
+      "max": 0.0,
+      "mean": 0.0,
+      "p50": 0.0,
+      "p99": 0.0
+    },
+    "offset_max_ns": {
+      "min": 98853573.0,
+      "max": 101209774.0,
+      "mean": 100007500.45302014,
+      "p50": 100139066.5,
+      "p99": 100895161.88
+    },
+    "nonmonotonic_offset_frames": 298,
+    "header_timebase_mismatches": 0,
+    "invalid_points": 0,
+    "below_0p1m_points": 1537088,
+    "azimuth_10degree_bins_from_minus_pi": [
+      141741,
+      131265,
+      133748,
+      123264,
+      113229,
+      95747,
+      105446,
+      95395,
+      76890,
+      82369,
+      82072,
+      98179,
+      107277,
+      109244,
+      103068,
+      105874,
+      108514,
+      112372,
+      123123,
+      113501,
+      99829,
+      151391,
+      153797,
+      164794,
+      110900,
+      121603,
+      121105,
+      123717,
+      126758,
+      130949,
+      151932,
+      157411,
+      165939,
+      165734,
+      164217,
+      150294
+    ],
+    "xyz_bounds_m": [
+      [
+        -9.711999893188477,
+        -5.008999824523926,
+        -0.546999990940094
+      ],
+      [
+        62.76300048828125,
+        32.23099899291992,
+        28.51300048828125
+      ]
+    ],
+    "occlusion_conclusion": "Sector statistics alone cannot distinguish hardware obstruction from scene; human confirmation required"
+  },
+  "imu": {
+    "acceleration_units": "g, unmodified upstream raw output; NOT SI m/s^2",
+    "angular_velocity_units": "rad/s",
+    "acc_mean_xyz": [
+      0.006368337455236861,
+      0.0063323507543957235,
+      0.9955723494421272
+    ],
+    "acc_std_xyz": [
+      0.0058535213380327316,
+      0.007553969743974071,
+      0.016546955575448698
+    ],
+    "acc_norm": {
+      "min": 0.9709962915198366,
+      "max": 1.022191108773049,
+      "mean": 0.9956591796896284,
+      "p50": 0.994451306817088,
+      "p99": 1.0209689789370628
+    },
+    "gyro_mean_xyz": [
+      0.00030479623887066834,
+      -0.00019592587672535134,
+      0.0013760446274952375
+    ],
+    "gyro_std_xyz": [
+      0.00539779273655671,
+      0.003214231459976355,
+      0.001266250237549466
+    ],
+    "gyro_norm": {
+      "min": 0.0005278974160771511,
+      "max": 0.01678354910735633,
+      "mean": 0.006206160693668892,
+      "p50": 0.005832394584443293,
+      "p99": 0.012206043668275764
+    },
+    "orientation_samples": {
+      "[0.0, 0.0, 0.0, 1.0]": 5962
+    },
+    "orientation_covariance_0": {
+      "0.0": 5962
+    },
+    "orientation_valid": false
+  },
+  "tf_edges": [],
+  "limitations": [
+    "Raw IMU orientation is not a pose",
+    "No base_link installation TF is fabricated",
+    "Header proximity to wall clock does not prove PTP/GPS synchronization"
+  ]
+}

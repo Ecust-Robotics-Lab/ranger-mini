@@ -1,0 +1,58 @@
+{
+  "timestamp": "2026-09-15T20:56:27.095604+08:00",
+  "os_release": "PRETTY_NAME=\"Ubuntu 22.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"22.04\"\nVERSION=\"22.04.5 LTS (Jammy Jellyfish)\"\nVERSION_CODENAME=jammy\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=jammy\n",
+  "checks": [
+    {
+      "command": [
+        "uname",
+        "-a"
+      ],
+      "exit": 0,
+      "output": "Linux lab307-Thunderobot-MIX-G2 6.8.0-40-generic #40~22.04.3-Ubuntu SMP PREEMPT_DYNAMIC Tue Jul 30 17:30:19 UTC 2 x86_64 x86_64 x86_64 GNU/Linux\n"
+    },
+    {
+      "command": [
+        "systemd-detect-virt"
+      ],
+      "exit": 1,
+      "output": "none\n"
+    },
+    {
+      "command": [
+        "free",
+        "-h"
+      ],
+      "exit": 0,
+      "output": "               total        used        free      shared  buff/cache   available\n\u5185\u5b58\uff1a       30Gi       900Mi        25Gi        13Mi       4.6Gi        29Gi\n\u4ea4\u6362\uff1a      2.0Gi          0B       2.0Gi\n"
+    },
+    {
+      "command": [
+        "dpkg-query",
+        "-W",
+        "-f=${Package} ${Version}\n",
+        "libeigen3-dev",
+        "libopencv-dev",
+        "libpcl-dev",
+        "libtbb-dev",
+        "libyaml-cpp-dev",
+        "libgl1-mesa-dev",
+        "libglew-dev",
+        "libepoxy0",
+        "liblzma-dev",
+        "ros-humble-pcl-conversions",
+        "ros-humble-rosbag2-cpp"
+      ],
+      "exit": 0,
+      "output": "libeigen3-dev 3.4.0-2ubuntu2\nlibepoxy0 1.5.10-1\nlibgl1-mesa-dev 23.2.1-1ubuntu3.1~22.04.4\nlibglew-dev 2.2.0-4\nliblzma-dev 5.2.5-2ubuntu1.1\nlibopencv-dev 4.5.4+dfsg-9ubuntu4\nlibpcl-dev 1.12.1+dfsg-3build1\nlibtbb-dev 2021.5.0-7ubuntu2\nlibyaml-cpp-dev 0.7.0+dfsg-8build1\nros-humble-pcl-conversions 2.4.5-2jammy.20260726.121755\nros-humble-rosbag2-cpp 0.15.16-1jammy.20260726.123559\n"
+    },
+    {
+      "command": [
+        "ps",
+        "-eo",
+        "pid,comm,args"
+      ],
+      "exit": 0,
+      "output": ""
+    }
+  ]
+}

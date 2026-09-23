@@ -1,0 +1,27 @@
+['sha256sum', '/home/lab307/ranger_nav/vendor/base_deps/downloads/can-utils_2020.11.0-1_amd64.deb']
+3bdc5ddfc7d41a8ec0f3deb23f8365ac7a96e39c20900da821b485dda4222503  /home/lab307/ranger_nav/vendor/base_deps/downloads/can-utils_2020.11.0-1_amd64.deb
+
+EXIT=0
+['dpkg-deb', '-f', '/home/lab307/ranger_nav/vendor/base_deps/downloads/can-utils_2020.11.0-1_amd64.deb', 'Package', 'Version', 'Architecture', 'Depends']
+Package: can-utils
+Version: 2020.11.0-1
+Architecture: amd64
+Depends: libc6 (>= 2.17)
+
+EXIT=0
+['dpkg-deb', '-x', '/home/lab307/ranger_nav/vendor/base_deps/downloads/can-utils_2020.11.0-1_amd64.deb', '/home/lab307/ranger_nav/vendor/base_deps/root']
+
+EXIT=0
+['sha256sum', '/home/lab307/ranger_nav/vendor/base_deps/downloads/libasio-dev_1%3a1.18.1-1_all.deb']
+765fe7bff62134db942c00953544f62f483cebc6ccf2b9153fb6fd40570e6b9c  /home/lab307/ranger_nav/vendor/base_deps/downloads/libasio-dev_1%3a1.18.1-1_all.deb
+
+EXIT=0
+['dpkg-deb', '-f', '/home/lab307/ranger_nav/vendor/base_deps/downloads/libasio-dev_1%3a1.18.1-1_all.deb', 'Package', 'Version', 'Architecture', 'Depends']
+Package: libasio-dev
+Version: 1:1.18.1-1
+Architecture: all
+
+EXIT=0
+['dpkg-deb', '-x', '/home/lab307/ranger_nav/vendor/base_deps/downloads/libasio-dev_1%3a1.18.1-1_all.deb', '/home/lab307/ranger_nav/vendor/base_deps/root']
+
+EXIT=0

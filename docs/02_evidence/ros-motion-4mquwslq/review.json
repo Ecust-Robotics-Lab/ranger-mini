@@ -1,0 +1,75 @@
+{
+  "requested_duration_seconds": 5.0,
+  "can_first_nonzero_to_zero_seconds": 1.9584947859984823,
+  "ros_first_nonzero_to_zero_seconds": 1.968253109997022,
+  "nonzero_ros_count": 78,
+  "nonzero_can_count": 78,
+  "nonzero_can_payloads": [
+    "0032000000000000"
+  ],
+  "first_cleanup_zero_phase": "cleanup_zero",
+  "motion_feedback_v_ranges_by_phase": {
+    "preflight": [
+      0.0,
+      0.0
+    ],
+    "static": [
+      0.0,
+      0.092
+    ],
+    "forward": [
+      0.0,
+      0.101
+    ],
+    "cleanup_zero": [
+      -0.002,
+      0.106
+    ],
+    "after_driver_exit": [
+      -0.801,
+      0.0
+    ]
+  },
+  "first_forward_feedback_above_guard": {
+    "t": 88244.678798135,
+    "phase": "forward",
+    "id": "0x221",
+    "dlc": 8,
+    "data": "0065000000000000",
+    "values": [
+      0.101,
+      0.0,
+      0.0,
+      0.0
+    ]
+  },
+  "stats_delta": {
+    "rx": {
+      "bytes": 103886,
+      "packets": 13495,
+      "errors": 0,
+      "dropped": 0,
+      "over_errors": 0,
+      "multicast": 0
+    },
+    "tx": {
+      "bytes": 6928,
+      "packets": 866,
+      "errors": 0,
+      "dropped": 0,
+      "carrier_errors": 0,
+      "collisions": 0
+    }
+  },
+  "can_error_counter_delta": {
+    "restarts": 0,
+    "bus_error": 0,
+    "arbitration_lost": 0,
+    "error_warning": 0,
+    "error_passive": 0,
+    "bus_off": 0
+  },
+  "assessment": "PARTIAL: requested 5 s pulse interrupted by speed guard; post-exit negative feedback also observed. Physical speed/stop unverified.",
+  "timing_note": "Userspace ROS publish / CAN receive timestamps; includes local TX loopback; not physical movement duration.",
+  "first_abort_source": "User-provided terminal output: Unexpected feedback speed v=0.101; source rejects abs(v)>0.1. Raw CAN independently corroborates."
+}

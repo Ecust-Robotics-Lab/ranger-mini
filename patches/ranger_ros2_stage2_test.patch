@@ -1,0 +1,130 @@
+diff --git a/ranger_base/include/ranger_base/ranger_messenger.hpp b/ranger_base/include/ranger_base/ranger_messenger.hpp
+index 072bcb5..15c45c5 100644
+--- a/ranger_base/include/ranger_base/ranger_messenger.hpp
++++ b/ranger_base/include/ranger_base/ranger_messenger.hpp
+@@ -64,6 +64,7 @@ class RangerROSMessenger : public std::enable_shared_from_this<RangerROSMessenge
+ 
+  public:
+   RangerROSMessenger(rclcpp::Node::SharedPtr& node);
++  ~RangerROSMessenger();
+ 
+   void Run();
+ 
+diff --git a/ranger_base/src/ranger_base_node.cpp b/ranger_base/src/ranger_base_node.cpp
+index da465d2..b10dc4f 100644
+--- a/ranger_base/src/ranger_base_node.cpp
++++ b/ranger_base/src/ranger_base_node.cpp
+@@ -34,7 +34,7 @@ int main(int argc, char** argv)
+ {
+   // setup ROS node
+   rclcpp::init(argc, argv);
+-  controlSingal();
++  // Keep rclcpp's signal handling so Run returns and the SDK closes cleanly.
+ 
+   auto node = rclcpp::Node::make_shared("ranger_base_node");
+   // instantiate a robot object
+diff --git a/ranger_base/src/ranger_messenger.cpp b/ranger_base/src/ranger_messenger.cpp
+index e7ef852..c1b56df 100644
+--- a/ranger_base/src/ranger_messenger.cpp
++++ b/ranger_base/src/ranger_messenger.cpp
+@@ -50,6 +50,11 @@ RangerROSMessenger::RangerROSMessenger(rclcpp::Node::SharedPtr& node){
+   SetupSubscription();
+ }
+ 
++RangerROSMessenger::~RangerROSMessenger() {
++  // Best effort only: SIGKILL, process failure or CAN loss can bypass this.
++  if (robot_) robot_->SetMotionCommand(0.0, 0.0, 0.0);
++}
++
+ void RangerROSMessenger::Run() {
+   rclcpp::Rate rate(update_rate_);
+   while (rclcpp::ok()) {
+@@ -113,7 +118,7 @@ void RangerROSMessenger::LoadParameters() {
+       robot_params_.max_steer_angle_ackermann =
+           RangerMiniV2Params::max_steer_angle_ackermann;
+     }
+-    if (robot_model_ == "ranger_mini_v3") {
++    else if (robot_model_ == "ranger_mini_v3") {
+       robot_type_ = RangerSubType::kRangerMiniV3;
+ 
+       robot_params_.track = RangerMiniV3Params::track;
+@@ -184,6 +189,13 @@ void RangerROSMessenger::PublishStateToROS() {
+   auto state = robot_->GetRobotState();
+   auto actuator_state = robot_->GetActuatorState();
+ 
++  if (state.time_stamp == SdkTimePoint{} ||
++      SdkClock::now() - state.time_stamp > std::chrono::milliseconds(250)) {
++    last_time_ = current_time_;
++    return;  // Never relabel missing/stale feedback as a new observation.
++  }
++  motion_mode_ = state.motion_mode_state.motion_mode;
++
+   // update odometry
+   {
+     double dt = (current_time_ - last_time_).seconds();
+@@ -235,20 +247,26 @@ void RangerROSMessenger::PublishStateToROS() {
+     for (int i = 0; i < 8; i++) {
+       ranger_msgs::msg::DriverState driver_state_msg;
+       driver_state_msg.driver_voltage =
+-          actuator_state.actuator_ls_state->driver_voltage;
++          actuator_state.actuator_ls_state[i].driver_voltage;
+       driver_state_msg.driver_temperature =
+-          actuator_state.actuator_ls_state->driver_temp;
++          actuator_state.actuator_ls_state[i].driver_temp;
+       driver_state_msg.motor_temperature =
+-          actuator_state.actuator_ls_state->motor_temp;
++          actuator_state.actuator_ls_state[i].motor_temp;
+       driver_state_msg.driver_state =
+-          actuator_state.actuator_ls_state->driver_state;
++          actuator_state.actuator_ls_state[i].driver_state;
+ 
+       ranger_msgs::msg::MotorState motor_state_msg;
+-      motor_state_msg.current = actuator_state.actuator_hs_state->current;
+-      motor_state_msg.pulse_count = actuator_state.actuator_hs_state->pulse_count;
+-      motor_state_msg.rpm = actuator_state.actuator_hs_state->rpm;
+-      motor_state_msg.motor_angles = actuator_state.motor_angles.angle_5;
+-      motor_state_msg.motor_speeds = actuator_state.motor_speeds.speed_1;
++      motor_state_msg.current = actuator_state.actuator_hs_state[i].current;
++      motor_state_msg.pulse_count = actuator_state.actuator_hs_state[i].pulse_count;
++      motor_state_msg.rpm = actuator_state.actuator_hs_state[i].rpm;
++      const double angles[] = {actuator_state.motor_angles.angle_5,
++          actuator_state.motor_angles.angle_6, actuator_state.motor_angles.angle_7,
++          actuator_state.motor_angles.angle_8};
++      const double speeds[] = {actuator_state.motor_speeds.speed_1,
++          actuator_state.motor_speeds.speed_2, actuator_state.motor_speeds.speed_3,
++          actuator_state.motor_speeds.speed_4};
++      motor_state_msg.motor_angles = i >= 4 ? angles[i - 4] : std::numeric_limits<float>::quiet_NaN();
++      motor_state_msg.motor_speeds = i < 4 ? speeds[i] : std::numeric_limits<float>::quiet_NaN();
+       
+       ranger_msgs::msg::ActuatorState actuator_state_msg;
+       actuator_state_msg.id = i;
+@@ -264,13 +282,19 @@ void RangerROSMessenger::PublishStateToROS() {
+   // publish BMS state
+   {
+     auto common_sensor_state = robot_->GetCommonSensorState();
++    if (common_sensor_state.time_stamp == SdkTimePoint{} ||
++        SdkClock::now() - common_sensor_state.time_stamp > std::chrono::seconds(2)) {
++      return;  // No BMS frame received: do not invent battery measurements.
++    }
+ 
+     sensor_msgs::msg::BatteryState batt_msg;
+     batt_msg.header.stamp = current_time_;
+     batt_msg.voltage = common_sensor_state.bms_basic_state.voltage;
+     batt_msg.temperature = common_sensor_state.bms_basic_state.temperature;
+     batt_msg.current = common_sensor_state.bms_basic_state.current;
+-    batt_msg.percentage = common_sensor_state.bms_basic_state.battery_soc;
++    batt_msg.percentage = common_sensor_state.bms_basic_state.battery_soc <= 100
++        ? common_sensor_state.bms_basic_state.battery_soc / 100.0
++        : std::numeric_limits<float>::quiet_NaN();
+     batt_msg.charge = std::numeric_limits<float>::quiet_NaN();
+     batt_msg.capacity = std::numeric_limits<float>::quiet_NaN();
+     batt_msg.design_capacity = std::numeric_limits<float>::quiet_NaN();
+@@ -280,7 +304,7 @@ void RangerROSMessenger::PublishStateToROS() {
+         sensor_msgs::msg::BatteryState::POWER_SUPPLY_HEALTH_UNKNOWN;
+     batt_msg.power_supply_technology =
+         sensor_msgs::msg::BatteryState::POWER_SUPPLY_TECHNOLOGY_LION;
+-    batt_msg.present = std::numeric_limits<uint8_t>::quiet_NaN();
++    batt_msg.present = true;
+ 
+     battery_state_pub_->publish(batt_msg);
+   }

@@ -1,0 +1,14 @@
+# Paths relative to project root. Lightning is source review only in stage 3.
+repositories:
+  vendor/livox/Livox-SDK2:
+    type: git
+    url: https://github.com/Livox-SDK/Livox-SDK2
+    version: 08f523c930b2f0ba1e98a6afaa8d7476bf479908
+  ws_livox/src/livox_ros_driver2:
+    type: git
+    url: https://github.com/Livox-SDK/livox_ros_driver2
+    version: 4a1def929e5b59c7a8122d19fce6efba581ce9f7
+  vendor/livox/lightning-lm-review:
+    type: git
+    url: https://github.com/gaoxiang12/lightning-lm
+    version: 1325fed8fa97a2506878360fc23427ea00a767da

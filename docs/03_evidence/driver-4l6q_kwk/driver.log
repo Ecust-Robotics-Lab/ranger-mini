@@ -1,0 +1,27 @@
+[INFO] [1789475196.863838492] [mid360s_driver]: Livox Ros Driver2 Version: 1.2.7
+[INFO] [1789475196.863910565] [mid360s_driver]: Data Source is raw lidar.
+[INFO] [1789475196.863914506] [mid360s_driver]: Config file : /home/lab307/ranger_nav/config/mid360/MID360S_config.json
+LdsLidar *GetInstance
+config lidar type: 8
+successfully parse base config, counts: 1
+[INFO] [1789475196.864185676] [mid360s_driver]: Init lds lidar success!
+GetFreeIndex key:livox_lidar_2432805056.
+STAGE3_DEVICE type=35 sn=ARMCP870038745 ip=192.168.1.145
+set pcl data type, handle: 2432805056, data type: 1
+set scan pattern, handle: 2432805056, scan pattern: 0
+begin to change work mode to 'Normal', handle: 2432805056
+STAGE3_TIME handle=2432805056 data_type=1 time_type=0 raw_timestamp=651792364870
+STAGE3_TIME handle=successfully set data type, handle: 2432805056, set_bit: 2
+2432805056 data_type=0 time_type=0 raw_timestamp=651796095130
+successfully set pattern mode, handle: 2432805056, set_bit: 0
+successfully set lidar attitude, ip: 192.168.1.145
+successfully change work mode, handle: 2432805056
+successfully enable Livox Lidar imu, ip: 192.168.1.145
+[INFO] [1789475199.864627661] [mid360s_driver]: livox/imu publish use imu format
+[INFO] [1789475199.867344306] [mid360s_driver]: livox/lidar publish use livox custom format
+Init queue, real query size:16.
+Lidar[0] storage queue size: 10
+[INFO] [1789475259.716170939] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+Livox Lidar SDK Deinit completely!
+lddc destory!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+lds destory!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

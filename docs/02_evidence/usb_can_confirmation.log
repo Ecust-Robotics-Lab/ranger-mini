@@ -1,0 +1,59 @@
+['lsusb', '-d', '1d50:606f']
+Bus 001 Device 005: ID 1d50:606f OpenMoko, Inc. Geschwister Schneider CAN adapter
+
+EXIT=0
+['readlink', '-f', '/sys/class/net/can0/device']
+/sys/devices/pci0000:00/0000:00:14.0/usb1/1-11/1-11:1.0
+
+EXIT=0
+['readlink', '-f', '/sys/class/net/can0/device/driver']
+/sys/bus/usb/drivers/gs_usb
+
+EXIT=0
+['udevadm', 'info', '--query=property', '--path=/sys/class/net/can0']
+DEVPATH=/devices/pci0000:00/0000:00:14.0/usb1/1-11/1-11:1.0/net/can0
+INTERFACE=can0
+IFINDEX=3
+SUBSYSTEM=net
+USEC_INITIALIZED=343822573
+ID_MM_CANDIDATE=1
+ID_VENDOR=bytewerk
+ID_VENDOR_ENC=bytewerk
+ID_VENDOR_ID=1d50
+ID_MODEL=candleLight_USB_to_CAN_adapter
+ID_MODEL_ENC=candleLight\x20USB\x20to\x20CAN\x20adapter
+ID_MODEL_ID=606f
+ID_REVISION=0000
+ID_SERIAL=bytewerk_candleLight_USB_to_CAN_adapter_002300305246571220393733
+ID_SERIAL_SHORT=002300305246571220393733
+ID_TYPE=generic
+ID_BUS=usb
+ID_USB_INTERFACES=:ffffff:fe0101:
+ID_USB_INTERFACE_NUM=00
+ID_USB_DRIVER=gs_usb
+ID_VENDOR_FROM_DATABASE=OpenMoko, Inc.
+ID_MODEL_FROM_DATABASE=Geschwister Schneider CAN adapter
+ID_PATH=pci-0000:00:14.0-usb-0:11:1.0
+ID_PATH_TAG=pci-0000_00_14_0-usb-0_11_1_0
+ID_NET_DRIVER=gs_usb
+ID_NET_LINK_FILE=/usr/lib/systemd/network/73-usb-net-by-mac.link
+ID_NET_NAME=can0
+SYSTEMD_ALIAS=/sys/subsystem/net/devices/can0
+TAGS=:systemd:
+CURRENT_TAGS=:systemd:
+
+EXIT=0
+['ip', '-details', '-statistics', 'link', 'show', 'can0']
+3: can0: <NOARP,ECHO> mtu 16 qdisc noop state DOWN mode DEFAULT group default qlen 10
+    link/can  promiscuity 0 minmtu 0 maxmtu 0 
+    can state STOPPED restart-ms 0 
+	  gs_usb: tseg1 1..16 tseg2 1..8 sjw 1..4 brp 1..1024 brp-inc 1
+	  clock 48000000 
+	  re-started bus-errors arbit-lost error-warn error-pass bus-off
+	  0          0          0          0          0          0         numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535 parentbus usb parentdev 1-11:1.0 
+    RX:  bytes packets errors dropped  missed   mcast           
+             0       0      0       0       0       0 
+    TX:  bytes packets errors dropped carrier collsns           
+             0       0      0       0       0       0 
+
+EXIT=0

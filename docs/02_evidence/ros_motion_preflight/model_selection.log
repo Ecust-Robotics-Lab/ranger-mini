@@ -1,0 +1,12 @@
+upstream exit= 1 
+ranger variant/geometry PASS
+ranger_mini_v1 variant/geometry PASS
+ranger_mini_v2 selected wrong variant/geometry
+
+patched exit= 0 
+ranger variant/geometry PASS
+ranger_mini_v1 variant/geometry PASS
+ranger_mini_v2 variant/geometry PASS
+ranger_mini_v3 variant/geometry PASS
+
+PASS: actual parameter method regression; no ROS node or CAN access.

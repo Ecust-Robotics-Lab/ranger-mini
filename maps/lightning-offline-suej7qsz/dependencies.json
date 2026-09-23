@@ -1,0 +1,86 @@
+[
+  {
+    "command": [
+      "apt-get",
+      "download",
+      "libgoogle-glog-dev=0.5.0+really0.4.0-2"
+    ],
+    "exit": 0,
+    "output": "\u83b7\u53d6:1 https://mirrors.ustc.edu.cn/ubuntu jammy/universe amd64 libgoogle-glog-dev amd64 0.5.0+really0.4.0-2 [91.9 kB]\n\u5df2\u4e0b\u8f7d 91.9 kB\uff0c\u8017\u65f6 23\u79d2 (3990 B/s)\n"
+  },
+  {
+    "command": [
+      "apt-get",
+      "download",
+      "libgoogle-glog0v5=0.5.0+really0.4.0-2"
+    ],
+    "exit": 0,
+    "output": "\u83b7\u53d6:1 https://mirrors.ustc.edu.cn/ubuntu jammy/universe amd64 libgoogle-glog0v5 amd64 0.5.0+really0.4.0-2 [60.3 kB]\n\u5df2\u4e0b\u8f7d 60.3 kB\uff0c\u8017\u65f6 2\u79d2 (31.7 kB/s)\n"
+  },
+  {
+    "command": [
+      "apt-get",
+      "download",
+      "libgflags-dev=2.2.2-2"
+    ],
+    "exit": 0,
+    "output": "\u83b7\u53d6:1 https://mirrors.ustc.edu.cn/ubuntu jammy/universe amd64 libgflags-dev amd64 2.2.2-2 [93.7 kB]\n\u5df2\u4e0b\u8f7d 93.7 kB\uff0c\u8017\u65f6 4\u79d2 (22.7 kB/s)\n"
+  },
+  {
+    "command": [
+      "apt-get",
+      "download",
+      "libgflags2.2=2.2.2-2"
+    ],
+    "exit": 0,
+    "output": "\u83b7\u53d6:1 https://mirrors.ustc.edu.cn/ubuntu jammy/universe amd64 libgflags2.2 amd64 2.2.2-2 [78.1 kB]\n\u5df2\u4e0b\u8f7d 78.1 kB\uff0c\u8017\u65f6 3\u79d2 (22.3 kB/s)\n"
+  },
+  {
+    "command": [
+      "apt-get",
+      "download",
+      "libepoxy-dev=1.5.10-1"
+    ],
+    "exit": 0,
+    "output": "\u83b7\u53d6:1 https://mirrors.ustc.edu.cn/ubuntu jammy/main amd64 libepoxy-dev amd64 1.5.10-1 [132 kB]\n\u5df2\u4e0b\u8f7d 132 kB\uff0c\u8017\u65f6 3\u79d2 (41.1 kB/s)\n"
+  },
+  {
+    "command": [
+      "apt-get",
+      "download",
+      "libunwind-dev=1.3.2-2build2.1"
+    ],
+    "exit": 0,
+    "output": "\u83b7\u53d6:1 https://mirrors.ustc.edu.cn/ubuntu jammy-updates/main amd64 libunwind-dev amd64 1.3.2-2build2.1 [1883 kB]\n\u5df2\u4e0b\u8f7d 1883 kB\uff0c\u8017\u65f6 9\u79d2 (214 kB/s)\n"
+  },
+  {
+    "file": "/home/lab307/ranger_nav/ws_slam/deps/downloads/libepoxy-dev_1.5.10-1_amd64.deb",
+    "sha256": "075fbb11331397e989f12bdd8fff519a7f66395e561cc4eb63f4bfeedce02c4f",
+    "metadata": "Package: libepoxy-dev\nVersion: 1.5.10-1\nDepends: libegl-dev, libepoxy0 (= 1.5.10-1), libgl-dev\n"
+  },
+  {
+    "file": "/home/lab307/ranger_nav/ws_slam/deps/downloads/libunwind-dev_1.3.2-2build2.1_amd64.deb",
+    "sha256": "f8a7f63a6663190bf77275626e9ff654505f52ce876aff7e51b976e565ac081f",
+    "metadata": "Package: libunwind-dev\nVersion: 1.3.2-2build2.1\nDepends: libunwind8 (= 1.3.2-2build2.1), liblzma-dev\n"
+  },
+  {
+    "file": "/home/lab307/ranger_nav/ws_slam/deps/downloads/libgoogle-glog0v5_0.5.0+really0.4.0-2_amd64.deb",
+    "sha256": "c7bebf51aacb022984daa16d5b0ea48275c87d275b8202f401bd775b3523ba94",
+    "metadata": "Package: libgoogle-glog0v5\nVersion: 0.5.0+really0.4.0-2\nDepends: libc6 (>= 2.34), libgcc-s1 (>= 3.3.1), libgflags2.2 (>= 2.2.2), libstdc++6 (>= 5.2), libunwind8\n"
+  },
+  {
+    "file": "/home/lab307/ranger_nav/ws_slam/deps/downloads/libgflags2.2_2.2.2-2_amd64.deb",
+    "sha256": "715b81b4d6577b577c09bfb5cc572edc271f3af4d419c7b0eacf2f6feb943df6",
+    "metadata": "Package: libgflags2.2\nVersion: 2.2.2-2\nDepends: libc6 (>= 2.14), libgcc-s1 (>= 3.0), libstdc++6 (>= 5.2)\n"
+  },
+  {
+    "file": "/home/lab307/ranger_nav/ws_slam/deps/downloads/libgflags-dev_2.2.2-2_amd64.deb",
+    "sha256": "7e75f61ad260248753a2703b1a04e07896f5e7e54fe52f6955d8126eb581d6e9",
+    "metadata": "Package: libgflags-dev\nVersion: 2.2.2-2\nDepends: libgflags2.2 (= 2.2.2-2)\n"
+  },
+  {
+    "file": "/home/lab307/ranger_nav/ws_slam/deps/downloads/libgoogle-glog-dev_0.5.0+really0.4.0-2_amd64.deb",
+    "sha256": "133bce58e98e56366960410dabbf0259eca1cfaa1b0f67063201be542a8ecd3c",
+    "metadata": "Package: libgoogle-glog-dev\nVersion: 0.5.0+really0.4.0-2\nDepends: libgoogle-glog0v5 (= 0.5.0+really0.4.0-2), libgflags-dev, libunwind-dev | libunwind7-dev\n"
+  }
+]

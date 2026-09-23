@@ -1,0 +1,3 @@
+Scoped historical CAN search; excludes project generated artifacts and chat/credential stores.
+COMMAND=["rg", "-n", "-i", "--hidden", "-g", "!.git/**", "-g", "!node_modules/**", "-g", "!*.pem", "-g", "!*.key", "-g", "!*.nmconnection", "candump|can0|bitrate|gs_usb|slcan", "/home/lab307/.bash_history", "/home/lab307/.bashrc", "/home/lab307/.profile", "/home/lab307/qzy", "/home/lab307/周如意", "/home/lab307/桌面", "/home/lab307/文档", "/home/lab307/下载", "/home/lab307/log", "/etc/systemd/network", "/etc/systemd/system", "/etc/udev/rules.d", "/etc/network", "/etc/modules-load.d", "/etc/modprobe.d", "/etc/netplan"]
+EXIT=1

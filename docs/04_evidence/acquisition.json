@@ -1,0 +1,38 @@
+[
+  {
+    "command": [
+      "git",
+      "clone",
+      "--no-hardlinks",
+      "vendor/livox/lightning-lm-review",
+      "ws_slam/src/lightning"
+    ],
+    "exit": 0,
+    "output": "\u6b63\u514b\u9686\u5230 'ws_slam/src/lightning'...\n"
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "ws_slam/src/lightning",
+      "remote",
+      "set-url",
+      "origin",
+      "https://github.com/gaoxiang12/lightning-lm"
+    ],
+    "exit": 0,
+    "output": ""
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "ws_slam/src/lightning",
+      "checkout",
+      "--detach",
+      "1325fed8fa97a2506878360fc23427ea00a767da"
+    ],
+    "exit": 0,
+    "output": "HEAD \u76ee\u524d\u4f4d\u4e8e 1325fed Merge pull request #119 from gaoxiang12/copilot/update-readme-translate-chinese\n"
+  }
+]

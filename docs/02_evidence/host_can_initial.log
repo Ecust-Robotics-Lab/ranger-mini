@@ -1,0 +1,44 @@
+['date', '--iso-8601=seconds']
+2026-09-14T21:40:50+08:00
+
+EXIT=0
+['uname', '-a']
+Linux lab307-Thunderobot-MIX-G2 6.8.0-40-generic #40~22.04.3-Ubuntu SMP PREEMPT_DYNAMIC Tue Jul 30 17:30:19 UTC 2 x86_64 x86_64 x86_64 GNU/Linux
+
+EXIT=0
+['ip', '-details', '-statistics', 'link', 'show', 'can0']
+3: can0: <NOARP,ECHO> mtu 16 qdisc noop state DOWN mode DEFAULT group default qlen 10
+    link/can  promiscuity 0 minmtu 0 maxmtu 0 
+    can state STOPPED restart-ms 0 
+	  gs_usb: tseg1 1..16 tseg2 1..8 sjw 1..4 brp 1..1024 brp-inc 1
+	  clock 48000000 
+	  re-started bus-errors arbit-lost error-warn error-pass bus-off
+	  0          0          0          0          0          0         numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535 parentbus usb parentdev 1-11:1.0 
+    RX:  bytes packets errors dropped  missed   mcast           
+             0       0      0       0       0       0 
+    TX:  bytes packets errors dropped carrier collsns           
+             0       0      0       0       0       0 
+
+EXIT=0
+['ip', '-json', '-details', '-statistics', 'link', 'show', 'can0']
+[{"ifindex":3,"ifname":"can0","flags":["NOARP","ECHO"],"mtu":16,"qdisc":"noop","operstate":"DOWN","linkmode":"DEFAULT","group":"default","txqlen":10,"link_type":"can","promiscuity":0,"min_mtu":0,"max_mtu":0,"linkinfo":{"info_kind":"can","info_data":{"state":"STOPPED","restart_ms":0,"bittiming_const":{"name":"gs_usb","tseg1":{"min":1,"max":16},"tseg2":{"min":1,"max":8},"sjw":{"min":1,"max":4},"brp":{"min":1,"max":1024},"brp_inc":1},"clock":48000000},"info_xstats":{"restarts":0,"bus_error":0,"arbitration_lost":0,"error_warning":0,"error_passive":0,"bus_off":0}},"num_tx_queues":1,"num_rx_queues":1,"gso_max_size":65536,"gso_max_segs":65535,"parentbus":"usb","parentdev":"1-11:1.0","stats64":{"rx":{"bytes":0,"packets":0,"errors":0,"dropped":0,"over_errors":0,"multicast":0},"tx":{"bytes":0,"packets":0,"errors":0,"dropped":0,"carrier_errors":0,"collisions":0}}}]
+
+EXIT=0
+['timeout', '--signal=TERM', '--kill-after=2s', '10s', 'vendor/base_deps/root/usr/bin/candump', '-e', '-x', 'can0,0:0,#FFFFFFFF']
+read: Network is down
+
+EXIT=1
+['ip', '-details', '-statistics', 'link', 'show', 'can0']
+3: can0: <NOARP,ECHO> mtu 16 qdisc noop state DOWN mode DEFAULT group default qlen 10
+    link/can  promiscuity 0 minmtu 0 maxmtu 0 
+    can state STOPPED restart-ms 0 
+	  gs_usb: tseg1 1..16 tseg2 1..8 sjw 1..4 brp 1..1024 brp-inc 1
+	  clock 48000000 
+	  re-started bus-errors arbit-lost error-warn error-pass bus-off
+	  0          0          0          0          0          0         numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535 parentbus usb parentdev 1-11:1.0 
+    RX:  bytes packets errors dropped  missed   mcast           
+             0       0      0       0       0       0 
+    TX:  bytes packets errors dropped carrier collsns           
+             0       0      0       0       0       0 
+
+EXIT=0

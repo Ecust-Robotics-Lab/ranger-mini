@@ -1,0 +1,1154 @@
+Livox Mid-360
+User Manual   v1.2
+
+
+2024.04
+       Searching for Keywords
+       Search for keywords such as “battery” and “install” to find a topic. If you are using Adobe
+       Acrobat Reader to read this document, press Ctrl+F on Windows or Command+F on Mac to
+       begin a search.
+
+       Navigating to a Topic
+       View a complete list of topics in the table of contents. Click on a topic to navigate to that section.
+
+       Printing this Document
+       This document supports high resolution printing.
+
+
+
+
+Using this Manual
+Legend
+     Warning                   Important                    Hints and Tips                   Reference
+
+
+Downloading Documents
+Visit the link below to download the latest Livox Mid-360 User Manual:
+www.livoxtech.com/mid-360/downloads
+
+
+Downloading Livox Viewer 2
+Visit the link below to download Livox Viewer 2:
+www.livoxtech.com/mid-360/downloads
+
+
+
+Open-sourced Algorithm
+Visit the link below to download Livox SDK 2 and Livox ROS Driver 2:
+https://github.com/Livox-SDK
+
+
+
+Livox Wiki
+Visit Livox Wiki for more information intended for developers:
+https://livox-wiki-en.readthedocs.io
+Contents
+
+  Using this Manual                                                               2
+     Legend                                                                       2
+     Downloading Documents                                                        2
+     Downloading Livox Viewer 2                                                   2
+     Open-sourced Algorithm                                                       2
+     Livox Wiki                                                                   2
+  Contents                                                                        1
+
+  Product Profile                                                                 2
+     Introduction                                                                 2
+     Product Characteristics                                                      3
+     Overview                                                                     5
+  Connectors                                                                      6
+     M12 Aviation Connector                                                       6
+  Mounting Livox Mid-360                                                          8
+     Effective FOV Range                                                          8
+     Mounting Notice                                                              9
+     Dimensions                                                                   9
+  Getting Started                                                                10
+     External Power Supply                                                       10
+     Connection                                                                  10
+  Usage                                                                          12
+     Coordinates                                                                 12
+     Output Data                                                                 12
+     Working States and Working Modes                                            15
+     Livox Viewer 2                                                              15
+     Software Development Kit (SDK)                                              16
+  Storage, Transportation, and Maintenance                                       17
+     Storage                                                                     17
+     Transportation                                                              17
+     Maintenance                                                                 17
+  Troubleshooting                                                                18
+
+  After-Sales Information                                                        18
+
+  Appendix                                                                       19
+     Livox Mid-360 Dimensions                                                    19
+  Specifications                                                                 20
+
+                                             © 2024 LIVOX All Rights Reserved.   1
+Product Profile
+Introduction
+Livox Mid-360 is a high-performance LiDAR sensor that can be used for multiple applications
+including automated guided vehicles, robotics, smart cities, and other fields, and supports the
+realization of mapping, positioning, recognition, obstacle avoidance, and other functions. Livox Mid-
+360 can detect objects as close as 0.1 meters away, and it has a detection range of up to 100 meters.
+
+Compact Design: The Mid-360 features a compact design with a size resembling a tennis ball and a
+weight of only 265 g, which makes it more suitable for realization of mapping and obstacle avoidance
+on small-scale robots.
+
+Wide FOV: The FOV of Mid-360 is 360° horizontally and 59° at maximum vertically. The wide FOV
+enables Mid-360 to detect objects around more efficiently.
+
+High Angular Precision: With an advanced opto-mechanical system design, the Mid-360 has an
+increased detection range and higher point cloud density and coverage. In addition, the Mid-360 has
+the non-repetitive scanning technology which can capture more details.
+
+High Reliability: The Mid-360 offers enhanced reliability as the design works normally without rotating
+internal electronic devices such as the transmitter and receiver. In addition, the Mid-360 has achieved
+an IP67 waterproof and dustproof rating (excluding accessories such as the cables). It has an
+operation temperature range of -20° to 55° C (-4° to 131° F). It also meets the testing requirements for
+random vibration in section 4.1.2.4 of GB/T 28046.3-2011 (mainland China) and ISO 16750-3:2007
+(outside mainland China).
+
+Built-in IMU Module: The Mid-360 is embedded with a 3-axis accelerometer and a 3-axis gyroscope.
+Users turn on or turn off the information push through Livox Viewer 2 or Livox SDK 2. The Mid-360
+pushes information at 200 Hz.
+
+User-Friendly Livox Viewer 2: Livox Viewer 2 is a software specially designed for Livox LiDAR sensors.
+It displays and records real-time point cloud data, replays point cloud videos, and analyzes 3D point
+cloud data. Users can set product parameters and calibrate extrinsics using Livox Viewer 2. The
+simple interface makes it easy to use.
+
+Open Source Livox SDK 2: A software development kit (SDK) is provided to help develop
+customizable applications using the data acquired from the point cloud data. Livox SDK 2 supports
+Windows/Linux/Mac OS/ROS. Visit https://github.com/Livox-SDK/Livox-SDK2 to learn more.
+
+Livox ROS Driver 2: Livox provides open source drivers for ROS1 and ROS2. Visit https://github.com/
+Livox-SDK/livox_ros_driver2 to learn more.
+
+
+
+
+2    © 2024 LIVOX All Rights Reserved.
+                                                                                                                    Livox Mid-360 User Manual
+
+
+Product Characteristics
+Livox Mid-360 adopts a smart and reliable optical design, equipped with non-repetitive scanning
+technology.
+
+Non-Repetitive Scanning Technology
+Livox Mid-360 has a high coverage ratio due to its non-repetitive scanning technology. Over time,
+the coverage inside the FOV increases significantly and reveals more detailed information of the
+surrounding area.
+The figure below displays the point cloud patterns of Livox Mid-360 over different integration times (0.1 s,
+0.2 s, 0.5 s and 1 s), using the non-repetitive scanning technology.
+
+
+
+                 0.1 s                                    0.2 s                            0.5 s                           1s
+
+
+
+
+                 Point cloud patterns of Livox Mid-360 accumulated over different integration times.
+
+
+
+The figure below displays the FOV coverage of Livox Mid-360 using the non-repetitive scanning
+technology, compared with traditional mechanical LiDAR sensors that use common mechanical
+scanning methods. The diagram shows that when the integration time is 0.1 seconds, the FOV
+coverage of Livox Mid-360 is similar to a 32-line mechanical LiDAR sensor. As the integration time
+increases to 0.5 seconds, the FOV coverage of Livox Mid-360 approaches 70%, which is higher than
+that of a 64-line mechanical LiDAR sensor, most of the areas will be illuminated by laser beams.
+
+                                                100
+
+                                                 90
+
+                                                 80
+
+                                                 70
+                             FOV Coverage (%)
+
+
+
+
+                                                 60
+                                                                                                   Livox-Mid-360
+                                                                                                   Livox Mid-360
+                                                 50                                                16 Lines
+                                                                                                   32 Lines
+                                                 40                                                64 Lines
+
+                                                 30
+
+                                                 20
+
+                                                 10
+
+                                                  0
+                                                      0           0.5                      1                       1.5
+
+                                                                    Integration Time (s)
+
+
+ The FOV coverage of Livox Mid-360 and non-Livox LiDAR sensors using common mechanical scanning methods.
+  The 16-line non-Livox LiDAR sensor has a vertical FOV of 30°, the 32-line non-Livox LiDAR sensor is 41°, and the
+                                     64-line non-Livox LiDAR sensor is 27°.
+
+
+
+                                                                                                         © 2024 LIVOX All Rights Reserved.   3
+Livox Mid-360 User Manual
+
+
+                         The performance of the scanning method is defined by the FOV coverage, which is calculated
+                         as the fraction of FOV illuminated by laser beams. The FOV coverage (C) can be calculated
+                         with the following formula:
+
+                                                                       Total area illuminated by laser beams
+                                                               C=                                                        × 100%
+                                                                                  Total area in FOV
+
+                         Refer to the official Livox website for more information about how the FOV coverage is calculated.
+
+
+The figure below shows the average angular gap change curve of the point cloud over different
+integration times using the non-repetitive scanning technology. Users can select the integration time
+according to the size and distance of the target object.
+
+
+                                                                                 Point Cloud Average Angular Gap
+                                          1.6
+
+
+
+                                          1.4
+    Point Cloud Average Angular Gap (°)
+
+
+
+
+                                          1.2
+
+
+
+                                           1
+
+
+
+                                          0.8
+
+
+
+                                          0.6
+
+
+
+                                          0.4
+
+
+
+                                          0.2
+                                             0   0.1    0.2   0.3    0.4   0.5   0.6    0.7     0.8     0.9   1    1.1    1.2   1.3   1.4   1.5   1.6
+
+                                                                                       Integration Time (s)
+
+
+                                                       Point cloud average angular gap of Livox Mid-360 over different integration times.
+
+
+
+
+4               © 2024 LIVOX All Rights Reserved.
+                                                                            Livox Mid-360 User Manual
+
+
+Overview
+
+
+
+
+          1
+
+
+
+
+                                                2
+
+
+                                                                      3              4
+
+
+1. Optical Window
+   The laser beam passes through the optical window and scans objects in the FOV.
+2. M12 Aviation Connector
+   The M12 aviation connector can be connected to the Livox Aviation Connector 1-to-3 Splitter Cable
+   (sold separately) for quick testing and debugging. Users can use customized cables according to
+   the connector pinout table to improve the waterproof and dustproof protection ability of the LiDAR
+   sensor. Refer to the Connectors section for more information on the M12 aviation connector.
+3. Locating Hole
+   The locating hole makes it easy for users to find the correct place to mount a fixed support for the
+   Mid-360. Refer to the Dimensions section for more information.
+4. M3 Mounting Holes
+   Mount Livox Mid-360 to an appropriate location using the M3 screws and the mounting holes.
+
+
+
+       Visit the DJI official store to purchase the Livox Aviation Connector 1-to-3 Splitter Cable. The
+       Livox Aviation Connector 1-to-3 Splitter Cable can only be used for testing and debugging. It
+       is recommended to customize the cable and connectors for other scenarios that require high
+       reliability.
+
+
+
+
+                                                                     © 2024 LIVOX All Rights Reserved.   5
+Connectors
+M12 Aviation Connector
+The Mid-360 uses a high-reliability M12 A-Code aviation connector (male). The M12 12P A-code fully
+shielded male connector meets the IEC 61076-2-101 standard. The recommended female connector
+type is Finecables, port number MA12FAHD12STXXXB14. Both connectors have an IP rating of
+IP67. Users can connect Livox Mid-360 with the Livox Aviation Connector 1-to-3 Splitter Cable (sold
+separately) for transmission of power, control signal, and data. Users can also replace the cable with
+other cables to improve the dustproof and waterproof protection of the LiDAR sensor.
+
+
+
+                                                                                    7       6
+                                                                                                 5
+                                                                                8   12 11
+                                                                                                     4
+                                                                                9           10       3
+                                                                                        1        2
+
+
+
+
+Livox Aviation Connector 1-to-3 Splitter Cable
+Users can connect Livox Mid-360 with the Livox Aviation Connector 1-to-3 Splitter Cable (sold
+separately). The Livox Aviation Connector 1-to-3 Splitter Cable has an M12 aviation connector (female)
+on one end, and the other is split into the power, Ethernet, and function cables. The cable length is 1.5
+meters.
+The M12 aviation connector (female) connects to the M12 aviation connector (male) on Livox Mid-360.
+The power cable connects to an external DC power supply. The Ethernet cable has an RJ-45 network
+connector which connects to the RJ-45 connector on a computer for data transmission during testing.
+If users need GPS time synchronization (not required), connect the function cable (pin 8 and 10) to
+the corresponding synchronization source, with the GPS serial port configured as: baud rate 9600, 8
+data bits, no parity. Visit Livox Wiki for more information about time synchronization: https://livox-wiki-
+en.readthedocs.io.
+
+
+
+                                                                                                         Power Cable
+                 6                             M12
+             5        7                                                                                  Ethernet cable
+        11                    12       Aviation Connector
+    4                              8         (female)                                                    Function cable
+
+
+
+                                                          6
+                                   9             11
+                                                      5        7
+                                                                       12
+    3                                       4                               8
+
+             2   10       1
+                                                                            9
+                                             3
+                                                      2   10       1
+
+
+
+
+6       © 2024 LIVOX All Rights Reserved.
+                                                                        Livox Mid-360 User Manual
+
+
+See below for more information on the Mid-360 M12 aviation connector (male) and the Livox Aviation
+Connector 1-to-3 Splitter Cable.
+
+   M12 Aviation
+    Connector
+                     Signal              Type           Description           Color         Function
+  (male/female)
+      Pins
+        1            Power+             Power           DC 9V-27V
+                                                                         Red (positive)
+        9            Power+             Power           DC 9V-27V                             Power
+        2            Ground             Power             Ground                              Cable
+                                                                        Black (negative)
+        3            Ground             Power             Ground
+        4         Ethernet-TX+          Output         Ethernet-TX+      Orange/white
+        5          Ethernet-TX-         Output          Ethernet-TX-        Orange           Ethernet
+        6         Ethernet-RX+          Input          Ethernet-RX+       Green/white         cable
+        7         Ethernet-RX-          Input           Ethernet-RX-         Green
+                                                         Pulse per
+        8           LVTTL_IN       Input 3.3V LVTTL                       Purple/white
+                                                          second
+       10           LVTTL_IN       Input 3.3V LVTTL      GPS input         Gray/white
+                                                         Reserved                           Function
+       11          LVTTL_OUT      Output 3.3V LVTTL                           Gray
+                                                         output IO                           cable
+                                                         Reserved
+       12          LVTTL_OUT      Output 3.3V LVTTL                          Purple
+                                                         output IO
+      2&3            Ground            Ground             Ground              Black
+
+
+
+
+                                                                 © 2024 LIVOX All Rights Reserved.    7
+Mounting Livox Mid-360
+Effective FOV Range
+The FOV of Livox Mid-360 is 360° horizontally and 59° at maximum vertically. When mounting the
+sensor, make sure that the FOV is not blocked by any objects. Visit www.livoxtech.com/mid-360 to
+download the 3D model of the Mid-360 and its FOV.
+
+
+
+
+                                                              52°
+                                                                52°
+                         360°
+                           360°
+
+                         Horizontal                                        Vertical
+
+                                            Effective FOV of the Mid-360
+
+
+
+Note that the effective detection range of Livox Mid-360 varies based on where the object is within the
+FOV. For the vertical FOV, the closer to the upper edge, the shorter the effective detection range is;
+the closer to the lower edge, the longer the effective detection range is. Refer to the diagram below.
+Pay attention to the effective detection range when in use.
+
+
+                                            60°                       60°
+                                      45°                                    45°
+                                  30°                                           30°
+
+                               15°                                                    15°
+
+                                0°                                                    0°
+                                                   10         10 20                         10% Reflectivity
+                                            20
+                                      40 30                           30 40                        Unit: m
+
+
+
+                               Effective Detection Range inside FOV of the Mid-360
+
+
+
+As shown above, when an object with a reflectivity of 10% is placed near the lowest border of the
+vertical FOV, the object can be detected as far as 40 m. The closer to the upper part of the vertical
+FOV, the shorter the effective detection range.
+
+      Overlapping with other Lidar FOVs should be avoided. If the laser beams are pointed right at
+      each other, irreversible damage may be caused to the Mid-360.
+
+
+
+
+8    © 2024 LIVOX All Rights Reserved.
+                                                                                   Livox Mid-360 User Manual
+
+
+Mounting Notice
+Read and understand the following warnings before mounting the Mid-360.
+1. Dust and stains on the optical window will negatively affect the performance of the LiDAR sensor.
+   Follow the instructions in the Maintenance section to clean the optical window using compressed
+   air, isopropyl alcohol, or a lens cloth. Mount the Mid-360 after cleaning it.
+2. When mounting the Mid-360, the FOV must not be blocked by an object, including glass.
+3. There is no orientation requirement when mounting the Mid-360. Use the bottom surface for
+   mounting. If mounting the Mid-360 upside down, allow a space of no less than 0.5 m between the
+   mounting surface and the ground. Contact Livox if you have special installation needs.
+4. The Mid-360 cannot bear any extra payload. Otherwise, the reliability of the product cannot be
+   guaranteed.
+5. When mounting the Mid-360, allow a space of at least 10 mm around the device to prevent poor
+   airflow which can affect heat dissipation.
+6. It is recommended to mount the Mid-360 on a flat metal surface. The metal base plate should
+   have a thickness of no less than 3 mm, and an area of no less than 10000 mm2 on the metal plate
+   should be exposed to the air for heat dissipation.
+
+
+Dimensions
+The bottom surface of the Mid-360 has four M3 mounting holes with a depth of 5 mm. Refer to the
+dimensions and the mounting holes in the diagrams below to mount or embed the Mid-360 to or in an
+appropriate place on the target base.
+
+                       73.0
+                    65.0±0.5                                                                            Unit: mm
+                      48.0
+                                    3.0 +0.1
+                                         0       1.8
+
+                                                                               O
+                                                                                                          60.0±0.5
+65.0±0.5
+
+
+
+
+                                               39.0
+
+
+
+
+                                                              47.0
+           36.0
+
+
+
+
+                                                                                                 39.5
+                                      16.0
+
+
+
+
+                                    4-M3        5
+                                                                                          14.3
+
+
+
+
+                                 3.0 +0.1
+                                      0      1.8
+
+
+                                    Mid-360 Dimensions (refer to Appendix 1)
+
+
+Livox Mid-360 Weight and Dimensions
+           Weight     Approx. 265 g
+    Dimensions        65 (width) × 65 (depth) × 60 (height) mm
+
+
+
+                                                                          © 2024 LIVOX All Rights Reserved.          9
+Getting Started
+External Power Supply
+The working voltage range of Livox Mid-360 is from 9 V to 27 V, the recommended working voltage is 12 V.
+The minimum working voltage should be increased in a low-temperature environment. When the Mid-360
+is connected to an external power source directly using the M12 aviation connector, make sure the output
+voltage range of the external power source is within the operating voltage range of the Mid-360. When an
+extension cable is required, make sure to increase the output voltage of the external power source due to
+the extra voltage reduction. Make sure the maximum voltage does not exceed 27 V. Note that the power
+cable may generate voltage fluctuation where the voltage exceeds 27 V in some scenarios, such as if the
+power cable is interfered with or other devices connected to another power source in the parallel circuit
+suddenly power off. In such scenarios, the Mid-360 may not work normally or even be damaged.
+The Mid-360 has a working power of 6.5 W when working normally. When in an environment where the
+temperature is less than 35° C (95° F), the startup power is 18 W (which lasts for about 8 seconds); when
+in an environment where the temperature is higher than 35° C (95° F), the startup power is 9 W (which lasts
+for about 8 seconds). When in an environment where the temperature is -20° to 0° C (-4° to 32° F), Livox
+Mid-360 will first enter self-heating mode automatically. In self-heating mode, the working power of the Mid-
+360 can reach 14 W, which lasts at most 10 minutes. The working power of the Mid-360 varies at different
+temperatures. Make sure the power supply is suitable based on the working voltage range and the startup
+peak power of Livox Mid-360. The value is for reference only. In normal conditions, the startup peak power
+varies depending on each sensor.
+
+
+Connection
+Livox Mid-360 uses a M12 aviation connector for power supply as well as data transmission. Refer to the
+Connectors section for more information about the connector. It is recommended to use the Livox Aviation
+Connector 1-to-3 Splitter Cable (sold separately) when testing or using the Mid-360 temporarily. The Livox
+Aviation Connector 1-to-3 Splitter Cable contains the M12 aviation connector (female), power cable (bare
+wires), function cable (wires with insulation), and Ethernet cable (with RJ-45 connector).
+Livox Mid-360 transfers data using the User Datagram Protocol (UDP). It supports the static IP address
+configuration. All Livox Mid-360 LiDAR sensors are set to static IP address mode by default with an IP
+address of 192.168.1.1XX (XX stands for the last two digits of the Livox Mid-360 LiDAR sensor’s serial
+number). The default subnet masks of the Livox Mid-360 LiDAR sensors are all 255.255.255.0 and their
+default gateways are 192.168.1.1. Directly connect the Mid-360 to a computer when using for the first time.
+1. Before connecting, set the IP address of the computer to static IP address mode. Follow the steps to
+   set the IP address of the computer to a static IP address:
+
+     Windows system
+     a. Click to enter the Network and Sharing Center under Control Panel.
+     b. Select the network you are using and then click Properties.
+     c. Double click Internet Protocol Version 4 (TCP/IPv4).
+     d. Set the static IP address of the computer to 192.168.1.50, the subnet mask is set at
+        255.255.255.0.Click OK to complete.
+
+
+
+10      © 2024 LIVOX All Rights Reserved.
+                                                                                    Livox Mid-360 User Manual
+
+
+   Ubuntu-18.04 system
+   The IP address of the computer can be configured by using the ifconfig command at the terminal.
+   The configuration code is as below:
+   ~$ sudo ifconfig enp4s0 192.168.1.50 (replace “enp4s0” with the network port name of the
+   computer)
+
+2. Connect the Mid-360 as shown below.
+
+
+                                                         Red (positive)
+                                                        Black (negative)
+                                                                        External
+                                                                     Power Source
+
+                                                                       Function Cable     Computer
+         Livox Mid-360   Livox Aviation Connector 1-to-3 Splitter Cable
+
+
+                                     Connecting using the static IP address
+
+
+
+   a. Connect the M12 aviation connector (female) on the Livox Aviation Connector 1-to-3 Splitter
+      Cable with the M12 aviation connector (male) on Livox Mid-360. The lock nut of the M12
+      aviation connector (female) should be tightened with a wrench to ensure there is a secure
+      connection with the M12 aviation connector (male). Make sure there is no gap between them.
+   b. Connect the RJ-45 network connector on the Livox Aviation Connector 1-to-3 Splitter Cable to
+      the computer.
+   c. If GPS time synchronization is required, connect the function cable on the Livox Aviation
+      Connector 1-to-3 Splitter Cable to the corresponding synchronization source.
+   d. Connect the power cable on the Livox Aviation Connector 1-to-3 Splitter Cable to the external
+      power source. Pay attention to the input voltage range and polarity.
+
+     •    When connecting the power cable and the function cable, pay attention to their respective
+          voltage ranges and polarities. DO NOT connect any PoE device to the RJ-45 network
+          connector. Incorrect connection can lead to irreversible damage to the LiDAR.
+     •    Connect the function cable on the Livox Aviation Connector 1-to-3 Splitter Cable to the
+          corresponding synchronization source if needed.
+     •    When multiple Mid-360 LiDAR sensors are connected to one computer in static IP address
+          mode, make sure all sensors connected have different static IP addresses, and they are
+          connected to the computer using a switch.
+     •    If more than three Mid-360 LiDAR sensors are required, use a gigabit router or switch.
+     •    The broadcast number for each LiDAR sensor can be viewed using the QR code sticker on
+          the back of the LiDAR sensor or in the Device Manager of Livox Viewer 2.
+     •    Launch Livox Viewer 2 on the computer after the Mid-360 is connected. Click the device
+          with the static IP address that should be altered. Click to open the settings page and set
+          the static IP address of the Mid-360.
+
+
+
+                                                                          © 2024 LIVOX All Rights Reserved.   11
+      Usage
+       Coordinates
+      The Cartesian coordinates O-XYZ of Mid-360 is defined as below: Point O is the origin, and O-XYZ is
+      the point cloud coordinates of Mid-360.
+
+
+                                                                                      360°
+
+                                    Z
+O
+              60.0±0.5
+
+
+
+
+                                        O
+                                                                             X
+                                                                                      Z
+       39.5
+
+
+
+
+                                                                                                                       52°
+                         X                             Y
+                                                                                                            X
+                                                                                                                  7°
+    14.3
+
+
+
+
+                                                                                          Y
+
+
+                                                    Mid-360 Coordinates
+
+
+
+       Output Data
+      The output information of Mid-360 LiDAR sensors includes: Information Push, Point Could Data and
+      IMU Data.
+      For detailed output information formats, refer to the communication protocol section of Livox Wiki:
+      https://livox-wiki-en.readthedocs.io
+
+      Information Push
+      After power-on, Livox Mid-360 periodically pushes LiDAR sensor information to the set IP address (the
+      broadcast address by default), including device information, user configuration and current status.
+      Below is part of the pushed information.
+
+       Type                     Content                       Description
+                                Serial Number                 The only identification number for Livox Mid-360.
+                                Firmware Version              Firmware Version
+       Device Information
+                                Hardware Version              Hardware Version
+                                MAC Address                   The MAC address of the network card.
+                                LiDAR sensor IP               Configure the IP address, subnet mark and gateway
+                                address                       for the LiDAR sensor.
+       User Configuration
+                                                              Configure the target address for pushing information
+                                Target Address
+                                                              and sending point cloud data.
+
+
+
+
+      12        © 2024 LIVOX All Rights Reserved.
+                                                                                        Livox Mid-360 User Manual
+
+
+                          Point Cloud Data Format Configure different coordinates.
+                                                        Configure the switch for pushing IMU data, which is
+                          IMU Data
+                                                        enabled by default.
+                                                        Configure the extrinsic parameters calibration
+                          LiDAR Sensor Extrinsic
+                                                        information for the LiDAR sensor (the LiDAR sensor
+                          Parameters
+                                                        only stores and does not use this information).
+                                                        The target working state. Users can change this
+User Configuration
+                          Working Mode                  setting. The default working mode is Sampling (i.e.
+                                                        starting to collect point cloud after power-on).
+                                                        If users do not need the full FOV of 360°, users can
+                          FOV Configuration             configure the LiDAR sensor to work in a certain range
+                                                        of FOV.
+                                                        Configure as Normal or Sensitive detection mode.
+                          Detection Mode
+                                                        The default detection mode is Normal. [1]
+                          The current working
+                                                        The current working status.
+                          status.
+                                                        The current temperature of the crucial internal
+                          Internal Temperature
+Current Status                                          components of the LiDAR sensor.
+                                                        If the LiDAR sensor malfunctions, users can use the
+                          Error Code                    error code to confirm the reason and classify the
+                                                        error.
+[1] If the detection mode is configured as Sensitive detection mode, the ability for detecting low-reflectivity objects
+    can be enhanced, achieving better detection effect for extremely dark or bright objects. Note that the noise rate
+    may increase slightly in this mode.
+
+
+Point Cloud Data
+Normally, Livox Mid-360 starts to output point cloud data after power-on. The point cloud data
+includes target reflectivity, coordinates, tags, and timestamp.
+
+A point cloud is the collection of the points where the surface of an object was detected in the FOV of
+the LiDAR sensor. Each point contains the following information.
+
+Target reflectivity: expressed by a number from 0 to 255. 0 to 150 corresponds to the reflectivity within
+the range of 0 to 100% in the Lambertian reflection model. 151 to 255 corresponds to the reflectivity of
+target objects with retroflection properties. When the target is less than 2 m from the Mid-360, it may
+result in a large reflectivity error. The data should only be used to distinguish whether the target is total
+reflective or diffuse reflective.
+
+Coordinates: The coordinates of Livox Mid-360 can be expressed in Cartesian coordinates (x, y, z)
+or in Spherical coordinates (r, θ, φ). The relation between the two coordinate systems are as shown
+below. When there is no object within the detection range or the object is placed beyond the detection
+range (such as further than 100 m), the coordinates of the point cloud will be expressed as (0, 0, 0) in
+Cartesian coordinates, and as (0, θ, φ) in Spherical coordinates.
+
+
+
+
+                                                                              © 2024 LIVOX All Rights Reserved.      13
+Livox Mid-360 User Manual
+
+
+                            P(r,θ,φ)           Z
+                                           θ
+
+                                               O
+                                                                        X = r×sin(θ)×cos(φ)
+                                                                        Y = r×sin(θ)×sin(φ)
+                                                              Y
+                                   φ                                    Z = r×cos(θ)
+                        X
+
+
+                               M
+
+Tags: Indicates additional information about the detected points. Point cloud tags are 8-bit unsigned
+integers, which are divided into several groups. Each group indicates one property of the detected
+point, including rain, fog, dust, and dragging noise between objects, etc. The confidence level
+indicates the credibility of the detected points. “0” stands for normal point cloud data (high confidence
+level); low confidence level indicates that the detected point is highly affected by the corresponding
+type of noise, and as a result the detection result has low credibility. Filter the point cloud based on
+the tag information.
+
+The format of the tag is as shown below:
+Bit[7-6]     Bit[5-4]                              Bit[3-2]                       Bit[1-0]
+                                                   Detected points property:
+         Detected points property:                                                Detected points property:
+                                                   Atmospheric particles like
+         Other                                                                    Dragging noise between
+                                                   rain, fog, and dust.
+         0: High confidence level                                                 objects:
+                                                   0: High confidence level
+         (normal points)                                                          0: High confidence level
+Reserved                                           (normal points)
+         1: Moderate confidence                                                   (normal points)
+                                                   1: Moderate confidence
+         level                                                                    1: Moderate confidence level
+                                                   level
+         2: Low confidence level                                                  2: Low confidence level
+                                                   2: Low confidence level
+         3: Reserved                                                              3: Reserved
+                                                   3: Reserved
+
+
+Timestamp
+There are two ways to synchronize data with the Mid-360: IEEE 1588-2008 and GPS. Timestamps are
+displayed in format of 64-bit integers, and the unit is ns. Visit Livox Wiki for more detailed information
+about time synchronization: https://livox-wiki-en.readthedocs.io.
+IEEE 1588-2008: IEEE 1588-2008 is the Precision Time Protocol (PTP) enabling precise
+synchronization of clocks in measurement and control systems by Ethernet. Livox LiDAR sensors,
+as the ordinary clock in the PTP, only supports UDP/IPV4 for PTP. Livox LiDAR sensors support the
+following message events: Sync, Follow_up, Delay_req, and Delay_resp.
+GPS: GPS is a way to synchronize the data using the PPS signal and GPS message events. PPS
+port logic is the same as the PPS synchronization mentioned above. GPS messages (GPRMC)
+are sent to the corresponding pins through the serial port (see the Connectors section in this user
+manual). The pulse interval in PPS signal is 1 s (t0=1000 ms) while the continuous time of high-level
+voltage is t1 (t1 > 1 us). Besides sending GPS messages through serial port, users can also send the
+timestamp information of each pulse to Livox Mid-360 in network packets. For specific communication
+commands, refer to the communication protocol section.
+
+14     © 2024 LIVOX All Rights Reserved.
+                                                                           Livox Mid-360 User Manual
+
+
+IMU Data
+The LiDAR sensor is integrated with a IMU chip (with a 3‑axis accelerometer and a 3-axis gyroscope).
+By default, Livox Mid-360 starts to push IMU data at a frequency of 200 Hz after power-on, which can
+be enabled or disabled using the host computer. The IMU data contains the 3-axis acceleration and
+3-axis angular velocity, the directions of which are the same with that of the point cloud coordinates.
+The position of the IMU chip in the point cloud coordinates is x=11.0 mm, y=23.29 mm, z=-44.12 mm.
+Refer to the communication protocol section for specific communication protocol and data formats.
+
+
+Working States and Working Modes
+The working state of Livox Mid-360 refer to the current working state of the LiDAR sensor, while the
+working mode refers to the target working mode selected by the user.
+
+Working States Descriptions
+The working states of Livox Mid-360 include idle, ready, and sampling, etc. Refer to table below for
+details.
+
+Working States Description
+   Sampling      The LiDAR sensor is powered on and working normally (emitting laser beams).
+                 All components are powered off apart from the communication module. The lowest
+      Idle
+                 power consumption is in this state.
+      Error      The LiDAR sensor will enter error status when an error is detected.
+   Self-check    The LiDAR sensor is conducting the power-on self-check.
+ Motor Startup   The motor of the LiDAR sensor is starting.
+   Upgrading     The LiDAR sensor is updating the firmware.
+     Ready       The LiDAR sensor is powered on and ready to emit laser beams.
+
+
+Working Modes Descriptions
+The working modes refer to the target working modes selected by the user. Livox Mid-360 has three
+working modes: idle, ready, and sampling. Users can select different working modes using Livox
+Viewer 2 or Livox SDK 2.
+
+
+Livox Viewer 2
+Livox Viewer 2 is software specially designed for Livox LiDAR sensors. It displays and records real-
+time point cloud data, replays point cloud videos, and analyzes the 3D point cloud data. Users can
+set product parameters and calibrate extrinsics using Livox Viewer 2. The simple interface makes it
+easy to use.
+Visit www.livoxtech.com to download the latest Livox Viewer 2. It supports Windows® 10 (64 bit) and
+UbuntuTM 18.04 (64 bit). Follow the steps below to use Livox Viewer 2.
+
+
+
+
+                                                                  © 2024 LIVOX All Rights Reserved.   15
+Livox Mid-360 User Manual
+
+
+      For Windows users, Livox Viewer 2 may fail to detect LiDAR sensors if Windows Firewall is
+      turned on. In this situation, go to the Control Panel to turn off Windows Firewall and restart
+      Livox Viewer 2.
+
+Windows Users: unzip the downloaded file and click to open the .exe file named “Livox Viewer 2”.
+Ubuntu Users: unzip the downloaded file, and run the command “./livox_viewer_2.sh” file in the root
+directory of the unzipped folder.
+For more information, download the Livox Viewer 2 User Manual from the official website: https://www.
+livoxtech.com.
+
+
+Software Development Kit (SDK)
+Livox SDK 2
+Besides using Livox Viewer 2 to check real-time point cloud data, users can also use the Livox SDK 2
+to apply the point cloud acquired from Livox LiDAR sensors to different scenarios, such as:
+• Configure the LiDAR Sensor: configure the parameters of the LiDAR sensor and check the status.
+• Get Point Cloud Data: get the point cloud coordinates from the LiDAR sensor.
+• Firmware Update: conduct firmware update of the LiDAR sensor.
+Visit https://github.com/Livox-SDK/Livox-SDK2 to see more detailed information about Livox SDK 2
+API documentation.
+
+
+SDK Communication Protocol
+Both Livox Viewer 2 and Livox SDK 2 communicate with LiDAR sensors using the SDK communication
+protocol. Users can also develop their own software based on the SDK communication protocol
+to realize communication with and controlling the LiDAR sensor, and collecting the point cloud
+coordinates.
+Visit https://livox-wiki-en.readthedocs.io to learn more information about SDK communication protocol.
+
+
+
+
+16     © 2024 LIVOX All Rights Reserved.
+Storage, Transportation, and Maintenance
+Storage
+The storage temperature for the Mid-360 is from -40° to 70° C (-40° to 158° F). Keep Mid-360 LiDAR
+sensors in a dry and dust-free environment.
+• Make sure the Mid-360 LiDAR sensor is not exposed to environments containing poisonous or
+  corrosive gases or materials.
+• DO NOT drop the Mid-360 LiDAR sensor and be careful when placing it in storage or taking it out
+  of storage.
+• If a Mid-360 LiDAR sensor is not to be used for more than three months, regularly check the
+  sensors and connectors for abnormalities.
+
+
+Transportation
+• Before transportation, place Mid-360 LiDAR sensor in a suitable box and make sure it is secure.
+• Make sure to place foam inside the transportation box and that the box is clean and dry.
+• Always handle with care during transportation. Protect it from any impact, bumps, and never drop it
+  to the ground.
+
+
+Maintenance
+With full consideration for the requirements of reliability and stability during design, Livox Mid-360
+features advanced optical, mechanical, and electrical performance. In normal conditions, the only
+maintenance required for the Mid-360 is to clean the optical window of the LiDAR sensor. Dust and
+stains on the optical window can negatively affect the performance of the LiDAR sensor. Make sure to
+regularly clean the optical window to prevent this from happening.
+Check the surface of the optical window to see if cleaning is necessary. If it is necessary to clean,
+follow the steps below:
+1. Use compressed or canned air:
+   DO NOT directly wipe a dusty optical window as it will only cause more damage. Clean the optical
+   window with compressed or canned air before wiping the optical window.
+
+      If the optical window has no visible stains afterwards, it is unnecessary to wipe it.
+
+
+2. Wipe the stains:
+   It is recommended to use a clean and dry lens tissue to gently wipe the optical window. If the
+   optical window is still dirty, use the lens tissue provided with a small amount of isopropyl alcohol
+   and wipe slowly to remove the dirt.
+
+
+
+
+                                                                     © 2024 LIVOX All Rights Reserved.   17
+Troubleshooting
+The table below shows you how to troubleshoot and resolve common issues with Mid-360 LiDAR
+sensors. If the issue persists, contact Livox.
+
+Issue                         Solution
+                              • Make sure that all cables are correctly wired.
+                              • Make sure the voltage of the power supply is suitable. The voltage
+                                should be between 9 V and 27 V. If connected with the Livox Aviation
+                                Connector 1-to-3 Splitter Cable, the voltage range of the supported
+                                external power source is from 9 V to 27 V.
+                              • Make sure that the LiDAR sensor is not connected to other software.
+Cannot detect the             • Make sure that the LiDAR sensor and the host computer is connected to
+LiDAR sensor                    the same LAN.
+                              • Make sure no security software is installed that would block Ethernet
+                                broadcasts.
+                              If the issue persists, turn off all firewalls, restart the Livox Viewer 2 and try
+                              again.
+                              Confirm the packet outputs of all connected devices using another
+                              application (e.g., Wireshark).
+                              • Make sure that all cables are correctly wired.
+Cannot connect to             • Make sure the voltage is correct. The working voltage range for Livox
+the detected LiDAR              Mid-360 is from 9 V to 27 V. If connected with the Livox Aviation
+sensor/Cannot start             Connector 1-to-3 Splitter Cable, the voltage range of the supported
+sampling                        external power source is from 9 V to 27 V.
+                              If the issue persists, reboot the LiDAR sensor and restart the Livox Viewer 2.
+                              Confirm the packet outputs for all connected devices using another
+No data received
+                              application (e.g., Wireshark).
+
+
+
+
+After-Sales Information
+Visit www.livoxtech.com/support to check the after-sales policy and warranty conditions for Livox
+LiDAR sensors.
+
+
+
+
+18      © 2024 LIVOX All Rights Reserved.
+           Appendix
+            Livox Mid-360 Dimensions
+
+
+
+                                                                                   Unit: mm
+
+                                          73.0
+                                       65.0±0.5
+                                         48.0
+                                                     3.0 +0.1
+                                                          0        1.8
+                     65.0±0.5
+
+
+
+
+                                                                39.0
+
+
+
+
+                                                                                               47.0
+                                36.0
+
+
+
+
+                                                      16.0
+
+                                                     4-M3         5
+                                                  3.0 +0.1
+                                                       0      1.8
+
+
+
+1
+      1.8
+
+                                            O
+                                                                      60.0±0.5
+    39.0
+
+
+
+
+                                47.0
+
+
+
+
+                                                          39.5
+
+
+
+
+                                                                                                      X
+
+     5
+                                                   14.3
+
+
+
+
+1.8
+
+
+
+
+                                                        © 2024 LIVOX All Rights Reserved.     19
+Specifications
+ Livox Mid-360
+ Model                                    MID-360
+ Laser Wavelength                         905 nm
+ Laser Safety   [1]
+                                          Class 1 (IEC 60825-1:2014) (safe for eyes)
+                                          40 m @ 10% reflectivity
+ Detection Range (@ 100 klx)
+                                          70 m @ 80% reflectivity
+ Close Proximity Blind Zone       [2]
+                                          0.1 m
+ FOV                                      Horizontal: 360°, Vertical: -7° ~ 52°
+                                          ≤ 2 cm (@10 m)[4]
+ Distance Random Error (1σ)[3]
+                                          ≤ 3 cm (@ 0.2 m)[5]
+ Angular Random Error (1σ)                ≤ 0.15°
+ Point Rate                               200,000 points/s
+ Frame Rate                               10 Hz (typical value)
+ Data Port                                100 BASE-TX Ethernet
+ Data Synchronization                     IEEE 1588-2008 (PTP v2), GPS
+ Anti-Interference Function               Available
+ False Alarm Ratio (@100 klx)[6]          < 0.01%
+ IMU                                      Built-in IMU Model: ICM40609
+ Operating Temperature                    -20° to 55° C (-4° to 131° F)[7]
+ Storage Temperature                      -40° to 70° C (-40° to 158° F)
+ IP Rating                                IP67
+ Power[8]                                 6.5 W (environment temperature 25° C (77° F))
+ Power Supply Voltage Range               9-27 V DC
+ Dimensions                               65 (width) × 65 (depth) × 60 (height) mm
+ Weight                                   Approx. 265 g
+
+
+
+[1] The divergence of the embedded laser is 25.2° (horizontal) × 8° (vertical), which was measured at full width at half
+    maximum. The maximum power of the embedded laser may exceed 70 W. In order to avoid being injured by the laser,
+    DO NOT disassemble Livox Mid-360.
+[2] Target objects within 0.1 to 0.2 m from Mid-360 can be detected and point cloud data can be recorded. However, since
+    the detection precision cannot be guaranteed, the data should be taken as a reference only.
+[3] To detect objects having different reflectivities within the detection range, the accuracy of point cloud data of very few
+    positions might decrease slightly.
+[4] Tested in an environment at a temperature of 25° C (77° F) with a target object that has a reflectivity of 80% and is 10
+    meters away from Livox Mid-360.
+[5] Tested in an environment at a temperature of 25° C (77° F) with a target object that has a reflectivity of 80% and is 0.2
+    meters away from Livox Mid-360. For target objects within 0.1 to 1 m away from the Mid-360, if they have a low reflectivity
+    or are thin and tiny, the detection effect cannot be guaranteed. These objects include but are not limited to black foam
+    and the surface of water or objects that have been polished, have a matte finish, thin lines, etc.
+
+
+
+
+20      © 2024 LIVOX All Rights Reserved.
+                                                                                                 Livox Mid-360 User Manual
+
+
+[6] The false alarm ratio of the noise created by the stray light in a test environment of 100 klx at a temperature of 25° C (77° F).
+[7] The performance of Livox Mid-360 might slightly decrease in high-temperature or low-temperature environments, or
+    environments with strong vibrations or heavy fog, etc. Besides, operating at a high temperature for an extended period of
+    time may negatively affect performance and may lead to permanent damage to the product. It is recommended to apply
+    extra heat dissipation measures. A high temperature will trigger the high-temperature protection mechanism, and Livox
+    Mid-360 will issue a high-temperature warning. Livox Mid-360 will stop operating automatically if the temperature is too
+    high. When the Livox Mid-360 logo faces the user, make sure the temperature of the following locations does not exceed
+    75° C (167° F): a. The center of the bottom of Livox Mid-360. b. The highest point of the sloped surface in the left heatsink
+    center groove.
+[8] When the ambient temperature is from -20° C (-4° F) to 0° C (32° F), Livox Mid-360 will automatically enter self-heating
+    mode, where the peak power may reach 14 W. Make sure to design the power supply reasonably to ensure the LiDAR
+    sensor works normally.
+
+
+
+
+                                                                                      © 2024 LIVOX All Rights Reserved.         21
+WE ARE HERE FOR YOU
+
+
+
+
+https://www.livoxtech.com/support
+
+
+
+
+The content is subject to change without notice.
+Visit the Livox oﬃcial website to download the latest user manual.
+
+
+
+
+                    https://www.livoxtech.com/mid-360/downloads
+
+Livox and Livox Mid are the trademarks of Livox Technology Company Limited.
+Windows is the registered trademark of Microsoft Corporation and its subsidiaries.
+Ubuntu is a registered trademark of Canonical Ltd.
+
+Copyright © 2024 LIVOX All Rights Reserved
+

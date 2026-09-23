@@ -1,0 +1,11 @@
+{
+  "time": "2026-09-14T22:27:42+08:00",
+  "script_sha256": "7d699ec3f78c3a754b19ddd861286054b0814f60c703fbbcf0db8eb0f5a414fd",
+  "change": "Preserve primary_error/abort_phase and append post-exit failures without overwriting first cause",
+  "validation": {
+    "test_post_exit_feedback.py": 0,
+    "default_dry_run": 0
+  },
+  "hardware_rerun": false,
+  "guard_threshold_changed": false
+}

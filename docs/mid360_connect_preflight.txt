@@ -1,0 +1,13 @@
+['bash', '-n', '/home/lab307/ranger_nav/scripts/connect_mid360.sh']
+Exit=0
+
+
+['bash', '/home/lab307/ranger_nav/scripts/connect_mid360.sh', '--dry-run']
+Exit=0
+Verify kernel, enrolled certificate fingerprint, signed module checksum and PCI alias.
+Load only the signed YT6801 module if absent; find its PCI 0000:02:00.0 interface.
+Create a dedicated NetworkManager profile with 192.168.1.50/24, no default route,
+no DNS, IPv6 disabled and autoconnect disabled. Activate it and ping 192.168.1.145.
+Save original state, results and exact rollback command under /var/lib/ranger-nav-yt6801.
+Do not install modules, alter Wi-Fi, reboot, start ROS drivers or send CAN controls.
+DRY-RUN: no changes made.

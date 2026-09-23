@@ -1,0 +1,7 @@
+[INFO] [1789475026.561741910] [rosbag2_storage]: Opened database '/tmp/mid360-synthetic-15cywlet/good/good_0.db3' for READ_WRITE.
+[INFO] [1789475026.614306751] [rosbag2_storage]: Opened database '/tmp/mid360-synthetic-15cywlet/good/good_0.db3' for READ_ONLY.
+[INFO] [1789475026.617082048] [rosbag2_storage]: Opened database '/tmp/mid360-synthetic-15cywlet/bad/bad_0.db3' for READ_WRITE.
+[INFO] [1789475026.619833646] [rosbag2_storage]: Opened database '/tmp/mid360-synthetic-15cywlet/bad/bad_0.db3' for READ_ONLY.
+{"fixture": "/tmp/mid360-synthetic-15cywlet/good", "expected": "PASS", "actual": "PASS", "anomalies": []}
+{"fixture": "/tmp/mid360-synthetic-15cywlet/bad", "expected": "PARTIAL", "actual": "PARTIAL", "anomalies": ["/livox/imu: nonmonotonic or large header gap"]}
+PASS: full deserialization/counts, IMU plausibility, and timestamp reversal rejection. Synthetic evidence only.

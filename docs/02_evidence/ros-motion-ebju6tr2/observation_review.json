@@ -1,0 +1,93 @@
+{
+  "can_nonzero_count": 204,
+  "can_nonzero_payloads": [
+    "0032000000000000"
+  ],
+  "ros_nonzero_seconds": 5.001284772006329,
+  "can_nonzero_seconds": 5.001482938998379,
+  "vx_feedback_ranges": {
+    "preflight": [
+      0.0,
+      0.0
+    ],
+    "static": [
+      -0.035,
+      0.0
+    ],
+    "forward": [
+      -0.002,
+      0.08
+    ],
+    "explicit_zero": [
+      0.0,
+      0.061
+    ],
+    "cleanup_zero": [
+      0.0,
+      0.0
+    ],
+    "after_driver_exit": [
+      -2.544,
+      0.0
+    ]
+  },
+  "exit_negative_samples": [
+    {
+      "data": "f88a000000000000",
+      "vx": -1.91,
+      "seconds_after_first_explicit_zero": 3.6446349309990183
+    },
+    {
+      "data": "f610000000000000",
+      "vx": -2.544,
+      "seconds_after_first_explicit_zero": 3.6656040280067828
+    },
+    {
+      "data": "fa67000000000000",
+      "vx": -1.433,
+      "seconds_after_first_explicit_zero": 3.68655432399828
+    },
+    {
+      "data": "fecf000000000000",
+      "vx": -0.305,
+      "seconds_after_first_explicit_zero": 3.7075636819936335
+    },
+    {
+      "data": "ffcf000000000000",
+      "vx": -0.049,
+      "seconds_after_first_explicit_zero": 3.728692624994437
+    }
+  ],
+  "rx_tx_delta": {
+    "rx": {
+      "bytes": 141764,
+      "packets": 18409,
+      "errors": 0,
+      "dropped": 0,
+      "over_errors": 0,
+      "multicast": 0
+    },
+    "tx": {
+      "bytes": 10672,
+      "packets": 1334,
+      "errors": 0,
+      "dropped": 0,
+      "carrier_errors": 0,
+      "collisions": 0
+    }
+  },
+  "can_errors_delta": {
+    "restarts": 0,
+    "bus_error": 0,
+    "arbitration_lost": 0,
+    "error_warning": 0,
+    "error_passive": 0,
+    "bus_off": 0
+  },
+  "result_assessment": "PARTIAL/ABORTED: nonzero motion feedback after driver exit; physical observation required, stopping safety not passed.",
+  "human_observation": {
+    "statement": "观察到5S的时候停车没有往后退",
+    "scope": "User reported physical observation of a 5 s test; exact run and coverage of driver-exit window not specified. Latest completed 5 s log inspected, not assumed uniquely matched."
+  },
+  "conclusion": "5 s command completed in latest log; user reports no visible rollback. Negative feedback persists after driver exit; cause unresolved, not proof of physical reverse speed. Full stopping safety not passed."
+}

@@ -1,0 +1,9 @@
+I0915 20:48:37.837612 15745 laser_mapping.cc:20] init laser mapping from /home/lab307/ranger_nav/config/slam/ranger_mid360s.yaml
+I0915 20:48:37.838109 15745 laser_mapping.cc:93] lidar_type 1
+I0915 20:48:37.838111 15745 laser_mapping.cc:96] Using AVIA Lidar
+I0915 20:48:37.838411 15745 slam.cc:42] slam with loop closing
+[INFO] [1789476517.839905841] [rosbag2_storage]: Opened database '/home/lab307/ranger_nav/docs/04_evidence/save-guards-yxkfchvz/empty_input/empty_input_0.db3' for READ_ONLY.
+I0915 20:48:37.839944 15745 bag_io.cc:36] bag /home/lab307/ranger_nav/docs/04_evidence/save-guards-yxkfchvz/empty_input finished.
+I0915 20:48:37.840018 15745 slam.cc:155] slam map saving to ./data/new_map/
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  Refusing to overwrite existing map: ./data/new_map/

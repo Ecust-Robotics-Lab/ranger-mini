@@ -1,0 +1,20 @@
+COMMAND=["journalctl", "--no-pager", "--since", "2026-09-01", "-g", "can0|gs_usb|candump|bitrate", "-n", "100"]
+Sep 13 21:29:20 lab307-Thunderobot-MIX-G2 kernel: gs_usb 1-11:1.0: Configuring for 1 interfaces
+Sep 13 21:29:20 lab307-Thunderobot-MIX-G2 NetworkManager[934]: <info>  [1789306160.9629] manager: (can0): new Generic device (/org/freedesktop/NetworkManager/Devices/4)
+Sep 13 21:29:20 lab307-Thunderobot-MIX-G2 kernel: usbcore: registered new interface driver gs_usb
+-- Boot 47ea4d4e0c474bcab3cdddbdd41baf4e --
+Sep 13 22:00:57 lab307-Thunderobot-MIX-G2 kernel: gs_usb 1-11:1.0: Configuring for 1 interfaces
+Sep 13 22:00:57 lab307-Thunderobot-MIX-G2 kernel: usbcore: registered new interface driver gs_usb
+Sep 13 22:00:57 lab307-Thunderobot-MIX-G2 NetworkManager[829]: <info>  [1789308057.8874] manager: (can0): new Generic device (/org/freedesktop/NetworkManager/Devices/4)
+EXIT=0
+
+COMMAND=["nmcli", "-t", "-f", "NAME,TYPE,DEVICE", "connection", "show"]
+10-307:802-11-wireless:wlo1
+ranger-mid360-8745:802-3-ethernet:enp2s0
+有线连接 1:802-3-ethernet:
+EXIT=0
+
+COMMAND=["rg", "-n", "-i", "can0|bitrate|gs_usb", "/run/systemd/network", "/usr/lib/systemd/network"]
+rg: /run/systemd/network: No such file or directory (os error 2)
+EXIT=2
+

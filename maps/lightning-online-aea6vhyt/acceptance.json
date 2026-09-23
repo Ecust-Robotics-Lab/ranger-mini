@@ -1,0 +1,28 @@
+{
+  "review_date": "2026-09-23",
+  "role": "online_pipeline_verification_stationary",
+  "data_classification": "ONLINE_LIVE_STREAM_STATIONARY_VEHICLE",
+  "classification_basis": "用户 2026-09-23 现场启动雷达驱动（唯一可靠发布者 /livox/lidar + /livox/imu，mid360s_driver）；在线 SLAM 运行约 120 秒，车辆全程静止，未启动底盘驱动、未发送 CAN/速度/导航目标。",
+  "purpose": "验证在线模式端到端链路：实时订阅→处理→保存服务→正常退出→产物完整。不是建图质量实验；正式地图仍为离线实验 lightning-offline-8k_qnpae / k2i9n8qw / suej7qsz。",
+  "config": "config/slam/ranger_mid360s_g2p5.yaml（g2p5 开启，与离线二维验证同配置）",
+  "three_dimensional": "PASS_BY_REFERENCE",
+  "three_dimensional_basis": "在线运行不产生运动建图结论；三维验收依据 maps/lightning-offline-8k_qnpae/acceptance.json。",
+  "online_pipeline": "PASS",
+  "online_pipeline_basis": "入口预检通过（两话题各唯一 RELIABLE 发布者）；exit 0；保存服务 /lightning/save_map 首次实测成功（response=0，save_service.log）；run.log 正常收尾（'done'、析构干净）；结构检查 map_check exit 0，产物齐全（0.pcd/global.pcd/index.txt/keyframes.txt/map.pgm/map.yaml）。",
+  "stationary_sanity": "单关键帧，120 秒静止期 LIO 位移模长约 0.008-0.024 m、姿态接近单位四元数，符合静止预期（车未动，无运动授权问题）。",
+  "two_dimensional": "GENERATED_ONLINE_SMALL_SCALE",
+  "two_dimensional_note": "在线同配置生成 map.pgm(0.05 m, 256x224, occupied 14 / free 913)+map.yaml；单帧静止扫描规模，仅证明在线 g2p5 路径可用，不用于导航。",
+  "run_facts": {
+    "exit": 0,
+    "save_service_exit": 0,
+    "map_check": "PASS",
+    "keyframes": 1,
+    "global_points": 2317,
+    "duration_s": 120
+  },
+  "known_limitations": [
+    "在线运动建图（车动起来跑在线模式）未验证，本轮仅静止管线验证",
+    "time_type=0 主机接收时钟问题未解决，动态去畸变时间质量仍属未验收项"
+  ],
+  "next_step": "阶段 4 建图验收链路已闭环；定位部署/导航属后续阶段，须用户明确指令"
+}

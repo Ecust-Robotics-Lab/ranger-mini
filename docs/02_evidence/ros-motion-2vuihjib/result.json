@@ -1,0 +1,675 @@
+{
+  "start": "2026-09-14T22:30:12.731097+08:00",
+  "authorized_scope": "one driver start; static checks; requested vx=0.05 m/s for 5 s and explicit zeros",
+  "forward_duration_seconds": 5.0,
+  "max_forward_feedback_speed_mps": 0.12,
+  "motion_executed": true,
+  "assessment": "PARTIAL/ABORTED: RuntimeError('Zero command did not produce stable zero feedback; human hardware stop required'); additionally: nonzero motion feedback after driver exit; physical observation required, stopping safety not passed.",
+  "driver_command": [
+    "/home/lab307/ranger_nav/ws_base/install/ranger_base/lib/ranger_base/ranger_base_node",
+    "--ros-args",
+    "--params-file",
+    "/home/lab307/ranger_nav/config/base_mini_v2.yaml",
+    "-r",
+    "/cmd_vel:=/base/safe_cmd_vel"
+  ],
+  "driver_pid": 24664,
+  "parameters": {
+    "values": [
+      {
+        "type": 4,
+        "bool_value": false,
+        "integer_value": 0,
+        "double_value": 0.0,
+        "string_value": "ranger_mini_v2",
+        "byte_array_value": [],
+        "bool_array_value": [],
+        "integer_array_value": [],
+        "double_array_value": [],
+        "string_array_value": []
+      },
+      {
+        "type": 4,
+        "bool_value": false,
+        "integer_value": 0,
+        "double_value": 0.0,
+        "string_value": "can0",
+        "byte_array_value": [],
+        "bool_array_value": [],
+        "integer_array_value": [],
+        "double_array_value": [],
+        "string_array_value": []
+      },
+      {
+        "type": 4,
+        "bool_value": false,
+        "integer_value": 0,
+        "double_value": 0.0,
+        "string_value": "/wheel/odom",
+        "byte_array_value": [],
+        "bool_array_value": [],
+        "integer_array_value": [],
+        "double_array_value": [],
+        "string_array_value": []
+      },
+      {
+        "type": 1,
+        "bool_value": false,
+        "integer_value": 0,
+        "double_value": 0.0,
+        "string_value": "",
+        "byte_array_value": [],
+        "bool_array_value": [],
+        "integer_array_value": [],
+        "double_array_value": [],
+        "string_array_value": []
+      },
+      {
+        "type": 2,
+        "bool_value": false,
+        "integer_value": 50,
+        "double_value": 0.0,
+        "string_value": "",
+        "byte_array_value": [],
+        "bool_array_value": [],
+        "integer_array_value": [],
+        "double_array_value": [],
+        "string_array_value": []
+      }
+    ]
+  },
+  "command_subscriptions": [
+    {
+      "node": "ranger_base_node",
+      "type": "geometry_msgs/msg/Twist"
+    }
+  ],
+  "static_ros_checks": "PASS for parameters/remap and four live streams; BMS separately counted",
+  "static_can": {
+    "vehicle": 0,
+    "control": 1,
+    "fault": 0,
+    "v": 0.0,
+    "w": 0.0,
+    "steer": 0.0,
+    "mode": 0,
+    "changing": 0
+  },
+  "pulse_start_monotonic": 88507.723832431,
+  "first_zero_monotonic": 88512.726093814,
+  "post_zero_can": {
+    "vehicle": 0,
+    "control": 1,
+    "fault": 0,
+    "v": 0.0,
+    "w": 0.0,
+    "steer": 0.0,
+    "mode": 0,
+    "changing": 0
+  },
+  "zero_feedback_stable_seconds": 0.25069151900243014,
+  "primary_error": "RuntimeError('Zero command did not produce stable zero feedback; human hardware stop required')",
+  "abort_phase": "explicit_zero",
+  "driver_exit": 0,
+  "after_driver_exit_can": {
+    "vehicle": 2,
+    "control": 0,
+    "fault": 0,
+    "v": -0.021,
+    "w": 0.0,
+    "steer": 0.0,
+    "mode": 0,
+    "changing": 0
+  },
+  "after_driver_exit_motion_samples": 101,
+  "after_driver_exit_motion_excursions": [
+    {
+      "t": 88516.449761982,
+      "values": [
+        -1.452,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88516.470712212,
+      "values": [
+        -2.362,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88516.491764988,
+      "values": [
+        -1.012,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88516.512772907,
+      "values": [
+        -0.314,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88516.533779724,
+      "values": [
+        -0.052,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88516.554743381,
+      "values": [
+        -0.021,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88516.575702723,
+      "values": [
+        -0.037,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88516.596747812,
+      "values": [
+        -0.037,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88516.617769846,
+      "values": [
+        -0.026,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88516.638782231,
+      "values": [
+        -0.026,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88516.659794948,
+      "values": [
+        -0.044,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88516.680743121,
+      "values": [
+        -0.023,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88516.701865785,
+      "values": [
+        -0.018,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88516.7227666,
+      "values": [
+        -0.037,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88516.743779319,
+      "values": [
+        -0.037,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88516.764796968,
+      "values": [
+        -0.014,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88516.785776691,
+      "values": [
+        -0.016,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88516.806791149,
+      "values": [
+        -0.033,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88516.827872658,
+      "values": [
+        -0.042,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88516.848788814,
+      "values": [
+        -0.016,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88516.869685207,
+      "values": [
+        -0.009,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88516.890669327,
+      "values": [
+        -0.016,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88516.911705262,
+      "values": [
+        -0.007,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88516.932755965,
+      "values": [
+        -0.016,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88516.953707116,
+      "values": [
+        -0.033,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88516.974728102,
+      "values": [
+        -0.014,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88516.995755389,
+      "values": [
+        -0.016,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.016753078,
+      "values": [
+        -0.007,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.037800173,
+      "values": [
+        -0.014,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.058825596,
+      "values": [
+        -0.044,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.079723711,
+      "values": [
+        -0.018,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.121757312,
+      "values": [
+        -0.014,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.142772116,
+      "values": [
+        -0.026,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.163768906,
+      "values": [
+        -0.016,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.184754137,
+      "values": [
+        -0.03,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.205749323,
+      "values": [
+        -0.016,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.268777492,
+      "values": [
+        -0.014,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.352829363,
+      "values": [
+        -0.009,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.373753927,
+      "values": [
+        -0.009,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.394756087,
+      "values": [
+        -0.009,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.436756587,
+      "values": [
+        -0.018,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.457763646,
+      "values": [
+        -0.018,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.47876954,
+      "values": [
+        -0.007,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.520782542,
+      "values": [
+        -0.011,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.541760867,
+      "values": [
+        -0.009,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.562797296,
+      "values": [
+        -0.018,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.583845134,
+      "values": [
+        -0.021,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.60474752,
+      "values": [
+        -0.021,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.625782487,
+      "values": [
+        -0.021,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.646726045,
+      "values": [
+        -0.009,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.688756745,
+      "values": [
+        -0.011,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.709774257,
+      "values": [
+        -0.011,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.730775952,
+      "values": [
+        -0.011,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.751742873,
+      "values": [
+        -0.035,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.77270554,
+      "values": [
+        -0.018,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.793792957,
+      "values": [
+        -0.007,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.814767656,
+      "values": [
+        -0.014,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.835776811,
+      "values": [
+        -0.007,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.940776314,
+      "values": [
+        -0.014,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88517.961825298,
+      "values": [
+        -0.021,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "ros_message_counts": {
+    "/system_state": 755,
+    "/motion_state": 755,
+    "/actuator_state": 755,
+    "/wheel/odom": 755
+  },
+  "tf_edges": {},
+  "end": "2026-09-14T22:30:32.044533+08:00"
+}

@@ -1,0 +1,383 @@
+{
+  "start": "2026-09-14T22:19:43.357659+08:00",
+  "authorized_scope": "one driver start; static checks; vx <= 0.05 m/s for <= 1 s and explicit zeros",
+  "motion_executed": true,
+  "assessment": "PARTIAL/ABORTED: nonzero motion feedback after driver exit; physical observation required, stopping safety not passed.",
+  "driver_command": [
+    "/home/lab307/ranger_nav/ws_base/install/ranger_base/lib/ranger_base/ranger_base_node",
+    "--ros-args",
+    "--params-file",
+    "/home/lab307/ranger_nav/config/base_mini_v2.yaml",
+    "-r",
+    "/cmd_vel:=/base/safe_cmd_vel"
+  ],
+  "driver_pid": 23770,
+  "parameters": {
+    "values": [
+      {
+        "type": 4,
+        "bool_value": false,
+        "integer_value": 0,
+        "double_value": 0.0,
+        "string_value": "ranger_mini_v2",
+        "byte_array_value": [],
+        "bool_array_value": [],
+        "integer_array_value": [],
+        "double_array_value": [],
+        "string_array_value": []
+      },
+      {
+        "type": 4,
+        "bool_value": false,
+        "integer_value": 0,
+        "double_value": 0.0,
+        "string_value": "can0",
+        "byte_array_value": [],
+        "bool_array_value": [],
+        "integer_array_value": [],
+        "double_array_value": [],
+        "string_array_value": []
+      },
+      {
+        "type": 4,
+        "bool_value": false,
+        "integer_value": 0,
+        "double_value": 0.0,
+        "string_value": "/wheel/odom",
+        "byte_array_value": [],
+        "bool_array_value": [],
+        "integer_array_value": [],
+        "double_array_value": [],
+        "string_array_value": []
+      },
+      {
+        "type": 1,
+        "bool_value": false,
+        "integer_value": 0,
+        "double_value": 0.0,
+        "string_value": "",
+        "byte_array_value": [],
+        "bool_array_value": [],
+        "integer_array_value": [],
+        "double_array_value": [],
+        "string_array_value": []
+      },
+      {
+        "type": 2,
+        "bool_value": false,
+        "integer_value": 50,
+        "double_value": 0.0,
+        "string_value": "",
+        "byte_array_value": [],
+        "bool_array_value": [],
+        "integer_array_value": [],
+        "double_array_value": [],
+        "string_array_value": []
+      }
+    ]
+  },
+  "command_subscriptions": [
+    {
+      "node": "ranger_base_node",
+      "type": "geometry_msgs/msg/Twist"
+    }
+  ],
+  "static_ros_checks": "PASS for parameters/remap and four live streams; BMS separately counted",
+  "static_can": {
+    "vehicle": 0,
+    "control": 1,
+    "fault": 0,
+    "v": 0.0,
+    "w": 0.0,
+    "steer": 0.0,
+    "mode": 0,
+    "changing": 0
+  },
+  "pulse_start_monotonic": 87878.35471278,
+  "first_zero_monotonic": 87879.157825234,
+  "post_zero_can": {
+    "vehicle": 0,
+    "control": 1,
+    "fault": 0,
+    "v": 0.0,
+    "w": 0.0,
+    "steer": 0.0,
+    "mode": 0,
+    "changing": 0
+  },
+  "zero_feedback_stable_seconds": 1.6074456540081883,
+  "driver_exit": 0,
+  "after_driver_exit_can": {
+    "vehicle": 2,
+    "control": 0,
+    "fault": 0,
+    "v": 0.0,
+    "w": 0.0,
+    "steer": 0.0,
+    "mode": 0,
+    "changing": 0
+  },
+  "after_driver_exit_motion_samples": 101,
+  "after_driver_exit_motion_excursions": [
+    {
+      "t": 87882.514254356,
+      "values": [
+        0.009,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87882.557790551,
+      "values": [
+        0.007,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87882.577812297,
+      "values": [
+        0.007,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87882.598269578,
+      "values": [
+        -0.007,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87882.662325606,
+      "values": [
+        0.009,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87882.682446929,
+      "values": [
+        -0.009,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87882.702603438,
+      "values": [
+        0.007,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87882.726151397,
+      "values": [
+        -0.009,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87882.810235106,
+      "values": [
+        -0.066,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87882.830449822,
+      "values": [
+        -0.172,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87882.850628558,
+      "values": [
+        -0.073,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87882.870767425,
+      "values": [
+        -0.018,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87882.89426492,
+      "values": [
+        -0.016,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87882.914457382,
+      "values": [
+        -0.018,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87882.934708236,
+      "values": [
+        -0.033,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87882.954806581,
+      "values": [
+        -0.018,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87882.978413632,
+      "values": [
+        -0.026,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87882.998539236,
+      "values": [
+        -0.026,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87883.018758828,
+      "values": [
+        -0.033,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87883.038991748,
+      "values": [
+        -0.03,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87883.06245833,
+      "values": [
+        -0.026,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87883.082652589,
+      "values": [
+        -0.028,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87883.102824281,
+      "values": [
+        -0.03,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87883.122962218,
+      "values": [
+        -0.009,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87883.143156434,
+      "values": [
+        -0.018,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87883.166679965,
+      "values": [
+        -0.021,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87883.18680705,
+      "values": [
+        -0.04,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 87883.206948685,
+      "values": [
+        -0.016,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "ros_message_counts": {
+    "/system_state": 540,
+    "/motion_state": 540,
+    "/actuator_state": 540,
+    "/wheel/odom": 540
+  },
+  "tf_edges": {},
+  "end": "2026-09-14T22:19:58.414817+08:00"
+}

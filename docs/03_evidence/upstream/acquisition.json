@@ -1,0 +1,74 @@
+[
+  {
+    "command": [
+      "git",
+      "clone",
+      "--depth",
+      "1",
+      "https://github.com/Livox-SDK/Livox-SDK2",
+      "vendor/livox/Livox-SDK2"
+    ],
+    "exit": 0,
+    "output": "\u6b63\u514b\u9686\u5230 'vendor/livox/Livox-SDK2'...\n"
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "vendor/livox/Livox-SDK2",
+      "checkout",
+      "--detach",
+      "08f523c930b2f0ba1e98a6afaa8d7476bf479908"
+    ],
+    "exit": 0,
+    "output": "HEAD \u76ee\u524d\u4f4d\u4e8e 08f523c Support Avia2 Lidar, set fov/echo/ITO/fog filter mode and NTP server ip, add ip_set and info_get samples.\n"
+  },
+  {
+    "command": [
+      "git",
+      "clone",
+      "--depth",
+      "1",
+      "https://github.com/Livox-SDK/livox_ros_driver2",
+      "ws_livox/src/livox_ros_driver2"
+    ],
+    "exit": 0,
+    "output": "\u6b63\u514b\u9686\u5230 'ws_livox/src/livox_ros_driver2'...\n"
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "ws_livox/src/livox_ros_driver2",
+      "checkout",
+      "--detach",
+      "4a1def929e5b59c7a8122d19fce6efba581ce9f7"
+    ],
+    "exit": 0,
+    "output": "HEAD \u76ee\u524d\u4f4d\u4e8e 4a1def9 Support Avia2 Lidar, fix the issue that no point cloud is published when all config items are omitted.\n"
+  },
+  {
+    "command": [
+      "git",
+      "clone",
+      "--depth",
+      "1",
+      "https://github.com/gaoxiang12/lightning-lm",
+      "vendor/livox/lightning-lm-review"
+    ],
+    "exit": 0,
+    "output": "\u6b63\u514b\u9686\u5230 'vendor/livox/lightning-lm-review'...\n"
+  },
+  {
+    "command": [
+      "git",
+      "-C",
+      "vendor/livox/lightning-lm-review",
+      "checkout",
+      "--detach",
+      "1325fed8fa97a2506878360fc23427ea00a767da"
+    ],
+    "exit": 0,
+    "output": "HEAD \u76ee\u524d\u4f4d\u4e8e 1325fed Merge pull request #119 from gaoxiang12/copilot/update-readme-translate-chinese\n"
+  }
+]

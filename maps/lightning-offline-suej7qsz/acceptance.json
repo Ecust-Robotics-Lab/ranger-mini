@@ -1,0 +1,33 @@
+{
+  "review_date": "2026-09-23",
+  "role": "g2p5_2d_offline_verification",
+  "data_classification": "VEHICLE_MOUNTED_FORMAL_LOOP",
+  "classification_basis": "同正式车体闭环包 bags/mid360-manual-loop-n2cgpiz0/raw 的第三离线运行，目的仅为验证 g2p5 二维栅格生成；三维验收依据 maps/lightning-offline-8k_qnpae（three_dimensional=PASS）。",
+  "config": "config/slam/ranger_mid360s_g2p5.yaml（与已验收三维配置唯一差异：system.with_g2p5=true 与 g2p5 实测值）",
+  "g2p5_inputs_from_user_2026_09_23": {
+    "obstacle_band_above_ground_m": [0.10, 0.80],
+    "lidar_height_above_ground_m_user": 0.60,
+    "lidar_height_used_m": 0.556,
+    "floor_height_used_m": -0.556,
+    "frame_note": "关键帧点云为 IMU 系（阶段4补丁#5）；IMU 原点低于 LiDAR 原点 44.12 mm（手册 t_LI z=-0.04412），故 0.60-0.04412=0.556。用户确认装平，固定地面平面模型。"
+  },
+  "three_dimensional": "PASS_BY_REFERENCE",
+  "three_dimensional_basis": "本实验三维部分与已验收运行同包同前端参数；三维验收结论见 maps/lightning-offline-8k_qnpae/acceptance.json（人工图审合格；尺度用户免除）。",
+  "two_dimensional": "PASS_STRUCTURAL_AND_LOCAL_CONSISTENCY",
+  "two_dimensional_basis": "map.pgm + map.yaml 生成且结构检查 exit 0：分辨率 0.05 m、528x560、origin(-5.15,-14.95)、trinary 阈值 0.65/0.25。自动化交叉验证：占据格 1201 个全部位于闭环附近（x -3.58…4.22、y -4.22…5.48），与 3D 地图按同障碍带（地面 z=-0.556）投影的最近距离中位数 0.047 m（约 1 格）；优化轨迹 49 个关键帧栅格全部为自由区；>50 m 两个远端离群点未进入栅格。",
+  "two_dimensional_caveats": [
+    "3D 障碍带点投影落格值分布：占据 605 / 自由 2899 / 未知 2691。自由与未知占比高，归因于 g2p5 逐关键帧固定平面（IMU 系）与世界系 z 投影的倾角差、以及 miss 射线清空的 2.5D 高度逻辑；闭环附近一致性良好，远场不影响首版平地导航。",
+    "栅格 96% 为未知（283882/295680），因外框由 miss 射线端点撑大（28x26.4 m），实际已映射区域限于闭环走廊；非数据错误。",
+    "固定地面平面模型仅在平地+装平前提成立；坡道场景需 esti_floor=true 或重测平面（后续阶段）。"
+  ],
+  "run_facts": {
+    "exit": 0,
+    "map_check": "PASS",
+    "keyframes": 49,
+    "global_points": 27321,
+    "chunks": {"0.pcd": 27318, "1.pcd": 1},
+    "grid": {"resolution_m": 0.05, "shape_wxh": [528, 560], "occupied_cells": 1201, "free_cells": 10597, "unknown_cells": 283882}
+  },
+  "viewing_aids": ["map_pgm_view.png（map.pgm 放大查看图，不参与验收）", "map_pgm_view_with_trajectory.png（栅格+优化轨迹叠加，全图/局部两视图，不参与验收）"],
+  "next_step": "在线模式最后验证（需用户按采集说明启动雷达驱动；入口要求 --accepted-offline 与唯一可靠发布者）"
+}

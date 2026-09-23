@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/scripts/record_mid360.py", line 44, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+  File "/home/lab307/ranger_nav/scripts/record_mid360.py", line 20, in main
+    if len(graph[topic])!=1 or graph[topic][0]['type']!=typ:raise RuntimeError('Expected one raw publisher: '+repr(graph))
+RuntimeError: Expected one raw publisher: {'/livox/lidar': [], '/livox/imu': [], '/tf': [], '/tf_static': [], '/system_state': [], '/motion_state': [], '/actuator_state': [], '/wheel/odom': [], '/battery_state': [], '/livox/imu_si': []}

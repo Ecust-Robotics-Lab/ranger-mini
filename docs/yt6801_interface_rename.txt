@@ -1,0 +1,59 @@
+['ip', '-brief', 'address']
+Exit=0
+lo               UNKNOWN        127.0.0.1/8 ::1/128 
+wlo1             UP             192.168.3.18/24 fd42:abaf:db6b:c400:35b2:2943:9ad5:aa37/64 fd42:abaf:db6b:c400:ad7c:ba5f:b78d:6bc9/64 fe80::cc39:8ce9:b3e9:44e2/64 
+can0             DOWN           
+enp2s0           UP             fe80::751d:11d2:c46c:50c4/64 
+
+
+['ip', 'route']
+Exit=0
+default via 192.168.3.1 dev wlo1 proto dhcp metric 600 
+169.254.0.0/16 dev wlo1 scope link metric 1000 
+192.168.3.0/24 dev wlo1 proto kernel scope link src 192.168.3.18 metric 600 
+
+
+['nmcli', '-t', '-f', 'DEVICE,TYPE,STATE,CONNECTION', 'device', 'status']
+Exit=0
+wlo1:wifi:connected:10-307
+enp2s0:ethernet:connecting (getting IP configuration):有线连接 1
+p2p-dev-wlo1:wifi-p2p:disconnected:
+can0:can:unmanaged:
+lo:loopback:unmanaged:
+
+
+['nmcli', '-t', '-f', 'NAME,UUID,DEVICE', 'connection', 'show']
+Exit=0
+有线连接 1:f4dfa695-3abb-3fd6-99c5-1cfa73c5a59f:enp2s0
+10-307:793ad98f-388b-496a-9343-eea24935b112:wlo1
+
+
+['udevadm', 'info', '--query=property', '--path=/sys/class/net/enp2s0']
+Exit=0
+DEVPATH=/devices/pci0000:00/0000:00:1c.0/0000:02:00.0/net/enp2s0
+INTERFACE=enp2s0
+IFINDEX=4
+SUBSYSTEM=net
+USEC_INITIALIZED=83514027477
+ID_MM_CANDIDATE=1
+ID_BUS=pci
+ID_VENDOR_ID=0x1f0a
+ID_MODEL_ID=0x6801
+ID_PCI_CLASS_FROM_DATABASE=Network controller
+ID_PCI_SUBCLASS_FROM_DATABASE=Ethernet controller
+ID_NET_NAMING_SCHEME=v249
+ID_NET_NAME_MAC=enx84f758401fce
+ID_NET_NAME_PATH=enp2s0
+ID_PATH=pci-0000:02:00.0
+ID_PATH_TAG=pci-0000_02_00_0
+ID_NET_DRIVER=yt6801
+ID_NET_LINK_FILE=/usr/lib/systemd/network/99-default.link
+ID_NET_NAME=enp2s0
+SYSTEMD_ALIAS=/sys/subsystem/net/devices/enp2s0
+TAGS=:systemd:
+CURRENT_TAGS=:systemd:
+
+
+['sudo', '-n', 'true']
+Exit=1
+sudo: 需要密码

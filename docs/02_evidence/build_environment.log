@@ -1,0 +1,33 @@
+['g++', '--version']
+g++ (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+EXIT=0
+['cmake', '--version']
+cmake version 3.22.1
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+
+EXIT=0
+['python3', '--version']
+Python 3.10.12
+
+EXIT=0
+['dpkg-query', '-W', '-f=${Package}\t${Version}\n', 'libboost-dev', 'libeigen3-dev', 'ros-humble-rclcpp', 'ros-humble-tf2-geometry-msgs', 'ros-humble-rosidl-default-generators', 'python3-colcon-core']
+libboost-dev	1.74.0.3ubuntu7
+libeigen3-dev	3.4.0-2ubuntu2
+python3-colcon-core	0.21.2+upstream-1
+ros-humble-rclcpp	16.0.19-1jammy.20260724.021311
+ros-humble-rosidl-default-generators	1.2.1-1jammy.20260718.000113
+ros-humble-tf2-geometry-msgs	0.25.22-1jammy.20260804.194827
+
+EXIT=0
+['git', '-C', 'ws_base/src/ranger_ros2', 'diff', '--check']
+
+EXIT=0
+['bash', '-n', 'scripts/build_base.sh']
+
+EXIT=0

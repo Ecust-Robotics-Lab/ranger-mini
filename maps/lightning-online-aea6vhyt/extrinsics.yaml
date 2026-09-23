@@ -1,0 +1,21 @@
+# Documentation only, Mid-360S User Manual 2026-06-01, IMU Data section.
+imu_in_lidar:
+  status: manufacturer_nominal_not_field_calibrated
+  convention: p_L = R_LI * p_I + t_LI
+  translation_m: [0.011, 0.02329, -0.04412]
+  rotation: aligned_axes_per_mid360s_manual
+  source: docs/03_evidence/upstream/Mid360S_User_Manual_EN.pdf
+lidar_in_base_link:
+  status: USER_REPORTED_APPROXIMATE_NOT_CALIBRATED
+  user_statement_2026_09_23: 车顶中间，距车尾约 25 cm，离地约 60 cm，装平了
+  approx_height_above_ground_m: 0.60
+  approx_distance_from_rear_edge_m: 0.25
+  lateral: roof_centerline_approx_zero
+  roll_pitch: user_reports_level_not_measured
+  translation_m: null  # base_link 原点定义未核对（ranger_ros2/URDF），先不换算，避免虚构
+  rotation_rpy_rad: null
+  publish_tf: false
+# Driver identity preserves native point coordinates, not an installation calibration.
+# Do not copy t_LI into Lightning without checking its transform direction.
+# IMU origin sits 44.12 mm BELOW the LiDAR origin (manual t_LI z=-0.04412),
+# so IMU-origin height above ground = 0.60 - 0.04412 = 0.556 m when level.

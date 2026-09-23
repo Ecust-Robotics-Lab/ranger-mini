@@ -1,0 +1,16 @@
+['python3', 'scripts/base_readonly_diagnostics.py']
+DRY-RUN: read can0 state before/after; execute ['timeout', '--signal=TERM', '--kill-after=2s', '10s', '/home/lab307/ranger_nav/vendor/base_deps/root/usr/bin/candump', '-e', '-x', 'can0,0:0,#FFFFFFFF']
+No CAN configuration, transmitted CAN commands, or ROS nodes.
+
+EXIT=0
+['python3', 'scripts/base_readonly_diagnostics.py', '--execute', '--seconds', '10']
+/home/lab307/ranger_nav/docs/02_evidence/can-mdxf3ols
+candump exit=1; no automatic communication or safety PASS.
+
+EXIT=2
+['bash', '-c', 'source /opt/ros/humble/setup.bash\nexport ROS_LOG_DIR=/home/lab307/ranger_nav/docs/02_evidence/ros_launch_dryrun\nros2 launch /home/lab307/ranger_nav/config/base_mini_v2.launch.py']
+[INFO] [launch]: All log files can be found below /home/lab307/ranger_nav/docs/02_evidence/ros_launch_dryrun/2026-09-14-21-42-23-614225-lab307-Thunderobot-MIX-G2-19868
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [launch.user]: DRY-RUN: Mini V2; /wheel/odom; TF disabled; /cmd_vel -> /base/safe_cmd_vel. No driver started.
+
+EXIT=0

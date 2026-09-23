@@ -1,0 +1,4 @@
+{
+  "command": "source scripts/slam_env.sh; cmake -S tests/slam_reader -B ws_slam/reader_build -DCMAKE_BUILD_TYPE=Release; cmake --build ws_slam/reader_build --parallel 2",
+  "exit": 0
+}

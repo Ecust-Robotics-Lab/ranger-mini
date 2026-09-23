@@ -1,0 +1,213 @@
+{
+  "start": "2026-09-14T22:31:39.783295+08:00",
+  "authorized_scope": "one driver start; static checks; requested vx=0.05 m/s for 5 s and explicit zeros",
+  "forward_duration_seconds": 5.0,
+  "max_forward_feedback_speed_mps": 0.12,
+  "motion_executed": true,
+  "assessment": "PARTIAL/ABORTED: RuntimeError(\"Unexpected feedback speed: {'vehicle': 0, 'control': 1, 'fault': 0, 'v': 0.144, 'w': 0.0, 'steer': 0.0, 'mode': 0, 'changing': 0}\"); additionally: nonzero motion feedback after driver exit; physical observation required, stopping safety not passed.",
+  "driver_command": [
+    "/home/lab307/ranger_nav/ws_base/install/ranger_base/lib/ranger_base/ranger_base_node",
+    "--ros-args",
+    "--params-file",
+    "/home/lab307/ranger_nav/config/base_mini_v2.yaml",
+    "-r",
+    "/cmd_vel:=/base/safe_cmd_vel"
+  ],
+  "driver_pid": 24810,
+  "parameters": {
+    "values": [
+      {
+        "type": 4,
+        "bool_value": false,
+        "integer_value": 0,
+        "double_value": 0.0,
+        "string_value": "ranger_mini_v2",
+        "byte_array_value": [],
+        "bool_array_value": [],
+        "integer_array_value": [],
+        "double_array_value": [],
+        "string_array_value": []
+      },
+      {
+        "type": 4,
+        "bool_value": false,
+        "integer_value": 0,
+        "double_value": 0.0,
+        "string_value": "can0",
+        "byte_array_value": [],
+        "bool_array_value": [],
+        "integer_array_value": [],
+        "double_array_value": [],
+        "string_array_value": []
+      },
+      {
+        "type": 4,
+        "bool_value": false,
+        "integer_value": 0,
+        "double_value": 0.0,
+        "string_value": "/wheel/odom",
+        "byte_array_value": [],
+        "bool_array_value": [],
+        "integer_array_value": [],
+        "double_array_value": [],
+        "string_array_value": []
+      },
+      {
+        "type": 1,
+        "bool_value": false,
+        "integer_value": 0,
+        "double_value": 0.0,
+        "string_value": "",
+        "byte_array_value": [],
+        "bool_array_value": [],
+        "integer_array_value": [],
+        "double_array_value": [],
+        "string_array_value": []
+      },
+      {
+        "type": 2,
+        "bool_value": false,
+        "integer_value": 50,
+        "double_value": 0.0,
+        "string_value": "",
+        "byte_array_value": [],
+        "bool_array_value": [],
+        "integer_array_value": [],
+        "double_array_value": [],
+        "string_array_value": []
+      }
+    ]
+  },
+  "command_subscriptions": [
+    {
+      "node": "ranger_base_node",
+      "type": "geometry_msgs/msg/Twist"
+    }
+  ],
+  "static_ros_checks": "PASS for parameters/remap and four live streams; BMS separately counted",
+  "static_can": {
+    "vehicle": 0,
+    "control": 1,
+    "fault": 0,
+    "v": 0.0,
+    "w": 0.0,
+    "steer": 0.0,
+    "mode": 0,
+    "changing": 0
+  },
+  "pulse_start_monotonic": 88594.780755694,
+  "primary_error": "RuntimeError(\"Unexpected feedback speed: {'vehicle': 0, 'control': 1, 'fault': 0, 'v': 0.144, 'w': 0.0, 'steer': 0.0, 'mode': 0, 'changing': 0}\")",
+  "abort_phase": "forward",
+  "driver_exit": 0,
+  "after_driver_exit_can": {
+    "vehicle": 2,
+    "control": 0,
+    "fault": 0,
+    "v": 0.0,
+    "w": 0.0,
+    "steer": 0.0,
+    "mode": 0,
+    "changing": 0
+  },
+  "after_driver_exit_motion_samples": 100,
+  "after_driver_exit_motion_excursions": [
+    {
+      "t": 88600.934797941,
+      "values": [
+        -0.319,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88600.955720102,
+      "values": [
+        -3.351,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88600.976815986,
+      "values": [
+        -1.113,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88600.997756996,
+      "values": [
+        -0.21,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88601.018637759,
+      "values": [
+        -0.073,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88601.039662333,
+      "values": [
+        -0.007,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88601.123737008,
+      "values": [
+        0.026,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88601.144933794,
+      "values": [
+        0.011,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88601.20782492,
+      "values": [
+        0.014,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "t": 88601.690723649,
+      "values": [
+        0.014,
+        0.0,
+        0.0,
+        0.0
+      ]
+    }
+  ],
+  "ros_message_counts": {
+    "/system_state": 627,
+    "/motion_state": 627,
+    "/actuator_state": 627,
+    "/wheel/odom": 627
+  },
+  "tf_edges": {},
+  "end": "2026-09-14T22:31:56.532087+08:00"
+}

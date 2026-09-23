@@ -1,0 +1,11 @@
+Public cert: /tmp/ranger-mok-public-zysp3xjv/MOK-0002.der
+subject=CN = ranger-nav YT6801 module signing
+sha256 Fingerprint=84:B2:A7:E5:EA:31:84:56:1D:A7:B9:B2:0E:A6:A7:A7:EB:00:99:C0:D1:C5:4F:99:BA:68:05:33:CB:87:8A:98
+
+mokutil --test-key exit=1
+Failed to accesss kernel trusted keyring: Required key not available
+/tmp/ranger-mok-public-zysp3xjv/MOK-0002.der is already enrolled
+
+Command: mokutil --ignore-keyring --test-key exported-project-public-certificate
+Exit=1
+/tmp/ranger-mok-public-zysp3xjv/MOK-0002.der is already enrolled

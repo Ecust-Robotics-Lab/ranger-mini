@@ -1,0 +1,50 @@
+diff --git a/src/call_back/livox_lidar_callback.cpp b/src/call_back/livox_lidar_callback.cpp
+index 653551b..1d35da5 100644
+--- a/src/call_back/livox_lidar_callback.cpp
++++ b/src/call_back/livox_lidar_callback.cpp
+@@ -26,6 +26,7 @@
+ 
+ #include "livox_lidar_api.h"
+ #include <string>
++#include <cstring>
+ #include <thread>
+ #include <iostream>
+ 
+@@ -38,6 +39,12 @@ void LivoxLidarCallback::LidarInfoChangeCallback(const uint32_t handle,
+     std::cout << "lidar info change callback failed, client data is nullptr" << std::endl;
+     return;
+   }
++  if (info) {
++    std::cerr << "STAGE3_DEVICE type=" << static_cast<int>(info->dev_type)
++              << " sn=" << std::string(info->sn, strnlen(info->sn, sizeof(info->sn)))
++              << " ip=" << std::string(info->lidar_ip, strnlen(info->lidar_ip, sizeof(info->lidar_ip)))
++              << std::endl;
++  }
+   LdsLidar* lds_lidar = static_cast<LdsLidar*>(client_data);
+ 
+   LidarDevice* lidar_device = GetLidarDevice(handle, client_data);
+diff --git a/src/comm/pub_handler.cpp b/src/comm/pub_handler.cpp
+index e33d588..af49ce3 100644
+--- a/src/comm/pub_handler.cpp
++++ b/src/comm/pub_handler.cpp
+@@ -102,6 +102,20 @@ void PubHandler::OnLivoxLidarPointCloudCallback(uint32_t handle, const uint8_t d
+     return;
+   }
+ 
++  // Stage 3 evidence only: expose protocol time domain before upstream conversion.
++  // This project runs one configured LiDAR. No packet timestamp is modified.
++  static std::atomic<int> last_point_time_type{-1};
++  static std::atomic<int> last_imu_time_type{-1};
++  auto& last_type = data->data_type == kLivoxLidarImuData ? last_imu_time_type : last_point_time_type;
++  if (last_type.exchange(data->time_type) != data->time_type) {
++    uint64_t raw_stamp = 0;
++    memcpy(&raw_stamp, data->timestamp, sizeof(raw_stamp));
++    std::cerr << "STAGE3_TIME handle=" << handle
++              << " data_type=" << static_cast<int>(data->data_type)
++              << " time_type=" << static_cast<int>(data->time_type)
++              << " raw_timestamp=" << raw_stamp << std::endl;
++  }
++
+   if (data->time_type != kTimestampTypeNoSync) {
+     is_timestamp_sync_.store(true);
+   } else {

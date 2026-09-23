@@ -1,0 +1,650 @@
+## Host isolation
+Command: systemd-detect-virt; cat /proc/1/cgroup; cat /sys/class/dmi/id/sys_vendor /sys/class/dmi/id/product_name; findmnt -n -o SOURCE,FSTYPE,TARGET /; ls -l /.dockerenv /run/.containerenv; readlink /proc/self/ns/net /proc/1/ns/net
+Exit: 0
+none
+0::/user.slice/user-1000.slice/session-59.scope
+THUNDEROBOT
+Thunderobot MIX G2
+/dev/nvme0n1p2 ext4   /
+ls: 无法访问 '/.dockerenv': 没有那个文件或目录
+ls: 无法访问 '/run/.containerenv': 没有那个文件或目录
+net:[4026532916]
+net:[4026532916]
+
+
+## Tool versions
+Command: for t in python python3 cmake gcc g++ colcon rosdep ros2 candump ip lsusb nmcli netplan curl; do command -v "$t"; done; python3 --version; cmake --version; gcc --version; colcon version-check; rosdep --version
+Exit: 0
+/usr/bin/python3
+/usr/bin/cmake
+/usr/bin/gcc
+/usr/bin/g++
+/usr/bin/colcon
+/usr/bin/rosdep
+/usr/sbin/ip
+/usr/bin/lsusb
+/usr/bin/nmcli
+/usr/sbin/netplan
+/usr/bin/curl
+Python 3.10.12
+cmake version 3.22.1
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+gcc (Ubuntu 11.4.0-1ubuntu1~22.04.3) 11.4.0
+Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+colcon-argcomplete: Failed to reach server
+colcon-bash: Failed to reach server
+colcon-cd: Failed to reach server
+colcon-cmake: Failed to reach server
+colcon-core: Failed to reach server
+colcon-defaults: Failed to reach server
+colcon-devtools: Failed to reach server
+colcon-installed-package-information: Failed to reach server
+colcon-library-path: Failed to reach server
+colcon-metadata: Failed to reach server
+colcon-notification: Failed to reach server
+colcon-output: Failed to reach server
+colcon-override-check: Failed to reach server
+colcon-package-information: Failed to reach server
+colcon-package-selection: Failed to reach server
+colcon-parallel-executor: Failed to reach server
+colcon-pkg-config: Failed to reach server
+colcon-powershell: Failed to reach server
+colcon-python-setup-py: Failed to reach server
+colcon-recursive-crawl: Failed to reach server
+colcon-ros: Failed to reach server
+colcon-test-result: Failed to reach server
+colcon-zsh: Failed to reach server
+0.27.0
+
+
+## Installed packages
+Command: dpkg-query -W -f='${binary:Package}	${Version}
+' 'ros-*' '*colcon*' '*rosdep*' 'can-utils' 'livox*' 2>&1
+Exit: 1
+colcon	
+python-rosdep	
+python-rosdep2	
+python3-colcon-argcomplete	0.3.3+upstream-1
+python3-colcon-bash	0.5.0-100
+python3-colcon-cd	0.2.1-100
+python3-colcon-cmake	0.2.30+upstream-1
+python3-colcon-common-extensions	0.3.0-100
+python3-colcon-core	0.21.2+upstream-1
+python3-colcon-defaults	0.2.9+upstream-1
+python3-colcon-devtools	0.3.0-100
+python3-colcon-installed-package-information	0.2.1-100
+python3-colcon-library-path	0.2.1-100
+python3-colcon-metadata	0.3.0+upstream-1
+python3-colcon-notification	0.3.2+upstream-1
+python3-colcon-output	0.2.14+upstream-1
+python3-colcon-override-check	0.0.1-100
+python3-colcon-package-information	0.4.1+upstream-1
+python3-colcon-package-selection	0.2.10-100
+python3-colcon-parallel-executor	0.3.0-100
+python3-colcon-pkg-config	0.1.0-100
+python3-colcon-powershell	0.5.0+upstream-1
+python3-colcon-python-setup-py	0.2.9-100
+python3-colcon-recursive-crawl	0.2.3-100
+python3-colcon-ros	0.5.0+upstream-1
+python3-colcon-test-result	0.3.8-100
+python3-colcon-zsh	0.5.0-100
+python3-rosdep	0.27.0-1
+python3-rosdep-modules	0.27.0-1
+python3-rosdep2	
+ros-humble-action-msgs	1.2.3-1jammy.20260718.011317
+ros-humble-action-tutorials-cpp	0.20.9-1jammy.20260726.113924
+ros-humble-action-tutorials-interfaces	0.20.9-1jammy.20260718.011804
+ros-humble-action-tutorials-py	0.20.9-1jammy.20260724.024653
+ros-humble-actionlib-msgs	4.9.2-1jammy.20260718.021647
+ros-humble-ament-cmake	1.3.14-1jammy.20260226.035055
+ros-humble-ament-cmake-auto	1.3.14-1jammy.20260304.074922
+ros-humble-ament-cmake-copyright	0.12.15-1jammy.20260304.195729
+ros-humble-ament-cmake-core	1.3.14-1jammy.20260224.185609
+ros-humble-ament-cmake-cppcheck	0.12.15-1jammy.20260304.195901
+ros-humble-ament-cmake-cpplint	0.12.15-1jammy.20260304.195910
+ros-humble-ament-cmake-export-definitions	1.3.14-1jammy.20260226.010509
+ros-humble-ament-cmake-export-dependencies	1.3.14-1jammy.20260226.011144
+ros-humble-ament-cmake-export-include-directories	1.3.14-1jammy.20260226.010305
+ros-humble-ament-cmake-export-interfaces	1.3.14-1jammy.20260226.005715
+ros-humble-ament-cmake-export-libraries	1.3.14-1jammy.20260226.004939
+ros-humble-ament-cmake-export-link-flags	1.3.14-1jammy.20260226.010357
+ros-humble-ament-cmake-export-targets	1.3.14-1jammy.20260226.005705
+ros-humble-ament-cmake-flake8	0.12.15-1jammy.20260304.200009
+ros-humble-ament-cmake-gen-version-h	1.3.14-1jammy.20260226.034234
+ros-humble-ament-cmake-gmock	1.3.14-1jammy.20260226.034220
+ros-humble-ament-cmake-gtest	1.3.14-1jammy.20260226.013944
+ros-humble-ament-cmake-include-directories	1.3.14-1jammy.20260226.010650
+ros-humble-ament-cmake-libraries	1.3.14-1jammy.20260226.010453
+ros-humble-ament-cmake-lint-cmake	0.12.15-1jammy.20260304.195414
+ros-humble-ament-cmake-pep257	0.12.15-1jammy.20260304.200058
+ros-humble-ament-cmake-pytest	1.3.14-1jammy.20260226.014042
+ros-humble-ament-cmake-python	1.3.14-1jammy.20260226.005145
+ros-humble-ament-cmake-ros	0.10.0-3jammy.20260304.201222
+ros-humble-ament-cmake-target-dependencies	1.3.14-1jammy.20260226.013622
+ros-humble-ament-cmake-test	1.3.14-1jammy.20260226.013528
+ros-humble-ament-cmake-uncrustify	0.12.15-1jammy.20260304.195907
+ros-humble-ament-cmake-version	1.3.14-1jammy.20260226.010514
+ros-humble-ament-cmake-xmllint	0.12.15-1jammy.20260304.200103
+ros-humble-ament-copyright	0.12.15-1jammy.20260226.034848
+ros-humble-ament-cppcheck	0.12.15-1jammy.20260226.010724
+ros-humble-ament-cpplint	0.12.15-1jammy.20260304.090253
+ros-humble-ament-flake8	0.12.15-1jammy.20260226.013519
+ros-humble-ament-index-cpp	1.4.1-1jammy.20260304.201844
+ros-humble-ament-index-python	1.4.1-1jammy.20260304.090250
+ros-humble-ament-lint	0.12.15-1jammy.20260226.005140
+ros-humble-ament-lint-auto	0.12.15-1jammy.20260226.014133
+ros-humble-ament-lint-cmake	0.12.15-1jammy.20260304.090258
+ros-humble-ament-lint-common	0.12.15-1jammy.20260304.201149
+ros-humble-ament-package	0.14.2-1jammy.20260213.215617
+ros-humble-ament-pep257	0.12.15-1jammy.20260226.014506
+ros-humble-ament-uncrustify	0.12.15-1jammy.20260304.195710
+ros-humble-ament-xmllint	0.12.15-1jammy.20260304.090301
+ros-humble-angles	1.15.0-1jammy.20260304.075013
+ros-humble-builtin-interfaces	1.2.3-1jammy.20260718.005731
+ros-humble-class-loader	2.2.0-3jammy.20260717.233651
+ros-humble-common-interfaces	4.9.2-1jammy.20260718.021859
+ros-humble-composition	0.20.9-1jammy.20260726.113925
+ros-humble-composition-interfaces	1.2.3-1jammy.20260718.021622
+ros-humble-console-bridge-vendor	1.4.1-1jammy.20260304.202710
+ros-humble-cv-bridge	3.2.1-1jammy.20260718.023548
+ros-humble-demo-nodes-cpp	0.20.9-1jammy.20260726.113819
+ros-humble-demo-nodes-cpp-native	0.20.9-1jammy.20260726.114521
+ros-humble-demo-nodes-py	0.20.9-1jammy.20260724.024758
+ros-humble-depthimage-to-laserscan	2.5.1-1jammy.20260726.115533
+ros-humble-desktop	0.10.0-1jammy.20260804.223343
+ros-humble-diagnostic-msgs	4.9.2-1jammy.20260718.014152
+ros-humble-domain-coordinator	0.10.0-3jammy.20260304.090332
+ros-humble-dummy-map-server	0.20.9-1jammy.20260724.031347
+ros-humble-dummy-robot-bringup	0.20.9-1jammy.20260804.210020
+ros-humble-dummy-sensors	0.20.9-1jammy.20260724.031410
+ros-humble-eigen3-cmake-module	0.1.1-4jammy.20260304.195907
+ros-humble-example-interfaces	0.9.3-2jammy.20260718.011806
+ros-humble-examples-rclcpp-minimal-action-client	0.15.5-1jammy.20260726.120959
+ros-humble-examples-rclcpp-minimal-action-server	0.15.5-1jammy.20260726.121012
+ros-humble-examples-rclcpp-minimal-client	0.15.5-1jammy.20260726.110233
+ros-humble-examples-rclcpp-minimal-composition	0.15.5-1jammy.20260728.072237
+ros-humble-examples-rclcpp-minimal-publisher	0.15.5-1jammy.20260725.070212
+ros-humble-examples-rclcpp-minimal-service	0.15.5-1jammy.20260726.110437
+ros-humble-examples-rclcpp-minimal-subscriber	0.15.5-1jammy.20260726.115747
+ros-humble-examples-rclcpp-minimal-timer	0.15.5-1jammy.20260726.110425
+ros-humble-examples-rclcpp-multithreaded-executor	0.15.5-1jammy.20260726.110340
+ros-humble-examples-rclpy-executors	0.15.5-1jammy.20260724.024815
+ros-humble-examples-rclpy-minimal-action-client	0.15.5-1jammy.20260724.024842
+ros-humble-examples-rclpy-minimal-action-server	0.15.5-1jammy.20260724.024838
+ros-humble-examples-rclpy-minimal-client	0.15.5-1jammy.20260724.024838
+ros-humble-examples-rclpy-minimal-publisher	0.15.5-1jammy.20260724.025034
+ros-humble-examples-rclpy-minimal-service	0.15.5-1jammy.20260724.024915
+ros-humble-examples-rclpy-minimal-subscriber	0.15.5-1jammy.20260724.024923
+ros-humble-fastcdr	1.0.29-1jammy.20260226.010952
+ros-humble-fastrtps	2.6.12-1jammy.20260723.233918
+ros-humble-fastrtps-cmake-module	2.2.4-1jammy.20260304.202011
+ros-humble-foonathan-memory-vendor	1.2.0-3jammy.20260304.200554
+ros-humble-geometry-msgs	4.9.2-1jammy.20260718.012617
+ros-humble-geometry2	0.25.22-1jammy.20260804.195606
+ros-humble-gmock-vendor	1.10.9006-1jammy.20260226.011659
+ros-humble-gtest-vendor	1.10.9006-1jammy.20260226.011046
+ros-humble-ignition-cmake2-vendor	0.0.2-2jammy.20260304.200630
+ros-humble-ignition-math6-vendor	0.0.2-2jammy.20260304.200852
+ros-humble-image-geometry	3.2.1-1jammy.20260718.023550
+ros-humble-image-tools	0.20.9-1jammy.20260726.114509
+ros-humble-image-transport	3.1.13-1jammy.20260726.121656
+ros-humble-interactive-markers	2.3.2-2jammy.20260804.195618
+ros-humble-intra-process-demo	0.20.9-1jammy.20260724.030642
+ros-humble-joy	3.3.0-1jammy.20260726.115901
+ros-humble-kdl-parser	2.6.4-1jammy.20260718.021412
+ros-humble-keyboard-handler	0.0.5-1jammy.20260304.202120
+ros-humble-laser-geometry	2.4.1-1jammy.20260804.154922
+ros-humble-launch	1.0.14-1jammy.20260304.195519
+ros-humble-launch-ros	0.19.14-1jammy.20260724.025042
+ros-humble-launch-testing	1.0.14-1jammy.20260304.200104
+ros-humble-launch-testing-ament-cmake	1.0.14-1jammy.20260304.202633
+ros-humble-launch-testing-ros	0.19.14-1jammy.20260724.025646
+ros-humble-launch-xml	1.0.14-1jammy.20260304.195726
+ros-humble-launch-yaml	1.0.14-1jammy.20260304.195728
+ros-humble-libcurl-vendor	3.1.3-1jammy.20260304.090502
+ros-humble-libstatistics-collector	1.3.4-1jammy.20260724.020507
+ros-humble-libyaml-vendor	1.2.2-2jammy.20260717.233545
+ros-humble-lifecycle	0.20.9-1jammy.20260726.111223
+ros-humble-lifecycle-msgs	1.2.3-1jammy.20260718.005812
+ros-humble-logging-demo	0.20.9-1jammy.20260726.114708
+ros-humble-map-msgs	2.1.0-3jammy.20260718.015830
+ros-humble-message-filters	4.3.19-1jammy.20260726.111837
+ros-humble-nav-msgs	4.9.2-1jammy.20260718.014329
+ros-humble-orocos-kdl-vendor	0.2.5-1jammy.20260304.201339
+ros-humble-osrf-pycommon	2.1.6-1jammy.20260226.011505
+ros-humble-pcl-conversions	2.4.5-2jammy.20260726.121755
+ros-humble-pcl-msgs	1.0.0-7jammy.20260718.020111
+ros-humble-pendulum-control	0.20.9-1jammy.20260726.123228
+ros-humble-pendulum-msgs	0.20.9-1jammy.20260718.010605
+ros-humble-pluginlib	5.1.4-1jammy.20260717.234837
+ros-humble-pybind11-vendor	2.4.2-1jammy.20260304.195023
+ros-humble-python-cmake-module	0.10.0-2jammy.20260304.202554
+ros-humble-python-orocos-kdl-vendor	0.2.5-1jammy.20260304.202632
+ros-humble-python-qt-binding	1.1.3-1jammy.20260304.202555
+ros-humble-qt-dotgraph	2.2.5-1jammy.20260330.190918
+ros-humble-qt-gui	2.2.5-1jammy.20260330.190956
+ros-humble-qt-gui-cpp	2.2.5-1jammy.20260718.005252
+ros-humble-qt-gui-py-common	2.2.5-1jammy.20260330.190941
+ros-humble-quality-of-service-demo-cpp	0.20.9-1jammy.20260726.114130
+ros-humble-quality-of-service-demo-py	0.20.9-1jammy.20260724.025128
+ros-humble-rcl	5.3.13-1jammy.20260724.003904
+ros-humble-rcl-action	5.3.13-1jammy.20260724.021048
+ros-humble-rcl-interfaces	1.2.3-1jammy.20260718.010613
+ros-humble-rcl-lifecycle	5.3.13-1jammy.20260724.020529
+ros-humble-rcl-logging-interface	2.3.2-1jammy.20260717.233548
+ros-humble-rcl-logging-spdlog	2.3.2-1jammy.20260717.234845
+ros-humble-rcl-yaml-param-parser	5.3.13-1jammy.20260717.234751
+ros-humble-rclcpp	16.0.19-1jammy.20260724.021311
+ros-humble-rclcpp-action	16.0.19-1jammy.20260726.112254
+ros-humble-rclcpp-components	16.0.19-1jammy.20260726.112306
+ros-humble-rclcpp-lifecycle	16.0.19-1jammy.20260724.031557
+ros-humble-rclpy	3.3.21-1jammy.20260724.022150
+ros-humble-rcpputils	2.4.7-1jammy.20260717.060655
+ros-humble-rcutils	5.1.9-1jammy.20260716.060637
+ros-humble-resource-retriever	3.1.3-1jammy.20260304.202624
+ros-humble-rmw	6.1.3-1jammy.20260716.100059
+ros-humble-rmw-connextdds	
+ros-humble-rmw-cyclonedds-cpp	
+ros-humble-rmw-dds-common	1.6.0-2jammy.20260718.001401
+ros-humble-rmw-fastrtps-cpp	6.2.10-1jammy.20260724.002510
+ros-humble-rmw-fastrtps-shared-cpp	6.2.10-1jammy.20260724.000641
+ros-humble-rmw-implementation	2.8.5-1jammy.20260724.003446
+ros-humble-rmw-implementation-cmake	6.1.3-1jammy.20260716.060509
+ros-humble-robot-state-publisher	3.0.3-2jammy.20260804.200125
+ros-humble-ros-base	0.10.0-1jammy.20260804.204550
+ros-humble-ros-core	0.10.0-1jammy.20260726.123022
+ros-humble-ros-environment	3.2.2-1jammy.20260226.005101
+ros-humble-ros-workspace	1.0.2-2jammy.20260224.185744
+ros-humble-ros2action	0.18.19-1jammy.20260724.030032
+ros-humble-ros2bag	0.15.16-1jammy.20260726.134553
+ros-humble-ros2cli	0.18.19-1jammy.20260724.025302
+ros-humble-ros2cli-common-extensions	0.1.2-1jammy.20260726.122808
+ros-humble-ros2component	0.18.19-1jammy.20260726.114744
+ros-humble-ros2doctor	0.18.19-1jammy.20260724.030215
+ros-humble-ros2interface	0.18.19-1jammy.20260726.112728
+ros-humble-ros2launch	0.19.14-1jammy.20260726.121957
+ros-humble-ros2lifecycle	0.18.19-1jammy.20260724.033013
+ros-humble-ros2multicast	0.18.19-1jammy.20260724.025729
+ros-humble-ros2node	0.18.19-1jammy.20260724.030156
+ros-humble-ros2param	0.18.19-1jammy.20260724.030538
+ros-humble-ros2pkg	0.18.19-1jammy.20260726.112725
+ros-humble-ros2plugin	5.1.4-1jammy.20260726.122010
+ros-humble-ros2run	0.18.19-1jammy.20260726.122057
+ros-humble-ros2service	0.18.19-1jammy.20260724.030235
+ros-humble-ros2topic	0.18.19-1jammy.20260726.112803
+ros-humble-rosbag2	0.15.16-1jammy.20260726.135454
+ros-humble-rosbag2-compression	0.15.16-1jammy.20260726.130318
+ros-humble-rosbag2-compression-zstd	0.15.16-1jammy.20260726.130828
+ros-humble-rosbag2-cpp	0.15.16-1jammy.20260726.123559
+ros-humble-rosbag2-interfaces	0.15.16-1jammy.20260718.010834
+ros-humble-rosbag2-py	0.15.16-1jammy.20260726.134021
+ros-humble-rosbag2-storage	0.15.16-1jammy.20260726.122141
+ros-humble-rosbag2-storage-default-plugins	0.15.16-1jammy.20260726.122936
+ros-humble-rosbag2-transport	0.15.16-1jammy.20260726.131107
+ros-humble-rosgraph-msgs	1.2.3-1jammy.20260718.011206
+ros-humble-rosidl-adapter	3.1.9-1jammy.20260605.103907
+ros-humble-rosidl-cli	3.1.9-1jammy.20260605.103654
+ros-humble-rosidl-cmake	3.1.9-1jammy.20260605.104545
+ros-humble-rosidl-default-generators	1.2.1-1jammy.20260718.000113
+ros-humble-rosidl-default-runtime	1.2.1-1jammy.20260718.000013
+ros-humble-rosidl-generator-c	3.1.9-1jammy.20260716.100325
+ros-humble-rosidl-generator-cpp	3.1.9-1jammy.20260717.233559
+ros-humble-rosidl-generator-py	0.14.6-1jammy.20260717.235155
+ros-humble-rosidl-generator-rs	0.4.12-1jammy.20260717.234619
+ros-humble-rosidl-parser	3.1.9-1jammy.20260605.104513
+ros-humble-rosidl-runtime-c	3.1.9-1jammy.20260716.095316
+ros-humble-rosidl-runtime-cpp	3.1.9-1jammy.20260717.060829
+ros-humble-rosidl-runtime-py	0.9.3-1jammy.20260718.012837
+ros-humble-rosidl-typesupport-c	2.0.2-1jammy.20260717.233513
+ros-humble-rosidl-typesupport-cpp	2.0.2-1jammy.20260717.234335
+ros-humble-rosidl-typesupport-fastrtps-c	2.2.4-1jammy.20260717.234832
+ros-humble-rosidl-typesupport-fastrtps-cpp	2.2.4-1jammy.20260717.234411
+ros-humble-rosidl-typesupport-interface	3.1.9-1jammy.20260605.103839
+ros-humble-rosidl-typesupport-introspection-c	3.1.9-1jammy.20260716.100023
+ros-humble-rosidl-typesupport-introspection-cpp	3.1.9-1jammy.20260717.233854
+ros-humble-rpyutils	0.2.2-1jammy.20260304.195455
+ros-humble-rqt-action	2.0.1-3jammy.20260724.030551
+ros-humble-rqt-bag	1.1.6-1jammy.20260726.141545
+ros-humble-rqt-bag-plugins	1.1.6-1jammy.20260726.141809
+ros-humble-rqt-common-plugins	1.2.0-1jammy.20260726.141857
+ros-humble-rqt-console	2.0.3-1jammy.20260724.030104
+ros-humble-rqt-graph	1.3.2-1jammy.20260724.030329
+ros-humble-rqt-gui	1.1.9-1jammy.20260724.025250
+ros-humble-rqt-gui-cpp	1.1.9-1jammy.20260726.112827
+ros-humble-rqt-gui-py	1.1.9-1jammy.20260724.025620
+ros-humble-rqt-image-view	1.2.0-2jammy.20260726.123237
+ros-humble-rqt-msg	1.2.1-1jammy.20260724.030243
+ros-humble-rqt-plot	1.1.5-1jammy.20260724.030150
+ros-humble-rqt-publisher	1.5.0-1jammy.20260726.112838
+ros-humble-rqt-py-common	1.1.9-1jammy.20260724.025246
+ros-humble-rqt-py-console	1.0.2-3jammy.20260724.030235
+ros-humble-rqt-reconfigure	1.1.4-1jammy.20260724.030142
+ros-humble-rqt-service-caller	1.0.5-3jammy.20260724.030641
+ros-humble-rqt-shell	1.0.2-3jammy.20260724.030617
+ros-humble-rqt-srv	1.0.3-3jammy.20260724.030559
+ros-humble-rqt-topic	1.5.1-1jammy.20260724.030408
+ros-humble-rttest	0.13.0-2jammy.20260304.202749
+ros-humble-rviz-assimp-vendor	11.2.28-1jammy.20260714.150848
+ros-humble-rviz-common	11.2.28-1jammy.20260804.200122
+ros-humble-rviz-default-plugins	11.2.28-1jammy.20260804.212519
+ros-humble-rviz-ogre-vendor	11.2.28-1jammy.20260714.150851
+ros-humble-rviz-rendering	11.2.28-1jammy.20260715.012257
+ros-humble-rviz2	11.2.28-1jammy.20260804.222726
+ros-humble-sdl2-vendor	3.3.0-1jammy.20260304.195240
+ros-humble-sensor-msgs	4.9.2-1jammy.20260718.014433
+ros-humble-sensor-msgs-py	4.9.2-1jammy.20260718.023551
+ros-humble-shape-msgs	4.9.2-1jammy.20260718.015101
+ros-humble-shared-queues-vendor	0.15.16-1jammy.20260304.075306
+ros-humble-spdlog-vendor	1.3.1-1jammy.20260304.202915
+ros-humble-sqlite3-vendor	0.15.16-1jammy.20260304.195038
+ros-humble-sros2	0.10.9-1jammy.20260724.030847
+ros-humble-sros2-cmake	0.10.9-1jammy.20260724.031139
+ros-humble-statistics-msgs	1.2.3-1jammy.20260718.011154
+ros-humble-std-msgs	4.9.2-1jammy.20260718.010840
+ros-humble-std-srvs	4.9.2-1jammy.20260718.011109
+ros-humble-stereo-msgs	4.9.2-1jammy.20260718.020132
+ros-humble-tango-icons-vendor	0.1.1-3jammy.20260304.202920
+ros-humble-teleop-twist-joy	2.4.8-1jammy.20260726.121144
+ros-humble-teleop-twist-keyboard	2.4.1-1jammy.20260724.025324
+ros-humble-tf2	0.25.22-1jammy.20260804.152304
+ros-humble-tf2-bullet	0.25.22-1jammy.20260804.194912
+ros-humble-tf2-eigen	0.25.22-1jammy.20260804.194912
+ros-humble-tf2-eigen-kdl	0.25.22-1jammy.20260804.161619
+ros-humble-tf2-geometry-msgs	0.25.22-1jammy.20260804.194827
+ros-humble-tf2-kdl	0.25.22-1jammy.20260804.194856
+ros-humble-tf2-msgs	0.25.22-1jammy.20260729.042019
+ros-humble-tf2-py	0.25.22-1jammy.20260804.155238
+ros-humble-tf2-ros	0.25.22-1jammy.20260804.155840
+ros-humble-tf2-ros-py	0.25.22-1jammy.20260804.1dpkg-query: 没有找到与 can-utils 相匹配的软件包
+dpkg-query: 没有找到与 livox* 相匹配的软件包
+61624
+ros-humble-tf2-sensor-msgs	0.25.22-1jammy.20260804.194831
+ros-humble-tf2-tools	0.25.22-1jammy.20260804.195304
+ros-humble-tinyxml-vendor	0.8.3-2jammy.20260304.195406
+ros-humble-tinyxml2-vendor	0.7.7-1jammy.20260304.195411
+ros-humble-tlsf	0.7.0-2jammy.20260304.202930
+ros-humble-tlsf-cpp	0.13.0-2jammy.20260726.113040
+ros-humble-topic-monitor	0.20.9-1jammy.20260724.025328
+ros-humble-tracetools	4.1.2-1jammy.20260304.201640
+ros-humble-trajectory-msgs	4.9.2-1jammy.20260718.015114
+ros-humble-turtlesim	1.4.3-1jammy.20260726.121530
+ros-humble-uncrustify-vendor	2.0.2-2jammy.20260304.195304
+ros-humble-unique-identifier-msgs	2.2.1-3jammy.20260718.011116
+ros-humble-urdf	2.6.1-1jammy.20260718.005320
+ros-humble-urdf-parser-plugin	2.6.1-1jammy.20260304.201738
+ros-humble-urdfdom	3.0.2-2jammy.20260304.202852
+ros-humble-urdfdom-headers	1.0.6-2jammy.20260226.012553
+ros-humble-visualization-msgs	4.9.2-1jammy.20260718.020205
+ros-humble-yaml-cpp-vendor	8.0.2-1jammy.20260304.195332
+ros-humble-zstd-vendor	0.15.16-1jammy.20260304.195400
+
+
+## Selected environment
+{
+  "HOME": "/home/lab307",
+  "USER": "lab307",
+  "SHELL": "/bin/bash",
+  "ROS_DISTRO": "<unset>",
+  "ROS_VERSION": "<unset>",
+  "ROS_DOMAIN_ID": "<unset>",
+  "RMW_IMPLEMENTATION": "<unset>",
+  "ROS_LOCALHOST_ONLY": "<unset>",
+  "ROS_AUTOMATIC_DISCOVERY_RANGE": "<unset>",
+  "ROS_DISCOVERY_SERVER": "<unset>",
+  "AMENT_PREFIX_PATH": "<unset>",
+  "CMAKE_PREFIX_PATH": "<unset>",
+  "COLCON_PREFIX_PATH": "<unset>",
+  "PYTHONPATH": "<unset>",
+  "LD_LIBRARY_PATH": "<unset>",
+  "PATH": "/home/lab307/.nvm/versions/node/v24.21.0/lib/node_modules/@openai/codex/node_modules/@openai/codex-linux-x64/vendor/x86_64-unknown-linux-musl/codex-path:/home/lab307/.codex/tmp/arg0/codex-arg0VD5JAl:/home/lab307/.nvm/versions/node/v24.21.0/lib/node_modules/@openai/codex/node_modules/@openai/codex-linux-x64/vendor/x86_64-unknown-linux-musl/codex-path:/home/lab307/.nvm/versions/node/v24.21.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin",
+  "CONDA_PREFIX": "<unset>",
+  "CONDA_DEFAULT_ENV": "<unset>",
+  "VIRTUAL_ENV": "<unset>",
+  "BASH_ENV": "<unset>",
+  "ENV": "<unset>",
+  "http_proxy": "http://127.0.0.1:7897",
+  "https_proxy": "http://127.0.0.1:7897",
+  "all_proxy": "<unset>",
+  "no_proxy": "<unset>",
+  "HTTP_PROXY": "http://127.0.0.1:7897",
+  "HTTPS_PROXY": "http://127.0.0.1:7897",
+  "ALL_PROXY": "<unset>",
+  "NO_PROXY": "<unset>",
+  "FASTRTPS_DEFAULT_PROFILES_FILE": "<unset>",
+  "FASTDDS_DEFAULT_PROFILES_FILE": "<unset>",
+  "CYCLONEDDS_URI": "<unset>"
+}
+
+## Python runtime
+Command: python3 -c 'import sys,site; print(sys.executable); print(sys.prefix); print(sys.base_prefix); print(sys.path); print(site.getusersitepackages())'
+Exit: 0
+/usr/bin/python3
+/usr
+/usr
+['', '/usr/lib/python310.zip', '/usr/lib/python3.10', '/usr/lib/python3.10/lib-dynload', '/usr/local/lib/python3.10/dist-packages', '/usr/lib/python3/dist-packages']
+/home/lab307/.local/lib/python3.10/site-packages
+
+
+## Shell startup relevant lines
+Command: rg -n -i 'source|(^|[ ;])\.[[:space:]]|ros|conda|venv|PYTHONPATH|LD_LIBRARY_PATH|proxy|DOMAIN_ID|RMW_' /home/lab307/.bashrc /home/lab307/.profile /home/lab307/.bash_profile /home/lab307/.bash_login /home/lab307/.zshrc /etc/profile /etc/bash.bashrc /etc/environment /etc/profile.d 2>&1
+Exit: 2
+rg: /home/lab307/.bash_profile: No such file or directory (os error 2)
+rg: /home/lab307/.bash_login: No such file or directory (os error 2)
+rg: /home/lab307/.zshrc: No such file or directory (os error 2)
+/etc/profile:9:      . /etc/bash.bashrc
+/etc/profile:23:      . $i
+/etc/bash.bashrc:4:# this file has to be sourced in /etc/profile.
+/etc/bash.bashrc:37:#    . /usr/share/bash-completion/bash_completion
+/etc/bash.bashrc:39:#    . /etc/bash_completion
+/home/lab307/.bashrc:105:    . ~/.bash_aliases
+/home/lab307/.bashrc:110:# sources /etc/bash.bashrc).
+/home/lab307/.bashrc:113:    . /usr/share/bash-completion/bash_completion
+/home/lab307/.bashrc:115:    . /etc/bash_completion
+/home/lab307/.bashrc:123:# >>> fishros initialize >>>
+/home/lab307/.bashrc:124:source /opt/ros/humble/setup.bash
+/home/lab307/.bashrc:125:# <<< fishros initialize <<<
+rg: /etc/profile.d/debuginfod.sh: Permission denied (os error 13)
+/etc/profile.d/bash_completion.sh:2:# Check for interactive bash and that we haven't already been sourced.
+/etc/profile.d/bash_completion.sh:9:            . "${XDG_CONFIG_HOME:-$HOME/.config}/bash_completion"
+/etc/profile.d/bash_completion.sh:11:            # Source completion code.
+/etc/profile.d/bash_completion.sh:12:            . /usr/share/bash-completion/bash_completion
+rg: /etc/profile.d/debuginfod.csh: Permission denied (os error 13)
+/etc/profile.d/im-config_wayland.sh:15:    . /etc/X11/Xsession.d/70im-config_launch
+/etc/profile.d/gnome-session_gnomerc.sh:3:# If we are running the GNOME session, source ~/.gnomerc, but only if
+/etc/profile.d/gnome-session_gnomerc.sh:22:    # shellcheck source=/dev/null
+/etc/profile.d/gnome-session_gnomerc.sh:23:    . "$GNOMERC"
+
+
+## USB devices
+Command: lsusb; lsusb -t
+Exit: 0
+unable to initialize libusb: -99
+/:  Bus 02.Port 1: Dev 1, Class=root_hub, Driver=xhci_hcd/10p, 20000M/x2
+/:  Bus 01.Port 1: Dev 1, Class=root_hub, Driver=xhci_hcd/16p, 480M
+    |__ Port 11: Dev 8, If 0, Class=Vendor Specific Class, Driver=gs_usb, 12M
+    |__ Port 11: Dev 8, If 1, Class=Application Specific Interface, Driver=, 12M
+    |__ Port 14: Dev 5, If 0, Class=Wireless, Driver=btusb, 12M
+    |__ Port 14: Dev 5, If 1, Class=Wireless, Driver=btusb, 12M
+
+
+## CAN kernel modules
+Command: lsmod | rg '(^can|can_|gs_usb|slcan|peak_usb|kvaser|usb_8dev)' ; ls -l /sys/class/net; ip -details -statistics link show type can; ip -details -statistics link show can0
+Exit: 1
+gs_usb                 24576  0
+can_dev                53248  1 gs_usb
+总计 0
+lrwxrwxrwx 1 nobody nogroup 0 Sep 13 21:29 can0 -> ../../devices/pci0000:00/0000:00:14.0/usb1/1-11/1-11:1.0/net/can0
+lrwxrwxrwx 1 nobody nogroup 0 Sep 13 17:20 lo -> ../../devices/virtual/net/lo
+lrwxrwxrwx 1 nobody nogroup 0 Sep 13 17:20 wlo1 -> ../../devices/pci0000:00/0000:00:14.3/net/wlo1
+Cannot open netlink socket: Operation not permitted
+Cannot open netlink socket: Operation not permitted
+
+
+## Network addressing
+Command: ip -brief address; ip -details -statistics link show; ip route show table all; ip -6 route show table all; ip neigh show
+Exit: 1
+Cannot open netlink socket: Operation not permitted
+Cannot open netlink socket: Operation not permitted
+Cannot open netlink socket: Operation not permitted
+Cannot open netlink socket: Operation not permitted
+Cannot open netlink socket: Operation not permitted
+
+
+## Network management
+Command: nmcli -t -f DEVICE,TYPE,STATE,CONNECTION device status; nmcli -t -f NAME,TYPE,DEVICE connection show; systemctl is-active NetworkManager systemd-networkd; ls -l /etc/netplan /etc/NetworkManager/system-connections; networkctl list --no-pager
+Exit: 1
+错误：无法创建 NMClient 对象：无法连接： 不允许的操作。
+错误：无法创建 NMClient 对象：无法连接： 不允许的操作。
+Failed to connect to bus: Operation not permitted (consider using --machine=<user>@.host --user to connect to bus of other user)
+/etc/NetworkManager/system-connections:
+总计 4
+-rw------- 1 nobody nogroup 275 Sep 13 17:23 10-307.nmconnection
+
+/etc/netplan:
+总计 4
+-rw-r--r-- 1 nobody nogroup 104 Sep 11  2024 01-network-manager-all.yaml
+Failed to connect system bus: Operation not permitted
+
+
+## Network config safe fields
+Command: rg -n 'renderer:|dhcp[46]:|addresses:|routes:|gateway[46]:|to:|via:|optional:|match:|set-name:' /etc/netplan /etc/network/interfaces /etc/network/interfaces.d 2>&1
+Exit: 2
+rg: /etc/network/interfaces: No such file or directory (os error 2)
+rg: /etc/network/interfaces.d: No such file or directory (os error 2)
+/etc/netplan/01-network-manager-all.yaml:4:  renderer: NetworkManager
+
+
+## Network hardware
+Command: lspci -nnk; for n in /sys/class/net/*; do echo "$n"; readlink -f "$n/device/driver"; cat "$n/type" "$n/operstate" "$n/carrier" 2>/dev/null; done
+Exit: 0
+00:00.0 Host bridge [0600]: Intel Corporation Device [8086:a702] (rev 01)
+	DeviceName: Onboard - Other
+	Subsystem: Device [1b61:8105]
+00:01.0 PCI bridge [0604]: Intel Corporation Device [8086:a70d] (rev 01)
+	Kernel driver in use: pcieport
+00:02.0 Display controller [0380]: Intel Corporation Device [8086:a788] (rev 04)
+	DeviceName: Onboard - Video
+	Subsystem: Device [1b61:8105]
+	Kernel driver in use: i915
+	Kernel modules: i915, xe
+00:04.0 Signal processing controller [1180]: Intel Corporation Device [8086:a71d] (rev 01)
+	DeviceName: Onboard - Other
+	Subsystem: Device [1b61:8105]
+	Kernel driver in use: proc_thermal_pci
+	Kernel modules: processor_thermal_device_pci
+00:08.0 System peripheral [0880]: Intel Corporation Device [8086:a74f] (rev 01)
+	DeviceName: Onboard - Other
+	Subsystem: Device [1b61:8105]
+00:0a.0 Signal processing controller [1180]: Intel Corporation Device [8086:a77d] (rev 01)
+	DeviceName: Onboard - Other
+	Kernel driver in use: intel_vsec
+	Kernel modules: intel_vsec
+00:14.0 USB controller [0c03]: Intel Corporation Device [8086:7a60] (rev 11)
+	DeviceName: Onboard - Other
+	Subsystem: Device [1b61:8105]
+	Kernel driver in use: xhci_hcd
+	Kernel modules: mei_me, xhci_pci
+00:14.2 RAM memory [0500]: Intel Corporation Device [8086:7a27] (rev 11)
+	DeviceName: Onboard - Other
+00:14.3 Network controller [0280]: Intel Corporation Device [8086:7a70] (rev 11)
+	DeviceName: Onboard - Ethernet
+	Subsystem: Intel Corporation Device [8086:0094]
+	Kernel driver in use: iwlwifi
+	Kernel modules: iwlwifi
+00:16.0 Communication controller [0780]: Intel Corporation Device [8086:7a68] (rev 11)
+	DeviceName: Onboard - Other
+	Subsystem: Device [1b61:8105]
+	Kernel driver in use: mei_me
+	Kernel modules: mei_me
+00:1c.0 PCI bridge [0604]: Intel Corporation Device [8086:7a39] (rev 11)
+	Kernel driver in use: pcieport
+00:1d.0 PCI bridge [0604]: Intel Corporation Device [8086:7a34] (rev 11)
+	Kernel driver in use: pcieport
+00:1f.0 ISA bridge [0601]: Intel Corporation Device [8086:7a0c] (rev 11)
+	DeviceName: Onboard - Other
+	Subsystem: Device [1b61:8105]
+00:1f.3 Multimedia audio controller [0401]: Intel Corporation Device [8086:7a50] (rev 11)
+	DeviceName: Onboard - Sound
+	Subsystem: Device [1b61:8105]
+	Kernel driver in use: snd_hda_intel
+	Kernel modules: snd_hda_intel, snd_sof_pci_intel_tgl
+00:1f.4 SMBus [0c05]: Intel Corporation Device [8086:7a23] (rev 11)
+	DeviceName: Onboard - Other
+	Subsystem: Device [1b61:8105]
+	Kernel driver in use: i801_smbus
+	Kernel modules: i2c_i801
+00:1f.5 Serial bus controller [0c80]: Intel Corporation Device [8086:7a24] (rev 11)
+	DeviceName: Onboard - Other
+	Subsystem: Device [1b61:8105]
+	Kernel driver in use: intel-spi
+	Kernel modules: spi_intel_pci
+01:00.0 VGA compatible controller [0300]: NVIDIA Corporation Device [10de:2d19] (rev a1)
+	Subsystem: Device [1b61:810e]
+	Kernel modules: nvidiafb, nouveau
+01:00.1 Audio device [0403]: NVIDIA Corporation Device [10de:22eb] (rev a1)
+	Subsystem: NVIDIA Corporation Device [10de:0000]
+	Kernel driver in use: snd_hda_intel
+	Kernel modules: snd_hda_intel
+02:00.0 Ethernet controller [0200]: Device [1f0a:6801] (rev 03)
+	Subsystem: Device [1b61:8105]
+03:00.0 Non-Volatile memory controller [0108]: Yangtze Memory Technologies Co.,Ltd Device [1e49:1081] (rev 03)
+	Subsystem: Yangtze Memory Technologies Co.,Ltd Device [1e49:1081]
+	Kernel driver in use: nvme
+	Kernel modules: nvme
+/sys/class/net/can0
+/sys/bus/usb/drivers/gs_usb
+280
+down
+/sys/class/net/lo
+772
+unknown
+1
+/sys/class/net/wlo1
+/sys/bus/pci/drivers/iwlwifi
+1
+up
+1
+
+
+## Firewall read-only
+Command: ufw status; nft list ruleset; iptables -S
+Exit: 1
+ERROR: 只有 root 用户才能运行此脚本
+mnl.c:60: Unable to initialize Netlink socket: Operation not permitted
+iptables/1.8.7 Failed to initialize nft: Operation not permitted
+
+
+## APT sources and proxy fields
+Command: rg -n -i '^(deb |URIs:|Suites:)|proxy' /etc/apt/sources.list /etc/apt/sources.list.d /etc/apt/apt.conf /etc/apt/apt.conf.d 2>&1
+Exit: 2
+rg: /etc/apt/apt.conf: No such file or directory (os error 2)
+/etc/apt/sources.list:2:deb https://mirrors.ustc.edu.cn/ubuntu/ jammy main restricted universe multiverse
+/etc/apt/sources.list:3:deb https://mirrors.ustc.edu.cn/ubuntu/ jammy-updates main restricted universe multiverse
+/etc/apt/sources.list:4:deb https://mirrors.ustc.edu.cn/ubuntu/ jammy-backports main restricted universe multiverse
+/etc/apt/sources.list:5:deb https://mirrors.ustc.edu.cn/ubuntu/ jammy-security main restricted universe multiverse
+/etc/apt/sources.list.d/ros-fish.list:1:deb [arch=amd64]  https://mirrors.ustc.edu.cn/ros2/ubuntu/ jammy main
+
+
+## Proxy desktop mode
+Command: gsettings get org.gnome.system.proxy mode
+Exit: 0
+
+(process:104): dconf-CRITICAL **: 21:32:01.238: unable to create file '/run/user/1000/dconf/user': 只读文件系统.  dconf will not work properly.
+
+(process:104): dconf-CRITICAL **: 21:32:01.238: unable to create file '/run/user/1000/dconf/user': 只读文件系统.  dconf will not work properly.
+'none'
+
+
+## Scoped existing project scan
+Command: find /home/lab307 /opt /srv /mnt /media -maxdepth 5 \( -name .cache -o -name .codex -o -name .git -o -name .local -o -name .nvm -o -name .npm -o -name .vscode-server -o -name snap -o -name bags -o -name maps -o -name datasets -o -name data -o -name node_modules -o -name build -o -name install -o -name log \) -prune -o \( -iname '*ranger*' -o -iname '*ugv*' -o -iname '*livox*' -o -iname '*lightning*' -o -name colcon.meta -o -name .catkin_tools \) -print 2>&1
+Exit: 0
+/home/lab307/ranger_nav
+
+
+## Existing CAN persistent settings
+Command: rg -n -i 'can0|bitrate|gs_usb|slcan|candump|use_sim_time|ROS_DOMAIN_ID|RMW_IMPLEMENTATION' /etc/systemd/network /etc/systemd/system /etc/udev/rules.d /etc/modules-load.d /etc/modprobe.d /home/lab307/qzy /home/lab307/周如意 /home/lab307/.bashrc /home/lab307/.profile 2>&1
+Exit: 1

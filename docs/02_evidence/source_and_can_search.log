@@ -1,0 +1,17 @@
+['git', 'ls-remote', '--heads', 'https://github.com/agilexrobotics/ranger_ros2.git']
+fb96124fa68c49bab03d8ddd2294c2afd45af925	refs/heads/air_delta
+b6ea21a275ca5e7168130cc6470e61474681d679	refs/heads/humble
+a1bc20675ae3655d4048b8e4b1139914de159b52	refs/heads/jazzy
+888fd1fe8505603a48db22997ba587768986ce03	refs/heads/old-version
+
+EXIT=0
+['git', 'ls-remote', '--heads', 'https://github.com/agilexrobotics/ugv_sdk.git']
+012a9aa02436ffe2ef66f211dd193be7b69902ba	refs/heads/devel
+f2704eacdc90357078cd93ec60aae08bb4baab35	refs/heads/main
+3ba9d5cd5239c9038ea39093294b7585193f06af	refs/heads/next
+210fce78bb3cb3f2273b257139b541686cf318c7	refs/heads/v2.x
+
+EXIT=0
+['rg', '-n', '-i', 'candump|can0|bitrate|gs_usb|slcan', '/home/lab307/.bash_history', '/home/lab307/.bashrc', '/home/lab307/.profile', '/etc/systemd/network', '/etc/systemd/system', '/etc/udev/rules.d', '/etc/modules-load.d', '/etc/modprobe.d', '/etc/netplan', '/home/lab307/qzy', '/home/lab307/周如意']
+
+EXIT=1

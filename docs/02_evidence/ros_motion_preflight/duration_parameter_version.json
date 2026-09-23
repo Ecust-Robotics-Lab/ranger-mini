@@ -1,0 +1,12 @@
+{
+  "timestamp": "2026-09-14T22:22:53+08:00",
+  "script": "scripts/base_ros_motion_test.py",
+  "sha256": "a3889ea219a0071f37e071a6b83a88cf083e0d0846e87ec494d7b02581c4258c",
+  "default_seconds": 0.8,
+  "hardware_executed": false,
+  "offline_checks": [
+    "duration validation/dry-run PASS",
+    "test_post_exit_feedback.py exit 0",
+    "test_motion_interlocks.py exit 0"
+  ]
+}

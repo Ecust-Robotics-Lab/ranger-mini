@@ -1,0 +1,25 @@
+注意：这只是一次模拟！
+　　　apt-get 需要 root 特权进行实际的执行。
+　　　同时请记住此时并未锁定，所以请勿完全相信当前的情况！
+正在读取软件包列表...
+正在分析软件包的依赖关系树...
+正在读取状态信息...
+将会同时安装下列软件：
+  cpp-12 libasan8 libgcc-12-dev libtsan2
+建议安装：
+  gcc-12-locales cpp-12-doc gcc-12-multilib gcc-12-doc
+下列【新】软件包将被安装：
+  cpp-12 gcc-12 libasan8 libgcc-12-dev libtsan2
+升级了 0 个软件包，新安装了 5 个软件包，要卸载 0 个软件包，有 419 个软件包未被升级。
+Inst cpp-12 (12.3.0-1ubuntu1~22.04.3 Ubuntu:22.04/jammy-updates, Ubuntu:22.04/jammy-security [amd64])
+Inst libasan8 (12.3.0-1ubuntu1~22.04.3 Ubuntu:22.04/jammy-updates, Ubuntu:22.04/jammy-security [amd64])
+Inst libtsan2 (12.3.0-1ubuntu1~22.04.3 Ubuntu:22.04/jammy-updates, Ubuntu:22.04/jammy-security [amd64])
+Inst libgcc-12-dev (12.3.0-1ubuntu1~22.04.3 Ubuntu:22.04/jammy-updates, Ubuntu:22.04/jammy-security [amd64])
+Inst gcc-12 (12.3.0-1ubuntu1~22.04.3 Ubuntu:22.04/jammy-updates, Ubuntu:22.04/jammy-security [amd64])
+Conf cpp-12 (12.3.0-1ubuntu1~22.04.3 Ubuntu:22.04/jammy-updates, Ubuntu:22.04/jammy-security [amd64])
+Conf libasan8 (12.3.0-1ubuntu1~22.04.3 Ubuntu:22.04/jammy-updates, Ubuntu:22.04/jammy-security [amd64])
+Conf libtsan2 (12.3.0-1ubuntu1~22.04.3 Ubuntu:22.04/jammy-updates, Ubuntu:22.04/jammy-security [amd64])
+Conf libgcc-12-dev (12.3.0-1ubuntu1~22.04.3 Ubuntu:22.04/jammy-updates, Ubuntu:22.04/jammy-security [amd64])
+Conf gcc-12 (12.3.0-1ubuntu1~22.04.3 Ubuntu:22.04/jammy-updates, Ubuntu:22.04/jammy-security [amd64])
+
+EXIT=0

@@ -1,0 +1,42 @@
+{
+  "review_date": "2026-09-23",
+  "role": "first_run",
+  "data_classification": "VEHICLE_MOUNTED_FORMAL_LOOP",
+  "classification_basis": "用户 2026-09-23 确认 Mid-360S 已牢固安装回 Ranger Mini V2 后录制 bags/mid360-manual-loop-n2cgpiz0/raw（人工遥控低速闭环）。",
+  "installation_reported_by_user": {
+    "date": "2026-09-23",
+    "statement": "雷达在车顶中间，距车尾约 25 cm，离地约 60 cm，装平了",
+    "precision": "approximate, not calibrated; base_link origin convention not yet verified against ranger_ros2"
+  },
+  "three_dimensional": "PASS",
+  "three_dimensional_basis": "用户 2026-09-23 人工图审四张审查图（xy/3d/slices/height_histogram）结论：合格（墙体重影/闭环/地面/整体错位均无问题）。运行与结构检查 PASS（exit 0、49 关键帧、轨迹 z 跨度 0.117 m）；同包重建双向最近邻中位数 0.044 m。尺度未做独立核对：用户明确免除（见 measured_scale）。",
+  "wall_ghosting": "PASS",
+  "loop_alignment": "PASS",
+  "ground": "PASS",
+  "measured_scale": "WAIVED_BY_USER_NOT_INDEPENDENTLY_VERIFIED",
+  "measured_scale_note": "用户 2026-09-23 明确表示无需现场参考距离核对尺度，认为算法尺度可信。地图绝对尺度未与任何外部量测比对，此缺口如实保留，不写成 PASS。",
+  "reproducibility": "SAME_BAG_TWICE_MEDIAN_0P044M_ACCEPTED_WITH_REVIEW",
+  "two_dimensional": "NOT_RUN_IN_THIS_EXPERIMENT",
+  "two_dimensional_note": "二维 g2p5 在后续独立实验目录离线验证。用户 2026-09-23 提供：障碍物高度带 0.10–0.80 m 算障碍、雷达离地约 0.60 m、装平（固定地面平面模型）。",
+  "run_facts": {
+    "exit": 0,
+    "map_check": "PASS",
+    "keyframes": 49,
+    "global_points": 33936,
+    "optimized_path_length_m": 9.077,
+    "start_end_translation_m": 0.452,
+    "start_end_yaw_delta_deg": -4.27,
+    "trajectory_z_span_m": 0.117,
+    "max_loop_correction_m": 0.167,
+    "known_outliers_horizontal_gt_30m": [
+      [65.5, -5.29, 15.25],
+      [61.21, -13.5, 8.7]
+    ],
+    "known_outliers_note": "2 个远端离群点位于主体地图（0.pcd，33,933 点）之外，图审已知晓并接受"
+  },
+  "user_inputs": [
+    {"date": "2026-09-23", "item": "人工图审（四张审查图）", "result": "合格"},
+    {"date": "2026-09-23", "item": "现场量测参考距离", "result": "用户免除，不做独立尺度核对"},
+    {"date": "2026-09-23", "item": "安装 xyz/rpy", "result": "车顶中间、距车尾约 0.25 m、离地约 0.60 m、装平（约值，未精测）"}
+  ]
+}

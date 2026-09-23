@@ -1,0 +1,118 @@
+{
+  "status": "MAPPING_STAGE4_PIPELINE_COMPLETE_ONLINE_VERIFIED",
+  "updated": "2026-09-23",
+  "update_reason": "2026-09-23 三维验收完成（人工图审合格、安装约值已提供、尺度用户免除并如实记 WAIVED）；g2p5 二维图离线生成并验证（lightning-offline-suej7qsz）；在线管线静止验证完成（lightning-online-aea6vhyt：exit 0、保存服务首次实测 response=0、结构 PASS）。同日用户自行删除两个手持诊断实验目录（确认不再需要），其不通过正式建图验收的结论不变；对应 bag 与全部正式实验地图保留。",
+  "actual_maps": [
+    {
+      "path": "maps/lightning-offline-8k_qnpae",
+      "input_bag": "bags/mid360-manual-loop-n2cgpiz0/raw",
+      "classification": "VEHICLE_MOUNTED_FORMAL_LOOP",
+      "three_dimensional": "PASS",
+      "three_dimensional_basis": "user manual review 2026-09-23; measured_scale WAIVED_BY_USER_NOT_INDEPENDENTLY_VERIFIED",
+      "run_exit": 0,
+      "map_check_exit": 0,
+      "keyframes": 49,
+      "global_points": 33936
+    },
+    {
+      "path": "maps/lightning-offline-k2i9n8qw",
+      "input_bag": "bags/mid360-manual-loop-n2cgpiz0/raw",
+      "classification": "VEHICLE_MOUNTED_FORMAL_LOOP",
+      "three_dimensional": "PASS",
+      "three_dimensional_basis": "user manual review side-by-side 2026-09-23; measured_scale WAIVED_BY_USER",
+      "run_exit": 0,
+      "map_check_exit": 0,
+      "keyframes": 49,
+      "global_points": 27340,
+      "note": "same_bag_reproduction of lightning-offline-8k_qnpae; symmetric NN median 0.0439 m / p95 0.1192 m / max 0.6415 m"
+    },
+    {
+      "path": "maps/lightning-offline-suej7qsz",
+      "input_bag": "bags/mid360-manual-loop-n2cgpiz0/raw",
+      "classification": "VEHICLE_MOUNTED_FORMAL_LOOP_G2P5_2D",
+      "three_dimensional": "PASS_BY_REFERENCE",
+      "two_dimensional": "PASS_STRUCTURAL_AND_LOCAL_CONSISTENCY",
+      "config": "config/slam/ranger_mid360s_g2p5.yaml",
+      "run_exit": 0,
+      "map_check_exit": 0,
+      "keyframes": 49,
+      "global_points": 27321,
+      "grid": {"resolution_m": 0.05, "width": 528, "height": 560, "occupied": 1201, "free": 10597, "unknown": 283882},
+      "note": "g2p5 inputs from user 2026-09-23: obstacle band 0.10-0.80 m, level mount, floor/lidar_height=-/+0.556 m (IMU frame, 0.60-0.04412)"
+    },
+    {
+      "path": "maps/lightning-online-aea6vhyt",
+      "input_bag": null,
+      "classification": "ONLINE_LIVE_STREAM_STATIONARY_VEHICLE",
+      "purpose": "online pipeline verification (subscribe -> process -> save service -> clean exit)",
+      "online_pipeline": "PASS",
+      "save_service_exit": 0,
+      "run_exit": 0,
+      "map_check_exit": 0,
+      "keyframes": 1,
+      "global_points": 2317,
+      "note": "stationary vehicle, ~120 s; single-keyframe scan, NOT a mapping-quality map; formal maps remain the offline experiments"
+    }
+  ],
+  "deleted_handheld_experiments": {
+    "deleted_date": "2026-09-23",
+    "deleted_by": "user",
+    "user_reason": "手持诊断实验不再需要",
+    "conclusion_unchanged": "不通过正式建图验收；不得作为任何后续阶段依据",
+    "bag_retained": "bags/mid360-manual-loop-4uwmxbzb/raw",
+    "former_entries": [
+      {
+        "path": "maps/lightning-offline-t_4fi98t (deleted)",
+        "input_bag": "bags/mid360-manual-loop-4uwmxbzb/raw",
+        "classification": "HANDHELD_DIAGNOSTIC_NOT_FORMAL_MAPPING",
+        "three_dimensional": "NOT_ACCEPTED_HANDHELD_DATA",
+        "formal_mapping_acceptance": "NOT_PASSED_INELIGIBLE_DATA",
+        "run_exit": 0,
+        "map_check_exit": 0,
+        "keyframes": 35,
+        "global_points": 22634
+      },
+      {
+        "path": "maps/lightning-offline-7dwk87rr (deleted)",
+        "input_bag": "bags/mid360-manual-loop-4uwmxbzb/raw",
+        "classification": "HANDHELD_DIAGNOSTIC_NOT_FORMAL_MAPPING",
+        "three_dimensional": "NOT_ACCEPTED_HANDHELD_DATA",
+        "formal_mapping_acceptance": "NOT_PASSED_INELIGIBLE_DATA",
+        "run_exit": 0,
+        "map_check_exit": 0,
+        "keyframes": 35,
+        "global_points": 21964,
+        "note": "same_bag_reproduction of lightning-offline-t_4fi98t"
+      }
+    ]
+  },
+  "static_bag": "/home/lab307/ranger_nav/bags/mid360-static-qg8qtyiv/raw",
+  "handheld_diagnostic_bag": {
+    "path": "/home/lab307/ranger_nav/bags/mid360-manual-loop-4uwmxbzb/raw",
+    "classification": "HANDHELD_DIAGNOSTIC_NOT_FORMAL_MAPPING",
+    "duration_s": 49.981,
+    "lidar_frames": 500,
+    "imu_messages": 9996,
+    "raw_points": 9999072,
+    "chassis_topics_present": false,
+    "tf_present": false
+  },
+  "formal_vehicle_bag": {
+    "path": "/home/lab307/ranger_nav/bags/mid360-manual-loop-n2cgpiz0/raw",
+    "classification": "VEHICLE_MOUNTED_FORMAL_LOOP",
+    "duration_s": 94.99,
+    "lidar_frames": 950,
+    "imu_messages": 18995,
+    "raw_points": 18997056,
+    "record_exit": 0,
+    "input_check_exit": 0,
+    "offset_reversals": 122536,
+    "chassis_topics_present": false,
+    "tf_present": false
+  },
+  "three_dimensional": "PASS (user manual review 2026-09-23; scale NOT independently verified - user waived)",
+  "two_dimensional": "GENERATED_AND_VERIFIED_OFFLINE (maps/lightning-offline-suej7qsz, map.pgm + map.yaml at 0.05 m); online g2p5 path also exercised in lightning-online-aea6vhyt",
+  "online": "PIPELINE_VERIFIED_STATIONARY (maps/lightning-online-aea6vhyt; online MAPPING with vehicle motion NOT yet run)",
+  "reproducibility": "SAME_BAG_TWICE_MEDIAN_0P044M_REVIEW_REQUIRED",
+  "not_navigation_or_ramp_acceptance": true
+}

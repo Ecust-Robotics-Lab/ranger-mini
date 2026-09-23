@@ -1,0 +1,11 @@
+python3 analyze.py > analysis.json
+EXIT=0
+['dpkg-query', '-W', '-f=${Package}\t${Version}\n', 'can-utils']
+can-utils	2020.11.0-1
+
+EXIT=0
+['sha256sum', '/usr/bin/candump']
+e33939c5f2afd7977de0ec1f91d6c8d921cfe4ef3212c918c0cafdb17c218606  /usr/bin/candump
+
+EXIT=0
+Updated documentation links/source line bounds checked: PASS

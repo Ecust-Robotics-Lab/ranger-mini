@@ -188,6 +188,19 @@ bash scripts/nav_safety.sh disable      # 撤销许可
 bash scripts/run_navigation.sh --stop
 ```
 
+**Foxglove 点选目标（已离线验证 goal_pose→导航链路）**：布局添加 Publish 面板，
+Topic `/goal_pose`、类型 `geometry_msgs/PoseStamped`、JSON 模板：
+```json
+{"header":{"frame_id":"map","stamp":{"sec":0,"nanosec":0}},
+ "pose":{"position":{"x":-0.6,"y":1.9,"z":0},
+         "orientation":{"x":0,"y":0,"z":0,"w":1}}}
+```
+（frame_id 必须 map；新版 Foxglove 支持在 3D 视图点击放置，否则手改 x/y 后点
+Publish。）**点击即发车，无确认弹窗**——点错立即 `nav_safety.sh estop` 或
+`send_nav_goal.py --cancel`。朝向说明：点击默认朝东（identity 四元数），开阔区
+可到达；如需指定朝向手填 z=sin(yaw/2)、w=cos(yaw/2)。该入口与命令行等价，
+不绕过许可/急停/防撞任何一道门禁。
+
 真机测试顺序（按用户七：隔离平坦空旷区、确认后的很低速度起步）：
 1. 0.15 m/s 限速下 1–2 m 短距直行目标（改 config/motion_gate.yaml max_vx 收紧）；
 2. 缓弯目标；3. 取消目标（观察停车）；4. 静态软障碍（纸箱）接近停车；

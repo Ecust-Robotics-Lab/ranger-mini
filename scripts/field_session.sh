@@ -4,7 +4,7 @@
 #
 # 用法：
 #   bash scripts/field_session.sh             # 干跑：只打印将启动的组件与命令
-#   bash scripts/field_session.sh --execute   # 实际打开标签页启动
+#   bash scripts/field_session.sh --execute   # 有桌面→标签页；SSH/无桌面→后台进程+日志
 #   bash scripts/field_session.sh --status    # 查看各组件运行状态
 #   bash scripts/field_session.sh --stop      # 按精确模式逐组件停止
 #
@@ -114,21 +114,39 @@ if [ "$EXEC" = "-2" ]; then
     exit 0
 fi
 
-# ---- 启动（gnome-terminal 标签页）------------------------------------
-command -v gnome-terminal > /dev/null || { echo "无 gnome-terminal（本脚本需桌面会话内运行）"; exit 1; }
-echo "== 启动 ${#NAMES[@]} 个标签页：${NAMES[*]} =="
-echo "== 车应在建图起点附近；ENABLE_BASE 启动底盘驱动会发 CAN 控制模式配置 =="
-first=1
-for i in "${!NAMES[@]}"; do
-    title="${NAMES[$i]}"
-    cmd="${CMDS[$i]}"
-    if [ "$first" = "1" ]; then
-        gnome-terminal --window --title="$title" -- bash -c "$cmd"
-        first=0
-    else
-        gnome-terminal --tab --title="$title" -- bash -c "$cmd"
-    fi
-    sleep 1   # 标签按依赖顺序错开启动，便于阅读各自日志
-done
+# ---- 启动 --------------------------------------------------------------
+# 无桌面/SSH 场景（车机常无显示）：gnome-terminal 不可用时自动改后台模式，
+# 组件日志逐个落在 /tmp/ranger_session/<组件名>.log（--stop/--status 通用）。
+LOGDIR=/tmp/ranger_session
+mkdir -p "$LOGDIR"
+
+if command -v gnome-terminal > /dev/null && [ -n "${DISPLAY:-}" ]; then
+    echo "== 启动 ${#NAMES[@]} 个标签页：${NAMES[*]} =="
+    echo "== 车应在建图起点附近；ENABLE_BASE 启动底盘驱动会发 CAN 控制模式配置 =="
+    first=1
+    for i in "${!NAMES[@]}"; do
+        title="${NAMES[$i]}"
+        cmd="${CMDS[$i]}"
+        if [ "$first" = "1" ]; then
+            gnome-terminal --window --title="$title" -- bash -c "$cmd"
+            first=0
+        else
+            gnome-terminal --tab --title="$title" -- bash -c "$cmd"
+        fi
+        sleep 1   # 标签按依赖顺序错开启动，便于阅读各自日志
+    done
+else
+    echo "== 无桌面会话（DISPLAY 未设置或无 gnome-terminal）→ 后台模式 =="
+    echo "== 日志: $LOGDIR/<组件>.log；查看: tail -f $LOGDIR/B-base.log =="
+    echo "== 车应在建图起点附近；ENABLE_BASE 启动底盘驱动会发 CAN 控制模式配置 =="
+    for i in "${!NAMES[@]}"; do
+        title="${NAMES[$i]}"
+        # 去掉标签页专用的 'exec bash' 尾巴，避免后台残留交互 shell
+        cmd="${CMDS[$i]%"; exec bash"}"
+        nohup bash -c "$cmd" > "$LOGDIR/${title}.log" 2>&1 &
+        echo "[${title}] 后台启动 pid=$! 日志=$LOGDIR/${title}.log"
+        sleep 1   # 按依赖顺序错开启动
+    done
+fi
 echo "== 完成。就绪检查: ros2 topic echo /navigation_ready --once（期望 data: true）=="
 echo "== Foxglove: ws://<本机IP>:8765，Fixed Frame=map，加 /map、TF、/livox/points_rviz =="

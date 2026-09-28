@@ -84,4 +84,4 @@
 - 成功证据：docs/mid360_ip_connected_20260914.txt；原配置/激活日志及回滚：/var/lib/ranger-nav-yt6801/connect-jQpZBTzH/。
 - 雷达 UDP/ROS 等后续阶段尚未授权；雷达临时连接持久化尚未实施。
 
-交接：docs/HANDOFF.md 原文是阶段 2 之前的历史交接。当前已授权阶段 5（完成，剩两项 PENDING 见顶部阶段 5 节）；主仓库与四个上游源码仓库均已 git 化——源码本地修改提交在各仓库 `ranger-local` 本地分支（lightning@b973e7f 基点 1325fed8、ranger_ros2@7b75bc2 基点 b6ea21a2、ugv_sdk@e2f5764 基点 f2704eac、livox_ros_driver2@cc34f0a 基点 4a1def92；SDK2 与审查副本保持干净 detached HEAD），完整记录见 [source_versions.json](04_evidence/source_versions.json)；主仓库基线 commit c833632（bags/ 与第三方源码不入库，补丁以 patches/ 追踪）。后续阶段不自动推进，底盘运动许可不跨进程重启。
+交接：docs/HANDOFF.md 原文是阶段 2 之前的历史交接。当前已授权阶段 5（完成，剩两项 PENDING 见顶部阶段 5 节）；主仓库与四个上游源码仓库均已 git 化——源码本地修改提交在各仓库 `ranger-local` 本地分支（lightning@b973e7f 基点 1325fed8、ranger_ros2@7b75bc2 基点 b6ea21a2、ugv_sdk@e2f5764 基点 f2704eac、livox_ros_driver2@cc34f0a 基点 4a1def92；SDK2 与审查副本保持干净 detached HEAD），完整记录见 [source_versions.json](04_evidence/source_versions.json)；主仓库最新 commit 15d71e9（bags/ 与第三方源码不入库，补丁以 patches/ 追踪）。**现场一键启动**：`bash scripts/field_session.sh [--execute|--status|--stop]`，参数在 [config/field_session.env](../config/field_session.env)（组件开关/雷达时限/初始位姿/外参/桥接阈值）。后续阶段不自动推进，底盘运动许可不跨进程重启。

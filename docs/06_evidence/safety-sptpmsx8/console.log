@@ -1,0 +1,92 @@
+PASS T0.no_chassis_driver_running | pids=[]（测试在隔离 domain，仍拒绝与真机驱动同跑）
+PASS T0.no_stale_chain_processes | pids=[]（前次运行残留会假失败/假通过——先清理再测）
+PASS T12.radius_ordering | chassis 0.4764 < gate 0.55 <= smac/mppi 0.6
+PASS T12.velocity_ordering | gate 0.2 <= mppi 0.2 <= smoother 0.25
+PASS T12.forward_only | 三重禁倒车: MPPI vx_min>=0, smoother min>=0, Smac DUBIN
+PASS T12.unknown_not_traversable | allow_unknown=false + track_unknown_space=true
+PASS T12.cm_final_topic | /base/safe_cmd_vel
+PASS T12.footprint_envelope | 0.74×0.52 外包络（用户确认）: half=0.37×0.26
+PASS T12.bt_no_recovery | v1 BT 无倒车/原地旋转/等待/清图恢复节点
+PASS T12.recorders_no_control_topics | 录像脚本不含 cmd_vel 链话题: clean
+[INFO] [1790576752.222456901] [static_transform_publisher_2AEyKkgVlUTVN60r]: Spinning until stopped - publishing transform
+translation: ('0.000000', '0.000000', '0.600000')
+rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
+from 'base_link' to 'livox_frame'
+[INFO] [1790576752.223507364] [static_transform_publisher_IDKuDjylr33rNBfl]: Spinning until stopped - publishing transform
+translation: ('0.000000', '0.000000', '0.000000')
+rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
+from 'map' to 'odom'
+[INFO] [1790576752.224431364] [static_transform_publisher_rfHJT1EtNWVlHwjH]: Spinning until stopped - publishing transform
+translation: ('0.000000', '0.000000', '0.000000')
+rotation: ('0.000000', '0.000000', '0.707107', '0.707107')
+from 'odom' to 'base_link'
+PASS T0.stack_active | 4.5s 出现首条 /base/safe_cmd_vel
+PASS T1.permission_off_blocks | max|vx|=0.0000
+PASS T2.enable_flows | max|vx|=0.120
+PASS T3.nav_not_ready_blocks | 0.04s 归零
+PASS T3.ready_restores
+PASS T4.cloud_stale_blocks | 0.99s 归零（补偿 CM fail-open）
+PASS T4.cloud_restores
+PASS T5.cmd_stale_stops | 0.03s 归零
+PASS T5.cmd_restores
+PASS T6.estop_stops_fast | 0.02s 归零
+PASS T7.estop_clear_resumes
+PASS T8.obstacle_stops | 0.12s CM 停车
+PASS T8.ground_point_ignored | 带内障碍停、地面点(带外)不误刹
+FAIL T11.unique_final_publisher | Publisher count=1
+FAIL T14.mppi_runtime | MPPI 运行时: Ackermann + min_turning_r 0.6 + vx_max 0.2
+FAIL T14.smac_runtime | Smac 运行时: DUBIN + 0.6 半径 + 禁未知
+FAIL T14.costmap_runtime | 局部代价地图运行时: /livox/obstacles + 0.10–0.80 高度带
+FAIL T14.cm_runtime | CM 运行时: 输出直达底盘 + 1 点即停
+PASS T10.precondition_flowing
+PASS T10.gate_restart_no_auto_permission | 门禁重启后许可复位 False；final_max=0.0000 gated_max=0.0000（明细 t10_deques/t10_topic_info/t10_pre_kill）
+PASS T10.reenable_restores
+T13 goal: (-0.73, 1.83) yaw 112deg (clearance-score 0.71)
+[INFO] [1790577131.769290973] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[INFO] [1790577131.769500164] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[INFO] [1790577131.769523739] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 320, in wait
+    waiter.acquire()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 607, in wait
+    signaled = self._cond.wait(timeout)
+  File "/usr/lib/python3.10/threading.py", line 320, in wait
+    waiter.acquire()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_stage6_safety.py", line 428, in main
+    ['ros2', 'launch', 'ranger_navigation', 'navigation.launch.py',
+  File "/home/lab307/ranger_nav/tests/test_stage6_safety.py", line 651, in _run_phases
+    check('T10.precondition_flowing', sim.wait_flow(sim.final, 0.10, 10.0))
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/action/client.py", line 417, in send_goal
+    result = self._get_result(goal_handle)
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/action/client.py", line 543, in _get_result
+    event.wait()
+  File "/usr/lib/python3.10/threading.py", line 604, in wait
+    with self._cond:
+  File "/usr/lib/python3.10/threading.py", line 268, in __exit__
+    return self._lock.__exit__(*args)
+RuntimeError: release unlocked lock
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_stage6_safety.py", line 705, in <module>
+    n_final_before = len(sim.final)
+  File "/home/lab307/ranger_nav/tests/test_stage6_safety.py", line 457, in main
+    try:
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/__init__.py", line 130, in shutdown
+    _shutdown(context=context)
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/utilities.py", line 58, in shutdown
+    return context.shutdown()
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/context.py", line 102, in shutdown
+    self.__context.shutdown()
+rclpy._rclpy_pybind11.RCLError: failed to shutdown: rcl_shutdown already called on the given context, at ./src/rcl/init.c:241

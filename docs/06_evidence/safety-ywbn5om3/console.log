@@ -1,0 +1,41 @@
+PASS T0.no_chassis_driver_running | pids=[]（测试在隔离 domain，仍拒绝与真机驱动同跑）
+PASS T0.no_stale_chain_processes | pids=[]（前次运行残留会假失败/假通过——先清理再测）
+PASS T12.radius_ordering | chassis 0.4764 < gate 0.55 <= smac/mppi 0.6
+PASS T12.velocity_ordering | gate 0.2 <= mppi 0.2 <= smoother 0.25
+PASS T12.forward_only | 三重禁倒车: MPPI vx_min>=0, smoother min>=0, Smac DUBIN
+PASS T12.unknown_not_traversable | allow_unknown=false + track_unknown_space=true
+PASS T12.cm_final_topic | /base/safe_cmd_vel
+PASS T12.footprint_envelope | 0.74×0.52 外包络（用户确认）: half=0.37×0.26
+PASS T12.bt_no_recovery | v1 BT 无倒车/原地旋转/等待/清图恢复节点
+PASS T12.recorders_no_control_topics | 录像脚本(python+shell)不含 cmd_vel 链话题: clean
+[INFO] [1790585190.869943416] [static_transform_publisher_um4nNV0SrlkobVvG]: Spinning until stopped - publishing transform
+translation: ('0.000000', '0.000000', '0.600000')
+rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
+from 'base_link' to 'livox_frame'
+[INFO] [1790585190.873898219] [static_transform_publisher_WjzjsADPfQXSYev8]: Spinning until stopped - publishing transform
+translation: ('0.000000', '0.000000', '0.000000')
+rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
+from 'map' to 'odom'
+[INFO] [1790585190.873954750] [static_transform_publisher_X8ndy1ywR0056H37]: Spinning until stopped - publishing transform
+translation: ('0.000000', '0.000000', '0.000000')
+rotation: ('0.000000', '0.000000', '0.707107', '0.707107')
+from 'odom' to 'base_link'
+PASS T0.stack_active | 1.5s 出现首条 /base/safe_cmd_vel
+PASS T1.permission_off_blocks | max|vx|=0.0000
+FAIL T2.enable_flows | max|vx|=0.000
+FAIL T3.nav_not_ready_blocks | 前置/结果异常: noflow
+FAIL T3.ready_restores
+FAIL T4.cloud_stale_blocks | 前置/结果异常: noflow
+FAIL T4.cloud_restores
+FAIL T5.cmd_stale_stops | 前置/结果异常: noflow
+FAIL T5.cmd_restores
+FAIL T6.estop_stops_fast | 前置/结果异常: noflow
+FAIL T7.estop_clear_resumes
+FAIL T8.obstacle_stops | 前置/结果异常: noflow
+FAIL T8.ground_point_ignored | 带内障碍停、地面点(带外)不误刹
+PASS T11.unique_final_publisher | rclpy count_publishers(/base/safe_cmd_vel)=1（唯一性；身份=CM 由 T9 因果性证明，CLI 明细留档 t11_topic_info.txt）
+FAIL T0.phases_completed_without_exception | AttributeError: 'ParameterValue' object has no attribute 'TYPE_DOUBLE'
+
+13/25 checks passed
+FAILED: T2.enable_flows, T3.nav_not_ready_blocks, T3.ready_restores, T4.cloud_stale_blocks, T4.cloud_restores, T5.cmd_stale_stops, T5.cmd_restores, T6.estop_stops_fast, T7.estop_clear_resumes, T8.obstacle_stops, T8.ground_point_ignored, T0.phases_completed_without_exception
+evidence: /home/lab307/ranger_nav/docs/06_evidence/safety-ywbn5om3

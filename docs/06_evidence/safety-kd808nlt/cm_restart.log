@@ -1,0 +1,29 @@
+[INFO] [1790571677.849518915] [collision_monitor]: 
+	collision_monitor lifecycle node launched. 
+	Waiting on external lifecycle transitions to activate
+	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[WARN] [1790571678.895896634] [rcl_lifecycle]: No transition matching 4 found for current state unconfigured
+[WARN] [1790571678.895997560] [rcl_lifecycle]: No transition matching 4 found for current state unconfigured
+[ERROR] [1790571678.896018274] [collision_monitor]: Unable to start transition 4 from current state unconfigured: Transition is not registered., at ./src/rcl_lifecycle.c:355
+[WARN] [1790571680.200206856] [rcl_lifecycle]: No transition matching 2 found for current state unconfigured
+[WARN] [1790571680.200271951] [rcl_lifecycle]: No transition matching 2 found for current state unconfigured
+[ERROR] [1790571680.200281388] [collision_monitor]: Unable to start transition 2 from current state unconfigured: Transition is not registered., at ./src/rcl_lifecycle.c:355
+[INFO] [1790571680.999522275] [collision_monitor]: Configuring
+[INFO] [1790571681.006195311] [collision_monitor]: [PolygonStop]: Creating Polygon
+[INFO] [1790571681.008189124] [collision_monitor]: [FootprintApproach]: Creating Polygon
+[INFO] [1790571681.010039604] [collision_monitor]: [cloud]: Creating PointCloud
+[WARN] [1790571682.159760402] [rcl_lifecycle]: No transition matching 1 found for current state inactive
+[WARN] [1790571682.159778490] [rcl_lifecycle]: No transition matching 1 found for current state inactive
+[ERROR] [1790571682.159781888] [collision_monitor]: Unable to start transition 1 from current state inactive: Transition is not registered., at ./src/rcl_lifecycle.c:355
+[INFO] [1790571682.971764735] [collision_monitor]: Activating
+[INFO] [1790571682.972088403] [collision_monitor]: Creating bond (collision_monitor) to lifecycle manager.
+[WARN] [1790571830.524014371] [rcl_lifecycle]: No transition matching 1 found for current state active
+[WARN] [1790571830.524077952] [rcl_lifecycle]: No transition matching 1 found for current state active
+[ERROR] [1790571830.524087197] [collision_monitor]: Unable to start transition 1 from current state active: Transition is not registered., at ./src/rcl_lifecycle.c:355
+[WARN] [1790571978.187589687] [rcl_lifecycle]: No transition matching configure found for current state active
+[WARN] [1790572053.674342124] [rcl_lifecycle]: No transition matching 1 found for current state active
+[WARN] [1790572053.674455240] [rcl_lifecycle]: No transition matching 1 found for current state active
+[ERROR] [1790572053.674487809] [collision_monitor]: Unable to start transition 1 from current state active: Transition is not registered., at ./src/rcl_lifecycle.c:355
+[WARN] [1790572053.675696209] [rcl_lifecycle]: No transition matching 3 found for current state active
+[WARN] [1790572053.675766716] [rcl_lifecycle]: No transition matching 3 found for current state active
+[ERROR] [1790572053.675782716] [collision_monitor]: Unable to start transition 3 from current state active: Transition is not registered., at ./src/rcl_lifecycle.c:355

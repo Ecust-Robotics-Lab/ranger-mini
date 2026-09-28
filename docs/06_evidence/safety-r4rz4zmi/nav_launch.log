@@ -1,0 +1,562 @@
+[INFO] [launch]: All log files can be found below /home/lab307/.ros/log/2026-09-28-14-14-58-913424-lab307-Thunderobot-MIX-G2-17647
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [obstacle_filter-1]: process started with pid [17685]
+[INFO] [motion_gate-2]: process started with pid [17687]
+[INFO] [twist_mux-3]: process started with pid [17689]
+[INFO] [velocity_smoother-4]: process started with pid [17691]
+[INFO] [collision_monitor-5]: process started with pid [17693]
+[INFO] [map_server-6]: process started with pid [17695]
+[INFO] [planner_server-7]: process started with pid [17697]
+[INFO] [controller_server-8]: process started with pid [17699]
+[INFO] [bt_navigator-9]: process started with pid [17701]
+[INFO] [lifecycle_manager-10]: process started with pid [17703]
+[twist_mux-3] [0m[INFO] [1790576098.958471291] [twist_mux]: Topic handler 'topics.keyboard' subscribed to topic '/teleop/cmd_vel': timeout = 0.500000s , priority = 90.[0m
+[twist_mux-3] [0m[INFO] [1790576098.959450326] [twist_mux]: Topic handler 'topics.navigation' subscribed to topic '/cmd_vel_nav': timeout = 0.500000s , priority = 10.[0m
+[lifecycle_manager-10] [0m[INFO] [1790576098.966942343] [lifecycle_manager_navigation]: Creating[0m
+[lifecycle_manager-10] [0m[INFO] [1790576098.968490650] [lifecycle_manager_navigation]: [34m[1mCreating and initializing lifecycle service clients[0m[0m[0m
+[bt_navigator-9] [0m[INFO] [1790576098.968624647] [bt_navigator]: 
+[bt_navigator-9] 	bt_navigator lifecycle node launched. 
+[bt_navigator-9] 	Waiting on external lifecycle transitions to activate
+[bt_navigator-9] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.[0m
+[bt_navigator-9] [0m[INFO] [1790576098.968694976] [bt_navigator]: Creating[0m
+[controller_server-8] [0m[INFO] [1790576098.969433187] [controller_server]: 
+[controller_server-8] 	controller_server lifecycle node launched. 
+[controller_server-8] 	Waiting on external lifecycle transitions to activate
+[controller_server-8] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.[0m
+[planner_server-7] [0m[INFO] [1790576098.969572541] [planner_server]: 
+[planner_server-7] 	planner_server lifecycle node launched. 
+[planner_server-7] 	Waiting on external lifecycle transitions to activate
+[planner_server-7] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.[0m
+[collision_monitor-5] [0m[INFO] [1790576098.969609024] [collision_monitor]: 
+[collision_monitor-5] 	collision_monitor lifecycle node launched. 
+[collision_monitor-5] 	Waiting on external lifecycle transitions to activate
+[collision_monitor-5] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.[0m
+[velocity_smoother-4] [0m[INFO] [1790576098.969601045] [velocity_smoother]: 
+[velocity_smoother-4] 	velocity_smoother lifecycle node launched. 
+[velocity_smoother-4] 	Waiting on external lifecycle transitions to activate
+[velocity_smoother-4] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.[0m
+[planner_server-7] [0m[INFO] [1790576098.970409543] [planner_server]: Creating[0m
+[map_server-6] [0m[INFO] [1790576098.970922114] [map_server]: 
+[map_server-6] 	map_server lifecycle node launched. 
+[map_server-6] 	Waiting on external lifecycle transitions to activate
+[map_server-6] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.[0m
+[map_server-6] [0m[INFO] [1790576098.971027724] [map_server]: Creating[0m
+[controller_server-8] [0m[INFO] [1790576098.972201013] [controller_server]: Creating controller server[0m
+[planner_server-7] [0m[INFO] [1790576098.977213366] [global_costmap.global_costmap]: 
+[planner_server-7] 	global_costmap lifecycle node launched. 
+[planner_server-7] 	Waiting on external lifecycle transitions to activate
+[planner_server-7] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.[0m
+[planner_server-7] [0m[INFO] [1790576098.977500017] [global_costmap.global_costmap]: Creating Costmap[0m
+[controller_server-8] [0m[INFO] [1790576098.979905630] [local_costmap.local_costmap]: 
+[controller_server-8] 	local_costmap lifecycle node launched. 
+[controller_server-8] 	Waiting on external lifecycle transitions to activate
+[controller_server-8] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.[0m
+[controller_server-8] [0m[INFO] [1790576098.980126892] [local_costmap.local_costmap]: Creating Costmap[0m
+[obstacle_filter-1] [0m[INFO] [1790576099.124388096] [ranger_obstacle_filter]: obstacle filter up: range [0.3, 12.0] m, self_radius_xy 0.35 m[0m
+[lifecycle_manager-10] [0m[INFO] [1790576099.141039991] [lifecycle_manager_navigation]: [34m[1mStarting managed nodes bringup...[0m[0m[0m
+[lifecycle_manager-10] [0m[INFO] [1790576099.141085146] [lifecycle_manager_navigation]: [34m[1mConfiguring collision_monitor[0m[0m[0m
+[collision_monitor-5] [0m[INFO] [1790576099.141253546] [collision_monitor]: Configuring[0m
+[motion_gate-2] [0m[INFO] [1790576099.141713399] [ranger_motion_gate]: ranger_motion_gate up: permission=False (issue motion_enable:=true to arm); max_vx=0.2 max_wz=0.6 min_turn_radius=0.55[0m
+[collision_monitor-5] [0m[INFO] [1790576099.143710416] [collision_monitor]: [PolygonStop]: Creating Polygon[0m
+[collision_monitor-5] [0m[INFO] [1790576099.144550092] [collision_monitor]: [FootprintApproach]: Creating Polygon[0m
+[collision_monitor-5] [0m[INFO] [1790576099.145173444] [collision_monitor]: [cloud]: Creating PointCloud[0m
+[lifecycle_manager-10] [0m[INFO] [1790576099.147062907] [lifecycle_manager_navigation]: [34m[1mConfiguring map_server[0m[0m[0m
+[map_server-6] [0m[INFO] [1790576099.147297651] [map_server]: Configuring[0m
+[map_server-6] [0m[INFO] [1790576099.147333058] [map_io]: Loading yaml file: /home/lab307/ranger_nav/maps/lightning-offline-suej7qsz/data/new_map/nav/map_nav.yaml[0m
+[map_server-6] [0m[INFO] [1790576099.147465303] [map_io]: resolution: 0.05[0m
+[map_server-6] [0m[INFO] [1790576099.147469240] [map_io]: origin[0]: -5.15[0m
+[map_server-6] [0m[INFO] [1790576099.147472107] [map_io]: origin[1]: -14.95[0m
+[map_server-6] [0m[INFO] [1790576099.147474549] [map_io]: origin[2]: 0[0m
+[map_server-6] [0m[INFO] [1790576099.147477219] [map_io]: free_thresh: 0.25[0m
+[map_server-6] [0m[INFO] [1790576099.147479549] [map_io]: occupied_thresh: 0.65[0m
+[map_server-6] [0m[INFO] [1790576099.147482263] [map_io]: mode: trinary[0m
+[map_server-6] [0m[INFO] [1790576099.147484601] [map_io]: negate: 0[0m
+[map_server-6] [0m[INFO] [1790576099.147584384] [map_io]: Loading image_file: /home/lab307/ranger_nav/maps/lightning-offline-suej7qsz/data/new_map/nav/map_nav.pgm[0m
+[map_server-6] [0m[INFO] [1790576099.159853011] [map_io]: Read map /home/lab307/ranger_nav/maps/lightning-offline-suej7qsz/data/new_map/nav/map_nav.pgm: 528 X 560 map @ 0.05 m/cell[0m
+[lifecycle_manager-10] [0m[INFO] [1790576099.161993458] [lifecycle_manager_navigation]: [34m[1mConfiguring planner_server[0m[0m[0m
+[planner_server-7] [0m[INFO] [1790576099.162103717] [planner_server]: Configuring[0m
+[planner_server-7] [0m[INFO] [1790576099.162125451] [global_costmap.global_costmap]: Configuring[0m
+[planner_server-7] [0m[INFO] [1790576099.164191672] [global_costmap.global_costmap]: Using plugin "static_layer"[0m
+[planner_server-7] [0m[INFO] [1790576099.165533051] [global_costmap.global_costmap]: Subscribing to the map topic (/map) with transient local durability[0m
+[planner_server-7] [0m[INFO] [1790576099.165991702] [global_costmap.global_costmap]: Initialized plugin "static_layer"[0m
+[planner_server-7] [0m[INFO] [1790576099.166004512] [global_costmap.global_costmap]: Using plugin "inflation_layer"[0m
+[planner_server-7] [0m[INFO] [1790576099.166212546] [global_costmap.global_costmap]: Initialized plugin "inflation_layer"[0m
+[planner_server-7] [0m[INFO] [1790576099.171795670] [planner_server]: Created global planner plugin GridBased of type nav2_smac_planner/SmacPlannerHybrid[0m
+[planner_server-7] [0m[INFO] [1790576099.171813980] [planner_server]: Configuring GridBased of type SmacPlannerHybrid[0m
+[planner_server-7] [0m[INFO] [1790576099.172148544] [planner_server]: Even sized heuristic lookup table size set 400.000000, increasing size by 1 to make odd[0m
+[planner_server-7] [0m[INFO] [1790576100.006444906] [planner_server]: Configured plugin GridBased of type SmacPlannerHybrid with maximum iterations 1000000, max on approach iterations 1000, and not allowing unknown traversal. Tolerance 0.25.Using motion model: Dubin.[0m
+[planner_server-7] [0m[INFO] [1790576100.006496692] [planner_server]: Planner Server has GridBased  planners available.[0m
+[lifecycle_manager-10] [0m[INFO] [1790576100.009738488] [lifecycle_manager_navigation]: [34m[1mConfiguring controller_server[0m[0m[0m
+[controller_server-8] [0m[INFO] [1790576100.009997197] [controller_server]: Configuring controller interface[0m
+[controller_server-8] [0m[INFO] [1790576100.010099800] [controller_server]: getting goal checker plugins..[0m
+[controller_server-8] [0m[INFO] [1790576100.010183427] [controller_server]: Controller frequency set to 20.0000Hz[0m
+[controller_server-8] [0m[INFO] [1790576100.010214376] [local_costmap.local_costmap]: Configuring[0m
+[controller_server-8] [0m[INFO] [1790576100.013470195] [local_costmap.local_costmap]: Using plugin "obstacle_layer"[0m
+[controller_server-8] [0m[INFO] [1790576100.015772553] [local_costmap.local_costmap]: Subscribed to Topics: cloud[0m
+[controller_server-8] [0m[INFO] [1790576100.017020301] [local_costmap.local_costmap]: Initialized plugin "obstacle_layer"[0m
+[controller_server-8] [0m[INFO] [1790576100.017035265] [local_costmap.local_costmap]: Using plugin "inflation_layer"[0m
+[controller_server-8] [0m[INFO] [1790576100.017284245] [local_costmap.local_costmap]: Initialized plugin "inflation_layer"[0m
+[controller_server-8] [0m[INFO] [1790576100.020508247] [controller_server]: Created progress_checker : progress_checker of type nav2_controller::SimpleProgressChecker[0m
+[controller_server-8] [0m[INFO] [1790576100.020698035] [controller_server]: Created goal checker : goal_checker of type nav2_controller::SimpleGoalChecker[0m
+[controller_server-8] [0m[INFO] [1790576100.020769171] [controller_server]: Controller Server has goal_checker  goal checkers available.[0m
+[controller_server-8] [0m[INFO] [1790576100.021127000] [controller_server]: Created controller : FollowPath of type nav2_mppi_controller::MPPIController[0m
+[controller_server-8] [0m[INFO] [1790576100.021497251] [controller_server]: Controller period is equal to model dt. Control sequence shifting is ON[0m
+[controller_server-8] [0m[INFO] [1790576100.023396049] [controller_server]: Optimizer reset[0m
+[controller_server-8] [0m[INFO] [1790576100.024440459] [MPPIController]: Configured MPPI Controller: FollowPath[0m
+[controller_server-8] [0m[INFO] [1790576100.024453577] [controller_server]: Controller Server has FollowPath  controllers available.[0m
+[lifecycle_manager-10] [0m[INFO] [1790576100.027990729] [lifecycle_manager_navigation]: [34m[1mConfiguring bt_navigator[0m[0m[0m
+[bt_navigator-9] [0m[INFO] [1790576100.028156804] [bt_navigator]: Configuring[0m
+[lifecycle_manager-10] [0m[INFO] [1790576100.047168347] [lifecycle_manager_navigation]: [34m[1mConfiguring velocity_smoother[0m[0m[0m
+[velocity_smoother-4] [0m[INFO] [1790576100.047395524] [velocity_smoother]: Configuring velocity smoother[0m
+[lifecycle_manager-10] [0m[INFO] [1790576100.050510732] [lifecycle_manager_navigation]: [34m[1mActivating collision_monitor[0m[0m[0m
+[collision_monitor-5] [0m[INFO] [1790576100.050678949] [collision_monitor]: Activating[0m
+[collision_monitor-5] [0m[INFO] [1790576100.050792548] [collision_monitor]: Creating bond (collision_monitor) to lifecycle manager.[0m
+[lifecycle_manager-10] [0m[INFO] [1790576100.154098562] [lifecycle_manager_navigation]: Server collision_monitor connected with bond.[0m
+[lifecycle_manager-10] [0m[INFO] [1790576100.154187433] [lifecycle_manager_navigation]: [34m[1mActivating map_server[0m[0m[0m
+[map_server-6] [0m[INFO] [1790576100.154559370] [map_server]: Activating[0m
+[map_server-6] [0m[INFO] [1790576100.155447961] [map_server]: Creating bond (map_server) to lifecycle manager.[0m
+[planner_server-7] [0m[INFO] [1790576100.156240749] [global_costmap.global_costmap]: StaticLayer: Resizing costmap to 528 X 560 at 0.050000 m/pix[0m
+[obstacle_filter-1] Traceback (most recent call last):
+[obstacle_filter-1]   File "/home/lab307/ranger_nav/ws_nav/install/ranger_navigation/lib/ranger_navigation/obstacle_filter", line 33, in <module>
+[obstacle_filter-1]     sys.exit(load_entry_point('ranger-navigation==0.1.0', 'console_scripts', 'obstacle_filter')())
+[obstacle_filter-1]   File "/home/lab307/ranger_nav/ws_nav/install/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/obstacle_filter.py", line 87, in main
+[obstacle_filter-1]     rclpy.spin(node)
+[obstacle_filter-1]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/__init__.py", line 229, in spin
+[obstacle_filter-1]     executor.spin_once()
+[obstacle_filter-1]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/executors.py", line 808, in spin_once
+[obstacle_filter-1]     self._spin_once_impl(timeout_sec)
+[obstacle_filter-1]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/executors.py", line 805, in _spin_once_impl
+[obstacle_filter-1]     raise handler.exception()
+[obstacle_filter-1]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/task.py", line 272, in _execute_coroutine_step
+[obstacle_filter-1]     result = coro.send(None)
+[obstacle_filter-1]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/executors.py", line 488, in handler
+[obstacle_filter-1]     await call_coroutine(entity, arg)
+[obstacle_filter-1]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/executors.py", line 407, in _execute_subscription
+[obstacle_filter-1]     await await_or_execute(sub.callback, msg)
+[obstacle_filter-1]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/executors.py", line 110, in await_or_execute
+[obstacle_filter-1]     return callback(*args)
+[obstacle_filter-1]   File "/home/lab307/ranger_nav/ws_nav/install/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/obstacle_filter.py", line 54, in cb
+[obstacle_filter-1]     arr = point_cloud2.read_points(msg, field_names=('x', 'y', 'z', 'intensity'),
+[obstacle_filter-1]   File "/opt/ros/humble/lib/python3.10/site-packages/sensor_msgs_py/point_cloud2.py", line 99, in read_points
+[obstacle_filter-1]     assert all(field_name in points.dtype.names for field_name in field_names), \
+[obstacle_filter-1] AssertionError: Requests field is not in the fields of the PointCloud!
+[lifecycle_manager-10] [0m[INFO] [1790576100.260285263] [lifecycle_manager_navigation]: Server map_server connected with bond.[0m
+[lifecycle_manager-10] [0m[INFO] [1790576100.260377876] [lifecycle_manager_navigation]: [34m[1mActivating planner_server[0m[0m[0m
+[planner_server-7] [0m[INFO] [1790576100.260937101] [planner_server]: Activating[0m
+[planner_server-7] [0m[INFO] [1790576100.261044314] [global_costmap.global_costmap]: Activating[0m
+[planner_server-7] [0m[INFO] [1790576100.261068798] [global_costmap.global_costmap]: Checking transform[0m
+[planner_server-7] [0m[INFO] [1790576100.261228297] [global_costmap.global_costmap]: start[0m
+[planner_server-7] [0m[INFO] [1790576100.311355760] [planner_server]: Activating plugin GridBased of type SmacPlannerHybrid[0m
+[planner_server-7] [0m[INFO] [1790576100.312429654] [planner_server]: Creating bond (planner_server) to lifecycle manager.[0m
+[ERROR] [obstacle_filter-1]: process has died [pid 17685, exit code 1, cmd '/home/lab307/ranger_nav/ws_nav/install/ranger_navigation/lib/ranger_navigation/obstacle_filter --ros-args -r __node:=ranger_obstacle_filter --params-file /home/lab307/ranger_nav/ws_nav/install/ranger_navigation/share/ranger_navigation/config/obstacle_filter.yaml -r cloud_in:=/livox/points_rviz -r obstacles_out:=/livox/obstacles'].
+[lifecycle_manager-10] [0m[INFO] [1790576100.416841274] [lifecycle_manager_navigation]: Server planner_server connected with bond.[0m
+[lifecycle_manager-10] [0m[INFO] [1790576100.416944564] [lifecycle_manager_navigation]: [34m[1mActivating controller_server[0m[0m[0m
+[controller_server-8] [0m[INFO] [1790576100.417675205] [controller_server]: Activating[0m
+[controller_server-8] [0m[INFO] [1790576100.417799396] [local_costmap.local_costmap]: Activating[0m
+[controller_server-8] [0m[INFO] [1790576100.417850158] [local_costmap.local_costmap]: Checking transform[0m
+[controller_server-8] [0m[INFO] [1790576100.418214885] [local_costmap.local_costmap]: start[0m
+[controller_server-8] [33m[WARN] [1790576100.619890003] [controller_server]: Parameter controller_server.verbose not found[0m
+[controller_server-8] [0m[INFO] [1790576100.624761776] [controller_server]: Optimizer reset[0m
+[controller_server-8] [0m[INFO] [1790576100.625004701] [MPPIController]: Activated MPPI Controller: FollowPath[0m
+[controller_server-8] [0m[INFO] [1790576100.625040329] [controller_server]: Creating bond (controller_server) to lifecycle manager.[0m
+[lifecycle_manager-10] [0m[INFO] [1790576100.729519548] [lifecycle_manager_navigation]: Server controller_server connected with bond.[0m
+[lifecycle_manager-10] [0m[INFO] [1790576100.729606333] [lifecycle_manager_navigation]: [34m[1mActivating bt_navigator[0m[0m[0m
+[bt_navigator-9] [0m[INFO] [1790576100.730055897] [bt_navigator]: Activating[0m
+[bt_navigator-9] [0m[INFO] [1790576100.746535379] [bt_navigator]: Creating bond (bt_navigator) to lifecycle manager.[0m
+[lifecycle_manager-10] [0m[INFO] [1790576100.851766361] [lifecycle_manager_navigation]: Server bt_navigator connected with bond.[0m
+[lifecycle_manager-10] [0m[INFO] [1790576100.851844870] [lifecycle_manager_navigation]: [34m[1mActivating velocity_smoother[0m[0m[0m
+[velocity_smoother-4] [0m[INFO] [1790576100.852385719] [velocity_smoother]: Activating[0m
+[velocity_smoother-4] [0m[INFO] [1790576100.852507843] [velocity_smoother]: Creating bond (velocity_smoother) to lifecycle manager.[0m
+[lifecycle_manager-10] [0m[INFO] [1790576100.958841215] [lifecycle_manager_navigation]: Server velocity_smoother connected with bond.[0m
+[lifecycle_manager-10] [0m[INFO] [1790576100.958885324] [lifecycle_manager_navigation]: [34m[1mManaged nodes are active[0m[0m[0m
+[lifecycle_manager-10] [0m[INFO] [1790576100.958893340] [lifecycle_manager_navigation]: [34m[1mCreating bond timer...[0m[0m[0m
+[controller_server-8] [33m[WARN] [1790576101.018533162] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 0.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576101.218504542] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 0.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576101.418506076] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 1.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576101.618603946] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 1.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576101.818494456] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 1.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576102.018453172] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 1.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576102.218647415] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 1.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576102.418502066] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 2.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576102.618516444] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 2.20 seconds, and it should be updated every 0.50 seconds.[0m
+[motion_gate-2] [33m[WARN] [1790576102.815018777] [ranger_motion_gate]: motion permission -> True[0m
+[controller_server-8] [33m[WARN] [1790576102.818477347] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 2.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576103.018498303] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 2.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576103.218508426] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 2.80 seconds, and it should be updated every 0.50 seconds.[0m
+[motion_gate-2] [31m[ERROR] [1790576103.324870087] [ranger_motion_gate]: SOFT E-STOP latched (publish soft_estop:=false to clear)[0m
+[controller_server-8] [33m[WARN] [1790576103.418511201] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 3.00 seconds, and it should be updated every 0.50 seconds.[0m
+[motion_gate-2] [33m[WARN] [1790576103.476880661] [ranger_motion_gate]: soft e-stop cleared[0m
+[controller_server-8] [33m[WARN] [1790576103.618503580] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 3.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576103.818522200] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 3.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576104.018501858] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 3.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576104.218503867] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 3.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576104.418487378] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 4.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576104.618486646] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 4.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576104.818536378] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 4.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576105.018471448] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 4.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576105.218578253] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 4.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576105.418464793] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 5.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576105.618468032] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 5.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576105.818610955] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 5.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576106.018468251] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 5.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576106.218473821] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 5.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576106.418459305] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 6.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576106.618466472] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 6.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576106.818419399] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 6.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576107.018592443] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 6.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576107.218461626] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 6.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576107.418494439] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 7.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576107.618457936] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 7.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576107.818450229] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 7.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576108.018453007] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 7.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576108.218470086] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 7.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576108.418470927] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 8.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576108.618457981] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 8.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576108.818472367] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 8.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576109.018469507] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 8.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576109.218497869] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 8.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576109.418383390] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 9.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576109.618543356] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 9.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576109.818473207] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 9.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576110.018468490] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 9.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576110.218449539] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 9.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576110.418564402] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 10.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576110.618382489] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 10.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576110.818416609] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 10.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576111.018472505] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 10.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576111.218565066] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 10.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576111.418476357] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 11.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576111.618601402] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 11.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576111.818481351] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 11.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576112.018457777] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 11.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576112.218463120] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 11.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576112.418502207] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 12.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576112.618475573] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 12.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576112.818490740] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 12.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576113.018519287] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 12.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576113.218597997] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 12.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576113.418470820] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 13.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576113.618436339] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 13.20 seconds, and it should be updated every 0.50 seconds.[0m
+[INFO] [motion_gate-2]: process has finished cleanly [pid 17687]
+[controller_server-8] [33m[WARN] [1790576113.818595138] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 13.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576114.018548194] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 13.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576114.218487522] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 13.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576114.418558135] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 14.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576114.618576973] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 14.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576114.818486127] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 14.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576115.018498036] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 14.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576115.218442304] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 14.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576115.418465328] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 15.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576115.618471875] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 15.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576115.818489039] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 15.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576116.018487615] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 15.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576116.218489563] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 15.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576116.418452749] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 16.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576116.618466973] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 16.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576116.818465636] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 16.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576117.018480530] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 16.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576117.218457652] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 16.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576117.418442681] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 17.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576117.618442747] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 17.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576117.818487313] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 17.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576118.018479477] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 17.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576118.218477168] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 17.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576118.418456884] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 18.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576118.618567588] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 18.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576118.818481741] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 18.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576119.018585205] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 18.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576119.218437178] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 18.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576119.418452256] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 19.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576119.618599138] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 19.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576119.818459128] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 19.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576120.018481311] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 19.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576120.218473450] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 19.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576120.418444954] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 20.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576120.618565744] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 20.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576120.818473223] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 20.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576121.018483733] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 20.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576121.218584471] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 20.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576121.418456180] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 21.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576121.618480370] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 21.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576121.818460881] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 21.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576122.018462111] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 21.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576122.218453371] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 21.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576122.418452551] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 22.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576122.618463825] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 22.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576122.818442794] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 22.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576123.018474513] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 22.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576123.218393489] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 22.80 seconds, and it should be updated every 0.50 seconds.[0m
+[bt_navigator-9] [0m[INFO] [1790576123.348929209] [bt_navigator]: Begin navigating from current location (0.00, 0.00) to (-0.52, 1.87)[0m
+[planner_server-7] [33m[WARN] [1790576123.351262951] [planner_server]: GridBased: failed to create plan, no valid path found.[0m
+[planner_server-7] [33m[WARN] [1790576123.351310954] [planner_server]: Planning algorithm GridBased failed to generate a valid path to (-0.52, 1.87)[0m
+[planner_server-7] [33m[WARN] [1790576123.351324675] [planner_server]: [compute_path_to_pose] [ActionServer] Aborting handle.[0m
+[bt_navigator-9] [33m[WARN] [1790576123.379241029] [bt_navigator]: [navigate_to_pose] [ActionServer] Aborting handle.[0m
+[bt_navigator-9] [31m[ERROR] [1790576123.379572545] [bt_navigator]: Goal failed[0m
+[controller_server-8] [33m[WARN] [1790576123.418463397] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 23.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576123.618493956] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 23.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576123.818447884] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 23.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576124.018520249] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 23.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576124.218567641] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 23.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576124.418488086] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 24.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576124.618449513] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 24.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576124.818464587] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 24.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576125.018471181] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 24.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576125.218463528] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 24.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576125.418442064] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 25.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576125.618443877] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 25.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576125.818444506] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 25.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576126.018474990] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 25.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576126.218467896] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 25.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576126.418468727] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 26.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576126.618448281] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 26.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576126.818437406] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 26.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576127.018462310] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 26.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576127.218454772] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 26.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576127.418463106] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 27.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576127.618451779] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 27.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576127.818466581] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 27.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576128.018481328] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 27.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576128.218463166] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 27.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576128.418453573] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 28.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576128.618475402] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 28.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576128.818464189] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 28.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576129.018463399] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 28.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576129.218468636] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 28.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576129.418462904] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 29.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576129.618458378] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 29.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576129.818448820] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 29.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576130.018472778] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 29.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576130.218454377] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 29.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576130.418541084] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 30.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576130.618465857] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 30.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576130.818538052] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 30.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576131.018537669] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 30.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576131.218545843] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 30.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576131.418544684] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 31.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576131.618522017] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 31.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576131.818474466] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 31.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576132.018492638] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 31.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576132.218468024] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 31.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576132.418548113] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 32.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576132.618526648] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 32.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576132.818452413] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 32.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576133.018455925] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 32.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576133.218455231] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 32.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576133.418457952] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 33.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576133.618540569] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 33.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576133.818449081] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 33.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576134.018494327] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 33.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576134.218464534] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 33.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576134.418456713] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 34.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576134.618463825] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 34.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576134.818459934] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 34.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576135.018452982] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 34.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576135.218482644] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 34.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576135.418480558] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 35.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576135.618485355] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 35.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576135.818552265] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 35.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576136.018505378] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 35.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576136.218471780] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 35.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576136.418518115] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 36.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576136.618476865] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 36.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576136.818473162] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 36.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576137.018482110] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 36.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576137.218459863] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 36.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576137.418477172] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 37.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576137.618537189] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 37.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576137.818532386] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 37.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576138.018458448] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 37.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576138.218459990] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 37.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576138.418487214] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 38.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576138.618506907] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 38.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576138.818473535] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 38.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576139.018555932] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 38.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576139.218542857] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 38.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576139.418478685] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 39.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576139.618570557] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 39.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576139.818463644] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 39.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576140.018486296] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 39.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576140.218570722] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 39.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576140.418527602] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 40.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576140.618522950] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 40.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576140.818516046] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 40.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576141.018582431] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 40.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576141.218463284] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 40.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576141.418468144] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 41.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576141.618612299] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 41.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576141.818484202] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 41.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576142.018488826] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 41.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576142.218534986] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 41.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576142.418486236] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 42.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576142.618441259] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 42.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576142.818460347] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 42.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576143.018459537] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 42.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576143.218464333] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 42.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576143.418449294] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 43.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576143.618441298] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 43.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576143.818450989] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 43.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576144.018441416] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 43.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576144.218450793] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 43.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576144.418450067] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 44.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576144.618447300] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 44.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576144.818452969] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 44.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576145.018453603] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 44.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576145.218440579] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 44.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576145.418449440] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 45.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576145.618452064] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 45.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576145.818451115] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 45.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576146.018454481] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 45.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576146.218453878] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 45.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576146.418442285] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 46.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576146.618453225] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 46.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576146.818453971] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 46.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576147.018459076] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 46.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576147.218441459] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 46.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576147.418445292] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 47.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576147.618428215] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 47.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576147.818416320] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 47.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576148.018442008] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 47.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576148.218437709] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 47.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576148.418441482] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 48.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576148.618433137] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 48.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576148.818436674] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 48.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576149.018467836] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 48.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576149.218430691] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 48.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576149.418446466] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 49.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576149.618433322] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 49.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576149.818426546] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 49.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576150.018442414] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 49.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576150.218456031] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 49.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576150.418495255] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 50.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576150.618445584] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 50.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576150.818440669] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 50.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576151.018468755] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 50.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576151.218424944] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 50.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576151.418442255] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 51.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576151.618534734] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 51.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576151.818526896] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 51.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576152.018452795] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 51.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576152.218451368] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 51.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576152.418447767] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 52.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576152.618527903] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 52.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576152.818460286] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 52.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576153.018464872] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 52.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576153.218470345] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 52.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576153.418471828] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 53.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576153.618527102] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 53.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576153.818530512] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 53.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576154.018417339] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 53.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576154.218530983] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 53.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576154.418462367] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 54.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576154.618449404] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 54.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576154.818535275] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 54.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576155.018448895] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 54.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576155.218533037] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 54.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576155.418430508] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 55.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576155.618427890] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 55.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576155.818449028] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 55.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576156.018435753] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 55.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576156.218451886] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 55.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576156.418434451] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 56.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576156.618579775] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 56.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576156.818437149] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 56.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576157.018439059] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 56.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576157.218434169] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 56.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576157.418598525] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 57.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576157.618524290] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 57.20 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576157.818554916] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 57.40 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576158.018425520] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 57.60 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576158.218463175] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 57.80 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576158.418427480] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 58.00 seconds, and it should be updated every 0.50 seconds.[0m
+[controller_server-8] [33m[WARN] [1790576158.618435746] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 58.20 seconds, and it should be updated every 0.50 seconds.[0m
+[collision_monitor-5] [0m[INFO] [1790576158.774153880] [rclcpp]: signal_handler(SIGINT/SIGTERM)[0m
+[collision_monitor-5] [0m[INFO] [1790576158.774332019] [collision_monitor]: Running Nav2 LifecycleNode rcl preshutdown (collision_monitor)[0m
+[collision_monitor-5] [0m[INFO] [1790576158.774412892] [collision_monitor]: Deactivating[0m
+[collision_monitor-5] [0m[INFO] [1790576158.774444094] [collision_monitor]: Destroying bond (collision_monitor) to lifecycle manager.[0m
+[collision_monitor-5] [0m[INFO] [1790576158.784883275] [collision_monitor]: Cleaning up[0m
+[collision_monitor-5] [0m[INFO] [1790576158.784953611] [collision_monitor]: [PolygonStop]: Destroying Polygon[0m
+[collision_monitor-5] [0m[INFO] [1790576158.784998714] [collision_monitor]: [FootprintApproach]: Destroying Polygon[0m
+[collision_monitor-5] [0m[INFO] [1790576158.785031116] [collision_monitor]: [cloud]: Destroying PointCloud[0m
+[collision_monitor-5] [0m[INFO] [1790576158.788680298] [collision_monitor]: Destroying bond (collision_monitor) to lifecycle manager.[0m
+[collision_monitor-5] [0m[INFO] [1790576158.793549795] [collision_monitor]: Destroying[0m
+[controller_server-8] [33m[WARN] [1790576158.818456986] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 58.40 seconds, and it should be updated every 0.50 seconds.[0m
+[INFO] [collision_monitor-5]: process has finished cleanly [pid 17693]
+[lifecycle_manager-10] [0m[INFO] [1790576158.961020947] [lifecycle_manager_navigation]: [34m[1mHave not received a heartbeat from collision_monitor.[0m[0m[0m
+[lifecycle_manager-10] [31m[ERROR] [1790576158.961119858] [lifecycle_manager_navigation]: CRITICAL FAILURE: SERVER collision_monitor IS DOWN after not receiving a heartbeat for 4000 ms. Shutting down related nodes.[0m
+[lifecycle_manager-10] [0m[INFO] [1790576158.961171546] [lifecycle_manager_navigation]: [34m[1mTerminating bond timer...[0m[0m[0m
+[lifecycle_manager-10] [0m[INFO] [1790576158.961196456] [lifecycle_manager_navigation]: [34m[1mResetting managed nodes...[0m[0m[0m
+[lifecycle_manager-10] [0m[INFO] [1790576158.961215652] [lifecycle_manager_navigation]: [34m[1mDeactivating velocity_smoother[0m[0m[0m
+[velocity_smoother-4] [0m[INFO] [1790576158.961694141] [velocity_smoother]: Deactivating[0m
+[velocity_smoother-4] [0m[INFO] [1790576158.961787435] [velocity_smoother]: Destroying bond (velocity_smoother) to lifecycle manager.[0m
+[controller_server-8] [33m[WARN] [1790576159.018453627] [local_costmap.local_costmap]: The /livox/obstacles observation buffer has not been updated for 58.60 seconds, and it should be updated every 0.50 seconds.[0m
+[lifecycle_manager-10] [0m[INFO] [1790576159.075865257] [lifecycle_manager_navigation]: [34m[1mDeactivating bt_navigator[0m[0m[0m
+[bt_navigator-9] [0m[INFO] [1790576159.076537374] [bt_navigator]: Deactivating[0m
+[bt_navigator-9] [0m[INFO] [1790576159.076632448] [bt_navigator]: Destroying bond (bt_navigator) to lifecycle manager.[0m
+[lifecycle_manager-10] [0m[INFO] [1790576159.190966797] [lifecycle_manager_navigation]: [34m[1mDeactivating controller_server[0m[0m[0m
+[controller_server-8] [0m[INFO] [1790576159.191651093] [controller_server]: Deactivating[0m
+[controller_server-8] [0m[INFO] [1790576159.191739889] [MPPIController]: Deactivated MPPI Controller: FollowPath[0m
+[controller_server-8] [0m[INFO] [1790576159.191767742] [local_costmap.local_costmap]: Deactivating[0m
+[controller_server-8] [0m[INFO] [1790576159.218783716] [controller_server]: Destroying bond (controller_server) to lifecycle manager.[0m
+[lifecycle_manager-10] [0m[INFO] [1790576159.332462057] [lifecycle_manager_navigation]: [34m[1mDeactivating planner_server[0m[0m[0m
+[planner_server-7] [0m[INFO] [1790576159.333056379] [planner_server]: Deactivating[0m
+[planner_server-7] [0m[INFO] [1790576159.333175320] [global_costmap.global_costmap]: Deactivating[0m
+[planner_server-7] [0m[INFO] [1790576160.261741316] [planner_server]: Deactivating plugin GridBased of type SmacPlannerHybrid[0m
+[planner_server-7] [0m[INFO] [1790576160.261874564] [planner_server]: Destroying bond (planner_server) to lifecycle manager.[0m
+[lifecycle_manager-10] [0m[INFO] [1790576160.376755114] [lifecycle_manager_navigation]: [34m[1mDeactivating map_server[0m[0m[0m
+[map_server-6] [0m[INFO] [1790576160.377428318] [map_server]: Deactivating[0m
+[map_server-6] [0m[INFO] [1790576160.377516192] [map_server]: Destroying bond (map_server) to lifecycle manager.[0m
+[lifecycle_manager-10] [0m[INFO] [1790576160.491664660] [lifecycle_manager_navigation]: [34m[1mDeactivating collision_monitor[0m[0m[0m
+[lifecycle_manager-10] [31m[ERROR] [1790576165.492030125] [lifecycle_manager_navigation]: Failed to change state for node: collision_monitor. Exception: change_state service is not available!.[0m
+[lifecycle_manager-10] [0m[INFO] [1790576165.492148535] [lifecycle_manager_navigation]: [34m[1mManaged nodes have been reset[0m[0m[0m
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[INFO] [lifecycle_manager-10]: sending signal 'SIGINT' to process[lifecycle_manager-10]
+[INFO] [bt_navigator-9]: sending signal 'SIGINT' to process[bt_navigator-9]
+[INFO] [controller_server-8]: sending signal 'SIGINT' to process[controller_server-8]
+[INFO] [planner_server-7]: sending signal 'SIGINT' to process[planner_server-7]
+[INFO] [map_server-6]: sending signal 'SIGINT' to process[map_server-6]
+[INFO] [velocity_smoother-4]: sending signal 'SIGINT' to process[velocity_smoother-4]
+[INFO] [twist_mux-3]: sending signal 'SIGINT' to process[twist_mux-3]
+[lifecycle_manager-10] [0m[INFO] [1790576171.552033061] [rclcpp]: signal_handler(SIGINT/SIGTERM)[0m
+[lifecycle_manager-10] [0m[INFO] [1790576171.552162712] [lifecycle_manager_navigation]: Running Nav2 LifecycleManager rcl preshutdown (lifecycle_manager_navigation)[0m
+[bt_navigator-9] [0m[INFO] [1790576171.554107096] [rclcpp]: signal_handler(SIGINT/SIGTERM)[0m
+[bt_navigator-9] [0m[INFO] [1790576171.554208450] [bt_navigator]: Running Nav2 LifecycleNode rcl preshutdown (bt_navigator)[0m
+[bt_navigator-9] [0m[INFO] [1790576171.554287865] [bt_navigator]: Cleaning up[0m
+[controller_server-8] [0m[INFO] [1790576171.555503322] [rclcpp]: signal_handler(SIGINT/SIGTERM)[0m
+[controller_server-8] [0m[INFO] [1790576171.555615439] [controller_server]: Running Nav2 LifecycleNode rcl preshutdown (controller_server)[0m
+[controller_server-8] [0m[INFO] [1790576171.555762530] [controller_server]: Cleaning up[0m
+[controller_server-8] [0m[INFO] [1790576171.555822080] [MPPIController]: Cleaned up MPPI Controller: FollowPath[0m
+[controller_server-8] [0m[INFO] [1790576171.555984468] [local_costmap.local_costmap]: Cleaning up[0m
+[planner_server-7] [0m[INFO] [1790576171.557208101] [rclcpp]: signal_handler(SIGINT/SIGTERM)[0m
+[planner_server-7] [0m[INFO] [1790576171.557289899] [planner_server]: Running Nav2 LifecycleNode rcl preshutdown (planner_server)[0m
+[planner_server-7] [0m[INFO] [1790576171.557372194] [planner_server]: Cleaning up[0m
+[map_server-6] [0m[INFO] [1790576171.558662727] [rclcpp]: signal_handler(SIGINT/SIGTERM)[0m
+[map_server-6] [0m[INFO] [1790576171.558846187] [map_server]: Running Nav2 LifecycleNode rcl preshutdown (map_server)[0m
+[map_server-6] [0m[INFO] [1790576171.558930579] [map_server]: Cleaning up[0m
+[map_server-6] [0m[INFO] [1790576171.559034539] [map_server]: Destroying bond (map_server) to lifecycle manager.[0m
+[velocity_smoother-4] [0m[INFO] [1790576171.560054383] [rclcpp]: signal_handler(SIGINT/SIGTERM)[0m
+[velocity_smoother-4] [0m[INFO] [1790576171.560172932] [velocity_smoother]: Running Nav2 LifecycleNode rcl preshutdown (velocity_smoother)[0m
+[velocity_smoother-4] [0m[INFO] [1790576171.560247160] [velocity_smoother]: Cleaning up[0m
+[velocity_smoother-4] [0m[INFO] [1790576171.560296630] [velocity_smoother]: Destroying bond (velocity_smoother) to lifecycle manager.[0m
+[twist_mux-3] [0m[INFO] [1790576171.561326085] [rclcpp]: signal_handler(SIGINT/SIGTERM)[0m
+[map_server-6] [0m[INFO] [1790576171.562068745] [map_server]: Destroying[0m
+[velocity_smoother-4] [0m[INFO] [1790576171.562413802] [velocity_smoother]: Destroying[0m
+[planner_server-7] [0m[INFO] [1790576171.566326535] [global_costmap.global_costmap]: Cleaning up[0m
+[planner_server-7] [0m[INFO] [1790576171.569792583] [planner_server]: Cleaning up plugin GridBased of type SmacPlannerHybrid[0m
+[planner_server-7] [0m[INFO] [1790576171.570019352] [planner_server]: Destroying plugin GridBased of type SmacPlannerHybrid[0m
+[controller_server-8] [0m[INFO] [1790576171.571997188] [controller_server]: Destroying bond (controller_server) to lifecycle manager.[0m
+[planner_server-7] [0m[INFO] [1790576171.576325725] [planner_server]: Destroying bond (planner_server) to lifecycle manager.[0m
+[controller_server-8] [0m[INFO] [1790576171.576479980] [local_costmap.local_costmap]: Destroying[0m
+[planner_server-7] [0m[INFO] [1790576171.579745472] [global_costmap.global_costmap]: Destroying[0m
+[controller_server-8] [0m[INFO] [1790576171.587779823] [controller_server]: Destroying[0m
+[planner_server-7] [0m[INFO] [1790576171.589327668] [planner_server]: Destroying[0m
+[bt_navigator-9] [0m[INFO] [1790576171.591568455] [bt_navigator]: Completed Cleaning up[0m
+[bt_navigator-9] [0m[INFO] [1790576171.591654214] [bt_navigator]: Destroying bond (bt_navigator) to lifecycle manager.[0m
+[bt_navigator-9] [0m[INFO] [1790576171.605539956] [bt_navigator]: Destroying[0m
+[INFO] [twist_mux-3]: process has finished cleanly [pid 17689]
+[INFO] [velocity_smoother-4]: process has finished cleanly [pid 17691]
+[INFO] [map_server-6]: process has finished cleanly [pid 17695]
+[INFO] [controller_server-8]: process has finished cleanly [pid 17699]
+[INFO] [planner_server-7]: process has finished cleanly [pid 17697]
+[INFO] [bt_navigator-9]: process has finished cleanly [pid 17701]
+[lifecycle_manager-10] [0m[INFO] [1790576172.512455953] [lifecycle_manager_navigation]: Destroying lifecycle_manager_navigation[0m
+[INFO] [lifecycle_manager-10]: process has finished cleanly [pid 17703]

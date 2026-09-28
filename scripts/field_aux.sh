@@ -10,6 +10,8 @@ mkdir -p "$LOGDIR"
 
 MAP_DIR="${MAP_DIR:-$ROOT/maps/lightning-offline-suej7qsz/data/new_map}"
 ENABLE_FOXGLOVE="${ENABLE_FOXGLOVE:-1}"
+# 导航会话中 map_server 也会发布 /map：避免双 latched 发布，导航时置 0
+ENABLE_MAP_PUB="${ENABLE_MAP_PUB:-1}"
 
 pids=()
 cleanup() {
@@ -33,10 +35,14 @@ trap cleanup EXIT INT TERM
 # ROS 环境：slam_env.sh 已含 Humble + ws_livox + 项目内依赖
 source "$ROOT/scripts/slam_env.sh"
 
-echo "[aux] 1/4 二维地图发布 (latched /map): $MAP_DIR"
-python3 "$ROOT/scripts/publish_loc_map.py" --map-dir "$MAP_DIR" \
-    > "$LOGDIR/map_publisher.log" 2>&1 &
-pids+=($!)
+if [ "$ENABLE_MAP_PUB" = "1" ]; then
+    echo "[aux] 1/4 二维地图发布 (latched /map): $MAP_DIR"
+    python3 "$ROOT/scripts/publish_loc_map.py" --map-dir "$MAP_DIR" \
+        > "$LOGDIR/map_publisher.log" 2>&1 &
+    pids+=($!)
+else
+    echo "[aux] 1/4 二维地图发布已按 ENABLE_MAP_PUB=0 跳过（导航会话由 map_server 提供 /map）"
+fi
 
 echo "[aux] 2/4 派生点云 /livox/points_rviz"
 python3 "$ROOT/scripts/mid360_derived.py" --execute \

@@ -1,0 +1,16 @@
+[INFO] [1790574880.903174635] [collision_monitor]: 
+	collision_monitor lifecycle node launched. 
+	Waiting on external lifecycle transitions to activate
+	See https://design.ros2.org/articles/node_lifecycle.html for more information.
+[WARN] [1790574882.266039206] [rcl_lifecycle]: No transition matching 4 found for current state unconfigured
+[WARN] [1790574882.266147071] [rcl_lifecycle]: No transition matching 4 found for current state unconfigured
+[ERROR] [1790574882.266167727] [collision_monitor]: Unable to start transition 4 from current state unconfigured: Transition is not registered., at ./src/rcl_lifecycle.c:355
+[WARN] [1790574882.341415726] [rcl_lifecycle]: No transition matching 2 found for current state unconfigured
+[WARN] [1790574882.341446970] [rcl_lifecycle]: No transition matching 2 found for current state unconfigured
+[ERROR] [1790574882.341454151] [collision_monitor]: Unable to start transition 2 from current state unconfigured: Transition is not registered., at ./src/rcl_lifecycle.c:355
+[INFO] [1790574883.353577656] [collision_monitor]: Configuring
+[INFO] [1790574883.360623347] [collision_monitor]: [PolygonStop]: Creating Polygon
+[INFO] [1790574883.363188319] [collision_monitor]: [FootprintApproach]: Creating Polygon
+[INFO] [1790574883.364912625] [collision_monitor]: [cloud]: Creating PointCloud
+[INFO] [1790574884.255782809] [collision_monitor]: Activating
+[INFO] [1790574884.255870577] [collision_monitor]: Creating bond (collision_monitor) to lifecycle manager.

@@ -1,0 +1,14 @@
+# ranger_motion_gate — 许可/限速/运动学门禁（速度链倒数第二环，CM 之前）
+# 运动许可：进程启动恒为 False，需每次显式发布 /ranger/motion_enable=true；
+# 订阅为 VOLATILE（刻意不做 transient_local，防锁存使能自动重新武装重启后的
+# 门禁），重启即失效（AGENTS.md：运动许可不跨进程重启）。
+ranger_motion_gate:
+  ros__parameters:
+    publish_rate: 20.0      # 输出心跳频率（向 CM 持续供零/有效流）
+    max_vx: 0.20            # v1 现场限速：先低后放宽，只改这里即可收紧全链
+    max_wz: 0.60
+    min_turn_radius: 0.55   # 底盘 0.4764 < 0.55 < Nav2 0.60
+    vx_turn_min: 0.05       # 低于此 vx 时 wz 归零：禁低速原地旋转（防 SPINNING 切换）
+    cmd_timeout: 0.5        # 上游指令过期阈值
+    ready_timeout: 1.0      # navigation_ready 新鲜度
+    cloud_timeout: 1.0      # 障碍点云新鲜度（补偿 CM fail-open）

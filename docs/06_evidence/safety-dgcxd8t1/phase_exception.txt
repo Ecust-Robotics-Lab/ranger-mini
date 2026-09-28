@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_stage6_safety.py", line 436, in main
+    _run_phases(sim, launch, procs)
+  File "/home/lab307/ranger_nav/tests/test_stage6_safety.py", line 606, in _run_phases
+    p14['controller_server'] = node_params('/controller_server',
+  File "/home/lab307/ranger_nav/tests/test_stage6_safety.py", line 592, in node_params
+    if v.type == v.TYPE_DOUBLE:
+AttributeError: 'ParameterValue' object has no attribute 'TYPE_DOUBLE'

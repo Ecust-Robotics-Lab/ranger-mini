@@ -1,0 +1,50 @@
+# nav2_collision_monitor 1.1.20（Humble）— 速度链最后一环，输出直接进底盘驱动
+# 之后不允许有任何再平滑/再仲裁节点。Twist 接口（1.1.20 未用 TwistStamped）。
+# 注意 fail-open 行为：TF 查询失败/点云过期时该帧静默无点（不停不减速），
+# 由上游 ranger_motion_gate 的 cloud 新鲜度门禁补偿（传感器过期不放行）。
+collision_monitor:
+  ros__parameters:
+    use_sim_time: false
+    base_frame_id: base_link                # 本车无 base_footprint（阶段5决策不引入）
+    odom_frame_id: odom
+    cmd_vel_in_topic: /cmd_vel_after_gate   # ranger_motion_gate 输出
+    cmd_vel_out_topic: /base/safe_cmd_vel   # 底盘驱动唯一速度入口（launch 已重映射）
+    transform_tolerance: 0.3
+    source_timeout: 1.5
+    base_shift_correction: true             # 运动中点云用数据时刻 TF 修正到当前 base 系
+    stop_pub_timeout: 1.0                   # 停车后零速仅再发 1 s（随后静默；底盘失压自停已用户确认）
+    polygons: ["PolygonStop"]
+    PolygonStop:
+      type: "polygon"
+      action_type: "stop"
+      # footprint 0.74×0.52 + 0.08 m 边距（半轴 0.45×0.34）
+      # 语义（1.1.20 源码）: getPointsInside() > max_points 才触发——
+      # 设 0 表示多边形内出现任意 1 点即停车
+      points: [0.45, 0.34, 0.45, -0.34, -0.45, -0.34, -0.45, 0.34]
+      max_points: 0
+      enabled: true
+      visualize: true
+      polygon_pub_topic: "polygon_stop"
+    # FootprintApproach（平滑减速）v1 禁用：1.1.20 实测在空点云+动态 footprint
+    # 组合下误触发"即刻碰撞"（速度×0，证据 docs/06_evidence/safety-3zlp6hrr
+    # "Robot to approach" 交替出现），机制待上游核查后重新启用。防撞核心=
+    # Stop 多边形（1 点即停）+ 门禁 + 局部代价地图，不依赖 approach。
+    FootprintApproach:
+      type: "polygon"
+      action_type: "approach"
+      footprint_topic: "/local_costmap/published_footprint"
+      time_before_collision: 2.0
+      simulation_time_step: 0.1
+      max_points: 1
+      enabled: false
+      visualize: false
+    # 场地现实（如实声明）：本场地部分走廊中轴线距墙仅 0.04-0.4 m，Stop 多边形
+    # 半轴 0.45×0.34 在这些路段会常驻触发停车——v1 目标点必须选开阔区，窄段
+    # 通行属后续阶段（换传感高度带/重测图/缩 footprint）处理事项。
+    observation_sources: ["cloud"]
+    cloud:
+      type: "pointcloud"
+      topic: /livox/obstacles
+      min_height: 0.10                      # base 系高度带 = 建图障碍带，地面点在此剔除
+      max_height: 0.80
+      enabled: true

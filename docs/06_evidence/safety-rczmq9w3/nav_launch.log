@@ -1,0 +1,226 @@
+[INFO] [launch]: All log files can be found below /home/lab307/.ros/log/2026-09-28-12-45-00-326148-lab307-Thunderobot-MIX-G2-10690
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [obstacle_filter-1]: process started with pid [10729]
+[INFO] [motion_gate-2]: process started with pid [10731]
+[INFO] [twist_mux-3]: process started with pid [10733]
+[INFO] [velocity_smoother-4]: process started with pid [10735]
+[INFO] [collision_monitor-5]: process started with pid [10737]
+[INFO] [map_server-6]: process started with pid [10739]
+[INFO] [planner_server-7]: process started with pid [10741]
+[INFO] [controller_server-8]: process started with pid [10743]
+[INFO] [bt_navigator-9]: process started with pid [10745]
+[INFO] [lifecycle_manager-10]: process started with pid [10747]
+[twist_mux-3] [0m[INFO] [1790570700.378524966] [twist_mux]: Topic handler 'topics.keyboard' subscribed to topic '/teleop/cmd_vel': timeout = 0.500000s , priority = 90.[0m
+[twist_mux-3] [0m[INFO] [1790570700.378940306] [twist_mux]: Topic handler 'topics.navigation' subscribed to topic '/cmd_vel_nav': timeout = 0.500000s , priority = 10.[0m
+[lifecycle_manager-10] [0m[INFO] [1790570700.389001165] [lifecycle_manager_navigation]: Creating[0m
+[lifecycle_manager-10] [0m[INFO] [1790570700.390983225] [lifecycle_manager_navigation]: [34m[1mCreating and initializing lifecycle service clients[0m[0m[0m
+[velocity_smoother-4] [0m[INFO] [1790570700.391212792] [velocity_smoother]: 
+[velocity_smoother-4] 	velocity_smoother lifecycle node launched. 
+[velocity_smoother-4] 	Waiting on external lifecycle transitions to activate
+[velocity_smoother-4] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.[0m
+[controller_server-8] [0m[INFO] [1790570700.392838964] [controller_server]: 
+[controller_server-8] 	controller_server lifecycle node launched. 
+[controller_server-8] 	Waiting on external lifecycle transitions to activate
+[controller_server-8] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.[0m
+[controller_server-8] [0m[INFO] [1790570700.394669475] [controller_server]: Creating controller server[0m
+[collision_monitor-5] [0m[INFO] [1790570700.394826909] [collision_monitor]: 
+[collision_monitor-5] 	collision_monitor lifecycle node launched. 
+[collision_monitor-5] 	Waiting on external lifecycle transitions to activate
+[collision_monitor-5] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.[0m
+[bt_navigator-9] [0m[INFO] [1790570700.395615931] [bt_navigator]: 
+[bt_navigator-9] 	bt_navigator lifecycle node launched. 
+[bt_navigator-9] 	Waiting on external lifecycle transitions to activate
+[bt_navigator-9] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.[0m
+[bt_navigator-9] [0m[INFO] [1790570700.395670352] [bt_navigator]: Creating[0m
+[planner_server-7] [0m[INFO] [1790570700.395650465] [planner_server]: 
+[planner_server-7] 	planner_server lifecycle node launched. 
+[planner_server-7] 	Waiting on external lifecycle transitions to activate
+[planner_server-7] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.[0m
+[planner_server-7] [0m[INFO] [1790570700.396299187] [planner_server]: Creating[0m
+[map_server-6] [0m[INFO] [1790570700.398067535] [map_server]: 
+[map_server-6] 	map_server lifecycle node launched. 
+[map_server-6] 	Waiting on external lifecycle transitions to activate
+[map_server-6] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.[0m
+[map_server-6] [0m[INFO] [1790570700.398137410] [map_server]: Creating[0m
+[controller_server-8] [0m[INFO] [1790570700.399189357] [local_costmap.local_costmap]: 
+[controller_server-8] 	local_costmap lifecycle node launched. 
+[controller_server-8] 	Waiting on external lifecycle transitions to activate
+[controller_server-8] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.[0m
+[controller_server-8] [0m[INFO] [1790570700.399403433] [local_costmap.local_costmap]: Creating Costmap[0m
+[controller_server-8] terminate called after throwing an instance of 'rclcpp::exceptions::InvalidParameterTypeException'
+[controller_server-8]   what():  parameter 'height' has invalid type: Wrong parameter type, parameter {height} is of type {integer}, setting it to {double} is not allowed.
+[planner_server-7] [0m[INFO] [1790570700.400536732] [global_costmap.global_costmap]: 
+[planner_server-7] 	global_costmap lifecycle node launched. 
+[planner_server-7] 	Waiting on external lifecycle transitions to activate
+[planner_server-7] 	See https://design.ros2.org/articles/node_lifecycle.html for more information.[0m
+[planner_server-7] [0m[INFO] [1790570700.400716735] [global_costmap.global_costmap]: Creating Costmap[0m
+[obstacle_filter-1] [0m[INFO] [1790570700.535514535] [ranger_obstacle_filter]: obstacle filter up: range [0.3, 12.0] m, self_radius_xy 0.35 m[0m
+[motion_gate-2] [0m[INFO] [1790570700.537996451] [ranger_motion_gate]: ranger_motion_gate up: permission=False (issue motion_enable:=true to arm); max_vx=0.2 max_wz=0.6 min_turn_radius=0.55[0m
+[ERROR] [controller_server-8]: process has died [pid 10743, exit code -6, cmd '/opt/ros/humble/lib/nav2_controller/controller_server --ros-args -r __node:=controller_server --params-file /home/lab307/ranger_nav/ws_nav/install/ranger_navigation/share/ranger_navigation/config/nav2_params.yaml -r cmd_vel:=/cmd_vel_nav'].
+[lifecycle_manager-10] [0m[INFO] [1790570702.399276869] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570704.399620798] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570706.400051834] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570708.400377095] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570710.400769519] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570712.401176893] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570714.401490780] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570716.401929277] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570718.402279631] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570720.402551324] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570722.403005863] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570724.403312151] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570726.403792228] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570728.404241954] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570730.404587114] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570732.405110101] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570734.405655698] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570736.406036207] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570738.406506387] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570740.407006919] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570742.407434070] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570744.407763704] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570746.408096933] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570748.408422898] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570750.408829173] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570752.409155497] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570754.409465274] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570756.409814550] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570758.410233295] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570760.410727518] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570762.411222043] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570764.411719710] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570766.412181596] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570768.412627302] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570770.413107811] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570772.413569530] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570774.414020953] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570776.414479660] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570778.414933354] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570780.415473361] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570782.415896356] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570784.416405816] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570786.416849637] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570788.417295693] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[INFO] [lifecycle_manager-10]: sending signal 'SIGINT' to process[lifecycle_manager-10]
+[INFO] [bt_navigator-9]: sending signal 'SIGINT' to process[bt_navigator-9]
+[INFO] [planner_server-7]: sending signal 'SIGINT' to process[planner_server-7]
+[INFO] [map_server-6]: sending signal 'SIGINT' to process[map_server-6]
+[INFO] [collision_monitor-5]: sending signal 'SIGINT' to process[collision_monitor-5]
+[INFO] [velocity_smoother-4]: sending signal 'SIGINT' to process[velocity_smoother-4]
+[INFO] [twist_mux-3]: sending signal 'SIGINT' to process[twist_mux-3]
+[INFO] [motion_gate-2]: sending signal 'SIGINT' to process[motion_gate-2]
+[INFO] [obstacle_filter-1]: sending signal 'SIGINT' to process[obstacle_filter-1]
+[lifecycle_manager-10] [0m[INFO] [1790570790.328018713] [rclcpp]: signal_handler(SIGINT/SIGTERM)[0m
+[lifecycle_manager-10] [0m[INFO] [1790570790.328186554] [lifecycle_manager_navigation]: Running Nav2 LifecycleManager rcl preshutdown (lifecycle_manager_navigation)[0m
+[bt_navigator-9] [0m[INFO] [1790570790.328997743] [rclcpp]: signal_handler(SIGINT/SIGTERM)[0m
+[bt_navigator-9] [0m[INFO] [1790570790.329136289] [bt_navigator]: Running Nav2 LifecycleNode rcl preshutdown (bt_navigator)[0m
+[bt_navigator-9] [0m[INFO] [1790570790.329199210] [bt_navigator]: Destroying bond (bt_navigator) to lifecycle manager.[0m
+[planner_server-7] [0m[INFO] [1790570790.330186408] [rclcpp]: signal_handler(SIGINT/SIGTERM)[0m
+[planner_server-7] [0m[INFO] [1790570790.330306691] [planner_server]: Running Nav2 LifecycleNode rcl preshutdown (planner_server)[0m
+[planner_server-7] [0m[INFO] [1790570790.330365703] [planner_server]: Destroying bond (planner_server) to lifecycle manager.[0m
+[bt_navigator-9] [0m[INFO] [1790570790.330285144] [bt_navigator]: Destroying[0m
+[map_server-6] [0m[INFO] [1790570790.331579123] [rclcpp]: signal_handler(SIGINT/SIGTERM)[0m
+[map_server-6] [0m[INFO] [1790570790.331696328] [map_server]: Running Nav2 LifecycleNode rcl preshutdown (map_server)[0m
+[map_server-6] [0m[INFO] [1790570790.331753984] [map_server]: Destroying bond (map_server) to lifecycle manager.[0m
+[lifecycle_manager-10] [0m[INFO] [1790570790.331603364] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] 
+[lifecycle_manager-10] >>> [rcutils|error_handling.c:108] rcutils_set_error_state()
+[lifecycle_manager-10] This error state is being overwritten:
+[lifecycle_manager-10] 
+[lifecycle_manager-10]   'rcl node's context is invalid, at ./src/rcl/node.c:428'
+[lifecycle_manager-10] 
+[lifecycle_manager-10] with this new error message:
+[lifecycle_manager-10] 
+[lifecycle_manager-10]   'publisher's context is invalid, at ./src/rcl/publisher.c:389'
+[lifecycle_manager-10] 
+[lifecycle_manager-10] rcutils_reset_error() should be called after error handling to avoid this.
+[lifecycle_manager-10] <<<
+[lifecycle_manager-10] Failed to publish log message to rosout: publisher's context is invalid, at ./src/rcl/publisher.c:389
+[lifecycle_manager-10] [0m[INFO] [1790570790.331731964] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] 
+[lifecycle_manager-10] >>> [rcutils|error_handling.c:108] rcutils_set_error_state()
+[lifecycle_manager-10] This error state is being overwritten:
+[lifecycle_manager-10] 
+[lifecycle_manager-10]   'rcl node's context is invalid, at ./src/rcl/node.c:428'
+[lifecycle_manager-10] 
+[lifecycle_manager-10] with this new error message:
+[lifecycle_manager-10] 
+[lifecycle_manager-10]   'publisher's context is invalid, at ./src/rcl/publisher.c:389'
+[lifecycle_manager-10] 
+[lifecycle_manager-10] rcutils_reset_error() should be called after error handling to avoid this.
+[lifecycle_manager-10] <<<
+[lifecycle_manager-10] Failed to publish log message to rosout: publisher's context is invalid, at ./src/rcl/publisher.c:389
+[planner_server-7] [0m[INFO] [1790570790.332003937] [global_costmap.global_costmap]: Destroying[0m
+[map_server-6] [0m[INFO] [1790570790.332560696] [map_server]: Destroying[0m
+[collision_monitor-5] [0m[INFO] [1790570790.333224829] [rclcpp]: signal_handler(SIGINT/SIGTERM)[0m
+[collision_monitor-5] [0m[INFO] [1790570790.333318009] [collision_monitor]: Running Nav2 LifecycleNode rcl preshutdown (collision_monitor)[0m
+[collision_monitor-5] [0m[INFO] [1790570790.333370991] [collision_monitor]: Destroying bond (collision_monitor) to lifecycle manager.[0m
+[collision_monitor-5] [0m[INFO] [1790570790.334119287] [collision_monitor]: Destroying[0m
+[velocity_smoother-4] [0m[INFO] [1790570790.335000764] [rclcpp]: signal_handler(SIGINT/SIGTERM)[0m
+[velocity_smoother-4] [0m[INFO] [1790570790.335170641] [velocity_smoother]: Running Nav2 LifecycleNode rcl preshutdown (velocity_smoother)[0m
+[velocity_smoother-4] [0m[INFO] [1790570790.335231254] [velocity_smoother]: Destroying bond (velocity_smoother) to lifecycle manager.[0m
+[velocity_smoother-4] [0m[INFO] [1790570790.335892804] [velocity_smoother]: Destroying[0m
+[twist_mux-3] [0m[INFO] [1790570790.336387777] [rclcpp]: signal_handler(SIGINT/SIGTERM)[0m
+[planner_server-7] [0m[INFO] [1790570790.341803851] [planner_server]: Destroying[0m
+[obstacle_filter-1] Traceback (most recent call last):
+[obstacle_filter-1]   File "/home/lab307/ranger_nav/ws_nav/install/ranger_navigation/lib/ranger_navigation/obstacle_filter", line 33, in <module>
+[obstacle_filter-1]     sys.exit(load_entry_point('ranger-navigation==0.1.0', 'console_scripts', 'obstacle_filter')())
+[obstacle_filter-1]   File "/home/lab307/ranger_nav/ws_nav/install/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/obstacle_filter.py", line 92, in main
+[obstacle_filter-1]     rclpy.shutdown()
+[obstacle_filter-1]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/__init__.py", line 130, in shutdown
+[obstacle_filter-1]     _shutdown(context=context)
+[obstacle_filter-1]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/utilities.py", line 58, in shutdown
+[obstacle_filter-1]     return context.shutdown()
+[obstacle_filter-1]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/context.py", line 102, in shutdown
+[obstacle_filter-1]     self.__context.shutdown()
+[obstacle_filter-1] rclpy._rclpy_pybind11.RCLError: failed to shutdown: rcl_shutdown already called on the given context, at ./src/rcl/init.c:241
+[motion_gate-2] Traceback (most recent call last):
+[motion_gate-2]   File "/home/lab307/ranger_nav/ws_nav/install/ranger_navigation/lib/ranger_navigation/motion_gate", line 33, in <module>
+[motion_gate-2]     sys.exit(load_entry_point('ranger-navigation==0.1.0', 'console_scripts', 'motion_gate')())
+[motion_gate-2]   File "/home/lab307/ranger_nav/ws_nav/install/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/motion_gate.py", line 227, in main
+[motion_gate-2]     rclpy.shutdown()
+[motion_gate-2]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/__init__.py", line 130, in shutdown
+[motion_gate-2]     _shutdown(context=context)
+[motion_gate-2]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/utilities.py", line 58, in shutdown
+[motion_gate-2]     return context.shutdown()
+[motion_gate-2]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/context.py", line 102, in shutdown
+[motion_gate-2]     self.__context.shutdown()
+[motion_gate-2] rclpy._rclpy_pybind11.RCLError: failed to shutdown: rcl_shutdown already called on the given context, at ./src/rcl/init.c:241
+[lifecycle_manager-10] [0m[INFO] [1790570790.381972953] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570790.432191855] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[INFO] [twist_mux-3]: process has finished cleanly [pid 10733]
+[INFO] [planner_server-7]: process has finished cleanly [pid 10741]
+[INFO] [collision_monitor-5]: process has finished cleanly [pid 10737]
+[INFO] [velocity_smoother-4]: process has finished cleanly [pid 10735]
+[INFO] [bt_navigator-9]: process has finished cleanly [pid 10745]
+[INFO] [map_server-6]: process has finished cleanly [pid 10739]
+[lifecycle_manager-10] [0m[INFO] [1790570790.482425113] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[ERROR] [motion_gate-2]: process has died [pid 10731, exit code 1, cmd '/home/lab307/ranger_nav/ws_nav/install/ranger_navigation/lib/ranger_navigation/motion_gate --ros-args -r __node:=ranger_motion_gate --params-file /home/lab307/ranger_nav/ws_nav/install/ranger_navigation/share/ranger_navigation/config/motion_gate.yaml -r cmd_vel_in:=/cmd_vel_gated_in -r cmd_vel_out:=/cmd_vel_after_gate -r motion_enable:=/ranger/motion_enable -r soft_estop:=/ranger/soft_estop -r obstacle_cloud:=/livox/points_rviz'].
+[ERROR] [obstacle_filter-1]: process has died [pid 10729, exit code 1, cmd '/home/lab307/ranger_nav/ws_nav/install/ranger_navigation/lib/ranger_navigation/obstacle_filter --ros-args -r __node:=ranger_obstacle_filter --params-file /home/lab307/ranger_nav/ws_nav/install/ranger_navigation/share/ranger_navigation/config/obstacle_filter.yaml -r cloud_in:=/livox/points_rviz -r obstacles_out:=/livox/obstacles'].
+[lifecycle_manager-10] [0m[INFO] [1790570790.532732131] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570790.583055603] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570790.633362496] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570790.683710133] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570790.734043217] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570790.784293922] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570790.834591345] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570790.884928348] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570790.935269627] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570790.985532319] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570791.035836924] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570791.086197356] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570791.136503615] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570791.186817359] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570791.237147368] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570791.287467155] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570791.337781458] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570791.388084094] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570791.438330637] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570791.488648732] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570791.538957836] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570791.589287093] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570791.639586245] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570791.689896561] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570791.740216783] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m
+[lifecycle_manager-10] [0m[INFO] [1790570791.790526059] [lifecycle_manager_navigation]: Waiting for service controller_server/get_state...[0m

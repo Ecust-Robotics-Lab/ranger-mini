@@ -1,0 +1,6 @@
+# ranger_obstacle_filter — 实时防撞点云预过滤（只删不可能是障碍的点）
+ranger_obstacle_filter:
+  ros__parameters:
+    min_range: 0.30         # 近于 0.30 m 视为车体自身/支架回波
+    max_range: 12.0         # 有效观测范围
+    self_radius_xy: 0.35    # 传感器原点水平 0.35 m 内的自身点

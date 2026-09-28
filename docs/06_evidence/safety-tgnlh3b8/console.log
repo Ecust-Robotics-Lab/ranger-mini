@@ -1,0 +1,3 @@
+PASS T0.no_chassis_driver_running | pids=[]（测试在隔离 domain，仍拒绝与真机驱动同跑）
+FAIL T0.no_stale_chain_processes | pids=[13775, 13584, 13585, 13586]（前次运行残留会假失败/假通过——先清理再测）
+ABORT: 检测到上次运行残留的导航链进程，请先清理（见 pkill 模式）

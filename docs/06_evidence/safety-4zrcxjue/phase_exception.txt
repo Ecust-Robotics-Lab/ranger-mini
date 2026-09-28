@@ -1,0 +1,30 @@
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 320, in wait
+    waiter.acquire()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 607, in wait
+    signaled = self._cond.wait(timeout)
+  File "/usr/lib/python3.10/threading.py", line 320, in wait
+    waiter.acquire()
+KeyboardInterrupt
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_stage6_safety.py", line 435, in main
+    try:
+  File "/home/lab307/ranger_nav/tests/test_stage6_safety.py", line 681, in _run_phases
+    t_cutoff = time.monotonic() - 1.0
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/action/client.py", line 417, in send_goal
+    result = self._get_result(goal_handle)
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/action/client.py", line 543, in _get_result
+    event.wait()
+  File "/usr/lib/python3.10/threading.py", line 604, in wait
+    with self._cond:
+  File "/usr/lib/python3.10/threading.py", line 268, in __exit__
+    return self._lock.__exit__(*args)
+RuntimeError: release unlocked lock

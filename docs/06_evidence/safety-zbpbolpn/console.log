@@ -1,0 +1,22 @@
+PASS T0.no_chassis_driver_running | pids=[]（测试在隔离 domain，仍拒绝与真机驱动同跑）
+PASS T12.radius_ordering | chassis 0.4764 < gate 0.55 <= smac/mppi 0.6
+PASS T12.velocity_ordering | gate 0.2 <= mppi 0.2 <= smoother 0.25
+PASS T12.forward_only | 三重禁倒车: MPPI vx_min>=0, smoother min>=0, Smac DUBIN
+PASS T12.unknown_not_traversable | allow_unknown=false + track_unknown_space=true
+PASS T12.cm_final_topic | /base/safe_cmd_vel
+PASS T12.footprint_envelope | 0.74×0.52 外包络（用户确认）: half=0.37×0.26
+PASS T12.bt_no_recovery | v1 BT 无倒车/原地旋转/等待/清图恢复节点
+PASS T12.recorders_no_control_topics | 录像脚本不含 cmd_vel 链话题: clean
+[INFO] [1790571233.905073494] [static_transform_publisher_eSwlV6FyqZelfYGn]: Spinning until stopped - publishing transform
+translation: ('0.000000', '0.000000', '0.600000')
+rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
+from 'base_link' to 'livox_frame'
+[INFO] [1790571233.909898642] [static_transform_publisher_xV7FbF1xY7TiwMTV]: Spinning until stopped - publishing transform
+translation: ('0.000000', '0.000000', '0.000000')
+rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
+from 'odom' to 'base_link'
+[INFO] [1790571233.914776046] [static_transform_publisher_eTg9ed3sC10YOliB]: Spinning until stopped - publishing transform
+translation: ('0.000000', '0.000000', '0.000000')
+rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
+from 'map' to 'odom'
+FAIL T0.stack_active | 栈未激活，见 nav_launch.log

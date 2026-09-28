@@ -1,0 +1,215 @@
+===== /controller_server =====
+/controller_server:
+  ros__parameters:
+    /bond_disable_heartbeat_timeout: true
+    FollowPath:
+      AckermannConstraints:
+        min_turning_r: 0.6
+      TrajectoryVisualizer:
+        time_step: 3
+        trajectory_step: 5
+      batch_size: 1000
+      critics: []
+      enforce_path_inversion: false
+      gamma: 0.015
+      iteration_count: 1
+      max_robot_pose_search_dist: 2.5
+      model_dt: 0.05
+      motion_model: Ackermann
+      plugin: nav2_mppi_controller::MPPIController
+      prune_distance: 1.5
+      regenerate_noises: false
+      reset_period: 1.0
+      retry_attempt_limit: 2
+      temperature: 0.3
+      time_steps: 56
+      transform_tolerance: 0.1
+      visualize: false
+      vx_max: 0.2
+      vx_min: 0.0
+      vx_std: 0.15
+      vy_max: 0.0
+      vy_std: 0.0
+      wz_max: 0.5
+      wz_std: 0.3
+    controller_frequency: 20.0
+    controller_plugins:
+    - FollowPath
+    controller_server:
+      verbose: false
+    failure_tolerance: 0.0
+    goal_checker:
+      plugin: nav2_controller::SimpleGoalChecker
+      stateful: true
+      xy_goal_tolerance: 0.25
+      yaw_goal_tolerance: 0.25
+    goal_checker_plugins:
+    - goal_checker
+    min_theta_velocity_threshold: 0.0001
+    min_x_velocity_threshold: 0.0001
+    min_y_velocity_threshold: 0.0001
+    odom_topic: /wheel/odom
+    progress_checker:
+      movement_time_allowance: 10.0
+      plugin: nav2_controller::SimpleProgressChecker
+      required_movement_radius: 0.5
+    progress_checker_plugin: progress_checker
+    publish_zero_velocity: true
+    speed_limit_topic: speed_limit
+    use_sim_time: false
+
+
+
+===== /planner_server =====
+/planner_server:
+  ros__parameters:
+    /bond_disable_heartbeat_timeout: true
+    GridBased:
+      allow_unknown: false
+      analytic_expansion_max_length: 3.0
+      analytic_expansion_ratio: 3.5
+      angle_quantization_bins: 72
+      cache_obstacle_heuristic: false
+      change_penalty: 0.0
+      cost_penalty: 2.0
+      downsample_costmap: false
+      downsampling_factor: 1
+      lookup_table_size: 20.0
+      max_iterations: 1000000
+      max_on_approach_iterations: 1000
+      max_planning_time: 5.0
+      minimum_turning_radius: 0.6
+      motion_model_for_search: DUBIN
+      non_straight_penalty: 1.2
+      plugin: nav2_smac_planner/SmacPlannerHybrid
+      retrospective_penalty: 0.015
+      reverse_penalty: 10.0
+      smooth_path: true
+      smoother:
+        do_refinement: true
+        max_iterations: 1000
+        tolerance: 1.0e-10
+        w_data: 0.2
+        w_smooth: 0.3
+      tolerance: 0.25
+    expected_planner_frequency: 1.0
+    planner_plugins:
+    - GridBased
+    use_sim_time: false
+
+
+
+===== /local_costmap/local_costmap =====
+/local_costmap/local_costmap:
+  ros__parameters:
+    /bond_disable_heartbeat_timeout: true
+    always_send_full_costmap: true
+    filters: []
+    footprint: '[[0.37, 0.26], [0.37, -0.26], [-0.37, -0.26], [-0.37, 0.26]]'
+    footprint_padding: 0.01
+    global_frame: odom
+    height: 5
+    inflation_layer:
+      cost_scaling_factor: 4.0
+      enabled: true
+      inflate_around_unknown: false
+      inflate_unknown: false
+      inflation_radius: 0.6
+      plugin: nav2_costmap_2d::InflationLayer
+    lethal_cost_threshold: 100
+    map_topic: /map
+    observation_sources: ''
+    obstacle_layer:
+      cloud:
+        clearing: true
+        data_type: PointCloud2
+        expected_update_rate: 0.5
+        inf_is_valid: false
+        marking: true
+        max_obstacle_height: 0.8
+        min_obstacle_height: 0.1
+        observation_persistence: 0.0
+        obstacle_max_range: 8.0
+        obstacle_min_range: 0.3
+        raytrace_max_range: 10.0
+        raytrace_min_range: 0.3
+        sensor_frame: ''
+        topic: /livox/obstacles
+      combination_method: 1
+      enabled: true
+      footprint_clearing_enabled: true
+      max_obstacle_height: 2.0
+      min_obstacle_height: 0.0
+      observation_sources: cloud
+      plugin: nav2_costmap_2d::ObstacleLayer
+    origin_x: 0.0
+    origin_y: 0.0
+    plugins:
+    - obstacle_layer
+    - inflation_layer
+    publish_frequency: 2.0
+    resolution: 0.05
+    robot_base_frame: base_link
+    robot_radius: 0.1
+    rolling_window: true
+    track_unknown_space: false
+    transform_tolerance: 0.3
+    trinary_costmap: true
+    unknown_cost_value: 255
+    update_frequency: 5.0
+    use_maximum: false
+    use_sim_time: false
+    width: 5
+
+
+
+===== /collision_monitor =====
+/collision_monitor:
+  ros__parameters:
+    /bond_disable_heartbeat_timeout: true
+    FootprintApproach:
+      action_type: approach
+      enabled: true
+      footprint_topic: /local_costmap/published_footprint
+      max_points: 5
+      simulation_time_step: 0.1
+      time_before_collision: 2.0
+      type: polygon
+      visualize: false
+    PolygonStop:
+      action_type: stop
+      enabled: true
+      max_points: 0
+      points:
+      - 0.45
+      - 0.34
+      - 0.45
+      - -0.34
+      - -0.45
+      - -0.34
+      - -0.45
+      - 0.34
+      polygon_pub_topic: polygon_stop
+      type: polygon
+      visualize: true
+    base_frame_id: base_link
+    base_shift_correction: true
+    cloud:
+      enabled: true
+      max_height: 0.8
+      min_height: 0.1
+      topic: /livox/obstacles
+      type: pointcloud
+    cmd_vel_in_topic: /cmd_vel_after_gate
+    cmd_vel_out_topic: /base/safe_cmd_vel
+    observation_sources:
+    - cloud
+    odom_frame_id: odom
+    polygons:
+    - PolygonStop
+    - FootprintApproach
+    source_timeout: 1.5
+    stop_pub_timeout: 1.0
+    transform_tolerance: 0.3
+    use_sim_time: false
+

@@ -1,0 +1,53 @@
+PASS T0.no_chassis_driver_running | pids=[]（测试在隔离 domain，仍拒绝与真机驱动同跑）
+PASS T0.no_stale_chain_processes | pids=[]（前次运行残留会假失败/假通过——先清理再测）
+PASS T12.radius_ordering | chassis 0.4764 < gate 0.55 <= smac/mppi 0.6
+PASS T12.velocity_ordering | gate 0.2 <= mppi 0.2 <= smoother 0.25
+PASS T12.forward_only | 三重禁倒车: MPPI vx_min>=0, smoother min>=0, Smac DUBIN
+PASS T12.unknown_not_traversable | allow_unknown=false + track_unknown_space=true
+PASS T12.cm_final_topic | /base/safe_cmd_vel
+PASS T12.footprint_envelope | 0.74×0.52 外包络（用户确认）: half=0.37×0.26
+PASS T12.bt_no_recovery | v1 BT 无倒车/原地旋转/等待/清图恢复节点
+PASS T12.recorders_no_control_topics | 录像脚本不含 cmd_vel 链话题: clean
+[INFO] [1790576098.861078578] [static_transform_publisher_ppV9oxfmqg2IjJrJ]: Spinning until stopped - publishing transform
+translation: ('0.000000', '0.000000', '0.000000')
+rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
+from 'odom' to 'base_link'
+[INFO] [1790576098.864479548] [static_transform_publisher_BSgJxT1mtGqODlr8]: Spinning until stopped - publishing transform
+translation: ('0.000000', '0.000000', '0.600000')
+rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
+from 'base_link' to 'livox_frame'
+[INFO] [1790576098.865811779] [static_transform_publisher_9YXw6idMCED0FbyJ]: Spinning until stopped - publishing transform
+translation: ('0.000000', '0.000000', '0.000000')
+rotation: ('0.000000', '0.000000', '0.000000', '1.000000')
+from 'map' to 'odom'
+PASS T0.stack_active | 1.5s 出现首条 /base/safe_cmd_vel
+PASS T1.permission_off_blocks | max|vx|=0.0000
+PASS T2.enable_flows | max|vx|=0.150
+PASS T3.nav_not_ready_blocks | 0.01s 归零
+PASS T3.ready_restores
+PASS T4.cloud_stale_blocks | 0.02s 归零（补偿 CM fail-open）
+PASS T4.cloud_restores
+PASS T5.cmd_stale_stops | 0.02s 归零
+PASS T5.cmd_restores
+PASS T6.estop_stops_fast | 0.00s 归零
+PASS T7.estop_clear_resumes
+FAIL T8.obstacle_stops | 未停
+PASS T8.ground_point_ignored | 带内障碍停、地面点(带外)不误刹
+PASS T11.unique_final_publisher | Publisher count=1
+PASS T14.mppi_runtime | MPPI 运行时: Ackermann + min_turning_r 0.6 + vx_max 0.2
+PASS T14.smac_runtime | Smac 运行时: DUBIN + 0.6 半径 + 禁未知
+PASS T14.costmap_runtime | 局部代价地图运行时: /livox/obstacles + 0.10–0.80 高度带
+PASS T14.cm_runtime | CM 运行时: 输出直达底盘 + 1 点即停
+PASS T10.precondition_flowing
+FAIL T10.gate_restart_no_auto_permission | 门禁重启后许可复位 False；final_max=0.1500 gated_max=0.1500（明细 t10_deques/t10_topic_info/t10_pre_kill）
+PASS T10.reenable_restores
+T13 goal: (-0.52, 1.87) yaw 8deg (clearance-score -1000000000.00)
+FAIL T13.plan_and_cmd_produced | plan=False controller_cmd=False（防空调：控制器确在发令）
+PASS T13.permission_off_stays_zero | BT 导航激活且控制器发令时，最终输出恒零
+FAIL T9.precondition_flowing
+PASS T9.cm_death_silent | CM 死后 3 s 内消息 0 条（全零或无，不执行旧指令）
+PASS T9.no_auto_recovery | CM 死后 11 s 内消息 0 条全零/无（全栈复位停机，无自动恢复）
+
+32/36 checks passed
+FAILED: T8.obstacle_stops, T10.gate_restart_no_auto_permission, T13.plan_and_cmd_produced, T9.precondition_flowing
+evidence: /home/lab307/ranger_nav/docs/06_evidence/safety-r4rz4zmi

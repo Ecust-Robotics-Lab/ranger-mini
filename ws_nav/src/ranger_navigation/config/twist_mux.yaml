@@ -1,0 +1,14 @@
+# twist_mux 4.3.0（已装版本自带示例格式核实：topics: 列表 + name/topic/timeout/priority）
+# 仲裁优先级：键盘遥控 90 > Nav2 10（人工接管压制自主导航）。急停不在这一层，
+# 统一在 ranger_motion_gate 的 /ranger/soft_estop（避免多处急停来源不一致）。
+twist_mux:
+  ros__parameters:
+    topics:
+      keyboard:
+        topic: /teleop/cmd_vel
+        timeout: 0.5
+        priority: 90
+      navigation:
+        topic: /cmd_vel_nav
+        timeout: 0.5
+        priority: 10

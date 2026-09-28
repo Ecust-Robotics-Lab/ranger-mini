@@ -1,9 +1,23 @@
 # 项目状态
 
-更新时间：2026-09-23。
+更新时间：2026-09-28。
 
 
-## 阶段 5：地图定位与 Nav2 接口适配（当前）
+## 阶段 6：Nav2 平地单点导航集成（当前）
+
+- **PARTIAL：安全链与导航栈配置/离线验证完成；真机导航测试全部未执行——只可表述为"配置/离线测试完成，真机待验"，不写"导航已成功"。** 用户 2026-09-28 授权阶段 6 并给出速度链顺序要求（仲裁/平滑在 CM 之前、CM 最后直通底盘）。
+- **安装**：ros-humble navigation2 全套 1.1.20（bringup/collision-monitor/mppi-controller/smac-planner/velocity-smoother/simple-commander）+ twist-mux 4.3.0，参数/插件名全部对照已装版本源码与二进制符号核实（例：MPPI 插件名 Humble 用 `::`、Ackermann 半径参数在 `FollowPath.AckermannConstraints.min_turning_r` 子命名空间、costmap width/height 必须整型、bt_navigator configure 时同时加载两个默认 BT）。
+- **速度链**（用户指定顺序）：Nav2(/cmd_vel_nav)+遥控(/teleop/cmd_vel) → twist_mux（遥控 90>Nav2 10；4.3.0 输出话题实测 cmd_vel_out）→ velocity_smoother(OPEN_LOOP) → **ranger_motion_gate（本项目新节点：VOLATILE 粘滞许可/软急停锁存/定位 ready/点云新鲜度/限速/阿克曼运动学）** → collision_monitor → **/base/safe_cmd_vel（唯一发布者=CM，launch 重映射的底盘入口）**。全链 Twist。
+- **运动模式约束**：底盘驱动源码证实 |vx|/|wz|<0.4764 切 SPINNING、vy≠0 切横移——门禁运动学强制拦截（先限幅后裁半径，输出不变量 R≥0.55 或 wz=0，单元测试 12/12 含回归用例与全网格扫描 tests/test_stage6_gate_unit.py）；禁倒车三重（MPPI vx_min=0 + smoother min=0 + Smac DUBIN）。
+- **防撞输入**：ranger_obstacle_filter（去自身点/限距，空云也发布作新鲜度心跳）→ /livox/obstacles 同时供 CM（高度带 0.10–0.80 base 系=建图障碍带；Stop 多边形 footprint+0.08、严格大于语义 max_points=0 即 1 点停）与局部代价地图；未知区不可行驶（track_unknown+allow_unknown=false）。**门禁点云新鲜度监视 /livox/obstacles（与 CM 同源）——过滤器死亡时门禁立即阻断（审查 major 修复）**。
+- **地图**：导航副本 `maps/.../new_map/nav/`（make_nav_map.py 清除建图起点 0.177 m 处 1 个不可能占据像元，原图未动；原版会使起点膨胀致死、Smac 拒规划）。footprint 0.74×0.52（用户确认外包络，PROVISIONAL）。**场地走廊净空紧张**（中轴线距墙 0.04–0.4 m 段存在）：v1 目标点须选开阔区，窄段通行属后续阶段。
+- **验证**：tests/test_stage6_safety.py（隔离 domain 跨进程全栈）**37/37 全绿 exit 0**（safety-ych6w74e）+ 门禁单元 12/12；防空转设计（cmd_seen 时间戳截止、零速断言接受静默、T10 活跃零值消息、T9 实时图发布者数判定、T14 get_parameters 服务直读）；历轮 13 个失败证据目录保留。另实测禁用 FootprintApproach（1.1.20 空点云+动态 footprint 误判即刻碰撞，§7.1）。
+- **对抗性审查**（6 维度×3 视角工作流）：确认 15 项（5 major：门禁看错云话题、限幅顺序 bug 可触发 SPINNING、--yaw 缺省全零四元数、--cancel 跨进程空操作、--timeout 不覆盖服务器不可用）全部修复；56 个验证代理因账户限流失败，驳回清单经人工复核拾回修复（launch 默认地图、MPPI critics 显式化、daemon 退化改服务直读等）。详见 06 报告 §5.1。
+- **运维发现（如实记录）**：`ros2 run` 包装器 SIGINT 后子进程孤儿化（曾致 6 个带许可门禁泄漏发 0.15）；SIGKILL 残留 /dev/shm fastrtps_* 段与幽灵端点污染 DDS 图；调试会话 `ros2 topic pub` 僵尸污染输入话题——清理脚本 scripts/clean_dds_shm.sh，测试护栏已覆盖全部三类模式。
+- **PENDING**：真机导航（隔离平坦空旷区，0.15 m/s 起步→缓弯→取消→软障碍→遥控接管→逐步放宽限速；不让人冲入车前测防撞）；footprint 实测；阶段 5 两项 PENDING 不变（独立数据验证、T_base_imu 精测）。
+- 阶段 2 停车安全已由用户 2026-09-28 确认通过（见阶段 2 节）；运动许可仍逐次授权、不跨进程重启。
+
+## 阶段 5：地图定位与 Nav2 接口适配（前一阶段，已完成含两项 PENDING）
 
 - **PARTIAL：定位管线与接口适配完成并经离线自测+合成测试；真实冷启动定位与独立数据验证待用户，未放行导航。** 用户 2026-09-23 授权阶段 5；不启动自主导航。
 - **源码审计（不虚构接口）**：定位初始化依赖地图功能点（我们地图仅 `start`=建图起点），无任意全局搜索（YawSearch 被注释）；外部初始位姿仅 C++ API，**无 /initialpose/重定位服务**；`Localize()` 成功判定恒真（上游缺陷，置信度门槛失效）→ 桥接自设门槛补救。上游 TF 把传感器位姿硬编码 child=`base_link`（语义错误），补丁更名 `imu_link`。**Lightning 未融合底盘轮速**（ProcessOdomMsg 被注释）；/wheel/odom（odom→base_link 平面里程计，50 Hz，TF 关闭）保持独立观测。
@@ -11,7 +25,7 @@
 - **验证**：离线定位自测 `docs/05_evidence/loc-offline-6ggxi299/`（同源建图包，exit 0，FP init 成功，**73** 匹配全成功 conf≈3.0，终点与建图轨迹终点一致；**同源自测不作独立依据**）；桥接合成测试 `tests/test_stage5_bridge.py` v2 **11/11**（9 轮 8 轮全绿）。**对抗性审查（15 代理工作流）确认 10 项缺陷已全部修复**：`/navigation_ready` 无看门狗致轮速断流滞留 True（已加 0.2 s 看门狗+`odom_present` 诊断）、innovation yaw 误差未参与判定（原地旋转航向发散不可见，已加 20° 判据）、零四元数输入崩溃（已加防护）、Localization::Finish 空指针（Init 失败路径，已保护+早退）、v1 测试多项空转（jump 检查可被任意满足/TF 仅查存在性/stall 归因错误，破坏性实验证实后 v2 全重写：TF 数值比对、纯门禁归因、相位前沉淀基线、跨话题配对竞态修正、批量排空防测试饥饿）、文档 74→73 匹配数更正。失败记录保留：mfrsk5zz 缺 slam_env 退出 127；桥接首版 quat_rotate bug 由数学测试抓出已修；单进程多节点 DDS 发现在本环境不可靠→测试改跨进程。
 - **现场冷启动（2026-09-23 晚，静止部分）实测 PASS**：车摆位偏差 ~0.43 m/−10° 仍 FP 收敛（conf 3.04 @200 Hz、status GOOD）；`/navigation_ready`=true、map→base_link z=−0.53 m 与外参换算一致；用户经 foxglove_bridge 确认二维地图+TF+实时点云可视化正常。插曲与看门狗现场验证（雷达驱动 600 s 到时退出→ready 正确翻 false）见 [05 第 7 节](05_localization_interface.md)。运动短距验证（可选强化）未做。
 - **PENDING**：① 独立数据验证（新运动包，先离线后在线）；② T_base_imu 精测（当前近似）。
-- 阶段 2 结论不变：停车安全未通过，自主导航不放行。
+- 阶段 2 停车安全结论已于 2026-09-28 更新为通过（用户确认，见阶段 2 节顶部）；运动许可仍逐次授权、不跨进程重启。
 
 ## 阶段 4：Lightning-LM 编译与离线输入验证（已完成）
 
@@ -51,6 +65,7 @@
 
 ## 阶段 2：底盘通信、ROS 与控制测试
 
+- **【2026-09-28 结论更新：停车安全通过（用户确认）】** 用户明确确认"阶段 2 停止安全测试已经通过"。据此本阶段的停车安全（STOP safety）判为 **通过（依据=用户现场确认，非新增自动化测试证据）**；下文 2026-09-2x 历史记录中"驱动退出后负向速度反馈、原因未明"等异常观察作为原始记录保留不改写。运动许可逐次授权的约束不因此放松。
 - **最新用户观察**：5 秒测试停车时未观察到后退。记录为现场结果，不等同于所有停车机制通过。
 - **最新日志（22:32）**：ros-motion-ebju6tr2 中 204 条非零 CAN 指令均 0.05 m/s，持续约 5.0015 秒；主动发零后反馈归零。驱动退出后仍有 5 条负向反馈，最低 −2.544 m/s，随后归零；这是解码反馈，不能据此声称实物同速后退。用户未指定精确日志或观察窗口。审查：docs/02_evidence/ros-motion-ebju6tr2/observation_review.json。
 - 22:30、22:31 两轮分别有零速稳定不足、前进速度反馈 0.144 m/s 超阈值中止。最新一轮完成不能追溯认定此前通过。本次仅分析本地记录，未启动驱动或发控制；停车反馈异常仍待定位。

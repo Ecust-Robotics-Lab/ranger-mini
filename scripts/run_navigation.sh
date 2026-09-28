@@ -9,7 +9,7 @@
 #   bash scripts/run_navigation.sh --stop
 #
 # 放行顺序：启动后先 nav_safety.sh enable 授权，再 send_nav_goal.py 发目标。
-set -uo pipefail
+set -o pipefail  # 注意不用 -u：ROS setup 脚本依赖未绑定变量属正常行为
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"

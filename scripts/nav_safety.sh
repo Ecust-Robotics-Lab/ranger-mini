@@ -8,7 +8,7 @@
 #   status  -> 查看门禁当前判定
 #
 # 语义：VOLATILE 连发 5 次，不做 latched——重启后的门禁不会自动恢复许可。
-set -uo pipefail
+set -o pipefail  # 注意不用 -u：ROS setup 脚本依赖未绑定变量属正常行为
 source /opt/ros/humble/setup.bash 2>/dev/null
 
 MODE="${1:-status}"

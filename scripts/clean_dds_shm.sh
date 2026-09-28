@@ -9,7 +9,7 @@
 # 用法: bash scripts/clean_dds_shm.sh [--force]
 #   默认：检测到任何疑似活 ROS 进程则拒绝执行并列出它们
 #   --force：跳过检测直接清理（自行承担风险）
-set -uo pipefail
+set -o pipefail  # 注意不用 -u：ROS setup 脚本依赖未绑定变量属正常行为
 
 if [ "${1:-}" != "--force" ]; then
     mapfile -t alive < <(pgrep -af 'ros2 |ros2$|/ros/|ranger_navigation|nav2_|fastrtps' 2>/dev/null | grep -av 'clean_dds_shm')

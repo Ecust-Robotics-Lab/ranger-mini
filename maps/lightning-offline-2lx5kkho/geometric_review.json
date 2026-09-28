@@ -1,0 +1,42 @@
+{
+  "experiment": "/home/lab307/ranger_nav/maps/lightning-offline-2lx5kkho",
+  "map_points": 19710,
+  "keyframes": 25,
+  "optimized_path_length_m": 8.257094491506901,
+  "optimized_start_xyz_m": [
+    0.04180993991564598,
+    0.0044422091312893265,
+    0.01814963165853373
+  ],
+  "optimized_end_xyz_m": [
+    -0.15843277976148942,
+    -0.16780567177695987,
+    -0.024687534671727372
+  ],
+  "start_end_translation_m": 0.26758456995926483,
+  "start_end_planar_m": 0.2641334497201713,
+  "start_end_height_m": -0.042837166330261106,
+  "start_yaw_deg": -0.5483062495531259,
+  "end_yaw_deg": 2.5133983284481114,
+  "start_end_yaw_delta_deg": 3.0617045780012404,
+  "optimized_trajectory_z_min_m": -0.024687534671727372,
+  "optimized_trajectory_z_max_m": 0.02687022950516478,
+  "optimized_trajectory_z_span_m": 0.05155776417689215,
+  "max_lio_to_optimized_translation_m": 0.04071406460731193,
+  "cloud_z_percentiles_m": {
+    "p0": -0.6250476837158203,
+    "p1": -0.39923502326011656,
+    "p5": -0.12845548167824744,
+    "p25": 0.3479825407266617,
+    "p50": 1.6667571663856506,
+    "p75": 2.5248090624809265,
+    "p95": 2.559162211418152,
+    "p99": 2.5822935199737547,
+    "p100": 6.5732903480529785
+  },
+  "review_limits": [
+    "No surveyed reference distance was supplied, so absolute scale cannot be accepted.",
+    "Point-cloud plots can reveal gross duplication but do not replace on-site scene comparison.",
+    "A returned position with different yaw is not a full pose closure."
+  ]
+}

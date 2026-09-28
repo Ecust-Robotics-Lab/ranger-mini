@@ -1,0 +1,65 @@
+{
+  "note": "2026-09-28 起本地修改提交至各仓库的本地分支 ranger-local（基点=官方固定 commit，单 commit，工作树干净）。历史 patches/ 文件仍保留作跨仓库汇总，两者内容对应。",
+  "lightning": {
+    "path": "/home/lab307/ranger_nav/ws_slam/src/lightning",
+    "origin": "https://github.com/gaoxiang12/lightning-lm",
+    "base_commit": "1325fed8fa97a2506878360fc23427ea00a767da",
+    "local_branch": "ranger-local",
+    "local_commit": "b973e7f",
+    "uncommitted_changes": 0,
+    "patches": ["stage4_lightning_integration.patch", "stage5_loc_interface.patch", "stage4_glog_local_prefix.patch"]
+  },
+  "ranger_ros2": {
+    "path": "/home/lab307/ranger_nav/ws_base/src/ranger_ros2",
+    "origin": "https://github.com/agilexrobotics/ranger_ros2",
+    "base_commit": "b6ea21a275ca5e7168130cc6470e61474681d679",
+    "local_branch": "ranger-local",
+    "local_commit": "7b75bc2",
+    "uncommitted_changes": 0,
+    "patches": ["stage2 累计补丁（见 docs/02_ros_motion_test.md）"]
+  },
+  "ugv_sdk": {
+    "path": "/home/lab307/ranger_nav/ws_base/src/ugv_sdk",
+    "origin": "https://github.com/agilexrobotics/ugv_sdk",
+    "base_commit": "f2704eacdc90357078cd93ec60aae08bb4baab35",
+    "local_branch": "ranger-local",
+    "local_commit": "e2f5764",
+    "uncommitted_changes": 0,
+    "patches": ["stage2 累计补丁（async CAN/agilex_base）"]
+  },
+  "livox_driver": {
+    "path": "/home/lab307/ranger_nav/ws_livox/src/livox_ros_driver2",
+    "origin": "https://github.com/Livox-SDK/livox_ros_driver2",
+    "base_commit": "4a1def929e5b59c7a8122d19fce6efba581ce9f7",
+    "local_branch": "ranger-local",
+    "local_commit": "cc34f0a",
+    "uncommitted_changes": 0,
+    "patches": ["livox_driver_stage3_diagnostics.patch"]
+  },
+  "livox_sdk": {
+    "path": "/home/lab307/ranger_nav/vendor/livox/Livox-SDK2",
+    "origin": "https://github.com/Livox-SDK/Livox-SDK2",
+    "commit": "08f523c930b2f0ba1e98a6afaa8d7476bf479908",
+    "head": "detached HEAD, clean",
+    "local_branch": null
+  },
+  "lightning_review": {
+    "path": "/home/lab307/ranger_nav/vendor/livox/lightning-lm-review",
+    "origin": "https://github.com/gaoxiang12/lightning-lm",
+    "commit": "1325fed8fa97a2506878360fc23427ea00a767da",
+    "head": "detached HEAD, clean",
+    "local_branch": null,
+    "role": "stage3 read-only review copy, never built"
+  },
+  "patches": {
+    "stage4_lightning_integration.patch": "dd8c0ed3229636695b55e7f17ac0c20a4d780427989cdf9420276fffa1e201dd",
+    "stage4_glog_local_prefix.patch": "d638a9da006d189ae1a6b6d3ca55b1d5af2b412de45628a5d8ebb91d63bbfb1e",
+    "stage5_loc_interface.patch": "see patches/ (regenerated 2026-09-23 after review fixes)"
+  },
+  "pangolin": {
+    "version": "0.9.3",
+    "source": "upstream bundled zip at fixed Lightning commit",
+    "archive_sha256": "bd22e2f7cbf7093fcc8e20927157dccd5a82057ab187c1450af37a112bce5807"
+  },
+  "updated_at": "2026-09-28"
+}

@@ -97,10 +97,9 @@ def prepare(context):
 
 
 def generate_launch_description():
-    # 默认用导航副本地图：原版起点处 1 个不可能占据像元经膨胀使起点致死、
-    # Smac 拒规划（scripts/make_nav_map.py 生成，原图未动）
-    default_map = ('/home/lab307/ranger_nav/maps/lightning-offline-suej7qsz'
-                   '/data/new_map/nav/map_nav.yaml')
+    # 2026-09-28 重录地图（g2p5 二维 8cw1afzl，起点净空 0.326 m 无需副本）
+    default_map = ('/home/lab307/ranger_nav/maps/lightning-offline-8cw1afzl'
+                   '/data/new_map/map.yaml')
     return LaunchDescription([
         DeclareLaunchArgument('execute', default_value='false', choices=['false', 'true']),
         DeclareLaunchArgument('control_authorized', default_value='false'),

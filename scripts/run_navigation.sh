@@ -16,7 +16,7 @@ cd "$ROOT"
 
 # 导航用副本地图（make_nav_map.py 生成：清除建图起点处 1 个不可能的自身占据像元，
 # 该像元经膨胀会使起点致死、Smac 拒规划；原图 map.yaml 未改动）
-MAP_YAML="${MAP_YAML:-$ROOT/maps/lightning-offline-suej7qsz/data/new_map/nav/map_nav.yaml}"
+MAP_YAML="${MAP_YAML:-$ROOT/maps/lightning-offline-8cw1afzl/data/new_map/map.yaml}"  # 2026-09-28 重录地图（起点净空0.326m无需副本）
 CMD_PREFIX=(ros2 launch ranger_navigation navigation.launch.py
             execute:=true control_authorized:=true map_yaml:="$MAP_YAML")
 

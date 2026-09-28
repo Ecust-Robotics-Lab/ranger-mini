@@ -112,7 +112,16 @@
 - **PENDING-2 独立数据验证**：录一段**新**的运动包（不同起点或不同路径），先 `run_loc_offline` 验证定位，再做在线。建图原包自测（loc-offline-6ggxi299）不作为独立验证依据。
 - **待测参数**：`T_base_imu` 精测（当前近似值会引入 cm 级 base_link 偏移与未知 x/y 偏置；Nav2 footprint 需加余量或精测后收紧）。
 
-**下次现场恢复流程**（终端 A/B/C 三条命令见第 8 节；桥接/地图发布/派生点云/静态 TF 由助手侧脚本常驻）。
+**下次现场恢复流程（一键版）**：参数集中在 [config/field_session.env](../config/field_session.env)（组件开关、雷达时限、初始位姿、外参、地图目录、桥接阈值等，改文件即调参）：
+
+```bash
+bash scripts/field_session.sh             # 干跑：只打印将启动的组件与命令
+bash scripts/field_session.sh --execute   # 一个 gnome-terminal 窗口 5 个标签页全起
+bash scripts/field_session.sh --status    # 各组件运行状态
+bash scripts/field_session.sh --stop      # 按精确模式逐组件停止（INT→宽限→TERM→KILL）
+```
+
+标签页 = 原终端 A（雷达）/B（底盘）/C（定位）/D（桥接）/E（辅助聚合：二维地图发布+派生点云+静态TF+foxglove_bridge，日志在 `/tmp/ranger_session/`）。Foxglove 连 `ws://<本机IP>:8765`。已实测：辅助聚合 4 节点起停干净、foxglove_bridge 监听 8765；开标签部分需桌面会话（助手侧无 DISPLAY 未测，首次使用如遇问题报告助手）。手动逐终端命令仍见第 8 节备用。
 
 ## 8. 命令与退出记录
 

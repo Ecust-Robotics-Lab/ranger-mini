@@ -163,6 +163,10 @@ class LocalizationBridge(Node):
         self.declare_parameter("odom_max_age_s", 0.5)
         self.declare_parameter("min_confidence", 1.0)
         self.declare_parameter("required_status", 2)  # LocalizationStatus::GOOD
+        # /lightning/loc_status 为事件驱动（状态机枚举，GOOD 直到变化才重发；
+        # 实测静止时 8 s 无消息）。定位链路存活由 loc TF 的 tf_max_age_s 把守，
+        # status 只验证"最近一次已知状态"，窗口放宽到 10 s。
+        self.declare_parameter("status_max_age_s", 10.0)
         self.declare_parameter("innovation_trans_th", 0.5)
         self.declare_parameter("innovation_speed_th", 0.3)
         self.declare_parameter("innovation_yaw_th_deg", 20.0)
@@ -178,6 +182,7 @@ class LocalizationBridge(Node):
         self.odom_max_age = float(p("odom_max_age_s"))
         self.min_conf = float(p("min_confidence"))
         self.req_status = int(p("required_status"))
+        self.status_max_age = float(p("status_max_age_s"))
         self.innov_t_th = float(p("innovation_trans_th"))
         self.innov_speed_th = float(p("innovation_speed_th"))
         self.innov_yaw_th = math.radians(float(p("innovation_yaw_th_deg")))
@@ -220,9 +225,11 @@ class LocalizationBridge(Node):
         self._innov_last_err = None
 
         self.get_logger().info(
-            "bridge up: %s->%s + %s->%s computed from %s->%s; T_base_imu t=%s q=%s (APPROXIMATE)" %
+            "bridge up: %s->%s + %s->%s computed from %s->%s; T_base_imu t=%s q=%s (APPROXIMATE); "
+            "tf_max_age=%s odom_max_age=%s status_max_age=%s" %
             (self.map_frame, self.odom_frame, self.odom_frame, self.base_frame,
-             self.map_frame, self.loc_child, self.t_base_imu.t, self.t_base_imu.q))
+             self.map_frame, self.loc_child, self.t_base_imu.t, self.t_base_imu.q,
+             self.tf_max_age, self.odom_max_age, self.status_max_age))
 
     # ------------------------------------------------------------------ inputs
 
@@ -305,7 +312,7 @@ class LocalizationBridge(Node):
 
             checks["status"] = self._status is not None and self._status == self.req_status
             if self._status_time is not None:
-                checks["status_fresh"] = (now - self._status_time) <= 1.0
+                checks["status_fresh"] = (now - self._status_time) <= self.status_max_age
             else:
                 checks["status_fresh"] = False
 

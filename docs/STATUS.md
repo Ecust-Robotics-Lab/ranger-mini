@@ -84,4 +84,4 @@
 - 成功证据：docs/mid360_ip_connected_20260914.txt；原配置/激活日志及回滚：/var/lib/ranger-nav-yt6801/connect-jQpZBTzH/。
 - 雷达 UDP/ROS 等后续阶段尚未授权；雷达临时连接持久化尚未实施。
 
-交接：docs/HANDOFF.md 原文是阶段 2 之前的历史交接。当前已授权阶段 4：构建、静止输入验证、手持诊断（不作验收）与正式车体闭环包两次离线建图均已完成，三维验收等待用户人工图审结论、现场参考距离和安装 xyz/rpy，最新结果见顶部；后续阶段不自动推进，底盘运动许可不跨进程重启。
+交接：docs/HANDOFF.md 原文是阶段 2 之前的历史交接。当前已授权阶段 5（完成，剩两项 PENDING 见顶部阶段 5 节）；主仓库与四个上游源码仓库均已 git 化——源码本地修改提交在各仓库 `ranger-local` 本地分支（lightning@b973e7f 基点 1325fed8、ranger_ros2@7b75bc2 基点 b6ea21a2、ugv_sdk@e2f5764 基点 f2704eac、livox_ros_driver2@cc34f0a 基点 4a1def92；SDK2 与审查副本保持干净 detached HEAD），完整记录见 [source_versions.json](04_evidence/source_versions.json)；主仓库基线 commit c833632（bags/ 与第三方源码不入库，补丁以 patches/ 追踪）。后续阶段不自动推进，底盘运动许可不跨进程重启。

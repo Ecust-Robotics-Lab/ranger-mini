@@ -106,17 +106,18 @@ def main():
             print('错误：navigate_to_pose 服务器不可用（导航栈未运行/未激活），未发送目标。')
             return 3
 
-        goal = NavigateToPose.Goal()
-        goal.pose = PoseStamped()
-        goal.pose.header.frame_id = 'map'
-        goal.pose.header.stamp = nav.get_clock().now().to_msg()
-        goal.pose.pose.position.x, goal.pose.pose.position.y = args.x, args.y
-        goal.pose.pose.orientation.z = math.sin(yaw / 2.0)
-        goal.pose.pose.orientation.w = math.cos(yaw / 2.0)
+        # BasicNavigator.goToPose 接收 PoseStamped（内部自行包装 action goal，
+        # 此前误传 NavigateToPose.Goal 整体触发断言）
+        pose = PoseStamped()
+        pose.header.frame_id = 'map'
+        pose.header.stamp = nav.get_clock().now().to_msg()
+        pose.pose.position.x, pose.pose.position.y = args.x, args.y
+        pose.pose.orientation.z = math.sin(yaw / 2.0)
+        pose.pose.orientation.w = math.cos(yaw / 2.0)
 
         print(f'发送目标 map({args.x:.2f}, {args.y:.2f}, yaw={math.degrees(yaw):.1f}°)，'
               f'超时 {args.timeout}s')
-        nav.goToPose(goal)
+        nav.goToPose(pose)
         t0 = time.time()
         while not nav.isTaskComplete():
             if time.time() - t0 > args.timeout:

@@ -5,7 +5,7 @@
 ranger_motion_gate:
   ros__parameters:
     publish_rate: 20.0      # 输出心跳频率（向 CM 持续供零/有效流）
-    max_vx: 0.20            # v1 现场限速：先低后放宽，只改这里即可收紧全链
+    max_vx: 0.10            # v1 现场限速：先低后放宽，只改这里即可收紧全链
     max_wz: 0.60
     min_turn_radius: 0.55   # 底盘 0.4764 < 0.55 < Nav2 0.60
     vx_turn_min: 0.05       # 低于此 vx 时 wz 归零：禁低速原地旋转（防 SPINNING 切换）

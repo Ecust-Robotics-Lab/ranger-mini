@@ -67,7 +67,7 @@ controller_server:
       # 1.1.20 装机头文件核实：Ackermann 半径参数在子命名空间 AckermannConstraints 下
       AckermannConstraints:
         min_turning_r: 0.60
-      vx_max: 0.20
+      vx_max: 0.10
       vx_min: 0.0                           # v1 禁倒车（连同 Smac DUBIN + 门禁三重）
       vy_max: 0.0
       wz_max: 0.50
@@ -106,7 +106,7 @@ velocity_smoother:
     use_sim_time: false
     smoothing_frequency: 20.0
     feedback: "OPEN_LOOP"                   # 不依赖底盘速度反馈（其标定未验收）
-    max_velocity: [0.25, 0.0, 0.70]         # 仅平滑角色，上限比 MPPI/门禁宽
+    max_velocity: [0.12, 0.0, 0.70]         # 仅平滑角色，上限比 MPPI/门禁宽
     min_velocity: [0.0, 0.0, -0.70]         # 反向 x 钳到 0（三重禁倒车之一）
     # 加速度比值约束：max_accel_x/max_accel_wz >= 底盘 0.4764，避免起步/加速
     # 弯道的瞬态半径低于门禁阈值而被逐帧削波（对抗审查 note）
@@ -127,8 +127,12 @@ global_costmap:
       publish_frequency: 1.0
       resolution: 0.05
       track_unknown_space: true             # 未知≠可行驶（配合 Smac allow_unknown=false）
-      footprint: "[[0.37, 0.26], [0.37, -0.26], [-0.37, -0.26], [-0.37, 0.26]]"
-      footprint_padding: 0.01
+      # 窄口模式（2026-09-30 用户决定放宽）：圆形模型 0.20 m，比真实半宽(0.26)小
+      # 6 cm/侧；真实车体防撞由 CM Stop 多边形(真实外形+0.08)兜底，门禁限速 0.10 m/s。
+      # 可通过通道 >=0.80 m（真实足迹模型需 >=1.06 m，本场地大多 0.67-1.04 m）。
+      # 停车窄口 0.67 m 仍不可自主通行（遥控通过）。
+      robot_radius: 0.20
+      footprint_padding: 0.0
       plugins: ["static_layer", "inflation_layer"]
       static_layer:
         plugin: "nav2_costmap_2d::StaticLayer"
@@ -152,8 +156,12 @@ local_costmap:
       rolling_window: true
       width: 5
       height: 5
-      footprint: "[[0.37, 0.26], [0.37, -0.26], [-0.37, -0.26], [-0.37, 0.26]]"
-      footprint_padding: 0.01
+      # 窄口模式（2026-09-30 用户决定放宽）：圆形模型 0.20 m，比真实半宽(0.26)小
+      # 6 cm/侧；真实车体防撞由 CM Stop 多边形(真实外形+0.08)兜底，门禁限速 0.10 m/s。
+      # 可通过通道 >=0.80 m（真实足迹模型需 >=1.06 m，本场地大多 0.67-1.04 m）。
+      # 停车窄口 0.67 m 仍不可自主通行（遥控通过）。
+      robot_radius: 0.20
+      footprint_padding: 0.0
       plugins: ["obstacle_layer", "inflation_layer"]
       obstacle_layer:
         plugin: "nav2_costmap_2d::ObstacleLayer"

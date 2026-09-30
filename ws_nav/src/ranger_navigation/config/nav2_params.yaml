@@ -54,7 +54,7 @@ controller_server:
     # 放宽到可达成范围；真机验证后再收紧
     goal_checker:
       xy_goal_tolerance: 0.30
-      yaw_goal_tolerance: 0.40
+      yaw_goal_tolerance: 3.15   # 窄场地：到达即成功，不要求最终朝向（0.6m半径窄带内无法任意掉头）
     FollowPath:
       plugin: "nav2_mppi_controller::MPPIController"   # Humble 插件名用 :: （/ 是新版风格）
       time_steps: 56

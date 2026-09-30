@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # 单独补起底盘驱动（用于会话其余组件已在跑、只有 B-base 缺席时；
-export FASTRTPS_DEFAULT_PROFILES_FILE="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/config/fastdds_udp_only.xml"   # 禁 SHM 传输，防幽灵端点
 # 例如重启后 can0 刚重配完，不想重启整个会话弄丢已收敛的定位）。
 # 前置：can0 已 UP/ERROR-ACTIVE（launch 自带护栏，不满足会拒绝）。
 # 日志：/tmp/ranger_session/B-base.log

@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # 单独补起雷达驱动（驱动 3600s 到时自动退出后，不想重启整个会话时用；
 # C-loc 等组件会自动接上恢复的点云流）。日志 /tmp/ranger_session/A-lidar.log
-export FASTRTPS_DEFAULT_PROFILES_FILE="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/config/fastdds_udp_only.xml"
 set -o pipefail
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 LOG=/tmp/ranger_session/A-lidar.log

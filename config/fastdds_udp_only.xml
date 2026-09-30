@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- Fast DDS 传输配置：禁用共享内存（SHM），只用 UDP（含本机回环）。
+根因：本机多轮强杀进程后 /dev/shm/fastrtps_* 残段与幽灵端点反复污染 DDS 图
+（阶段 6 现场实测：话题可见但服务调用超时、action 发现失败）。UDP-only 彻底
+规避该类问题；本机通信走回环，性能对本项目规模无影响。
+用法：export FASTRTPS_DEFAULT_PROFILES_FILE=<本文件路径> -->
+<profiles xmlns="http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles">
+  <transport_descriptors>
+    <transport_descriptor>
+      <transport_id>udp_only</transport_id>
+      <type>UDPv4</type>
+    </transport_descriptor>
+  </transport_descriptors>
+  <participant profile_name="udp_participant" is_default_profile="true">
+    <rtps>
+      <userTransports>
+        <transport_id>udp_only</transport_id>
+      </userTransports>
+      <useBuiltinTransports>false</useBuiltinTransports>
+    </rtps>
+  </participant>
+</profiles>

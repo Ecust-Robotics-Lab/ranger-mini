@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # 阶段 6 单点导航启动入口（干跑默认；--execute 需现场控制授权）
+export FASTRTPS_DEFAULT_PROFILES_FILE="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/config/fastdds_udp_only.xml"   # 禁 SHM 传输，防幽灵端点
 # 前提：field_session.sh --execute 已在跑（雷达/底盘/定位/桥接）。
 #
 # 用法:

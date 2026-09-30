@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 # ranger_nav 现场会话一键启动：把原来的 A/B/C/D/E/F 多终端合并为一个
+export FASTRTPS_DEFAULT_PROFILES_FILE="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/config/fastdds_udp_only.xml"   # 禁 SHM 传输，防幽灵端点
 # gnome-terminal 窗口的多个标签页；参数集中在 config/field_session.env。
 #
 # 用法：

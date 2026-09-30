@@ -131,7 +131,7 @@ global_costmap:
       # 6 cm/侧；真实车体防撞由 CM Stop 多边形(真实外形+0.08)兜底，门禁限速 0.10 m/s。
       # 可通过通道 >=0.80 m（真实足迹模型需 >=1.06 m，本场地大多 0.67-1.04 m）。
       # 停车窄口 0.67 m 仍不可自主通行（遥控通过）。
-      robot_radius: 0.20
+      robot_radius: 0.16
       footprint_padding: 0.0
       plugins: ["static_layer", "inflation_layer"]
       static_layer:
@@ -160,7 +160,7 @@ local_costmap:
       # 6 cm/侧；真实车体防撞由 CM Stop 多边形(真实外形+0.08)兜底，门禁限速 0.10 m/s。
       # 可通过通道 >=0.80 m（真实足迹模型需 >=1.06 m，本场地大多 0.67-1.04 m）。
       # 停车窄口 0.67 m 仍不可自主通行（遥控通过）。
-      robot_radius: 0.20
+      robot_radius: 0.16
       footprint_padding: 0.0
       plugins: ["obstacle_layer", "inflation_layer"]
       obstacle_layer:

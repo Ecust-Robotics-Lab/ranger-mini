@@ -17,10 +17,12 @@ collision_monitor:
     PolygonStop:
       type: "polygon"
       action_type: "stop"
-      # footprint 0.74×0.52 + 0.08 m 边距（半轴 0.45×0.34）
+      # 真实 footprint 0.74×0.52 + 0.02 m 边距（半轴 0.39×0.28）——2026-09-30 现场
+      # 用户要求收紧：走廊净空 0.44-0.66m，原 +0.08 边距过保守；保留车体真实外形
+      # +2cm 作为防撞底线，规划层(robot_radius 0.14)负责绕行
       # 语义（1.1.20 源码）: getPointsInside() > max_points 才触发——
       # 设 0 表示多边形内出现任意 1 点即停车
-      points: [0.45, 0.34, 0.45, -0.34, -0.45, -0.34, -0.45, 0.34]
+      points: [0.39, 0.28, 0.39, -0.28, -0.39, -0.28, -0.39, 0.28]
       max_points: 0
       enabled: true
       visualize: true

@@ -1,25 +1,20 @@
 #!/usr/bin/env python3
 """ranger_obstacle_filter: prepare the live Mid-360S cloud for anti-collision use.
 
-Input  /livox/points_rviz (PointCloud2, frame livox_frame, ~10 Hz, derived copy
-        of the CustomMsg; ground points are NOT removed here).
-Output /livox/obstacles (same frame/fields).
+2026-09-30 治本改版：直接订阅 /livox/lidar 的 livox CustomMsg（不再依赖
+mid360_derived 的 PointCloud2 中转——该可视化节点曾以 73% CPU 卡在安全链
+上游，是定位 TF 滞后 1.7s 的主要负载源），并按 every_n 抽帧降频（默认每 3
+帧取 1 ≈ 3.3 Hz；0.10 m/s 时帧间位移 ~3 cm，防撞足够）。空云也发布（新鲜度
+心跳）。兼容模式 input_type=pointcloud2 供集成测试注入合成云。
 
-Only frame-independent filtering is done here:
-  - range gate: drop points closer than min_range or farther than max_range;
-  - self-points: drop points whose horizontal distance to the sensor origin is
-    below self_radius_xy (mount/body returns; they would sit inside the
-    collision polygons and cause a permanent stop).
+Input  /livox/lidar (livox_ros_driver2/CustomMsg, ~10 Hz, frame livox_frame)
+Output /livox/obstacles (PointCloud2, 同 frame)
 
-Ground/ceiling selection is deliberately left downstream where it can use the
-base_link frame with correct height bands: collision_monitor min/max_height
-(base frame, 0.10-0.80 m band, same band as the g2p5 mapping) and costmap
-obstacle layer min/max_obstacle_height. Dynamic obstacles (people etc.) are
-never filtered out here — this node only removes what cannot be a real
-obstacle (too near = body, too far = beyond sensor trust range).
+过滤（只删不可能是障碍的点，行人等动态障碍永远保留）：
+  - range: 3D 距离在 [min_range, max_range] 外的丢弃；
+  - self: 传感器原点水平 self_radius_xy 内的自身/支架回波丢弃；
+  - 地面/天花板由下游在 base 系高度带处理（CM 0.10-0.80 m + 局部代价地图）。
 """
-
-import math
 
 import rclpy
 from rclpy.node import Node
@@ -42,36 +37,57 @@ class ObstacleFilterNode(Node):
         self.min_range = float(d('min_range', 0.30).value)
         self.max_range = float(d('max_range', 12.0).value)
         self.self_radius_xy = float(d('self_radius_xy', 0.35).value)
+        self.every_n = int(d('every_n', 3).value)          # 抽帧：每 N 帧处理 1 帧
+        self.input_type = str(d('input_type', 'custom').value)  # custom|pointcloud2
+        self._frame_count = 0
 
         self.pub = self.create_publisher(PointCloud2, 'obstacles_out', 10)
-        self.sub = self.create_subscription(PointCloud2, 'cloud_in', self.cb, 10)
-        self.dropped_pub = self.create_publisher(PointCloud2, 'dropped_debug', 10)
-        self.get_logger().info(
-            f'obstacle filter up: range [{self.min_range}, {self.max_range}] m, '
-            f'self_radius_xy {self.self_radius_xy} m')
 
-    def cb(self, msg):
-        # 字段防御：异常/残缺点云（缺 x/y/z）丢弃并告警，不让节点崩溃——
-        # 过滤器一死，CM 与局部代价地图就失去全部实时障碍输入（fail-open）。
-        names = {f.name for f in msg.fields}
-        if not {'x', 'y', 'z'} <= names:
-            self.get_logger().warn(f'cloud without xyz fields {sorted(names)}; dropped')
-            return
-        fields = ('x', 'y', 'z', 'intensity') if 'intensity' in names else ('x', 'y', 'z')
+        if self.input_type == 'custom':
+            from livox_ros_driver2.msg import CustomMsg
+            self.get_logger().info(
+                f'obstacle filter up: CustomMsg 直订, every_n={self.every_n} '
+                f'(≈{10.0/max(self.every_n,1):.1f}Hz), range '
+                f'[{self.min_range},{self.max_range}], self_r={self.self_radius_xy}')
+            self.sub = self.create_subscription(CustomMsg, 'cloud_in', self.cb_custom, 10)
+        else:
+            self.get_logger().info(f'obstacle filter up: pointcloud2 兼容模式')
+            self.sub = self.create_subscription(PointCloud2, 'cloud_in', self.cb_pc2, 10)
+
+    def _publish_filtered(self, header, xs, ys, zs, inten):
         import numpy as np
-        pts = np.asarray(point_cloud2.read_points(msg, field_names=fields, skip_nans=True))
+        x = np.asarray(xs); y = np.asarray(ys); z = np.asarray(zs)
+        r3 = np.sqrt(x * x + y * y + z * z)
+        keep = ((np.hypot(x, y) >= self.self_radius_xy) &
+                (r3 >= self.min_range) & (r3 <= self.max_range))
+        rows = np.column_stack((x[keep], y[keep], z[keep],
+                                np.asarray(inten)[keep] if len(inten) == len(x)
+                                else np.zeros(int(keep.sum()))))
+        self.pub.publish(point_cloud2.create_cloud(header, FIELDS, rows))
+
+    def cb_custom(self, msg):
+        # 抽帧 + 空云心跳：未选中帧也要发布空云（保持下游新鲜度节奏一致）
+        self._frame_count += 1
+        if self.every_n > 1 and (self._frame_count % self.every_n) != 1:
+            empty = point_cloud2.create_cloud(msg.header, FIELDS[:3], [])
+            self.pub.publish(empty)
+            return
+        xs, ys, zs, inten = [], [], [], []
+        for p in msg.points:
+            xs.append(p.x); ys.append(p.y); zs.append(p.z)
+            inten.append(float(p.reflectivity))
+        self._publish_filtered(msg.header, xs, ys, zs, inten)
+
+    def cb_pc2(self, msg):
+        import numpy as np
+        pts = np.asarray(point_cloud2.read_points(
+            msg, field_names=('x', 'y', 'z', 'intensity'), skip_nans=True))
         if pts.size == 0:
-            # 空云也要发布（保留 header 时间戳）：下游 motion_gate 以本话题的
-            # 新鲜度判定"防撞输入在流"——空障碍集是有效信息，不是断流。
             self.pub.publish(point_cloud2.create_cloud(msg.header, FIELDS[:3], []))
             return
-        x, y, z = pts['x'], pts['y'], pts['z']
-        inten = pts['intensity'] if 'intensity' in pts.dtype.names else np.zeros_like(x)
-        r3 = np.sqrt(x * x + y * y + z * z)
-        keep = (np.hypot(x, y) >= self.self_radius_xy) & (r3 >= self.min_range) & (r3 <= self.max_range)
-        rows = np.column_stack((x[keep], y[keep], z[keep], inten[keep]))
-        out_fields = FIELDS if 'intensity' in names else FIELDS[:3]
-        self.pub.publish(point_cloud2.create_cloud(msg.header, out_fields, rows))
+        names = pts.dtype.names or ()
+        inten = pts['intensity'] if 'intensity' in names else []
+        self._publish_filtered(msg.header, pts['x'], pts['y'], pts['z'], inten)
 
 
 def main(args=None):

@@ -57,9 +57,9 @@ controller_server:
       yaw_goal_tolerance: 3.15   # 窄场地：到达即成功，不要求最终朝向（0.6m半径窄带内无法任意掉头）
     FollowPath:
       plugin: "nav2_mppi_controller::MPPIController"   # Humble 插件名用 :: （/ 是新版风格）
-      time_steps: 56
+      time_steps: 32
       model_dt: 0.05
-      batch_size: 1000
+      batch_size: 400
       iteration_count: 1
       temperature: 0.3
       gamma: 0.015
@@ -150,7 +150,7 @@ local_costmap:
       use_sim_time: false
       global_frame: odom
       robot_base_frame: base_link
-      update_frequency: 5.0
+      update_frequency: 3.0
       publish_frequency: 2.0
       resolution: 0.05
       rolling_window: true
@@ -180,7 +180,7 @@ local_costmap:
           obstacle_max_range: 8.0
           raytrace_min_range: 0.30
           raytrace_max_range: 10.0
-          expected_update_rate: 0.5         # 10 Hz 流，0.5 s 未见新帧即视为过期
+          expected_update_rate: 1.0         # 3.3 Hz 抽帧流，0.5 s 未见新帧即视为过期
           observation_persistence: 0.0
           inf_is_valid: false
           transform_tolerance: 0.3

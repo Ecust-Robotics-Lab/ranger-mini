@@ -46,6 +46,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), "..",
 
 # force (not setdefault): pre-exported domain must not silently break isolation
 os.environ["ROS_DOMAIN_ID"] = "180"
+os.environ["RANGER_FILTER_INPUT"] = "pc2"  # 过滤器兼容模式：测试注入 PointCloud2
 os.environ["ROS_LOCALHOST_ONLY"] = "1"
 
 import rclpy
@@ -155,15 +156,8 @@ class Sim(Node):
         self.create_subscription(DiagnosticArray, '/diagnostics',
                                  self._diag_cb, 10)
 
-    def _diag_cb(self, msg):
-        for st in msg.status:
-            if st.name == 'ranger_motion_gate':
-                for kv in st.values:
-                    if kv.key == 'flags':
-                        self.last_gate_flags = kv.value
-
         self.cmd_pub = self.create_publisher(Twist, '/cmd_vel_nav', 10)
-        self.cloud_pub = self.create_publisher(PointCloud2, '/livox/points_rviz', 10)
+        self.cloud_pub = self.create_publisher(PointCloud2, '/livox/lidar', 10)
         self.ready_pub = self.create_publisher(Bool, '/navigation_ready', 10)
         self.enable_pub = self.create_publisher(Bool, '/ranger/motion_enable', 10)
         self.estop_pub = self.create_publisher(Bool, '/ranger/soft_estop', 10)
@@ -172,6 +166,13 @@ class Sim(Node):
         self.create_timer(1 / 20.0, self.pub_cmd)
         self.create_timer(1 / 10.0, self.pub_cloud)
         self.create_timer(1 / 10.0, self.pub_ready)
+
+    def _diag_cb(self, msg):
+        for st in msg.status:
+            if st.name == 'ranger_motion_gate':
+                for kv in st.values:
+                    if kv.key == 'flags':
+                        self.last_gate_flags = kv.value
 
     def pub_cmd(self):
         if not self.cmd['on']:

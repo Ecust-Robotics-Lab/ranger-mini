@@ -51,8 +51,11 @@ def prepare(context):
     nodes = [
         # -- plain nodes (not lifecycle managed) ----------------------------
         Node(package='ranger_navigation', executable='obstacle_filter',
-             name='ranger_obstacle_filter', parameters=[filt_params],
-             remappings=[('cloud_in', '/livox/points_rviz'),
+             name='ranger_obstacle_filter',
+             parameters=[filt_params,
+                         {'input_type': __import__('os').environ.get(
+                             'RANGER_FILTER_INPUT', 'custom')}],
+             remappings=[('cloud_in', '/livox/lidar'),
                          ('obstacles_out', '/livox/obstacles')], **common),
         Node(package='ranger_navigation', executable='motion_gate',
              name='ranger_motion_gate', parameters=[gate_params],

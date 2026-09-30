@@ -44,10 +44,17 @@ else
     echo "[aux] 1/4 二维地图发布已按 ENABLE_MAP_PUB=0 跳过（导航会话由 map_server 提供 /map）"
 fi
 
-echo "[aux] 2/4 派生点云 /livox/points_rviz"
-python3 "$ROOT/scripts/mid360_derived.py" --execute \
-    > "$LOGDIR/derived.log" 2>&1 &
-pids+=($!)
+ENABLE_DERIVED="${ENABLE_DERIVED:-0}"   # 2026-09-30 默认关：防撞链已直订雷达原始话题，
+                                         # 此节点仅为 Foxglove 可视化（73% CPU 大户）；
+                                         # 需要看原始全量点云时置 1
+if [ "$ENABLE_DERIVED" = "1" ]; then
+    echo "[aux] 2/4 派生点云 /livox/points_rviz"
+    python3 "$ROOT/scripts/mid360_derived.py" --execute \
+        > "$LOGDIR/derived.log" 2>&1 &
+    pids+=($!)
+else
+    echo "[aux] 2/4 派生点云已按 ENABLE_DERIVED=0 跳过（Foxglove 可用 /livox/obstacles 看点云）"
+fi
 
 echo "[aux] 3/4 静态TF imu_link->livox_frame（厂家名义外参）"
 ros2 run tf2_ros static_transform_publisher \

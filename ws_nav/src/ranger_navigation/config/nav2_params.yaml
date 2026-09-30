@@ -140,8 +140,8 @@ global_costmap:
         transform_tolerance: 0.3
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 4.0
-        inflation_radius: 0.60              # 外接半径 0.452 + 余量
+        cost_scaling_factor: 8.0
+        inflation_radius: 0.35              # 2026-09-30 现场收紧：走廊净空0.44-0.66，原0.60全程高代价
       always_send_full_costmap: true
 
 local_costmap:
@@ -186,6 +186,6 @@ local_costmap:
           transform_tolerance: 0.3
       inflation_layer:
         plugin: "nav2_costmap_2d::InflationLayer"
-        cost_scaling_factor: 4.0
-        inflation_radius: 0.60
+        cost_scaling_factor: 8.0
+        inflation_radius: 0.35
       always_send_full_costmap: true

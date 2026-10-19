@@ -1,0 +1,28 @@
+PASS all eight repositories have full SHA
+PASS 13 source/install pairs match
+PASS installed still matches: ws_nav/install/ranger_navigation/share/ranger_navigation/behavior_trees/single_point.xml
+PASS installed still matches: ws_nav/install/ranger_navigation/share/ranger_navigation/config/collision_monitor.yaml
+PASS installed still matches: ws_nav/install/ranger_navigation/share/ranger_navigation/config/motion_gate.yaml
+PASS installed still matches: ws_nav/install/ranger_navigation/share/ranger_navigation/config/nav2_params.yaml
+PASS installed still matches: ws_nav/install/ranger_navigation/share/ranger_navigation/config/obstacle_filter.yaml
+PASS installed still matches: ws_nav/install/ranger_navigation/share/ranger_navigation/config/twist_mux.yaml
+PASS installed still matches: ws_nav/install/ranger_navigation/share/ranger_navigation/launch/navigation.launch.py
+PASS installed still matches: ws_nav/install/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/__init__.py
+PASS installed still matches: ws_nav/install/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/motion_gate.py
+PASS installed still matches: ws_nav/install/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/obstacle_filter.py
+PASS installed still matches: ws_nav/install/ranger_localization_bridge/share/ranger_localization_bridge/launch/loc_bridge.launch.py
+PASS installed still matches: ws_nav/install/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge/__init__.py
+PASS installed still matches: ws_nav/install/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge/bridge_node.py
+PASS recorded raw bag hashes match current files
+PASS active map provenance matches
+PASS 25 matched keyframe IDs and times
+PASS same-data pose discrepancy below one grid cell
+PASS new navigation acceptance remains pending
+PASS configuration/patches hashes unchanged
+PASS 2lx5kkho hashes unchanged
+PASS 8cw1afzl hashes unchanged
+PASS suej7qsz hashes unchanged
+PASS navigation PGM matches YAML dimensions
+PASS dry-run entries both exit zero
+PASS only command exception is absent main origin
+27/27 static checks passed. No ROS or hardware tests executed.

@@ -1,0 +1,1814 @@
+{
+  "collected_at": "2026-10-19T12:47:14.424539+00:00",
+  "scope": "disk/source defaults; no live ROS parameters or hardware validation",
+  "repositories": [
+    {
+      "path": ".",
+      "head": "e5b2029d67475a15cf8516f7a4069a4206474346",
+      "branch": "refactor/pluggable-navigation",
+      "detached": false,
+      "status": "?? docs/03_evidence/driver-5v7_r4c4/\n?? docs/03_evidence/driver-a9w6s6i0/\n?? docs/03_evidence/driver-dhth97g3/\n?? docs/03_evidence/driver-hj360f0f/\n?? docs/03_evidence/driver-nrs50iyr/\n?? docs/03_evidence/driver-y2sd6pvt/\n?? docs/architecture_evidence/",
+      "origin": null,
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ws_base/src/ranger_ros2",
+      "head": "7b75bc2443a1d6cbd42cc3ef3059cf4897242072",
+      "branch": "ranger-local",
+      "detached": false,
+      "status": "",
+      "origin": "https://github.com/agilexrobotics/ranger_ros2.git",
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ws_base/src/ugv_sdk",
+      "head": "e2f5764acc00a2e556cf3bdc3ea3b206fa326e5b",
+      "branch": "ranger-local",
+      "detached": false,
+      "status": "",
+      "origin": "https://github.com/agilexrobotics/ugv_sdk.git",
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ws_livox/src/livox_ros_driver2",
+      "head": "cc34f0a18f8c43adbf304c71ebd9f8af69440f41",
+      "branch": "ranger-local",
+      "detached": false,
+      "status": "",
+      "origin": "https://github.com/Livox-SDK/livox_ros_driver2",
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "vendor/livox/Livox-SDK2",
+      "head": "08f523c930b2f0ba1e98a6afaa8d7476bf479908",
+      "branch": null,
+      "detached": true,
+      "status": "",
+      "origin": "https://github.com/Livox-SDK/Livox-SDK2",
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ws_slam/src/lightning",
+      "head": "b973e7fcfef147959dcfa6d78dd7a07a59384c52",
+      "branch": "ranger-local",
+      "detached": false,
+      "status": "",
+      "origin": "https://github.com/gaoxiang12/lightning-lm",
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "vendor/livox/lightning-lm-review",
+      "head": "1325fed8fa97a2506878360fc23427ea00a767da",
+      "branch": null,
+      "detached": true,
+      "status": "",
+      "origin": "https://github.com/gaoxiang12/lightning-lm",
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "ws_camera/src/hik_camera_ros2_driver",
+      "head": "4e351d0b096e124cc076b2edf9f6abb7bfb23eda",
+      "branch": "main",
+      "detached": false,
+      "status": "M config/camera_params.yaml\n M src/hik_camera_node.cpp",
+      "origin": "https://github.com/zylyehuo/hik_camera_ros2_driver.git",
+      "tracked_diff_sha256": "ea5d59a30371fb5f3ed9b3b1a4772d33771fb2d83ca7a1a2fbeb1db854a0d3cb"
+    }
+  ],
+  "configuration_and_patch_files": {
+    "config/__pycache__/base_mini_v2.launch.cpython-310.pyc": {
+      "bytes": 2046,
+      "sha256": "0f22413e7c7ceba6f3dd293244fa0292b4edda3afc5564ccd77126c0dac18a91"
+    },
+    "config/base_mini_v2.launch.py": {
+      "bytes": 2166,
+      "sha256": "a090cc857f8a620247fee0ee50bef01e5bb4180c468c50daff45b347a8c9da36"
+    },
+    "config/base_mini_v2.yaml": {
+      "bytes": 240,
+      "sha256": "1a8b916ccb2a49d4b2878175255cdf53c713aeb3e26022521cfa9062966e4249"
+    },
+    "config/base_sources.repos": {
+      "bytes": 290,
+      "sha256": "12e1c63bb9e5ab1a2db28bde6ab2b1f10d13edfcfb7cb7b1167cdceac3ca50c0"
+    },
+    "config/fastdds_udp_only.xml": {
+      "bytes": 1012,
+      "sha256": "44457a776baed85a7e67fa08ac9370dbd5cbc1f210ffb5ff9aca7e6390113f68"
+    },
+    "config/field_session.env": {
+      "bytes": 2244,
+      "sha256": "a98721b53e904f8e353d3e12976c3394f681d4647695bd0356c090f3bcc12b85"
+    },
+    "config/livox_sources.repos": {
+      "bytes": 550,
+      "sha256": "7b1168a3da7f93f76d3072fc01aff9e66a1e180617a69b2fab659751c9ef8fcb"
+    },
+    "config/mid360/MID360S_config.json": {
+      "bytes": 973,
+      "sha256": "d4831fcc2ed85b7ee4e4de071221e8b21e12c36e83de834619fb12fcb3c7a77a"
+    },
+    "config/mid360/bag_qos.yaml": {
+      "bytes": 361,
+      "sha256": "46007cabab8d356d21c932f99334b6a204b74ef7ece6809bdea617d866486f88"
+    },
+    "config/mid360/extrinsics_pending.yaml": {
+      "bytes": 1123,
+      "sha256": "76fa34100af49f12402ede298bad31bb25d3d45e3e6427b3c62e68f3636c026e"
+    },
+    "config/slam/ranger_mid360s.yaml": {
+      "bytes": 3669,
+      "sha256": "794714d003bb3af214154ef682442842cea19a6800498a20878848f526c141fb"
+    },
+    "config/slam/ranger_mid360s_g2p5.yaml": {
+      "bytes": 3849,
+      "sha256": "0cfd8a3ccabe7b426c90ed31aae6ebc1e390b4fba498ceaa9eb82805b54dfb6e"
+    },
+    "config/slam/ranger_mid360s_loc.yaml": {
+      "bytes": 3945,
+      "sha256": "0cd86dc88bf53404d6ed1d1b7d07a4130009a55b51d1816371e2ff1f3528e5e5"
+    },
+    "config/slam/ranger_mid360s_loc_v2.yaml": {
+      "bytes": 3945,
+      "sha256": "0d3f4ec65051acb01d3d618609d0c85db18d2bab0e31f037e1558b3642b68a95"
+    },
+    "patches/livox_driver_stage3_diagnostics.patch": {
+      "bytes": 2157,
+      "sha256": "8855ae4a21f30d134e8014977e8e81b87bf33dfa3b6d09b98f2cf224f414e164"
+    },
+    "patches/ranger_ros2_humble_v2_model.patch": {
+      "bytes": 587,
+      "sha256": "0bc00f105dae42f15bfc973814cfc624d49d315fd196d7f01f5f1c86dd2d694c"
+    },
+    "patches/ranger_ros2_stage2_test.patch": {
+      "bytes": 6272,
+      "sha256": "38d9e1b3c1e6c31bc55f30dbada7193e69f31188e8675bf0caed6f5142ae93ce"
+    },
+    "patches/stage4_glog_local_prefix.patch": {
+      "bytes": 472,
+      "sha256": "d638a9da006d189ae1a6b6d3ca55b1d5af2b412de45628a5d8ebb91d63bbfb1e"
+    },
+    "patches/stage4_lightning_integration.patch": {
+      "bytes": 12164,
+      "sha256": "dd8c0ed3229636695b55e7f17ac0c20a4d780427989cdf9420276fffa1e201dd"
+    },
+    "patches/stage5_loc_interface.patch": {
+      "bytes": 7320,
+      "sha256": "40e103b05b22fd7ca67ce65d8601c48316af02809b4bf5aaf267ca965b6a3629"
+    },
+    "patches/ugv_sdk_stage2_transport.patch": {
+      "bytes": 5613,
+      "sha256": "ba4525f044369980cb43bdd0d3b727c40eb5f846fcb82b1e855d655d4a20fca7"
+    },
+    "scripts/analyze_slam_experiment.py": {
+      "bytes": 5254,
+      "sha256": "9abc59f3418c2d683dc8207a97c47109b558a5a7b8f256f6faedaf3a78baf69d"
+    },
+    "scripts/base_readonly_diagnostics.py": {
+      "bytes": 2497,
+      "sha256": "274400a226318f4506c1eff80563a13541a050cbc27ff25ed2a4e6a396af2e36"
+    },
+    "scripts/base_ros_motion_test.py": {
+      "bytes": 17698,
+      "sha256": "be4c148f8f80c4649963d0db279b7ddd98214d60038c62a2bfb1dce533f12bc8"
+    },
+    "scripts/build_base.sh": {
+      "bytes": 1451,
+      "sha256": "7f7b4c29a298cf40ef6a7247ed18ba19d945d9073ae2b989869981f95a128356"
+    },
+    "scripts/build_lightning.sh": {
+      "bytes": 669,
+      "sha256": "3a239483e2aaf3dd94462f2c0d3f1fa005624997bd5814a7b557a4417480af25"
+    },
+    "scripts/build_lightning_reader.sh": {
+      "bytes": 376,
+      "sha256": "8555be46712a27d6cddbe9f9a78160da08a10abfa4cdfebfa31500fb012d0b5e"
+    },
+    "scripts/build_livox.sh": {
+      "bytes": 1642,
+      "sha256": "ce8bb76b0c5e67a7a052d081eee94b61f5a0f3966b4e3fb24a1704743d96dbd0"
+    },
+    "scripts/check_base_launch_guards.py": {
+      "bytes": 2183,
+      "sha256": "0f0213432115cc0cef93be5eef0935d6cf14af8e5198d58ee67ccfca29c3b75b"
+    },
+    "scripts/check_base_model_selection.py": {
+      "bytes": 3314,
+      "sha256": "a6f63c38586295115fff12fe30adad15fc438eecd1a2a6ad926e12f0cb705931"
+    },
+    "scripts/check_lightning_input.sh": {
+      "bytes": 205,
+      "sha256": "fb8fdf3a9f283a742fb162f2b55a29dc39682750bc602f780db7299e8db69ca8"
+    },
+    "scripts/check_mid360_bag.py": {
+      "bytes": 7987,
+      "sha256": "b57313f59de343ce0640863f694458344a9d0d26e3e868c633605ff8e9032965"
+    },
+    "scripts/check_slam_map.py": {
+      "bytes": 6453,
+      "sha256": "41019418014fb44f4ce97d9dd00af97151a141cbf1dfe210417734b5e204c384"
+    },
+    "scripts/clean_dds_shm.sh": {
+      "bytes": 1333,
+      "sha256": "047bb3ff6d7667bd3ab91b8058e194c53a4b759f3687d28ea1e95478fbc89608"
+    },
+    "scripts/connect_mid360.sh": {
+      "bytes": 7369,
+      "sha256": "c66a218d766f5c01b0ab12b09856a39b9276f9b5b29dc870a363f673f372e55e"
+    },
+    "scripts/field_aux.sh": {
+      "bytes": 3024,
+      "sha256": "7e01c6ecad71927081b12fa9cf24faa8771f1504917e3500f3da77f88b6dff18"
+    },
+    "scripts/field_session.sh": {
+      "bytes": 7430,
+      "sha256": "e7d58f8cb12b926f4c02fee1ec0ce37416cbeb0eb12a7b4554156f9877ee2711"
+    },
+    "scripts/make_nav_map.py": {
+      "bytes": 2376,
+      "sha256": "34213ca2524515ff88f7a58ef26e460cd209c828c546389393ab2185720e61e5"
+    },
+    "scripts/mid360_derived.py": {
+      "bytes": 1789,
+      "sha256": "a9d2943aaf9c1c7af3fd729f5edd4049a63d5e2a9a5df2de8d31e620544a051e"
+    },
+    "scripts/nav_safety.sh": {
+      "bytes": 2021,
+      "sha256": "6c3bce0846fd19ef7aac9b762a46f5daefed37d8660726399d34d73869a8a1f5"
+    },
+    "scripts/persist_mid360_network.sh": {
+      "bytes": 2775,
+      "sha256": "e4c2ef6ac30dee723870fbaf036f5caaa8ad466390f0bacec7294cae37e20dc8"
+    },
+    "scripts/prepare_lightning_deps.py": {
+      "bytes": 2750,
+      "sha256": "016ae249db16da7448dea2306f6aae0d6ec5155dc0e1f44a010d3c802729a1df"
+    },
+    "scripts/prepare_yt6801_secureboot.sh": {
+      "bytes": 3834,
+      "sha256": "e5b2e97175265a5cc2f4feb0e694ed7d736527152b9022ad7288ad7cff4ad240"
+    },
+    "scripts/publish_loc_map.py": {
+      "bytes": 3197,
+      "sha256": "986ae3d29b1faa33c5f8c7a747ff1d3875ccac0c7a08077a830f61fd9f96e9d2"
+    },
+    "scripts/record_mid360.py": {
+      "bytes": 3292,
+      "sha256": "cd9f4c6303bd773cdda80abfcd810b2819f579ae66f118957c2162c9a82100de"
+    },
+    "scripts/record_slam_loop.sh": {
+      "bytes": 265,
+      "sha256": "772e189af8096d2c3be90efb4bfbdb1064f1af1108d3374f2150517f793490de"
+    },
+    "scripts/restore_mid360_network.sh": {
+      "bytes": 3308,
+      "sha256": "dd48e6bb0fcd2b9f6b705564533b303e8abd3cc8704bc143accaa61bc984f6f0"
+    },
+    "scripts/run_loc_offline.py": {
+      "bytes": 4129,
+      "sha256": "2f94701f7bbec35e8f607f95b62c811848d5f0664e544eae42c0ff0ac6808e8e"
+    },
+    "scripts/run_loc_offline.sh": {
+      "bytes": 167,
+      "sha256": "bee6639ac6b71ca616d331819aebf147611bd6530cac98195c76a20308f2224c"
+    },
+    "scripts/run_navigation.sh": {
+      "bytes": 4482,
+      "sha256": "5e5d50d9b5fdc0d70958de94dce0f0ae10f8da37cbc23ec37c4820008c3cf801"
+    },
+    "scripts/run_slam_offline.sh": {
+      "bytes": 168,
+      "sha256": "3ed8413076d87dd96074110118bf644ee63e1e1a206672a3087a3774b123ddb8"
+    },
+    "scripts/run_slam_online.sh": {
+      "bytes": 293,
+      "sha256": "c82cc4a69ad6de683d679a166499df1ac841bfa074ac74992d1fbe87b6c4acef"
+    },
+    "scripts/send_nav_goal.py": {
+      "bytes": 5989,
+      "sha256": "b949348e4e0c9f0a284f89d0e3a2fbc4cd2b4c9efd3b9b36aa78b45fb16cb209"
+    },
+    "scripts/slam_env.sh": {
+      "bytes": 603,
+      "sha256": "4aa14d667fc5f64cfd3341cc01c63f9c5531bd09df19c8a99272ebb5bf272176"
+    },
+    "scripts/slam_run.py": {
+      "bytes": 10263,
+      "sha256": "db8d2767ecbb1a448f7c380acd7110ff272e69d1d5fe35ea468fec2570f3582e"
+    },
+    "scripts/start_base_only.sh": {
+      "bytes": 827,
+      "sha256": "d037735aa7ad3332a4ebce2f8dc7afdbfe1eaf45dadcbfecb34b5803a785416f"
+    },
+    "scripts/start_lidar_only.sh": {
+      "bytes": 580,
+      "sha256": "cff99266f512aa63600c865ec7b68fddab771123e9dd309aeb4e5ee7c4726684"
+    },
+    "scripts/start_mid360.py": {
+      "bytes": 3809,
+      "sha256": "9c04825d0ba473b4c95836ac9df42df09bdfe6f547af44f6c61d1c7e0f301457"
+    },
+    "scripts/tests/test_mid360_bag.py": {
+      "bytes": 2006,
+      "sha256": "a059567841063c000ed1a67dccca5ea17237c05b5237cb31c015528b39d370a0"
+    },
+    "scripts/tests/test_motion_interlocks.py": {
+      "bytes": 3147,
+      "sha256": "c7cb26070aa74b389e450334175317dca4c1af050003bf13e7bfb10e91751cd1"
+    },
+    "scripts/tests/test_post_exit_feedback.py": {
+      "bytes": 2300,
+      "sha256": "05c6650e3d5e0849a6c9cb5a700e0e8284b9f6d5cb02c7b3992a843c53eca916"
+    },
+    "scripts/tests/test_tf_static_recording.py": {
+      "bytes": 1877,
+      "sha256": "676214333dcdba2fa87fbea6952b5be581e614a48220bdea91088a59ad50c5ce"
+    },
+    "ws_nav/src/ranger_localization_bridge/launch/loc_bridge.launch.py": {
+      "bytes": 1654,
+      "sha256": "9db02b4c0d88215acb87ee5870a08db0b309645abde218168edf1bcd4c65f94f"
+    },
+    "ws_nav/src/ranger_localization_bridge/package.xml": {
+      "bytes": 1053,
+      "sha256": "97a3e96c5d9b1a93ae530ba89b5cba08a01688662089a37c9b226c031282160a"
+    },
+    "ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/__init__.py": {
+      "bytes": 29,
+      "sha256": "baceeb05e25888ec1ee9fb33ea0949198105c9dc33ba85bd67ec24aac526710e"
+    },
+    "ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/bridge_node.py": {
+      "bytes": 20567,
+      "sha256": "13fa0d860b58bab95187c7eca81dab29d32292546a3420e7bb4979377c8ede67"
+    },
+    "ws_nav/src/ranger_localization_bridge/setup.py": {
+      "bytes": 862,
+      "sha256": "c8337f002ea65f490c59a62723745b929d14312862f5b6fadd9f12f6e2b3da0b"
+    },
+    "ws_nav/src/ranger_navigation/behavior_trees/single_point.xml": {
+      "bytes": 641,
+      "sha256": "aa0278af2c05015c968779e9b4083d8f19830e75bbcd2f3e38f07b4564cd404a"
+    },
+    "ws_nav/src/ranger_navigation/config/collision_monitor.yaml": {
+      "bytes": 2927,
+      "sha256": "94e5a5f97b51446c6c5a2e7b5b6b57231ed9dfb5c02cdacd2a9d483fbb2a5bef"
+    },
+    "ws_nav/src/ranger_navigation/config/motion_gate.yaml": {
+      "bytes": 969,
+      "sha256": "5b49ea481b9bbeb3ca2a87670c657698818a0cf68511e4f30748f52b6a920abb"
+    },
+    "ws_nav/src/ranger_navigation/config/nav2_params.yaml": {
+      "bytes": 8592,
+      "sha256": "0b6299820c96790dbd47e5f9d3d770ef020e3f216966ad42aa78afb2bcbb5792"
+    },
+    "ws_nav/src/ranger_navigation/config/obstacle_filter.yaml": {
+      "bytes": 336,
+      "sha256": "313cd0f031ed66193b8eee34888fd1cc250d500156a5e0f9cb4e16bfd41ed8e6"
+    },
+    "ws_nav/src/ranger_navigation/config/twist_mux.yaml": {
+      "bytes": 531,
+      "sha256": "19dfb7eb19698e71121215ca4ddc07f7ed6119ab64ee0fbd1539c4d9aaf9c80d"
+    },
+    "ws_nav/src/ranger_navigation/launch/navigation.launch.py": {
+      "bytes": 6510,
+      "sha256": "675aa4231f4ecf9a14044fdf0cf89ef4fc5471f96ce763e10ad343b3734237f6"
+    },
+    "ws_nav/src/ranger_navigation/package.xml": {
+      "bytes": 1103,
+      "sha256": "62577dc0685defd8504210799865c9c2d6217161a7bf93e798f9a9fafb308fca"
+    },
+    "ws_nav/src/ranger_navigation/ranger_navigation/__init__.py": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "ws_nav/src/ranger_navigation/ranger_navigation/motion_gate.py": {
+      "bytes": 11120,
+      "sha256": "7db6015bc6571e3c2384cfa13bb0ca5745906653882016879be39456621b632b"
+    },
+    "ws_nav/src/ranger_navigation/ranger_navigation/obstacle_filter.py": {
+      "bytes": 4803,
+      "sha256": "86d81e20fc5c3e30faa5b353fae46db2d947bb19e07134fa23277dd456899dec"
+    },
+    "ws_nav/src/ranger_navigation/setup.py": {
+      "bytes": 1075,
+      "sha256": "2026ad3cb9b251fa0fd1f02608ead080df97e7fde2ac735363af5dd06e8a813c"
+    },
+    "ws_camera/src/hik_camera_ros2_driver/config/camera_info.yaml": {
+      "bytes": 701,
+      "sha256": "c615d2dfd0f32206a4da32eaa299fc33988188f8054a0b39e4a8c4d870608b9b"
+    },
+    "ws_camera/src/hik_camera_ros2_driver/config/camera_params.yaml": {
+      "bytes": 3719,
+      "sha256": "181a81b3701dd34b7949fc8b6da57bf7111db73151a39bb7b3ff5d2284fe0384"
+    },
+    "ws_camera/src/hik_camera_ros2_driver/src/hik_camera_node.cpp": {
+      "bytes": 73574,
+      "sha256": "b6c3563d157267ee00cec273b473a880871a8a9725b88422caa39ccd70534ae1"
+    }
+  },
+  "installed_comparison": [
+    {
+      "source": "ws_nav/src/ranger_navigation/behavior_trees/single_point.xml",
+      "installed": "ws_nav/install/ranger_navigation/share/ranger_navigation/behavior_trees/single_point.xml",
+      "source_sha256": "aa0278af2c05015c968779e9b4083d8f19830e75bbcd2f3e38f07b4564cd404a",
+      "installed_sha256": "aa0278af2c05015c968779e9b4083d8f19830e75bbcd2f3e38f07b4564cd404a",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_navigation/config/collision_monitor.yaml",
+      "installed": "ws_nav/install/ranger_navigation/share/ranger_navigation/config/collision_monitor.yaml",
+      "source_sha256": "94e5a5f97b51446c6c5a2e7b5b6b57231ed9dfb5c02cdacd2a9d483fbb2a5bef",
+      "installed_sha256": "94e5a5f97b51446c6c5a2e7b5b6b57231ed9dfb5c02cdacd2a9d483fbb2a5bef",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_navigation/config/motion_gate.yaml",
+      "installed": "ws_nav/install/ranger_navigation/share/ranger_navigation/config/motion_gate.yaml",
+      "source_sha256": "5b49ea481b9bbeb3ca2a87670c657698818a0cf68511e4f30748f52b6a920abb",
+      "installed_sha256": "5b49ea481b9bbeb3ca2a87670c657698818a0cf68511e4f30748f52b6a920abb",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_navigation/config/nav2_params.yaml",
+      "installed": "ws_nav/install/ranger_navigation/share/ranger_navigation/config/nav2_params.yaml",
+      "source_sha256": "0b6299820c96790dbd47e5f9d3d770ef020e3f216966ad42aa78afb2bcbb5792",
+      "installed_sha256": "0b6299820c96790dbd47e5f9d3d770ef020e3f216966ad42aa78afb2bcbb5792",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_navigation/config/obstacle_filter.yaml",
+      "installed": "ws_nav/install/ranger_navigation/share/ranger_navigation/config/obstacle_filter.yaml",
+      "source_sha256": "313cd0f031ed66193b8eee34888fd1cc250d500156a5e0f9cb4e16bfd41ed8e6",
+      "installed_sha256": "313cd0f031ed66193b8eee34888fd1cc250d500156a5e0f9cb4e16bfd41ed8e6",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_navigation/config/twist_mux.yaml",
+      "installed": "ws_nav/install/ranger_navigation/share/ranger_navigation/config/twist_mux.yaml",
+      "source_sha256": "19dfb7eb19698e71121215ca4ddc07f7ed6119ab64ee0fbd1539c4d9aaf9c80d",
+      "installed_sha256": "19dfb7eb19698e71121215ca4ddc07f7ed6119ab64ee0fbd1539c4d9aaf9c80d",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_navigation/launch/navigation.launch.py",
+      "installed": "ws_nav/install/ranger_navigation/share/ranger_navigation/launch/navigation.launch.py",
+      "source_sha256": "675aa4231f4ecf9a14044fdf0cf89ef4fc5471f96ce763e10ad343b3734237f6",
+      "installed_sha256": "675aa4231f4ecf9a14044fdf0cf89ef4fc5471f96ce763e10ad343b3734237f6",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_navigation/ranger_navigation/__init__.py",
+      "installed": "ws_nav/install/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "installed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_navigation/ranger_navigation/motion_gate.py",
+      "installed": "ws_nav/install/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/motion_gate.py",
+      "source_sha256": "7db6015bc6571e3c2384cfa13bb0ca5745906653882016879be39456621b632b",
+      "installed_sha256": "7db6015bc6571e3c2384cfa13bb0ca5745906653882016879be39456621b632b",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_navigation/ranger_navigation/obstacle_filter.py",
+      "installed": "ws_nav/install/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/obstacle_filter.py",
+      "source_sha256": "86d81e20fc5c3e30faa5b353fae46db2d947bb19e07134fa23277dd456899dec",
+      "installed_sha256": "86d81e20fc5c3e30faa5b353fae46db2d947bb19e07134fa23277dd456899dec",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_localization_bridge/launch/loc_bridge.launch.py",
+      "installed": "ws_nav/install/ranger_localization_bridge/share/ranger_localization_bridge/launch/loc_bridge.launch.py",
+      "source_sha256": "9db02b4c0d88215acb87ee5870a08db0b309645abde218168edf1bcd4c65f94f",
+      "installed_sha256": "9db02b4c0d88215acb87ee5870a08db0b309645abde218168edf1bcd4c65f94f",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/__init__.py",
+      "installed": "ws_nav/install/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge/__init__.py",
+      "source_sha256": "baceeb05e25888ec1ee9fb33ea0949198105c9dc33ba85bd67ec24aac526710e",
+      "installed_sha256": "baceeb05e25888ec1ee9fb33ea0949198105c9dc33ba85bd67ec24aac526710e",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/bridge_node.py",
+      "installed": "ws_nav/install/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge/bridge_node.py",
+      "source_sha256": "13fa0d860b58bab95187c7eca81dab29d32292546a3420e7bb4979377c8ede67",
+      "installed_sha256": "13fa0d860b58bab95187c7eca81dab29d32292546a3420e7bb4979377c8ede67",
+      "equal": true
+    }
+  ],
+  "maps": {
+    "2lx5kkho": {
+      "path": "maps/lightning-offline-2lx5kkho",
+      "provenance": {
+        "created_utc": "2026-09-28T12:43:31.054700+00:00",
+        "bag": "/home/lab307/ranger_nav/bags/mid360-manual-loop-p42bk0yi/raw",
+        "current_source_commit": "b973e7fcfef147959dcfa6d78dd7a07a59384c52",
+        "current_source_status": "",
+        "online_or_2d_prerequisite": "None",
+        "executable_sha256": "429c3ea60b044dae5ed8b5d707fd9a6e77c47efbeb398643c1908abcd35dbbbc"
+      },
+      "recorded_bag_files": {
+        "metadata.yaml": "dea5914416da947027761e5c64f32e0a4c65873bc4563237d977ee3a870a3dba",
+        "raw_0.db3": "3068a4f1aa96419047b0a965773d1f239a81c5ece16536993bcc749fb5ba0762"
+      },
+      "acceptance": {
+        "three_dimensional": "PASS",
+        "wall_ghosting": "PENDING",
+        "loop_alignment": "PENDING",
+        "ground": "PENDING",
+        "measured_scale": "WAIVED_BY_USER_NOT_INDEPENDENTLY_VERIFIED",
+        "reproducibility": "PENDING",
+        "two_dimensional": "PENDING",
+        "three_dimensional_basis": "用户 2026-09-28 晚口头确认图审合格（重录包，两次运行复现性对称最近邻中位 0.0002 m）"
+      },
+      "files": {
+        "maps/lightning-offline-2lx5kkho/data/new_map/0.pcd": {
+          "bytes": 444507,
+          "sha256": "bcd912e254d0841ed3e121bc38ac12c89b19a751034ee6186abb457cbae1297d"
+        },
+        "maps/lightning-offline-2lx5kkho/data/new_map/global.pcd": {
+          "bytes": 421901,
+          "sha256": "326ff29bbd648b81d31953e208f1c3893879b1a0d3433ffd38653f7f8e797c4a"
+        },
+        "maps/lightning-offline-2lx5kkho/data/new_map/index.txt": {
+          "bytes": 218,
+          "sha256": "467c5d435a0f30be8a62e54bc513ac9593d41d68c4b8a08ad79ffe6f691d36f2"
+        },
+        "maps/lightning-offline-2lx5kkho/data/new_map/keyframes.txt": {
+          "bytes": 8092,
+          "sha256": "aa8842fc417404a75eea425d230ac566b05f149034cc762934a44bae267dae46"
+        },
+        "maps/lightning-offline-2lx5kkho/manifest.json": {
+          "bytes": 31993,
+          "sha256": "e1471fca3cba4ca6371c74a232e7168a4ff961694307cd02be05a81bc23f97aa"
+        },
+        "maps/lightning-offline-2lx5kkho/config.yaml": {
+          "bytes": 3669,
+          "sha256": "794714d003bb3af214154ef682442842cea19a6800498a20878848f526c141fb"
+        },
+        "maps/lightning-offline-2lx5kkho/extrinsics.yaml": {
+          "bytes": 1123,
+          "sha256": "76fa34100af49f12402ede298bad31bb25d3d45e3e6427b3c62e68f3636c026e"
+        },
+        "maps/lightning-offline-2lx5kkho/acceptance.json": {
+          "bytes": 393,
+          "sha256": "7381e17d5bb71bfcb7f2b7e6b85f379bc1c0b5df183ea24a3dceb85c26a5065d"
+        },
+        "maps/lightning-offline-2lx5kkho/source_versions.json": {
+          "bytes": 2929,
+          "sha256": "f5705ee2ebe21494a635c4577f40695991738ab7c6e78163ce7eb695d8b95ccc"
+        }
+      },
+      "config": {
+        "common": {
+          "dataset": "nclt",
+          "lidar_topic": "/ranger/unused_pointcloud2",
+          "livox_lidar_topic": "/livox/lidar",
+          "imu_topic": "/livox/imu"
+        },
+        "fasterlio": {
+          "lidar_type": 1,
+          "scan_line": 4,
+          "blind": 0.1,
+          "time_scale": "1e-3",
+          "skip_lidar_num": 0,
+          "point_filter_num": 4,
+          "max_iteration": 4,
+          "filter_size_scan": 0.2,
+          "filter_size_map": 0.2,
+          "ivox_grid_resolution": 0.2,
+          "ivox_nearby_type": 18,
+          "esti_plane_threshold": 0.1,
+          "use_aa": false,
+          "acc_cov": 0.1,
+          "gyr_cov": 0.1,
+          "b_acc_cov": 0.0001,
+          "b_gyr_cov": 0.0001,
+          "extrinsic_T": [
+            -0.011,
+            -0.02329,
+            0.04412
+          ],
+          "extrinsic_R": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "keep_first_imu_estimation": false,
+          "kf_dis_th": 0.5,
+          "kf_angle_th": 10.0,
+          "enable_icp_part": false,
+          "plane_icp_weight": 300.0,
+          "min_pts": 500,
+          "imu_filter": false,
+          "proj_kfs": false
+        },
+        "g2p5": {
+          "esti_floor": false,
+          "lidar_height": null,
+          "floor_height": null,
+          "min_th_floor": null,
+          "max_th_floor": null,
+          "grid_map_resolution": 0.05
+        },
+        "system": {
+          "with_loop_closing": true,
+          "with_ui": false,
+          "with_2dui": false,
+          "with_g2p5": false,
+          "step_on_kf": false,
+          "enable_lidar_loc_skip": false,
+          "enable_lidar_loc_rviz": false,
+          "enable_lidar_odom_skip": false,
+          "evaluation": false,
+          "lidar_loc_skip_num": 4,
+          "lidar_odom_skip_num": 2,
+          "map_path": "./data/new_map/",
+          "pub_tf": false
+        },
+        "loop_closing": {
+          "loop_kf_gap": 5,
+          "min_id_interval": 5,
+          "closest_id_th": 20,
+          "max_range": 5.0,
+          "ndt_score_th": 1.3,
+          "with_height": false
+        },
+        "lidar_loc": {
+          "enable_dynamic_polygon": false,
+          "enable_parking_static": true,
+          "enable_icp_adjust": false,
+          "filter_intensity_max": 100.0,
+          "filter_intensity_min": 10.0,
+          "filter_z_max": 30.0,
+          "filter_z_min": -1.0,
+          "force_2d": false,
+          "grid_search_angle_range": 180.0,
+          "grid_search_angle_step": 60,
+          "lidar_loc_odom_th": 0.5,
+          "init_with_fp": true,
+          "min_init_confidence": 1.8,
+          "update_dynamic_cloud": false,
+          "update_err_h": 0.2,
+          "update_err_v": 0.2,
+          "update_kf_dis": 2.0,
+          "update_lidar_loc_score": 2.5,
+          "loc_on_kf": true,
+          "try_self_extrap": false
+        },
+        "maps": {
+          "delete_when_unload": false,
+          "dyn_cloud_policy": "persistent",
+          "load_dyn_cloud": true,
+          "load_map_size": 2,
+          "max_pts_dyn_chunk": 100000,
+          "save_dyn_when_quit": true,
+          "save_dyn_when_unload": false,
+          "unload_map_size": 4,
+          "with_dyn_area": false
+        },
+        "pgo": {
+          "dr_ang_noise": 0.5,
+          "dr_pos_noise": 1.0,
+          "dr_pos_noise_ratio": 1.0,
+          "lidar_loc_ang_noise": 1.0,
+          "lidar_loc_outlier_th": 5.0,
+          "lidar_loc_pos_noise": 0.3,
+          "lidar_odom_ang_noise": 1.0,
+          "lidar_odom_pos_noise": 0.3,
+          "pgo_frame_converge_ang_th": 1.0,
+          "pgo_frame_converge_pos_th": 0.05,
+          "rtk_fix_ang_noise": 2.0,
+          "rtk_fix_pos_noise": 1.0,
+          "rtk_height_noise_ratio": 10.0,
+          "rtk_other_ang_noise": 10.0,
+          "rtk_other_pos_noise": 5.0,
+          "rtk_outlier_th": 1.0,
+          "smooth_factor": 0.01
+        },
+        "roi": {
+          "height_max": 20.0,
+          "height_min": -20.0,
+          "range_max": 70,
+          "range_min": 3.0
+        },
+        "ui": {
+          "car_length": 2.0,
+          "car_width": 1.6,
+          "car_height": 1.7,
+          "scans": 1
+        }
+      }
+    },
+    "8cw1afzl": {
+      "path": "maps/lightning-offline-8cw1afzl",
+      "provenance": {
+        "created_utc": "2026-09-28T12:48:23.571310+00:00",
+        "bag": "/home/lab307/ranger_nav/bags/mid360-manual-loop-p42bk0yi/raw",
+        "current_source_commit": "b973e7fcfef147959dcfa6d78dd7a07a59384c52",
+        "current_source_status": "",
+        "online_or_2d_prerequisite": "maps/lightning-offline-2lx5kkho",
+        "executable_sha256": "429c3ea60b044dae5ed8b5d707fd9a6e77c47efbeb398643c1908abcd35dbbbc"
+      },
+      "recorded_bag_files": {
+        "metadata.yaml": "dea5914416da947027761e5c64f32e0a4c65873bc4563237d977ee3a870a3dba",
+        "raw_0.db3": "3068a4f1aa96419047b0a965773d1f239a81c5ece16536993bcc749fb5ba0762"
+      },
+      "acceptance": {
+        "three_dimensional": "PENDING",
+        "wall_ghosting": "PENDING",
+        "loop_alignment": "PENDING",
+        "ground": "PENDING",
+        "measured_scale": "PENDING",
+        "reproducibility": "PENDING",
+        "two_dimensional": "PENDING"
+      },
+      "files": {
+        "maps/lightning-offline-8cw1afzl/data/new_map/0.pcd": {
+          "bytes": 437355,
+          "sha256": "c8e9514ce5c2404610e7f35677c8c511db0f55b673b6f98a012034ff0581ae3f"
+        },
+        "maps/lightning-offline-8cw1afzl/data/new_map/global.pcd": {
+          "bytes": 439799,
+          "sha256": "93b05ab7ab9300cd8bfb6014aa9f371e00b8e5e8d5de56430097a1b918bc5281"
+        },
+        "maps/lightning-offline-8cw1afzl/data/new_map/index.txt": {
+          "bytes": 220,
+          "sha256": "10dbc1834448704090af729720127040f8163bd0c751d66a40775c94b9ff6e40"
+        },
+        "maps/lightning-offline-8cw1afzl/data/new_map/keyframes.txt": {
+          "bytes": 8103,
+          "sha256": "122232f03577bbb4abbeec32da79eaf05c4f1ae1a939bf73f4f5e390ceb24218"
+        },
+        "maps/lightning-offline-8cw1afzl/data/new_map/map.pgm": {
+          "bytes": 198415,
+          "sha256": "6d045dd477a4815958feb652a8b73b3e24119f52d6a7f594bae30fddd69b6088"
+        },
+        "maps/lightning-offline-8cw1afzl/data/new_map/map.yaml": {
+          "bytes": 187,
+          "sha256": "55d4ca0ac19b2dcda4e03be15c0d8ac6255ef68a9e9bd37a5c0157916e7c6026"
+        },
+        "maps/lightning-offline-8cw1afzl/manifest.json": {
+          "bytes": 31917,
+          "sha256": "f41a3709c429f4b42cde57d82b376ee9db4882f60773efddeb961b26a6019a20"
+        },
+        "maps/lightning-offline-8cw1afzl/config.yaml": {
+          "bytes": 3849,
+          "sha256": "0cfd8a3ccabe7b426c90ed31aae6ebc1e390b4fba498ceaa9eb82805b54dfb6e"
+        },
+        "maps/lightning-offline-8cw1afzl/extrinsics.yaml": {
+          "bytes": 1123,
+          "sha256": "76fa34100af49f12402ede298bad31bb25d3d45e3e6427b3c62e68f3636c026e"
+        },
+        "maps/lightning-offline-8cw1afzl/acceptance.json": {
+          "bytes": 216,
+          "sha256": "cb35cd08f29807a515251ba434558d4f4bbc11e3bd932975693e77dd9ef2c87a"
+        },
+        "maps/lightning-offline-8cw1afzl/source_versions.json": {
+          "bytes": 2929,
+          "sha256": "f5705ee2ebe21494a635c4577f40695991738ab7c6e78163ce7eb695d8b95ccc"
+        }
+      },
+      "config": {
+        "common": {
+          "dataset": "nclt",
+          "lidar_topic": "/ranger/unused_pointcloud2",
+          "livox_lidar_topic": "/livox/lidar",
+          "imu_topic": "/livox/imu"
+        },
+        "fasterlio": {
+          "lidar_type": 1,
+          "scan_line": 4,
+          "blind": 0.1,
+          "time_scale": "1e-3",
+          "skip_lidar_num": 0,
+          "point_filter_num": 4,
+          "max_iteration": 4,
+          "filter_size_scan": 0.2,
+          "filter_size_map": 0.2,
+          "ivox_grid_resolution": 0.2,
+          "ivox_nearby_type": 18,
+          "esti_plane_threshold": 0.1,
+          "use_aa": false,
+          "acc_cov": 0.1,
+          "gyr_cov": 0.1,
+          "b_acc_cov": 0.0001,
+          "b_gyr_cov": 0.0001,
+          "extrinsic_T": [
+            -0.011,
+            -0.02329,
+            0.04412
+          ],
+          "extrinsic_R": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "keep_first_imu_estimation": false,
+          "kf_dis_th": 0.5,
+          "kf_angle_th": 10.0,
+          "enable_icp_part": false,
+          "plane_icp_weight": 300.0,
+          "min_pts": 500,
+          "imu_filter": false,
+          "proj_kfs": false
+        },
+        "g2p5": {
+          "esti_floor": false,
+          "lidar_height": 0.556,
+          "floor_height": -0.556,
+          "min_th_floor": 0.1,
+          "max_th_floor": 0.8,
+          "grid_map_resolution": 0.05
+        },
+        "system": {
+          "with_loop_closing": true,
+          "with_ui": false,
+          "with_2dui": false,
+          "with_g2p5": true,
+          "step_on_kf": false,
+          "enable_lidar_loc_skip": false,
+          "enable_lidar_loc_rviz": false,
+          "enable_lidar_odom_skip": false,
+          "evaluation": false,
+          "lidar_loc_skip_num": 4,
+          "lidar_odom_skip_num": 2,
+          "map_path": "./data/new_map/",
+          "pub_tf": false
+        },
+        "loop_closing": {
+          "loop_kf_gap": 5,
+          "min_id_interval": 5,
+          "closest_id_th": 20,
+          "max_range": 5.0,
+          "ndt_score_th": 1.3,
+          "with_height": false
+        },
+        "lidar_loc": {
+          "enable_dynamic_polygon": false,
+          "enable_parking_static": true,
+          "enable_icp_adjust": false,
+          "filter_intensity_max": 100.0,
+          "filter_intensity_min": 10.0,
+          "filter_z_max": 30.0,
+          "filter_z_min": -1.0,
+          "force_2d": false,
+          "grid_search_angle_range": 180.0,
+          "grid_search_angle_step": 60,
+          "lidar_loc_odom_th": 0.5,
+          "init_with_fp": true,
+          "min_init_confidence": 1.8,
+          "update_dynamic_cloud": false,
+          "update_err_h": 0.2,
+          "update_err_v": 0.2,
+          "update_kf_dis": 2.0,
+          "update_lidar_loc_score": 2.5,
+          "loc_on_kf": true,
+          "try_self_extrap": false
+        },
+        "maps": {
+          "delete_when_unload": false,
+          "dyn_cloud_policy": "persistent",
+          "load_dyn_cloud": true,
+          "load_map_size": 2,
+          "max_pts_dyn_chunk": 100000,
+          "save_dyn_when_quit": true,
+          "save_dyn_when_unload": false,
+          "unload_map_size": 4,
+          "with_dyn_area": false
+        },
+        "pgo": {
+          "dr_ang_noise": 0.5,
+          "dr_pos_noise": 1.0,
+          "dr_pos_noise_ratio": 1.0,
+          "lidar_loc_ang_noise": 1.0,
+          "lidar_loc_outlier_th": 5.0,
+          "lidar_loc_pos_noise": 0.3,
+          "lidar_odom_ang_noise": 1.0,
+          "lidar_odom_pos_noise": 0.3,
+          "pgo_frame_converge_ang_th": 1.0,
+          "pgo_frame_converge_pos_th": 0.05,
+          "rtk_fix_ang_noise": 2.0,
+          "rtk_fix_pos_noise": 1.0,
+          "rtk_height_noise_ratio": 10.0,
+          "rtk_other_ang_noise": 10.0,
+          "rtk_other_pos_noise": 5.0,
+          "rtk_outlier_th": 1.0,
+          "smooth_factor": 0.01
+        },
+        "roi": {
+          "height_max": 20.0,
+          "height_min": -20.0,
+          "range_max": 70,
+          "range_min": 3.0
+        },
+        "ui": {
+          "car_length": 2.0,
+          "car_width": 1.6,
+          "car_height": 1.7,
+          "scans": 1
+        }
+      }
+    },
+    "suej7qsz": {
+      "path": "maps/lightning-offline-suej7qsz",
+      "provenance": {
+        "created_utc": "2026-09-23T11:49:55.258328+00:00",
+        "bag": "/home/lab307/ranger_nav/bags/mid360-manual-loop-n2cgpiz0/raw",
+        "current_source_commit": "1325fed8fa97a2506878360fc23427ea00a767da",
+        "current_source_status": " M CMakeLists.txt\n M cmake/packages.cmake\n M package.xml\n M src/CMakeLists.txt\n M src/app/run_slam_offline.cc\n M src/core/lio/laser_mapping.cc\n M src/core/lio/pointcloud_preprocess.cc\n M src/core/miao/core/CMakeLists.txt\n M src/core/system/slam.cc\n?? src/core/lio/extrinsic_cloud.h\n",
+        "online_or_2d_prerequisite": "maps/lightning-offline-8k_qnpae",
+        "executable_sha256": "429c3ea60b044dae5ed8b5d707fd9a6e77c47efbeb398643c1908abcd35dbbbc"
+      },
+      "recorded_bag_files": {
+        "metadata.yaml": "35bb6600acd8e55d9a3400501aa8808dd46e2aca25a47606c5d254ccc2bd416c",
+        "raw_0.db3": "73e64750f09b921fd22ab9d298017c8bfbe5a099879ba2c475fe6deeeb7b22a0"
+      },
+      "acceptance": {
+        "review_date": "2026-09-23",
+        "role": "g2p5_2d_offline_verification",
+        "data_classification": "VEHICLE_MOUNTED_FORMAL_LOOP",
+        "classification_basis": "同正式车体闭环包 bags/mid360-manual-loop-n2cgpiz0/raw 的第三离线运行，目的仅为验证 g2p5 二维栅格生成；三维验收依据 maps/lightning-offline-8k_qnpae（three_dimensional=PASS）。",
+        "config": "config/slam/ranger_mid360s_g2p5.yaml（与已验收三维配置唯一差异：system.with_g2p5=true 与 g2p5 实测值）",
+        "g2p5_inputs_from_user_2026_09_23": {
+          "obstacle_band_above_ground_m": [
+            0.1,
+            0.8
+          ],
+          "lidar_height_above_ground_m_user": 0.6,
+          "lidar_height_used_m": 0.556,
+          "floor_height_used_m": -0.556,
+          "frame_note": "关键帧点云为 IMU 系（阶段4补丁#5）；IMU 原点低于 LiDAR 原点 44.12 mm（手册 t_LI z=-0.04412），故 0.60-0.04412=0.556。用户确认装平，固定地面平面模型。"
+        },
+        "three_dimensional": "PASS_BY_REFERENCE",
+        "three_dimensional_basis": "本实验三维部分与已验收运行同包同前端参数；三维验收结论见 maps/lightning-offline-8k_qnpae/acceptance.json（人工图审合格；尺度用户免除）。",
+        "two_dimensional": "PASS_STRUCTURAL_AND_LOCAL_CONSISTENCY",
+        "two_dimensional_basis": "map.pgm + map.yaml 生成且结构检查 exit 0：分辨率 0.05 m、528x560、origin(-5.15,-14.95)、trinary 阈值 0.65/0.25。自动化交叉验证：占据格 1201 个全部位于闭环附近（x -3.58…4.22、y -4.22…5.48），与 3D 地图按同障碍带（地面 z=-0.556）投影的最近距离中位数 0.047 m（约 1 格）；优化轨迹 49 个关键帧栅格全部为自由区；>50 m 两个远端离群点未进入栅格。",
+        "two_dimensional_caveats": [
+          "3D 障碍带点投影落格值分布：占据 605 / 自由 2899 / 未知 2691。自由与未知占比高，归因于 g2p5 逐关键帧固定平面（IMU 系）与世界系 z 投影的倾角差、以及 miss 射线清空的 2.5D 高度逻辑；闭环附近一致性良好，远场不影响首版平地导航。",
+          "栅格 96% 为未知（283882/295680），因外框由 miss 射线端点撑大（28x26.4 m），实际已映射区域限于闭环走廊；非数据错误。",
+          "固定地面平面模型仅在平地+装平前提成立；坡道场景需 esti_floor=true 或重测平面（后续阶段）。"
+        ],
+        "run_facts": {
+          "exit": 0,
+          "map_check": "PASS",
+          "keyframes": 49,
+          "global_points": 27321,
+          "chunks": {
+            "0.pcd": 27318,
+            "1.pcd": 1
+          },
+          "grid": {
+            "resolution_m": 0.05,
+            "shape_wxh": [
+              528,
+              560
+            ],
+            "occupied_cells": 1201,
+            "free_cells": 10597,
+            "unknown_cells": 283882
+          }
+        },
+        "viewing_aids": [
+          "map_pgm_view.png（map.pgm 放大查看图，不参与验收）",
+          "map_pgm_view_with_trajectory.png（栅格+优化轨迹叠加，全图/局部两视图，不参与验收）"
+        ],
+        "next_step": "在线模式最后验证（需用户按采集说明启动雷达驱动；入口要求 --accepted-offline 与唯一可靠发布者）"
+      },
+      "files": {
+        "maps/lightning-offline-suej7qsz/data/new_map/0.pcd": {
+          "bytes": 422566,
+          "sha256": "bbceca3b338e9ac23d8638e560108392973bc046fa013bc8efb20b892114b457"
+        },
+        "maps/lightning-offline-suej7qsz/data/new_map/1.pcd": {
+          "bytes": 235,
+          "sha256": "787c4ec641da5a7aade51ed173cde3fe5e9f94c434721f758991261c7c7c1a9d"
+        },
+        "maps/lightning-offline-suej7qsz/data/new_map/global.pcd": {
+          "bytes": 563643,
+          "sha256": "3c3b8fe47f826f4b977214ba4411c5b87894ee58d90d857c4b4fa257251ba637"
+        },
+        "maps/lightning-offline-suej7qsz/data/new_map/index.txt": {
+          "bytes": 247,
+          "sha256": "eb9e4fd1b9631d0de9009b183b51e4c783529c36ba45094141058d59b9959ab0"
+        },
+        "maps/lightning-offline-suej7qsz/data/new_map/keyframes.txt": {
+          "bytes": 15745,
+          "sha256": "5458f9c124e5bcc6c21965c65ab048834be9c40755e844495d84c59ee017fc70"
+        },
+        "maps/lightning-offline-suej7qsz/data/new_map/map.pgm": {
+          "bytes": 295695,
+          "sha256": "319a22673815ac2144e6bc29a2c14273e6ecf6e393b40e08e7f4fba5c03ad533"
+        },
+        "maps/lightning-offline-suej7qsz/data/new_map/map.yaml": {
+          "bytes": 203,
+          "sha256": "06b96e824a13db00a6b7a50c3a0eba1f830740981acab5123835149f834fd3ac"
+        },
+        "maps/lightning-offline-suej7qsz/data/new_map/nav/map_nav.pgm": {
+          "bytes": 295695,
+          "sha256": "d25937caddfad7da6893430b7aa1b9e75a3a2bf62918eb4c94f1d1c344cb2f1a"
+        },
+        "maps/lightning-offline-suej7qsz/data/new_map/nav/map_nav.yaml": {
+          "bytes": 186,
+          "sha256": "5f94d9e54a1e3485a781f835fbb2e1e893bc232e76356e38069927d93ecf8afa"
+        },
+        "maps/lightning-offline-suej7qsz/manifest.json": {
+          "bytes": 31985,
+          "sha256": "1015bddf5759021d12cf5aff1d256da655636b0b227ee08b3e98552c63707e47"
+        },
+        "maps/lightning-offline-suej7qsz/config.yaml": {
+          "bytes": 3849,
+          "sha256": "0cfd8a3ccabe7b426c90ed31aae6ebc1e390b4fba498ceaa9eb82805b54dfb6e"
+        },
+        "maps/lightning-offline-suej7qsz/extrinsics.yaml": {
+          "bytes": 1123,
+          "sha256": "76fa34100af49f12402ede298bad31bb25d3d45e3e6427b3c62e68f3636c026e"
+        },
+        "maps/lightning-offline-suej7qsz/acceptance.json": {
+          "bytes": 3006,
+          "sha256": "04beb7f1d90827c666c898d2296c9a967e82882e45d0a9e6eba7fc1d04c060de"
+        },
+        "maps/lightning-offline-suej7qsz/source_versions.json": {
+          "bytes": 2178,
+          "sha256": "00e86e94af9a370af08a2e843a0b502893487c89795a429cca7de3520c502513"
+        }
+      },
+      "config": {
+        "common": {
+          "dataset": "nclt",
+          "lidar_topic": "/ranger/unused_pointcloud2",
+          "livox_lidar_topic": "/livox/lidar",
+          "imu_topic": "/livox/imu"
+        },
+        "fasterlio": {
+          "lidar_type": 1,
+          "scan_line": 4,
+          "blind": 0.1,
+          "time_scale": "1e-3",
+          "skip_lidar_num": 0,
+          "point_filter_num": 4,
+          "max_iteration": 4,
+          "filter_size_scan": 0.2,
+          "filter_size_map": 0.2,
+          "ivox_grid_resolution": 0.2,
+          "ivox_nearby_type": 18,
+          "esti_plane_threshold": 0.1,
+          "use_aa": false,
+          "acc_cov": 0.1,
+          "gyr_cov": 0.1,
+          "b_acc_cov": 0.0001,
+          "b_gyr_cov": 0.0001,
+          "extrinsic_T": [
+            -0.011,
+            -0.02329,
+            0.04412
+          ],
+          "extrinsic_R": [
+            1,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            1
+          ],
+          "keep_first_imu_estimation": false,
+          "kf_dis_th": 0.5,
+          "kf_angle_th": 10.0,
+          "enable_icp_part": false,
+          "plane_icp_weight": 300.0,
+          "min_pts": 500,
+          "imu_filter": false,
+          "proj_kfs": false
+        },
+        "g2p5": {
+          "esti_floor": false,
+          "lidar_height": 0.556,
+          "floor_height": -0.556,
+          "min_th_floor": 0.1,
+          "max_th_floor": 0.8,
+          "grid_map_resolution": 0.05
+        },
+        "system": {
+          "with_loop_closing": true,
+          "with_ui": false,
+          "with_2dui": false,
+          "with_g2p5": true,
+          "step_on_kf": false,
+          "enable_lidar_loc_skip": false,
+          "enable_lidar_loc_rviz": false,
+          "enable_lidar_odom_skip": false,
+          "evaluation": false,
+          "lidar_loc_skip_num": 4,
+          "lidar_odom_skip_num": 2,
+          "map_path": "./data/new_map/",
+          "pub_tf": false
+        },
+        "loop_closing": {
+          "loop_kf_gap": 5,
+          "min_id_interval": 5,
+          "closest_id_th": 20,
+          "max_range": 5.0,
+          "ndt_score_th": 1.3,
+          "with_height": false
+        },
+        "lidar_loc": {
+          "enable_dynamic_polygon": false,
+          "enable_parking_static": true,
+          "enable_icp_adjust": false,
+          "filter_intensity_max": 100.0,
+          "filter_intensity_min": 10.0,
+          "filter_z_max": 30.0,
+          "filter_z_min": -1.0,
+          "force_2d": false,
+          "grid_search_angle_range": 180.0,
+          "grid_search_angle_step": 60,
+          "lidar_loc_odom_th": 0.5,
+          "init_with_fp": true,
+          "min_init_confidence": 1.8,
+          "update_dynamic_cloud": false,
+          "update_err_h": 0.2,
+          "update_err_v": 0.2,
+          "update_kf_dis": 2.0,
+          "update_lidar_loc_score": 2.5,
+          "loc_on_kf": true,
+          "try_self_extrap": false
+        },
+        "maps": {
+          "delete_when_unload": false,
+          "dyn_cloud_policy": "persistent",
+          "load_dyn_cloud": true,
+          "load_map_size": 2,
+          "max_pts_dyn_chunk": 100000,
+          "save_dyn_when_quit": true,
+          "save_dyn_when_unload": false,
+          "unload_map_size": 4,
+          "with_dyn_area": false
+        },
+        "pgo": {
+          "dr_ang_noise": 0.5,
+          "dr_pos_noise": 1.0,
+          "dr_pos_noise_ratio": 1.0,
+          "lidar_loc_ang_noise": 1.0,
+          "lidar_loc_outlier_th": 5.0,
+          "lidar_loc_pos_noise": 0.3,
+          "lidar_odom_ang_noise": 1.0,
+          "lidar_odom_pos_noise": 0.3,
+          "pgo_frame_converge_ang_th": 1.0,
+          "pgo_frame_converge_pos_th": 0.05,
+          "rtk_fix_ang_noise": 2.0,
+          "rtk_fix_pos_noise": 1.0,
+          "rtk_height_noise_ratio": 10.0,
+          "rtk_other_ang_noise": 10.0,
+          "rtk_other_pos_noise": 5.0,
+          "rtk_outlier_th": 1.0,
+          "smooth_factor": 0.01
+        },
+        "roi": {
+          "height_max": 20.0,
+          "height_min": -20.0,
+          "range_max": 70,
+          "range_min": 3.0
+        },
+        "ui": {
+          "car_length": 2.0,
+          "car_width": 1.6,
+          "car_height": 1.7,
+          "scans": 1
+        }
+      }
+    }
+  },
+  "active_map_pair": {
+    "recorded_bag_files_equal": true,
+    "same_source_commit": true,
+    "keyframe_counts": [
+      25,
+      25
+    ],
+    "keyframe_ids_and_times_equal": true,
+    "max_optimized_translation_difference_m": 7.135128238595632e-05,
+    "max_optimized_rotation_difference_deg": 0.004164819511319377,
+    "meaning": "Same-data pose consistency only; not independent geometric or navigation acceptance."
+  },
+  "active_bag_verification": {
+    "metadata.yaml": {
+      "expected_sha256": "dea5914416da947027761e5c64f32e0a4c65873bc4563237d977ee3a870a3dba",
+      "actual_sha256": "dea5914416da947027761e5c64f32e0a4c65873bc4563237d977ee3a870a3dba",
+      "equal": true
+    },
+    "raw_0.db3": {
+      "expected_sha256": "3068a4f1aa96419047b0a965773d1f239a81c5ece16536993bcc749fb5ba0762",
+      "actual_sha256": "3068a4f1aa96419047b0a965773d1f239a81c5ece16536993bcc749fb5ba0762",
+      "equal": true
+    }
+  },
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "/home/lab307/ranger_nav",
+      "exit_code": 0,
+      "stdout": "/home/lab307/ranger_nav\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "cwd": "/home/lab307/ranger_nav",
+      "exit_code": 0,
+      "stdout": "refactor/pluggable-navigation\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "HEAD",
+        "--binary"
+      ],
+      "cwd": "/home/lab307/ranger_nav",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/lab307/ranger_nav",
+      "exit_code": 0,
+      "stdout": "e5b2029d67475a15cf8516f7a4069a4206474346\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "cwd": "/home/lab307/ranger_nav",
+      "exit_code": 0,
+      "stdout": "?? docs/03_evidence/driver-5v7_r4c4/\n?? docs/03_evidence/driver-a9w6s6i0/\n?? docs/03_evidence/driver-dhth97g3/\n?? docs/03_evidence/driver-hj360f0f/\n?? docs/03_evidence/driver-nrs50iyr/\n?? docs/03_evidence/driver-y2sd6pvt/\n?? docs/architecture_evidence/\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "cwd": "/home/lab307/ranger_nav",
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "error: 没有此远程 'origin'\n"
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_base/src/ranger_ros2",
+      "exit_code": 0,
+      "stdout": "/home/lab307/ranger_nav/ws_base/src/ranger_ros2\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_base/src/ranger_ros2",
+      "exit_code": 0,
+      "stdout": "ranger-local\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "HEAD",
+        "--binary"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_base/src/ranger_ros2",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_base/src/ranger_ros2",
+      "exit_code": 0,
+      "stdout": "7b75bc2443a1d6cbd42cc3ef3059cf4897242072\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_base/src/ranger_ros2",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_base/src/ranger_ros2",
+      "exit_code": 0,
+      "stdout": "https://github.com/agilexrobotics/ranger_ros2.git\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_base/src/ugv_sdk",
+      "exit_code": 0,
+      "stdout": "/home/lab307/ranger_nav/ws_base/src/ugv_sdk\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_base/src/ugv_sdk",
+      "exit_code": 0,
+      "stdout": "ranger-local\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "HEAD",
+        "--binary"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_base/src/ugv_sdk",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_base/src/ugv_sdk",
+      "exit_code": 0,
+      "stdout": "e2f5764acc00a2e556cf3bdc3ea3b206fa326e5b\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_base/src/ugv_sdk",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_base/src/ugv_sdk",
+      "exit_code": 0,
+      "stdout": "https://github.com/agilexrobotics/ugv_sdk.git\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_livox/src/livox_ros_driver2",
+      "exit_code": 0,
+      "stdout": "/home/lab307/ranger_nav/ws_livox/src/livox_ros_driver2\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_livox/src/livox_ros_driver2",
+      "exit_code": 0,
+      "stdout": "ranger-local\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "HEAD",
+        "--binary"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_livox/src/livox_ros_driver2",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_livox/src/livox_ros_driver2",
+      "exit_code": 0,
+      "stdout": "cc34f0a18f8c43adbf304c71ebd9f8af69440f41\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_livox/src/livox_ros_driver2",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_livox/src/livox_ros_driver2",
+      "exit_code": 0,
+      "stdout": "https://github.com/Livox-SDK/livox_ros_driver2\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "/home/lab307/ranger_nav/vendor/livox/Livox-SDK2",
+      "exit_code": 0,
+      "stdout": "/home/lab307/ranger_nav/vendor/livox/Livox-SDK2\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "cwd": "/home/lab307/ranger_nav/vendor/livox/Livox-SDK2",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "HEAD",
+        "--binary"
+      ],
+      "cwd": "/home/lab307/ranger_nav/vendor/livox/Livox-SDK2",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/lab307/ranger_nav/vendor/livox/Livox-SDK2",
+      "exit_code": 0,
+      "stdout": "08f523c930b2f0ba1e98a6afaa8d7476bf479908\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "cwd": "/home/lab307/ranger_nav/vendor/livox/Livox-SDK2",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "cwd": "/home/lab307/ranger_nav/vendor/livox/Livox-SDK2",
+      "exit_code": 0,
+      "stdout": "https://github.com/Livox-SDK/Livox-SDK2\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_slam/src/lightning",
+      "exit_code": 0,
+      "stdout": "/home/lab307/ranger_nav/ws_slam/src/lightning\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_slam/src/lightning",
+      "exit_code": 0,
+      "stdout": "ranger-local\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "HEAD",
+        "--binary"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_slam/src/lightning",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_slam/src/lightning",
+      "exit_code": 0,
+      "stdout": "b973e7fcfef147959dcfa6d78dd7a07a59384c52\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_slam/src/lightning",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_slam/src/lightning",
+      "exit_code": 0,
+      "stdout": "https://github.com/gaoxiang12/lightning-lm\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "/home/lab307/ranger_nav/vendor/livox/lightning-lm-review",
+      "exit_code": 0,
+      "stdout": "/home/lab307/ranger_nav/vendor/livox/lightning-lm-review\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "cwd": "/home/lab307/ranger_nav/vendor/livox/lightning-lm-review",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "HEAD",
+        "--binary"
+      ],
+      "cwd": "/home/lab307/ranger_nav/vendor/livox/lightning-lm-review",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/lab307/ranger_nav/vendor/livox/lightning-lm-review",
+      "exit_code": 0,
+      "stdout": "1325fed8fa97a2506878360fc23427ea00a767da\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "cwd": "/home/lab307/ranger_nav/vendor/livox/lightning-lm-review",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "cwd": "/home/lab307/ranger_nav/vendor/livox/lightning-lm-review",
+      "exit_code": 0,
+      "stdout": "https://github.com/gaoxiang12/lightning-lm\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "--show-toplevel"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_camera/src/hik_camera_ros2_driver",
+      "exit_code": 0,
+      "stdout": "/home/lab307/ranger_nav/ws_camera/src/hik_camera_ros2_driver\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_camera/src/hik_camera_ros2_driver",
+      "exit_code": 0,
+      "stdout": "main\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "HEAD",
+        "--binary"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_camera/src/hik_camera_ros2_driver",
+      "exit_code": 0,
+      "stdout": "diff --git a/config/camera_params.yaml b/config/camera_params.yaml\nindex 846e155..1758ccb 100644\n--- a/config/camera_params.yaml\n+++ b/config/camera_params.yaml\n@@ -8,10 +8,10 @@\n     # ================================================================\n     # 设备参数组 1（当前启用）\n     # ================================================================\n-    camera_sn: \"DA0434641\"\n+    camera_sn: \"DB1216907\"\n     pixel_format: \"\"\n-    image_width: 812\n-    image_height: 620\n+    image_width: 1280\n+    image_height: 1024\n     auto_adjust_resolution: true\n     strict_camera_profile: false\n \n@@ -19,11 +19,11 @@\n     # PayloadSize；如果网口只协商到 100 Mbit/s，将自动限制到安全帧率，\n     # 避免持续丢包后 GetImageBuffer 超时。要实际达到 20/30 Hz，网口必须\n     # 正常协商为 1000 Mbit/s。\n-    acquisition_frame_rate: 20.0\n+    acquisition_frame_rate: 10.0\n     disable_exposure_auto: true\n-    exposure_time: 50000.0\n+    exposure_time: 40000.0\n     disable_gain_auto: true\n-    gain: 23.0\n+    gain: 10.0\n     use_sensor_data_qos: false\n     qos_reliability: \"best_effort\"\n     qos_depth: 5\ndiff --git a/src/hik_camera_node.cpp b/src/hik_camera_node.cpp\nindex 196c12f..43c905c 100644\n--- a/src/hik_camera_node.cpp\n+++ b/src/hik_camera_node.cpp\n@@ -14,7 +14,7 @@\n #include <vector>\n \n #include \"MvCameraControl.h\"\n-#include \"camera_info_manager/camera_info_manager.hpp\"\n+#include \"camera_info_manager/camera_info_manager.h\"\n #include \"image_transport/image_transport.hpp\"\n #include \"rclcpp/logging.hpp\"\n #include \"rclcpp/rclcpp.hpp\"\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_camera/src/hik_camera_ros2_driver",
+      "exit_code": 0,
+      "stdout": "4e351d0b096e124cc076b2edf9f6abb7bfb23eda\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_camera/src/hik_camera_ros2_driver",
+      "exit_code": 0,
+      "stdout": " M config/camera_params.yaml\n M src/hik_camera_node.cpp\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "remote",
+        "get-url",
+        "origin"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_camera/src/hik_camera_ros2_driver",
+      "exit_code": 0,
+      "stdout": "https://github.com/zylyehuo/hik_camera_ros2_driver.git\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "log",
+        "--since=2026-09-28",
+        "--format=%H %ad %s",
+        "--date=iso-strict"
+      ],
+      "cwd": "/home/lab307/ranger_nav",
+      "exit_code": 0,
+      "stdout": "e5b2029d67475a15cf8516f7a4069a4206474346 2026-10-19T20:44:36+08:00 docs: record pluggable navigation architecture plan\n1963cc84d9e1c7d448f5be95c9599ead52c13455 2026-09-30T12:58:28+08:00 规划车模型缩小30%（用户2026-09-30要求）：robot_radius 0.14→0.10（需求净空 0.28→0.20，走廊全程裕度≥24cm）；CM 真实车体+2cm 防撞层不变\n89443c1ae5ce2a8667f82875b1f933a724879af0 2026-09-30T12:54:36+08:00 膨胀层收紧（用户2026-09-30要求）：inflation_radius 0.60→0.35、cost_scaling 4→8——原0.60覆盖整条走廊全程高代价；致死环仍由 robot_radius 0.14 决定，CM 防撞层不变\n178e9655add2038fc95e62cc6b5933910c4b8f35 2026-09-30T12:52:48+08:00 现场收紧碰撞模型（用户2026-09-30要求）：规划半径 0.16→0.14（走廊全程裕度≥16cm）；CM 停车多边形边距 0.08→0.02（真实外形+2cm 防撞底线，半轴0.39×0.28，走廊净空下不误触发）\n7b687db10fa052d3ba20e7e2b1b2530aa7433fed 2026-09-30T12:49:30+08:00 窄口模式半径 0.20→0.16：实测起点段净空 0.44m，原需求 0.40m 裕度仅 4cm，行驶偏移即入致死环（现场首次自主行驶 5s 后重规划失败中止）；0.16 需求 0.32m 全程裕度≥12cm，CM 真实外形多边形(半宽0.34)全程净空≥0.44 不误触发\n6c72c3063645fbb14e80f268ee07b87687f2b80c 2026-09-30T12:31:31+08:00 撤回 UDP-only 传输强制：实测 260KB 雷达帧在纯 UDP 下分片重传致 Lightning 输入积压(6.6Hz消化10Hz流)、TF 滞后持续增长(1.7→3.4s)；恢复默认 SHM+UDP（大消息走 SHM），幽灵端点风险由 SIGINT 收尾+clean_dds_shm 纪律控制\n6ff318ba99e53f64db4a08f01a71d72720717904 2026-09-30T12:24:08+08:00 治本：①过滤器直订 /livox/lidar CustomMsg（every_n=3 抽帧≈3.3Hz，脱离可视化中转依赖），②mid360_derived 默认关闭（曾 73% CPU 卡安全链上游），③MPPI 1000/56→400/32、局部图 5→3Hz 减载，④桥接 tf_max_age 1.5s；测试修正 Sim 类结构+pc2 注入模式（根因：Lightning TF 戳在满载下滞后 0.5-1.7s）\nb61add6452bad5cca521dad66abf6d988fd8d686 2026-09-30T12:01:14+08:00 雷达时限修正 7200→3600（驱动脚本硬上限，7200 被参数校验拒绝致雷达未启动）；新增 start_lidar_only.sh 单独补起\n39547421486706c39c3346a701794485badf63c9 2026-09-30T11:51:57+08:00 现场参数：雷达时限 1800→7200s（调试会话常超30分钟致断流）；初始位姿种子可配置用法示例（当前开阔区车位姿）\n432727557c47ac98c2769f288aa016142280e77e 2026-09-30T11:48:15+08:00 目标朝向判定放宽至任意（yaw_goal_tolerance 3.15）：0.6m Dubin 半径在窄带内无法完成任意朝向掉头，现场秒败根因\n154326f85990bb86a8093c5c1cd0db1b5eb1162c 2026-09-30T11:45:19+08:00 窄口模式（用户2026-09-30决定放宽）：costmap 圆形模型 0.20m 替代真实足迹（可通过通道 1.06→0.80m，本场地 0.67-1.04m）；真实车体防撞由 CM Stop 多边形(真实外形+0.08)兜底；全链限速 0.20→0.10 m/s；停车窄口 0.67m 仍不可自主通行\n41932f891436f7a70f361f772b2db00328e288e3 2026-09-30T11:13:32+08:00 DDS 根治：默认域禁用 Fast DDS SHM 传输（UDP-only profiles，三入口注入）——多轮强杀后 SHM 残段反复致服务调用超时/action 发现失败\n41d639f0dc1ab5ec60b5a0463d7b2cceacd68f3d 2026-09-30T11:07:43+08:00 现场脚本：单独补起底盘驱动（can0 重配后不重启整个会话）\n1939e6fb96d158e7ef7de214bc984681c3b0ee4a 2026-09-28T20:50:10+08:00 重录地图上线：三维2lx5kkho/utxktpt1（同包复现中位0.2mm，用户图审PASS）、g2p5二维8cw1afzl；定位/导航配置切新图；新起点净空0.326m无需清像元副本\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "dpkg-query",
+        "-W",
+        "-f=${Package}\t${Version}\n",
+        "ros-humble-nav2-*",
+        "ros-humble-twist-mux"
+      ],
+      "cwd": "/home/lab307/ranger_nav",
+      "exit_code": 0,
+      "stdout": "ros-humble-nav2-amcl\t1.1.20-1jammy.20260908.000809\nros-humble-nav2-behavior-tree\t1.1.20-1jammy.20260908.004120\nros-humble-nav2-behaviors\t1.1.20-1jammy.20260908.011930\nros-humble-nav2-bringup\t1.1.20-1jammy.20260908.021125\nros-humble-nav2-bt-navigator\t1.1.20-1jammy.20260908.011944\nros-humble-nav2-collision-monitor\t1.1.20-1jammy.20260908.010715\nros-humble-nav2-common\t1.1.20-1jammy.20260907.215155\nros-humble-nav2-constrained-smoother\t1.1.20-1jammy.20260908.005501\nros-humble-nav2-controller\t1.1.20-1jammy.20260908.005456\nros-humble-nav2-core\t1.1.20-1jammy.20260908.004903\nros-humble-nav2-costmap-2d\t1.1.20-1jammy.20260908.002855\nros-humble-nav2-dwb-controller\t1.1.20-1jammy.20260908.012626\nros-humble-nav2-lifecycle-manager\t1.1.20-1jammy.20260908.000824\nros-humble-nav2-map-server\t1.1.20-1jammy.20260908.000810\nros-humble-nav2-mppi-controller\t1.1.20-1jammy.20260908.012051\nros-humble-nav2-msgs\t1.1.20-1jammy.20260907.223327\nros-humble-nav2-navfn-planner\t1.1.20-1jammy.20260908.005505\nros-humble-nav2-planner\t1.1.20-1jammy.20260908.005526\nros-humble-nav2-regulated-pure-pursuit-controller\t1.1.20-1jammy.20260908.005527\nros-humble-nav2-rotation-shim-controller\t1.1.20-1jammy.20260908.010304\nros-humble-nav2-route\t1.1.20-1jammy.20260908.005219\nros-humble-nav2-rviz-plugins\t1.1.20-1jammy.20260908.014610\nros-humble-nav2-simple-commander\t1.1.20-1jammy.20260907.224519\nros-humble-nav2-smac-planner\t1.1.20-1jammy.20260908.005553\nros-humble-nav2-smoother\t1.1.20-1jammy.20260908.005556\nros-humble-nav2-theta-star-planner\t1.1.20-1jammy.20260908.005548\nros-humble-nav2-util\t1.1.20-1jammy.20260907.235813\nros-humble-nav2-velocity-smoother\t1.1.20-1jammy.20260908.000910\nros-humble-nav2-voxel-grid\t1.1.20-1jammy.20260908.002526\nros-humble-nav2-waypoint-follower\t1.1.20-1jammy.20260908.005557\nros-humble-twist-mux\t4.3.0-1jammy.20260907.224309\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "bash",
+        "scripts/field_session.sh"
+      ],
+      "cwd": "/home/lab307/ranger_nav",
+      "exit_code": 0,
+      "stdout": "== 干跑（--execute 才会实际启动）==\n--- [A-lidar]\n    cd '/home/lab307/ranger_nav' && source scripts/slam_env.sh && python3 scripts/start_mid360.py --execute --seconds 3600; exec bash\n--- [B-base]\n    source /opt/ros/humble/setup.bash && source '/home/lab307/ranger_nav/ws_base/install/local_setup.bash' && ros2 launch '/home/lab307/ranger_nav/config/base_mini_v2.launch.py' execute:=true confirmed_model:=ranger_mini_v2 control_authorized:=true; exec bash\n--- [C-loc]\n    cd '/home/lab307/ranger_nav' && source scripts/slam_env.sh && ws_slam/build/lightning/bin/run_loc_online --config=config/slam/ranger_mid360s_loc_v2.yaml --tf_child=imu_link --init_x=-0.85 --init_y=-0.31 --init_z=0.0 --init_qx=0.0 --init_qy=0.0 --init_qz=-0.951 --init_qw=0.309; exec bash\n--- [D-bridge]\n    source /opt/ros/humble/setup.bash && source '/home/lab307/ranger_nav/ws_nav/install/setup.bash' && ros2 launch ranger_localization_bridge loc_bridge.launch.py t_base_imu_xyz:='[0.0,0.0,0.556]' t_base_imu_rpy:='[0.0,0.0,0.0]' min_confidence:=1.0 tf_max_age_s:=1.5; exec bash\n--- [E-aux]\n    cd '/home/lab307/ranger_nav' && bash scripts/field_aux.sh; exec bash\n== Foxglove 连接: ws://<本机IP>:8765；就绪检查: ros2 topic echo /navigation_ready --once ==\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "bash",
+        "scripts/run_navigation.sh"
+      ],
+      "cwd": "/home/lab307/ranger_nav",
+      "exit_code": 0,
+      "stdout": "== 干跑（--execute 才会实际启动）==\n    ros2 launch ranger_navigation navigation.launch.py execute:=true control_authorized:=true map_yaml:=/home/lab307/ranger_nav/maps/lightning-offline-8cw1afzl/data/new_map/map.yaml\n== 速度链: Nav2/遥控 -> twist_mux -> velocity_smoother -> ranger_motion_gate -> collision_monitor -> /base/safe_cmd_vel ==\n== 放行: scripts/nav_safety.sh enable ；发目标: python3 scripts/send_nav_goal.py --x .. --y .. ==\n",
+      "stderr": ""
+    }
+  ]
+}

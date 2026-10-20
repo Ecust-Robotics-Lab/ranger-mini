@@ -2,6 +2,7 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>ranger_navigation</name>
+  <exec_depend>ranger_localization_bridge</exec_depend>
   <version>0.1.0</version>
   <description>Stage 6 flat single-point navigation: Nav2 integration config, velocity safety chain (twist_mux -> velocity_smoother -> motion gate -> collision_monitor -> /base/safe_cmd_vel), obstacle cloud filter, and launch entry.</description>
   <maintainer email="lab307@example.invalid">ranger_nav</maintainer>

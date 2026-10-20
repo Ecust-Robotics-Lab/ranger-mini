@@ -1,0 +1,4 @@
+== 干跑（--execute 才会实际启动）==
+    ros2 launch ranger_navigation navigation.launch.py execute:=true control_authorized:=true map_yaml:=/home/lab307/ranger_nav/maps/lightning-offline-8cw1afzl/data/new_map/map.yaml
+== 速度链: Nav2/遥控 -> twist_mux -> velocity_smoother -> ranger_motion_gate -> collision_monitor -> /base/safe_cmd_vel ==
+== 放行: scripts/nav_safety.sh enable ；发目标: python3 scripts/send_nav_goal.py --x .. --y .. ==

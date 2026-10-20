@@ -1,0 +1,45 @@
+[INFO] [launch]: All log files can be found below /home/lab307/.ros/log/2026-10-19-21-25-55-891393-lab307-Thunderobot-MIX-G2-9965
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [ranger_localization_bridge-1]: process started with pid [9975]
+[INFO] [lightning_adapter-2]: process started with pid [9977]
+[ranger_localization_bridge-1] [INFO] [1792416356.106301999] [ranger_localization_bridge]: generic bridge: map -> odom -> base_link; max pose age 0.400s
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[INFO] [lightning_adapter-2]: sending signal 'SIGINT' to process[lightning_adapter-2]
+[INFO] [ranger_localization_bridge-1]: sending signal 'SIGINT' to process[ranger_localization_bridge-1]
+[ranger_localization_bridge-1] Traceback (most recent call last):
+[ranger_localization_bridge-1]   File "/home/lab307/ranger_nav/ws_nav/install/ranger_localization_bridge/lib/ranger_localization_bridge/ranger_localization_bridge", line 33, in <module>
+[ranger_localization_bridge-1]     sys.exit(load_entry_point('ranger-localization-bridge==0.1.0', 'console_scripts', 'ranger_localization_bridge')())
+[ranger_localization_bridge-1]   File "/home/lab307/ranger_nav/ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/bridge_node.py", line 201, in main
+[ranger_localization_bridge-1]     n.destroy_node()
+[ranger_localization_bridge-1]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/node.py", line 1691, in destroy_node
+[ranger_localization_bridge-1]     self.destroy_service(self._services[0])
+[ranger_localization_bridge-1]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/node.py", line 1615, in destroy_service
+[ranger_localization_bridge-1]     service.destroy()
+[ranger_localization_bridge-1]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/service.py", line 93, in destroy
+[ranger_localization_bridge-1]     self.__service.destroy_when_not_in_use()
+[ranger_localization_bridge-1] KeyboardInterrupt
+[lightning_adapter-2] Traceback (most recent call last):
+[lightning_adapter-2]   File "/home/lab307/ranger_nav/ws_nav/install/ranger_localization_bridge/lib/ranger_localization_bridge/lightning_adapter", line 33, in <module>
+[lightning_adapter-2]     sys.exit(load_entry_point('ranger-localization-bridge==0.1.0', 'console_scripts', 'lightning_adapter')())
+[lightning_adapter-2]   File "/home/lab307/ranger_nav/ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/lightning_adapter.py", line 94, in main
+[lightning_adapter-2]     node.destroy_node()
+[lightning_adapter-2]   File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/node.py", line 1696, in destroy_node
+[lightning_adapter-2]     self.__node.destroy_when_not_in_use()
+[lightning_adapter-2] KeyboardInterrupt
+[ERROR] [lightning_adapter-2]: process has died [pid 9977, exit code -2, cmd '/home/lab307/ranger_nav/ws_nav/install/ranger_localization_bridge/lib/ranger_localization_bridge/lightning_adapter --ros-args -r __node:=ranger_lightning_adapter --params-file /tmp/launch_params_v8nr5buc'].
+[ERROR] [ranger_localization_bridge-1]: process has died [pid 9975, exit code -2, cmd '/home/lab307/ranger_nav/ws_nav/install/ranger_localization_bridge/lib/ranger_localization_bridge/ranger_localization_bridge --ros-args -r __node:=ranger_localization_bridge --params-file /tmp/launch_params_qji1by0b'].
+PASS A.se3_roundtrip
+PASS A.map_odom_identity
+PASS A.zero_quat_guard
+PASS B.ready_true
+PASS B.tf_values_vs_ground_truth
+PASS B.event_status_shared_timeout
+PASS B.status_recovery
+PASS B.stall_settle_precondition
+PASS B.stall_tf_gate_fires | health={'backend_alive': '1', 'backend_valid': '1', 'innovation': '1', 'innovation_skipped': '0', 'loc_tf': '1', 'loc_tf_age_ok': '0', 'odom_age': '1', 'odom_present': '1', 'backend_state': '1', 'backend_reason': 'Lightning tracking', 'sample_time': '1792416358.20476'}
+PASS B.jump_settle_precondition
+PASS B.jump_sustained_never_ready | msgs=225 violated=None innov_failed=True
+PASS B.recover_ready_true
+PASS B.odom_stop_watchdog | health={'backend_alive': '1', 'backend_valid': '1', 'innovation': '1', 'innovation_skipped': '0', 'loc_tf': '1', 'loc_tf_age_ok': '1', 'odom_age': '0', 'odom_present': '0', 'backend_state': '1', 'backend_reason': 'Lightning tracking', 'sample_time': '1792416362.6350598'}
+
+13/13 checks passed

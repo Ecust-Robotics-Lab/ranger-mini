@@ -115,7 +115,8 @@ class FakeWorld(Node):
         return time.monotonic() - self._t0
 
     def tick_status(self):
-        self.status_pub.publish(Int32(data=2))
+        if self.phase != "no_status":
+            self.status_pub.publish(Int32(data=2))
         self.conf_pub.publish(Float32(data=3.0))
 
     def tick_loc(self):
@@ -213,10 +214,9 @@ def test_ros():
     env = dict(os.environ)
     env["PYTHONPATH"] = pkg + os.pathsep + env.get("PYTHONPATH", "")
     bridge_proc = subprocess.Popen(
-        [sys.executable, "-m", "ranger_localization_bridge.bridge_node",
-         "--ros-args", "-p", "t_base_imu_xyz:=[0.0,0.0,0.0]",
-         "-p", "tf_max_age_s:=0.4", "-p", "odom_max_age_s:=0.4"],
-        env=env)
+        ['ros2', 'launch', 'ranger_localization_bridge', 'loc_bridge.launch.py',
+         't_base_imu_xyz:=[0.0,0.0,0.0]', 'tf_max_age_s:=0.4', 'odom_max_age_s:=0.4'],
+        env=env, start_new_session=True)
     BRIDGE_PROC = bridge_proc
     try:
         fake = FakeWorld()
@@ -241,6 +241,35 @@ def test_ros():
                         and abs(mb.t[1] - 0.3 * t * t) < 0.4)
         check("B.tf_values_vs_ground_truth", ok_v)
 
+        # Read runtime parameters via services, so a dropped launch argument
+        # cannot pass by merely appearing in the dry-run command.
+        from rcl_interfaces.srv import GetParameters
+        forwarded = True
+        for node_name, names, expected in [
+            ('ranger_localization_bridge', ['tf_max_age_s', 'odom_max_age_s'], [.4, .4]),
+            ('ranger_lightning_adapter', ['tf_max_age_s', 'status_max_age_s'], [.4, 10.0])]:
+            client = fake.create_client(GetParameters, '/' + node_name + '/get_parameters')
+            if not client.wait_for_service(timeout_sec=3.0):
+                forwarded = False
+                continue
+            request = GetParameters.Request(); request.names = names
+            future = client.call_async(request)
+            deadline = time.monotonic() + 3.0
+            while not future.done() and time.monotonic() < deadline:
+                spin(fake, step=.01)
+            response = future.result() if future.done() else None
+            forwarded = forwarded and response is not None and [v.double_value for v in response.values] == expected
+            fake.destroy_client(client)
+        check('B.launch_parameters_forwarded', forwarded)
+
+        # Event-driven GOOD status must not expire at the old watchdog's 1 s.
+        fake.set_phase("no_status")
+        status_hold, _, _, _ = hold_and_check(fake, seconds=2.0, grace_s=0.5,
+            condition=lambda: fake.last_ready is True, min_msgs=20)
+        check("B.event_status_shared_timeout", status_hold)
+        fake.set_phase("run")
+        check("B.status_recovery", settle_true(fake, n=3))
+
         # pure loc-TF stall (status/conf keep flowing): the TF-staleness gate
         # itself must eventually fire. Innovation may trip FIRST (frozen TF +
         # moving odom is a legitimate divergence) - so wait specifically for a
@@ -254,7 +283,7 @@ def test_ros():
             h = fake.last_health
             if fake.last_ready is False and h \
                     and (h.get("loc_tf") == "0" or h.get("loc_tf_age_ok") == "0") \
-                    and h.get("status") == "1" and h.get("confidence") == "1":
+                    and h.get("backend_alive") == "1":
                 stalled_ok = True
                 break
         check("B.stall_tf_gate_fires", stalled_ok,
@@ -297,11 +326,13 @@ def test_ros():
 
         fake.destroy_node()
     finally:
-        bridge_proc.terminate()
+        import signal
+        bridge_proc.send_signal(signal.SIGINT)
         try:
-            bridge_proc.wait(timeout=5)
+            bridge_proc.wait(timeout=8)
         except subprocess.TimeoutExpired:
-            bridge_proc.kill()
+            os.killpg(bridge_proc.pid, signal.SIGKILL)
+            bridge_proc.wait()
         rclpy.shutdown()
 
 

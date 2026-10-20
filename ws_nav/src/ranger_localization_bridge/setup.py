@@ -18,11 +18,12 @@ setup(
     zip_safe=True,
     maintainer='ranger_nav',
     maintainer_email='dev@example.com',
-    description='Bridge Lightning-LM localization TF and Ranger wheel odometry for Nav2 (map->odom, odom->base_link, navigation_ready).',
+    description='Backend-independent localization bridge and Lightning adapter for Nav2.',
     license='MIT',
     entry_points={
         'console_scripts': [
             'ranger_localization_bridge = ranger_localization_bridge.bridge_node:main',
+            'lightning_adapter = ranger_localization_bridge.lightning_adapter:main',
         ],
     },
 )

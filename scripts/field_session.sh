@@ -28,6 +28,10 @@ case "$ACTION" in
     *) echo "用法: $0 [--execute|--status|--stop]"; exit 1 ;;
 esac
 
+if [ "$EXEC" -ge 0 ]; then
+    source "$ROOT/scripts/load_runtime.sh" || exit 2
+fi
+
 # ---- 各组件命令（在各自标签页的 bash 内执行）--------------------------
 tab_lidar() {  # 雷达驱动（含单实例锁与证据日志）
     echo "cd '$ROOT' && source scripts/slam_env.sh && python3 scripts/start_mid360.py --execute --seconds ${LIDAR_SECONDS:-1800}; exec bash"
@@ -36,10 +40,13 @@ tab_base() {   # 底盘驱动：/wheel/odom（启动即发 CAN 控制模式配�
     echo "source /opt/ros/humble/setup.bash && source '$ROOT/ws_base/install/local_setup.bash' && ros2 launch '$ROOT/config/base_mini_v2.launch.py' execute:=true confirmed_model:=ranger_mini_v2 control_authorized:=true; exec bash"
 }
 tab_loc() {    # Lightning 在线定位（固定启动点初始位姿可调）
-    echo "cd '$ROOT' && source scripts/slam_env.sh && ws_slam/build/lightning/bin/run_loc_online --config=${LOC_CONFIG:-config/slam/ranger_mid360s_loc.yaml} --tf_child=${TF_CHILD:-imu_link} --init_x=${INIT_X:-0} --init_y=${INIT_Y:-0} --init_z=${INIT_Z:-0} --init_qx=${INIT_QX:-0} --init_qy=${INIT_QY:-0} --init_qz=${INIT_QZ:-0} --init_qw=${INIT_QW:-1}; exec bash"
+    [ "${LOCALIZATION_BACKEND:-lightning}" = lightning ] || { echo "echo 'standard backend: start external LocalizationEstimate producer'; exec bash"; return; }
+    local loc_config_quoted
+    printf -v loc_config_quoted '%q' "${LOC_CONFIG:-config/slam/ranger_mid360s_loc.yaml}"
+    echo "cd '$ROOT' && source scripts/slam_env.sh && ws_slam/build/lightning/bin/run_loc_online --config=$loc_config_quoted --tf_child=${TF_CHILD:-imu_link} --init_x=${INIT_X:-0} --init_y=${INIT_Y:-0} --init_z=${INIT_Z:-0} --init_qx=${INIT_QX:-0} --init_qy=${INIT_QY:-0} --init_qz=${INIT_QZ:-0} --init_qw=${INIT_QW:-1}; exec bash"
 }
 tab_bridge() { # 桥接：map->odom + odom->base_link + navigation_ready
-    echo "source /opt/ros/humble/setup.bash && source '$ROOT/ws_nav/install/setup.bash' && ros2 launch ranger_localization_bridge loc_bridge.launch.py t_base_imu_xyz:='${T_BASE_IMU_XYZ:-[0.0,0.0,0.556]}' t_base_imu_rpy:='${T_BASE_IMU_RPY:-[0.0,0.0,0.0]}' min_confidence:=${MIN_CONFIDENCE:-1.0} ${BRIDGE_EXTRA_ARGS:-}; exec bash"
+    echo "source /opt/ros/humble/setup.bash && source '$ROOT/ws_nav/install/setup.bash' && ros2 launch ranger_localization_bridge loc_bridge.launch.py t_base_imu_xyz:='${T_BASE_IMU_XYZ:-[0.0,0.0,0.556]}' t_base_imu_rpy:='${T_BASE_IMU_RPY:-[0.0,0.0,0.0]}' localization_backend:=${LOCALIZATION_BACKEND:-lightning} min_confidence:=${MIN_CONFIDENCE:-1.0} tf_max_age_s:=${TF_MAX_AGE_S:-0.5} odom_max_age_s:=${ODOM_MAX_AGE_S:-0.5} heartbeat_max_age_s:=${HEARTBEAT_MAX_AGE_S:-0.5} status_max_age_s:=${STATUS_MAX_AGE_S:-10.0} confidence_max_age_s:=${CONFIDENCE_MAX_AGE_S:-1.0} ${BRIDGE_EXTRA_ARGS:-}; exec bash"
 }
 tab_aux() {    # 辅助节点聚合（地图发布/派生点云/静态TF/foxglove_bridge）
     echo "cd '$ROOT' && bash scripts/field_aux.sh; exec bash"
@@ -73,6 +80,7 @@ declare -A PATTERNS=(
 # aux 子进程兜底模式（supervisor 先走，孤儿由这些模式兜住）
 declare -a AUX_CHILD_PATTERNS=(
     "publish_loc_map.py"
+    "[l]ib/ranger_localization_bridge/lightning_adapter"
     "mid360_derived.py"
     "static_transform_publisher.*imu_link.*livox_frame"
     "foxglove_bridge"

@@ -1,0 +1,12 @@
+== 干跑（--execute 才会实际启动）==
+--- [A-lidar]
+    cd '/home/lab307/ranger_nav' && source scripts/slam_env.sh && python3 scripts/start_mid360.py --execute --seconds 3600.0; exec bash
+--- [B-base]
+    source /opt/ros/humble/setup.bash && source '/home/lab307/ranger_nav/ws_base/install/local_setup.bash' && ros2 launch '/home/lab307/ranger_nav/config/base_mini_v2.launch.py' execute:=true confirmed_model:=ranger_mini_v2 control_authorized:=true; exec bash
+--- [C-loc]
+    cd '/home/lab307/ranger_nav' && source scripts/slam_env.sh && ws_slam/build/lightning/bin/run_loc_online --config=/home/lab307/ranger_nav/config/slam/ranger_mid360s_loc_v2.yaml --tf_child=imu_link --init_x=-0.85 --init_y=-0.31 --init_z=0.0 --init_qx=0.0 --init_qy=0.0 --init_qz=-0.951 --init_qw=0.309; exec bash
+--- [D-bridge]
+    source /opt/ros/humble/setup.bash && source '/home/lab307/ranger_nav/ws_nav/install/setup.bash' && ros2 launch ranger_localization_bridge loc_bridge.launch.py t_base_imu_xyz:='[0.0, 0.0, 0.556]' t_base_imu_rpy:='[0.0, 0.0, 0.0]' localization_backend:=lightning min_confidence:=1.0 tf_max_age_s:=0.5 odom_max_age_s:=0.5 heartbeat_max_age_s:=0.5 status_max_age_s:=10.0 confidence_max_age_s:=1.0 ; exec bash
+--- [E-aux]
+    cd '/home/lab307/ranger_nav' && bash scripts/field_aux.sh; exec bash
+== Foxglove 连接: ws://<本机IP>:8765；就绪检查: ros2 topic echo /navigation_ready --once ==

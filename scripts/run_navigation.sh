@@ -14,12 +14,6 @@ set -o pipefail  # 注意不用 -u：ROS setup 脚本依赖未绑定变量属正
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "$ROOT"
 
-# 导航用副本地图（make_nav_map.py 生成：清除建图起点处 1 个不可能的自身占据像元，
-# 该像元经膨胀会使起点致死、Smac 拒规划；原图 map.yaml 未改动）
-MAP_YAML="${MAP_YAML:-$ROOT/maps/lightning-offline-8cw1afzl/data/new_map/map.yaml}"  # 2026-09-28 重录地图（起点净空0.326m无需副本）
-CMD_PREFIX=(ros2 launch ranger_navigation navigation.launch.py
-            execute:=true control_authorized:=true map_yaml:="$MAP_YAML")
-
 ACTION="${1:-plan}"
 case "$ACTION" in
     plan|--plan) EXEC=0 ;;
@@ -28,6 +22,13 @@ case "$ACTION" in
     --stop)      EXEC=-2 ;;
     *) echo "用法: $0 [--execute|--status|--stop]"; exit 1 ;;
 esac
+
+if [ "$EXEC" -ge 0 ]; then
+    # Shared bundle resolves the localization/navigation/visualization map pair.
+    source "$ROOT/scripts/load_runtime.sh" || exit 2
+    CMD_PREFIX=(ros2 launch ranger_navigation navigation.launch.py
+                execute:=true control_authorized:=true map_yaml:="$MAP_YAML")
+fi
 
 # 进程匹配用可执行文件路径锚定（对抗审查：裸组件名会误伤恰好包含该词的
 # 编辑器/日志进程，且 vim 吸收 SIGINT 后会被逐级升级到 TERM/KILL）

@@ -3,7 +3,7 @@
 <package format="3">
   <name>ranger_localization_bridge</name>
   <version>0.1.0</version>
-  <description>Minimal bridge between Lightning-LM localization TF and the wheel odometry of Ranger Mini V2: publishes map->odom and odom->base_link TF with a single publisher each, plus a navigation_ready health status derived from TF freshness, Lightning status/confidence and a loc-vs-odom innovation check. Not a controller, does not touch the chassis.</description>
+  <description>Backend-independent localization pose/health bridge, Lightning adapter and runtime map configuration. Publishes navigation TF and readiness without controlling the chassis.</description>
   <maintainer email="dev@example.com">ranger_nav</maintainer>
   <license>MIT</license>
 
@@ -13,6 +13,10 @@
   <exec_depend>nav_msgs</exec_depend>
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>diagnostic_msgs</exec_depend>
+  <exec_depend>geometry_msgs</exec_depend>
+  <exec_depend>ranger_localization_msgs</exec_depend>
+  <exec_depend>python3-yaml</exec_depend>
+  <exec_depend>launch_ros</exec_depend>
 
   <test_depend>ament_copyright</test_depend>
   <export>

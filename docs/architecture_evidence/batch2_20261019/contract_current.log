@@ -1,0 +1,15 @@
+test_external_backend_and_failures (__main__.ExternalContractTests) ... ok
+test_backend_and_native_map_mismatch_rejected (__main__.RuntimeTests) ... ok
+test_conflicting_legacy_map_rejected (__main__.RuntimeTests) ... ok
+test_health_sample_time_not_heartbeat (__main__.RuntimeTests) ... ok
+test_invalid_overrides_rejected (__main__.RuntimeTests) ... ok
+test_map_pair_and_seed_override (__main__.RuntimeTests) ... ok
+test_map_provenance_mismatch_rejected (__main__.RuntimeTests) ... ok
+test_safe_shell_roundtrip (__main__.RuntimeTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 7.376s
+
+OK
+[INFO] [1792416414.635179771] [ranger_localization_bridge]: generic bridge: map -> odom -> base_link; max pose age 0.500s
+

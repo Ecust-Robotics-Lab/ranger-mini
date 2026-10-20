@@ -100,9 +100,8 @@ def prepare(context):
 
 
 def generate_launch_description():
-    # 2026-09-28 重录地图（g2p5 二维 8cw1afzl，起点净空 0.326 m 无需副本）
-    default_map = ('/home/lab307/ranger_nav/maps/lightning-offline-8cw1afzl'
-                   '/data/new_map/map.yaml')
+    from ranger_localization_bridge.runtime_config import resolve
+    default_map = resolve()['MAP_YAML']
     return LaunchDescription([
         DeclareLaunchArgument('execute', default_value='false', choices=['false', 'true']),
         DeclareLaunchArgument('control_authorized', default_value='false'),

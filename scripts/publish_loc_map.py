@@ -70,10 +70,13 @@ class MapPublisher(Node):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("--map-dir", type=Path,
-                    default=Path("/home/lab307/ranger_nav/maps/"
-                                 "lightning-offline-suej7qsz/data/new_map"))
+    ap.add_argument("--map-dir", type=Path)
     args = ap.parse_args()
+    if args.map_dir is None:
+        import sys
+        sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'ws_nav/src/ranger_localization_bridge'))
+        from ranger_localization_bridge.runtime_config import resolve
+        args.map_dir = Path(resolve()['MAP_DIR'])
     rclpy.init()
     node = MapPublisher(args.map_dir.resolve())
     try:

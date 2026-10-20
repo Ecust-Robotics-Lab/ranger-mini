@@ -1,0 +1,15 @@
+PASS T0.no_chassis_driver_running | pids=[]（测试在隔离 domain，仍拒绝与真机驱动同跑）
+PASS T0.no_stale_chain_processes | pids=[]（前次运行残留会假失败/假通过——先清理再测）
+PASS T12.radius_ordering | chassis 0.4764 < gate 0.55 <= smac/mppi 0.6
+PASS T12.velocity_ordering | gate 0.1 <= mppi 0.1 <= smoother 0.12
+PASS T12.forward_only | 三重禁倒车: MPPI vx_min>=0, smoother min>=0, Smac DUBIN
+PASS T12.unknown_not_traversable | allow_unknown=false + track_unknown_space=true
+PASS T12.cm_final_topic | /base/safe_cmd_vel
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_stage6_safety.py", line 827, in <module>
+    sys.exit(main())
+  File "/home/lab307/ranger_nav/tests/test_stage6_safety.py", line 423, in main
+    static_checks()
+  File "/home/lab307/ranger_nav/tests/test_stage6_safety.py", line 373, in static_checks
+    fp = nav['local_costmap']['local_costmap']['ros__parameters']['footprint']
+KeyError: 'footprint'

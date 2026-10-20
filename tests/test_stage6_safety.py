@@ -62,9 +62,10 @@ from std_msgs.msg import Bool, Header
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 SHARE = os.path.join(ROOT, "ws_nav/install/ranger_navigation/share/ranger_navigation")
-# 导航副本地图：建图起点 (0,0) 0.177 m 处有一个不可能的占据像元（车体内部），
-# 膨胀后起点致死导致 Smac 拒规划；副本由 scripts/make_nav_map.py 生成（原图不动）
-MAP_YAML = os.path.join(ROOT, "maps/lightning-offline-suej7qsz/data/new_map/nav/map_nav.yaml")
+# Use the selected runtime bundle; historical map-copy paths are not defaults.
+sys.path.insert(0, os.path.join(ROOT, 'ws_nav/src/ranger_localization_bridge'))
+from ranger_localization_bridge.runtime_config import resolve
+MAP_YAML = resolve()['MAP_YAML']
 EVIDENCE = os.environ.get("EVIDENCE_DIR", "/tmp/ranger_stage6_safety")
 
 RESULTS = []
@@ -121,8 +122,8 @@ CLOUD_FIELDS = [
 # Static TF puts livox_frame at +0.60 m above base_link, so a point at
 # z_livox=-0.20 lands at z_base=+0.40 (inside the 0.10-0.80 m obstacle band) and
 # a point at z_livox=-0.55 lands at z_base=+0.05 (ground, below the band).
-PT_STOP = [(0.40, 0.10, -0.20, 10.0)]      # base xy (0.40,0.10): inside PolygonStop
-PT_GROUND = [(0.40, 0.10, -0.55, 10.0)]    # same xy but ground height
+PT_STOP = [(0.36, 0.10, -0.20, 10.0)]      # base xy (0.36,0.10): inside current PolygonStop, outside self filter
+PT_GROUND = [(0.36, 0.10, -0.55, 10.0)]    # same xy but ground height
 
 
 class Sim(Node):
@@ -249,12 +250,13 @@ class Sim(Node):
 
 
 def static_tf_procs():
-    # 车头朝 +y（yaw 90°）：建图轨迹从起点向 +y 延伸（keyframe1 ≈ (0.02,0.51)），
-    # 朝向摆对后 Dubin 直行基元可用，目标点选在 +y 锥内可达。
+    # Synthetic chassis heading follows a checked free ray in the selected map.
+    # This fixture does not describe the physical robot's current pose.
+    yaw = pick_reachable_goal()[2]
     exe = ['ros2', 'run', 'tf2_ros', 'static_transform_publisher']
     return [
         subprocess.Popen(exe + ['--frame-id', 'map', '--child-frame-id', 'odom']),
-        subprocess.Popen(exe + ['--yaw', '1.5707963', '--frame-id', 'odom',
+        subprocess.Popen(exe + ['--yaw', str(yaw), '--frame-id', 'odom',
                                 '--child-frame-id', 'base_link']),
         subprocess.Popen(exe + ['--x', '0', '--y', '0', '--z', '0.60',
                                 '--frame-id', 'base_link', '--child-frame-id', 'livox_frame']),
@@ -276,67 +278,51 @@ def pgrep(pattern):
     return [int(x) for x in r.stdout.split()]
 
 
-def read_keyframes():
-    kfs = []
-    with open(os.path.join(ROOT, 'maps/lightning-offline-suej7qsz/data/new_map/keyframes.txt')) as f:
-        for line in f:
-            if line.startswith('#') or not line.strip():
-                continue
-            v = line.split()
-            # opt pose = cols 9..15 (tx ty tz qx qy qz qw)
-            kfs.append((float(v[9]), float(v[10]), float(v[14]), float(v[15])))
-    return kfs
+_TEST_GOAL = None
 
 
 def pick_reachable_goal():
-    """从导航副本地图选一个对 0.6 m Dubin 半径可达的目标。
+    """Choose a free straight ray on the selected map for a planner smoke test.
 
-    选取准则（模拟 TF 的机器人位于 (0,0) 朝 +y/yaw90°，走廊实测净空紧张）：
-      - 自由像元，距起点 1.2–2.6 m，世界方向角 60°–135°（车头 ±37° 锥）；
-      - 距最近占据像元净空 >= 0.5 m（内切环 0.28 之上、走廊实测最优量级）；
-      - 得分 = min(净空,1.5) - |距离-2.0|，取最优。
-    选不到时回退到 keyframe ~2 m 目标（并如实返回其朝向）。
+    Check the whole ray against occupied AND unknown cells. Point the static
+    synthetic base along this ray, so a forward-only Dubin path is feasible.
+    This validates the experimental planning model only, not body passage.
     """
+    global _TEST_GOAL
+    if _TEST_GOAL is not None:
+        return _TEST_GOAL
     import numpy as np
     import yaml as yaml_mod
     from PIL import Image
-    mp = os.path.join(ROOT, 'maps/lightning-offline-suej7qsz/data/new_map/nav/map_nav.yaml')
-    y = yaml_mod.safe_load(open(mp))
-    img = np.array(Image.open(os.path.join(os.path.dirname(mp), y['image'])))
-    H, W = img.shape
-    res = y['resolution']
-    ox, oy = y['origin'][0], y['origin'][1]
-    # 净空对"占据或未知"像元计算（img<200）：未知区同样不可穿越
-    # （allow_unknown=false），只对占据算会把目标选进不可达的未知口袋（审查发现）
-    blocked = np.argwhere(img < 200)
-    blw = np.array([[ox + (c + .5) * res, oy + (H - 1 - r + .5) * res]
-                    for r, c in blocked]) if len(blocked) else np.zeros((0, 2))
-    best, best_score = None, -1e9
-    for rr in range(0, H, 4):
-        for cc in range(0, W, 4):
-            if img[rr, cc] < 200:
+    from scipy.ndimage import distance_transform_edt
+    meta = yaml_mod.safe_load(open(MAP_YAML))
+    image = np.array(Image.open(os.path.join(os.path.dirname(MAP_YAML), meta['image'])))
+    height, width = image.shape
+    resolution = meta['resolution']
+    ox, oy = meta['origin'][:2]
+    clearance = distance_transform_edt(image >= 200) * resolution
+    nav = yaml_mod.safe_load(open(os.path.join(SHARE, 'config/nav2_params.yaml')))
+    radius = nav['global_costmap']['global_costmap']['ros__parameters']['robot_radius']
+    best = None
+    for angle in np.linspace(-math.pi, math.pi, 181):
+        for length in [1.2, 1.5, 2.0]:
+            distance = np.linspace(0, length, 101)
+            x, y = distance * math.cos(angle), distance * math.sin(angle)
+            cols = ((x - ox) / resolution).astype(int)
+            rows = height - 1 - ((y - oy) / resolution).astype(int)
+            if min(cols) < 0 or min(rows) < 0 or max(cols) >= width or max(rows) >= height:
                 continue
-            wx, wy = ox + (cc + .5) * res, oy + (H - 1 - rr + .5) * res
-            dist = math.hypot(wx, wy)
-            if not (1.2 <= dist <= 2.6):
+            minimum = float(min(clearance[rows, cols]))
+            if minimum <= radius + resolution:
                 continue
-            heading = math.degrees(math.atan2(wy, wx))
-            if not (60.0 <= heading <= 135.0):
-                continue
-            clear = float(np.min(np.hypot(blw[:, 0] - wx, blw[:, 1] - wy))) if len(blw) else 99.0
-            if clear < 0.5:
-                continue
-            score = min(clear, 1.5) - abs(dist - 2.0)
-            if score > best_score:
-                best_score, best = score, (wx, wy, math.radians(heading))
+            score = minimum - .05 * abs(length - 1.5)
+            if best is None or score > best[0]:
+                best = (score, length * math.cos(angle), length * math.sin(angle), float(angle))
     if best is None:
-        kfs = read_keyframes()
-        x0, y0 = kfs[0][0], kfs[0][1]
-        t = min(kfs, key=lambda k: abs(math.hypot(k[0] - x0, k[1] - y0) - 2.0))
-        best = (t[0], t[1], 2 * math.atan2(t[2], t[3]))
-    print(f'T13 goal: ({best[0]:.2f}, {best[1]:.2f}) yaw {math.degrees(best[2]):.0f}deg '
-          f'(clearance-score {best_score:.2f})', flush=True)
-    return best
+        raise RuntimeError('selected map has no checked free ray from synthetic origin')
+    _TEST_GOAL = best[1:]
+    print(f'T13 synthetic goal={_TEST_GOAL}, ray score={best[0]:.3f}, map={MAP_YAML}', flush=True)
+    return _TEST_GOAL
 
 
 def static_checks():
@@ -370,12 +356,18 @@ def static_checks():
           'allow_unknown=false + track_unknown_space=true')
     check('T12.cm_final_topic', cm['cmd_vel_out_topic'] == '/base/safe_cmd_vel',
           cm['cmd_vel_out_topic'])
-    fp = nav['local_costmap']['local_costmap']['ros__parameters']['footprint']
-    pts = eval(fp)
-    mx = max(abs(p[0]) for p in pts)
-    my = max(abs(p[1]) for p in pts)
-    check('T12.footprint_envelope', mx == 0.37 and my == 0.26,
-          f'0.74×0.52 外包络（用户确认）: half={mx}×{my}')
+    # 2026-09-30 switched planning to an undersized experimental circle.
+    # Verify the actual independent stop envelope, never infer that the small
+    # planning circle proves full-body traversability.
+    pts = cm['PolygonStop']['points']
+    xs, ys = pts[0::2], pts[1::2]
+    check('T12.cm_body_envelope', min(xs) <= -0.37 and max(xs) >= 0.37 and
+          min(ys) <= -0.26 and max(ys) >= 0.26,
+          f'CM half extents {max(xs)}x{max(ys)} cover recorded 0.74x0.52 body')
+    radius = nav['local_costmap']['local_costmap']['ros__parameters'].get('robot_radius')
+    if radius is not None and radius < 0.26:
+        print(f'NOTE experimental planning radius={radius}m is smaller than body; '
+              'these chain tests do not certify narrow-passage traversability', flush=True)
 
     bt = open(os.path.join(SHARE, 'behavior_trees/single_point.xml')).read()
     check('T12.bt_no_recovery',
@@ -644,7 +636,7 @@ def _run_phases(sim, launch, procs):
     check('T14.mppi_runtime',
           cs == {'FollowPath.motion_model': 'Ackermann',
                  'FollowPath.AckermannConstraints.min_turning_r': 0.6,
-                 'FollowPath.vx_max': 0.2},
+                 'FollowPath.vx_max': 0.1},
           f'{cs}')
     check('T14.smac_runtime',
           ps == {'GridBased.motion_model_for_search': 'DUBIN',

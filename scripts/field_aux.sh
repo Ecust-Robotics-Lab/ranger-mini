@@ -5,13 +5,15 @@
 set -o pipefail  # 注意不用 -u：ROS setup 脚本依赖未绑定变量属正常行为
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+source "$ROOT/scripts/load_runtime.sh" || exit 2
 LOGDIR=/tmp/ranger_session
 mkdir -p "$LOGDIR"
 
-MAP_DIR="${MAP_DIR:-$ROOT/maps/lightning-offline-suej7qsz/data/new_map}"
+# MAP_DIR resolved from the same bundle as Nav2; map publication is opt-in.
+
 ENABLE_FOXGLOVE="${ENABLE_FOXGLOVE:-1}"
 # 导航会话中 map_server 也会发布 /map：避免双 latched 发布，导航时置 0
-ENABLE_MAP_PUB="${ENABLE_MAP_PUB:-1}"
+ENABLE_MAP_PUB="${ENABLE_MAP_PUB:-0}"
 
 pids=()
 cleanup() {

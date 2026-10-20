@@ -1,0 +1,11 @@
+# Association manifest, not an acceptance certificate. Paths are project-relative.
+schema_version: 1
+id: field_20260928
+frame: map
+localization_backend: lightning
+localization_config: config/slam/ranger_mid360s_loc_v2.yaml
+localization_map: maps/lightning-offline-2lx5kkho/data/new_map
+navigation_map: maps/lightning-offline-8cw1afzl/data/new_map/map.yaml
+calibration: config/mid360/extrinsics_pending.yaml
+source_bag: bags/mid360-manual-loop-p42bk0yi/raw
+# Acceptance remains in each original experiment; no PASS is inferred here.

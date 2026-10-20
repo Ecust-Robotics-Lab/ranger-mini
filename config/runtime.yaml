@@ -1,0 +1,21 @@
+# Shared defaults. Environment overrides are explicit in runtime_config.py.
+schema_version: 1
+robot: ranger_mini_v2
+sensors: mid360s_camera
+odometry_backend: wheel
+localization_backend: lightning
+mapping_backend: lightning
+terrain_backend: disabled
+map_bundle: config/maps/field_20260928.yaml
+localization:
+  tf_max_age_s: 0.5  # preserve the previously effective threshold
+  odom_max_age_s: 0.5
+  heartbeat_max_age_s: 0.5
+  status_max_age_s: 10.0
+  confidence_max_age_s: 1.0
+  min_confidence: 1.0
+  t_base_imu_xyz: [0.0, 0.0, 0.556]  # APPROXIMATE, not field calibrated
+  t_base_imu_rpy: [0.0, 0.0, 0.0]
+session:
+  lidar_seconds: 3600
+  initial_pose: [-0.85, -0.31, 0.0, 0.0, 0.0, -0.951, 0.309]

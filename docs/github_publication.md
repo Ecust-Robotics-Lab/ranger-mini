@@ -8,7 +8,7 @@
 
 GitHub 的提交 API 对上述最新提交返回 `author: null`，说明本机作者邮箱未关联到 GitHub 账号。经登录账号 API 确认，当前用户为 `ujd66`，ID 为 `193844208`。GitHub 按提交邮箱关联账号，而不按谁执行 push 关联；参见 [GitHub 作者邮箱说明](https://docs.github.com/en/account-and-profile/how-tos/email-preferences/setting-your-commit-email-address)和 [贡献者统计说明](https://docs.github.com/en/repositories/viewing-activity-and-data-for-your-repository/viewing-a-projects-contributors)。
 
-仅调整本仓库的配置：
+首次处理时仅调整本仓库的配置（后续用户邮箱更正在文末）：
 
 ```bash
 git config --local user.name ujd66
@@ -38,3 +38,16 @@ README 不将克隆等同于完整环境安装：第三方源码、原始 rosbag
 **PASS：文档、身份配置及默认入口只读核验。** 不复跑与本次文档修改无关的导航回归；已有测试及其日期在 README 和原报告中保留。推送仅作正常快进更新，不改写历史。
 
 本次无需用户人工操作。已有 `docs/03_mid360_validation.md` 的独立 IP 修改及六个未跟踪雷达日志目录保留，不纳入本次提交。
+
+## 用户邮箱更正（2026-10-26）
+
+README 提交 `b0dc898ef0f98012c259fffc4aa3b73e56756652` 发布后，GitHub API 已核验 `author.login=ujd66`、`committer.login=ujd66`。随后用户明确提供邮箱 `qzy154846@163.com`，因此将本仓库 `user.email` 改为该值，`user.name` 保持 ujd66；`.mailmap` 同时将原工作站邮箱和此前 noreply 邮箱映射到此身份。原始提交内容和 SHA 不变，上方首次核验记录保持原时间语义。
+
+```bash
+git config --local user.email qzy154846@163.com
+git check-mailmap 'lab307 <lab307@lab307-Thunderobot-MIX-G2>'
+git check-mailmap 'ujd66 <193844208+ujd66@users.noreply.github.com>'
+git diff --check
+```
+
+上述配置、别名与差异核验均 exit 0。邮箱关联查询 `gh api user/emails` 返回 `Not Found`（exit 1），当前凭据不能据此核验邮箱关联状态，不能将它解释为邮箱未关联。新提交推送后另核对 GitHub 提交作者；若仍未关联，需用户在 GitHub 的邮箱设置中添加并验证该地址。

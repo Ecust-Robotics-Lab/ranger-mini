@@ -2,7 +2,7 @@
 
 更新时间：2026-10-26（恢复中断并完成架构改造批次 3 收尾；下方旧阶段正文保留为历史快照）。
 
-仓库维护（2026-10-26）：已发布至 [Ecust-Robotics-Lab/ranger-mini](https://github.com/Ecust-Robotics-Lab/ranger-mini)，补充根目录 README；本仓库后续提交使用 ujd66 的 GitHub noreply 身份，`.mailmap` 规范原工作站作者别名。旧提交 SHA 与共同作者记录保留。此项仅为文档和仓库维护，不进入架构批次 4；详见 [发布与作者归属记录](github_publication.md)。
+仓库维护（2026-10-26）：已发布至 [Ecust-Robotics-Lab/ranger-mini](https://github.com/Ecust-Robotics-Lab/ranger-mini)，补充根目录 README；按用户提供的邮箱，本仓库后续提交使用 `ujd66 <qzy154846@163.com>`，`.mailmap` 规范原工作站及此前 noreply 作者别名。旧提交 SHA 与共同作者记录保留。此项仅为文档和仓库维护，不进入架构批次 4；详见 [发布与作者归属记录](github_publication.md)。
 
 ## 架构改造批次 3：时间对齐与受管会话（当前）
 

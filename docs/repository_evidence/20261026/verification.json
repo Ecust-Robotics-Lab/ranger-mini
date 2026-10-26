@@ -1,0 +1,328 @@
+{
+  "created_utc": "2026-10-26T03:49:12.100184+00:00",
+  "scope": "README and repository identity maintenance; no ROS nodes or hardware started",
+  "checks": {
+    "local_document_links": true,
+    "readme_bash_syntax": true,
+    "python3 scripts/runtime_config.py": true,
+    "bash scripts/field_session.sh": true,
+    "scripts/field_session.sh_is_dry_run": true,
+    "bash scripts/run_navigation.sh": true,
+    "scripts/run_navigation.sh_is_dry_run": true,
+    "git check-mailmap lab307 <lab307@lab307-Thunderobot-MIX-G2>": true,
+    "git diff --check": true,
+    "no_session_created": true,
+    "local_author_identity": true
+  },
+  "local_identity": {
+    "user.name": "ujd66",
+    "user.email": "193844208+ujd66@users.noreply.github.com"
+  },
+  "links": [
+    {
+      "document": "README.md",
+      "target": "docs/STATUS.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/localization_backend_contract.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/architecture_baseline.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/architecture_evidence/batch1_20261019/baseline.json",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/02_base_interface.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/03_mid360_validation.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/04_mapping_report.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/06_flat_navigation_acceptance.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "config/runtime.yaml",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "config/maps/field_20260928.yaml",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "config/field_session.env",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "ws_nav/src/ranger_navigation/config/",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/managed_sessions.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "AGENTS.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/architecture_batch3_report.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "ARCHITECTURE_PLAN.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/STATUS.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/localization_backend_contract.md",
+      "exists": true
+    },
+    {
+      "document": "README.md",
+      "target": "docs/managed_sessions.md",
+      "exists": true
+    },
+    {
+      "document": "docs/STATUS.md",
+      "target": "github_publication.md",
+      "exists": true
+    },
+    {
+      "document": "docs/STATUS.md",
+      "target": "architecture_batch3_report.md",
+      "exists": true
+    },
+    {
+      "document": "docs/STATUS.md",
+      "target": "managed_sessions.md",
+      "exists": true
+    },
+    {
+      "document": "docs/STATUS.md",
+      "target": "architecture_batch2_report.md",
+      "exists": true
+    },
+    {
+      "document": "docs/STATUS.md",
+      "target": "localization_backend_contract.md",
+      "exists": true
+    },
+    {
+      "document": "docs/STATUS.md",
+      "target": "architecture_baseline.md",
+      "exists": true
+    },
+    {
+      "document": "docs/STATUS.md",
+      "target": "../ARCHITECTURE_PLAN.md",
+      "exists": true
+    },
+    {
+      "document": "docs/STATUS.md",
+      "target": "architecture_evidence/batch1_20261019/baseline.json",
+      "exists": true
+    },
+    {
+      "document": "docs/STATUS.md",
+      "target": "../patches/stage5_loc_interface.patch",
+      "exists": true
+    },
+    {
+      "document": "docs/STATUS.md",
+      "target": "../config/slam/ranger_mid360s_loc.yaml",
+      "exists": true
+    },
+    {
+      "document": "docs/STATUS.md",
+      "target": "05_localization_interface.md",
+      "exists": true
+    },
+    {
+      "document": "docs/STATUS.md",
+      "target": "04_mapping_report.md",
+      "exists": true
+    },
+    {
+      "document": "docs/STATUS.md",
+      "target": "04_manual_capture.md",
+      "exists": true
+    },
+    {
+      "document": "docs/STATUS.md",
+      "target": "04_evidence/map_inventory.json",
+      "exists": true
+    },
+    {
+      "document": "docs/STATUS.md",
+      "target": "03_mid360_validation.md",
+      "exists": true
+    },
+    {
+      "document": "docs/STATUS.md",
+      "target": "02_ros_motion_test.md",
+      "exists": true
+    },
+    {
+      "document": "docs/STATUS.md",
+      "target": "02_base_interface.md",
+      "exists": true
+    },
+    {
+      "document": "docs/STATUS.md",
+      "target": "02_base_manual_tests.md",
+      "exists": true
+    },
+    {
+      "document": "docs/STATUS.md",
+      "target": "04_evidence/source_versions.json",
+      "exists": true
+    },
+    {
+      "document": "docs/STATUS.md",
+      "target": "../config/field_session.env",
+      "exists": true
+    }
+  ],
+  "missing_links": [],
+  "files_sha256": {
+    "README.md": "cc0e2fa581be98de51f9a7f0fc4118fb11a8bcb3f9995bb9e3a908ca41bd922f",
+    ".mailmap": "bc2084f827cff411074bc4703cb781c29dfaaabeb70c70d975caabfa1903127e",
+    "docs/STATUS.md": "037ccc96a6a1a27588158a7361a1438c412d1000d634cb4f87a1ca9a25c77d9d",
+    "docs/github_publication.md": "adbf35a831fd61fef6b7d7e055b02d5f40276ccb55d2c9f00a8f5b140cca27ea"
+  },
+  "commands": [
+    {
+      "argv": [
+        "bash",
+        "-n"
+      ],
+      "input": "git clone https://github.com/Ecust-Robotics-Lab/ranger-mini.git\ncd ranger-mini\n",
+      "exit_code": 0,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "bash",
+        "-n"
+      ],
+      "input": "source /opt/ros/humble/setup.bash\nsource ws_livox/install/setup.bash\ncd ws_nav\nPYTHONDONTWRITEBYTECODE=1 colcon build --packages-up-to ranger_navigation --executor sequential\nsource install/setup.bash\ncd ..\n",
+      "exit_code": 0,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "bash",
+        "-n"
+      ],
+      "input": "python3 scripts/runtime_config.py\nbash scripts/field_session.sh\nbash scripts/run_navigation.sh\n",
+      "exit_code": 0,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "bash",
+        "-n"
+      ],
+      "input": "bash scripts/field_session.sh --status\nbash scripts/run_navigation.sh --status\nbash scripts/run_navigation.sh --stop\nbash scripts/field_session.sh --stop\n",
+      "exit_code": 0,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "bash",
+        "-n"
+      ],
+      "input": "PYTHONDONTWRITEBYTECODE=1 python3 tests/test_session_manager.py\n",
+      "exit_code": 0,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "bash",
+        "-n"
+      ],
+      "input": "PYTHONDONTWRITEBYTECODE=1 python3 tests/test_time_alignment.py\nPYTHONDONTWRITEBYTECODE=1 python3 tests/test_architecture_contract.py\nPYTHONDONTWRITEBYTECODE=1 python3 tests/test_stage5_bridge.py\nPYTHONDONTWRITEBYTECODE=1 python3 tests/test_stage6_gate_unit.py\n",
+      "exit_code": 0,
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/runtime_config.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"RANGER_RUNTIME_CONFIG\": \"/home/lab307/ranger_nav/config/runtime.yaml\",\n  \"MAP_BUNDLE\": \"/home/lab307/ranger_nav/config/maps/field_20260928.yaml\",\n  \"LOC_CONFIG\": \"/home/lab307/ranger_nav/config/slam/ranger_mid360s_loc_v2.yaml\",\n  \"MAP_YAML\": \"/home/lab307/ranger_nav/maps/lightning-offline-8cw1afzl/data/new_map/map.yaml\",\n  \"MAP_DIR\": \"/home/lab307/ranger_nav/maps/lightning-offline-8cw1afzl/data/new_map\",\n  \"LOCALIZATION_BACKEND\": \"lightning\",\n  \"TF_MAX_AGE_S\": \"0.5\",\n  \"ODOM_MAX_AGE_S\": \"0.5\",\n  \"ODOM_HISTORY_S\": \"2.0\",\n  \"ODOM_MAX_GAP_S\": \"0.1\",\n  \"HEARTBEAT_MAX_AGE_S\": \"0.5\",\n  \"STATUS_MAX_AGE_S\": \"10.0\",\n  \"CONFIDENCE_MAX_AGE_S\": \"1.0\",\n  \"MIN_CONFIDENCE\": \"1.0\",\n  \"T_BASE_IMU_XYZ\": \"[0.0, 0.0, 0.556]\",\n  \"T_BASE_IMU_RPY\": \"[0.0, 0.0, 0.0]\",\n  \"LIDAR_SECONDS\": \"3600.0\",\n  \"LOC_CHILD_FRAME\": \"lightning_imu_pose\",\n  \"BRIDGE_EXTRA_ARGS\": \"\",\n  \"INIT_X\": \"-0.85\",\n  \"INIT_Y\": \"-0.31\",\n  \"INIT_Z\": \"0.0\",\n  \"INIT_QX\": \"0.0\",\n  \"INIT_QY\": \"0.0\",\n  \"INIT_QZ\": \"-0.951\",\n  \"INIT_QW\": \"0.309\"\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "bash",
+        "scripts/field_session.sh"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"action\": \"DRY-RUN\",\n  \"session\": \"field\",\n  \"requires_fresh_control_authorization\": true,\n  \"map_bundle\": \"/home/lab307/ranger_nav/config/maps/field_20260928.yaml\",\n  \"components\": [\n    {\n      \"name\": \"probe\",\n      \"argv\": [\n        \"bash\",\n        \"-c\",\n        \"source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_livox/install/setup.bash && source /home/lab307/ranger_nav/ws_nav/install/setup.bash && exec python3 /home/lab307/ranger_nav/scripts/session_probe.py\"\n      ],\n      \"depends\": [],\n      \"requires\": [],\n      \"ready_key\": \"probe_live\",\n      \"critical\": true,\n      \"start_requires\": [],\n      \"resource\": \"\"\n    },\n    {\n      \"name\": \"lidar\",\n      \"argv\": [\n        \"bash\",\n        \"-c\",\n        \"source /home/lab307/ranger_nav/scripts/slam_env.sh && exec python3 /home/lab307/ranger_nav/scripts/start_mid360.py --execute --seconds 3600.0\"\n      ],\n      \"depends\": [\n        \"probe\"\n      ],\n      \"requires\": [],\n      \"ready_key\": \"lidar\",\n      \"critical\": true,\n      \"start_requires\": [\n        \"lidar_unclaimed\"\n      ],\n      \"resource\": \"livox_lidar\"\n    },\n    {\n      \"name\": \"base\",\n      \"argv\": [\n        \"bash\",\n        \"-c\",\n        \"source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_base/install/local_setup.bash && exec ros2 launch /home/lab307/ranger_nav/config/base_mini_v2.launch.py execute:=true confirmed_model:=ranger_mini_v2 control_authorized:=true\"\n      ],\n      \"depends\": [\n        \"probe\"\n      ],\n      \"requires\": [],\n      \"ready_key\": \"odom\",\n      \"critical\": true,\n      \"start_requires\": [\n        \"odom_unclaimed\"\n      ],\n      \"resource\": \"base_control\"\n    },\n    {\n      \"name\": \"sensor_mount\",\n      \"argv\": [\n        \"bash\",\n        \"-c\",\n        \"source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_livox/install/setup.bash && source /home/lab307/ranger_nav/ws_nav/install/setup.bash && exec /opt/ros/humble/lib/tf2_ros/static_transform_publisher --x 0.0 --y 0.0 --z 0.556 --roll 0.0 --pitch 0.0 --yaw 0.0 --frame-id base_link --child-frame-id imu_link\"\n      ],\n      \"depends\": [\n        \"probe\"\n      ],\n      \"requires\": [],\n      \"ready_key\": \"process\",\n      \"critical\": true,\n      \"start_requires\": [],\n      \"resource\": \"sensor_mount\"\n    },\n    {\n      \"name\": \"sensor_tf\",\n      \"argv\": [\n        \"bash\",\n        \"-c\",\n        \"source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_livox/install/setup.bash && source /home/lab307/ranger_nav/ws_nav/install/setup.bash && exec /opt/ros/humble/lib/tf2_ros/static_transform_publisher --x -0.011 --y -0.02329 --z 0.04412 --frame-id imu_link --child-frame-id livox_frame\"\n      ],\n      \"depends\": [\n        \"sensor_mount\"\n      ],\n      \"requires\": [],\n      \"ready_key\": \"sensor_tf\",\n      \"critical\": true,\n      \"start_requires\": [],\n      \"resource\": \"sensor_tf\"\n    },\n    {\n      \"name\": \"foxglove\",\n      \"argv\": [\n        \"bash\",\n        \"-c\",\n        \"source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_livox/install/setup.bash && source /home/lab307/ranger_nav/ws_nav/install/setup.bash && exec ros2 launch foxglove_bridge foxglove_bridge_launch.xml\"\n      ],\n      \"depends\": [\n        \"probe\"\n      ],\n      \"requires\": [],\n      \"ready_key\": \"process\",\n      \"critical\": false,\n      \"start_requires\": [],\n      \"resource\": \"foxglove\"\n    },\n    {\n      \"name\": \"localization\",\n      \"argv\": [\n        \"bash\",\n        \"-c\",\n        \"source /home/lab307/ranger_nav/scripts/slam_env.sh && exec /home/lab307/ranger_nav/ws_slam/build/lightning/bin/run_loc_online --config=/home/lab307/ranger_nav/config/slam/ranger_mid360s_loc_v2.yaml --tf_child=lightning_imu_pose --init_x=-0.85 --init_y=-0.31 --init_z=0.0 --init_qx=0.0 --init_qy=0.0 --init_qz=-0.951 --init_qw=0.309\"\n      ],\n      \"depends\": [\n        \"probe\",\n        \"lidar\"\n      ],\n      \"requires\": [\n        \"lidar\"\n      ],\n      \"ready_key\": \"native_localization\",\n      \"critical\": true,\n      \"start_requires\": [\n        \"native_unclaimed\"\n      ],\n      \"resource\": \"native_localization\"\n    },\n    {\n      \"name\": \"bridge\",\n      \"argv\": [\n        \"bash\",\n        \"-c\",\n        \"source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_livox/install/setup.bash && source /home/lab307/ranger_nav/ws_nav/install/setup.bash && exec ros2 launch ranger_localization_bridge loc_bridge.launch.py localization_backend:=lightning 't_base_imu_xyz:=[0.0, 0.0, 0.556]' 't_base_imu_rpy:=[0.0, 0.0, 0.0]' loc_child_frame:=lightning_imu_pose min_confidence:=1.0 tf_max_age_s:=0.5 odom_max_age_s:=0.5 odom_history_s:=2.0 odom_max_gap_s:=0.1 heartbeat_max_age_s:=0.5 status_max_age_s:=10.0 confidence_max_age_s:=1.0\"\n      ],\n      \"depends\": [\n        \"probe\",\n        \"base\",\n        \"localization\"\n      ],\n      \"requires\": [\n        \"odom\"\n      ],\n      \"ready_key\": \"localization\",\n      \"critical\": true,\n      \"start_requires\": [\n        \"bridge_unclaimed\"\n      ],\n      \"resource\": \"localization_bridge\"\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "bash",
+        "scripts/run_navigation.sh"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"action\": \"DRY-RUN\",\n  \"session\": \"navigation\",\n  \"requires_fresh_control_authorization\": true,\n  \"map_bundle\": \"/home/lab307/ranger_nav/config/maps/field_20260928.yaml\",\n  \"components\": [\n    {\n      \"name\": \"probe\",\n      \"argv\": [\n        \"bash\",\n        \"-c\",\n        \"source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_livox/install/setup.bash && source /home/lab307/ranger_nav/ws_nav/install/setup.bash && exec python3 /home/lab307/ranger_nav/scripts/session_probe.py\"\n      ],\n      \"depends\": [],\n      \"requires\": [],\n      \"ready_key\": \"probe_live\",\n      \"critical\": true,\n      \"start_requires\": [],\n      \"resource\": \"\"\n    },\n    {\n      \"name\": \"navigation\",\n      \"argv\": [\n        \"bash\",\n        \"-c\",\n        \"source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_livox/install/setup.bash && source /home/lab307/ranger_nav/ws_nav/install/setup.bash && exec ros2 launch ranger_navigation navigation.launch.py execute:=true control_authorized:=true map_yaml:=/home/lab307/ranger_nav/maps/lightning-offline-8cw1afzl/data/new_map/map.yaml\"\n      ],\n      \"depends\": [\n        \"probe\"\n      ],\n      \"requires\": [\n        \"localization\",\n        \"lidar\",\n        \"sensor_tf\"\n      ],\n      \"ready_key\": \"navigation\",\n      \"critical\": true,\n      \"start_requires\": [\n        \"nav_unclaimed\"\n      ],\n      \"resource\": \"navigation\"\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "check-mailmap",
+        "lab307 <lab307@lab307-Thunderobot-MIX-G2>"
+      ],
+      "exit_code": 0,
+      "stdout": "ujd66 <193844208+ujd66@users.noreply.github.com>\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

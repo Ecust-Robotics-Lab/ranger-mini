@@ -1,0 +1,26 @@
+[INFO] [launch]: All log files can be found below /home/lab307/.ros/log/2026-10-20-16-35-06-624884-lab307-Thunderobot-MIX-G2-6302
+[INFO] [launch]: Default logging verbosity is set to INFO
+[INFO] [ranger_localization_bridge-1]: process started with pid [6334]
+[INFO] [lightning_adapter-2]: process started with pid [6336]
+[ranger_localization_bridge-1] [INFO] [1792485306.847225199] [ranger_localization_bridge]: generic bridge: map -> odom -> base_link; max pose age 0.400s
+[WARNING] [launch]: user interrupted with ctrl-c (SIGINT)
+[INFO] [lightning_adapter-2]: sending signal 'SIGINT' to process[lightning_adapter-2]
+[INFO] [ranger_localization_bridge-1]: sending signal 'SIGINT' to process[ranger_localization_bridge-1]
+[INFO] [lightning_adapter-2]: process has finished cleanly [pid 6336]
+[INFO] [ranger_localization_bridge-1]: process has finished cleanly [pid 6334]
+PASS A.se3_roundtrip
+PASS A.map_odom_identity
+PASS A.zero_quat_guard
+PASS B.ready_true
+PASS B.tf_values_vs_ground_truth
+PASS B.launch_parameters_forwarded
+PASS B.event_status_shared_timeout
+PASS B.status_recovery
+PASS B.stall_settle_precondition
+PASS B.stall_tf_gate_fires | health={'backend_alive': '1', 'backend_valid': '1', 'innovation': '1', 'innovation_skipped': '0', 'loc_tf': '1', 'loc_tf_age_ok': '0', 'map_transform': '1', 'odom_age': '1', 'odom_present': '1', 'time_aligned': '0', 'backend_state': '1', 'backend_reason': 'Lightning tracking', 'alignment_reason': 'interpolated', 'aligned_sample_time': '1792485309.0051744', 'sample_time': '1792485309.0051742'}
+PASS B.jump_settle_precondition
+PASS B.jump_sustained_never_ready | msgs=225 violated=None innov_failed=True
+PASS B.recover_ready_true
+PASS B.odom_stop_watchdog | health={'backend_alive': '1', 'backend_valid': '1', 'innovation': '1', 'innovation_skipped': '1', 'loc_tf': '1', 'loc_tf_age_ok': '1', 'map_transform': '0', 'odom_age': '0', 'odom_present': '0', 'time_aligned': '0', 'backend_state': '1', 'backend_reason': 'Lightning tracking', 'alignment_reason': 'waiting for odometry bracket', 'sample_time': '1792485313.4352357'}
+
+14/14 checks passed

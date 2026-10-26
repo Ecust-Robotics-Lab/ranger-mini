@@ -1,0 +1,49 @@
+{
+  "run_directory": "/tmp/ranger-managed-ros-9ctxbv1c/sessions/field/run-gztics90",
+  "guardian": {
+    "pid": 4248,
+    "start_ticks": 177206,
+    "ppid": 4212,
+    "state": "R",
+    "boot_id": "c38b4db8-d7f6-40c4-88a2-3a177dbdee3c"
+  },
+  "owner": {
+    "pid": 4251,
+    "start_ticks": 177211,
+    "ppid": 4248,
+    "state": "R",
+    "boot_id": "c38b4db8-d7f6-40c4-88a2-3a177dbdee3c"
+  },
+  "state": "FAILED",
+  "reason": "scheduler exited 2; guardian cleanup",
+  "owned": [],
+  "components": {
+    "probe": {
+      "state": "EXITED",
+      "process": {
+        "pid": 4252,
+        "start_ticks": 177211,
+        "ppid": 4251,
+        "state": "R",
+        "boot_id": "c38b4db8-d7f6-40c4-88a2-3a177dbdee3c"
+      },
+      "argv": [
+        "bash",
+        "-c",
+        "source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_livox/install/setup.bash && source /home/lab307/ranger_nav/ws_nav/install/setup.bash && exec python3 /home/lab307/ranger_nav/scripts/session_probe.py"
+      ],
+      "exit_code": 1
+    },
+    "sensor_mount": {
+      "state": "WAITING"
+    },
+    "bridge": {
+      "state": "WAITING"
+    },
+    "sensor_tf": {
+      "state": "WAITING"
+    }
+  },
+  "updated_monotonic": 1772.798290467,
+  "guardian_cleanup_complete": true
+}

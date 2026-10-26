@@ -55,7 +55,7 @@ from rclpy.node import Node
 
 from geometry_msgs.msg import PoseStamped, Twist
 from nav2_msgs.action import NavigateToPose
-from nav_msgs.msg import Path
+from nav_msgs.msg import Path, Odometry
 from sensor_msgs.msg import PointCloud2, PointField
 from sensor_msgs_py import point_cloud2
 from std_msgs.msg import Bool, Header
@@ -157,6 +157,7 @@ class Sim(Node):
         self.create_subscription(DiagnosticArray, '/diagnostics',
                                  self._diag_cb, 10)
 
+        self.odom_pub = self.create_publisher(Odometry, '/wheel/odom', 10)
         self.cmd_pub = self.create_publisher(Twist, '/cmd_vel_nav', 10)
         self.cloud_pub = self.create_publisher(PointCloud2, '/livox/lidar', 10)
         self.ready_pub = self.create_publisher(Bool, '/navigation_ready', 10)
@@ -164,6 +165,7 @@ class Sim(Node):
         self.estop_pub = self.create_publisher(Bool, '/ranger/soft_estop', 10)
         self.action = ActionClient(self, NavigateToPose, 'navigate_to_pose')
 
+        self.create_timer(1 / 20.0, self.pub_odom)
         self.create_timer(1 / 20.0, self.pub_cmd)
         self.create_timer(1 / 10.0, self.pub_cloud)
         self.create_timer(1 / 10.0, self.pub_ready)
@@ -174,6 +176,18 @@ class Sim(Node):
                 for kv in st.values:
                     if kv.key == 'flags':
                         self.last_gate_flags = kv.value
+
+    def pub_odom(self):
+        # The controller consumes wheel odometry even in this fixed-pose test.
+        # Report a stationary body at the same pose as the synthetic TF; no
+        # odometry TF is broadcast here and no actuator is connected.
+        msg = Odometry()
+        msg.header.stamp = self.get_clock().now().to_msg()
+        msg.header.frame_id = 'odom'; msg.child_frame_id = 'base_link'
+        yaw = pick_reachable_goal()[2]
+        msg.pose.pose.orientation.z = math.sin(yaw/2.)
+        msg.pose.pose.orientation.w = math.cos(yaw/2.)
+        self.odom_pub.publish(msg)
 
     def pub_cmd(self):
         if not self.cmd['on']:
@@ -749,6 +763,9 @@ def _run_phases(sim, launch, procs):
             if plan_seen and cmd_seen:
                 break
             time.sleep(0.2)
+        with open(os.path.join(EVIDENCE, 't13_controller_trace.json'), 'w') as trace:
+            json.dump({'commands_after_settle': [m for m in sim.nav_cmd if m[0] >= t_settle],
+                       'plan_seen': plan_seen, 'cmd_seen': cmd_seen, 'target': target}, trace)
         # 取消路径与 send_nav_goal.py --cancel 同源：直接调用动作 CancelGoal
         # 服务（空 goal_id=取消全部，rcl_action 语义），并断言 1 Hz 重规划停止
         from action_msgs.srv import CancelGoal as CancelGoalSrv

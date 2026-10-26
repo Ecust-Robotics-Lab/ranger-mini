@@ -3,6 +3,7 @@ import argparse
 import json
 import math
 import os
+import re
 from pathlib import Path
 import shlex
 
@@ -28,8 +29,8 @@ def resolve(root=None, environ=None):
     # Convert the old raw launch-argument string to validated typed overrides.
     # Unknown arguments previously disappeared silently inside roslaunch.
     legacy_keys = {'t_base_imu_xyz', 't_base_imu_rpy', 'min_confidence',
-                   'tf_max_age_s', 'odom_max_age_s', 'heartbeat_max_age_s',
-                   'status_max_age_s', 'confidence_max_age_s'}
+                   'tf_max_age_s', 'odom_max_age_s', 'odom_history_s', 'odom_max_gap_s', 'heartbeat_max_age_s',
+                   'status_max_age_s', 'confidence_max_age_s', 'loc_child_frame'}
     for argument in shlex.split(env.get('BRIDGE_EXTRA_ARGS', '')):
         key, sep, value = argument.partition(':=')
         if not sep or key not in legacy_keys:
@@ -80,7 +81,9 @@ def resolve(root=None, environ=None):
         if key in env and path_at(root, env[key]) != expected:
             raise ValueError(f'{key} conflicts with map bundle; select MAP_BUNDLE instead')
     loc = dict(cfg['localization'])
-    for key in ['tf_max_age_s', 'odom_max_age_s', 'heartbeat_max_age_s',
+    loc.setdefault('odom_history_s', 2.0)
+    loc.setdefault('odom_max_gap_s', 0.1)
+    for key in ['tf_max_age_s', 'odom_max_age_s', 'odom_history_s', 'odom_max_gap_s', 'heartbeat_max_age_s',
                 'status_max_age_s', 'confidence_max_age_s', 'min_confidence']:
         if not math.isfinite(float(loc[key])) or float(loc[key]) <= 0:
             raise ValueError(f'{key} must be finite and positive')
@@ -90,6 +93,7 @@ def resolve(root=None, environ=None):
         'MAP_YAML': str(paths['navigation_map']), 'MAP_DIR': str(paths['navigation_map'].parent),
         'LOCALIZATION_BACKEND': cfg['localization_backend'],
         'TF_MAX_AGE_S': str(loc['tf_max_age_s']), 'ODOM_MAX_AGE_S': str(loc['odom_max_age_s']),
+        'ODOM_HISTORY_S': str(loc['odom_history_s']), 'ODOM_MAX_GAP_S': str(loc['odom_max_gap_s']),
         'HEARTBEAT_MAX_AGE_S': str(loc['heartbeat_max_age_s']),
         'STATUS_MAX_AGE_S': str(loc['status_max_age_s']),
         'CONFIDENCE_MAX_AGE_S': str(loc['confidence_max_age_s']),
@@ -97,6 +101,7 @@ def resolve(root=None, environ=None):
         'T_BASE_IMU_XYZ': json.dumps(loc['t_base_imu_xyz']),
         'T_BASE_IMU_RPY': json.dumps(loc['t_base_imu_rpy']),
         'LIDAR_SECONDS': str(cfg['session']['lidar_seconds']),
+        'LOC_CHILD_FRAME': env.get('LOC_CHILD_FRAME', env.get('TF_CHILD', loc.get('native_pose_frame', 'lightning_imu_pose'))),
         'BRIDGE_EXTRA_ARGS': '',  # overrides above have already been consumed
     }
     pose = cfg['session']['initial_pose']
@@ -108,7 +113,7 @@ def resolve(root=None, environ=None):
     for key in list(values):
         if key not in ['RANGER_RUNTIME_CONFIG', 'MAP_BUNDLE', 'LOC_CONFIG', 'MAP_YAML', 'MAP_DIR', 'LOCALIZATION_BACKEND', 'BRIDGE_EXTRA_ARGS'] and key in env:
             values[key] = env[key]
-    for key in ['TF_MAX_AGE_S', 'ODOM_MAX_AGE_S', 'HEARTBEAT_MAX_AGE_S', 'STATUS_MAX_AGE_S', 'CONFIDENCE_MAX_AGE_S', 'MIN_CONFIDENCE']:
+    for key in ['TF_MAX_AGE_S', 'ODOM_MAX_AGE_S', 'ODOM_HISTORY_S', 'ODOM_MAX_GAP_S', 'HEARTBEAT_MAX_AGE_S', 'STATUS_MAX_AGE_S', 'CONFIDENCE_MAX_AGE_S', 'MIN_CONFIDENCE']:
         if not math.isfinite(float(values[key])) or float(values[key]) <= 0:
             raise ValueError(f'invalid {key}')
         values[key] = str(float(values[key]))
@@ -126,6 +131,11 @@ def resolve(root=None, environ=None):
         values[key] = str(float(values[key]))
     if sum(float(values[key])**2 for key in ['INIT_QX', 'INIT_QY', 'INIT_QZ', 'INIT_QW']) < 1e-12:
         raise ValueError('initial quaternion is zero')
+    native_frame = values['LOC_CHILD_FRAME']
+    if not re.fullmatch(r'[A-Za-z][A-Za-z0-9_/]*', native_frame) or native_frame in ['map', 'odom', 'base_link', 'imu_link', 'livox_frame']:
+        raise ValueError('native pose frame must be private, not a physical/public TF frame')
+    if float(values['ODOM_HISTORY_S']) < max(float(values['ODOM_MAX_GAP_S']), float(values['TF_MAX_AGE_S'])):
+        raise ValueError('odometry history must cover pose age and maximum interpolation gap')
     return values
 
 

@@ -1,6 +1,6 @@
 # 定位后端接口与统一配置
 
-适用于架构改造批次 2，2026-10-20。本批保持轮速里程计、Lightning 原生定位和既有速度链；FAST-LIVO2 尚未部署。
+适用于架构改造批次 3，2026-10-20。保持轮速里程计、Lightning 原生定位和既有速度链；FAST-LIVO2 尚未部署。受管入口、时间对齐和 TF 细节见 [批次 3 操作说明](managed_sessions.md)。
 
 ## 1. 模块边界
 
@@ -37,17 +37,17 @@ launch 参数 `localization_backend:=lightning` 启动独立 Lightning 适配器
 
 `/localization_health` 保持 DiagnosticArray 类型，包含各项判定、`backend_state`、`backend_reason` 和可用时的 `sample_time`。旧的 Lightning 专属 `status`/`confidence` 诊断键由通用 `backend_valid`/`backend_alive` 替代；这不改变门禁消费的 Bool 话题。
 
-**本批仍使用最新定位位姿与当前轮速位姿组合 map→odom；采样时刻插值属于批次 3，尚未完成。** 现有创新检查只能作为相对运动一致性检查，不能替代该时间修复。
+**批次 3 已按定位采样时刻插值轮速位姿。** 缓存默认 2 s，最大相邻轮速间隙 0.1 s，不外推；平移线性插值、旋转 SLERP。创新检查也使用同刻配对。缓存的 map→odom 修正随新轮速传播，但原采样时间仍用于新鲜度判定，重复定位心跳不刷新它。
 
 ## 3. Lightning 适配与兼容入口
 
-默认原生输入为 `map→imu_link`、`/lightning/loc_status`、`/lightning/loc_confidence`。转换为 `T_map_base = T_map_imu × inverse(T_base_imu)`；GOOD=2 与 min_confidence=1.0 仅在此适配器解释。
+受管启动的原生输入为 `map→lightning_imu_pose`、`/lightning/loc_status`、`/lightning/loc_confidence`。转换为 `T_map_base = T_map_imu × inverse(T_base_imu)`；GOOD=2 与 min_confidence=1.0 仅在此适配器解释。私有算法帧名由 runtime 的 native_pose_frame 统一传给 Lightning 与适配器；直接运行适配器可执行文件仍默认读 imu_link，以兼容旧外部调用。
 
 状态事件有效期默认 10 s，置信度有效期 1 s，位姿最大年龄 0.5 s。10 s 状态有效期现在只有一套实现；修复了旧看门狗硬编码 1 s 的不一致。默认 0.5 s 保留此前实际生效值，不自动扩大到历史命令里未生效的 1.5 s。
 
 原 `ros2 launch ranger_localization_bridge loc_bridge.launch.py` 继续可用，阈值显式转交到两个进程。直接调用 `ranger_localization_bridge` 可执行文件或 `python -m ...bridge_node` 时，默认在同一进程组合 Lightning 适配器以兼容旧用法；公共桥接的独立调用使用 ROS 参数 `adapter_backend:=external`。
 
-尚未移除 Lightning 自己的 `map→imu_link` 原生 TF，也未新增 base→imu 静态边来改变既有 TF 拓扑；公共 TF/标定统一管理留待后续批次，避免本批重复父节点。
+受管入口使用固定 base_link→imu_link→livox_frame 物理链；Lightning 改用私有算法帧，避免 imu_link 有两个父节点。固定外参仍为原近似值，不构成精确标定通过。旧外部启动流程不得继续把 map→imu_link 与新的物理链同时发布。
 
 ## 4. 运行配置与地图清单
 
@@ -81,4 +81,4 @@ source install/setup.bash
 
 回退应在进程停止后回到批次前提交 `1420575dc6436f60b8ad7b4277193fc6d3edd1db` 的独立 checkout 并重建 ws_nav；不能仅切源代码而继续使用本批安装副本。保留本分支及所有地图、bag、历史证据，不执行删除或硬重置；回退也不继承任何运动许可。
 
-后续批次 3 才处理采样时刻对齐、完整进程监督与退出管理。FAST-LIVO2、相机同步、高程地图和坡道运行需要各自后续验收，本批未安装或启用。
+批次 3 已增加按采样时刻对齐及受管会话，使用 PID/start_ticks/boot_id 和 Linux subreaper 管理本次子孙进程；异常不自动重启。FAST-LIVO2、相机同步、高程地图和坡道运行仍需各自后续验收，未安装或启用。

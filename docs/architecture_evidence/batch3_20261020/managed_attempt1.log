@@ -1,0 +1,17 @@
+test_start_lifecycle_and_dependency_loss (__main__.ManagedRosTests) ... FAIL
+
+======================================================================
+FAIL: test_start_lifecycle_and_dependency_loss (__main__.ManagedRosTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_managed_session_ros.py", line 88, in test_start_lifecycle_and_dependency_loss
+    self.assertTrue(wait_for(node,lambda:state('field') and state('field')['state']=='RUNNING',25))
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 1 test in 25.121s
+
+FAILED (failures=1)
+field final state FAILED reason scheduler exited 2; guardian cleanup owned []
+field.log SESSION_DIR=/tmp/ranger-managed-ros-9ctxbv1c/sessions/field/run-gztics90
+

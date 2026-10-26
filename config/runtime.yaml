@@ -8,8 +8,11 @@ mapping_backend: lightning
 terrain_backend: disabled
 map_bundle: config/maps/field_20260928.yaml
 localization:
+  native_pose_frame: lightning_imu_pose  # algorithm pose, not a physical sensor frame
   tf_max_age_s: 0.5  # preserve the previously effective threshold
   odom_max_age_s: 0.5
+  odom_history_s: 2.0
+  odom_max_gap_s: 0.1
   heartbeat_max_age_s: 0.5
   status_max_age_s: 10.0
   confidence_max_age_s: 1.0

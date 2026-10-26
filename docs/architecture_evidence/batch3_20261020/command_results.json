@@ -1,0 +1,103 @@
+{
+  "cwd": "/home/lab307/ranger_nav",
+  "branch": "refactor/pluggable-navigation",
+  "commands": [
+    {
+      "command": "source /opt/ros/humble/setup.bash && source ws_livox/install/setup.bash && cd ws_nav && PYTHONDONTWRITEBYTECODE=1 colcon build --packages-up-to ranger_navigation --executor sequential",
+      "exit_code": 0,
+      "log": "build_complete.log"
+    },
+    {
+      "command": "source /opt/ros/humble/setup.bash && source ws_nav/install/setup.bash && PYTHONDONTWRITEBYTECODE=1 python3 tests/test_time_alignment.py",
+      "exit_code": 0,
+      "log": "alignment_verified.log"
+    },
+    {
+      "command": "source /opt/ros/humble/setup.bash && source ws_nav/install/setup.bash && PYTHONDONTWRITEBYTECODE=1 python3 tests/test_architecture_contract.py",
+      "exit_code": 0,
+      "log": "contract_verified.log"
+    },
+    {
+      "command": "source /opt/ros/humble/setup.bash && source ws_nav/install/setup.bash && PYTHONDONTWRITEBYTECODE=1 python3 tests/test_stage5_bridge.py",
+      "exit_code": 0,
+      "log": "bridge_verified.log"
+    },
+    {
+      "command": "source /opt/ros/humble/setup.bash && PYTHONDONTWRITEBYTECODE=1 python3 tests/test_stage6_gate_unit.py",
+      "exit_code": 0,
+      "log": "gate_verified.log"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 tests/test_session_manager.py",
+      "exit_code": 0,
+      "log": "process_verified.log"
+    },
+    {
+      "command": "source /opt/ros/humble/setup.bash && source ws_livox/install/setup.bash && source ws_nav/install/setup.bash && PYTHONDONTWRITEBYTECODE=1 EVIDENCE_DIR=docs/architecture_evidence/batch3_20261020/safety python3 tests/test_stage6_safety.py",
+      "exit_code": 0,
+      "log": "safety_verified.log"
+    },
+    {
+      "command": "source /opt/ros/humble/setup.bash && source ws_livox/install/setup.bash && source ws_nav/install/setup.bash && PYTHONDONTWRITEBYTECODE=1 EVIDENCE_DIR=docs/architecture_evidence/batch3_20261020/managed_complete python3 tests/test_managed_session_ros.py",
+      "exit_code": 0,
+      "log": "managed_complete.log"
+    },
+    {
+      "command": "bash scripts/field_session.sh",
+      "exit_code": 0,
+      "log": "field_plan.json",
+      "mode": "dry-run"
+    },
+    {
+      "command": "bash scripts/run_navigation.sh",
+      "exit_code": 0,
+      "log": "navigation_plan.json",
+      "mode": "dry-run"
+    },
+    {
+      "command": "python3 scripts/runtime_config.py",
+      "exit_code": 0,
+      "log": "runtime_resolved.json",
+      "mode": "read-only"
+    },
+    {
+      "command": "tests/test_managed_session_ros.py (initial probe implementation)",
+      "exit_code": 1,
+      "log": "managed_attempt1.log",
+      "note": "probe attribute conflict; no downstream component started"
+    },
+    {
+      "command": "tests/test_session_manager.py (initial preflight assertion)",
+      "exit_code": 1,
+      "log": "session_verified.log",
+      "note": "test expected probe to start, but preflight correctly rejected before that"
+    },
+    {
+      "command": "tests/test_stage6_safety.py (before stationary wheel fixture)",
+      "exit_code": 1,
+      "log": "safety_attempt1.log",
+      "note": "36/37; T13 planned but did not observe threshold controller output; evidence retained"
+    },
+    {
+      "command": "source /opt/ros/humble/setup.bash && source ws_nav/install/setup.bash && PYTHONDONTWRITEBYTECODE=1 python3 tests/test_time_alignment.py",
+      "exit_code": 0,
+      "log": "alignment_resume_20261026.log",
+      "date": "2026-10-26"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 tests/test_session_manager.py",
+      "exit_code": 0,
+      "log": "process_resume_20261026.log",
+      "date": "2026-10-26"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 docs/architecture_evidence/batch3_20261020/verify_resume.py",
+      "exit_code": 0,
+      "log": "verification.json",
+      "date": "2026-10-26",
+      "mode": "read-only audit; writes evidence JSON only"
+    }
+  ],
+  "historical_full_suite_date": "2026-10-20",
+  "resume_date": "2026-10-26"
+}

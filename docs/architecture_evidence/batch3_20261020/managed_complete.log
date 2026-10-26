@@ -1,0 +1,12 @@
+test_start_lifecycle_and_dependency_loss (__main__.ManagedRosTests) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 8.284s
+
+OK
+field final state STOPPED reason  owned []
+navigation final state FAILED reason RuntimeError: critical health lost; stopping session, fresh start required; scheduler exited 2; guardian cleanup owned []
+field.log SESSION_DIR=/tmp/ranger-managed-ros-5ztns4db/sessions/field/run-augpm4ba
+
+navigation.log SESSION_DIR=/tmp/ranger-managed-ros-5ztns4db/sessions/navigation/run-cb3vbg1x
+

@@ -1,0 +1,48 @@
+Type: geometry_msgs/msg/Twist
+
+Publisher count: 1
+
+Node name: ranger_motion_gate
+Node namespace: /
+Topic type: geometry_msgs/msg/Twist
+Endpoint type: PUBLISHER
+GID: 01.0f.2e.54.92.1b.ea.c8.00.00.00.00.00.00.16.03.00.00.00.00.00.00.00.00
+QoS profile:
+  Reliability: RELIABLE
+  History (Depth): UNKNOWN
+  Durability: VOLATILE
+  Lifespan: Infinite
+  Deadline: Infinite
+  Liveliness: AUTOMATIC
+  Liveliness lease duration: Infinite
+
+Subscription count: 2
+
+Node name: collision_monitor
+Node namespace: /
+Topic type: geometry_msgs/msg/Twist
+Endpoint type: SUBSCRIPTION
+GID: 01.0f.2e.54.03.1b.54.6d.00.00.00.00.00.00.23.04.00.00.00.00.00.00.00.00
+QoS profile:
+  Reliability: RELIABLE
+  History (Depth): UNKNOWN
+  Durability: VOLATILE
+  Lifespan: Infinite
+  Deadline: Infinite
+  Liveliness: AUTOMATIC
+  Liveliness lease duration: Infinite
+
+Node name: stage6_sim
+Node namespace: /
+Topic type: geometry_msgs/msg/Twist
+Endpoint type: SUBSCRIPTION
+GID: 01.0f.2e.54.89.1a.63.8a.00.00.00.00.00.00.12.04.00.00.00.00.00.00.00.00
+QoS profile:
+  Reliability: RELIABLE
+  History (Depth): UNKNOWN
+  Durability: VOLATILE
+  Lifespan: Infinite
+  Deadline: Infinite
+  Liveliness: AUTOMATIC
+  Liveliness lease duration: Infinite
+

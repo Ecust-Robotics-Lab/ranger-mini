@@ -1,0 +1,149 @@
+{
+  "action": "DRY-RUN",
+  "session": "field",
+  "requires_fresh_control_authorization": true,
+  "map_bundle": "/home/lab307/ranger_nav/config/maps/field_20260928.yaml",
+  "components": [
+    {
+      "name": "probe",
+      "argv": [
+        "bash",
+        "-c",
+        "source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_livox/install/setup.bash && source /home/lab307/ranger_nav/ws_nav/install/setup.bash && exec python3 /home/lab307/ranger_nav/scripts/session_probe.py"
+      ],
+      "depends": [],
+      "requires": [],
+      "ready_key": "probe_live",
+      "critical": true,
+      "start_requires": [],
+      "resource": ""
+    },
+    {
+      "name": "lidar",
+      "argv": [
+        "bash",
+        "-c",
+        "source /home/lab307/ranger_nav/scripts/slam_env.sh && exec python3 /home/lab307/ranger_nav/scripts/start_mid360.py --execute --seconds 3600.0"
+      ],
+      "depends": [
+        "probe"
+      ],
+      "requires": [],
+      "ready_key": "lidar",
+      "critical": true,
+      "start_requires": [
+        "lidar_unclaimed"
+      ],
+      "resource": "livox_lidar"
+    },
+    {
+      "name": "base",
+      "argv": [
+        "bash",
+        "-c",
+        "source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_base/install/local_setup.bash && exec ros2 launch /home/lab307/ranger_nav/config/base_mini_v2.launch.py execute:=true confirmed_model:=ranger_mini_v2 control_authorized:=true"
+      ],
+      "depends": [
+        "probe"
+      ],
+      "requires": [],
+      "ready_key": "odom",
+      "critical": true,
+      "start_requires": [
+        "odom_unclaimed"
+      ],
+      "resource": "base_control"
+    },
+    {
+      "name": "sensor_mount",
+      "argv": [
+        "bash",
+        "-c",
+        "source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_livox/install/setup.bash && source /home/lab307/ranger_nav/ws_nav/install/setup.bash && exec /opt/ros/humble/lib/tf2_ros/static_transform_publisher --x 0.0 --y 0.0 --z 0.556 --roll 0.0 --pitch 0.0 --yaw 0.0 --frame-id base_link --child-frame-id imu_link"
+      ],
+      "depends": [
+        "probe"
+      ],
+      "requires": [],
+      "ready_key": "process",
+      "critical": true,
+      "start_requires": [],
+      "resource": "sensor_mount"
+    },
+    {
+      "name": "sensor_tf",
+      "argv": [
+        "bash",
+        "-c",
+        "source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_livox/install/setup.bash && source /home/lab307/ranger_nav/ws_nav/install/setup.bash && exec /opt/ros/humble/lib/tf2_ros/static_transform_publisher --x -0.011 --y -0.02329 --z 0.04412 --frame-id imu_link --child-frame-id livox_frame"
+      ],
+      "depends": [
+        "sensor_mount"
+      ],
+      "requires": [],
+      "ready_key": "sensor_tf",
+      "critical": true,
+      "start_requires": [],
+      "resource": "sensor_tf"
+    },
+    {
+      "name": "foxglove",
+      "argv": [
+        "bash",
+        "-c",
+        "source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_livox/install/setup.bash && source /home/lab307/ranger_nav/ws_nav/install/setup.bash && exec ros2 launch foxglove_bridge foxglove_bridge_launch.xml"
+      ],
+      "depends": [
+        "probe"
+      ],
+      "requires": [],
+      "ready_key": "process",
+      "critical": false,
+      "start_requires": [],
+      "resource": "foxglove"
+    },
+    {
+      "name": "localization",
+      "argv": [
+        "bash",
+        "-c",
+        "source /home/lab307/ranger_nav/scripts/slam_env.sh && exec /home/lab307/ranger_nav/ws_slam/build/lightning/bin/run_loc_online --config=/home/lab307/ranger_nav/config/slam/ranger_mid360s_loc_v2.yaml --tf_child=lightning_imu_pose --init_x=-0.85 --init_y=-0.31 --init_z=0.0 --init_qx=0.0 --init_qy=0.0 --init_qz=-0.951 --init_qw=0.309"
+      ],
+      "depends": [
+        "probe",
+        "lidar"
+      ],
+      "requires": [
+        "lidar"
+      ],
+      "ready_key": "native_localization",
+      "critical": true,
+      "start_requires": [
+        "native_unclaimed"
+      ],
+      "resource": "native_localization"
+    },
+    {
+      "name": "bridge",
+      "argv": [
+        "bash",
+        "-c",
+        "source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_livox/install/setup.bash && source /home/lab307/ranger_nav/ws_nav/install/setup.bash && exec ros2 launch ranger_localization_bridge loc_bridge.launch.py localization_backend:=lightning 't_base_imu_xyz:=[0.0, 0.0, 0.556]' 't_base_imu_rpy:=[0.0, 0.0, 0.0]' loc_child_frame:=lightning_imu_pose min_confidence:=1.0 tf_max_age_s:=0.5 odom_max_age_s:=0.5 odom_history_s:=2.0 odom_max_gap_s:=0.1 heartbeat_max_age_s:=0.5 status_max_age_s:=10.0 confidence_max_age_s:=1.0"
+      ],
+      "depends": [
+        "probe",
+        "base",
+        "localization"
+      ],
+      "requires": [
+        "odom"
+      ],
+      "ready_key": "localization",
+      "critical": true,
+      "start_requires": [
+        "bridge_unclaimed"
+      ],
+      "resource": "localization_bridge"
+    }
+  ]
+}

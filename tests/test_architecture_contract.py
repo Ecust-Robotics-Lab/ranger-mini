@@ -46,6 +46,14 @@ class RuntimeTests(unittest.TestCase):
             with self.subTest(env=env), self.assertRaises(ValueError):
                 resolve(ROOT, env)
 
+    def test_history_and_private_frame_validation(self):
+        for env in [{'ODOM_HISTORY_S': '0.1'}, {'ODOM_MAX_GAP_S': 'nan'},
+                    {'TF_CHILD': 'imu_link'}, {'LOC_CHILD_FRAME': 'base_link'}]:
+            with self.subTest(env=env), self.assertRaises(ValueError):
+                resolve(ROOT, env)
+        cfg=resolve(ROOT, {})
+        self.assertEqual(cfg['LOC_CHILD_FRAME'],'lightning_imu_pose')
+
     def test_legacy_arguments_are_validated(self):
         cfg = resolve(ROOT, {'BRIDGE_EXTRA_ARGS': 'tf_max_age_s:=0.8'})
         self.assertEqual(cfg['TF_MAX_AGE_S'], '0.8')
@@ -189,6 +197,7 @@ class ExternalContractTests(unittest.TestCase):
                 except subprocess.TimeoutExpired:os.killpg(proc.pid,signal.SIGKILL);proc.wait()
                 node.destroy_node();rclpy.shutdown();log.close()
                 print((Path(tmp)/'bridge.log').read_text())
+                self.assertEqual(proc.returncode,0,'bridge shutdown must be clean')
 
 
 class LightningAdapterTests(unittest.TestCase):
@@ -238,6 +247,7 @@ class LightningAdapterTests(unittest.TestCase):
                 node.destroy_node();rclpy.shutdown();log.close()
                 os.environ['ROS_DOMAIN_ID']='181'
                 print((Path(tmp)/'adapter.log').read_text())
+                self.assertEqual(proc.returncode,0,'adapter shutdown must be clean')
 
 
 if __name__=='__main__':

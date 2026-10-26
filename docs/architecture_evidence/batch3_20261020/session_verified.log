@@ -1,0 +1,83 @@
+test_control_start_requires_explicit_flag (__main__.ProcessTests) ... ok
+test_critical_health_loss_stops_without_auto_restart (__main__.ProcessTests) ... ok
+test_dependency_wait_and_normal_stop (__main__.ProcessTests) ... ok
+test_escaped_child_after_parent_exit (__main__.ProcessTests) ... ok
+test_guardian_sigkill_scheduler_cleans (__main__.ProcessTests) ... ok
+test_occupied_interface_rejected_before_components_start (__main__.ProcessTests) ... FAIL
+test_optional_exit_degrades_without_restarting (__main__.ProcessTests) ... ok
+test_resource_lease_and_duplicate_session (__main__.ProcessTests) ... ok
+test_scheduler_sigkill_guardian_cleans_orphans (__main__.ProcessTests) ... ok
+test_stale_identity_does_not_signal_reused_pid (__main__.ProcessTests) ... ok
+test_startup_timeout (__main__.ProcessTests) ... ok
+
+======================================================================
+FAIL: test_occupied_interface_rejected_before_components_start (__main__.ProcessTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_session_manager.py", line 163, in test_occupied_interface_rejected_before_components_start
+    self.assertEqual(starts,['probe'])
+AssertionError: Lists differ: [] != ['probe']
+
+Second list contains 1 additional elements.
+First extra element 0:
+'probe'
+
+- []
++ ['probe']
+
+----------------------------------------------------------------------
+Ran 11 tests in 4.927s
+
+FAILED (failures=1)
+health_loss0.log SESSION_DIR=/tmp/ranger-session-test-gckz50ei/sessions/one/run-lk1ygk7t
+
+dependency0.log SESSION_DIR=/tmp/ranger-session-test-2h9a347_/sessions/one/run-uqka6mrk
+
+escape0.log SESSION_DIR=/tmp/ranger-session-test-ltpgvoi1/sessions/one/run-jqzind1_
+
+normal0.log SESSION_DIR=/tmp/ranger-session-test-54yay12r/sessions/one/run-n2j7nufa
+
+preflight0.log SESSION_DIR=/tmp/ranger-session-test-lf4bw1ml/sessions/one/run-83fhv4w0
+
+optional0.log SESSION_DIR=/tmp/ranger-session-test-gftqwhox/sessions/one/run-zki50lxp
+
+resource_two2.log Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/scripts/session_manager.py", line 211, in run_guarded
+    fcntl.flock(handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
+BlockingIOError: [Errno 11] Resource temporarily unavailable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_session_manager.py", line 194, in <module>
+    if len(sys.argv)>1 and sys.argv[1]=='--worker':raise SystemExit(worker(sys.argv[2],sys.argv[3]))
+  File "/home/lab307/ranger_nav/tests/test_session_manager.py", line 63, in worker
+    return run_guarded(session,specs,health_factory=provider,startup_timeout=.8 if scenario=='timeout' else 5.,
+  File "/home/lab307/ranger_nav/scripts/session_manager.py", line 213, in run_guarded
+    raise RuntimeError(f'resource already owned by another session: {resource}')
+RuntimeError: resource already owned by another session: shared
+
+normal0.log SESSION_DIR=/tmp/ranger-session-test-sgmqbd5c/sessions/one/run-jktq6y4i
+
+normal1.log Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/scripts/session_manager.py", line 197, in run_guarded
+    fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+BlockingIOError: [Errno 11] Resource temporarily unavailable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_session_manager.py", line 194, in <module>
+    if len(sys.argv)>1 and sys.argv[1]=='--worker':raise SystemExit(worker(sys.argv[2],sys.argv[3]))
+  File "/home/lab307/ranger_nav/tests/test_session_manager.py", line 63, in worker
+    return run_guarded(session,specs,health_factory=provider,startup_timeout=.8 if scenario=='timeout' else 5.,
+  File "/home/lab307/ranger_nav/scripts/session_manager.py", line 199, in run_guarded
+    raise RuntimeError('session is already active')
+RuntimeError: session is already active
+
+normal3.log SESSION_DIR=/tmp/ranger-session-test-sgmqbd5c/sessions/one/run-xdhvnbeq
+
+normal0.log SESSION_DIR=/tmp/ranger-session-test-dmnxdbi2/sessions/one/run-m1rswwkp
+
+timeout0.log SESSION_DIR=/tmp/ranger-session-test-b30aoaoo/sessions/one/run-0_2w_bcr
+

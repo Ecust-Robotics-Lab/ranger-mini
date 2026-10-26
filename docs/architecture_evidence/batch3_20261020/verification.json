@@ -1,0 +1,864 @@
+{
+  "created_utc": "2026-10-26T03:09:22.841934+00:00",
+  "branch": "refactor/pluggable-navigation",
+  "pre_commit_head": "b97cf91bbc44cd6b29e5e6a338fb3493169375e6",
+  "scope": "2026-10-26 static audit plus two fresh offline suites; other full-suite logs are from 2026-10-20; no hardware test",
+  "checks": {
+    "shell_syntax": true,
+    "python_ast": true,
+    "diff_check": true,
+    "installed_source_matches": true,
+    "preserved_assets": true,
+    "nested_repositories_preserved": true,
+    "alignment_verified.log": true,
+    "process_verified.log": true,
+    "contract_verified.log": true,
+    "bridge_verified.log": true,
+    "gate_verified.log": true,
+    "safety_verified.log": true,
+    "managed_complete.log": true,
+    "build_complete.log": true,
+    "alignment_resume_20261026.log": true,
+    "process_resume_20261026.log": true,
+    "managed_cleanup_empty": true,
+    "managed_expected_final_states": true,
+    "managed_no_physical_components": true
+  },
+  "installed_comparison": [
+    {
+      "source": "ws_nav/src/ranger_localization_bridge/launch/loc_bridge.launch.py",
+      "installed": "ws_nav/install/ranger_localization_bridge/share/ranger_localization_bridge/launch/loc_bridge.launch.py",
+      "source_sha256": "290cc3c07ff2608a8a000243c2a7353bab7c3fa0d10e6e48c96d02bdaf1ee086",
+      "installed_sha256": "290cc3c07ff2608a8a000243c2a7353bab7c3fa0d10e6e48c96d02bdaf1ee086",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/__init__.py",
+      "installed": "ws_nav/install/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge/__init__.py",
+      "source_sha256": "baceeb05e25888ec1ee9fb33ea0949198105c9dc33ba85bd67ec24aac526710e",
+      "installed_sha256": "baceeb05e25888ec1ee9fb33ea0949198105c9dc33ba85bd67ec24aac526710e",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/bridge_node.py",
+      "installed": "ws_nav/install/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge/bridge_node.py",
+      "source_sha256": "8ca337e5144415ecde7587a3ec0ade5ea90fd15017919316a79e84fccabab3e1",
+      "installed_sha256": "8ca337e5144415ecde7587a3ec0ade5ea90fd15017919316a79e84fccabab3e1",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/geometry.py",
+      "installed": "ws_nav/install/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge/geometry.py",
+      "source_sha256": "1dad2c437ef485b9ab138a293436e474e7a83abec2156e48a5b771a74a89c4f4",
+      "installed_sha256": "1dad2c437ef485b9ab138a293436e474e7a83abec2156e48a5b771a74a89c4f4",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/health.py",
+      "installed": "ws_nav/install/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge/health.py",
+      "source_sha256": "bf823588a1c7431f018a934ae7c842d5e2fbee2dcc818a0fca0078746d97bb99",
+      "installed_sha256": "bf823588a1c7431f018a934ae7c842d5e2fbee2dcc818a0fca0078746d97bb99",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/lightning_adapter.py",
+      "installed": "ws_nav/install/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge/lightning_adapter.py",
+      "source_sha256": "ea05769aaf64bcd32764480b7fa7d8db72fa143f1cc835f9d40b66921e7357a5",
+      "installed_sha256": "ea05769aaf64bcd32764480b7fa7d8db72fa143f1cc835f9d40b66921e7357a5",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/runtime_config.py",
+      "installed": "ws_nav/install/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge/runtime_config.py",
+      "source_sha256": "d312a34708c49a3811eca5b9cc04fb5249d5e8773c32d3f8d2a9fa85a0af9995",
+      "installed_sha256": "d312a34708c49a3811eca5b9cc04fb5249d5e8773c32d3f8d2a9fa85a0af9995",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_navigation/behavior_trees/single_point.xml",
+      "installed": "ws_nav/install/ranger_navigation/share/ranger_navigation/behavior_trees/single_point.xml",
+      "source_sha256": "aa0278af2c05015c968779e9b4083d8f19830e75bbcd2f3e38f07b4564cd404a",
+      "installed_sha256": "aa0278af2c05015c968779e9b4083d8f19830e75bbcd2f3e38f07b4564cd404a",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_navigation/config/collision_monitor.yaml",
+      "installed": "ws_nav/install/ranger_navigation/share/ranger_navigation/config/collision_monitor.yaml",
+      "source_sha256": "94e5a5f97b51446c6c5a2e7b5b6b57231ed9dfb5c02cdacd2a9d483fbb2a5bef",
+      "installed_sha256": "94e5a5f97b51446c6c5a2e7b5b6b57231ed9dfb5c02cdacd2a9d483fbb2a5bef",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_navigation/config/motion_gate.yaml",
+      "installed": "ws_nav/install/ranger_navigation/share/ranger_navigation/config/motion_gate.yaml",
+      "source_sha256": "5b49ea481b9bbeb3ca2a87670c657698818a0cf68511e4f30748f52b6a920abb",
+      "installed_sha256": "5b49ea481b9bbeb3ca2a87670c657698818a0cf68511e4f30748f52b6a920abb",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_navigation/config/nav2_params.yaml",
+      "installed": "ws_nav/install/ranger_navigation/share/ranger_navigation/config/nav2_params.yaml",
+      "source_sha256": "0b6299820c96790dbd47e5f9d3d770ef020e3f216966ad42aa78afb2bcbb5792",
+      "installed_sha256": "0b6299820c96790dbd47e5f9d3d770ef020e3f216966ad42aa78afb2bcbb5792",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_navigation/config/obstacle_filter.yaml",
+      "installed": "ws_nav/install/ranger_navigation/share/ranger_navigation/config/obstacle_filter.yaml",
+      "source_sha256": "313cd0f031ed66193b8eee34888fd1cc250d500156a5e0f9cb4e16bfd41ed8e6",
+      "installed_sha256": "313cd0f031ed66193b8eee34888fd1cc250d500156a5e0f9cb4e16bfd41ed8e6",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_navigation/config/twist_mux.yaml",
+      "installed": "ws_nav/install/ranger_navigation/share/ranger_navigation/config/twist_mux.yaml",
+      "source_sha256": "19dfb7eb19698e71121215ca4ddc07f7ed6119ab64ee0fbd1539c4d9aaf9c80d",
+      "installed_sha256": "19dfb7eb19698e71121215ca4ddc07f7ed6119ab64ee0fbd1539c4d9aaf9c80d",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_navigation/launch/navigation.launch.py",
+      "installed": "ws_nav/install/ranger_navigation/share/ranger_navigation/launch/navigation.launch.py",
+      "source_sha256": "a3d8d642728b73f60758be23e11f0c7b337b23fc90352316b8f474bc131581de",
+      "installed_sha256": "a3d8d642728b73f60758be23e11f0c7b337b23fc90352316b8f474bc131581de",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_navigation/ranger_navigation/__init__.py",
+      "installed": "ws_nav/install/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/__init__.py",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "installed_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_navigation/ranger_navigation/motion_gate.py",
+      "installed": "ws_nav/install/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/motion_gate.py",
+      "source_sha256": "7db6015bc6571e3c2384cfa13bb0ca5745906653882016879be39456621b632b",
+      "installed_sha256": "7db6015bc6571e3c2384cfa13bb0ca5745906653882016879be39456621b632b",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_navigation/ranger_navigation/obstacle_filter.py",
+      "installed": "ws_nav/install/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/obstacle_filter.py",
+      "source_sha256": "86d81e20fc5c3e30faa5b353fae46db2d947bb19e07134fa23277dd456899dec",
+      "installed_sha256": "86d81e20fc5c3e30faa5b353fae46db2d947bb19e07134fa23277dd456899dec",
+      "equal": true
+    },
+    {
+      "source": "ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/alignment.py",
+      "installed": "ws_nav/install/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge/alignment.py",
+      "source_sha256": "c2d8716413836758d9990ac6735fd8af548367ebb114d2f3c6445fc124a0ea56",
+      "installed_sha256": "c2d8716413836758d9990ac6735fd8af548367ebb114d2f3c6445fc124a0ea56",
+      "equal": true
+    }
+  ],
+  "preserved_assets": {
+    "map_2lx5kkho": true,
+    "map_8cw1afzl": true,
+    "map_suej7qsz": true,
+    "config/base_mini_v2.yaml": true,
+    "config/mid360/extrinsics_pending.yaml": true,
+    "patches/livox_driver_stage3_diagnostics.patch": true,
+    "patches/ranger_ros2_humble_v2_model.patch": true,
+    "patches/ranger_ros2_stage2_test.patch": true,
+    "patches/stage4_glog_local_prefix.patch": true,
+    "patches/stage4_lightning_integration.patch": true,
+    "patches/stage5_loc_interface.patch": true,
+    "patches/ugv_sdk_stage2_transport.patch": true,
+    "ws_nav/src/ranger_navigation/config/collision_monitor.yaml": true,
+    "ws_nav/src/ranger_navigation/config/motion_gate.yaml": true,
+    "ws_nav/src/ranger_navigation/config/nav2_params.yaml": true,
+    "ws_nav/src/ranger_navigation/config/obstacle_filter.yaml": true,
+    "ws_nav/src/ranger_navigation/config/twist_mux.yaml": true,
+    "bags/mid360-manual-loop-p42bk0yi/raw/metadata.yaml": true,
+    "bags/mid360-manual-loop-p42bk0yi/raw/raw_0.db3": true
+  },
+  "nested_repositories": [
+    {
+      "path": "ws_base/src/ranger_ros2",
+      "head": "7b75bc2443a1d6cbd42cc3ef3059cf4897242072",
+      "branch": "ranger-local",
+      "detached": false,
+      "status": "",
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged_since_batch1": true
+    },
+    {
+      "path": "ws_base/src/ugv_sdk",
+      "head": "e2f5764acc00a2e556cf3bdc3ea3b206fa326e5b",
+      "branch": "ranger-local",
+      "detached": false,
+      "status": "",
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged_since_batch1": true
+    },
+    {
+      "path": "ws_livox/src/livox_ros_driver2",
+      "head": "cc34f0a18f8c43adbf304c71ebd9f8af69440f41",
+      "branch": "ranger-local",
+      "detached": false,
+      "status": "",
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged_since_batch1": true
+    },
+    {
+      "path": "vendor/livox/Livox-SDK2",
+      "head": "08f523c930b2f0ba1e98a6afaa8d7476bf479908",
+      "branch": null,
+      "detached": true,
+      "status": "",
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged_since_batch1": true
+    },
+    {
+      "path": "ws_slam/src/lightning",
+      "head": "b973e7fcfef147959dcfa6d78dd7a07a59384c52",
+      "branch": "ranger-local",
+      "detached": false,
+      "status": "",
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged_since_batch1": true
+    },
+    {
+      "path": "vendor/livox/lightning-lm-review",
+      "head": "1325fed8fa97a2506878360fc23427ea00a767da",
+      "branch": null,
+      "detached": true,
+      "status": "",
+      "tracked_diff_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged_since_batch1": true
+    },
+    {
+      "path": "ws_camera/src/hik_camera_ros2_driver",
+      "head": "4e351d0b096e124cc076b2edf9f6abb7bfb23eda",
+      "branch": "main",
+      "detached": false,
+      "status": "M config/camera_params.yaml\n M src/hik_camera_node.cpp",
+      "tracked_diff_sha256": "ea5d59a30371fb5f3ed9b3b1a4772d33771fb2d83ca7a1a2fbeb1db854a0d3cb",
+      "unchanged_since_batch1": true
+    }
+  ],
+  "changed_and_new_files_sha256": {
+    ".gitattributes": "359beb753b750964b44dcec32b2bce30006bcb071af04f0de64d791596f5c66d",
+    ".gitignore": "5a75ad23f1f3f9a2100d324cbd674316a748dacb143e29a4f9701b20696932de",
+    "ARCHITECTURE_PLAN.md": "80ed52f087c885b78c44201e91ea3b6c6a4fe5d2bb50fc474fdf1931bc5f4072",
+    "config/runtime.yaml": "268febe61b4b76f940ec9b1076512149f4d59a54c782684a1c2589205000f7ce",
+    "docs/STATUS.md": "1ece887da7ea0eb8dcfa0a8702d4e71c59470a40d012e5d8eeb8aed9d971ac99",
+    "docs/architecture_batch3_report.md": "4734bc294c14161d615461cc1c08e139dff00299e4d4f9bffeb7d1ad4ecd315f",
+    "docs/architecture_evidence/batch3_20261020/alignment_attempt1.log": "30745873be7cda8f6fbc29e158e9fdf55e8790999c56f2d91d21b9df7b20d385",
+    "docs/architecture_evidence/batch3_20261020/alignment_complete.log": "12eabf40e9a57226a6ed1c77a2ae5a0517e5e141d50f05073274b88b224e0233",
+    "docs/architecture_evidence/batch3_20261020/alignment_final.log": "542b744ac99d264d5dcb7bc382af8860392943d84659a6e831b010f144c06c53",
+    "docs/architecture_evidence/batch3_20261020/alignment_resume_20261026.log": "b1d9c1e6dd39a24380954ee68b0928fa48a3340eda4bc96ac46fe1c5c1d3d96b",
+    "docs/architecture_evidence/batch3_20261020/alignment_verified.log": "06bb3556c8e499b26f6b1acf7769575f8e685b2364fd622f32d67c828197b1ec",
+    "docs/architecture_evidence/batch3_20261020/bridge_attempt1.log": "8b9020c69a1467f483c7d15cd71845bac8ef02e97e330f89605f23c3d6bf5d79",
+    "docs/architecture_evidence/batch3_20261020/bridge_complete.log": "b6ff80fe214b29dc2a4e167ef6958ded9135d29522c5b2170989e63a4f8567ed",
+    "docs/architecture_evidence/batch3_20261020/bridge_verified.log": "0d9d44d986b316c04095eca9fef548fa731035f8dc0bedce42c7b3465f1904e8",
+    "docs/architecture_evidence/batch3_20261020/build.log": "56f3e0df281df67b088e329b8008398bec71db5890edab61d5acf3497f5f9c06",
+    "docs/architecture_evidence/batch3_20261020/build_complete.log": "c4cb6ac165cd4df758c19beff4e7f2446f6ad6cc1e22b52d823510391f03d729",
+    "docs/architecture_evidence/batch3_20261020/build_final.log": "997a6a2b327fcaab2e604e8c15add78ca90221d6799ed2f607052835ec43ee0d",
+    "docs/architecture_evidence/batch3_20261020/build_tf.log": "8c9bb660ccf001b65b1e472364ab59d0d9922233b5c30ea8db4724284eeaebba",
+    "docs/architecture_evidence/batch3_20261020/build_verified.log": "e15575226d7416c51654773b655fb2a6bf0b9371a1ff6e3e93078d333760feb5",
+    "docs/architecture_evidence/batch3_20261020/command_results.json": "54eb0d2359757a747a8d14385af1aec987580fabd5cea6d83ef65927a2b8aacf",
+    "docs/architecture_evidence/batch3_20261020/contract_attempt1.log": "9a7d99961a66adfdb8851c6255b3f49f1fc767b71158252ddc806ad59af27d36",
+    "docs/architecture_evidence/batch3_20261020/contract_complete.log": "e3e2e9a8da85a0ed2660b31df82c1ccd03e709e454d5a9addbd9536d950effa2",
+    "docs/architecture_evidence/batch3_20261020/contract_verified.log": "b1656e74ba0b999edc047ea567c5fb3348b4c4980c54153a0f6a15c6629aaa4c",
+    "docs/architecture_evidence/batch3_20261020/field_plan.json": "839feb7098d23e6098cb5b278b88994eb5f4e98d7be90e27ab9cbf23c4775333",
+    "docs/architecture_evidence/batch3_20261020/gate_verified.log": "2a76c1698ebe4d4938e626010ab4c9ce69ae3b76fa8e012b9ad79148f55ee8f6",
+    "docs/architecture_evidence/batch3_20261020/managed_attempt1.log": "43bc62f6e2ff2a2be878a65fb8ded80fd2b148a08e58b60cc8e1ab0a24b04843",
+    "docs/architecture_evidence/batch3_20261020/managed_attempt1/field.log": "770b2a64b2a35416ed8334df8b51ab4bf4a20a8d5a9dddebc73561d63bed2632",
+    "docs/architecture_evidence/batch3_20261020/managed_attempt1/field/events.jsonl": "350b16afcc972633097728c254255907964bdcfe92152b67203456261e4a1c7a",
+    "docs/architecture_evidence/batch3_20261020/managed_attempt1/field/probe.log": "ddb0ef15b1c88dcde054a0929f059450f9961b33479eb58d8301e0fcf2c1075b",
+    "docs/architecture_evidence/batch3_20261020/managed_attempt1/field/state.json": "9ba378093ecf11a34cca4685b3e70994f59f19cf76fa27b732cb2362178b82b3",
+    "docs/architecture_evidence/batch3_20261020/managed_attempt2.log": "590e0318734efe480ff8c405fec63a17266e55e3f7c9ad4d3f3c42de6c7eefe1",
+    "docs/architecture_evidence/batch3_20261020/managed_attempt2/field.log": "a653d8992ffc769b64f9f401b7a303ab789a1c7bb096c25ecb47a28c1d5663aa",
+    "docs/architecture_evidence/batch3_20261020/managed_attempt2/field/bridge.log": "f15d42d6c9d7d0e93bd686905e255c4d669fd06f9ecf27bccb4f23972bc39607",
+    "docs/architecture_evidence/batch3_20261020/managed_attempt2/field/events.jsonl": "9775c3332ebf18c46aa2e9410fa6558154f08a53d41fbe5d42aa044df6438668",
+    "docs/architecture_evidence/batch3_20261020/managed_attempt2/field/health.json": "c68bbc2dcb3a722208fc6facdd2d1ea0faea983450c019664854acc2ad2d5898",
+    "docs/architecture_evidence/batch3_20261020/managed_attempt2/field/probe.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/architecture_evidence/batch3_20261020/managed_attempt2/field/sensor_mount.log": "d1ea8fd30b41f89a40b83cfeb22b8396e15b176b79dece97d4b747a125255d45",
+    "docs/architecture_evidence/batch3_20261020/managed_attempt2/field/sensor_tf.log": "d235b61daf4d4b6ce91ec04b6b9835aaded1f25cc046d4afccec219847fe37d3",
+    "docs/architecture_evidence/batch3_20261020/managed_attempt2/field/state.json": "d85fd28369f955ea75e1be9b85872c0db0de2ad4c323c55d11f5b781754c10b8",
+    "docs/architecture_evidence/batch3_20261020/managed_attempt2/navigation.log": "f5fc218ed10c84ad5eafef83334a09ff4361e9c9225818a3d8055dfbb9f43fd2",
+    "docs/architecture_evidence/batch3_20261020/managed_attempt2/navigation/events.jsonl": "9dba931087a1b888545ce191993baf9932bd566c3b9696323c6fe68502424f87",
+    "docs/architecture_evidence/batch3_20261020/managed_attempt2/navigation/health.json": "8434f85af002f3b6d6922212a8cb9b6051e5aabef10e1034e3a1003f5f177829",
+    "docs/architecture_evidence/batch3_20261020/managed_attempt2/navigation/navigation.log": "e4f30ca61fd59ea39e0487306a2bd3e00f658e70d104e40be69ae46c72fcca5c",
+    "docs/architecture_evidence/batch3_20261020/managed_attempt2/navigation/probe.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/architecture_evidence/batch3_20261020/managed_attempt2/navigation/state.json": "4fc556890f487ee33e7273d1765711a6b3ea959db13671356eae13446564e893",
+    "docs/architecture_evidence/batch3_20261020/managed_complete.log": "a31ca7169598fb7c4b1adc1e1f621d0ac4b0e3f1397985355ebe52af3c7995fc",
+    "docs/architecture_evidence/batch3_20261020/managed_complete/field.log": "05860aa26c33b5783dd885cb10939e7d53916e8a99a5216d7bf95e9b161278fe",
+    "docs/architecture_evidence/batch3_20261020/managed_complete/field/bridge.log": "ecec3258b30feb8fd743792f99ffa32c17d71315e11717aa0f098b8e880691f6",
+    "docs/architecture_evidence/batch3_20261020/managed_complete/field/events.jsonl": "670c22ab221b6d41ecf002567b4529d801fb411e424e3165c9f21291150aee1b",
+    "docs/architecture_evidence/batch3_20261020/managed_complete/field/health.json": "7f67b6d0f45e44bd50d0c281ab9fc3ecbb833bad8f3960ef76458196b0470502",
+    "docs/architecture_evidence/batch3_20261020/managed_complete/field/probe.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/architecture_evidence/batch3_20261020/managed_complete/field/sensor_mount.log": "c23b094ae035a6786792cb2c8089787a0cba1252e516c1cbb486b02a789e929f",
+    "docs/architecture_evidence/batch3_20261020/managed_complete/field/sensor_tf.log": "c7e94432cb630fa1ed466e8d5497990fa31e2a74a47083623484782431254eed",
+    "docs/architecture_evidence/batch3_20261020/managed_complete/field/state.json": "47dc4968c0a32ab9ffff529f65ecb608c026b7767d875b79ef761021bba6284f",
+    "docs/architecture_evidence/batch3_20261020/managed_complete/navigation.log": "033b3417ccff76e3be50a929ed11f6c9a913039197ec940e7bb58a3fa4d86325",
+    "docs/architecture_evidence/batch3_20261020/managed_complete/navigation/events.jsonl": "024a501961a9563edeb13a8d7e979c883cb32edf09b4426aad1f14f89bf5f89c",
+    "docs/architecture_evidence/batch3_20261020/managed_complete/navigation/health.json": "5e73b22527ea7a1fc505e6647c9afc904af718c9888e9febe1493436333bad53",
+    "docs/architecture_evidence/batch3_20261020/managed_complete/navigation/navigation.log": "48e6f3f10867423a7522c25d791520b8b9755d3e60061eefdc601a0331e3b918",
+    "docs/architecture_evidence/batch3_20261020/managed_complete/navigation/probe.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/architecture_evidence/batch3_20261020/managed_complete/navigation/state.json": "d16f9ed4d593e67966fd1c0e32847b19e982e2be702ab458e6671f2ce7836463",
+    "docs/architecture_evidence/batch3_20261020/managed_final.log": "93926954c97bfefe846af0fe72569feeda9f7842581ef3ca1f047c7f6d1ec112",
+    "docs/architecture_evidence/batch3_20261020/managed_final/field.log": "4393d12b8a24df4b742766604300b58130b10e2eadff50b80dcd8a8a3f1c84fc",
+    "docs/architecture_evidence/batch3_20261020/managed_final/field/bridge.log": "653c2848446f3ca2873b6c44193b4e8379da2604cff9696950b4c69e34f5be40",
+    "docs/architecture_evidence/batch3_20261020/managed_final/field/events.jsonl": "2687e2aae00c184feb8b8f2f31ce6158cc9fcb00f9332078af76ba54f0406438",
+    "docs/architecture_evidence/batch3_20261020/managed_final/field/health.json": "83ea9cd0d99609998509352f12691e6218fef9799de4e01c7f92800a2e01b0cf",
+    "docs/architecture_evidence/batch3_20261020/managed_final/field/probe.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/architecture_evidence/batch3_20261020/managed_final/field/sensor_mount.log": "dd297abc691e7aebe856dd43c81a67883a1c3ac3e584d7d1d52086c44b581959",
+    "docs/architecture_evidence/batch3_20261020/managed_final/field/sensor_tf.log": "383d8c928e5eed5558e58ca0ac3a473526e1c26e0b492058ae4e035d9a1157ce",
+    "docs/architecture_evidence/batch3_20261020/managed_final/field/state.json": "11b7cca8778260a6617f840c13667fe42ecab24ab9d39400deb6f92d56f27e9a",
+    "docs/architecture_evidence/batch3_20261020/managed_final/navigation.log": "2aa21581e074e49dcb4978b39f2ad49c4e2922dfc9426655736fef33e96ee2ae",
+    "docs/architecture_evidence/batch3_20261020/managed_final/navigation/events.jsonl": "3801c33e2e0cb18fbfce917b112fcfda8876c8a7d8593a0cb24e6b44d9169053",
+    "docs/architecture_evidence/batch3_20261020/managed_final/navigation/health.json": "398cc658c8d89155b9011e1491a16f8201ab8d56b4fa7040b704384ea1f0ad4f",
+    "docs/architecture_evidence/batch3_20261020/managed_final/navigation/navigation.log": "1873ec6309ae323e4172ee535067451e68bb266c423304bc2dcb03607f98686c",
+    "docs/architecture_evidence/batch3_20261020/managed_final/navigation/probe.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/architecture_evidence/batch3_20261020/managed_final/navigation/state.json": "e7837ac693e5165a3390e65a2cc035774865dccd7406e66fd11f8b4ea2d1033c",
+    "docs/architecture_evidence/batch3_20261020/managed_verified.log": "65998d8d3976956127ae4f682568e60a1928ecd2edaade44712aba172781591e",
+    "docs/architecture_evidence/batch3_20261020/managed_verified/field.log": "564688ed1612c45b490b5ebaf520f235ecf08218d3935bcc762cf63c38600361",
+    "docs/architecture_evidence/batch3_20261020/managed_verified/field/bridge.log": "a3f1de7a0236a942cf31558633308995838dc1fb92a12a79e9af1d1fef60d121",
+    "docs/architecture_evidence/batch3_20261020/managed_verified/field/events.jsonl": "c547c92f9ddbaf9035a6fe307373d4fd58cf32f7b06d4902abeba843514e96f4",
+    "docs/architecture_evidence/batch3_20261020/managed_verified/field/health.json": "c77bc4e6d24f42e6fd633dad8c0a80be7c2eb3e15cd799c01bd59c7f9659668b",
+    "docs/architecture_evidence/batch3_20261020/managed_verified/field/probe.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/architecture_evidence/batch3_20261020/managed_verified/field/sensor_mount.log": "404cb79d451e36630678c85b473c8f0e91b94e938bb547462dcc469857a30392",
+    "docs/architecture_evidence/batch3_20261020/managed_verified/field/sensor_tf.log": "d55701ecd36d925f841869fa678de5f97ef5b391380b967289c10f0becf1ee2a",
+    "docs/architecture_evidence/batch3_20261020/managed_verified/field/state.json": "1a8cfd11316e531911ecd6a7e58e84aadb53096a84edbbe62fe26abfd11b7301",
+    "docs/architecture_evidence/batch3_20261020/managed_verified/navigation.log": "cedec21f58acd7fc55bd5de9ab027cdfc5dde9bde9a290df3d5790a7836e22d5",
+    "docs/architecture_evidence/batch3_20261020/managed_verified/navigation/events.jsonl": "211ae3a6b1958d39f61b3105f2fe78de7a00e0c53a497e0abb4d6b64c8ceeecc",
+    "docs/architecture_evidence/batch3_20261020/managed_verified/navigation/health.json": "47bcd7ddbf810933d21787c061d45eebca4f452ee35fe1a13cf189efbd0a147b",
+    "docs/architecture_evidence/batch3_20261020/managed_verified/navigation/navigation.log": "bdbe805619fa69c085fa3999c321ce102d0b32679513e35c63b6565819454cee",
+    "docs/architecture_evidence/batch3_20261020/managed_verified/navigation/probe.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "docs/architecture_evidence/batch3_20261020/managed_verified/navigation/state.json": "f47510289a1a79a793faefa8b3f78316fc252173fc065d658e45c8f0ca468261",
+    "docs/architecture_evidence/batch3_20261020/navigation_plan.json": "1875307c025af4d608244bc4a0877bbd4f3d24fcc5ccd6de5f217378b22f48aa",
+    "docs/architecture_evidence/batch3_20261020/process_resume_20261026.log": "a4c75c6aa40c492238d85a69e6244f3ea7bf70e8b867e0cf2a1b8b4a1efe5cf1",
+    "docs/architecture_evidence/batch3_20261020/process_verified.log": "8f4889a6552174bfa4215d3782b6c5ca038f40945e27f05fb9914f89ccb42c28",
+    "docs/architecture_evidence/batch3_20261020/runtime_resolved.json": "fb60988e42815b2533aabdce3cee377d786199659e9085ba0a5e52679fef3c40",
+    "docs/architecture_evidence/batch3_20261020/safety/cleanup_report.txt": "b9ef2b064a20c778c29f2535176539e1c97703112098296a3401a051586201d4",
+    "docs/architecture_evidence/batch3_20261020/safety/gate_restart.log": "da1f85d4afc33bcde564eb94cabe22d03ccba42b7a240500d8b5fa3aac2150a0",
+    "docs/architecture_evidence/batch3_20261020/safety/nav_launch.log": "db3773763008998be67813110a77ba1828c6c2b7d0100b34253bbb17e415dddd",
+    "docs/architecture_evidence/batch3_20261020/safety/runtime_params.json": "0f468b0bf72060cfdbb9f1b7003d28289de8a50f6fb7afb8dc8d1a01c54f8f45",
+    "docs/architecture_evidence/batch3_20261020/safety/t10_deques.txt": "acfdb345908da1cf7d78523ea318700c05216364e329971836d1e0a7292f610a",
+    "docs/architecture_evidence/batch3_20261020/safety/t10_pre_kill.txt": "015699f87a15ad09cba9d1014bf5532ad292f33516fe71cf3848011f85a3a592",
+    "docs/architecture_evidence/batch3_20261020/safety/t10_topic_info.txt": "e326d84b64efd9b9a09e076eb9752896810d1e4e54149e9c18ffe11eb7db0b4f",
+    "docs/architecture_evidence/batch3_20261020/safety/t11_topic_info.txt": "1100620f485e50f0a0fc91a1403c8c996cf23b79b0b58aec2b7f256b364a706c",
+    "docs/architecture_evidence/batch3_20261020/safety/t13_controller_trace.json": "c01cc5869d329c7806b57e146ef5f5facba9e09aa534ebf0f27348103aadd2d7",
+    "docs/architecture_evidence/batch3_20261020/safety/topics_t13.txt": "191a0845ee0c6cc747f0c5d50c7fd00f8d58aecca85542ac9f05232b664327d0",
+    "docs/architecture_evidence/batch3_20261020/safety_attempt1.log": "a092936137b515c659becebc7ab57af4638382c12d1796b3011d36b5155644cd",
+    "docs/architecture_evidence/batch3_20261020/safety_attempt1/cleanup_report.txt": "b9ef2b064a20c778c29f2535176539e1c97703112098296a3401a051586201d4",
+    "docs/architecture_evidence/batch3_20261020/safety_attempt1/gate_restart.log": "32a9e592cb7e56eb4aec862e17f0b6042a27b49f863d7f6a2fd5fe85ae0d4fa0",
+    "docs/architecture_evidence/batch3_20261020/safety_attempt1/nav_launch.log": "b20772fa4667c88226faea37215b103cdf0223f02cdf1c62213ea4c9447a6d2f",
+    "docs/architecture_evidence/batch3_20261020/safety_attempt1/runtime_params.json": "0f468b0bf72060cfdbb9f1b7003d28289de8a50f6fb7afb8dc8d1a01c54f8f45",
+    "docs/architecture_evidence/batch3_20261020/safety_attempt1/t10_deques.txt": "1c6767708f50b046fd578167578e227800f4e696b9844dd8fe5eab360011db66",
+    "docs/architecture_evidence/batch3_20261020/safety_attempt1/t10_pre_kill.txt": "46e3c07dd16bf53d3050b646ab4050ec4dcadeef5aa15472efd62b8e636be7a1",
+    "docs/architecture_evidence/batch3_20261020/safety_attempt1/t10_topic_info.txt": "24a6cfc8fbd1bffe85d043c3ab39187389bbc93442cde51a80dd83dff32c7bd5",
+    "docs/architecture_evidence/batch3_20261020/safety_attempt1/t11_topic_info.txt": "aee9c10acf0580561c720439fa1188fc168db6c27dd361e686baf0a402fca766",
+    "docs/architecture_evidence/batch3_20261020/safety_attempt1/topics_t13.txt": "191a0845ee0c6cc747f0c5d50c7fd00f8d58aecca85542ac9f05232b664327d0",
+    "docs/architecture_evidence/batch3_20261020/safety_verified.log": "ecb5fcac37052869d66a0d0ad282ddcb5b96a7cb8224621d33611f3212427880",
+    "docs/architecture_evidence/batch3_20261020/session_attempt1.log": "16d49d75e3e7b558cf5736a15e38b7a40d763c6deab9bbe9a6b5a84417953231",
+    "docs/architecture_evidence/batch3_20261020/session_complete.log": "78904cd036a06faddba45b6c0e0a1187ed7f667bc1a6d4875f939e8424499b59",
+    "docs/architecture_evidence/batch3_20261020/session_final.log": "55983c1a16a57885fb54857c5d496cb06164140746d95cefacd4f5a8138f635a",
+    "docs/architecture_evidence/batch3_20261020/session_verified.log": "877acd5e8e23a283c2b56a7dc3ee19dc21c74e377d605f00407b03cacf421636",
+    "docs/architecture_evidence/batch3_20261020/verify_resume.py": "0eea1f11597788c0db3277d8ff01d609279f7055c7535162ddc5cc1e9e32aebd",
+    "docs/localization_backend_contract.md": "1b2db8aefb1d508ecddd2ad61a2a0545d69944941431b78373a17cc725e47ad0",
+    "docs/managed_sessions.md": "77c844d91d429ae49ccf220b418022fda508511ffabf5e7348ba1334fe43513d",
+    "scripts/field_aux.sh": "67e883de5072691688ff484d31a19dac3aadee86eca6f334271d823426cb1acf",
+    "scripts/field_session.sh": "67c52d3a9e4b4b59e4e96df0687497523c71028b0672750e8c90fbc7df150404",
+    "scripts/robot_session.py": "dfc82c11a49bf8ad2956171eef0114e198ec2cf1e235f468b336d3373b4bbf36",
+    "scripts/run_navigation.sh": "17ec45ba26d62e534dd81c04351f46ae91c4786763f2887808b2de1a6f2cc1c6",
+    "scripts/session_manager.py": "521f821929c2300406858a90d5b8c07f2b9e744fe6fb8c0bf08695a54fb49428",
+    "scripts/session_probe.py": "bfcd9920bb2f63a46d87c1801ab49e423d5c24c805a12ad6e73b5b64f0dd8a8f",
+    "scripts/start_base_only.sh": "0ebb44a61f65734092c48118f81129fe0b899a8d0b4e587eb721776c4ee6e454",
+    "scripts/start_lidar_only.sh": "ac4e1292b101abe3f94deb890a93bf0b707151208f83a86c0e27f06dfa3c4547",
+    "tests/test_architecture_contract.py": "50f9162c44fc26823a1b599e994989fdccd6850368b013a8e403092b60bf3336",
+    "tests/test_managed_session_ros.py": "e6967de8bb19e517df038cc9e5e0ab9341ac4136f549077ad77ecfe9e9652761",
+    "tests/test_session_manager.py": "44045229218037623e63460d0ad14d20a72697231b0e061d4553b18e0735a6b9",
+    "tests/test_stage5_bridge.py": "8336285c86a3c57ea7a2af84bf9c3ed86686423237afff492b230e45e214fe2e",
+    "tests/test_stage6_safety.py": "fef8230564483d13c94ce7b3741c185c310297b34351e208db39657b4b76712f",
+    "tests/test_time_alignment.py": "ffe024f3dfe2d31e4c468e6309fec99e3c42b34cc65ed7f62d4d37f87727cf12",
+    "ws_nav/src/ranger_localization_bridge/launch/loc_bridge.launch.py": "290cc3c07ff2608a8a000243c2a7353bab7c3fa0d10e6e48c96d02bdaf1ee086",
+    "ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/alignment.py": "c2d8716413836758d9990ac6735fd8af548367ebb114d2f3c6445fc124a0ea56",
+    "ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/bridge_node.py": "8ca337e5144415ecde7587a3ec0ade5ea90fd15017919316a79e84fccabab3e1",
+    "ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/lightning_adapter.py": "ea05769aaf64bcd32764480b7fa7d8db72fa143f1cc835f9d40b66921e7357a5",
+    "ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/runtime_config.py": "d312a34708c49a3811eca5b9cc04fb5249d5e8773c32d3f8d2a9fa85a0af9995"
+  },
+  "excluded_existing_work": {
+    "docs/03_mid360_validation.md": "99ea3234665db675ab58bced343097e4e8c65e996d534a8690122e7a7d14c8e7",
+    "docs/03_evidence/driver-5v7_r4c4/command.json": "cdbdeb45750e77c60e28c4c41ac893b1d394bcf6ccfb658d62bc1225dd6a9844",
+    "docs/03_evidence/driver-5v7_r4c4/config.json": "d4831fcc2ed85b7ee4e4de071221e8b21e12c36e83de834619fb12fcb3c7a77a",
+    "docs/03_evidence/driver-5v7_r4c4/driver.log": "38dd512c4f63bfa818b29d40f7456401b3a69cca44e77e18b7006d446117c4cb",
+    "docs/03_evidence/driver-5v7_r4c4/exit.json": "4f5132ad8c4ecad41bc77a042382ab5dbf8b5c05d902e4cb083789f2364fd491",
+    "docs/03_evidence/driver-5v7_r4c4/pid.json": "03d320375d6c0221d097596d86f4bdba4aae4111da6cda674b6308f2c49a8740",
+    "docs/03_evidence/driver-5v7_r4c4/ros_logs/livox_ros_driver2_node_11990_1790742393258.log": "d78f11635497b3c986be179b1ea168c2e3bfc293e6be2cbcb04c78ee3cd48e30",
+    "docs/03_evidence/driver-a9w6s6i0/command.json": "cdbdeb45750e77c60e28c4c41ac893b1d394bcf6ccfb658d62bc1225dd6a9844",
+    "docs/03_evidence/driver-a9w6s6i0/config.json": "d4831fcc2ed85b7ee4e4de071221e8b21e12c36e83de834619fb12fcb3c7a77a",
+    "docs/03_evidence/driver-a9w6s6i0/driver.log": "663be660134ab973da9ab05b876ae057a7bc55dcee45dc1210f2064cfe72d1b0",
+    "docs/03_evidence/driver-a9w6s6i0/exit.json": "04163ae5c6c027fdcb53dad1a1341698b93e313af8f67d0a0ab33845454d8dea",
+    "docs/03_evidence/driver-a9w6s6i0/pid.json": "c6ab0b4033869d782dbb5e368a143c7fc30aba449d88757ad748eee7eea8c82c",
+    "docs/03_evidence/driver-a9w6s6i0/ros_logs/livox_ros_driver2_node_2360_1790736942247.log": "34684050d85597809531370387c04076cc282d66da102d849efcdf1b7735c0ae",
+    "docs/03_evidence/driver-dhth97g3/command.json": "cdbdeb45750e77c60e28c4c41ac893b1d394bcf6ccfb658d62bc1225dd6a9844",
+    "docs/03_evidence/driver-dhth97g3/config.json": "d4831fcc2ed85b7ee4e4de071221e8b21e12c36e83de834619fb12fcb3c7a77a",
+    "docs/03_evidence/driver-dhth97g3/driver.log": "3b51672c0a83c3e82e5021a96f9b142dec3ce9ea793204c01b7b99cf09c46f29",
+    "docs/03_evidence/driver-dhth97g3/exit.json": "805953702102d7005b17fd56fc70a7e0882e2ea72d3c42c9ffa8078c2f7c3258",
+    "docs/03_evidence/driver-dhth97g3/pid.json": "02a0059a5ea9b23afbc22a9ae03b1d6e747a73c1fc307709fbcedb392e98013a",
+    "docs/03_evidence/driver-dhth97g3/ros_logs/livox_ros_driver2_node_9229_1790740937421.log": "2269863920c6b7fa7841c0ff0acec4567b27cacaefbf6633bf69be788b024533",
+    "docs/03_evidence/driver-hj360f0f/command.json": "cdbdeb45750e77c60e28c4c41ac893b1d394bcf6ccfb658d62bc1225dd6a9844",
+    "docs/03_evidence/driver-hj360f0f/config.json": "d4831fcc2ed85b7ee4e4de071221e8b21e12c36e83de834619fb12fcb3c7a77a",
+    "docs/03_evidence/driver-hj360f0f/driver.log": "8db2955ebcb82980a336c96b99faaaf7cd2458fc6b108d2b42aeff9c6e4f9c77",
+    "docs/03_evidence/driver-hj360f0f/exit.json": "11d1630ea58098c23ec872b875ce4f8ba4c05483e59dda4a5f0405270324d819",
+    "docs/03_evidence/driver-hj360f0f/pid.json": "ea0afe84aa3d93b05688389da9f9b64c78fe16f0f79d1cf692327d534fcbbd70",
+    "docs/03_evidence/driver-hj360f0f/ros_logs/livox_ros_driver2_node_9487_1790741095084.log": "d4de1a3772eeb72c7d36d157a90ec97c3a8fe3576f41d2bbed014a7e040339db",
+    "docs/03_evidence/driver-nrs50iyr/command.json": "cdbdeb45750e77c60e28c4c41ac893b1d394bcf6ccfb658d62bc1225dd6a9844",
+    "docs/03_evidence/driver-nrs50iyr/config.json": "d4831fcc2ed85b7ee4e4de071221e8b21e12c36e83de834619fb12fcb3c7a77a",
+    "docs/03_evidence/driver-nrs50iyr/driver.log": "261dfd0014995be3cc5ddfcbdf193cb95392e7cb7c38c00e891b53357cc97aea",
+    "docs/03_evidence/driver-nrs50iyr/exit.json": "c9a60b12b3dc5fbbab7f2ed23d2e2b8aec5dfcba053f07e5ec1493c37123c1b4",
+    "docs/03_evidence/driver-nrs50iyr/pid.json": "9a3956483f47030ff20613a6c4f29e73f6afef9575024e1461efdcffd78d6261",
+    "docs/03_evidence/driver-nrs50iyr/ros_logs/livox_ros_driver2_node_12676_1790742735601.log": "84dbdeca1ca039e2a05e49795f6f50a022d938a54cf6defb6c8ded8c9d006111",
+    "docs/03_evidence/driver-y2sd6pvt/command.json": "cdbdeb45750e77c60e28c4c41ac893b1d394bcf6ccfb658d62bc1225dd6a9844",
+    "docs/03_evidence/driver-y2sd6pvt/config.json": "d4831fcc2ed85b7ee4e4de071221e8b21e12c36e83de834619fb12fcb3c7a77a",
+    "docs/03_evidence/driver-y2sd6pvt/driver.log": "96ff9bebdfea741e07f61a5ca8daf5d8879a8f53a2275f3738c45f819a8036f2",
+    "docs/03_evidence/driver-y2sd6pvt/exit.json": "0722937c476ccd0983971ecb74b33a6df66954a47ffd6e6086f41da85019b9a9",
+    "docs/03_evidence/driver-y2sd6pvt/pid.json": "86565624acb02041bcd6aac15001b0e7969e4c6bc5efb03d443ddf462e5a980d",
+    "docs/03_evidence/driver-y2sd6pvt/ros_logs/livox_ros_driver2_node_4426_1790738234352.log": "492944ab48d962514d573cd4b96dac429e666915a711cfb1d9e33e154783ecef"
+  },
+  "commands": [
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--name-only",
+        "HEAD"
+      ],
+      "cwd": "/home/lab307/ranger_nav",
+      "exit_code": 0,
+      "stdout": ".gitattributes\n.gitignore\nARCHITECTURE_PLAN.md\nconfig/runtime.yaml\ndocs/03_mid360_validation.md\ndocs/STATUS.md\ndocs/localization_backend_contract.md\nscripts/field_aux.sh\nscripts/field_session.sh\nscripts/run_navigation.sh\nscripts/start_base_only.sh\nscripts/start_lidar_only.sh\ntests/test_architecture_contract.py\ntests/test_stage5_bridge.py\ntests/test_stage6_safety.py\nws_nav/src/ranger_localization_bridge/launch/loc_bridge.launch.py\nws_nav/src/ranger_localization_bridge/ranger_localization_bridge/bridge_node.py\nws_nav/src/ranger_localization_bridge/ranger_localization_bridge/lightning_adapter.py\nws_nav/src/ranger_localization_bridge/ranger_localization_bridge/runtime_config.py\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "ls-files",
+        "--others",
+        "--exclude-standard"
+      ],
+      "cwd": "/home/lab307/ranger_nav",
+      "exit_code": 0,
+      "stdout": "docs/03_evidence/driver-5v7_r4c4/command.json\ndocs/03_evidence/driver-5v7_r4c4/config.json\ndocs/03_evidence/driver-5v7_r4c4/driver.log\ndocs/03_evidence/driver-5v7_r4c4/exit.json\ndocs/03_evidence/driver-5v7_r4c4/pid.json\ndocs/03_evidence/driver-5v7_r4c4/ros_logs/livox_ros_driver2_node_11990_1790742393258.log\ndocs/03_evidence/driver-a9w6s6i0/command.json\ndocs/03_evidence/driver-a9w6s6i0/config.json\ndocs/03_evidence/driver-a9w6s6i0/driver.log\ndocs/03_evidence/driver-a9w6s6i0/exit.json\ndocs/03_evidence/driver-a9w6s6i0/pid.json\ndocs/03_evidence/driver-a9w6s6i0/ros_logs/livox_ros_driver2_node_2360_1790736942247.log\ndocs/03_evidence/driver-dhth97g3/command.json\ndocs/03_evidence/driver-dhth97g3/config.json\ndocs/03_evidence/driver-dhth97g3/driver.log\ndocs/03_evidence/driver-dhth97g3/exit.json\ndocs/03_evidence/driver-dhth97g3/pid.json\ndocs/03_evidence/driver-dhth97g3/ros_logs/livox_ros_driver2_node_9229_1790740937421.log\ndocs/03_evidence/driver-hj360f0f/command.json\ndocs/03_evidence/driver-hj360f0f/config.json\ndocs/03_evidence/driver-hj360f0f/driver.log\ndocs/03_evidence/driver-hj360f0f/exit.json\ndocs/03_evidence/driver-hj360f0f/pid.json\ndocs/03_evidence/driver-hj360f0f/ros_logs/livox_ros_driver2_node_9487_1790741095084.log\ndocs/03_evidence/driver-nrs50iyr/command.json\ndocs/03_evidence/driver-nrs50iyr/config.json\ndocs/03_evidence/driver-nrs50iyr/driver.log\ndocs/03_evidence/driver-nrs50iyr/exit.json\ndocs/03_evidence/driver-nrs50iyr/pid.json\ndocs/03_evidence/driver-nrs50iyr/ros_logs/livox_ros_driver2_node_12676_1790742735601.log\ndocs/03_evidence/driver-y2sd6pvt/command.json\ndocs/03_evidence/driver-y2sd6pvt/config.json\ndocs/03_evidence/driver-y2sd6pvt/driver.log\ndocs/03_evidence/driver-y2sd6pvt/exit.json\ndocs/03_evidence/driver-y2sd6pvt/pid.json\ndocs/03_evidence/driver-y2sd6pvt/ros_logs/livox_ros_driver2_node_4426_1790738234352.log\ndocs/architecture_batch3_report.md\ndocs/architecture_evidence/batch3_20261020/alignment_attempt1.log\ndocs/architecture_evidence/batch3_20261020/alignment_complete.log\ndocs/architecture_evidence/batch3_20261020/alignment_final.log\ndocs/architecture_evidence/batch3_20261020/alignment_resume_20261026.log\ndocs/architecture_evidence/batch3_20261020/alignment_verified.log\ndocs/architecture_evidence/batch3_20261020/bridge_attempt1.log\ndocs/architecture_evidence/batch3_20261020/bridge_complete.log\ndocs/architecture_evidence/batch3_20261020/bridge_verified.log\ndocs/architecture_evidence/batch3_20261020/build.log\ndocs/architecture_evidence/batch3_20261020/build_complete.log\ndocs/architecture_evidence/batch3_20261020/build_final.log\ndocs/architecture_evidence/batch3_20261020/build_tf.log\ndocs/architecture_evidence/batch3_20261020/build_verified.log\ndocs/architecture_evidence/batch3_20261020/command_results.json\ndocs/architecture_evidence/batch3_20261020/contract_attempt1.log\ndocs/architecture_evidence/batch3_20261020/contract_complete.log\ndocs/architecture_evidence/batch3_20261020/contract_verified.log\ndocs/architecture_evidence/batch3_20261020/field_plan.json\ndocs/architecture_evidence/batch3_20261020/gate_verified.log\ndocs/architecture_evidence/batch3_20261020/managed_attempt1.log\ndocs/architecture_evidence/batch3_20261020/managed_attempt1/field.log\ndocs/architecture_evidence/batch3_20261020/managed_attempt1/field/events.jsonl\ndocs/architecture_evidence/batch3_20261020/managed_attempt1/field/probe.log\ndocs/architecture_evidence/batch3_20261020/managed_attempt1/field/state.json\ndocs/architecture_evidence/batch3_20261020/managed_attempt2.log\ndocs/architecture_evidence/batch3_20261020/managed_attempt2/field.log\ndocs/architecture_evidence/batch3_20261020/managed_attempt2/field/bridge.log\ndocs/architecture_evidence/batch3_20261020/managed_attempt2/field/events.jsonl\ndocs/architecture_evidence/batch3_20261020/managed_attempt2/field/health.json\ndocs/architecture_evidence/batch3_20261020/managed_attempt2/field/probe.log\ndocs/architecture_evidence/batch3_20261020/managed_attempt2/field/sensor_mount.log\ndocs/architecture_evidence/batch3_20261020/managed_attempt2/field/sensor_tf.log\ndocs/architecture_evidence/batch3_20261020/managed_attempt2/field/state.json\ndocs/architecture_evidence/batch3_20261020/managed_attempt2/navigation.log\ndocs/architecture_evidence/batch3_20261020/managed_attempt2/navigation/events.jsonl\ndocs/architecture_evidence/batch3_20261020/managed_attempt2/navigation/health.json\ndocs/architecture_evidence/batch3_20261020/managed_attempt2/navigation/navigation.log\ndocs/architecture_evidence/batch3_20261020/managed_attempt2/navigation/probe.log\ndocs/architecture_evidence/batch3_20261020/managed_attempt2/navigation/state.json\ndocs/architecture_evidence/batch3_20261020/managed_complete.log\ndocs/architecture_evidence/batch3_20261020/managed_complete/field.log\ndocs/architecture_evidence/batch3_20261020/managed_complete/field/bridge.log\ndocs/architecture_evidence/batch3_20261020/managed_complete/field/events.jsonl\ndocs/architecture_evidence/batch3_20261020/managed_complete/field/health.json\ndocs/architecture_evidence/batch3_20261020/managed_complete/field/probe.log\ndocs/architecture_evidence/batch3_20261020/managed_complete/field/sensor_mount.log\ndocs/architecture_evidence/batch3_20261020/managed_complete/field/sensor_tf.log\ndocs/architecture_evidence/batch3_20261020/managed_complete/field/state.json\ndocs/architecture_evidence/batch3_20261020/managed_complete/navigation.log\ndocs/architecture_evidence/batch3_20261020/managed_complete/navigation/events.jsonl\ndocs/architecture_evidence/batch3_20261020/managed_complete/navigation/health.json\ndocs/architecture_evidence/batch3_20261020/managed_complete/navigation/navigation.log\ndocs/architecture_evidence/batch3_20261020/managed_complete/navigation/probe.log\ndocs/architecture_evidence/batch3_20261020/managed_complete/navigation/state.json\ndocs/architecture_evidence/batch3_20261020/managed_final.log\ndocs/architecture_evidence/batch3_20261020/managed_final/field.log\ndocs/architecture_evidence/batch3_20261020/managed_final/field/bridge.log\ndocs/architecture_evidence/batch3_20261020/managed_final/field/events.jsonl\ndocs/architecture_evidence/batch3_20261020/managed_final/field/health.json\ndocs/architecture_evidence/batch3_20261020/managed_final/field/probe.log\ndocs/architecture_evidence/batch3_20261020/managed_final/field/sensor_mount.log\ndocs/architecture_evidence/batch3_20261020/managed_final/field/sensor_tf.log\ndocs/architecture_evidence/batch3_20261020/managed_final/field/state.json\ndocs/architecture_evidence/batch3_20261020/managed_final/navigation.log\ndocs/architecture_evidence/batch3_20261020/managed_final/navigation/events.jsonl\ndocs/architecture_evidence/batch3_20261020/managed_final/navigation/health.json\ndocs/architecture_evidence/batch3_20261020/managed_final/navigation/navigation.log\ndocs/architecture_evidence/batch3_20261020/managed_final/navigation/probe.log\ndocs/architecture_evidence/batch3_20261020/managed_final/navigation/state.json\ndocs/architecture_evidence/batch3_20261020/managed_verified.log\ndocs/architecture_evidence/batch3_20261020/managed_verified/field.log\ndocs/architecture_evidence/batch3_20261020/managed_verified/field/bridge.log\ndocs/architecture_evidence/batch3_20261020/managed_verified/field/events.jsonl\ndocs/architecture_evidence/batch3_20261020/managed_verified/field/health.json\ndocs/architecture_evidence/batch3_20261020/managed_verified/field/probe.log\ndocs/architecture_evidence/batch3_20261020/managed_verified/field/sensor_mount.log\ndocs/architecture_evidence/batch3_20261020/managed_verified/field/sensor_tf.log\ndocs/architecture_evidence/batch3_20261020/managed_verified/field/state.json\ndocs/architecture_evidence/batch3_20261020/managed_verified/navigation.log\ndocs/architecture_evidence/batch3_20261020/managed_verified/navigation/events.jsonl\ndocs/architecture_evidence/batch3_20261020/managed_verified/navigation/health.json\ndocs/architecture_evidence/batch3_20261020/managed_verified/navigation/navigation.log\ndocs/architecture_evidence/batch3_20261020/managed_verified/navigation/probe.log\ndocs/architecture_evidence/batch3_20261020/managed_verified/navigation/state.json\ndocs/architecture_evidence/batch3_20261020/navigation_plan.json\ndocs/architecture_evidence/batch3_20261020/process_resume_20261026.log\ndocs/architecture_evidence/batch3_20261020/process_verified.log\ndocs/architecture_evidence/batch3_20261020/runtime_resolved.json\ndocs/architecture_evidence/batch3_20261020/safety/cleanup_report.txt\ndocs/architecture_evidence/batch3_20261020/safety/gate_restart.log\ndocs/architecture_evidence/batch3_20261020/safety/nav_launch.log\ndocs/architecture_evidence/batch3_20261020/safety/runtime_params.json\ndocs/architecture_evidence/batch3_20261020/safety/t10_deques.txt\ndocs/architecture_evidence/batch3_20261020/safety/t10_pre_kill.txt\ndocs/architecture_evidence/batch3_20261020/safety/t10_topic_info.txt\ndocs/architecture_evidence/batch3_20261020/safety/t11_topic_info.txt\ndocs/architecture_evidence/batch3_20261020/safety/t13_controller_trace.json\ndocs/architecture_evidence/batch3_20261020/safety/topics_t13.txt\ndocs/architecture_evidence/batch3_20261020/safety_attempt1.log\ndocs/architecture_evidence/batch3_20261020/safety_attempt1/cleanup_report.txt\ndocs/architecture_evidence/batch3_20261020/safety_attempt1/gate_restart.log\ndocs/architecture_evidence/batch3_20261020/safety_attempt1/nav_launch.log\ndocs/architecture_evidence/batch3_20261020/safety_attempt1/runtime_params.json\ndocs/architecture_evidence/batch3_20261020/safety_attempt1/t10_deques.txt\ndocs/architecture_evidence/batch3_20261020/safety_attempt1/t10_pre_kill.txt\ndocs/architecture_evidence/batch3_20261020/safety_attempt1/t10_topic_info.txt\ndocs/architecture_evidence/batch3_20261020/safety_attempt1/t11_topic_info.txt\ndocs/architecture_evidence/batch3_20261020/safety_attempt1/topics_t13.txt\ndocs/architecture_evidence/batch3_20261020/safety_verified.log\ndocs/architecture_evidence/batch3_20261020/session_attempt1.log\ndocs/architecture_evidence/batch3_20261020/session_complete.log\ndocs/architecture_evidence/batch3_20261020/session_final.log\ndocs/architecture_evidence/batch3_20261020/session_verified.log\ndocs/architecture_evidence/batch3_20261020/verification.json\ndocs/architecture_evidence/batch3_20261020/verify_resume.py\ndocs/managed_sessions.md\nscripts/robot_session.py\nscripts/session_manager.py\nscripts/session_probe.py\ntests/test_managed_session_ros.py\ntests/test_session_manager.py\ntests/test_time_alignment.py\nws_nav/src/ranger_localization_bridge/ranger_localization_bridge/alignment.py\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "bash",
+        "-n",
+        "scripts/field_session.sh"
+      ],
+      "cwd": "/home/lab307/ranger_nav",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "bash",
+        "-n",
+        "scripts/field_aux.sh"
+      ],
+      "cwd": "/home/lab307/ranger_nav",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "bash",
+        "-n",
+        "scripts/run_navigation.sh"
+      ],
+      "cwd": "/home/lab307/ranger_nav",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "bash",
+        "-n",
+        "scripts/start_base_only.sh"
+      ],
+      "cwd": "/home/lab307/ranger_nav",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "bash",
+        "-n",
+        "scripts/start_lidar_only.sh"
+      ],
+      "cwd": "/home/lab307/ranger_nav",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "bash",
+        "-n",
+        "scripts/load_runtime.sh"
+      ],
+      "cwd": "/home/lab307/ranger_nav",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--check",
+        "HEAD"
+      ],
+      "cwd": "/home/lab307/ranger_nav",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_base/src/ranger_ros2",
+      "exit_code": 0,
+      "stdout": "7b75bc2443a1d6cbd42cc3ef3059cf4897242072\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_base/src/ranger_ros2",
+      "exit_code": 0,
+      "stdout": "ranger-local\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_base/src/ranger_ros2",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "HEAD",
+        "--binary"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_base/src/ranger_ros2",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_base/src/ugv_sdk",
+      "exit_code": 0,
+      "stdout": "e2f5764acc00a2e556cf3bdc3ea3b206fa326e5b\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_base/src/ugv_sdk",
+      "exit_code": 0,
+      "stdout": "ranger-local\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_base/src/ugv_sdk",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "HEAD",
+        "--binary"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_base/src/ugv_sdk",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_livox/src/livox_ros_driver2",
+      "exit_code": 0,
+      "stdout": "cc34f0a18f8c43adbf304c71ebd9f8af69440f41\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_livox/src/livox_ros_driver2",
+      "exit_code": 0,
+      "stdout": "ranger-local\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_livox/src/livox_ros_driver2",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "HEAD",
+        "--binary"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_livox/src/livox_ros_driver2",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/lab307/ranger_nav/vendor/livox/Livox-SDK2",
+      "exit_code": 0,
+      "stdout": "08f523c930b2f0ba1e98a6afaa8d7476bf479908\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "cwd": "/home/lab307/ranger_nav/vendor/livox/Livox-SDK2",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "cwd": "/home/lab307/ranger_nav/vendor/livox/Livox-SDK2",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "HEAD",
+        "--binary"
+      ],
+      "cwd": "/home/lab307/ranger_nav/vendor/livox/Livox-SDK2",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_slam/src/lightning",
+      "exit_code": 0,
+      "stdout": "b973e7fcfef147959dcfa6d78dd7a07a59384c52\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_slam/src/lightning",
+      "exit_code": 0,
+      "stdout": "ranger-local\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_slam/src/lightning",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "HEAD",
+        "--binary"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_slam/src/lightning",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/lab307/ranger_nav/vendor/livox/lightning-lm-review",
+      "exit_code": 0,
+      "stdout": "1325fed8fa97a2506878360fc23427ea00a767da\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "cwd": "/home/lab307/ranger_nav/vendor/livox/lightning-lm-review",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "cwd": "/home/lab307/ranger_nav/vendor/livox/lightning-lm-review",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "HEAD",
+        "--binary"
+      ],
+      "cwd": "/home/lab307/ranger_nav/vendor/livox/lightning-lm-review",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_camera/src/hik_camera_ros2_driver",
+      "exit_code": 0,
+      "stdout": "4e351d0b096e124cc076b2edf9f6abb7bfb23eda\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_camera/src/hik_camera_ros2_driver",
+      "exit_code": 0,
+      "stdout": "main\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "status",
+        "--short"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_camera/src/hik_camera_ros2_driver",
+      "exit_code": 0,
+      "stdout": " M config/camera_params.yaml\n M src/hik_camera_node.cpp\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "HEAD",
+        "--binary"
+      ],
+      "cwd": "/home/lab307/ranger_nav/ws_camera/src/hik_camera_ros2_driver",
+      "exit_code": 0,
+      "stdout": "diff --git a/config/camera_params.yaml b/config/camera_params.yaml\nindex 846e155..1758ccb 100644\n--- a/config/camera_params.yaml\n+++ b/config/camera_params.yaml\n@@ -8,10 +8,10 @@\n     # ================================================================\n     # 设备参数组 1（当前启用）\n     # ================================================================\n-    camera_sn: \"DA0434641\"\n+    camera_sn: \"DB1216907\"\n     pixel_format: \"\"\n-    image_width: 812\n-    image_height: 620\n+    image_width: 1280\n+    image_height: 1024\n     auto_adjust_resolution: true\n     strict_camera_profile: false\n \n@@ -19,11 +19,11 @@\n     # PayloadSize；如果网口只协商到 100 Mbit/s，将自动限制到安全帧率，\n     # 避免持续丢包后 GetImageBuffer 超时。要实际达到 20/30 Hz，网口必须\n     # 正常协商为 1000 Mbit/s。\n-    acquisition_frame_rate: 20.0\n+    acquisition_frame_rate: 10.0\n     disable_exposure_auto: true\n-    exposure_time: 50000.0\n+    exposure_time: 40000.0\n     disable_gain_auto: true\n-    gain: 23.0\n+    gain: 10.0\n     use_sensor_data_qos: false\n     qos_reliability: \"best_effort\"\n     qos_depth: 5\ndiff --git a/src/hik_camera_node.cpp b/src/hik_camera_node.cpp\nindex 196c12f..43c905c 100644\n--- a/src/hik_camera_node.cpp\n+++ b/src/hik_camera_node.cpp\n@@ -14,7 +14,7 @@\n #include <vector>\n \n #include \"MvCameraControl.h\"\n-#include \"camera_info_manager/camera_info_manager.hpp\"\n+#include \"camera_info_manager/camera_info_manager.h\"\n #include \"image_transport/image_transport.hpp\"\n #include \"rclcpp/logging.hpp\"\n #include \"rclcpp/rclcpp.hpp\"\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "branch",
+        "--show-current"
+      ],
+      "cwd": "/home/lab307/ranger_nav",
+      "exit_code": 0,
+      "stdout": "refactor/pluggable-navigation\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "git",
+        "rev-parse",
+        "HEAD"
+      ],
+      "cwd": "/home/lab307/ranger_nav",
+      "exit_code": 0,
+      "stdout": "b97cf91bbc44cd6b29e5e6a338fb3493169375e6\n",
+      "stderr": ""
+    }
+  ]
+}

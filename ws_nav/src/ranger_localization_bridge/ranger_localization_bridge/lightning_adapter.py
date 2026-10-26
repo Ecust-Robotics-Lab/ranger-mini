@@ -90,6 +90,11 @@ def main(args=None):
         rclpy.spin(node)
     except (KeyboardInterrupt, rclpy.executors.ExternalShutdownException):
         pass
+    except RuntimeError:
+        # Humble can interrupt take_message conversion while SIGINT shuts the
+        # context down. Never hide this exception while ROS is still running.
+        if rclpy.ok():
+            raise
     finally:
         node.destroy_node()
         if rclpy.ok():

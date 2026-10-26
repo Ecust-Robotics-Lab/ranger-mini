@@ -1,0 +1,44 @@
+{
+  "action": "DRY-RUN",
+  "session": "navigation",
+  "requires_fresh_control_authorization": true,
+  "map_bundle": "/home/lab307/ranger_nav/config/maps/field_20260928.yaml",
+  "components": [
+    {
+      "name": "probe",
+      "argv": [
+        "bash",
+        "-c",
+        "source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_livox/install/setup.bash && source /home/lab307/ranger_nav/ws_nav/install/setup.bash && exec python3 /home/lab307/ranger_nav/scripts/session_probe.py"
+      ],
+      "depends": [],
+      "requires": [],
+      "ready_key": "probe_live",
+      "critical": true,
+      "start_requires": [],
+      "resource": ""
+    },
+    {
+      "name": "navigation",
+      "argv": [
+        "bash",
+        "-c",
+        "source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_livox/install/setup.bash && source /home/lab307/ranger_nav/ws_nav/install/setup.bash && exec ros2 launch ranger_navigation navigation.launch.py execute:=true control_authorized:=true map_yaml:=/home/lab307/ranger_nav/maps/lightning-offline-8cw1afzl/data/new_map/map.yaml"
+      ],
+      "depends": [
+        "probe"
+      ],
+      "requires": [
+        "localization",
+        "lidar",
+        "sensor_tf"
+      ],
+      "ready_key": "navigation",
+      "critical": true,
+      "start_requires": [
+        "nav_unclaimed"
+      ],
+      "resource": "navigation"
+    }
+  ]
+}

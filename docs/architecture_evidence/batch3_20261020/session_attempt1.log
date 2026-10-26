@@ -1,0 +1,59 @@
+test_control_start_requires_explicit_flag (__main__.ProcessTests) ... ok
+test_dependency_wait_and_normal_stop (__main__.ProcessTests) ... ok
+test_escaped_child_after_parent_exit (__main__.ProcessTests) ... ok
+test_guardian_sigkill_scheduler_cleans (__main__.ProcessTests) ... ok
+test_resource_lease_and_duplicate_session (__main__.ProcessTests) ... ok
+test_scheduler_sigkill_guardian_cleans_orphans (__main__.ProcessTests) ... ok
+test_stale_identity_does_not_signal_reused_pid (__main__.ProcessTests) ... ok
+test_startup_timeout (__main__.ProcessTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 4.063s
+
+OK
+dependency0.log SESSION_DIR=/tmp/ranger-session-test-9at_8vph/sessions/one/run-jkul3tyk
+
+escape0.log SESSION_DIR=/tmp/ranger-session-test-fhyamvm1/sessions/one/run-o_d565gs
+
+normal0.log SESSION_DIR=/tmp/ranger-session-test-xqhn09n1/sessions/one/run-g__nsrdr
+
+resource_two2.log Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/scripts/session_manager.py", line 211, in run_guarded
+    fcntl.flock(handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
+BlockingIOError: [Errno 11] Resource temporarily unavailable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_session_manager.py", line 156, in <module>
+    if len(sys.argv)>1 and sys.argv[1]=='--worker':raise SystemExit(worker(sys.argv[2],sys.argv[3]))
+  File "/home/lab307/ranger_nav/tests/test_session_manager.py", line 52, in worker
+    return run_guarded(session,specs,health_factory=provider,startup_timeout=.8 if scenario=='timeout' else 5.,
+  File "/home/lab307/ranger_nav/scripts/session_manager.py", line 213, in run_guarded
+    raise RuntimeError(f'resource already owned by another session: {resource}')
+RuntimeError: resource already owned by another session: shared
+
+normal0.log SESSION_DIR=/tmp/ranger-session-test-o6o5jnvv/sessions/one/run-ezrnlsfl
+
+normal1.log Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/scripts/session_manager.py", line 197, in run_guarded
+    fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+BlockingIOError: [Errno 11] Resource temporarily unavailable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_session_manager.py", line 156, in <module>
+    if len(sys.argv)>1 and sys.argv[1]=='--worker':raise SystemExit(worker(sys.argv[2],sys.argv[3]))
+  File "/home/lab307/ranger_nav/tests/test_session_manager.py", line 52, in worker
+    return run_guarded(session,specs,health_factory=provider,startup_timeout=.8 if scenario=='timeout' else 5.,
+  File "/home/lab307/ranger_nav/scripts/session_manager.py", line 199, in run_guarded
+    raise RuntimeError('session is already active')
+RuntimeError: session is already active
+
+normal3.log SESSION_DIR=/tmp/ranger-session-test-o6o5jnvv/sessions/one/run-97ddccl5
+
+normal0.log SESSION_DIR=/tmp/ranger-session-test-zu24z_ap/sessions/one/run-s7vlc60s
+
+timeout0.log SESSION_DIR=/tmp/ranger-session-test-qtafz06g/sessions/one/run-chcd350d
+

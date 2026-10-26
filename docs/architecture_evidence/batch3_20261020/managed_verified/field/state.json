@@ -1,0 +1,84 @@
+{
+  "run_directory": "/tmp/ranger-managed-ros-f00z3kt5/sessions/field/run-xys7hvmd",
+  "guardian": {
+    "pid": 7155,
+    "start_ticks": 268085,
+    "ppid": 7119,
+    "state": "R",
+    "boot_id": "c38b4db8-d7f6-40c4-88a2-3a177dbdee3c"
+  },
+  "owner": {
+    "pid": 7158,
+    "start_ticks": 268090,
+    "ppid": 7155,
+    "state": "R",
+    "boot_id": "c38b4db8-d7f6-40c4-88a2-3a177dbdee3c"
+  },
+  "state": "STOPPED",
+  "reason": "",
+  "owned": [],
+  "components": {
+    "probe": {
+      "state": "READY",
+      "process": {
+        "pid": 7159,
+        "start_ticks": 268090,
+        "ppid": 7158,
+        "state": "R",
+        "boot_id": "c38b4db8-d7f6-40c4-88a2-3a177dbdee3c"
+      },
+      "argv": [
+        "bash",
+        "-c",
+        "source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_livox/install/setup.bash && source /home/lab307/ranger_nav/ws_nav/install/setup.bash && exec python3 /home/lab307/ranger_nav/scripts/session_probe.py"
+      ]
+    },
+    "sensor_mount": {
+      "state": "READY",
+      "process": {
+        "pid": 7195,
+        "start_ticks": 268165,
+        "ppid": 7158,
+        "state": "R",
+        "boot_id": "c38b4db8-d7f6-40c4-88a2-3a177dbdee3c"
+      },
+      "argv": [
+        "bash",
+        "-c",
+        "source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_livox/install/setup.bash && source /home/lab307/ranger_nav/ws_nav/install/setup.bash && exec ros2 run tf2_ros static_transform_publisher --x 0.0 --y 0.0 --z 0.556 --roll 0.0 --pitch 0.0 --yaw 0.0 --frame-id base_link --child-frame-id imu_link"
+      ]
+    },
+    "bridge": {
+      "state": "STARTING",
+      "process": {
+        "pid": 7196,
+        "start_ticks": 268165,
+        "ppid": 7158,
+        "state": "R",
+        "boot_id": "c38b4db8-d7f6-40c4-88a2-3a177dbdee3c"
+      },
+      "argv": [
+        "bash",
+        "-c",
+        "source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_livox/install/setup.bash && source /home/lab307/ranger_nav/ws_nav/install/setup.bash && exec ros2 launch ranger_localization_bridge loc_bridge.launch.py localization_backend:=standard 't_base_imu_xyz:=[0.0, 0.0, 0.556]' 't_base_imu_rpy:=[0.0, 0.0, 0.0]' loc_child_frame:=lightning_imu_pose min_confidence:=1.0 tf_max_age_s:=0.5 odom_max_age_s:=0.5 odom_history_s:=2.0 odom_max_gap_s:=0.1 heartbeat_max_age_s:=0.5 status_max_age_s:=10.0 confidence_max_age_s:=1.0"
+      ]
+    },
+    "sensor_tf": {
+      "state": "READY",
+      "process": {
+        "pid": 7198,
+        "start_ticks": 268165,
+        "ppid": 7158,
+        "state": "R",
+        "boot_id": "c38b4db8-d7f6-40c4-88a2-3a177dbdee3c"
+      },
+      "argv": [
+        "bash",
+        "-c",
+        "source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_livox/install/setup.bash && source /home/lab307/ranger_nav/ws_nav/install/setup.bash && exec ros2 run tf2_ros static_transform_publisher --x -0.011 --y -0.02329 --z 0.04412 --frame-id imu_link --child-frame-id livox_frame"
+      ]
+    }
+  },
+  "updated_monotonic": 2707.662621116,
+  "guardian_cleanup_complete": true
+}

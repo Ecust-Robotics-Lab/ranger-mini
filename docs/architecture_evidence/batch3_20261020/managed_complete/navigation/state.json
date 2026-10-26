@@ -1,0 +1,54 @@
+{
+  "run_directory": "/tmp/ranger-managed-ros-5ztns4db/sessions/navigation/run-cb3vbg1x",
+  "guardian": {
+    "pid": 7735,
+    "start_ticks": 277061,
+    "ppid": 7545,
+    "state": "R",
+    "boot_id": "c38b4db8-d7f6-40c4-88a2-3a177dbdee3c"
+  },
+  "owner": {
+    "pid": 7738,
+    "start_ticks": 277066,
+    "ppid": 7735,
+    "state": "R",
+    "boot_id": "c38b4db8-d7f6-40c4-88a2-3a177dbdee3c"
+  },
+  "state": "FAILED",
+  "reason": "RuntimeError: critical health lost; stopping session, fresh start required; scheduler exited 2; guardian cleanup",
+  "owned": [],
+  "components": {
+    "probe": {
+      "state": "READY",
+      "process": {
+        "pid": 7739,
+        "start_ticks": 277066,
+        "ppid": 7738,
+        "state": "R",
+        "boot_id": "c38b4db8-d7f6-40c4-88a2-3a177dbdee3c"
+      },
+      "argv": [
+        "bash",
+        "-c",
+        "source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_livox/install/setup.bash && source /home/lab307/ranger_nav/ws_nav/install/setup.bash && exec python3 /home/lab307/ranger_nav/scripts/session_probe.py"
+      ]
+    },
+    "navigation": {
+      "state": "STARTING",
+      "process": {
+        "pid": 7775,
+        "start_ticks": 277141,
+        "ppid": 7738,
+        "state": "R",
+        "boot_id": "c38b4db8-d7f6-40c4-88a2-3a177dbdee3c"
+      },
+      "argv": [
+        "bash",
+        "-c",
+        "source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_livox/install/setup.bash && source /home/lab307/ranger_nav/ws_nav/install/setup.bash && exec ros2 launch ranger_navigation navigation.launch.py execute:=true control_authorized:=true map_yaml:=/home/lab307/ranger_nav/maps/lightning-offline-8cw1afzl/data/new_map/map.yaml"
+      ]
+    }
+  },
+  "updated_monotonic": 2776.575160884,
+  "guardian_cleanup_complete": true
+}

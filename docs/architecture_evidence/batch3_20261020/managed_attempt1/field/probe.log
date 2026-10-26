@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/scripts/session_probe.py", line 135, in <module>
+    main()
+  File "/home/lab307/ranger_nav/scripts/session_probe.py", line 124, in main
+    node = Probe(args.output)
+  File "/home/lab307/ranger_nav/scripts/session_probe.py", line 39, in __init__
+    self.clients = {name: self.create_client(GetState, '/'+name+'/get_state') for name in names}
+AttributeError: can't set attribute 'clients'

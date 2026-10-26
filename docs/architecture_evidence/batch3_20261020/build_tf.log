@@ -1,0 +1,21 @@
+Starting >>> ranger_localization_msgs
+Finished <<< ranger_localization_msgs [0.24s]
+Starting >>> ranger_localization_bridge
+--- stderr: ranger_localization_bridge
+warning: build_py: byte-compiling is disabled, skipping.
+
+warning: install_lib: byte-compiling is disabled, skipping.
+
+---
+Finished <<< ranger_localization_bridge [0.41s]
+Starting >>> ranger_navigation
+--- stderr: ranger_navigation
+warning: build_py: byte-compiling is disabled, skipping.
+
+warning: install_lib: byte-compiling is disabled, skipping.
+
+---
+Finished <<< ranger_navigation [0.39s]
+
+Summary: 3 packages finished [1.15s]
+  2 packages had stderr output: ranger_localization_bridge ranger_navigation

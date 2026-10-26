@@ -1,0 +1,16 @@
+test_delayed_correction_values_and_staleness (__main__.AlignedRosTests) ... ok
+test_ros_clock_regression_clears_all_cached_transforms (__main__.ClockResetTests) ... [INFO] [1792485310.619525163] [ranger_localization_bridge]: generic bridge: map -> odom -> base_link; max pose age 0.500s
+ok
+test_antipodal_shortest_arc (__main__.HistoryTests) ... ok
+test_duplicate_and_regression (__main__.HistoryTests) ... ok
+test_integer_epoch_and_capacity (__main__.HistoryTests) ... ok
+test_midpoint_translation_and_full_rotation (__main__.HistoryTests) ... ok
+test_no_extrapolation_and_gap (__main__.HistoryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 4.120s
+
+OK
+delayed correction max translation error= 3.050255370396617e-05 m; yaw= 3.0494487550510404e-08 rad
+[INFO] [1792485306.748364142] [ranger_localization_bridge]: generic bridge: map -> odom -> base_link; max pose age 0.500s
+

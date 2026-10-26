@@ -1,0 +1,61 @@
+{
+  "monotonic": 2690.680373081,
+  "checks": {
+    "probe_live": true,
+    "lidar": false,
+    "odom": false,
+    "localization": false,
+    "native_localization": false,
+    "sensor_tf": true,
+    "lidar_unclaimed": false,
+    "odom_unclaimed": false,
+    "native_unclaimed": true,
+    "bridge_unclaimed": false,
+    "nav_unclaimed": false,
+    "map_unclaimed": false,
+    "navigation": false
+  },
+  "publishers": {
+    "/livox/lidar": 1,
+    "/livox/imu": 1,
+    "/wheel/odom": 1,
+    "/localization/estimate": 1,
+    "/navigation_ready": 1,
+    "/lightning/loc_status": 0,
+    "/lightning/loc_confidence": 0,
+    "/base/safe_cmd_vel": 1,
+    "/cmd_vel_after_gate": 1,
+    "/cmd_vel_gated_in": 1,
+    "/cmd_vel_mux": 1,
+    "/cmd_vel_nav": 1,
+    "/map": 1,
+    "/livox/obstacles": 1,
+    "/ranger/motion_permitted": 1
+  },
+  "lifecycle_states": {
+    "map_server": [
+      3,
+      2690.680373081
+    ],
+    "controller_server": [
+      3,
+      2690.680373081
+    ],
+    "velocity_smoother": [
+      3,
+      2690.680373081
+    ],
+    "collision_monitor": [
+      3,
+      2690.079837741
+    ],
+    "planner_server": [
+      3,
+      2690.680373081
+    ],
+    "bt_navigator": [
+      3,
+      2690.680373081
+    ]
+  }
+}

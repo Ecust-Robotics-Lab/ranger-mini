@@ -122,13 +122,13 @@ class FakeWorld(Node):
     def tick_loc(self):
         if self.phase == "stall_tf":
             return
-        t = self._t()
+        t = self._t() - 0.05  # pose belongs to the header sampling time
         x, y, yaw = 2.0 * t, 0.3 * t * t, 0.15 * t
         if self.phase == "jump":
             # continuous from phase entry: pure sustained +1 m/s divergence
-            x += 1.0 * (t - (self.phase_t0 - self._t0))
+            x += max(0.0, t - (self.phase_t0 - self._t0))
         pose = SE3((x, y, 0.0), rpy_to_quat(0.0, 0.0, yaw))
-        self.br.sendTransform(tf_msg_from_se3(pose, "map", "imu_link", self._stamp(0.05)))
+        self.br.sendTransform(tf_msg_from_se3(pose, "map", "lightning_imu_pose", self._stamp(0.05)))
 
     def tick_odom(self):
         if self.phase == "no_odom":
@@ -227,7 +227,7 @@ def test_ros():
         check("B.ready_true", settle_true(fake, n=5, timeout=25.0))
 
         # VALUE checks against ground truth (loc==odom, identity extrinsic):
-        # map->odom must stay ~identity (loc TF lags 0.05 s => ~0.1 m at 2 m/s)
+        # map->odom must remain identity despite 0.05 s localization delay
         ok_v = False
         t0 = time.monotonic()
         while time.monotonic() - t0 < 5.0 and not ok_v:
@@ -236,7 +236,7 @@ def test_ros():
             mb = tf_se3(buf, "map", "base_link")
             if mo is not None and mb is not None:
                 t = fake._t()
-                ok_v = (math.dist(mo.t, (0, 0, 0)) < 0.3 and abs(mo.yaw()) < 0.1
+                ok_v = (math.dist(mo.t, (0, 0, 0)) < 0.005 and abs(mo.yaw()) < 0.005
                         and abs(mb.t[0] - 2.0 * t) < 0.4
                         and abs(mb.t[1] - 0.3 * t * t) < 0.4)
         check("B.tf_values_vs_ground_truth", ok_v)

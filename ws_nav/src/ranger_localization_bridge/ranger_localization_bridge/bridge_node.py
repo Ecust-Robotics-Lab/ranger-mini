@@ -3,8 +3,9 @@
 
 Consumes LocalizationEstimate (map-frame base pose, sample time, health).
 Publishes map->odom, odom->base_link and the legacy readiness/diagnostics.
-Batch 2 retains latest-pose/current-odom composition. Sampling-time alignment
-is explicitly deferred to batch 3; do not describe these as same-time poses.
+Localization corrections use odometry interpolated at the pose sampling time.
+The cached map->odom correction is propagated with current odometry only while
+the original aligned pose, backend heartbeat and wheel stream remain fresh.
 """
 import collections
 import math
@@ -19,6 +20,7 @@ from ranger_localization_msgs.msg import LocalizationEstimate
 from .geometry import (SE3, quat_normalize, rpy_to_quat, se3_from_tf_msg,
                        tf_msg_from_se3, se3_from_odom)
 from .health import fresh, readiness
+from .alignment import PoseHistory, stamp_ns
 import tf2_ros
 
 
@@ -47,6 +49,10 @@ class LocalizationBridge(Node):
                       self.innov_interval, self.innov_fail_limit]:
             if not math.isfinite(value) or value <= 0:
                 raise ValueError('bridge thresholds must be finite and positive')
+        self.odom_history = PoseHistory(float(d('odom_history_s', 2.0).value),
+                                        float(d('odom_max_gap_s', 0.1).value))
+        if self.odom_history.duration_ns < self.tf_max_age*1e9:
+            raise ValueError('odometry history must cover localization maximum age')
         self.tf_broadcaster = tf2_ros.TransformBroadcaster(self)
         self.ready_pub = self.create_publisher(Bool, '/navigation_ready', 10)
         self.diag_pub = self.create_publisher(DiagnosticArray, '/localization_health', 10)
@@ -54,6 +60,11 @@ class LocalizationBridge(Node):
         self.create_subscription(LocalizationEstimate, d('estimate_topic', '/localization/estimate').value, self.on_estimate, 10)
         self.sample = self.received = self._last_odom_stamp = self._last_map_update = None
         self.input_error = None
+        self._last_clock_ns = None
+        self._last_aligned_ns = None
+        self._last_seen_loc_ns = None
+        self._map_to_odom = None
+        self.alignment_reason = 'no aligned localization'
         self._history = collections.deque(maxlen=80)
         self._innov_fails = 0
         self._innov_last_err = None
@@ -62,7 +73,21 @@ class LocalizationBridge(Node):
                                (self.map_frame, self.odom_frame, self.base_frame, self.tf_max_age))
 
     def now_s(self):
-        return self.get_clock().now().nanoseconds * 1e-9
+        now = self.get_clock().now().nanoseconds
+        if self._last_clock_ns is not None and now < self._last_clock_ns:
+            self.odom_history.clear()
+            self.sample = self.received = self._last_odom_stamp = None
+            self._last_seen_loc_ns = None
+            self._reset_alignment('ROS clock regressed; history reset')
+        self._last_clock_ns = now
+        return now * 1e-9
+
+    def _reset_alignment(self, reason):
+        self._last_aligned_ns = self._map_to_odom = self._last_map_update = None
+        self.alignment_reason = reason
+        self._history.clear()
+        self._innov_fails = 0
+        self._innov_last_err = None
 
     def on_estimate(self, msg):
         now = self.now_s()
@@ -77,10 +102,18 @@ class LocalizationBridge(Node):
                 (not valid_pose or not fresh(now, stamp, self.tf_max_age))):
             self.sample = None
             self.input_error = 'invalid estimate: frame/state/pose/sample time'
+        elif (self._last_seen_loc_ns is not None and msg.state == msg.VALID and
+              stamp_ns(msg.header.stamp) < self._last_seen_loc_ns):
+            self.sample = None
+            self.input_error = 'localization sampling time regressed'
+            self._reset_alignment(self.input_error)
         else:
             self.sample = msg
             self.input_error = None
+            if msg.state == msg.VALID:
+                self._last_seen_loc_ns = stamp_ns(msg.header.stamp)
         self.received = now
+        self._align_latest(now)
         self._health_tick()
 
     def on_odom(self, msg):
@@ -96,50 +129,75 @@ class LocalizationBridge(Node):
             self._last_odom_stamp = None
             self._health_tick()
             return
-        self._last_odom_stamp = stamp_sec
         t_odom_base = se3_from_odom(msg)
+        added = self.odom_history.add(stamp_ns(stamp), t_odom_base)
+        if added == 'regressed':
+            self._reset_alignment('odometry sampling time regressed; history reset')
+            self.sample = None
+            self._last_seen_loc_ns = None
+        if added == 'duplicate':
+            self._health_tick()
+            return
+        self._last_odom_stamp = stamp_sec
         self.tf_broadcaster.sendTransform(tf_msg_from_se3(t_odom_base, self.odom_frame, self.base_frame, stamp))
-        sample = self.sample
-        loc_stamp = None if sample is None else sample.header.stamp.sec + sample.header.stamp.nanosec * 1e-9
-        t_map_base = None
-        if sample is not None and sample.state == sample.VALID and fresh(now, loc_stamp, self.tf_max_age):
-            p, q = sample.pose.position, sample.pose.orientation
-            t_map_base = SE3((p.x, p.y, p.z), (q.x, q.y, q.z, q.w))
-            ok, err = self._innovation(stamp_sec, t_map_base, t_odom_base, loc_stamp)
-            self._innov_fails = 0 if ok else self._innov_fails + 1
-            self._innov_last_err = err
-            self._history.append((stamp_sec, loc_stamp, t_map_base, t_odom_base))
-            # Retained composition policy; batch 3 will interpolate odom at loc_stamp.
-            self.tf_broadcaster.sendTransform(tf_msg_from_se3(
-                t_map_base * t_odom_base.inverse(), self.map_frame, self.odom_frame, stamp))
-            self._last_map_update = stamp_sec
+        self._align_latest(now)
+        self._publish_correction(stamp, now)
         self._health_tick()
 
-    def _innovation(self, stamp, t_map_base, t_odom_base, loc_stamp):
-        """Compare loc-relative-motion vs odom-relative-motion over ~0.5 s.
-        Fails on translation OR speed OR yaw disagreement. Windows whose loc
-        and odom intervals disagree by >0.1 s (lookup-latency jitter) are
-        skipped, not scored, to avoid a speed-proportional bias (review #4).
-        Returns (ok, err)."""
-        if t_map_base is None or t_odom_base is None or loc_stamp is None \
-                or len(self._history) < 2:
-            return True, None  # not enough history yet: do not fail warm-up
+    def _align_latest(self, now):
+        sample = self.sample
+        if sample is None or sample.state != sample.VALID:
+            return
+        ns = stamp_ns(sample.header.stamp)
+        if not fresh(now, ns*1e-9, self.tf_max_age):
+            return
+        # Heartbeats of the same measurement do not recompute the correction,
+        # append innovation samples or clear failed innovation checks.
+        if self._last_aligned_ns is not None and ns <= self._last_aligned_ns:
+            return
+        odom_at_loc, reason = self.odom_history.lookup(ns)
+        self.alignment_reason = reason
+        if odom_at_loc is None:
+            # A new pose can arrive one wheel tick ahead. Retain only a recent
+            # already-aligned correction during this bounded normal wait.
+            waiting = reason == 'waiting for odometry bracket'
+            if not waiting or (self.odom_history.samples and
+                    ns-self.odom_history.samples[-1][0] > self.odom_history.max_gap_ns):
+                self._reset_alignment(reason)
+            return
+        p, q = sample.pose.position, sample.pose.orientation
+        loc = SE3((p.x, p.y, p.z), (q.x, q.y, q.z, q.w))
+        ok, err = self._innovation(ns*1e-9, loc, odom_at_loc)
+        self._innov_fails = 0 if ok else self._innov_fails + 1
+        self._innov_last_err = err
+        self._history.append((ns*1e-9, loc, odom_at_loc))
+        self._map_to_odom = loc * odom_at_loc.inverse()
+        self._last_aligned_ns = ns
+    def _publish_correction(self, stamp, now):
+        if (self._map_to_odom is not None and self._last_aligned_ns is not None and
+                self.sample is not None and self.sample.state == self.sample.VALID and
+                fresh(now, self._last_aligned_ns*1e-9, self.tf_max_age) and
+                fresh(now, self.received, self.heartbeat_max_age) and
+                fresh(now, stamp_ns(stamp)*1e-9, self.odom_max_age)):
+            self.tf_broadcaster.sendTransform(tf_msg_from_se3(
+                self._map_to_odom, self.map_frame, self.odom_frame, stamp))
+            self._last_map_update = stamp_ns(stamp)*1e-9
 
-        # pick the history sample closest to (stamp - interval), prefer older
-        target = stamp - self.innov_interval
+    def _innovation(self, stamp, t_map_base, t_odom_base):
+        """Compare two localization-time-aligned motion intervals."""
+        target = stamp-self.innov_interval
         ref = None
         for sample in self._history:
             if sample[0] <= target:
-                ref = sample          # keep the newest one that is old enough
+                ref = sample
             else:
                 break
         if ref is None:
-            ref = self._history[0]    # fall back to the oldest sample
-        prev_t, prev_loc_t, prev_map_base, prev_odom_base = ref
-        dt = stamp - prev_t
-        dt_loc = loc_stamp - prev_loc_t
-        if dt <= 0.05 or abs(dt - dt_loc) > 0.1:
-            return True, None         # mismatched intervals: skip this window
+            return True, None
+        prev_t, prev_map_base, prev_odom_base = ref
+        dt = stamp-prev_t
+        if dt <= 0.05:
+            return True, None
 
         d_loc = prev_map_base.inverse() * t_map_base
         d_odo = prev_odom_base.inverse() * t_odom_base
@@ -159,6 +217,9 @@ class LocalizationBridge(Node):
         ready, checks = readiness(self.now_s(), self.sample, self.received,
             self._last_odom_stamp, self.tf_max_age, self.odom_max_age,
             self.heartbeat_max_age, self._innov_fails < self.innov_fail_limit)
+        checks['time_aligned'] = self._last_aligned_ns is not None and fresh(
+            self.now_s(), self._last_aligned_ns*1e-9, self.tf_max_age)
+        ready = ready and checks['time_aligned']
         checks['map_transform'] = fresh(self.now_s(), self._last_map_update, self.odom_max_age)
         ready = ready and checks['map_transform']
         checks['innovation_skipped'] = len(self._history) < 2
@@ -175,6 +236,9 @@ class LocalizationBridge(Node):
         st.values.append(KeyValue(key='backend_state', value=str(self.sample.state) if self.sample else 'unknown'))
         st.values.append(KeyValue(key='backend_reason', value=self.input_error or
                                   (self.sample.reason if self.sample else 'no estimate')))
+        st.values.append(KeyValue(key='alignment_reason', value=self.alignment_reason))
+        if self._last_aligned_ns is not None:
+            st.values.append(KeyValue(key='aligned_sample_time', value=str(self._last_aligned_ns*1e-9)))
         if self.sample:
             st.values.append(KeyValue(key='sample_time', value=str(
                 self.sample.header.stamp.sec + self.sample.header.stamp.nanosec * 1e-9)))
@@ -198,6 +262,11 @@ def main(args=None):
         executor.spin()
     except (KeyboardInterrupt, rclpy.executors.ExternalShutdownException):
         pass
+    except RuntimeError:
+        # Humble can interrupt take_message conversion while SIGINT shuts the
+        # context down. Never hide this exception while ROS is still running.
+        if rclpy.ok():
+            raise
     finally:
         executor.shutdown()
         for n in nodes:

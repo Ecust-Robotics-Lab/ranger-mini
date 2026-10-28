@@ -23,8 +23,51 @@ docs/02_evidence/*/ros_messages.jsonl
 .DDS/
 *.swp
 __pycache__/
-ws_camera/
+*.pyc
+*.xwd
+MvSdkLog/
+$(ALLUSERSPROFILE)/
+ws_camera/*
+!ws_camera/src/
+ws_camera/src/*
+!ws_camera/src/hik_camera_trigger_driver/
+!ws_camera/src/timeshare_writer/
+ws_camera/src/hik_camera_trigger_driver/hikSDK
+ws_fast_livo/
+!ws_fast_livo/
+ws_fast_livo/*
+!ws_fast_livo/src/
+docs/fast_livo2_evidence/**/*.xwd
 mvs/
 
 # Local managed-session state and per-run logs
 .runtime/
+
+# Integrated calibration: retain procedures/configuration; raw captures/results
+# stay on disk and in the migration manifest, as with bags/ and local workspaces.
+calibration/ws_calib/
+calibration/bags/
+calibration/logs/
+calibration/MvSdkLog/
+calibration/$(ALLUSERSPROFILE)/
+calibration/**/datasets/
+calibration/**/logs/
+calibration/**/results_archive/
+calibration/**/session_*/
+calibration/**/combined_*/
+calibration/**/build_manual/
+calibration/**/build_integrated/
+calibration/**/install_integrated/
+calibration/**/*.png
+calibration/**/*.jpg
+calibration/**/*.jpeg
+calibration/**/*.ppm
+calibration/**/*.pcd
+calibration/**/*.npy
+calibration/**/*.npz
+calibration/**/*.db3
+calibration/**/*.mcap
+
+# Locally rendered presentation videos and frontend replay artifacts.
+/outputs/fast-livo-demo-*/
+/outputs/fast-livo-backend-validation-*/

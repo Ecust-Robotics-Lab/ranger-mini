@@ -7,6 +7,18 @@ localization_backend: lightning
 mapping_backend: lightning
 terrain_backend: disabled
 map_bundle: config/maps/field_20260928.yaml
+# Mapping/frontend selection is independent of global localization.
+# FAST-LIVO2 currently provides a LiDAR-IMU-camera frontend, not prior-map localization.
+mapping:
+  lightning:
+    config: config/slam/ranger_mid360s.yaml
+  fast_livo2:
+    config: config/fast_livo2/ranger_mid360s_hik_trial.yaml
+    camera_config: config/fast_livo2/camera_live.yaml
+    lidar_config: config/fast_livo2/mid360s_live.json
+    rviz_config: config/fast_livo2/live.rviz
+    ros_domain_id: 175
+    localhost_only: true
 localization:
   native_pose_frame: lightning_imu_pose  # algorithm pose, not a physical sensor frame
   tf_max_age_s: 0.5  # preserve the previously effective threshold

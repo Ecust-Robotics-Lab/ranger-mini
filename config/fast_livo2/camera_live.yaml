@@ -1,0 +1,31 @@
+/**:
+  ros__parameters:
+    camera_info_url: package://hik_camera_trigger_driver/config/camera_info.yaml
+    camera_name: front
+    frame_id: front_optical_frame
+    camera_sn: DB1216907
+    pixel_format: ''
+    image_width: 1280
+    image_height: 1024
+    auto_adjust_resolution: true
+    strict_camera_profile: false
+    trigger_enable: true
+    trigger_source: Line0
+    disable_exposure_auto: true
+    exposure_time: 20000.0
+    disable_gain_auto: true
+    gain: 10.0
+    sync_image_topic: /front/image_sync
+    timeshare_path: ''
+    timeshare_stale_ms: 300
+    frame_timeout_ms: 1500
+    image_node_num: 8
+    startup_frame_timeout_ms: 3000
+    timeout_recovery_threshold: 3
+    reconnect_interval_ms: 2000
+    open_settle_ms: 500
+    enable_auto_reconnect: true
+    reuse_camera_profile_on_reconnect: true
+    use_sensor_data_qos: false
+    qos_reliability: reliable
+    qos_depth: 5

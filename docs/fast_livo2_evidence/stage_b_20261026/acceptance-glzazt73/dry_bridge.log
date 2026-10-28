@@ -1,0 +1,108 @@
+{
+  "action": "DRY-RUN",
+  "domain": 187,
+  "localhost_only": true,
+  "public_tf_enabled": true,
+  "components": [
+    {
+      "name": "monitor",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/lab307/ranger_nav/scripts/fast_livo2/backend/monitor.py"
+      ],
+      "depends": [],
+      "requires": [],
+      "ready_key": "probe_live",
+      "critical": true,
+      "start_requires": [],
+      "resource": ""
+    },
+    {
+      "name": "backend",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/backend_node",
+        "--ros-args",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/fast_livo2/backend.yaml",
+        "-p",
+        "use_sim_time:=true",
+        "-p",
+        "metadata_path:=/home/lab307/ranger_nav/.runtime/sessions/fast_livo_backend_bridge/provenance-NEW.json",
+        "-p",
+        "data_root:=/home/lab307/ranger_nav/.runtime/fast_livo_backend",
+        "-p",
+        "registration:=pcl_icp"
+      ],
+      "depends": [
+        "monitor"
+      ],
+      "requires": [
+        "probe_live"
+      ],
+      "ready_key": "backend_healthy",
+      "critical": true,
+      "start_requires": [],
+      "resource": "fast_livo_backend"
+    },
+    {
+      "name": "adapter",
+      "argv": [
+        "/usr/bin/python3",
+        "-m",
+        "ranger_localization_bridge.fast_livo_adapter",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true",
+        "-p",
+        "t_base_imu_xyz:=[0.0, 0.0, 0.556]",
+        "-p",
+        "t_base_imu_rpy:=[0.0, 0.0, 0.0]",
+        "-p",
+        "sample_max_age:=0.5",
+        "-p",
+        "heartbeat_max_age:=0.5"
+      ],
+      "depends": [
+        "backend"
+      ],
+      "requires": [],
+      "ready_key": "process",
+      "critical": true,
+      "start_requires": [],
+      "resource": "localization_backend"
+    },
+    {
+      "name": "bridge",
+      "argv": [
+        "/usr/bin/python3",
+        "-m",
+        "ranger_localization_bridge.bridge_node",
+        "--ros-args",
+        "-p",
+        "adapter_backend:=external",
+        "-p",
+        "use_sim_time:=true",
+        "-p",
+        "latch_on_innovation_failure:=true",
+        "-p",
+        "tf_max_age_s:=0.5",
+        "-p",
+        "odom_max_age_s:=0.5",
+        "-p",
+        "odom_history_s:=2.0",
+        "-p",
+        "odom_max_gap_s:=0.1",
+        "-p",
+        "heartbeat_max_age_s:=0.5"
+      ],
+      "depends": [
+        "adapter"
+      ],
+      "requires": [],
+      "ready_key": "process",
+      "critical": true,
+      "start_requires": [],
+      "resource": "localization_bridge"
+    }
+  ]
+}

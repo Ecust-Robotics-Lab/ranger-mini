@@ -1,0 +1,2 @@
+DRY-RUN: build locked GTSAM/small_gicp into ws_fast_livo/backend_deps, then backend only; no devices.
+Execute: bash scripts/build_fast_livo2_backend.sh --execute

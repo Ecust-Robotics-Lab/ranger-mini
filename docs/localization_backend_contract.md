@@ -1,6 +1,6 @@
 # 定位后端接口与统一配置
 
-适用于架构改造批次 3，2026-10-20。保持轮速里程计、Lightning 原生定位和既有速度链；FAST-LIVO2 尚未部署。受管入口、时间对齐和 TF 细节见 [批次 3 操作说明](managed_sessions.md)。
+更新：2026-10-26。公共契约沿用批次 3，保持轮速里程计、Lightning 全局定位和既有速度链。FAST-LIVO2 前端已部署并可配置选择，但独立先验全局定位尚未实现；阶段 B 已实现私有 PGO 和仅显式离线启用的标准适配器，见 [B 接口](fast_livo2_backend_interfaces.md)。生产入口不自动启用它。受管入口、时间对齐和 TF 细节见 [操作说明](managed_sessions.md)，后续接入见 [后端计划](FAST_LIVO2_BACKEND_PLAN.md)。
 
 ## 1. 模块边界
 
@@ -77,8 +77,8 @@ colcon build --packages-up-to ranger_navigation --executor sequential
 source install/setup.bash
 ```
 
-后端接入验收需覆盖坐标参考点、非零外参、状态退化、原采样时间停止、心跳停止和轮速停止；不能只检查消息存在。标准后端的离线测试没有 Lightning 原生输入或 TF，验证桥接无需算法专属输入即可正常工作。
+阶段 B 修复了创新拒绝后仍覆盖接受修正缓存的问题：失败候选不进入缓存/参考历史，重复失败心跳不累加。新增 `latch_on_innovation_failure` 默认 false；B 离线入口显式 true，首次拒绝锁定未就绪并停止地图修正，重启会话才能解除。后端接入验收需覆盖坐标参考点、非零外参、状态退化、原采样时间停止、心跳停止和轮速停止；不能只检查消息存在。标准后端的离线测试没有 Lightning 原生输入或 TF，验证桥接无需算法专属输入即可正常工作。
 
 回退应在进程停止后回到批次前提交 `1420575dc6436f60b8ad7b4277193fc6d3edd1db` 的独立 checkout 并重建 ws_nav；不能仅切源代码而继续使用本批安装副本。保留本分支及所有地图、bag、历史证据，不执行删除或硬重置；回退也不继承任何运动许可。
 
-批次 3 已增加按采样时刻对齐及受管会话，使用 PID/start_ticks/boot_id 和 Linux subreaper 管理本次子孙进程；异常不自动重启。FAST-LIVO2、相机同步、高程地图和坡道运行仍需各自后续验收，未安装或启用。
+现有受管会话使用 PID/start_ticks/boot_id 和 Linux subreaper 管理所属子孙进程，异常不自动重启。FAST-LIVO2 前端与相机同步包已构建并完成一次在线展示，现已停止；独立后端/先验定位、物理同步及运动精度仍待实现或验收。高程地图仍禁用，坡道能力未验收。

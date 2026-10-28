@@ -24,6 +24,35 @@ def path_at(root, value):
     return (root / p).resolve() if not p.is_absolute() else p.resolve()
 
 
+def load_runtime(root, path, seen=()):
+    """Project-relative profile inheritance, with cycle/type checks."""
+    path = Path(path).resolve()
+    if path in seen:
+        raise ValueError('runtime profile inheritance cycle')
+    cfg = yaml.safe_load(path.read_text())
+    if not isinstance(cfg, dict):
+        raise ValueError('runtime configuration must be a mapping')
+    parent = cfg.pop('extends', None)
+    if parent is None:
+        return cfg
+    if not isinstance(parent, str):
+        raise ValueError('runtime extends must be a configuration path')
+    base = load_runtime(root, path_at(root, parent), (*seen, path))
+    def merge(a, b):
+        result = dict(a)
+        for key, value in b.items():
+            result[key] = merge(result[key], value) if isinstance(result.get(key), dict) and isinstance(value, dict) else value
+        return result
+    return merge(base, cfg)
+
+
+def validate_fast_livo_config(path):
+    params = yaml.safe_load(Path(path).read_text())['/**']['ros__parameters']
+    if (params['common'].get('img_en') != 1 or params['common'].get('lidar_en') != 1
+            or params['imu'].get('imu_en') is not True or params['common'].get('require_livo') is not True):
+        raise ValueError('FAST-LIVO2 profile must retain LiDAR-IMU-camera fusion')
+
+
 def resolve(root=None, environ=None):
     env = dict(os.environ if environ is None else environ)
     # Convert the old raw launch-argument string to validated typed overrides.
@@ -38,15 +67,40 @@ def resolve(root=None, environ=None):
         env[key.upper()] = value
     root = Path(root) if root is not None else project_root()
     runtime_path = path_at(root, env.get('RANGER_RUNTIME_CONFIG', 'config/runtime.yaml'))
-    cfg = yaml.safe_load(runtime_path.read_text())
+    cfg = load_runtime(root, runtime_path)
     if cfg['schema_version'] != 1:
         raise ValueError('unsupported runtime schema')
     supported = {'robot': ['ranger_mini_v2'], 'odometry_backend': ['wheel'],
                  'localization_backend': ['lightning', 'standard'],
-                 'mapping_backend': ['lightning'], 'terrain_backend': ['disabled']}
+                 'mapping_backend': ['lightning', 'fast_livo2'], 'terrain_backend': ['disabled']}
     for key, choices in supported.items():
         if cfg[key] not in choices:
+            if key == 'localization_backend' and cfg[key] == 'fast_livo2':
+                raise ValueError('FAST-LIVO2 is a local frontend only: prior-map global localization is not implemented; use mapping_backend: fast_livo2')
             raise ValueError(f'unsupported {key}: {cfg[key]}')
+    mapping = cfg.get('mapping', {})
+    if not isinstance(mapping, dict) or any(not isinstance(mapping.get(k, {}), dict) for k in ('lightning', 'fast_livo2')):
+        raise ValueError('mapping backend configuration must be a mapping')
+    light = mapping.get('lightning', {})
+    fast = mapping.get('fast_livo2', {})
+    mapping_paths = {
+        'LIGHTNING_MAPPING_CONFIG': light.get('config', 'config/slam/ranger_mid360s.yaml'),
+        'FAST_LIVO_CONFIG': fast.get('config', 'config/fast_livo2/ranger_mid360s_hik_trial.yaml'),
+        'FAST_LIVO_CAMERA_CONFIG': fast.get('camera_config', 'config/fast_livo2/camera_live.yaml'),
+        'FAST_LIVO_LIDAR_CONFIG': fast.get('lidar_config', 'config/fast_livo2/mid360s_live.json'),
+        'FAST_LIVO_RVIZ_CONFIG': fast.get('rviz_config', 'config/fast_livo2/live.rviz'),
+    }
+    mapping_paths = {k:str(path_at(root,v)) for k,v in mapping_paths.items()}
+    required = ['LIGHTNING_MAPPING_CONFIG'] if cfg['mapping_backend'] == 'lightning' else list(mapping_paths)[1:]
+    for key in required:
+        if not Path(mapping_paths[key]).is_file():
+            raise ValueError(f'missing mapping configuration: {key}')
+    domain = fast.get('ros_domain_id', 175)
+    localhost = fast.get('localhost_only', True)
+    if type(domain) is not int or not 0 <= domain <= 232 or type(localhost) is not bool:
+        raise ValueError('invalid FAST-LIVO2 ROS domain/localhost configuration')
+    if cfg['mapping_backend'] == 'fast_livo2':
+        validate_fast_livo_config(mapping_paths['FAST_LIVO_CONFIG'])
     bundle_path = path_at(root, env.get('MAP_BUNDLE', cfg['map_bundle']))
     bundle = yaml.safe_load(bundle_path.read_text())
     if bundle['schema_version'] != 1 or bundle['frame'] != 'map':
@@ -92,6 +146,8 @@ def resolve(root=None, environ=None):
         'LOC_CONFIG': str(paths['localization_config']),
         'MAP_YAML': str(paths['navigation_map']), 'MAP_DIR': str(paths['navigation_map'].parent),
         'LOCALIZATION_BACKEND': cfg['localization_backend'],
+        'MAPPING_BACKEND': cfg['mapping_backend'], **mapping_paths,
+        'FAST_LIVO_ROS_DOMAIN_ID': str(domain), 'FAST_LIVO_LOCALHOST_ONLY': '1' if localhost else '0',
         'TF_MAX_AGE_S': str(loc['tf_max_age_s']), 'ODOM_MAX_AGE_S': str(loc['odom_max_age_s']),
         'ODOM_HISTORY_S': str(loc['odom_history_s']), 'ODOM_MAX_GAP_S': str(loc['odom_max_gap_s']),
         'HEARTBEAT_MAX_AGE_S': str(loc['heartbeat_max_age_s']),
@@ -111,7 +167,7 @@ def resolve(root=None, environ=None):
         values[key] = str(value)
     # Only operational seed/extrinsic/threshold variables can override defaults.
     for key in list(values):
-        if key not in ['RANGER_RUNTIME_CONFIG', 'MAP_BUNDLE', 'LOC_CONFIG', 'MAP_YAML', 'MAP_DIR', 'LOCALIZATION_BACKEND', 'BRIDGE_EXTRA_ARGS'] and key in env:
+        if key not in ['RANGER_RUNTIME_CONFIG', 'MAP_BUNDLE', 'LOC_CONFIG', 'MAP_YAML', 'MAP_DIR', 'LOCALIZATION_BACKEND', 'MAPPING_BACKEND', 'BRIDGE_EXTRA_ARGS', *mapping_paths, 'FAST_LIVO_ROS_DOMAIN_ID', 'FAST_LIVO_LOCALHOST_ONLY'] and key in env:
             values[key] = env[key]
     for key in ['TF_MAX_AGE_S', 'ODOM_MAX_AGE_S', 'ODOM_HISTORY_S', 'ODOM_MAX_GAP_S', 'HEARTBEAT_MAX_AGE_S', 'STATUS_MAX_AGE_S', 'CONFIDENCE_MAX_AGE_S', 'MIN_CONFIDENCE']:
         if not math.isfinite(float(values[key])) or float(values[key]) <= 0:
@@ -142,9 +198,12 @@ def resolve(root=None, environ=None):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--shell', action='store_true')
+    parser.add_argument('--check-fast-livo', action='store_true', help='Require three-sensor fusion for a direct FAST-LIVO2 entry')
     args = parser.parse_args()
     try:
         values = resolve()
+        if args.check_fast_livo:
+            validate_fast_livo_config(values['FAST_LIVO_CONFIG'])
     except (ValueError, KeyError, TypeError, OSError, yaml.YAMLError) as exc:
         parser.exit(2, f'configuration error: {exc}\n')
     if args.shell:

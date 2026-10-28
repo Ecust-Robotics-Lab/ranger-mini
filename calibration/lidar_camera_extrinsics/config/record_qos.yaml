@@ -1,0 +1,10 @@
+/livox/lidar:
+  reliability: reliable
+  durability: volatile
+  history: keep_last
+  depth: 200
+/front/image_sync:
+  reliability: reliable
+  durability: volatile
+  history: keep_last
+  depth: 200

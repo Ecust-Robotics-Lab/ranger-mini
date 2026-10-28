@@ -1,0 +1,44 @@
+{
+  "build_camera_sync": 0,
+  "build_calibration": 0,
+  "build_nav": 0,
+  "build_bridge_final": 0,
+  "test_consolidation": {
+    "exit_code": 0,
+    "passed": 10
+  },
+  "test_calibration": {
+    "exit_code": 0,
+    "passed": 11
+  },
+  "test_sessions": {
+    "exit_code": 0,
+    "passed": 11
+  },
+  "test_time_alignment": {
+    "exit_code": 0,
+    "passed": 7
+  },
+  "test_localization_contract": {
+    "exit_code": 0,
+    "passed": 11
+  },
+  "relocation_checks": {
+    "exit_code": 0,
+    "passed": 8
+  },
+  "frontend_checks": {
+    "exit_code": 0,
+    "passed": 13
+  },
+  "syntax": {
+    "python_files_parsed": 23,
+    "shell_files_checked": 15,
+    "passed": true
+  },
+  "installed_runtime_matches_source": true,
+  "live_session_stopped": true,
+  "hardware_started_this_task": false,
+  "commit_created": false,
+  "overall": "PASS for consolidation/build/offline checks; PARTIAL for physical calibration/sync and post-migration live verification"
+}

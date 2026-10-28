@@ -1,0 +1,123 @@
+{
+  "source": "ws://127.0.0.1:8765",
+  "modifies_sensor_state": false,
+  "topics": {
+    "/fast_livo/view/scan": {
+      "messages": 40,
+      "bytes": 3895256,
+      "frame_id": "fast_livo_local",
+      "stamp_ns": 1590195356700188398,
+      "websocket_time_ns": 1793113563811480905,
+      "points": 6075,
+      "point_step": 16,
+      "row_step": 97200,
+      "data_bytes": 97200,
+      "fields": [
+        "x",
+        "y",
+        "z",
+        "intensity"
+      ]
+    },
+    "/fast_livo/view/path": {
+      "messages": 40,
+      "bytes": 5184640,
+      "frame_id": "fast_livo_local",
+      "stamp_ns": 1590195356700188398,
+      "websocket_time_ns": 1793113563814952819,
+      "poses": 1492
+    },
+    "/front/image_sync": {
+      "messages": 40,
+      "bytes": 157288960,
+      "frame_id": "front_optical_frame",
+      "stamp_ns": 1590195356800028540,
+      "websocket_time_ns": 1793113563860142845,
+      "width": 1280,
+      "height": 1024,
+      "encoding": "rgb8",
+      "step": 3840,
+      "data_bytes": 3932160
+    },
+    "/fast_livo/view/map": {
+      "messages": 8,
+      "bytes": 4332232,
+      "frame_id": "fast_livo_local",
+      "stamp_ns": 1590195356400188446,
+      "websocket_time_ns": 1793113563571214200,
+      "points": 33869,
+      "point_step": 16,
+      "row_step": 541904,
+      "data_bytes": 541904,
+      "fields": [
+        "x",
+        "y",
+        "z",
+        "intensity"
+      ]
+    }
+  },
+  "handshake": "HTTP/1.1 101 Switching Protocols\r\nconnection: Upgrade\r\nupgrade: websocket\r\nsec-websocket-accept: m/+UGUbyvIkASJGmwIThMFRnqYs=\r\nsec-websocket-protocol: foxglove.sdk.v1\r\n\r\n",
+  "channels": [
+    {
+      "id": 5,
+      "topic": "/fast_livo/view/path",
+      "encoding": "cdr",
+      "schemaName": "nav_msgs/msg/Path",
+      "schemaEncoding": "ros2msg"
+    },
+    {
+      "id": 4,
+      "topic": "/fast_livo/view/pose",
+      "encoding": "cdr",
+      "schemaName": "geometry_msgs/msg/PoseStamped",
+      "schemaEncoding": "ros2msg"
+    },
+    {
+      "id": 1,
+      "topic": "/front/image_sync",
+      "encoding": "cdr",
+      "schemaName": "sensor_msgs/msg/Image",
+      "schemaEncoding": "ros2msg"
+    },
+    {
+      "id": 3,
+      "topic": "/fast_livo/view/scan",
+      "encoding": "cdr",
+      "schemaName": "sensor_msgs/msg/PointCloud2",
+      "schemaEncoding": "ros2msg"
+    },
+    {
+      "id": 6,
+      "topic": "/fast_livo/view/map",
+      "encoding": "cdr",
+      "schemaName": "sensor_msgs/msg/PointCloud2",
+      "schemaEncoding": "ros2msg"
+    },
+    {
+      "id": 8,
+      "topic": "/rgb_img",
+      "encoding": "cdr",
+      "schemaName": "sensor_msgs/msg/Image",
+      "schemaEncoding": "ros2msg"
+    },
+    {
+      "id": 2,
+      "topic": "/front/camera_info",
+      "encoding": "cdr",
+      "schemaName": "sensor_msgs/msg/CameraInfo",
+      "schemaEncoding": "ros2msg"
+    },
+    {
+      "id": 7,
+      "topic": "/fast_livo/odometry",
+      "encoding": "cdr",
+      "schemaName": "nav_msgs/msg/Odometry",
+      "schemaEncoding": "ros2msg"
+    }
+  ],
+  "capabilities": [
+    "connectionGraph"
+  ],
+  "elapsed_seconds": 4.004067775999829
+}

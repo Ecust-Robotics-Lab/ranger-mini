@@ -1,0 +1,10 @@
+{
+  "action": "DRY-RUN",
+  "procedure": "camera",
+  "command": [
+    "bash",
+    "/home/lab307/ranger_nav/calibration/camera_intrinsics/start_intrinsics_camera.sh"
+  ],
+  "starts_physical_drivers": true,
+  "calibration_acceptance": "unchanged; PARTIAL remains PARTIAL"
+}

@@ -1,0 +1,34 @@
+{
+  "command": "source /opt/ros/humble/setup.bash; PYTHONDONTWRITEBYTECODE=1 python3 tests/test_fast_livo_recording.py",
+  "exit": 0,
+  "passed": 10,
+  "physical_hardware_started": false,
+  "headless_dry_run_exit": 0,
+  "headless_visualization": "foxglove",
+  "files": [
+    {
+      "path": "scripts/fast_livo2/record_session.py",
+      "sha256": "e95d32c17c0a1fc52afab52af7d607ecb1160a5b30f4df708cca1bd6c060627d"
+    },
+    {
+      "path": "tests/test_fast_livo_recording.py",
+      "sha256": "ac0b92522ab42d672970908280eb7c1997b27eb6c179bf70f04cd9134a1199a1"
+    },
+    {
+      "path": "docs/fast_livo2_recording.md",
+      "sha256": "fc495c1accfb5a3d65aad0720882e9bd3fb354e7ce254333b93051d3050faf20"
+    },
+    {
+      "path": "docs/fast_livo2_recording_report.md",
+      "sha256": "337e4cff985f23edcee9e69d8555b8a8b8dc989b7f3032a015d56ad974db5ad8"
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "sha256": "b4b0bf638e75a680a39c5f94df8c69ee5f488aa86180da944d6f1f45d00f6beb"
+    },
+    {
+      "path": "docs/STATUS.md",
+      "sha256": "fefebbfcde99542b5db32ae711f4eb3b58ae4e3c9382ac3a94f8801a3031c24c"
+    }
+  ]
+}

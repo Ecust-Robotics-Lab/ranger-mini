@@ -1,0 +1,16 @@
+stdin is not a terminal device. Keyboard handling disabled.getifaddrs: Operation not permitted
+getifaddrs: Operation not permitted
+getifaddrs: Operation not permitted
+getifaddrs: Operation not permitted
+[37;1m2026-10-26 13:52:34.376 [31;1m[[37;1mTRANSPORT[31;1m Error] [37mAll whitelist interfaces were filtered out[34;1m -> Function [36mUDPv4Transport[m
+[37;1m2026-10-26 13:52:34.376 [31;1m[[37;1mTRANSPORT_UDP[31;1m Error] [37mError creating socket: Operation not permitted[34;1m -> Function [36minit[m
+[37;1m2026-10-26 13:52:34.376 [31;1m[[37;1mRTPS_PARTICIPANT[31;1m Error] [37mUser transport failed to register.[34;1m -> Function [36mRTPSParticipantImpl[m
+[INFO] [1792993954.381828666] [rosbag2_storage]: Opened database 'bags/fast-livo2-dds-smoke-a/view/view_0.db3' for READ_ONLY.
+[INFO] [1792993954.381860630] [rosbag2_player]: Set rate to 1
+[INFO] [1792993954.384347118] [rosbag2_player]: Adding keyboard callbacks.
+[INFO] [1792993954.384360528] [rosbag2_player]: Press SPACE for Pause/Resume
+[INFO] [1792993954.384363839] [rosbag2_player]: Press CURSOR_RIGHT for Play Next Message
+[INFO] [1792993954.384366781] [rosbag2_player]: Press CURSOR_UP for Increase Rate 10%
+[INFO] [1792993954.384369444] [rosbag2_player]: Press CURSOR_DOWN for Decrease Rate 10%
+[WARN] [1792993954.384504227] [rosbag2_player]: New subscription discovered on topic '/clock', requesting incompatible QoS. No messages will be sent to it. Last incompatible policy: RELIABILITY_QOS_POLICY
+[INFO] [1792993954.384562888] [rosbag2_storage]: Opened database 'bags/fast-livo2-dds-smoke-a/view/view_0.db3' for READ_ONLY.

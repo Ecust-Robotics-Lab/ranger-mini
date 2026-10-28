@@ -1,0 +1,48 @@
+{
+  "source": "/home/lab307/ranger_nav/bags/fast-livo2-baseline-126a5fAo/result",
+  "scope": "nominally static synchronization bag; no ground truth",
+  "frontend_summary": {
+    "messages": 18356,
+    "paired_frames": 829,
+    "vio_frames": 829,
+    "visual_solver_updates": 4222,
+    "max_lidar_queue": 2,
+    "max_imu_queue": 53,
+    "max_image_queue": 1,
+    "wall_seconds": 10.3962,
+    "mode": "offline_direct_callbacks",
+    "physical_sync_proven": false,
+    "accuracy_validated": false
+  },
+  "pose_count": 829,
+  "sensor_duration_s": 82.80019974708557,
+  "all_trajectory_values_finite": true,
+  "unique_pose_timestamps": 829,
+  "frames_with_visual_solver_updates": 828,
+  "frames_with_nonzero_visual_translation_update": 526,
+  "visual_translation_update_m_p50_p95_max": [
+    0.00180501,
+    0.005322492199999999,
+    0.009827565
+  ],
+  "visual_rotation_update_rad_p50_p95_max": [
+    0.0007093,
+    0.0022221393999999933,
+    0.004161421
+  ],
+  "vio_processing_ms_p50_p95_max": [
+    3.737089,
+    4.9138426,
+    6.797876
+  ],
+  "point_count_min_median_max": [
+    4257.0,
+    4390.0,
+    4527.0
+  ],
+  "observed_displacement_from_first_pose_m_max": 0.01423456740948839,
+  "observed_end_to_start_translation_m": 0.005739684001752361,
+  "accuracy_validated": false,
+  "physical_sync_proven": false,
+  "note": "Observed dispersion and visual increments are not APE/RPE or calibration accuracy; static data cannot validate motion fusion or loops."
+}

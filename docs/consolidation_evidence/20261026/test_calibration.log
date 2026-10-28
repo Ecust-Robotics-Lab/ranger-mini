@@ -1,0 +1,17 @@
+test_bad_rotation_rejected (test_interfaces.Interfaces) ... ok
+test_inverse (test_interfaces.Interfaces) ... ok
+test_mid360s_layout_and_padding (test_interfaces.Interfaces) ... ok
+test_paired_projection_skips_unmatched_first_image (test_interfaces.Interfaces) ... ok
+test_real_k3_projection_and_inverse (test_interfaces.Interfaces) ... ok
+test_rgb_bgr (test_interfaces.Interfaces) ... ok
+test_ros_parameter_yaml_no_aliases (test_interfaces.Interfaces) ... ok
+test_unverified_board_orientation_rejected (test_interfaces.Interfaces) ... ok
+test_cleanup_owned_dummy_process_groups (test_stage_b_supervisor.Supervisor) ... ok
+test_command_order_and_parameters (test_stage_b_supervisor.Supervisor) ... ok
+test_pid_identity_guard (test_stage_b_supervisor.Supervisor) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.142s
+
+OK
+REAL_K3_NUMERICS: projection max 0.0 px; undistort max 2.2737367544323206e-13 px; dropping k3 max 2.241345142457242 px

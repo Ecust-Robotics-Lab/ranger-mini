@@ -1,0 +1,56 @@
+{
+  "run_directory": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/headless-fix-efzQFAA3/test_owned_synthetic_session_is_cleaned_after_finite_capture-pqbz_dgj/sessions/fast_livo_record/run-s4p5ntim",
+  "guardian": {
+    "pid": 3875,
+    "start_ticks": 93830,
+    "ppid": 3451,
+    "state": "R",
+    "boot_id": "9ee4990c-890d-4dc7-bdf2-768bdacc709f"
+  },
+  "owner": {
+    "pid": 3880,
+    "start_ticks": 93838,
+    "ppid": 3875,
+    "state": "R",
+    "boot_id": "9ee4990c-890d-4dc7-bdf2-768bdacc709f"
+  },
+  "state": "STOPPED",
+  "reason": "",
+  "owned": [],
+  "components": {
+    "frontend": {
+      "state": "READY",
+      "process": {
+        "pid": 3881,
+        "start_ticks": 93839,
+        "ppid": 3880,
+        "state": "R",
+        "boot_id": "9ee4990c-890d-4dc7-bdf2-768bdacc709f"
+      },
+      "argv": [
+        "/usr/bin/python3",
+        "/home/lab307/ranger_nav/tests/test_fast_livo_recording.py",
+        "--publish",
+        "/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/headless-fix-efzQFAA3/test_owned_synthetic_session_is_cleaned_after_finite_capture-pqbz_dgj/owned_capture/sensor_assets"
+      ]
+    },
+    "capture": {
+      "state": "READY",
+      "process": {
+        "pid": 3882,
+        "start_ticks": 93839,
+        "ppid": 3880,
+        "state": "R",
+        "boot_id": "9ee4990c-890d-4dc7-bdf2-768bdacc709f"
+      },
+      "argv": [
+        "/usr/bin/python3",
+        "/home/lab307/ranger_nav/scripts/fast_livo2/record_worker.py",
+        "--folder",
+        "/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/headless-fix-efzQFAA3/test_owned_synthetic_session_is_cleaned_after_finite_capture-pqbz_dgj/owned_capture"
+      ]
+    }
+  },
+  "updated_monotonic": 941.152523355,
+  "guardian_cleanup_complete": true
+}

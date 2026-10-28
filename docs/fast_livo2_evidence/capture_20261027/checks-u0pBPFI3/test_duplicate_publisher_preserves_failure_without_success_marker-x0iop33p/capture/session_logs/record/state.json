@@ -1,0 +1,41 @@
+{
+  "run_directory": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/checks-u0pBPFI3/test_duplicate_publisher_preserves_failure_without_success_marker-x0iop33p/sessions/fast_livo_record/run-vvgg2bnx",
+  "guardian": {
+    "pid": 12593,
+    "start_ticks": 596225,
+    "ppid": 12274,
+    "state": "R",
+    "boot_id": "7d9266bc-caeb-4e72-9d67-82ac247914e1"
+  },
+  "owner": {
+    "pid": 12627,
+    "start_ticks": 596259,
+    "ppid": 12593,
+    "state": "R",
+    "boot_id": "7d9266bc-caeb-4e72-9d67-82ac247914e1"
+  },
+  "state": "FAILED",
+  "reason": "RuntimeError: capture exited 2; no automatic restart; scheduler exited 2; guardian cleanup",
+  "owned": [],
+  "components": {
+    "capture": {
+      "state": "EXITED",
+      "process": {
+        "pid": 12628,
+        "start_ticks": 596259,
+        "ppid": 12627,
+        "state": "R",
+        "boot_id": "7d9266bc-caeb-4e72-9d67-82ac247914e1"
+      },
+      "argv": [
+        "/usr/bin/python3",
+        "/home/lab307/ranger_nav/scripts/fast_livo2/record_worker.py",
+        "--folder",
+        "/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/checks-u0pBPFI3/test_duplicate_publisher_preserves_failure_without_success_marker-x0iop33p/capture"
+      ],
+      "exit_code": 2
+    }
+  },
+  "updated_monotonic": 5963.627500624,
+  "guardian_cleanup_complete": true
+}

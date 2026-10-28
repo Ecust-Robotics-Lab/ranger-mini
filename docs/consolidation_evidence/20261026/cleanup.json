@@ -1,0 +1,86 @@
+{
+  "authorized_by_user": true,
+  "removed": [
+    {
+      "path": "bags/fast-livo2-dds-smoke-a",
+      "bytes": 268013568,
+      "reason": "byte-identical derived DDS bag; final retained",
+      "database_sha256": "42b3112782243a0f6974ee8005a7390cbb8ffbe8602163ecad9fa2a1aafa25b3"
+    },
+    {
+      "path": "bags/fast-livo2-dds-smoke-c",
+      "bytes": 268013568,
+      "reason": "byte-identical derived DDS bag; final retained",
+      "database_sha256": "42b3112782243a0f6974ee8005a7390cbb8ffbe8602163ecad9fa2a1aafa25b3"
+    },
+    {
+      "path": "docs/fast_livo2_evidence/online_20261026/rviz_live.xwd",
+      "bytes": 30076928,
+      "reason": "raw XWD capture; verified PNG retained",
+      "sha256": "7bc61bd2f5de2238cc4d41a7000a3b562ac03d846e49a2a74baf5dfa08b2d669"
+    },
+    {
+      "path": "MvSdkLog",
+      "bytes": 24576,
+      "reason": "generated Hik SDK logs/cache"
+    },
+    {
+      "path": "$(ALLUSERSPROFILE)",
+      "bytes": 77824,
+      "reason": "generated Hik SDK logs/cache"
+    },
+    {
+      "path": "scripts/fast_livo2/__pycache__",
+      "bytes": 12288,
+      "reason": "regenerable Python bytecode cache"
+    },
+    {
+      "path": "scripts/__pycache__",
+      "bytes": 73728,
+      "reason": "regenerable Python bytecode cache"
+    },
+    {
+      "path": "tests/__pycache__",
+      "bytes": 12288,
+      "reason": "regenerable Python bytecode cache"
+    },
+    {
+      "path": "config/__pycache__",
+      "bytes": 4096,
+      "reason": "regenerable Python bytecode cache"
+    },
+    {
+      "path": "ws_nav/src/ranger_navigation/ranger_navigation/__pycache__",
+      "bytes": 16384,
+      "reason": "regenerable Python bytecode cache"
+    },
+    {
+      "path": "ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/__pycache__",
+      "bytes": 45056,
+      "reason": "regenerable Python bytecode cache"
+    },
+    {
+      "path": "calibration/MvSdkLog",
+      "bytes": 671744,
+      "reason": "migrated regenerable SDK/Python cache; calibration logs and captures retained"
+    },
+    {
+      "path": "calibration/$(ALLUSERSPROFILE)",
+      "bytes": 77824,
+      "reason": "migrated regenerable SDK/Python cache; calibration logs and captures retained"
+    },
+    {
+      "path": "calibration/camera_intrinsics/__pycache__",
+      "bytes": 12288,
+      "reason": "migrated regenerable SDK/Python cache; calibration logs and captures retained"
+    },
+    {
+      "path": "calibration/lidar_camera_extrinsics/scripts/__pycache__",
+      "bytes": 98304,
+      "reason": "migrated regenerable SDK/Python cache; calibration logs and captures retained"
+    }
+  ],
+  "retained_final_db": "bags/fast-livo2-dds-smoke-final/view/view_0.db3",
+  "retained_db_sha256": "42b3112782243a0f6974ee8005a7390cbb8ffbe8602163ecad9fa2a1aafa25b3",
+  "approx_allocated_bytes_released": 567230464
+}

@@ -1,0 +1,37 @@
+Starting >>> ranger_localization_bridge
+running egg_info
+writing ../../build/ranger_localization_bridge/ranger_localization_bridge.egg-info/PKG-INFO
+writing dependency_links to ../../build/ranger_localization_bridge/ranger_localization_bridge.egg-info/dependency_links.txt
+writing entry points to ../../build/ranger_localization_bridge/ranger_localization_bridge.egg-info/entry_points.txt
+writing requirements to ../../build/ranger_localization_bridge/ranger_localization_bridge.egg-info/requires.txt
+writing top-level names to ../../build/ranger_localization_bridge/ranger_localization_bridge.egg-info/top_level.txt
+reading manifest file '../../build/ranger_localization_bridge/ranger_localization_bridge.egg-info/SOURCES.txt'
+writing manifest file '../../build/ranger_localization_bridge/ranger_localization_bridge.egg-info/SOURCES.txt'
+running build
+running build_py
+copying ranger_localization_bridge/runtime_config.py -> /home/lab307/ranger_nav/ws_nav/build/ranger_localization_bridge/build/lib/ranger_localization_bridge
+running install
+warning: build_py: byte-compiling is disabled, skipping.
+
+running install_lib
+copying /home/lab307/ranger_nav/ws_nav/build/ranger_localization_bridge/build/lib/ranger_localization_bridge/runtime_config.py -> /home/lab307/ranger_nav/ws_nav/install/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge
+warning: install_lib: byte-compiling is disabled, skipping.
+
+running install_data
+running install_egg_info
+removing '/home/lab307/ranger_nav/ws_nav/install/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge-0.1.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/ranger_localization_bridge/ranger_localization_bridge.egg-info to /home/lab307/ranger_nav/ws_nav/install/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge-0.1.0-py3.10.egg-info
+running install_scripts
+Installing lightning_adapter script to /home/lab307/ranger_nav/ws_nav/install/ranger_localization_bridge/lib/ranger_localization_bridge
+Installing ranger_localization_bridge script to /home/lab307/ranger_nav/ws_nav/install/ranger_localization_bridge/lib/ranger_localization_bridge
+writing list of installed files to '/home/lab307/ranger_nav/ws_nav/build/ranger_localization_bridge/install.log'
+--- stderr: ranger_localization_bridge
+warning: build_py: byte-compiling is disabled, skipping.
+
+warning: install_lib: byte-compiling is disabled, skipping.
+
+---
+Finished <<< ranger_localization_bridge [0.40s]
+
+Summary: 1 package finished [0.52s]
+  1 package had stderr output: ranger_localization_bridge

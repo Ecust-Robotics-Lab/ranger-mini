@@ -1,0 +1,47 @@
+{
+  "finished_at": "2026-10-26T14:39:57.570956+08:00",
+  "session_directory": "/home/lab307/ranger_nav/.runtime/sessions/fast_livo_live/run-b5ekdtik",
+  "state": "STOPPED",
+  "guardian_cleanup_complete": true,
+  "owned_processes_after_stop": [],
+  "last_health": {
+    "monotonic": 188048.781818194,
+    "checks": {
+      "probe_live": true,
+      "lidar": true,
+      "camera": true,
+      "frontend": true,
+      "lidar_unclaimed": false,
+      "camera_unclaimed": false,
+      "frontend_unclaimed": false,
+      "writer": true
+    },
+    "counts": {
+      "/livox/imu": 4343,
+      "/livox/lidar": 4032,
+      "/front/image_sync": 3932,
+      "paired": 3925
+    },
+    "paired_frames": 3925,
+    "map_points": 61807,
+    "sample_ns": 1590193055900272130,
+    "first_pose": [
+      -0.0003447517902512779,
+      0.000875982355680143,
+      -0.0008864123884074247
+    ],
+    "frame_contract_ok": true,
+    "physical_sync_proven": false,
+    "map_optimized": false
+  },
+  "camera_rows": 3997,
+  "camera_status_counts": {
+    "OK": 3935,
+    "BACKWARD": 62
+  },
+  "camera_frame_number_gaps": 0,
+  "all_ok_sequences_even": true,
+  "physical_sync_proven": false,
+  "user_requested_stop": true,
+  "user_visual_feedback": "看上去效果不错"
+}

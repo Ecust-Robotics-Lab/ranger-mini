@@ -1,0 +1,157 @@
+status: PARTIAL
+generated_at: '2026-10-21T17:29:06.754169+08:00'
+capture_start: '2026-10-21T16:33:58.429328+08:00'
+capture_end: '2026-10-21T17:27:08.047486+08:00'
+source: /home/lab307/calibration/camera_intrinsics/combined_20261021_163239_171804
+opencv_version: 4.5.4
+image_width: 1280
+image_height: 1024
+pattern_size:
+- 11
+- 8
+square_size_m: 0.02
+camera: Hikrobot MV-CU013-A0UC
+lens: MVL-HF0628M-6MPE 6mm
+distortion_model: plumb_bob
+coefficient_order:
+- k1
+- k2
+- p1
+- p2
+- k3
+camera_matrix:
+- - 1299.9988190926874
+  - 0.0
+  - 640.2595320942488
+- - 0.0
+  - 1299.8402206328024
+  - 484.9367557425784
+- - 0.0
+  - 0.0
+  - 1.0
+distortion_coefficients:
+- -0.08288339607839673
+- 0.15032436811294939
+- -0.0005625494644882011
+- -0.00039491110944710704
+- -0.08810366754215963
+parameters:
+  fx: 1299.9988190926874
+  fy: 1299.8402206328024
+  cx: 640.2595320942488
+  cy: 484.9367557425784
+  k1: -0.08288339607839673
+  k2: 0.15032436811294939
+  p1: -0.0005625494644882011
+  p2: -0.00039491110944710704
+  k3: -0.08810366754215963
+std_deviations_intrinsics:
+  fx: 0.187518076743341
+  fy: 0.18301529316357917
+  cx: 0.23454658591530847
+  cy: 0.19062187722765808
+  k1: 0.0008265564735437952
+  k2: 0.008869360627730732
+  p1: 4.3626980722162245e-05
+  p2: 5.511613786592385e-05
+  k3: 0.027189877384158682
+train_rms_px: 0.07677566299701596
+holdout_rms_px: 0.08513876264332756
+holdout_split_corner_rms_px: 0.08427619678669795
+input_count: 63
+train_count: 50
+holdout_count: 13
+train_files:
+- image_001.png
+- image_002.png
+- image_004.png
+- image_005.png
+- image_006.png
+- image_007.png
+- image_009.png
+- image_010.png
+- image_011.png
+- image_012.png
+- image_014.png
+- image_015.png
+- image_016.png
+- image_017.png
+- image_019.png
+- image_020.png
+- image_021.png
+- image_022.png
+- image_024.png
+- image_025.png
+- image_026.png
+- image_027.png
+- image_029.png
+- image_030.png
+- image_031.png
+- image_032.png
+- image_034.png
+- image_035.png
+- image_036.png
+- image_037.png
+- image_039.png
+- image_040.png
+- image_041.png
+- image_042.png
+- zz_01_session_20261021_171804__image_001.png
+- zz_01_session_20261021_171804__image_002.png
+- zz_01_session_20261021_171804__image_003.png
+- zz_01_session_20261021_171804__image_004.png
+- zz_01_session_20261021_171804__image_006.png
+- zz_01_session_20261021_171804__image_007.png
+- zz_01_session_20261021_171804__image_008.png
+- zz_01_session_20261021_171804__image_009.png
+- zz_01_session_20261021_171804__image_011.png
+- zz_01_session_20261021_171804__image_012.png
+- zz_01_session_20261021_171804__image_013.png
+- zz_01_session_20261021_171804__image_014.png
+- zz_01_session_20261021_171804__image_016.png
+- zz_01_session_20261021_171804__image_017.png
+- zz_01_session_20261021_171804__image_018.png
+- zz_01_session_20261021_171804__image_019.png
+holdout_files:
+- image_003.png
+- image_008.png
+- image_013.png
+- image_018.png
+- image_023.png
+- image_028.png
+- image_033.png
+- image_038.png
+- image_043.png
+- zz_01_session_20261021_171804__image_005.png
+- zz_01_session_20261021_171804__image_010.png
+- zz_01_session_20261021_171804__image_015.png
+- zz_01_session_20261021_171804__image_020.png
+excluded: []
+automatically_removed_outliers: []
+high_residual_candidates: []
+high_residual_threshold_px: 0.5
+corner_hull_coverage: 0.5648414004827216
+train_corner_hull_coverage: 0.5641401778808365
+occupied_grid_cells: 39
+grid_cells: 48
+tilt_deg_range:
+- 2.495929900776779
+- 47.363624897016024
+reduced_training_focal_max_relative_change: 0.00013832975208072362
+reduced_training_center_max_change_px: 0.13309307154842334
+radial_derivative_min: 0.9750671361169438
+compatibility_k3_fixed_zero:
+  train_rms_px: 0.07687405787503265
+  holdout_rms_px: 0.08505266595660031
+  parameters:
+    fx: 1299.9243093829689
+    fy: 1299.7688125941456
+    cx: 640.2514561358767
+    cy: 484.91610083416714
+    k1: -0.08058610527446257
+    k2: 0.12249574273413627
+    p1: -0.0005626841419798357
+    p2: -0.0003957718653253932
+    k3: 0.0
+warnings:
+- 角点覆盖不足：边缘/角落外推的可信度有限，建议补充边缘视角。

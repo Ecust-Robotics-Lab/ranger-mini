@@ -1,0 +1,36 @@
+[INFO] [1793110490.817140820] [hik_camera_trigger]: Starting HikCameraRos2DriverNode
+[INFO] [1793110490.846775738] [hik_camera_trigger]: Image publisher QoS: topic=front/image, reliability=reliable, durability=volatile, depth=5
+[INFO] [1793110490.846861129] [hik_camera_trigger]: Sync image publisher enabled: topic=/front/image_sync reliability=reliable (lidar-domain stamps via timeshare)
+[INFO] [1793110490.846983338] [hik_camera_trigger]: camera calibration URL: package://hik_camera_trigger_driver/config/camera_info.yaml
+[INFO] [1793110490.847336412] [hik_camera_trigger]: Camera capture thread started
+[INFO] [1793110490.963620086] [hik_camera_trigger]: Matched target camera: SN=DB1216907, transport=USB3
+[INFO] [1793110492.184707640] [hik_camera_trigger]: Trigger profile applied: source=Line0, exposure=20000.0 us (requested 20000.0), gain=10.02 (requested 10.00)
+[INFO] [1793110492.184867672] [hik_camera_trigger]: timeshare mapped: /home/lab307/ranger_nav/.runtime/sessions/fast_livo_live/sensors-typrg78w/timeshare
+[INFO] [1793110492.184938759] [hik_camera_trigger]: sync CSV log: /home/lab307/ranger_nav/.runtime/sessions/fast_livo_live/sensors-typrg78w/camera_sync.csv
+[INFO] [1793110492.196778312] [hik_camera_trigger]: Camera connected and grabbing started: index=0, transport=USB3, SN=DB1216907
+[INFO] [1793110492.266872418] [hik_camera_trigger]: sync summary: total=1 ok=1 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1793110492.266915053] [hik_camera_trigger]: Publishing image: 1280x1024 RGB8, first frame=0, source_pixel=BayerGB8 (0x0108000A)
+[INFO] [1793110497.361134118] [hik_camera_trigger]: sync summary: total=52 ok=52 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1793110502.364399599] [hik_camera_trigger]: sync summary: total=102 ok=102 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1793110507.461370719] [hik_camera_trigger]: sync summary: total=153 ok=153 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1793110512.462271412] [hik_camera_trigger]: sync summary: total=203 ok=203 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1793110517.462600658] [hik_camera_trigger]: sync summary: total=253 ok=253 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1793110522.562178848] [hik_camera_trigger]: sync summary: total=304 ok=304 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1793110527.563363404] [hik_camera_trigger]: sync summary: total=354 ok=354 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1793110532.661093015] [hik_camera_trigger]: sync summary: total=405 ok=405 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1793110537.663730819] [hik_camera_trigger]: sync summary: total=455 ok=455 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1793110542.762213070] [hik_camera_trigger]: sync summary: total=506 ok=506 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1793110547.863464773] [hik_camera_trigger]: sync summary: total=557 ok=557 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1793110552.961249988] [hik_camera_trigger]: sync summary: total=608 ok=608 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1793110557.962253166] [hik_camera_trigger]: sync summary: total=658 ok=658 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1793110563.061518133] [hik_camera_trigger]: sync summary: total=709 ok=709 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1793110568.064634089] [hik_camera_trigger]: sync summary: total=759 ok=759 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1793110573.164106684] [hik_camera_trigger]: sync summary: total=810 ok=810 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1793110578.261717548] [hik_camera_trigger]: sync summary: total=861 ok=861 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1793110583.360856307] [hik_camera_trigger]: sync summary: total=912 ok=912 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1793110588.363322967] [hik_camera_trigger]: sync summary: total=962 ok=962 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1793110593.460950582] [hik_camera_trigger]: sync summary: total=1013 ok=1013 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1793110598.461551113] [hik_camera_trigger]: sync summary: total=1063 ok=1063 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1793110603.462896322] [hik_camera_trigger]: sync summary: total=1113 ok=1113 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1793110608.562311320] [hik_camera_trigger]: sync summary: total=1164 ok=1164 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1793110613.661243377] [hik_camera_trigger]: sync summary: total=1215 ok=1214 no_map=0 no_writer=0 unstable=0 stale=0 backward=1

@@ -1,0 +1,103 @@
+Panels:
+- Class: rviz_common/Displays
+  Name: Displays
+- Class: rviz_common/Views
+  Name: Views
+Visualization Manager:
+  Class: ''
+  Global Options:
+    Background Color: 28; 30; 35
+    Fixed Frame: fast_livo_local
+    Frame Rate: 30
+  Displays:
+  - Class: rviz_default_plugins/Grid
+    Name: Grid
+    Enabled: true
+    Cell Size: 1
+    Plane Cell Count: 30
+    Color: 80; 80; 85
+  - Class: rviz_default_plugins/PointCloud2
+    Name: Frontend accumulated cloud (unoptimized)
+    Enabled: true
+    Topic:
+      Value: /fast_livo/view/map
+      Reliability Policy: Reliable
+      Durability Policy: Volatile
+      Depth: 2
+    Size (m): 0.04
+    Size (Pixels): 3
+    Style: Points
+    Color Transformer: AxisColor
+    Axis: Z
+    Position Transformer: XYZ
+    Decay Time: 0
+    Alpha: 1
+  - Class: rviz_default_plugins/PointCloud2
+    Name: Current deskewed scan
+    Enabled: true
+    Topic:
+      Value: /fast_livo/view/scan
+      Reliability Policy: Reliable
+      Durability Policy: Volatile
+      Depth: 2
+    Size (Pixels): 2
+    Style: Points
+    Color Transformer: FlatColor
+    Color: 255; 245; 225
+    Position Transformer: XYZ
+    Decay Time: 0
+    Alpha: 0.7
+  - Class: rviz_default_plugins/Path
+    Name: LIVO trajectory
+    Enabled: true
+    Topic:
+      Value: /fast_livo/view/path
+      Reliability Policy: Reliable
+      Durability Policy: Volatile
+      Depth: 2
+    Color: 255; 80; 80
+    Line Style: Lines
+    Line Width: 0.04
+    Pose Style: None
+  - Class: rviz_default_plugins/Pose
+    Name: IMU pose
+    Enabled: true
+    Topic:
+      Value: /fast_livo/view/pose
+      Reliability Policy: Reliable
+      Depth: 2
+    Shape: Axes
+    Axes Length: 0.6
+    Axes Radius: 0.04
+  - Class: rviz_default_plugins/Image
+    Name: Camera used by VIO
+    Enabled: true
+    Topic:
+      Value: /rgb_img
+      Reliability Policy: Reliable
+      Durability Policy: Volatile
+      Depth: 2
+    Transport Hint: raw
+    Normalize Range: true
+  Tools:
+  - Class: rviz_default_plugins/Interact
+  - Class: rviz_default_plugins/MoveCamera
+  - Class: rviz_default_plugins/Select
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 10
+      Pitch: 0.6
+      Yaw: 0.8
+      Focal Point:
+        X: 0
+        Y: 0
+        Z: 0
+      Target Frame: fast_livo_local
+      Name: Current View
+  Value: true
+Window Geometry:
+  Width: 1400
+  Height: 900
+  X: 50
+  Y: 50

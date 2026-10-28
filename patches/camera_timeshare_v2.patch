@@ -1,0 +1,38 @@
+--- a/timeshare_writer/src/timeshare_writer_node.cpp
++++ b/timeshare_writer/src/timeshare_writer_node.cpp
+@@ -121,7 +121,7 @@
+ private:
+   bool openSharedFile(const std::string & path)
+   {
+-    fd_ = open(path.c_str(), O_CREAT | O_RDWR | O_TRUNC, 0666);
++    fd_ = open(path.c_str(), O_CREAT | O_RDWR, 0666);
+     if (fd_ < 0) {
+       RCLCPP_ERROR(
+         this->get_logger(), "open(%s) failed: %s", path.c_str(),
+@@ -204,10 +204,12 @@
+     prev_stamp_ns_ = stamp_ns;
+     prev_arr_ns_ = now;
+ 
+-    // Protocol: low first, then high. A reader that sees the same high twice
+-    // owns a consistent (low, high) pair.
++    // Protocol v2: odd/even seqlock; see the paired camera reader.
++    // Odd = write in progress; even nonzero = committed snapshot (v2).
++    // Publish the odd marker BEFORE touching low; readers reject odd high.
++    __atomic_store_n(&map_->high, int64_t(2 * seq_ + 1), __ATOMIC_SEQ_CST);
+     __atomic_store_n(&map_->low, stamp_ns, __ATOMIC_SEQ_CST);
+-    __atomic_store_n(&map_->high, ++seq_, __ATOMIC_SEQ_CST);
++    __atomic_store_n(&map_->high, int64_t(2 * ++seq_), __ATOMIC_SEQ_CST);
+ 
+     history_.push_back({stamp_ns, now});
+     if (history_.size() > static_cast<std::size_t>(history_size_)) {
+--- a/hik_camera_trigger_driver/src/hik_camera_node.cpp
++++ b/hik_camera_trigger_driver/src/hik_camera_node.cpp
+@@ -2165,7 +2165,7 @@
+     if (h1 == 0 || low == 0) {
+       return -2;  // NO_WRITER (writer never wrote)
+     }
+-    if (h1 != h2) {
++    if (h1 != h2 || (h1 & 1) != 0) {
+       return -3;  // UNSTABLE (write raced with read)
+     }
+     seq = h1;

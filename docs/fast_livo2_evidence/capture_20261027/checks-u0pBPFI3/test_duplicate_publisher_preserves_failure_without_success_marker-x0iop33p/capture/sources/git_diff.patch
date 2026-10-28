@@ -1,0 +1,2219 @@
+diff --git a/.gitattributes b/.gitattributes
+index 2f418c2..9a81bae 100644
+--- a/.gitattributes
++++ b/.gitattributes
+@@ -3,3 +3,9 @@ docs/architecture_evidence/batch2_20261019/**/*.log -whitespace
+ docs/architecture_evidence/batch2_20261019/**/*.txt -whitespace
+ docs/architecture_evidence/batch3_20261020/**/*.log -whitespace
+ docs/architecture_evidence/batch3_20261020/**/*.txt -whitespace
++docs/fast_livo2_evidence/**/*.log -whitespace
++docs/fast_livo2_evidence/**/*.txt -whitespace
++docs/fast_livo2_evidence/**/*.diff -whitespace
++patches/fast_livo2_stage_a.patch -whitespace
++docs/consolidation_evidence/**/*.log -whitespace
++docs/consolidation_evidence/**/*.txt -whitespace
+diff --git a/.gitignore b/.gitignore
+index 08ab34a..88216bf 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -23,8 +23,47 @@ docs/02_evidence/*/ros_messages.jsonl
+ .DDS/
+ *.swp
+ __pycache__/
+-ws_camera/
++*.pyc
++*.xwd
++MvSdkLog/
++$(ALLUSERSPROFILE)/
++ws_camera/*
++!ws_camera/src/
++ws_camera/src/*
++!ws_camera/src/hik_camera_trigger_driver/
++!ws_camera/src/timeshare_writer/
++ws_camera/src/hik_camera_trigger_driver/hikSDK
++ws_fast_livo/
++!ws_fast_livo/
++ws_fast_livo/*
++!ws_fast_livo/src/
++docs/fast_livo2_evidence/**/*.xwd
+ mvs/
+ 
+ # Local managed-session state and per-run logs
+ .runtime/
++
++# Integrated calibration: retain procedures/configuration; raw captures/results
++# stay on disk and in the migration manifest, as with bags/ and local workspaces.
++calibration/ws_calib/
++calibration/bags/
++calibration/logs/
++calibration/MvSdkLog/
++calibration/$(ALLUSERSPROFILE)/
++calibration/**/datasets/
++calibration/**/logs/
++calibration/**/results_archive/
++calibration/**/session_*/
++calibration/**/combined_*/
++calibration/**/build_manual/
++calibration/**/build_integrated/
++calibration/**/install_integrated/
++calibration/**/*.png
++calibration/**/*.jpg
++calibration/**/*.jpeg
++calibration/**/*.ppm
++calibration/**/*.pcd
++calibration/**/*.npy
++calibration/**/*.npz
++calibration/**/*.db3
++calibration/**/*.mcap
+diff --git a/AGENTS.md b/AGENTS.md
+index ebc9340..2ee4e3c 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -1,55 +1,45 @@
+-# Ranger Mini + Livox Mid-360S 导航系统工程约束
+-
+-## 授权范围与阶段
+-- 在当前机器上检查和实施工程，不能只提供泛泛的安装建议。
+-- 严格按用户指定阶段执行；不得自动跳到下一阶段。尚未收到阶段指令时，只做约束落盘与必要的项目初始化。
+-- 阶段结束更新 `docs/STATUS.md` 和对应阶段报告。
+-
+-## 项目背景与路线
+-- 硬件为用户确认的 Ranger Mini V2 底盘与 Livox Mid-360S 雷达（2026-09-15 更正；历史记录中的 Mid-360 名称不作为实物型号依据）。前期讨论以 Ranger Mini 3 为目标，但启动底盘驱动前必须核对实物版本。
+-- 用户曾通过 `candump can0` 成功收到数据，优先查找并复用已有配置；不能将历史成功当成本机当前验证结果。
+-- 当前建图和定位明确先使用 `gaoxiang12/lightning-lm`。
+-- 目标是在有斜坡的巡检场景运行。第一版先完成通信、录包、建图、定位和平地导航，再增加坡道能力；此路线不构成自动进入后续阶段的授权。
+-- 不假设当前电脑就是其他项目使用的电脑，也不假设当前是原生 Ubuntu。
+-
+-## 候选技术基线（须经实际检查确认）
+-- Ubuntu 22.04 + ROS 2 Humble。
+-- AgileX ranger_ros2 + ugv_sdk。
+-- Livox-SDK2 + livox_ros_driver2。
+-- Lightning-LM。
+-- 后续 Nav2 + Smac Hybrid-A* + MPPI。
+-
+-官方源码：
+-- https://github.com/agilexrobotics/ranger_ros2
+-- https://github.com/agilexrobotics/ugv_sdk
+-- https://github.com/Livox-SDK/Livox-SDK2
+-- https://github.com/Livox-SDK/livox_ros_driver2
+-- https://github.com/gaoxiang12/lightning-lm
+-
+-## 源码、环境与可复现性
+-- 优先读取实际源码、launch、参数声明和官方文档，不凭记忆编造接口。
+-- 所有仓库记录分支、完整 commit SHA 和本地修改，禁止用无法复现的“最新版”描述。游离 HEAD 要明确标记；未获取的仓库不得虚构版本。
+-- 不删除现有工作空间，不覆盖已有地图和 rosbag，不擅自重装 ROS、系统或 CUDA。
+-- 不修改无关项目，不把本项目混入已有 Isaac Sim、Conda 或其他 SLAM 工程。
+-- 安装脚本先审查再运行。网络和系统配置修改前记录原值，并提供回滚方法。
+-- 需要 sudo 时使用正常授权流程，不索取或记录密码，不绕过权限。
+-
+-## 真机安全与测试
+-- 启动可能接管底盘的节点、发送 CAN 控制、发布非零速度或执行导航目标，必须先得到用户对该次真机测试的明确确认。
+-- 不能因为“没有发布非零 cmd_vel”就认为启动驱动绝对无副作用；启动前必须检查初始化过程是否切换控制模式。
+-- 自动运行的测试默认 dry-run。任何运动许可在进程重启后失效，必须重新取得该次真机测试确认。
+-- 真机不在线或缺少人工操作时，完成当前获授权阶段可完成的代码与离线测试，明确标记待验项，不伪造真机通过结果。
+-
+-## 工程组织
+-- 项目根目录为 `/home/lab307/ranger_nav`；初始化前检查已有合适工程，优先合理复用。
+-- 基础目录：`docs/`、`scripts/`、`config/`、`patches/`、`bags/`、`maps/`，以及本文件。
+-- 按依赖实际需要建立独立工作空间：`ws_livox/`（雷达驱动）、`ws_base/`（底盘驱动）、`ws_slam/`（Lightning-LM）、`ws_nav/`（自有集成包与导航配置）。
+-- 不一次创建大量没有实现的空包；未到对应阶段不提前创建工作空间或安装依赖。
+-
+-## 每阶段报告必填
+-- 本阶段实际完成了什么。
+-- 执行的关键命令与退出结果。
+-- 修改的文件。
+-- 测试证据与日志路径。
+-- `PASS` / `PARTIAL` / `BLOCKED`，明确其适用范围。
+-- 下一步需要用户做的最少人工操作。
++# Ranger 导航工程约束
++
++更新：2026-10-26。新上下文先读 `docs/HANDOFF.md`、`docs/STATUS.md`；目录与操作分别见 `docs/PROJECT_LAYOUT.md`、根 README。本文件只维护当前约束，历史事实以带日期报告为准。
++
++## 当前范围与授权
++
++- 在 `/home/lab307/ranger_nav` 实际检查、实现和验证；优先复用现有工程，不推倒重建。
++- 当前已完成 FAST-LIVO2 阶段 A 与独立后端 B 的本机构建、合成/离线测试；物理同步、标定与三传感器运动回环验收仍 PARTIAL。
++- 本轮用户已明确授权阶段 B 源码、构建、离线测试和报告；交付见 `docs/fast_livo2_stage_b_report.md`。C1/C2、真实硬件、导航运动、高程与坡道不在本轮授权内，完成 B 后停止。
++- 下一窗口收到明确的阶段实施指令后，在授权范围内自主完成源码、编译和离线测试；缺少运动录包不阻止可执行的离线实现，但不能报告真实闭环或定位精度通过。
++- 阶段结束更新 `docs/STATUS.md` 和对应报告，记录命令/退出结果、修改文件、证据、PASS/PARTIAL/BLOCKED 的适用范围与最少人工待办。
++
++## 本机、硬件与生产默认
++
++- 已核实环境 Ubuntu 22.04、ROS 2 Humble、x86_64、系统 Python 3.10；换机器/系统后重新核实，不能套用历史验证。
++- 用户确认实物 **Ranger Mini V2**，雷达 **Livox Mid-360S**，海康相机使用雷达外触发方案；历史 Mini 3、Mid-360 称呼不作实物依据。设备 IP/SN 读取当前配置与运行结果，不抄旧报告值。
++- Lightning-LM 仍为生产默认建图/定位；连续里程计默认 wheel，地形后端 disabled。保留 Nav2、Smac Hybrid-A*、MPPI 及安全链。
++- `config/runtime.yaml` / `config/profiles/` 选择建图前端与全局定位，二者独立。FAST-LIVO2 前端与阶段 B 建图后端都不提供先验地图定位，不能配置成已有地图全局定位后端。
++- 必须保留 LiDAR–IMU–Camera 融合；禁止关闭图像后仍声称 FAST-LIVO2。没有三传感器运动录包，静态包、无图像运动包不作为三融合运动验收。
++
++## 组织、版本与资产
++
++- `calibration/` 是正式标定/同步目录；`~/calibration` 只是兼容链接，新入口不得依赖旧路径。当前同步包位于 `ws_camera/src/hik_camera_trigger_driver` 与 `timeshare_writer`；原相机驱动/SDK及用户修改保留。
++- 工作空间按实际依赖分离：ws_base、ws_livox、ws_camera、ws_slam（Lightning）、ws_fast_livo、ws_nav（公共定位/导航）。FAST 源码/审查仓库在 `vendor/fast_livo2_review/`，版本锁在 `config/fast_livo2/sources.lock.json`，实际补丁在 `patches/`。
++- 读取实际源码、参数、launch、许可证和依赖；记录完整 SHA、分支或 DETACHED、本地修改。未验证的来源不得编造为已核实版本。
++- 检查 Git 状态并保留现有修改；当前大量阶段 A/整合成果尚未提交，不可 reset/clean。用户原有雷达文档改动及六份 driver 证据保持。
++- 不删除工作空间、原始 bag、地图、标定/失败证据或 `.runtime/backups/`。可再生 build 也需先核对运行依赖：Lightning 当前从 build/bin 启动，部分旧部署是链接。
++- 不擅自升级系统、ROS、CUDA、网络或驱动。需要改系统/网络时保存原值并提供回退；sudo 使用正常授权，不索取/记录密码，不绕过权限。
++
++## 传感器、时间、后端和 TF
++
++- 当前前端契约见 `docs/fast_livo2_interfaces.md`。后端接 `/fast_livo/odometry` 与 `/fast_livo/deskewed_imu`：同戳、VIO 后 IMU 参考点，云为去畸变单区间机体系云。
++- 禁止用累积世界云冒充单帧机体系云，或重复变换世界云。保存全局地图必须逐关键帧按优化位姿重建，一个刚体修正不等于历史图已优化。
++- 图像复制扫描戳不证明物理同步；所有零偏移是试验假设，禁止无证据硬编码 ±100 ms。共享文件已配套修复 v2 一致性协议，旧历元/曝光相位仍待验。
++- 当前公共桥接唯一发布 map→odom、odom→base_link，底盘原生 TF 与前端 native_tf 关闭。参考 PGO/localizer 不得争抢公共 TF；第一版不反馈修改前端滤波器/视觉地图。
++- `T_map_odom(t) = T_map_base(t) × inverse(T_odom_base(t))` 必须同一机体、同一原采样时刻；用既有轮速历史插值，禁止外推或用两个最新到达值相减。FAST 局部系不等于 wheel odom。
++- 实时传感器旧历元与主机/轮速时钟尚不能直接拼接；离线使用已审查的 header-clock 视图与节点模拟时钟，不改原包或用重打当前时间掩盖问题。
++- 定位失效不发布未经验证的新修正，撤销就绪。给定初值 ICP 与无初值全局搜索分别验收；初始化、退化、丢失、恢复必须可观测。
++
++## 真机和测试
++
++- 自动入口默认 dry-run；真实雷达/相机会话已按用户指令停止，本次 B 阶段只做隔离离线测试，不重启设备。
++- 启动可能接管底盘的节点、CAN 控制、非零速度或导航目标，必须有该次明确授权；启动前审查是否切控制模式。重启不继承运动许可，不因“未发非零速度”假定无副作用。
++- 复用受管会话的依赖/占用检查、进程身份、日志和故障清理；不按进程名全局杀、不自动重启设备。
++- 离线 ROS 测试隔离 domain/localhost，不连接底盘。只运行与改动相关的验证；无真值不编造 APE/RPE 或绝对定位精度，报告真实可测量指标。
+diff --git a/ARCHITECTURE_PLAN.md b/ARCHITECTURE_PLAN.md
+deleted file mode 100644
+index d3a03fb..0000000
+--- a/ARCHITECTURE_PLAN.md
++++ /dev/null
+@@ -1,111 +0,0 @@
+-# 导航架构渐进改造计划
+-
+-日期：2026-10-19；更新：2026-10-20。状态：批次 1–3 已完成，均限对应磁盘/离线验证；真机验收缺口保留。结果见 [批次 1 报告](docs/architecture_baseline.md)、[批次 2 报告](docs/architecture_batch2_report.md)、[批次 3 报告](docs/architecture_batch3_report.md)。
+-
+-## 1. 目标与当前授权
+-
+-目标：把连续里程计、全局定位、地图生产和地形理解分离，通过适配器和配置选择后端，使替换定位算法时无需修改 Nav2、安全门禁和底盘接口。
+-
+-采用渐进改造，保留现有工作空间、Lightning 基线、测试、地图与 rosbag。用户拟采用 FAST-LIVO2 和 elevation_mapping_cupy；本计划不表示这些后端已具备本机兼容性或已获真机验收。
+-
+-首次交付为创建分支、写入本文件和单独提交；用户随后逐批授权继续，当前已完成至批次 3。后续按批次实践，不自动安装候选算法、升级系统/ROS/CUDA、启动底盘或进入坡道测试。任何可能接管底盘的启动与运动测试继续遵守 AGENTS.md 的逐次授权要求。
+-
+-## 2. 分支与基线
+-
+-- 分支：`refactor/pluggable-navigation`。
+-- 起点：`main`，完整 commit `1963cc84d9e1c7d448f5be95c9599ead52c13455`。
+-- 首个提交仅包含本文件，提交说明：`docs: record pluggable navigation architecture plan`。
+-- 初始工作区没有已跟踪文件修改；六个未跟踪雷达证据目录保持原位，不加入本次提交：`docs/03_evidence/driver-{5v7_r4c4,a9w6s6i0,dhth97g3,hj360f0f,nrs50iyr,y2sd6pvt}/`。
+-- 硬件依据现有项目记录为 Ranger Mini V2、Mid-360S；相机和同步方案后续按本机实际情况核验。
+-- `docs/STATUS.md` 更新于 2026-09-28，而后续 Git 记录包含 2026-09-30 现场短时自主行驶、重规划失败和参数调整。不得将旧状态或提交说明单独当作当前完整真机验收。
+-
+-## 3. 架构接口与默认决策
+-
+-采用独立 ROS 节点、后端适配器和统一启动配置，不要求所有算法实现同一种进程内插件。
+-
+-| 子系统 | 职责与公共接口原则 |
+-| --- | --- |
+-| 传感器与标定 | 管理点云、IMU、图像及 CameraInfo；明确时钟来源、时间戳、坐标系、QoS 和标定版本；算法需要的原始逐点时间信息不得丢弃 |
+-| 连续里程计 | 输出 Odometry，明确车体参考点、速度坐标系和采样时间；负责连续局部运动估计，允许漂移 |
+-| 全局定位适配器 | 输出地图系车体位姿和健康状态；负责已有地图定位、初始化与重定位能力声明；原生分数和枚举在适配器内解释 |
+-| 公共状态与 TF | 管理时间对齐、公共 TF 和健康汇总；保留 `/navigation_ready` 兼容现有门禁，不依赖 Lightning 专属分数 |
+-| 地图资产 | 通过地图包关联原生定位地图、导航地图、可选高程图、坐标系、标定版本、源数据和算法版本；不假设不同后端原生地图互通 |
+-| 地形与通行代价 | 保留 GridMap 高程、方差和有效区域；独立转换为 Ranger 轮式底盘可通行性，再接入导航代价接口 |
+-| 导航与安全 | 保持现有 Nav2、仲裁、平滑、运动门禁、Collision Monitor、底盘入口顺序；安全链不依赖算法私有接口 |
+-
+-公共 TF 使用 `map → odom → base_link → sensors`，每条边只有一个指定发布者。算法原生位姿通过话题或隔离的私有坐标系进入适配器，避免与公共 TF 争夺发布权。
+-
+-时间对齐采用定位采样时刻 t 的连续里程计：
+-
+-```text
+-T_map_odom(t) = T_map_base(t) × inverse(T_odom_base(t))
+-```
+-
+-缓存并插值里程计，不能用不同采样时刻的位姿直接相乘。无法对齐时报告退化，不以放宽新鲜度阈值替代修复。具体缓存、QoS、消息字段及阈值在对应批次结合源码和测试确定并记录。
+-
+-运行配置分别选择机器人、传感器、连续里程计、全局定位、建图后端、地形后端和地图包。初始默认仍为现有轮速、Lightning 和禁用地形后端。建图与定位后端不强绑定；不支持的地图组合明确拒绝。
+-
+-局部滚动高程图优先依附连续 odom；地形模块初次以旁路运行，不改变现有运动输出。高程不直接等同于可通行性，坡度、台阶、粗糙度和净空阈值必须按底盘能力验证。
+-
+-## 4. 实施批次与交付
+-
+-### 批次 1：基线整理
+-
+-- 对照阶段报告、Git 变更和已有日志，补齐事实时间线，区分历史记录、离线结果与真机待验。
+-- 登记各仓库分支、完整 SHA、本地修改、补丁及有效配置；未获取的仓库不虚构版本。
+-- 核对定位、导航、可视化地图的来源和坐标关系，建立地图包清单。
+-- 明确常规配置与窄口实验配置，记录规划半径与实际车体碰撞模型的差异，不擅自改变现场参数。
+-- 验收：能够从记录重现当前软件与地图配置，文档不把旧快照当当前验收。
+-
+-### 批次 2：接口与配置解耦
+-
+-- 以 Lightning 为首个后端，分离专属状态解释、公共健康检查、外参换算和 TF 管理。
+-- 统一运行配置和地图包引用，消除多个入口各自选择地图造成的歧义。
+-- 健康状态区分初始化、有效、退化、丢失和错误，携带采样时间与原因；不跨算法复用置信度门槛。
+-- 保留现有外部导航与安全接口，旧入口作为兼容包装逐步迁移。
+-- 验收：Lightning 通过适配器驱动现有导航接口，安全测试保持通过；模拟后端可在不改 Nav2/门禁代码的情况下替换输入。
+-
+-### 批次 3：时间与进程管理
+-
+-- 修复当前最新定位位姿与当前轮速位姿混合计算问题，实现采样时刻对齐和缺失数据退化。
+-- 统一组件启动、就绪检查、退出和会话日志，使用本会话进程身份管理子进程，不以固定 sleep 或进程名匹配作为就绪/归属依据。
+-- 支持 Lifecycle 的组件使用生命周期管理；普通进程由外部监督与健康检查管理。
+-- 保持 dry-run 默认行为，重启后运动许可失效，不自动恢复运动。
+-- 验收：延迟与故障注入产生预期健康状态，退出不遗留本会话子进程，其他会话不受影响。
+-
+-### 批次 4：FAST-LIVO2 接入准备
+-
+-- 固定并审查候选 ROS 2 实现，核对依赖、输入格式、位姿参考系、输出时间语义及资源需求。
+-- 核验相机触发、硬件同步、时间戳和内外参。本地相机代码存在 TriggerMode=Off 及 this->now() 打戳，不能以同款硬件推断同步已经完成。
+-- 单独核实已有地图加载、冷启动定位、重定位与回环能力，不把连续里程计等同于完整全局定位。
+-- 输出具体接入方案和兼容性结论；后续先离线/旁路验证，再考虑替代现有后端。
+-- 验收：职责、缺失能力、接口转换和测试数据明确；不以点云显示正常代替定位验收。
+-
+-### 批次 5：高程地图接入准备
+-
+-- 固定 elevation_mapping_cupy 的具体版本，核验 Humble、Python、CUDA 和 GPU 兼容性及资源隔离需求。
+-- 明确点云/位姿输入、GridMap 输出、局部图坐标系及全局修正处理方式。
+-- 设计 Ranger 可通行性到 Nav2 代价接口的转换，保留不确定性和未知区域语义。
+-- 输出旁路验证方案；坡道运动能力另行分阶段验收。
+-- 验收：地图刷新、有效区域、延迟与失效状态可观测，后端故障不移除既有防撞能力。
+-
+-## 5. 验证、提交与报告
+-
+-- 本轮落盘仅检查分支起点、文件内容、Git diff 和提交范围，不运行 ROS 或新增代码测试。
+-- 后续复用 `tests/test_stage5_bridge.py`、`tests/test_stage6_gate_unit.py`、`tests/test_stage6_safety.py`；先审查运行方式，保持隔离 ROS domain 和无真机控制。
+-- 补充契约测试：定位延迟、时间错位/回退、轮速及定位断流、定位跳变、重复 TF、错误地图包、节点崩溃及重启许可失效。
+-- 测试时间对齐必须核对变换数值，不仅检查 TF 存在；安全测试必须验证有效放行及故障阻断，避免始终输出零造成假通过。
+-- 每批单独提交，更新 `docs/STATUS.md` 与对应改造报告，包含关键命令/退出码、修改文件、证据路径、PASS/PARTIAL/BLOCKED 适用范围和最少人工待办。
+-- 本次分支与计划初始化不改变原导航阶段验收状态。后续阶段报告不得把候选后端准备工作写成部署或真机通过。
+-
+-## 6. 参考与待核实边界
+-
+-- FAST-LIVO2：https://github.com/hku-mars/FAST-LIVO2
+-- 硬件参考：https://github.com/hku-mars/LIV_handhold_2
+-- 高程地图：https://github.com/leggedrobotics/elevation_mapping_cupy/tree/ros2
+-- TF 语义：https://github.com/openrobotics/reps/blob/main/_posts/rep-0105.md
+-- Lifecycle：https://design.ros2.org/articles/node_lifecycle.html
+-
+-本次只查阅候选上游说明，未获取或锁定其部署 commit。所查 FAST-LIVO2 官方主线说明采用 ROS 1/catkin；高程地图 ros2 分支说明面向 Jazzy/Ubuntu 24.04/CUDA 12。上述内容仅作为兼容性审查线索，不作为本机可直接安装的依据。
+-
+-保留既有独立定位数据、精确外参、传感时间质量和真机导航待验项。是否通过必须由对应证据确认，不能通过架构重构消除这些验收缺口。
+diff --git a/README.md b/README.md
+index e00e8a8..3c583cc 100644
+--- a/README.md
++++ b/README.md
+@@ -1,188 +1,108 @@
+ # Ranger Mini 导航系统
+ 
+-面向 **AgileX Ranger Mini V2 + Livox Mid-360S** 的 ROS 2 导航工程，包含传感器与底盘集成、Lightning-LM 建图和定位、Nav2 平地导航、安全速度链及离线验证工具。
++ROS 2 Humble / Ubuntu 22.04 / x86_64，实物为 **Ranger Mini V2 + Livox Mid-360S + 海康相机**。Lightning-LM 保持生产默认；FAST-LIVO2 三传感器前端已离线及真实在线运行，独立回环后端 B 已完成本机构建与离线验证；先验定位和无初值重定位未实施。
+ 
+-项目采用独立节点、后端适配器和统一配置组织各模块，目标是在更换定位或建图算法时，保持导航、安全门禁和底盘接口稳定。
++**新上下文从 [交接指南](docs/HANDOFF.md) 开始**，再读 [当前状态](docs/STATUS.md)、[工程约束](AGENTS.md)、[后端与重定位计划](docs/FAST_LIVO2_BACKEND_PLAN.md)。全部文档见 [docs 索引](docs/README.md)。
+ 
+-## 当前进展
++## 当前能力
+ 
+-| 模块 | 当前状态 |
++| 模块 | 已有结果与边界 |
+ | --- | --- |
+-| 底盘与雷达 | 已有通信、收流和录包的阶段证据；实际启动仍需按本次测试确认 |
+-| 建图与定位 | 当前使用 Lightning-LM；已有地图、离线运行及静止冷启动定位记录 |
+-| 公共定位接口 | 已分离 Lightning 适配器、标准位姿/健康消息和公共 TF 管理 |
+-| 时间对齐 | 按定位原采样时间插值轮速位姿，处理延迟、断流和时间回退 |
+-| 会话管理 | 默认 dry-run，具备依赖就绪检查、资源互斥、子进程清理及故障停机 |
+-| Nav2 与安全链 | 配置和隔离离线验证完成，完整真机导航验收仍为 **PARTIAL** |
+-| 后续工作 | FAST-LIVO2 接入准备、传感器同步与精确标定、高程地图旁路验证 |
+-
+-详细事实、历史记录和待验项见 [项目状态](docs/STATUS.md)。合成测试通过不代表实际停车距离、定位精度、窄口通行或坡道能力已经验收。当前规划模型包含现场窄口实验参数，不能直接作为实物碰撞包络使用。
+-
+-## 软件与硬件
+-
+-- 本机已验证环境：Ubuntu 22.04、ROS 2 Humble、系统 Python 3.10。
+-- 底盘：Ranger Mini V2，`ranger_ros2` + `ugv_sdk`。
+-- 雷达：Livox Mid-360S，Livox-SDK2 + `livox_ros_driver2`。
+-- 当前建图/定位：Lightning-LM。
+-- 导航：Nav2，Smac Hybrid-A* + MPPI。
+-- 可视化：Foxglove Bridge，可按配置关闭。
+-
+-相机驱动存在于本机独立工作空间；相机同步、内外参及 FAST-LIVO2 接入尚未完成本项目验收。高程地图后端当前禁用。
+-
+-## 架构
+-
+-```mermaid
+-flowchart TD
+-    lidar[Mid-360S 点云 / IMU] --> lightning[Lightning-LM]
+-    lightning --> adapter[Lightning 适配器]
+-    other[其他全局定位后端] --> estimate[LocalizationEstimate]
+-    adapter --> estimate
+-    wheel[轮速 Odometry] --> bridge[公共定位桥接：采样时间对齐 / TF / 健康]
+-    estimate --> bridge
+-    bridge --> ready[navigation_ready / localization_health]
+-    bridge --> tf[map → odom → base_link → sensors]
+-    tf --> nav[Nav2]
+-    lidar --> filter[障碍点云过滤]
+-    filter --> nav
+-    nav --> mux[twist_mux]
+-    teleop[遥控速度] --> mux
+-    mux --> smoother[velocity_smoother]
+-    smoother --> gate[运动门禁]
+-    ready --> gate
+-    filter --> gate
+-    gate --> cm[Collision Monitor]
+-    filter --> cm
+-    cm --> output[base/safe_cmd_vel → 底盘]
+-```
+-
+-`standard` 后端接收外部发布的标准定位消息；它是接入接口，不是另一个现成定位算法。当前连续里程计仍来自轮速，建图与全局定位分工独立。
++| 生产导航路线 | Lightning、轮速、公共定位桥接、Nav2、安全速度链已有实现；完整真机导航仍 PARTIAL |
++| 定位契约 | LocalizationEstimate 携带地图系车体位姿、原采样时刻和健康；按定位时刻插值轮速，唯一管理公共 TF |
++| FAST-LIVO2 | 保留 LiDAR–IMU–Camera 更新；静态基线与在线 RViz 通过，用户要求停止后会话保持停止 |
++| 配置切换 | mapping_backend 选择 Lightning / FAST-LIVO2 前端；localization_backend 独立选择 lightning / standard |
++| 标定与同步 | 已整合到本工程；v2 共享戳保护已修复，物理同步、几何标定与实时历元仍待验 |
++| 后续目标 | 独立在线回环/PGO → 优化地图包 → 给定初值定位 → 无初值自动重定位；高程/坡道另行分阶段 |
+ 
+-| 公共接口 | 用途 |
+-| --- | --- |
+-| `/wheel/odom` | 连续轮速里程计及速度 |
+-| `/localization/estimate` | 地图系车体位姿、原采样时间和后端状态，类型为 `ranger_localization_msgs/LocalizationEstimate` |
+-| `/navigation_ready` | 公共就绪信号，供安全门禁使用 |
+-| `/localization_health` | 对齐、新鲜度和后端状态诊断 |
+-| `/livox/obstacles` | 过滤后的障碍点云与新鲜度心跳 |
+-| `/base/safe_cmd_vel` | Collision Monitor 最终输出的底盘速度入口 |
++目前没有三传感器运动录包；静态融合、画面与合成测试不代表运动精度、真实回环或自动定位验收。standard 是外部标准消息接口，不是另一套现成定位算法。
+ 
+-公共桥接负责 `map→odom` 与 `odom→base_link`；Lightning 原生位姿使用私有 `lightning_imu_pose`，避免与物理传感器 TF 争夺发布权。详见 [定位接口契约](docs/localization_backend_contract.md)。
+-
+-## 目录
++## 目录与配置
+ 
+ ```text
+-config/       运行配置、地图关联、传感器与底盘配置
+-docs/         阶段报告、操作说明、验证证据
+-scripts/      启动、构建、采集、诊断和会话管理入口
+-patches/      第三方源码的本项目修改
+-tests/        定位契约、时间对齐、进程管理及安全链验证
+-maps/         地图实验产物、来源和验收记录
+-ws_nav/src/   本项目维护的 ROS 2 包
+-  ranger_localization_msgs/    标准定位消息
+-  ranger_localization_bridge/  公共桥接及 Lightning 适配器
+-  ranger_navigation/           Nav2 配置、门禁和障碍点云过滤
+-```
+-
+-本机另有 `ws_base/`、`ws_livox/`、`ws_slam/`、`ws_camera/`、`vendor/` 和 `bags/`。这些目录以及构建产物、`.runtime/` 不随本仓库上传；**克隆仓库不包含完整运行环境和原始 rosbag**。
+-
+-## 获取与构建
+-
+-```bash
+-git clone https://github.com/Ecust-Robotics-Lab/ranger-mini.git
+-cd ranger-mini
+-```
+-
+-第三方源码需要按固定上游版本恢复，并结合 `patches/` 重现本地修改。版本和本地分支记录见 [基线报告](docs/architecture_baseline.md)及 [版本快照](docs/architecture_evidence/batch1_20261019/baseline.json)；上游起点还记录于 `config/base_sources.repos` 和 `config/livox_sources.repos`。本机的 `ranger-local` 提交不保证存在于上游仓库。
+-
+-现有 `build_base.sh`、`build_livox.sh` 等阶段脚本带有固定版本检查；恢复源码时应先核对脚本要求和对应阶段报告。它们不是全新机器的一键安装程序。迁移目录时还需核对算法原生配置中的地图及依赖路径。
+-
+-在 ROS Humble、Livox 自定义消息及所需导航依赖已经就绪后，于项目根目录构建集成包：
+-
+-```bash
+-source /opt/ros/humble/setup.bash
+-source ws_livox/install/setup.bash
+-cd ws_nav
+-PYTHONDONTWRITEBYTECODE=1 colcon build --packages-up-to ranger_navigation --executor sequential
+-source install/setup.bash
+-cd ..
++config/runtime.yaml     生产默认与后端/地图/阈值
++config/profiles/        继承默认配置的算法选择
++config/fast_livo2/      本机试验参数、标定来源、固定 SHA 锁
++calibration/            标定工具、流程、原始数据与结果
++scripts/、tests/        统一入口、会话管理、验证
++ws_camera/src/          当前维护的触发相机与 timeshare_writer
++ws_nav/src/             定位消息、公共桥接、导航与安全
++ws_slam/                既有 Lightning 部署
++ws_fast_livo/           FAST-LIVO2 隔离构建部署
++ws_base/、ws_livox/     底盘与雷达工作空间
++vendor/、patches/       第三方固定源码与实际补丁
++bags/、maps/、docs/     数据、地图和验证证据
++.runtime/               受管状态、日志与回退备份
+ ```
+ 
+-各阶段环境与依赖说明见 [底盘报告](docs/02_base_interface.md)、[雷达报告](docs/03_mid360_validation.md)、[Lightning 报告](docs/04_mapping_report.md)和 [Nav2 报告](docs/06_flat_navigation_acceptance.md)。
+-
+-## 配置与启动
++正式标定根目录为 `calibration/`，`~/calibration` 仅是兼容链接；新入口已在临时无链接条件下通过离线验证。原相机驱动/SDK及用户修改保留。职责与清理范围见 [工程结构](docs/PROJECT_LAYOUT.md)、[整合报告](docs/consolidation_report.md)。
+ 
+-主要配置入口：
+-
+-| 文件 | 内容 |
+-| --- | --- |
+-| [`config/runtime.yaml`](config/runtime.yaml) | 后端选择、定位阈值、历史缓存、外参近似值与初始位姿 |
+-| [`config/maps/field_20260928.yaml`](config/maps/field_20260928.yaml) | 原生定位地图、导航地图、标定来源和源包关联 |
+-| [`config/field_session.env`](config/field_session.env) | 现场组件开关及受支持的环境覆盖 |
+-| [`ws_nav/src/ranger_navigation/config/`](ws_nav/src/ranger_navigation/config/) | 导航、仲裁、门禁与防撞参数 |
++本地原始图片/rosbag、SDK、第三方工作空间、构建与 .runtime 不进入主仓库。相机只纳入两个维护包源码。当前阶段 A/整合成果尚有大量未提交文件，克隆远端不能代替当前工作树；第三方完整 SHA/补丁来源见交接指南与版本锁。
+ 
+-地图关联清单不代表地图已全部验收；验收结论保留在每个地图实验的 `acceptance.json` 中。安装外参当前仍为近似值。
++## 统一入口
+ 
+-先检查配置和启动计划，以下命令不启动节点：
++项目根目录执行，以下命令均只读取状态或显示计划：
+ 
+ ```bash
+ python3 scripts/runtime_config.py
++bash scripts/run_mapping.sh online
++bash scripts/run_mapping.sh online --runtime-config config/profiles/fast_livo2_frontend.yaml
++bash scripts/run_mapping.sh offline --runtime-config config/profiles/fast_livo2_frontend.yaml
++bash scripts/run_calibration.sh sync
+ bash scripts/field_session.sh
+ bash scripts/run_navigation.sh
++bash scripts/run_fast_livo2_live.sh --status
+ ```
+ 
+-现场、导航、底盘、雷达和辅助入口均默认 dry-run。实际执行为前台受管会话；含底盘或导航的启动必须取得该次测试的明确确认，并显式传入 `--execute --control-authorized`。该标志不等于运动使能，重启也不继承运动许可。完整操作流程见 [受管会话说明](docs/managed_sessions.md)和 [工程约束](AGENTS.md)。
++可修改 runtime 的 mapping_backend，或用 `--runtime-config` / `RANGER_RUNTIME_CONFIG` 选择 profile。profile 的 extends 与相对路径以工程根目录为准；地图通过 map_bundle 检查来源和后端兼容性。
+ 
+-查看及停止本管理器创建的会话：
++实际执行须显式 `--execute`，online 会打开相应实物，不能从默认 dry-run 推断获准测试。底盘/导航还必须有该次用户授权及 `--control-authorized`，运动许可不跨重启；不自动恢复运动。完整流程见 [受管会话说明](docs/managed_sessions.md)。相机内参、外参和同步的入口/依赖见 [标定说明](calibration/README.md)。
+ 
+-```bash
+-bash scripts/field_session.sh --status
+-bash scripts/run_navigation.sh --status
+-bash scripts/run_navigation.sh --stop
+-bash scripts/field_session.sh --stop
+-```
++FAST-LIVO2 当前不提供先验地图定位，不能设为 localization_backend；其局部世界系不等于轮速 odom。输入输出的参考点与时钟见 [前端接口](docs/fast_livo2_interfaces.md)。
+ 
+-会话日志、状态和事件记录在 `.runtime/sessions/<会话>/run-*`。管理器按进程身份清理所属子进程，不自动重启；它不会代替操作员处理外部手动启动的旧进程。
++## 公共定位与 TF
+ 
+-## 离线验证
++```text
++Lightning 适配器 / 外部全局定位后端
++    → /localization/estimate + /wheel/odom
++    → 公共桥接：map→odom→base_link、/navigation_ready、/localization_health
++    → Nav2 → 仲裁/平滑/门禁/Collision Monitor → /base/safe_cmd_vel
++```
+ 
+-最近一次完整回归于 2026-10-20 完成；2026-10-26 恢复中断后复跑了时间对齐和进程管理。证据见 [第三批报告](docs/architecture_batch3_report.md)。
++公共桥接用同一机体、同一原采样时刻的位姿计算修正，缓存默认 2 s，禁止外推；前端/参考后端不得同时抢发公共 TF。定位失效撤销就绪。安装外参仍有近似值，实时传感器旧历元尚须处理，未将隔离 FAST 展示接为导航定位。详见 [定位契约](docs/localization_backend_contract.md)。
+ 
+-| 验证项 | 结果 |
+-| --- | --- |
+-| 时间对齐与延迟轨迹 | 7/7 |
+-| 进程管理与故障清理 | 11/11 |
+-| 定位接口契约 | 11/11 |
+-| 定位桥接 | 14/14 |
+-| 门禁运动学单元 | 12/12 |
+-| Nav2 安全链 | 37/37 |
+-| 合成传感器驱动实际启动入口 | 生命周期就绪、输入中断停机及子进程清理通过 |
++## 构建与验证
+ 
+-不依赖 ROS 的进程管理测试可直接运行：
++下列构建不打开硬件，默认不带 --execute 的专用脚本只显示计划：
+ 
+ ```bash
+-PYTHONDONTWRITEBYTECODE=1 python3 tests/test_session_manager.py
++bash scripts/build_camera_sync.sh --execute
++bash scripts/build_calibration.sh --execute
++bash scripts/build_fast_livo2.sh --execute
++bash scripts/build_fast_livo2_backend.sh --execute
++source /opt/ros/humble/setup.bash
++source ws_livox/install/setup.bash
++cd ws_nav
++PYTHONDONTWRITEBYTECODE=1 colcon build --packages-up-to ranger_navigation --executor sequential
+ ```
+ 
+-在前述集成包构建完成并加载 ROS / 工作空间环境后，可运行定位与门禁验证：
++这些是已有本机依赖下的构建入口，不是全新机器的一键安装程序。相机需要本地 Hik SDK；FAST 前端依赖在独立目录，来源与补丁见 [阶段 A](docs/fast_livo2_stage_a_report.md)。
++
++2026-10-26 最近整合验证：配置/迁移 10/10、标定接口 11/11、时间对齐 7/7、进程管理 11/11、定位契约 11/11、前端 C++ 13/13；静态短回放 20 对且视觉参与。完整静态基线 829 对，在线约 10/200/10 Hz。Nav2 安全链 37/37 等完整回归仍保留 2026-10-20 日期，本轮未全量重跑。
+ 
+ ```bash
+-PYTHONDONTWRITEBYTECODE=1 python3 tests/test_time_alignment.py
+-PYTHONDONTWRITEBYTECODE=1 python3 tests/test_architecture_contract.py
+-PYTHONDONTWRITEBYTECODE=1 python3 tests/test_stage5_bridge.py
+-PYTHONDONTWRITEBYTECODE=1 python3 tests/test_stage6_gate_unit.py
++PYTHONDONTWRITEBYTECODE=1 python3 tests/test_project_consolidation.py
+ ```
+ 
+-ROS 集成测试使用独立 domain、localhost 和合成输入，不连接物理底盘。全栈安全及受管入口测试还依赖本机 Nav2 和 Livox 消息环境，执行方法、失败尝试与边界见报告；本 README 不把这些结果作为真机通过证明。
++其他 ROS 测试先审查脚本并加载对应 workspace，使用隔离 domain/localhost。事实与日志见 [STATUS](docs/STATUS.md)、[整合报告](docs/consolidation_report.md)、[在线报告](docs/fast_livo2_online_report.md)。历史阶段报告作为追溯证据保留，不将其旧状态当当前操作指令。
+ 
+-## 后续路线与文档
++后端入口（下列命令均为 dry-run）：
+ 
+-1. 已完成：基线梳理、定位接口与配置解耦、采样时间对齐、受管会话。
+-2. 下一批：FAST-LIVO2 实现和版本审查、职责划分、同步/标定缺口及离线接入方案。
+-3. 后续：高程地图旁路验证，再按阶段补齐实际导航和坡道能力验收。
++```bash
++bash scripts/run_fast_livo2_backend.sh
++bash scripts/run_fast_livo2_backend.sh --offline-bridge
++```
+ 
+-- [架构改造计划](ARCHITECTURE_PLAN.md)
+-- [项目状态与待验项](docs/STATUS.md)
+-- [定位后端接口](docs/localization_backend_contract.md)
+-- [会话操作与故障边界](docs/managed_sessions.md)
++阶段 B 交付见 [报告](docs/fast_livo2_stage_b_report.md) 和 [后端接口](docs/fast_livo2_backend_interfaces.md)。下一步 C1 需要明确实施指令；不自动进入重定位、真机或高程阶段。
+ 
+ 项目维护：[ujd66](https://github.com/ujd66) · [Ecust Robotics Lab](https://github.com/Ecust-Robotics-Lab)。
+diff --git a/config/__pycache__/base_mini_v2.launch.cpython-310.pyc b/config/__pycache__/base_mini_v2.launch.cpython-310.pyc
+deleted file mode 100644
+index c5d72855d684419f79ae52cb5ebe995e57670206..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 2046
+zcmZWqOK;mo5ayDUNXfGNh|@NYrh6(N1d@UjMIJ8F28ja%NF2j)0#t_*EAEP<y?kVM
+zDaV3+X?m>xL)=TzzqHq$a_^-@fOM9kQU@imubG|QnQuN0^X28X1<$X4|Gq!<E$dIS
+zIRDtN_yL;a&{1n-QABNyMhHfS+o>~h&|Kz@T#&iEkv2!oO4i_B>W}=iHEN~pQM-~g
+z`BK^$b*j0?m(%X33v-{gez8U?v`v>_T&4DNtJj%5-4Xdd3l-+1%))pRQ#K(bS2&TF
+zile?LvjN^BVT?(rO2V;JL@1mwMkSsICSzPMktR|mc{X?l0a)8Tq}?5&Vi?z+RL4GK
+zG89RnU{BA{7ay{a6T#-X`ywh+mMQH$$)m^FB-h<%1$kAnN8nIpf%Jv>)(3euNupAa
+zTI_D;l!eG#T0adK4cHH$$-kge0Nfk&79Cq>=mZ@Dum_G<Q#N&|dx|3T-0Wy9cF-nh
+zuPKLmZ_v*OH2z18vAYhMR;6+G8<9oZzahF*y&bxI+BmUQ^R0Jm@B3$nb}v~c&av~h
+zMOPB*%!YB*j3+K#tEB4@tfokkV;6K6z+&UTsaF?ki_gxGWN_!_)tznn1-%6CWqL&|
+zsg7C(-@5eb8N?SM`X#h$r=E$Z_tm!c*lQM+ifLDglFfd4xcg&&_r>;I{4~iD{PN}|
+z9v;Sw@nKH$bQAAA!ZeX&%oznun9^X%IPTxW!!eO;D9MBcwRC{DbD%~tWnxYSMhB2-
+zCzX+22~CDX%4m>6YPjwSl0{4eDcl-NZ_aL3DHJJIF~dcCB$E(0Rr`c18$8JcsDXbK
+z)dqSU4pk!O0V!3Si)6;=?9SfD4Op;OWdcmB>BwFeJP8wpYcsqst5`GWHMN}-vqpbk
+z=Gn~eQ>IA5rFMCe9cWj^`Jr}0lHJ&QXUNoZbt8;fc%Zu>DO4#~ke8|`6#&a#18G%~
+zGLQ(vLhYMF62sw^=>tj>(e{fS-I#C^N!@^u6q|Lnc6Xoc_U}K~d;D@sx5kNrQ<5yw
+z9!!DVY<AmtfYVYcOt@f#9^o;=FLs9KE%9NZVtkP0hZ(L72YRVS+~iHKo?8SNWJEXN
+zLu4#_G+Q$p7I_&Qk(BrBnZHQ=Z2kX<?|IrQNO(XZrrUFR8Nz5cBPkqQ!{R|E3UZj~
+zc0mLv6cbXn1xra$K!~!pB0K|?2W0~?oeG1p?(CMCL2^roT<Eqe$A!p4CZ%?u0%_MI
+zOE-8<sDuy{h0C-PF(sg$TH29H2vbG19|V(xvmnqd15RLE>ov4zxB%%AEwiZ!E<%YD
+zS1VgU`VULog84t+4&yv!Lr%uu+_*KYvCGJG2<A|DDo8#;HZPci;s`<!41#4HI71Gg
+z>mna@(7NrTb(pnbY<^g^H_$5TLbE^kwvAlW1g(qw_u>wigwQ^DOkh<Ny9*O#Df2V1
+z;dLS#DwhN625nOB)P|Y=iN-cn3Tm7C#?*rL_B`mugmB4(DULl`FV|&0m=azxz$eZV
+zfLoXl^b!=_#dq98ViRPdYwVErCyS!&3dhJ@(=|<JqNrdz*WCu0z7nyF8CC~#$O8J`
+z-{5Q5AkC#V0MmvBP`wx5gP^yjy&#}@7zCnkjsfnem?z^Z(c-!hHRlIbp6G6!5cp5Q
+zZ${2NGvun=(;KxKs3ldR%K4^>itDvsBA0`OwSj*gl5yr-NQNk)ip&2F>Q%|vJ@e_y
+S4d`6U<Q*F1x?^Te=kmX#S6iz9
+
+diff --git a/config/runtime.yaml b/config/runtime.yaml
+index 6d6d0e1..e30b9a4 100644
+--- a/config/runtime.yaml
++++ b/config/runtime.yaml
+@@ -7,6 +7,18 @@ localization_backend: lightning
+ mapping_backend: lightning
+ terrain_backend: disabled
+ map_bundle: config/maps/field_20260928.yaml
++# Mapping/frontend selection is independent of global localization.
++# FAST-LIVO2 currently provides a LiDAR-IMU-camera frontend, not prior-map localization.
++mapping:
++  lightning:
++    config: config/slam/ranger_mid360s.yaml
++  fast_livo2:
++    config: config/fast_livo2/ranger_mid360s_hik_trial.yaml
++    camera_config: config/fast_livo2/camera_live.yaml
++    lidar_config: config/fast_livo2/mid360s_live.json
++    rviz_config: config/fast_livo2/live.rviz
++    ros_domain_id: 175
++    localhost_only: true
+ localization:
+   native_pose_frame: lightning_imu_pose  # algorithm pose, not a physical sensor frame
+   tf_max_age_s: 0.5  # preserve the previously effective threshold
+diff --git a/docs/00_environment_audit.md b/docs/00_environment_audit.md
+index d28a9d2..009c7aa 100644
+--- a/docs/00_environment_audit.md
++++ b/docs/00_environment_audit.md
+@@ -1,5 +1,7 @@
+ # 阶段 0 环境与现有工程审计
+ 
++> 历史阶段报告：正文保留当时的实现、命令、失败与验收范围；当前状态以 [STATUS](STATUS.md) 为准，当前入口见 [根 README](../README.md)。旧文中的“下一步/尚未授权/未部署”不构成本次任务指令。
++
+ 2026-09-13，Asia/Shanghai。结果：PARTIAL。用户随后明确要求“先连接上雷达”，雷达连接处理另记，不将其冒充阶段 0 只读工作。
+ 
+ ## 已确认事实
+diff --git a/docs/02_base_interface.md b/docs/02_base_interface.md
+index 4d835cd..404fab4 100644
+--- a/docs/02_base_interface.md
++++ b/docs/02_base_interface.md
+@@ -1,5 +1,7 @@
+ # 阶段 2：Ranger Mini V2 底盘通信、驱动和控制语义
+ 
++> 历史阶段报告：正文保留当时的实现、命令、失败与验收范围；当前状态以 [STATUS](STATUS.md) 为准，当前入口见 [根 README](../README.md)。旧文中的“下一步/尚未授权/未部署”不构成本次任务指令。
++
+ 2026-09-14，Asia/Shanghai。**阶段 PARTIAL；CAN 通信及已测 ROS 接口 PASS；停车安全未通过，自主导航不放行。**
+ 
+ > 最新更新：22:11、22:16 各获当次授权后执行 0.05 m/s、约 0.8 s 前进和主动发零，用户确认最后一轮实物运动。两轮驱动退出后均出现负向速度反馈，原因未明。详见 [02_ros_motion_test.md](02_ros_motion_test.md)。驱动已退出；以下 21:56 结果和源码审查保留为历史记录，已修改文件链接指向修改前快照。两个仓库现均有本地补丁。
+diff --git a/docs/02_ros_motion_test.md b/docs/02_ros_motion_test.md
+index a81bef8..c6cb80d 100644
+--- a/docs/02_ros_motion_test.md
++++ b/docs/02_ros_motion_test.md
+@@ -1,5 +1,7 @@
+ # 阶段 2：ROS 接口与短时运动测试记录
+ 
++> 历史阶段报告：正文保留当时的实现、命令、失败与验收范围；当前状态以 [STATUS](STATUS.md) 为准，当前入口见 [根 README](../README.md)。旧文中的“下一步/尚未授权/未部署”不构成本次任务指令。
++
+ 2026-09-14，Asia/Shanghai。阶段 **PARTIAL**：CAN 通信及已测 ROS 接口 PASS；最新日志完成约 5 秒前进指令，用户报告 5 秒测试停车未观察到后退。**驱动退出后仍有负速度反馈，反馈与实物关系待查；完整停车安全未通过，自主导航不放行。**
+ 
+ **【2026-09-28 结论更新】** 用户明确确认"阶段 2 停止安全测试已经通过"。停车安全据此改判 **通过（依据=用户现场确认，未新增自动化测试证据）**，本报告下文的"停车安全未通过"均为 2026-09-14 当时记录，作为历史原始记录保留不改写。上层停发超时、遥控接管与硬件急停在导航链路中的独立验收见阶段 6 验收文档；运动许可逐次授权约束不变。
+diff --git a/docs/03_mid360_validation.md b/docs/03_mid360_validation.md
+index 0281832..9f663a1 100644
+--- a/docs/03_mid360_validation.md
++++ b/docs/03_mid360_validation.md
+@@ -1,12 +1,14 @@
+ # 阶段 3：Mid-360S 驱动、网络、时间戳与静止录包验证
+ 
++> 历史阶段报告：正文保留当时的实现、命令、失败与验收范围；当前状态以 [STATUS](STATUS.md) 为准，当前入口见 [根 README](../README.md)。旧文中的“下一步/尚未授权/未部署”不构成本次任务指令。
++
+ 日期：2026-09-15，Asia/Shanghai。**阶段 PARTIAL**。实物由用户更正为 **Mid-360S**，随后设备协议确认 type=35、SN=`ARMCP870038745`。历史 Mid-360 名称/配置不能作为本机型号证据。
+ 
+ ## 结论与验收范围
+ 
+ | 项目 | 结果 | 证据与边界 |
+ |---|---|---|
+-| 采集时网络与设备识别 | PASS | enp2s0，主机 192.168.1.50/24；雷达 192.168.1.145，MAC ec:72:f7:da:cf:c8；实际协议 type=35、上述完整 SN；采集后载波丢失，见下文 |
++| 采集时网络与设备识别 | PASS | enp2s0，主机 192.168.1.50/24；雷达 192.168.1.101，MAC ec:72:f7:da:cf:c8；实际协议 type=35、上述完整 SN；采集后载波丢失，见下文 |
+ | 固定源码与独立构建 | PASS | SDK2 + ROS2 driver 均构建成功；编译警告保留，没有运行 SDK 样例/升级程序 |
+ | 点云和 IMU 原始收流 | PASS | 298 帧 CustomMsg，5962 条 IMU，约 10/200 Hz |
+ | SQLite3 录包、读取和计数一致性 | PASS | 29.804909820 s，6260 条全部反序列化，数据库完整性 ok，与 metadata 一致 |
+@@ -46,7 +48,7 @@
+ 用户执行恢复后，[本次网络证据](03_evidence/network_restored.json)：
+ 
+ - enp2s0 `192.168.1.50/24`，100 Mbit/s、full duplex、carrier=1。
+-- 到 `192.168.1.145` 经 enp2s0；邻居 MAC 与历史记录一致。先读路由/邻居，再只对这个已知地址 ping，3/3 响应；未扫描公司网络。
++- 到 `192.168.1.101` 经 enp2s0；邻居 MAC 与历史记录一致。先读路由/邻居，再只对这个已知地址 ping，3/3 响应；未扫描公司网络。
+ - SDK 的发现 socket 绑定主机雷达地址；`ip route get 255.255.255.255 from 192.168.1.50` 实测走 enp2s0。没有遍历 Wi-Fi 子网。
+ - 默认路由仍 `via 192.168.3.1 dev wlo1 metric 600`。雷达连接无 gateway，`ipv4.never-default=yes`，IPv6 disabled。
+ - 没有关闭/修改防火墙。`/etc/ufw/ufw.conf` 可读值为 ENABLED=no；本助手的 `sudo -n ufw status verbose` 因需要本机认证退出 1，因此不声称已完整审计运行中的 nftables/iptables 规则。实际 UDP 收流已通过。
+@@ -97,7 +99,7 @@ sudo bash /home/lab307/ranger_nav/scripts/persist_mid360_network.sh --execute
+ 
+ 配置副本：[MID360S_config.json](../config/mid360/MID360S_config.json)。正确设备键是 `Mid360s`，SDK 映射见 [parse_cfg_file.cpp:33](/home/lab307/ranger_nav/vendor/livox/Livox-SDK2/sdk_core/parse_cfg_file.cpp:33)，协议 type=35 见 [livox_lidar_def.h:69](/home/lab307/ranger_nav/vendor/livox/Livox-SDK2/include/livox_lidar_def.h:69)。`lidar_summary_info.lidar_type=8` 是驱动内部协议类别位，不是此处设备 type=35，不能简单改成 35。
+ 
+-- 主机数据端口 56101/56201/56301/56401/56501，雷达对应端口 56100/56200/56300/56400/56500；指定雷达 IP 列表，仅目标 192.168.1.145。
++- 主机数据端口 56101/56201/56301/56401/56501，雷达对应端口 56100/56200/56300/56400/56500；指定雷达 IP 列表，仅目标 192.168.1.101。
+ - xfer_format=1，publish_freq=10.0，multi_topic=0，use_sim_time=false，frame_id=livox_frame。
+ - 驱动会配置点格式、扫描模式、安装姿态参数并进入 Normal、启用 IMU；启动不是设备纯只读操作。配置 identity 表示保留原生点坐标，**不表示安装标定完成**，也不是 IMU-LiDAR 外参。
+ - 单实例文件锁、已运行程序检查和 UDP 端口占用检查阻止重复驱动。曾实际因锁占用拒绝第二进程；旧进程退出后才重新启动。
+diff --git a/docs/04_mapping_report.md b/docs/04_mapping_report.md
+index 9a66f6c..fc7fe4f 100644
+--- a/docs/04_mapping_report.md
++++ b/docs/04_mapping_report.md
+@@ -1,5 +1,7 @@
+ # 阶段 4：Lightning-LM 编译、离线输入验证与小地图待验
+ 
++> 历史阶段报告：正文保留当时的实现、命令、失败与验收范围；当前状态以 [STATUS](STATUS.md) 为准，当前入口见 [根 README](../README.md)。旧文中的“下一步/尚未授权/未部署”不构成本次任务指令。
++
+ 更新：2026-09-23。实物：Ranger Mini V2 + **Mid-360S**。范围为阶段 4，不进入定位部署、导航或坡道通行性评估。
+ 
+ > 当前雷达已更换并已实际识别收流：**Mid-360S，完整 SN `ARMCP4E0033801`，IP `192.168.1.101`，MAC `4c:43:f6:f4:9d:c2`，协议 type=35**。[地址切换只读检查](04_evidence/radar_switch_3801.json)、[成功驱动日志](03_evidence/driver-2v7kj2bx/)（退出 0；点云与 IMU 均 time_type=0）。此前静止包、完整 SN `ARMCP870038745`、MAC `ec:72:f7:da:cf:c8` 和其时间质量属于旧雷达，不能外推到新设备；新设备已由手持诊断包确认 CustomMsg/IMU 消息与频率（见第 4 节），但采集时**未安装在车体上**，安装外参仍未测。
+diff --git a/docs/05_localization_interface.md b/docs/05_localization_interface.md
+index e816e31..e5ed9ea 100644
+--- a/docs/05_localization_interface.md
++++ b/docs/05_localization_interface.md
+@@ -1,5 +1,7 @@
+ # 阶段 5：Lightning-LM 地图定位与 Nav2 接口适配
+ 
++> 历史阶段报告：正文保留当时的实现、命令、失败与验收范围；当前状态以 [STATUS](STATUS.md) 为准，当前入口见 [根 README](../README.md)。旧文中的“下一步/尚未授权/未部署”不构成本次任务指令。
++
+ 更新：2026-09-23。实物：Ranger Mini V2 + Mid-360S（车顶中间、距车尾约 0.25 m、离地约 0.60 m、装平，用户约值）。范围为定位与导航接口，**不启动自主导航**。
+ 
+ ## 结论
+diff --git a/docs/06_flat_navigation_acceptance.md b/docs/06_flat_navigation_acceptance.md
+index 4e41636..d91897e 100644
+--- a/docs/06_flat_navigation_acceptance.md
++++ b/docs/06_flat_navigation_acceptance.md
+@@ -1,5 +1,7 @@
+ # 阶段 6：Nav2 平地单点导航集成与安全链验收
+ 
++> 历史阶段报告：正文保留当时的实现、命令、失败与验收范围；当前状态以 [STATUS](STATUS.md) 为准，当前入口见 [根 README](../README.md)。旧文中的“下一步/尚未授权/未部署”不构成本次任务指令。
++
+ 更新：2026-09-28。范围：**配置与离线（dry-run）安全验证**；真机导航测试未执行。
+ **本文不声称"导航已成功"——当前结论为"配置/离线测试完成，真机待验"。**
+ 
+diff --git a/docs/HANDOFF.md b/docs/HANDOFF.md
+index 78d66aa..0a3514e 100644
+--- a/docs/HANDOFF.md
++++ b/docs/HANDOFF.md
+@@ -1,90 +1,76 @@
+-# 新窗口接手指南
++# 新上下文接手指南
+ 
+-> 2026-09-15 阶段 3：实物已更正并协议确认为 **Mid-360S**，SN ARMCP870038745。静止 SQLite3 包与真实收流通过，逐点时间回退仍为 PARTIAL；网络持久化配置/索引权限修复已完成，实际重启待验，当前采集后网卡无载波。雷达已停，底盘未启动。以 [STATUS.md](STATUS.md) 和 [03_mid360_validation.md](03_mid360_validation.md) 为准，不自动进入 SLAM/导航。
++交接更新：2026-10-26，项目 `/home/lab307/ranger_nav`。当前已完成独立后端阶段 B 的代码、构建与隔离离线验证，真实设备保持停止。阶段 B 报告见 [交付报告](fast_livo2_stage_b_report.md)，实际接口见 [B 契约](fast_livo2_backend_interfaces.md)。下一阶段 C1/C2 未获自动实施授权。
+ 
+-> 2026-09-14 后续更新：用户已授权并开展阶段 2，确认底盘为 Ranger Mini V2。以下交接正文保留为此前快照；最新源码、构建、CAN、ROS 与测试结果以 [STATUS.md](STATUS.md)、[02_ros_motion_test.md](02_ros_motion_test.md) 为准。22:11、22:16 两次另获授权的低速测试已执行，用户确认最后一次实物运动；主动发零后反馈归零，但退出后负速度异常复现，停车安全未通过。驱动已退出，不自动重启。
++## 建议阅读顺序
+ 
+-交接日期：2026-09-14，Asia/Shanghai。用户已结束上一窗口任务，下一阶段尚未指定。只读接手，不自动安装、改网、运行驱动或进入下一阶段。
++1. [AGENTS](../AGENTS.md)：当前约束和逐次真机授权。
++2. [STATUS](STATUS.md)、[根 README](../README.md)：当前能力、入口和验收边界。
++3. [工程结构](PROJECT_LAYOUT.md)、[标定流程](../calibration/README.md)：整合后的路径。
++4. [后端与重定位计划](FAST_LIVO2_BACKEND_PLAN.md)：下一阶段实施顺序与验收。
++5. [前端接口](fast_livo2_interfaces.md)、[源码审查](fast_livo2_source_review.md)：后端接入前必须读源码核对。
++6. [定位接口契约](localization_backend_contract.md)、[受管会话](managed_sessions.md)：复用已有桥接和安全链。
+ 
+-## 先读这些文件
++## 不要重做或误判的事实
+ 
+-1. `/home/lab307/ranger_nav/AGENTS.md`：项目约束和真机许可边界。
+-2. `docs/STATUS.md`：最近一次已验证状态。
+-3. `docs/00_environment_audit.md`：2026-09-13 阶段 0 的历史快照，不是网卡修复后的状态。
+-4. `docs/LIDAR_CONNECTION.md`：按时间追加的连接处理记录。以最后“2026-09-14 21:10 最终连接结果”章节为准，早期 BLOCKED 是历史状态。
+-5. `docs/mid360_ip_connected_20260914.txt`：实际成功命令、退出码和输出。
++- 实物 **Ranger Mini V2**，不是任务早期的 3.0；Ubuntu 22.04、Humble、x86_64。生产默认仍 Lightning，FAST-LIVO2 前端可通过配置切换。
++- FAST-LIVO2 已能真实在线三融合并在 RViz 显示，用户反馈“看上去效果不错”后要求停止。不能重新从选型/安装建议开始，也不能把显示效果当作闭环/重定位通过。
++- 同步 writer 的 O_TRUNC/flock 顺序与读写一致性已经修复成配套 v2；不要重复要求先修。曝光相位和时间历元问题仍未解决，不硬编码 ±100 ms。
++- `~/calibration` 已原子迁入 `ranger_nav/calibration`，旧路径只是链接；当前同步包在 `ws_camera/src/`。新入口去掉兼容链接仍能离线运行；不要重新复制一个标定工程。
++- 用户确认**没有三传感器运动录包**。`calibration/bags/stageB_sync_run2` 是静态同步检查；标定场景也是静态，旧运动包没有图像。先实现可离线验证的代码，真实回环/自动定位结果留待数据，不反复询问同一信息。
++- 本项目 B 已实现关键帧/回环/PGO、非关键帧传播、几何图快照导出和标准适配器离线联调；没有真实三传感器运动回环验收。C1 统一加载/给定初值定位、C2 无初值重定位未实施。
+ 
+-## 已完成与边界
++## 工作树、源码与入口
+ 
+-- 项目根目录 `/home/lab307/ranger_nav`，不要与其他工程混用。
+-- 本机已核实为原生 Ubuntu 22.04.5、x86_64、内核 6.8.0-40-generic，已安装 ROS 2 Humble。当前工具 shell 可能未 source ROS；`.bashrc` 中的 source 对非交互 shell 不一定执行。
+-- 阶段 0 审计 PARTIAL。用户之后明确追加“先连接上雷达”，这项已完成到 **IP 通信 PASS**。
+-- 用户确认 Mid-360 序列号尾号 **8745**，接板载以太网口。默认规则推导地址 `192.168.1.145` 已响应，尚未通过 Livox 协议读取完整 SN。
+-- 板载 PCI `0000:02:00.0` / `1f0a:6801`，驱动 `yt6801` 1.0.34，正式接口 **enp2s0**，电脑地址 **192.168.1.50/24**。
+-- 2026-09-14 21:10，指定 enp2s0 ping `192.168.1.145`：5 发 5 收、0% 丢包、平均 1.829 ms。邻居 MAC `ec:72:f7:da:cf:c8`。物理协商 100 Mbit/s、full duplex。
+-- 上网 `wlo1`：192.168.3.18/24，默认 via 192.168.3.1 metric 600。雷达网段与它不重叠，默认路由未变。
+-- **没有验收 UDP 点云、IMU、ROS 话题、录包、建图或定位。** 不将 ping 成功称为雷达数据链路全通过。
+-- Ranger Mini 实物具体版本尚未确认；USB-CAN `gs_usb` / `can0` 最近为 DOWN，没有当前 bitrate 或底盘收帧验收。不得启用底盘或发送控制。
++- 主仓库分支 `refactor/pluggable-navigation`，交接 HEAD `a76d83a767d5691ca40351f3a57f65b398572a52`；**大量阶段 A、同步修复和整合文件未提交**。开始先 `git status --short`，不可 reset/clean，不因 HEAD 相同就忽略工作树。
++- 用户原有 `docs/03_mid360_validation.md` IP 修改和六个 `docs/03_evidence/driver-*` 未跟踪目录保留；原相机驱动有用户修改。不要混入无关提交或删除证据。
++- 部署前端：`vendor/fast_livo2_review/ros2_frontend`，humble，`837b7bbc1431cb04cf936528e52c83c835efba8e` 加 `patches/fast_livo2_stage_a.patch`。构建入口 `scripts/build_fast_livo2.sh`，产物 `ws_fast_livo/`；15 仓库（含 B 依赖）固定 SHA 见 `config/fast_livo2/sources.lock.json`。
++- 优先参考后端：`vendor/fast_livo2_review/fastlio_backend`，main，`7baa59f7339ba88ce3b646fe35b23f61031c5d3f`。pgo/localizer/interface 已审查；B 以独立包实现必要算法，未启动参考原版节点；许可证、缺陷和其他候选对照见源码审查。第一版不整体引入 OpenFleX/HoloAgent，也不修改前端滤波器。
++- runtime 默认 `mapping_backend: lightning`、`localization_backend: lightning`、`odometry_backend: wheel`、`terrain_backend: disabled`。FAST profile 为 `config/profiles/fast_livo2_frontend.yaml`，只切前端，不切导航定位。
++- SDK 复用原 `ws_camera/src/hik_camera_ros2_driver/hikSDK`，不随 Git 分发。FAST-Calib 新编译路径为 `calibration/lidar_camera_extrinsics/ws/{build_integrated,install_integrated}`，旧工作空间保留追溯。
+ 
+-## 当前配置是临时的
++安全接手命令，均不打开实物：
+ 
+-- 签名驱动仅 insmod 加载，**未安装到 `/lib/modules`**，不保证重启后自动加载。
+-- NM 连接 `ranger-mid360-8745` 已创建并激活，UUID `7d3735fd-229f-4461-bebd-421146eb06d2`，地址 192.168.1.50/24，`ipv4.never-default=yes`，无 gateway，IPv6 disabled，**autoconnect=no**。
+-- `有线连接 1` 是 NM 自动创建的旧 DHCP 配置；不要误改它或删除 Wi-Fi。
+-- 新窗口先重新读取实际状态。若机器重启或雷达重新接线，不能照抄过去的 PASS 当成当前结果。持久化尚未实施，也未被指定为下一阶段。
+-
+-## 驱动来源与 Secure Boot
+-
+-- 原因：系统缺少板载 YT6801 驱动；为现有内核补装 GCC 12，并编译厂商驱动，未更换内核或系统。
+-- 厂商归档：`vendor/yt6801/yt6801-linux-driver-1.0.34.zip`。
+-- URL：`https://www.motor-comm.com/Cn/Skippower/downloadFile.html?id=1817`。
+-- 归档 SHA256：`877e6953fc6eb47232a74e47b0daf33de0e7f9e9a395d3bc10d500d3c4150af8`。
+-- 源码目录：`vendor/yt6801/source/yt6801-1.0.34`，源码未改，含构建产物。厂商归档不是 Git 仓库，分支/commit SHA 不适用，不能虚构。
+-- 构建模块未签名版本 SHA256：`aed6951c8e9656d0443c2a52b07ce0be8061a56a46d83309b9d8bebba3c83918`。这是未签名文件，不能拿它替代 root 目录的签名副本。
+-- Secure Boot 保持开启。用户已现场完成 MOK 登记；证书 CN `ranger-nav YT6801 module signing`。
+-- 证书 SHA256：`84:B2:A7:E5:EA:31:84:56:1D:A7:B9:B2:0E:A6:A7:A7:EB:00:99:C0:D1:C5:4F:99:BA:68:05:33:CB:87:8A:98`。
+-- root-only 状态目录 `/var/lib/ranger-nav-yt6801`：含签名模块 `yt6801.ko`、`signed-module.sha256`、公共证书 `MOK.der` 和私钥。**不读取或输出私钥，不把它复制到项目。**
+-- 官方 ROS/SLAM 五个候选仓库尚未克隆。不要误以为已经建立 ROS 工作空间或装好了 Lightning-LM。
++```bash
++cd /home/lab307/ranger_nav
++git status --short
++python3 scripts/runtime_config.py
++bash scripts/run_mapping.sh online
++bash scripts/run_mapping.sh online --runtime-config config/profiles/fast_livo2_frontend.yaml
++bash scripts/run_fast_livo2_live.sh --status
++bash scripts/run_calibration.sh status
++PYTHONDONTWRITEBYTECODE=1 python3 tests/test_project_consolidation.py
++```
+ 
+-## 脚本与已修复问题
++`--execute` online 会开真实设备，本次交接不运行。离线 ROS 测试先 source Humble / 对应 workspace，按原脚本使用隔离 domain。构建脚本默认 dry-run。
+ 
+-- `scripts/prepare_yt6801_secureboot.sh`：只用于首次签名/登记准备；已执行完，不能重新运行或要求用户再登记。
+-- `scripts/connect_mid360.sh`：默认 dry-run；新建雷达临时连接用。当前连接已存在，**不要反复 --apply**；先读实际状态，它会拒绝已有项目连接。
+-- `mokutil 0.6.0 --test-key` 对“已登记”返回 1。已改成捕获状态并严格验证肯定输出，不可仅凭非零退出判断登记失败。`--ignore-keyring` 仅影响该次只读查询，内核签名强制检查未关闭。
+-- 内核最初注册 eth0，udev 随后改为 enp2s0；已加入等待最终名称逻辑。
+-- 本机 nmcli 不接受创建时改写 connection.uuid；应让 NM 生成。详情查询用 `-g connection.uuid`，摘要列表才用 `UUID`。
+-- 早期 dry-run/语法通过没有覆盖全部真机路径，实际执行时发现上述兼容问题；已修复，不能宣称早期脚本全流程一次通过。
++## 后端最关键的接口
+ 
+-## 回滚与证据
++输入必须用 `/fast_livo/odometry` 与 `/fast_livo/deskewed_imu`，同一 stamp、同一 VIO 后 IMU 参考点。点云是已去畸变的单图像区间 IMU 机体系云；里程计为 T_fast_livo_local_imu。不能拿 `/cloud_registered` 累计世界云或 VIO 前 `/aft_mapped_to_init` 重映射充数。
+ 
+-最近一次有效状态/日志目录：`/var/lib/ranger-nav-yt6801/connect-jQpZBTzH/`。
++后端先得到 T_map_imu(t)，适配器用真实方向的 T_base_imu 转成 T_map_base(t)，发布 `LocalizationEstimate`；现有公共桥接按同一采样时刻插值轮速，唯一发布 map→odom、odom→base_link。FAST 局部系不是 wheel odom；参考节点的 TF 必须关闭。车体安装外参仍近似，不能将相机–雷达外参当作车体标定。
+ 
+-```bash
+-sudo bash /var/lib/ranger-nav-yt6801/connect-jQpZBTzH/rollback.sh
+-```
++实时传感器曾使用 2020 年 header、主机/存储时间为 2026 年。当前隔离展示未接公共桥接；直接接轮速/Nav2 会产生跨历元问题。后端离线使用 header-clock 调度与 use_sim_time，保留原消息；真机接公共 TF 前必须解决实际时钟一致性，不重打 now 掩盖。
+ 
+-此命令是**备用回滚，不是接手步骤**：按 UUID 删除项目连接，并按记录恢复先前有线连接；保留本次操作前已加载的驱动。若需卸载驱动，必须先确认 enp2s0 已不再使用。不要运行早期失败尝试目录的旧回滚脚本。
++## 已有证据与清理结果
+ 
+-该目录包含 `activation.log`、激活前后默认路由、原地址和修复后的回滚脚本。普通用户可能不可读。项目 docs 中另有完整只读审计和成功验证证据。
++- 前端完整静态基线 829 对，828 帧 VIO，4222 次视觉迭代；DDS 55/55，定向 C++ 13/13。
++- 本次在线约 10/200/10 Hz，最终显示 3925 对；没有公共 TF/速度输出，已停止。最新在线雷达 SN/IP 在在线报告中，与 9 月旧雷达不同，不能套用旧 `.145`；当前配置为 `.101`。
++- 整合后配置/迁移 10/10、标定 11/11、时间对齐 7/7、进程 11/11、定位契约 11/11；新入口静态短回放 20 对 / 20 VIO / 121 迭代。Nav2 全量 37/37 等结果保留原 10 月 20 日日期。
++- 保留 `bags/fast-livo2-baseline-126a5fAo`、`bags/fast-livo2-dds-smoke-final`、全部原始数据与地图。约 541 MiB 重复 DDS/XWD/缓存已清理，不要重新生成多份全量等价回放。
++- [整合报告](consolidation_report.md)、`docs/consolidation_evidence/20261026/verification_summary.json`、[在线报告](fast_livo2_online_report.md)、[阶段 A](fast_livo2_stage_a_report.md)。
++- 回退资产：`.runtime/backups/consolidation_20261026/`，含迁前 tracked diff、源码检查点、原标定 `.git` 及完整 bundle；另有本轮文档备份 `.runtime/backups/docs_handoff_20261026/`。不要整目录清空 `.runtime/` 或 build。
+ 
+-## 接手可执行的只读检查
++## 阶段 B 新入口与边界
+ 
+-```bash
+-uname -r
+-ip -brief address
+-ip route
+-ip route get 192.168.1.145
+-ip neigh show dev enp2s0
+-nmcli -f connection.id,connection.uuid,connection.interface-name,connection.autoconnect,ipv4.addresses,ipv4.never-default connection show ranger-mid360-8745
+-```
++- 源码 `ws_fast_livo/src/ranger_fast_livo_backend` 已纳入可跟踪路径；前端旧 build/install 保留。后端依赖在 `backend_deps`，构建在 `backend_build`，安装在 `backend_install`，不覆盖前端部署。
++- `bash scripts/build_fast_livo2_backend.sh`、`bash scripts/run_fast_livo2_backend.sh` 默认 dry-run。后者只有显式 `--offline-bridge` 才启动公共适配器和 TF 桥接；本轮未启动硬件。
++- PCL、small_gicp、small_vgicp 可配置；正常默认 PCL。图基准保留 FAST local 轴，当前未验证重力对齐，不可默认水平。
++- 配对队列启动缺对造成批量释放的问题已修复；创新失败写入修正缓存的问题已修复。B 离线桥接首次创新失败锁定，不影响私有 PGO。
++- GTSAM SHA 同时有 4.2 / 4.2.0 标签，源码显示字符串仍含 a9；记录事实，不更改上游版本字符串。完整依赖/参考审查和测试命令见 B 报告。
+ 
+-这些命令不加载模块、不激活连接、不启动 ROS。若沙箱阻止 netlink/D-Bus，应通过正常工具授权读取，不将沙箱限制误判为主机网络故障。
++## 下一窗口应做什么
+ 
+-## 接手工作方式
++B 已完成本轮交付。后续按 [计划](FAST_LIVO2_BACKEND_PLAN.md) 的 C1→C2→D 顺序：先定义归档加载/完整性/标定兼容和给定初值定位，再做无初值搜索与系统验收。不要把局部 ICP 当全局重定位，不宣称没有数据的成功率或精度。
+ 
+-- 阅读并概述当前状态后，等待用户指定下一阶段；不自动继续雷达驱动、持久化或 SLAM。
+-- 后续技术路线仍为 Lightning-LM 建图/定位；先通信、录包、建图、定位和平地导航，坡道后续。Nav2/Smac Hybrid-A*/MPPI 是后续候选。
+-- 用户偏好少来回确认，已授权范围内自主实施；必要修改先保存原值并提供回滚。所有自动测试默认 dry-run。
+-- 没有任何底盘运动许可。启动可能切换底盘控制模式的驱动、发送 CAN 控制、非零速度或导航目标，必须取得用户对该次测试的明确许可；进程重启后旧运动许可失效。
+-- 用户曾要求代理自行处理正常 sudo 认证；**本交接不包含密码，也不要求新窗口从旧聊天查找密码**。以新窗口实际工具权限和可用的正常认证方式为准，不写入密码、不绕过权限。
+-- 每阶段更新 STATUS.md 和对应报告；注明实测、用户提供信息、推断及待验项。
++下一阶段获 C1 明确授权后，复查 B 归档与当前 localizer，先实现新进程加载及失败状态，不重做 B、不把局部 ICP 称为全局重定位。高程地图与坡道不在这个阶段。
+diff --git a/docs/INITIALIZATION.md b/docs/INITIALIZATION.md
+deleted file mode 100644
+index c615f3e..0000000
+--- a/docs/INITIALIZATION.md
++++ /dev/null
+@@ -1,32 +0,0 @@
+-# 项目约束初始化记录
+-
+-日期：2026-09-13（Asia/Shanghai）。本记录不是通信、建图或导航阶段报告。
+-
+-## 实际完成
+-- 检查 `/home/lab307` 下可见目录和工程文件线索，未发现可复用的 Ranger 工程；`/home/lab307/ranger_nav` 原先不存在。
+-- 未发现 `/AGENTS.md`、`/home/AGENTS.md` 或 `/home/lab307/AGENTS.md`。递归文件检索也未返回 `AGENTS.md` 或名称包含 ranger 的文件。
+-- 检索不构成对系统全部挂载点、隐藏缓存或外部磁盘的穷尽检查。
+-- 创建 `docs/`、`scripts/`、`config/`、`patches/`、`bags/`、`maps/`，写入工程约束和状态文件。未创建空 ROS 包或工作空间。
+-
+-## 关键命令与退出结果 / 检查证据
+-以下为本次工具返回的人工整理记录；没有另外生成原始终端日志。
+-
+-| 命令 | 退出结果与证据 |
+-| --- | --- |
+-| `pwd` | 输出 `/home/lab307` |
+-| `rg --files -g AGENTS.md -g '*ranger*' -g '!node_modules' -g '!build' -g '!install' -g '!log' -g '!\.cache' /home/lab307 2>/dev/null` | 1；未返回匹配文件；错误输出被隐藏，因此不能据此认定所有目录均可访问 |
+-| `ls -ld /AGENTS.md /home/AGENTS.md /home/lab307/AGENTS.md /home/lab307/ranger_nav 2>/dev/null` | 无输出；与后续 `ls` 同次执行，未单独保存其退出码 |
+-| `ls -la /home/lab307` | 0；主目录包含 qzy、周如意、标准用户目录与应用配置目录，无 ranger_nav |
+-| `find /home/lab307 -maxdepth 4 -type d \( -name .cache -o -name .codex -o -name .local -o -name .nvm -o -name .npm -o -name .vscode-server -o -name snap \) -prune -o -maxdepth 4 -type d -print` | 0；列出的非缓存目录中未见 Ranger 或 ROS 工作空间 |
+-| `mkdir -p /home/lab307/ranger_nav/{docs,scripts,config,patches,bags,maps}` | 0 |
+-
+-## 修改文件
+-- `AGENTS.md`
+-- `docs/STATUS.md`
+-- `docs/INITIALIZATION.md`
+-
+-## 结果与待验项
+-- **PASS：仅项目约束初始化。** 不代表任何硬件、驱动或导航功能通过测试。
+-- 没有运行安装脚本、访问官方源码、修改网络/系统配置或启动硬件进程。
+-- 系统环境、硬件版本、CAN 历史配置及全部功能验证留给用户指定的阶段。
+-- 下一步最少人工操作：指定第一个执行阶段。
+diff --git a/docs/LIDAR_CONNECTION.md b/docs/LIDAR_CONNECTION.md
+index 104e038..9169ec1 100644
+--- a/docs/LIDAR_CONNECTION.md
++++ b/docs/LIDAR_CONNECTION.md
+@@ -1,5 +1,7 @@
+ # Mid-360 连接处理
+ 
++> 历史阶段报告：正文保留当时的实现、命令、失败与验收范围；当前状态以 [STATUS](STATUS.md) 为准，当前入口见 [根 README](../README.md)。旧文中的“下一步/尚未授权/未部署”不构成本次任务指令。
++
+ 2026-09-13。用户在阶段 0 后明确要求“先连接上雷达再说”。本任务范围为板载网卡恢复与雷达连接，不授权底盘动作。
+ 
+ ## 当前状态：PASS（2026-09-14 板载直连 IP 通信；ROS/UDP 点云尚未验收）
+diff --git a/docs/STATUS.md b/docs/STATUS.md
+index d05ca29..ac9eb0e 100644
+--- a/docs/STATUS.md
++++ b/docs/STATUS.md
+@@ -1,134 +1,51 @@
+-# 项目状态
++# 当前项目状态
+ 
+-更新时间：2026-10-26（恢复中断并完成架构改造批次 3 收尾；下方旧阶段正文保留为历史快照）。
++更新：2026-10-26。当前完成 FAST-LIVO2 阶段 B 的代码与隔离离线验收；设备保持停止。本页只保留当前结论，历史过程、失败尝试和原始数值查对应阶段报告。
+ 
+-仓库维护（2026-10-26）：已发布至 [Ecust-Robotics-Lab/ranger-mini](https://github.com/Ecust-Robotics-Lab/ranger-mini)，补充根目录 README；按用户提供的邮箱，本仓库后续提交使用 `ujd66 <qzy154846@163.com>`，`.mailmap` 规范原工作站及此前 noreply 作者别名。随后按用户明确指令删除旧提交中的 25 条 Claude 共同作者尾注：31 个历史提交的文件树、原作者和时间保持不变，SHA 已改写，原历史已本地备份并保存映射。此项仅为文档和仓库维护，不进入架构批次 4；详见 [发布与作者归属记录](github_publication.md)。
++## 当前结论
+ 
+-## 架构改造批次 3：时间对齐与受管会话（当前）
++| 项目 | 状态与边界 |
++| --- | --- |
++| 硬件/环境 | Ranger Mini V2、Mid-360S、海康相机；Ubuntu 22.04 / ROS 2 Humble / x86_64 |
++| 生产默认 | Lightning 建图/定位，wheel 连续里程计，terrain disabled；Nav2 与安全链保持 |
++| FAST-LIVO2 前端 | 已构建、静态三融合回放、真实在线与 RViz 运行；用户确认画面后要求停止 |
++| FAST 后端能力 | 独立关键帧/回环/iSAM2、非关键帧传播、B 图归档与离线适配器已实现；三传感器运动效果待验，C1/C2 未实施 |
++| 标定/时间 | 本机五参数内参、试验外参均保留；几何验收、曝光/扫描物理对应、旧历元问题仍 PARTIAL |
++| 运动数据 | 用户确认没有三传感器运动录包；既有运动闭环包没有图像 |
++| 系统验收 | 静态链路和离线接口通过，不代表真实运动精度、完整 Nav2、安全停车距离或坡道能力通过 |
++| Git | refactor/pluggable-navigation；交接快照 HEAD a76d83a767d5691ca40351f3a57f65b398572a52；阶段 A/整合修改大量未提交，保留用户已有修改 |
+ 
+-- **PASS：代码、构建及隔离离线验证；真机导航仍为 PARTIAL。** 定位修正使用原采样时刻的轮速插值，缓存默认 2 s/1000 条、最大插值间隙 0.1 s，禁止外推。重复心跳不刷新定位采样年龄；时间回退与数据缺口撤销就绪。
+-- 数值测试 **7/7**：已知加速/转弯 6DoF 轨迹在 0.18/0.32/0.06 s 延迟下，最大 map→odom 平移误差约 0.031 mm（仅合成插值精度）；包含冻结采样、断流、时间/时钟回退与恢复。
+-- 统一受管物理 TF 链 `map→odom→base_link→imu_link→livox_frame`；Lightning 原生位姿使用私有 `lightning_imu_pose`。固定安装外参仍为用户近似值，未精测。
+-- 五个 shell 入口统一默认 dry-run，实际执行为前台受管会话。按数据/TF/生命周期状态启动依赖，资源租约与 PID/start_ticks/boot_id 限定进程归属，双监督/subreaper 清理子孙进程，不按名字全局清场、不自动重启。含底盘或导航的启动显式要求本次 --control-authorized，运动门禁仍默认无许可。
+-- 验证：进程管理 **11/11**、定位契约 **11/11**、桥接 **14/14**、门禁单元 **12/12**、安全链 **37/37**；合成传感器驱动真实 field→Nav2 入口的生命周期/故障停机测试通过。首轮安全链 36/37 的夹具问题与所有失败记录保留，未降低控制指令判定阈值。
+-- 2026-10-26 恢复后复跑时间对齐 **7/7**、进程管理 **11/11**，补齐源码/安装副本、保留资产和嵌套仓库核验；10 月 20 日全量测试仍保留原日期。独立的雷达历史文档 IP 修改未纳入本批提交。
+-- **PENDING**：真实硬件启动/退出、精确外参、独立定位数据、原始传感器时间质量、真实导航及坡道。双监督同时被强杀或系统故障仍需外部 systemd/cgroup 保证；本批不声称完全覆盖。
+-- [批次 3 报告](architecture_batch3_report.md)、[受管会话操作说明](managed_sessions.md)。本批未启动物理驱动、未安装候选算法或改动地图/Nav2 生产参数。后续为 FAST-LIVO2 接入准备，不自动进入新真机阶段。
++当前路径与入口以 [工程结构](PROJECT_LAYOUT.md)、[根 README](../README.md)、[标定流程](../calibration/README.md) 为准。`calibration/` 已迁入，`~/calibration` 仅兼容链接；当前相机/同步包在 `ws_camera/src/`。
+ 
+-## 架构改造批次 2：定位接口与配置解耦（历史快照）
++## 最近完成
+ 
+-- **PASS：构建与隔离离线验证；真机导航仍为 PARTIAL。** 新增 LocalizationEstimate 消息包，Lightning 适配器负责原生分数/状态与外参，公共桥接消费统一位姿/健康消息。`standard` 后端允许独立模拟发布者接入，保持现有导航与门禁 Bool 接口。
+-- 统一 `config/runtime.yaml` 与地图关联清单，现场/导航/可视化默认选择关联的新图；冲突地图覆盖在启动前报错。单独 aux 地图发布改为默认关闭。新导航图 acceptance 的 PENDING 原样保留。
+-- launch 明确转交阈值，默认位姿新鲜度保留实际生效的 0.5 s；Lightning 事件状态有效期统一 10 s，修复旧看门狗 1 s 分歧。旧额外参数经白名单和类型校验后转交，未知项报错。
+-- 验证：新接口契约 **10/10**、实际 launch 桥接 **14/14**、门禁单元 **12/12**、安全链 **37/37**，均退出 0。安全测试使用当前地图和 0.10 m/s 参数；小规划半径仍是实验模型，测试不构成窄口通行验收。证据、失败尝试和测试夹具修正见 [批次 2 报告](architecture_batch2_report.md)。
+-- **PENDING**：采样时刻里程计插值、完整进程监督与公共 TF/标定整理留待批次 3；本批没有修复跨时刻变换组合。相机同步、FAST-LIVO2/高程地图接入和原有真机待验项继续保留。
+-- 本批已重建 ws_nav；未启动真实设备、未安装新算法或改动地图/原生算法源码，无新增真机运动许可。[接口说明](localization_backend_contract.md)。
++- 阶段 B 独立 C++ 包、GTSAM/small_gicp 项目内依赖、PCL/GICP/VGICP 接口、不可变云分片/一致性导出及受管私有入口落地；公共桥接拒绝缓存缺陷已修复。见 [B 报告](fast_livo2_stage_b_report.md) 和 [B 接口](fast_livo2_backend_interfaces.md)。
+ 
+-## 架构改造批次 1：基线整理（历史快照）
++- 清理两份经 SHA 核对的冗余 DDS 回放、XWD 与缓存，约 541 MiB；原始数据、正式基线、final 派生包、PNG、地图与失败证据保留。
++- 标定资产原子迁移，1818 条迁移身份检查、1158 条原始资产保护检查通过。相机/同步包、FAST-Calib 与 ws_nav 构建通过；去掉旧路径链接的八项离线检查通过。
++- 新增统一建图和标定入口，runtime/profile 可选择 Lightning 或 FAST-LIVO2 前端。全局定位仍独立选择 lightning/standard，解析器拒绝把局部前端冒充全局定位。
++- 更新 AGENTS、README、交接与文档索引；删除重复初始化记录和已完成批次的旧总计划，下一步计划集中于 [后端与重定位计划](FAST_LIVO2_BACKEND_PLAN.md)。见 [本轮文档报告](documentation_refresh_report.md)。
+ 
+-- **PASS：磁盘基线、版本与地图关联整理；导航完整验收仍为 PARTIAL。** 在 `refactor/pluggable-navigation` 分支执行，仅修改文档和审计证据，未调整运行配置、安装依赖或启动设备。详见 [批次 1 报告](architecture_baseline.md) 和 [架构计划](../ARCHITECTURE_PLAN.md)。
+-- **修正历史时间边界**：原阶段 6“真机测试全部未执行”是 9 月 28 日早期记录。9 月 30 日 Git 提交说明已记录自主行驶约 5 s 后重规划失败及后续现场调参；本批未复测，不据此认定完整真机验收。
+-- **当前源码默认地图**：定位 `2lx5kkho`、导航 `8cw1afzl`，同源包 `p42bk0yi` 哈希复核一致；25 个关键帧最大位置差约 0.071 mm。新导航图 acceptance.json 仍全部 PENDING；旧地图的验收结论不得转用。辅助地图仍默认旧 `suej7qsz`，现场会话默认关闭发布，单独 aux 入口默认开启。
+-- **当前配置属于窄口现场实验**：规划半径 0.10 m、MPPI/门禁限速 0.10 m/s、CM 多边形半轴 0.39×0.28 m（记录车体外形加 0.02 m 边距）；不能把实验规划模型当真实车体几何。源码/安装副本 13 项一致；历史 37/37 不代表当前配置重新验收通过。
+-- **待修接口问题**：现场 `tf_max_age_s:=1.5` 未经 bridge launch 转交，按静态调用链仍采用节点默认 0.5 s；状态新鲜度回调与看门狗分别采用 10 s/1 s；定位与轮速位姿缺少同刻对齐。本批仅记录，留待后续批次修复。
+-- 七个嵌套仓库完整版本、补丁及配置哈希、相机两处已有本地修改见 [证据快照](architecture_evidence/batch1_20261019/baseline.json)。相机修改和六个未跟踪雷达日志目录均保持原样；候选后端尚未获取或锁定部署版本。
+-- 下一批为接口与配置解耦；未进入候选算法部署、坡道测试或新真机阶段。本批无需用户人工操作。
++## 验证事实
+ 
++| 验证 | 已有结果 | 日期与证据 |
++| --- | --- | --- |
++| 阶段 B 离线 | C++ 21/21、ROS 6/6、适配器 3/3、桥接拒绝回归 2/2；公共桥接 14/14、契约 11/11、时间 7/7、门禁 12/12；三传感器→前端→后端 55/55 | 2026-10-26，[B 报告](fast_livo2_stage_b_report.md) |
++| 完整静态三融合基线 | 829 对、828 帧 VIO、4222 次视觉迭代；DDS 55/55 对 | 2026-10-26，[阶段 A](fast_livo2_stage_a_report.md) |
++| 真实在线前端/RViz | 约 10 Hz 点云、200 Hz IMU、10 Hz 图像/位姿；已受管停止 | 2026-10-26，[在线报告](fast_livo2_online_report.md) |
++| 整合后验证 | 配置/迁移 10/10、标定接口 11/11、时间对齐 7/7、进程 11/11、定位契约 11/11、前端 C++ 13/13 | 2026-10-26，[整合报告](consolidation_report.md) |
++| 整合后短回放 | 20 对、20 帧 VIO、121 次视觉迭代；真实 writer 合成测试 5736 快照通过 | 同上；不属于新增运动验收 |
++| Nav2 完整离线回归 | 桥接 14/14、门禁单元 12/12、安全链 37/37、合成受管入口测试 | 2026-10-20，[批次 3](architecture_batch3_report.md)；本轮未全量复跑 |
++| 底盘停车 | 2026-09-28 用户确认该次停车安全通过，保留此前异常反馈记录 | [底盘报告](02_ros_motion_test.md)；不代表本次新增实车验证或运动许可 |
+ 
+-## 阶段 6：Nav2 平地单点导航集成（当前）
++## 下一步与主要缺口
+ 
+-- **PARTIAL：安全链与导航栈配置/离线验证完成；真机导航测试全部未执行——只可表述为"配置/离线测试完成，真机待验"，不写"导航已成功"。** 用户 2026-09-28 授权阶段 6 并给出速度链顺序要求（仲裁/平滑在 CM 之前、CM 最后直通底盘）。
+-- **安装**：ros-humble navigation2 全套 1.1.20（bringup/collision-monitor/mppi-controller/smac-planner/velocity-smoother/simple-commander）+ twist-mux 4.3.0，参数/插件名全部对照已装版本源码与二进制符号核实（例：MPPI 插件名 Humble 用 `::`、Ackermann 半径参数在 `FollowPath.AckermannConstraints.min_turning_r` 子命名空间、costmap width/height 必须整型、bt_navigator configure 时同时加载两个默认 BT）。
+-- **速度链**（用户指定顺序）：Nav2(/cmd_vel_nav)+遥控(/teleop/cmd_vel) → twist_mux（遥控 90>Nav2 10；4.3.0 输出话题实测 cmd_vel_out）→ velocity_smoother(OPEN_LOOP) → **ranger_motion_gate（本项目新节点：VOLATILE 粘滞许可/软急停锁存/定位 ready/点云新鲜度/限速/阿克曼运动学）** → collision_monitor → **/base/safe_cmd_vel（唯一发布者=CM，launch 重映射的底盘入口）**。全链 Twist。
+-- **运动模式约束**：底盘驱动源码证实 |vx|/|wz|<0.4764 切 SPINNING、vy≠0 切横移——门禁运动学强制拦截（先限幅后裁半径，输出不变量 R≥0.55 或 wz=0，单元测试 12/12 含回归用例与全网格扫描 tests/test_stage6_gate_unit.py）；禁倒车三重（MPPI vx_min=0 + smoother min=0 + Smac DUBIN）。
+-- **防撞输入**：ranger_obstacle_filter（去自身点/限距，空云也发布作新鲜度心跳）→ /livox/obstacles 同时供 CM（高度带 0.10–0.80 base 系=建图障碍带；Stop 多边形 footprint+0.08、严格大于语义 max_points=0 即 1 点停）与局部代价地图；未知区不可行驶（track_unknown+allow_unknown=false）。**门禁点云新鲜度监视 /livox/obstacles（与 CM 同源）——过滤器死亡时门禁立即阻断（审查 major 修复）**。
+-- **地图**：导航副本 `maps/.../new_map/nav/`（make_nav_map.py 清除建图起点 0.177 m 处 1 个不可能占据像元，原图未动；原版会使起点膨胀致死、Smac 拒规划）。footprint 0.74×0.52（用户确认外包络，PROVISIONAL）。**场地走廊净空紧张**（中轴线距墙 0.04–0.4 m 段存在）：v1 目标点须选开阔区，窄段通行属后续阶段。
+-- **验证**：tests/test_stage6_safety.py（隔离 domain 跨进程全栈）**37/37 全绿 exit 0**（safety-ych6w74e）+ 门禁单元 12/12；防空转设计（cmd_seen 时间戳截止、零速断言接受静默、T10 活跃零值消息、T9 实时图发布者数判定、T14 get_parameters 服务直读）；历轮 13 个失败证据目录保留。另实测禁用 FootprintApproach（1.1.20 空点云+动态 footprint 误判即刻碰撞，§7.1）。
+-- **对抗性审查**（6 维度×3 视角工作流）：确认 15 项（5 major：门禁看错云话题、限幅顺序 bug 可触发 SPINNING、--yaw 缺省全零四元数、--cancel 跨进程空操作、--timeout 不覆盖服务器不可用）全部修复；56 个验证代理因账户限流失败，驳回清单经人工复核拾回修复（launch 默认地图、MPPI critics 显式化、daemon 退化改服务直读等）。详见 06 报告 §5.1。
+-- **运维发现（如实记录）**：`ros2 run` 包装器 SIGINT 后子进程孤儿化（曾致 6 个带许可门禁泄漏发 0.15）；SIGKILL 残留 /dev/shm fastrtps_* 段与幽灵端点污染 DDS 图；调试会话 `ros2 topic pub` 僵尸污染输入话题——清理脚本 scripts/clean_dds_shm.sh，测试护栏已覆盖全部三类模式。
+-- **PENDING**：真机导航（隔离平坦空旷区，0.15 m/s 起步→缓弯→取消→软障碍→遥控接管→逐步放宽限速；不让人冲入车前测防撞）；footprint 实测；阶段 5 两项 PENDING 不变（独立数据验证、T_base_imu 精测）。
+-- 阶段 2 停车安全已由用户 2026-09-28 确认通过（见阶段 2 节）；运动许可仍逐次授权、不跨进程重启。
++B 已完成本轮可执行范围并停止。下一步为地图包加载与给定初值定位 C1，之后才是 C2 与 D；各阶段需明确实施指令，本轮不启动后续开发或实物。
+ 
+-## 阶段 5：地图定位与 Nav2 接口适配（前一阶段，已完成含两项 PENDING）
++B 的配对、关键帧/图优化、拒绝条件、保存原子性及隔离桥接已实现并测试。剩余重点为真实运动参数/误环验证、长时资源测试和 C1 地图加载契约。三传感器运动闭环数据、精确 T_base_imu、统一实时历元、重复结构/丢失恢复、重启定位、真机导航与坡道仍待验。缺少运动包只限制实证验收，不妨碍获授权后的代码和定向离线测试。
+ 
+-- **PARTIAL：定位管线与接口适配完成并经离线自测+合成测试；真实冷启动定位与独立数据验证待用户，未放行导航。** 用户 2026-09-23 授权阶段 5；不启动自主导航。
+-- **源码审计（不虚构接口）**：定位初始化依赖地图功能点（我们地图仅 `start`=建图起点），无任意全局搜索（YawSearch 被注释）；外部初始位姿仅 C++ API，**无 /initialpose/重定位服务**；`Localize()` 成功判定恒真（上游缺陷，置信度门槛失效）→ 桥接自设门槛补救。上游 TF 把传感器位姿硬编码 child=`base_link`（语义错误），补丁更名 `imu_link`。**Lightning 未融合底盘轮速**（ProcessOdomMsg 被注释）；/wheel/odom（odom→base_link 平面里程计，50 Hz，TF 关闭）保持独立观测。
+-- **适配（新增，最小化）**：[stage5_loc_interface.patch](../patches/stage5_loc_interface.patch)（run_loc_online 加 --init_*/--pub_tf/--tf_child；新增 /lightning/loc_status + /lightning/loc_confidence）；定位配置 [ranger_mid360s_loc.yaml](../config/slam/ranger_mid360s_loc.yaml)（地图=suej7qsz，`save_dyn_when_quit:false` 防 Finish() 回写已验收地图——`has_set_pose_` 上游永不置位）；桥接包 `ws_nav/src/ranger_localization_bridge`（**唯一发布** odom→base_link 与 map→odom=T_map_base×inv(T_odom_base) 同刻同参考点；loc TF 取最新+显式年龄检查；navigation_ready=loc TF 新鲜+status GOOD+conf≥1.0+innovation+odom 新鲜；速度取 /wheel/odom.twist；外参 T_base_imu 为用户约值显式 APPROXIMATE，base_footprint 不引入）。3D/2D 地图同坐标系构造+数值一致（占据格 vs 障碍带投影中位 0.047 m）。
+-- **验证**：离线定位自测 `docs/05_evidence/loc-offline-6ggxi299/`（同源建图包，exit 0，FP init 成功，**73** 匹配全成功 conf≈3.0，终点与建图轨迹终点一致；**同源自测不作独立依据**）；桥接合成测试 `tests/test_stage5_bridge.py` v2 **11/11**（9 轮 8 轮全绿）。**对抗性审查（15 代理工作流）确认 10 项缺陷已全部修复**：`/navigation_ready` 无看门狗致轮速断流滞留 True（已加 0.2 s 看门狗+`odom_present` 诊断）、innovation yaw 误差未参与判定（原地旋转航向发散不可见，已加 20° 判据）、零四元数输入崩溃（已加防护）、Localization::Finish 空指针（Init 失败路径，已保护+早退）、v1 测试多项空转（jump 检查可被任意满足/TF 仅查存在性/stall 归因错误，破坏性实验证实后 v2 全重写：TF 数值比对、纯门禁归因、相位前沉淀基线、跨话题配对竞态修正、批量排空防测试饥饿）、文档 74→73 匹配数更正。失败记录保留：mfrsk5zz 缺 slam_env 退出 127；桥接首版 quat_rotate bug 由数学测试抓出已修；单进程多节点 DDS 发现在本环境不可靠→测试改跨进程。
+-- **现场冷启动（2026-09-23 晚，静止部分）实测 PASS**：车摆位偏差 ~0.43 m/−10° 仍 FP 收敛（conf 3.04 @200 Hz、status GOOD）；`/navigation_ready`=true、map→base_link z=−0.53 m 与外参换算一致；用户经 foxglove_bridge 确认二维地图+TF+实时点云可视化正常。插曲与看门狗现场验证（雷达驱动 600 s 到时退出→ready 正确翻 false）见 [05 第 7 节](05_localization_interface.md)。运动短距验证（可选强化）未做。
+-- **PENDING**：① 独立数据验证（新运动包，先离线后在线）；② T_base_imu 精测（当前近似）。
+-- 阶段 2 停车安全结论已于 2026-09-28 更新为通过（用户确认，见阶段 2 节顶部）；运动许可仍逐次授权、不跨进程重启。
++## 历史报告索引
+ 
+-## 阶段 4：Lightning-LM 编译与离线输入验证（已完成）
++环境/网络：[00](00_environment_audit.md)、[连接处理](LIDAR_CONNECTION.md)；底盘：[02](02_base_interface.md)、[运动与退出记录](02_ros_motion_test.md)；雷达：[03](03_mid360_validation.md)；Lightning：[04 建图](04_mapping_report.md)、[05 定位](05_localization_interface.md)、[06 导航](06_flat_navigation_acceptance.md)。
+ 
+-- **新雷达已识别并实际收流：Mid-360S，完整 SN `ARMCP4E0033801`，IP `192.168.1.101`，MAC `4c:43:f6:f4:9d:c2`，协议 type=35。** `config/mid360/MID360S_config.json` 已指向 .101；主机 enp2s0=192.168.1.50/24，默认上网路由仍走 Wi-Fi。驱动日志 `docs/03_evidence/driver-2v7kj2bx/`：设置数据类型/扫描模式/姿态、启用 IMU，**退出 0**（运行约 301 秒，SIGINT 正常收尾）。点云与 IMU 均 **time_type=0**（主机接收时间，未 PTP/GPS 同步）；旧设备的逐点 offset 回退问题在新设备上依旧存在。
+-- **三维验收完成（2026-09-23）：用户人工图审合格；安装约值已提供（车顶中间、距车尾约 0.25 m、离地约 0.60 m、装平）；尺度核对由用户明确免除。** 两个正式实验 acceptance.json 已如实填写：`three_dimensional=PASS`（依据=人工图审+同包重复性）、`measured_scale=WAIVED_BY_USER_NOT_INDEPENDENTLY_VERIFIED`（不写成 PASS）。g2p5 二维配置 `config/slam/ranger_mid360s_g2p5.yaml` 已按用户输入建立（障碍带 0.10–0.80 m、floor/lidar_height=∓0.556 m IMU 系换算、装平固定地面平面），同包离线验证 **完成**：`maps/lightning-offline-suej7qsz/` exit 0、结构 PASS、map.pgm(0.05 m, 528×560)+map.yaml 首次生成；占据格与 3D 障碍带投影中位差 0.047 m、轨迹 49 关键帧全部自由、离群点未进栅格，二维 `PASS_STRUCTURAL_AND_LOCAL_CONSISTENCY`（边界与 caveat 见其实验 acceptance.json）。**在线模式静止管线验证完成（2026-09-23）**：用户现场启动雷达驱动后运行 `maps/lightning-online-aea6vhyt/`——入口预检（唯一可靠发布者）通过、exit 0、**保存服务 /lightning/save_map 首次实测成功（response=0）**、结构 PASS、产物齐全（含在线 map.pgm/map.yaml）；车全程静止，单关键帧 120 秒漂移约 2 cm 符合预期。在线**运动**建图未做（无需，正式地图已由离线产生）。用户已授权阶段4，不自动进入定位部署/导航。本轮 Codex 未启动底盘驱动、未发送 CAN/速度；雷达驱动由用户按采集说明启动。
+-- **正式车体闭环包与两次离线运行（2026-09-23）**：用户确认 Mid-360S 已牢固安装回 Ranger Mini V2 后录制 `bags/mid360-manual-loop-n2cgpiz0/raw/`（约 95 s，950 帧 CustomMsg + 18995 条 IMU，18,997,056 原始点，录包退出 0）。输入检查退出 0：header 无倒退，预处理保留 4,303,005 点；**time_type=0 逐点 offset 回退仍有 122,536 次，动态时间质量问题未解决**。两次离线运行 `maps/lightning-offline-8k_qnpae/`（首次）与 `maps/lightning-offline-k2i9n8qw/`（同包重建）：均 exit 0、结构检查 PASS、49 关键帧；轨迹长 9.08/9.14 m，起止平移差 0.45/0.49 m，航向差 −4.3°/−4.7°，轨迹 z 跨度 0.117/0.057 m，回环最大修正 0.167/0.044 m；双向最近邻中位数 0.044 m、p95 0.119 m、max 0.642 m（REVIEW_REQUIRED）。已知离群点 2 个：水平距离 >30 m 的 (65.5,−5.3,15.2) 与 (61.2,−13.5,8.7)，后者即单点分块 `1.pcd`；主体地图（`0.pcd`，33,933 点）范围 x −4.3…21.1、y −14.4…11.2 m。每实验已生成 geometric_review.json + 4 张审查图；`8k_qnpae` 另有查看辅助 `map_review_cloud_with_trajectory.pcd`（intensity −1=轨迹线、−2=朝向箭头，不参与验收）。两个实验 acceptance.json 已于 2026-09-23 填写：`three_dimensional=PASS`（依据=用户人工图审合格）、`measured_scale=WAIVED_BY_USER_NOT_INDEPENDENTLY_VERIFIED`（用户明确免除尺度核对，缺口如实保留）；`8k_qnpae` 另增全范围查看辅助 `map_review_xy_full_extent.png`。
+-- **验收输入记录（2026-09-23 齐备）**：① 人工图审——合格（两实验同判，已写入 acceptance.json）；② 现场参考距离——**用户明确免除**（"核尺度就不用了，算法基本算出来的没问题"），acceptance.json 记为 WAIVED，绝对尺度未独立核对的缺口如实保留；③ 安装 xyz/rpy——用户约值（车顶中间、距车尾约 0.25 m、离地约 0.60 m、装平；base_link 原点定义未核对，不换算成虚构 TF），已记入 `config/mid360/extrinsics_pending.yaml` 与两实验 acceptance.json。g2p5 二维验证：新配置 + 同包新目录离线运行 map.pgm/map.yaml，通过后在线模式最后验证。
+-- **构建 PASS**：`ws_slam/src/lightning` 固定 `1325fed8fa97a2506878360fc23427ea00a767da`，master 来源、detached HEAD，有可追踪本地补丁。Pangolin 0.9.3 与缺失依赖安装在项目内，最多2个编译任务；最终退出0，有上游警告。没有把关闭UI当成免除Pangolin依赖。
+-- **外部 Livox 接口 PASS**：使用 ws_livox 已固定的 `livox_ros_driver2`；不生成内置副本。消息字段一致，无内部生成头遮蔽，动态链接无缺失。SDK/driver及阶段3审查副本保留原状态。
+-- **真实静止包读取 PASS（限兼容性）**：同源 C++ RosbagIO/预处理读取298帧CustomMsg、5962条IMU、5,959,776原始点；预处理保留1,096,607点。header无非递增，原包SHA256不变。静止加速度模长均值0.995659g。
+-- Livox offset_time按ns→ms，time_scale不作用于此分支；实际比较已证实。去畸变前有按点时间排序，但39103次原始offset回退和time_type=0主机接收时钟问题仍保留，运动时间质量未验收。
+-- 专用 `config/slam/ranger_mid360s.yaml` 使用厂家名义IMU–LiDAR变换逆向：t_IL=[-0.011,-0.02329,+0.04412]m、R=I。base_link安装外参待测；不发布虚构TF。with_height=false避免z=0先验；保留6DoF。源码SLAM无TF广播器，不能以未被读取的system.pub_tf YAML推断定位TF关闭。
+-- 局部补丁处理外部接口/构建、Livox预处理边界与距离条件、关键帧点云转IMU系、拒绝覆盖/空地图、6DoF关键帧导出、真实二维分辨率和正常退出；合成检查通过，真实动态效果待验。
+-- **手持诊断闭环包（不作为建图验收）**：`bags/mid360-manual-loop-4uwmxbzb/raw/`，约 49.98 s，500 帧 CustomMsg + 9996 条 IMU（≈10/200 Hz），9,999,072 原始点；无底盘状态/TF（当时无发布者，未启动底盘）。**用户 2026-09-22 关键更正：该包为手持雷达走动录制，雷达并未牢固安装在 Ranger Mini V2 车体上**；实验 manifest 中“人工遥控录制”的说法不成立，原始 manifest 保留不改写。因此两个离线实验 `maps/lightning-offline-t_4fi98t/`、`maps/lightning-offline-7dwk87rr/` **明确标为手持诊断数据，不通过正式建图验收**（各自 acceptance.json 已更新）：车体三维地图、base_link 安装外参、绝对尺度、地面/坡道、g2p5、在线模式与导航一律不得引用其结论。
+-  - 诊断性事实（仅证明链路与管线可用）：两次运行均 exit 0、结构检查 exit 0、各 35 关键帧，优化轨迹长约 5.41/5.42 m，起止平移差约 0.096/0.098 m（航向差约 173°–174°，不构成位姿闭合）；同包重建对称最近邻中位数 0.0216 m、p95 0.060 m、max 0.285 m（comparison.json，REVIEW_REQUIRED）。
+-  - 输入检查 PARTIAL：500/500 帧存在逐点 offset 回退（64,701 次），time_type=0 的动态时间质量问题在新设备上未解决；预处理保留 1,848,931 点，header 无倒退。
+-  - 地图与 bag 保留情况更新（2026-09-23）：用户自行删除两个手持诊断实验目录 `lightning-offline-t_4fi98t/`、`lightning-offline-7dwk87rr/`（确认不再需要）；"不通过正式建图验收"结论不变，诊断数字以阶段4报告第 4 节留档为准。手持 bag `bags/mid360-manual-loop-4uwmxbzb/` 与全部正式实验地图仍保留。
+-- 若人工审查不通过（明显重影/错位/漂移），在当前阶段内先诊断原因（time_type=0 时间质量、外参、配置），不自动进入后续阶段；必要时重录。
+-- 输出：[阶段4报告](04_mapping_report.md)、[人工采集说明](04_manual_capture.md)、`docs/04_evidence/`（含已更新的 [map_inventory.json](04_evidence/map_inventory.json)）、离线/在线/录制/检查脚本。
+-- 阶段2停车安全未通过的结论不变，自主导航不放行。二维成功也不代表坡道通行性评估完成。
+-
+-## 阶段 3：Mid-360S 驱动、网络、时间戳与静止录包（旧雷达、阶段3结束时记录）
+-
+-- **实物更正并验证：Mid-360S**（此前 Mid-360 为历史称呼）。用户确认 12 V、原厂一分三线、固定牢固、窗口无遮挡、可以静止；协议识别 type=35，SN **ARMCP870038745**，IP **192.168.1.145**。
+-- **阶段 PARTIAL**：真实收流与 SQLite3 完整录包/读取 PASS；逐点时间质量、安装外参及重启后恢复仍待验。没有运行 SLAM/导航，没有启动底盘或发送 CAN/速度。
+-- 当前原生 Ubuntu 22.04.5 / 6.8.0-40-generic / ROS2 Humble。采集时 enp2s0=192.168.1.50/24、100 Mbps/full duplex；20:30:38 后载波丢失、无 IPv4，是否人为断电/拔线待确认。上网默认路由继续 wlo1→192.168.3.1。
+-- 本次开始 enp2s0 不存在，can0 DOWN；已复用已有签名 YT6801 和 NM 连接恢复。首次恢复脚本因符号路径比较错误退出 1，修复后用户执行退出 0，失败记录保留。
+-- **网络持久化配置 PASS（当前内核）**：用户执行 persist_mid360_network.sh 退出 0；首次复核发现 umask 077 导致公共索引 0600，已修脚本并在 /tmp 复现验证。用户执行最小 depmod 修复后，本助手确认索引 0644、普通用户按名解析/签名查询通过，modules-load、autoconnect=yes、never-default=yes 均正确，Secure Boot 开启。同内核正常重启无需重复手工加载；实际重启未测试，不宣称 DKMS/未来内核适配。最终证据 docs/03_evidence/persistence_final_verified.json。
+-- 持久化 root-only 备份和回滚：/var/lib/ranger-nav-yt6801/stage3-persist-FxqdJUHF/rollback.sh；只读证据 docs/03_evidence/persistence_verified.json。没有重复 MOK、关闭防火墙或修改 Wi-Fi/CAN。
+-- 独立 ws_livox 构建 PASS（有上游警告）：SDK2 `08f523c930b2f0ba1e98a6afaa8d7476bf479908`；driver2 `4a1def929e5b59c7a8122d19fce6efba581ce9f7`，仅加设备/时间类型诊断日志。Lightning-LM `1325fed8fa97a2506878360fc23427ea00a767da` 只审查输入，未构建。三个仓库 master 来源，均 detached HEAD。
+-- 最新成功驱动 docs/03_evidence/driver-4l6q_kwk/，**退出 0，当前已停**。型号更正前两轮无数据、最终退出 -9，不列为通过。单实例锁曾拒绝重复启动。
+-- **真实静止包** bags/mid360-static-qg8qtyiv/raw/：SQLite3、metadata 完整、29.8049 s、298 帧 CustomMsg + 5962 条 IMU（约 10/200 Hz），6260 条全部反序列化，计数一致、integrity_check=ok。没有底盘状态或真实 TF 发布者，未虚构/补录。
+-- header 均无倒退/重复；**time_type=0，未 PTP/GPS 同步**，驱动取主机接收时间。298/298 点云帧存在逐点 offset 回退，共 39103 次，最大回退 0.468837 ms；原始数据不改，检查退出 2，时间质量 PARTIAL，不能放行运动去畸变。
+-- 原始 IMU 加速度单位 g、角速度 rad/s；静止加速度模长均值 0.995659 g。orientation 默认四元数不是有效姿态。原始 CustomMsg 保留逐点 ns；可选 RViz/SI IMU 派生话题独立，未替换 SLAM 输入。
+-- /tf_static reliable/transient_local 录制配置通过隔离合成迟加入测试；本车外参 TF 尚不存在。厂家 S 型号 IMU-in-LiDAR 名义外参与未知 base_link 安装外参分开记录，不用离地高度代替。
+-- 报告：[03_mid360_validation.md](03_mid360_validation.md)。后续仅待用户指定，不自动进入 SLAM/导航。底盘阶段 2 的停车安全结论不变。
+-
+-## 阶段 2：底盘通信、ROS 与控制测试
+-
+-- **【2026-09-28 结论更新：停车安全通过（用户确认）】** 用户明确确认"阶段 2 停止安全测试已经通过"。据此本阶段的停车安全（STOP safety）判为 **通过（依据=用户现场确认，非新增自动化测试证据）**；下文 2026-09-2x 历史记录中"驱动退出后负向速度反馈、原因未明"等异常观察作为原始记录保留不改写。运动许可逐次授权的约束不因此放松。
+-- **最新用户观察**：5 秒测试停车时未观察到后退。记录为现场结果，不等同于所有停车机制通过。
+-- **最新日志（22:32）**：ros-motion-ebju6tr2 中 204 条非零 CAN 指令均 0.05 m/s，持续约 5.0015 秒；主动发零后反馈归零。驱动退出后仍有 5 条负向反馈，最低 −2.544 m/s，随后归零；这是解码反馈，不能据此声称实物同速后退。用户未指定精确日志或观察窗口。审查：docs/02_evidence/ros-motion-ebju6tr2/observation_review.json。
+-- 22:30、22:31 两轮分别有零速稳定不足、前进速度反馈 0.144 m/s 超阈值中止。最新一轮完成不能追溯认定此前通过。本次仅分析本地记录，未启动驱动或发控制；停车反馈异常仍待定位。
+-
+-- **此前配置修改（22:29）**：按用户“放宽保护”要求，前进纵向反馈绝对值阈值 0.10 → 0.12 m/s，顶部参数 `MAX_FORWARD_FEEDBACK_SPEED_MPS` 可调。发送速度仍 0.05 m/s、时长 5 秒；其他检查保留。离线边界/故障/退出瞬态检查和 dry-run 通过，未运行真机。证据 ros_motion_preflight/feedback_limit_012.json；不代表停车安全通过。
+-- **此前用户自测（22:25）**：5 秒参数已生效，但约 1.96 秒时 vx 反馈达到 0.101 m/s，超过脚本 0.1 阈值而提前中止。78 条非零 CAN 指令均为 0.05 m/s；退出后最低反馈 −0.801 m/s。5 秒持续前进未完成；当时未提高阈值，之后修改见上条。证据 docs/02_evidence/ros-motion-4mquwslq/review.json。
+-- 已修复首次中止原因被退出异常覆盖的日志问题，离线回归和默认 dry-run 通过；本助手未重新运行真机。停车原因仍未确定，安全未通过。
+-- 实物：用户确认 Ranger Mini V2；铭牌/SN/固件版本待记录。阶段 **PARTIAL**，停车安全未通过，自主导航不放行。
+-- **CAN 通信 PASS（已测范围）**：复用 can0 500000 bit/s、sample-point=0.875、restart-ms=100；没有重配。两次前进试验实际发送控制，收到运动反馈；接口 ERROR-ACTIVE，错误累计无增长。
+-- **ROS 接口 PASS（限范围）**：/system_state、/motion_state、/actuator_state、/wheel/odom 持续收流；22:16 轮各 524 条。实测 V2 参数、/wheel/odom、底盘 TF 关闭、/cmd_vel → /base/safe_cmd_vel 的 Twist 订阅正确。BMS 尚无数据。
+-- 22:05 首次启动因静止阶段未刷新命令而拒绝前进，未发送非零。之后测试脚本静止阶段增加零速刷新。22:11 和 22:16 分别获新授权后各执行一次 0.05 m/s、约 0.8 s 前进和主动发零。用户确认最后一次车体“确实运行了”。
+-- **停车安全未通过**：两轮主动发零后反馈归零，但驱动退出后均出现连续负向速度反馈，最低分别 −0.425、−0.392 m/s，最后又归零。无反向指令，原因未明；上述短脉冲的实物回动尚无明确现场结论；新的 5 秒现场观察见顶部。不能用驱动退出 0 或末帧为零判安全。
+-- 22:16 驱动 PID 23670 正常退出 0，测试脚本退出 2（退出后反馈异常）；没有自动重启。原脚本遗漏退出中途瞬态，已修复并用原始数据离线回放通过，重复轮实际捕获异常。
+-- 两仓库 detached HEAD：ranger_ros2 b6ea21a275ca5e7168130cc6470e61474681d679，ugv_sdk f2704eacdc90357078cd93ec60aae08bb4baab35，均有已存累计补丁。4 包构建 PASS：docs/02_evidence/build-JaMO1xCg.log。没有改变本轮驱动二进制。
+-- 测试脚本已按用户要求增加顶部 `FORWARD_DURATION_SECONDS` 参数，当前按用户要求设为 5.0 秒（速度仍 0.05 m/s）；截止时间、提示及日志同步使用。有限正数校验、默认/自定义 dry-run、状态拒绝与退出瞬态回放离线检查通过。5 秒配置仅运行默认 dry-run，退出 0，未启动驱动或发送控制；随后用户自行执行，既有中止记录，也有最新约 5 秒完成记录，详见本节顶部。此前参数化证据 ros_motion_preflight/duration_parameter_offline.log。
+-- 仍无生产主机运动看门狗；退出补零不覆盖崩溃、SIGKILL、CAN 中断。停发超时、RC 接管、硬件急停等未验收。测试脚本默认 dry-run，不属于生产安全控制器。
+-- 报告：[02_ros_motion_test.md](02_ros_motion_test.md)；源码审查：[02_base_interface.md](02_base_interface.md)；人工步骤：[02_base_manual_tests.md](02_base_manual_tests.md)。
+-- 新证据：docs/02_evidence/ros-motion-mp69pbm2/、ros-motion-9yzy_0mk/；历史 ros-motion-79ltuvud/。各轮保留实际脚本快照和版本记录。用户请求自行测试的命令已提供；本助手不再自动运行。
+-
+-## 已完成的前序阶段（历史结果）
+-
+-- 阶段 0 环境审计：PARTIAL，历史报告 docs/00_environment_audit.md。
+-- 用户追加任务“先连接雷达”：**PASS，仅板载直连 IP 通信。**
+-- YT6801 1.0.34 签名模块已加载，MOK 已登记，Secure Boot 保持开启；板载接口 enp2s0，192.168.1.50/24。
+-- 192.168.1.145 经 enp2s0 ping 5 发 5 收、0% 丢包，平均 1.829 ms；邻居 MAC ec:72:f7:da:cf:c8。
+-- wlo1 192.168.3.18/24，上网默认网关 192.168.3.1 保持原样；雷达配置无默认路由。
+-- NM ranger-mid360-8745 已激活，UUID 7d3735fd-229f-4461-bebd-421146eb06d2；autoconnect=no，模块未安装供开机加载，重启后不保证恢复。
+-- 设备完整 SN、Livox UDP 点云/IMU、ROS 话题与录包尚未验收；没有进入建图/导航阶段。
+-- 当时 can0 DOWN，未运行底盘驱动；阶段 2 最新检查见上。
+-- 详情、已修复脚本问题、命令和回滚：docs/LIDAR_CONNECTION.md 最后章节。
+-- 成功证据：docs/mid360_ip_connected_20260914.txt；原配置/激活日志及回滚：/var/lib/ranger-nav-yt6801/connect-jQpZBTzH/。
+-- 雷达 UDP/ROS 等后续阶段尚未授权；雷达临时连接持久化尚未实施。
+-
+-交接：docs/HANDOFF.md 原文是阶段 2 之前的历史交接。当前已授权阶段 6（配置/离线验证完成，真机导航待用户逐次授权，见顶部阶段 6 节）；主仓库与四个上游源码仓库均已 git 化——源码本地修改提交在各仓库 `ranger-local` 本地分支（lightning@b973e7f 基点 1325fed8、ranger_ros2@7b75bc2 基点 b6ea21a2、ugv_sdk@e2f5764 基点 f2704eac、livox_ros_driver2@cc34f0a 基点 4a1def92；SDK2 与审查副本保持干净 detached HEAD），完整记录见 [source_versions.json](04_evidence/source_versions.json)；主仓库最新 commit a34dee6（bags/ 与第三方源码不入库，补丁以 patches/ 追踪；用户自有的 mvs/、ws_camera/ 未纳入）。**现场流程**：定位会话 `bash scripts/field_session.sh [--execute|--status|--stop]`（参数 [config/field_session.env](../config/field_session.env)，导航时设 ENABLE_MAP_PUB=0）→ 导航 `bash scripts/run_navigation.sh --execute` → 授权 `scripts/nav_safety.sh enable` → 发目标 `scripts/send_nav_goal.py --x --y [--yaw-deg|--cancel]`。阶段 5 两项 PENDING 与本阶段真机清单见 06 报告 §9。后续阶段不自动推进，底盘运动许可不跨进程重启。
++架构已完成批次：[基线](architecture_baseline.md)、[接口解耦](architecture_batch2_report.md)、[时间/会话](architecture_batch3_report.md)。这些是各自日期快照，不能从旧文档的“尚未安装/尚未授权/下一步”恢复已过期任务。完整分类见 [文档索引](README.md)，当前交接见 [HANDOFF](HANDOFF.md)。
+diff --git a/docs/architecture_baseline.md b/docs/architecture_baseline.md
+index 225329f..a1a8c19 100644
+--- a/docs/architecture_baseline.md
++++ b/docs/architecture_baseline.md
+@@ -1,5 +1,7 @@
+ # 架构改造批次 1：基线整理报告
+ 
++> 历史阶段报告：正文保留当时的实现、命令、失败与验收范围；当前状态以 [STATUS](STATUS.md) 为准，当前入口见 [根 README](../README.md)。旧文中的“下一步/尚未授权/未部署”不构成本次任务指令。
++
+ 日期：2026-10-19。分支：`refactor/pluggable-navigation`。
+ 
+ **PASS（限磁盘基线整理与只读核验）；导航完整验收仍为 PARTIAL。** 本批没有安装依赖、调整运行参数、构建、启动 ROS/底盘或执行运动。基线源码起点为 `1963cc84d9e1c7d448f5be95c9599ead52c13455`；采集时主仓库 HEAD 为计划提交 `e5b2029d67475a15cf8516f7a4069a4206474346`。
+diff --git a/docs/architecture_batch2_report.md b/docs/architecture_batch2_report.md
+index 3d2f3f1..cd8537d 100644
+--- a/docs/architecture_batch2_report.md
++++ b/docs/architecture_batch2_report.md
+@@ -1,5 +1,7 @@
+ # 架构改造批次 2：定位接口与配置解耦
+ 
++> 历史阶段报告：正文保留当时的实现、命令、失败与验收范围；当前状态以 [STATUS](STATUS.md) 为准，当前入口见 [根 README](../README.md)。旧文中的“下一步/尚未授权/未部署”不构成本次任务指令。
++
+ 开始：2026-10-19；完成：2026-10-20。分支：`refactor/pluggable-navigation`。批次前提交：`1420575dc6436f60b8ad7b4277193fc6d3edd1db`。
+ 
+ **PASS：本批接口实现、构建与隔离离线验证。整体真机导航验收仍为 PARTIAL。** 真实底盘、雷达和相机均未启动，没有真机运动测试；未安装 FAST-LIVO2 或高程地图依赖。
+diff --git a/docs/architecture_batch3_report.md b/docs/architecture_batch3_report.md
+index 329042d..4363374 100644
+--- a/docs/architecture_batch3_report.md
++++ b/docs/architecture_batch3_report.md
+@@ -1,5 +1,7 @@
+ # 架构改造批次 3：采样时间对齐与会话管理
+ 
++> 历史阶段报告：正文保留当时的实现、命令、失败与验收范围；当前状态以 [STATUS](STATUS.md) 为准，当前入口见 [根 README](../README.md)。旧文中的“下一步/尚未授权/未部署”不构成本次任务指令。
++
+ 实施与全量测试：2026-10-20；中断恢复核验与收尾：2026-10-26。分支：`refactor/pluggable-navigation`。批次前提交：`b97cf91bbc44cd6b29e5e6a338fb3493169375e6`。
+ 
+ **PASS：本批实现、构建、数值测试与隔离离线启动/退出验证；真机导航验收仍为 PARTIAL。** 未启动物理底盘、雷达或相机，未发送真实 CAN 控制，没有安装新算法或更改系统/网络/CUDA。
+diff --git a/docs/localization_backend_contract.md b/docs/localization_backend_contract.md
+index 0d1fdea..c7480e0 100644
+--- a/docs/localization_backend_contract.md
++++ b/docs/localization_backend_contract.md
+@@ -1,6 +1,6 @@
+ # 定位后端接口与统一配置
+ 
+-适用于架构改造批次 3，2026-10-20。保持轮速里程计、Lightning 原生定位和既有速度链；FAST-LIVO2 尚未部署。受管入口、时间对齐和 TF 细节见 [批次 3 操作说明](managed_sessions.md)。
++更新：2026-10-26。公共契约沿用批次 3，保持轮速里程计、Lightning 全局定位和既有速度链。FAST-LIVO2 前端已部署并可配置选择，但独立先验全局定位尚未实现；阶段 B 已实现私有 PGO 和仅显式离线启用的标准适配器，见 [B 接口](fast_livo2_backend_interfaces.md)。生产入口不自动启用它。受管入口、时间对齐和 TF 细节见 [操作说明](managed_sessions.md)，后续接入见 [后端计划](FAST_LIVO2_BACKEND_PLAN.md)。
+ 
+ ## 1. 模块边界
+ 
+@@ -77,8 +77,8 @@ colcon build --packages-up-to ranger_navigation --executor sequential
+ source install/setup.bash
+ ```
+ 
+-后端接入验收需覆盖坐标参考点、非零外参、状态退化、原采样时间停止、心跳停止和轮速停止；不能只检查消息存在。标准后端的离线测试没有 Lightning 原生输入或 TF，验证桥接无需算法专属输入即可正常工作。
++阶段 B 修复了创新拒绝后仍覆盖接受修正缓存的问题：失败候选不进入缓存/参考历史，重复失败心跳不累加。新增 `latch_on_innovation_failure` 默认 false；B 离线入口显式 true，首次拒绝锁定未就绪并停止地图修正，重启会话才能解除。后端接入验收需覆盖坐标参考点、非零外参、状态退化、原采样时间停止、心跳停止和轮速停止；不能只检查消息存在。标准后端的离线测试没有 Lightning 原生输入或 TF，验证桥接无需算法专属输入即可正常工作。
+ 
+ 回退应在进程停止后回到批次前提交 `1420575dc6436f60b8ad7b4277193fc6d3edd1db` 的独立 checkout 并重建 ws_nav；不能仅切源代码而继续使用本批安装副本。保留本分支及所有地图、bag、历史证据，不执行删除或硬重置；回退也不继承任何运动许可。
+ 
+-批次 3 已增加按采样时刻对齐及受管会话，使用 PID/start_ticks/boot_id 和 Linux subreaper 管理本次子孙进程；异常不自动重启。FAST-LIVO2、相机同步、高程地图和坡道运行仍需各自后续验收，未安装或启用。
++现有受管会话使用 PID/start_ticks/boot_id 和 Linux subreaper 管理所属子孙进程，异常不自动重启。FAST-LIVO2 前端与相机同步包已构建并完成一次在线展示，现已停止；独立后端/先验定位、物理同步及运动精度仍待实现或验收。高程地图仍禁用，坡道能力未验收。
+diff --git a/docs/managed_sessions.md b/docs/managed_sessions.md
+index b61f3a5..4322fa4 100644
+--- a/docs/managed_sessions.md
++++ b/docs/managed_sessions.md
+@@ -1,6 +1,6 @@
+-# 受管会话与时间对齐（批次 3）
++# 受管会话与时间对齐
+ 
+-更新：2026-10-20。适用于 `refactor/pluggable-navigation` 分支。此文档描述已完成的代码和离线验证，不代表已执行真机验收。
++更新：2026-10-26。公共机制沿用批次 3，适用于 `refactor/pluggable-navigation`。默认导航/定位仍为 Lightning；FAST-LIVO2 三融合展示已有独立受管入口，当前已停止。其运行记录见 [在线报告](fast_livo2_online_report.md)，统一建图入口见 [整合报告](consolidation_report.md)。下面描述公共代码与离线验证，不能代替真机导航验收。
+ 
+ ## 1. 定位与轮速如何按采样时刻组合
+ 
+diff --git a/scripts/__pycache__/analyze_slam_experiment.cpython-310.pyc b/scripts/__pycache__/analyze_slam_experiment.cpython-310.pyc
+deleted file mode 100644
+index 6145600742a187ce5cd3a6804efd806e1b9c3d64..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 5133
+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
+E0aV8NWB>pF
+
+diff --git a/scripts/__pycache__/check_mid360_bag.cpython-310.pyc b/scripts/__pycache__/check_mid360_bag.cpython-310.pyc
+deleted file mode 100644
+index eb65cddb460e15b32c33d82677afe0a8d619ff50..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 8400
+zcmZu$S!^6fdhY5uIXuKmyd^btQ=)k4mMoc;WJ$Jltf=g61UuvARL`)7Gu@-A9*P|F
+z1kTdQ+CZ3SlRRYiX_%M5L9p+^B2Re>umO@h1SlXtf;<EUf&_t)hxLo|{nb4@B+sC#
+z>#o24`>*o5yK@G9Kfd}^dGVNG{0CL`|4dZgMUny;H(nT=akIi+F#R=OnEIP|k<j1d
+zi=_UhUZnIl{UWWunHO38?Re3_6Fm93@gm1lJdJNB&+sh1T~0UeSTn^Hr^o5qGPc-H
+zu+OqFm1{hEQY=<n&#{X2O63A~q$6Cr;x_ES^*zh3b2qqQxn8XvSSxnPa;4?h9M9pF
+zaBP0T_bQvymglTH0u8l_z3K3ouW=URae>h%{?R!J6L*m03uJ*&W}y+_eA{M|1&NSt
+zG1<+HWg|!iX2@Ep9YCo|>D^K$Dg{O>8?qhD2uzeaLY!sC++sYjox+)tkH2Cn#e>b7
+zQ~Kroe{T%_@_%kmrBtHoddTbzm8?28inU8~$gW+R$|=*Usf;acA?!_+Dpq_uP>G7;
+zsU&v`fk*;ik)kY(Or@(1cd<hDW!?4yx8h8hD!p!3>W);*{>l*j81?Pq?5baNW-Io}
+z;@p*4VS6P<<UM<RRu+U?3*>BJ)hVpyt1e%>JeLP<XKI@&Cu_Esmw_F~3>J~JUk~eI
+z?=mrn;sKmqN5c?O0!g0k0RIs07**C}jLM0MSxtNym6MfZHPtk$>1LvuX(pKwWPvw>
+zr^by|ZpYYRJUwbOQ(=l{Mh%`_ONjG9C+{FWagAmg?YU9ouJOs0W+pVk3}$uh7|m>$
+zZFPsbyu;*O%;=;UK~MP*dU|&Z-ZgCSZr-zP{&8QkBkXAP@k2YT)xTqe=`eHC_z`$M
+ziT_rD8D4hYkcC%(m;S$v^m0Blw~S^k%(Vu>L@*eFBY2kgZku6}_wl|hP#q`j=L4S`
+z7;|_B5N@$%=TBLY@j<j^!_L-F+}afkw?=l1FAaQ0gRvdf?A|T)=+Zda4wZ~%FH#>;
+zKhglwU^KINIQ|ZyZJ4v>2+}Ch7}7Y>1k#aUqI`rOMt+nJfwPZtqj?PN7T`O!W4t!S
+zXDC@a#>a`~Wb=6QM99M9VOKagYHXR!lV2F&WXb>qhOdCEH;u4|dRmj=i5=i2I3Awl
+zBU|QcCVIo}xaVZ~MEPX-6dxTl!l-<D81!UDcu0>pqg&7FmPtOgW&(y>*hzhSd@X^s
+zEYNL&=oa>3r<3I=J$5uWhw}L?cExCphDU;F>S?#FC3O3da6-3Vh@jy|Mvb^<g66(v
+z^23+^09?%Qqx=|Xgf^nkE_P0ZeXU8XaH=&+lCAgck6Y$;TgHRwV4^jTv=E*Gr?NGi
+zPwzjDwi#~iUmG+$jn>8R^bRXu<imV&n>EjbBiQB4A)|GPR>g@%!qedya6HDAFPE=`
+zr}ap)c{Uuw$g}+T+TPePjHQ;89)B)8y~TjT4(xIj=^EyOi+|tb!$ot{*sU?D?U-2q
+zI%MDkeFu$kgC8CQ^sO7gG){7O$Y@T5N6~jPoZ^T1$!!y`9Su*HXCc1?Id&`0#pUzi
+zF>cfiQ0zD1x$u0+^bTSFchJhP?>XA5bqlp&)XwjiC9`?V6X7I3rD<LO_HUQp)%lXn
+z-zz1WMAbXG^-h^u@06+aLU56v=4U{$>F~m^mMS{4ycAl*nc(IDa0*TUE*nJYf-W6~
+zgq|$l)vMjrtKBWXr(5ool3VNmUk~ZA?-S$)d%RIVe0H5ACB)qOca2Yan=|1sxZ*)L
+z8P0&)&mw=wr?wNc>udAnS|nTYpP{K{A)9kw7?IR}@~<D8kTP&ic_!jelp?uY&}~|}
+zcH0(#zlCrCbU8O}G%sR5EhXW6@IfR?TP&RC!)r;v_K)EraXWIHAZ|h5h{4Yd8sH$^
+z3r?q!KH~^z?=f)7`R!!$669zB7)^*z!%O84F=`<irAt^BGd~J1>iHLm-y^<7FV)Pr
+zrq|H$B*ZvYAb9jTfCnwn9{XU@BlMc_Zf%&b*J8Lpu#aPBKE0g*T_^bkP=O$vY(3&L
+zI|S__pT!xDH!o{ASZf{{Eg|oO7sJbI$*3ki2<N~NlYB1HLcl3W?&G~3fM4KHulH#@
+zc0Sfvm%`a_@+Q&r3%;PWdWtWS-GNrW5?uVL0lj_^e3=cewDme+(f@<s5@`N}WE+<1
+z5-4Ieuks7voxbJ?=+qO?btl&7G(V>u`Q`9LwBzf<%P+$boZ&A+OXo*)K7o;ctw&zb
+zoZXN5uY$R-AK1C7vHL6CdrkL_qxbK0{kpDSMg5<Gd45AnP@3SP6KHz>iyn8A#(`U}
+zg#)jX;t}vO6AnOg4d~J!N`t`z{tmwt4wRop(%<?4Z011u*<LO92%Jm0Yar5HIQ!s%
+z(SzSRdaykj{CybQ@E{z*sc!Rkw>z8H_)@S;tG2Ledo9wnNmwJ`FDb6@_w@IH2g?in
+z(;mIMGmVC>OwzgZS?|zUahki~-0P%#&hLSP-Vf(s|F7<&+AQE01t0ce_I-T&v;+X(
+z;dnR^j)Y_3QH_B}117}=H@q}|pf&$7!Y+TvKiKXHukjD5jeo=+L3<5T52cd9AO8j8
+zPqsVZA3l97$Tgi}YGBXZb@Ek5O1tF1ckC=VLAyGYP`%5}%en(c&#pX!&+7=)vmE#W
+zW1rN>NtUYjj_<((4jd7;G`g!!U~@aLXEyC>MU4wz!oyo2H?IhXG4FasUsSb^t@>rO
+zTHfWfOVPy+8Tqo}2F_xm_ufX$DFpDh;}$g_oC+qcJ9)iQ%??&&W9&Wn=2WyCS+Hx4
+zw74rU&lj7G?Cq-0op*%)97j&nh1(c<`fTa`qb0cYfm0H0u$kAs=#(iCqZn{PcL7od
+zT~2c2$r)ZolH_~3MreGJX|j-&4J7ub=1YVX+5v`Bob>Ffqmtx_e`P9jW=^p{_eI$N
+z7ErmH<YE{6YVFo2tx8)A8I4gLdCc6b_yxNnZ_VtDI^YA7?@Nw3EhWd0X@EMQ_gNEB
+z1Y{p^!9JiO$P(fdhKke36k8K?kUfaR8B}R04a%7D^-1a`u)Zd?QR!991g`P-zqs*j
+z*KEaI_cxGpTQrX8N*=_{a{&s8h1ses&EBa4q18vS)ENAc@V$~H>{nKy;@7!FsQLOk
+z{0^LoHlveiG*d89A~dHWH2-WLiovUXu_(c=fm;QR^|=(Qy^Z9GD<dS+>Ga9^zX!>?
+zquv6CkgUO(XoHj6qdF*W78CmcODMLX*rs9)F^dUrz$50-Hih&JopgdkF==nOvh<6e
+z)9-I?e@*RZ?Lf?iFsu};ew&Li?N;k=0Y@w;DG}Lzk8qVmOlh>hmOJc+6iJvAS$@SH
+z6H`L$R#n!OMc0Ff#YhtinED2os^ew}q3%Xa+@juZXdCmh5u-8kCUdrjO_`0vY*1|E
+zkm)GSEkJ>!0>9=KRJvvh2)IfWR^19OVKKw`^{<zvlHvr4X!h&q?I;Qe4RnE2J<t|;
+z#H21_%lv9%Dx(fXya&k_GRQ;o^u!GnJF54^bsprUQ}8{k(i=Ce*oC!Mwm{47pn9$1
+z7VH3FYezh2wV@{3I|BE0nU6c-)u1A#0j#*DA=X^44`LYqcDr%>y5;#^)%X0s_uPWz
+z3#(#_l4C_{SS7pG7`slKUs$`q{i^MHR>Z#6t$9nnMb=%OJBr=3V0RMFaSD*g<wdwV
+zYDB^fEca+ELvKflR~#o0p@+3r&uipH^nHg8KvETDq&l?B-$g-7#!*9!>cwRKl^d+K
+zO+mEA0VqjGDJ{}e3z=rV&Pe@0`4E)mnz_e<f`WFv@6-V$<bm1K8b-Mfs#_R*4@pLx
+zchnG1P-`51<Vxv!rCHaL^<vR2xL_-*arL1GMsd02)vLI~DOj*16^{EF5i6TWl4eO&
+ztk}}As;-1A6joza{M)6*=u;myp-mKhXJOr%o4I7k#>9axU%(FH#s@l1LO&lsN?Uuq
+zC6PqB5?f2e=wPtLCeCg8YmXz8wDs3|gab_@O&&tThe+Z!oqv*y9hh4}r#W6>6L^U2
+zm{qjhN?kaO+0wLC2P<+ir`)R7WPtmss@A-IJ-}_&4eRlf=hpH=t2!%xXQ7c2HlLO6
+zPj#w(yHIc{j?l(AUx$v6Y6!PCb?|b2-2wBG!Hn9wFc$2AE1QkYhU%o647jdjsp7%N
+ztM1aK@b^Y_>1umehpy>y1HK?aM*B*;TB|@XNA@=s{B;|*b6&y8&#AusJ(}>b`uzHK
+zX;J^ax!pLqOzRb_hmU^C!tGpLx+^Xmi%m-#e2p%LH+VdX>=HRGmhEwU+ozY+0NsFS
+z2NrCxyAok$+FFG&fkJUCx#<;FVc6nJ!)a^zqoqg0c2!?rB1*gH1e+@PbZL26Wu7iQ
+zd;W0gBiy;Y%{Ij6%Se(gyR^|ulf<`-9b><Bfvf~R*(#_bvgC@byvZ?SVSa$5EzF?N
+zC@pJm$fBz?Omqv<vMWBWJqxx+C*#xzBD->R?_mB4*rs04hbRia3LOP|aKl=yS8b0t
+z5PCRr;vfny>+rbvRF~=s`~V8OMxq4u8-4RN-2Q3RzH73Hg;aNJzoBeNpYK-f4XTdq
+z*Qfb-s9ptqv1V?IGj0+iaR%4)xREMo1JSnvzI~OStIb#2O(*OIOewV6{2Yf9=s5Wm
+zs1tzbSFsXl{+g@0z}EQ{*d;FWRW;}r3Kg)B??DxMaq%tD|6Upf(1ly<01ZVq$Rkct
+z_J%TU(@r?(d~1EW64g9Hp2#X0dw3#&5fGo46asFsKiTIZk@<z4b5vUT@X)zR!RS||
+z_#P_&dk<GiyQ0K8;u5mAZGC&lRH8BY3<5)<wNDi3hMXA6wraj~8s{GSkR<8kamT&}
+zha3D?A@?13>(Ae(u|<0Yx*A59H|{;qo~2b2{)Ss6DGhw<6~;#<)8an-dRiL;)*b8V
+z^QW`-pDw>Ceo$d4S->T|%8@KbuD$B8Js8}I3+CvJA_>GGvDQ?BZKD~PxV*Lssz2i6
+zeK8Uzxq~YsRj20aymn$$0*s`x@OT_v!up*R0$!g{PCZAwQmE86XAZn8h{Hgwj*47f
+z$qV>But|B0s^dD{4FIJWrV+Vz+*I2XBSaDk5d?X8Dyajj4$>`o+}Cr}K@Sr7z}W~?
+z?uT?4e@_S>k(6+xUs-n`6EeRWIw8P0LaSuJ$R0F<O4~Az&`4#R4X02K9F>L6Dy#ze
+zDoGC>DgjlXMkq2wTRwIVpeOU>!b=g*YMlkYQo(9ED9qd;e-5!+CwGc=y%JEIqmrby
+zu$U7F+}OkGYdAO~n9>U_UsTyufB}yaZlFGmE~f1o0N^TvPCE#MIIkyyld3gZsh~0*
+zs7r-}%{d^CJxJ9NQ3?Kl=%P94SSKa08weKr0V<{6J@#HXu#5+F4cl21H)&pi(2$Vz
+zs!D^6?Mexe9a%PdDIpZwq7c~Lf-<2pfJnlK%0it)9&HBd1RPRT89ct|!T>!u!J6*3
+zw2=e8i0#Bh+OzjflMB7MXCD=NrH1y^!MJVHsB!@u7fJE8)H+7>Xoow}zHqFC)VQeE
+zARdl>R#92tSCX%XqpnENOHh!W5d|6w(sR*?($sa8F8UR?KAM5wWXWt>j8w<2Y(;Kp
+zl0tK3@)eaPx`HWEnr*;;@Z2SYCauXSRW|m%(Gu(Vu2|HFo21I^*^9k0-n0_HrAm@B
+zp}O|rMXDq)GpEd;s4}rpXbZ0vZ%`7HP={he6WbWX2yO1zH7n{+<Uj5;B*|i^bYve?
+zH<pM(syv7+-X+W>Ndv`kHs~M0E>(iOrIdCq6cd8eP_yDIbJbO*y{^pCx@HH}8Ts^N
+zw58a<FhPnLr;*AO8$c)oiqyGEX`Q1wi2{)lgAr_#BhqK$cWFME8h8!Qs7xwG3?PF9
+z&^sr|i2O5TU3hUDWJ5?vl)6wFL3!dk^Rts?KWeAhSvJRV>^k}`;yc8~*aE&2c&B?$
+z_dH<zn6tpl&vI;<S(rVI-W=v-|1&w3WWDS%`xx~<M;c`3(A$L>b1aKd$<L0nqZn}(
+zyQk5+&VJ1Pkcs~SV8o8QKQgpgq&rCRuaME3s(w*rO_;@Uf}26IoWiRp?&@?sxxd~@
+z;{}fe83gZH+^^!cq}(BvC~x8Qc!%M|E)jH=yFxQe@HD+6Z{ywYtrxqS`(NyWZp`Qj
+z&3HUsiLkTDI}ott@cO*WasS5C@cX+S!|{h=l=>|c`cfqj>`pNq3OBMBE<{dxq!g~;
+zZ12+>tLxDX8EjdFycsAx@d{nyQ_A#}-XW5o65?zLeZM412!y=gDOI7R@_FtT@_E$-
+zC5f;)>QosLO?b6%Pf12|dNOrOjdAhcSX`xJaQ=uY$+85zNnVHgP1OYH(iBxBBKbK2
+zrB6?R-GS0qtoVj|Ll+RPr#%>AIO3l)y9GKAGVvYF%;v$ca0l~Khr~Cu-v3heGs=EL
+z*$vA6k1}n-Qc&+Ok7P~6=aiA}9KqgRj;`Tw@Z9ny0;cM{4R`-7+-{VmvNsVh)ho^|
+V!lfi7nA9wpWmz+u%HAK!{6FU;j-vno
+
+diff --git a/scripts/__pycache__/check_slam_map.cpython-310.pyc b/scripts/__pycache__/check_slam_map.cpython-310.pyc
+deleted file mode 100644
+index 9bd27a53a2f422e97036a13eff1cd04deee583f1..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 6370
+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
+K=c03Ns{DWO5Y{dL
+
+diff --git a/scripts/__pycache__/prepare_lightning_deps.cpython-310.pyc b/scripts/__pycache__/prepare_lightning_deps.cpython-310.pyc
+deleted file mode 100644
+index d500a1b25bf6e30310273e6b390931fb207734a2..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 3014
+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
+
+diff --git a/scripts/__pycache__/record_mid360.cpython-310.pyc b/scripts/__pycache__/record_mid360.cpython-310.pyc
+deleted file mode 100644
+index f3cda445ae6bcc4b7283af09ae94b6c40bd46520..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 3698
+zcmai0Tay#V6`q@}yApc=mR&9u7_f!WiUk|THpT`oIK&v7-E}bQkjZGeR~qeTX6SD1
+zWolIAGQ2odTX7zfmq>X@`6uM^OS<xqN}l#D&r~^;uV=IvDwT><efoAzpVQ~^^@Np5
+zS;KGT`gh&GO={Xd)#SyWiOGj(d<%qV>l)FC;p^*q+8gUe+MDZU+FR>Z+UM4DX`f%u
+zr+s0)koLv(A~lC4S{~`ciILWwB<8%fULh9AJ=NB$^bpB!8tff9MXOJ=C;HdWwW`$%
+z@q^o5;0an={pnqFS89y9AtPSUu7w*l=4{vQdRyVn#hSC_c)ru}X|3gOTI0fjkQ0#F
+z+U@shL0BWq+oFuC4JIgA+{dM~d;2=5tA+=^DGaJ;AEEJo!3RR?>H>G&(+66jbxmRr
+zlURF(p3QQ?B6(8SGsp8HDUov90G%L{dzM-q=0@5;CzV9+<}J<CHg(n{)lHqh73k@H
+zfgBoP)Yiz<AM}9%z9PRZN@Q9|keS4If^*31DjL!J^1w_?<wMAt!%1>@qz^1n8CFLc
+zIWngWa@jb^ZEDO<%<iGYB1g%bviOG`ZhP7wpBT&9qw1hQj*<DNT4D{SlEO$|hX0d%
+zQn;o)j<7a8)-<DfvH*!wKQ{)2K~c;qu6b~i%BIPGpUueZyhe`CYe{j_WPcQg$q8{J
+z$v@HO(x^WEMjRc^iDTV)auT;&nA6CqIZYfVuN>D%ZO_16N=b>FKCTT<h?Ct@NuHb`
+zuc~$2wnWZi{S|PZLth(dYL%QPuaVbDom?Pqh|}P?cwAZ35U0VnsK)J5V!$tD>@}aC
+zTmIo(c>0o(R5p?&ayj+XneMB@vxwV7dgc{%PBKB>yrz-2$knIXU{ahLo)hP~=ab2i
+z@@zJHEt?T-P$6#*s<9tmgw`KH>+9s5k^bw2!68xaUP#J`>fgYLOXS_X+@O+Fx);-E
+zzqf}wJwUx#_&-5b1*IkJTb<w9#=81HM0=nG6-&bj4Y9ake5>z%aj+NY+t^Ji-|FmF
+zNoCkXPH26|r?X4SUgfj6sPvI*WUMXtNp>1e`X)PxEDfrVUm8JM%KLuC`%nws+}482
+zsfNG2q~Wia{Z9?sxQ((G8vgwMG;C|xAD+8@5HA6Z-785o_0b1=<`2<Js_@R=)h?Oc
+zG}Cd3d<eNWN6K&iAZJ#gdH5E&k!HkA70DO!<fC-FoaRYxqyuwq-K*<zf>7=<FA`oD
+z#HB`q?ohWcs4R04GHMIfr{Kyv?g0Y_E(L_|p8{^w4QYwph{^(?8&2OBaiP%wI8k5b
+z6)<^jJkfK4zT-FiFpT0iR-S`e%2f*ke;24lfmk&+?17i?S}#<(>ZUBXozQbBXGQ3e
+zR)_i#GcfeN0F4*MmehKEE@~}W^Mcx!OBb(Ry7Z`Cem2?k6<&f8hdnEgXI`%#n@zD1
+zmqF~YiIpbb<%0IoIgKmL%z*LqP!o6WJMhMMVWPR+q111NB<#i2X3G(RvfbyxnOZ2a
+zxff3@uRLt5e17lU8h`97SeJ#d)l31hobP$$%GFDD2KJQM5u+Qv*Y1dY3;XTg{Z{?{
+z^nnVL@Om`t3mXTxO8DTXJW@hiMdLR?+JNFmCkMLFkVN{>Ab<~|&8eB0QVXM8H{UI!
+zeR15E0R6e&7?0I+WIWTG^_;YVkWf~@nR0?r-*Z|XZm}!Nq|Xk<IYJ}Rsh6ciJXgr7
+z60rlPM|tG9ROT5MNH1A>zAnomj6By)6KCRa$Z_d#!}BRStQ1*FmL0*69R)#(8H<;s
+zPQTMw4fAKmvUKIm%x8Ay!NmwxUGqIIkVet<8E|stn44OBtmk;a;x#{X9iLyv;DD)a
+z)D4CY0xf<e4VukhOZI$TZuWS)`4JK;?0w4H;HxOUSxy6vM8GCbIqvlOse9rRw{{}x
+z;=M&m)AYHH`YmYcQ1)&uE@VbFp6Lx~wVXD`t@0|=-i|bh$KvTWbE1yjq8li>#V!wn
+zePz9>JTD+L5b;cAn2qAw@Y*R$d^(#nv(uZO-dRR2t-i=2E!^p{G@%obNQ*Bv8XQ@e
+zr6VSxH1Ty2pJ+4?ipDq;jSv;dJYYj3azrOycv%yUv%$T%>-7A1b{vRt{br^WZ{GOW
+zM&iG}hCAdo{66o<qVlgFwz-^GxxZ@Pz5lVjd}rmQj}n#Fsy#sCsse=ewO-d1P)&bA
+zcUz&u$ejT7#`=-KqHd>2k&)Bjmli@6omAq=ftD7}yc~YDeLF5^HZQ^&sqfS+1y=;c
+zmG(GYnl#vw)9E*q9nftQ9p?&^bXgeJ;l9e&ef4D-&x}35C<g|n4gh*tbjQPih^R}6
+zoM!ZKp8{rxDqw}6@ihG2>`~zmM>v@;r<#4vnk_GAM!TXD23O+a2kGv1sJl7Nb{hde
+z#>d4*14c)E5g*!e6w)c+%=BNCMTfN`hjA*aH(0yhLl%9erc4%Wn}n`y%Sne28*J&O
+z3RCC^Sx$x2GH2=oQRd)~5K;$ELoQ-oAY_iYKB~@ApRIDjWfUKxwyJWx34khD>V-il
+z!oYK7iAP>whXL^5M4Jlxd2Qh9EZ7L`)~=mmf}BLg2^Q{V=M;ITkFab9()4K{Cs+D`
+zI{8*=j>TvMqf~nOUQ1e^VIYfu@kn8bEc7;sn#f%C9$72*@2|=7HUkRVg6;@usWOu}
+z((gsc$ZVsvD=3%94u`-fH8x?7G(waNGQwk!u-p*W&U3FFIC$q)?|gjc-kL0+U%R#P
+zskFifww8Ing<8Vn#bxfZbSb~OwtWBdHEC@-a9DLMgLB}9$0%V-%F|X9`o5e1${<U!
+z^Gitfo)^HkY)-MjHqmE+tNffthH=4Rk>mUIDXB+NcVs?wC1*bdJDXK9MS}bIUO;6o
+z#Tl8)yln!4Rf75ed1<;m!roRgSCmZ7?RY+6@2jziGWoAMQ)QLIF8>9{1^uXA)X$(T
+zpv~x$`gz?-XHyto#m+HsTmU_sa-6`PrB7jPN<Z~)>#GIR`0B7R3CTqrqwlkk_5FG4
+ztbS2v17$_gwv|rXu1~WYSYRJ0@}(kcinJB^nIfMkqHu-%QjyO=l(fnVBz*y88v0vE
+z5hOZ_g0qK;>p+Kke!x{;O}`0lp@v_$dQEYrI8(gV3rXLn*A-lG1p}7;A#PXHkG}pN
+D*vn9o
+
+diff --git a/scripts/__pycache__/slam_run.cpython-310.pyc b/scripts/__pycache__/slam_run.cpython-310.pyc
+deleted file mode 100644
+index 1462253a7c46a19805de29c7258a7af2d4e66300..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 10275
+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
+
+diff --git a/scripts/__pycache__/start_mid360.cpython-310.pyc b/scripts/__pycache__/start_mid360.cpython-310.pyc
+deleted file mode 100644
+index e3f8f0ac9fa8150380929cd6a83eb6867a46cac4..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 4403
+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
+
+diff --git a/tests/__pycache__/test_stage5_bridge.cpython-310.pyc b/tests/__pycache__/test_stage5_bridge.cpython-310.pyc
+deleted file mode 100644
+index 91bf0681d3dbfea67a99e6a52cc08775b28e0ea7..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 11218
+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
+
+diff --git a/ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/__pycache__/__init__.cpython-310.pyc b/ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/__pycache__/__init__.cpython-310.pyc
+index 09ad33ff11727d0acd27582221e2badd6e5e99d1..1981dc57a2332468d5dae84afa415bd796eec41e 100644
+GIT binary patch
+delta 34
+pcmX@bc#v^|yF`k9Mt*LpeokVNv4OdMQDR<tYEgV%V%fxuBmmLQ3|;^L
+
+delta 43
+ycmX@ec#3g?yJD_>Mt*LpeokVNv4OdMQDR<tYEgV%VwrwPYH>-izMkI1_#^;O4-ZrT
+
+diff --git a/ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/__pycache__/bridge_node.cpython-310.pyc b/ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/__pycache__/bridge_node.cpython-310.pyc
+deleted file mode 100644
+index 5885d666b5ecbf18c272c0d8f4c32fcb9f089f65..0000000000000000000000000000000000000000
+GIT binary patch
+literal 0
+HcmV?d00001
+
+literal 14647
+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
+OwNGcCa`IW+t^XNj3>-QD
+
+diff --git a/ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/bridge_node.py b/ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/bridge_node.py
+index 59651d5..409cba1 100644
+--- a/ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/bridge_node.py
++++ b/ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/bridge_node.py
+@@ -44,6 +44,9 @@ class LocalizationBridge(Node):
+         self.innov_yaw_th = math.radians(float(d('innovation_yaw_th_deg', 20.0).value))
+         self.innov_interval = float(d('innovation_interval_s', 0.5).value)
+         self.innov_fail_limit = int(d('innovation_fail_limit', 3).value)
++        self.latch_on_innovation_failure = bool(d('latch_on_innovation_failure', False).value)
++        self._innovation_latched = False
++        self._last_checked_ns = None
+         for value in [self.tf_max_age, self.odom_max_age, self.heartbeat_max_age,
+                       self.innov_t_th, self.innov_speed_th, self.innov_yaw_th,
+                       self.innov_interval, self.innov_fail_limit]:
+@@ -88,6 +91,7 @@ class LocalizationBridge(Node):
+         self._history.clear()
+         self._innov_fails = 0
+         self._innov_last_err = None
++        self._last_checked_ns = None
+ 
+     def on_estimate(self, msg):
+         now = self.now_s()
+@@ -145,6 +149,9 @@ class LocalizationBridge(Node):
+         self._health_tick()
+ 
+     def _align_latest(self, now):
++        if self._innovation_latched:
++            self.alignment_reason = 'innovation failure latched; restart the explicit alignment session'
++            return
+         sample = self.sample
+         if sample is None or sample.state != sample.VALID:
+             return
+@@ -155,6 +162,8 @@ class LocalizationBridge(Node):
+         # append innovation samples or clear failed innovation checks.
+         if self._last_aligned_ns is not None and ns <= self._last_aligned_ns:
+             return
++        if self._last_checked_ns is not None and ns <= self._last_checked_ns:
++            return
+         odom_at_loc, reason = self.odom_history.lookup(ns)
+         self.alignment_reason = reason
+         if odom_at_loc is None:
+@@ -168,13 +177,21 @@ class LocalizationBridge(Node):
+         p, q = sample.pose.position, sample.pose.orientation
+         loc = SE3((p.x, p.y, p.z), (q.x, q.y, q.z, q.w))
+         ok, err = self._innovation(ns*1e-9, loc, odom_at_loc)
++        self._last_checked_ns = ns
+         self._innov_fails = 0 if ok else self._innov_fails + 1
+         self._innov_last_err = err
++        if not ok:
++            # A rejected candidate must never replace the accepted correction or
++            # become the reference for validating subsequent candidates.
++            self._innovation_latched = self.latch_on_innovation_failure
++            self.alignment_reason = 'innovation rejected: ' + str(err)
++            return
+         self._history.append((ns*1e-9, loc, odom_at_loc))
+         self._map_to_odom = loc * odom_at_loc.inverse()
+         self._last_aligned_ns = ns
+     def _publish_correction(self, stamp, now):
+-        if (self._map_to_odom is not None and self._last_aligned_ns is not None and
++        if (not self._innovation_latched and self._innov_fails < self.innov_fail_limit and
++                self._map_to_odom is not None and self._last_aligned_ns is not None and
+                 self.sample is not None and self.sample.state == self.sample.VALID and
+                 fresh(now, self._last_aligned_ns*1e-9, self.tf_max_age) and
+                 fresh(now, self.received, self.heartbeat_max_age) and
+@@ -216,7 +233,8 @@ class LocalizationBridge(Node):
+     def _health_tick(self):
+         ready, checks = readiness(self.now_s(), self.sample, self.received,
+             self._last_odom_stamp, self.tf_max_age, self.odom_max_age,
+-            self.heartbeat_max_age, self._innov_fails < self.innov_fail_limit)
++            self.heartbeat_max_age, self._innov_fails < self.innov_fail_limit and not self._innovation_latched)
++        checks['innovation_unlocked'] = not self._innovation_latched
+         checks['time_aligned'] = self._last_aligned_ns is not None and fresh(
+             self.now_s(), self._last_aligned_ns*1e-9, self.tf_max_age)
+         ready = ready and checks['time_aligned']
+diff --git a/ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/runtime_config.py b/ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/runtime_config.py
+index 992a630..8361724 100644
+--- a/ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/runtime_config.py
++++ b/ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/runtime_config.py
+@@ -24,6 +24,35 @@ def path_at(root, value):
+     return (root / p).resolve() if not p.is_absolute() else p.resolve()
+ 
+ 
++def load_runtime(root, path, seen=()):
++    """Project-relative profile inheritance, with cycle/type checks."""
++    path = Path(path).resolve()
++    if path in seen:
++        raise ValueError('runtime profile inheritance cycle')
++    cfg = yaml.safe_load(path.read_text())
++    if not isinstance(cfg, dict):
++        raise ValueError('runtime configuration must be a mapping')
++    parent = cfg.pop('extends', None)
++    if parent is None:
++        return cfg
++    if not isinstance(parent, str):
++        raise ValueError('runtime extends must be a configuration path')
++    base = load_runtime(root, path_at(root, parent), (*seen, path))
++    def merge(a, b):
++        result = dict(a)
++        for key, value in b.items():
++            result[key] = merge(result[key], value) if isinstance(result.get(key), dict) and isinstance(value, dict) else value
++        return result
++    return merge(base, cfg)
++
++
++def validate_fast_livo_config(path):
++    params = yaml.safe_load(Path(path).read_text())['/**']['ros__parameters']
++    if (params['common'].get('img_en') != 1 or params['common'].get('lidar_en') != 1
++            or params['imu'].get('imu_en') is not True or params['common'].get('require_livo') is not True):
++        raise ValueError('FAST-LIVO2 profile must retain LiDAR-IMU-camera fusion')
++
++
+ def resolve(root=None, environ=None):
+     env = dict(os.environ if environ is None else environ)
+     # Convert the old raw launch-argument string to validated typed overrides.
+@@ -38,15 +67,40 @@ def resolve(root=None, environ=None):
+         env[key.upper()] = value
+     root = Path(root) if root is not None else project_root()
+     runtime_path = path_at(root, env.get('RANGER_RUNTIME_CONFIG', 'config/runtime.yaml'))
+-    cfg = yaml.safe_load(runtime_path.read_text())
++    cfg = load_runtime(root, runtime_path)
+     if cfg['schema_version'] != 1:
+         raise ValueError('unsupported runtime schema')
+     supported = {'robot': ['ranger_mini_v2'], 'odometry_backend': ['wheel'],
+                  'localization_backend': ['lightning', 'standard'],
+-                 'mapping_backend': ['lightning'], 'terrain_backend': ['disabled']}
++                 'mapping_backend': ['lightning', 'fast_livo2'], 'terrain_backend': ['disabled']}
+     for key, choices in supported.items():
+         if cfg[key] not in choices:
++            if key == 'localization_backend' and cfg[key] == 'fast_livo2':
++                raise ValueError('FAST-LIVO2 is a local frontend only: prior-map global localization is not implemented; use mapping_backend: fast_livo2')
+             raise ValueError(f'unsupported {key}: {cfg[key]}')
++    mapping = cfg.get('mapping', {})
++    if not isinstance(mapping, dict) or any(not isinstance(mapping.get(k, {}), dict) for k in ('lightning', 'fast_livo2')):
++        raise ValueError('mapping backend configuration must be a mapping')
++    light = mapping.get('lightning', {})
++    fast = mapping.get('fast_livo2', {})
++    mapping_paths = {
++        'LIGHTNING_MAPPING_CONFIG': light.get('config', 'config/slam/ranger_mid360s.yaml'),
++        'FAST_LIVO_CONFIG': fast.get('config', 'config/fast_livo2/ranger_mid360s_hik_trial.yaml'),
++        'FAST_LIVO_CAMERA_CONFIG': fast.get('camera_config', 'config/fast_livo2/camera_live.yaml'),
++        'FAST_LIVO_LIDAR_CONFIG': fast.get('lidar_config', 'config/fast_livo2/mid360s_live.json'),
++        'FAST_LIVO_RVIZ_CONFIG': fast.get('rviz_config', 'config/fast_livo2/live.rviz'),
++    }
++    mapping_paths = {k:str(path_at(root,v)) for k,v in mapping_paths.items()}
++    required = ['LIGHTNING_MAPPING_CONFIG'] if cfg['mapping_backend'] == 'lightning' else list(mapping_paths)[1:]
++    for key in required:
++        if not Path(mapping_paths[key]).is_file():
++            raise ValueError(f'missing mapping configuration: {key}')
++    domain = fast.get('ros_domain_id', 175)
++    localhost = fast.get('localhost_only', True)
++    if type(domain) is not int or not 0 <= domain <= 232 or type(localhost) is not bool:
++        raise ValueError('invalid FAST-LIVO2 ROS domain/localhost configuration')
++    if cfg['mapping_backend'] == 'fast_livo2':
++        validate_fast_livo_config(mapping_paths['FAST_LIVO_CONFIG'])
+     bundle_path = path_at(root, env.get('MAP_BUNDLE', cfg['map_bundle']))
+     bundle = yaml.safe_load(bundle_path.read_text())
+     if bundle['schema_version'] != 1 or bundle['frame'] != 'map':
+@@ -92,6 +146,8 @@ def resolve(root=None, environ=None):
+         'LOC_CONFIG': str(paths['localization_config']),
+         'MAP_YAML': str(paths['navigation_map']), 'MAP_DIR': str(paths['navigation_map'].parent),
+         'LOCALIZATION_BACKEND': cfg['localization_backend'],
++        'MAPPING_BACKEND': cfg['mapping_backend'], **mapping_paths,
++        'FAST_LIVO_ROS_DOMAIN_ID': str(domain), 'FAST_LIVO_LOCALHOST_ONLY': '1' if localhost else '0',
+         'TF_MAX_AGE_S': str(loc['tf_max_age_s']), 'ODOM_MAX_AGE_S': str(loc['odom_max_age_s']),
+         'ODOM_HISTORY_S': str(loc['odom_history_s']), 'ODOM_MAX_GAP_S': str(loc['odom_max_gap_s']),
+         'HEARTBEAT_MAX_AGE_S': str(loc['heartbeat_max_age_s']),
+@@ -111,7 +167,7 @@ def resolve(root=None, environ=None):
+         values[key] = str(value)
+     # Only operational seed/extrinsic/threshold variables can override defaults.
+     for key in list(values):
+-        if key not in ['RANGER_RUNTIME_CONFIG', 'MAP_BUNDLE', 'LOC_CONFIG', 'MAP_YAML', 'MAP_DIR', 'LOCALIZATION_BACKEND', 'BRIDGE_EXTRA_ARGS'] and key in env:
++        if key not in ['RANGER_RUNTIME_CONFIG', 'MAP_BUNDLE', 'LOC_CONFIG', 'MAP_YAML', 'MAP_DIR', 'LOCALIZATION_BACKEND', 'MAPPING_BACKEND', 'BRIDGE_EXTRA_ARGS', *mapping_paths, 'FAST_LIVO_ROS_DOMAIN_ID', 'FAST_LIVO_LOCALHOST_ONLY'] and key in env:
+             values[key] = env[key]
+     for key in ['TF_MAX_AGE_S', 'ODOM_MAX_AGE_S', 'ODOM_HISTORY_S', 'ODOM_MAX_GAP_S', 'HEARTBEAT_MAX_AGE_S', 'STATUS_MAX_AGE_S', 'CONFIDENCE_MAX_AGE_S', 'MIN_CONFIDENCE']:
+         if not math.isfinite(float(values[key])) or float(values[key]) <= 0:
+@@ -142,9 +198,12 @@ def resolve(root=None, environ=None):
+ def main():
+     parser = argparse.ArgumentParser(description=__doc__)
+     parser.add_argument('--shell', action='store_true')
++    parser.add_argument('--check-fast-livo', action='store_true', help='Require three-sensor fusion for a direct FAST-LIVO2 entry')
+     args = parser.parse_args()
+     try:
+         values = resolve()
++        if args.check_fast_livo:
++            validate_fast_livo_config(values['FAST_LIVO_CONFIG'])
+     except (ValueError, KeyError, TypeError, OSError, yaml.YAMLError) as exc:
+         parser.exit(2, f'configuration error: {exc}\n')
+     if args.shell:
+diff --git a/ws_nav/src/ranger_localization_bridge/setup.py b/ws_nav/src/ranger_localization_bridge/setup.py
+index d407ca7..d08b19d 100644
+--- a/ws_nav/src/ranger_localization_bridge/setup.py
++++ b/ws_nav/src/ranger_localization_bridge/setup.py
+@@ -24,6 +24,7 @@ setup(
+         'console_scripts': [
+             'ranger_localization_bridge = ranger_localization_bridge.bridge_node:main',
+             'lightning_adapter = ranger_localization_bridge.lightning_adapter:main',
++            'fast_livo_adapter = ranger_localization_bridge.fast_livo_adapter:main',
+         ],
+     },
+ )

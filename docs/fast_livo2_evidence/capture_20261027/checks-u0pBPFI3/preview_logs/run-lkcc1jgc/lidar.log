@@ -1,0 +1,26 @@
+[INFO] [1793109861.198744913] [livox_lidar_publisher]: Livox Ros Driver2 Version: 1.2.7
+[INFO] [1793109861.198921665] [livox_lidar_publisher]: Data Source is raw lidar.
+[INFO] [1793109861.198936177] [livox_lidar_publisher]: Config file : /home/lab307/ranger_nav/config/fast_livo2/mid360s_live.json
+LdsLidar *GetInstance
+config lidar type: 8
+successfully parse base config, counts: 1
+[INFO] [1793109861.203889513] [livox_lidar_publisher]: Init lds lidar success!
+GetFreeIndex key:livox_lidar_1694607552.
+STAGE3_TIME handle=1694607552 data_type=1 time_type=0 raw_timestamp=503334147240
+STAGE3_TIME handle=1694607552 data_type=0 time_type=0 raw_timestamp=503340038840
+Init queue, real query size:16.
+Lidar[0] storage queue size: 10
+STAGE3_DEVICE type=35 sn=ARMCP4E0033801 ip=192.168.1.101
+set pcl data type, handle: 1694607552, data type: 1
+set scan pattern, handle: 1694607552, scan pattern: 0
+begin to change work mode to 'Normal', handle: 1694607552
+successfully set data type, handle: 1694607552, set_bit: 2
+successfully set pattern mode, handle: 1694607552, set_bit: 0
+successfully set lidar attitude, ip: 192.168.1.101
+successfully change work mode, handle: 1694607552
+successfully enable Livox Lidar imu, ip: 192.168.1.101
+[INFO] [1793109864.204435975] [livox_lidar_publisher]: livox/imu publish use imu format
+[INFO] [1793109864.206030620] [livox_lidar_publisher]: livox/lidar publish use PointCloud2 format
+[INFO] [1793109886.053355692] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+Livox Lidar SDK Deinit completely!
+lddc destory!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!

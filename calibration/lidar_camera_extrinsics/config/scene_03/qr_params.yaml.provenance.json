@@ -1,0 +1,51 @@
+{
+  "config_sha256": "1599920b855e3d2e794cc68ce6c7221c46aef5a5ae7f69a16c7f335a3abc4be5",
+  "intrinsics": {
+    "source": "/home/lab307/calibration/camera_intrinsics/results/camera_intrinsics.yaml",
+    "sha256": "466cb1595c4d296f51e6cbe1011ddc1c5ba329b51f7b28053d0faede7ba8926f",
+    "image_width": 1280,
+    "image_height": 1024,
+    "distortion_model": "plumb_bob",
+    "K": [
+      [
+        1299.9988190926874,
+        0.0,
+        640.2595320942488
+      ],
+      [
+        0.0,
+        1299.8402206328024,
+        484.9367557425784
+      ],
+      [
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "D": [
+      -0.08288339607839673,
+      0.15032436811294939,
+      -0.0005625494644882011,
+      -0.00039491110944710704,
+      -0.08810366754215963
+    ],
+    "status": "PARTIAL",
+    "warnings": [
+      "角点覆盖不足：边缘/角落外推的可信度有限，建议补充边缘视角。"
+    ],
+    "coefficient_order": [
+      "k1",
+      "k2",
+      "p1",
+      "p2",
+      "k3"
+    ]
+  },
+  "board_source": "/home/lab307/calibration/lidar_camera_extrinsics/config/board.yaml",
+  "board_sha256": "983fd1ddc3759009673dfcf8792003d359dbf141a22d3dd53b4dd00ee8feadef",
+  "scenes_sha256": "4090aeae3582c0d965ab6a0b800a70302657bd769437b6459181376f001a721a",
+  "scene": "scene_03",
+  "bag": "/home/lab307/calibration/lidar_camera_extrinsics/datasets/scene_03/20261021_182958_009120/bag",
+  "partial_intrinsics_explicitly_accepted": true
+}

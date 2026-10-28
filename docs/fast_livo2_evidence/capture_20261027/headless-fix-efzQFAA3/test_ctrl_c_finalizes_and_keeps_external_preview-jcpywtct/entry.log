@@ -1,0 +1,83 @@
+CAPTURE_DIR=/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/headless-fix-efzQFAA3/test_ctrl_c_finalizes_and_keeps_external_preview-jcpywtct/capture
+VISUALIZATION=existing session
+SESSION_DIR=/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/headless-fix-efzQFAA3/test_ctrl_c_finalizes_and_keeps_external_preview-jcpywtct/sessions/fast_livo_record/run-sbw7v7rf
+CAPTURE PREFLIGHT /home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/headless-fix-efzQFAA3/test_ctrl_c_finalizes_and_keeps_external_preview-jcpywtct/capture
+CAPTURE RECORDING /home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/headless-fix-efzQFAA3/test_ctrl_c_finalizes_and_keeps_external_preview-jcpywtct/capture
+录制已就绪；先静止15秒，再开始人工采集动作。Ctrl+C 停录并归档。
+{
+  "exit": 0,
+  "forced": false,
+  "requested_seconds": 60.0,
+  "elapsed_seconds": 0.7503269830000363,
+  "stopped_by_signal": true,
+  "observed_messages": {
+    "/livox/lidar": 23,
+    "/livox/imu": 22,
+    "/front/image_sync": 22,
+    "/front/image": 22,
+    "/front/camera_info": 21,
+    "/fast_livo/odometry": 21
+  },
+  "session_exit": 0,
+  "session_state": {
+    "run_directory": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/headless-fix-efzQFAA3/test_ctrl_c_finalizes_and_keeps_external_preview-jcpywtct/sessions/fast_livo_record/run-sbw7v7rf",
+    "guardian": {
+      "pid": 3482,
+      "start_ticks": 92722,
+      "ppid": 3451,
+      "state": "R",
+      "boot_id": "9ee4990c-890d-4dc7-bdf2-768bdacc709f"
+    },
+    "owner": {
+      "pid": 3512,
+      "start_ticks": 92761,
+      "ppid": 3482,
+      "state": "R",
+      "boot_id": "9ee4990c-890d-4dc7-bdf2-768bdacc709f"
+    },
+    "state": "STOPPED",
+    "reason": "",
+    "owned": [],
+    "components": {
+      "capture": {
+        "state": "READY",
+        "process": {
+          "pid": 3513,
+          "start_ticks": 92762,
+          "ppid": 3512,
+          "state": "R",
+          "boot_id": "9ee4990c-890d-4dc7-bdf2-768bdacc709f"
+        },
+        "argv": [
+          "/usr/bin/python3",
+          "/home/lab307/ranger_nav/scripts/fast_livo2/record_worker.py",
+          "--folder",
+          "/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/headless-fix-efzQFAA3/test_ctrl_c_finalizes_and_keeps_external_preview-jcpywtct/capture"
+        ]
+      }
+    },
+    "updated_monotonic": 929.233707029,
+    "guardian_cleanup_complete": true
+  },
+  "folder": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/headless-fix-efzQFAA3/test_ctrl_c_finalizes_and_keeps_external_preview-jcpywtct/capture",
+  "capture_complete": true,
+  "sync": {
+    "available": true,
+    "source": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/headless-fix-efzQFAA3/test_ctrl_c_finalizes_and_keeps_external_preview-jcpywtct/assets/camera_sync.csv",
+    "status_counts": {
+      "OK": 2
+    },
+    "hardware_frame_id_missing": 0,
+    "hardware_frame_id_nonincreasing": 0,
+    "scope": "entire sensor session; may include time outside this recording",
+    "physical_sync_proven": false
+  },
+  "quality": {
+    "data_checks": "PASS",
+    "failures": [],
+    "warnings": [],
+    "physical_sync": "PARTIAL",
+    "motion_mapping_accuracy": "NOT_EVALUATED",
+    "note": "Header equality is not physical synchronization; no APE/RPE or loop accuracy is inferred."
+  }
+}

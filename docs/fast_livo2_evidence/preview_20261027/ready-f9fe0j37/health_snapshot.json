@@ -1,0 +1,30 @@
+{
+  "monotonic": 6786.507464805,
+  "checks": {
+    "probe_live": true,
+    "lidar": true,
+    "camera": true,
+    "frontend": true,
+    "lidar_unclaimed": false,
+    "camera_unclaimed": false,
+    "frontend_unclaimed": false,
+    "writer": true
+  },
+  "counts": {
+    "/livox/imu": 1317,
+    "/livox/lidar": 1267,
+    "/front/image_sync": 1235,
+    "paired": 1224
+  },
+  "paired_frames": 1224,
+  "map_points": 49761,
+  "sample_ns": 1590192408400451183,
+  "first_pose": [
+    0.00018774097288407215,
+    -0.0005103867980589521,
+    0.00016829614940614004
+  ],
+  "frame_contract_ok": true,
+  "physical_sync_proven": false,
+  "map_optimized": false
+}

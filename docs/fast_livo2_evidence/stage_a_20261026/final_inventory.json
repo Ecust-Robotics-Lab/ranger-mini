@@ -1,0 +1,1984 @@
+{
+  "generated_at": "2026-10-26T06:14:53.630194+00:00",
+  "machine": {
+    "system": "Linux",
+    "node": "lab307-Thunderobot-MIX-G2",
+    "release": "6.8.0-40-generic",
+    "version": "#40~22.04.3-Ubuntu SMP PREEMPT_DYNAMIC Tue Jul 30 17:30:19 UTC 2",
+    "machine": "x86_64",
+    "processor": "x86_64"
+  },
+  "versions": [
+    {
+      "path": "/home/lab307/ranger_nav",
+      "commit": {
+        "command": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "a76d83a767d5691ca40351f3a57f65b398572a52\n",
+        "stderr": ""
+      },
+      "branch": {
+        "command": [
+          "git",
+          "symbolic-ref",
+          "--short",
+          "-q",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "refactor/pluggable-navigation\n",
+        "stderr": ""
+      },
+      "status": {
+        "command": [
+          "git",
+          "status",
+          "--porcelain=v1"
+        ],
+        "exit_code": 0,
+        "stdout": " M .gitignore\n M AGENTS.md\n M README.md\n M docs/03_mid360_validation.md\n M docs/STATUS.md\n?? config/fast_livo2/\n?? docs/03_evidence/driver-5v7_r4c4/\n?? docs/03_evidence/driver-a9w6s6i0/\n?? docs/03_evidence/driver-dhth97g3/\n?? docs/03_evidence/driver-hj360f0f/\n?? docs/03_evidence/driver-nrs50iyr/\n?? docs/03_evidence/driver-y2sd6pvt/\n?? docs/fast_livo2_evidence/\n?? docs/fast_livo2_interfaces.md\n?? docs/fast_livo2_source_review.md\n?? docs/fast_livo2_stage_a_report.md\n?? patches/fast_livo2_stage_a.patch\n?? scripts/audit_fast_livo2.py\n?? scripts/build_fast_livo2.sh\n?? scripts/fast_livo2/\n?? scripts/run_fast_livo2_replay.sh\n",
+        "stderr": ""
+      },
+      "remote": {
+        "command": [
+          "git",
+          "remote",
+          "-v"
+        ],
+        "exit_code": 0,
+        "stdout": "origin\thttps://github.com/Ecust-Robotics-Lab/ranger-mini.git (fetch)\norigin\thttps://github.com/Ecust-Robotics-Lab/ranger-mini.git (push)\n",
+        "stderr": ""
+      },
+      "diff": {
+        "command": [
+          "git",
+          "diff",
+          "--stat"
+        ],
+        "exit_code": 0,
+        "stdout": " .gitignore                   |  1 +\n AGENTS.md                    |  7 ++++++-\n README.md                    | 10 +++++++---\n docs/03_mid360_validation.md |  6 +++---\n docs/STATUS.md               | 15 +++++++++++++--\n 5 files changed, 30 insertions(+), 9 deletions(-)\n",
+        "stderr": ""
+      },
+      "licenses": [
+        {
+          "path": "vendor/fast_livo2_review/fastlio_backend/fastlio2/LICENSE",
+          "sha256": "e4da13b8ee8adf3c184f3cfaa765c1b002efd9e1b7a200fe7c507a30391f8fb9"
+        },
+        {
+          "path": "vendor/fast_livo2_review/fastlio_backend/hba/LICENSE",
+          "sha256": "e4da13b8ee8adf3c184f3cfaa765c1b002efd9e1b7a200fe7c507a30391f8fb9"
+        },
+        {
+          "path": "vendor/fast_livo2_review/fastlio_backend/interface/LICENSE",
+          "sha256": "e4da13b8ee8adf3c184f3cfaa765c1b002efd9e1b7a200fe7c507a30391f8fb9"
+        },
+        {
+          "path": "vendor/fast_livo2_review/fastlio_backend/localizer/LICENSE",
+          "sha256": "e4da13b8ee8adf3c184f3cfaa765c1b002efd9e1b7a200fe7c507a30391f8fb9"
+        },
+        {
+          "path": "vendor/fast_livo2_review/fastlio_backend/pgo/LICENSE",
+          "sha256": "e4da13b8ee8adf3c184f3cfaa765c1b002efd9e1b7a200fe7c507a30391f8fb9"
+        },
+        {
+          "path": "vendor/fast_livo2_review/global_lvba/LICENSE",
+          "sha256": "b893853757d2040f0fe44287972688eefa904619284b8d9d06447facdb7477e2"
+        },
+        {
+          "path": "vendor/fast_livo2_review/handheld_mapper/LICENSE",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "vendor/fast_livo2_review/handheld_mapper/src/FAST-LIVO2/LICENSE",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "vendor/fast_livo2_review/handheld_mapper/src/Global-LVBA/LICENSE",
+          "sha256": "b893853757d2040f0fe44287972688eefa904619284b8d9d06447facdb7477e2"
+        },
+        {
+          "path": "vendor/fast_livo2_review/handheld_mapper/src/livox_ros_driver2/LICENSE.txt",
+          "sha256": "5d965fd1439196751d5ccad8064a51dafdb2d88548174bb5516d393c7a4c0717"
+        },
+        {
+          "path": "vendor/fast_livo2_review/hardware/LICENSE.txt",
+          "sha256": "3a533f1967229b34548da1f5accc6f8353ab0958a8685acca156570aabbcb1ad"
+        },
+        {
+          "path": "vendor/fast_livo2_review/hardware/livox_ros_driver2/LICENSE.txt",
+          "sha256": "5d965fd1439196751d5ccad8064a51dafdb2d88548174bb5516d393c7a4c0717"
+        },
+        {
+          "path": "vendor/fast_livo2_review/holoagent/LICENSE",
+          "sha256": "324c150dd00876f3992ed19611ef8013d223f73f688ae8b3c9918a997110957b"
+        },
+        {
+          "path": "vendor/fast_livo2_review/holoagent/agentic_robot/core/src/fast_livo/LICENSE",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "vendor/fast_livo2_review/holoagent/agentic_robot/core/src/fast_livo/thirdparty/fast_gicp/thirdparty/nvbio/LICENSE",
+          "sha256": "967eb31128b76ab2f5c7bab9679f0474fddc2a7f431f1cbaf58791493ca590a2"
+        },
+        {
+          "path": "vendor/fast_livo2_review/holoagent/agentic_robot/core/src/fast_livo/thirdparty/fast_gicp/thirdparty/nvbio/contrib/lz4/LICENSE",
+          "sha256": "cd680953c2d0933069840846381b904ef2c02e4cfe6e40e89c4417876f10b2d2"
+        },
+        {
+          "path": "vendor/fast_livo2_review/holoagent/agentic_robot/thirdparty/src/navigation2-humble/LICENSE",
+          "sha256": "e71fcb65bd31cdbdcf50cf43ab87a0c600ea3ec407495c2e15d1e68bc9c3bfc1"
+        },
+        {
+          "path": "vendor/fast_livo2_review/holoagent/agentic_robot/thirdparty/src/navigation2-humble/nav2_mppi_controller/LICENSE.md",
+          "sha256": "fd511b3d95b4cfc9f0a5f82ed8f1238d664e1e54d11e70c10a3e3651d859e0c4"
+        },
+        {
+          "path": "vendor/fast_livo2_review/official/LICENSE",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "vendor/fast_livo2_review/openflex/LICENSE",
+          "sha256": "a3ecf5dad6f3d88751a1244eb266880f399159ca01a6c0320c667d1e7b1f392a"
+        },
+        {
+          "path": "vendor/fast_livo2_review/openflex/fast_livo/LICENSE",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "vendor/fast_livo2_review/openflex/fastlio2/LICENSE",
+          "sha256": "e4da13b8ee8adf3c184f3cfaa765c1b002efd9e1b7a200fe7c507a30391f8fb9"
+        },
+        {
+          "path": "vendor/fast_livo2_review/openflex/hba/LICENSE",
+          "sha256": "e4da13b8ee8adf3c184f3cfaa765c1b002efd9e1b7a200fe7c507a30391f8fb9"
+        },
+        {
+          "path": "vendor/fast_livo2_review/openflex/pgo/LICENSE",
+          "sha256": "e4da13b8ee8adf3c184f3cfaa765c1b002efd9e1b7a200fe7c507a30391f8fb9"
+        },
+        {
+          "path": "vendor/fast_livo2_review/openflex_docs/LICENSE",
+          "sha256": "a3ecf5dad6f3d88751a1244eb266880f399159ca01a6c0320c667d1e7b1f392a"
+        },
+        {
+          "path": "vendor/fast_livo2_review/ros2_frontend/LICENSE",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "vendor/fast_livo2_review/sc_fast_livo2/LICENSE",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "vendor/fast_livo2_review/sophus/LICENSE.txt",
+          "sha256": "fb709d95e89b7bff8987ba32050be62eb110edc2727262a85b2726b22d7d1571"
+        },
+        {
+          "path": "vendor/livox/Livox-SDK2/3rdparty/FastCRC/LICENSE.md",
+          "sha256": "2cdf510c5ad25585baf540ce3867879baaa80238c0bb29cdbe661435e6ea1c3d"
+        },
+        {
+          "path": "vendor/livox/Livox-SDK2/3rdparty/spdlog/LICENSE",
+          "sha256": "9eb46fbd9cbdb0793e496ab744aa2e290b4e39825a2da5cba3ba6fa36bb25683"
+        },
+        {
+          "path": "vendor/livox/Livox-SDK2/3rdparty/spdlog/spdlog/fmt/bundled/LICENSE.rst",
+          "sha256": "560d39617dfb4b4e4088597291a070ed6c3a8d67668114ed475c673430c3e49a"
+        },
+        {
+          "path": "vendor/livox/Livox-SDK2/LICENSE.txt",
+          "sha256": "8a71b3149554ec5b7df17087e63affedc4c0dbc7fb65bfe5495cdf86224fa85f"
+        },
+        {
+          "path": "ws_base/src/ranger_ros2/LICENSE",
+          "sha256": "46b7b2bdc6e3e769477c9515594c547e640f7e9d652f88e6295e9d2671f32ece"
+        },
+        {
+          "path": "ws_base/src/ugv_sdk/LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        },
+        {
+          "path": "ws_camera/src/hik_camera_ros2_driver/LICENSE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        },
+        {
+          "path": "ws_livox/src/livox_ros_driver2/LICENSE.txt",
+          "sha256": "5d965fd1439196751d5ccad8064a51dafdb2d88548174bb5516d393c7a4c0717"
+        },
+        {
+          "path": "ws_slam/deps/pangolin_install/include/NaturalSort/LICENSE.md",
+          "sha256": "93ae4f4ebd20c87eb2da242d9587cf5e7137463a5fdba71b167cea27dc607715"
+        },
+        {
+          "path": "ws_slam/deps/src/Pangolin-0.9.3/components/pango_core/include/NaturalSort/LICENSE.md",
+          "sha256": "93ae4f4ebd20c87eb2da242d9587cf5e7137463a5fdba71b167cea27dc607715"
+        }
+      ]
+    },
+    {
+      "path": "/home/lab307/ranger_nav/vendor/fast_livo2_review/fastlio_backend",
+      "commit": {
+        "command": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "7baa59f7339ba88ce3b646fe35b23f61031c5d3f\n",
+        "stderr": ""
+      },
+      "branch": {
+        "command": [
+          "git",
+          "symbolic-ref",
+          "--short",
+          "-q",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "main\n",
+        "stderr": ""
+      },
+      "status": {
+        "command": [
+          "git",
+          "status",
+          "--porcelain=v1"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "remote": {
+        "command": [
+          "git",
+          "remote",
+          "-v"
+        ],
+        "exit_code": 0,
+        "stdout": "origin\thttps://github.com/liangheming/FASTLIO2_ROS2.git (fetch)\norigin\thttps://github.com/liangheming/FASTLIO2_ROS2.git (push)\n",
+        "stderr": ""
+      },
+      "diff": {
+        "command": [
+          "git",
+          "diff",
+          "--stat"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "licenses": [
+        {
+          "path": "fastlio2/LICENSE",
+          "sha256": "e4da13b8ee8adf3c184f3cfaa765c1b002efd9e1b7a200fe7c507a30391f8fb9"
+        },
+        {
+          "path": "hba/LICENSE",
+          "sha256": "e4da13b8ee8adf3c184f3cfaa765c1b002efd9e1b7a200fe7c507a30391f8fb9"
+        },
+        {
+          "path": "interface/LICENSE",
+          "sha256": "e4da13b8ee8adf3c184f3cfaa765c1b002efd9e1b7a200fe7c507a30391f8fb9"
+        },
+        {
+          "path": "localizer/LICENSE",
+          "sha256": "e4da13b8ee8adf3c184f3cfaa765c1b002efd9e1b7a200fe7c507a30391f8fb9"
+        },
+        {
+          "path": "pgo/LICENSE",
+          "sha256": "e4da13b8ee8adf3c184f3cfaa765c1b002efd9e1b7a200fe7c507a30391f8fb9"
+        }
+      ]
+    },
+    {
+      "path": "/home/lab307/ranger_nav/vendor/fast_livo2_review/global_lvba",
+      "commit": {
+        "command": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "10493a2b0f695e32db83dde49dad843a4826e090\n",
+        "stderr": ""
+      },
+      "branch": {
+        "command": [
+          "git",
+          "symbolic-ref",
+          "--short",
+          "-q",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "master\n",
+        "stderr": ""
+      },
+      "status": {
+        "command": [
+          "git",
+          "status",
+          "--porcelain=v1"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "remote": {
+        "command": [
+          "git",
+          "remote",
+          "-v"
+        ],
+        "exit_code": 0,
+        "stdout": "origin\thttps://github.com/xuankuzcr/Global-LVBA.git (fetch)\norigin\thttps://github.com/xuankuzcr/Global-LVBA.git (push)\n",
+        "stderr": ""
+      },
+      "diff": {
+        "command": [
+          "git",
+          "diff",
+          "--stat"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "licenses": [
+        {
+          "path": "LICENSE",
+          "sha256": "b893853757d2040f0fe44287972688eefa904619284b8d9d06447facdb7477e2"
+        }
+      ]
+    },
+    {
+      "path": "/home/lab307/ranger_nav/vendor/fast_livo2_review/handheld_mapper",
+      "commit": {
+        "command": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "3abbde381e2ae6ec382a9cec8376fc5d47d95545\n",
+        "stderr": ""
+      },
+      "branch": {
+        "command": [
+          "git",
+          "symbolic-ref",
+          "--short",
+          "-q",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "main\n",
+        "stderr": ""
+      },
+      "status": {
+        "command": [
+          "git",
+          "status",
+          "--porcelain=v1"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "remote": {
+        "command": [
+          "git",
+          "remote",
+          "-v"
+        ],
+        "exit_code": 0,
+        "stdout": "origin\thttps://github.com/limshoonkit/handheld_mapper.git (fetch)\norigin\thttps://github.com/limshoonkit/handheld_mapper.git (push)\n",
+        "stderr": ""
+      },
+      "diff": {
+        "command": [
+          "git",
+          "diff",
+          "--stat"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "licenses": [
+        {
+          "path": "LICENSE",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "src/FAST-LIVO2/LICENSE",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "src/Global-LVBA/LICENSE",
+          "sha256": "b893853757d2040f0fe44287972688eefa904619284b8d9d06447facdb7477e2"
+        },
+        {
+          "path": "src/livox_ros_driver2/LICENSE.txt",
+          "sha256": "5d965fd1439196751d5ccad8064a51dafdb2d88548174bb5516d393c7a4c0717"
+        }
+      ]
+    },
+    {
+      "path": "/home/lab307/ranger_nav/vendor/fast_livo2_review/hardware",
+      "commit": {
+        "command": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "30507028a7c00c99ac992322507701e0efe72a2a\n",
+        "stderr": ""
+      },
+      "branch": {
+        "command": [
+          "git",
+          "symbolic-ref",
+          "--short",
+          "-q",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "main\n",
+        "stderr": ""
+      },
+      "status": {
+        "command": [
+          "git",
+          "status",
+          "--porcelain=v1"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "remote": {
+        "command": [
+          "git",
+          "remote",
+          "-v"
+        ],
+        "exit_code": 0,
+        "stdout": "origin\thttps://github.com/hku-mars/LIV_handhold_2.git (fetch)\norigin\thttps://github.com/hku-mars/LIV_handhold_2.git (push)\n",
+        "stderr": ""
+      },
+      "diff": {
+        "command": [
+          "git",
+          "diff",
+          "--stat"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "licenses": [
+        {
+          "path": "LICENSE.txt",
+          "sha256": "3a533f1967229b34548da1f5accc6f8353ab0958a8685acca156570aabbcb1ad"
+        },
+        {
+          "path": "livox_ros_driver2/LICENSE.txt",
+          "sha256": "5d965fd1439196751d5ccad8064a51dafdb2d88548174bb5516d393c7a4c0717"
+        }
+      ]
+    },
+    {
+      "path": "/home/lab307/ranger_nav/vendor/fast_livo2_review/holoagent",
+      "commit": {
+        "command": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "ef14d3152ca6246d8ae64920694c6c74581d246c\n",
+        "stderr": ""
+      },
+      "branch": {
+        "command": [
+          "git",
+          "symbolic-ref",
+          "--short",
+          "-q",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "main\n",
+        "stderr": ""
+      },
+      "status": {
+        "command": [
+          "git",
+          "status",
+          "--porcelain=v1"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "remote": {
+        "command": [
+          "git",
+          "remote",
+          "-v"
+        ],
+        "exit_code": 0,
+        "stdout": "origin\thttps://github.com/HorizonRobotics/HoloAgent.git (fetch)\norigin\thttps://github.com/HorizonRobotics/HoloAgent.git (push)\n",
+        "stderr": ""
+      },
+      "diff": {
+        "command": [
+          "git",
+          "diff",
+          "--stat"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "licenses": [
+        {
+          "path": "LICENSE",
+          "sha256": "324c150dd00876f3992ed19611ef8013d223f73f688ae8b3c9918a997110957b"
+        },
+        {
+          "path": "agentic_robot/core/src/fast_livo/LICENSE",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "agentic_robot/core/src/fast_livo/thirdparty/fast_gicp/thirdparty/nvbio/LICENSE",
+          "sha256": "967eb31128b76ab2f5c7bab9679f0474fddc2a7f431f1cbaf58791493ca590a2"
+        },
+        {
+          "path": "agentic_robot/core/src/fast_livo/thirdparty/fast_gicp/thirdparty/nvbio/contrib/lz4/LICENSE",
+          "sha256": "cd680953c2d0933069840846381b904ef2c02e4cfe6e40e89c4417876f10b2d2"
+        },
+        {
+          "path": "agentic_robot/thirdparty/src/navigation2-humble/LICENSE",
+          "sha256": "e71fcb65bd31cdbdcf50cf43ab87a0c600ea3ec407495c2e15d1e68bc9c3bfc1"
+        },
+        {
+          "path": "agentic_robot/thirdparty/src/navigation2-humble/nav2_mppi_controller/LICENSE.md",
+          "sha256": "fd511b3d95b4cfc9f0a5f82ed8f1238d664e1e54d11e70c10a3e3651d859e0c4"
+        }
+      ]
+    },
+    {
+      "path": "/home/lab307/ranger_nav/vendor/fast_livo2_review/longxiaoze",
+      "commit": {
+        "command": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "6130a580e43bb9c3763477dffc70b6a9a148aa4c\n",
+        "stderr": ""
+      },
+      "branch": {
+        "command": [
+          "git",
+          "symbolic-ref",
+          "--short",
+          "-q",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "main\n",
+        "stderr": ""
+      },
+      "status": {
+        "command": [
+          "git",
+          "status",
+          "--porcelain=v1"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "remote": {
+        "command": [
+          "git",
+          "remote",
+          "-v"
+        ],
+        "exit_code": 0,
+        "stdout": "origin\thttps://github.com/Longxiaoze/FAST-LIVO2-Humble.git (fetch)\norigin\thttps://github.com/Longxiaoze/FAST-LIVO2-Humble.git (push)\n",
+        "stderr": ""
+      },
+      "diff": {
+        "command": [
+          "git",
+          "diff",
+          "--stat"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "licenses": []
+    },
+    {
+      "path": "/home/lab307/ranger_nav/vendor/fast_livo2_review/official",
+      "commit": {
+        "command": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "0d2c0346107b75b59934975adec9a6eeeb913c64\n",
+        "stderr": ""
+      },
+      "branch": {
+        "command": [
+          "git",
+          "symbolic-ref",
+          "--short",
+          "-q",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "main\n",
+        "stderr": ""
+      },
+      "status": {
+        "command": [
+          "git",
+          "status",
+          "--porcelain=v1"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "remote": {
+        "command": [
+          "git",
+          "remote",
+          "-v"
+        ],
+        "exit_code": 0,
+        "stdout": "origin\thttps://github.com/hku-mars/FAST-LIVO2.git (fetch)\norigin\thttps://github.com/hku-mars/FAST-LIVO2.git (push)\n",
+        "stderr": ""
+      },
+      "diff": {
+        "command": [
+          "git",
+          "diff",
+          "--stat"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "licenses": [
+        {
+          "path": "LICENSE",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        }
+      ]
+    },
+    {
+      "path": "/home/lab307/ranger_nav/vendor/fast_livo2_review/openflex",
+      "commit": {
+        "command": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "0e891ff05dc562868d84716933bb68fdc74476f4\n",
+        "stderr": ""
+      },
+      "branch": {
+        "command": [
+          "git",
+          "symbolic-ref",
+          "--short",
+          "-q",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "v1.0_basic\n",
+        "stderr": ""
+      },
+      "status": {
+        "command": [
+          "git",
+          "status",
+          "--porcelain=v1"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "remote": {
+        "command": [
+          "git",
+          "remote",
+          "-v"
+        ],
+        "exit_code": 0,
+        "stdout": "origin\thttps://github.com/OpenFleX-Wheeled-Humanoid/mapping_localization_layer.git (fetch)\norigin\thttps://github.com/OpenFleX-Wheeled-Humanoid/mapping_localization_layer.git (push)\n",
+        "stderr": ""
+      },
+      "diff": {
+        "command": [
+          "git",
+          "diff",
+          "--stat"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "licenses": [
+        {
+          "path": "LICENSE",
+          "sha256": "a3ecf5dad6f3d88751a1244eb266880f399159ca01a6c0320c667d1e7b1f392a"
+        },
+        {
+          "path": "fast_livo/LICENSE",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        },
+        {
+          "path": "fastlio2/LICENSE",
+          "sha256": "e4da13b8ee8adf3c184f3cfaa765c1b002efd9e1b7a200fe7c507a30391f8fb9"
+        },
+        {
+          "path": "hba/LICENSE",
+          "sha256": "e4da13b8ee8adf3c184f3cfaa765c1b002efd9e1b7a200fe7c507a30391f8fb9"
+        },
+        {
+          "path": "pgo/LICENSE",
+          "sha256": "e4da13b8ee8adf3c184f3cfaa765c1b002efd9e1b7a200fe7c507a30391f8fb9"
+        }
+      ]
+    },
+    {
+      "path": "/home/lab307/ranger_nav/vendor/fast_livo2_review/openflex_docs",
+      "commit": {
+        "command": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "980592bd06c355730e6867e79cb77bf6c86d91a5\n",
+        "stderr": ""
+      },
+      "branch": {
+        "command": [
+          "git",
+          "symbolic-ref",
+          "--short",
+          "-q",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "v1.0_basic\n",
+        "stderr": ""
+      },
+      "status": {
+        "command": [
+          "git",
+          "status",
+          "--porcelain=v1"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "remote": {
+        "command": [
+          "git",
+          "remote",
+          "-v"
+        ],
+        "exit_code": 0,
+        "stdout": "origin\thttps://github.com/OpenFleX-Wheeled-Humanoid/OpenFleX.git (fetch)\norigin\thttps://github.com/OpenFleX-Wheeled-Humanoid/OpenFleX.git (push)\n",
+        "stderr": ""
+      },
+      "diff": {
+        "command": [
+          "git",
+          "diff",
+          "--stat"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "licenses": [
+        {
+          "path": "LICENSE",
+          "sha256": "a3ecf5dad6f3d88751a1244eb266880f399159ca01a6c0320c667d1e7b1f392a"
+        }
+      ]
+    },
+    {
+      "path": "/home/lab307/ranger_nav/vendor/fast_livo2_review/ros2_frontend",
+      "commit": {
+        "command": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "837b7bbc1431cb04cf936528e52c83c835efba8e\n",
+        "stderr": ""
+      },
+      "branch": {
+        "command": [
+          "git",
+          "symbolic-ref",
+          "--short",
+          "-q",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "humble\n",
+        "stderr": ""
+      },
+      "status": {
+        "command": [
+          "git",
+          "status",
+          "--porcelain=v1"
+        ],
+        "exit_code": 0,
+        "stdout": " M CMakeLists.txt\n M include/LIVMapper.h\n M include/preprocess.h\n M include/vio.h\n M package.xml\n M src/LIVMapper.cpp\n M src/main.cpp\n M src/preprocess.cpp\n M src/vio.cpp\n?? include/ranger_input_guard.h\n?? src/ranger_livo_checks.cpp\n?? src/ranger_livo_replay.cpp\n",
+        "stderr": ""
+      },
+      "remote": {
+        "command": [
+          "git",
+          "remote",
+          "-v"
+        ],
+        "exit_code": 0,
+        "stdout": "origin\thttps://github.com/Robotic-Developer-Road/FAST-LIVO2.git (fetch)\norigin\thttps://github.com/Robotic-Developer-Road/FAST-LIVO2.git (push)\n",
+        "stderr": ""
+      },
+      "diff": {
+        "command": [
+          "git",
+          "diff",
+          "--stat"
+        ],
+        "exit_code": 0,
+        "stdout": " CMakeLists.txt       | 33 +++++++++++++---------\n include/LIVMapper.h  | 14 +++++++++-\n include/preprocess.h |  1 +\n include/vio.h        |  1 +\n package.xml          |  6 ++--\n src/LIVMapper.cpp    | 79 ++++++++++++++++++++++++++++++++++++++++++++++------\n src/main.cpp         |  3 +-\n src/preprocess.cpp   | 41 ++++++++++++++++++++++++++-\n src/vio.cpp          | 10 +++++++\n 9 files changed, 160 insertions(+), 28 deletions(-)\n",
+        "stderr": ""
+      },
+      "licenses": [
+        {
+          "path": "LICENSE",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        }
+      ]
+    },
+    {
+      "path": "/home/lab307/ranger_nav/vendor/fast_livo2_review/rpg_vikit",
+      "commit": {
+        "command": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "4b7abc838f5d2ca9137f70f122eaaeff9eaf0f50\n",
+        "stderr": ""
+      },
+      "branch": {
+        "command": [
+          "git",
+          "symbolic-ref",
+          "--short",
+          "-q",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "main\n",
+        "stderr": ""
+      },
+      "status": {
+        "command": [
+          "git",
+          "status",
+          "--porcelain=v1"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "remote": {
+        "command": [
+          "git",
+          "remote",
+          "-v"
+        ],
+        "exit_code": 0,
+        "stdout": "origin\thttps://github.com/Robotic-Developer-Road/rpg_vikit.git (fetch)\norigin\thttps://github.com/Robotic-Developer-Road/rpg_vikit.git (push)\n",
+        "stderr": ""
+      },
+      "diff": {
+        "command": [
+          "git",
+          "diff",
+          "--stat"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "licenses": []
+    },
+    {
+      "path": "/home/lab307/ranger_nav/vendor/fast_livo2_review/sc_fast_livo2",
+      "commit": {
+        "command": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "f39e3d0008af7cbd838b05ccfbad794c66161596\n",
+        "stderr": ""
+      },
+      "branch": {
+        "command": [
+          "git",
+          "symbolic-ref",
+          "--short",
+          "-q",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "main\n",
+        "stderr": ""
+      },
+      "status": {
+        "command": [
+          "git",
+          "status",
+          "--porcelain=v1"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "remote": {
+        "command": [
+          "git",
+          "remote",
+          "-v"
+        ],
+        "exit_code": 0,
+        "stdout": "origin\thttps://github.com/jxk6575/SC_FAST_LIVO2.git (fetch)\norigin\thttps://github.com/jxk6575/SC_FAST_LIVO2.git (push)\n",
+        "stderr": ""
+      },
+      "diff": {
+        "command": [
+          "git",
+          "diff",
+          "--stat"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "licenses": [
+        {
+          "path": "LICENSE",
+          "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643"
+        }
+      ]
+    },
+    {
+      "path": "/home/lab307/ranger_nav/vendor/fast_livo2_review/sophus",
+      "commit": {
+        "command": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "de0f8d3d92bf776271e16de56d1803940ebccab9\n",
+        "stderr": ""
+      },
+      "branch": {
+        "command": [
+          "git",
+          "symbolic-ref",
+          "--short",
+          "-q",
+          "HEAD"
+        ],
+        "exit_code": 1,
+        "stdout": "",
+        "stderr": ""
+      },
+      "status": {
+        "command": [
+          "git",
+          "status",
+          "--porcelain=v1"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "remote": {
+        "command": [
+          "git",
+          "remote",
+          "-v"
+        ],
+        "exit_code": 0,
+        "stdout": "origin\thttps://github.com/strasdat/Sophus.git (fetch)\norigin\thttps://github.com/strasdat/Sophus.git (push)\n",
+        "stderr": ""
+      },
+      "diff": {
+        "command": [
+          "git",
+          "diff",
+          "--stat"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "licenses": [
+        {
+          "path": "LICENSE.txt",
+          "sha256": "fb709d95e89b7bff8987ba32050be62eb110edc2727262a85b2726b22d7d1571"
+        }
+      ]
+    },
+    {
+      "path": "/home/lab307/ranger_nav/ws_base/src/ranger_ros2",
+      "commit": {
+        "command": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "7b75bc2443a1d6cbd42cc3ef3059cf4897242072\n",
+        "stderr": ""
+      },
+      "branch": {
+        "command": [
+          "git",
+          "symbolic-ref",
+          "--short",
+          "-q",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "ranger-local\n",
+        "stderr": ""
+      },
+      "status": {
+        "command": [
+          "git",
+          "status",
+          "--porcelain=v1"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "remote": {
+        "command": [
+          "git",
+          "remote",
+          "-v"
+        ],
+        "exit_code": 0,
+        "stdout": "origin\thttps://github.com/agilexrobotics/ranger_ros2.git (fetch)\norigin\thttps://github.com/agilexrobotics/ranger_ros2.git (push)\n",
+        "stderr": ""
+      },
+      "diff": {
+        "command": [
+          "git",
+          "diff",
+          "--stat"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "licenses": [
+        {
+          "path": "LICENSE",
+          "sha256": "46b7b2bdc6e3e769477c9515594c547e640f7e9d652f88e6295e9d2671f32ece"
+        }
+      ]
+    },
+    {
+      "path": "/home/lab307/ranger_nav/ws_base/src/ugv_sdk",
+      "commit": {
+        "command": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "e2f5764acc00a2e556cf3bdc3ea3b206fa326e5b\n",
+        "stderr": ""
+      },
+      "branch": {
+        "command": [
+          "git",
+          "symbolic-ref",
+          "--short",
+          "-q",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "ranger-local\n",
+        "stderr": ""
+      },
+      "status": {
+        "command": [
+          "git",
+          "status",
+          "--porcelain=v1"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "remote": {
+        "command": [
+          "git",
+          "remote",
+          "-v"
+        ],
+        "exit_code": 0,
+        "stdout": "origin\thttps://github.com/agilexrobotics/ugv_sdk.git (fetch)\norigin\thttps://github.com/agilexrobotics/ugv_sdk.git (push)\n",
+        "stderr": ""
+      },
+      "diff": {
+        "command": [
+          "git",
+          "diff",
+          "--stat"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "licenses": [
+        {
+          "path": "LICENSE",
+          "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+        }
+      ]
+    },
+    {
+      "path": "/home/lab307/ranger_nav/ws_camera/src/hik_camera_ros2_driver",
+      "commit": {
+        "command": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "4e351d0b096e124cc076b2edf9f6abb7bfb23eda\n",
+        "stderr": ""
+      },
+      "branch": {
+        "command": [
+          "git",
+          "symbolic-ref",
+          "--short",
+          "-q",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "main\n",
+        "stderr": ""
+      },
+      "status": {
+        "command": [
+          "git",
+          "status",
+          "--porcelain=v1"
+        ],
+        "exit_code": 0,
+        "stdout": " M config/camera_params.yaml\n M src/hik_camera_node.cpp\n",
+        "stderr": ""
+      },
+      "remote": {
+        "command": [
+          "git",
+          "remote",
+          "-v"
+        ],
+        "exit_code": 0,
+        "stdout": "origin\thttps://github.com/zylyehuo/hik_camera_ros2_driver.git (fetch)\norigin\thttps://github.com/zylyehuo/hik_camera_ros2_driver.git (push)\n",
+        "stderr": ""
+      },
+      "diff": {
+        "command": [
+          "git",
+          "diff",
+          "--stat"
+        ],
+        "exit_code": 0,
+        "stdout": " config/camera_params.yaml | 12 ++++++------\n src/hik_camera_node.cpp   |  2 +-\n 2 files changed, 7 insertions(+), 7 deletions(-)\n",
+        "stderr": ""
+      },
+      "licenses": [
+        {
+          "path": "LICENSE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        }
+      ]
+    },
+    {
+      "path": "/home/lab307/ranger_nav/ws_livox/src/livox_ros_driver2",
+      "commit": {
+        "command": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "cc34f0a18f8c43adbf304c71ebd9f8af69440f41\n",
+        "stderr": ""
+      },
+      "branch": {
+        "command": [
+          "git",
+          "symbolic-ref",
+          "--short",
+          "-q",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "ranger-local\n",
+        "stderr": ""
+      },
+      "status": {
+        "command": [
+          "git",
+          "status",
+          "--porcelain=v1"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "remote": {
+        "command": [
+          "git",
+          "remote",
+          "-v"
+        ],
+        "exit_code": 0,
+        "stdout": "origin\thttps://github.com/Livox-SDK/livox_ros_driver2 (fetch)\norigin\thttps://github.com/Livox-SDK/livox_ros_driver2 (push)\n",
+        "stderr": ""
+      },
+      "diff": {
+        "command": [
+          "git",
+          "diff",
+          "--stat"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "licenses": [
+        {
+          "path": "LICENSE.txt",
+          "sha256": "5d965fd1439196751d5ccad8064a51dafdb2d88548174bb5516d393c7a4c0717"
+        }
+      ]
+    },
+    {
+      "path": "/home/lab307/ranger_nav/ws_slam/src/lightning",
+      "commit": {
+        "command": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "b973e7fcfef147959dcfa6d78dd7a07a59384c52\n",
+        "stderr": ""
+      },
+      "branch": {
+        "command": [
+          "git",
+          "symbolic-ref",
+          "--short",
+          "-q",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "ranger-local\n",
+        "stderr": ""
+      },
+      "status": {
+        "command": [
+          "git",
+          "status",
+          "--porcelain=v1"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "remote": {
+        "command": [
+          "git",
+          "remote",
+          "-v"
+        ],
+        "exit_code": 0,
+        "stdout": "origin\thttps://github.com/gaoxiang12/lightning-lm (fetch)\norigin\thttps://github.com/gaoxiang12/lightning-lm (push)\n",
+        "stderr": ""
+      },
+      "diff": {
+        "command": [
+          "git",
+          "diff",
+          "--stat"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "licenses": []
+    },
+    {
+      "path": "/home/lab307/calibration/lidar_camera_extrinsics",
+      "commit": {
+        "command": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "82936bbbd12c5d5d93cf9f9d2564ec6a5c37fac8\n",
+        "stderr": ""
+      },
+      "branch": {
+        "command": [
+          "git",
+          "symbolic-ref",
+          "--short",
+          "-q",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "master\n",
+        "stderr": ""
+      },
+      "status": {
+        "command": [
+          "git",
+          "status",
+          "--porcelain=v1"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "remote": {
+        "command": [
+          "git",
+          "remote",
+          "-v"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "diff": {
+        "command": [
+          "git",
+          "diff",
+          "--stat"
+        ],
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "licenses": [
+        {
+          "path": "upstream/zhi-calf/FAST-Calib/LICENSE",
+          "sha256": "cc6a6e6642baa31f3c761050754afc680bca7ca3f305b3035024244e7880e037"
+        },
+        {
+          "path": "ws/src/fast_calib/LICENSE",
+          "sha256": "cc6a6e6642baa31f3c761050754afc680bca7ca3f305b3035024244e7880e037"
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "path": "/home/lab307/ranger_nav/AGENTS.md",
+      "sha256": "808968684335056bc05805bd7430a12e660a234be5b2043830dcb7d4f4b67ef0"
+    },
+    {
+      "path": "/home/lab307/ranger_nav/config/runtime.yaml",
+      "sha256": "268febe61b4b76f940ec9b1076512149f4d59a54c782684a1c2589205000f7ce"
+    },
+    {
+      "path": "/home/lab307/ranger_nav/docs/03_mid360_validation.md",
+      "sha256": "99ea3234665db675ab58bced343097e4e8c65e996d534a8690122e7a7d14c8e7"
+    },
+    {
+      "path": "/home/lab307/calibration/camera_intrinsics/results/board_poses.yaml",
+      "sha256": "5e6a077db5b90fd5b5c5b9235611b14f84839976ceeffe7218b170029c9c70ab"
+    },
+    {
+      "path": "/home/lab307/calibration/camera_intrinsics/results/camera_info.yaml",
+      "sha256": "3b8536bf5331cc7a07f98751dfa322c7c1f3f7fdc08a5e91272030735f475932"
+    },
+    {
+      "path": "/home/lab307/calibration/camera_intrinsics/results/camera_intrinsics.yaml",
+      "sha256": "466cb1595c4d296f51e6cbe1011ddc1c5ba329b51f7b28053d0faede7ba8926f"
+    },
+    {
+      "path": "/home/lab307/calibration/camera_intrinsics/results/compatibility_camera_info_k3_zero.yaml",
+      "sha256": "9c1afac351dde606fcdc32566d6d63c2f5c6a8ba21b3f541b05642391ff302ad"
+    },
+    {
+      "path": "/home/lab307/calibration/camera_intrinsics/results/fast_calib_camera.yaml",
+      "sha256": "b70db3cabbfc9f07e8ac7992287f152c3df51505823179bdea78965480a00cec"
+    },
+    {
+      "path": "/home/lab307/calibration/camera_intrinsics/results/undistortion_camera_info.yaml",
+      "sha256": "9bca1486f2df451b7c5a966cc4a59c935efa1574a89a0ee777731e202600ad1e"
+    },
+    {
+      "path": "/home/lab307/calibration/ws_calib/src/hik_camera_trigger_driver/src/hik_camera_node.cpp",
+      "sha256": "cb6dd82a4cf88cc958f1a8515cc6e39cd47957f4be517a010c2d5ef315118082"
+    },
+    {
+      "path": "/home/lab307/calibration/ws_calib/src/timeshare_writer/src/timeshare_writer_node.cpp",
+      "sha256": "511879ae7212da4c41c2207ddcca2d558a82b5f100ddf7648c6207894d9debc0"
+    },
+    {
+      "path": "/home/lab307/calibration/lidar_camera_extrinsics/results/multi_20261021_183657_578407/joint/multi_calib_result.txt",
+      "sha256": "25386dc2d3a9bc2d3f7fffc5ff4af7746318977521ba1256cd928f077212cb2a"
+    }
+  ],
+  "bags": [
+    {
+      "metadata": "/home/lab307/ranger_nav/bags/fast-livo2-baseline-126a5fAo/result/native_frames/metadata.yaml",
+      "sha256": "64b0ca21e1fbae0850eb342f2cec6e854d48f75966a80c823ec782c62b43261a",
+      "databases": [
+        {
+          "path": "/home/lab307/ranger_nav/bags/fast-livo2-baseline-126a5fAo/result/native_frames/native_frames_0.db3",
+          "size": 176500736,
+          "topics": [
+            [
+              "/fast_livo/odometry",
+              "nav_msgs/msg/Odometry",
+              829,
+              1590193436500015974,
+              1590193519300215721
+            ],
+            [
+              "/fast_livo/deskewed_imu",
+              "sensor_msgs/msg/PointCloud2",
+              829,
+              1590193436500015974,
+              1590193519300215721
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "metadata": "/home/lab307/ranger_nav/bags/fast-livo2-baseline-1OR4jydU/result/native_frames/metadata.yaml",
+      "sha256": "6a310497fd8d9d172e42527f6d8d13e132d0bcee6202365998f9f09fba99e21e",
+      "databases": [
+        {
+          "path": "/home/lab307/ranger_nav/bags/fast-livo2-baseline-1OR4jydU/result/native_frames/native_frames_0.db3",
+          "size": 24576,
+          "topics": []
+        }
+      ]
+    },
+    {
+      "metadata": "/home/lab307/ranger_nav/bags/fast-livo2-baseline-T6b2g4w8/result/native_frames/metadata.yaml",
+      "sha256": "712a835d9cf94616ddc965c3d77b18b04e5e824b9aa2f4af3e6576c52bab83df",
+      "databases": [
+        {
+          "path": "/home/lab307/ranger_nav/bags/fast-livo2-baseline-T6b2g4w8/result/native_frames/native_frames_0.db3",
+          "size": 4288512,
+          "topics": [
+            [
+              "/fast_livo/odometry",
+              "nav_msgs/msg/Odometry",
+              20,
+              1590193436500015974,
+              1590193438400363683
+            ],
+            [
+              "/fast_livo/deskewed_imu",
+              "sensor_msgs/msg/PointCloud2",
+              20,
+              1590193436500015974,
+              1590193438400363683
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "metadata": "/home/lab307/ranger_nav/bags/fast-livo2-baseline-vwxvBopg/result/native_frames/metadata.yaml",
+      "sha256": "64b0ca21e1fbae0850eb342f2cec6e854d48f75966a80c823ec782c62b43261a",
+      "databases": [
+        {
+          "path": "/home/lab307/ranger_nav/bags/fast-livo2-baseline-vwxvBopg/result/native_frames/native_frames_0.db3",
+          "size": 176500736,
+          "topics": [
+            [
+              "/fast_livo/odometry",
+              "nav_msgs/msg/Odometry",
+              829,
+              1590193436500015974,
+              1590193519300215721
+            ],
+            [
+              "/fast_livo/deskewed_imu",
+              "sensor_msgs/msg/PointCloud2",
+              829,
+              1590193436500015974,
+              1590193519300215721
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "metadata": "/home/lab307/ranger_nav/bags/fast-livo2-baseline-ysjqws9p/result/native_frames/metadata.yaml",
+      "sha256": "712a835d9cf94616ddc965c3d77b18b04e5e824b9aa2f4af3e6576c52bab83df",
+      "databases": [
+        {
+          "path": "/home/lab307/ranger_nav/bags/fast-livo2-baseline-ysjqws9p/result/native_frames/native_frames_0.db3",
+          "size": 4288512,
+          "topics": [
+            [
+              "/fast_livo/odometry",
+              "nav_msgs/msg/Odometry",
+              20,
+              1590193436500015974,
+              1590193438400363683
+            ],
+            [
+              "/fast_livo/deskewed_imu",
+              "sensor_msgs/msg/PointCloud2",
+              20,
+              1590193436500015974,
+              1590193438400363683
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "metadata": "/home/lab307/ranger_nav/bags/fast-livo2-dds-smoke-a/view/metadata.yaml",
+      "sha256": "f3fce6e0285974f53007a9217d58d55af3b02ba8d11793130c4169a08fed79c9",
+      "databases": [
+        {
+          "path": "/home/lab307/ranger_nav/bags/fast-livo2-dds-smoke-a/view/view_0.db3",
+          "size": 268005376,
+          "topics": [
+            [
+              "/livox/lidar",
+              "sensor_msgs/msg/PointCloud2",
+              60,
+              1590193436100175970,
+              1590193442000419500
+            ],
+            [
+              "/livox/imu",
+              "sensor_msgs/msg/Imu",
+              1188,
+              1590193436162266470,
+              1590193442096402860
+            ],
+            [
+              "/front/image_sync",
+              "sensor_msgs/msg/Image",
+              60,
+              1590193436100175970,
+              1590193442000419500
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "metadata": "/home/lab307/ranger_nav/bags/fast-livo2-dds-smoke-c/view/metadata.yaml",
+      "sha256": "f3fce6e0285974f53007a9217d58d55af3b02ba8d11793130c4169a08fed79c9",
+      "databases": [
+        {
+          "path": "/home/lab307/ranger_nav/bags/fast-livo2-dds-smoke-c/view/view_0.db3",
+          "size": 268005376,
+          "topics": [
+            [
+              "/livox/lidar",
+              "sensor_msgs/msg/PointCloud2",
+              60,
+              1590193436100175970,
+              1590193442000419500
+            ],
+            [
+              "/livox/imu",
+              "sensor_msgs/msg/Imu",
+              1188,
+              1590193436162266470,
+              1590193442096402860
+            ],
+            [
+              "/front/image_sync",
+              "sensor_msgs/msg/Image",
+              60,
+              1590193436100175970,
+              1590193442000419500
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "metadata": "/home/lab307/ranger_nav/bags/fast-livo2-dds-smoke-final/view/metadata.yaml",
+      "sha256": "f3fce6e0285974f53007a9217d58d55af3b02ba8d11793130c4169a08fed79c9",
+      "databases": [
+        {
+          "path": "/home/lab307/ranger_nav/bags/fast-livo2-dds-smoke-final/view/view_0.db3",
+          "size": 268005376,
+          "topics": [
+            [
+              "/livox/lidar",
+              "sensor_msgs/msg/PointCloud2",
+              60,
+              1590193436100175970,
+              1590193442000419500
+            ],
+            [
+              "/livox/imu",
+              "sensor_msgs/msg/Imu",
+              1188,
+              1590193436162266470,
+              1590193442096402860
+            ],
+            [
+              "/front/image_sync",
+              "sensor_msgs/msg/Image",
+              60,
+              1590193436100175970,
+              1590193442000419500
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "metadata": "/home/lab307/ranger_nav/bags/mid360-manual-loop-4uwmxbzb/raw/metadata.yaml",
+      "sha256": "c1ab43ed482d013d68fecccff0a28f0d1df95727820f52b5ab398ab5b31c4eeb",
+      "databases": [
+        {
+          "path": "/home/lab307/ranger_nav/bags/mid360-manual-loop-4uwmxbzb/raw/raw_0.db3",
+          "size": 204402688,
+          "topics": [
+            [
+              "/livox/lidar",
+              "livox_ros_driver2/msg/CustomMsg",
+              500,
+              1790049466979484379,
+              1790049516881324297
+            ],
+            [
+              "/livox/imu",
+              "sensor_msgs/msg/Imu",
+              9996,
+              1790049466979496881,
+              1790049516960548894
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "metadata": "/home/lab307/ranger_nav/bags/mid360-manual-loop-n2cgpiz0/raw/metadata.yaml",
+      "sha256": "35bb6600acd8e55d9a3400501aa8808dd46e2aca25a47606c5d254ccc2bd416c",
+      "databases": [
+        {
+          "path": "/home/lab307/ranger_nav/bags/mid360-manual-loop-n2cgpiz0/raw/raw_0.db3",
+          "size": 388423680,
+          "topics": [
+            [
+              "/livox/lidar",
+              "livox_ros_driver2/msg/CustomMsg",
+              950,
+              1790133135934916280,
+              1790133230834398804
+            ],
+            [
+              "/livox/imu",
+              "sensor_msgs/msg/Imu",
+              18995,
+              1790133135861937430,
+              1790133230846949129
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "metadata": "/home/lab307/ranger_nav/bags/mid360-manual-loop-p42bk0yi/raw/metadata.yaml",
+      "sha256": "dea5914416da947027761e5c64f32e0a4c65873bc4563237d977ee3a870a3dba",
+      "databases": [
+        {
+          "path": "/home/lab307/ranger_nav/bags/mid360-manual-loop-p42bk0yi/raw/raw_0.db3",
+          "size": 370438144,
+          "topics": [
+            [
+              "/wheel/odom",
+              "nav_msgs/msg/Odometry",
+              4486,
+              1790599163184610906,
+              1790599252884747299
+            ],
+            [
+              "/tf",
+              "tf2_msgs/msg/TFMessage",
+              0,
+              null,
+              null
+            ],
+            [
+              "/livox/lidar",
+              "livox_ros_driver2/msg/CustomMsg",
+              897,
+              1790599163234075868,
+              1790599252833125923
+            ],
+            [
+              "/livox/imu",
+              "sensor_msgs/msg/Imu",
+              17942,
+              1790599163182453638,
+              1790599252886701976
+            ],
+            [
+              "/battery_state",
+              "sensor_msgs/msg/BatteryState",
+              0,
+              null,
+              null
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "metadata": "/home/lab307/ranger_nav/bags/mid360-static-qg8qtyiv/raw/metadata.yaml",
+      "sha256": "81f199b448716f0161d77947ae0bac4bbf8cf16d5149553922252a0afed9b451",
+      "databases": [
+        {
+          "path": "/home/lab307/ranger_nav/bags/mid360-static-qg8qtyiv/raw/raw_0.db3",
+          "size": 121856000,
+          "topics": [
+            [
+              "/livox/imu",
+              "sensor_msgs/msg/Imu",
+              5962,
+              1789475205887828219,
+              1789475235692738039
+            ],
+            [
+              "/livox/lidar",
+              "livox_ros_driver2/msg/CustomMsg",
+              298,
+              1789475205976937709,
+              1789475235674512958
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "metadata": "/home/lab307/calibration/bags/stageB_sync_run2/metadata.yaml",
+      "sha256": "bb7d252b98e1fe3a1f8d9be7a2060776d295359c84799756a2874deea7f0a12e",
+      "databases": [
+        {
+          "path": "/home/lab307/calibration/bags/stageB_sync_run2/stageB_sync_run2_0.db3",
+          "size": 7012745216,
+          "topics": [
+            [
+              "/livox/lidar",
+              "sensor_msgs/msg/PointCloud2",
+              834,
+              1792558950027300358,
+              1792559033342794577
+            ],
+            [
+              "/livox/imu",
+              "sensor_msgs/msg/Imu",
+              16688,
+              1792558949985598270,
+              1792559033436910957
+            ],
+            [
+              "/front/image_sync",
+              "sensor_msgs/msg/Image",
+              834,
+              1792558950078435426,
+              1792559033380768676
+            ],
+            [
+              "/front/image",
+              "sensor_msgs/msg/Image",
+              834,
+              1792558950375406561,
+              1792559033377491130
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "metadata": "/home/lab307/calibration/lidar_camera_extrinsics/datasets/scene_01/20261021_181558_055290/bag/metadata.yaml",
+      "sha256": "692cab3cd9bcca88011c58c216a36595d77fa80be1b03dd16991dd533e8c8fd1",
+      "databases": [
+        {
+          "path": "/home/lab307/calibration/lidar_camera_extrinsics/datasets/scene_01/20261021_181558_055290/bag/bag_0.db3",
+          "size": 347734016,
+          "topics": [
+            [
+              "/livox/lidar",
+              "sensor_msgs/msg/PointCloud2",
+              78,
+              1792577758286294214,
+              1792577765985697230
+            ],
+            [
+              "/front/image_sync",
+              "sensor_msgs/msg/Image",
+              78,
+              1792577758339008607,
+              1792577766036580396
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "metadata": "/home/lab307/calibration/lidar_camera_extrinsics/datasets/scene_02/20261021_182754_515500/bag/metadata.yaml",
+      "sha256": "38f523d121d3b1b15d10424ba7905f4a61efc027920be57a7cb18449c3b341d2",
+      "databases": [
+        {
+          "path": "/home/lab307/calibration/lidar_camera_extrinsics/datasets/scene_02/20261021_182754_515500/bag/bag_0.db3",
+          "size": 441344000,
+          "topics": [
+            [
+              "/livox/lidar",
+              "sensor_msgs/msg/PointCloud2",
+              99,
+              1792578474681939893,
+              1792578484482141244
+            ],
+            [
+              "/front/image_sync",
+              "sensor_msgs/msg/Image",
+              99,
+              1792578474733649020,
+              1792578484513359014
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "metadata": "/home/lab307/calibration/lidar_camera_extrinsics/datasets/scene_03/20261021_182958_009120/bag/metadata.yaml",
+      "sha256": "0d65bd89000c91ea88d84671d9010341781c7c41adb766d4f2e3ee677d0d7e64",
+      "databases": [
+        {
+          "path": "/home/lab307/calibration/lidar_camera_extrinsics/datasets/scene_03/20261021_182958_009120/bag/bag_0.db3",
+          "size": 441348096,
+          "topics": [
+            [
+              "/livox/lidar",
+              "sensor_msgs/msg/PointCloud2",
+              99,
+              1792578598179921322,
+              1792578607980060527
+            ],
+            [
+              "/front/image_sync",
+              "sensor_msgs/msg/Image",
+              99,
+              1792578598229607148,
+              1792578608018379279
+            ]
+          ]
+        }
+      ]
+    },
+    {
+      "metadata": "/home/lab307/calibration/lidar_camera_extrinsics/datasets/validation_01/20261021_185640_899318/bag/metadata.yaml",
+      "sha256": "9c31a15191ae45b0cee65388702ea8678b47754a4f097ef962eaa1d75a200640",
+      "databases": [
+        {
+          "path": "/home/lab307/calibration/lidar_camera_extrinsics/datasets/validation_01/20261021_185640_899318/bag/bag_0.db3",
+          "size": 440823808,
+          "topics": [
+            [
+              "/livox/lidar",
+              "sensor_msgs/msg/PointCloud2",
+              98,
+              1792580201143626186,
+              1792580210842200756
+            ],
+            [
+              "/front/image_sync",
+              "sensor_msgs/msg/Image",
+              99,
+              1792580201081787979,
+              1792580210883010432
+            ]
+          ]
+        }
+      ]
+    }
+  ],
+  "processes": {
+    "command": [
+      "ps",
+      "-eo",
+      "pid,ppid,comm"
+    ],
+    "exit_code": 0,
+    "stdout": "    PID    PPID COMMAND\n      1       0 systemd\n      2       0 kthreadd\n      3       2 pool_workqueue_release\n      4       2 kworker/R-rcu_g\n      5       2 kworker/R-rcu_p\n      6       2 kworker/R-slub_\n      7       2 kworker/R-netns\n      9       2 kworker/0:0H-events_highpri\n     12       2 kworker/R-mm_pe\n     13       2 rcu_tasks_kthread\n     14       2 rcu_tasks_rude_kthread\n     15       2 rcu_tasks_trace_kthread\n     16       2 ksoftirqd/0\n     17       2 rcu_preempt\n     18       2 migration/0\n     19       2 idle_inject/0\n     20       2 cpuhp/0\n     21       2 cpuhp/2\n     22       2 idle_inject/2\n     23       2 migration/2\n     24       2 ksoftirqd/2\n     26       2 kworker/2:0H-events_highpri\n     27       2 cpuhp/4\n     28       2 idle_inject/4\n     29       2 migration/4\n     30       2 ksoftirqd/4\n     32       2 kworker/4:0H-events_highpri\n     33       2 cpuhp/6\n     34       2 idle_inject/6\n     35       2 migration/6\n     36       2 ksoftirqd/6\n     38       2 kworker/6:0H-events_highpri\n     39       2 cpuhp/8\n     40       2 idle_inject/8\n     41       2 migration/8\n     42       2 ksoftirqd/8\n     44       2 kworker/8:0H-events_highpri\n     45       2 cpuhp/10\n     46       2 idle_inject/10\n     47       2 migration/10\n     48       2 ksoftirqd/10\n     50       2 kworker/10:0H-kblockd\n     51       2 cpuhp/12\n     52       2 idle_inject/12\n     53       2 migration/12\n     54       2 ksoftirqd/12\n     56       2 kworker/12:0H-events_highpri\n     57       2 cpuhp/14\n     58       2 idle_inject/14\n     59       2 migration/14\n     60       2 ksoftirqd/14\n     62       2 kworker/14:0H-kblockd\n     63       2 cpuhp/16\n     64       2 idle_inject/16\n     65       2 migration/16\n     66       2 ksoftirqd/16\n     68       2 kworker/16:0H-kblockd\n     69       2 cpuhp/17\n     70       2 idle_inject/17\n     71       2 migration/17\n     72       2 ksoftirqd/17\n     74       2 kworker/17:0H-events_highpri\n     75       2 cpuhp/18\n     76       2 idle_inject/18\n     77       2 migration/18\n     78       2 ksoftirqd/18\n     80       2 kworker/18:0H-kblockd\n     81       2 cpuhp/19\n     82       2 idle_inject/19\n     83       2 migration/19\n     84       2 ksoftirqd/19\n     86       2 kworker/19:0H-events_highpri\n     87       2 cpuhp/20\n     88       2 idle_inject/20\n     89       2 migration/20\n     90       2 ksoftirqd/20\n     92       2 kworker/20:0H-kblockd\n     93       2 cpuhp/21\n     94       2 idle_inject/21\n     95       2 migration/21\n     96       2 ksoftirqd/21\n     98       2 kworker/21:0H-events_highpri\n     99       2 cpuhp/22\n    100       2 idle_inject/22\n    101       2 migration/22\n    102       2 ksoftirqd/22\n    104       2 kworker/22:0H-events_highpri\n    105       2 cpuhp/23\n    106       2 idle_inject/23\n    107       2 migration/23\n    108       2 ksoftirqd/23\n    110       2 kworker/23:0H-events_highpri\n    111       2 cpuhp/24\n    112       2 idle_inject/24\n    113       2 migration/24\n    114       2 ksoftirqd/24\n    116       2 kworker/24:0H-events_highpri\n    117       2 cpuhp/25\n    118       2 idle_inject/25\n    119       2 migration/25\n    120       2 ksoftirqd/25\n    122       2 kworker/25:0H-events_highpri\n    123       2 cpuhp/26\n    124       2 idle_inject/26\n    125       2 migration/26\n    126       2 ksoftirqd/26\n    128       2 kworker/26:0H-events_highpri\n    129       2 cpuhp/27\n    130       2 idle_inject/27\n    131       2 migration/27\n    132       2 ksoftirqd/27\n    134       2 kworker/27:0H-events_highpri\n    135       2 cpuhp/28\n    136       2 idle_inject/28\n    137       2 migration/28\n    138       2 ksoftirqd/28\n    140       2 kworker/28:0H-events_highpri\n    141       2 cpuhp/29\n    142       2 idle_inject/29\n    143       2 migration/29\n    144       2 ksoftirqd/29\n    146       2 kworker/29:0H-events_highpri\n    147       2 cpuhp/30\n    148       2 idle_inject/30\n    149       2 migration/30\n    150       2 ksoftirqd/30\n    152       2 kworker/30:0H-events_highpri\n    153       2 cpuhp/31\n    154       2 idle_inject/31\n    155       2 migration/31\n    156       2 ksoftirqd/31\n    158       2 kworker/31:0H-events_highpri\n    159       2 cpuhp/1\n    160       2 idle_inject/1\n    161       2 migration/1\n    162       2 ksoftirqd/1\n    164       2 kworker/1:0H-events_highpri\n    165       2 cpuhp/3\n    166       2 idle_inject/3\n    167       2 migration/3\n    168       2 ksoftirqd/3\n    170       2 kworker/3:0H-events_highpri\n    171       2 cpuhp/5\n    172       2 idle_inject/5\n    173       2 migration/5\n    174       2 ksoftirqd/5\n    176       2 kworker/5:0H-events_highpri\n    177       2 cpuhp/7\n    178       2 idle_inject/7\n    179       2 migration/7\n    180       2 ksoftirqd/7\n    182       2 kworker/7:0H-events_highpri\n    183       2 cpuhp/9\n    184       2 idle_inject/9\n    185       2 migration/9\n    186       2 ksoftirqd/9\n    188       2 kworker/9:0H-events_highpri\n    189       2 cpuhp/11\n    190       2 idle_inject/11\n    191       2 migration/11\n    192       2 ksoftirqd/11\n    194       2 kworker/11:0H-events_highpri\n    195       2 cpuhp/13\n    196       2 idle_inject/13\n    197       2 migration/13\n    198       2 ksoftirqd/13\n    199       2 kworker/13:0-mm_percpu_wq\n    200       2 kworker/13:0H-events_highpri\n    201       2 cpuhp/15\n    202       2 idle_inject/15\n    203       2 migration/15\n    204       2 ksoftirqd/15\n    206       2 kworker/15:0H-events_highpri\n    207       2 kdevtmpfs\n    208       2 kworker/R-inet_\n    210       2 kauditd\n    214       2 khungtaskd\n    215       2 oom_reaper\n    216       2 kworker/R-write\n    218       2 kcompactd0\n    219       2 ksmd\n    220       2 khugepaged\n    221       2 kworker/R-kinte\n    222       2 kworker/R-kbloc\n    223       2 kworker/R-blkcg\n    224       2 irq/9-acpi\n    226       2 kworker/28:1-rcu_par_gp\n    227       2 kworker/R-tpm_d\n    228       2 kworker/R-ata_s\n    229       2 kworker/R-md\n    230       2 kworker/R-md_bi\n    231       2 kworker/R-edac-\n    232       2 kworker/R-devfr\n    233       2 watchdogd\n    234       2 kworker/28:1H-kblockd\n    235       2 kswapd0\n    236       2 ecryptfs-kthread\n    237       2 kworker/R-kthro\n    238       2 irq/122-aerdrv\n    239       2 irq/123-aerdrv\n    240       2 irq/124-aerdrv\n    241       2 kworker/R-acpi_\n    242       2 hwrng\n    243       2 kworker/R-hfi-u\n    244       2 kworker/R-mld\n    245       2 kworker/R-ipv6_\n    246       2 kworker/0:1H-kblockd\n    255       2 kworker/R-kstrp\n    260       2 kworker/20:1-mm_percpu_wq\n    262       2 kworker/25:1-mm_percpu_wq\n    265       2 kworker/29:1-mm_percpu_wq\n    269       2 kworker/7:1-mm_percpu_wq\n    292       2 kworker/R-charg\n    314       2 kworker/2:1H-kblockd\n    317       2 kworker/22:1H-kblockd\n    337       2 kworker/31:1H-kblockd\n    338       2 kworker/8:1H-kblockd\n    339       2 kworker/21:1H-kblockd\n    340       2 kworker/4:1H-events_highpri\n    341       2 kworker/27:1H-kblockd\n    342       2 kworker/24:1H-kblockd\n    343       2 kworker/16:1H\n    345       2 kworker/23:1H-kblockd\n    346       2 kworker/25:1H-kblockd\n    347       2 kworker/26:1H-kblockd\n    348       2 kworker/30:1H-kblockd\n    350       2 kworker/10:1H\n    351       2 kworker/14:1H\n    352       2 kworker/20:1H\n    353       2 kworker/17:1H-kblockd\n    354       2 kworker/12:1H-kblockd\n    355       2 kworker/1:1H-kblockd\n    356       2 kworker/6:1H-kblockd\n    358       2 kworker/5:1H-kblockd\n    360       2 kworker/19:1H-kblockd\n    384       2 kworker/18:1H\n    386       2 kworker/29:1H-kblockd\n    394       2 kworker/3:1H-kblockd\n    434       2 kworker/9:1H-kblockd\n    435       2 kworker/7:1H-kblockd\n    436       2 kworker/13:1H-kblockd\n    437       2 kworker/15:1H-kblockd\n    438       2 kworker/11:1H-kblockd\n    440       2 kworker/R-nvme-\n    441       2 kworker/R-nvme-\n    442       2 kworker/R-nvme-\n    443       2 kworker/R-nvme-\n    465       2 jbd2/nvme0n1p2-8\n    466       2 kworker/R-ext4-\n    508       1 systemd-journal\n    557       1 systemd-udevd\n    717       2 irq/155-mei_me\n    726       2 kworker/R-cfg80\n    743       2 kworker/R-crypt\n    761       1 systemd-oomd\n    762       1 systemd-resolve\n    763       1 systemd-timesyn\n    769       2 irq/156-iwlwifi:default_queue\n    770       2 irq/157-iwlwifi:queue_1\n    771       2 irq/158-iwlwifi:queue_2\n    772       2 irq/159-iwlwifi:queue_3\n    773       2 irq/160-iwlwifi:queue_4\n    774       2 irq/161-iwlwifi:queue_5\n    775       2 irq/162-iwlwifi:queue_6\n    776       2 irq/163-iwlwifi:queue_7\n    777       2 irq/164-iwlwifi:queue_8\n    778       2 irq/165-iwlwifi:queue_9\n    779       2 irq/166-iwlwifi:queue_10\n    780       2 irq/167-iwlwifi:queue_11\n    781       2 irq/168-iwlwifi:queue_12\n    782       2 irq/169-iwlwifi:queue_13\n    783       2 irq/170-iwlwifi:queue_14\n    784       2 irq/171-iwlwifi:exception\n    811       2 irq/16-processor_thermal_device_pci\n    851       2 kworker/R-ttm\n    852       1 accounts-daemon\n    853       1 acpid\n    855       2 card1-crtc0\n    856       2 card1-crtc1\n    857       2 card1-crtc2\n    858       2 card1-crtc3\n    860       1 avahi-daemon\n    861       1 cron\n    862       1 dbus-daemon\n    864       1 NetworkManager\n    870       1 irqbalance\n    872       1 networkd-dispat\n    874       1 polkitd\n    877       1 power-profiles-\n    878       1 rsyslogd\n    887       1 snapd\n    888       1 switcheroo-cont\n    891       1 systemd-logind\n    893       1 thermald\n    895       1 udisksd\n    896       1 wpa_supplicant\n    903     860 avahi-daemon\n    946       1 bluetoothd\n    977       1 ModemManager\n    988       1 unattended-upgr\n   1013       1 sshd\n   1122       1 upowerd\n   1142       2 kworker/R-USBC0\n   1278       1 kerneloops\n   1280       1 kerneloops\n   1288       1 gdm3\n   1317       1 rtkit-daemon\n   1543       1 packagekitd\n   1718       1 colord\n   2000       2 kworker/27:0-events\n   6211       2 kworker/21:1-events\n   7638       1 cupsd\n   7641       1 cups-browsed\n   7857       2 kworker/19:0-mm_percpu_wq\n   9455       2 kworker/5:0-mm_percpu_wq\n   9568    1288 gdm-session-wor\n   9600       1 systemd\n   9601    9600 (sd-pam)\n   9608    9600 pipewire\n   9609    9600 pipewire-media-\n   9610    9600 pulseaudio\n   9619       1 gnome-keyring-d\n   9632    9600 dbus-daemon\n   9649    9600 xdg-document-po\n   9653    9600 xdg-permission-\n   9659    9649 fusermount3\n   9674       2 krfcommd\n   9706    9568 gdm-wayland-ses\n   9709    9706 gnome-session-b\n   9754    9600 gnome-session-c\n   9764    9600 gvfsd\n   9770    9600 gvfsd-fuse\n   9773    9600 gnome-session-b\n   9793    9773 at-spi-bus-laun\n   9797    9600 gnome-shell\n   9805    9793 dbus-daemon\n  10019    9600 gnome-shell-cal\n  10025    9600 evolution-sourc\n  10032    9600 dconf-service\n  10037    9600 goa-daemon\n  10038    9600 gvfs-udisks2-vo\n  10044    9600 evolution-calen\n  10049    9600 gvfs-goa-volume\n  10060    9600 goa-identity-se\n  10062    9600 gvfs-afc-volume\n  10070    9600 gvfs-mtp-volume\n  10077    9600 gvfs-gphoto2-vo\n  10085    9600 evolution-addre\n  10097    9764 gvfsd-trash\n  10108    9600 gjs\n  10109    9600 at-spi2-registr\n  10131    9600 sh\n  10132    9600 gsd-a11y-settin\n  10133    9600 gsd-color\n  10135   10131 ibus-daemon\n  10136    9600 gsd-datetime\n  10138    9600 gsd-housekeepin\n  10141    9600 gsd-keyboard\n  10142    9600 gsd-media-keys\n  10144    9600 gsd-power\n  10146    9600 gsd-print-notif\n  10149    9600 gsd-rfkill\n  10150    9600 gsd-screensaver\n  10152    9600 gsd-sharing\n  10155    9600 gsd-smartcard\n  10156    9600 gsd-sound\n  10159    9600 gsd-wacom\n  10198    9773 evolution-alarm\n  10221    9773 gsd-disk-utilit\n  10257   10135 ibus-dconf\n  10258   10135 ibus-extension-\n  10262    9600 ibus-portal\n  10280    9600 gsd-printer\n  10309   10135 ibus-engine-lib\n  10323    9600 tracker-miner-f\n  10324    9600 xdg-desktop-por\n  10329    9600 xdg-desktop-por\n  10341    9600 gjs\n  10384    9600 xdg-desktop-por\n  10428    9600 gvfsd-metadata\n  10440    9600 user-session-he\n  10516   10440 snapd-desktop-i\n  10580    9797 clash-verge\n  10598    9797 Xwayland\n  10654    9600 gsd-xsettings\n  10706    9600 ibus-x11\n  10797   10580 WebKitNetworkPr\n  10800   10580 WebKitWebProces\n  10870   10580 verge-mihomo\n  11082    9797 msedge\n  11087   11082 cat\n  11088   11082 cat\n  11090    9600 msedge_crashpad\n  11092    9600 msedge_crashpad\n  11123   11082 msedge\n  11124   11082 msedge\n  11126   11124 msedge\n  11175   11123 msedge\n  11178   11082 msedge\n  11223   11126 msedge\n  11253   11126 msedge\n  11332   11126 msedge\n  11370   11082 msedge\n  11400   11126 msedge\n  11447    9773 update-notifier\n  11584    9600 nautilus\n  11619       2 kworker/15:2-i915-unordered\n  11929   11126 msedge\n  12247    9600 gnome-terminal-\n  12912    9600 codex\n  14088   12912 codex\n  14475   11126 msedge\n  15301   12247 bash\n  15724   11126 msedge\n  15849   14088 codex-code-mode\n  18496    9764 gvfsd-http\n  18875    9600 snap\n  19748   10135 ibus-engine-sim\n  20587    9764 gvfsd-network\n  20617    9764 gvfsd-dnssd\n  20665       2 kworker/3:0-mm_percpu_wq\n  21287    9797 wechat\n  21291    9600 crashpad_handle\n  21370   21287 WeChatAppEx\n  21380    9600 crashpad_handle\n  21386   21370 WeChatAppEx\n  21387   21370 WeChatAppEx\n  21389   21387 WeChatAppEx\n  21457   21370 WeChatAppEx\n  21460   21386 WeChatAppEx\n  21681   21287 wxocr\n  21712   21370 WeChatAppEx\n  21726   21287 wxplayer\n  21730   21287 wxplayer\n  21743   21287 wxutility\n  21799   21389 WeChatAppEx\n  21800   21386 WeChatAppEx\n  21801   21800 WeChatAppEx\n  21851   21389 WeChatAppEx\n  22422   21389 WeChatAppEx\n  25727       2 kworker/31:0-mm_percpu_wq\n  27437       2 kworker/9:2-events\n  28410       2 kworker/1:0-events\n  28429       2 kworker/10:3-events\n  29253       2 kworker/17:2-events\n  30058       2 kworker/4:1-events\n  30645       2 kworker/26:2-mm_percpu_wq\n  31142       2 kworker/8:2-events\n  31570       2 kworker/2:0-rcu_par_gp\n  31827       2 kworker/11:2-events\n  32342       2 kworker/21:0-i915-unordered\n  32353       2 kworker/0:2-events\n  32391       2 kworker/26:0-mm_percpu_wq\n  32552       2 kworker/22:2-events\n  33024       2 kworker/7:2-i915-unordered\n  33056       2 kworker/u65:2-rb_allocator\n  33184       2 kworker/4:2-rcu_par_gp\n  33292       2 kworker/13:2\n  33330       2 kworker/u64:3-events_unbound\n  33612       2 kworker/16:1-mm_percpu_wq\n  33741       2 kworker/18:2-events\n  33875       2 kworker/12:1-events\n  33921       2 kworker/20:2-rcu_par_gp\n  34005       2 kworker/11:1-cgroup_destroy\n  34039       2 kworker/9:1-inet_frag_wq\n  34100       2 kworker/u64:1-events_freezable_power_\n  34143       2 kworker/5:1-rcu_par_gp\n  34174       2 kworker/28:0-mm_percpu_wq\n  34176       2 kworker/8:0-rcu_par_gp\n  34177       2 kworker/0:1-rcu_par_gp\n  34198    9797 gjs\n  34358       2 kworker/19:2-rcu_par_gp\n  34372       2 kworker/17:0-events\n  34376       2 kworker/31:1-rcu_par_gp\n  34379       2 kworker/10:0-rcu_par_gp\n  34386       2 kworker/12:0-events\n  34412       2 kworker/1:2-inet_frag_wq\n  34640       2 kworker/25:2-rcu_par_gp\n  34644       2 kworker/6:2-rcu_par_gp\n  34646       2 kworker/29:0-rcu_gp\n  34840       2 kworker/23:2-mm_percpu_wq\n  35091       2 kworker/16:0-rcu_gp\n  35264       2 kworker/27:1\n  35497       2 kworker/15:0-i915-unordered\n  35949   11126 msedge\n  35986   11126 msedge\n  36016   11126 msedge\n  36052   11126 msedge\n  36142       2 kworker/2:2-events\n  36145   15301 MainThread\n  36152   36145 codex\n  36809       2 kworker/6:0-events\n  36810       2 kworker/24:2-mm_percpu_wq\n  36863       2 kworker/30:1-events\n  36878   12247 bash\n  37118   36878 MainThread\n  37125   37118 codex\n  37338       2 kworker/23:1-mm_percpu_wq\n  37379       2 kworker/u64:4-events_unbound\n  37527       2 kworker/18:3-events\n  37773       2 kworker/3:2\n  38181       2 kworker/u65:1-rb_allocator\n  38310       2 kworker/14:0-events\n  38584   21386 WeChatAppEx\n  38952       2 kworker/u64:5-events_unbound\n  38958       2 kworker/18:0-events\n  38998       2 kworker/22:0-mm_percpu_wq\n  39348       2 kworker/18:1-events\n  39467       2 kworker/3:1-mm_percpu_wq\n  39617       2 kworker/30:2-mm_percpu_wq\n  39628       2 kworker/24:0-events\n  39643       2 kworker/14:1-events\n  40126       2 kworker/16:2-events\n  40275       2 kworker/26:1-events\n  40613       2 kworker/u64:0-events_unbound\n  40753       2 kworker/30:0\n  40813   14088 bash\n  40838   40813 python3\n  40955   40838 ps\n",
+    "stderr": ""
+  },
+  "os": "PRETTY_NAME=\"Ubuntu 22.04.5 LTS\"\nNAME=\"Ubuntu\"\nVERSION_ID=\"22.04\"\nVERSION=\"22.04.5 LTS (Jammy Jellyfish)\"\nVERSION_CODENAME=jammy\nID=ubuntu\nID_LIKE=debian\nHOME_URL=\"https://www.ubuntu.com/\"\nSUPPORT_URL=\"https://help.ubuntu.com/\"\nBUG_REPORT_URL=\"https://bugs.launchpad.net/ubuntu/\"\nPRIVACY_POLICY_URL=\"https://www.ubuntu.com/legal/terms-and-policies/privacy-policy\"\nUBUNTU_CODENAME=jammy\n"
+}

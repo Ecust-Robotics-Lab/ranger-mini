@@ -71,3 +71,10 @@ calibration/**/*.mcap
 # Locally rendered presentation videos and frontend replay artifacts.
 /outputs/fast-livo-demo-*/
 /outputs/fast-livo-backend-validation-*/
+/outputs/fast-livo-c1-*/
+
+# Evidence manifests/logs are versioned; full scan/database payloads stay local.
+docs/fast_livo2_evidence/**/*.pcd
+docs/fast_livo2_evidence/**/*.cdr
+docs/fast_livo2_evidence/**/*.db3
+/ws_nav/c1_adapter_log/

@@ -1,0 +1,15 @@
+run_name: three_real_scenes_20261021
+configuration_status: USER_ACCEPTED_PARTIAL_INTRINSICS_FOR_TRIAL
+scenes:
+- name: scene_01
+  config: /home/lab307/calibration/lidar_camera_extrinsics/config/scene_01/qr_params.yaml
+  review: /home/lab307/calibration/lidar_camera_extrinsics/results/scene_01_20261021_181558/quality_review.yaml
+- name: scene_02
+  config: /home/lab307/calibration/lidar_camera_extrinsics/config/scene_02/qr_params.yaml
+  review: /home/lab307/calibration/lidar_camera_extrinsics/results/scene_02_20261021_182754/quality_review.yaml
+- name: scene_03
+  config: /home/lab307/calibration/lidar_camera_extrinsics/config/scene_03/qr_params.yaml
+  review: /home/lab307/calibration/lidar_camera_extrinsics/results/scene_03_20261021_182958/quality_review.yaml
+acceptance_scope: Single-scene and joint trial; independent geometric acceptance remains
+  false
+completed_trial_directory: /home/lab307/calibration/lidar_camera_extrinsics/results/multi_20261021_183657_578407

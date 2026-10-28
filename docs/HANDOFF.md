@@ -1,90 +1,93 @@
-# 新窗口接手指南
+# 新上下文接手指南
 
-> 2026-09-15 阶段 3：实物已更正并协议确认为 **Mid-360S**，SN ARMCP870038745。静止 SQLite3 包与真实收流通过，逐点时间回退仍为 PARTIAL；网络持久化配置/索引权限修复已完成，实际重启待验，当前采集后网卡无载波。雷达已停，底盘未启动。以 [STATUS.md](STATUS.md) 和 [03_mid360_validation.md](03_mid360_validation.md) 为准，不自动进入 SLAM/导航。
+最新2026-10-28阶段B验证：用户明确要求完成后端验证并提交Git。已有运动包的1362对输入已实际接入独立ROS后端，PCL/GICP均49关键帧、35候选、13条接受并优化的回环约束、3项歧义拒绝，严格配对/传播/快照逐点重建通过；构建和16项原验收命令及3项新测试退出0。见[运动后端报告](fast_livo2_stage_b_motion_report.md)，证据`docs/fast_livo2_evidence/stage_b_motion_20261028/run-PYV5azso/`，完整输出在`outputs/fast-livo-backend-validation-20261028-{pcl,gicp}/`。不再套用“该包后端未验证”；物理同步、真值精度、误环泛化、实时wheel与长时仍PARTIAL，C1/C2未实施，本次无硬件启动。
 
-> 2026-09-14 后续更新：用户已授权并开展阶段 2，确认底盘为 Ranger Mini V2。以下交接正文保留为此前快照；最新源码、构建、CAN、ROS 与测试结果以 [STATUS.md](STATUS.md)、[02_ros_motion_test.md](02_ros_motion_test.md) 为准。22:11、22:16 两次另获授权的低速测试已执行，用户确认最后一次实物运动；主动发零后反馈归零，但退出后负速度异常复现，停车安全未通过。驱动已退出，不自动重启。
+最新追加2026-10-28：用户新增两份有效录包，要求删除第二份180秒并将第一份制成展示视频。保留`bags/fast-livo-motion-w5phdosj/raw`（约136.6秒）；`ez09stbr`完整180秒已移入系统回收站，另一个`58obp75g`无raw失败目录保留。三融合离线重放1362对/10911次视觉更新，视频交付位于`outputs/fast-livo-demo-20261028-fHJTbGCU/`，见[演示报告](fast_livo2_demo_20261028.md)。本轮不启动硬件；现已具备运动采集数据，勿继续套用“没有三传感器运动包”的旧结论。视频是前端重建，不是该包回环或真值精度验收。
 
-交接日期：2026-09-14，Asia/Shanghai。用户已结束上一窗口任务，下一阶段尚未指定。只读接手，不自动安装、改网、运行驱动或进入下一阶段。
+交接更新：2026-10-26，项目 `/home/lab307/ranger_nav`。当前已完成独立后端阶段 B 的代码、构建与隔离离线验证，真实设备保持停止。阶段 B 报告见 [交付报告](fast_livo2_stage_b_report.md)，实际接口见 [B 契约](fast_livo2_backend_interfaces.md)。下一阶段 C1/C2 未获自动实施授权。
 
-## 先读这些文件
+2026-10-27追加：用户要求完整运动录包脚本、Foxglove远程预览，并授权先用RViz查看。已完成[录包入口](fast_livo2_recording.md)与[本次报告](fast_livo2_recording_report.md)。本次雷达收流，但海康Line0模式连接后没有图像，前端/GUI未启动；已受管停止，owned=[]。待确认外触发线/源与供电，不切自由运行绕过。用户本次未授权底盘、导航或C1/C2；无新的真实运动包。
 
-1. `/home/lab307/ranger_nav/AGENTS.md`：项目约束和真机许可边界。
-2. `docs/STATUS.md`：最近一次已验证状态。
-3. `docs/00_environment_audit.md`：2026-09-13 阶段 0 的历史快照，不是网卡修复后的状态。
-4. `docs/LIDAR_CONNECTION.md`：按时间追加的连接处理记录。以最后“2026-09-14 21:10 最终连接结果”章节为准，早期 BLOCKED 是历史状态。
-5. `docs/mid360_ip_connected_20260914.txt`：实际成功命令、退出码和输出。
+随后用户明确“已经准备好传感器了”，本次受管重试`run-4e1fptkc`已RUNNING：Line0图像恢复、三融合云位姿输出、RViz与localhost:8765只读Foxglove正常。会话保留运行供查看；使用`run_fast_livo2_live.sh --status/--stop`管理，不重复启动。尚未录包，可用`record_fast_livo2.sh --execute --attach --seconds 60`接入。新证据在`docs/fast_livo2_evidence/preview_20261027/ready-f9fe0j37/`；物理同步/精度仍PARTIAL，传感器2020历元仍未与wheel对齐。
 
-## 已完成与边界
+最新：用户确认成功并要求关闭原程序准备录包，已执行`run_fast_livo2_live.sh --stop`，退出0；STOPPED、live=false、owned=[]、所有组件身份均已退出，见上述证据目录`stopped_summary.json`。没有启动录包。下一次录包应使用`record_fast_livo2.sh --execute --start-sensors --seconds 60`，不再使用`--attach`接入已停止的预览。
 
-- 项目根目录 `/home/lab307/ranger_nav`，不要与其他工程混用。
-- 本机已核实为原生 Ubuntu 22.04.5、x86_64、内核 6.8.0-40-generic，已安装 ROS 2 Humble。当前工具 shell 可能未 source ROS；`.bashrc` 中的 source 对非交互 shell 不一定执行。
-- 阶段 0 审计 PARTIAL。用户之后明确追加“先连接上雷达”，这项已完成到 **IP 通信 PASS**。
-- 用户确认 Mid-360 序列号尾号 **8745**，接板载以太网口。默认规则推导地址 `192.168.1.145` 已响应，尚未通过 Livox 协议读取完整 SN。
-- 板载 PCI `0000:02:00.0` / `1f0a:6801`，驱动 `yt6801` 1.0.34，正式接口 **enp2s0**，电脑地址 **192.168.1.50/24**。
-- 2026-09-14 21:10，指定 enp2s0 ping `192.168.1.145`：5 发 5 收、0% 丢包、平均 1.829 ms。邻居 MAC `ec:72:f7:da:cf:c8`。物理协商 100 Mbit/s、full duplex。
-- 上网 `wlo1`：192.168.3.18/24，默认 via 192.168.3.1 metric 600。雷达网段与它不重叠，默认路由未变。
-- **没有验收 UDP 点云、IMU、ROS 话题、录包、建图或定位。** 不将 ping 成功称为雷达数据链路全通过。
-- Ranger Mini 实物具体版本尚未确认；USB-CAN `gs_usb` / `can0` 最近为 DOWN，没有当前 bitrate 或底盘收帧验收。不得启用底盘或发送控制。
+随后用户在无DISPLAY远程终端录包遇到默认RViz检查失败；已将录包默认改为`--visualization auto`，远程自动选Foxglove、有桌面选RViz，显式rviz无桌面仍拒绝。修复过程仅离线测试，不启动真实设备；用户可原命令重试，或显式加`--visualization foxglove`。
 
-## 当前配置是临时的
+最新：用户已确认Foxglove话题可见/连通，要求删除之前采集数据。本轮4份`bags/fast-livo-motion-{9sbycm9a,tzj_swlp,unfaf7sz,kp3yt18t}`已移入系统回收站，不再位于bags原路径，可恢复；合计约29.4GB，移入回收站不等于释放磁盘。删除前确认会话已停止且无打开文件；未启动新采集。操作清单与原manifest/result在`.runtime/capture_cleanup/20261027_231026_079043/manifest.json`，历史包/地图/标定仍保留。
 
-- 签名驱动仅 insmod 加载，**未安装到 `/lib/modules`**，不保证重启后自动加载。
-- NM 连接 `ranger-mid360-8745` 已创建并激活，UUID `7d3735fd-229f-4461-bebd-421146eb06d2`，地址 192.168.1.50/24，`ipv4.never-default=yes`，无 gateway，IPv6 disabled，**autoconnect=no**。
-- `有线连接 1` 是 NM 自动创建的旧 DHCP 配置；不要误改它或删除 Wi-Fi。
-- 新窗口先重新读取实际状态。若机器重启或雷达重新接线，不能照抄过去的 PASS 当成当前结果。持久化尚未实施，也未被指定为下一阶段。
 
-## 驱动来源与 Secure Boot
+随后用户明确要求清空系统回收站，已执行`gio trash --empty`退出0，并核实`trash:///`为空；上述4份数据现已永久删除，不能再从回收站恢复。当前磁盘可用约848GiB。
 
-- 原因：系统缺少板载 YT6801 驱动；为现有内核补装 GCC 12，并编译厂商驱动，未更换内核或系统。
-- 厂商归档：`vendor/yt6801/yt6801-linux-driver-1.0.34.zip`。
-- URL：`https://www.motor-comm.com/Cn/Skippower/downloadFile.html?id=1817`。
-- 归档 SHA256：`877e6953fc6eb47232a74e47b0daf33de0e7f9e9a395d3bc10d500d3c4150af8`。
-- 源码目录：`vendor/yt6801/source/yt6801-1.0.34`，源码未改，含构建产物。厂商归档不是 Git 仓库，分支/commit SHA 不适用，不能虚构。
-- 构建模块未签名版本 SHA256：`aed6951c8e9656d0443c2a52b07ce0be8061a56a46d83309b9d8bebba3c83918`。这是未签名文件，不能拿它替代 root 目录的签名副本。
-- Secure Boot 保持开启。用户已现场完成 MOK 登记；证书 CN `ranger-nav YT6801 module signing`。
-- 证书 SHA256：`84:B2:A7:E5:EA:31:84:56:1D:A7:B9:B2:0E:A6:A7:A7:EB:00:99:C0:D1:C5:4F:99:BA:68:05:33:CB:87:8A:98`。
-- root-only 状态目录 `/var/lib/ranger-nav-yt6801`：含签名模块 `yt6801.ko`、`signed-module.sha256`、公共证书 `MOK.der` 和私钥。**不读取或输出私钥，不把它复制到项目。**
-- 官方 ROS/SLAM 五个候选仓库尚未克隆。不要误以为已经建立 ROS 工作空间或装好了 Lightning-LM。
+## 建议阅读顺序
 
-## 脚本与已修复问题
+1. [AGENTS](../AGENTS.md)：当前约束和逐次真机授权。
+2. [STATUS](STATUS.md)、[根 README](../README.md)：当前能力、入口和验收边界。
+3. [工程结构](PROJECT_LAYOUT.md)、[标定流程](../calibration/README.md)：整合后的路径。
+4. [后端与重定位计划](FAST_LIVO2_BACKEND_PLAN.md)：下一阶段实施顺序与验收。
+5. [前端接口](fast_livo2_interfaces.md)、[源码审查](fast_livo2_source_review.md)：后端接入前必须读源码核对。
+6. [定位接口契约](localization_backend_contract.md)、[受管会话](managed_sessions.md)：复用已有桥接和安全链。
 
-- `scripts/prepare_yt6801_secureboot.sh`：只用于首次签名/登记准备；已执行完，不能重新运行或要求用户再登记。
-- `scripts/connect_mid360.sh`：默认 dry-run；新建雷达临时连接用。当前连接已存在，**不要反复 --apply**；先读实际状态，它会拒绝已有项目连接。
-- `mokutil 0.6.0 --test-key` 对“已登记”返回 1。已改成捕获状态并严格验证肯定输出，不可仅凭非零退出判断登记失败。`--ignore-keyring` 仅影响该次只读查询，内核签名强制检查未关闭。
-- 内核最初注册 eth0，udev 随后改为 enp2s0；已加入等待最终名称逻辑。
-- 本机 nmcli 不接受创建时改写 connection.uuid；应让 NM 生成。详情查询用 `-g connection.uuid`，摘要列表才用 `UUID`。
-- 早期 dry-run/语法通过没有覆盖全部真机路径，实际执行时发现上述兼容问题；已修复，不能宣称早期脚本全流程一次通过。
+## 不要重做或误判的事实
 
-## 回滚与证据
+- 实物 **Ranger Mini V2**，不是任务早期的 3.0；Ubuntu 22.04、Humble、x86_64。生产默认仍 Lightning，FAST-LIVO2 前端可通过配置切换。
+- FAST-LIVO2 已能真实在线三融合并在 RViz 显示，用户反馈“看上去效果不错”后要求停止。不能重新从选型/安装建议开始，也不能把显示效果当作闭环/重定位通过。
+- 同步 writer 的 O_TRUNC/flock 顺序与读写一致性已经修复成配套 v2；不要重复要求先修。曝光相位和时间历元问题仍未解决，不硬编码 ±100 ms。
+- `~/calibration` 已原子迁入 `ranger_nav/calibration`，旧路径只是链接；当前同步包在 `ws_camera/src/`。新入口去掉兼容链接仍能离线运行；不要重新复制一个标定工程。
+- 截至10月26日没有三传感器运动录包；10月28日已新增并保留`w5phdosj`，详见本页最新追加。`calibration/bags/stageB_sync_run2`仍为静态包，不能冒充运动验收。新包已用于前端视频，后端回环及定位精度还需单独验证。
+- 本项目B已有关键帧/回环/PGO、非关键帧传播、几何图快照导出、标准适配器隔离联调，且单份真实三传感器运动包的后端闭环管线已验证。没有独立真值和实车泛化验收。C1统一加载/给定初值定位、C2无初值重定位未实施。
 
-最近一次有效状态/日志目录：`/var/lib/ranger-nav-yt6801/connect-jQpZBTzH/`。
+## 工作树、源码与入口
+
+- 主仓库分支 `refactor/pluggable-navigation`，交接 HEAD `a76d83a767d5691ca40351f3a57f65b398572a52`；**大量阶段 A、同步修复和整合文件未提交**。开始先 `git status --short`，不可 reset/clean，不因 HEAD 相同就忽略工作树。
+- 用户原有 `docs/03_mid360_validation.md` IP 修改和六个 `docs/03_evidence/driver-*` 未跟踪目录保留；原相机驱动有用户修改。不要混入无关提交或删除证据。
+- 部署前端：`vendor/fast_livo2_review/ros2_frontend`，humble，`837b7bbc1431cb04cf936528e52c83c835efba8e` 加 `patches/fast_livo2_stage_a.patch`。构建入口 `scripts/build_fast_livo2.sh`，产物 `ws_fast_livo/`；15 仓库（含 B 依赖）固定 SHA 见 `config/fast_livo2/sources.lock.json`。
+- 优先参考后端：`vendor/fast_livo2_review/fastlio_backend`，main，`7baa59f7339ba88ce3b646fe35b23f61031c5d3f`。pgo/localizer/interface 已审查；B 以独立包实现必要算法，未启动参考原版节点；许可证、缺陷和其他候选对照见源码审查。第一版不整体引入 OpenFleX/HoloAgent，也不修改前端滤波器。
+- runtime 默认 `mapping_backend: lightning`、`localization_backend: lightning`、`odometry_backend: wheel`、`terrain_backend: disabled`。FAST profile 为 `config/profiles/fast_livo2_frontend.yaml`，只切前端，不切导航定位。
+- SDK 复用原 `ws_camera/src/hik_camera_ros2_driver/hikSDK`，不随 Git 分发。FAST-Calib 新编译路径为 `calibration/lidar_camera_extrinsics/ws/{build_integrated,install_integrated}`，旧工作空间保留追溯。
+
+安全接手命令，均不打开实物：
 
 ```bash
-sudo bash /var/lib/ranger-nav-yt6801/connect-jQpZBTzH/rollback.sh
+cd /home/lab307/ranger_nav
+git status --short
+python3 scripts/runtime_config.py
+bash scripts/run_mapping.sh online
+bash scripts/run_mapping.sh online --runtime-config config/profiles/fast_livo2_frontend.yaml
+bash scripts/run_fast_livo2_live.sh --status
+bash scripts/run_calibration.sh status
+PYTHONDONTWRITEBYTECODE=1 python3 tests/test_project_consolidation.py
 ```
 
-此命令是**备用回滚，不是接手步骤**：按 UUID 删除项目连接，并按记录恢复先前有线连接；保留本次操作前已加载的驱动。若需卸载驱动，必须先确认 enp2s0 已不再使用。不要运行早期失败尝试目录的旧回滚脚本。
+`--execute` online 会开真实设备，本次交接不运行。离线 ROS 测试先 source Humble / 对应 workspace，按原脚本使用隔离 domain。构建脚本默认 dry-run。
 
-该目录包含 `activation.log`、激活前后默认路由、原地址和修复后的回滚脚本。普通用户可能不可读。项目 docs 中另有完整只读审计和成功验证证据。
+## 后端最关键的接口
 
-## 接手可执行的只读检查
+输入必须用 `/fast_livo/odometry` 与 `/fast_livo/deskewed_imu`，同一 stamp、同一 VIO 后 IMU 参考点。点云是已去畸变的单图像区间 IMU 机体系云；里程计为 T_fast_livo_local_imu。不能拿 `/cloud_registered` 累计世界云或 VIO 前 `/aft_mapped_to_init` 重映射充数。
 
-```bash
-uname -r
-ip -brief address
-ip route
-ip route get 192.168.1.145
-ip neigh show dev enp2s0
-nmcli -f connection.id,connection.uuid,connection.interface-name,connection.autoconnect,ipv4.addresses,ipv4.never-default connection show ranger-mid360-8745
-```
+后端先得到 T_map_imu(t)，适配器用真实方向的 T_base_imu 转成 T_map_base(t)，发布 `LocalizationEstimate`；现有公共桥接按同一采样时刻插值轮速，唯一发布 map→odom、odom→base_link。FAST 局部系不是 wheel odom；参考节点的 TF 必须关闭。车体安装外参仍近似，不能将相机–雷达外参当作车体标定。
 
-这些命令不加载模块、不激活连接、不启动 ROS。若沙箱阻止 netlink/D-Bus，应通过正常工具授权读取，不将沙箱限制误判为主机网络故障。
+实时传感器曾使用 2020 年 header、主机/存储时间为 2026 年。当前隔离展示未接公共桥接；直接接轮速/Nav2 会产生跨历元问题。后端离线使用 header-clock 调度与 use_sim_time，保留原消息；真机接公共 TF 前必须解决实际时钟一致性，不重打 now 掩盖。
 
-## 接手工作方式
+## 已有证据与清理结果
 
-- 阅读并概述当前状态后，等待用户指定下一阶段；不自动继续雷达驱动、持久化或 SLAM。
-- 后续技术路线仍为 Lightning-LM 建图/定位；先通信、录包、建图、定位和平地导航，坡道后续。Nav2/Smac Hybrid-A*/MPPI 是后续候选。
-- 用户偏好少来回确认，已授权范围内自主实施；必要修改先保存原值并提供回滚。所有自动测试默认 dry-run。
-- 没有任何底盘运动许可。启动可能切换底盘控制模式的驱动、发送 CAN 控制、非零速度或导航目标，必须取得用户对该次测试的明确许可；进程重启后旧运动许可失效。
-- 用户曾要求代理自行处理正常 sudo 认证；**本交接不包含密码，也不要求新窗口从旧聊天查找密码**。以新窗口实际工具权限和可用的正常认证方式为准，不写入密码、不绕过权限。
-- 每阶段更新 STATUS.md 和对应报告；注明实测、用户提供信息、推断及待验项。
+- 前端完整静态基线 829 对，828 帧 VIO，4222 次视觉迭代；DDS 55/55，定向 C++ 13/13。
+- 本次在线约 10/200/10 Hz，最终显示 3925 对；没有公共 TF/速度输出，已停止。最新在线雷达 SN/IP 在在线报告中，与 9 月旧雷达不同，不能套用旧 `.145`；当前配置为 `.101`。
+- 整合后配置/迁移 10/10、标定 11/11、时间对齐 7/7、进程 11/11、定位契约 11/11；新入口静态短回放 20 对 / 20 VIO / 121 迭代。Nav2 全量 37/37 等结果保留原 10 月 20 日日期。
+- 保留 `bags/fast-livo2-baseline-126a5fAo`、`bags/fast-livo2-dds-smoke-final`、全部原始数据与地图。约 541 MiB 重复 DDS/XWD/缓存已清理，不要重新生成多份全量等价回放。
+- [整合报告](consolidation_report.md)、`docs/consolidation_evidence/20261026/verification_summary.json`、[在线报告](fast_livo2_online_report.md)、[阶段 A](fast_livo2_stage_a_report.md)。
+- 回退资产：`.runtime/backups/consolidation_20261026/`，含迁前 tracked diff、源码检查点、原标定 `.git` 及完整 bundle；另有本轮文档备份 `.runtime/backups/docs_handoff_20261026/`。不要整目录清空 `.runtime/` 或 build。
+
+## 阶段 B 新入口与边界
+
+- 源码 `ws_fast_livo/src/ranger_fast_livo_backend` 已纳入可跟踪路径；前端旧 build/install 保留。后端依赖在 `backend_deps`，构建在 `backend_build`，安装在 `backend_install`，不覆盖前端部署。
+- `bash scripts/build_fast_livo2_backend.sh`、`bash scripts/run_fast_livo2_backend.sh` 默认 dry-run。后者只有显式 `--offline-bridge` 才启动公共适配器和 TF 桥接；本轮未启动硬件。
+- PCL、small_gicp、small_vgicp 可配置；正常默认 PCL。图基准保留 FAST local 轴，当前未验证重力对齐，不可默认水平。
+- 配对队列启动缺对造成批量释放的问题已修复；创新失败写入修正缓存的问题已修复。B 离线桥接首次创新失败锁定，不影响私有 PGO。
+- GTSAM SHA 同时有 4.2 / 4.2.0 标签，源码显示字符串仍含 a9；记录事实，不更改上游版本字符串。完整依赖/参考审查和测试命令见 B 报告。
+
+## 下一窗口应做什么
+
+B 已完成本轮交付。后续按 [计划](FAST_LIVO2_BACKEND_PLAN.md) 的 C1→C2→D 顺序：先定义归档加载/完整性/标定兼容和给定初值定位，再做无初值搜索与系统验收。不要把局部 ICP 当全局重定位，不宣称没有数据的成功率或精度。
+
+下一阶段获 C1 明确授权后，复查 B 归档与当前 localizer，先实现新进程加载及失败状态，不重做 B、不把局部 ICP 称为全局重定位。高程地图与坡道不在这个阶段。

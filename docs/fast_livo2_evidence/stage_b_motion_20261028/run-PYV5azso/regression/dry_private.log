@@ -1,0 +1,48 @@
+{
+  "action": "DRY-RUN",
+  "domain": 187,
+  "localhost_only": true,
+  "public_tf_enabled": false,
+  "components": [
+    {
+      "name": "monitor",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/lab307/ranger_nav/scripts/fast_livo2/backend/monitor.py"
+      ],
+      "depends": [],
+      "requires": [],
+      "ready_key": "probe_live",
+      "critical": true,
+      "start_requires": [],
+      "resource": ""
+    },
+    {
+      "name": "backend",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/backend_node",
+        "--ros-args",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/fast_livo2/backend.yaml",
+        "-p",
+        "use_sim_time:=true",
+        "-p",
+        "metadata_path:=/home/lab307/ranger_nav/.runtime/sessions/fast_livo_backend/provenance-NEW.json",
+        "-p",
+        "data_root:=/home/lab307/ranger_nav/.runtime/fast_livo_backend",
+        "-p",
+        "registration:=pcl_icp"
+      ],
+      "depends": [
+        "monitor"
+      ],
+      "requires": [
+        "probe_live"
+      ],
+      "ready_key": "backend_healthy",
+      "critical": true,
+      "start_requires": [],
+      "resource": "fast_livo_backend"
+    }
+  ]
+}

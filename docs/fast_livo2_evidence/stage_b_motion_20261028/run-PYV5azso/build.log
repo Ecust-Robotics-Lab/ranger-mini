@@ -1,0 +1,524 @@
+-- GTSAM Version: 4.2a9
+-- GTSAM_POSE3_EXPMAP=ON, enabling GTSAM_ROT3_EXPMAP as well
+-- Found Eigen version: 3.4.0
+-- checking for thread-local storage - found
+-- Could NOT find MKL (missing: MKL_INCLUDE_DIR MKL_LIBRARIES) 
+-- Building 3rdparty
+-- Could NOT find GeographicLib (missing: GeographicLib_LIBRARY_DIRS GeographicLib_LIBRARIES GeographicLib_INCLUDE_DIRS) 
+-- Building base
+-- Building basis
+-- Building geometry
+-- Building inference
+-- Building symbolic
+-- Building discrete
+-- Building hybrid
+-- Building linear
+-- Building nonlinear
+-- Building sam
+-- Building sfm
+-- Building slam
+-- Building navigation
+-- GTSAM Version: 4.2.0
+-- Install prefix: /home/lab307/ranger_nav/ws_fast_livo/backend_deps
+-- Building GTSAM - shared: ON
+-- Wrote /home/lab307/ranger_nav/ws_fast_livo/backend_build/gtsam/GTSAMConfig.cmake
+-- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
+-- ===============================================================
+-- ================  Configuration Options  ======================
+--  CMAKE_CXX_COMPILER_ID type                       : GNU
+--  CMAKE_CXX_COMPILER_VERSION                       : 11.4.0
+--  CMake version                                    : 3.22.1
+--  CMake generator                                  : Unix Makefiles
+--  CMake build tool                                 : /usr/bin/gmake
+-- Build flags                                               
+--  Build Tests                                      : Disabled
+--  Build examples with 'make all'                   : Disabled
+--  Build timing scripts with 'make all'             : Disabled
+--  Build shared GTSAM libraries                     : Enabled
+--  Put build type in library name                   : Enabled
+--  Build libgtsam_unstable                          : Disabled
+--  Build GTSAM unstable Python                      : Disabled
+--  Build MATLAB Toolbox for unstable                : Disabled
+--  Build for native architecture                    : Disabled
+--  Build type                                       : Release
+--  C compilation flags                              :  -O3 -DNDEBUG
+--  C++ compilation flags                            :  -O3 -DNDEBUG
+--  GTSAM_COMPILE_FEATURES_PUBLIC                    : cxx_std_11
+--  GTSAM_COMPILE_OPTIONS_PUBLIC                     : 
+--  GTSAM_COMPILE_DEFINITIONS_PUBLIC                 : 
+--  GTSAM_COMPILE_OPTIONS_PUBLIC_RELEASE             : 
+--  GTSAM_COMPILE_DEFINITIONS_PUBLIC_RELEASE         : 
+--  Use System Eigen                                 : ON (Using version: 3.4.0)
+--  Use System Metis                                 : OFF
+--  Using Boost version                              : 1.74.0
+--  Use Intel TBB                                    : TBB not found
+--  Eigen will use MKL                               : MKL not found
+--  Eigen will use MKL and OpenMP                    : OpenMP found but GTSAM_WITH_EIGEN_MKL is disabled
+--  Default allocator                                : STL
+--  Cheirality exceptions enabled                    : YES
+--  Build with ccache                                : No
+-- Packaging flags
+--  CPack Source Generator                           : TGZ
+--  CPack Generator                                  : TGZ
+-- GTSAM flags                                               
+--  Quaternions as default Rot3                      : Disabled
+--  Runtime consistency checking                     : Disabled
+--  Rot3 retract is full ExpMap                      : Enabled
+--  Pose3 retract is full ExpMap                     : Enabled
+--  Allow features deprecated in GTSAM 4.2           : Enabled
+--  Metis-based Nested Dissection                    : Enabled
+--  Use tangent-space preintegration                 : Enabled
+-- MATLAB toolbox flags
+--  Install MATLAB toolbox                           : Disabled
+-- Python toolbox flags                                      
+--  Build Python module with pybind                  : Disabled
+-- ===============================================================
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/lab307/ranger_nav/ws_fast_livo/backend_build/gtsam
+Consolidate compiler generated dependencies of target CppUnitLite
+Consolidate compiler generated dependencies of target metis-gtsam
+[  1%] Built target CppUnitLite
+[ 28%] Built target metis-gtsam
+Consolidate compiler generated dependencies of target gtsam
+[100%] Built target gtsam
+-- Install configuration: "Release"
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/cmake/GTSAM/gtsam_extra.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/cmake/GTSAM/GTSAMConfig.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/cmake/GTSAM/GTSAMConfigVersion.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/cmake/GTSAM/GTSAM-exports.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/cmake/GTSAM/GTSAM-exports-release.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/3rdparty/metis/metis.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/libmetis-gtsam.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/CppUnitLite/Failure.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/CppUnitLite/Test.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/CppUnitLite/TestHarness.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/CppUnitLite/TestRegistry.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/CppUnitLite/TestResult.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/libCppUnitLite.a
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/global_includes.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/precompiled_header.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/config.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/dllexport.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/libgtsam.so.4.2.0
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/libgtsam.so.4
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/libgtsam.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/3rdparty/CCOLAMD/ccolamd.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/3rdparty/SuiteSparse_config/SuiteSparse_config.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/3rdparty/ceres/autodiff.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/3rdparty/ceres/eigen.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/3rdparty/ceres/example.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/3rdparty/ceres/fixed_array.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/3rdparty/ceres/fpclassify.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/3rdparty/ceres/jet.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/3rdparty/ceres/macros.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/3rdparty/ceres/manual_constructor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/3rdparty/ceres/rotation.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/3rdparty/ceres/variadic_evaluate.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/ConcurrentMap.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/DSFMap.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/DSFVector.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/FastDefaultAllocator.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/FastList.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/FastMap.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/FastSet.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/FastVector.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/GenericValue.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/Group.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/Lie.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/Manifold.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/Matrix.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/MatrixSerialization.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/OptionalJacobian.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/ProductLieGroup.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/SymmetricBlockMatrix.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/Testable.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/TestableAssertions.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/ThreadsafeException.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/Value.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/Vector.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/VectorSerialization.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/VectorSpace.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/VerticalBlockMatrix.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/WeightedSampler.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/chartTesting.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/cholesky.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/concepts.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/debug.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/lieProxies.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/make_shared.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/numericalDerivative.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/serialization.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/serializationTestHelpers.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/testLie.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/timing.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/treeTraversal-inst.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/types.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/utilities.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/treeTraversal/parallelTraversalTasks.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/base/treeTraversal/statistics.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/basis/Basis.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/basis/BasisFactors.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/basis/Chebyshev.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/basis/Chebyshev2.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/basis/FitBasis.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/basis/Fourier.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/basis/ParameterMatrix.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/BearingRange.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/Cal3.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/Cal3Bundler.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/Cal3DS2.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/Cal3DS2_Base.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/Cal3Fisheye.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/Cal3Unified.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/Cal3_S2.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/Cal3_S2Stereo.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/CalibratedCamera.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/CameraSet.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/Cyclic.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/EssentialMatrix.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/Line3.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/OrientedPlane3.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/PinholeCamera.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/PinholePose.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/PinholeSet.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/Point2.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/Point3.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/Pose2.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/Pose3.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/Quaternion.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/Rot2.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/Rot3.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/SO3.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/SO4.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/SOn-inl.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/SOn.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/Similarity2.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/Similarity3.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/SimpleCamera.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/SphericalCamera.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/StereoCamera.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/StereoPoint2.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/Unit3.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/concepts.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/geometry/triangulation.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/BayesNet-inst.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/BayesNet.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/BayesTree-inst.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/BayesTree.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/BayesTreeCliqueBase-inst.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/BayesTreeCliqueBase.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/ClusterTree-inst.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/ClusterTree.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/Conditional-inst.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/Conditional.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/DotWriter.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/EliminateableFactorGraph-inst.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/EliminateableFactorGraph.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/EliminationTree-inst.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/EliminationTree.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/Factor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/FactorGraph-inst.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/FactorGraph.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/ISAM-inst.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/ISAM.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/JunctionTree-inst.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/JunctionTree.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/Key.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/LabeledSymbol.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/MetisIndex-inl.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/MetisIndex.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/Ordering.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/Symbol.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/VariableIndex-inl.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/VariableIndex.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/VariableSlots.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/graph-inl.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/graph.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/inference-inst.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/inference/inferenceExceptions.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/symbolic/SymbolicBayesNet.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/symbolic/SymbolicBayesTree.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/symbolic/SymbolicConditional.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/symbolic/SymbolicEliminationTree.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/symbolic/SymbolicFactor-inst.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/symbolic/SymbolicFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/symbolic/SymbolicFactorGraph.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/symbolic/SymbolicISAM.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/symbolic/SymbolicJunctionTree.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/discrete/AlgebraicDecisionTree.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/discrete/Assignment.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/discrete/DecisionTree-inl.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/discrete/DecisionTree.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/discrete/DecisionTreeFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/discrete/DiscreteBayesNet.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/discrete/DiscreteBayesTree.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/discrete/DiscreteConditional.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/discrete/DiscreteDistribution.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/discrete/DiscreteEliminationTree.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/discrete/DiscreteFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/discrete/DiscreteFactorGraph.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/discrete/DiscreteJunctionTree.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/discrete/DiscreteKey.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/discrete/DiscreteLookupDAG.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/discrete/DiscreteMarginals.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/discrete/DiscreteValues.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/discrete/Signature.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/hybrid/GaussianMixture.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/hybrid/GaussianMixtureFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/hybrid/HybridBayesNet.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/hybrid/HybridBayesTree.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/hybrid/HybridConditional.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/hybrid/HybridEliminationTree.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/hybrid/HybridFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/hybrid/HybridFactorGraph.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/hybrid/HybridGaussianFactorGraph.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/hybrid/HybridGaussianISAM.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/hybrid/HybridJunctionTree.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/hybrid/HybridNonlinearFactorGraph.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/hybrid/HybridNonlinearISAM.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/hybrid/HybridSmoother.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/hybrid/HybridValues.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/hybrid/MixtureFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/AcceleratedPowerMethod.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/BinaryJacobianFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/ConjugateGradientSolver.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/Errors.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/GaussianBayesNet.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/GaussianBayesTree-inl.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/GaussianBayesTree.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/GaussianConditional-inl.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/GaussianConditional.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/GaussianDensity.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/GaussianEliminationTree.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/GaussianFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/GaussianFactorGraph.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/GaussianISAM.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/GaussianJunctionTree.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/HessianFactor-inl.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/HessianFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/IterativeSolver.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/JacobianFactor-inl.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/JacobianFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/KalmanFilter.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/LossFunctions.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/NoiseModel.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/PCGSolver.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/PowerMethod.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/Preconditioner.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/RegularHessianFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/RegularJacobianFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/Sampler.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/Scatter.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/SparseEigen.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/SubgraphBuilder.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/SubgraphPreconditioner.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/SubgraphSolver.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/VectorValues.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/iterative-inl.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/iterative.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/linearAlgorithms-inst.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/linear/linearExceptions.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/AdaptAutoDiff.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/CustomFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/DoglegOptimizer.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/DoglegOptimizerImpl.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/Expression-inl.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/Expression.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/ExpressionFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/ExpressionFactorGraph.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/ExtendedKalmanFilter-inl.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/ExtendedKalmanFilter.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/FunctorizedFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/GaussNewtonOptimizer.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/GncOptimizer.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/GncParams.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/GraphvizFormatting.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/ISAM2-impl.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/ISAM2.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/ISAM2Clique.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/ISAM2Params.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/ISAM2Result.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/ISAM2UpdateParams.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/LevenbergMarquardtOptimizer.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/LevenbergMarquardtParams.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/LinearContainerFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/Marginals.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/NonlinearConjugateGradientOptimizer.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/NonlinearEquality.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/NonlinearFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/NonlinearFactorGraph.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/NonlinearISAM.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/NonlinearOptimizer.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/NonlinearOptimizerParams.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/PriorFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/Symbol.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/Values-inl.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/Values.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/WhiteNoiseFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/expressionTesting.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/expressions.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/factorTesting.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/nonlinearExceptions.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/utilities.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/internal/CallRecord.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/internal/ExecutionTrace.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/internal/ExpressionNode.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/internal/JacobianMap.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/internal/LevenbergMarquardtState.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/nonlinear/internal/NonlinearOptimizerState.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/sam/BearingFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/sam/BearingRangeFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/sam/RangeFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/sfm/BinaryMeasurement.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/sfm/DsfTrackGenerator.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/sfm/MFAS.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/sfm/SfmData.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/sfm/SfmTrack.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/sfm/ShonanAveraging.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/sfm/ShonanFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/sfm/ShonanGaugeFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/sfm/TranslationFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/sfm/TranslationRecovery.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/AntiFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/BearingFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/BearingRangeFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/BetweenFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/BoundingConstraint.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/EssentialMatrixConstraint.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/EssentialMatrixFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/FrobeniusFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/GeneralSFMFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/InitializePose.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/InitializePose3.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/JacobianFactorQ.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/JacobianFactorQR.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/JacobianFactorSVD.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/KarcherMeanFactor-inl.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/KarcherMeanFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/OrientedPlane3Factor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/PoseRotationPrior.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/PoseTranslationPrior.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/PriorFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/ProjectionFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/RangeFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/ReferenceFrameFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/RegularImplicitSchurFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/RotateFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/SmartFactorBase.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/SmartFactorParams.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/SmartProjectionFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/SmartProjectionPoseFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/SmartProjectionRigFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/StereoFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/TriangulationFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/dataset.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/expressions.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/slam/lago.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/navigation/AHRSFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/navigation/AttitudeFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/navigation/BarometricFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/navigation/CombinedImuFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/navigation/ConstantVelocityFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/navigation/GPSFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/navigation/ImuBias.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/navigation/ImuFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/navigation/MagFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/navigation/MagPoseFactor.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/navigation/ManifoldPreintegration.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/navigation/NavState.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/navigation/PreintegratedRotation.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/navigation/PreintegrationBase.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/navigation/PreintegrationParams.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/navigation/Scenario.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/navigation/ScenarioRunner.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/navigation/TangentPreintegration.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/gtsam/navigation/expressions.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/cmake/GTSAMCMakeTools/GTSAMCMakeToolsConfig.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/cmake/GTSAMCMakeTools/Config.cmake.in
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/cmake/GTSAMCMakeTools/dllexport.h.in
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/cmake/GTSAMCMakeTools/GtsamBuildTypes.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/cmake/GTSAMCMakeTools/GtsamMakeConfigFile.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/cmake/GTSAMCMakeTools/GtsamTesting.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/cmake/GTSAMCMakeTools/GtsamPrinting.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/cmake/GTSAMCMakeTools/FindNumPy.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/cmake/GTSAMCMakeTools/README.html
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/lab307/ranger_nav/ws_fast_livo/backend_build/small_gicp
+Consolidate compiler generated dependencies of target small_gicp
+[100%] Built target small_gicp
+-- Install configuration: "Release"
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/ros
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/ros/ros2.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/ros/ros1.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/ros/ros_impl.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/factors
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/factors/colored_icp_factor.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/factors/icp_factor.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/factors/gicp_factor.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/factors/robust_kernel.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/factors/plane_icp_factor.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/factors/general_factor.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/points
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/points/eigen.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/points/traits.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/points/point_cloud.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/ann
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/ann/gaussian_voxelmap.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/ann/traits.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/ann/projection.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/ann/kdtree_tbb.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/ann/incremental_voxelmap.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/ann/sequential_voxelmap_accessor.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/ann/flat_container.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/ann/kdtree_omp.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/ann/knn_result.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/ann/projective_search.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/ann/kdtree.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/util
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/util/downsampling_tbb.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/util/normal_estimation_omp.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/util/color_gradient_tbb.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/util/normal_estimation_tbb.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/util/lie.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/util/downsampling.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/util/color_gradient_omp.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/util/fast_floor.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/util/downsampling_omp.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/util/sort_omp.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/util/sort_tbb.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/util/vector3i_hash.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/util/normal_estimation.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/util/color_gradient.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/registration
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/registration/optimizer.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/registration/reduction_omp.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/registration/reduction_tbb.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/registration/registration_result.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/registration/reduction.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/registration/termination_criteria.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/registration/registration_helper.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/registration/rejector.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/registration/registration.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/pcl
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/pcl/pcl_registration.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/pcl/pcl_point.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/pcl/pcl_point_traits.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/pcl/pcl_registration_impl.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/pcl/pcl_proxy.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/benchmark
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/benchmark/benchmark_odom.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/benchmark/read_points.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/include/small_gicp/benchmark/benchmark.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/libsmall_gicp.so
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/cmake/small_gicp/small_gicp-targets.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/cmake/small_gicp/small_gicp-targets-release.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/cmake/small_gicp/small_gicp-config.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/cmake/small_gicp/small_gicp-config-version.cmake
+Starting >>> ranger_fast_livo_backend
+Finished <<< ranger_fast_livo_backend [2.26s]
+
+Summary: 1 package finished [2.41s]

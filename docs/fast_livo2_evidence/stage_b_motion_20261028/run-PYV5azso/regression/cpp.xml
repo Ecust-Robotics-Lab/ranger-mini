@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="21" failures="0" disabled="0" errors="0" time="0.526" timestamp="2026-10-28T14:50:15" name="AllTests">
+  <testsuite name="Input" tests="5" failures="0" disabled="0" errors="0" time="0" timestamp="2026-10-28T14:50:15">
+    <testcase name="StrictIntegerPairingReorderAndDuplicates" status="run" result="completed" time="0" timestamp="2026-10-28T14:50:15" classname="Input" />
+    <testcase name="LossCapacityAndClockReset" status="run" result="completed" time="0" timestamp="2026-10-28T14:50:15" classname="Input" />
+    <testcase name="RejectInvalidFieldsAndValues" status="run" result="completed" time="0" timestamp="2026-10-28T14:50:15" classname="Input" />
+    <testcase name="ByteBudgetPreservesOtherPairs" status="run" result="completed" time="0" timestamp="2026-10-28T14:50:15" classname="Input" />
+    <testcase name="BoundedDrainDoesNotDiscardMatchedSuccessors" status="run" result="completed" time="0" timestamp="2026-10-28T14:50:15" classname="Input" />
+  </testsuite>
+  <testsuite name="Geometry" tests="1" failures="0" disabled="0" errors="0" time="0" timestamp="2026-10-28T14:50:15">
+    <testcase name="TransformDirectionsAndIncrementComposition" status="run" result="completed" time="0" timestamp="2026-10-28T14:50:15" classname="Geometry" />
+  </testsuite>
+  <testsuite name="Registration" tests="3" failures="0" disabled="0" errors="0" time="0.145" timestamp="2026-10-28T14:50:15">
+    <testcase name="SameInputPclGicpAndVgicpTotalTransform" status="run" result="completed" time="0.006" timestamp="2026-10-28T14:50:15" classname="Registration" />
+    <testcase name="RejectLowOverlapWrongInitialAndDegenerate" status="run" result="completed" time="0.002" timestamp="2026-10-28T14:50:15" classname="Registration" />
+    <testcase name="NonfiniteInputAndRepeatedTimingComparison" status="run" result="completed" time="0.137" timestamp="2026-10-28T14:50:15" classname="Registration" />
+  </testsuite>
+  <testsuite name="Graph" tests="1" failures="0" disabled="0" errors="0" time="0.001" timestamp="2026-10-28T14:50:16">
+    <testcase name="Pose3OdomLoopAndRollback" status="run" result="completed" time="0.001" timestamp="2026-10-28T14:50:16" classname="Graph" />
+  </testsuite>
+  <testsuite name="Keyframes" tests="1" failures="0" disabled="0" errors="0" time="0.026" timestamp="2026-10-28T14:50:16">
+    <testcase name="StationaryRotationMinimumIntervalAndResume" status="run" result="completed" time="0.026" timestamp="2026-10-28T14:50:16" classname="Keyframes" />
+  </testsuite>
+  <testsuite name="Candidates" tests="1" failures="0" disabled="0" errors="0" time="0" timestamp="2026-10-28T14:50:16">
+    <testcase name="PositionTimeIdsHeightAndDescriptorSeparation" status="run" result="completed" time="0" timestamp="2026-10-28T14:50:16" classname="Candidates" />
+  </testsuite>
+  <testsuite name="Backend" tests="7" failures="0" disabled="0" errors="0" time="0.325" timestamp="2026-10-28T14:50:16">
+    <testcase name="NoSelfScanSubmapSessionIsolationAndPropagation" status="run" result="completed" time="0.029" timestamp="2026-10-28T14:50:16" classname="Backend" />
+    <testcase name="SyntheticLoopActuallyRunsRegistrationAndPgo" status="run" result="completed" time="0.054" timestamp="2026-10-28T14:50:16" classname="Backend" />
+    <testcase name="LargeCorrectionRequiresIndependentConsistentObservations" status="run" result="completed" time="0.105" timestamp="2026-10-28T14:50:16" classname="Backend" />
+    <testcase name="IndependentCandidatesAreNotPositionFilteredAndAmbiguityRejected" status="run" result="completed" time="0.038" timestamp="2026-10-28T14:50:16" classname="Backend" />
+    <testcase name="NoLoopAndRepeatedScanIdRejected" status="run" result="completed" time="0.029" timestamp="2026-10-28T14:50:16" classname="Backend" />
+    <testcase name="StaleSnapshotDependenciesAndBudgetFailure" status="run" result="completed" time="0.018" timestamp="2026-10-28T14:50:16" classname="Backend" />
+    <testcase name="AmbiguityGateIndependentOfSearchRadius" status="run" result="completed" time="0.052" timestamp="2026-10-28T14:50:16" classname="Backend" />
+  </testsuite>
+  <testsuite name="Archive" tests="2" failures="0" disabled="0" errors="0" time="0.029" timestamp="2026-10-28T14:50:16">
+    <testcase name="FrozenVersionPerFrameTransformChecksumsAndNoOverwrite" status="run" result="completed" time="0.022" timestamp="2026-10-28T14:50:16" classname="Archive" />
+    <testcase name="WriteFailureCannotCommitSuccessMarker" status="run" result="completed" time="0.007" timestamp="2026-10-28T14:50:16" classname="Archive" />
+  </testsuite>
+</testsuites>

@@ -1,0 +1,137 @@
+{
+  "sources": {
+    "fastlio_backend": {
+      "sha": "7baa59f7339ba88ce3b646fe35b23f61031c5d3f",
+      "expected": "7baa59f7339ba88ce3b646fe35b23f61031c5d3f",
+      "status": "",
+      "branch": "main"
+    },
+    "global_lvba": {
+      "sha": "10493a2b0f695e32db83dde49dad843a4826e090",
+      "expected": "10493a2b0f695e32db83dde49dad843a4826e090",
+      "status": "",
+      "branch": "master"
+    },
+    "handheld_mapper": {
+      "sha": "3abbde381e2ae6ec382a9cec8376fc5d47d95545",
+      "expected": "3abbde381e2ae6ec382a9cec8376fc5d47d95545",
+      "status": "",
+      "branch": "main"
+    },
+    "hardware": {
+      "sha": "30507028a7c00c99ac992322507701e0efe72a2a",
+      "expected": "30507028a7c00c99ac992322507701e0efe72a2a",
+      "status": "",
+      "branch": "main"
+    },
+    "holoagent": {
+      "sha": "ef14d3152ca6246d8ae64920694c6c74581d246c",
+      "expected": "ef14d3152ca6246d8ae64920694c6c74581d246c",
+      "status": "",
+      "branch": "main"
+    },
+    "longxiaoze": {
+      "sha": "6130a580e43bb9c3763477dffc70b6a9a148aa4c",
+      "expected": "6130a580e43bb9c3763477dffc70b6a9a148aa4c",
+      "status": "",
+      "branch": "main"
+    },
+    "official": {
+      "sha": "0d2c0346107b75b59934975adec9a6eeeb913c64",
+      "expected": "0d2c0346107b75b59934975adec9a6eeeb913c64",
+      "status": "",
+      "branch": "main"
+    },
+    "openflex": {
+      "sha": "0e891ff05dc562868d84716933bb68fdc74476f4",
+      "expected": "0e891ff05dc562868d84716933bb68fdc74476f4",
+      "status": "",
+      "branch": "v1.0_basic"
+    },
+    "openflex_docs": {
+      "sha": "980592bd06c355730e6867e79cb77bf6c86d91a5",
+      "expected": "980592bd06c355730e6867e79cb77bf6c86d91a5",
+      "status": "",
+      "branch": "v1.0_basic"
+    },
+    "ros2_frontend": {
+      "sha": "837b7bbc1431cb04cf936528e52c83c835efba8e",
+      "expected": "837b7bbc1431cb04cf936528e52c83c835efba8e",
+      "status": "M CMakeLists.txt\n M include/LIVMapper.h\n M include/preprocess.h\n M include/vio.h\n M package.xml\n M src/LIVMapper.cpp\n M src/main.cpp\n M src/preprocess.cpp\n M src/vio.cpp\n?? include/ranger_input_guard.h\n?? src/ranger_livo_checks.cpp\n?? src/ranger_livo_replay.cpp",
+      "branch": "humble"
+    },
+    "rpg_vikit": {
+      "sha": "4b7abc838f5d2ca9137f70f122eaaeff9eaf0f50",
+      "expected": "4b7abc838f5d2ca9137f70f122eaaeff9eaf0f50",
+      "status": "",
+      "branch": "main"
+    },
+    "sc_fast_livo2": {
+      "sha": "f39e3d0008af7cbd838b05ccfbad794c66161596",
+      "expected": "f39e3d0008af7cbd838b05ccfbad794c66161596",
+      "status": "",
+      "branch": "main"
+    },
+    "sophus": {
+      "sha": "de0f8d3d92bf776271e16de56d1803940ebccab9",
+      "expected": "de0f8d3d92bf776271e16de56d1803940ebccab9",
+      "status": "",
+      "branch": "HEAD"
+    },
+    "gtsam": {
+      "sha": "4f66a491ffc83cf092d0d818b11dc35135521612",
+      "expected": "4f66a491ffc83cf092d0d818b11dc35135521612",
+      "status": "",
+      "branch": "HEAD"
+    },
+    "small_gicp": {
+      "sha": "fa0cfc983417c044b6036f71dfa448038bb9c820",
+      "expected": "fa0cfc983417c044b6036f71dfa448038bb9c820",
+      "status": "",
+      "branch": "HEAD"
+    }
+  },
+  "builds": {
+    "gtsam": {
+      "system_eigen_header_path": true,
+      "native_avx_fast_math": false,
+      "explicit_eigen_definitions": [],
+      "compile_commands_sha256": "5a9b9bde2439f373d4ef993c9769db5f432361e3e5530c3e80ad1817cc846eba"
+    },
+    "small_gicp": {
+      "system_eigen_header_path": true,
+      "native_avx_fast_math": false,
+      "explicit_eigen_definitions": [],
+      "compile_commands_sha256": "f3ad8cc4815a4e7aa3713fc6de3292439ca58e66cb44c81506c173817000ae87"
+    },
+    "backend": {
+      "system_eigen_header_path": true,
+      "native_avx_fast_math": false,
+      "explicit_eigen_definitions": [],
+      "compile_commands_sha256": "a1288c15a054d56522dda8d09314a16937d054c1da07ebe667fc708914b37c9d"
+    }
+  },
+  "runtime": {
+    "gtsam": "/home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/libgtsam.so.4",
+    "small_gicp": "/home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/libsmall_gicp.so",
+    "ldd": "linux-vdso.so.1 (0x00007fffd39ef000)\n\tlibdiagnostic_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/libdiagnostic_msgs__rosidl_typesupport_cpp.so (0x000075496c9cc000)\n\tlibranger_backend_core.so => /home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/libranger_backend_core.so (0x000075496c922000)\n\tlibranger_fast_livo_backend__rosidl_typesupport_cpp.so => /home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/libranger_fast_livo_backend__rosidl_typesupport_cpp.so (0x000075496c91d000)\n\tlibrclcpp.so => /opt/ros/humble/lib/librclcpp.so (0x000075496c727000)\n\tlibnav_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_cpp.so (0x000075496c71d000)\n\tlibsensor_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_cpp.so (0x000075496c712000)\n\tliblibstatistics_collector.so => /opt/ros/humble/lib/liblibstatistics_collector.so (0x000075496c70b000)\n\tlibrcl.so => /opt/ros/humble/lib/librcl.so (0x000075496c6cd000)\n\tlibstatistics_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/libstatistics_msgs__rosidl_typesupport_cpp.so (0x000075496c6c8000)\n\tlibtracetools.so => /opt/ros/humble/lib/libtracetools.so (0x000075496c6c3000)\n\tlibrmw.so => /opt/ros/humble/lib/librmw.so (0x000075496c6b5000)\n\tlibrcutils.so => /opt/ros/humble/lib/librcutils.so (0x000075496c69d000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x000075496c400000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x000075496c319000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x000075496c65b000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x000075496c000000)\n\tlibrosidl_typesupport_cpp.so => /opt/ros/humble/lib/librosidl_typesupport_cpp.so (0x000075496c653000)\n\tlibgtsam.so.4 => /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/libgtsam.so.4 (0x000075496ba00000)\n\tlibsmall_gicp.so => /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/libsmall_gicp.so (0x000075496c2f1000)\n\tlibcrypto.so.3 => /lib/x86_64-linux-gnu/libcrypto.so.3 (0x000075496b400000)\n\tlibgomp.so.1 => /lib/x86_64-linux-gnu/libgomp.so.1 (0x000075496c2a7000)\n\tlibpcl_features.so.1.12 => /lib/x86_64-linux-gnu/libpcl_features.so.1.12 (0x0000754968c00000)\n\tlibpcl_filters.so.1.12 => /lib/x86_64-linux-gnu/libpcl_filters.so.1.12 (0x0000754968400000)\n\tlibpcl_search.so.1.12 => /lib/x86_64-linux-gnu/libpcl_search.so.1.12 (0x0000754968219000)\n\tlibpcl_io.so.1.12 => /lib/x86_64-linux-gnu/libpcl_io.so.1.12 (0x0000754968021000)\n\tlibpcl_common.so.1.12 => /lib/x86_64-linux-gnu/libpcl_common.so.1.12 (0x000075496b966000)\n\tlibrcl_yaml_param_parser.so => /opt/ros/humble/lib/librcl_yaml_param_parser.so (0x000075496c645000)\n\tlibrosgraph_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/librosgraph_msgs__rosidl_typesupport_cpp.so (0x000075496c63d000)\n\tlibrmw_implementation.so => /opt/ros/humble/lib/librmw_implementation.so (0x000075496c630000)\n\tlibament_index_cpp.so => /opt/ros/humble/lib/libament_index_cpp.so (0x000075496c29c000)\n\tlibrcl_logging_interface.so => /opt/ros/humble/lib/librcl_logging_interface.so (0x000075496c297000)\n\tlibrcl_interfaces__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_cpp.so (0x000075496c28c000)\n\tlibrcpputils.so => /opt/ros/humble/lib/librcpputils.so (0x000075496c27e000)\n\t/lib64/ld-linux-x86-64.so.2 (0x000075496ca86000)\n\tlibrcl_logging_spdlog.so => /opt/ros/humble/lib/librcl_logging_spdlog.so (0x000075496c276000)\n\tlibrcl_interfaces__rosidl_typesupport_c.so => /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_c.so (0x000075496c26d000)\n\tlibrcl_interfaces__rosidl_generator_c.so => /opt/ros/humble/lib/librcl_interfaces__rosidl_generator_c.so (0x000075496c251000)\n\tlibrosidl_runtime_c.so => /opt/ros/humble/lib/librosidl_runtime_c.so (0x000075496c246000)\n\tlibboost_serialization.so.1.74.0 => /lib/x86_64-linux-gnu/libboost_serialization.so.1.74.0 (0x000075496b924000)\n\tlibboost_filesystem.so.1.74.0 => /lib/x86_64-linux-gnu/libboost_filesystem.so.1.74.0 (0x000075496b904000)\n\tlibboost_timer.so.1.74.0 => /lib/x86_64-linux-gnu/libboost_timer.so.1.74.0 (0x000075496c23c000)\n\tlibmetis-gtsam.so => /home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/libmetis-gtsam.so (0x000075496b894000)\n\tlibpcl_kdtree.so.1.12 => /lib/x86_64-linux-gnu/libpcl_kdtree.so.1.12 (0x000075496b2ea000)\n\tlibpcl_octree.so.1.12 => /lib/x86_64-linux-gnu/libpcl_octree.so.1.12 (0x0000754967c00000)\n\tlibpcl_sample_consensus.so.1.12 => /lib/x86_64-linux-gnu/libpcl_sample_consensus.so.1.12 (0x0000754967000000)\n\tlibboost_iostreams.so.1.74.0 => /lib/x86_64-linux-gnu/libboost_iostreams.so.1.74.0 (0x000075496b87c000)\n\tlibpcl_io_ply.so.1.12 => /lib/x86_64-linux-gnu/libpcl_io_ply.so.1.12 (0x000075496b2aa000)\n\tlibvtkIOGeometry-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkIOGeometry-9.1.so.1 (0x0000754967ea0000)\n\tlibvtkIOPLY-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkIOPLY-9.1.so.1 (0x000075496b861000)\n\tlibpng16.so.16 => /lib/x86_64-linux-gnu/libpng16.so.16 (0x000075496b26f000)\n\tlibusb-1.0.so.0 => /lib/x86_64-linux-gnu/libusb-1.0.so.0 (0x000075496b251000)\n\tlibOpenNI2.so.0 => /lib/x86_64-linux-gnu/libOpenNI2.so.0 (0x0000754968ba4000)\n\tlibOpenNI.so.0 => /lib/libOpenNI.so.0 (0x0000754968b37000)\n\tlibpcap.so.0.8 => /lib/x86_64-linux-gnu/libpcap.so.0.8 (0x0000754968aea000)\n\tlibvtkIOImage-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkIOImage-9.1.so.1 (0x0000754966e87000)\n\tlibvtkIOLegacy-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkIOLegacy-9.1.so.1 (0x0000754966def000)\n\tlibvtkImagingCore-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkImagingCore-9.1.so.1 (0x0000754966c17000)\n\tlibvtkIOCore-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkIOCore-9.1.so.1 (0x0000754966bad000)\n\tlibvtkCommonExecutionModel-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkCommonExecutionModel-9.1.so.1 (0x0000754966a71000)\n\tlibvtkCommonDataModel-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkCommonDataModel-9.1.so.1 (0x0000754966400000)\n\tlibvtkCommonCore-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkCommonCore-9.1.so.1 (0x0000754965a00000)\n\tlibyaml.so => /opt/ros/humble/lib/libyaml.so (0x000075496b22f000)\n\tlibspdlog.so.1 => /lib/x86_64-linux-gnu/libspdlog.so.1 (0x00007549669f6000)\n\tlibrosidl_typesupport_c.so => /opt/ros/humble/lib/librosidl_typesupport_c.so (0x000075496c22e000)\n\tlibbuiltin_interfaces__rosidl_generator_c.so => /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_c.so (0x000075496c229000)\n\tlibboost_chrono.so.1.74.0 => /lib/x86_64-linux-gnu/libboost_chrono.so.1.74.0 (0x000075496b856000)\n\tliblz4.so.1 => /lib/x86_64-linux-gnu/liblz4.so.1 (0x0000754968aca000)\n\tlibz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x0000754968aae000)\n\tlibbz2.so.1.0 => /lib/x86_64-linux-gnu/libbz2.so.1.0 (0x0000754967e8d000)\n\tliblzma.so.5 => /lib/x86_64-linux-gnu/liblzma.so.5 (0x0000754967e62000)\n\tlibzstd.so.1 => /lib/x86_64-linux-gnu/libzstd.so.1 (0x0000754966927000)\n\tlibvtkFiltersHybrid-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkFiltersHybrid-9.1.so.1 (0x0000754965930000)\n\tlibvtkRenderingCore-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkRenderingCore-9.1.so.1 (0x0000754965600000)\n\tlibjsoncpp.so.25 => /lib/x86_64-linux-gnu/libjsoncpp.so.25 (0x00007549668f2000)\n\tlibvtkFiltersGeneral-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkFiltersGeneral-9.1.so.1 (0x0000754965000000)\n\tlibvtkFiltersCore-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkFiltersCore-9.1.so.1 (0x0000754964800000)\n\tlibvtkCommonSystem-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkCommonSystem-9.1.so.1 (0x00007549663c5000)\n\tlibvtkCommonTransforms-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkCommonTransforms-9.1.so.1 (0x0000754966381000)\n\tlibvtkCommonMath-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkCommonMath-9.1.so.1 (0x0000754967bde000)\n\tlibvtksys-9.1.so.1 => /lib/x86_64-linux-gnu/libvtksys-9.1.so.1 (0x00007549658e2000)\n\tlibvtkCommonMisc-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkCommonMisc-9.1.so.1 (0x0000754964200000)\n\tlibudev.so.1 => /lib/x86_64-linux-gnu/libudev.so.1 (0x00007549668c8000)\n\tlibdl.so.2 => /lib/x86_64-linux-gnu/libdl.so.2 (0x000075496b851000)\n\tlibpthread.so.0 => /lib/x86_64-linux-gnu/libpthread.so.0 (0x000075496b84c000)\n\tlibjpeg.so.8 => /lib/x86_64-linux-gnu/libjpeg.so.8 (0x0000754965861000)\n\tlibtinyxml.so.2.6.2 => /lib/x86_64-linux-gnu/libtinyxml.so.2.6.2 (0x0000754967e4b000)\n\tlibdbus-1.so.3 => /lib/x86_64-linux-gnu/libdbus-1.so.3 (0x0000754965813000)\n\tlibvtkDICOMParser-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkDICOMParser-9.1.so.1 (0x00007549655e5000)\n\tlibvtkmetaio-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkmetaio-9.1.so.1 (0x000075496554e000)\n\tlibvtkpugixml-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkpugixml-9.1.so.1 (0x0000754965516000)\n\tlibtiff.so.5 => /lib/x86_64-linux-gnu/libtiff.so.5 (0x000075496548d000)\n\tlibtbb.so.12 => /lib/x86_64-linux-gnu/libtbb.so.12 (0x000075496543d000)\n\tlibdouble-conversion.so.3 => /lib/x86_64-linux-gnu/libdouble-conversion.so.3 (0x000075496636c000)\n\tlibvtkloguru-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkloguru-9.1.so.1 (0x00007549647cb000)\n\tlibfmt.so.8 => /lib/x86_64-linux-gnu/libfmt.so.8 (0x00007549647aa000)\n\tlibvtkImagingSources-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkImagingSources-9.1.so.1 (0x0000754964770000)\n\tlibvtkFiltersGeometry-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkFiltersGeometry-9.1.so.1 (0x000075496469a000)\n\tlibvtkCommonColor-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkCommonColor-9.1.so.1 (0x000075496467e000)\n\tlibvtkFiltersSources-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkFiltersSources-9.1.so.1 (0x0000754964148000)\n\tlibvtkCommonComputationalGeometry-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkCommonComputationalGeometry-9.1.so.1 (0x000075496464b000)\n\tlibvtkfmt-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkfmt-9.1.so.1 (0x0000754964628000)\n\tlibvtkkissfft-9.1.so.1 => /lib/x86_64-linux-gnu/libvtkkissfft-9.1.so.1 (0x0000754968aa7000)\n\tlibsystemd.so.0 => /lib/x86_64-linux-gnu/libsystemd.so.0 (0x0000754964081000)\n\tlibwebp.so.7 => /lib/x86_64-linux-gnu/libwebp.so.7 (0x0000754964014000)\n\tlibjbig.so.0 => /lib/x86_64-linux-gnu/libjbig.so.0 (0x0000754964617000)\n\tlibdeflate.so.0 => /lib/x86_64-linux-gnu/libdeflate.so.0 (0x0000754963ff0000)\n\tlibcap.so.2 => /lib/x86_64-linux-gnu/libcap.so.2 (0x0000754967bd3000)\n\tlibgcrypt.so.20 => /lib/x86_64-linux-gnu/libgcrypt.so.20 (0x0000754963eb2000)\n\tlibgpg-error.so.0 => /lib/x86_64-linux-gnu/libgpg-error.so.0 (0x0000754963e8c000)"
+  },
+  "passed": true,
+  "gtsam_options": {
+    "GTSAM_USE_SYSTEM_EIGEN": "ON",
+    "GTSAM_BUILD_WITH_MARCH_NATIVE": "OFF",
+    "GTSAM_BUILD_UNSTABLE": "OFF",
+    "GTSAM_BUILD_PYTHON": "OFF",
+    "GTSAM_INSTALL_MATLAB_TOOLBOX": "OFF",
+    "GTSAM_WITH_EIGEN_MKL": "OFF"
+  },
+  "gtsam_tag": "4.2",
+  "gtsam_tags_at_commit": [
+    "4.2",
+    "4.2.0"
+  ],
+  "gtsam_display_prerelease": "a9",
+  "eigen": "3.4.0-2ubuntu2",
+  "pcl": "1.12.1+dfsg-3build1",
+  "abi_evidence_scope": "Compile commands/headers/macros and loaded paths checked; Pose3/PCL interoperability exercised by C++ tests. Distro PCL original build flags are not installed, so this is not a universal ABI proof."
+}

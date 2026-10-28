@@ -1,6 +1,8 @@
-# 受管会话与时间对齐（批次 3）
+# 受管会话与时间对齐
 
-更新：2026-10-20。适用于 `refactor/pluggable-navigation` 分支。此文档描述已完成的代码和离线验证，不代表已执行真机验收。
+更新：2026-10-26。公共机制沿用批次 3，适用于 `refactor/pluggable-navigation`。默认导航/定位仍为 Lightning；FAST-LIVO2 三融合展示已有独立受管入口，当前已停止。其运行记录见 [在线报告](fast_livo2_online_report.md)，统一建图入口见 [整合报告](consolidation_report.md)。下面描述公共代码与离线验证，不能代替真机导航验收。
+
+2026-10-27新增 [FAST三传感器录包](fast_livo2_recording.md)：独立 `fast_livo_record` 会话复用本管理器及设备资源锁。自行启动的设备随录包清理；接入已有 `fast_livo_live` 预览时仅清理录包进程，归档来源会话状态与日志。只读Foxglove Bridge是可选显示组件，不启动公共TF或控制。`RANGER_CAPTURE_SESSION_ROOT`仅用于明确的会话根目录覆盖；隔离合成测试仍同时指定独立ROS domain。
 
 ## 1. 定位与轮速如何按采样时刻组合
 

@@ -1,0 +1,137 @@
+{
+  "sources": {
+    "fastlio_backend": {
+      "sha": "7baa59f7339ba88ce3b646fe35b23f61031c5d3f",
+      "expected": "7baa59f7339ba88ce3b646fe35b23f61031c5d3f",
+      "status": "",
+      "branch": "main"
+    },
+    "global_lvba": {
+      "sha": "10493a2b0f695e32db83dde49dad843a4826e090",
+      "expected": "10493a2b0f695e32db83dde49dad843a4826e090",
+      "status": "",
+      "branch": "master"
+    },
+    "handheld_mapper": {
+      "sha": "3abbde381e2ae6ec382a9cec8376fc5d47d95545",
+      "expected": "3abbde381e2ae6ec382a9cec8376fc5d47d95545",
+      "status": "",
+      "branch": "main"
+    },
+    "hardware": {
+      "sha": "30507028a7c00c99ac992322507701e0efe72a2a",
+      "expected": "30507028a7c00c99ac992322507701e0efe72a2a",
+      "status": "",
+      "branch": "main"
+    },
+    "holoagent": {
+      "sha": "ef14d3152ca6246d8ae64920694c6c74581d246c",
+      "expected": "ef14d3152ca6246d8ae64920694c6c74581d246c",
+      "status": "",
+      "branch": "main"
+    },
+    "longxiaoze": {
+      "sha": "6130a580e43bb9c3763477dffc70b6a9a148aa4c",
+      "expected": "6130a580e43bb9c3763477dffc70b6a9a148aa4c",
+      "status": "",
+      "branch": "main"
+    },
+    "official": {
+      "sha": "0d2c0346107b75b59934975adec9a6eeeb913c64",
+      "expected": "0d2c0346107b75b59934975adec9a6eeeb913c64",
+      "status": "",
+      "branch": "main"
+    },
+    "openflex": {
+      "sha": "0e891ff05dc562868d84716933bb68fdc74476f4",
+      "expected": "0e891ff05dc562868d84716933bb68fdc74476f4",
+      "status": "",
+      "branch": "v1.0_basic"
+    },
+    "openflex_docs": {
+      "sha": "980592bd06c355730e6867e79cb77bf6c86d91a5",
+      "expected": "980592bd06c355730e6867e79cb77bf6c86d91a5",
+      "status": "",
+      "branch": "v1.0_basic"
+    },
+    "ros2_frontend": {
+      "sha": "837b7bbc1431cb04cf936528e52c83c835efba8e",
+      "expected": "837b7bbc1431cb04cf936528e52c83c835efba8e",
+      "status": "M CMakeLists.txt\n M include/LIVMapper.h\n M include/preprocess.h\n M include/vio.h\n M package.xml\n M src/LIVMapper.cpp\n M src/main.cpp\n M src/preprocess.cpp\n M src/vio.cpp\n?? include/ranger_input_guard.h\n?? src/ranger_livo_checks.cpp\n?? src/ranger_livo_replay.cpp",
+      "branch": "humble"
+    },
+    "rpg_vikit": {
+      "sha": "4b7abc838f5d2ca9137f70f122eaaeff9eaf0f50",
+      "expected": "4b7abc838f5d2ca9137f70f122eaaeff9eaf0f50",
+      "status": "",
+      "branch": "main"
+    },
+    "sc_fast_livo2": {
+      "sha": "f39e3d0008af7cbd838b05ccfbad794c66161596",
+      "expected": "f39e3d0008af7cbd838b05ccfbad794c66161596",
+      "status": "",
+      "branch": "main"
+    },
+    "sophus": {
+      "sha": "de0f8d3d92bf776271e16de56d1803940ebccab9",
+      "expected": "de0f8d3d92bf776271e16de56d1803940ebccab9",
+      "status": "",
+      "branch": "HEAD"
+    },
+    "gtsam": {
+      "sha": "4f66a491ffc83cf092d0d818b11dc35135521612",
+      "expected": "4f66a491ffc83cf092d0d818b11dc35135521612",
+      "status": "",
+      "branch": "HEAD"
+    },
+    "small_gicp": {
+      "sha": "fa0cfc983417c044b6036f71dfa448038bb9c820",
+      "expected": "fa0cfc983417c044b6036f71dfa448038bb9c820",
+      "status": "",
+      "branch": "HEAD"
+    }
+  },
+  "builds": {
+    "gtsam": {
+      "system_eigen_header_path": true,
+      "native_avx_fast_math": false,
+      "explicit_eigen_definitions": [],
+      "compile_commands_sha256": "5a9b9bde2439f373d4ef993c9769db5f432361e3e5530c3e80ad1817cc846eba"
+    },
+    "small_gicp": {
+      "system_eigen_header_path": true,
+      "native_avx_fast_math": false,
+      "explicit_eigen_definitions": [],
+      "compile_commands_sha256": "f3ad8cc4815a4e7aa3713fc6de3292439ca58e66cb44c81506c173817000ae87"
+    },
+    "backend": {
+      "system_eigen_header_path": true,
+      "native_avx_fast_math": false,
+      "explicit_eigen_definitions": [],
+      "compile_commands_sha256": "a1288c15a054d56522dda8d09314a16937d054c1da07ebe667fc708914b37c9d"
+    }
+  },
+  "runtime": {
+    "gtsam": "",
+    "small_gicp": "",
+    "ldd": "linux-vdso.so.1 (0x00007ffc02dc9000)\n\tlibdiagnostic_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/libdiagnostic_msgs__rosidl_typesupport_cpp.so (0x0000750773696000)\n\tlibranger_backend_core.so => not found\n\tlibranger_fast_livo_backend__rosidl_typesupport_cpp.so => not found\n\tlibrclcpp.so => /opt/ros/humble/lib/librclcpp.so (0x000075077347e000)\n\tlibnav_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_cpp.so (0x0000750773476000)\n\tlibsensor_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_cpp.so (0x0000750773469000)\n\tliblibstatistics_collector.so => /opt/ros/humble/lib/liblibstatistics_collector.so (0x0000750773462000)\n\tlibrcl.so => /opt/ros/humble/lib/librcl.so (0x0000750773424000)\n\tlibstatistics_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/libstatistics_msgs__rosidl_typesupport_cpp.so (0x000075077341f000)\n\tlibtracetools.so => /opt/ros/humble/lib/libtracetools.so (0x000075077341a000)\n\tlibrmw.so => /opt/ros/humble/lib/librmw.so (0x000075077340e000)\n\tlibrcutils.so => /opt/ros/humble/lib/librcutils.so (0x00007507733f4000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x0000750773000000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x000075077330d000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007507732ed000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x0000750772c00000)\n\tlibrosidl_typesupport_cpp.so => /opt/ros/humble/lib/librosidl_typesupport_cpp.so (0x00007507732e7000)\n\tlibrcl_yaml_param_parser.so => /opt/ros/humble/lib/librcl_yaml_param_parser.so (0x00007507732d9000)\n\tlibrosgraph_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/librosgraph_msgs__rosidl_typesupport_cpp.so (0x00007507732d3000)\n\tlibrmw_implementation.so => /opt/ros/humble/lib/librmw_implementation.so (0x00007507732c6000)\n\tlibament_index_cpp.so => /opt/ros/humble/lib/libament_index_cpp.so (0x00007507732bb000)\n\tlibrcl_logging_interface.so => /opt/ros/humble/lib/librcl_logging_interface.so (0x00007507732b6000)\n\tlibrcl_interfaces__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_cpp.so (0x00007507732ab000)\n\tlibrcpputils.so => /opt/ros/humble/lib/librcpputils.so (0x000075077329b000)\n\t/lib64/ld-linux-x86-64.so.2 (0x0000750773750000)\n\tlibrcl_logging_spdlog.so => /opt/ros/humble/lib/librcl_logging_spdlog.so (0x0000750773293000)\n\tlibrcl_interfaces__rosidl_typesupport_c.so => /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_c.so (0x000075077328a000)\n\tlibrcl_interfaces__rosidl_generator_c.so => /opt/ros/humble/lib/librcl_interfaces__rosidl_generator_c.so (0x000075077326e000)\n\tlibrosidl_runtime_c.so => /opt/ros/humble/lib/librosidl_runtime_c.so (0x0000750773263000)\n\tlibyaml.so => /opt/ros/humble/lib/libyaml.so (0x000075077323f000)\n\tlibspdlog.so.1 => /lib/x86_64-linux-gnu/libspdlog.so.1 (0x0000750772f85000)\n\tlibrosidl_typesupport_c.so => /opt/ros/humble/lib/librosidl_typesupport_c.so (0x0000750773239000)\n\tlibbuiltin_interfaces__rosidl_generator_c.so => /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_c.so (0x0000750773234000)\n\tlibfmt.so.8 => /lib/x86_64-linux-gnu/libfmt.so.8 (0x0000750772f64000)"
+  },
+  "passed": false,
+  "gtsam_options": {
+    "GTSAM_USE_SYSTEM_EIGEN": "ON",
+    "GTSAM_BUILD_WITH_MARCH_NATIVE": "OFF",
+    "GTSAM_BUILD_UNSTABLE": "OFF",
+    "GTSAM_BUILD_PYTHON": "OFF",
+    "GTSAM_INSTALL_MATLAB_TOOLBOX": "OFF",
+    "GTSAM_WITH_EIGEN_MKL": "OFF"
+  },
+  "gtsam_tag": "4.2",
+  "gtsam_tags_at_commit": [
+    "4.2",
+    "4.2.0"
+  ],
+  "gtsam_display_prerelease": "a9",
+  "eigen": "3.4.0-2ubuntu2",
+  "pcl": "1.12.1+dfsg-3build1",
+  "abi_evidence_scope": "Compile commands/headers/macros and loaded paths checked; Pose3/PCL interoperability exercised by C++ tests. Distro PCL original build flags are not installed, so this is not a universal ABI proof."
+}

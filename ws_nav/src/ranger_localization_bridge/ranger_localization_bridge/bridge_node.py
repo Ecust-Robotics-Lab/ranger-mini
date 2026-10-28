@@ -44,6 +44,9 @@ class LocalizationBridge(Node):
         self.innov_yaw_th = math.radians(float(d('innovation_yaw_th_deg', 20.0).value))
         self.innov_interval = float(d('innovation_interval_s', 0.5).value)
         self.innov_fail_limit = int(d('innovation_fail_limit', 3).value)
+        self.latch_on_innovation_failure = bool(d('latch_on_innovation_failure', False).value)
+        self._innovation_latched = False
+        self._last_checked_ns = None
         for value in [self.tf_max_age, self.odom_max_age, self.heartbeat_max_age,
                       self.innov_t_th, self.innov_speed_th, self.innov_yaw_th,
                       self.innov_interval, self.innov_fail_limit]:
@@ -88,6 +91,7 @@ class LocalizationBridge(Node):
         self._history.clear()
         self._innov_fails = 0
         self._innov_last_err = None
+        self._last_checked_ns = None
 
     def on_estimate(self, msg):
         now = self.now_s()
@@ -145,6 +149,9 @@ class LocalizationBridge(Node):
         self._health_tick()
 
     def _align_latest(self, now):
+        if self._innovation_latched:
+            self.alignment_reason = 'innovation failure latched; restart the explicit alignment session'
+            return
         sample = self.sample
         if sample is None or sample.state != sample.VALID:
             return
@@ -154,6 +161,8 @@ class LocalizationBridge(Node):
         # Heartbeats of the same measurement do not recompute the correction,
         # append innovation samples or clear failed innovation checks.
         if self._last_aligned_ns is not None and ns <= self._last_aligned_ns:
+            return
+        if self._last_checked_ns is not None and ns <= self._last_checked_ns:
             return
         odom_at_loc, reason = self.odom_history.lookup(ns)
         self.alignment_reason = reason
@@ -168,13 +177,21 @@ class LocalizationBridge(Node):
         p, q = sample.pose.position, sample.pose.orientation
         loc = SE3((p.x, p.y, p.z), (q.x, q.y, q.z, q.w))
         ok, err = self._innovation(ns*1e-9, loc, odom_at_loc)
+        self._last_checked_ns = ns
         self._innov_fails = 0 if ok else self._innov_fails + 1
         self._innov_last_err = err
+        if not ok:
+            # A rejected candidate must never replace the accepted correction or
+            # become the reference for validating subsequent candidates.
+            self._innovation_latched = self.latch_on_innovation_failure
+            self.alignment_reason = 'innovation rejected: ' + str(err)
+            return
         self._history.append((ns*1e-9, loc, odom_at_loc))
         self._map_to_odom = loc * odom_at_loc.inverse()
         self._last_aligned_ns = ns
     def _publish_correction(self, stamp, now):
-        if (self._map_to_odom is not None and self._last_aligned_ns is not None and
+        if (not self._innovation_latched and self._innov_fails < self.innov_fail_limit and
+                self._map_to_odom is not None and self._last_aligned_ns is not None and
                 self.sample is not None and self.sample.state == self.sample.VALID and
                 fresh(now, self._last_aligned_ns*1e-9, self.tf_max_age) and
                 fresh(now, self.received, self.heartbeat_max_age) and
@@ -216,7 +233,8 @@ class LocalizationBridge(Node):
     def _health_tick(self):
         ready, checks = readiness(self.now_s(), self.sample, self.received,
             self._last_odom_stamp, self.tf_max_age, self.odom_max_age,
-            self.heartbeat_max_age, self._innov_fails < self.innov_fail_limit)
+            self.heartbeat_max_age, self._innov_fails < self.innov_fail_limit and not self._innovation_latched)
+        checks['innovation_unlocked'] = not self._innovation_latched
         checks['time_aligned'] = self._last_aligned_ns is not None and fresh(
             self.now_s(), self._last_aligned_ns*1e-9, self.tf_max_age)
         ready = ready and checks['time_aligned']

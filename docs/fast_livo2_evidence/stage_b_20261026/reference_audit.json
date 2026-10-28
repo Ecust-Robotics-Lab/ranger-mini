@@ -1,0 +1,99 @@
+{
+  "review_scope": "Targeted source and license review, not a claim of full audits or integrated solvers",
+  "repositories": [
+    {
+      "name": "SimplePGO",
+      "sha": "7baa59f7339ba88ce3b646fe35b23f61031c5d3f",
+      "branch": "main",
+      "license": "pgo MIT text retained",
+      "files": [
+        "pgo/src/pgos/simple_pgo.cpp",
+        "pgo/src/pgo_node.cpp",
+        "localizer/src/localizers/icp_localizer.cpp"
+      ],
+      "use": "Independent implementation of keyframe/relative odometry/submap/Pose3 organization; ROS outer node replaced"
+    },
+    {
+      "name": "KISS-Matcher",
+      "sha": "8b58b118e00c7a5a22448741f8d956d638a44ae2",
+      "branch": "main",
+      "license": "root MIT observed",
+      "files": [
+        "cpp/kiss_matcher/core/kiss_matcher/KISSMatcher.hpp",
+        "ros/include/slam/loop_closure.h",
+        "ros/src/slam/loop_closure.cpp",
+        "cpp/kiss_matcher/CMakeLists.txt"
+      ],
+      "findings": [
+        "Matcher solve and inlier API separates geometric registration from candidate selection",
+        "coarse-to-fine result composes fine.pose * coarse_alignment",
+        "SAM includes independent candidate and subkeyframe organization; not imported"
+      ],
+      "integrated": false
+    },
+    {
+      "name": "small_gicp",
+      "sha": "fa0cfc983417c044b6036f71dfa448038bb9c820",
+      "branch": "DETACHED locally",
+      "license": "MIT retained",
+      "files": [
+        "include/small_gicp/registration/registration_helper.hpp",
+        "include/small_gicp/registration/registration_result.hpp",
+        "src/small_gicp/registration/registration_helper.cpp",
+        "CMakeLists.txt"
+      ],
+      "findings": [
+        "align(target, source, initial) returns TOTAL T_target_source",
+        "result includes converged, num_inliers, H, b and error",
+        "system Eigen and non-native build verified",
+        "raw H is diagnostic, not calibrated covariance"
+      ],
+      "integrated": true
+    },
+    {
+      "name": "SC-A-LOAM",
+      "sha": "321cb4b07b7815c114237ce5d87014d2e46b972c",
+      "branch": "main",
+      "license": "package.xml says BSD; no root LICENSE found in inspected tree; component audit still needed before reuse",
+      "files": [
+        "include/scancontext/Scancontext.h",
+        "src/laserPosegraphOptimization.cpp"
+      ],
+      "findings": [
+        "detectLoopClosureID returns candidate index and relative yaw",
+        "doICPVirtualRelative separately validates candidate geometry"
+      ],
+      "integrated": false
+    },
+    {
+      "name": "STD",
+      "sha": "6e5903cfa2aaed5ca3c9e7d21424eebcca7655bb",
+      "branch": "master",
+      "license": "README GPLv2 plus personal/academic and commercial-contact wording; package.xml TODO",
+      "files": [
+        "include/STDesc.h",
+        "README.md",
+        "package.xml"
+      ],
+      "findings": [
+        "SearchLoop and candidate_selector are retrieval interfaces; descriptor outputs still require geometric verification"
+      ],
+      "integrated": false
+    },
+    {
+      "name": "iBTC",
+      "sha": "9f3bf49e26ff254d28043e8e5d404f3348da8ef2",
+      "branch": "main",
+      "license": "README GPLv2; iBTC/package.xml TODO",
+      "files": [
+        "iBTC/include/ibtc.h",
+        "README.md",
+        "iBTC/package.xml"
+      ],
+      "findings": [
+        "Future descriptor reference only; no detector performance ranking or reliability claim"
+      ],
+      "integrated": false
+    }
+  ]
+}

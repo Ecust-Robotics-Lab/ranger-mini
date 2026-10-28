@@ -1,0 +1,8 @@
+# New absolute directory; existing destinations are never overwritten.
+string destination
+---
+bool success
+string reason
+string session_id
+uint64 graph_version
+string manifest_path

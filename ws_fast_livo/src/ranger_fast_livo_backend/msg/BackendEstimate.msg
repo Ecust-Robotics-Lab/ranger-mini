@@ -1,0 +1,19 @@
+# T_map_imu at the original sampling time. No TF or controller velocity.
+std_msgs/Header header
+string imu_frame
+geometry_msgs/Pose pose
+bool pose_valid
+uint8 INITIALIZING=0
+uint8 VALID=1
+uint8 DEGRADED=2
+uint8 LOST=3
+uint8 ERROR=4
+uint8 state
+string reason
+string session_id
+uint64 graph_version
+uint64 scan_id
+uint64 reference_keyframe_id
+uint64 loop_event_id
+bool loop_accepted
+bool optimization_committed

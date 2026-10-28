@@ -3,3 +3,11 @@ docs/architecture_evidence/batch2_20261019/**/*.log -whitespace
 docs/architecture_evidence/batch2_20261019/**/*.txt -whitespace
 docs/architecture_evidence/batch3_20261020/**/*.log -whitespace
 docs/architecture_evidence/batch3_20261020/**/*.txt -whitespace
+docs/fast_livo2_evidence/**/*.log -whitespace
+docs/fast_livo2_evidence/**/*.txt -whitespace
+docs/fast_livo2_evidence/**/*.diff -whitespace
+patches/fast_livo2_stage_a.patch -whitespace
+docs/consolidation_evidence/**/*.log -whitespace
+docs/consolidation_evidence/**/*.txt -whitespace
+# Retain the upstream license text verbatim, including its original whitespace.
+ws_fast_livo/src/ranger_fast_livo_backend/third_party/GTSAM_LICENSE.txt -whitespace

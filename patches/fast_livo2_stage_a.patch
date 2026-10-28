@@ -1,0 +1,506 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index af27e8a..8004f3b 100755
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -31,8 +31,8 @@ if(CMAKE_SYSTEM_PROCESSOR MATCHES "^(arm|aarch64|ARM|AARCH64)")
+   add_definitions(-DARM_ARCH)
+ else()
+   # x86-64 (Intel/AMD) optimizations
+-  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -march=native -mtune=native -funroll-loops") #-flto
+-  message(STATUS "Using general x86 optimizations: -O3 -march=native -mtune=native -funroll-loops") 
++  set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3 -funroll-loops") #-flto
++  message(STATUS "Using portable x86 optimizations: -O3 -funroll-loops")
+   add_definitions(-DX86_ARCH)
+ endif()
+ 
+@@ -76,6 +76,7 @@ else()
+ endif()
+ 
+ # Find ament and required dependencies
++find_package(rosbag2_cpp REQUIRED)
+ find_package(ament_cmake REQUIRED)
+ find_package(rclcpp REQUIRED)
+ find_package(rclpy REQUIRED)
+@@ -83,12 +84,13 @@ find_package(geometry_msgs REQUIRED)
+ find_package(nav_msgs REQUIRED)
+ find_package(sensor_msgs REQUIRED)
+ find_package(visualization_msgs REQUIRED)
+-find_package(pcl_ros REQUIRED)
++
+ find_package(pcl_conversions REQUIRED)
+ find_package(tf2_ros REQUIRED)
++find_package(tf2_geometry_msgs REQUIRED)
+ find_package(livox_ros_driver2 REQUIRED)
+ find_package(vikit_common REQUIRED)
+-find_package(vikit_ros REQUIRED)
++
+ find_package(cv_bridge REQUIRED)
+ find_package(image_transport REQUIRED)
+ find_package(Eigen3 REQUIRED)
+@@ -105,7 +107,6 @@ include_directories(
+   ${OpenCV_INCLUDE_DIRS}
+   ${Sophus_INCLUDE_DIRS}
+   ${vikit_common_INCLUDE_DIRS}
+-  ${vikit_ros_INCLUDE_DIRS}
+   include
+ )
+ 
+@@ -118,11 +119,10 @@ set(dependencies
+   visualization_msgs
+   cv_bridge
+   vikit_common
+-  vikit_ros
+   image_transport
+-  pcl_ros
+   pcl_conversions
+   tf2_ros
++  tf2_geometry_msgs
+   livox_ros_driver2
+ )
+ 
+@@ -148,12 +148,11 @@ ament_target_dependencies(imu_proc ${dependencies})
+ ament_target_dependencies(laser_mapping ${dependencies})
+ 
+ # linking libraries or executables to public dependencies
+-target_link_libraries(laser_mapping 
+-    ${CMAKE_SOURCE_DIR}/../../install/vikit_common/lib/libvikit_common.so 
+-    ${CMAKE_SOURCE_DIR}/../../install/vikit_ros/lib/libvikit_ros.so
++target_link_libraries(laser_mapping Sophus::Sophus
++    ${vikit_common_LIBRARIES}
+     ${COMMON_DEPENDENCIES}
+ )
+-target_link_libraries(vio ${COMMON_DEPENDENCIES})
++target_link_libraries(vio ${vikit_common_LIBRARIES} Sophus::Sophus ${COMMON_DEPENDENCIES})
+ target_link_libraries(lio utils ${COMMON_DEPENDENCIES})
+ target_link_libraries(pre ${COMMON_DEPENDENCIES})
+ target_link_libraries(imu_proc ${COMMON_DEPENDENCIES})
+@@ -181,9 +180,17 @@ if(mimalloc_FOUND)
+   target_link_libraries(fastlivo_mapping mimalloc)
+ endif()
+ 
++add_executable(ranger_livo_replay src/ranger_livo_replay.cpp)
++ament_target_dependencies(ranger_livo_replay ${dependencies} rosbag2_cpp)
++target_link_libraries(ranger_livo_replay laser_mapping vio lio pre imu_proc ${PCL_LIBRARIES} ${OpenCV_LIBRARIES} Sophus::Sophus ${Boost_LIBRARIES})
++
++add_executable(ranger_livo_checks src/ranger_livo_checks.cpp)
++ament_target_dependencies(ranger_livo_checks ${dependencies})
++target_link_libraries(ranger_livo_checks pre ${vikit_common_LIBRARIES} Sophus::Sophus ${PCL_LIBRARIES} ${OpenCV_LIBRARIES})
++
+ # Install the executable
+ install(TARGETS
+-  fastlivo_mapping
++  fastlivo_mapping ranger_livo_replay ranger_livo_checks
+   DESTINATION lib/${PROJECT_NAME}
+ )
+ 
+@@ -199,9 +206,9 @@ ament_export_dependencies(
+   geometry_msgs
+   nav_msgs
+   sensor_msgs
+-  pcl_ros
+   pcl_conversions
+   tf2_ros
++  tf2_geometry_msgs
+   livox_ros_driver2
+   Eigen3
+   PCL
+diff --git a/include/LIVMapper.h b/include/LIVMapper.h
+index 7477e2f..a1b9adc 100644
+--- a/include/LIVMapper.h
++++ b/include/LIVMapper.h
+@@ -25,7 +25,10 @@ which is included as part of this source code package.
+ #include <tf2_ros/transform_broadcaster.h>
+ #include <geometry_msgs/msg/transform_stamped.hpp>
+ #include <nav_msgs/msg/path.hpp>
+-#include <vikit/camera_loader.h>
++
++
++
++#include "ranger_input_guard.h"
+ 
+ class LIVMapper
+ {
+@@ -40,6 +43,15 @@ public:
+   void handleFirstFrame();
+   void stateEstimationAndMapping();
+   void handleVIO();
++  void publishBackendFrame();
++  RangerInputGuard ranger_input_guard;
++  PointCloudXYZI backend_deskewed_lidar;
++  double backend_deskew_time = -1;
++  nav_msgs::msg::Odometry backend_last_odom;
++  sensor_msgs::msg::PointCloud2 backend_last_cloud;
++  rclcpp::Publisher<sensor_msgs::msg::PointCloud2>::SharedPtr backend_cloud_pub;
++  rclcpp::Publisher<nav_msgs::msg::Odometry>::SharedPtr backend_odom_pub;
++  bool publish_native_tf = false;
+   void handleLIO();
+   void savePCD();
+   void processImu();
+diff --git a/include/preprocess.h b/include/preprocess.h
+index bb550cf..f793b9e 100755
+--- a/include/preprocess.h
++++ b/include/preprocess.h
+@@ -172,6 +172,7 @@ public:
+   std::shared_ptr<rclcpp::Publisher<sensor_msgs::msg::PointCloud2>> pub_corn;
+ 
+ private:
++  void mid360_pc2_handler(const sensor_msgs::msg::PointCloud2::ConstSharedPtr &msg);
+   void avia_handler(const livox_ros_driver2::msg::CustomMsg::SharedPtr &msg);
+   void oust64_handler(const sensor_msgs::msg::PointCloud2::ConstSharedPtr &msg);
+   void velodyne_handler(const sensor_msgs::msg::PointCloud2::ConstSharedPtr &msg);
+diff --git a/include/vio.h b/include/vio.h
+index 21f2d9d..4a5072c 100755
+--- a/include/vio.h
++++ b/include/vio.h
+@@ -83,6 +83,7 @@ public:
+ class VIOManager
+ {
+ public:
++  size_t ranger_solver_updates = 0;
+   int grid_size;
+   vk::AbstractCamera *cam;
+   vk::PinholeCamera *pinhole_cam;
+diff --git a/package.xml b/package.xml
+index f38b1f1..3618a70 100755
+--- a/package.xml
++++ b/package.xml
+@@ -12,12 +12,14 @@
+ 
+   <maintainer email="dev@livoxtech.com">claydergc</maintainer>
+ 
+-  <license>BSD</license>
++  <license>GPL-2.0</license>
+ 
+   <author email="zhangji@cmu.edu">Ji Zhang</author>
+   
+   <buildtool_depend>ament_cmake</buildtool_depend>
+ 
++  <depend>tf2_geometry_msgs</depend>
++  <depend>rosbag2_cpp</depend>
+   <build_depend>rclcpp</build_depend>
+   <build_depend>rclpy</build_depend>
+   <build_depend>sensor_msgs</build_depend>
+@@ -26,11 +28,9 @@
+   <build_depend>nav_msgs</build_depend>
+   <build_depend>std_msgs</build_depend>
+   <build_depend>tf2_ros</build_depend>
+-  <build_depend>pcl_ros</build_depend>
+   <build_depend>pcl_conversions</build_depend>
+   <build_depend>livox_ros_driver2</build_depend>
+   <build_depend>vikit_common</build_depend>
+-  <build_depend>vikit_ros</build_depend>
+   <build_depend>cv_bridge</build_depend>
+   <build_depend>image_transport</build_depend>
+   <build_depend>libopencv-dev</build_depend>
+diff --git a/src/LIVMapper.cpp b/src/LIVMapper.cpp
+index d67d140..20a7ed1 100755
+--- a/src/LIVMapper.cpp
++++ b/src/LIVMapper.cpp
+@@ -11,7 +11,7 @@ which is included as part of this source code package.
+ */
+ 
+ #include "LIVMapper.h"
+-#include <vikit/camera_loader.h>
++#include <vikit/pinhole_camera.h>
+ 
+ using namespace Sophus;
+ LIVMapper::LIVMapper(rclcpp::Node::SharedPtr &node, std::string node_name)
+@@ -52,6 +52,8 @@ LIVMapper::~LIVMapper() {}
+ 
+ void LIVMapper::readParameters(rclcpp::Node::SharedPtr &node)
+ {
++  publish_native_tf = this->node->declare_parameter<bool>("publish.native_tf", false);
++  this->node->declare_parameter<bool>("common.require_livo", true);
+   // declare parameters
+   this->node->declare_parameter<std::string>("common.lid_topic", "/livox/lidar");
+   this->node->declare_parameter<std::string>("common.imu_topic", "/livox/imu");
+@@ -191,7 +193,16 @@ void LIVMapper::initializeComponents(rclcpp::Node::SharedPtr &node)
+   voxelmap_manager->extT_ << VEC_FROM_ARRAY(extrinT);
+   voxelmap_manager->extR_ << MAT_FROM_ARRAY(extrinR);
+ 
+-  if (!vk::camera_loader::loadFromRosNs(this->node, "parameter_blackboard", vio_manager->cam)) throw std::runtime_error("Camera model not correctly specified.");
++  // Local parameters: one atomic configuration, including the real fifth distortion term.
++  auto dp = [this](const char *name) { return this->node->declare_parameter<double>(name); };
++  int width = this->node->declare_parameter<int>("camera.width");
++  int height = this->node->declare_parameter<int>("camera.height");
++  double scale = this->node->declare_parameter<double>("camera.scale", 0.5);
++  double fx=dp("camera.fx"), fy=dp("camera.fy"), cx=dp("camera.cx"), cy=dp("camera.cy");
++  double k1=dp("camera.k1"), k2=dp("camera.k2"), p1=dp("camera.p1"), p2=dp("camera.p2"), k3=dp("camera.k3");
++  if(width <= 0 || height <= 0 || fx <= 0 || fy <= 0 || scale <= 0 || scale > 1)
++    throw std::runtime_error("Invalid local camera calibration");
++  vio_manager->cam = new vk::PinholeCamera(width, height, scale, fx, fy, cx, cy, k1, k2, p1, p2, k3);
+ 
+   vio_manager->grid_size = grid_size;
+   vio_manager->patch_size = patch_size;
+@@ -226,6 +237,8 @@ void LIVMapper::initializeComponents(rclcpp::Node::SharedPtr &node)
+   if (!exposure_estimate_en) p_imu->disable_exposure_est();
+ 
+   slam_mode_ = (img_en && lidar_en) ? LIVO : imu_en ? ONLY_LIO : ONLY_LO;
++  if (this->node->get_parameter("common.require_livo").as_bool() && (slam_mode_ != LIVO || !imu_en))
++    throw std::runtime_error("LiDAR-IMU-camera fusion is mandatory");
+ }
+ 
+ void LIVMapper::initializeFiles() 
+@@ -258,13 +271,15 @@ void LIVMapper::initializeFiles()
+ void LIVMapper::initializeSubscribersAndPublishers(rclcpp::Node::SharedPtr &node, image_transport::ImageTransport &it_)
+ {
+   image_transport::ImageTransport it(this->node);
++  backend_cloud_pub = this->node->create_publisher<sensor_msgs::msg::PointCloud2>("/fast_livo/deskewed_imu", 10);
++  backend_odom_pub = this->node->create_publisher<nav_msgs::msg::Odometry>("/fast_livo/odometry", 10);
+   if (p_pre->lidar_type == AVIA) {
+-    sub_pcl = this->node->create_subscription<livox_ros_driver2::msg::CustomMsg>(lid_topic, 200000, std::bind(&LIVMapper::livox_pcl_cbk, this, std::placeholders::_1));
++    sub_pcl = this->node->create_subscription<livox_ros_driver2::msg::CustomMsg>(lid_topic, rclcpp::QoS(20).reliable(), std::bind(&LIVMapper::livox_pcl_cbk, this, std::placeholders::_1));
+   } else {
+-    sub_pcl = this->node->create_subscription<sensor_msgs::msg::PointCloud2>(lid_topic, 200000, std::bind(&LIVMapper::standard_pcl_cbk, this, std::placeholders::_1));
++    sub_pcl = this->node->create_subscription<sensor_msgs::msg::PointCloud2>(lid_topic, rclcpp::QoS(20).reliable(), std::bind(&LIVMapper::standard_pcl_cbk, this, std::placeholders::_1));
+   }
+-  sub_imu = this->node->create_subscription<sensor_msgs::msg::Imu>(imu_topic, 200000, std::bind(&LIVMapper::imu_cbk, this, std::placeholders::_1));
+-  sub_img = this->node->create_subscription<sensor_msgs::msg::Image>(img_topic, 200000, std::bind(&LIVMapper::img_cbk, this, std::placeholders::_1));
++  sub_imu = this->node->create_subscription<sensor_msgs::msg::Imu>(imu_topic, rclcpp::QoS(1000).reliable(), std::bind(&LIVMapper::imu_cbk, this, std::placeholders::_1));
++  sub_img = this->node->create_subscription<sensor_msgs::msg::Image>(img_topic, rclcpp::QoS(10).reliable(), std::bind(&LIVMapper::img_cbk, this, std::placeholders::_1));
+   
+   pubLaserCloudFullRes = this->node->create_publisher<sensor_msgs::msg::PointCloud2>("/cloud_registered", 100);
+   pubNormal = this->node->create_publisher<visualization_msgs::msg::MarkerArray>("/visualization_marker", 100);
+@@ -319,6 +334,12 @@ void LIVMapper::processImu()
+   // double t0 = omp_get_wtime();
+ 
+   p_imu->Process2(LidarMeasures, _state, feats_undistort);
++  // Process2 clears feats_undistort on the following VIO propagation. Retain
++  // exactly this interval until its visual update, in its LiDAR end frame.
++  if (LidarMeasures.lio_vio_flg == LIO && !p_imu->imu_need_init) {
++    backend_deskewed_lidar = *feats_undistort;
++    backend_deskew_time = LidarMeasures.last_lio_update_time;
++  }
+ 
+   if (gravity_align_en) gravityAlignment();
+ 
+@@ -393,6 +414,7 @@ void LIVMapper::handleVIO()
+   //   visual_sub_map->push_back(temp_map);
+   // }
+ 
++  publishBackendFrame();
+   publish_frame_world(pubLaserCloudFullRes, vio_manager);
+   publish_img_rgb(pubImage, vio_manager);
+ 
+@@ -780,6 +802,7 @@ void LIVMapper::RGBpointBodyLidarToIMU(PointType const *const pi, PointType *con
+ void LIVMapper::standard_pcl_cbk(const sensor_msgs::msg::PointCloud2::ConstSharedPtr &msg)
+ {
+   if (!lidar_en) return;
++  ranger_input_guard.check(0,msg->header.stamp.sec,msg->header.stamp.nanosec,lid_raw_data_buffer.size());
+   mtx_buffer.lock();
+ 
+   double cur_head_time = stamp2Sec(msg->header.stamp) + lidar_time_offset;
+@@ -846,6 +869,7 @@ void LIVMapper::livox_pcl_cbk(const livox_ros_driver2::msg::CustomMsg::ConstShar
+ void LIVMapper::imu_cbk(const sensor_msgs::msg::Imu::ConstSharedPtr &msg_in)
+ {
+   if (!imu_en) return;
++  ranger_input_guard.check(1,msg_in->header.stamp.sec,msg_in->header.stamp.nanosec,imu_buffer.size());
+ 
+   if (last_timestamp_lidar < 0.0) return;
+   RCLCPP_INFO(this->node->get_logger(), "get imu at time: %.6f", stamp2Sec(msg_in->header.stamp));
+@@ -906,6 +930,7 @@ cv::Mat LIVMapper::getImageFromMsg(const sensor_msgs::msg::Image::ConstSharedPtr
+ void LIVMapper::img_cbk(const sensor_msgs::msg::Image::ConstSharedPtr &msg_in)
+ {
+   if (!img_en) return;
++  ranger_input_guard.check(2,msg_in->header.stamp.sec,msg_in->header.stamp.nanosec,img_buffer.size());
+   sensor_msgs::msg::Image::SharedPtr msg(new sensor_msgs::msg::Image(*msg_in));
+   // if ((abs(stamp2Sec(msg->header.stamp) - last_timestamp_img) > 0.2 && last_timestamp_img > 0) || sync_jump_flag)
+   // {
+@@ -1261,7 +1286,7 @@ void LIVMapper::publish_frame_world(const rclcpp::Publisher<sensor_msgs::msg::Po
+   { 
+     pcl::toROSMsg(*pcl_w_wait_pub, laserCloudmsg); 
+   }
+-  laserCloudmsg.header.stamp = this->node->get_clock()->now(); //.fromSec(last_timestamp_lidar);
++  laserCloudmsg.header.stamp = sec2Stamp(LidarMeasures.last_lio_update_time);
+   laserCloudmsg.header.frame_id = "camera_init";
+   pubLaserCloudFullRes->publish(laserCloudmsg);
+ 
+@@ -1414,9 +1439,10 @@ void LIVMapper::publish_odometry(const rclcpp::Publisher<nav_msgs::msg::Odometry
+ {
+   odomAftMapped.header.frame_id = "camera_init";
+   odomAftMapped.child_frame_id = "aft_mapped";
+-  odomAftMapped.header.stamp = this->node->get_clock()->now(); //.ros::Time()fromSec(last_timestamp_lidar);
++  odomAftMapped.header.stamp = sec2Stamp(LidarMeasures.last_lio_update_time);
+   set_posestamp(odomAftMapped.pose.pose);
+ 
++  if (publish_native_tf) {
+   static std::shared_ptr<tf2_ros::TransformBroadcaster> br;
+   br = std::make_shared<tf2_ros::TransformBroadcaster>(this->node);
+   tf2::Transform transform;
+@@ -1428,6 +1454,7 @@ void LIVMapper::publish_odometry(const rclcpp::Publisher<nav_msgs::msg::Odometry
+   q.setZ(geoQuat.z);
+   transform.setRotation(q);
+   br->sendTransform(geometry_msgs::msg::TransformStamped(createTransformStamped(transform, odomAftMapped.header.stamp, "camera_init", "aft_mapped")));
++  }
+   pubOdomAftMapped->publish(odomAftMapped);
+ }
+ 
+@@ -1446,4 +1473,38 @@ void LIVMapper::publish_path(const rclcpp::Publisher<nav_msgs::msg::Path>::Share
+   msg_body_pose.header.frame_id = "camera_init";
+   path.poses.push_back(msg_body_pose);
+   pubPath->publish(path);
+-}
+\ No newline at end of file
++}
++// One full deskewed LIVO interval, in the IMU body at its end (the image update
++// time). Publish only AFTER visual correction; never feed the colored accumulated
++// world cloud to PGO. State is T_local_imu; extrinsics are T_imu_lidar.
++void LIVMapper::publishBackendFrame()
++{
++  if (p_imu->imu_need_init || backend_deskewed_lidar.empty() ||
++      std::abs(backend_deskew_time-LidarMeasures.last_lio_update_time)>1e-6) return;
++  if (!_state.rot_end.allFinite() || !_state.pos_end.allFinite())
++    throw std::runtime_error("Non-finite frontend state");
++  nav_msgs::msg::Odometry odom;
++  odom.header.frame_id = "fast_livo_local";
++  odom.child_frame_id = "fast_livo_imu";
++  odom.header.stamp = sec2Stamp(LidarMeasures.last_lio_update_time);
++  Eigen::Quaterniond q(_state.rot_end);
++  q.normalize();
++  odom.pose.pose.position.x = _state.pos_end.x();
++  odom.pose.pose.position.y = _state.pos_end.y();
++  odom.pose.pose.position.z = _state.pos_end.z();
++  odom.pose.pose.orientation.x = q.x(); odom.pose.pose.orientation.y = q.y();
++  odom.pose.pose.orientation.z = q.z(); odom.pose.pose.orientation.w = q.w();
++  PointCloudXYZI body;
++  body.reserve(backend_deskewed_lidar.size());
++  for (const auto &pt : backend_deskewed_lidar.points) {
++    PointType b = pt;
++    Eigen::Vector3d v = extR * Eigen::Vector3d(pt.x, pt.y, pt.z) + extT;
++    b.x=v.x(); b.y=v.y(); b.z=v.z();
++    body.push_back(b);
++  }
++  sensor_msgs::msg::PointCloud2 cloud;
++  pcl::toROSMsg(body, cloud);
++  cloud.header.stamp = odom.header.stamp; cloud.header.frame_id = odom.child_frame_id;
++  backend_last_odom = odom; backend_last_cloud = cloud;
++  backend_odom_pub->publish(odom); backend_cloud_pub->publish(cloud);
++}
+diff --git a/src/main.cpp b/src/main.cpp
+index 61dd592..a65927d 100755
+--- a/src/main.cpp
++++ b/src/main.cpp
+@@ -5,8 +5,9 @@ int main(int argc, char **argv)
+   rclcpp::init(argc, argv);
+   rclcpp::NodeOptions options;
+   rclcpp::Node::SharedPtr nh;
+-  image_transport::ImageTransport it_(nh);
++
+   LIVMapper mapper(nh, "laserMapping");
++  image_transport::ImageTransport it_(mapper.node);
+   mapper.initializeSubscribersAndPublishers(nh, it_);
+   mapper.run(nh);
+   rclcpp::shutdown();
+diff --git a/src/preprocess.cpp b/src/preprocess.cpp
+index bf0d497..ede4a2d 100755
+--- a/src/preprocess.cpp
++++ b/src/preprocess.cpp
+@@ -11,6 +11,8 @@ which is included as part of this source code package.
+ */
+ 
+ #include "preprocess.h"
++#include <cstring>
++#include <stdexcept>
+ 
+ #define RETURN0 0x00
+ #define RETURN0AND1 0x10
+@@ -61,6 +63,9 @@ void Preprocess::process(const sensor_msgs::msg::PointCloud2::ConstSharedPtr &ms
+ {
+   switch (lidar_type)
+   {
++  case 100: // Ranger Mid-360S native PointCloud2 (absolute timestamp in ns)
++    mid360_pc2_handler(msg);
++    break;
+   case OUST64:
+     oust64_handler(msg);
+     break;
+@@ -1123,4 +1128,38 @@ bool Preprocess::edge_jump_judge(const PointCloudXYZI &pl, vector<orgtype> &type
+   if (d1 > edgea * d2 || (d1 - d2) > edgeb) { return false; }
+ 
+   return true;
+-}
+\ No newline at end of file
++}
++void Preprocess::mid360_pc2_handler(const sensor_msgs::msg::PointCloud2::ConstSharedPtr &msg)
++{
++  pl_surf.clear();
++  if (msg->is_bigendian || msg->row_step < msg->width * uint64_t(msg->point_step) ||
++      msg->data.size() < uint64_t(msg->row_step) * msg->height || point_filter_num <= 0)
++    throw std::runtime_error("Invalid Mid360S PointCloud2 layout");
++  auto field = [&](const char *name, uint8_t type, size_t size) {
++    for(const auto &f : msg->fields) if(f.name == name) {
++      if(f.datatype != type || f.count != 1 || f.offset + size > msg->point_step)
++        throw std::runtime_error("Invalid Mid360S point field");
++      return f.offset;
++    }
++    throw std::runtime_error(std::string("Missing Mid360S field: ")+name);
++  };
++  auto ox=field("x",7,4), oy=field("y",7,4), oz=field("z",7,4);
++  auto oi=field("intensity",7,4), ot=field("timestamp",8,8), og=field("tag",2,1);
++  const int64_t base_ns = int64_t(msg->header.stamp.sec)*1000000000LL + msg->header.stamp.nanosec;
++  for(uint32_t row=0; row<msg->height; ++row) for(uint32_t col=0; col<msg->width; ++col) {
++    const auto *raw = msg->data.data()+size_t(row)*msg->row_step+size_t(col)*msg->point_step;
++    float x,y,z,intensity; double ts;
++    std::memcpy(&x,raw+ox,4); std::memcpy(&y,raw+oy,4); std::memcpy(&z,raw+oz,4);
++    std::memcpy(&intensity,raw+oi,4); std::memcpy(&ts,raw+ot,8);
++    double dt_ns=ts-double(base_ns);
++    const uint8_t tag=raw[og]&0x30;
++    if(!std::isfinite(x)||!std::isfinite(y)||!std::isfinite(z)||!std::isfinite(ts)||
++       !std::isfinite(intensity)||dt_ns < 0 || dt_ns > 150000000 ||
++       (tag!=0 && tag!=0x10) || (size_t(row)*msg->width+col)%point_filter_num ||
++       double(x)*x+double(y)*y+double(z)*z <= blind*blind) continue;
++    PointType pt{}; pt.x=x; pt.y=y; pt.z=z; pt.intensity=intensity;
++    pt.curvature=dt_ns*1e-6; // algorithm convention: milliseconds, never epoch ns
++    pl_surf.push_back(pt);
++  }
++  std::stable_sort(pl_surf.begin(),pl_surf.end(),[](const PointType&a,const PointType&b){return a.curvature<b.curvature;});
++}
+diff --git a/src/vio.cpp b/src/vio.cpp
+index 6e14fcf..10c3ab2 100755
+--- a/src/vio.cpp
++++ b/src/vio.cpp
+@@ -36,6 +36,12 @@ void VIOManager::setImuToLidarExtrinsic(const V3D &transl, const M3D &rot)
+ void VIOManager::setLidarToCameraExtrinsic(vector<double> &R, vector<double> &P)
+ {
+   Rcl << MAT_FROM_ARRAY(R);
++  // Archived calibration has six decimal places. Reject invalid rotations;
++  // project only tiny rounding error to SO(3), preserving the source artifact.
++  if ((Rcl.transpose()*Rcl-M3D::Identity()).norm() > 1e-5 || Rcl.determinant() < 0.99)
++    throw std::runtime_error("Invalid camera-to-lidar rotation");
++  Eigen::JacobiSVD<M3D> svd(Rcl, Eigen::ComputeFullU | Eigen::ComputeFullV);
++  Rcl = svd.matrixU()*svd.matrixV().transpose();
+   Pcl << VEC_FROM_ARRAY(P);
+ }
+ 
+@@ -1480,6 +1486,7 @@ void VIOManager::updateStateInverse(cv::Mat img, int level)
+       error += patch_error;
+     }
+ 
++    if (n_meas == 0) break;
+     error = error / n_meas;
+ 
+     compute_jacobian_time += omp_get_wtime() - t1;
+@@ -1500,6 +1507,7 @@ void VIOManager::updateStateInverse(cv::Mat img, int level)
+       auto vec = (*state_propagat) - (*state);
+       G.block<DIM_STATE, 6>(0, 0) = K_1.block<DIM_STATE, 6>(0, 0) * H_T_H.block<6, 6>(0, 0);
+       auto solution = -K_1.block<DIM_STATE, 6>(0, 0) * HTz + vec - G.block<DIM_STATE, 6>(0, 0) * vec.block<6, 1>(0, 0);
++      ++ranger_solver_updates;
+       (*state) += solution;
+       auto &&rot_add = solution.block<3, 1>(0, 0);
+       auto &&t_add = solution.block<3, 1>(3, 0);
+@@ -1634,6 +1642,7 @@ void VIOManager::updateState(cv::Mat img, int level)
+       error += patch_error;
+     }
+ 
++    if (n_meas == 0) break;
+     error = error / n_meas;
+     
+     compute_jacobian_time += omp_get_wtime() - t1;
+@@ -1667,6 +1676,7 @@ void VIOManager::updateState(cv::Mat img, int level)
+       MD(DIM_STATE, 1)
+       solution = -K_1.block<DIM_STATE, 7>(0, 0) * HTz + vec - G.block<DIM_STATE, 7>(0, 0) * vec.block<7, 1>(0, 0);
+ 
++      ++ranger_solver_updates;
+       (*state) += solution;
+       auto &&rot_add = solution.block<3, 1>(0, 0);
+       auto &&t_add = solution.block<3, 1>(3, 0);

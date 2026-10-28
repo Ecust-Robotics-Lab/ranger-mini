@@ -1,0 +1,24 @@
+{
+  "status": "PARTIAL_OFFLINE_TRIAL",
+  "geometric_calibration_accepted": false,
+  "physical_sync_proven": false,
+  "sources": [
+    {
+      "path": "/home/lab307/calibration/camera_intrinsics/results/camera_intrinsics.yaml",
+      "sha256": "466cb1595c4d296f51e6cbe1011ddc1c5ba329b51f7b28053d0faede7ba8926f",
+      "snapshot": "config/fast_livo2/calibration_snapshot/camera_intrinsics.yaml"
+    },
+    {
+      "path": "/home/lab307/calibration/lidar_camera_extrinsics/results/multi_20261021_183657_578407/joint/extrinsics.yaml",
+      "sha256": "3e0953b8577e4d58458c34f7ab198477f0611ac6eff2ec2e8165246f1adf1dc0",
+      "snapshot": "config/fast_livo2/calibration_snapshot/extrinsics.yaml"
+    }
+  ],
+  "T_imu_lidar_source": "config/slam/ranger_mid360s.yaml; inherited nominal sensor geometry, not a new measurement",
+  "T_base_imu": "Not used in frontend baseline; existing runtime value is approximate",
+  "time_offset_seconds": 0.0,
+  "time_offset_reason": "Unverified zero baseline; no automatic 100 ms compensation",
+  "rotation_numeric_normalization": "Six-decimal T_cam_lidar rotation has orthogonality residual 6.37736e-7; runtime SVD projects it to SO(3), rejecting residual above 1e-5. Original artifact unchanged.",
+  "robot": "Ranger Mini V2, confirmed by user 2026-10-26",
+  "motion_bag_available": false
+}

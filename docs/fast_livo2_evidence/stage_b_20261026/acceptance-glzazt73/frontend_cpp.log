@@ -1,0 +1,15 @@
+PASS organized padded unaligned FLOAT64 timestamps and temporal sorting
+PASS big endian rejected
+PASS truncated payload rejected
+PASS wrong timestamp datatype rejected
+PASS missing timestamp rejected
+PASS field exceeds point stride rejected
+PASS invalid row stride rejected
+PASS negative and excessive point times discarded
+PASS nonfinite points and invalid return tags discarded
+scale: 1
+PASS actual five-term camera model agrees with OpenCV at image edges
+PASS sensor clock regression and duplicate rejected
+PASS sensor gap requires a fresh session
+PASS image loss cannot grow lidar queue indefinitely
+13 passed, 0 failed

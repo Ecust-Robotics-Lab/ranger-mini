@@ -1,0 +1,76 @@
+Running main() from /opt/ros/humble/src/gtest_vendor/src/gtest_main.cc
+[==========] Running 21 tests from 8 test suites.
+[----------] Global test environment set-up.
+[----------] 5 tests from Input
+[ RUN      ] Input.StrictIntegerPairingReorderAndDuplicates
+[       OK ] Input.StrictIntegerPairingReorderAndDuplicates (1 ms)
+[ RUN      ] Input.LossCapacityAndClockReset
+[       OK ] Input.LossCapacityAndClockReset (0 ms)
+[ RUN      ] Input.RejectInvalidFieldsAndValues
+[       OK ] Input.RejectInvalidFieldsAndValues (0 ms)
+[ RUN      ] Input.ByteBudgetPreservesOtherPairs
+[       OK ] Input.ByteBudgetPreservesOtherPairs (0 ms)
+[ RUN      ] Input.BoundedDrainDoesNotDiscardMatchedSuccessors
+[       OK ] Input.BoundedDrainDoesNotDiscardMatchedSuccessors (0 ms)
+[----------] 5 tests from Input (1 ms total)
+
+[----------] 1 test from Geometry
+[ RUN      ] Geometry.TransformDirectionsAndIncrementComposition
+[       OK ] Geometry.TransformDirectionsAndIncrementComposition (0 ms)
+[----------] 1 test from Geometry (0 ms total)
+
+[----------] 3 tests from Registration
+[ RUN      ] Registration.SameInputPclGicpAndVgicpTotalTransform
+REGISTRATION_COMPARISON [{"T_target_source":{"xyz":[0.39999985694885254,-0.30000007152557373,0.20000091195106506],"xyzw":[0.055070011916572376,-0.055162709899497245,0.09258950971588624,0.9926487083514851]},"converged":true,"correspondences":600,"elapsed_ms":1.933735009515658,"geometrically_accepted":true,"method":"pcl_icp","native_diagnostics":{},"normalized_plane_hessian_eigen_ratio":0.3121313656620975,"reason":"geometry_valid","rmse_m":1.6669214845659032e-06,"source_overlap":1.0},{"T_target_source":{"xyz":[0.40004093671985785,-0.3000487964744217,0.20014187803602013],"xyzw":[0.055088309972783335,-0.05516212943127727,0.09257875396473063,0.9926487756982766]},"converged":true,"correspondences":600,"elapsed_ms":2.000100997975096,"geometrically_accepted":true,"method":"small_gicp","native_diagnostics":{"H_eigenvalues":[82429.70691393828,88388.98685241779,91122.31373952405,823768.5046226772,930898.538664884,1073993.988051627],"H_finite":true,"covariance_calibrated":false,"error":0.2172877073887775,"iterations":2,"num_inliers":579},"normalized_plane_hessian_eigen_ratio":0.312127027679686,"reason":"geometry_valid","rmse_m":0.00025003373903651047,"source_overlap":1.0},{"T_target_source":{"xyz":[0.39998511062470776,-0.3001119203455309,0.19993774949058596],"xyzw":[0.05505184951893804,-0.055153897634842936,0.09259027136521236,0.9926501816293319]},"converged":true,"correspondences":600,"elapsed_ms":1.8338700174354017,"geometrically_accepted":true,"method":"small_vgicp","native_diagnostics":{"H_eigenvalues":[13061.721378420367,78185.09166685933,85429.16020836598,439258.9116988834,676030.9896174526,921427.3642752451],"H_finite":true,"covariance_calibrated":false,"error":0.6065006215717996,"iterations":1,"num_inliers":431},"normalized_plane_hessian_eigen_ratio":0.31213515038262646,"reason":"geometry_valid","rmse_m":0.0002184447279210252,"source_overlap":1.0}]
+[       OK ] Registration.SameInputPclGicpAndVgicpTotalTransform (6 ms)
+[ RUN      ] Registration.RejectLowOverlapWrongInitialAndDegenerate
+[pcl::IterativeClosestPoint::computeTransformation] Not enough correspondences found. Relax your threshold parameters.
+[pcl::IterativeClosestPoint::computeTransformation] Not enough correspondences found. Relax your threshold parameters.
+[       OK ] Registration.RejectLowOverlapWrongInitialAndDegenerate (1 ms)
+[ RUN      ] Registration.NonfiniteInputAndRepeatedTimingComparison
+TIMING_COMPARISON [{"max_translation_error_m":1.2514704543615378e-06,"median_total_ms":1.6255429945886135,"method":"pcl_icp","p95_total_ms":1.6660580004099756,"points_per_cloud":600,"repetitions":25,"threads":1},{"max_translation_error_m":0.0001499627434159253,"median_total_ms":1.9347330089658499,"method":"small_gicp","p95_total_ms":1.97249001939781,"points_per_cloud":600,"repetitions":25,"threads":1},{"max_translation_error_m":0.0012464223546563152,"median_total_ms":1.878655981272459,"method":"small_vgicp","p95_total_ms":1.901409006677568,"points_per_cloud":600,"repetitions":25,"threads":1}]
+[       OK ] Registration.NonfiniteInputAndRepeatedTimingComparison (137 ms)
+[----------] 3 tests from Registration (144 ms total)
+
+[----------] 1 test from Graph
+[ RUN      ] Graph.Pose3OdomLoopAndRollback
+[       OK ] Graph.Pose3OdomLoopAndRollback (0 ms)
+[----------] 1 test from Graph (0 ms total)
+
+[----------] 1 test from Keyframes
+[ RUN      ] Keyframes.StationaryRotationMinimumIntervalAndResume
+[       OK ] Keyframes.StationaryRotationMinimumIntervalAndResume (25 ms)
+[----------] 1 test from Keyframes (25 ms total)
+
+[----------] 1 test from Candidates
+[ RUN      ] Candidates.PositionTimeIdsHeightAndDescriptorSeparation
+[       OK ] Candidates.PositionTimeIdsHeightAndDescriptorSeparation (0 ms)
+[----------] 1 test from Candidates (0 ms total)
+
+[----------] 7 tests from Backend
+[ RUN      ] Backend.NoSelfScanSubmapSessionIsolationAndPropagation
+[       OK ] Backend.NoSelfScanSubmapSessionIsolationAndPropagation (25 ms)
+[ RUN      ] Backend.SyntheticLoopActuallyRunsRegistrationAndPgo
+[       OK ] Backend.SyntheticLoopActuallyRunsRegistrationAndPgo (48 ms)
+[ RUN      ] Backend.LargeCorrectionRequiresIndependentConsistentObservations
+[       OK ] Backend.LargeCorrectionRequiresIndependentConsistentObservations (100 ms)
+[ RUN      ] Backend.IndependentCandidatesAreNotPositionFilteredAndAmbiguityRejected
+[       OK ] Backend.IndependentCandidatesAreNotPositionFilteredAndAmbiguityRejected (40 ms)
+[ RUN      ] Backend.NoLoopAndRepeatedScanIdRejected
+[       OK ] Backend.NoLoopAndRepeatedScanIdRejected (24 ms)
+[ RUN      ] Backend.StaleSnapshotDependenciesAndBudgetFailure
+[       OK ] Backend.StaleSnapshotDependenciesAndBudgetFailure (18 ms)
+[ RUN      ] Backend.AmbiguityGateIndependentOfSearchRadius
+[       OK ] Backend.AmbiguityGateIndependentOfSearchRadius (46 ms)
+[----------] 7 tests from Backend (301 ms total)
+
+[----------] 2 tests from Archive
+[ RUN      ] Archive.FrozenVersionPerFrameTransformChecksumsAndNoOverwrite
+[       OK ] Archive.FrozenVersionPerFrameTransformChecksumsAndNoOverwrite (18 ms)
+[ RUN      ] Archive.WriteFailureCannotCommitSuccessMarker
+[       OK ] Archive.WriteFailureCannotCommitSuccessMarker (8 ms)
+[----------] 2 tests from Archive (26 ms total)
+
+[----------] Global test environment tear-down
+[==========] 21 tests from 8 test suites ran. (497 ms total)
+[  PASSED  ] 21 tests.

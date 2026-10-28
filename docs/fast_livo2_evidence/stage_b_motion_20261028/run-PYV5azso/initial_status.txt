@@ -1,0 +1,87 @@
+ M .gitattributes
+ M .gitignore
+ M AGENTS.md
+ D ARCHITECTURE_PLAN.md
+ M README.md
+ D config/__pycache__/base_mini_v2.launch.cpython-310.pyc
+ M config/runtime.yaml
+ M docs/00_environment_audit.md
+ M docs/02_base_interface.md
+ M docs/02_ros_motion_test.md
+ M docs/03_mid360_validation.md
+ M docs/04_mapping_report.md
+ M docs/05_localization_interface.md
+ M docs/06_flat_navigation_acceptance.md
+ M docs/HANDOFF.md
+ D docs/INITIALIZATION.md
+ M docs/LIDAR_CONNECTION.md
+ M docs/STATUS.md
+ M docs/architecture_baseline.md
+ M docs/architecture_batch2_report.md
+ M docs/architecture_batch3_report.md
+ M docs/localization_backend_contract.md
+ M docs/managed_sessions.md
+ D scripts/__pycache__/analyze_slam_experiment.cpython-310.pyc
+ D scripts/__pycache__/check_mid360_bag.cpython-310.pyc
+ D scripts/__pycache__/check_slam_map.cpython-310.pyc
+ D scripts/__pycache__/prepare_lightning_deps.cpython-310.pyc
+ D scripts/__pycache__/record_mid360.cpython-310.pyc
+ D scripts/__pycache__/slam_run.cpython-310.pyc
+ D scripts/__pycache__/start_mid360.cpython-310.pyc
+ D tests/__pycache__/test_stage5_bridge.cpython-310.pyc
+ M ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/__pycache__/__init__.cpython-310.pyc
+ D ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/__pycache__/bridge_node.cpython-310.pyc
+ M ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/bridge_node.py
+ M ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/runtime_config.py
+ M ws_nav/src/ranger_localization_bridge/setup.py
+?? calibration/
+?? config/calibration_sources.json
+?? config/fast_livo2/
+?? config/profiles/
+?? docs/03_evidence/driver-5v7_r4c4/
+?? docs/03_evidence/driver-a9w6s6i0/
+?? docs/03_evidence/driver-dhth97g3/
+?? docs/03_evidence/driver-hj360f0f/
+?? docs/03_evidence/driver-nrs50iyr/
+?? docs/03_evidence/driver-y2sd6pvt/
+?? docs/FAST_LIVO2_BACKEND_PLAN.md
+?? docs/PROJECT_LAYOUT.md
+?? docs/README.md
+?? docs/consolidation_evidence/
+?? docs/consolidation_report.md
+?? docs/documentation_evidence/
+?? docs/documentation_refresh_report.md
+?? docs/fast_livo2_backend_interfaces.md
+?? docs/fast_livo2_demo_20261028.md
+?? docs/fast_livo2_evidence/
+?? docs/fast_livo2_interfaces.md
+?? docs/fast_livo2_online_report.md
+?? docs/fast_livo2_recording.md
+?? docs/fast_livo2_recording_report.md
+?? docs/fast_livo2_source_review.md
+?? docs/fast_livo2_stage_a_report.md
+?? docs/fast_livo2_stage_b_report.md
+?? patches/camera_timeshare_v2.patch
+?? patches/fast_livo2_stage_a.patch
+?? scripts/audit_fast_livo2.py
+?? scripts/build_calibration.sh
+?? scripts/build_camera_sync.sh
+?? scripts/build_fast_livo2.sh
+?? scripts/build_fast_livo2_backend.sh
+?? scripts/fast_livo2/
+?? scripts/mapping_session.py
+?? scripts/record_fast_livo2.sh
+?? scripts/run_calibration.sh
+?? scripts/run_fast_livo2_backend.sh
+?? scripts/run_fast_livo2_live.sh
+?? scripts/run_fast_livo2_replay.sh
+?? scripts/run_mapping.sh
+?? tests/test_bridge_pgo_guard.py
+?? tests/test_fast_livo_adapter_contract.py
+?? tests/test_fast_livo_backend_ros.py
+?? tests/test_fast_livo_foxglove.py
+?? tests/test_fast_livo_recording.py
+?? tests/test_project_consolidation.py
+?? ws_camera/
+?? ws_fast_livo/
+?? ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/fast_livo_adapter.py

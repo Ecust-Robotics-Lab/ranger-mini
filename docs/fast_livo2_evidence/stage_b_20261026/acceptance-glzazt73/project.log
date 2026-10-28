@@ -1,0 +1,15 @@
+test_cannot_disable_camera_imu_or_lidar (__main__.BackendRouting) ... ok
+test_cycle_missing_config_and_invalid_domain_rejected (__main__.BackendRouting) ... ok
+test_direct_fast_entry_cannot_bypass_fusion_check (__main__.BackendRouting) ... ok
+test_local_frontend_cannot_claim_global_localization (__main__.BackendRouting) ... ok
+test_nested_profile_changes_reach_real_sensor_plan (__main__.BackendRouting) ... ok
+test_production_defaults_unchanged (__main__.BackendRouting) ... ok
+test_real_cli_defaults_to_dry_run (__main__.BackendRouting) ... ok
+test_routes_both_modes_to_correct_existing_entry (__main__.BackendRouting) ... ok
+test_calibration_commands_are_project_local_and_dry (__main__.CalibrationRelocation) ... ok
+test_historical_config_hash_and_rebased_inputs (__main__.CalibrationRelocation) ... ok
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.390s
+
+OK

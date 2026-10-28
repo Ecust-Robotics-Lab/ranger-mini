@@ -1,0 +1,91 @@
+small_gicp ACK 1/1362 graph=1 loop_event=0
+small_gicp ACK 101/1362 graph=1 loop_event=0
+small_gicp ACK 201/1362 graph=1 loop_event=0
+small_gicp ACK 301/1362 graph=1 loop_event=0
+small_gicp ACK 401/1362 graph=3 loop_event=0
+small_gicp ACK 501/1362 graph=15 loop_event=0
+small_gicp ACK 601/1362 graph=25 loop_event=0
+small_gicp ACK 701/1362 graph=32 loop_event=0
+small_gicp ACK 801/1362 graph=48 loop_event=6
+small_gicp ACK 901/1362 graph=62 loop_event=13
+small_gicp ACK 1001/1362 graph=62 loop_event=13
+small_gicp ACK 1101/1362 graph=62 loop_event=13
+small_gicp ACK 1201/1362 graph=62 loop_event=13
+small_gicp ACK 1301/1362 graph=62 loop_event=13
+{
+  "passed": true,
+  "hardware_started": false,
+  "domain": 193,
+  "registration": "small_gicp",
+  "pacing": "one input pair; wait for actual backend output stamp; not a real-time benchmark",
+  "backend_argv": [
+    "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/backend_node",
+    "--ros-args",
+    "--params-file",
+    "/home/lab307/ranger_nav/config/fast_livo2/backend.yaml",
+    "-p",
+    "use_sim_time:=true",
+    "-p",
+    "data_root:=/home/lab307/ranger_nav/outputs/fast-livo-backend-validation-20261028-gicp/shards",
+    "-p",
+    "metadata_path:=/home/lab307/ranger_nav/outputs/fast-livo-backend-validation-20261028-gicp/metadata.json",
+    "-p",
+    "registration:=small_gicp"
+  ],
+  "source_pairs": 1362,
+  "acknowledged_pairs": 1362,
+  "source_duration_s": 136.099892854,
+  "wall_seconds": 205.50128589299857,
+  "session_id": "c401b82687b09f70e4391af941fd6acb",
+  "graph_version": 62,
+  "loop_events": 13,
+  "snapshot_checks": {
+    "checksummed_files": 151,
+    "map_points": 296594,
+    "maximum_map_rebuild_coordinate_error_m": 2.868880443429589e-06,
+    "scan_self_match_count": 0,
+    "accepted_loop_updates": 13,
+    "loop_factors": 13,
+    "candidate_decisions": {
+      "accepted_and_optimized": 13,
+      "rejected_lower_ranked_candidate": 19,
+      "rejected_ambiguous_places": 3
+    },
+    "candidate_count": 35,
+    "keyframes": 49,
+    "factors": 62
+  },
+  "diagnostics": {
+    "graph_version": 62,
+    "invalid_messages": 0,
+    "pair_cache_entries": 0,
+    "pair_counters": {},
+    "public_tf_publisher": false,
+    "session_id": "c401b82687b09f70e4391af941fd6acb",
+    "work_queue_entries": 0
+  },
+  "nonkeyframe_propagation_checks": 1313,
+  "max_nonkeyframe_propagation_error": 1.7763568394002505e-15,
+  "final_propagation_error": 3.3306690738754696e-16,
+  "public_publishers": {
+    "/tf": 0,
+    "/tf_static": 0,
+    "/cmd_vel": 0,
+    "/base/safe_cmd_vel": 0
+  },
+  "raw_endpoint_distance_m": 0.4573073646456662,
+  "optimized_endpoint_distance_m": 0.4495682451283596,
+  "keyframe_correction_m_p50_p95_max": [
+    0.023500243924620533,
+    0.036350696432754244,
+    0.03941872339000099
+  ],
+  "acknowledgment_latency_ms_p50_p95_max": [
+    149.48422050019872,
+    150.0535141495675,
+    249.1244060001918
+  ],
+  "accuracy_validated": false,
+  "physical_sync_proven": false,
+  "backend_exit": 0
+}

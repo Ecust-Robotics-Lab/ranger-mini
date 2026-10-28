@@ -1,0 +1,158 @@
+{
+  "started_utc": "2026-10-26T14:57:30.251591+00:00",
+  "hardware_started": false,
+  "commands": [
+    {
+      "name": "build_audit",
+      "argv": [
+        "/usr/bin/python3",
+        "scripts/fast_livo2/backend/audit_build.py"
+      ],
+      "exit_code": 0,
+      "log": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_b_20261026/acceptance-glzazt73/build_audit.log"
+    },
+    {
+      "name": "cpp",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_build/ros/ranger_fast_livo_backend/backend_tests",
+        "--gtest_output=xml:/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_b_20261026/acceptance-glzazt73/cpp.xml"
+      ],
+      "exit_code": 0,
+      "log": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_b_20261026/acceptance-glzazt73/cpp.log"
+    },
+    {
+      "name": "bridge_guard",
+      "argv": [
+        "/usr/bin/python3",
+        "tests/test_bridge_pgo_guard.py"
+      ],
+      "exit_code": 0,
+      "log": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_b_20261026/acceptance-glzazt73/bridge_guard.log"
+    },
+    {
+      "name": "adapter_contract",
+      "argv": [
+        "/usr/bin/python3",
+        "tests/test_fast_livo_adapter_contract.py"
+      ],
+      "exit_code": 0,
+      "log": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_b_20261026/acceptance-glzazt73/adapter_contract.log"
+    },
+    {
+      "name": "ros",
+      "argv": [
+        "/usr/bin/python3",
+        "tests/test_fast_livo_backend_ros.py"
+      ],
+      "exit_code": 0,
+      "log": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_b_20261026/acceptance-glzazt73/ros.log"
+    },
+    {
+      "name": "project",
+      "argv": [
+        "/usr/bin/python3",
+        "tests/test_project_consolidation.py"
+      ],
+      "exit_code": 0,
+      "log": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_b_20261026/acceptance-glzazt73/project.log"
+    },
+    {
+      "name": "contract",
+      "argv": [
+        "/usr/bin/python3",
+        "tests/test_architecture_contract.py"
+      ],
+      "exit_code": 0,
+      "log": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_b_20261026/acceptance-glzazt73/contract.log"
+    },
+    {
+      "name": "time",
+      "argv": [
+        "/usr/bin/python3",
+        "tests/test_time_alignment.py"
+      ],
+      "exit_code": 0,
+      "log": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_b_20261026/acceptance-glzazt73/time.log"
+    },
+    {
+      "name": "bridge_legacy",
+      "argv": [
+        "/usr/bin/python3",
+        "tests/test_stage5_bridge.py"
+      ],
+      "exit_code": 0,
+      "log": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_b_20261026/acceptance-glzazt73/bridge_legacy.log"
+    },
+    {
+      "name": "gate",
+      "argv": [
+        "/usr/bin/python3",
+        "tests/test_stage6_gate_unit.py"
+      ],
+      "exit_code": 0,
+      "log": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_b_20261026/acceptance-glzazt73/gate.log"
+    },
+    {
+      "name": "frontend_cpp",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/install/fast_livo/lib/fast_livo/ranger_livo_checks"
+      ],
+      "exit_code": 0,
+      "log": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_b_20261026/acceptance-glzazt73/frontend_cpp.log"
+    },
+    {
+      "name": "frontend_patch",
+      "argv": [
+        "/usr/bin/python3",
+        "scripts/fast_livo2/check_patch.py"
+      ],
+      "exit_code": 0,
+      "log": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_b_20261026/acceptance-glzazt73/frontend_patch.log"
+    },
+    {
+      "name": "dry_private",
+      "argv": [
+        "bash",
+        "scripts/run_fast_livo2_backend.sh"
+      ],
+      "exit_code": 0,
+      "log": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_b_20261026/acceptance-glzazt73/dry_private.log"
+    },
+    {
+      "name": "dry_bridge",
+      "argv": [
+        "bash",
+        "scripts/run_fast_livo2_backend.sh",
+        "--offline-bridge"
+      ],
+      "exit_code": 0,
+      "log": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_b_20261026/acceptance-glzazt73/dry_bridge.log"
+    },
+    {
+      "name": "dry_build",
+      "argv": [
+        "bash",
+        "scripts/build_fast_livo2_backend.sh"
+      ],
+      "exit_code": 0,
+      "log": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_b_20261026/acceptance-glzazt73/dry_build.log"
+    },
+    {
+      "name": "frontend_backend_chain",
+      "argv": [
+        "/usr/bin/python3",
+        "scripts/fast_livo2/dds_smoke.py",
+        "bags/fast-livo2-dds-smoke-final/view",
+        "--existing-view",
+        "--with-backend",
+        "--data",
+        "/home/lab307/ranger_nav/bags/stage-b-acceptance-glzazt73",
+        "--out",
+        "/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_b_20261026/acceptance-glzazt73/chain"
+      ],
+      "exit_code": 0,
+      "log": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_b_20261026/acceptance-glzazt73/frontend_backend_chain.log"
+    }
+  ],
+  "passed": true
+}

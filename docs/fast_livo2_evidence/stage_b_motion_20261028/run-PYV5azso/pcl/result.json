@@ -1,0 +1,77 @@
+{
+  "passed": true,
+  "hardware_started": false,
+  "domain": 192,
+  "registration": "pcl_icp",
+  "pacing": "one input pair; wait for actual backend output stamp; not a real-time benchmark",
+  "backend_argv": [
+    "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/backend_node",
+    "--ros-args",
+    "--params-file",
+    "/home/lab307/ranger_nav/config/fast_livo2/backend.yaml",
+    "-p",
+    "use_sim_time:=true",
+    "-p",
+    "data_root:=/home/lab307/ranger_nav/outputs/fast-livo-backend-validation-20261028-pcl/shards",
+    "-p",
+    "metadata_path:=/home/lab307/ranger_nav/outputs/fast-livo-backend-validation-20261028-pcl/metadata.json",
+    "-p",
+    "registration:=pcl_icp"
+  ],
+  "source_pairs": 1362,
+  "acknowledged_pairs": 1362,
+  "source_duration_s": 136.099892854,
+  "wall_seconds": 206.15419585700147,
+  "session_id": "dab60edde6496854ee547d782ec648a1",
+  "graph_version": 62,
+  "loop_events": 13,
+  "snapshot_checks": {
+    "checksummed_files": 151,
+    "map_points": 296594,
+    "maximum_map_rebuild_coordinate_error_m": 1.3761920172328246e-06,
+    "scan_self_match_count": 0,
+    "accepted_loop_updates": 13,
+    "loop_factors": 13,
+    "candidate_decisions": {
+      "accepted_and_optimized": 13,
+      "rejected_lower_ranked_candidate": 19,
+      "rejected_ambiguous_places": 3
+    },
+    "candidate_count": 35,
+    "keyframes": 49,
+    "factors": 62
+  },
+  "diagnostics": {
+    "graph_version": 62,
+    "invalid_messages": 0,
+    "pair_cache_entries": 0,
+    "pair_counters": {},
+    "public_tf_publisher": false,
+    "session_id": "dab60edde6496854ee547d782ec648a1",
+    "work_queue_entries": 0
+  },
+  "nonkeyframe_propagation_checks": 1313,
+  "max_nonkeyframe_propagation_error": 1.7763568394002505e-15,
+  "final_propagation_error": 2.220446049250313e-16,
+  "public_publishers": {
+    "/tf": 0,
+    "/tf_static": 0,
+    "/cmd_vel": 0,
+    "/base/safe_cmd_vel": 0
+  },
+  "raw_endpoint_distance_m": 0.4573073646456662,
+  "optimized_endpoint_distance_m": 0.4450811007782961,
+  "keyframe_correction_m_p50_p95_max": [
+    0.03770043949061203,
+    0.04727598765720141,
+    0.05339561458254524
+  ],
+  "acknowledgment_latency_ms_p50_p95_max": [
+    149.38020150020748,
+    150.0075100491813,
+    349.9633999999787
+  ],
+  "accuracy_validated": false,
+  "physical_sync_proven": false,
+  "backend_exit": 0
+}

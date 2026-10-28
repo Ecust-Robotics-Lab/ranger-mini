@@ -25,6 +25,7 @@ setup(
             'ranger_localization_bridge = ranger_localization_bridge.bridge_node:main',
             'lightning_adapter = ranger_localization_bridge.lightning_adapter:main',
             'fast_livo_adapter = ranger_localization_bridge.fast_livo_adapter:main',
+            'fast_livo_localizer_adapter = ranger_localization_bridge.fast_livo_localizer_adapter:main',
         ],
     },
 )

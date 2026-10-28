@@ -1,7 +1,7 @@
 # FAST-LIVO2 阶段 B 后端契约
 
 更新：2026-10-26。实现位于 `ws_fast_livo/src/ranger_fast_livo_backend`。
-本页描述已实现的 B 接口；真实三传感器运动回环、定位精度仍未验收。
+本页描述 B 接口。后续 2026-10-28 已完成单份真实运动包的后端离线验证，见 [运动报告](fast_livo2_stage_b_motion_report.md)；独立精度/泛化仍未验收。先验地图定位由独立 [C1](fast_livo2_localizer_interfaces.md) 实现，不改变 B 的建图角色。
 
 ## 输入、时刻与坐标
 
@@ -92,4 +92,4 @@ scan.cdr 是完整 **后端输入 PointCloud2**，不是原始雷达包。原始
 
 同文件系统 `.partial-UUID` 完整写入、校验与 fsync 后，以 Linux renameat2(RENAME_NOREPLACE) 提交，拒绝覆盖和目标竞争；失败去掉成功标记，保留 FAILED.json/partial 证据。文件大小限制注入、不可写路径、损坏分片均有测试；未实际填满磁盘或模拟突然断电。
 
-这是 B 几何图归档，不是 C1 已实现的加载格式。几何、字段、整数时刻及来源信息为后续 HBA/LVBA 转换保留；LVBA 所需原始图像还需从绑定的原始 bag 提取。C1 应先定义加载校验、标定兼容与定位入口；C2 在独立 CandidateSearch/CoarseRegistration 接口增加检索和无初值几何验证。均未在本阶段实现。
+这是 B 几何图归档，后续 C1 已实现只读加载校验、来源兼容和初值定位，见 [C1 契约](fast_livo2_localizer_interfaces.md)。几何、字段、整数时刻及来源信息为后续 HBA/LVBA 转换保留；LVBA 所需原始图像还需从绑定的原始 bag 提取。C2 检索和无初值几何验证未实现，不把 B 的图内 PositionSearch 当作跨会话检索。

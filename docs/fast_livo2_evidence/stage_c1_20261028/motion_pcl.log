@@ -1,0 +1,12 @@
+{"processed": 1, "valid": 0, "reason": "waiting_initial_pose"}
+{"processed": 101, "valid": 0, "reason": "waiting_initial_pose"}
+{"processed": 201, "valid": 0, "reason": "waiting_initial_pose"}
+{"processed": 301, "valid": 0, "reason": "waiting_initial_pose"}
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/scripts/fast_livo2/localizer/validate_motion.py", line 210, in <module>
+    raise SystemExit(main())
+  File "/home/lab307/ranger_nav/scripts/fast_livo2/localizer/validate_motion.py", line 153, in main
+    wait(lambda: latest and latest[-1].latest_scan_stamp_ns == ns)
+  File "/home/lab307/ranger_nav/scripts/fast_livo2/localizer/validate_motion.py", line 113, in wait
+    raise TimeoutError('C1 did not confirm processing/state; last reason '+(latest[-1].reason if latest else 'none'))
+TimeoutError: C1 did not confirm processing/state; last reason initial_verification_timeout

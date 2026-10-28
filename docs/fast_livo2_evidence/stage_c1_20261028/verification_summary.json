@@ -1,0 +1,180 @@
+{
+  "stage": "C1-0 through C1-5 offline implementation",
+  "status": "PASS for implemented offline function and fault matrix; real-world capability PARTIAL",
+  "hardware_started": false,
+  "c2_implemented": false,
+  "production_runtime_changed": false,
+  "git_head": "46c2efad12c6cd065739a747f6edfa6a06ee52c1",
+  "committed": false,
+  "pushed": false,
+  "build_exit": 0,
+  "c1_cpp_tests": 18,
+  "c1_ros_tests": 9,
+  "regression_commands_passed": 12,
+  "regression_results": "acceptance-hotzb1e0/results.json",
+  "final_cpp_after_index_error_cleanup": "cpp_index_final.xml",
+  "pcl": {
+    "passed": true,
+    "hardware_started": false,
+    "absolute_accuracy_validated": false,
+    "independent_session_validated": false,
+    "physical_sync_validated": false,
+    "registration": "pcl_icp",
+    "domain": 197,
+    "source_pairs": 1362,
+    "source_native": "/home/lab307/ranger_nav/outputs/fast-livo-demo-20261028-fHJTbGCU/frontend/native_frames",
+    "source_database_sha256": "2eecd2c75e0c33eac80cda41f043f4c8ebe6bd5c089da06e6018b40deeaf62b4",
+    "source_manifest_sha256": "a890afe331f16ad5d65e601f390a00c7f270cd489346884a41b0b4274b9a4f58",
+    "initial_index": 366,
+    "initial_pose_source": "same B graph; earlier keyframe X * inverse(U) * current U",
+    "pacing": "acknowledge each input stamp; not a real-time benchmark",
+    "exclude_identical_stamp": true,
+    "argv": [
+      "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node",
+      "--ros-args",
+      "--params-file",
+      "/home/lab307/ranger_nav/config/fast_livo2/localizer.yaml",
+      "-p",
+      "archive_path:=/home/lab307/ranger_nav/outputs/fast-livo-backend-validation-20261028-pcl/snapshot",
+      "-p",
+      "compatibility_path:=/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_c1_20261028/pcl_compatibility.json",
+      "-p",
+      "registration:=pcl_icp"
+    ],
+    "initial_pose": {
+      "xyz": [
+        0.05204212909480292,
+        -0.003400135953030474,
+        0.01550743238907014
+      ],
+      "xyzw": [
+        -0.002485594113271512,
+        -0.001665521068309566,
+        0.013592094177108865,
+        0.9999031467283997
+      ],
+      "reference_keyframe_id": 1
+    },
+    "processed_pairs": 1362,
+    "valid_samples": 994,
+    "states": {
+      "0": 368,
+      "1": 994
+    },
+    "reasons": {
+      "waiting_initial_pose": 366,
+      "verifying_multiframe_motion_support": 2,
+      "map_match_confirmed": 994
+    },
+    "node_peak_rss_kib": 84500,
+    "wall_seconds": 189.02728465799987,
+    "ack_latency_ms_p50_p95_max": [
+      140.44628799990733,
+      160.6072597999173,
+      1724.4413239998266
+    ],
+    "solve_ms_p50_p95_max": [
+      95.63207350004177,
+      116.41798220009605,
+      1673.0553249999502
+    ],
+    "public_publishers": {
+      "/tf": 0,
+      "/tf_static": 0,
+      "/cmd_vel": 0,
+      "/base/safe_cmd_vel": 0
+    },
+    "post_initial_queries": 996,
+    "tracking_complete_without_loss": true,
+    "localizer_exit": 0
+  },
+  "gicp": {
+    "passed": true,
+    "hardware_started": false,
+    "absolute_accuracy_validated": false,
+    "independent_session_validated": false,
+    "physical_sync_validated": false,
+    "registration": "small_gicp",
+    "domain": 198,
+    "source_pairs": 1362,
+    "source_native": "/home/lab307/ranger_nav/outputs/fast-livo-demo-20261028-fHJTbGCU/frontend/native_frames",
+    "source_database_sha256": "2eecd2c75e0c33eac80cda41f043f4c8ebe6bd5c089da06e6018b40deeaf62b4",
+    "source_manifest_sha256": "7abc51e21a5e3fd62ba8fc119c64a78a1aa4e5ca8dd8c44bb1aebf760dfdd546",
+    "initial_index": 366,
+    "initial_pose_source": "same B graph; earlier keyframe X * inverse(U) * current U",
+    "pacing": "acknowledge each input stamp; not a real-time benchmark",
+    "exclude_identical_stamp": true,
+    "argv": [
+      "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node",
+      "--ros-args",
+      "--params-file",
+      "/home/lab307/ranger_nav/config/fast_livo2/localizer.yaml",
+      "-p",
+      "archive_path:=/home/lab307/ranger_nav/outputs/fast-livo-backend-validation-20261028-gicp/snapshot",
+      "-p",
+      "compatibility_path:=/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_c1_20261028/gicp_compatibility.json",
+      "-p",
+      "registration:=small_gicp"
+    ],
+    "initial_pose": {
+      "xyz": [
+        0.05204212909480294,
+        -0.0034001359530305007,
+        0.01550743238907013
+      ],
+      "xyzw": [
+        -0.002485594113271511,
+        -0.0016655210683095571,
+        0.013592094177108865,
+        0.9999031467283997
+      ],
+      "reference_keyframe_id": 1
+    },
+    "processed_pairs": 1362,
+    "valid_samples": 988,
+    "states": {
+      "0": 368,
+      "1": 988,
+      "2": 6
+    },
+    "reasons": {
+      "waiting_initial_pose": 366,
+      "verifying_multiframe_motion_support": 2,
+      "map_match_confirmed": 988,
+      "not_converged": 6
+    },
+    "node_peak_rss_kib": 86144,
+    "wall_seconds": 173.65628404599988,
+    "ack_latency_ms_p50_p95_max": [
+      120.45890399997461,
+      140.55339944998195,
+      1282.9397109999263
+    ],
+    "solve_ms_p50_p95_max": [
+      84.90533299993785,
+      86.73326315000622,
+      1222.5679099999525
+    ],
+    "public_publishers": {
+      "/tf": 0,
+      "/tf_static": 0,
+      "/cmd_vel": 0,
+      "/base/safe_cmd_vel": 0
+    },
+    "post_initial_queries": 996,
+    "tracking_complete_without_loss": true,
+    "localizer_exit": 0
+  },
+  "source_maps_unchanged": true,
+  "remaining_owned_c1_processes": 0,
+  "partial": [
+    "independent-session localization",
+    "physical exposure/scan synchronization",
+    "measured T_base_imu",
+    "absolute accuracy and independent ground truth",
+    "multiple-environment false acceptance",
+    "real sensor/wheel epoch alignment",
+    "real-time and long-duration operation"
+  ],
+  "next_stage_requires_new_instruction": "C2"
+}

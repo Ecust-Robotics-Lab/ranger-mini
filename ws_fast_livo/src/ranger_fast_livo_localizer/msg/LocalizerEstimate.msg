@@ -1,0 +1,23 @@
+# Confirmed map-frame IMU pose; heartbeat NEVER changes the pose sample stamp.
+std_msgs/Header header
+string imu_frame
+geometry_msgs/Pose pose
+bool pose_valid
+uint8 INITIALIZING=0
+uint8 VALID=1
+uint8 DEGRADED=2
+uint8 LOST=3
+uint8 ERROR=4
+uint8 state
+string reason
+string map_uuid
+string manifest_sha256
+uint64 graph_version
+uint64 map_generation
+string session_id
+uint64 request_generation
+string initialization_request_id
+uint64 scan_id
+int64 latest_scan_stamp_ns
+int64 last_confirmed_stamp_ns
+string quality_json

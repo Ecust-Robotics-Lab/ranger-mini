@@ -1,0 +1,67 @@
+{
+  "run_directory": "/home/lab307/ranger_nav/.runtime/sessions/fast_livo_localizer/run-yqgdmle8",
+  "guardian": {
+    "pid": 4590,
+    "start_ticks": 120971,
+    "ppid": 4456,
+    "state": "R",
+    "boot_id": "18872a22-3c77-4e11-ae3e-df815708155d"
+  },
+  "owner": {
+    "pid": 4628,
+    "start_ticks": 121219,
+    "ppid": 4590,
+    "state": "R",
+    "boot_id": "18872a22-3c77-4e11-ae3e-df815708155d"
+  },
+  "state": "FAILED",
+  "reason": "RuntimeError: localizer exited -9; no automatic restart; scheduler exited 2; guardian cleanup",
+  "owned": [],
+  "components": {
+    "monitor": {
+      "state": "READY",
+      "process": {
+        "pid": 4629,
+        "start_ticks": 121220,
+        "ppid": 4628,
+        "state": "R",
+        "boot_id": "18872a22-3c77-4e11-ae3e-df815708155d"
+      },
+      "argv": [
+        "/usr/bin/python3",
+        "/home/lab307/ranger_nav/scripts/fast_livo2/localizer/monitor.py"
+      ]
+    },
+    "localizer": {
+      "state": "EXITED",
+      "process": {
+        "pid": 4641,
+        "start_ticks": 121293,
+        "ppid": 4628,
+        "state": "R",
+        "boot_id": "18872a22-3c77-4e11-ae3e-df815708155d"
+      },
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node",
+        "--ros-args",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/fast_livo2/localizer.yaml",
+        "-p",
+        "use_sim_time:=true",
+        "-p",
+        "registration:=pcl_icp",
+        "-p",
+        "t_base_imu_xyz:=[0.0, 0.0, 0.556]",
+        "-p",
+        "t_base_imu_rpy:=[0.0, 0.0, 0.0]",
+        "-p",
+        "archive_path:=/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_c1_20261028/test_managed_process_failure_cleans_only_owned_children-3xrk8rg2/map",
+        "-p",
+        "compatibility_path:=/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_c1_20261028/test_managed_process_failure_cleans_only_owned_children-3xrk8rg2/map-compatibility.json"
+      ],
+      "exit_code": -9
+    }
+  },
+  "updated_monotonic": 1213.42829173,
+  "guardian_cleanup_complete": true
+}

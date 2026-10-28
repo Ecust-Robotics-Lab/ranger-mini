@@ -1,0 +1,24 @@
+{
+  "compatibility": {
+    "absolute_accuracy_validated": false,
+    "evidence_files_sha256": {
+      "/home/lab307/ranger_nav/docs/fast_livo2_stage_b_motion_report.md": "579f2b210f09e66531f47c45770c99463bd1590e24f08ffa07c357faf81e91d7",
+      "/home/lab307/ranger_nav/outputs/fast-livo-backend-validation-20261028-pcl/metadata.json": "f9b9097c73154984097abcd79e3413a72196352066b53429f88b055e8767edd5"
+    },
+    "limitations": [
+      "Historical archive lacks complete attested sensor/calibration/source identity.",
+      "Referenced evidence is traceability, not physical calibration validation.",
+      "Same-capture localization is a function test; no independent-session or accuracy claim."
+    ],
+    "mode": "offline_experiment",
+    "physical_sync_validated": false,
+    "schema_version": 1,
+    "source_manifest_sha256": "a890afe331f16ad5d65e601f390a00c7f270cd489346884a41b0b4274b9a4f58"
+  },
+  "graph_version": 62,
+  "keyframes": 49,
+  "manifest_sha256": "a890afe331f16ad5d65e601f390a00c7f270cd489346884a41b0b4274b9a4f58",
+  "map_uuid": "6acd0a5763786389402bf72f397d9cbc",
+  "passed": true,
+  "points": 296594
+}

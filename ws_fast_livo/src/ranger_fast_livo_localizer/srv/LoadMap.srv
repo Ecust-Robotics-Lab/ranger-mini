@@ -1,0 +1,8 @@
+# Asynchronous request. accepted is NOT map loaded or localization success.
+string request_id
+string archive_path
+string compatibility_path
+---
+bool accepted
+string reason
+uint64 map_generation

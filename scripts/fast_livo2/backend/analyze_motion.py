@@ -50,7 +50,7 @@ def main():
             'graph_error_after':row['graph_error_after_same_factors']})
     if metrics:
         with (out/'loop_geometry.csv').open('w') as handle:
-            writer=csv.DictWriter(handle,fieldnames=metrics[0]);writer.writeheader();writer.writerows(metrics)
+            writer=csv.DictWriter(handle,fieldnames=metrics[0],lineterminator='\n');writer.writeheader();writer.writerows(metrics)
     U=np.array([matrix(f['U_local_imu'])[:3,3] for f in frames])
     X=np.array([matrix(f['X_map_imu'])[:3,3] for f in frames])
     corrections=np.linalg.norm(X-U,axis=1)

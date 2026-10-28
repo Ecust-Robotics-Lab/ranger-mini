@@ -1,0 +1,14 @@
+test_invalid_messages_and_nonfinite_cloud_fail_closed (__main__.RosBackendTests) ... FAIL
+
+======================================================================
+FAIL: test_invalid_messages_and_nonfinite_cloud_fail_closed (__main__.RosBackendTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_backend_ros.py", line 266, in test_invalid_messages_and_nonfinite_cloud_fail_closed
+    self.assertEqual(self.private[-1].state, BackendEstimate.ERROR)
+AssertionError: 3 != 4
+
+----------------------------------------------------------------------
+Ran 1 test in 3.807s
+
+FAILED (failures=1)

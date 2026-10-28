@@ -1,0 +1,106 @@
+{
+  "private_messages": 180,
+  "valid_samples": 77,
+  "sessions": [
+    "7318dfed987cfadcd6854d342f0d20f3"
+  ],
+  "bridge_health": {
+    "backend_alive": "1",
+    "backend_valid": "1",
+    "innovation": "0",
+    "innovation_skipped": "0",
+    "innovation_unlocked": "0",
+    "loc_tf": "1",
+    "loc_tf_age_ok": "1",
+    "map_transform": "0",
+    "odom_age": "1",
+    "odom_present": "1",
+    "time_aligned": "0",
+    "backend_state": "1",
+    "backend_reason": "frontend_tracking_with_pgo; session=7318dfed987cfadcd6854d342f0d20f3; graph=6; loop_event=0",
+    "alignment_reason": "innovation failure latched; restart the explicit alignment session",
+    "aligned_sample_time": "1006.8900000000001",
+    "sample_time": "1008.79",
+    "innovation_last_error": "trans_err=10.000m rate=20.000m/s yaw_err=0.0deg dt=0.500s"
+  },
+  "last_estimates": [
+    {
+      "state": 1,
+      "reason": "frontend_tracking_with_pgo",
+      "session": "7318dfed987cfadcd6854d342f0d20f3",
+      "stamp": 1008.29
+    },
+    {
+      "state": 1,
+      "reason": "frontend_tracking_with_pgo",
+      "session": "7318dfed987cfadcd6854d342f0d20f3",
+      "stamp": 1008.29
+    },
+    {
+      "state": 1,
+      "reason": "frontend_tracking_with_pgo",
+      "session": "7318dfed987cfadcd6854d342f0d20f3",
+      "stamp": 1008.39
+    },
+    {
+      "state": 1,
+      "reason": "frontend_tracking_with_pgo",
+      "session": "7318dfed987cfadcd6854d342f0d20f3",
+      "stamp": 1008.39
+    },
+    {
+      "state": 1,
+      "reason": "frontend_tracking_with_pgo",
+      "session": "7318dfed987cfadcd6854d342f0d20f3",
+      "stamp": 1008.49
+    },
+    {
+      "state": 1,
+      "reason": "frontend_tracking_with_pgo",
+      "session": "7318dfed987cfadcd6854d342f0d20f3",
+      "stamp": 1008.49
+    },
+    {
+      "state": 1,
+      "reason": "frontend_tracking_with_pgo",
+      "session": "7318dfed987cfadcd6854d342f0d20f3",
+      "stamp": 1008.59
+    },
+    {
+      "state": 1,
+      "reason": "frontend_tracking_with_pgo",
+      "session": "7318dfed987cfadcd6854d342f0d20f3",
+      "stamp": 1008.59
+    },
+    {
+      "state": 1,
+      "reason": "frontend_tracking_with_pgo",
+      "session": "7318dfed987cfadcd6854d342f0d20f3",
+      "stamp": 1008.69
+    },
+    {
+      "state": 1,
+      "reason": "frontend_tracking_with_pgo",
+      "session": "7318dfed987cfadcd6854d342f0d20f3",
+      "stamp": 1008.69
+    },
+    {
+      "state": 1,
+      "reason": "frontend_tracking_with_pgo",
+      "session": "7318dfed987cfadcd6854d342f0d20f3",
+      "stamp": 1008.79
+    },
+    {
+      "state": 1,
+      "reason": "frontend_tracking_with_pgo",
+      "session": "7318dfed987cfadcd6854d342f0d20f3",
+      "stamp": 1008.79
+    }
+  ],
+  "process_exit_codes": [
+    0,
+    0,
+    0
+  ],
+  "hardware": false
+}

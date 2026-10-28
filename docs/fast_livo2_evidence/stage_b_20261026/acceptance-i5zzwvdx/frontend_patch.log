@@ -1,0 +1,17 @@
+{
+  "passed": true,
+  "source_commit": "837b7bbc1431cb04cf936528e52c83c835efba8e",
+  "patch_sha256": "8dc20b4ef91133cab3f6e9dc6f6bdbdda67a75d1deefa80ccfd233c4b1ce1e09",
+  "files": [
+    "CMakeLists.txt",
+    "include/LIVMapper.h",
+    "include/preprocess.h",
+    "include/vio.h",
+    "package.xml",
+    "src/LIVMapper.cpp",
+    "src/main.cpp",
+    "src/preprocess.cpp",
+    "src/vio.cpp"
+  ],
+  "verification": "apply reviewed patch to pristine HEAD bytes/modes and compare actual source"
+}

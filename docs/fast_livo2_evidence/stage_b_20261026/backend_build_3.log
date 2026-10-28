@@ -1,0 +1,42 @@
+Starting >>> ranger_fast_livo_backend
+--- stderr: ranger_fast_livo_backend
+/home/lab307/ranger_nav/ws_fast_livo/src/ranger_fast_livo_backend/src/registration.cpp: In function ‘void ranger_backend::evaluate_registration(const Cloud&, const Cloud&, const ranger_backend::Config&, ranger_backend::RegistrationResult&)’:
+/home/lab307/ranger_nav/ws_fast_livo/src/ranger_fast_livo_backend/src/registration.cpp:54:3: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   54 |   for(auto& p:*aligned)lever+=(p.getVector3fMap().cast<double>()-centroid).squaredNorm();lever=std::max(.1,std::sqrt(lever/aligned->size()));
+      |   ^~~
+/home/lab307/ranger_nav/ws_fast_livo/src/ranger_fast_livo_backend/src/registration.cpp:54:90: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   54 |   for(auto& p:*aligned)lever+=(p.getVector3fMap().cast<double>()-centroid).squaredNorm();lever=std::max(.1,std::sqrt(lever/aligned->size()));
+      |                                                                                          ^~~~~
+/home/lab307/ranger_nav/ws_fast_livo/src/ranger_fast_livo_backend/src/registration.cpp: In member function ‘virtual std::vector<ranger_backend::Candidate> ranger_backend::PositionSearch::find(const ranger_backend::Snapshot&, uint64_t) const’:
+/home/lab307/ranger_nav/ws_fast_livo/src/ranger_fast_livo_backend/src/registration.cpp:105:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  105 |   if(query>=s.frames.size())throw std::out_of_range("candidate query");std::vector<Candidate> out;const auto& q=s.frames[query];
+      |   ^~
+/home/lab307/ranger_nav/ws_fast_livo/src/ranger_fast_livo_backend/src/registration.cpp:105:72: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  105 |   if(query>=s.frames.size())throw std::out_of_range("candidate query");std::vector<Candidate> out;const auto& q=s.frames[query];
+      |                                                                        ^~~
+/home/lab307/ranger_nav/ws_fast_livo/src/ranger_fast_livo_backend/src/graph.cpp: In member function ‘bool ranger_backend::Graph::transaction(std::vector<ranger_backend::Keyframe>, std::vector<ranger_backend::Factor>, const std::vector<ranger_backend::Factor>&, std::string&, const std::function<void()>&)’:
+/home/lab307/ranger_nav/ws_fast_livo/src/ranger_fast_livo_backend/src/graph.cpp:44:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+   44 |     for(auto& f:frames_)before.insert(f.id,gpose(f.X));for(size_t i=frames_.size();i<frames.size();++i)before.insert(i,initial.at<gtsam::Pose3>(i));
+      |     ^~~
+/home/lab307/ranger_nav/ws_fast_livo/src/ranger_fast_livo_backend/src/graph.cpp:44:56: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+   44 |     for(auto& f:frames_)before.insert(f.id,gpose(f.X));for(size_t i=frames_.size();i<frames.size();++i)before.insert(i,initial.at<gtsam::Pose3>(i));
+      |                                                        ^~~
+/home/lab307/ranger_nav/ws_fast_livo/src/ranger_fast_livo_backend/src/backend.cpp: In constructor ‘ranger_backend::Backend::Backend(ranger_backend::Config, std::filesystem::__cxx11::path, std::string, ranger_backend::Json, std::unique_ptr<ranger_backend::CandidateSearch>)’:
+/home/lab307/ranger_nav/ws_fast_livo/src/ranger_fast_livo_backend/src/backend.cpp:8:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+    8 |   if(fs::exists(directory_))throw std::runtime_error("new session directory required");fs::create_directories(directory_);
+      |   ^~
+/home/lab307/ranger_nav/ws_fast_livo/src/ranger_fast_livo_backend/src/backend.cpp:8:88: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+    8 |   if(fs::exists(directory_))throw std::runtime_error("new session directory required");fs::create_directories(directory_);
+      |                                                                                        ^~
+/home/lab307/ranger_nav/ws_fast_livo/src/ranger_fast_livo_backend/src/backend.cpp: In member function ‘ranger_backend::Output ranger_backend::Backend::propagate(int64_t, uint64_t, const Pose&) const’:
+/home/lab307/ranger_nav/ws_fast_livo/src/ranger_fast_livo_backend/src/backend.cpp:28:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   28 |   if(it==frames.begin())throw std::invalid_argument("no past reference keyframe");--it;
+      |   ^~
+/home/lab307/ranger_nav/ws_fast_livo/src/ranger_fast_livo_backend/src/backend.cpp:28:83: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   28 |   if(it==frames.begin())throw std::invalid_argument("no past reference keyframe");--it;
+      |                                                                                   ^~
+---
+Finished <<< ranger_fast_livo_backend [36.1s]
+
+Summary: 1 package finished [36.2s]
+  1 package had stderr output: ranger_fast_livo_backend

@@ -1,0 +1,14 @@
+PASS case(0.15, 0.0, 0.0) | -> (0.150,0.000) []
+PASS case(0.15, 0.0, 0.25) | -> (0.150,0.250) []
+PASS case(0.15, 0.01, 0.0) | -> (0.000,0.000) ['lateral_rejected']
+PASS case(-0.1, 0.0, 0.0) | -> (0.000,0.000) ['reverse_clamped']
+PASS case(0.0, 0.0, 0.5) | -> (0.000,0.000) ['spin_prevented']
+PASS case(0.04, 0.0, 0.4) | -> (0.040,0.000) ['spin_prevented']
+PASS case(0.3, 0.0, 0.0) | -> (0.200,0.000) ['vx_capped']
+PASS case(0.15, 0.0, 0.9) | -> (0.150,0.273) ['wz_capped', 'radius_clipped']
+PASS case(nan, 0.0, 0.0) | -> (0.000,0.000) ['invalid']
+PASS regression_cap_before_radius | out=(0.200,0.3636) R=0.550 flags=['vx_capped', 'radius_clipped']
+PASS sweep_radius_invariant | 0 违例, 例: []
+PASS sweep_bounds_invariant | 0 越界, 例: []
+
+12/12 checks passed

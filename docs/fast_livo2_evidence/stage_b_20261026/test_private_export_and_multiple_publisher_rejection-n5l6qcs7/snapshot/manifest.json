@@ -1,0 +1,134 @@
+{
+  "cloud_frame": "fast_livo_imu",
+  "config": {
+    "ambiguity_overlap": 0.1,
+    "ambiguity_rmse": 0.03,
+    "cache_bytes": 134217728,
+    "candidate_budget_ms": 1000.0,
+    "correspondence_distance": 0.5,
+    "degeneracy_ratio": 0.0001,
+    "exclude_ids": 20,
+    "exclude_time": 30.0,
+    "gravity_aligned": false,
+    "height_threshold": 1.0,
+    "horizontal_search": false,
+    "huber": 1.345,
+    "key_min_time": 0.1,
+    "key_rotation": 0.17453292519943295,
+    "key_time": 2.0,
+    "key_translation": 0.5,
+    "large_rotation": 0.5235987755982988,
+    "large_translation": 1.0,
+    "loop_rotation_sigma": 0.05,
+    "loop_translation_sigma": 0.1,
+    "max_candidates": 5,
+    "max_iterations": 50,
+    "max_keyframes": 100000,
+    "max_rmse": 0.2,
+    "max_submap_points": 300000,
+    "min_correspondences": 30,
+    "min_overlap": 0.45,
+    "odom_rotation_sigma": 0.02,
+    "odom_translation_sigma": 0.05,
+    "registration": "pcl_icp",
+    "registration_threads": 1,
+    "resolution": 0.15,
+    "robust_kernel": "huber",
+    "search_radius": 3.0,
+    "submap_half": 3,
+    "support_consistency_rotation": 0.17453292519943295,
+    "support_consistency_translation": 0.3,
+    "support_rotation": 0.08726646259971647,
+    "support_time": 1.0,
+    "support_translation": 0.5,
+    "time_min_rotation": 0.03490658503988659,
+    "time_min_translation": 0.05
+  },
+  "factors": [
+    {
+      "Z_i_j": {
+        "xyz": [
+          2.2135832037925542,
+          -1.0584461745051668,
+          0.7084736925476083
+        ],
+        "xyzw": [
+          0.11405589973974883,
+          -0.06772881828013355,
+          0.2995842918879441,
+          0.9448033186663413
+        ]
+      },
+      "i": 0,
+      "id": 0,
+      "j": 0,
+      "loop": false,
+      "prior": true,
+      "rotation_sigma_rad": 1e-05,
+      "translation_sigma_m": 1e-05
+    }
+  ],
+  "files": {
+    "candidates.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "keyframes/0/full.pcd": "ef411fb47c3e047cd00025d47930b8c6e32076bdd0486e2c47c5f2a43861486c",
+    "keyframes/0/match.pcd": "cbc703f5994d25407a8bcdbad514d65ae5f4653806a67d3a17c7f40f035cb938",
+    "keyframes/0/scan.cdr": "012ec520c989bbfc172c339cc4ff73cf43d2993c493d300499f2fcb5923932a8",
+    "map.pcd": "9947af4b96a147bcc0b8880188136d19a0fec949b7fc94c87e8e4d1574026d3a",
+    "optimized.tum": "98aef254aab002e9962deda1316a7ad95d9f921f1426d8d5fd33942541801601",
+    "original.tum": "98aef254aab002e9962deda1316a7ad95d9f921f1426d8d5fd33942541801601"
+  },
+  "graph_version": 1,
+  "keyframes": [
+    {
+      "U_local_imu": {
+        "xyz": [
+          2.2135832037925542,
+          -1.0584461745051668,
+          0.7084736925476083
+        ],
+        "xyzw": [
+          0.11405589973974883,
+          -0.06772881828013355,
+          0.2995842918879441,
+          0.9448033186663413
+        ]
+      },
+      "X_map_imu": {
+        "xyz": [
+          2.2135832037925542,
+          -1.0584461745051668,
+          0.7084736925476083
+        ],
+        "xyzw": [
+          0.11405589973974883,
+          -0.06772881828013355,
+          0.2995842918879441,
+          0.9448033186663413
+        ]
+      },
+      "directory": "keyframes/0",
+      "id": 0,
+      "points": 600,
+      "scan_id": 0,
+      "stamp_ns": 1000090000000
+    }
+  ],
+  "kind": "stage_b_graph_archive",
+  "loop_event_id": 0,
+  "map_basis": "FAST local origin, axes and yaw retained; not assumed gravity-aligned",
+  "map_uuid": "66f2073bd9f06a96e922a9fe8b067a8b",
+  "original_scan": "scan.cdr retains every PointCloud2 field and header",
+  "pcd_fields": [
+    "x",
+    "y",
+    "z",
+    "intensity"
+  ],
+  "provenance": {
+    "candidate_log_bytes": 0,
+    "source_provenance": "standalone invocation; not supplied"
+  },
+  "schema_version": 1,
+  "session_id": "e07dafe2ab6beec8b204bc8bf497df88",
+  "transform_convention": "T_A_B maps points in B to A"
+}

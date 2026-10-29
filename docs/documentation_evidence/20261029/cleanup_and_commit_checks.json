@@ -1,0 +1,107 @@
+{
+  "status": "PASS",
+  "phase": "before final documentation commit",
+  "scope": "local user-authorized checkpoint, no push",
+  "document_files": [
+    "AGENTS.md",
+    "README.md",
+    "calibration/README.md",
+    "config/profiles/fast_livo2_frontend.yaml",
+    "docs/02_base_manual_tests.md",
+    "docs/04_manual_capture.md",
+    "docs/FAST_LIVO2_BACKEND_PLAN.md",
+    "docs/HANDOFF.md",
+    "docs/PROJECT_LAYOUT.md",
+    "docs/README.md",
+    "docs/STATUS.md",
+    "docs/fast_livo2_backend_interfaces.md",
+    "docs/fast_livo2_interfaces.md",
+    "docs/fast_livo2_localizer_interfaces.md",
+    "docs/fast_livo2_recording.md",
+    "docs/fast_livo2_stage_c2_report.md",
+    "docs/localization_backend_contract.md",
+    "ws_fast_livo/src/ranger_fast_livo_backend/README.md",
+    "ws_fast_livo/src/ranger_fast_livo_localizer/README.md"
+  ],
+  "local_links_checked": 195,
+  "broken_local_links": [],
+  "cleanup_validation": {
+    "status": "PASS",
+    "changed_files": [
+      "README.md",
+      "calibration/README.md",
+      "config/profiles/fast_livo2_frontend.yaml",
+      "docs/02_base_manual_tests.md",
+      "docs/04_manual_capture.md",
+      "docs/HANDOFF.md",
+      "docs/PROJECT_LAYOUT.md",
+      "docs/README.md",
+      "docs/STATUS.md",
+      "docs/fast_livo2_backend_interfaces.md",
+      "docs/fast_livo2_interfaces.md",
+      "docs/fast_livo2_localizer_interfaces.md",
+      "docs/fast_livo2_recording.md",
+      "docs/localization_backend_contract.md",
+      "ws_fast_livo/src/ranger_fast_livo_backend/README.md",
+      "ws_fast_livo/src/ranger_fast_livo_localizer/README.md"
+    ],
+    "deleted_files": [],
+    "retained_old_document_candidates": [
+      {
+        "path": "docs/02_base_manual_tests.md",
+        "reason": "Unique historical motion-safety/command record; original body retained and marked historical"
+      },
+      {
+        "path": "docs/04_manual_capture.md",
+        "reason": "Lightning-specific historical acquisition workflow, not a duplicate FAST three-sensor guide"
+      },
+      {
+        "path": "docs/documentation_refresh_report.md",
+        "reason": "Dated cleanup report with independent evidence and backup references"
+      }
+    ],
+    "fully_superseded_files_without_independent_value_found": 0,
+    "local_links_checked": 169,
+    "broken_local_links": [],
+    "existing_files_preserved": 4180,
+    "yaml_configuration_values_unchanged": true,
+    "non_document_source_files_unchanged": true,
+    "historical_bodies_preserved": true,
+    "hardware_started": false,
+    "build_or_replay_run": false,
+    "committed_or_pushed": false,
+    "git_diff_check_exit_code": 0
+  },
+  "feature_commits": {
+    "gravity": "4b49bb09a0a4ebaa809995e322b928f764e66128",
+    "c2": "2e0f06f7f5ca21e4a29699194871e9244854480e"
+  },
+  "retained_acceptance_exit_codes": [
+    {
+      "name": "cpp_accepted",
+      "argv": [
+        "ws_fast_livo/backend_build/ros/ranger_fast_livo_localizer/localizer_tests",
+        "--gtest_output=xml:docs/fast_livo2_evidence/stage_c2_20261028/cpp_accepted.xml"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "c2_ros_accepted",
+      "argv": [
+        "python3",
+        "tests/test_fast_livo_relocalizer_ros.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "name": "c1_ros_accepted",
+      "argv": [
+        "python3",
+        "tests/test_fast_livo_localizer_ros.py"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "tests_rerun_for_commit": false,
+  "hardware_started": false
+}

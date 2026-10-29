@@ -1,6 +1,6 @@
 # 阶段 A 前端接口、时间与后续 TF
 
-更新：2026-10-26，已含在线同步保护修复与目录迁移。适用于锁定前端加 `patches/fast_livo2_stage_a.patch`；不是未修改的上游接口说明。当前同步源码为 `ws_camera/src/{hik_camera_trigger_driver,timeshare_writer}`，标定在 `calibration/`，接手见 [HANDOFF](HANDOFF.md)。
+更新：2026-10-29，已含在线同步保护、目录迁移与初始重力对齐配置。适用于锁定前端加 `patches/fast_livo2_stage_a.patch`；不是未修改的上游接口说明。当前同步源码为 `ws_camera/src/{hik_camera_trigger_driver,timeshare_writer}`，标定在 `calibration/`，接手见 [HANDOFF](HANDOFF.md)。
 
 ## 当前输入
 
@@ -61,8 +61,8 @@ T_map_odom(t) = T_map_base(t) × inverse(T_odom_base(t))
 
 公共 LocalizationBridge 继续按原采样时刻插值 `/wheel/odom`，拥有唯一 map→odom 和 odom→base_link；物理静态链仍由既有受管会话持有。FAST-LIVO2 是连续局部里程计提供者，**其局部原点不自动等于 wheel odom**。不要同时让参考 PGO/localizer 广播 map→odom/map→base_link。现有 T_base_imu 仍是近似值，不能因相机–雷达标定存在就认为车体安装标定也已完成。
 
-阶段 A 的成对云 rosbag 与 IMU TUM 轨迹只是前端基线资产。Lightning 原生地图、liangheming map/patches/poses、OpenFleX SC 二进制与 HoloAgent session 格式没有已实现的互转。阶段 A 尚无优化归档/保存/加载服务；B 后来实现了几何图快照导出，C1 加载/定位仍未实现。
+阶段 A 的成对云 rosbag 与 IMU TUM 轨迹只是前端基线资产。Lightning 原生地图、liangheming map/patches/poses、OpenFleX SC 二进制与 HoloAgent session 格式没有已实现的互转。B 已实现几何图归档导出，C1 已实现只读加载与初值定位，可选 C2 提供全局确认初值；见 [B](fast_livo2_backend_interfaces.md)、[C1](fast_livo2_localizer_interfaces.md)、[C2](fast_livo2_relocalizer_interfaces.md) 契约。
 
 ## 阶段 B 复核（2026-10-26）
 
-B 已沿 `sync_packages → Process2/UndistortPcl → processImu → handleVIO → publishBackendFrame` 复核上述语义，没有修改阶段 A 前端接口或补丁。完整静态输出只读解码仍为 829 对整数同戳；B 短 DDS 链路为 55 对前端输出、55 个后端有效采样，无公共 TF。当前 gravity_align_en=false，输出缺少显式 reset/session；B 使用 DDS GID 与 ROS 时钟代际，并禁止假定重力对齐。若以后增加同进程前端 reset，必须配套明确会话信号。详见 [B 契约](fast_livo2_backend_interfaces.md) 和 [B 报告](fast_livo2_stage_b_report.md)。
+B 已沿 `sync_packages → Process2/UndistortPcl → processImu → handleVIO → publishBackendFrame` 复核上述语义，没有修改阶段 A 前端接口或补丁。完整静态输出只读解码仍为 829 对整数同戳；B 短 DDS 链路为 55 对前端输出、55 个后端有效采样，无公共 TF。该次历史验证的 gravity_align_en=false；2026-10-28 后续按用户指令将试验配置开启为 true，完整回放及关闭对照见 [重力对齐报告](fast_livo2_gravity_alignment_report.md)，既有地图不追认对齐。输出缺少显式 reset/session；B 使用 DDS GID 与 ROS 时钟代际，并禁止假定重力对齐。若以后增加同进程前端 reset，必须配套明确会话信号。详见 [B 契约](fast_livo2_backend_interfaces.md) 和 [B 报告](fast_livo2_stage_b_report.md)。

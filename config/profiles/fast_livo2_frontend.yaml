@@ -1,4 +1,5 @@
 # Select this file using RANGER_RUNTIME_CONFIG or run_mapping.sh --runtime-config.
-# Navigation localization stays Lightning; FAST-LIVO2 has no global-map backend yet.
+# Production localization stays Lightning; optional C1/C2 offline entries are separate.
+# The FAST frontend and B mapping backend are not prior-map localizers.
 extends: config/runtime.yaml
 mapping_backend: fast_livo2

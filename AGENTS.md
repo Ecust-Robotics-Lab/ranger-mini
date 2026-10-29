@@ -1,12 +1,13 @@
 # Ranger 导航工程约束
 
-更新：2026-10-28。新上下文先读 [HANDOFF](docs/HANDOFF.md)、[STATUS](docs/STATUS.md)，再读 [总计划](docs/FAST_LIVO2_BACKEND_PLAN.md)。目录与操作见 `docs/PROJECT_LAYOUT.md`、根 README；历史事实以带日期报告为准，本文件只维护有效约束。
+更新：2026-10-29。新上下文先读 [HANDOFF](docs/HANDOFF.md)、[STATUS](docs/STATUS.md)，再读 [总计划](docs/FAST_LIVO2_BACKEND_PLAN.md)。目录与操作见 `docs/PROJECT_LAYOUT.md`、根 README；历史事实以带日期报告为准，本文件只维护有效约束。
 
 ## 当前范围与授权
 
 - 在 `/home/lab307/ranger_nav` 核对实际代码、工作树和证据；优先复用，不推倒重建。
 - FAST-LIVO2 阶段 A、独立后端 B 已完成本机构建与合成/离线测试；单份真实三传感器运动包的后端闭环管线已验证。见 `docs/fast_livo2_stage_b_motion_report.md`；物理同步、真值精度、误环泛化、实时接车和长时稳定性仍 PARTIAL。
-- 阶段 B 三个提交已按用户指令推送；C1 与其他既有成果已按新指令分组本地提交，C1 为 `1212b43`。本轮授权 C2-0 至 C2-4 的源码、构建与离线测试；不启动真实硬件、底盘/导航运动，不实施在线前端恢复、高程/坡道。
+- 阶段 B 三个提交已按用户指令推送；C1 与其他既有成果已分组本地提交，C1 为 `1212b43`。后续授权的 C2 源码/构建/合成及同包功能检查已交付，C2-4 跨会话与真实负样本验收仍 PARTIAL，D 未完成；C2、重力对齐及净化交接已按用户后续指令分组本地提交，未推送（提交记录见HANDOFF和Git）。总计划未全部完成。
+- 2026-10-29 用户将后续工作转交新上下文，本上下文只完成文档交接，不再继续实施。新 Agent 先核对工作树和证据，再按用户新指令确定范围；历史计划不构成自动续跑、采集/重启设备、提交或推送许可。不启动真实硬件、底盘/导航运动，不实施在线前端恢复、高程/坡道。
 - 下一阶段收到明确实施指令后，在授权范围内自主完成源码、编译与离线测试，不必逐步等待确认。缺少独立运动定位包不阻止可执行的离线开发，但对应真实性能不得报告通过。
 - 阶段结束更新 STATUS 和对应报告，记录实际命令、退出码、文件、证据、PASS/PARTIAL/未实施及最少人工待办。计划文件不构成硬件操作许可。
 
@@ -16,7 +17,7 @@
 - 实物为 **Ranger Mini V2、Livox Mid-360S、海康相机**，相机采用雷达外触发；历史 Mini 3/Mid-360 称呼不作实物依据。设备 IP/SN 读取当前配置和运行结果。
 - Lightning-LM 仍为生产默认建图/定位，连续里程计默认 wheel，terrain disabled。保留 Nav2、Smac Hybrid-A*、MPPI 和安全链。
 - `config/runtime.yaml` / `config/profiles/` 独立选择建图前端与全局定位；FAST 前端和 B 建图后端不提供先验地图定位，不能配置成已有地图定位器。
-- C1 为独立离线定位器，人工初值通过私有服务进行几何确认，LOST 后需重新给初值；现有缺完整来源身份的 B 归档须显式绑定离线兼容说明，不改原档。C1 不接管生产 runtime，不把同包功能检查当作跨会话验收。
+- 默认 C1 为独立离线定位器，人工初值通过私有服务进行几何确认，LOST 后需重新给初值；显式 C2 入口才提供全局确认初值和自动恢复，仍由同一个 C1 跟踪。现有缺完整来源身份的 B 归档须显式绑定离线兼容说明，不改原档。C1/C2 不接管生产 runtime，不把同包功能检查当作跨会话验收。
 - 保持 LiDAR–IMU–Camera 融合；关闭图像不能称为 FAST-LIVO2 三融合。静态/无图像数据不能代替三融合运动验证；同包验证不代替跨会话泛化或真值验收。
 
 ## 组织、版本与资产
@@ -30,10 +31,10 @@
 
 ## 传感器、时间、后端和 TF
 
-- 前端契约见 `docs/fast_livo2_interfaces.md`，B/C1 契约见 `docs/fast_livo2_backend_interfaces.md`、`docs/fast_livo2_localizer_interfaces.md`。后端接 `/fast_livo/odometry` 和 `/fast_livo/deskewed_imu`：严格同戳、VIO 后 IMU 参考点，云是去畸变单区间机体系云；LiDAR–IMU 外参只应用一次。
+- 前端契约见 `docs/fast_livo2_interfaces.md`，B/C1/C2 契约见 `docs/fast_livo2_backend_interfaces.md`、`docs/fast_livo2_localizer_interfaces.md`、`docs/fast_livo2_relocalizer_interfaces.md`。后端接 `/fast_livo/odometry` 和 `/fast_livo/deskewed_imu`：严格同戳、VIO 后 IMU 参考点，云是去畸变单区间机体系云；LiDAR–IMU 外参只应用一次。
 - 统一 `T_A_B` 将 B 中点变到 A。禁止把累计世界云当 body 云；全局地图逐关键帧按其优化位姿重建，每点只做一次正确变换。单个全局刚体修正不等于历史图已优化。
 - 图像复制扫描戳不证明物理同步；零偏移仅是试验假设，不无证据硬编码 ±100 ms。同步共享文件读写已配套 v2 协议，旧历元/曝光相位仍待验，不重复修复已完成事项。
-- 当前 FAST 地图未验证重力对齐，不能假设水平、默认平面化或锁死 roll/pitch。私有 PGO/定位结果不反馈前端滤波器或视觉地图。
+- 当前前端试验配置已启用初始重力对齐（世界 +Z 朝上），见重力对齐报告；既有 B/C1 地图仍未对齐，不得追认或混用坐标系，也不能默认平面化或锁死 roll/pitch。私有 PGO/定位结果不反馈前端滤波器或视觉地图。
 - 公共桥接唯一发布 map→odom、odom→base_link；底盘原生 TF 和前端 native_tf 关闭。参考 PGO/localizer 不得争抢 TF。
 - `T_map_base=T_map_imu×inverse(T_base_imu)`；`T_map_odom(t)=T_map_base(t)×inverse(T_odom_base(t))` 必须同一机体、同一原采样时刻。复用 wheel 历史插值，禁止外推、latest-TF 拼接或两个最新到达值相减。FAST local 不等于 wheel odom。
 - 传感器旧历元与主机/wheel 尚不能直接拼接；离线使用 header-clock 视图和模拟时钟，原包不改写，不重打 now 掩盖问题。心跳不刷新位姿采样时间。

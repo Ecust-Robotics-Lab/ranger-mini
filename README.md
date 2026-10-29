@@ -1,6 +1,6 @@
 # Ranger Mini 导航系统
 
-ROS 2 Humble / Ubuntu 22.04 / x86_64，实物为 **Ranger Mini V2 + Livox Mid-360S + 海康相机**。Lightning-LM 保持生产默认；FAST-LIVO2 三传感器前端、独立回环后端 B 和给定初值的 C1 离线先验定位已实现。C2 无初值重定位未实施，实车精度和实时接车仍待验。
+ROS 2 Humble / Ubuntu 22.04 / x86_64，实物为 **Ranger Mini V2 + Livox Mid-360S + 海康相机**。Lightning-LM 保持生产默认；FAST-LIVO2 三传感器前端、独立回环后端 B 和给定初值的 C1 离线先验定位已实现。C2 无初值重定位已完成离线实现与同包功能检查，独立会话、实车精度和实时接车仍待验。
 
 **新上下文从 [交接指南](docs/HANDOFF.md) 开始**，再读 [当前状态](docs/STATUS.md)、[工程约束](AGENTS.md)、[后端与重定位计划](docs/FAST_LIVO2_BACKEND_PLAN.md)。全部文档见 [docs 索引](docs/README.md)。
 
@@ -13,7 +13,7 @@ ROS 2 Humble / Ubuntu 22.04 / x86_64，实物为 **Ranger Mini V2 + Livox Mid-36
 | FAST-LIVO2 | 保留 LiDAR–IMU–Camera 更新；静态基线与在线 RViz 通过，用户要求停止后会话保持停止 |
 | 配置切换 | mapping_backend 选择 Lightning / FAST-LIVO2 前端；localization_backend 独立选择 lightning / standard |
 | 标定与同步 | 已整合到本工程；v2 共享戳保护已修复，物理同步、几何标定与实时历元仍待验 |
-| 后续目标 | 独立在线回环/PGO → 优化地图包 → 给定初值定位 → 无初值自动重定位；高程/坡道另行分阶段 |
+| 待验收 | C1/C2跨会话与真实负样本、同步/外参/真值、实时wheel与D接车；高程/坡道另立范围 |
 
 目前保留一份约136.6秒三传感器运动采集包，已生成[建图演示视频](docs/fast_livo2_demo_20261028.md)；画面与合成测试不代表真值精度、真实回环或自动定位验收。standard 是外部标准消息接口，不是另一套现成定位算法。
 
@@ -37,7 +37,7 @@ bags/、maps/、docs/     数据、地图和验证证据
 
 正式标定根目录为 `calibration/`，`~/calibration` 仅是兼容链接；新入口已在临时无链接条件下通过离线验证。原相机驱动/SDK及用户修改保留。职责与清理范围见 [工程结构](docs/PROJECT_LAYOUT.md)、[整合报告](docs/consolidation_report.md)。
 
-本地原始图片/rosbag、SDK、第三方工作空间、构建与 .runtime 不进入主仓库。相机只纳入两个维护包源码。当前阶段 A/整合成果尚有大量未提交文件，克隆远端不能代替当前工作树；第三方完整 SHA/补丁来源见交接指南与版本锁。
+本地原始图片/rosbag、SDK、第三方工作空间、构建与 .runtime 不进入主仓库。相机只纳入两个维护包源码。A/整合、C1、C2、重力对齐与净化文档已有本地提交，本轮未推送；原始数据和本机部署仍须保留，远端副本不能代替当前工程；第三方完整 SHA/补丁来源见交接指南与版本锁。
 
 ## 统一入口
 
@@ -59,9 +59,9 @@ bash scripts/record_fast_livo2.sh --seconds 60
 
 实际执行须显式 `--execute`，online 会打开相应实物，不能从默认 dry-run 推断获准测试。底盘/导航还必须有该次用户授权及 `--control-authorized`，运动许可不跨重启；不自动恢复运动。完整流程见 [受管会话说明](docs/managed_sessions.md)。相机内参、外参和同步的入口/依赖见 [标定说明](calibration/README.md)。
 
-FAST-LIVO2 前端与 B 不能设为先验地图定位后端；C1 使用独立离线入口和私有初值接口，未接管生产 runtime。FAST 局部世界系不等于 wheel odom。输入输出的参考点与时钟见 [前端接口](docs/fast_livo2_interfaces.md) 和 [C1 契约](docs/fast_livo2_localizer_interfaces.md)。
+FAST-LIVO2 前端与 B 不能设为先验地图定位后端；C1/C2 使用独立离线入口，未接管生产 runtime。FAST 局部世界系不等于 wheel odom。输入输出的参考点与时钟见 [前端接口](docs/fast_livo2_interfaces.md) 和 [C1 契约](docs/fast_livo2_localizer_interfaces.md)。
 
-三传感器运动采集使用新入口 `record_fast_livo2.sh`，支持完整归档、定时/中断收尾及已有预览接入。`run_fast_livo2_live.sh --visualization rviz|foxglove|both|none` 选择显示，Foxglove经SSH隧道访问本机只读Bridge。命令与当前相机外触发阻塞见[录包指南](docs/fast_livo2_recording.md)、[采集入口报告](docs/fast_livo2_recording_report.md)。
+三传感器运动采集使用新入口 `record_fast_livo2.sh`，支持完整归档、定时/中断收尾及已有预览接入。`run_fast_livo2_live.sh --visualization rviz|foxglove|both|none` 选择显示，Foxglove经SSH隧道访问本机只读Bridge。命令、采集检查和历史故障记录见[录包指南](docs/fast_livo2_recording.md)、[采集入口报告](docs/fast_livo2_recording_report.md)。
 
 ## 公共定位与 TF
 
@@ -91,7 +91,7 @@ PYTHONDONTWRITEBYTECODE=1 colcon build --packages-up-to ranger_navigation --exec
 
 这些是已有本机依赖下的构建入口，不是全新机器的一键安装程序。相机需要本地 Hik SDK；FAST 前端依赖在独立目录，来源与补丁见 [阶段 A](docs/fast_livo2_stage_a_report.md)。
 
-2026-10-26 最近整合验证：配置/迁移 10/10、标定接口 11/11、时间对齐 7/7、进程管理 11/11、定位契约 11/11、前端 C++ 13/13；静态短回放 20 对且视觉参与。完整静态基线 829 对，在线约 10/200/10 Hz。Nav2 安全链 37/37 等完整回归仍保留 2026-10-20 日期，本轮未全量重跑。
+最新检查及其适用范围统一见 [STATUS](docs/STATUS.md)；旧整合与Nav2报告保留各自验证日期，不能据此宣称本轮全量复跑或实车验收通过。
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 python3 tests/test_project_consolidation.py
@@ -106,6 +106,6 @@ bash scripts/run_fast_livo2_backend.sh
 bash scripts/run_fast_livo2_backend.sh --offline-bridge
 ```
 
-阶段 B 交付见 [报告](docs/fast_livo2_stage_b_report.md) 和 [后端接口](docs/fast_livo2_backend_interfaces.md)。C1 见 [报告](docs/fast_livo2_stage_c1_report.md) 和 [接口/操作](docs/fast_livo2_localizer_interfaces.md)：`bash scripts/build_fast_livo2_localizer.sh`、`bash scripts/run_fast_livo2_localizer.sh` 默认 dry-run，显式 `--offline-bridge` 才接隔离公共桥接。不自动进入 C2、真机或高程阶段。
+阶段 B 交付见 [报告](docs/fast_livo2_stage_b_report.md) 和 [后端接口](docs/fast_livo2_backend_interfaces.md)。C1 见 [报告](docs/fast_livo2_stage_c1_report.md) 和 [接口/操作](docs/fast_livo2_localizer_interfaces.md)：`bash scripts/build_fast_livo2_localizer.sh`、`bash scripts/run_fast_livo2_localizer.sh` 默认 dry-run，显式 `--offline-bridge` 才接隔离公共桥接。C2 见 [报告](docs/fast_livo2_stage_c2_report.md) 与 [接口](docs/fast_livo2_relocalizer_interfaces.md)，使用独立 dry-run 入口 `scripts/run_fast_livo2_relocalizer.sh`。不自动进入真机或高程阶段。
 
 项目维护：[ujd66](https://github.com/ujd66) · [Ecust Robotics Lab](https://github.com/Ecust-Robotics-Lab)。

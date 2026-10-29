@@ -15,7 +15,7 @@
 | `ws_calib/` | 旧工作空间，保留追溯；新入口使用工程根目录的 `ws_camera/` |
 | `../ws_camera/src/hik_camera_trigger_driver/`、`timeshare_writer/` | 当前维护和构建的相机、共享戳 writer 源码 |
 
-大体积图片、bag、构建产物和运行日志不进入主仓库。流程、源码、配置、内参和来源清单进入可跟踪范围，本轮尚未提交。旧标定仓库原 SHA `82936bbbd12c5d5d93cf9f9d2564ec6a5c37fac8` 的完整历史保存到 `.runtime/backups/consolidation_20261026/calibration_history.bundle`；原 `.git` 元数据也保留于该备份目录。FAST-Calib 上游部分版本当年未能核实，见原 `upstream/SOURCE_MANIFEST.json`，本轮没有将其改称已验证提交。
+大体积图片、bag、构建产物和运行日志不进入主仓库。流程、源码、配置、内参和来源清单已随 `0ced46c` 本地提交；原始数据和SDK仍只保留在本机，当前Git状态以工程HANDOFF为准。旧标定仓库原 SHA `82936bbbd12c5d5d93cf9f9d2564ec6a5c37fac8` 的完整历史保存到 `.runtime/backups/consolidation_20261026/calibration_history.bundle`；原 `.git` 元数据也保留于该备份目录。FAST-Calib 上游部分版本当年未能核实，见原 `upstream/SOURCE_MANIFEST.json`，本轮没有将其改称已验证提交。
 
 ## 构建
 

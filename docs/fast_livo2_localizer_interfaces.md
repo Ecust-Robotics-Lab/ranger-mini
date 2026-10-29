@@ -1,6 +1,6 @@
 # FAST-LIVO2 C1 离线先验地图定位契约
 
-更新：2026-10-28。实现为 `ws_fast_livo/src/ranger_fast_livo_localizer`；实际命令、结果和限制见 [C1 报告](fast_livo2_stage_c1_report.md)。C1 接受人工初值，不包含 C2 全局搜索。生产 runtime 仍使用 Lightning。
+更新：2026-10-29。实现为 `ws_fast_livo/src/ranger_fast_livo_localizer`；实际命令、结果和限制见 [C1 报告](fast_livo2_stage_c1_report.md)。本页描述默认 C1 人工初值模式；显式启用的 [C2](fast_livo2_relocalizer_interfaces.md) 在同一包提供全局确认初值和丢失恢复，仍由 C1 跟踪。人工 Initialize 会暂停可选自动搜索，需显式重新允许。生产 runtime 仍使用 Lightning。
 
 ## 模式与地图
 

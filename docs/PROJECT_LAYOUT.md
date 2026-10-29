@@ -1,6 +1,6 @@
 # 当前工程结构
 
-更新：2026-10-28，目录沿用已完成的清理、标定迁移与配置切换。设备会话保持停止；FAST-LIVO2 B 和 C1 已实现离线范围，C2/D 未实施。整合详情见 [整合报告](consolidation_report.md)，C1 入口见 [C1 契约](fast_livo2_localizer_interfaces.md)。此前只读盘点在 `.runtime/housekeeping_20261026/inventory.json`；当时约 4.3 GiB 的工程体积不包含后来迁入的约 9.1 GiB 标定资产。
+更新：2026-10-29，目录沿用已完成的清理、标定迁移与配置切换。设备会话保持停止；FAST-LIVO2 B、C1 和 C2 已实现离线范围，D 未实施。整合详情见 [整合报告](consolidation_report.md)，定位入口见 [C1 契约](fast_livo2_localizer_interfaces.md) 和 [C2 契约](fast_livo2_relocalizer_interfaces.md)。
 
 新上下文先读 [HANDOFF](HANDOFF.md)，下一步见 [后端/重定位计划](FAST_LIVO2_BACKEND_PLAN.md)，当前与历史文档分类见 [文档索引](README.md)。
 
@@ -31,7 +31,7 @@
 ├── ws_livox/                    Livox 驱动与 SDK
 ├── ws_base/                     Ranger V2 驱动与 ugv_sdk
 ├── ws_slam/                     Lightning-LM 生产路线
-├── ws_fast_livo/                FAST 前端部署及 src/ 下 B backend、C1 localizer 自有源码
+├── ws_fast_livo/                FAST 前端部署及 src/ 下 B backend、C1/C2 localizer 自有源码
 ├── ws_nav/src/                  定位消息、公共桥接、导航与安全
 ├── vendor/                      固定版本第三方与审查源码
 ├── patches/                     第三方实际修改
@@ -55,14 +55,12 @@
 | 算法专用入口 | run_fast_livo2_live/replay.sh、run_slam_online/offline.sh | 保留环境装载、专用参数与状态控制，不是重复算法 |
 | 三传感器录包 | record_fast_livo2.sh | 默认dry-run；自动启动或接入预览，录包/配置/同步CSV归档与录后审查，见[指南](fast_livo2_recording.md) |
 
-`mapping_backend` 与 `localization_backend` 分别选择前端/建图和全局定位。FAST 前端与 B 的连续局部里程计/回环建图不能作为先验地图定位后端；C1 使用独立离线入口，不接管生产配置。配置解析器继续拒绝将局部前端冒充全局定位。`standard` 是既有外部标准定位输入接口。
+`mapping_backend` 与 `localization_backend` 分别选择前端/建图和全局定位。FAST 前端与 B 的连续局部里程计/回环建图不能作为先验地图定位后端；C1/C2 使用独立离线入口，不接管生产配置。配置解析器继续拒绝将局部前端冒充全局定位。`standard` 是既有外部标准定位输入接口。
 
-## 已删除与保留
+## 资产保留边界
 
-- 已删除 DDS 派生包 -a、-c，两者 DB 与保留的 -final SHA256 相同；sidecar、哈希与原因另存。
-- 已删除在线原始 XWD，保留 PNG；删除自有字节码及已确认的 SDK 自动缓存。释放约 **541 MiB 分配空间**，见 `consolidation_evidence/20261026/cleanup.json`。
-- 原始录包、正式 `fast-livo2-baseline-126a5fAo`、`dds-smoke-final`、地图、失败证据、源码与回退备份保留。迁后 1158 项受保护资产与迁前 inode/大小/mtime 或链接目标一致。
-- vendor 中 ros2_frontend、rpg_vikit、sophus 为实际构建依赖；固定 SHA 审查仓库也保留，不将不同提交误认为重复目录。
+- 原始录包、正式基线、地图、失败证据、源码与回退备份保留；历史删除清单和迁移完整性记录见整合报告，不将旧磁盘容量当作当前容量。
+- vendor 中前端、B和可选C2的实际依赖按各自sources.lock固定；审查仓库也保留，不将“参考过”当作已集成，也不将不同提交误认为重复目录。
 - 不整体清空 build/install：Lightning 从 `ws_slam/build/lightning/bin/` 运行，部分旧相机部署链接指向 build。新增标定构建使用 integrated 目录。
 
-标定流程和同步源码已进入主仓库可跟踪范围，原始 bag/图片、SDK、第三方工作空间和编译产物继续由 Git 忽略。本轮未提交或推送，用户已有雷达文档修改与证据未清理。
+标定流程和同步源码已进入主仓库可跟踪范围，原始 bag/图片、SDK、第三方工作空间和编译产物继续由 Git 忽略。既有整合/标定源码与用户雷达证据已有本地提交；当前提交、工作树和本机资产状态统一见HANDOFF与实际Git。

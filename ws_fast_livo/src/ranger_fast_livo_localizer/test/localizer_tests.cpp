@@ -1,8 +1,9 @@
-#include "ranger_fast_livo_localizer/localizer.hpp"
+#include "ranger_fast_livo_localizer/relocalizer.hpp"
 #include <gtest/gtest.h>
 #include <pcl/io/pcd_io.h>
 #include <random>
 #include <fstream>
+#include <thread>
 
 using namespace ranger_localizer;
 namespace {
@@ -179,4 +180,127 @@ TEST_F(C1,RepeatedFloatRegistrationKeepsAnOrthogonalAcceptedRotation) {
     EXPECT_LT((r.pose.matrix()-(X*U).matrix()).norm(),.015);
   }
 }
+
+class TestRetriever final:public PlaceRetriever {
+public:
+  std::vector<PlaceCandidate> candidates{{7,0.}};
+  std::vector<PlaceCandidate> query(const Cloud&,size_t)const override{return candidates;}
+};
+class TestCoarse final:public rb::CoarseRegistration {
+public:
+  Pose* transform;bool wrong=false;
+  explicit TestCoarse(Pose* p):transform(p){}
+  rb::RegistrationResult align(const Cloud&,const Cloud&)const override {
+    rb::RegistrationResult r;r.converged=r.accepted=true;r.T_target_source=*transform;
+    if(wrong)r.T_target_source.translation().x()+=100;
+    return r;
+  }
+};
+class C2:public C1 {
+protected:
+  SearchConfig search;Pose relative=Pose::Identity();std::shared_ptr<TestRetriever> retriever=std::make_shared<TestRetriever>();
+  void SetUp()override {C1::SetUp();search.resolution=.02;search.budget_ms=15000;search.retry_seconds=.001;}
+  std::unique_ptr<Relocalizer> create(bool wrong=false) {
+    auto c=std::make_unique<TestCoarse>(&relative);c->wrong=wrong;
+    return std::make_unique<Relocalizer>(map,config,search,retriever,std::move(c));
+  }
+  SearchResult step(Relocalizer& global,int k,double motion=1.,bool outside=false) {
+    relative=pose(.08*k*motion,.01*k*motion,0,.02,0,1.1);
+    Pose large_odom=pose(100,-50,20,.1,-.4,.3);
+    auto cloud=query(X*relative);if(outside)for(auto& p:cloud)p.x+=100;
+    return global.process(10000000000LL+k*200000000LL,k,large_odom*relative,cloud,k*.2);
+  }
+};
+TEST_F(C2,IndexRoundTripHashBindingAndNoOverwrite) {
+  auto index=PlaceIndex::build(map,search);auto dest=root/"c2-index";index->save(dest);
+  auto loaded=PlaceIndex::load(dest,map,search);auto candidates=loaded->query(body,5);ASSERT_EQ(candidates.size(),1U);EXPECT_EQ(candidates[0].id,7U);
+  EXPECT_THROW(index->save(dest),std::exception);
+  auto changed=search;changed.resolution=.1;EXPECT_THROW(PlaceIndex::load(dest,map,changed),std::exception);
+  auto other=std::make_shared<Archive>(*map);other->uuid="different-map";EXPECT_THROW(PlaceIndex::load(dest,other,search),std::exception);
+  {std::ofstream f(dest/"entries.json",std::ios::app);f<<"broken";}EXPECT_THROW(PlaceIndex::load(dest,map,search),std::exception);
+  EXPECT_THROW(PlaceIndex::build(map,search,[]{return true;}),std::exception);
+}
+TEST_F(C2,InvariantDescriptorRanksWithoutGlobalPositionPrior) {
+  auto a=radial_pair_descriptor(body,search),b=radial_pair_descriptor(*rb::transformed(body,pose(40,-30,10,.9,-.8,2.4)),search);
+  double difference=0;for(size_t k=0;k<a.size();++k)difference+=std::abs(a[k]-b[k]);EXPECT_LT(difference,.1);
+  EXPECT_THROW(radial_pair_descriptor(Cloud{},search),std::exception);
+}
+TEST_F(C2,LargeCorrectionNeedsDisjointMovingQueriesThenC1OwnsValidity) {
+  auto global=create();EXPECT_FALSE(step(*global,0).confirmed);auto r=step(*global,1);EXPECT_FALSE(r.confirmed);EXPECT_EQ(r.reason,"verifying_independent_motion_support")<<r.quality;
+  r=step(*global,2);EXPECT_FALSE(r.confirmed);EXPECT_EQ(r.reason,"verifying_wait_disjoint_query_scans");
+  r=step(*global,3);ASSERT_TRUE(r.confirmed)<<r.reason<<r.quality;
+  EXPECT_EQ(r.confirmed->stamp,10600000000LL);EXPECT_LT((r.confirmed->pose.matrix()-(X*relative).matrix()).norm(),.02);
+  Localizer tracker(map,config);tracker.initialize(*r.confirmed,.61);
+  Pose U=pose(100,-50,20,.1,-.4,.3)*relative;
+  auto first=tracker.process(r.confirmed->stamp,3,U,query(X*relative),.62);EXPECT_FALSE(first.valid);
+  Pose previous=relative;relative=pose(.5,.04,0,.03,.01,1.13);
+  auto valid=tracker.process(11000000000LL,4,pose(100,-50,20,.1,-.4,.3)*relative,query(X*relative),1.02);
+  EXPECT_TRUE(valid.valid)<<valid.reason;EXPECT_LT((valid.pose.matrix()-(X*relative).matrix()).norm(),.02);
+}
+TEST_F(C2,StaticAndRepeatedScansCannotConfirm) {
+  auto global=create();SearchResult r;
+  for(int k=0;k<6;++k)r=step(*global,k,0.);
+  EXPECT_FALSE(r.confirmed);EXPECT_EQ(r.reason,"verifying_insufficient_time_or_motion_baseline");
+  auto repeated=step(*global,5,0.);EXPECT_FALSE(repeated.confirmed);EXPECT_EQ(repeated.reason,"invalid_query_identity_or_time");
+}
+TEST_F(C2,IdenticalStaticCloudWithDriftingOdomCannotSupplyMotionBaseline) {
+  relative=pose(0,0,0,.02,0,1.1);auto global=create();SearchResult r;
+  auto cloud=query(X*relative);
+  for(int k=0;k<4;++k)r=global->process(10000000000LL+k*200000000LL,k,pose(.08*k,0,0,0,0,0),cloud,k*.2);
+  EXPECT_FALSE(r.confirmed);EXPECT_EQ(r.reason,"verifying_insufficient_time_or_motion_baseline");
+}
+TEST_F(C2,WrongCoarseAndOutsideQueriesCannotHandoff) {
+  auto wrong=create(true);step(*wrong,0);auto r=step(*wrong,1);EXPECT_FALSE(r.confirmed);EXPECT_EQ(r.reason,"global_no_geometric_match");
+  auto outside=create();step(*outside,0,1.,true);r=step(*outside,1,1.,true);EXPECT_FALSE(r.confirmed);EXPECT_EQ(r.reason,"global_no_geometric_match");
+}
+TEST_F(C2,SeparatedSimilarPlacesAreAmbiguous) {
+  auto copy=map->frames[0];copy.id=8;copy.scan_id=12;copy.X.translation().x()+=30;map->frames.push_back(copy);
+  retriever->candidates.push_back({8,0.});auto global=create();step(*global,0);auto r=step(*global,1);
+  EXPECT_FALSE(r.confirmed);EXPECT_EQ(r.reason,"global_ambiguous_places")<<r.quality;
+}
+TEST_F(C2,BudgetCancelAndResetNeverHandoffOldSupport) {
+  auto global=create();step(*global,0);auto r=step(*global,1);EXPECT_EQ(r.reason,"verifying_independent_motion_support");
+  global->reset();step(*global,2);r=step(*global,3);EXPECT_FALSE(r.confirmed);EXPECT_EQ(r.reason,"verifying_independent_motion_support");
+  r=global->process(11000000000LL,8,Pose::Identity(),body,1.,[]{return true;});EXPECT_FALSE(r.confirmed);EXPECT_EQ(r.reason,"cancelled_generation");
+  search.budget_ms=.000001;global=create();r=step(*global,0);EXPECT_FALSE(r.confirmed);EXPECT_EQ(r.reason,"global_budget_exhausted");
+}
+
+TEST_F(C2,DegenerateGeometryNeverHandoffs) {
+  Cloud plane;for(int x=0;x<40;++x)for(int y=0;y<40;++y){Point p;p.x=x*.05;p.y=y*.05;p.z=0;p.intensity=0;plane.push_back(p);}
+  body=plane;map=make(body,X);auto global=create();step(*global,0);auto r=step(*global,1);
+  EXPECT_FALSE(r.confirmed);EXPECT_EQ(r.reason,"global_no_geometric_match");
+}
+TEST_F(C2,GeometricAliasCannotSupplyInconsistentMotionSupport) {
+  auto copy=map->frames[0];copy.id=8;copy.scan_id=12;copy.X.translation().x()+=30;map->frames.push_back(copy);
+  auto global=create();step(*global,0);auto r=step(*global,1);ASSERT_EQ(r.reason,"verifying_independent_motion_support");
+  retriever->candidates={{8,0.}};step(*global,2);r=step(*global,3);
+  EXPECT_FALSE(r.confirmed);EXPECT_EQ(r.reason,"global_inconsistent_motion_support");
+}
+class SlowSecondCoarse final:public rb::CoarseRegistration {
+public:
+  Pose* transform;mutable size_t calls=0;
+  explicit SlowSecondCoarse(Pose* t):transform(t){}
+  rb::RegistrationResult align(const Cloud&,const Cloud&)const override {
+    if(++calls==2)std::this_thread::sleep_for(std::chrono::milliseconds(80));
+    rb::RegistrationResult r;r.converged=r.accepted=true;r.T_target_source=*transform;return r;
+  }
+};
+TEST_F(C2,ExhaustionAfterGoodCandidateCannotAcceptBestSurvivor) {
+  auto copy=map->frames[0];copy.id=8;copy.scan_id=12;copy.X.translation().x()+=30;map->frames.push_back(copy);
+  retriever->candidates.push_back({8,0.});search.budget_ms=50.;
+  auto coarse=std::make_unique<SlowSecondCoarse>(&relative);auto* observer=coarse.get();
+  Relocalizer global(map,config,search,retriever,std::move(coarse));step(global,0);auto r=step(global,1);
+  EXPECT_EQ(observer->calls,2U);EXPECT_FALSE(r.confirmed);EXPECT_NE(r.reason.find("global_budget_exhausted"),std::string::npos);
+}
+#ifdef RANGER_ENABLE_KISS
+TEST_F(C2,RealKissUnknownFullSixDofReturnsTotalTargetFromSource) {
+  SearchConfig c;c.resolution=.2;c.maximum_points=4000;
+  auto coarse=make_global_coarse(c);Pose truth=pose(4,-3,2,.6,-.4,1.7);
+  Cloud source=body;auto target=rb::transformed(source,truth);auto result=coarse->align(*target,source);
+  RecordProperty("kiss_diagnostics",result.json().dump());
+  ASSERT_TRUE(result.accepted)<<result.json();EXPECT_LT((result.T_target_source.translation()-truth.translation()).norm(),.1);
+  EXPECT_LT(rb::rotation_distance(result.T_target_source,truth),.05);
+  EXPECT_FALSE(coarse->align(Cloud{},source).accepted);
+}
+#endif
 }

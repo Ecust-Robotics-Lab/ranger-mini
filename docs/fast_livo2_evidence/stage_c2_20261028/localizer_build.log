@@ -1,0 +1,24 @@
+Starting >>> ranger_fast_livo_backend
+--- stderr: ranger_fast_livo_backend
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    RANGER_ENABLE_KISS
+
+
+---
+Finished <<< ranger_fast_livo_backend [2.21s]
+Starting >>> ranger_fast_livo_localizer
+--- stderr: ranger_fast_livo_localizer
+/home/lab307/ranger_nav/ws_fast_livo/src/ranger_fast_livo_localizer/src/place_index.cpp: In member function ‘virtual std::vector<ranger_localizer::PlaceCandidate> ranger_localizer::PlaceIndex::query(const Cloud&, size_t) const’:
+/home/lab307/ranger_nav/ws_fast_livo/src/ranger_fast_livo_localizer/src/place_index.cpp:105:3: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+  105 |   if(found.size()>count)found.resize(count);return found;
+      |   ^~
+/home/lab307/ranger_nav/ws_fast_livo/src/ranger_fast_livo_localizer/src/place_index.cpp:105:45: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  105 |   if(found.size()>count)found.resize(count);return found;
+      |                                             ^~~~~~
+---
+Finished <<< ranger_fast_livo_localizer [38.5s]
+
+Summary: 2 packages finished [40.8s]
+  2 packages had stderr output: ranger_fast_livo_backend ranger_fast_livo_localizer

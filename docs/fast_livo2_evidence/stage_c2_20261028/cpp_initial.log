@@ -1,0 +1,28 @@
+Running main() from /opt/ros/humble/src/gtest_vendor/src/gtest_main.cc
+Note: Google Test filter = C2.*
+[==========] Running 8 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 8 tests from C2
+[ RUN      ] C2.IndexRoundTripHashBindingAndNoOverwrite
+[       OK ] C2.IndexRoundTripHashBindingAndNoOverwrite (14 ms)
+[ RUN      ] C2.InvariantDescriptorRanksWithoutGlobalPositionPrior
+[       OK ] C2.InvariantDescriptorRanksWithoutGlobalPositionPrior (11 ms)
+[ RUN      ] C2.LargeCorrectionNeedsDisjointMovingQueriesThenC1OwnsValidity
+[       OK ] C2.LargeCorrectionNeedsDisjointMovingQueriesThenC1OwnsValidity (273 ms)
+[ RUN      ] C2.StaticAndRepeatedScansCannotConfirm
+[       OK ] C2.StaticAndRepeatedScansCannotConfirm (53 ms)
+[ RUN      ] C2.WrongCoarseAndOutsideQueriesCannotHandoff
+[pcl::IterativeClosestPoint::computeTransformation] Not enough correspondences found. Relax your threshold parameters.
+[pcl::IterativeClosestPoint::computeTransformation] Not enough correspondences found. Relax your threshold parameters.
+[       OK ] C2.WrongCoarseAndOutsideQueriesCannotHandoff (15 ms)
+[ RUN      ] C2.SeparatedSimilarPlacesAreAmbiguous
+[       OK ] C2.SeparatedSimilarPlacesAreAmbiguous (22 ms)
+[ RUN      ] C2.BudgetCancelAndResetNeverHandoffOldSupport
+[       OK ] C2.BudgetCancelAndResetNeverHandoffOldSupport (21 ms)
+[ RUN      ] C2.RealKissUnknownFullSixDofReturnsTotalTargetFromSource
+[       OK ] C2.RealKissUnknownFullSixDofReturnsTotalTargetFromSource (20 ms)
+[----------] 8 tests from C2 (429 ms total)
+
+[----------] Global test environment tear-down
+[==========] 8 tests from 1 test suite ran. (429 ms total)
+[  PASSED  ] 8 tests.

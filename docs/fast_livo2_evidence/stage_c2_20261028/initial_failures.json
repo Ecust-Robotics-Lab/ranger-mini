@@ -1,0 +1,12 @@
+[
+  {
+    "step": "first ad hoc KISS configure projection",
+    "exit_code": 1,
+    "reason": "duplicate xenium export; corrected generated projection; final checked build exits 0"
+  },
+  {
+    "step": "first index CLI invocation without workspace environment",
+    "exit_code": 127,
+    "reason": "libranger_localizer_core.so not found; corrected by sourcing ROS/workspace; final build and check exit 0"
+  }
+]

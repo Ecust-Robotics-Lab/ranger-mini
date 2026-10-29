@@ -25,6 +25,10 @@ def specs(args):
         command += ['-p', 'archive_path:='+str(args.archive.resolve())]
     if args.compatibility:
         command += ['-p', 'compatibility_path:='+str(args.compatibility.resolve())]
+    if getattr(args, 'global_search', False):
+        command += ['--params-file', str(ROOT/'config/fast_livo2/relocalizer.yaml')]
+        if args.index:
+            command += ['-p', 'global_index_path:='+str(args.index.resolve())]
     components = [Component('monitor', [sys.executable, str(ROOT/'scripts/fast_livo2/localizer/monitor.py')], ready_key='probe_live'),
                   Component('localizer', command, depends=('monitor',), requires=('probe_live',), ready_key='localizer_alive',
                             resource='fast_livo_backend')]
@@ -51,12 +55,16 @@ def main():
     p.add_argument('--archive', type=Path)
     p.add_argument('--compatibility', type=Path)
     p.add_argument('--offline-bridge', action='store_true')
+    p.add_argument('--global-search', action='store_true', help='Explicit optional C2; no initial pose required')
+    p.add_argument('--index', type=Path, help='Bound C2 index; omission builds an in-memory index')
     p.add_argument('--domain', type=int, default=189)
     p.add_argument('--registration', choices=['pcl_icp', 'small_gicp', 'small_vgicp'], default='pcl_icp')
     args = p.parse_args()
     if not 1 <= args.domain <= 232:
         p.error('offline domain must be 1..232')
     directory = ROOT/'.runtime/sessions'/('fast_livo_localizer_bridge' if args.offline_bridge else 'fast_livo_localizer')
+    if args.global_search:
+        directory = ROOT/'.runtime/sessions'/('fast_livo_relocalizer_bridge' if args.offline_bridge else 'fast_livo_relocalizer')
     if args.status:
         _, state = read_session(directory)
         print(json.dumps({'live': bool(session_live(state)), 'details': state}, indent=2))

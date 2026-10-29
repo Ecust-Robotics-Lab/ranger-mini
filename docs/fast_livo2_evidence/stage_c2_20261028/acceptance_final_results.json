@@ -1,0 +1,26 @@
+[
+  {
+    "name": "cpp_accepted",
+    "argv": [
+      "ws_fast_livo/backend_build/ros/ranger_fast_livo_localizer/localizer_tests",
+      "--gtest_output=xml:docs/fast_livo2_evidence/stage_c2_20261028/cpp_accepted.xml"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "c2_ros_accepted",
+    "argv": [
+      "python3",
+      "tests/test_fast_livo_relocalizer_ros.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "c1_ros_accepted",
+    "argv": [
+      "python3",
+      "tests/test_fast_livo_localizer_ros.py"
+    ],
+    "exit_code": 0
+  }
+]

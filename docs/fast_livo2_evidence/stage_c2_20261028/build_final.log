@@ -1,0 +1,175 @@
+
+██╗  ██╗██╗███████╗███████╗      
+██║ ██╔╝██║██╔════╝██╔════╝      
+█████╔╝ ██║███████╗███████╗█████╗
+██╔═██╗ ██║╚════██║╚════██║╚════╝
+██║  ██╗██║███████║███████║      
+╚═╝  ╚═╝╚═╝╚══════╝╚══════╝      
+
+███╗   ███╗ █████╗ ████████╗ ██████╗██╗  ██╗███████╗██████╗ 
+████╗ ████║██╔══██╗╚══██╔══╝██╔════╝██║  ██║██╔════╝██╔══██╗
+██╔████╔██║███████║   ██║   ██║     ███████║█████╗  ██████╔╝
+██║╚██╔╝██║██╔══██║   ██║   ██║     ██╔══██║██╔══╝  ██╔══██╗
+██║ ╚═╝ ██║██║  ██║   ██║   ╚██████╗██║  ██║███████╗██║  ██║
+╚═╝     ╚═╝╚═╝  ╚═╝   ╚═╝    ╚═════╝╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝
+
+-- Found OpenMP_CXX: -fopenmp (found version "4.5") 
+-- Found OpenMP: TRUE (found version "4.5")  
+-- ===============================================================
+-- ============= Robin Configuration Options =====================
+-- Build Type: Release
+-- BUILD_DOCS: OFF
+-- BUILD_MATLAB_BINDINGS: OFF
+-- USE_ASAN: OFF
+-- ENABLE_DIAGNOSTIC_PRINT: OFF
+-- ===============================================================
+-- Found OpenMP_CXX: -fopenmp (found version "4.5") 
+-- Found OpenMP: TRUE (found version "4.5")  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/lab307/ranger_nav/ws_fast_livo/relocalization_build/kiss
+Consolidate compiler generated dependencies of target pmc
+[ 37%] Built target pmc
+Consolidate compiler generated dependencies of target robin
+[ 79%] Built target robin
+Consolidate compiler generated dependencies of target kiss_matcher_core
+[100%] Built target kiss_matcher_core
+-- Install configuration: "Release"
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/chase_work_stealing_deque.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/detail
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/detail/pointer_queue_traits.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/detail/growing_circular_array.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/detail/nikolaev_scq.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/detail/hardware.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/detail/fixed_size_circular_array.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/detail/port.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/nikolaev_bounded_queue.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/harris_michael_list_based_set.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/backoff.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/parameter.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/aligned_object.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/michael_scott_queue.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/marked_ptr.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/seqlock.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/impl
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/impl/vyukov_hash_map.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/impl/vyukov_hash_map_traits.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/reclamation
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/reclamation/generic_epoch_based.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/reclamation/detail
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/reclamation/detail/allocation_tracker.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/reclamation/detail/thread_block_list.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/reclamation/detail/guard_ptr.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/reclamation/detail/retire_list.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/reclamation/detail/perf_counter.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/reclamation/detail/deletable_object.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/reclamation/detail/orphan.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/reclamation/detail/concurrent_ptr.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/reclamation/impl
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/reclamation/impl/generic_epoch_based.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/reclamation/impl/hazard_eras.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/reclamation/impl/quiescent_state_based.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/reclamation/impl/lock_free_ref_count.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/reclamation/impl/hazard_pointer.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/reclamation/impl/stamp_it.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/reclamation/hazard_eras.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/reclamation/quiescent_state_based.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/reclamation/lock_free_ref_count.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/reclamation/hazard_pointer.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/reclamation/stamp_it.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/ramalhete_queue.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/vyukov_hash_map.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/meta.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/harris_michael_hash_map.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/vyukov_bounded_queue.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/utils.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/nikolaev_queue.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/policy.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/kirsch_kfifo_queue.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/hash.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/acquire_guard.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/kirsch_bounded_kfifo_queue.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/xenium/left_right.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/lib/librobin.a
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/lib/libpmc.a
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/lib/cmake/robin/robinTargets.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/lib/cmake/robin/robinTargets-release.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/lib/cmake/robin/robinConfig.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/lib/cmake/robin/robinConfigVersion.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/robin
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/robin/pkc.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/robin/macros.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/robin/robin.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/robin/math.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/robin/graph_io.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/robin/graph_solvers.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/robin/graph.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/robin/problems.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/robin/utils.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/robin/graph_core.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/robin/views.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/robin/core.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/lib/cmake/xenium/xeniumConfig.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/lib/libpmc.a
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/lib/cmake/pmc/pmcTargets.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/lib/cmake/pmc/pmcTargets-release.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/pmc
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/pmc/pmc_heu.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/pmc/pmc_neigh_coloring.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/pmc/pmcx_maxclique_basic.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/pmc/pmc_maxclique.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/pmc/pmc_vertex.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/pmc/pmc_graph.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/pmc/pmc_debug_utils.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/pmc/pmc.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/pmc/pmc_input.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/pmc/pmc_utils.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/pmc/pmc_headers.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/pmc/pmcx_maxclique.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/pmc/pmc_neigh_cores.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/pmc/pmc_bool_vector.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/lib/cmake/pmc/pmcConfig.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/lib/libkiss_matcher_core.a
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/lib/cmake/kiss_matcher/kiss_matcherTargets.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/lib/cmake/kiss_matcher/kiss_matcherTargets-release.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher/ROBINMatching.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher/points
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher/points/eigen.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher/points/traits.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher/points/downsampling.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher/points/fast_floor.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher/points/point_cloud.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher/points/vector3i_hash.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher/GncSolver.cpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher/KISSMatcher.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher/kdtree
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher/kdtree/traits.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher/kdtree/kdtree_tbb.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher/kdtree/nanoflann_tbb.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher/kdtree/nanoflann.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher/kdtree/kdtree.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher/ROBINMatching.cpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher/FasterPFH.cpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher/tsl
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher/tsl/robin_map.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher/tsl/robin_set.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher/tsl/robin_growth_policy.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher/tsl/robin_hash.h
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher/KISSMatcher.cpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher/FasterPFH.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/include/kiss_matcher/GncSolver.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/lib/cmake/kiss_matcher/kiss_matcherConfig.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_fast_livo/relocalization_deps/lib/cmake/kiss_matcher/Findflann.cmake
+Starting >>> ranger_fast_livo_backend
+Finished <<< ranger_fast_livo_backend [0.36s]
+Starting >>> ranger_fast_livo_localizer
+Finished <<< ranger_fast_livo_localizer [34.5s]
+
+Summary: 2 packages finished [34.9s]
+Starting >>> ranger_localization_bridge
+Finished <<< ranger_localization_bridge [0.39s]
+
+Summary: 1 package finished [0.50s]

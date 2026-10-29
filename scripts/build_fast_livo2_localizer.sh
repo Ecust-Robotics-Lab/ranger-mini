@@ -27,6 +27,6 @@ export CMAKE_BUILD_PARALLEL_LEVEL=2 MAKEFLAGS=-j2
 cd "$project_root/ws_fast_livo"
 colcon --log-base localizer_log build --base-paths src --packages-up-to ranger_fast_livo_localizer \
   --build-base backend_build/ros --install-base backend_install --executor sequential \
-  --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON
+  --cmake-args -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DRANGER_ENABLE_KISS=OFF
 cd "$project_root/ws_nav"
 colcon --log-base c1_adapter_log build --packages-select ranger_localization_bridge --executor sequential

@@ -1,0 +1,96 @@
+{
+  "status": "PASS for authorized offline implementation; PARTIAL for independent capture/physical/real-time/ground-truth acceptance",
+  "dates": "2026-10-28 to 2026-10-29",
+  "cpp": {
+    "passed": 30,
+    "c1": 18,
+    "c2": 12
+  },
+  "c1_ros_passed": 9,
+  "c2_ros_passed": 4,
+  "build_final_exit_code": 0,
+  "source_audit_clean": true,
+  "index_build_and_new_process_check": "PASS",
+  "same_capture_function_check": {
+    "passed": true,
+    "hardware_started": false,
+    "absolute_accuracy_validated": false,
+    "independent_session_validated": false,
+    "physical_sync_validated": false,
+    "registration": "pcl_icp",
+    "domain": 197,
+    "source_pairs": 1362,
+    "source_native": "/home/lab307/ranger_nav/outputs/fast-livo-demo-20261028-fHJTbGCU/frontend/native_frames",
+    "source_database_sha256": "2eecd2c75e0c33eac80cda41f043f4c8ebe6bd5c089da06e6018b40deeaf62b4",
+    "source_manifest_sha256": "a890afe331f16ad5d65e601f390a00c7f270cd489346884a41b0b4274b9a4f58",
+    "initial_index": 366,
+    "initial_pose_source": "none; global search",
+    "global_search": true,
+    "skip_pairs": 0,
+    "pacing": "acknowledge each input stamp; not a real-time benchmark",
+    "exclude_identical_stamp": true,
+    "argv": [
+      "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node",
+      "--ros-args",
+      "--params-file",
+      "/home/lab307/ranger_nav/config/fast_livo2/localizer.yaml",
+      "-p",
+      "archive_path:=/home/lab307/ranger_nav/outputs/fast-livo-backend-validation-20261028-pcl/snapshot",
+      "-p",
+      "compatibility_path:=/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_c1_20261028/pcl_compatibility.json",
+      "-p",
+      "registration:=pcl_icp",
+      "--params-file",
+      "/home/lab307/ranger_nav/config/fast_livo2/relocalizer.yaml"
+    ],
+    "processed_pairs": 1362,
+    "valid_samples": 979,
+    "states": {
+      "0": 383,
+      "1": 979
+    },
+    "reasons": {
+      "searching_waiting_query_window": 1,
+      "verifying_independent_motion_support": 22,
+      "verifying_wait_disjoint_query_scans": 22,
+      "verifying_insufficient_time_or_motion_baseline": 81,
+      "global_no_geometric_match": 32,
+      "retry_backoff": 223,
+      "global_confirmed_handoff_requires_c1_verification": 1,
+      "verifying_multiframe_motion_support": 1,
+      "map_match_confirmed": 979
+    },
+    "node_peak_rss_kib": 165840,
+    "wall_seconds": 216.90577164200022,
+    "ack_latency_ms_p50_p95_max": [
+      140.47190949986543,
+      260.7977418500468,
+      3427.998439000021
+    ],
+    "solve_ms_p50_p95_max": [
+      95.1276109999526,
+      115.50134199983404,
+      1803.871048000019
+    ],
+    "public_publishers": {
+      "/tf": 0,
+      "/tf_static": 0,
+      "/cmd_vel": 0,
+      "/base/safe_cmd_vel": 0
+    },
+    "post_initial_queries": 1362,
+    "tracking_complete_without_loss": true,
+    "localizer_exit": 0
+  },
+  "hardware_started": false,
+  "new_stage_committed": false,
+  "pushed": false,
+  "existing_files_missing": 0,
+  "limitations": [
+    "No independent mapping/localization capture",
+    "No measured physical synchronization or absolute truth",
+    "No real-time wheel or robot deployment",
+    "Bounded candidates do not prove universal false-place rejection",
+    "Optional KISS binary transitively includes GPLv3+ PMC"
+  ]
+}

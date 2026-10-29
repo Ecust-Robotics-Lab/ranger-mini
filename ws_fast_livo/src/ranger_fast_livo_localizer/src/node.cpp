@@ -1,8 +1,10 @@
 #include "ranger_fast_livo_localizer/localizer.hpp"
+#include "ranger_fast_livo_localizer/relocalizer.hpp"
 #include <ranger_fast_livo_backend/input.hpp>
 #include <ranger_fast_livo_localizer/msg/localizer_estimate.hpp>
 #include <ranger_fast_livo_localizer/srv/load_map.hpp>
 #include <ranger_fast_livo_localizer/srv/initialize.hpp>
+#include <ranger_fast_livo_localizer/srv/relocalize.hpp>
 #include <rclcpp/rclcpp.hpp>
 #include <atomic>
 #include <condition_variable>
@@ -15,6 +17,7 @@ namespace ranger_localizer {
 using Estimate=ranger_fast_livo_localizer::msg::LocalizerEstimate;
 using Load=ranger_fast_livo_localizer::srv::LoadMap;
 using Init=ranger_fast_livo_localizer::srv::Initialize;
+using Search=ranger_fast_livo_localizer::srv::Relocalize;
 class LocalizerNode final:public rclcpp::Node {
 public:
   LocalizerNode():Node("ranger_fast_livo_localizer"),pairs_(32,.25,.02) {
@@ -33,6 +36,17 @@ public:
     config_.registration.registration=declare_parameter<std::string>("registration","pcl_icp");
     config_.registration.max_iterations=declare_parameter<int>("max_iterations",50);
     config_.exclude_identical_stamp=declare_parameter<bool>("exclude_identical_stamp",true);config_.validate();
+    global_enabled_=declare_parameter<bool>("global_search_enabled",false);search_allowed_=global_enabled_;
+    index_path_=declare_parameter<std::string>("global_index_path","");
+#define GLOBAL_SIZE(x) {auto n=declare_parameter<int64_t>("global_" #x,search_config_.x);if(n<1)throw std::invalid_argument("global_" #x);search_config_.x=size_t(n);}
+    GLOBAL_SIZE(candidates);GLOBAL_SIZE(maximum_points);GLOBAL_SIZE(window_frames);GLOBAL_SIZE(maximum_index_frames);GLOBAL_SIZE(support_queries);
+#undef GLOBAL_SIZE
+#define GLOBAL_DBL(x) search_config_.x=declare_parameter<double>("global_" #x,search_config_.x)
+    GLOBAL_DBL(resolution);GLOBAL_DBL(window_seconds);GLOBAL_DBL(window_translation);GLOBAL_DBL(window_rotation);
+    GLOBAL_DBL(budget_ms);GLOBAL_DBL(retry_seconds);GLOBAL_DBL(support_time);GLOBAL_DBL(support_translation);GLOBAL_DBL(support_rotation);
+    GLOBAL_DBL(consistency_translation);GLOBAL_DBL(consistency_rotation);
+#undef GLOBAL_DBL
+    search_config_.validate();if(global_enabled_)(void)make_global_coarse(search_config_);
     age_=declare_parameter<double>("sample_max_age",.5);stream_timeout_=declare_parameter<double>("stream_timeout",2.);
     if(!std::isfinite(age_) || !std::isfinite(stream_timeout_) || age_<=0 || stream_timeout_<=0) throw std::invalid_argument("invalid age limits");
     auto xyz=declare_parameter<std::vector<double>>("t_base_imu_xyz",{0.,0.,.556});
@@ -50,15 +64,18 @@ public:
     cloud_=create_subscription<rb::Scan>("/fast_livo/deskewed_imu",rclcpp::QoS(16).reliable(),[this](rb::Scan::ConstSharedPtr p){receive(p);});
     load_=create_service<Load>("/fast_livo/localizer/load_map",[this](std::shared_ptr<Load::Request> req,std::shared_ptr<Load::Response> res){load_request(*req,*res);});
     init_=create_service<Init>("/fast_livo/localizer/initialize",[this](std::shared_ptr<Init::Request> req,std::shared_ptr<Init::Response> res){initialize_request(*req,*res);});
+    search_service_=create_service<Search>("/fast_livo/localizer/relocalize",[this](std::shared_ptr<Search::Request> req,std::shared_ptr<Search::Response> res){search_request(*req,*res);});
     timer_=create_wall_timer(std::chrono::milliseconds(20),[this]{tick();});
     if(!archive.empty()) {Load::Request req;req.request_id="startup-map";req.archive_path=archive;req.compatibility_path=declaration;Load::Response res;load_request(req,res);}
     worker_=std::thread([this]{work();});
   }
   ~LocalizerNode()override {{std::lock_guard<std::mutex> lock(mutex_);stopping_=true;++generation_;}condition_.notify_all();if(worker_.joinable())worker_.join();}
 private:
-  enum class Kind {Reset,Load,Initialize,Scan};
+  enum class Kind {Reset,Load,Initialize,Search,Scan};
   struct Job {Kind kind=Kind::Reset;uint64_t generation=0,scan=0;rb::Pair pair;InitialPose initial;fs::path archive,declaration;};
   Config config_;Compatibility compatibility_;ArchiveLimits limits_;Pose T_base_imu_;
+  SearchConfig search_config_;bool global_enabled_=false;std::atomic<bool> search_allowed_{false};std::string index_path_;
+  std::shared_ptr<PlaceIndex> place_index_;std::unique_ptr<Relocalizer> search_;
   std::mutex mutex_;std::condition_variable condition_;std::deque<Job> jobs_;std::atomic<uint64_t> generation_{1};
   bool stopping_=false,terminal_=false,inputs_ready_=false,loading_=false,lost_latched_=false;
   rb::PairBuffer pairs_;std::shared_ptr<Archive> map_;std::unique_ptr<Localizer> core_;
@@ -66,15 +83,17 @@ private:
   double age_=.5,stream_timeout_=2.,last_discovery_=0,last_received_=0,request_started_=0;
   int64_t last_clock_=-1;size_t invalid_=0;
   std::map<std::string,std::pair<std::string,uint64_t>> load_ids_,init_ids_;
+  std::map<std::string,std::pair<bool,uint64_t>> search_ids_;
   std::thread worker_;rclcpp::TimerBase::SharedPtr timer_;
   rclcpp::Publisher<Estimate>::SharedPtr publisher_;
   rclcpp::Subscription<rb::Odom>::SharedPtr odom_;rclcpp::Subscription<rb::Scan>::SharedPtr cloud_;
   rclcpp::Service<Load>::SharedPtr load_;rclcpp::Service<Init>::SharedPtr init_;
+  rclcpp::Service<Search>::SharedPtr search_service_;
   static bool request_id(const std::string& id) {return !id.empty() && id.size()<=128;}
   void enqueue(Job j) {jobs_.push_back(std::move(j));condition_.notify_one();}
   void clear_locked(const std::string& reason,bool frontend_reset) {
     ++generation_;jobs_.clear();pairs_.clear();message_.pose_valid=false;message_.state=0;message_.reason=reason;request_started_=0;lost_latched_=false;
-    if(frontend_reset) {message_.session_id=rb::uuid();scan_=0;message_.header.stamp=builtin_interfaces::msg::Time{};message_.last_confirmed_stamp_ns=0;message_.latest_scan_stamp_ns=0;init_ids_.clear();message_.initialization_request_id.clear();}
+    if(frontend_reset) {message_.session_id=rb::uuid();scan_=0;message_.header.stamp=builtin_interfaces::msg::Time{};message_.last_confirmed_stamp_ns=0;message_.latest_scan_stamp_ns=0;init_ids_.clear();search_ids_.clear();message_.initialization_request_id.clear();}
   }
   void load_request(const Load::Request& req,Load::Response& res) {
     std::lock_guard<std::mutex> lock(mutex_);
@@ -107,9 +126,24 @@ private:
       if(old!=init_ids_.end()) {res.accepted=old->second.first==fingerprint.str();res.reason=res.accepted?"duplicate_request_already_accepted":"request_id_reused_with_different_payload";res.request_generation=old->second.second;return;}
       if(init_ids_.size()>=128) throw std::invalid_argument("initial request history capacity; reopen session");
       clear_locked("verifying_initial_pose",false);++message_.request_generation;message_.initialization_request_id=req.request_id;request_started_=rb::steady_seconds();
+      search_allowed_=false; // Explicit manual initialization supersedes global search.
       init_ids_[req.request_id]={fingerprint.str(),message_.request_generation};Job job;job.kind=Kind::Initialize;job.generation=generation_;job.initial=initial;enqueue(job);
       res.accepted=true;res.reason="accepted_for_geometric_verification_not_localized";res.request_generation=message_.request_generation;
     } catch(const std::exception& e) {res.reason=e.what();}
+  }
+  void search_request(const Search::Request& req,Search::Response& res) {
+    std::lock_guard<std::mutex> lock(mutex_);
+    if(!global_enabled_||terminal_||loading_||!map_||!inputs_ready_||!request_id(req.request_id)||
+       req.map_uuid!=map_->uuid||req.map_generation!=message_.map_generation||req.session_id!=message_.session_id) {
+      res.reason="global_search_disabled_or_map_session_not_ready";return;
+    }
+    auto old=search_ids_.find(req.request_id);
+    if(old!=search_ids_.end()) {res.accepted=old->second.first==req.enable;res.reason=res.accepted?"duplicate_request_already_accepted":"request_id_reused";res.request_generation=old->second.second;return;}
+    if(search_ids_.size()>=128){res.reason="search request history capacity";return;}
+    clear_locked(req.enable?"searching":"global_search_cancelled",false);search_allowed_=req.enable;
+    ++message_.request_generation;message_.initialization_request_id=req.request_id;
+    search_ids_[req.request_id]={req.enable,message_.request_generation};Job j;j.kind=Kind::Search;j.generation=generation_;enqueue(j);
+    res.accepted=true;res.reason="accepted_not_localized";res.request_generation=message_.request_generation;
   }
   template<class T> void receive(std::shared_ptr<const T> m) {
     std::lock_guard<std::mutex> lock(mutex_);if(terminal_ || !inputs_ready_) return;
@@ -158,6 +192,7 @@ private:
       Json quality;try {quality=Json::parse(message.quality_json.empty()?"{}":message.quality_json);}catch(...) {quality=Json::object();}
       quality["pair_counters"]=pairs_.counters;quality["invalid_messages"]=invalid_;quality["queued_jobs"]=jobs_.size();quality["pair_bytes"]=pairs_.bytes();
       quality["inputs_ready"]=inputs_ready_;quality["map_loading"]=loading_;quality["public_tf_publisher"]=false;
+      quality["global_search_enabled"]=global_enabled_;quality["global_search_allowed"]=search_allowed_.load();
       message.quality_json=quality.dump();
     }
     publisher_->publish(message);
@@ -173,6 +208,22 @@ private:
     message_.header.stamp=rclcpp::Time(result.stamp);message_.last_confirmed_stamp_ns=result.stamp;message_.latest_scan_stamp_ns=result.latest_scan;message_.scan_id=result.scan;message_.quality_json=result.quality.dump();
     if(result.valid) request_started_=0;
   }
+  void process_search(Job& job,const Cloud& cloud,const Pose& U,int64_t stamp,const std::function<bool()>& cancelled) {
+    auto result=search_->process(stamp,job.scan,U,cloud,rb::steady_seconds(),cancelled);
+    {
+      std::lock_guard<std::mutex> lock(mutex_);if(cancelled())return;
+      message_.pose_valid=false;message_.reason=result.reason;message_.state=lost_latched_?3:0;
+      message_.latest_scan_stamp_ns=stamp;message_.scan_id=job.scan;message_.quality_json=result.quality.dump();
+      if(!result.confirmed)return;
+      lost_latched_=false;++message_.request_generation;message_.initialization_request_id=result.confirmed->request_id;
+      request_started_=rb::steady_seconds();
+    }
+    core_->initialize(*result.confirmed,rb::steady_seconds());
+    // C1 independently verifies the confirmed original-stamp initial pose.
+    auto first=core_->process(stamp,job.scan,U,cloud,rb::steady_seconds(),cancelled);
+    first.quality["global_handoff"]=result.quality;
+    commit(first,job.generation);
+  }
   void work() {
     while(true) {
       Job job;
@@ -182,18 +233,30 @@ private:
         if(job.kind==Kind::Load) {
           auto compatibility=compatibility_;compatibility.declaration=job.declaration;
           auto map=Archive::load(job.archive,limits_,compatibility,cancelled);auto core=std::make_unique<Localizer>(map,config_);
-          {std::lock_guard<std::mutex> lock(mutex_);if(cancelled())continue;map_=map;core_=std::move(core);loading_=false;
+          std::shared_ptr<PlaceIndex> index;std::unique_ptr<Relocalizer> search;
+          if(global_enabled_) {
+            index=index_path_.empty()?PlaceIndex::build(map,search_config_,cancelled):PlaceIndex::load(index_path_,map,search_config_);
+            search=std::make_unique<Relocalizer>(map,config_,search_config_,index,make_global_coarse(search_config_));
+          }
+          {std::lock_guard<std::mutex> lock(mutex_);if(cancelled())continue;map_=map;core_=std::move(core);loading_=false;place_index_=std::move(index);search_=std::move(search);
             message_.map_uuid=map->uuid;message_.manifest_sha256=map->manifest_sha;message_.graph_version=map->graph_version;
-            message_.reason="map_loaded_waiting_initial_pose";message_.state=0;message_.pose_valid=false;message_.quality_json=Json({{"compatibility",map->compatibility}}).dump();}
+            message_.reason=global_enabled_&&search_allowed_?"map_loaded_searching":"map_loaded_waiting_initial_pose";message_.state=0;message_.pose_valid=false;message_.quality_json=Json({{"compatibility",map->compatibility}}).dump();}
         } else if(job.kind==Kind::Reset) {
           if(map_) core_=std::make_unique<Localizer>(map_,config_);
+          if(search_)search_->reset();
+        } else if(job.kind==Kind::Search) {
+          if(map_)core_=std::make_unique<Localizer>(map_,config_);
+          if(search_)search_->reset();
         } else if(job.kind==Kind::Initialize) {
+          if(search_)search_->reset();
           if(!core_) throw std::runtime_error("map_not_loaded");core_->initialize(job.initial,rb::steady_seconds());commit(core_->result(),job.generation);
         } else if(core_) {
-          auto cloud=rb::decode_cloud(*job.pair.cloud);auto result=core_->process(rb::stamp_ns(job.pair.odom->header.stamp),job.scan,rb::odom_pose(*job.pair.odom),*cloud,rb::steady_seconds(),cancelled);commit(result,job.generation);
+          auto cloud=rb::decode_cloud(*job.pair.cloud);auto U=rb::odom_pose(*job.pair.odom);auto stamp=rb::stamp_ns(job.pair.odom->header.stamp);
+          if(search_&&search_allowed_&&core_->needs_initialization())process_search(job,*cloud,U,stamp,cancelled);
+          else {auto result=core_->process(stamp,job.scan,U,*cloud,rb::steady_seconds(),cancelled);commit(result,job.generation);}
         }
       } catch(const std::exception& e) {
-        if(job.kind==Kind::Load && !cancelled()) {if(map_)core_=std::make_unique<Localizer>(map_,config_);}
+        if(job.kind==Kind::Load && !cancelled()) {if(map_)core_=std::make_unique<Localizer>(map_,config_);if(search_)search_->reset();}
         std::lock_guard<std::mutex> lock(mutex_);if(cancelled())continue;loading_=false;message_.state=4;message_.pose_valid=false;
         message_.reason=(job.kind==Kind::Load?"map_load_failed_previous_map_retained_requires_initial_pose: ":"processing_error: ")+std::string(e.what());
       }

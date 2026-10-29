@@ -1,0 +1,89 @@
+[
+  {
+    "name": "cpp",
+    "argv": [
+      "ws_fast_livo/backend_build/ros/ranger_fast_livo_localizer/localizer_tests",
+      "--gtest_output=xml:docs/fast_livo2_evidence/stage_c2_20261028/cpp_final.xml"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "c1_ros",
+    "argv": [
+      "python3",
+      "tests/test_fast_livo_localizer_ros.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "backend_cpp",
+    "argv": [
+      "ws_fast_livo/backend_build/ros/ranger_fast_livo_backend/backend_tests"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "bridge_guard",
+    "argv": [
+      "python3",
+      "tests/test_bridge_pgo_guard.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "bridge_legacy",
+    "argv": [
+      "python3",
+      "tests/test_stage5_bridge.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "time_alignment",
+    "argv": [
+      "python3",
+      "tests/test_time_alignment.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "adapter",
+    "argv": [
+      "python3",
+      "tests/test_fast_livo_adapter_contract.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "architecture",
+    "argv": [
+      "python3",
+      "tests/test_architecture_contract.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "config",
+    "argv": [
+      "python3",
+      "tests/test_project_consolidation.py"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "dry_build",
+    "argv": [
+      "bash",
+      "scripts/build_fast_livo2_relocalizer.sh"
+    ],
+    "exit_code": 0
+  },
+  {
+    "name": "dry_private",
+    "argv": [
+      "bash",
+      "scripts/run_fast_livo2_relocalizer.sh"
+    ],
+    "exit_code": 0
+  }
+]

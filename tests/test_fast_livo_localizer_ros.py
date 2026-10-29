@@ -33,7 +33,7 @@ from ranger_fast_livo_localizer.msg import LocalizerEstimate
 from ranger_fast_livo_localizer.srv import LoadMap, Initialize
 import tf2_ros
 
-EVIDENCE = ROOT/'docs/fast_livo2_evidence/stage_c1_20261028'
+EVIDENCE = Path(os.environ.get('RANGER_LOCALIZER_TEST_EVIDENCE', str(ROOT/'docs/fast_livo2_evidence/stage_c1_20261028')))
 EXECUTABLE = ROOT/'ws_fast_livo/backend_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node'
 
 

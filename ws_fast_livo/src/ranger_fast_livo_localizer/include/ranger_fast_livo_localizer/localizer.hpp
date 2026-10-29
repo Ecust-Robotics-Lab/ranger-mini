@@ -40,6 +40,7 @@ public:
                  const std::function<bool()>& cancelled=[] {return false;});
   Result expire(double steady);
   const Result& result()const {return result_;}
+  bool needs_initialization()const {return !initial_ && (!accepted_ || result_.state==3);}
   size_t cache_bytes()const {return provider_.cache_bytes();}
 private:
   struct Sample {int64_t stamp;Pose U;};

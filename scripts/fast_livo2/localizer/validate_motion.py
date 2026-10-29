@@ -29,14 +29,16 @@ def main():
     p.add_argument('--domain', type=int, default=197)
     p.add_argument('--initial-index', type=int, default=366)
     p.add_argument('--max-pairs', type=int)
+    p.add_argument('--skip-pairs', type=int, default=0)
+    p.add_argument('--global-search', action='store_true')
     p.add_argument('--execute', action='store_true')
     args = p.parse_args()
-    if not 1 <= args.domain <= 232 or args.initial_index < 0:
+    if not 1 <= args.domain <= 232 or args.initial_index < 0 or args.skip_pairs < 0:
         p.error('invalid isolated domain/initial index')
     if not args.execute:
         print(json.dumps({'action': 'DRY-RUN', 'domain': args.domain, 'hardware_started': False,
                           'archive': str(args.archive), 'native': str(args.native), 'initial_index': args.initial_index,
-                          'limitations': 'same capture and graph-derived initial pose; no accuracy/generality/real-time claim'}, indent=2))
+                          'global_search': args.global_search, 'limitations': 'same capture functional check; no accuracy/generality/real-time claim'}, indent=2))
         return 0
     os.environ.update(ROS_DOMAIN_ID=str(args.domain), ROS_LOCALHOST_ONLY='1', PYTHONDONTWRITEBYTECODE='1',
                       OMP_NUM_THREADS='1', OPENBLAS_NUM_THREADS='1')
@@ -55,10 +57,10 @@ def main():
     archive = args.archive.resolve()
     manifest_sha = sha(archive/'manifest.json')
     manifest = json.loads((archive/'manifest.json').read_text())
-    pairs = load_pairs(args.native)
+    pairs = load_pairs(args.native)[args.skip_pairs:]
     if args.max_pairs:
         pairs = pairs[:args.max_pairs]
-    if args.initial_index >= len(pairs):
+    if not pairs or (not args.global_search and args.initial_index >= len(pairs)):
         raise ValueError('initial index exceeds selected input pairs')
     args.output.mkdir(parents=True, exist_ok=False)
     rclpy.init()
@@ -72,7 +74,8 @@ def main():
               'registration': args.registration, 'domain': args.domain, 'source_pairs': len(pairs),
               'source_native': str(args.native.resolve()), 'source_database_sha256': sha(next(args.native.glob('*.db3'))),
               'source_manifest_sha256': manifest_sha, 'initial_index': args.initial_index,
-              'initial_pose_source': 'same B graph; earlier keyframe X * inverse(U) * current U',
+              'initial_pose_source': 'none; global search' if args.global_search else 'same B graph; earlier keyframe X * inverse(U) * current U',
+              'global_search': args.global_search, 'skip_pairs': args.skip_pairs,
               'pacing': 'acknowledge each input stamp; not a real-time benchmark', 'exclude_identical_stamp': True}
     try:
         deadline = time.monotonic()+2
@@ -89,6 +92,8 @@ def main():
                    '--ros-args', '--params-file', str(ROOT/'config/fast_livo2/localizer.yaml'),
                    '-p', 'archive_path:='+str(archive), '-p', 'compatibility_path:='+str(args.compatibility.resolve()),
                    '-p', 'registration:='+args.registration]
+        if args.global_search:
+            command += ['--params-file', str(ROOT/'config/fast_livo2/relocalizer.yaml')]
         result['argv'] = command
         log = (args.output/'localizer.log').open('w')
         proc = subprocess.Popen(command, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
@@ -124,7 +129,7 @@ def main():
             for index, (ns, odom, cloud) in enumerate(pairs):
                 current_ns = ns+30_000_000
                 pump(.01)
-                if index == args.initial_index:
+                if not args.global_search and index == args.initial_index:
                     candidates = [k for k in manifest['keyframes'] if k['stamp_ns'] <= ns]
                     if not candidates:
                         raise ValueError('no earlier archived keyframe for declared initial pose')
@@ -180,7 +185,7 @@ def main():
                       ack_latency_ms_p50_p95_max=np.percentile(latencies, [50, 95, 100]).tolist(),
                       solve_ms_p50_p95_max=np.percentile(solve_ms, [50, 95, 100]).tolist() if solve_ms else [],
                       public_publishers={topic: len(node.get_publishers_info_by_topic(topic)) for topic in ['/tf', '/tf_static', '/cmd_vel', '/base/safe_cmd_vel']})
-        result['post_initial_queries'] = len(pairs)-args.initial_index
+        result['post_initial_queries'] = len(pairs) if args.global_search else len(pairs)-args.initial_index
         result['tracking_complete_without_loss'] = counts.get(LocalizerEstimate.LOST, 0) == 0 and counts.get(LocalizerEstimate.ERROR, 0) == 0
         if len(valid_stamps) < 10 or not result['tracking_complete_without_loss'] or any(result['public_publishers'].values()):
             raise AssertionError('insufficient confirmation, tracking loss/errors, or unexpected public outputs')

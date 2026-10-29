@@ -89,7 +89,9 @@
       sliding_thresh: 8.0
     uav:
       imu_rate_odom: false
-      gravity_align_en: false
+      # Initial IMU gravity points along world -Z; world +Z is up.
+      # Applies to new frontend sessions only; existing maps keep their frame.
+      gravity_align_en: true
     publish:
       dense_map_en: true
       pub_effect_point_en: false

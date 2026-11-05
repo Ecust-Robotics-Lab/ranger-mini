@@ -1,6 +1,6 @@
 # 阶段 A 前端接口、时间与后续 TF
 
-更新：2026-10-29，已含在线同步保护、目录迁移与初始重力对齐配置。适用于锁定前端加 `patches/fast_livo2_stage_a.patch`；不是未修改的上游接口说明。当前同步源码为 `ws_camera/src/{hik_camera_trigger_driver,timeshare_writer}`，标定在 `calibration/`，接手见 [HANDOFF](HANDOFF.md)。
+更新：2026-11-04，已含在线同步保护、初始重力对齐及用户指定的 +100 ms 图像相位修正。适用于锁定前端加 `patches/fast_livo2_stage_a.patch`；不是未修改的上游接口说明。当前同步源码为 `ws_camera/src/{hik_camera_trigger_driver,timeshare_writer}`，标定在 `calibration/`，接手见 [HANDOFF](HANDOFF.md)。
 
 ## 当前输入
 
@@ -24,7 +24,7 @@
 
 上述共享文件风险已在在线测试前修复：writer 不再在加锁前 O_TRUNC；reader/writer 配套使用奇数写入、偶数提交的 v2 协议，重复 writer 拒绝且不截断活动文件。原在线离线测试 5859 次快照、迁移后测试 5736 次快照通过，见 [在线报告](fast_livo2_online_report.md) 与 [整合报告](consolidation_report.md)。这修复的是共享文件一致性，曝光与扫描的物理对应仍未证明；不据此推定原 bag 必然正确或错配。
 
-前端 LIVO 在 `img_time + exposure_time_init` 截断点云和 IMU，先 LIO 再 VIO；同 header 的图像通常对应**之前一个扫描区间的末端**。这种切分不能用于推导自动加/减 100 ms。本配置所有时间偏移和 exposure_time_init 均为 **0 的试验假设**，不宣称曝光中心或起点已经确定。
+前端 LIVO 在 `image_header + img_time_offset + exposure_time_init` 截断点云和 IMU，先 LIO 再 VIO；输出原采样戳也来自该有效时刻。2026-11-04 核实 LIV_handhold_2 锁定配置为 `img_time_offset: 0.1`，上游作者解释过扫描整帧完成后复制其起始戳导致的一帧差。按用户本次明确要求，本机正式前端试验配置现为 **+0.1 s**，其余时间偏移和 `exposure_time_init` 仍为 0；原始图像 header 不改。新两包每包900扫描的跨度约100ms、1843相机会话帧均消费最新writer，支持固定扫描相位机制，尚未证明曝光起点/中心及剩余偏差。见 [时间相位核查](fast_livo2_timestamp_phase_report.md)。历史零偏移/+110ms报告保留原条件；不得给已修正的位姿/图像再叠加100ms，Tag独立时间配置仍未确认、默认关闭。
 
 原 bag 的存储记录时间约为 2026 年，而传感器 header 约为 2020 年。直接 `ros2 bag play 原包 --clock` 的 /clock 跟随存储时间，与前端位姿 stamp 不在一个历元。提供两种验证：
 

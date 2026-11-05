@@ -1,0 +1,118 @@
+{
+  "capture": "fast-livo-tag140_straight_04-ryzykq2l",
+  "db_sha256": "e6c7cd1b2d200b4629abfa7002458ace896e3c6a3b2268cc673145d21f400b6d",
+  "db_bytes": 7563784192,
+  "db_mtime_ns": 1793771861283088342,
+  "imu_record_minus_header_reference_ns": 203569185406579999,
+  "arrival_is_not_exposure_time": true,
+  "physical_time_verified": false,
+  "topics": {
+    "/livox/lidar": {
+      "messages": 900,
+      "first_header_ns": 1590202585800254850,
+      "first_record_ns": 1793771771310427488,
+      "strictly_increasing_headers": true,
+      "record_lag_relative_to_imu_reference_ms": {
+        "count": 900,
+        "minimum": 99.617065,
+        "p50": 102.5721125,
+        "p95": 103.80870540000001,
+        "maximum": 105.04693499999999
+      }
+    },
+    "/livox/imu": {
+      "messages": 18002,
+      "first_header_ns": 1590202585873153710,
+      "first_record_ns": 1793771771284251149,
+      "strictly_increasing_headers": true,
+      "record_lag_relative_to_imu_reference_ms": {
+        "count": 18002,
+        "minimum": -1.645911,
+        "p50": -4.999999999999986e-07,
+        "p95": 1.4663409000000014,
+        "maximum": 8.230362999999999
+      }
+    },
+    "/front/image_sync": {
+      "messages": 899,
+      "first_header_ns": 1590202585800254850,
+      "first_record_ns": 1793771771351720293,
+      "strictly_increasing_headers": true,
+      "record_lag_relative_to_imu_reference_ms": {
+        "count": 899,
+        "minimum": 127.84795199999999,
+        "p50": 140.777034,
+        "p95": 155.1288293,
+        "maximum": 545.337151
+      }
+    },
+    "/front/image": {
+      "messages": 900,
+      "first_header_ns": 1793771771333850977,
+      "first_record_ns": 1793771771367354501,
+      "strictly_increasing_headers": true,
+      "record_lag_relative_to_imu_reference_ms": {
+        "count": 900,
+        "minimum": -203569185405.0977,
+        "p50": -203569185395.05048,
+        "p95": -203569185382.2083,
+        "maximum": -203569184982.13788
+      }
+    },
+    "/front/camera_info": {
+      "messages": 900,
+      "first_header_ns": 1793771771333850977,
+      "first_record_ns": 1793771771545605530,
+      "strictly_increasing_headers": true,
+      "record_lag_relative_to_imu_reference_ms": {
+        "count": 900,
+        "minimum": -203569185405.86407,
+        "p50": -203569185404.8931,
+        "p95": -203569185401.82697,
+        "maximum": -203569185194.82544
+      }
+    },
+    "/fast_livo/odometry": {
+      "messages": 900,
+      "first_header_ns": 1590202585700414896,
+      "first_record_ns": 1793771771314483548,
+      "strictly_increasing_headers": true,
+      "record_lag_relative_to_imu_reference_ms": {
+        "count": 900,
+        "minimum": 203.591423,
+        "p50": 211.725594,
+        "p95": 214.87198089999998,
+        "maximum": 573.6337619999999
+      }
+    }
+  },
+  "scan_last_point_minus_header_ms": {
+    "count": 900,
+    "minimum": 99.829838,
+    "p50": 99.830034,
+    "p95": 100.310064,
+    "maximum": 100.325194
+  },
+  "scan_first_point_minus_header_ns": {
+    "count": 900,
+    "minimum": -128.0,
+    "p50": -1.0,
+    "p95": 116.0,
+    "maximum": 128.0
+  },
+  "camera_csv_frames": 919,
+  "camera_csv_statuses": {
+    "OK": 919
+  },
+  "camera_consumed_minus_latest_writer_sequence": {
+    "0": 919
+  },
+  "writer_age_at_camera_sdk_arrival_ms": {
+    "count": 919,
+    "minimum": 20.24214,
+    "p50": 22.14427,
+    "p95": 23.0805392,
+    "maximum": 23.835262
+  },
+  "camera_exposure_us_from_session_log": 20000
+}

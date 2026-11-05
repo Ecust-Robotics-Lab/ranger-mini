@@ -1,0 +1,391 @@
+{
+  "live": false,
+  "session": {
+    "run_directory": "/home/lab307/ranger_nav/.runtime/sessions/fast_livo_record/run-lf4majbu",
+    "guardian": {
+      "pid": 25478,
+      "start_ticks": 4139065,
+      "ppid": 17601,
+      "state": "R",
+      "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+    },
+    "owner": {
+      "pid": 25525,
+      "start_ticks": 4139114,
+      "ppid": 25478,
+      "state": "R",
+      "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+    },
+    "state": "STOPPED",
+    "reason": "",
+    "owned": [],
+    "components": {
+      "probe": {
+        "state": "READY",
+        "process": {
+          "pid": 25526,
+          "start_ticks": 4139114,
+          "ppid": 25525,
+          "state": "R",
+          "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+        },
+        "argv": [
+          "python3",
+          "/home/lab307/ranger_nav/scripts/fast_livo2/live_monitor.py"
+        ]
+      },
+      "lidar": {
+        "state": "READY",
+        "process": {
+          "pid": 25538,
+          "start_ticks": 4139341,
+          "ppid": 25525,
+          "state": "R",
+          "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+        },
+        "argv": [
+          "/home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/lib/livox_ros_driver2/livox_ros_driver2_node",
+          "--ros-args",
+          "-p",
+          "xfer_format:=0",
+          "-p",
+          "multi_topic:=0",
+          "-p",
+          "data_src:=0",
+          "-p",
+          "publish_freq:=10.0",
+          "-p",
+          "output_data_type:=0",
+          "-p",
+          "frame_id:=livox_frame",
+          "-p",
+          "user_config_path:=/home/lab307/ranger_nav/config/fast_livo2/mid360s_live.json",
+          "-p",
+          "cmdline_input_bd_code:=livox0000000001",
+          "-r",
+          "__node:=livox_lidar_publisher"
+        ]
+      },
+      "writer": {
+        "state": "READY",
+        "process": {
+          "pid": 25557,
+          "start_ticks": 4139702,
+          "ppid": 25525,
+          "state": "R",
+          "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+        },
+        "argv": [
+          "/home/lab307/ranger_nav/ws_camera/install/timeshare_writer/lib/timeshare_writer/timeshare_writer_node",
+          "--ros-args",
+          "-p",
+          "timeshare_path:=/home/lab307/ranger_nav/bags/fast-livo-tag140_sync_diag_02-35f_m8nd/sensor_assets/timeshare",
+          "-p",
+          "lidar_reliability:=reliable",
+          "-p",
+          "lidar_queue_depth:=5",
+          "-p",
+          "csv_path:=/home/lab307/ranger_nav/bags/fast-livo-tag140_sync_diag_02-35f_m8nd/sensor_assets/timeshare_writer.csv"
+        ]
+      },
+      "camera": {
+        "state": "READY",
+        "process": {
+          "pid": 25569,
+          "start_ticks": 4139713,
+          "ppid": 25525,
+          "state": "R",
+          "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+        },
+        "argv": [
+          "bash",
+          "-c",
+          "cd -- \"$RANGER_LIVO_DEVICE_CWD\" && exec \"$@\"",
+          "camera-device",
+          "/home/lab307/ranger_nav/ws_camera/install/hik_camera_trigger_driver/lib/hik_camera_trigger_driver/hik_camera_trigger_driver_node",
+          "--ros-args",
+          "--params-file",
+          "/home/lab307/ranger_nav/config/fast_livo2/camera_live.yaml",
+          "-p",
+          "timeshare_path:=/home/lab307/ranger_nav/bags/fast-livo-tag140_sync_diag_02-35f_m8nd/sensor_assets/timeshare",
+          "-p",
+          "sync_csv_path:=/home/lab307/ranger_nav/bags/fast-livo-tag140_sync_diag_02-35f_m8nd/sensor_assets/camera_sync.csv",
+          "-r",
+          "__node:=hik_camera_trigger"
+        ]
+      },
+      "frontend": {
+        "state": "READY",
+        "process": {
+          "pid": 25607,
+          "start_ticks": 4139872,
+          "ppid": 25525,
+          "state": "R",
+          "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+        },
+        "argv": [
+          "/home/lab307/ranger_nav/ws_fast_livo/install/fast_livo/lib/fast_livo/fastlivo_mapping",
+          "--ros-args",
+          "--params-file",
+          "/home/lab307/ranger_nav/config/fast_livo2/ranger_mid360s_hik_trial.yaml",
+          "-p",
+          "use_sim_time:=false",
+          "--log-level",
+          "warn"
+        ]
+      },
+      "foxglove": {
+        "state": "READY",
+        "process": {
+          "pid": 25653,
+          "start_ticks": 4139974,
+          "ppid": 25525,
+          "state": "R",
+          "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+        },
+        "argv": [
+          "/opt/ros/humble/lib/foxglove_bridge/foxglove_bridge",
+          "--ros-args",
+          "--params-file",
+          "/home/lab307/ranger_nav/config/fast_livo2/foxglove.yaml",
+          "-p",
+          "port:=8765"
+        ]
+      },
+      "capture": {
+        "state": "READY",
+        "process": {
+          "pid": 25654,
+          "start_ticks": 4139974,
+          "ppid": 25525,
+          "state": "R",
+          "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+        },
+        "argv": [
+          "/usr/bin/python3",
+          "/home/lab307/ranger_nav/scripts/fast_livo2/record_worker.py",
+          "--folder",
+          "/home/lab307/ranger_nav/bags/fast-livo-tag140_sync_diag_02-35f_m8nd"
+        ]
+      }
+    },
+    "updated_monotonic": 41522.276956115,
+    "guardian_cleanup_complete": true
+  },
+  "capture": {
+    "folder": "/home/lab307/ranger_nav/bags/fast-livo-tag140_sync_diag_02-35f_m8nd",
+    "recording.json": {
+      "state": "RECORDED",
+      "elapsed_seconds": 120.00064773600025
+    },
+    "result.json": {
+      "exit": 0,
+      "forced": false,
+      "requested_seconds": 120.0,
+      "elapsed_seconds": 120.00064773600025,
+      "stopped_by_signal": false,
+      "observed_messages": {
+        "/livox/lidar": 1206,
+        "/livox/imu": 24129,
+        "/front/image_sync": 1206,
+        "/front/image": 1206,
+        "/front/camera_info": 1206,
+        "/fast_livo/odometry": 1201
+      },
+      "session_exit": 0,
+      "session_state": {
+        "run_directory": "/home/lab307/ranger_nav/.runtime/sessions/fast_livo_record/run-lf4majbu",
+        "guardian": {
+          "pid": 25478,
+          "start_ticks": 4139065,
+          "ppid": 17601,
+          "state": "R",
+          "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+        },
+        "owner": {
+          "pid": 25525,
+          "start_ticks": 4139114,
+          "ppid": 25478,
+          "state": "R",
+          "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+        },
+        "state": "STOPPED",
+        "reason": "",
+        "owned": [],
+        "components": {
+          "probe": {
+            "state": "READY",
+            "process": {
+              "pid": 25526,
+              "start_ticks": 4139114,
+              "ppid": 25525,
+              "state": "R",
+              "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+            },
+            "argv": [
+              "python3",
+              "/home/lab307/ranger_nav/scripts/fast_livo2/live_monitor.py"
+            ]
+          },
+          "lidar": {
+            "state": "READY",
+            "process": {
+              "pid": 25538,
+              "start_ticks": 4139341,
+              "ppid": 25525,
+              "state": "R",
+              "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+            },
+            "argv": [
+              "/home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/lib/livox_ros_driver2/livox_ros_driver2_node",
+              "--ros-args",
+              "-p",
+              "xfer_format:=0",
+              "-p",
+              "multi_topic:=0",
+              "-p",
+              "data_src:=0",
+              "-p",
+              "publish_freq:=10.0",
+              "-p",
+              "output_data_type:=0",
+              "-p",
+              "frame_id:=livox_frame",
+              "-p",
+              "user_config_path:=/home/lab307/ranger_nav/config/fast_livo2/mid360s_live.json",
+              "-p",
+              "cmdline_input_bd_code:=livox0000000001",
+              "-r",
+              "__node:=livox_lidar_publisher"
+            ]
+          },
+          "writer": {
+            "state": "READY",
+            "process": {
+              "pid": 25557,
+              "start_ticks": 4139702,
+              "ppid": 25525,
+              "state": "R",
+              "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+            },
+            "argv": [
+              "/home/lab307/ranger_nav/ws_camera/install/timeshare_writer/lib/timeshare_writer/timeshare_writer_node",
+              "--ros-args",
+              "-p",
+              "timeshare_path:=/home/lab307/ranger_nav/bags/fast-livo-tag140_sync_diag_02-35f_m8nd/sensor_assets/timeshare",
+              "-p",
+              "lidar_reliability:=reliable",
+              "-p",
+              "lidar_queue_depth:=5",
+              "-p",
+              "csv_path:=/home/lab307/ranger_nav/bags/fast-livo-tag140_sync_diag_02-35f_m8nd/sensor_assets/timeshare_writer.csv"
+            ]
+          },
+          "camera": {
+            "state": "READY",
+            "process": {
+              "pid": 25569,
+              "start_ticks": 4139713,
+              "ppid": 25525,
+              "state": "R",
+              "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+            },
+            "argv": [
+              "bash",
+              "-c",
+              "cd -- \"$RANGER_LIVO_DEVICE_CWD\" && exec \"$@\"",
+              "camera-device",
+              "/home/lab307/ranger_nav/ws_camera/install/hik_camera_trigger_driver/lib/hik_camera_trigger_driver/hik_camera_trigger_driver_node",
+              "--ros-args",
+              "--params-file",
+              "/home/lab307/ranger_nav/config/fast_livo2/camera_live.yaml",
+              "-p",
+              "timeshare_path:=/home/lab307/ranger_nav/bags/fast-livo-tag140_sync_diag_02-35f_m8nd/sensor_assets/timeshare",
+              "-p",
+              "sync_csv_path:=/home/lab307/ranger_nav/bags/fast-livo-tag140_sync_diag_02-35f_m8nd/sensor_assets/camera_sync.csv",
+              "-r",
+              "__node:=hik_camera_trigger"
+            ]
+          },
+          "frontend": {
+            "state": "READY",
+            "process": {
+              "pid": 25607,
+              "start_ticks": 4139872,
+              "ppid": 25525,
+              "state": "R",
+              "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+            },
+            "argv": [
+              "/home/lab307/ranger_nav/ws_fast_livo/install/fast_livo/lib/fast_livo/fastlivo_mapping",
+              "--ros-args",
+              "--params-file",
+              "/home/lab307/ranger_nav/config/fast_livo2/ranger_mid360s_hik_trial.yaml",
+              "-p",
+              "use_sim_time:=false",
+              "--log-level",
+              "warn"
+            ]
+          },
+          "foxglove": {
+            "state": "READY",
+            "process": {
+              "pid": 25653,
+              "start_ticks": 4139974,
+              "ppid": 25525,
+              "state": "R",
+              "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+            },
+            "argv": [
+              "/opt/ros/humble/lib/foxglove_bridge/foxglove_bridge",
+              "--ros-args",
+              "--params-file",
+              "/home/lab307/ranger_nav/config/fast_livo2/foxglove.yaml",
+              "-p",
+              "port:=8765"
+            ]
+          },
+          "capture": {
+            "state": "READY",
+            "process": {
+              "pid": 25654,
+              "start_ticks": 4139974,
+              "ppid": 25525,
+              "state": "R",
+              "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+            },
+            "argv": [
+              "/usr/bin/python3",
+              "/home/lab307/ranger_nav/scripts/fast_livo2/record_worker.py",
+              "--folder",
+              "/home/lab307/ranger_nav/bags/fast-livo-tag140_sync_diag_02-35f_m8nd"
+            ]
+          }
+        },
+        "updated_monotonic": 41522.276956115,
+        "guardian_cleanup_complete": true
+      },
+      "folder": "/home/lab307/ranger_nav/bags/fast-livo-tag140_sync_diag_02-35f_m8nd",
+      "capture_complete": true,
+      "sync": {
+        "available": true,
+        "source": "/home/lab307/ranger_nav/bags/fast-livo-tag140_sync_diag_02-35f_m8nd/sensor_assets/camera_sync.csv",
+        "status_counts": {
+          "OK": 1224
+        },
+        "hardware_frame_id_missing": 0,
+        "hardware_frame_id_nonincreasing": 0,
+        "scope": "entire sensor session; may include time outside this recording",
+        "physical_sync_proven": false
+      },
+      "quality": {
+        "data_checks": "PASS",
+        "failures": [],
+        "warnings": [],
+        "physical_sync": "PARTIAL",
+        "motion_mapping_accuracy": "NOT_EVALUATED",
+        "note": "Header equality is not physical synchronization; no APE/RPE or loop accuracy is inferred."
+      }
+    }
+  }
+}

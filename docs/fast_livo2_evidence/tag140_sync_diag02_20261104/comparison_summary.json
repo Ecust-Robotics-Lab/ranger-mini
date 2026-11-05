@@ -1,0 +1,30 @@
+{
+  "cohort": 1061,
+  "training_frames": 103,
+  "heldout_frames": 274,
+  "cases": [
+    {
+      "offset_ns": 0,
+      "holdout_rmse_px": {
+        "count": 274,
+        "minimum": 0.43592317155833143,
+        "p50": 4.427327736365243,
+        "p95": 27.569147156839726,
+        "maximum": 108.11889221868492
+      },
+      "frames_passing_initial_limits": 383
+    },
+    {
+      "offset_ns": 120000000,
+      "holdout_rmse_px": {
+        "count": 274,
+        "minimum": 0.19153224821220524,
+        "p50": 3.2793329248298413,
+        "p95": 8.896049114769857,
+        "maximum": 18.69088404456917
+      },
+      "frames_passing_initial_limits": 489
+    }
+  ],
+  "physical_sync_verified": false
+}

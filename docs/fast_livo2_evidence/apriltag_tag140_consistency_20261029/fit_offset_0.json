@@ -1,0 +1,3966 @@
+{
+  "score": {
+    "assumed_offset_ns": 0,
+    "offset_is_calibrated": false,
+    "common_cohort_count": 528,
+    "training_pose_modes": 6,
+    "seed_budget": 4,
+    "evaluated_seeds": 4,
+    "fits": [
+      {
+        "pose": {
+          "xyz": [
+            0.7338636732081438,
+            -0.059098723152170185,
+            -0.17468365067827177
+          ],
+          "xyzw": [
+            0.5015683743211896,
+            0.5006011058794204,
+            0.5037109971897127,
+            0.4940677382538204
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 5,
+        "training_huber_coordinate_cost_mean": 3.5293255190572035,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.7849131253300119,
+          "p50": 2.4808302395414286,
+          "p95": 24.33535401224104,
+          "maximum": 37.296207201204616
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6583476368600029,
+          "p50": 3.5394804032300913,
+          "p95": 33.10161623491473,
+          "maximum": 92.19671270280006
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6583476368600029,
+          "p50": 2.984926240682387,
+          "p95": 29.13448721197599,
+          "maximum": 92.19671270280006
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8349073854202879,
+          "p50": 3.67418857921843,
+          "p95": 30.773374324688753,
+          "maximum": 95.687396778682
+        },
+        "frames_passing_initial_3px_rms_6px_max": 266,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7338636542001408,
+            -0.05909871777843199,
+            -0.17468364979638035
+          ],
+          "xyzw": [
+            0.5015684271016362,
+            0.5006008511672994,
+            0.5037109082247024,
+            0.4940680334537055
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 9,
+        "training_huber_coordinate_cost_mean": 3.529325519067506,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.7849129931600249,
+          "p50": 2.480826960822306,
+          "p95": 24.335356346340006,
+          "maximum": 37.29620313132532
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.658344918862127,
+          "p50": 3.539480636258981,
+          "p95": 33.10162107445188,
+          "maximum": 92.19671454270024
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.658344918862127,
+          "p50": 2.9849264985786554,
+          "p95": 29.13448778128053,
+          "maximum": 92.19671454270024
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8349081823095938,
+          "p50": 3.6741988824276284,
+          "p95": 30.77337443999696,
+          "maximum": 95.6873807526197
+        },
+        "frames_passing_initial_3px_rms_6px_max": 266,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7338636245534186,
+            -0.05909869884846756,
+            -0.17468365030187186
+          ],
+          "xyzw": [
+            0.5015688030017796,
+            0.5005999926749766,
+            0.5037103933972239,
+            0.4940690465641308
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 23,
+        "training_huber_coordinate_cost_mean": 3.5293255194319157,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.7849110824156805,
+          "p50": 2.4808146310948627,
+          "p95": 24.335365505646052,
+          "maximum": 37.296197752812844
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6583297581442114,
+          "p50": 3.539481173701538,
+          "p95": 33.10162684926771,
+          "maximum": 92.19671488937438
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6583297581442114,
+          "p50": 2.984927129638425,
+          "p95": 29.134492958865135,
+          "maximum": 92.19671488937438
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8349037732094147,
+          "p50": 3.6742377700083235,
+          "p95": 30.773318192109056,
+          "maximum": 95.6873101975956
+        },
+        "frames_passing_initial_3px_rms_6px_max": 266,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7338636501365585,
+            -0.05909872718360778,
+            -0.17468364772442255
+          ],
+          "xyzw": [
+            0.5015681445504473,
+            0.5006012580704097,
+            0.5037112659581675,
+            0.49406754329480596
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 21,
+        "training_huber_coordinate_cost_mean": 3.5293255190766772,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.7849146753889742,
+          "p50": 2.480833501538293,
+          "p95": 24.335351310749733,
+          "maximum": 37.29620128140166
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6583553029400531,
+          "p50": 3.5394805162705953,
+          "p95": 33.10162389269418,
+          "maximum": 92.19671745554245
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6583553029400531,
+          "p50": 2.9849263252069314,
+          "p95": 29.134483600463046,
+          "maximum": 92.19671745554245
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8349139762531927,
+          "p50": 3.6741782552010775,
+          "p95": 30.773430948230136,
+          "maximum": 95.68742299856648
+        },
+        "frames_passing_initial_3px_rms_6px_max": 266,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      }
+    ],
+    "training_selected_seed": 0
+  },
+  "training_selected_fit": {
+    "pose": {
+      "xyz": [
+        0.7338636732081438,
+        -0.059098723152170185,
+        -0.17468365067827177
+      ],
+      "xyzw": [
+        0.5015683743211896,
+        0.5006011058794204,
+        0.5037109971897127,
+        0.4940677382538204
+      ]
+    },
+    "optimizer_success": true,
+    "evaluations": 5,
+    "training_huber_coordinate_cost_mean": 3.5293255190572035,
+    "train_rmse_px": {
+      "count": 56,
+      "minimum": 0.7849131253300119,
+      "p50": 2.4808302395414286,
+      "p95": 24.33535401224104,
+      "maximum": 37.296207201204616
+    },
+    "holdout_rmse_px": {
+      "count": 112,
+      "minimum": 0.6583476368600029,
+      "p50": 3.5394804032300913,
+      "p95": 33.10161623491473,
+      "maximum": 92.19671270280006
+    },
+    "all_cohort_rmse_px": {
+      "count": 528,
+      "minimum": 0.6583476368600029,
+      "p50": 2.984926240682387,
+      "p95": 29.13448721197599,
+      "maximum": 92.19671270280006
+    },
+    "all_cohort_maximum_corner_px": {
+      "count": 528,
+      "minimum": 0.8349073854202879,
+      "p50": 3.67418857921843,
+      "p95": 30.773374324688753,
+      "maximum": 95.687396778682
+    },
+    "frames_passing_initial_3px_rms_6px_max": 266,
+    "negative_depth_frames": 0,
+    "frame_errors": [
+      {
+        "image_index": 1,
+        "stamp_ns": 1590195569800402520,
+        "rmse_px": 6.377762840042054,
+        "maximum_px": 7.3276024681129925,
+        "positive_depth": true
+      },
+      {
+        "image_index": 2,
+        "stamp_ns": 1590195569900242520,
+        "rmse_px": 7.103244728045987,
+        "maximum_px": 8.391355789581944,
+        "positive_depth": true
+      },
+      {
+        "image_index": 3,
+        "stamp_ns": 1590195570000097180,
+        "rmse_px": 5.723224308663039,
+        "maximum_px": 7.005592001500239,
+        "positive_depth": true
+      },
+      {
+        "image_index": 4,
+        "stamp_ns": 1590195570100417180,
+        "rmse_px": 3.355198671436898,
+        "maximum_px": 3.9383143879487026,
+        "positive_depth": true
+      },
+      {
+        "image_index": 5,
+        "stamp_ns": 1590195570200257180,
+        "rmse_px": 1.786980955993013,
+        "maximum_px": 2.611894324723366,
+        "positive_depth": true
+      },
+      {
+        "image_index": 6,
+        "stamp_ns": 1590195570300097180,
+        "rmse_px": 5.16228750889389,
+        "maximum_px": 5.787650472540015,
+        "positive_depth": true
+      },
+      {
+        "image_index": 7,
+        "stamp_ns": 1590195570400417180,
+        "rmse_px": 6.42082493030625,
+        "maximum_px": 7.070902121970672,
+        "positive_depth": true
+      },
+      {
+        "image_index": 8,
+        "stamp_ns": 1590195570500257180,
+        "rmse_px": 4.312747558248228,
+        "maximum_px": 4.856160993748284,
+        "positive_depth": true
+      },
+      {
+        "image_index": 9,
+        "stamp_ns": 1590195570600097180,
+        "rmse_px": 0.7683924142789289,
+        "maximum_px": 1.409045431409629,
+        "positive_depth": true
+      },
+      {
+        "image_index": 10,
+        "stamp_ns": 1590195570700417180,
+        "rmse_px": 1.9525470005266696,
+        "maximum_px": 2.4821746672547076,
+        "positive_depth": true
+      },
+      {
+        "image_index": 11,
+        "stamp_ns": 1590195570800257180,
+        "rmse_px": 4.1351318347076855,
+        "maximum_px": 4.565164191022264,
+        "positive_depth": true
+      },
+      {
+        "image_index": 12,
+        "stamp_ns": 1590195570900097180,
+        "rmse_px": 3.9143978643214394,
+        "maximum_px": 4.431170252234755,
+        "positive_depth": true
+      },
+      {
+        "image_index": 13,
+        "stamp_ns": 1590195571000431860,
+        "rmse_px": 2.2024718911002674,
+        "maximum_px": 2.725714850180944,
+        "positive_depth": true
+      },
+      {
+        "image_index": 14,
+        "stamp_ns": 1590195571100271860,
+        "rmse_px": 1.986509979942874,
+        "maximum_px": 2.7099496734156423,
+        "positive_depth": true
+      },
+      {
+        "image_index": 15,
+        "stamp_ns": 1590195571200111860,
+        "rmse_px": 3.7936470352062512,
+        "maximum_px": 4.41135061512604,
+        "positive_depth": true
+      },
+      {
+        "image_index": 16,
+        "stamp_ns": 1590195571300431860,
+        "rmse_px": 3.1520677502065673,
+        "maximum_px": 3.6750489577416934,
+        "positive_depth": true
+      },
+      {
+        "image_index": 17,
+        "stamp_ns": 1590195571400271860,
+        "rmse_px": 1.1043156575961097,
+        "maximum_px": 1.5879403795269253,
+        "positive_depth": true
+      },
+      {
+        "image_index": 18,
+        "stamp_ns": 1590195571500111860,
+        "rmse_px": 2.740612760548436,
+        "maximum_px": 3.2386748926266384,
+        "positive_depth": true
+      },
+      {
+        "image_index": 19,
+        "stamp_ns": 1590195571600431860,
+        "rmse_px": 3.1780163192017197,
+        "maximum_px": 3.8949271591497063,
+        "positive_depth": true
+      },
+      {
+        "image_index": 20,
+        "stamp_ns": 1590195571700271860,
+        "rmse_px": 4.652482764385669,
+        "maximum_px": 5.494242330180767,
+        "positive_depth": true
+      },
+      {
+        "image_index": 21,
+        "stamp_ns": 1590195571800111860,
+        "rmse_px": 3.6623962554859166,
+        "maximum_px": 4.822407432344017,
+        "positive_depth": true
+      },
+      {
+        "image_index": 22,
+        "stamp_ns": 1590195571900431860,
+        "rmse_px": 2.2006301544355873,
+        "maximum_px": 2.817035781826608,
+        "positive_depth": true
+      },
+      {
+        "image_index": 23,
+        "stamp_ns": 1590195572000286530,
+        "rmse_px": 1.8408030475380646,
+        "maximum_px": 2.8336244751634405,
+        "positive_depth": true
+      },
+      {
+        "image_index": 24,
+        "stamp_ns": 1590195572100126530,
+        "rmse_px": 2.1317868410152756,
+        "maximum_px": 2.3098203611238723,
+        "positive_depth": true
+      },
+      {
+        "image_index": 25,
+        "stamp_ns": 1590195572200446530,
+        "rmse_px": 5.119596803024854,
+        "maximum_px": 5.6242849633602665,
+        "positive_depth": true
+      },
+      {
+        "image_index": 26,
+        "stamp_ns": 1590195572300286530,
+        "rmse_px": 2.641945709459086,
+        "maximum_px": 3.113478214459366,
+        "positive_depth": true
+      },
+      {
+        "image_index": 27,
+        "stamp_ns": 1590195572400126530,
+        "rmse_px": 3.763274559039707,
+        "maximum_px": 4.094497963652105,
+        "positive_depth": true
+      },
+      {
+        "image_index": 28,
+        "stamp_ns": 1590195572500446530,
+        "rmse_px": 4.89049301177507,
+        "maximum_px": 5.139167493555839,
+        "positive_depth": true
+      },
+      {
+        "image_index": 29,
+        "stamp_ns": 1590195572600286530,
+        "rmse_px": 1.4800714743549923,
+        "maximum_px": 2.3587770605917293,
+        "positive_depth": true
+      },
+      {
+        "image_index": 30,
+        "stamp_ns": 1590195572700126530,
+        "rmse_px": 6.21928801743021,
+        "maximum_px": 6.634698704207755,
+        "positive_depth": true
+      },
+      {
+        "image_index": 31,
+        "stamp_ns": 1590195572800446530,
+        "rmse_px": 6.946084446667602,
+        "maximum_px": 7.261738643164299,
+        "positive_depth": true
+      },
+      {
+        "image_index": 32,
+        "stamp_ns": 1590195572900286530,
+        "rmse_px": 3.679455453369829,
+        "maximum_px": 3.791673878553753,
+        "positive_depth": true
+      },
+      {
+        "image_index": 33,
+        "stamp_ns": 1590195573000141220,
+        "rmse_px": 2.551786297073106,
+        "maximum_px": 2.9821150270489594,
+        "positive_depth": true
+      },
+      {
+        "image_index": 34,
+        "stamp_ns": 1590195573100461220,
+        "rmse_px": 7.521046123468044,
+        "maximum_px": 8.097781941300687,
+        "positive_depth": true
+      },
+      {
+        "image_index": 35,
+        "stamp_ns": 1590195573200301220,
+        "rmse_px": 6.64071418055581,
+        "maximum_px": 7.131401155046291,
+        "positive_depth": true
+      },
+      {
+        "image_index": 36,
+        "stamp_ns": 1590195573300141220,
+        "rmse_px": 2.4270768834078433,
+        "maximum_px": 2.8574480018495536,
+        "positive_depth": true
+      },
+      {
+        "image_index": 37,
+        "stamp_ns": 1590195573400461220,
+        "rmse_px": 1.9959245012491718,
+        "maximum_px": 2.3138818422773815,
+        "positive_depth": true
+      },
+      {
+        "image_index": 38,
+        "stamp_ns": 1590195573500301220,
+        "rmse_px": 4.169329274799529,
+        "maximum_px": 4.252191707838365,
+        "positive_depth": true
+      },
+      {
+        "image_index": 39,
+        "stamp_ns": 1590195573600141220,
+        "rmse_px": 3.6432697633153763,
+        "maximum_px": 4.211652308645179,
+        "positive_depth": true
+      },
+      {
+        "image_index": 40,
+        "stamp_ns": 1590195573700461220,
+        "rmse_px": 2.639619161277858,
+        "maximum_px": 3.699490242286908,
+        "positive_depth": true
+      },
+      {
+        "image_index": 41,
+        "stamp_ns": 1590195573800301220,
+        "rmse_px": 3.360722790228521,
+        "maximum_px": 3.9627971402668236,
+        "positive_depth": true
+      },
+      {
+        "image_index": 42,
+        "stamp_ns": 1590195573900141220,
+        "rmse_px": 3.8655119095073225,
+        "maximum_px": 4.220638298595084,
+        "positive_depth": true
+      },
+      {
+        "image_index": 43,
+        "stamp_ns": 1590195574000475900,
+        "rmse_px": 2.9618362906570406,
+        "maximum_px": 3.4262073704007725,
+        "positive_depth": true
+      },
+      {
+        "image_index": 44,
+        "stamp_ns": 1590195574100315900,
+        "rmse_px": 1.5115104276493536,
+        "maximum_px": 1.9674384948284904,
+        "positive_depth": true
+      },
+      {
+        "image_index": 45,
+        "stamp_ns": 1590195574200155900,
+        "rmse_px": 1.3151163107017865,
+        "maximum_px": 1.900495427014015,
+        "positive_depth": true
+      },
+      {
+        "image_index": 46,
+        "stamp_ns": 1590195574300475900,
+        "rmse_px": 0.7812934344718611,
+        "maximum_px": 1.0477654035199075,
+        "positive_depth": true
+      },
+      {
+        "image_index": 47,
+        "stamp_ns": 1590195574400315900,
+        "rmse_px": 1.114997260098488,
+        "maximum_px": 1.6540998480340345,
+        "positive_depth": true
+      },
+      {
+        "image_index": 48,
+        "stamp_ns": 1590195574500155900,
+        "rmse_px": 1.4778857562460035,
+        "maximum_px": 2.108119394675798,
+        "positive_depth": true
+      },
+      {
+        "image_index": 49,
+        "stamp_ns": 1590195574600475900,
+        "rmse_px": 1.599164526926849,
+        "maximum_px": 2.2980141806150756,
+        "positive_depth": true
+      },
+      {
+        "image_index": 50,
+        "stamp_ns": 1590195574700315900,
+        "rmse_px": 1.0822908580074007,
+        "maximum_px": 1.5880916634806386,
+        "positive_depth": true
+      },
+      {
+        "image_index": 51,
+        "stamp_ns": 1590195574800155900,
+        "rmse_px": 1.1136859082702155,
+        "maximum_px": 1.844354389114255,
+        "positive_depth": true
+      },
+      {
+        "image_index": 52,
+        "stamp_ns": 1590195574900475900,
+        "rmse_px": 2.113038437950722,
+        "maximum_px": 2.8985762148545056,
+        "positive_depth": true
+      },
+      {
+        "image_index": 53,
+        "stamp_ns": 1590195575000330600,
+        "rmse_px": 2.4128864038962576,
+        "maximum_px": 2.8751391560431667,
+        "positive_depth": true
+      },
+      {
+        "image_index": 54,
+        "stamp_ns": 1590195575100170600,
+        "rmse_px": 1.07899365802283,
+        "maximum_px": 1.5395360322567935,
+        "positive_depth": true
+      },
+      {
+        "image_index": 55,
+        "stamp_ns": 1590195575200010600,
+        "rmse_px": 0.7072086656843313,
+        "maximum_px": 1.0337928149688644,
+        "positive_depth": true
+      },
+      {
+        "image_index": 56,
+        "stamp_ns": 1590195575300330600,
+        "rmse_px": 1.229789278999594,
+        "maximum_px": 1.618761751085119,
+        "positive_depth": true
+      },
+      {
+        "image_index": 57,
+        "stamp_ns": 1590195575400170600,
+        "rmse_px": 1.1930053810671861,
+        "maximum_px": 1.461422052698521,
+        "positive_depth": true
+      },
+      {
+        "image_index": 58,
+        "stamp_ns": 1590195575500010600,
+        "rmse_px": 2.3196533959219043,
+        "maximum_px": 3.2006884860270644,
+        "positive_depth": true
+      },
+      {
+        "image_index": 59,
+        "stamp_ns": 1590195575600330600,
+        "rmse_px": 2.323800367832098,
+        "maximum_px": 3.288413911179731,
+        "positive_depth": true
+      },
+      {
+        "image_index": 60,
+        "stamp_ns": 1590195575700170600,
+        "rmse_px": 3.239514229272743,
+        "maximum_px": 3.8769916570217045,
+        "positive_depth": true
+      },
+      {
+        "image_index": 61,
+        "stamp_ns": 1590195575800010600,
+        "rmse_px": 2.156330007222957,
+        "maximum_px": 2.3105812139458255,
+        "positive_depth": true
+      },
+      {
+        "image_index": 62,
+        "stamp_ns": 1590195575900330600,
+        "rmse_px": 0.7849131253300119,
+        "maximum_px": 1.051635588956262,
+        "positive_depth": true
+      },
+      {
+        "image_index": 63,
+        "stamp_ns": 1590195576000185300,
+        "rmse_px": 2.3814294831319867,
+        "maximum_px": 3.076552431879681,
+        "positive_depth": true
+      },
+      {
+        "image_index": 64,
+        "stamp_ns": 1590195576100025300,
+        "rmse_px": 3.2022467908484584,
+        "maximum_px": 3.9822095324511815,
+        "positive_depth": true
+      },
+      {
+        "image_index": 65,
+        "stamp_ns": 1590195576200345300,
+        "rmse_px": 3.7618471599235335,
+        "maximum_px": 4.639934670243518,
+        "positive_depth": true
+      },
+      {
+        "image_index": 66,
+        "stamp_ns": 1590195576300185300,
+        "rmse_px": 2.0608128148869773,
+        "maximum_px": 2.8730529804021363,
+        "positive_depth": true
+      },
+      {
+        "image_index": 67,
+        "stamp_ns": 1590195576400025300,
+        "rmse_px": 1.2640604519844845,
+        "maximum_px": 1.8936552571139074,
+        "positive_depth": true
+      },
+      {
+        "image_index": 68,
+        "stamp_ns": 1590195576500345300,
+        "rmse_px": 1.1897540203512742,
+        "maximum_px": 1.9363784341483339,
+        "positive_depth": true
+      },
+      {
+        "image_index": 69,
+        "stamp_ns": 1590195576600185300,
+        "rmse_px": 1.4340257897643252,
+        "maximum_px": 2.2473413348308,
+        "positive_depth": true
+      },
+      {
+        "image_index": 70,
+        "stamp_ns": 1590195576700025300,
+        "rmse_px": 1.1687835591152784,
+        "maximum_px": 1.736449980929402,
+        "positive_depth": true
+      },
+      {
+        "image_index": 71,
+        "stamp_ns": 1590195576800345300,
+        "rmse_px": 0.952211958839773,
+        "maximum_px": 1.4418049405397135,
+        "positive_depth": true
+      },
+      {
+        "image_index": 72,
+        "stamp_ns": 1590195576900185300,
+        "rmse_px": 1.597408825433386,
+        "maximum_px": 2.1809776552434355,
+        "positive_depth": true
+      },
+      {
+        "image_index": 73,
+        "stamp_ns": 1590195577000040000,
+        "rmse_px": 2.189263595664283,
+        "maximum_px": 2.8572541940007965,
+        "positive_depth": true
+      },
+      {
+        "image_index": 74,
+        "stamp_ns": 1590195577100360000,
+        "rmse_px": 3.386189363595958,
+        "maximum_px": 4.062545868522738,
+        "positive_depth": true
+      },
+      {
+        "image_index": 75,
+        "stamp_ns": 1590195577200200000,
+        "rmse_px": 2.4744881395693574,
+        "maximum_px": 3.0357146875387824,
+        "positive_depth": true
+      },
+      {
+        "image_index": 76,
+        "stamp_ns": 1590195577300040000,
+        "rmse_px": 1.299638349055824,
+        "maximum_px": 1.6467853407984263,
+        "positive_depth": true
+      },
+      {
+        "image_index": 77,
+        "stamp_ns": 1590195577400360000,
+        "rmse_px": 1.1863391767514426,
+        "maximum_px": 1.556436405140163,
+        "positive_depth": true
+      },
+      {
+        "image_index": 78,
+        "stamp_ns": 1590195577500200000,
+        "rmse_px": 1.5698198528259324,
+        "maximum_px": 1.9347892472144887,
+        "positive_depth": true
+      },
+      {
+        "image_index": 79,
+        "stamp_ns": 1590195577600040000,
+        "rmse_px": 1.5618684078256417,
+        "maximum_px": 2.0189874185496874,
+        "positive_depth": true
+      },
+      {
+        "image_index": 80,
+        "stamp_ns": 1590195577700360000,
+        "rmse_px": 2.0856350239797585,
+        "maximum_px": 2.5856607368392135,
+        "positive_depth": true
+      },
+      {
+        "image_index": 81,
+        "stamp_ns": 1590195577800200000,
+        "rmse_px": 1.1195888907612006,
+        "maximum_px": 1.7026864614433495,
+        "positive_depth": true
+      },
+      {
+        "image_index": 82,
+        "stamp_ns": 1590195577900040000,
+        "rmse_px": 2.5856877455862763,
+        "maximum_px": 3.3320230707841674,
+        "positive_depth": true
+      },
+      {
+        "image_index": 83,
+        "stamp_ns": 1590195578000374710,
+        "rmse_px": 2.161514118488204,
+        "maximum_px": 2.8474332719953646,
+        "positive_depth": true
+      },
+      {
+        "image_index": 84,
+        "stamp_ns": 1590195578100214710,
+        "rmse_px": 1.8827477855235857,
+        "maximum_px": 2.4158696781394275,
+        "positive_depth": true
+      },
+      {
+        "image_index": 85,
+        "stamp_ns": 1590195578200054710,
+        "rmse_px": 1.7310620392787908,
+        "maximum_px": 2.3573751968538583,
+        "positive_depth": true
+      },
+      {
+        "image_index": 86,
+        "stamp_ns": 1590195578300374710,
+        "rmse_px": 2.327709903306428,
+        "maximum_px": 2.9260484112548126,
+        "positive_depth": true
+      },
+      {
+        "image_index": 87,
+        "stamp_ns": 1590195578400214710,
+        "rmse_px": 2.5318300242429266,
+        "maximum_px": 3.0996335031049553,
+        "positive_depth": true
+      },
+      {
+        "image_index": 88,
+        "stamp_ns": 1590195578500054710,
+        "rmse_px": 2.347536708294971,
+        "maximum_px": 2.849436039895599,
+        "positive_depth": true
+      },
+      {
+        "image_index": 89,
+        "stamp_ns": 1590195578600374710,
+        "rmse_px": 2.100177840809117,
+        "maximum_px": 2.8181242726614197,
+        "positive_depth": true
+      },
+      {
+        "image_index": 90,
+        "stamp_ns": 1590195578700214710,
+        "rmse_px": 1.1187801924296954,
+        "maximum_px": 1.6115972893805692,
+        "positive_depth": true
+      },
+      {
+        "image_index": 91,
+        "stamp_ns": 1590195578800054710,
+        "rmse_px": 1.3931026629229457,
+        "maximum_px": 2.050491846315096,
+        "positive_depth": true
+      },
+      {
+        "image_index": 92,
+        "stamp_ns": 1590195578900374710,
+        "rmse_px": 1.3321935679516455,
+        "maximum_px": 2.0833479579428267,
+        "positive_depth": true
+      },
+      {
+        "image_index": 93,
+        "stamp_ns": 1590195579000229420,
+        "rmse_px": 0.7990365342460319,
+        "maximum_px": 1.2085838945691838,
+        "positive_depth": true
+      },
+      {
+        "image_index": 94,
+        "stamp_ns": 1590195579100069420,
+        "rmse_px": 2.056652060447313,
+        "maximum_px": 2.6738787296337247,
+        "positive_depth": true
+      },
+      {
+        "image_index": 95,
+        "stamp_ns": 1590195579200389420,
+        "rmse_px": 2.713445288612813,
+        "maximum_px": 3.2362547398823915,
+        "positive_depth": true
+      },
+      {
+        "image_index": 96,
+        "stamp_ns": 1590195579300229420,
+        "rmse_px": 1.621832908944013,
+        "maximum_px": 2.271879275005308,
+        "positive_depth": true
+      },
+      {
+        "image_index": 97,
+        "stamp_ns": 1590195579400069420,
+        "rmse_px": 1.4168431791924887,
+        "maximum_px": 2.1162533565578157,
+        "positive_depth": true
+      },
+      {
+        "image_index": 98,
+        "stamp_ns": 1590195579500389420,
+        "rmse_px": 1.8023839761347291,
+        "maximum_px": 2.656906060386593,
+        "positive_depth": true
+      },
+      {
+        "image_index": 99,
+        "stamp_ns": 1590195579600229420,
+        "rmse_px": 2.1444997337163874,
+        "maximum_px": 3.2338406743628236,
+        "positive_depth": true
+      },
+      {
+        "image_index": 100,
+        "stamp_ns": 1590195579700069420,
+        "rmse_px": 2.3902771236623326,
+        "maximum_px": 3.2981873929854966,
+        "positive_depth": true
+      },
+      {
+        "image_index": 101,
+        "stamp_ns": 1590195579800389420,
+        "rmse_px": 2.5747930011145033,
+        "maximum_px": 3.3027196075544514,
+        "positive_depth": true
+      },
+      {
+        "image_index": 102,
+        "stamp_ns": 1590195579900229420,
+        "rmse_px": 2.373943501203018,
+        "maximum_px": 2.9245572017320116,
+        "positive_depth": true
+      },
+      {
+        "image_index": 103,
+        "stamp_ns": 1590195580000084130,
+        "rmse_px": 1.5398921214078936,
+        "maximum_px": 2.2007847334202846,
+        "positive_depth": true
+      },
+      {
+        "image_index": 104,
+        "stamp_ns": 1590195580100404130,
+        "rmse_px": 2.8335632841481484,
+        "maximum_px": 3.293281738948783,
+        "positive_depth": true
+      },
+      {
+        "image_index": 105,
+        "stamp_ns": 1590195580200244130,
+        "rmse_px": 4.429829267090315,
+        "maximum_px": 5.342813267793108,
+        "positive_depth": true
+      },
+      {
+        "image_index": 110,
+        "stamp_ns": 1590195580800244130,
+        "rmse_px": 6.087773120215721,
+        "maximum_px": 6.6664169241730855,
+        "positive_depth": true
+      },
+      {
+        "image_index": 111,
+        "stamp_ns": 1590195580900084130,
+        "rmse_px": 4.212839249979149,
+        "maximum_px": 4.63805805964316,
+        "positive_depth": true
+      },
+      {
+        "image_index": 112,
+        "stamp_ns": 1590195581000418860,
+        "rmse_px": 1.0637542513433873,
+        "maximum_px": 1.6365305685403544,
+        "positive_depth": true
+      },
+      {
+        "image_index": 113,
+        "stamp_ns": 1590195581100258860,
+        "rmse_px": 2.698257140263163,
+        "maximum_px": 3.30279637683119,
+        "positive_depth": true
+      },
+      {
+        "image_index": 114,
+        "stamp_ns": 1590195581200098860,
+        "rmse_px": 5.298825716509031,
+        "maximum_px": 5.819578528435252,
+        "positive_depth": true
+      },
+      {
+        "image_index": 115,
+        "stamp_ns": 1590195581300418860,
+        "rmse_px": 4.044540372469225,
+        "maximum_px": 4.459506915092154,
+        "positive_depth": true
+      },
+      {
+        "image_index": 116,
+        "stamp_ns": 1590195581400258860,
+        "rmse_px": 2.3569060971962235,
+        "maximum_px": 2.8134746299394338,
+        "positive_depth": true
+      },
+      {
+        "image_index": 117,
+        "stamp_ns": 1590195581500098860,
+        "rmse_px": 1.92523137812696,
+        "maximum_px": 2.617713104955694,
+        "positive_depth": true
+      },
+      {
+        "image_index": 118,
+        "stamp_ns": 1590195581600418860,
+        "rmse_px": 3.58930116671094,
+        "maximum_px": 4.185690747477735,
+        "positive_depth": true
+      },
+      {
+        "image_index": 119,
+        "stamp_ns": 1590195581700258860,
+        "rmse_px": 3.515504461879384,
+        "maximum_px": 4.136219718208591,
+        "positive_depth": true
+      },
+      {
+        "image_index": 120,
+        "stamp_ns": 1590195581800098860,
+        "rmse_px": 1.6093558927078555,
+        "maximum_px": 1.926379258882778,
+        "positive_depth": true
+      },
+      {
+        "image_index": 121,
+        "stamp_ns": 1590195581900418860,
+        "rmse_px": 1.980604393564647,
+        "maximum_px": 2.9036124878599834,
+        "positive_depth": true
+      },
+      {
+        "image_index": 122,
+        "stamp_ns": 1590195582000273580,
+        "rmse_px": 2.5106666938198146,
+        "maximum_px": 3.253415215852718,
+        "positive_depth": true
+      },
+      {
+        "image_index": 123,
+        "stamp_ns": 1590195582100113580,
+        "rmse_px": 3.2862346426344735,
+        "maximum_px": 4.399045992232585,
+        "positive_depth": true
+      },
+      {
+        "image_index": 124,
+        "stamp_ns": 1590195582200433580,
+        "rmse_px": 2.2519154378826944,
+        "maximum_px": 3.207952894186275,
+        "positive_depth": true
+      },
+      {
+        "image_index": 125,
+        "stamp_ns": 1590195582300273580,
+        "rmse_px": 2.042204684074912,
+        "maximum_px": 2.7672641161930076,
+        "positive_depth": true
+      },
+      {
+        "image_index": 126,
+        "stamp_ns": 1590195582400113580,
+        "rmse_px": 2.3985918289216985,
+        "maximum_px": 2.9363172552011916,
+        "positive_depth": true
+      },
+      {
+        "image_index": 127,
+        "stamp_ns": 1590195582500433580,
+        "rmse_px": 1.9076970361045564,
+        "maximum_px": 2.4857424541270716,
+        "positive_depth": true
+      },
+      {
+        "image_index": 128,
+        "stamp_ns": 1590195582600273580,
+        "rmse_px": 3.5634563445807985,
+        "maximum_px": 4.302432119758875,
+        "positive_depth": true
+      },
+      {
+        "image_index": 129,
+        "stamp_ns": 1590195582700113580,
+        "rmse_px": 1.6742978366814154,
+        "maximum_px": 2.2731790189331966,
+        "positive_depth": true
+      },
+      {
+        "image_index": 130,
+        "stamp_ns": 1590195582800433580,
+        "rmse_px": 1.7648255977249008,
+        "maximum_px": 2.4477647531230384,
+        "positive_depth": true
+      },
+      {
+        "image_index": 131,
+        "stamp_ns": 1590195582900273580,
+        "rmse_px": 4.077624748389518,
+        "maximum_px": 4.977531410689766,
+        "positive_depth": true
+      },
+      {
+        "image_index": 132,
+        "stamp_ns": 1590195583000128310,
+        "rmse_px": 2.0389515911394183,
+        "maximum_px": 2.9894919773724498,
+        "positive_depth": true
+      },
+      {
+        "image_index": 133,
+        "stamp_ns": 1590195583100448310,
+        "rmse_px": 1.8204929275364894,
+        "maximum_px": 2.7153979990111585,
+        "positive_depth": true
+      },
+      {
+        "image_index": 134,
+        "stamp_ns": 1590195583200288310,
+        "rmse_px": 1.4542303544863688,
+        "maximum_px": 2.224822048033842,
+        "positive_depth": true
+      },
+      {
+        "image_index": 135,
+        "stamp_ns": 1590195583300128310,
+        "rmse_px": 1.1892814567715304,
+        "maximum_px": 1.6509036743354755,
+        "positive_depth": true
+      },
+      {
+        "image_index": 136,
+        "stamp_ns": 1590195583400448310,
+        "rmse_px": 2.1696164110920186,
+        "maximum_px": 2.3265512684595495,
+        "positive_depth": true
+      },
+      {
+        "image_index": 137,
+        "stamp_ns": 1590195583500288310,
+        "rmse_px": 2.0871905963590893,
+        "maximum_px": 2.711199382012562,
+        "positive_depth": true
+      },
+      {
+        "image_index": 138,
+        "stamp_ns": 1590195583600128310,
+        "rmse_px": 1.4707201958471612,
+        "maximum_px": 2.3157761060528648,
+        "positive_depth": true
+      },
+      {
+        "image_index": 139,
+        "stamp_ns": 1590195583700448310,
+        "rmse_px": 1.9602793144358703,
+        "maximum_px": 2.3256923720865883,
+        "positive_depth": true
+      },
+      {
+        "image_index": 140,
+        "stamp_ns": 1590195583800288310,
+        "rmse_px": 2.7572746236593506,
+        "maximum_px": 3.3583866200754877,
+        "positive_depth": true
+      },
+      {
+        "image_index": 141,
+        "stamp_ns": 1590195583900128310,
+        "rmse_px": 3.69144794051583,
+        "maximum_px": 4.1978706202298985,
+        "positive_depth": true
+      },
+      {
+        "image_index": 142,
+        "stamp_ns": 1590195584000463050,
+        "rmse_px": 2.1748102039852166,
+        "maximum_px": 2.769237408089459,
+        "positive_depth": true
+      },
+      {
+        "image_index": 143,
+        "stamp_ns": 1590195584100303050,
+        "rmse_px": 1.717422633665309,
+        "maximum_px": 2.48812986614365,
+        "positive_depth": true
+      },
+      {
+        "image_index": 144,
+        "stamp_ns": 1590195584200143050,
+        "rmse_px": 3.1531587390225133,
+        "maximum_px": 3.758589104041613,
+        "positive_depth": true
+      },
+      {
+        "image_index": 145,
+        "stamp_ns": 1590195584300463050,
+        "rmse_px": 3.9258077803843694,
+        "maximum_px": 4.607153880147254,
+        "positive_depth": true
+      },
+      {
+        "image_index": 146,
+        "stamp_ns": 1590195584400303050,
+        "rmse_px": 2.22030614338479,
+        "maximum_px": 2.365469051135123,
+        "positive_depth": true
+      },
+      {
+        "image_index": 147,
+        "stamp_ns": 1590195584500143050,
+        "rmse_px": 1.6319947394597993,
+        "maximum_px": 2.3191860646984264,
+        "positive_depth": true
+      },
+      {
+        "image_index": 148,
+        "stamp_ns": 1590195584600463050,
+        "rmse_px": 2.815483166639488,
+        "maximum_px": 3.4863449414081282,
+        "positive_depth": true
+      },
+      {
+        "image_index": 149,
+        "stamp_ns": 1590195584700303050,
+        "rmse_px": 2.8160984301345624,
+        "maximum_px": 3.527372118542736,
+        "positive_depth": true
+      },
+      {
+        "image_index": 150,
+        "stamp_ns": 1590195584800143050,
+        "rmse_px": 0.8905277973071062,
+        "maximum_px": 1.268530994337441,
+        "positive_depth": true
+      },
+      {
+        "image_index": 151,
+        "stamp_ns": 1590195584900463050,
+        "rmse_px": 2.5706023830290796,
+        "maximum_px": 3.2924007395753185,
+        "positive_depth": true
+      },
+      {
+        "image_index": 152,
+        "stamp_ns": 1590195585000317790,
+        "rmse_px": 4.015056934102012,
+        "maximum_px": 4.753855088206999,
+        "positive_depth": true
+      },
+      {
+        "image_index": 153,
+        "stamp_ns": 1590195585100157790,
+        "rmse_px": 1.6014095386455547,
+        "maximum_px": 2.1199732068863737,
+        "positive_depth": true
+      },
+      {
+        "image_index": 154,
+        "stamp_ns": 1590195585200477790,
+        "rmse_px": 1.5429557819523092,
+        "maximum_px": 2.372028176344176,
+        "positive_depth": true
+      },
+      {
+        "image_index": 155,
+        "stamp_ns": 1590195585300317790,
+        "rmse_px": 5.546901159267175,
+        "maximum_px": 6.478897280589289,
+        "positive_depth": true
+      },
+      {
+        "image_index": 156,
+        "stamp_ns": 1590195585400157790,
+        "rmse_px": 4.767053116046846,
+        "maximum_px": 5.844599237705959,
+        "positive_depth": true
+      },
+      {
+        "image_index": 157,
+        "stamp_ns": 1590195585500477790,
+        "rmse_px": 3.328258379279425,
+        "maximum_px": 4.32525155693907,
+        "positive_depth": true
+      },
+      {
+        "image_index": 158,
+        "stamp_ns": 1590195585600317790,
+        "rmse_px": 0.8296338956929179,
+        "maximum_px": 1.4781130784753322,
+        "positive_depth": true
+      },
+      {
+        "image_index": 159,
+        "stamp_ns": 1590195585700157790,
+        "rmse_px": 1.7864531297854511,
+        "maximum_px": 2.4482337177806586,
+        "positive_depth": true
+      },
+      {
+        "image_index": 160,
+        "stamp_ns": 1590195585800477790,
+        "rmse_px": 2.249737642649783,
+        "maximum_px": 2.9716586384881145,
+        "positive_depth": true
+      },
+      {
+        "image_index": 161,
+        "stamp_ns": 1590195585900317790,
+        "rmse_px": 1.003444460087777,
+        "maximum_px": 1.474364912417119,
+        "positive_depth": true
+      },
+      {
+        "image_index": 162,
+        "stamp_ns": 1590195586000172530,
+        "rmse_px": 1.5726178186587263,
+        "maximum_px": 2.224320617355806,
+        "positive_depth": true
+      },
+      {
+        "image_index": 163,
+        "stamp_ns": 1590195586100012530,
+        "rmse_px": 1.443982350836628,
+        "maximum_px": 2.09031397061932,
+        "positive_depth": true
+      },
+      {
+        "image_index": 164,
+        "stamp_ns": 1590195586200332530,
+        "rmse_px": 2.5784191817725297,
+        "maximum_px": 3.271450753017525,
+        "positive_depth": true
+      },
+      {
+        "image_index": 165,
+        "stamp_ns": 1590195586300172530,
+        "rmse_px": 2.8270913365629284,
+        "maximum_px": 3.554854714601472,
+        "positive_depth": true
+      },
+      {
+        "image_index": 166,
+        "stamp_ns": 1590195586400012530,
+        "rmse_px": 1.1841577465537363,
+        "maximum_px": 1.7559696238194404,
+        "positive_depth": true
+      },
+      {
+        "image_index": 167,
+        "stamp_ns": 1590195586500332530,
+        "rmse_px": 0.7081171485777167,
+        "maximum_px": 0.9774450917747484,
+        "positive_depth": true
+      },
+      {
+        "image_index": 168,
+        "stamp_ns": 1590195586600172530,
+        "rmse_px": 0.8453735920464289,
+        "maximum_px": 1.3673059569135586,
+        "positive_depth": true
+      },
+      {
+        "image_index": 169,
+        "stamp_ns": 1590195586700012530,
+        "rmse_px": 0.9428614818016392,
+        "maximum_px": 1.671550762061993,
+        "positive_depth": true
+      },
+      {
+        "image_index": 170,
+        "stamp_ns": 1590195586800332530,
+        "rmse_px": 2.442792512066624,
+        "maximum_px": 3.420377427701471,
+        "positive_depth": true
+      },
+      {
+        "image_index": 171,
+        "stamp_ns": 1590195586900172530,
+        "rmse_px": 2.1752690543468876,
+        "maximum_px": 3.1122999376379594,
+        "positive_depth": true
+      },
+      {
+        "image_index": 172,
+        "stamp_ns": 1590195587000027230,
+        "rmse_px": 1.2880496485458683,
+        "maximum_px": 1.6639226754315628,
+        "positive_depth": true
+      },
+      {
+        "image_index": 173,
+        "stamp_ns": 1590195587100347230,
+        "rmse_px": 2.8289000109121445,
+        "maximum_px": 3.673328200695167,
+        "positive_depth": true
+      },
+      {
+        "image_index": 174,
+        "stamp_ns": 1590195587200187230,
+        "rmse_px": 3.5631505840491755,
+        "maximum_px": 4.283047515972736,
+        "positive_depth": true
+      },
+      {
+        "image_index": 175,
+        "stamp_ns": 1590195587300027230,
+        "rmse_px": 3.1834765035571193,
+        "maximum_px": 3.9331460576135275,
+        "positive_depth": true
+      },
+      {
+        "image_index": 176,
+        "stamp_ns": 1590195587400347230,
+        "rmse_px": 2.9196514401615055,
+        "maximum_px": 3.4106171463657553,
+        "positive_depth": true
+      },
+      {
+        "image_index": 177,
+        "stamp_ns": 1590195587500187230,
+        "rmse_px": 1.0204236749599662,
+        "maximum_px": 1.4876172501353033,
+        "positive_depth": true
+      },
+      {
+        "image_index": 178,
+        "stamp_ns": 1590195587600027230,
+        "rmse_px": 1.6645314154987696,
+        "maximum_px": 2.286946477324315,
+        "positive_depth": true
+      },
+      {
+        "image_index": 179,
+        "stamp_ns": 1590195587700347230,
+        "rmse_px": 1.140252539058719,
+        "maximum_px": 1.5300941340056378,
+        "positive_depth": true
+      },
+      {
+        "image_index": 180,
+        "stamp_ns": 1590195587800187230,
+        "rmse_px": 1.1310501207663204,
+        "maximum_px": 1.5123004647529323,
+        "positive_depth": true
+      },
+      {
+        "image_index": 181,
+        "stamp_ns": 1590195587900027230,
+        "rmse_px": 1.567897201008215,
+        "maximum_px": 2.0687621164612042,
+        "positive_depth": true
+      },
+      {
+        "image_index": 182,
+        "stamp_ns": 1590195588000361890,
+        "rmse_px": 2.354720489732539,
+        "maximum_px": 3.0559704913531966,
+        "positive_depth": true
+      },
+      {
+        "image_index": 183,
+        "stamp_ns": 1590195588100201890,
+        "rmse_px": 1.4404621528086883,
+        "maximum_px": 2.052066866159053,
+        "positive_depth": true
+      },
+      {
+        "image_index": 184,
+        "stamp_ns": 1590195588200041890,
+        "rmse_px": 2.4187545776054966,
+        "maximum_px": 2.9509525160687304,
+        "positive_depth": true
+      },
+      {
+        "image_index": 185,
+        "stamp_ns": 1590195588300361890,
+        "rmse_px": 2.9793863549220787,
+        "maximum_px": 3.4370514800602896,
+        "positive_depth": true
+      },
+      {
+        "image_index": 186,
+        "stamp_ns": 1590195588400201890,
+        "rmse_px": 1.4517259632038078,
+        "maximum_px": 1.9401808002811192,
+        "positive_depth": true
+      },
+      {
+        "image_index": 187,
+        "stamp_ns": 1590195588500041890,
+        "rmse_px": 3.179634478865896,
+        "maximum_px": 3.8673794031844033,
+        "positive_depth": true
+      },
+      {
+        "image_index": 188,
+        "stamp_ns": 1590195588600361890,
+        "rmse_px": 3.6227442639865832,
+        "maximum_px": 4.4440202984089945,
+        "positive_depth": true
+      },
+      {
+        "image_index": 189,
+        "stamp_ns": 1590195588700201890,
+        "rmse_px": 2.9916306411726135,
+        "maximum_px": 3.6885051070430026,
+        "positive_depth": true
+      },
+      {
+        "image_index": 190,
+        "stamp_ns": 1590195588800041890,
+        "rmse_px": 1.169895476513766,
+        "maximum_px": 1.8662443320424038,
+        "positive_depth": true
+      },
+      {
+        "image_index": 191,
+        "stamp_ns": 1590195588900361890,
+        "rmse_px": 3.0712115205044364,
+        "maximum_px": 3.8541939207152653,
+        "positive_depth": true
+      },
+      {
+        "image_index": 192,
+        "stamp_ns": 1590195589000216570,
+        "rmse_px": 3.3924949826919737,
+        "maximum_px": 4.1480730720868095,
+        "positive_depth": true
+      },
+      {
+        "image_index": 193,
+        "stamp_ns": 1590195589100056570,
+        "rmse_px": 2.610710037872107,
+        "maximum_px": 2.9956974416816835,
+        "positive_depth": true
+      },
+      {
+        "image_index": 194,
+        "stamp_ns": 1590195589200376570,
+        "rmse_px": 1.6998452169363663,
+        "maximum_px": 2.2488601918824056,
+        "positive_depth": true
+      },
+      {
+        "image_index": 195,
+        "stamp_ns": 1590195589300216570,
+        "rmse_px": 2.0123455097173166,
+        "maximum_px": 2.603559816225918,
+        "positive_depth": true
+      },
+      {
+        "image_index": 196,
+        "stamp_ns": 1590195589400056570,
+        "rmse_px": 1.2444392471791126,
+        "maximum_px": 1.85770360651031,
+        "positive_depth": true
+      },
+      {
+        "image_index": 197,
+        "stamp_ns": 1590195589500376570,
+        "rmse_px": 3.630031375196405,
+        "maximum_px": 4.457620208077204,
+        "positive_depth": true
+      },
+      {
+        "image_index": 198,
+        "stamp_ns": 1590195589600216570,
+        "rmse_px": 4.560109166124374,
+        "maximum_px": 5.323584869439047,
+        "positive_depth": true
+      },
+      {
+        "image_index": 199,
+        "stamp_ns": 1590195589700056570,
+        "rmse_px": 3.260037307544762,
+        "maximum_px": 3.833602889796416,
+        "positive_depth": true
+      },
+      {
+        "image_index": 200,
+        "stamp_ns": 1590195589800376570,
+        "rmse_px": 1.6974193305676522,
+        "maximum_px": 2.0623041501210593,
+        "positive_depth": true
+      },
+      {
+        "image_index": 201,
+        "stamp_ns": 1590195589900216570,
+        "rmse_px": 3.449914287321552,
+        "maximum_px": 4.130876571514444,
+        "positive_depth": true
+      },
+      {
+        "image_index": 202,
+        "stamp_ns": 1590195590000071250,
+        "rmse_px": 3.297698754835394,
+        "maximum_px": 3.9614638634797386,
+        "positive_depth": true
+      },
+      {
+        "image_index": 203,
+        "stamp_ns": 1590195590100391250,
+        "rmse_px": 2.5540479244073024,
+        "maximum_px": 3.161955539808281,
+        "positive_depth": true
+      },
+      {
+        "image_index": 204,
+        "stamp_ns": 1590195590200231250,
+        "rmse_px": 1.7307898399134682,
+        "maximum_px": 2.5480546518155065,
+        "positive_depth": true
+      },
+      {
+        "image_index": 205,
+        "stamp_ns": 1590195590300071250,
+        "rmse_px": 0.8914860409920172,
+        "maximum_px": 1.3739930699151952,
+        "positive_depth": true
+      },
+      {
+        "image_index": 206,
+        "stamp_ns": 1590195590400391250,
+        "rmse_px": 1.3398907069627726,
+        "maximum_px": 1.943881382504543,
+        "positive_depth": true
+      },
+      {
+        "image_index": 207,
+        "stamp_ns": 1590195590500231250,
+        "rmse_px": 1.4321708029251903,
+        "maximum_px": 2.0261898520239408,
+        "positive_depth": true
+      },
+      {
+        "image_index": 208,
+        "stamp_ns": 1590195590600071250,
+        "rmse_px": 1.7476322206181174,
+        "maximum_px": 2.1439632711793215,
+        "positive_depth": true
+      },
+      {
+        "image_index": 209,
+        "stamp_ns": 1590195590700391250,
+        "rmse_px": 1.1141155696631204,
+        "maximum_px": 1.4651042414869135,
+        "positive_depth": true
+      },
+      {
+        "image_index": 210,
+        "stamp_ns": 1590195590800231250,
+        "rmse_px": 1.1856196119354903,
+        "maximum_px": 1.6360693229278838,
+        "positive_depth": true
+      },
+      {
+        "image_index": 211,
+        "stamp_ns": 1590195590900071250,
+        "rmse_px": 2.0189003348863293,
+        "maximum_px": 2.4991434083781026,
+        "positive_depth": true
+      },
+      {
+        "image_index": 212,
+        "stamp_ns": 1590195591000405940,
+        "rmse_px": 2.0835499701778386,
+        "maximum_px": 2.684770626958542,
+        "positive_depth": true
+      },
+      {
+        "image_index": 213,
+        "stamp_ns": 1590195591100245940,
+        "rmse_px": 0.7997586681863388,
+        "maximum_px": 1.1539609783663507,
+        "positive_depth": true
+      },
+      {
+        "image_index": 214,
+        "stamp_ns": 1590195591200085940,
+        "rmse_px": 1.1243329222447738,
+        "maximum_px": 1.7910912330828168,
+        "positive_depth": true
+      },
+      {
+        "image_index": 215,
+        "stamp_ns": 1590195591300405940,
+        "rmse_px": 1.1882794752903887,
+        "maximum_px": 1.9446145446662888,
+        "positive_depth": true
+      },
+      {
+        "image_index": 216,
+        "stamp_ns": 1590195591400245940,
+        "rmse_px": 1.311335648760011,
+        "maximum_px": 2.16108691959717,
+        "positive_depth": true
+      },
+      {
+        "image_index": 217,
+        "stamp_ns": 1590195591500085940,
+        "rmse_px": 0.7868870577640494,
+        "maximum_px": 1.0482898652946468,
+        "positive_depth": true
+      },
+      {
+        "image_index": 218,
+        "stamp_ns": 1590195591600405940,
+        "rmse_px": 2.1657423334330126,
+        "maximum_px": 2.790790743234055,
+        "positive_depth": true
+      },
+      {
+        "image_index": 219,
+        "stamp_ns": 1590195591700245940,
+        "rmse_px": 1.6769614504293935,
+        "maximum_px": 1.8052792866368277,
+        "positive_depth": true
+      },
+      {
+        "image_index": 220,
+        "stamp_ns": 1590195591800085940,
+        "rmse_px": 0.9668132057399029,
+        "maximum_px": 1.421244958825695,
+        "positive_depth": true
+      },
+      {
+        "image_index": 221,
+        "stamp_ns": 1590195591900405940,
+        "rmse_px": 1.6011475332308922,
+        "maximum_px": 2.4196994726788827,
+        "positive_depth": true
+      },
+      {
+        "image_index": 222,
+        "stamp_ns": 1590195592000260630,
+        "rmse_px": 2.523234309154455,
+        "maximum_px": 3.214964491011367,
+        "positive_depth": true
+      },
+      {
+        "image_index": 223,
+        "stamp_ns": 1590195592100100630,
+        "rmse_px": 2.2120926915643424,
+        "maximum_px": 2.869895006839789,
+        "positive_depth": true
+      },
+      {
+        "image_index": 224,
+        "stamp_ns": 1590195592200420630,
+        "rmse_px": 2.4210677148990314,
+        "maximum_px": 2.7803370529222806,
+        "positive_depth": true
+      },
+      {
+        "image_index": 225,
+        "stamp_ns": 1590195592300260630,
+        "rmse_px": 1.018531937362165,
+        "maximum_px": 1.420231110033422,
+        "positive_depth": true
+      },
+      {
+        "image_index": 226,
+        "stamp_ns": 1590195592400100630,
+        "rmse_px": 0.9873698633603317,
+        "maximum_px": 1.5843875446110463,
+        "positive_depth": true
+      },
+      {
+        "image_index": 227,
+        "stamp_ns": 1590195592500420630,
+        "rmse_px": 2.333813749644059,
+        "maximum_px": 3.0443630489873406,
+        "positive_depth": true
+      },
+      {
+        "image_index": 228,
+        "stamp_ns": 1590195592600260630,
+        "rmse_px": 1.7704087714073764,
+        "maximum_px": 2.5821359004948405,
+        "positive_depth": true
+      },
+      {
+        "image_index": 229,
+        "stamp_ns": 1590195592700100630,
+        "rmse_px": 0.9187842400071029,
+        "maximum_px": 1.6634820323128185,
+        "positive_depth": true
+      },
+      {
+        "image_index": 230,
+        "stamp_ns": 1590195592800420630,
+        "rmse_px": 1.7909637520770245,
+        "maximum_px": 2.550778820087471,
+        "positive_depth": true
+      },
+      {
+        "image_index": 231,
+        "stamp_ns": 1590195592900260630,
+        "rmse_px": 3.250407842961331,
+        "maximum_px": 4.19708391260276,
+        "positive_depth": true
+      },
+      {
+        "image_index": 232,
+        "stamp_ns": 1590195593000115320,
+        "rmse_px": 2.569807844913407,
+        "maximum_px": 3.349727219469176,
+        "positive_depth": true
+      },
+      {
+        "image_index": 233,
+        "stamp_ns": 1590195593100435320,
+        "rmse_px": 1.3036399127841762,
+        "maximum_px": 1.8545802720648683,
+        "positive_depth": true
+      },
+      {
+        "image_index": 234,
+        "stamp_ns": 1590195593200275320,
+        "rmse_px": 1.2002920119242384,
+        "maximum_px": 1.700677924344634,
+        "positive_depth": true
+      },
+      {
+        "image_index": 235,
+        "stamp_ns": 1590195593300115320,
+        "rmse_px": 1.4760044110242134,
+        "maximum_px": 1.907365272936771,
+        "positive_depth": true
+      },
+      {
+        "image_index": 236,
+        "stamp_ns": 1590195593400435320,
+        "rmse_px": 1.3695800155369562,
+        "maximum_px": 1.7141786603994222,
+        "positive_depth": true
+      },
+      {
+        "image_index": 237,
+        "stamp_ns": 1590195593500275320,
+        "rmse_px": 2.6968988368700804,
+        "maximum_px": 3.156866941979001,
+        "positive_depth": true
+      },
+      {
+        "image_index": 238,
+        "stamp_ns": 1590195593600115320,
+        "rmse_px": 2.12068516101192,
+        "maximum_px": 2.9419549510737393,
+        "positive_depth": true
+      },
+      {
+        "image_index": 239,
+        "stamp_ns": 1590195593700435320,
+        "rmse_px": 1.1353589602375194,
+        "maximum_px": 1.9247734132569767,
+        "positive_depth": true
+      },
+      {
+        "image_index": 240,
+        "stamp_ns": 1590195593800275320,
+        "rmse_px": 2.0806509126240846,
+        "maximum_px": 2.2831989692557526,
+        "positive_depth": true
+      },
+      {
+        "image_index": 241,
+        "stamp_ns": 1590195593900115320,
+        "rmse_px": 2.3829390876219003,
+        "maximum_px": 2.882216919677228,
+        "positive_depth": true
+      },
+      {
+        "image_index": 242,
+        "stamp_ns": 1590195594000450020,
+        "rmse_px": 1.172124013283148,
+        "maximum_px": 1.7142476059282261,
+        "positive_depth": true
+      },
+      {
+        "image_index": 243,
+        "stamp_ns": 1590195594100290020,
+        "rmse_px": 2.123664394990625,
+        "maximum_px": 2.992371016185098,
+        "positive_depth": true
+      },
+      {
+        "image_index": 244,
+        "stamp_ns": 1590195594200130020,
+        "rmse_px": 3.345303913922573,
+        "maximum_px": 4.24294923289025,
+        "positive_depth": true
+      },
+      {
+        "image_index": 245,
+        "stamp_ns": 1590195594300450020,
+        "rmse_px": 3.0119617669218677,
+        "maximum_px": 3.87712673115851,
+        "positive_depth": true
+      },
+      {
+        "image_index": 246,
+        "stamp_ns": 1590195594400290020,
+        "rmse_px": 0.9748078604973189,
+        "maximum_px": 1.2731165194629674,
+        "positive_depth": true
+      },
+      {
+        "image_index": 247,
+        "stamp_ns": 1590195594500130020,
+        "rmse_px": 1.6539351362043577,
+        "maximum_px": 2.292815998902089,
+        "positive_depth": true
+      },
+      {
+        "image_index": 248,
+        "stamp_ns": 1590195594600450020,
+        "rmse_px": 3.6215207543182713,
+        "maximum_px": 4.346499707405694,
+        "positive_depth": true
+      },
+      {
+        "image_index": 249,
+        "stamp_ns": 1590195594700290020,
+        "rmse_px": 3.7122274133640367,
+        "maximum_px": 4.476646024386226,
+        "positive_depth": true
+      },
+      {
+        "image_index": 250,
+        "stamp_ns": 1590195594800130020,
+        "rmse_px": 2.874466264324964,
+        "maximum_px": 3.569519670860436,
+        "positive_depth": true
+      },
+      {
+        "image_index": 251,
+        "stamp_ns": 1590195594900450020,
+        "rmse_px": 1.5368158607589377,
+        "maximum_px": 1.7851863895199085,
+        "positive_depth": true
+      },
+      {
+        "image_index": 252,
+        "stamp_ns": 1590195595000304730,
+        "rmse_px": 1.2256524046456196,
+        "maximum_px": 2.062038712091598,
+        "positive_depth": true
+      },
+      {
+        "image_index": 253,
+        "stamp_ns": 1590195595100144730,
+        "rmse_px": 1.3889776576758914,
+        "maximum_px": 2.2006479321728607,
+        "positive_depth": true
+      },
+      {
+        "image_index": 254,
+        "stamp_ns": 1590195595200464730,
+        "rmse_px": 2.034930789041929,
+        "maximum_px": 2.617620264926694,
+        "positive_depth": true
+      },
+      {
+        "image_index": 255,
+        "stamp_ns": 1590195595300304730,
+        "rmse_px": 3.3823542862806057,
+        "maximum_px": 3.9970167440544473,
+        "positive_depth": true
+      },
+      {
+        "image_index": 256,
+        "stamp_ns": 1590195595400144730,
+        "rmse_px": 0.6764753409147162,
+        "maximum_px": 1.0582154444125598,
+        "positive_depth": true
+      },
+      {
+        "image_index": 257,
+        "stamp_ns": 1590195595500464730,
+        "rmse_px": 6.623657702089671,
+        "maximum_px": 7.443576204093331,
+        "positive_depth": true
+      },
+      {
+        "image_index": 258,
+        "stamp_ns": 1590195595600304730,
+        "rmse_px": 1.3062988663186688,
+        "maximum_px": 1.8832155860307338,
+        "positive_depth": true
+      },
+      {
+        "image_index": 259,
+        "stamp_ns": 1590195595700144730,
+        "rmse_px": 12.191134111922272,
+        "maximum_px": 13.272381396540256,
+        "positive_depth": true
+      },
+      {
+        "image_index": 260,
+        "stamp_ns": 1590195595800464730,
+        "rmse_px": 14.595213417044567,
+        "maximum_px": 15.644100154005224,
+        "positive_depth": true
+      },
+      {
+        "image_index": 261,
+        "stamp_ns": 1590195595900304730,
+        "rmse_px": 9.254812443718045,
+        "maximum_px": 10.117863309945566,
+        "positive_depth": true
+      },
+      {
+        "image_index": 262,
+        "stamp_ns": 1590195596000159440,
+        "rmse_px": 1.7790147304306325,
+        "maximum_px": 2.170566665865079,
+        "positive_depth": true
+      },
+      {
+        "image_index": 263,
+        "stamp_ns": 1590195596100479440,
+        "rmse_px": 5.8588546961245,
+        "maximum_px": 6.534901646026022,
+        "positive_depth": true
+      },
+      {
+        "image_index": 264,
+        "stamp_ns": 1590195596200319440,
+        "rmse_px": 6.356726984139328,
+        "maximum_px": 7.138562709075601,
+        "positive_depth": true
+      },
+      {
+        "image_index": 265,
+        "stamp_ns": 1590195596300159440,
+        "rmse_px": 2.916907457590574,
+        "maximum_px": 3.7977310423665127,
+        "positive_depth": true
+      },
+      {
+        "image_index": 266,
+        "stamp_ns": 1590195596400479440,
+        "rmse_px": 1.2472018990368752,
+        "maximum_px": 1.8730464066167434,
+        "positive_depth": true
+      },
+      {
+        "image_index": 267,
+        "stamp_ns": 1590195596500319440,
+        "rmse_px": 4.822208460846983,
+        "maximum_px": 5.857859159974368,
+        "positive_depth": true
+      },
+      {
+        "image_index": 268,
+        "stamp_ns": 1590195596600159440,
+        "rmse_px": 4.0604420589799215,
+        "maximum_px": 5.014045252590483,
+        "positive_depth": true
+      },
+      {
+        "image_index": 269,
+        "stamp_ns": 1590195596700479440,
+        "rmse_px": 2.4721102766237504,
+        "maximum_px": 3.2364601015111516,
+        "positive_depth": true
+      },
+      {
+        "image_index": 270,
+        "stamp_ns": 1590195596800319440,
+        "rmse_px": 1.5349474577379858,
+        "maximum_px": 2.0898814095587213,
+        "positive_depth": true
+      },
+      {
+        "image_index": 271,
+        "stamp_ns": 1590195596900159440,
+        "rmse_px": 2.627400244395133,
+        "maximum_px": 3.210652498108442,
+        "positive_depth": true
+      },
+      {
+        "image_index": 272,
+        "stamp_ns": 1590195597000494150,
+        "rmse_px": 3.009283974641954,
+        "maximum_px": 3.5172873373612643,
+        "positive_depth": true
+      },
+      {
+        "image_index": 273,
+        "stamp_ns": 1590195597100334150,
+        "rmse_px": 3.19364889019657,
+        "maximum_px": 3.6893408533477317,
+        "positive_depth": true
+      },
+      {
+        "image_index": 274,
+        "stamp_ns": 1590195597200174150,
+        "rmse_px": 3.1038535133137857,
+        "maximum_px": 3.923874089317059,
+        "positive_depth": true
+      },
+      {
+        "image_index": 275,
+        "stamp_ns": 1590195597300014150,
+        "rmse_px": 4.908640078194512,
+        "maximum_px": 5.97332497624268,
+        "positive_depth": true
+      },
+      {
+        "image_index": 276,
+        "stamp_ns": 1590195597400334150,
+        "rmse_px": 5.049866225603718,
+        "maximum_px": 5.9620476207809885,
+        "positive_depth": true
+      },
+      {
+        "image_index": 277,
+        "stamp_ns": 1590195597500174150,
+        "rmse_px": 4.5471099663841485,
+        "maximum_px": 5.375207579391654,
+        "positive_depth": true
+      },
+      {
+        "image_index": 278,
+        "stamp_ns": 1590195597600014150,
+        "rmse_px": 3.983540879474928,
+        "maximum_px": 4.713162259322964,
+        "positive_depth": true
+      },
+      {
+        "image_index": 279,
+        "stamp_ns": 1590195597700334150,
+        "rmse_px": 2.031418210237878,
+        "maximum_px": 2.574148071259169,
+        "positive_depth": true
+      },
+      {
+        "image_index": 280,
+        "stamp_ns": 1590195597800174150,
+        "rmse_px": 4.182562323715614,
+        "maximum_px": 4.629921224617373,
+        "positive_depth": true
+      },
+      {
+        "image_index": 281,
+        "stamp_ns": 1590195597900014150,
+        "rmse_px": 4.138154230005001,
+        "maximum_px": 4.752578025333801,
+        "positive_depth": true
+      },
+      {
+        "image_index": 282,
+        "stamp_ns": 1590195598000348870,
+        "rmse_px": 2.865894412078561,
+        "maximum_px": 3.588322967319151,
+        "positive_depth": true
+      },
+      {
+        "image_index": 283,
+        "stamp_ns": 1590195598100188870,
+        "rmse_px": 1.9260560930195432,
+        "maximum_px": 2.874445322899945,
+        "positive_depth": true
+      },
+      {
+        "image_index": 284,
+        "stamp_ns": 1590195598200028870,
+        "rmse_px": 2.8994330164107933,
+        "maximum_px": 3.143897980179855,
+        "positive_depth": true
+      },
+      {
+        "image_index": 285,
+        "stamp_ns": 1590195598300348870,
+        "rmse_px": 3.996293223233081,
+        "maximum_px": 4.701000960150711,
+        "positive_depth": true
+      },
+      {
+        "image_index": 286,
+        "stamp_ns": 1590195598400188870,
+        "rmse_px": 2.3675182878162233,
+        "maximum_px": 3.1239754679222886,
+        "positive_depth": true
+      },
+      {
+        "image_index": 287,
+        "stamp_ns": 1590195598500028870,
+        "rmse_px": 3.42934025699319,
+        "maximum_px": 4.2313834767762994,
+        "positive_depth": true
+      },
+      {
+        "image_index": 288,
+        "stamp_ns": 1590195598600348870,
+        "rmse_px": 2.1413859754198543,
+        "maximum_px": 2.6933731672400985,
+        "positive_depth": true
+      },
+      {
+        "image_index": 289,
+        "stamp_ns": 1590195598700188870,
+        "rmse_px": 2.4510352480030053,
+        "maximum_px": 2.8292812558432963,
+        "positive_depth": true
+      },
+      {
+        "image_index": 290,
+        "stamp_ns": 1590195598800028870,
+        "rmse_px": 2.4377424662092055,
+        "maximum_px": 3.0607950609573034,
+        "positive_depth": true
+      },
+      {
+        "image_index": 291,
+        "stamp_ns": 1590195598900348870,
+        "rmse_px": 1.1494529164298657,
+        "maximum_px": 1.8341731847286171,
+        "positive_depth": true
+      },
+      {
+        "image_index": 292,
+        "stamp_ns": 1590195599000203600,
+        "rmse_px": 1.0893448107703536,
+        "maximum_px": 1.4583951798648578,
+        "positive_depth": true
+      },
+      {
+        "image_index": 293,
+        "stamp_ns": 1590195599100043600,
+        "rmse_px": 3.3906554268432436,
+        "maximum_px": 4.247156799140986,
+        "positive_depth": true
+      },
+      {
+        "image_index": 294,
+        "stamp_ns": 1590195599200363600,
+        "rmse_px": 3.9230530797879677,
+        "maximum_px": 4.912007370000557,
+        "positive_depth": true
+      },
+      {
+        "image_index": 295,
+        "stamp_ns": 1590195599300203600,
+        "rmse_px": 4.008468791040459,
+        "maximum_px": 4.917381205476845,
+        "positive_depth": true
+      },
+      {
+        "image_index": 296,
+        "stamp_ns": 1590195599400043600,
+        "rmse_px": 2.684421724638624,
+        "maximum_px": 3.3054083367604266,
+        "positive_depth": true
+      },
+      {
+        "image_index": 297,
+        "stamp_ns": 1590195599500363600,
+        "rmse_px": 2.7170091929040994,
+        "maximum_px": 3.2255455562764053,
+        "positive_depth": true
+      },
+      {
+        "image_index": 298,
+        "stamp_ns": 1590195599600203600,
+        "rmse_px": 1.9050039024236471,
+        "maximum_px": 2.387341275579583,
+        "positive_depth": true
+      },
+      {
+        "image_index": 299,
+        "stamp_ns": 1590195599700043600,
+        "rmse_px": 2.366998352458729,
+        "maximum_px": 2.717656684767538,
+        "positive_depth": true
+      },
+      {
+        "image_index": 300,
+        "stamp_ns": 1590195599800363600,
+        "rmse_px": 1.3568837015086022,
+        "maximum_px": 2.012380499263618,
+        "positive_depth": true
+      },
+      {
+        "image_index": 301,
+        "stamp_ns": 1590195599900203600,
+        "rmse_px": 1.7474883078154353,
+        "maximum_px": 2.2707590818956747,
+        "positive_depth": true
+      },
+      {
+        "image_index": 302,
+        "stamp_ns": 1590195600000058330,
+        "rmse_px": 3.0845968180306915,
+        "maximum_px": 3.9517960157393635,
+        "positive_depth": true
+      },
+      {
+        "image_index": 303,
+        "stamp_ns": 1590195600100378330,
+        "rmse_px": 5.338625181689307,
+        "maximum_px": 6.181275154464807,
+        "positive_depth": true
+      },
+      {
+        "image_index": 304,
+        "stamp_ns": 1590195600200218330,
+        "rmse_px": 3.9756285835051646,
+        "maximum_px": 4.80456115532899,
+        "positive_depth": true
+      },
+      {
+        "image_index": 305,
+        "stamp_ns": 1590195600300058330,
+        "rmse_px": 2.8139425163678835,
+        "maximum_px": 3.267098640224888,
+        "positive_depth": true
+      },
+      {
+        "image_index": 306,
+        "stamp_ns": 1590195600400378330,
+        "rmse_px": 1.4680894944980962,
+        "maximum_px": 2.258962673896147,
+        "positive_depth": true
+      },
+      {
+        "image_index": 307,
+        "stamp_ns": 1590195600500218330,
+        "rmse_px": 3.1462363626470715,
+        "maximum_px": 4.035904307434218,
+        "positive_depth": true
+      },
+      {
+        "image_index": 308,
+        "stamp_ns": 1590195600600058330,
+        "rmse_px": 3.281837675402809,
+        "maximum_px": 3.9618448636312884,
+        "positive_depth": true
+      },
+      {
+        "image_index": 309,
+        "stamp_ns": 1590195600700378330,
+        "rmse_px": 3.0073248124725223,
+        "maximum_px": 3.5848139714544516,
+        "positive_depth": true
+      },
+      {
+        "image_index": 310,
+        "stamp_ns": 1590195600800218330,
+        "rmse_px": 3.9443468721733526,
+        "maximum_px": 4.689455750097022,
+        "positive_depth": true
+      },
+      {
+        "image_index": 311,
+        "stamp_ns": 1590195600900058330,
+        "rmse_px": 2.861777408605066,
+        "maximum_px": 3.7114983098379506,
+        "positive_depth": true
+      },
+      {
+        "image_index": 312,
+        "stamp_ns": 1590195601000393060,
+        "rmse_px": 2.9904661264426955,
+        "maximum_px": 3.473259634626165,
+        "positive_depth": true
+      },
+      {
+        "image_index": 313,
+        "stamp_ns": 1590195601100233060,
+        "rmse_px": 3.657256253080195,
+        "maximum_px": 3.9566698172029184,
+        "positive_depth": true
+      },
+      {
+        "image_index": 314,
+        "stamp_ns": 1590195601200073060,
+        "rmse_px": 2.3495609181291917,
+        "maximum_px": 2.9143169842477605,
+        "positive_depth": true
+      },
+      {
+        "image_index": 315,
+        "stamp_ns": 1590195601300393060,
+        "rmse_px": 0.9470606575261126,
+        "maximum_px": 1.406390096911077,
+        "positive_depth": true
+      },
+      {
+        "image_index": 316,
+        "stamp_ns": 1590195601400233060,
+        "rmse_px": 2.909280821372693,
+        "maximum_px": 3.4445206900446013,
+        "positive_depth": true
+      },
+      {
+        "image_index": 317,
+        "stamp_ns": 1590195601500073060,
+        "rmse_px": 2.5226070033487735,
+        "maximum_px": 2.8742166457699208,
+        "positive_depth": true
+      },
+      {
+        "image_index": 318,
+        "stamp_ns": 1590195601600393060,
+        "rmse_px": 2.1000093259402,
+        "maximum_px": 2.5061155728218134,
+        "positive_depth": true
+      },
+      {
+        "image_index": 319,
+        "stamp_ns": 1590195601700233060,
+        "rmse_px": 0.8699503522426153,
+        "maximum_px": 1.4851178513292989,
+        "positive_depth": true
+      },
+      {
+        "image_index": 320,
+        "stamp_ns": 1590195601800073060,
+        "rmse_px": 0.9400176529485665,
+        "maximum_px": 1.2993608050182024,
+        "positive_depth": true
+      },
+      {
+        "image_index": 321,
+        "stamp_ns": 1590195601900393060,
+        "rmse_px": 0.9364933563435597,
+        "maximum_px": 1.6794846606945173,
+        "positive_depth": true
+      },
+      {
+        "image_index": 322,
+        "stamp_ns": 1590195602000247800,
+        "rmse_px": 0.8572366268395267,
+        "maximum_px": 1.5756604788906152,
+        "positive_depth": true
+      },
+      {
+        "image_index": 323,
+        "stamp_ns": 1590195602100087800,
+        "rmse_px": 2.1169157154041263,
+        "maximum_px": 2.4171189039677654,
+        "positive_depth": true
+      },
+      {
+        "image_index": 324,
+        "stamp_ns": 1590195602200407800,
+        "rmse_px": 1.8159686360052334,
+        "maximum_px": 2.141911650585732,
+        "positive_depth": true
+      },
+      {
+        "image_index": 325,
+        "stamp_ns": 1590195602300247800,
+        "rmse_px": 2.014621139205386,
+        "maximum_px": 2.4630392839682513,
+        "positive_depth": true
+      },
+      {
+        "image_index": 326,
+        "stamp_ns": 1590195602400087800,
+        "rmse_px": 0.9061607051249182,
+        "maximum_px": 1.5510214198085275,
+        "positive_depth": true
+      },
+      {
+        "image_index": 327,
+        "stamp_ns": 1590195602500407800,
+        "rmse_px": 2.2483211004875687,
+        "maximum_px": 2.8591491907503093,
+        "positive_depth": true
+      },
+      {
+        "image_index": 328,
+        "stamp_ns": 1590195602600247800,
+        "rmse_px": 2.2113576141733167,
+        "maximum_px": 2.9119286692533715,
+        "positive_depth": true
+      },
+      {
+        "image_index": 329,
+        "stamp_ns": 1590195602700087800,
+        "rmse_px": 3.502428924217305,
+        "maximum_px": 4.3427478952005725,
+        "positive_depth": true
+      },
+      {
+        "image_index": 330,
+        "stamp_ns": 1590195602800407800,
+        "rmse_px": 0.9981437800471494,
+        "maximum_px": 1.4909313176565184,
+        "positive_depth": true
+      },
+      {
+        "image_index": 331,
+        "stamp_ns": 1590195602900247800,
+        "rmse_px": 1.1493702294601822,
+        "maximum_px": 1.73379370209132,
+        "positive_depth": true
+      },
+      {
+        "image_index": 332,
+        "stamp_ns": 1590195603000102540,
+        "rmse_px": 1.1915835715622891,
+        "maximum_px": 1.7977582166989683,
+        "positive_depth": true
+      },
+      {
+        "image_index": 333,
+        "stamp_ns": 1590195603100422540,
+        "rmse_px": 1.6028634205272425,
+        "maximum_px": 2.187369198552474,
+        "positive_depth": true
+      },
+      {
+        "image_index": 334,
+        "stamp_ns": 1590195603200262540,
+        "rmse_px": 0.6982211435778677,
+        "maximum_px": 0.9804850649070076,
+        "positive_depth": true
+      },
+      {
+        "image_index": 335,
+        "stamp_ns": 1590195603300102540,
+        "rmse_px": 1.0344896548627878,
+        "maximum_px": 1.3865430449902336,
+        "positive_depth": true
+      },
+      {
+        "image_index": 341,
+        "stamp_ns": 1590195604000437290,
+        "rmse_px": 2.785898713803108,
+        "maximum_px": 3.573569033566937,
+        "positive_depth": true
+      },
+      {
+        "image_index": 342,
+        "stamp_ns": 1590195604100277290,
+        "rmse_px": 2.565942177065877,
+        "maximum_px": 3.2492489341047768,
+        "positive_depth": true
+      },
+      {
+        "image_index": 343,
+        "stamp_ns": 1590195604200117290,
+        "rmse_px": 1.3299423438688307,
+        "maximum_px": 1.8400268447590344,
+        "positive_depth": true
+      },
+      {
+        "image_index": 344,
+        "stamp_ns": 1590195604300437290,
+        "rmse_px": 2.811484791090404,
+        "maximum_px": 3.5764427005651416,
+        "positive_depth": true
+      },
+      {
+        "image_index": 345,
+        "stamp_ns": 1590195604400277290,
+        "rmse_px": 3.872641678482525,
+        "maximum_px": 4.7808983177255095,
+        "positive_depth": true
+      },
+      {
+        "image_index": 346,
+        "stamp_ns": 1590195604500117290,
+        "rmse_px": 2.5230434202587477,
+        "maximum_px": 3.373627093987006,
+        "positive_depth": true
+      },
+      {
+        "image_index": 347,
+        "stamp_ns": 1590195604600437290,
+        "rmse_px": 4.844779126249825,
+        "maximum_px": 5.801880693435094,
+        "positive_depth": true
+      },
+      {
+        "image_index": 348,
+        "stamp_ns": 1590195604700277290,
+        "rmse_px": 4.550529629792725,
+        "maximum_px": 5.0372788914240205,
+        "positive_depth": true
+      },
+      {
+        "image_index": 349,
+        "stamp_ns": 1590195604800117290,
+        "rmse_px": 2.9302229662621544,
+        "maximum_px": 3.5066223091485758,
+        "positive_depth": true
+      },
+      {
+        "image_index": 350,
+        "stamp_ns": 1590195604900437290,
+        "rmse_px": 1.1144208031015925,
+        "maximum_px": 1.6351936900067905,
+        "positive_depth": true
+      },
+      {
+        "image_index": 351,
+        "stamp_ns": 1590195605000291990,
+        "rmse_px": 3.3897201212822132,
+        "maximum_px": 3.737916420772627,
+        "positive_depth": true
+      },
+      {
+        "image_index": 352,
+        "stamp_ns": 1590195605100131990,
+        "rmse_px": 3.5876002171634855,
+        "maximum_px": 3.8763805877617417,
+        "positive_depth": true
+      },
+      {
+        "image_index": 353,
+        "stamp_ns": 1590195605200451990,
+        "rmse_px": 2.460736628267594,
+        "maximum_px": 2.9866407556948116,
+        "positive_depth": true
+      },
+      {
+        "image_index": 354,
+        "stamp_ns": 1590195605300291990,
+        "rmse_px": 1.4701250412811837,
+        "maximum_px": 2.325839675502215,
+        "positive_depth": true
+      },
+      {
+        "image_index": 355,
+        "stamp_ns": 1590195605400131990,
+        "rmse_px": 3.5394083886347825,
+        "maximum_px": 4.2647748072570835,
+        "positive_depth": true
+      },
+      {
+        "image_index": 356,
+        "stamp_ns": 1590195605500451990,
+        "rmse_px": 3.390254284380949,
+        "maximum_px": 3.8597811289172372,
+        "positive_depth": true
+      },
+      {
+        "image_index": 357,
+        "stamp_ns": 1590195605600291990,
+        "rmse_px": 2.0811494323848145,
+        "maximum_px": 2.9740269496330054,
+        "positive_depth": true
+      },
+      {
+        "image_index": 358,
+        "stamp_ns": 1590195605700131990,
+        "rmse_px": 0.8267323433374038,
+        "maximum_px": 1.305917001578652,
+        "positive_depth": true
+      },
+      {
+        "image_index": 359,
+        "stamp_ns": 1590195605800451990,
+        "rmse_px": 1.767646995927538,
+        "maximum_px": 2.3500430593712864,
+        "positive_depth": true
+      },
+      {
+        "image_index": 360,
+        "stamp_ns": 1590195605900291990,
+        "rmse_px": 2.2609592922242054,
+        "maximum_px": 2.9064475096922404,
+        "positive_depth": true
+      },
+      {
+        "image_index": 361,
+        "stamp_ns": 1590195606000146660,
+        "rmse_px": 1.621005987974603,
+        "maximum_px": 2.0328103407740374,
+        "positive_depth": true
+      },
+      {
+        "image_index": 362,
+        "stamp_ns": 1590195606100466660,
+        "rmse_px": 1.68280175243688,
+        "maximum_px": 2.259684218104577,
+        "positive_depth": true
+      },
+      {
+        "image_index": 363,
+        "stamp_ns": 1590195606200306660,
+        "rmse_px": 1.764075518104919,
+        "maximum_px": 2.3436281922733655,
+        "positive_depth": true
+      },
+      {
+        "image_index": 364,
+        "stamp_ns": 1590195606300146660,
+        "rmse_px": 0.8124110027445461,
+        "maximum_px": 1.448746398789574,
+        "positive_depth": true
+      },
+      {
+        "image_index": 365,
+        "stamp_ns": 1590195606400466660,
+        "rmse_px": 0.9855164245499412,
+        "maximum_px": 1.3905578357552557,
+        "positive_depth": true
+      },
+      {
+        "image_index": 366,
+        "stamp_ns": 1590195606500306660,
+        "rmse_px": 1.97989872282513,
+        "maximum_px": 2.8806222509692505,
+        "positive_depth": true
+      },
+      {
+        "image_index": 367,
+        "stamp_ns": 1590195606600146660,
+        "rmse_px": 2.5044190983137877,
+        "maximum_px": 3.3076469996627247,
+        "positive_depth": true
+      },
+      {
+        "image_index": 368,
+        "stamp_ns": 1590195606700466660,
+        "rmse_px": 3.3577820766778963,
+        "maximum_px": 4.011974277165536,
+        "positive_depth": true
+      },
+      {
+        "image_index": 369,
+        "stamp_ns": 1590195606800306660,
+        "rmse_px": 2.0273457408532365,
+        "maximum_px": 2.3406748875009575,
+        "positive_depth": true
+      },
+      {
+        "image_index": 370,
+        "stamp_ns": 1590195606900146660,
+        "rmse_px": 1.6132457883685098,
+        "maximum_px": 2.312039724628899,
+        "positive_depth": true
+      },
+      {
+        "image_index": 371,
+        "stamp_ns": 1590195607000481340,
+        "rmse_px": 2.8255270149224065,
+        "maximum_px": 3.6200250301857366,
+        "positive_depth": true
+      },
+      {
+        "image_index": 372,
+        "stamp_ns": 1590195607100321340,
+        "rmse_px": 3.020726926938475,
+        "maximum_px": 3.8867409922598517,
+        "positive_depth": true
+      },
+      {
+        "image_index": 373,
+        "stamp_ns": 1590195607200161340,
+        "rmse_px": 1.475935973695955,
+        "maximum_px": 1.753974038860138,
+        "positive_depth": true
+      },
+      {
+        "image_index": 374,
+        "stamp_ns": 1590195607300481340,
+        "rmse_px": 4.929541666183645,
+        "maximum_px": 6.048395520757283,
+        "positive_depth": true
+      },
+      {
+        "image_index": 375,
+        "stamp_ns": 1590195607400321340,
+        "rmse_px": 10.07049744895535,
+        "maximum_px": 10.973607466100269,
+        "positive_depth": true
+      },
+      {
+        "image_index": 376,
+        "stamp_ns": 1590195607500161340,
+        "rmse_px": 14.439768172101381,
+        "maximum_px": 15.052716199774922,
+        "positive_depth": true
+      },
+      {
+        "image_index": 377,
+        "stamp_ns": 1590195607600481340,
+        "rmse_px": 17.236395168187848,
+        "maximum_px": 17.734380904151873,
+        "positive_depth": true
+      },
+      {
+        "image_index": 383,
+        "stamp_ns": 1590195608300336020,
+        "rmse_px": 37.296207201204616,
+        "maximum_px": 38.82871560236395,
+        "positive_depth": true
+      },
+      {
+        "image_index": 384,
+        "stamp_ns": 1590195608400176020,
+        "rmse_px": 29.626461814438944,
+        "maximum_px": 30.384246240384073,
+        "positive_depth": true
+      },
+      {
+        "image_index": 385,
+        "stamp_ns": 1590195608500016020,
+        "rmse_px": 21.648966552477496,
+        "maximum_px": 22.419170340653604,
+        "positive_depth": true
+      },
+      {
+        "image_index": 386,
+        "stamp_ns": 1590195608600336020,
+        "rmse_px": 20.475383767550134,
+        "maximum_px": 20.992945321811437,
+        "positive_depth": true
+      },
+      {
+        "image_index": 387,
+        "stamp_ns": 1590195608700176020,
+        "rmse_px": 24.10816534957336,
+        "maximum_px": 25.029023841968353,
+        "positive_depth": true
+      },
+      {
+        "image_index": 388,
+        "stamp_ns": 1590195608800016020,
+        "rmse_px": 27.028806626850404,
+        "maximum_px": 28.31768730509895,
+        "positive_depth": true
+      },
+      {
+        "image_index": 389,
+        "stamp_ns": 1590195608900336020,
+        "rmse_px": 27.173777747663294,
+        "maximum_px": 28.54755049053019,
+        "positive_depth": true
+      },
+      {
+        "image_index": 390,
+        "stamp_ns": 1590195609000190710,
+        "rmse_px": 28.05775246064773,
+        "maximum_px": 29.09522359365896,
+        "positive_depth": true
+      },
+      {
+        "image_index": 391,
+        "stamp_ns": 1590195609100030710,
+        "rmse_px": 31.04208520420285,
+        "maximum_px": 31.385446632529987,
+        "positive_depth": true
+      },
+      {
+        "image_index": 392,
+        "stamp_ns": 1590195609200350710,
+        "rmse_px": 34.27979937760052,
+        "maximum_px": 35.18760617785586,
+        "positive_depth": true
+      },
+      {
+        "image_index": 393,
+        "stamp_ns": 1590195609300190710,
+        "rmse_px": 30.941409451362787,
+        "maximum_px": 31.53958118613414,
+        "positive_depth": true
+      },
+      {
+        "image_index": 394,
+        "stamp_ns": 1590195609400030710,
+        "rmse_px": 26.27166051571518,
+        "maximum_px": 26.927760170281047,
+        "positive_depth": true
+      },
+      {
+        "image_index": 395,
+        "stamp_ns": 1590195609500350710,
+        "rmse_px": 12.18479577296969,
+        "maximum_px": 12.519167832570819,
+        "positive_depth": true
+      },
+      {
+        "image_index": 396,
+        "stamp_ns": 1590195609600190710,
+        "rmse_px": 16.36772513595733,
+        "maximum_px": 17.348861610068806,
+        "positive_depth": true
+      },
+      {
+        "image_index": 397,
+        "stamp_ns": 1590195609700030710,
+        "rmse_px": 12.965242709734852,
+        "maximum_px": 13.998479222071186,
+        "positive_depth": true
+      },
+      {
+        "image_index": 398,
+        "stamp_ns": 1590195609800350710,
+        "rmse_px": 20.338375263689628,
+        "maximum_px": 21.382141971495592,
+        "positive_depth": true
+      },
+      {
+        "image_index": 399,
+        "stamp_ns": 1590195609900190710,
+        "rmse_px": 28.06992303523122,
+        "maximum_px": 29.99074646139502,
+        "positive_depth": true
+      },
+      {
+        "image_index": 400,
+        "stamp_ns": 1590195610000045410,
+        "rmse_px": 32.36344322602517,
+        "maximum_px": 35.66317776435019,
+        "positive_depth": true
+      },
+      {
+        "image_index": 415,
+        "stamp_ns": 1590195611500060100,
+        "rmse_px": 27.803038817233947,
+        "maximum_px": 29.154515365382508,
+        "positive_depth": true
+      },
+      {
+        "image_index": 416,
+        "stamp_ns": 1590195611600380100,
+        "rmse_px": 27.609031966488608,
+        "maximum_px": 28.96234984427315,
+        "positive_depth": true
+      },
+      {
+        "image_index": 417,
+        "stamp_ns": 1590195611700220100,
+        "rmse_px": 30.233434708500702,
+        "maximum_px": 30.930445209731452,
+        "positive_depth": true
+      },
+      {
+        "image_index": 422,
+        "stamp_ns": 1590195612300234810,
+        "rmse_px": 18.819041806344323,
+        "maximum_px": 19.967201122854526,
+        "positive_depth": true
+      },
+      {
+        "image_index": 423,
+        "stamp_ns": 1590195612400074810,
+        "rmse_px": 3.484713498662141,
+        "maximum_px": 4.215322209149065,
+        "positive_depth": true
+      },
+      {
+        "image_index": 424,
+        "stamp_ns": 1590195612500394810,
+        "rmse_px": 23.345963262048645,
+        "maximum_px": 24.51483507930437,
+        "positive_depth": true
+      },
+      {
+        "image_index": 425,
+        "stamp_ns": 1590195612600234810,
+        "rmse_px": 43.22563208262263,
+        "maximum_px": 45.24176845993152,
+        "positive_depth": true
+      },
+      {
+        "image_index": 426,
+        "stamp_ns": 1590195612700074810,
+        "rmse_px": 46.33136990118009,
+        "maximum_px": 48.023044142676056,
+        "positive_depth": true
+      },
+      {
+        "image_index": 427,
+        "stamp_ns": 1590195612800394810,
+        "rmse_px": 36.307524042312394,
+        "maximum_px": 37.110341387804375,
+        "positive_depth": true
+      },
+      {
+        "image_index": 428,
+        "stamp_ns": 1590195612900234810,
+        "rmse_px": 22.90347748324964,
+        "maximum_px": 23.50799101674205,
+        "positive_depth": true
+      },
+      {
+        "image_index": 429,
+        "stamp_ns": 1590195613000089520,
+        "rmse_px": 7.565864371501643,
+        "maximum_px": 7.929036287090019,
+        "positive_depth": true
+      },
+      {
+        "image_index": 430,
+        "stamp_ns": 1590195613100409520,
+        "rmse_px": 6.1238063258227715,
+        "maximum_px": 7.057111316955037,
+        "positive_depth": true
+      },
+      {
+        "image_index": 431,
+        "stamp_ns": 1590195613200249520,
+        "rmse_px": 7.753710053338542,
+        "maximum_px": 8.244534397159734,
+        "positive_depth": true
+      },
+      {
+        "image_index": 432,
+        "stamp_ns": 1590195613300089520,
+        "rmse_px": 16.192413227564224,
+        "maximum_px": 17.173451193145457,
+        "positive_depth": true
+      },
+      {
+        "image_index": 433,
+        "stamp_ns": 1590195613400409520,
+        "rmse_px": 30.478600756134945,
+        "maximum_px": 31.778213490808216,
+        "positive_depth": true
+      },
+      {
+        "image_index": 434,
+        "stamp_ns": 1590195613500249520,
+        "rmse_px": 42.481957957703756,
+        "maximum_px": 43.781980922065074,
+        "positive_depth": true
+      },
+      {
+        "image_index": 435,
+        "stamp_ns": 1590195613600089520,
+        "rmse_px": 40.54796472669359,
+        "maximum_px": 42.051099121069086,
+        "positive_depth": true
+      },
+      {
+        "image_index": 436,
+        "stamp_ns": 1590195613700409520,
+        "rmse_px": 30.120903877161307,
+        "maximum_px": 31.569893512219203,
+        "positive_depth": true
+      },
+      {
+        "image_index": 437,
+        "stamp_ns": 1590195613800249520,
+        "rmse_px": 16.13926662473128,
+        "maximum_px": 17.46616392327042,
+        "positive_depth": true
+      },
+      {
+        "image_index": 438,
+        "stamp_ns": 1590195613900089520,
+        "rmse_px": 15.748712880608926,
+        "maximum_px": 16.727276633903585,
+        "positive_depth": true
+      },
+      {
+        "image_index": 439,
+        "stamp_ns": 1590195614000424230,
+        "rmse_px": 15.252092618890083,
+        "maximum_px": 15.990429561961276,
+        "positive_depth": true
+      },
+      {
+        "image_index": 440,
+        "stamp_ns": 1590195614100264230,
+        "rmse_px": 22.301550716826522,
+        "maximum_px": 23.207209445057714,
+        "positive_depth": true
+      },
+      {
+        "image_index": 441,
+        "stamp_ns": 1590195614200104230,
+        "rmse_px": 14.992161338609897,
+        "maximum_px": 16.42342597466592,
+        "positive_depth": true
+      },
+      {
+        "image_index": 442,
+        "stamp_ns": 1590195614300424230,
+        "rmse_px": 10.755059247154344,
+        "maximum_px": 11.751130046170763,
+        "positive_depth": true
+      },
+      {
+        "image_index": 443,
+        "stamp_ns": 1590195614400264230,
+        "rmse_px": 12.126581897637546,
+        "maximum_px": 12.859369572332383,
+        "positive_depth": true
+      },
+      {
+        "image_index": 444,
+        "stamp_ns": 1590195614500104230,
+        "rmse_px": 24.23079377773626,
+        "maximum_px": 25.061785744413097,
+        "positive_depth": true
+      },
+      {
+        "image_index": 445,
+        "stamp_ns": 1590195614600424230,
+        "rmse_px": 33.94076973834768,
+        "maximum_px": 34.93387239821959,
+        "positive_depth": true
+      },
+      {
+        "image_index": 446,
+        "stamp_ns": 1590195614700264230,
+        "rmse_px": 39.053633129619975,
+        "maximum_px": 39.868296638973064,
+        "positive_depth": true
+      },
+      {
+        "image_index": 447,
+        "stamp_ns": 1590195614800104230,
+        "rmse_px": 39.42250885303003,
+        "maximum_px": 40.251456093928525,
+        "positive_depth": true
+      },
+      {
+        "image_index": 448,
+        "stamp_ns": 1590195614900424230,
+        "rmse_px": 34.22285981535933,
+        "maximum_px": 34.954045769600604,
+        "positive_depth": true
+      },
+      {
+        "image_index": 449,
+        "stamp_ns": 1590195615000278940,
+        "rmse_px": 13.68717250814681,
+        "maximum_px": 14.588390795877096,
+        "positive_depth": true
+      },
+      {
+        "image_index": 450,
+        "stamp_ns": 1590195615100118940,
+        "rmse_px": 5.4560490859340405,
+        "maximum_px": 5.92594166737281,
+        "positive_depth": true
+      },
+      {
+        "image_index": 451,
+        "stamp_ns": 1590195615200438940,
+        "rmse_px": 8.706847660266343,
+        "maximum_px": 8.996020359814539,
+        "positive_depth": true
+      },
+      {
+        "image_index": 452,
+        "stamp_ns": 1590195615300278940,
+        "rmse_px": 13.995541796296417,
+        "maximum_px": 15.333024548856704,
+        "positive_depth": true
+      },
+      {
+        "image_index": 453,
+        "stamp_ns": 1590195615400118940,
+        "rmse_px": 20.745900461507667,
+        "maximum_px": 22.275437255045805,
+        "positive_depth": true
+      },
+      {
+        "image_index": 454,
+        "stamp_ns": 1590195615500438940,
+        "rmse_px": 18.225709167977822,
+        "maximum_px": 18.998732432474256,
+        "positive_depth": true
+      },
+      {
+        "image_index": 455,
+        "stamp_ns": 1590195615600278940,
+        "rmse_px": 9.688449718550334,
+        "maximum_px": 11.1140456408872,
+        "positive_depth": true
+      },
+      {
+        "image_index": 456,
+        "stamp_ns": 1590195615700118940,
+        "rmse_px": 6.517039207756448,
+        "maximum_px": 7.993909942923722,
+        "positive_depth": true
+      },
+      {
+        "image_index": 457,
+        "stamp_ns": 1590195615800438940,
+        "rmse_px": 19.366624251059775,
+        "maximum_px": 19.90197022198153,
+        "positive_depth": true
+      },
+      {
+        "image_index": 458,
+        "stamp_ns": 1590195615900278940,
+        "rmse_px": 16.049443780646584,
+        "maximum_px": 17.15281443722028,
+        "positive_depth": true
+      },
+      {
+        "image_index": 459,
+        "stamp_ns": 1590195616000133660,
+        "rmse_px": 5.297181787892453,
+        "maximum_px": 6.651549308464267,
+        "positive_depth": true
+      },
+      {
+        "image_index": 460,
+        "stamp_ns": 1590195616100453660,
+        "rmse_px": 8.674094052477567,
+        "maximum_px": 9.025812663655492,
+        "positive_depth": true
+      },
+      {
+        "image_index": 461,
+        "stamp_ns": 1590195616200293660,
+        "rmse_px": 3.3862014592031313,
+        "maximum_px": 4.07707492363984,
+        "positive_depth": true
+      },
+      {
+        "image_index": 462,
+        "stamp_ns": 1590195616300133660,
+        "rmse_px": 14.666462451241388,
+        "maximum_px": 15.19690921970426,
+        "positive_depth": true
+      },
+      {
+        "image_index": 463,
+        "stamp_ns": 1590195616400453660,
+        "rmse_px": 15.69351356465306,
+        "maximum_px": 16.389891624504802,
+        "positive_depth": true
+      },
+      {
+        "image_index": 464,
+        "stamp_ns": 1590195616500293660,
+        "rmse_px": 9.131295755454698,
+        "maximum_px": 9.992427774872006,
+        "positive_depth": true
+      },
+      {
+        "image_index": 465,
+        "stamp_ns": 1590195616600133660,
+        "rmse_px": 4.961547067578632,
+        "maximum_px": 5.545691478448296,
+        "positive_depth": true
+      },
+      {
+        "image_index": 466,
+        "stamp_ns": 1590195616700453660,
+        "rmse_px": 12.297432963855945,
+        "maximum_px": 12.691741959066658,
+        "positive_depth": true
+      },
+      {
+        "image_index": 467,
+        "stamp_ns": 1590195616800293660,
+        "rmse_px": 13.212744317354597,
+        "maximum_px": 13.806047748316413,
+        "positive_depth": true
+      },
+      {
+        "image_index": 468,
+        "stamp_ns": 1590195616900133660,
+        "rmse_px": 10.100450857793195,
+        "maximum_px": 10.982461968032045,
+        "positive_depth": true
+      },
+      {
+        "image_index": 469,
+        "stamp_ns": 1590195617000468390,
+        "rmse_px": 2.8345842845289777,
+        "maximum_px": 3.249045481491046,
+        "positive_depth": true
+      },
+      {
+        "image_index": 470,
+        "stamp_ns": 1590195617100308390,
+        "rmse_px": 16.917446148026265,
+        "maximum_px": 18.189141660462216,
+        "positive_depth": true
+      },
+      {
+        "image_index": 471,
+        "stamp_ns": 1590195617200148390,
+        "rmse_px": 12.386314831356882,
+        "maximum_px": 15.087779752223655,
+        "positive_depth": true
+      },
+      {
+        "image_index": 472,
+        "stamp_ns": 1590195617300468390,
+        "rmse_px": 5.3263325289491155,
+        "maximum_px": 6.646065222409873,
+        "positive_depth": true
+      },
+      {
+        "image_index": 473,
+        "stamp_ns": 1590195617400308390,
+        "rmse_px": 19.59439709520783,
+        "maximum_px": 22.80265224099116,
+        "positive_depth": true
+      },
+      {
+        "image_index": 474,
+        "stamp_ns": 1590195617500148390,
+        "rmse_px": 24.612800703223467,
+        "maximum_px": 27.644872832215043,
+        "positive_depth": true
+      },
+      {
+        "image_index": 475,
+        "stamp_ns": 1590195617600468390,
+        "rmse_px": 21.39716811572145,
+        "maximum_px": 23.51202942031295,
+        "positive_depth": true
+      },
+      {
+        "image_index": 476,
+        "stamp_ns": 1590195617700308390,
+        "rmse_px": 12.95664996253005,
+        "maximum_px": 13.847985538358532,
+        "positive_depth": true
+      },
+      {
+        "image_index": 477,
+        "stamp_ns": 1590195617800148390,
+        "rmse_px": 3.294352705642034,
+        "maximum_px": 3.6790585462738328,
+        "positive_depth": true
+      },
+      {
+        "image_index": 478,
+        "stamp_ns": 1590195617900468390,
+        "rmse_px": 8.881271258176577,
+        "maximum_px": 9.651482075990314,
+        "positive_depth": true
+      },
+      {
+        "image_index": 479,
+        "stamp_ns": 1590195618000323120,
+        "rmse_px": 11.300222139280107,
+        "maximum_px": 12.354512921568286,
+        "positive_depth": true
+      },
+      {
+        "image_index": 480,
+        "stamp_ns": 1590195618100163120,
+        "rmse_px": 7.655873292409709,
+        "maximum_px": 8.859513062822394,
+        "positive_depth": true
+      },
+      {
+        "image_index": 481,
+        "stamp_ns": 1590195618200483120,
+        "rmse_px": 2.5009238508152634,
+        "maximum_px": 3.8598465898016525,
+        "positive_depth": true
+      },
+      {
+        "image_index": 482,
+        "stamp_ns": 1590195618300323120,
+        "rmse_px": 7.13244621451834,
+        "maximum_px": 8.292209372106841,
+        "positive_depth": true
+      },
+      {
+        "image_index": 483,
+        "stamp_ns": 1590195618400163120,
+        "rmse_px": 7.438214386149594,
+        "maximum_px": 9.07434717877958,
+        "positive_depth": true
+      },
+      {
+        "image_index": 484,
+        "stamp_ns": 1590195618500483120,
+        "rmse_px": 9.511714025802432,
+        "maximum_px": 12.424677132879843,
+        "positive_depth": true
+      },
+      {
+        "image_index": 485,
+        "stamp_ns": 1590195618600323120,
+        "rmse_px": 13.063677549585602,
+        "maximum_px": 16.72068694470088,
+        "positive_depth": true
+      },
+      {
+        "image_index": 486,
+        "stamp_ns": 1590195618700163120,
+        "rmse_px": 14.988720468150895,
+        "maximum_px": 18.501011215083057,
+        "positive_depth": true
+      },
+      {
+        "image_index": 487,
+        "stamp_ns": 1590195618800483120,
+        "rmse_px": 14.191586349055282,
+        "maximum_px": 17.95709384386937,
+        "positive_depth": true
+      },
+      {
+        "image_index": 488,
+        "stamp_ns": 1590195618900323120,
+        "rmse_px": 12.736076565616042,
+        "maximum_px": 17.087488039520334,
+        "positive_depth": true
+      },
+      {
+        "image_index": 489,
+        "stamp_ns": 1590195619000177860,
+        "rmse_px": 14.00633494349545,
+        "maximum_px": 18.521807149716455,
+        "positive_depth": true
+      },
+      {
+        "image_index": 490,
+        "stamp_ns": 1590195619100017860,
+        "rmse_px": 19.29524793878282,
+        "maximum_px": 24.47376417279142,
+        "positive_depth": true
+      },
+      {
+        "image_index": 491,
+        "stamp_ns": 1590195619200337860,
+        "rmse_px": 17.120384514158847,
+        "maximum_px": 22.480941275778726,
+        "positive_depth": true
+      },
+      {
+        "image_index": 492,
+        "stamp_ns": 1590195619300177860,
+        "rmse_px": 16.131037401893973,
+        "maximum_px": 21.25879315196667,
+        "positive_depth": true
+      },
+      {
+        "image_index": 493,
+        "stamp_ns": 1590195619400017860,
+        "rmse_px": 15.40773124256372,
+        "maximum_px": 20.40961336977005,
+        "positive_depth": true
+      },
+      {
+        "image_index": 494,
+        "stamp_ns": 1590195619500337860,
+        "rmse_px": 15.359422974879225,
+        "maximum_px": 20.16343379965294,
+        "positive_depth": true
+      },
+      {
+        "image_index": 495,
+        "stamp_ns": 1590195619600177860,
+        "rmse_px": 14.1645668263457,
+        "maximum_px": 18.81152338529697,
+        "positive_depth": true
+      },
+      {
+        "image_index": 496,
+        "stamp_ns": 1590195619700017860,
+        "rmse_px": 10.722134019646003,
+        "maximum_px": 14.710208022357099,
+        "positive_depth": true
+      },
+      {
+        "image_index": 497,
+        "stamp_ns": 1590195619800337860,
+        "rmse_px": 23.852935544122012,
+        "maximum_px": 30.48167125246663,
+        "positive_depth": true
+      },
+      {
+        "image_index": 498,
+        "stamp_ns": 1590195619900177860,
+        "rmse_px": 14.398924347250446,
+        "maximum_px": 19.51045529173656,
+        "positive_depth": true
+      },
+      {
+        "image_index": 499,
+        "stamp_ns": 1590195620000032600,
+        "rmse_px": 13.979422548582614,
+        "maximum_px": 18.039106204521552,
+        "positive_depth": true
+      },
+      {
+        "image_index": 500,
+        "stamp_ns": 1590195620100352600,
+        "rmse_px": 12.337538487687757,
+        "maximum_px": 13.482739901958668,
+        "positive_depth": true
+      },
+      {
+        "image_index": 501,
+        "stamp_ns": 1590195620200192600,
+        "rmse_px": 10.251285636587381,
+        "maximum_px": 12.528822655882202,
+        "positive_depth": true
+      },
+      {
+        "image_index": 502,
+        "stamp_ns": 1590195620300032600,
+        "rmse_px": 22.35174489437347,
+        "maximum_px": 26.456257506759037,
+        "positive_depth": true
+      },
+      {
+        "image_index": 503,
+        "stamp_ns": 1590195620400352600,
+        "rmse_px": 40.16006730801899,
+        "maximum_px": 45.90325419022508,
+        "positive_depth": true
+      },
+      {
+        "image_index": 504,
+        "stamp_ns": 1590195620500192600,
+        "rmse_px": 42.295987740932254,
+        "maximum_px": 49.738837494334966,
+        "positive_depth": true
+      },
+      {
+        "image_index": 505,
+        "stamp_ns": 1590195620600032600,
+        "rmse_px": 33.27118021106046,
+        "maximum_px": 41.02997209406353,
+        "positive_depth": true
+      },
+      {
+        "image_index": 506,
+        "stamp_ns": 1590195620700352600,
+        "rmse_px": 30.749084524083017,
+        "maximum_px": 37.423551672198435,
+        "positive_depth": true
+      },
+      {
+        "image_index": 507,
+        "stamp_ns": 1590195620800192600,
+        "rmse_px": 30.67811441683641,
+        "maximum_px": 37.38597932718379,
+        "positive_depth": true
+      },
+      {
+        "image_index": 508,
+        "stamp_ns": 1590195620900032600,
+        "rmse_px": 28.220820093116316,
+        "maximum_px": 34.709658927455976,
+        "positive_depth": true
+      },
+      {
+        "image_index": 509,
+        "stamp_ns": 1590195621000367340,
+        "rmse_px": 24.92347405795244,
+        "maximum_px": 29.852152580736902,
+        "positive_depth": true
+      },
+      {
+        "image_index": 510,
+        "stamp_ns": 1590195621100207340,
+        "rmse_px": 18.15417486093617,
+        "maximum_px": 23.153620478819917,
+        "positive_depth": true
+      },
+      {
+        "image_index": 511,
+        "stamp_ns": 1590195621200047340,
+        "rmse_px": 19.447478405494294,
+        "maximum_px": 22.875217464124677,
+        "positive_depth": true
+      },
+      {
+        "image_index": 512,
+        "stamp_ns": 1590195621300367340,
+        "rmse_px": 10.200819040268431,
+        "maximum_px": 10.960241320389246,
+        "positive_depth": true
+      },
+      {
+        "image_index": 513,
+        "stamp_ns": 1590195621400207340,
+        "rmse_px": 3.7152319515323966,
+        "maximum_px": 4.1164356410933225,
+        "positive_depth": true
+      },
+      {
+        "image_index": 514,
+        "stamp_ns": 1590195621500047340,
+        "rmse_px": 4.796733581349734,
+        "maximum_px": 5.70371276448891,
+        "positive_depth": true
+      },
+      {
+        "image_index": 515,
+        "stamp_ns": 1590195621600367340,
+        "rmse_px": 5.598148054428946,
+        "maximum_px": 6.7618550201639165,
+        "positive_depth": true
+      },
+      {
+        "image_index": 516,
+        "stamp_ns": 1590195621700207340,
+        "rmse_px": 4.924461830071168,
+        "maximum_px": 6.181515697576433,
+        "positive_depth": true
+      },
+      {
+        "image_index": 517,
+        "stamp_ns": 1590195621800047340,
+        "rmse_px": 12.541899061319928,
+        "maximum_px": 13.366138657079599,
+        "positive_depth": true
+      },
+      {
+        "image_index": 518,
+        "stamp_ns": 1590195621900367340,
+        "rmse_px": 10.819104119667463,
+        "maximum_px": 11.268298444578765,
+        "positive_depth": true
+      },
+      {
+        "image_index": 519,
+        "stamp_ns": 1590195622000222090,
+        "rmse_px": 3.413701521024284,
+        "maximum_px": 3.6785195122233176,
+        "positive_depth": true
+      },
+      {
+        "image_index": 520,
+        "stamp_ns": 1590195622100062090,
+        "rmse_px": 5.25927513725009,
+        "maximum_px": 5.421766764774501,
+        "positive_depth": true
+      },
+      {
+        "image_index": 521,
+        "stamp_ns": 1590195622200382090,
+        "rmse_px": 0.8530203479369167,
+        "maximum_px": 1.3478079564071113,
+        "positive_depth": true
+      },
+      {
+        "image_index": 522,
+        "stamp_ns": 1590195622300222090,
+        "rmse_px": 9.399697285289434,
+        "maximum_px": 10.822258712598096,
+        "positive_depth": true
+      },
+      {
+        "image_index": 523,
+        "stamp_ns": 1590195622400062090,
+        "rmse_px": 12.879532572058153,
+        "maximum_px": 15.414742915131125,
+        "positive_depth": true
+      },
+      {
+        "image_index": 524,
+        "stamp_ns": 1590195622500382090,
+        "rmse_px": 12.72048673482625,
+        "maximum_px": 16.574133424424254,
+        "positive_depth": true
+      },
+      {
+        "image_index": 525,
+        "stamp_ns": 1590195622600222090,
+        "rmse_px": 17.037719343963296,
+        "maximum_px": 23.269634148430434,
+        "positive_depth": true
+      },
+      {
+        "image_index": 526,
+        "stamp_ns": 1590195622700062090,
+        "rmse_px": 33.481060209244966,
+        "maximum_px": 41.95334869121315,
+        "positive_depth": true
+      },
+      {
+        "image_index": 527,
+        "stamp_ns": 1590195622800382090,
+        "rmse_px": 52.08563185510931,
+        "maximum_px": 61.93410130193723,
+        "positive_depth": true
+      },
+      {
+        "image_index": 528,
+        "stamp_ns": 1590195622900222090,
+        "rmse_px": 44.087717332055405,
+        "maximum_px": 52.94209045974024,
+        "positive_depth": true
+      },
+      {
+        "image_index": 529,
+        "stamp_ns": 1590195623000076790,
+        "rmse_px": 17.182606856485023,
+        "maximum_px": 22.232369633563447,
+        "positive_depth": true
+      },
+      {
+        "image_index": 530,
+        "stamp_ns": 1590195623100396790,
+        "rmse_px": 16.462282896517586,
+        "maximum_px": 21.253414079484006,
+        "positive_depth": true
+      },
+      {
+        "image_index": 531,
+        "stamp_ns": 1590195623200236790,
+        "rmse_px": 14.11977419054528,
+        "maximum_px": 17.882170525218925,
+        "positive_depth": true
+      },
+      {
+        "image_index": 536,
+        "stamp_ns": 1590195623800236790,
+        "rmse_px": 23.38921276710029,
+        "maximum_px": 27.53407231344243,
+        "positive_depth": true
+      },
+      {
+        "image_index": 537,
+        "stamp_ns": 1590195623900076790,
+        "rmse_px": 15.034910589251162,
+        "maximum_px": 18.10684328616803,
+        "positive_depth": true
+      },
+      {
+        "image_index": 538,
+        "stamp_ns": 1590195624000411460,
+        "rmse_px": 14.837887947711442,
+        "maximum_px": 17.70340885730568,
+        "positive_depth": true
+      },
+      {
+        "image_index": 539,
+        "stamp_ns": 1590195624100251460,
+        "rmse_px": 15.296007878325387,
+        "maximum_px": 17.684920779261677,
+        "positive_depth": true
+      },
+      {
+        "image_index": 540,
+        "stamp_ns": 1590195624200091460,
+        "rmse_px": 5.262191334942624,
+        "maximum_px": 6.574143489669559,
+        "positive_depth": true
+      },
+      {
+        "image_index": 541,
+        "stamp_ns": 1590195624300411460,
+        "rmse_px": 24.991448600889672,
+        "maximum_px": 27.60827026196695,
+        "positive_depth": true
+      },
+      {
+        "image_index": 542,
+        "stamp_ns": 1590195624400251460,
+        "rmse_px": 26.340972305803696,
+        "maximum_px": 29.212757532481188,
+        "positive_depth": true
+      },
+      {
+        "image_index": 543,
+        "stamp_ns": 1590195624500091460,
+        "rmse_px": 14.687771389371834,
+        "maximum_px": 17.26665405260295,
+        "positive_depth": true
+      },
+      {
+        "image_index": 544,
+        "stamp_ns": 1590195624600411460,
+        "rmse_px": 13.95012704660332,
+        "maximum_px": 16.50631800742322,
+        "positive_depth": true
+      },
+      {
+        "image_index": 545,
+        "stamp_ns": 1590195624700251460,
+        "rmse_px": 21.120097780682798,
+        "maximum_px": 23.39524653230662,
+        "positive_depth": true
+      },
+      {
+        "image_index": 546,
+        "stamp_ns": 1590195624800091460,
+        "rmse_px": 9.423034560514893,
+        "maximum_px": 11.189502297842639,
+        "positive_depth": true
+      },
+      {
+        "image_index": 547,
+        "stamp_ns": 1590195624900411460,
+        "rmse_px": 11.43310024539261,
+        "maximum_px": 11.693001781713107,
+        "positive_depth": true
+      },
+      {
+        "image_index": 548,
+        "stamp_ns": 1590195625000266140,
+        "rmse_px": 17.333678464217,
+        "maximum_px": 17.665137750854658,
+        "positive_depth": true
+      },
+      {
+        "image_index": 549,
+        "stamp_ns": 1590195625100106140,
+        "rmse_px": 12.845036389451588,
+        "maximum_px": 13.290188469257457,
+        "positive_depth": true
+      },
+      {
+        "image_index": 550,
+        "stamp_ns": 1590195625200426140,
+        "rmse_px": 1.7584680720494623,
+        "maximum_px": 2.163784097109104,
+        "positive_depth": true
+      },
+      {
+        "image_index": 551,
+        "stamp_ns": 1590195625300266140,
+        "rmse_px": 8.518587925159496,
+        "maximum_px": 9.21607773922303,
+        "positive_depth": true
+      },
+      {
+        "image_index": 552,
+        "stamp_ns": 1590195625400106140,
+        "rmse_px": 10.805740054433512,
+        "maximum_px": 11.52124296231728,
+        "positive_depth": true
+      },
+      {
+        "image_index": 553,
+        "stamp_ns": 1590195625500426140,
+        "rmse_px": 5.718285460572974,
+        "maximum_px": 5.915954208769698,
+        "positive_depth": true
+      },
+      {
+        "image_index": 554,
+        "stamp_ns": 1590195625600266140,
+        "rmse_px": 6.207004862285931,
+        "maximum_px": 6.6881184376301865,
+        "positive_depth": true
+      },
+      {
+        "image_index": 555,
+        "stamp_ns": 1590195625700106140,
+        "rmse_px": 6.811649827995241,
+        "maximum_px": 7.031253389143621,
+        "positive_depth": true
+      },
+      {
+        "image_index": 560,
+        "stamp_ns": 1590195626300120820,
+        "rmse_px": 3.9837787710591623,
+        "maximum_px": 4.5101965577655285,
+        "positive_depth": true
+      },
+      {
+        "image_index": 561,
+        "stamp_ns": 1590195626400440820,
+        "rmse_px": 4.285786456732906,
+        "maximum_px": 4.713385867610597,
+        "positive_depth": true
+      },
+      {
+        "image_index": 562,
+        "stamp_ns": 1590195626500280820,
+        "rmse_px": 4.834339321743443,
+        "maximum_px": 5.2822057497240085,
+        "positive_depth": true
+      },
+      {
+        "image_index": 563,
+        "stamp_ns": 1590195626600120820,
+        "rmse_px": 3.2796365122479436,
+        "maximum_px": 3.670123959882178,
+        "positive_depth": true
+      },
+      {
+        "image_index": 564,
+        "stamp_ns": 1590195626700440820,
+        "rmse_px": 0.6583476368600029,
+        "maximum_px": 0.8349073854202879,
+        "positive_depth": true
+      },
+      {
+        "image_index": 565,
+        "stamp_ns": 1590195626800280820,
+        "rmse_px": 1.5924653558794986,
+        "maximum_px": 2.0170174140532877,
+        "positive_depth": true
+      },
+      {
+        "image_index": 566,
+        "stamp_ns": 1590195626900120820,
+        "rmse_px": 6.923882629150248,
+        "maximum_px": 7.057392647180096,
+        "positive_depth": true
+      },
+      {
+        "image_index": 567,
+        "stamp_ns": 1590195627000455510,
+        "rmse_px": 16.68607626746706,
+        "maximum_px": 17.277614879272644,
+        "positive_depth": true
+      },
+      {
+        "image_index": 581,
+        "stamp_ns": 1590195628500470200,
+        "rmse_px": 92.19671270280006,
+        "maximum_px": 95.687396778682,
+        "positive_depth": true
+      }
+    ],
+    "trajectory_optimized": false,
+    "extrinsic_optimized": false,
+    "clock_calibrated": false
+  }
+}

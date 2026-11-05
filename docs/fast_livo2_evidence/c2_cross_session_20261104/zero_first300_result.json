@@ -1,0 +1,71 @@
+{
+  "passed": true,
+  "hardware_started": false,
+  "absolute_accuracy_validated": false,
+  "independent_session_validated": false,
+  "physical_sync_validated": false,
+  "registration": "pcl_icp",
+  "domain": 193,
+  "source_pairs": 300,
+  "source_native": "/home/lab307/ranger_nav/outputs/fast-livo-tag140-sync-diag02-replay-current-20261104/0/result/native_frames",
+  "source_database_sha256": "083196bd30ed96ac81368864ce96e2b7089ea9ae26ed7e91ae54966875f38513",
+  "source_manifest_sha256": "a890afe331f16ad5d65e601f390a00c7f270cd489346884a41b0b4274b9a4f58",
+  "initial_index": 0,
+  "initial_pose_source": "none; global search",
+  "global_search": true,
+  "skip_pairs": 0,
+  "pacing": "acknowledge each input stamp; not a real-time benchmark",
+  "exclude_identical_stamp": true,
+  "argv": [
+    "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node",
+    "--ros-args",
+    "--params-file",
+    "/home/lab307/ranger_nav/config/fast_livo2/localizer.yaml",
+    "-p",
+    "archive_path:=/home/lab307/ranger_nav/outputs/fast-livo-backend-validation-20261028-pcl/snapshot",
+    "-p",
+    "compatibility_path:=/home/lab307/ranger_nav/docs/fast_livo2_evidence/c2_cross_session_20261104/compatibility.json",
+    "-p",
+    "registration:=pcl_icp",
+    "--params-file",
+    "/home/lab307/ranger_nav/config/fast_livo2/relocalizer.yaml"
+  ],
+  "processed_pairs": 300,
+  "valid_samples": 41,
+  "states": {
+    "0": 259,
+    "1": 41
+  },
+  "reasons": {
+    "searching_waiting_query_window": 1,
+    "verifying_independent_motion_support": 11,
+    "verifying_wait_disjoint_query_scans": 11,
+    "verifying_insufficient_time_or_motion_baseline": 147,
+    "global_no_geometric_match": 11,
+    "retry_backoff": 75,
+    "global_confirmed_handoff_requires_c1_verification": 1,
+    "verifying_multiframe_motion_support": 2,
+    "map_match_confirmed": 41
+  },
+  "node_peak_rss_kib": 199524,
+  "wall_seconds": 78.21495432500024,
+  "ack_latency_ms_p50_p95_max": [
+    220.68816249998235,
+    501.35269769984916,
+    3187.798679000025
+  ],
+  "solve_ms_p50_p95_max": [
+    89.44240199980413,
+    108.27252100034457,
+    1393.9160650002123
+  ],
+  "public_publishers": {
+    "/tf": 0,
+    "/tf_static": 0,
+    "/cmd_vel": 0,
+    "/base/safe_cmd_vel": 0
+  },
+  "post_initial_queries": 300,
+  "tracking_complete_without_loss": true,
+  "localizer_exit": 0
+}

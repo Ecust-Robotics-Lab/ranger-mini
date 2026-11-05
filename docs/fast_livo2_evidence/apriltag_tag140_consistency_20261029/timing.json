@@ -1,0 +1,170 @@
+{
+  "camera_frames": 621,
+  "writer_samples": 629,
+  "recorded_lidar_scans": 600,
+  "recorded_lidar_scans_missing_from_writer": [
+    1590195580500244130,
+    1590195603600102540,
+    1590195607900481340,
+    1590195612000234810,
+    1590195623500236790,
+    1590195626000120820,
+    1590195627600455510
+  ],
+  "writer_age_at_camera_arrival_ms": {
+    "count": 621,
+    "minimum": 17.250103,
+    "p50": 21.793091999999998,
+    "p95": 23.041121,
+    "maximum": 123.583964
+  },
+  "camera_read_publish_after_arrival_ms": {
+    "count": 613,
+    "minimum": 1.838517,
+    "p50": 4.17181,
+    "p95": 6.847783199999999,
+    "maximum": 14.172416
+  },
+  "consumed_minus_latest_writer_sequence_at_frame_arrival": {
+    "0": 621
+  },
+  "camera_frame_ids_contiguous": true,
+  "device_clock_monotonic": true,
+  "empirical_device_tick_to_steady_arrival_ns_per_tick": 10.000318541911014,
+  "device_to_arrival_affine_residual_abs_ms": {
+    "count": 621,
+    "minimum": 0.00014194454193115235,
+    "p50": 0.05482257006072998,
+    "p95": 0.14557973168754576,
+    "maximum": 0.7147748308778397
+  },
+  "anomalies": [
+    {
+      "frame_id": 14,
+      "status": "BACKWARD",
+      "shared_seq": 60,
+      "shared_stamp_ns": 1590195569300242520,
+      "camera_arrival_ns": 37434728273005,
+      "writer_age_at_camera_arrival_ms": 123.583964,
+      "latest_writer_sequence_at_camera_arrival": 30,
+      "inside_recorded_lidar_range": false,
+      "same_stamp_as_previous": true,
+      "same_seq_as_previous": true,
+      "following_writer_stamp_gap_ms": 200.16,
+      "bag_scans_absent_from_writer_in_following_gap": []
+    },
+    {
+      "frame_id": 125,
+      "status": "BACKWARD",
+      "shared_seq": 280,
+      "shared_stamp_ns": 1590195580400404130,
+      "camera_arrival_ns": 37445828614744,
+      "writer_age_at_camera_arrival_ms": 121.56755,
+      "latest_writer_sequence_at_camera_arrival": 140,
+      "inside_recorded_lidar_range": true,
+      "same_stamp_as_previous": true,
+      "same_seq_as_previous": true,
+      "following_writer_stamp_gap_ms": 199.67999999999998,
+      "bag_scans_absent_from_writer_in_following_gap": [
+        1590195580500244130
+      ]
+    },
+    {
+      "frame_id": 356,
+      "status": "BACKWARD",
+      "shared_seq": 740,
+      "shared_stamp_ns": 1590195603500262540,
+      "camera_arrival_ns": 37468929208905,
+      "writer_age_at_camera_arrival_ms": 122.60748299999999,
+      "latest_writer_sequence_at_camera_arrival": 370,
+      "inside_recorded_lidar_range": true,
+      "same_stamp_as_previous": true,
+      "same_seq_as_previous": true,
+      "following_writer_stamp_gap_ms": 200.16,
+      "bag_scans_absent_from_writer_in_following_gap": [
+        1590195603600102540
+      ]
+    },
+    {
+      "frame_id": 399,
+      "status": "BACKWARD",
+      "shared_seq": 824,
+      "shared_stamp_ns": 1590195607800161340,
+      "camera_arrival_ns": 37473229346935,
+      "writer_age_at_camera_arrival_ms": 122.250232,
+      "latest_writer_sequence_at_camera_arrival": 412,
+      "inside_recorded_lidar_range": true,
+      "same_stamp_as_previous": true,
+      "same_seq_as_previous": true,
+      "following_writer_stamp_gap_ms": 200.17468,
+      "bag_scans_absent_from_writer_in_following_gap": [
+        1590195607900481340
+      ]
+    },
+    {
+      "frame_id": 440,
+      "status": "BACKWARD",
+      "shared_seq": 904,
+      "shared_stamp_ns": 1590195611900380100,
+      "camera_arrival_ns": 37477329424082,
+      "writer_age_at_camera_arrival_ms": 117.26308999999999,
+      "latest_writer_sequence_at_camera_arrival": 452,
+      "inside_recorded_lidar_range": true,
+      "same_stamp_as_previous": true,
+      "same_seq_as_previous": true,
+      "following_writer_stamp_gap_ms": 199.69471,
+      "bag_scans_absent_from_writer_in_following_gap": [
+        1590195612000234810
+      ]
+    },
+    {
+      "frame_id": 555,
+      "status": "BACKWARD",
+      "shared_seq": 1132,
+      "shared_stamp_ns": 1590195623400396790,
+      "camera_arrival_ns": 37488829875801,
+      "writer_age_at_camera_arrival_ms": 122.803922,
+      "latest_writer_sequence_at_camera_arrival": 566,
+      "inside_recorded_lidar_range": true,
+      "same_stamp_as_previous": true,
+      "same_seq_as_previous": true,
+      "following_writer_stamp_gap_ms": 199.67999999999998,
+      "bag_scans_absent_from_writer_in_following_gap": [
+        1590195623500236790
+      ]
+    },
+    {
+      "frame_id": 580,
+      "status": "BACKWARD",
+      "shared_seq": 1180,
+      "shared_stamp_ns": 1590195625900266140,
+      "camera_arrival_ns": 37491329875367,
+      "writer_age_at_camera_arrival_ms": 121.99479199999999,
+      "latest_writer_sequence_at_camera_arrival": 590,
+      "inside_recorded_lidar_range": true,
+      "same_stamp_as_previous": true,
+      "same_seq_as_previous": true,
+      "following_writer_stamp_gap_ms": 200.17468,
+      "bag_scans_absent_from_writer_in_following_gap": [
+        1590195626000120820
+      ]
+    },
+    {
+      "frame_id": 596,
+      "status": "BACKWARD",
+      "shared_seq": 1210,
+      "shared_stamp_ns": 1590195627500135510,
+      "camera_arrival_ns": 37492929742535,
+      "writer_age_at_camera_arrival_ms": 121.65136899999999,
+      "latest_writer_sequence_at_camera_arrival": 605,
+      "inside_recorded_lidar_range": true,
+      "same_stamp_as_previous": true,
+      "same_seq_as_previous": true,
+      "following_writer_stamp_gap_ms": 200.16,
+      "bag_scans_absent_from_writer_in_following_gap": [
+        1590195627600455510
+      ]
+    }
+  ],
+  "physical_exposure_offset_identified": false
+}

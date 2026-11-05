@@ -1,0 +1,974 @@
+[
+  {
+    "case": {
+      "name": "livo_110000000",
+      "offset_ns": 110000000,
+      "format": "native_db",
+      "path": "/home/lab307/ranger_nav/outputs/fast-livo-tag140-motion-geometry-20261104/livo_selected/native_frames/native_frames_0.db3"
+    },
+    "global_holdout_px": {
+      "count": 274,
+      "minimum": 0.4961895653770137,
+      "p50": 3.6954278150603344,
+      "p95": 9.043403291905397,
+      "maximum": 20.18165811635854
+    },
+    "initial_threshold_pass": 396,
+    "static_windows": [
+      {
+        "start_s": 0,
+        "frames": 47,
+        "observed_corner_spread_px": {
+          "count": 47,
+          "minimum": 0.02307103676625352,
+          "p50": 0.0399392238151325,
+          "p95": 0.06294463453410352,
+          "maximum": 0.06988685972539688
+        },
+        "predicted_corner_spread_px": {
+          "count": 47,
+          "minimum": 0.404447784729859,
+          "p50": 1.8273939878723007,
+          "p95": 4.626517737398837,
+          "maximum": 6.374664841986877
+        }
+      },
+      {
+        "start_s": 5,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.018544421681334293,
+          "p50": 0.045047051691272315,
+          "p95": 0.06626471678218075,
+          "maximum": 0.08198098540114905
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.2307941353896898,
+          "p50": 1.7034966370896167,
+          "p95": 4.950005882241549,
+          "maximum": 6.401055584222158
+        }
+      },
+      {
+        "start_s": 10,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.020277433720456213,
+          "p50": 0.04265666896506919,
+          "p95": 0.0695538717691806,
+          "maximum": 0.0891832430558567
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.3861348756615798,
+          "p50": 2.040796026015306,
+          "p95": 4.401555238949445,
+          "maximum": 6.165351533617404
+        }
+      },
+      {
+        "start_s": 55,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.020585877983517378,
+          "p50": 0.03963083884475131,
+          "p95": 0.06638738084599505,
+          "maximum": 0.08186098612465628
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.8968768029666155,
+          "p50": 6.939908198213794,
+          "p95": 18.58853032052325,
+          "maximum": 21.240657613414136
+        }
+      },
+      {
+        "start_s": 90,
+        "frames": 49,
+        "observed_corner_spread_px": {
+          "count": 49,
+          "minimum": 0.028026071712216296,
+          "p50": 0.04841253085056623,
+          "p95": 0.07034896456324059,
+          "maximum": 0.0871875323572753
+        },
+        "predicted_corner_spread_px": {
+          "count": 49,
+          "minimum": 0.8101895899293926,
+          "p50": 3.5968282550638992,
+          "p95": 6.920250586009101,
+          "maximum": 20.451862054769318
+        }
+      }
+    ]
+  },
+  {
+    "case": {
+      "name": "lio_120000000",
+      "offset_ns": 120000000,
+      "format": "diagnostic_states",
+      "path": "/home/lab307/ranger_nav/outputs/fast-livo-tag140-motion-geometry-20261104/lio/states.jsonl"
+    },
+    "global_holdout_px": {
+      "count": 274,
+      "minimum": 0.2178323443181486,
+      "p50": 1.560130196215354,
+      "p95": 5.134961950867817,
+      "maximum": 12.515686591594296
+    },
+    "initial_threshold_pass": 905,
+    "static_windows": [
+      {
+        "start_s": 0,
+        "frames": 47,
+        "observed_corner_spread_px": {
+          "count": 47,
+          "minimum": 0.02307103676625352,
+          "p50": 0.0399392238151325,
+          "p95": 0.06294463453410352,
+          "maximum": 0.06988685972539688
+        },
+        "predicted_corner_spread_px": {
+          "count": 47,
+          "minimum": 0.10954171724501678,
+          "p50": 1.038863351266484,
+          "p95": 2.1221734390560716,
+          "maximum": 2.5009531257387208
+        }
+      },
+      {
+        "start_s": 5,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.018544421681334293,
+          "p50": 0.045047051691272315,
+          "p95": 0.06626471678218075,
+          "maximum": 0.08198098540114905
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.11864614144319581,
+          "p50": 0.9887743455983794,
+          "p95": 1.8209188671468972,
+          "maximum": 2.4437234073822762
+        }
+      },
+      {
+        "start_s": 10,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.020277433720456213,
+          "p50": 0.04265666896506919,
+          "p95": 0.0695538717691806,
+          "maximum": 0.0891832430558567
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.3103896077942333,
+          "p50": 1.0436053059458326,
+          "p95": 1.7234989203080886,
+          "maximum": 2.6860466847290043
+        }
+      },
+      {
+        "start_s": 55,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.020585877983517378,
+          "p50": 0.03963083884475131,
+          "p95": 0.06638738084599505,
+          "maximum": 0.08186098612465628
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.06024676345439557,
+          "p50": 1.005143366643238,
+          "p95": 2.009531453330997,
+          "maximum": 2.375912709477897
+        }
+      },
+      {
+        "start_s": 90,
+        "frames": 49,
+        "observed_corner_spread_px": {
+          "count": 49,
+          "minimum": 0.028026071712216296,
+          "p50": 0.04841253085056623,
+          "p95": 0.07034896456324059,
+          "maximum": 0.0871875323572753
+        },
+        "predicted_corner_spread_px": {
+          "count": 49,
+          "minimum": 0.1284950104048467,
+          "p50": 0.7818968904648858,
+          "p95": 1.8257867337436884,
+          "maximum": 2.0358943405623364
+        }
+      }
+    ]
+  },
+  {
+    "case": {
+      "name": "livo_120000000",
+      "offset_ns": 120000000,
+      "format": "native_db",
+      "path": "/home/lab307/ranger_nav/outputs/fast-livo-tag140-sync-diag02-replay-current-20261104/120000000/result/native_frames/native_frames_0.db3"
+    },
+    "global_holdout_px": {
+      "count": 274,
+      "minimum": 0.19153224821220524,
+      "p50": 3.2793329248298413,
+      "p95": 8.896049114769857,
+      "maximum": 18.69088404456917
+    },
+    "initial_threshold_pass": 489,
+    "static_windows": [
+      {
+        "start_s": 0,
+        "frames": 47,
+        "observed_corner_spread_px": {
+          "count": 47,
+          "minimum": 0.02307103676625352,
+          "p50": 0.0399392238151325,
+          "p95": 0.06294463453410352,
+          "maximum": 0.06988685972539688
+        },
+        "predicted_corner_spread_px": {
+          "count": 47,
+          "minimum": 0.1463593666186753,
+          "p50": 2.054016788188613,
+          "p95": 4.928542558284968,
+          "maximum": 7.601603040360658
+        }
+      },
+      {
+        "start_s": 5,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.018544421681334293,
+          "p50": 0.045047051691272315,
+          "p95": 0.06626471678218075,
+          "maximum": 0.08198098540114905
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.17916068239134922,
+          "p50": 1.7405725189481493,
+          "p95": 6.755839977979754,
+          "maximum": 9.771910117818429
+        }
+      },
+      {
+        "start_s": 10,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.020277433720456213,
+          "p50": 0.04265666896506919,
+          "p95": 0.0695538717691806,
+          "maximum": 0.0891832430558567
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.3249636375567418,
+          "p50": 1.7924612297809848,
+          "p95": 4.531594566364451,
+          "maximum": 5.423157747032937
+        }
+      },
+      {
+        "start_s": 55,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.020585877983517378,
+          "p50": 0.03963083884475131,
+          "p95": 0.06638738084599505,
+          "maximum": 0.08186098612465628
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.6741797766216427,
+          "p50": 3.1176066307491004,
+          "p95": 5.632055636654584,
+          "maximum": 10.05140665355807
+        }
+      },
+      {
+        "start_s": 90,
+        "frames": 49,
+        "observed_corner_spread_px": {
+          "count": 49,
+          "minimum": 0.028026071712216296,
+          "p50": 0.04841253085056623,
+          "p95": 0.07034896456324059,
+          "maximum": 0.0871875323572753
+        },
+        "predicted_corner_spread_px": {
+          "count": 49,
+          "minimum": 0.24906542156531333,
+          "p50": 3.732176160382706,
+          "p95": 8.257705455861322,
+          "maximum": 10.917310941313996
+        }
+      }
+    ]
+  },
+  {
+    "case": {
+      "name": "livo_0",
+      "offset_ns": 0,
+      "format": "native_db",
+      "path": "/home/lab307/ranger_nav/outputs/fast-livo-tag140-sync-diag02-replay-current-20261104/0/result/native_frames/native_frames_0.db3"
+    },
+    "global_holdout_px": {
+      "count": 274,
+      "minimum": 0.43592317155833143,
+      "p50": 4.427327736365243,
+      "p95": 27.569147156839726,
+      "maximum": 108.11889221868492
+    },
+    "initial_threshold_pass": 383,
+    "static_windows": [
+      {
+        "start_s": 0,
+        "frames": 47,
+        "observed_corner_spread_px": {
+          "count": 47,
+          "minimum": 0.02307103676625352,
+          "p50": 0.0399392238151325,
+          "p95": 0.06294463453410352,
+          "maximum": 0.06988685972539688
+        },
+        "predicted_corner_spread_px": {
+          "count": 47,
+          "minimum": 0.4753792584256936,
+          "p50": 1.9293642342746218,
+          "p95": 4.862382787664624,
+          "maximum": 7.043366409583099
+        }
+      },
+      {
+        "start_s": 5,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.018544421681334293,
+          "p50": 0.045047051691272315,
+          "p95": 0.06626471678218075,
+          "maximum": 0.08198098540114905
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.4207221423064892,
+          "p50": 1.7072381339196239,
+          "p95": 7.321531680323318,
+          "maximum": 11.907351456531538
+        }
+      },
+      {
+        "start_s": 10,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.020277433720456213,
+          "p50": 0.04265666896506919,
+          "p95": 0.0695538717691806,
+          "maximum": 0.0891832430558567
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.31100659966421085,
+          "p50": 2.314447662901113,
+          "p95": 5.7883386435653845,
+          "maximum": 7.236749141455188
+        }
+      },
+      {
+        "start_s": 55,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.020585877983517378,
+          "p50": 0.03963083884475131,
+          "p95": 0.06638738084599505,
+          "maximum": 0.08186098612465628
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.3204428144525818,
+          "p50": 2.035514277581737,
+          "p95": 6.591081928514763,
+          "maximum": 11.423218578000654
+        }
+      },
+      {
+        "start_s": 90,
+        "frames": 49,
+        "observed_corner_spread_px": {
+          "count": 49,
+          "minimum": 0.028026071712216296,
+          "p50": 0.04841253085056623,
+          "p95": 0.07034896456324059,
+          "maximum": 0.0871875323572753
+        },
+        "predicted_corner_spread_px": {
+          "count": 49,
+          "minimum": 0.38724577376132,
+          "p50": 3.384037113795439,
+          "p95": 7.463778682180094,
+          "maximum": 9.070909406607518
+        }
+      }
+    ]
+  },
+  {
+    "case": {
+      "name": "lio_0",
+      "offset_ns": 0,
+      "format": "diagnostic_states",
+      "path": "/home/lab307/ranger_nav/outputs/fast-livo-tag140-motion-geometry-20261104/lio/states.jsonl"
+    },
+    "global_holdout_px": {
+      "count": 274,
+      "minimum": 0.24121194101799967,
+      "p50": 1.9920506125978898,
+      "p95": 56.395978503091314,
+      "maximum": 128.63060651150346
+    },
+    "initial_threshold_pass": 754,
+    "static_windows": [
+      {
+        "start_s": 0,
+        "frames": 47,
+        "observed_corner_spread_px": {
+          "count": 47,
+          "minimum": 0.02307103676625352,
+          "p50": 0.0399392238151325,
+          "p95": 0.06294463453410352,
+          "maximum": 0.06988685972539688
+        },
+        "predicted_corner_spread_px": {
+          "count": 47,
+          "minimum": 0.17760294324994028,
+          "p50": 1.1616680378665742,
+          "p95": 2.407392047597475,
+          "maximum": 2.7178921537896947
+        }
+      },
+      {
+        "start_s": 5,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.018544421681334293,
+          "p50": 0.045047051691272315,
+          "p95": 0.06626471678218075,
+          "maximum": 0.08198098540114905
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.17716064243088434,
+          "p50": 1.1591689615764929,
+          "p95": 2.3090351453338585,
+          "maximum": 2.938748784735177
+        }
+      },
+      {
+        "start_s": 10,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.020277433720456213,
+          "p50": 0.04265666896506919,
+          "p95": 0.0695538717691806,
+          "maximum": 0.0891832430558567
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.13745066884262125,
+          "p50": 1.202708127985569,
+          "p95": 2.3014879772563974,
+          "maximum": 2.7202690263576574
+        }
+      },
+      {
+        "start_s": 55,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.020585877983517378,
+          "p50": 0.03963083884475131,
+          "p95": 0.06638738084599505,
+          "maximum": 0.08186098612465628
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.18112973330368506,
+          "p50": 1.1584032924750756,
+          "p95": 2.258766534415584,
+          "maximum": 2.4363903833822373
+        }
+      },
+      {
+        "start_s": 90,
+        "frames": 49,
+        "observed_corner_spread_px": {
+          "count": 49,
+          "minimum": 0.028026071712216296,
+          "p50": 0.04841253085056623,
+          "p95": 0.07034896456324059,
+          "maximum": 0.0871875323572753
+        },
+        "predicted_corner_spread_px": {
+          "count": 49,
+          "minimum": 0.1744758064613417,
+          "p50": 0.8629128309897376,
+          "p95": 2.0203109413806133,
+          "maximum": 2.3728618555041923
+        }
+      }
+    ]
+  },
+  {
+    "case": {
+      "name": "lio_110000000",
+      "offset_ns": 110000000,
+      "format": "diagnostic_states",
+      "path": "/home/lab307/ranger_nav/outputs/fast-livo-tag140-motion-geometry-20261104/lio/states.jsonl"
+    },
+    "global_holdout_px": {
+      "count": 274,
+      "minimum": 0.2245548226401293,
+      "p50": 1.5746156851483324,
+      "p95": 3.3765998281688567,
+      "maximum": 6.585588135448733
+    },
+    "initial_threshold_pass": 932,
+    "static_windows": [
+      {
+        "start_s": 0,
+        "frames": 47,
+        "observed_corner_spread_px": {
+          "count": 47,
+          "minimum": 0.02307103676625352,
+          "p50": 0.0399392238151325,
+          "p95": 0.06294463453410352,
+          "maximum": 0.06988685972539688
+        },
+        "predicted_corner_spread_px": {
+          "count": 47,
+          "minimum": 0.10275893867067319,
+          "p50": 1.0871525780127989,
+          "p95": 2.2650983341470665,
+          "maximum": 2.6020631936416874
+        }
+      },
+      {
+        "start_s": 5,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.018544421681334293,
+          "p50": 0.045047051691272315,
+          "p95": 0.06626471678218075,
+          "maximum": 0.08198098540114905
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.12460866784043749,
+          "p50": 1.0862148475102025,
+          "p95": 2.0623431269947408,
+          "maximum": 2.6739053785897493
+        }
+      },
+      {
+        "start_s": 10,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.020277433720456213,
+          "p50": 0.04265666896506919,
+          "p95": 0.0695538717691806,
+          "maximum": 0.0891832430558567
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.16320791994282216,
+          "p50": 1.1016019624189999,
+          "p95": 1.977872360432636,
+          "maximum": 2.7469341842187767
+        }
+      },
+      {
+        "start_s": 55,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.020585877983517378,
+          "p50": 0.03963083884475131,
+          "p95": 0.06638738084599505,
+          "maximum": 0.08186098612465628
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.09413969425334938,
+          "p50": 0.9977279663491889,
+          "p95": 2.0665488650715975,
+          "maximum": 2.3555283464922705
+        }
+      },
+      {
+        "start_s": 90,
+        "frames": 49,
+        "observed_corner_spread_px": {
+          "count": 49,
+          "minimum": 0.028026071712216296,
+          "p50": 0.04841253085056623,
+          "p95": 0.07034896456324059,
+          "maximum": 0.0871875323572753
+        },
+        "predicted_corner_spread_px": {
+          "count": 49,
+          "minimum": 0.2078001311136068,
+          "p50": 0.79234811244244,
+          "p95": 1.9818035720612588,
+          "maximum": 2.1610568506089427
+        }
+      }
+    ]
+  },
+  {
+    "case": {
+      "name": "bias_livo_0",
+      "offset_ns": 0,
+      "format": "native_db",
+      "path": "/home/lab307/ranger_nav/outputs/fast-livo-tag140-motion-geometry-20261104/bias_livo_0/result/native_frames/native_frames_0.db3"
+    },
+    "global_holdout_px": {
+      "count": 274,
+      "minimum": 0.3326356289037921,
+      "p50": 3.768515366998213,
+      "p95": 24.09420887468666,
+      "maximum": 140.7390640186414
+    },
+    "initial_threshold_pass": 411,
+    "static_windows": [
+      {
+        "start_s": 0,
+        "frames": 47,
+        "observed_corner_spread_px": {
+          "count": 47,
+          "minimum": 0.02307103676625352,
+          "p50": 0.0399392238151325,
+          "p95": 0.06294463453410352,
+          "maximum": 0.06988685972539688
+        },
+        "predicted_corner_spread_px": {
+          "count": 47,
+          "minimum": 0.22801409494190647,
+          "p50": 2.241287900214909,
+          "p95": 5.365130826095779,
+          "maximum": 6.436555461154752
+        }
+      },
+      {
+        "start_s": 5,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.018544421681334293,
+          "p50": 0.045047051691272315,
+          "p95": 0.06626471678218075,
+          "maximum": 0.08198098540114905
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.23572673662885263,
+          "p50": 2.1433288616063093,
+          "p95": 4.301144714158349,
+          "maximum": 5.151116113346246
+        }
+      },
+      {
+        "start_s": 10,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.020277433720456213,
+          "p50": 0.04265666896506919,
+          "p95": 0.0695538717691806,
+          "maximum": 0.0891832430558567
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.5121380643448352,
+          "p50": 2.405708752015326,
+          "p95": 5.809061416831278,
+          "maximum": 9.77469832387381
+        }
+      },
+      {
+        "start_s": 55,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.020585877983517378,
+          "p50": 0.03963083884475131,
+          "p95": 0.06638738084599505,
+          "maximum": 0.08186098612465628
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.23060464392587565,
+          "p50": 2.222409217214115,
+          "p95": 7.203247432770892,
+          "maximum": 10.64853298478755
+        }
+      },
+      {
+        "start_s": 90,
+        "frames": 49,
+        "observed_corner_spread_px": {
+          "count": 49,
+          "minimum": 0.028026071712216296,
+          "p50": 0.04841253085056623,
+          "p95": 0.07034896456324059,
+          "maximum": 0.0871875323572753
+        },
+        "predicted_corner_spread_px": {
+          "count": 49,
+          "minimum": 0.1770949056541396,
+          "p50": 1.9327018449049187,
+          "p95": 4.5537335250833655,
+          "maximum": 6.489992576820747
+        }
+      }
+    ]
+  },
+  {
+    "case": {
+      "name": "bias_livo_110000000",
+      "offset_ns": 110000000,
+      "format": "native_db",
+      "path": "/home/lab307/ranger_nav/outputs/fast-livo-tag140-motion-geometry-20261104/bias_livo_110000000/result/native_frames/native_frames_0.db3"
+    },
+    "global_holdout_px": {
+      "count": 274,
+      "minimum": 0.281239882126936,
+      "p50": 2.687420168856926,
+      "p95": 7.961914435250791,
+      "maximum": 15.12775524159212
+    },
+    "initial_threshold_pass": 561,
+    "static_windows": [
+      {
+        "start_s": 0,
+        "frames": 47,
+        "observed_corner_spread_px": {
+          "count": 47,
+          "minimum": 0.02307103676625352,
+          "p50": 0.0399392238151325,
+          "p95": 0.06294463453410352,
+          "maximum": 0.06988685972539688
+        },
+        "predicted_corner_spread_px": {
+          "count": 47,
+          "minimum": 0.08979628485058305,
+          "p50": 1.6553417223356082,
+          "p95": 6.992555996949983,
+          "maximum": 12.520034972382838
+        }
+      },
+      {
+        "start_s": 5,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.018544421681334293,
+          "p50": 0.045047051691272315,
+          "p95": 0.06626471678218075,
+          "maximum": 0.08198098540114905
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.2288445163758364,
+          "p50": 1.9687029898768442,
+          "p95": 4.984755636983517,
+          "maximum": 5.956361182056152
+        }
+      },
+      {
+        "start_s": 10,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.020277433720456213,
+          "p50": 0.04265666896506919,
+          "p95": 0.0695538717691806,
+          "maximum": 0.0891832430558567
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.2748864686537703,
+          "p50": 2.086237207086562,
+          "p95": 5.723538085271118,
+          "maximum": 6.475667826589631
+        }
+      },
+      {
+        "start_s": 55,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.020585877983517378,
+          "p50": 0.03963083884475131,
+          "p95": 0.06638738084599505,
+          "maximum": 0.08186098612465628
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.3064481507556009,
+          "p50": 1.450148067689523,
+          "p95": 3.299436241090513,
+          "maximum": 7.505616277134635
+        }
+      },
+      {
+        "start_s": 90,
+        "frames": 49,
+        "observed_corner_spread_px": {
+          "count": 49,
+          "minimum": 0.028026071712216296,
+          "p50": 0.04841253085056623,
+          "p95": 0.07034896456324059,
+          "maximum": 0.0871875323572753
+        },
+        "predicted_corner_spread_px": {
+          "count": 49,
+          "minimum": 0.13771449274020525,
+          "p50": 2.2234620817988944,
+          "p95": 6.893214633713241,
+          "maximum": 11.348833130176311
+        }
+      }
+    ]
+  },
+  {
+    "case": {
+      "name": "bias_lio_110000000",
+      "offset_ns": 110000000,
+      "format": "diagnostic_states",
+      "path": "/home/lab307/ranger_nav/outputs/fast-livo-tag140-motion-geometry-20261104/bias_lio_0/result/states.jsonl"
+    },
+    "global_holdout_px": {
+      "count": 274,
+      "minimum": 0.2949708180992488,
+      "p50": 1.4322928898196765,
+      "p95": 3.565289017734853,
+      "maximum": 5.918761698549188
+    },
+    "initial_threshold_pass": 951,
+    "static_windows": [
+      {
+        "start_s": 0,
+        "frames": 47,
+        "observed_corner_spread_px": {
+          "count": 47,
+          "minimum": 0.02307103676625352,
+          "p50": 0.0399392238151325,
+          "p95": 0.06294463453410352,
+          "maximum": 0.06988685972539688
+        },
+        "predicted_corner_spread_px": {
+          "count": 47,
+          "minimum": 0.1909475801064358,
+          "p50": 0.9341827862016387,
+          "p95": 2.541716927533436,
+          "maximum": 3.721294980092307
+        }
+      },
+      {
+        "start_s": 5,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.018544421681334293,
+          "p50": 0.045047051691272315,
+          "p95": 0.06626471678218075,
+          "maximum": 0.08198098540114905
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.10503171663605088,
+          "p50": 1.0649922053618353,
+          "p95": 1.9020977489009787,
+          "maximum": 2.133410064079789
+        }
+      },
+      {
+        "start_s": 10,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.020277433720456213,
+          "p50": 0.04265666896506919,
+          "p95": 0.0695538717691806,
+          "maximum": 0.0891832430558567
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.12684466774276137,
+          "p50": 1.0604971551692695,
+          "p95": 2.040957653873122,
+          "maximum": 2.345137130808743
+        }
+      },
+      {
+        "start_s": 55,
+        "frames": 50,
+        "observed_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.020585877983517378,
+          "p50": 0.03963083884475131,
+          "p95": 0.06638738084599505,
+          "maximum": 0.08186098612465628
+        },
+        "predicted_corner_spread_px": {
+          "count": 50,
+          "minimum": 0.11488286250166811,
+          "p50": 0.9117878252850762,
+          "p95": 2.248523679426198,
+          "maximum": 2.4106325893216933
+        }
+      },
+      {
+        "start_s": 90,
+        "frames": 49,
+        "observed_corner_spread_px": {
+          "count": 49,
+          "minimum": 0.028026071712216296,
+          "p50": 0.04841253085056623,
+          "p95": 0.07034896456324059,
+          "maximum": 0.0871875323572753
+        },
+        "predicted_corner_spread_px": {
+          "count": 49,
+          "minimum": 0.025652668219518074,
+          "p50": 0.9454897704555921,
+          "p95": 1.7789928754771387,
+          "maximum": 2.4086457664595935
+        }
+      }
+    ]
+  }
+]

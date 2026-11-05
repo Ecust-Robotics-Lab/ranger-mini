@@ -1,0 +1,58 @@
+{
+  "different_capture_used": true,
+  "spatial_overlap_confirmed_by_user": false,
+  "source_pairs": 1195,
+  "valid_samples": 936,
+  "first_valid_index": 259,
+  "first_valid_sensor_seconds": 25.900230169,
+  "initial_static_wait_is_included": true,
+  "states": {
+    "0": 259,
+    "1": 936
+  },
+  "loss_transitions": 0,
+  "recovery_transitions": 0,
+  "final_state": 1,
+  "absolute_accuracy_validated": false,
+  "manual_initial_pose_provided": false,
+  "tag_candidates_enabled": false,
+  "pose_translation_axis_span_m": [
+    0.1065678596496582,
+    0.606765016913414,
+    0.04161727428436279
+  ],
+  "first_pose_map_imu": {
+    "xyz": [
+      1.462580919265747,
+      0.29321974515914917,
+      0.6096696853637695
+    ],
+    "xyzw": [
+      -0.21871262385423748,
+      -0.0030696854003399773,
+      0.6259459913729531,
+      0.7485632779414634
+    ]
+  },
+  "last_pose_map_imu": {
+    "xyz": [
+      1.4680705070495605,
+      0.3872622847557068,
+      0.6114837527275085
+    ],
+    "xyzw": [
+      -0.2441283843814513,
+      0.002349588275539247,
+      0.6909507117242012,
+      0.6804284865744951
+    ]
+  },
+  "public_publishers": {
+    "/tf": 0,
+    "/tf_static": 0,
+    "/cmd_vel": 0,
+    "/base/safe_cmd_vel": 0
+  },
+  "wall_seconds": 209.96952162500003,
+  "pacing": "acknowledged offline input; not real-time throughput or live latency"
+}

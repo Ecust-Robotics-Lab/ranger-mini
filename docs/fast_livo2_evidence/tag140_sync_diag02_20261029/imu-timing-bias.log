@@ -1,0 +1,1056 @@
+{
+  "kind": "raw_gyro_and_tag_relative_rotation_diagnostic",
+  "source_sha256": "753c9b4af470821d190c0187d920d9412a70f52ab774ff0adddec5e3d04589d2",
+  "source_files_sha256": {
+    "outputs/fast-livo-tag140-sync-diag02-screen-20261029/summary.json": "1daf2949fbe2c7eb7b79c96eb49579f1830934d813ec28035c8edcdc8cce6038",
+    "outputs/fast-livo-tag140-sync-diag02-screen-20261029/observations.jsonl": "47bcafcbd9266ecf7716ec33b016aded639731ab011479b23b457bc215d7d563",
+    "/home/lab307/ranger_nav/bags/fast-livo-tag140_sync_diag_02-35f_m8nd/sources/0_apriltag_camera.json": "54af13d1316b85954514196e0bb16deada8c1a18ad55a9ca12a2daa761d9f0b1"
+  },
+  "imu_samples": 23999,
+  "gyro_max_gap_ns": 20000000,
+  "gyro_bias_subtracted": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "source_frame_note": "native Livox gyro axes per driver; configured IMU-to-camera rotation, not inferred from frame_id",
+  "image_origin_ns": 1590199535300312660,
+  "offset_definition": "t_effective=t_image_header+offset",
+  "common_pairs": 322,
+  "pair_rejections": {
+    "split_boundary_purge": 21,
+    "endpoint_not_detected_or_eligible": 11
+  },
+  "no_common_gyro_support": 0,
+  "rotation_rich_pairs": {
+    "train": 96,
+    "holdout": 47
+  },
+  "diagnostic_thresholds": {
+    "gyro_window_p95_radps": 0.1,
+    "clipped_score_deg": 10.0,
+    "thresholds_field_calibrated": false
+  },
+  "training_selected_primary_offset_ns": 110000000,
+  "training_selected_branch_lower_bound_offset_ns": 110000000,
+  "training_profile_range_deg": {
+    "primary_clipped_mean_deg": 0.4541781476536372,
+    "lower_bound_clipped_mean_deg": 0.43644242742589345
+  },
+  "zero_offset": {
+    "offset_ns": 0,
+    "subsets": {
+      "train": {
+        "primary_error_deg": {
+          "count": 96,
+          "minimum": 0.3150888410580338,
+          "p50": 0.7766659251932959,
+          "p95": 1.932529222789386,
+          "maximum": 2.5798826168380016
+        },
+        "branch_lower_bound_deg": {
+          "count": 96,
+          "minimum": 0.3150888410580338,
+          "p50": 0.6811628770425142,
+          "p95": 1.5064302168365038,
+          "maximum": 2.043462166003775
+        },
+        "primary_clipped_mean_deg": 0.8781172946294685,
+        "lower_bound_clipped_mean_deg": 0.7369750128626297
+      },
+      "holdout": {
+        "primary_error_deg": {
+          "count": 47,
+          "minimum": 0.39390121543174084,
+          "p50": 0.8027704028090106,
+          "p95": 1.9866173960051527,
+          "maximum": 2.711776310961811
+        },
+        "branch_lower_bound_deg": {
+          "count": 47,
+          "minimum": 0.39390121543174084,
+          "p50": 0.6483778109429987,
+          "p95": 1.2574648303495009,
+          "maximum": 2.0436677265553294
+        },
+        "primary_clipped_mean_deg": 0.9144183030166525,
+        "lower_bound_clipped_mean_deg": 0.7405785854080236
+      },
+      "all": {
+        "primary_error_deg": {
+          "count": 143,
+          "minimum": 0.3150888410580338,
+          "p50": 0.7926918782920862,
+          "p95": 1.9912705573243925,
+          "maximum": 2.711776310961811
+        },
+        "branch_lower_bound_deg": {
+          "count": 143,
+          "minimum": 0.3150888410580338,
+          "p50": 0.6730566752980965,
+          "p95": 1.405626430369582,
+          "maximum": 2.0436677265553294
+        },
+        "primary_clipped_mean_deg": 0.8900483952881932,
+        "lower_bound_clipped_mean_deg": 0.738159403839088
+      }
+    },
+    "offset_is_calibrated": false
+  },
+  "primary_selected": {
+    "offset_ns": 110000000,
+    "subsets": {
+      "train": {
+        "primary_error_deg": {
+          "count": 96,
+          "minimum": 0.36384247971069256,
+          "p50": 0.7416695466599004,
+          "p95": 1.3451748217175679,
+          "maximum": 1.6552429928099295
+        },
+        "branch_lower_bound_deg": {
+          "count": 96,
+          "minimum": 0.36384247971069256,
+          "p50": 0.6372103081078582,
+          "p95": 0.9198188454273878,
+          "maximum": 1.3419641459692768
+        },
+        "primary_clipped_mean_deg": 0.7874897539529037,
+        "lower_bound_clipped_mean_deg": 0.6531702427673788
+      },
+      "holdout": {
+        "primary_error_deg": {
+          "count": 47,
+          "minimum": 0.3966696756290436,
+          "p50": 0.8115544222867359,
+          "p95": 1.8735678640015299,
+          "maximum": 2.937254764126692
+        },
+        "branch_lower_bound_deg": {
+          "count": 47,
+          "minimum": 0.3966696756290436,
+          "p50": 0.6990850215280736,
+          "p95": 1.027111106055536,
+          "maximum": 2.152621151269244
+        },
+        "primary_clipped_mean_deg": 0.8979472840774495,
+        "lower_bound_clipped_mean_deg": 0.7195821573054956
+      },
+      "all": {
+        "primary_error_deg": {
+          "count": 143,
+          "minimum": 0.36384247971069256,
+          "p50": 0.7616700880726899,
+          "p95": 1.4310357751403804,
+          "maximum": 2.937254764126692
+        },
+        "branch_lower_bound_deg": {
+          "count": 143,
+          "minimum": 0.36384247971069256,
+          "p50": 0.654651332768643,
+          "p95": 0.9442689918122272,
+          "maximum": 2.152621151269244
+        },
+        "primary_clipped_mean_deg": 0.8237939771406915,
+        "lower_bound_clipped_mean_deg": 0.6749979349582282
+      }
+    },
+    "offset_is_calibrated": false
+  },
+  "lower_bound_selected": {
+    "offset_ns": 110000000,
+    "subsets": {
+      "train": {
+        "primary_error_deg": {
+          "count": 96,
+          "minimum": 0.36384247971069256,
+          "p50": 0.7416695466599004,
+          "p95": 1.3451748217175679,
+          "maximum": 1.6552429928099295
+        },
+        "branch_lower_bound_deg": {
+          "count": 96,
+          "minimum": 0.36384247971069256,
+          "p50": 0.6372103081078582,
+          "p95": 0.9198188454273878,
+          "maximum": 1.3419641459692768
+        },
+        "primary_clipped_mean_deg": 0.7874897539529037,
+        "lower_bound_clipped_mean_deg": 0.6531702427673788
+      },
+      "holdout": {
+        "primary_error_deg": {
+          "count": 47,
+          "minimum": 0.3966696756290436,
+          "p50": 0.8115544222867359,
+          "p95": 1.8735678640015299,
+          "maximum": 2.937254764126692
+        },
+        "branch_lower_bound_deg": {
+          "count": 47,
+          "minimum": 0.3966696756290436,
+          "p50": 0.6990850215280736,
+          "p95": 1.027111106055536,
+          "maximum": 2.152621151269244
+        },
+        "primary_clipped_mean_deg": 0.8979472840774495,
+        "lower_bound_clipped_mean_deg": 0.7195821573054956
+      },
+      "all": {
+        "primary_error_deg": {
+          "count": 143,
+          "minimum": 0.36384247971069256,
+          "p50": 0.7616700880726899,
+          "p95": 1.4310357751403804,
+          "maximum": 2.937254764126692
+        },
+        "branch_lower_bound_deg": {
+          "count": 143,
+          "minimum": 0.36384247971069256,
+          "p50": 0.654651332768643,
+          "p95": 0.9442689918122272,
+          "maximum": 2.152621151269244
+        },
+        "primary_clipped_mean_deg": 0.8237939771406915,
+        "lower_bound_clipped_mean_deg": 0.6749979349582282
+      }
+    },
+    "offset_is_calibrated": false
+  },
+  "image_static_bias_sensitivity": {
+    "static_bias_diagnostic": {
+      "bias_radps": [
+        0.029601631686091423,
+        -0.012080035172402859,
+        -0.02549903094768524
+      ],
+      "training_samples": 3200,
+      "blocks": [
+        {
+          "start_s": 0,
+          "end_s": 5,
+          "split": "train",
+          "frames": 51,
+          "corner_spread_px": {
+            "count": 51,
+            "minimum": 0.022338205338071935,
+            "p50": 0.040182429757226176,
+            "p95": 0.06292584205866698,
+            "maximum": 0.07132327062465357
+          },
+          "gyro_samples": 800,
+          "median_gyro_radps": [
+            0.029601631686091423,
+            -0.012080035172402859,
+            -0.02549903094768524
+          ],
+          "std_gyro_radps": [
+            0.01010590441008667,
+            0.002486073462690622,
+            0.005101033515789623
+          ]
+        },
+        {
+          "start_s": 5,
+          "end_s": 10,
+          "split": "train",
+          "frames": 50,
+          "corner_spread_px": {
+            "count": 50,
+            "minimum": 0.018544421681334293,
+            "p50": 0.045047051691272315,
+            "p95": 0.06626471678218075,
+            "maximum": 0.08198098540114905
+          },
+          "gyro_samples": 800,
+          "median_gyro_radps": [
+            0.029601631686091423,
+            -0.012080035172402859,
+            -0.02549903094768524
+          ],
+          "std_gyro_radps": [
+            0.01008437024031978,
+            0.0026535802380243116,
+            0.005285162614172685
+          ]
+        },
+        {
+          "start_s": 10,
+          "end_s": 15,
+          "split": "train",
+          "frames": 50,
+          "corner_spread_px": {
+            "count": 50,
+            "minimum": 0.020277433720456213,
+            "p50": 0.04265666896506919,
+            "p95": 0.0695538717691806,
+            "maximum": 0.0891832430558567
+          },
+          "gyro_samples": 800,
+          "median_gyro_radps": [
+            0.029601631686091423,
+            -0.012080035172402859,
+            -0.02549903094768524
+          ],
+          "std_gyro_radps": [
+            0.010073938350805745,
+            0.0024202553298307496,
+            0.005232749226767392
+          ]
+        },
+        {
+          "start_s": 55,
+          "end_s": 60,
+          "split": "holdout",
+          "frames": 50,
+          "corner_spread_px": {
+            "count": 50,
+            "minimum": 0.020585877983517378,
+            "p50": 0.03963083884475131,
+            "p95": 0.06638738084599505,
+            "maximum": 0.08186098612465628
+          },
+          "gyro_samples": 800,
+          "median_gyro_radps": [
+            0.029601631686091423,
+            -0.012080035172402859,
+            -0.02549903094768524
+          ],
+          "std_gyro_radps": [
+            0.010327868681346327,
+            0.002118024959886459,
+            0.005334198237514055
+          ]
+        },
+        {
+          "start_s": 90,
+          "end_s": 95,
+          "split": "train",
+          "frames": 49,
+          "corner_spread_px": {
+            "count": 49,
+            "minimum": 0.028026071712216296,
+            "p50": 0.04841253085056623,
+            "p95": 0.07034896456324059,
+            "maximum": 0.0871875323572753
+          },
+          "gyro_samples": 800,
+          "median_gyro_radps": [
+            0.029601631686091423,
+            -0.012080035172402859,
+            -0.02549903094768524
+          ],
+          "std_gyro_radps": [
+            0.010137586435388039,
+            0.0020296014144883857,
+            0.005472650760324121
+          ]
+        }
+      ],
+      "selection": "5 s windows; >=45 frames; corner RMS spread P95<=0.2/max<=0.5 px; gyro std<=0.02 rad/s; 0.5 s edges purged",
+      "method": "componentwise median of training-only image-static gyro samples",
+      "thresholds_field_calibrated": false,
+      "runtime_bias_changed": false
+    },
+    "training_selected_primary_offset_ns": 120000000,
+    "training_selected_lower_bound_offset_ns": 130000000,
+    "zero_offset": {
+      "offset_ns": 0,
+      "subsets": {
+        "train": {
+          "primary_error_deg": {
+            "count": 96,
+            "minimum": 0.020868744557537518,
+            "p50": 0.3547557724475232,
+            "p95": 1.7147040529193402,
+            "maximum": 2.639813794171031
+          },
+          "branch_lower_bound_deg": {
+            "count": 96,
+            "minimum": 0.020868744557537518,
+            "p50": 0.31231812032393386,
+            "p95": 1.2367100365970198,
+            "maximum": 2.639813794171031
+          },
+          "primary_clipped_mean_deg": 0.5068941462423763,
+          "lower_bound_clipped_mean_deg": 0.4400641816220696
+        },
+        "holdout": {
+          "primary_error_deg": {
+            "count": 47,
+            "minimum": 0.11094871676203083,
+            "p50": 0.3574492770270858,
+            "p95": 2.1364378261531254,
+            "maximum": 2.8354469697128835
+          },
+          "branch_lower_bound_deg": {
+            "count": 47,
+            "minimum": 0.041791756027372014,
+            "p50": 0.3360544581548926,
+            "p95": 1.4554999449482833,
+            "maximum": 2.443755635706549
+          },
+          "primary_clipped_mean_deg": 0.5667546645044546,
+          "lower_bound_clipped_mean_deg": 0.4599091968988339
+        },
+        "all": {
+          "primary_error_deg": {
+            "count": 143,
+            "minimum": 0.020868744557537518,
+            "p50": 0.35545562312423706,
+            "p95": 1.9095489253671791,
+            "maximum": 2.8354469697128835
+          },
+          "branch_lower_bound_deg": {
+            "count": 143,
+            "minimum": 0.020868744557537518,
+            "p50": 0.3162786066791843,
+            "p95": 1.2918742499365943,
+            "maximum": 2.639813794171031
+          },
+          "primary_clipped_mean_deg": 0.526568582314528,
+          "lower_bound_clipped_mean_deg": 0.44658666916058654
+        }
+      },
+      "offset_is_calibrated": false
+    },
+    "primary_selected": {
+      "offset_ns": 120000000,
+      "subsets": {
+        "train": {
+          "primary_error_deg": {
+            "count": 96,
+            "minimum": 0.05506130900216832,
+            "p50": 0.3101286625048765,
+            "p95": 0.7778534919254754,
+            "maximum": 1.301869973257097
+          },
+          "branch_lower_bound_deg": {
+            "count": 96,
+            "minimum": 0.05506130900216832,
+            "p50": 0.29914433887108993,
+            "p95": 0.7358814321936776,
+            "maximum": 1.301869973257097
+          },
+          "primary_clipped_mean_deg": 0.3633879772249477,
+          "lower_bound_clipped_mean_deg": 0.33595016314351706
+        },
+        "holdout": {
+          "primary_error_deg": {
+            "count": 47,
+            "minimum": 0.09787679759881292,
+            "p50": 0.33485147637033624,
+            "p95": 1.621781326751666,
+            "maximum": 2.3849785317839105
+          },
+          "branch_lower_bound_deg": {
+            "count": 47,
+            "minimum": 0.07200153982210446,
+            "p50": 0.33485147637033624,
+            "p95": 1.5116442698329733,
+            "maximum": 2.2291444615894784
+          },
+          "primary_clipped_mean_deg": 0.5290703231075691,
+          "lower_bound_clipped_mean_deg": 0.4903629771972212
+        },
+        "all": {
+          "primary_error_deg": {
+            "count": 143,
+            "minimum": 0.05506130900216832,
+            "p50": 0.31731677330914043,
+            "p95": 1.064368752200766,
+            "maximum": 2.3849785317839105
+          },
+          "branch_lower_bound_deg": {
+            "count": 143,
+            "minimum": 0.05506130900216832,
+            "p50": 0.310357351786808,
+            "p95": 1.0192417864297167,
+            "maximum": 2.2291444615894784
+          },
+          "primary_clipped_mean_deg": 0.4178430139835715,
+          "lower_bound_clipped_mean_deg": 0.38670122790242684
+        }
+      },
+      "offset_is_calibrated": false
+    },
+    "lower_bound_selected": {
+      "offset_ns": 130000000,
+      "subsets": {
+        "train": {
+          "primary_error_deg": {
+            "count": 96,
+            "minimum": 0.06201107813932784,
+            "p50": 0.3147540856717638,
+            "p95": 0.8056345960668244,
+            "maximum": 1.302636046185113
+          },
+          "branch_lower_bound_deg": {
+            "count": 96,
+            "minimum": 0.04005998776097486,
+            "p50": 0.29247353658711617,
+            "p95": 0.7377071716599171,
+            "maximum": 1.302636046185113
+          },
+          "primary_clipped_mean_deg": 0.36671050714014886,
+          "lower_bound_clipped_mean_deg": 0.3346500488242204
+        },
+        "holdout": {
+          "primary_error_deg": {
+            "count": 47,
+            "minimum": 0.07838899303091135,
+            "p50": 0.333143839092925,
+            "p95": 1.72143984107691,
+            "maximum": 2.4246481994203615
+          },
+          "branch_lower_bound_deg": {
+            "count": 47,
+            "minimum": 0.06106128975566263,
+            "p50": 0.333143839092925,
+            "p95": 1.5644564318758962,
+            "maximum": 2.1699562052350876
+          },
+          "primary_clipped_mean_deg": 0.5373042845772833,
+          "lower_bound_clipped_mean_deg": 0.48461567874978795
+        },
+        "all": {
+          "primary_error_deg": {
+            "count": 143,
+            "minimum": 0.06201107813932784,
+            "p50": 0.32330299441437876,
+            "p95": 1.0756578762832243,
+            "maximum": 2.4246481994203615
+          },
+          "branch_lower_bound_deg": {
+            "count": 143,
+            "minimum": 0.04005998776097486,
+            "p50": 0.31056951076128103,
+            "p95": 1.0081197605043453,
+            "maximum": 2.1699562052350876
+          },
+          "primary_clipped_mean_deg": 0.4227797906334727,
+          "lower_bound_clipped_mean_deg": 0.3839394516668895
+        }
+      },
+      "offset_is_calibrated": false
+    }
+  },
+  "software_missing_recorded_scans": [],
+  "motion_blocks": [
+    {
+      "start_s": 0,
+      "end_s": 5,
+      "label": "low_rotation_translation_by_frontend",
+      "gyro_norm_radps": {
+        "count": 981,
+        "minimum": 0.024395032218737334,
+        "p50": 0.04110537471192321,
+        "p95": 0.0555757501213853,
+        "maximum": 0.05900377660786265
+      },
+      "conditional_frontend_speed_mps": {
+        "count": 51,
+        "minimum": 0.004087386502085261,
+        "p50": 0.017415703861325765,
+        "p95": 0.04133175529501916,
+        "maximum": 0.05296724773805394
+      },
+      "tag_frames": 51
+    },
+    {
+      "start_s": 5,
+      "end_s": 10,
+      "label": "low_rotation_translation_by_frontend",
+      "gyro_norm_radps": {
+        "count": 1000,
+        "minimum": 0.022891716576242265,
+        "p50": 0.04143611541266895,
+        "p95": 0.05545584663707278,
+        "maximum": 0.058775624211379
+      },
+      "conditional_frontend_speed_mps": {
+        "count": 50,
+        "minimum": 0.0046446127397851205,
+        "p50": 0.01578224582975936,
+        "p95": 0.04257986484905689,
+        "maximum": 0.05134270316959195
+      },
+      "tag_frames": 50
+    },
+    {
+      "start_s": 10,
+      "end_s": 15,
+      "label": "low_rotation_translation_by_frontend",
+      "gyro_norm_radps": {
+        "count": 1000,
+        "minimum": 0.024060643715724743,
+        "p50": 0.041323251025981195,
+        "p95": 0.05607543452290774,
+        "maximum": 0.059210517868977235
+      },
+      "conditional_frontend_speed_mps": {
+        "count": 49,
+        "minimum": 0.0033778786537439942,
+        "p50": 0.014614432644528998,
+        "p95": 0.030247120945253773,
+        "maximum": 0.03101248372388985
+      },
+      "tag_frames": 50
+    },
+    {
+      "start_s": 15,
+      "end_s": 20,
+      "label": "low_rotation_translation_by_frontend",
+      "gyro_norm_radps": {
+        "count": 1000,
+        "minimum": 0.018789274221981733,
+        "p50": 0.044607646616789426,
+        "p95": 0.09324037902857976,
+        "maximum": 0.23293425664264888
+      },
+      "conditional_frontend_speed_mps": {
+        "count": 49,
+        "minimum": 0.0038184068902272386,
+        "p50": 0.014655658159585546,
+        "p95": 0.12775445400802016,
+        "maximum": 0.13397576855888024
+      },
+      "tag_frames": 50
+    },
+    {
+      "start_s": 20,
+      "end_s": 25,
+      "label": "rotation_present",
+      "gyro_norm_radps": {
+        "count": 1000,
+        "minimum": 0.006481998593122732,
+        "p50": 0.07036093925822251,
+        "p95": 0.13508718624383906,
+        "maximum": 0.22647225677926874
+      },
+      "conditional_frontend_speed_mps": {
+        "count": 50,
+        "minimum": 0.055483628426705706,
+        "p50": 0.12130722428949309,
+        "p95": 0.2992764887709933,
+        "maximum": 0.4336849703379918
+      },
+      "tag_frames": 50
+    },
+    {
+      "start_s": 25,
+      "end_s": 30,
+      "label": "rotation_present",
+      "gyro_norm_radps": {
+        "count": 1000,
+        "minimum": 0.003960934286567931,
+        "p50": 0.06363495146740436,
+        "p95": 0.1311354398108698,
+        "maximum": 0.1800430482085759
+      },
+      "conditional_frontend_speed_mps": {
+        "count": 50,
+        "minimum": 0.05105087153142856,
+        "p50": 0.1463206733473722,
+        "p95": 0.353311831048662,
+        "maximum": 0.36909158170233247
+      },
+      "tag_frames": 50
+    },
+    {
+      "start_s": 30,
+      "end_s": 35,
+      "label": "rotation_present",
+      "gyro_norm_radps": {
+        "count": 1000,
+        "minimum": 0.006620300028837846,
+        "p50": 0.07096443661371993,
+        "p95": 0.13992323651135263,
+        "maximum": 0.22399153669013977
+      },
+      "conditional_frontend_speed_mps": {
+        "count": 49,
+        "minimum": 0.010006725510147462,
+        "p50": 0.09895701519819519,
+        "p95": 0.17037078317252577,
+        "maximum": 0.1739464620627548
+      },
+      "tag_frames": 50
+    },
+    {
+      "start_s": 35,
+      "end_s": 40,
+      "label": "rotation_present",
+      "gyro_norm_radps": {
+        "count": 1000,
+        "minimum": 0.010620765648305783,
+        "p50": 0.08292562929291353,
+        "p95": 0.19194972733357296,
+        "maximum": 0.2988280790071965
+      },
+      "conditional_frontend_speed_mps": {
+        "count": 49,
+        "minimum": 0.02987551159190821,
+        "p50": 0.10077785022874185,
+        "p95": 0.1952355741864291,
+        "maximum": 0.23111955652716268
+      },
+      "tag_frames": 50
+    },
+    {
+      "start_s": 40,
+      "end_s": 45,
+      "label": "rotation_present",
+      "gyro_norm_radps": {
+        "count": 1000,
+        "minimum": 0.006141750801793107,
+        "p50": 0.071154264021623,
+        "p95": 0.1784001496351911,
+        "maximum": 0.25950323459696983
+      },
+      "conditional_frontend_speed_mps": {
+        "count": 50,
+        "minimum": 0.019325546681800795,
+        "p50": 0.09984895182859423,
+        "p95": 0.19061452003151733,
+        "maximum": 0.2277093716503879
+      },
+      "tag_frames": 50
+    },
+    {
+      "start_s": 45,
+      "end_s": 50,
+      "label": "low_rotation_translation_by_frontend",
+      "gyro_norm_radps": {
+        "count": 1000,
+        "minimum": 0.009503329631832293,
+        "p50": 0.04396881610025234,
+        "p95": 0.0908847151765773,
+        "maximum": 0.23564198653428878
+      },
+      "conditional_frontend_speed_mps": {
+        "count": 50,
+        "minimum": 0.011863854846349855,
+        "p50": 0.036060029051607836,
+        "p95": 0.10753126513112475,
+        "maximum": 0.14658272975720857
+      },
+      "tag_frames": 50
+    },
+    {
+      "start_s": 50,
+      "end_s": 55,
+      "label": "low_rotation_translation_by_frontend",
+      "gyro_norm_radps": {
+        "count": 1000,
+        "minimum": 0.015424087918738538,
+        "p50": 0.04409684651191953,
+        "p95": 0.07407104669878684,
+        "maximum": 0.1635114740107879
+      },
+      "conditional_frontend_speed_mps": {
+        "count": 50,
+        "minimum": 0.004144980146899086,
+        "p50": 0.021604196414479384,
+        "p95": 0.08850528979347118,
+        "maximum": 0.12509681141977913
+      },
+      "tag_frames": 50
+    },
+    {
+      "start_s": 55,
+      "end_s": 60,
+      "label": "low_rotation_translation_by_frontend",
+      "gyro_norm_radps": {
+        "count": 1000,
+        "minimum": 0.024789223159630183,
+        "p50": 0.04108632967326539,
+        "p95": 0.05607631937405766,
+        "maximum": 0.0602397769683106
+      },
+      "conditional_frontend_speed_mps": {
+        "count": 50,
+        "minimum": 0.009468074912617095,
+        "p50": 0.025433453572052615,
+        "p95": 0.07303684993120022,
+        "maximum": 0.1097338451575767
+      },
+      "tag_frames": 50
+    },
+    {
+      "start_s": 60,
+      "end_s": 65,
+      "label": "rotation_present",
+      "gyro_norm_radps": {
+        "count": 1000,
+        "minimum": 0.00975751518752129,
+        "p50": 0.05151427057771957,
+        "p95": 0.5064027627147627,
+        "maximum": 0.5815022032595597
+      },
+      "conditional_frontend_speed_mps": {
+        "count": 42,
+        "minimum": 0.001476070262015387,
+        "p50": 0.041996281988503255,
+        "p95": 0.1175769438536901,
+        "maximum": 0.20040972654828185
+      },
+      "tag_frames": 44
+    },
+    {
+      "start_s": 65,
+      "end_s": 70,
+      "label": "rotation_present",
+      "gyro_norm_radps": {
+        "count": 1000,
+        "minimum": 0.004172595578419119,
+        "p50": 0.3416658174560158,
+        "p95": 0.6477783038910472,
+        "maximum": 0.6992191655568687
+      },
+      "conditional_frontend_speed_mps": {
+        "count": 12,
+        "minimum": 0.02571303882425809,
+        "p50": 0.09052997203817764,
+        "p95": 0.26387991279145934,
+        "maximum": 0.2679906921804946
+      },
+      "tag_frames": 13
+    },
+    {
+      "start_s": 70,
+      "end_s": 75,
+      "label": "rotation_present",
+      "gyro_norm_radps": {
+        "count": 1000,
+        "minimum": 0.009211245835742926,
+        "p50": 0.22555888565442428,
+        "p95": 0.7948026658937867,
+        "maximum": 0.8390163465349283
+      },
+      "conditional_frontend_speed_mps": {
+        "count": 18,
+        "minimum": 0.06211425594492687,
+        "p50": 0.12003439767371624,
+        "p95": 0.17257033682773196,
+        "maximum": 0.18865012665137307
+      },
+      "tag_frames": 18
+    },
+    {
+      "start_s": 75,
+      "end_s": 80,
+      "label": "rotation_present",
+      "gyro_norm_radps": {
+        "count": 1000,
+        "minimum": 0.013307270555432326,
+        "p50": 0.052679176927823534,
+        "p95": 0.5219213509578934,
+        "maximum": 0.6448862724798009
+      },
+      "conditional_frontend_speed_mps": {
+        "count": 44,
+        "minimum": 0.011976775564839334,
+        "p50": 0.05446557239741889,
+        "p95": 0.22509054985856913,
+        "maximum": 0.3528241986715261
+      },
+      "tag_frames": 44
+    },
+    {
+      "start_s": 80,
+      "end_s": 85,
+      "label": "rotation_present",
+      "gyro_norm_radps": {
+        "count": 1000,
+        "minimum": 0.010195795537302677,
+        "p50": 0.04963933581411744,
+        "p95": 0.1151801237207095,
+        "maximum": 0.2783185255288789
+      },
+      "conditional_frontend_speed_mps": {
+        "count": 49,
+        "minimum": 0.013242986744153655,
+        "p50": 0.07549869679914516,
+        "p95": 0.24980141920927842,
+        "maximum": 0.3292267458072958
+      },
+      "tag_frames": 49
+    },
+    {
+      "start_s": 85,
+      "end_s": 90,
+      "label": "rotation_present",
+      "gyro_norm_radps": {
+        "count": 1000,
+        "minimum": 0.0058126016952217,
+        "p50": 0.05087038567774643,
+        "p95": 0.506116454821809,
+        "maximum": 0.7072131230545856
+      },
+      "conditional_frontend_speed_mps": {
+        "count": 47,
+        "minimum": 0.006443162710162366,
+        "p50": 0.0490836202710225,
+        "p95": 0.16367017107594356,
+        "maximum": 0.17965588050809111
+      },
+      "tag_frames": 48
+    },
+    {
+      "start_s": 90,
+      "end_s": 95,
+      "label": "low_rotation_translation_by_frontend",
+      "gyro_norm_radps": {
+        "count": 1000,
+        "minimum": 0.02347130887616458,
+        "p50": 0.04131286723303782,
+        "p95": 0.05643477569836284,
+        "maximum": 0.0593988040739975
+      },
+      "conditional_frontend_speed_mps": {
+        "count": 49,
+        "minimum": 0.02132940683734675,
+        "p50": 0.03786088617860712,
+        "p95": 0.09388427218528571,
+        "maximum": 0.10651084290392372
+      },
+      "tag_frames": 49
+    },
+    {
+      "start_s": 95,
+      "end_s": 100,
+      "label": "rotation_present",
+      "gyro_norm_radps": {
+        "count": 1000,
+        "minimum": 0.015830666114447136,
+        "p50": 0.05116812398040563,
+        "p95": 0.11429787667928461,
+        "maximum": 0.18958623529758575
+      },
+      "conditional_frontend_speed_mps": {
+        "count": 49,
+        "minimum": 0.006765509887240863,
+        "p50": 0.05803236632057758,
+        "p95": 0.17292258290516083,
+        "maximum": 0.20131007341174056
+      },
+      "tag_frames": 51
+    },
+    {
+      "start_s": 100,
+      "end_s": 105,
+      "label": "low_rotation_translation_by_frontend",
+      "gyro_norm_radps": {
+        "count": 1000,
+        "minimum": 0.01943986264474139,
+        "p50": 0.04441807604329445,
+        "p95": 0.08080646766825406,
+        "maximum": 0.1747670522380157
+      },
+      "conditional_frontend_speed_mps": {
+        "count": 49,
+        "minimum": 0.007996631593310521,
+        "p50": 0.031694023210391914,
+        "p95": 0.22494322896988628,
+        "maximum": 0.24566829841318794
+      },
+      "tag_frames": 49
+    },
+    {
+      "start_s": 105,
+      "end_s": 110,
+      "label": "rotation_present",
+      "gyro_norm_radps": {
+        "count": 1000,
+        "minimum": 0.013408570389113797,
+        "p50": 0.060606679455286326,
+        "p95": 0.20713896698517856,
+        "maximum": 0.2986721217959025
+      },
+      "conditional_frontend_speed_mps": {
+        "count": 50,
+        "minimum": 0.019540651873379413,
+        "p50": 0.11393814378835852,
+        "p95": 0.19725026810208685,
+        "maximum": 0.2739950360707307
+      },
+      "tag_frames": 51
+    },
+    {
+      "start_s": 110,
+      "end_s": 115,
+      "label": "rotation_present",
+      "gyro_norm_radps": {
+        "count": 1000,
+        "minimum": 0.007346230764207349,
+        "p50": 0.05939644187591621,
+        "p95": 0.8652961268211601,
+        "maximum": 1.115027290728418
+      },
+      "conditional_frontend_speed_mps": {
+        "count": 22,
+        "minimum": 0.014815601749741088,
+        "p50": 0.045756971141844974,
+        "p95": 0.10334215147663912,
+        "maximum": 0.18788697495702567
+      },
+      "tag_frames": 22
+    },
+    {
+      "start_s": 115,
+      "end_s": 120,
+      "label": "rotation_present",
+      "gyro_norm_radps": {
+        "count": 1000,
+        "minimum": 0.011169633711126076,
+        "p50": 0.31528093063533374,
+        "p95": 0.799965609060677,
+        "maximum": 0.8853356555601761
+      },
+      "conditional_frontend_speed_mps": {
+        "count": 26,
+        "minimum": 0.019686821439129216,
+        "p50": 0.09055516711343395,
+        "p95": 0.2357244082955396,
+        "maximum": 0.29402298171804275
+      },
+      "tag_frames": 28
+    }
+  ],
+  "physical_time_verified": false,
+  "clock_mapping_changed": false,
+  "frontend_trajectory_used_for_timing_score": false,
+  "frontend_replayed": false,
+  "limitations": [
+    "Single capture, time-block holdout is not an independent visit",
+    "Primary branches ranked by pixel error; may switch planar modes",
+    "Lower bound selects branch pair separately against gyro at each offset; optimistic, not a consistent pose track",
+    "No gyro bias or extrinsic recalibration; exposure phase not externally measured",
+    "Near-constant angular rate does not identify time offset; inspect profile and multiple motion blocks",
+    "Rotation-only timing evidence cannot validate translation, global position, or VALID landmarks"
+  ]
+}
+	Command being timed: "python3 -u scripts/fast_livo2/tags/analyze_imu_timing.py --execute --capture bags/fast-livo-tag140_sync_diag_02-35f_m8nd --screen outputs/fast-livo-tag140-sync-diag02-screen-20261029 --output outputs/fast-livo-tag140-sync-diag02-imu-bias-20261029"
+	User time (seconds): 5.40
+	System time (seconds): 0.91
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:06.32
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 245328
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 58724
+	Voluntary context switches: 1
+	Involuntary context switches: 47
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 21160
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

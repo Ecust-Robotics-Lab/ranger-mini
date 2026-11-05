@@ -1,0 +1,120 @@
+{
+  "kind": "held_out_observed_hole_boundary_diagnostic",
+  "bag": "/home/lab307/ranger_nav/calibration/lidar_camera_extrinsics/datasets/validation_01/20261021_185640_899318/bag",
+  "input_pair": {
+    "image_stamp_ns": 1590192309500282750,
+    "camera_frame": "front_optical_frame",
+    "lidar_frame": "livox_frame",
+    "skipped_unpaired_images_before_first_pair": 1,
+    "skipped_unpaired_clouds_before_first_pair": 0,
+    "lidar_first_stamp_ns": 1590192309500282750,
+    "lidar_last_stamp_ns": 1590192309500282750,
+    "accumulated_frames": 1,
+    "exact_header_paired": true,
+    "paired_header_stamps_ns": [
+      1590192309500282750
+    ]
+  },
+  "T_cam_lidar_file": "/home/lab307/ranger_nav/calibration/lidar_camera_extrinsics/results/multi_20261021_183657_578407/joint/extrinsics.yaml",
+  "T_cam_lidar_sha256": "3e0953b8577e4d58458c34f7ab198477f0611ac6eff2ec2e8165246f1adf1dc0",
+  "T_cam_lidar_refitted": false,
+  "roi_from_image_pose_with_15cm_margin_only": [
+    1.2169466074877877,
+    2.120196526593448,
+    -0.9639990870677536,
+    0.7265014066339542,
+    -0.1030342420833513,
+    1.2059908415030405
+  ],
+  "lidar_argv": [
+    "/home/lab307/ranger_nav/calibration/lidar_camera_extrinsics/ws/install_integrated/fast_calib/lib/fast_calib/lidar_diagnostic",
+    "--offline",
+    "/home/lab307/ranger_nav/calibration/lidar_camera_extrinsics/datasets/validation_01/20261021_185640_899318/bag",
+    "/home/lab307/ranger_nav/outputs/fast-livo-apriltag-heldout-calibration-20261104/lidar",
+    "1.2169466074877877",
+    "2.120196526593448",
+    "-0.9639990870677536",
+    "0.7265014066339542",
+    "-0.1030342420833513",
+    "1.2059908415030405",
+    ".12",
+    ".5",
+    ".4",
+    "50"
+  ],
+  "image_ellipse_fit_domain": "undistorted pixels, K original, zero D; raw overlay redistorted",
+  "hole_results": [
+    {
+      "hole_index": 3,
+      "lidar_center_index": 0,
+      "curve_distance_rect_px": {
+        "p50": 2.1016844882819954,
+        "p95": 4.069571406829396,
+        "rms": 2.4296928735180385,
+        "max": 4.126315367222994
+      },
+      "image_edge_fit": {
+        "candidate_edge_pixels": 1531,
+        "inliers": 596,
+        "angular_bins_of_36": 36,
+        "fit_radial_rms_px": 0.6328690466863115
+      }
+    },
+    {
+      "hole_index": 0,
+      "lidar_center_index": 1,
+      "curve_distance_rect_px": {
+        "p50": 0.8984476784844635,
+        "p95": 1.7683997166814178,
+        "rms": 1.0615761202596792,
+        "max": 1.8380580819489645
+      },
+      "image_edge_fit": {
+        "candidate_edge_pixels": 1132,
+        "inliers": 507,
+        "angular_bins_of_36": 33,
+        "fit_radial_rms_px": 0.624433153078109
+      }
+    },
+    {
+      "hole_index": 1,
+      "lidar_center_index": 2,
+      "curve_distance_rect_px": {
+        "p50": 1.791369987981816,
+        "p95": 2.780377000452561,
+        "rms": 1.805464392909758,
+        "max": 2.827122819485181
+      },
+      "image_edge_fit": {
+        "candidate_edge_pixels": 1200,
+        "inliers": 562,
+        "angular_bins_of_36": 35,
+        "fit_radial_rms_px": 0.5160975574372074
+      }
+    },
+    {
+      "hole_index": 2,
+      "lidar_center_index": 3,
+      "curve_distance_rect_px": {
+        "p50": 1.3744712359891564,
+        "p95": 2.089759367626686,
+        "rms": 1.4268535802444056,
+        "max": 2.1278278211132293
+      },
+      "image_edge_fit": {
+        "candidate_edge_pixels": 1188,
+        "inliers": 553,
+        "angular_bins_of_36": 35,
+        "fit_radial_rms_px": 0.471923633416103
+      }
+    }
+  ],
+  "geometry_accepted": false,
+  "runtime_modified": false,
+  "limitations": [
+    "Observed image edges, not ArUco-inferred hole centers; marker homography only seeds broad ROIs",
+    "LiDAR circle centers/plane and nominal measured 0.12 m radius have unquantified errors",
+    "Nearest sampled ellipse distance is an internal cross-sensor check, not absolute calibration accuracy",
+    "One independent static board pose, no dynamic synchronization evidence"
+  ]
+}

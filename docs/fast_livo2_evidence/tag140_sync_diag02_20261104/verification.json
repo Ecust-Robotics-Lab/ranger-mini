@@ -1,0 +1,88 @@
+{
+  "date": "2026-11-04",
+  "head": "acffa879cc8d52330276089cd3df83ad6a43f112",
+  "raw_database_sha256": "753c9b4af470821d190c0187d920d9412a70f52ab774ff0adddec5e3d04589d2",
+  "raw_sha_matches_screen": true,
+  "raw_bytes": 10089824256,
+  "raw_mtime_ns": 1793286195009595983,
+  "configuration_sha_checks": {
+    "/home/lab307/ranger_nav/config/fast_livo2/apriltag_camera.json": true,
+    "/home/lab307/ranger_nav/config/fast_livo2/apriltag_sizes.json": true,
+    "/home/lab307/ranger_nav/config/fast_livo2/apriltag_sizes_capture_140mm.json": true,
+    "/home/lab307/ranger_nav/config/fast_livo2/camera_live.yaml": true,
+    "/home/lab307/ranger_nav/config/fast_livo2/ranger_mid360s_hik_trial.yaml": true
+  },
+  "installed_files_unchanged": {
+    "ranger_livo_replay": true,
+    "fastlivo_mapping": true
+  },
+  "isolated_source_matches_snapshot": true,
+  "vendor_tracked_patch_still_matches": true,
+  "source_and_script_sha256": {
+    "scripts/fast_livo2/tags/analyze_imu_timing.py": "0ffdc13120694ab1c4f8dd32bfa7592163eabb359b842d8723be23417d25bc3e",
+    "tests/test_tag_imu_timing.py": "cb291d8cecd62020f6c1a78501075ae2e27b286f62f94cc02ef4cdc28479e6b0",
+    "scripts/fast_livo2/record_session.py": "7fd65e6ef07c92ebe463bde1c48d202f24060993b354860cfdbb1eed0f04f245",
+    "tests/test_fast_livo_recording.py": "8726112dcad214e3329af2375d720233b33000ac1e488465275f784ac9497786",
+    "docs/fast_livo2_evidence/tag140_sync_diag02_20261104/replay_current.py": "5082ec67dbc85bb27ceea0796f7b2721b778ba1d4034ec72bfc6753387b96678",
+    "docs/fast_livo2_evidence/tag140_sync_diag02_20261104/plot_results.py": "c5f391d812bb82c6f0c8e7e41034460ea7d0013be3c5ffb3280dc375926e662b",
+    "docs/fast_livo2_evidence/tag140_sync_diag02_20261104/evaluate_replays.py": "8129f5823dc0fb102f72f32d75afc5b99f1cdf421eca3c58ff6e879b0eb82c1e"
+  },
+  "isolated_replay_binary_sha256": "7c4dff0a68a6c1602a382bcc98eec90ad8cb1fcc522490cccd3c50b696c9739b",
+  "checks": [
+    {
+      "log": "imu-timing-tests.log",
+      "tests": 6,
+      "exit_code": 0
+    },
+    {
+      "log": "geometry-tests.log",
+      "tests": 5,
+      "exit_code": 0
+    },
+    {
+      "log": "capture-provenance-test.log",
+      "tests": 1,
+      "exit_code": 0
+    },
+    {
+      "log": "frontend-checks.log",
+      "tests": 13,
+      "exit_code": 0
+    }
+  ],
+  "total_assertion_tests": 25,
+  "current_source_replays": [
+    {
+      "offset_ns": 0,
+      "exit_code": 0,
+      "wall_seconds": 18.320763236999937,
+      "directory": "/home/lab307/ranger_nav/outputs/fast-livo-tag140-sync-diag02-replay-current-20261104/0"
+    },
+    {
+      "offset_ns": 120000000,
+      "exit_code": 0,
+      "wall_seconds": 14.502850972000033,
+      "directory": "/home/lab307/ranger_nav/outputs/fast-livo-tag140-sync-diag02-replay-current-20261104/120000000"
+    }
+  ],
+  "evaluation_common_cohort": 1061,
+  "missing_report_links": [],
+  "git_diff_check_exit_code": 0,
+  "sessions": {
+    "fast_livo_record": {
+      "live": false,
+      "state": "STOPPED",
+      "owned": []
+    },
+    "fast_livo_live": {
+      "live": false,
+      "state": "STOPPED",
+      "owned": []
+    }
+  },
+  "physical_sync_verified": false,
+  "real_VALID_landmark_created": false,
+  "production_time_offset_changed": false,
+  "hardware_started": false,
+  "committed_or_pushed": false
+}

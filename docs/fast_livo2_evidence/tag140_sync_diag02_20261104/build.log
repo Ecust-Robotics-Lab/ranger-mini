@@ -1,0 +1,28 @@
+[  6%] Building CXX object CMakeFiles/vio.dir/src/vio.cpp.o
+[ 12%] Building CXX object CMakeFiles/utils.dir/src/utils.cpp.o
+[ 18%] Linking CXX static library libutils.a
+[ 18%] Built target utils
+[ 25%] Building CXX object CMakeFiles/pre.dir/src/preprocess.cpp.o
+[ 31%] Linking CXX static library libpre.a
+[ 31%] Built target pre
+[ 37%] Building CXX object CMakeFiles/imu_proc.dir/src/IMU_Processing.cpp.o
+[ 43%] Linking CXX static library libimu_proc.a
+[ 43%] Built target imu_proc
+[ 50%] Building CXX object CMakeFiles/laser_mapping.dir/src/LIVMapper.cpp.o
+[ 56%] Building CXX object CMakeFiles/vio.dir/src/frame.cpp.o
+[ 62%] Building CXX object CMakeFiles/vio.dir/src/visual_point.cpp.o
+[ 68%] Linking CXX static library libvio.a
+[ 68%] Built target vio
+[ 75%] Building CXX object CMakeFiles/lio.dir/src/voxel_map.cpp.o
+[ 81%] Linking CXX static library liblaser_mapping.a
+[ 81%] Built target laser_mapping
+[ 87%] Linking CXX static library liblio.a
+[ 87%] Built target lio
+[ 93%] Building CXX object CMakeFiles/ranger_livo_replay.dir/src/ranger_livo_replay.cpp.o
+[100%] Linking CXX executable ranger_livo_replay
+[100%] Built target ranger_livo_replay
+Consolidate compiler generated dependencies of target pre
+[ 50%] Built target pre
+[ 75%] Building CXX object CMakeFiles/ranger_livo_checks.dir/src/ranger_livo_checks.cpp.o
+[100%] Linking CXX executable ranger_livo_checks
+[100%] Built target ranger_livo_checks

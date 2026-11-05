@@ -1,0 +1,22 @@
+[
+  {
+    "argv": [
+      "python3",
+      "-c",
+      "import sys,unittest,pathlib;sys.path.insert(0,'tests');import test_fast_livo_relocalizer_ros as m;import test_fast_livo_localizer_ros as c;c.EVIDENCE=pathlib.Path('/home/lab307/ranger_nav/docs/fast_livo2_evidence/apriltag_20261029/baseline_ros_absolute');c.EVIDENCE.mkdir(exist_ok=True);r=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(m));sys.exit(not r.wasSuccessful())"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 13.899375484999837,
+    "log": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/apriltag_20261029/test_fast_livo_relocalizer_ros_baseline.log"
+  },
+  {
+    "argv": [
+      "python3",
+      "-c",
+      "import sys,unittest,pathlib;sys.path.insert(0,'tests');import test_fast_livo_localizer_ros as m;import test_fast_livo_localizer_ros as c;c.EVIDENCE=pathlib.Path('/home/lab307/ranger_nav/docs/fast_livo2_evidence/apriltag_20261029/baseline_ros_absolute');c.EVIDENCE.mkdir(exist_ok=True);r=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(m));sys.exit(not r.wasSuccessful())"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 27.343691877999845,
+    "log": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/apriltag_20261029/test_fast_livo_localizer_ros_baseline.log"
+  }
+]

@@ -1,0 +1,273 @@
+{
+  "hardware_started": false,
+  "group": "all",
+  "commands": [
+    {
+      "name": "tag_tests",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_build/ros/ranger_fast_livo_backend/tag_tests",
+        "--gtest_output=xml:/home/lab307/ranger_nav/docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/tag_tests.xml"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/tag_tests.log",
+      "resources": {
+        "max_rss_kib": 61696,
+        "elapsed_seconds": 0.04,
+        "user_seconds": 0.03,
+        "sys_seconds": 0.01
+      },
+      "tests": 12,
+      "failures": 0
+    },
+    {
+      "name": "tag_detector_tests",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_build/ros/ranger_fast_livo_backend/tag_detector_tests",
+        "--gtest_output=xml:/home/lab307/ranger_nav/docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/tag_detector_tests.xml"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/tag_detector_tests.log",
+      "resources": {
+        "max_rss_kib": 64712,
+        "elapsed_seconds": 0.04,
+        "user_seconds": 0.03,
+        "sys_seconds": 0.01
+      },
+      "tests": 3,
+      "failures": 0
+    },
+    {
+      "name": "tag_integration_tests",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_build/ros/ranger_fast_livo_localizer/tag_integration_tests",
+        "--gtest_output=xml:/home/lab307/ranger_nav/docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/tag_integration_tests.xml"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/tag_integration_tests.log",
+      "resources": {
+        "max_rss_kib": 65508,
+        "elapsed_seconds": 0.56,
+        "user_seconds": 0.4,
+        "sys_seconds": 0.07
+      },
+      "tests": 5,
+      "failures": 0
+    },
+    {
+      "name": "tag_ros",
+      "argv": [
+        "/usr/bin/python3",
+        "tests/test_fast_livo_tags_ros.py"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/tag_ros.log",
+      "resources": {
+        "max_rss_kib": 179812,
+        "elapsed_seconds": 8.81,
+        "user_seconds": 10.47,
+        "sys_seconds": 0.79
+      },
+      "tests": 3
+    },
+    {
+      "name": "backend_tests",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_build/ros/ranger_fast_livo_backend/backend_tests",
+        "--gtest_output=xml:/home/lab307/ranger_nav/docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/backend_tests.xml"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/backend_tests.log",
+      "resources": {
+        "max_rss_kib": 66304,
+        "elapsed_seconds": 0.52,
+        "user_seconds": 0.25,
+        "sys_seconds": 0.07
+      },
+      "tests": 21,
+      "failures": 0
+    },
+    {
+      "name": "localizer_tests",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_build/ros/ranger_fast_livo_localizer/localizer_tests",
+        "--gtest_output=xml:/home/lab307/ranger_nav/docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/localizer_tests.xml"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/localizer_tests.log",
+      "resources": {
+        "max_rss_kib": 66140,
+        "elapsed_seconds": 8.1,
+        "user_seconds": 6.71,
+        "sys_seconds": 1.01
+      },
+      "tests": 30,
+      "failures": 0
+    },
+    {
+      "name": "test_fast_livo_backend_ros",
+      "argv": [
+        "/usr/bin/python3",
+        "-c",
+        "import sys,unittest,pathlib;sys.path.insert(0,'tests');import test_fast_livo_backend_ros as m;p=pathlib.Path('/home/lab307/ranger_nav/docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/test_fast_livo_backend_ros');p.mkdir();m.EVIDENCE=p;import test_fast_livo_localizer_ros as c;c.EVIDENCE=p;r=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(m));sys.exit(not r.wasSuccessful())"
+      ],
+      "exit_code": 1,
+      "log": "docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/test_fast_livo_backend_ros.log",
+      "resources": {
+        "max_rss_kib": 79500,
+        "elapsed_seconds": 32.65,
+        "user_seconds": 15.85,
+        "sys_seconds": 1.02
+      },
+      "tests": 6
+    },
+    {
+      "name": "test_fast_livo_relocalizer_ros",
+      "argv": [
+        "/usr/bin/python3",
+        "-c",
+        "import sys,unittest,pathlib;sys.path.insert(0,'tests');import test_fast_livo_relocalizer_ros as m;p=pathlib.Path('/home/lab307/ranger_nav/docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/test_fast_livo_relocalizer_ros');p.mkdir();m.EVIDENCE=p;import test_fast_livo_localizer_ros as c;c.EVIDENCE=p;r=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(m));sys.exit(not r.wasSuccessful())"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/test_fast_livo_relocalizer_ros.log",
+      "resources": {
+        "max_rss_kib": 88448,
+        "elapsed_seconds": 14.61,
+        "user_seconds": 17.47,
+        "sys_seconds": 0.87
+      },
+      "tests": 4
+    },
+    {
+      "name": "test_fast_livo_localizer_ros",
+      "argv": [
+        "/usr/bin/python3",
+        "-c",
+        "import sys,unittest,pathlib;sys.path.insert(0,'tests');import test_fast_livo_localizer_ros as m;p=pathlib.Path('/home/lab307/ranger_nav/docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/test_fast_livo_localizer_ros');p.mkdir();m.EVIDENCE=p;import test_fast_livo_localizer_ros as c;c.EVIDENCE=p;r=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(m));sys.exit(not r.wasSuccessful())"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/test_fast_livo_localizer_ros.log",
+      "resources": {
+        "max_rss_kib": 79916,
+        "elapsed_seconds": 27.29,
+        "user_seconds": 40.0,
+        "sys_seconds": 1.82
+      },
+      "tests": 9
+    },
+    {
+      "name": "test_stage5_bridge",
+      "argv": [
+        "/usr/bin/python3",
+        "tests/test_stage5_bridge.py"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/test_stage5_bridge.log",
+      "resources": {
+        "max_rss_kib": 59780,
+        "elapsed_seconds": 6.97,
+        "user_seconds": 4.62,
+        "sys_seconds": 0.23
+      },
+      "tests": null
+    },
+    {
+      "name": "test_bridge_pgo_guard",
+      "argv": [
+        "/usr/bin/python3",
+        "tests/test_bridge_pgo_guard.py"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/test_bridge_pgo_guard.log",
+      "resources": {
+        "max_rss_kib": 43708,
+        "elapsed_seconds": 0.16,
+        "user_seconds": 0.14,
+        "sys_seconds": 0.02
+      },
+      "tests": 2
+    },
+    {
+      "name": "test_time_alignment",
+      "argv": [
+        "/usr/bin/python3",
+        "tests/test_time_alignment.py"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/test_time_alignment.log",
+      "resources": {
+        "max_rss_kib": 59836,
+        "elapsed_seconds": 4.27,
+        "user_seconds": 1.38,
+        "sys_seconds": 0.12
+      },
+      "tests": 7
+    },
+    {
+      "name": "test_fast_livo_adapter_contract",
+      "argv": [
+        "/usr/bin/python3",
+        "tests/test_fast_livo_adapter_contract.py"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/test_fast_livo_adapter_contract.log",
+      "resources": {
+        "max_rss_kib": 40192,
+        "elapsed_seconds": 0.13,
+        "user_seconds": 0.11,
+        "sys_seconds": 0.01
+      },
+      "tests": 3
+    },
+    {
+      "name": "dry_tag_build",
+      "argv": [
+        "bash",
+        "scripts/build_fast_livo2_tags.sh"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/dry_tag_build.log",
+      "resources": {
+        "max_rss_kib": 3072,
+        "elapsed_seconds": 0.0,
+        "user_seconds": 0.0,
+        "sys_seconds": 0.0
+      },
+      "tests": null
+    },
+    {
+      "name": "dry_tag_observer",
+      "argv": [
+        "bash",
+        "scripts/run_fast_livo2_tags.sh"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/dry_tag_observer.log",
+      "resources": {
+        "max_rss_kib": 13824,
+        "elapsed_seconds": 0.04,
+        "user_seconds": 0.03,
+        "sys_seconds": 0.01
+      },
+      "tests": null
+    },
+    {
+      "name": "dry_tag_c2",
+      "argv": [
+        "bash",
+        "scripts/run_fast_livo2_relocalizer.sh",
+        "--tag-relocalization",
+        "--tag-monitor"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/dry_tag_c2.log",
+      "resources": {
+        "max_rss_kib": 15616,
+        "elapsed_seconds": 0.06,
+        "user_seconds": 0.04,
+        "sys_seconds": 0.01
+      },
+      "tests": null
+    }
+  ],
+  "passed": false
+}

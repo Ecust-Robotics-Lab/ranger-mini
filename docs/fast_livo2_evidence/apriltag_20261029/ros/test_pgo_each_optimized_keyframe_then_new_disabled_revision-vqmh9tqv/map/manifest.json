@@ -1,0 +1,170 @@
+{
+  "schema_version": 1,
+  "kind": "stage_b_graph_archive",
+  "map_uuid": "4c8a6b183b2949f0ab02559ea3241de6",
+  "session_id": "synthetic-source",
+  "graph_version": 9,
+  "transform_convention": "T_A_B maps points in B to A",
+  "cloud_frame": "fast_livo_imu",
+  "pcd_fields": [
+    "x",
+    "y",
+    "z",
+    "intensity"
+  ],
+  "provenance": {
+    "kind": "synthetic_known_truth"
+  },
+  "keyframes": [
+    {
+      "id": 0,
+      "scan_id": 0,
+      "stamp_ns": 10000000000,
+      "directory": "keyframes/0",
+      "U_local_imu": {
+        "xyz": [
+          0,
+          0,
+          0.0
+        ],
+        "xyzw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "X_map_imu": {
+        "xyz": [
+          2.2010498066664526,
+          -1.0831067253350584,
+          0.7033264774887276
+        ],
+        "xyzw": [
+          0.13453755008854712,
+          -0.07563996508553175,
+          0.29917166522539623,
+          0.9416339830445238
+        ]
+      },
+      "points": 800
+    },
+    {
+      "id": 1,
+      "scan_id": 1,
+      "stamp_ns": 11000000000,
+      "directory": "keyframes/1",
+      "U_local_imu": {
+        "xyz": [
+          3,
+          -1,
+          0.2
+        ],
+        "xyzw": [
+          0.0546506882384549,
+          -0.04468397715907572,
+          0.10206947920088186,
+          0.9922693514746745
+        ]
+      },
+      "X_map_imu": {
+        "xyz": [
+          2.3571220383830687,
+          -0.9666452896286648,
+          0.7499975871841311
+        ],
+        "xyzw": [
+          0.1358148059765361,
+          -0.06537993990611665,
+          0.3055331540437148,
+          0.9401751399157118
+        ]
+      },
+      "points": 800
+    },
+    {
+      "id": 2,
+      "scan_id": 2,
+      "stamp_ns": 12000000000,
+      "directory": "keyframes/2",
+      "U_local_imu": {
+        "xyz": [
+          6,
+          -2,
+          0.4
+        ],
+        "xyzw": [
+          0.11708933707644135,
+          -0.07761983407788389,
+          0.20645729139459276,
+          0.9683184576009741
+        ]
+      },
+      "X_map_imu": {
+        "xyz": [
+          2.513194270099685,
+          -0.8501838539222712,
+          0.7966686968795347
+        ],
+        "xyzw": [
+          0.1369695709232448,
+          -0.05508076437821483,
+          0.3117528734778026,
+          0.9386243081845616
+        ]
+      },
+      "points": 800
+    },
+    {
+      "id": 3,
+      "scan_id": 3,
+      "stamp_ns": 13000000000,
+      "directory": "keyframes/3",
+      "U_local_imu": {
+        "xyz": [
+          9,
+          -3,
+          0.6000000000000001
+        ],
+        "xyzw": [
+          0.1848267146213393,
+          -0.09749452207617844,
+          0.3102550625148121,
+          0.9274026633083117
+        ]
+      },
+      "X_map_imu": {
+        "xyz": [
+          2.6692665018163018,
+          -0.7337224182158777,
+          0.8433398065749382
+        ],
+        "xyzw": [
+          0.13800113982997617,
+          -0.0447452787325949,
+          0.31782897642599295,
+          0.9369836109456641
+        ]
+      },
+      "points": 800
+    }
+  ],
+  "files": {
+    "map.pcd": "65f61425ff2b317c2e3b68616961dc1040b2d5054334981c560056ad7141a8d6",
+    "original.tum": "5e29f6699480e4729a9a7b3243e4a9bf928ec5be73b436f33977d70f95dd7686",
+    "optimized.tum": "401e78cf3184ccf6e35dca7c6d2178d44e908d2cb829d1fabbc2842b16e73424",
+    "keyframes/3/match.pcd": "998c2771c67ddd1abb08569691ad82038f536f00c53fd18757104b556c6c47d1",
+    "keyframes/3/full.pcd": "998c2771c67ddd1abb08569691ad82038f536f00c53fd18757104b556c6c47d1",
+    "keyframes/3/scan.cdr": "56be11c0a54534dcf75e5ef259d8f671fbea975204f32c168fcc894436f944d7",
+    "keyframes/0/match.pcd": "a9f702b9808fa61a8bbcaa6970fdc0c2e13a519c639bbfe6cb2e52768f6eb2a9",
+    "keyframes/0/full.pcd": "a9f702b9808fa61a8bbcaa6970fdc0c2e13a519c639bbfe6cb2e52768f6eb2a9",
+    "keyframes/0/scan.cdr": "56be11c0a54534dcf75e5ef259d8f671fbea975204f32c168fcc894436f944d7",
+    "keyframes/2/match.pcd": "d1754c25c88d406a647d8aadd573c8d141d43dd6e14b8fdeb110ea46bcfbbd97",
+    "keyframes/2/full.pcd": "d1754c25c88d406a647d8aadd573c8d141d43dd6e14b8fdeb110ea46bcfbbd97",
+    "keyframes/2/scan.cdr": "56be11c0a54534dcf75e5ef259d8f671fbea975204f32c168fcc894436f944d7",
+    "keyframes/1/match.pcd": "31ed5c3bb580acbffd3b037c4b11103cf14c5b7e1dc68650419015230050ac39",
+    "keyframes/1/full.pcd": "31ed5c3bb580acbffd3b037c4b11103cf14c5b7e1dc68650419015230050ac39",
+    "keyframes/1/scan.cdr": "56be11c0a54534dcf75e5ef259d8f671fbea975204f32c168fcc894436f944d7"
+  },
+  "factors": []
+}

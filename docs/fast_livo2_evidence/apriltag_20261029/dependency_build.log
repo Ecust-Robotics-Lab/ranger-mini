@@ -1,0 +1,98 @@
+-- The C compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/lab307/ranger_nav/ws_fast_livo/apriltag_build
+[  2%] Building C object CMakeFiles/apriltag.dir/apriltag_pose.c.o
+[  5%] Building C object CMakeFiles/apriltag.dir/apriltag.c.o
+[  8%] Building C object CMakeFiles/apriltag.dir/apriltag_quad_thresh.c.o
+[ 11%] Building C object CMakeFiles/apriltag.dir/common/g2d.c.o
+[ 14%] Building C object CMakeFiles/apriltag.dir/common/getopt.c.o
+[ 17%] Building C object CMakeFiles/apriltag.dir/common/homography.c.o
+[ 20%] Building C object CMakeFiles/apriltag.dir/common/image_u8.c.o
+[ 23%] Building C object CMakeFiles/apriltag.dir/common/image_u8_parallel.c.o
+[ 26%] Building C object CMakeFiles/apriltag.dir/common/image_u8x3.c.o
+[ 29%] Building C object CMakeFiles/apriltag.dir/common/image_u8x4.c.o
+[ 32%] Building C object CMakeFiles/apriltag.dir/common/matd.c.o
+[ 35%] Building C object CMakeFiles/apriltag.dir/common/pam.c.o
+[ 38%] Building C object CMakeFiles/apriltag.dir/common/pjpeg-idct.c.o
+[ 41%] Building C object CMakeFiles/apriltag.dir/common/pjpeg.c.o
+[ 44%] Building C object CMakeFiles/apriltag.dir/common/pnm.c.o
+[ 47%] Building C object CMakeFiles/apriltag.dir/common/pthreads_cross.c.o
+[ 50%] Building C object CMakeFiles/apriltag.dir/common/string_util.c.o
+[ 52%] Building C object CMakeFiles/apriltag.dir/common/svd22.c.o
+[ 55%] Building C object CMakeFiles/apriltag.dir/common/time_util.c.o
+[ 58%] Building C object CMakeFiles/apriltag.dir/common/unionfind.c.o
+[ 61%] Building C object CMakeFiles/apriltag.dir/common/workerpool.c.o
+[ 64%] Building C object CMakeFiles/apriltag.dir/common/zarray.c.o
+[ 67%] Building C object CMakeFiles/apriltag.dir/common/zhash.c.o
+[ 70%] Building C object CMakeFiles/apriltag.dir/common/zmaxheap.c.o
+[ 73%] Building C object CMakeFiles/apriltag.dir/tag16h5.c.o
+[ 76%] Building C object CMakeFiles/apriltag.dir/tag25h9.c.o
+[ 79%] Building C object CMakeFiles/apriltag.dir/tag36h10.c.o
+[ 82%] Building C object CMakeFiles/apriltag.dir/tag36h11.c.o
+[ 85%] Building C object CMakeFiles/apriltag.dir/tagCircle21h7.c.o
+[ 88%] Building C object CMakeFiles/apriltag.dir/tagCircle49h12.c.o
+[ 91%] Building C object CMakeFiles/apriltag.dir/tagCustom48h12.c.o
+[ 94%] Building C object CMakeFiles/apriltag.dir/tagStandard41h12.c.o
+[ 97%] Building C object CMakeFiles/apriltag.dir/tagStandard52h13.c.o
+[100%] Linking C shared library libapriltag.so
+[100%] Built target apriltag
+-- Install configuration: "Release"
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/apriltag.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/apriltag_math.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/apriltag_pose.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/debug_print.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/doubles.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/doubles_floats_impl.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/floats.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/g2d.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/getopt.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/homography.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/image_types.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/image_u8.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/image_u8_parallel.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/image_u8x3.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/image_u8x4.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/matd.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/math_util.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/pam.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/pjpeg.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/pnm.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/postscript_utils.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/pthreads_cross.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/string_util.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/svd22.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/time_util.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/timeprofile.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/unionfind.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/workerpool.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/zarray.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/zhash.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/common/zmaxheap.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/tag16h5.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/tag25h9.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/tag36h10.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/tag36h11.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/tagCircle21h7.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/tagCircle49h12.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/tagCustom48h12.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/tagStandard41h12.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/include/apriltag/tagStandard52h13.h
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/lib/libapriltag.so.3.4.5
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/lib/libapriltag.so.3
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/lib/libapriltag.so
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/lib/apriltag/cmake/apriltagTargets.cmake
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/lib/apriltag/cmake/apriltagTargets-release.cmake
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/lib/apriltag/cmake/apriltagConfig.cmake
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/lib/apriltag/cmake/apriltagConfigVersion.cmake
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/apriltag_deps/lib/pkgconfig/apriltag.pc

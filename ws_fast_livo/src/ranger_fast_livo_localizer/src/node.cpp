@@ -5,6 +5,7 @@
 #include <ranger_fast_livo_localizer/srv/load_map.hpp>
 #include <ranger_fast_livo_localizer/srv/initialize.hpp>
 #include <ranger_fast_livo_localizer/srv/relocalize.hpp>
+#include <std_msgs/msg/string.hpp>
 #include <rclcpp/rclcpp.hpp>
 #include <atomic>
 #include <condition_variable>
@@ -12,6 +13,7 @@
 #include <thread>
 #include <sstream>
 #include <iomanip>
+#include <fstream>
 
 namespace ranger_localizer {
 using Estimate=ranger_fast_livo_localizer::msg::LocalizerEstimate;
@@ -47,6 +49,22 @@ public:
     GLOBAL_DBL(consistency_translation);GLOBAL_DBL(consistency_rotation);
 #undef GLOBAL_DBL
     search_config_.validate();if(global_enabled_)(void)make_global_coarse(search_config_);
+    tag_relocalization_=declare_parameter<bool>("enable_tag_relocalization",false);
+    tag_monitor_=declare_parameter<bool>("enable_tag_monitor",false);
+    auto recording_mode=declare_parameter<std::string>("landmark_recording_mode","off");
+    if(recording_mode!="off"&&recording_mode!="c1")throw std::invalid_argument("landmark_recording_mode must be off or c1");
+    tag_recording_=recording_mode=="c1";
+    auto record_path=declare_parameter<std::string>("tag_record_path","");
+    if(tag_recording_){rb::tags::require(fs::path(record_path).is_absolute()&&!fs::exists(record_path),"new_c1_record_path_required");tag_record_.open(record_path);tag_record_.exceptions(std::ios::badbit|std::ios::failbit);}
+    auto tag_config=declare_parameter<std::string>("tag_config_path","");tag_landmarks_path_=declare_parameter<std::string>("tag_landmarks_path","");
+    if(tag_relocalization_&&!global_enabled_)throw std::invalid_argument("Tag relocalization requires explicit C2 entry");
+    if(tag_relocalization_||tag_monitor_||tag_recording_){
+      tag_config_=rb::tags::Config::parse(rb::tags::read_json(tag_config));tag_buffer_=std::make_unique<rb::tags::Buffer>(*tag_config_);
+      tag_context_publisher_=create_publisher<std_msgs::msg::String>("/fast_livo/tags/context",rclcpp::QoS(1).transient_local());
+      tag_subscription_=create_subscription<std_msgs::msg::String>("/fast_livo/tags/observations",rclcpp::QoS(4).best_effort(),[this](std_msgs::msg::String::ConstSharedPtr m){
+        std::lock_guard<std::mutex> lock(mutex_);if(m->data.size()>262144){++tag_dropped_;return;}if(tag_inbox_.size()>=8){tag_inbox_.pop_front();++tag_dropped_;}tag_inbox_.push_back({rb::steady_seconds(),m->data});
+      });
+    }
     age_=declare_parameter<double>("sample_max_age",.5);stream_timeout_=declare_parameter<double>("stream_timeout",2.);
     if(!std::isfinite(age_) || !std::isfinite(stream_timeout_) || age_<=0 || stream_timeout_<=0) throw std::invalid_argument("invalid age limits");
     auto xyz=declare_parameter<std::vector<double>>("t_base_imu_xyz",{0.,0.,.556});
@@ -72,10 +90,17 @@ public:
   ~LocalizerNode()override {{std::lock_guard<std::mutex> lock(mutex_);stopping_=true;++generation_;}condition_.notify_all();if(worker_.joinable())worker_.join();}
 private:
   enum class Kind {Reset,Load,Initialize,Search,Scan};
-  struct Job {Kind kind=Kind::Reset;uint64_t generation=0,scan=0;rb::Pair pair;InitialPose initial;fs::path archive,declaration;};
+  struct Job {Kind kind=Kind::Reset;uint64_t generation=0,scan=0;rb::Pair pair;InitialPose initial;fs::path archive,declaration;std::string tag_context;std::vector<std::pair<double,std::string>> tag_batches;};
   Config config_;Compatibility compatibility_;ArchiveLimits limits_;Pose T_base_imu_;
   SearchConfig search_config_;bool global_enabled_=false;std::atomic<bool> search_allowed_{false};std::string index_path_;
   std::shared_ptr<PlaceIndex> place_index_;std::unique_ptr<Relocalizer> search_;
+  bool tag_relocalization_=false,tag_monitor_=false;std::string tag_landmarks_path_,tag_reason_;
+  std::optional<rb::tags::Config> tag_config_;std::optional<rb::tags::Map> tag_map_;
+  std::unique_ptr<rb::tags::Buffer> tag_buffer_;std::deque<std::pair<double,std::string>> tag_inbox_;size_t tag_dropped_=0;
+  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr tag_context_publisher_;
+  rclcpp::Subscription<std_msgs::msg::String>::SharedPtr tag_subscription_;
+  std::function<bool(const Pose&,const Pose&,Json&)> handoff_verify_;
+  bool tag_recording_=false;std::ofstream tag_record_;Json record_segment_=Json::array();std::string record_context_;
   std::mutex mutex_;std::condition_variable condition_;std::deque<Job> jobs_;std::atomic<uint64_t> generation_{1};
   bool stopping_=false,terminal_=false,inputs_ready_=false,loading_=false,lost_latched_=false;
   rb::PairBuffer pairs_;std::shared_ptr<Archive> map_;std::unique_ptr<Localizer> core_;
@@ -92,7 +117,7 @@ private:
   static bool request_id(const std::string& id) {return !id.empty() && id.size()<=128;}
   void enqueue(Job j) {jobs_.push_back(std::move(j));condition_.notify_one();}
   void clear_locked(const std::string& reason,bool frontend_reset) {
-    ++generation_;jobs_.clear();pairs_.clear();message_.pose_valid=false;message_.state=0;message_.reason=reason;request_started_=0;lost_latched_=false;
+    ++generation_;jobs_.clear();pairs_.clear();tag_inbox_.clear();message_.pose_valid=false;message_.state=0;message_.reason=reason;request_started_=0;lost_latched_=false;
     if(frontend_reset) {message_.session_id=rb::uuid();scan_=0;message_.header.stamp=builtin_interfaces::msg::Time{};message_.last_confirmed_stamp_ns=0;message_.latest_scan_stamp_ns=0;init_ids_.clear();search_ids_.clear();message_.initialization_request_id.clear();}
   }
   void load_request(const Load::Request& req,Load::Response& res) {
@@ -168,6 +193,7 @@ private:
   }
   void tick() {
     Estimate message;
+    std_msgs::msg::String tag_context;
     {
       std::lock_guard<std::mutex> lock(mutex_);double now=rb::steady_seconds();auto ros=get_clock()->now().nanoseconds();
       if(last_clock_>=0 && ros<last_clock_ && !terminal_) {clear_locked("clock_regressed_requires_initial_pose",true);loading_=false;Job j;j.generation=generation_;enqueue(j);}
@@ -178,7 +204,8 @@ private:
         size_t available=jobs_.size()<8?8-jobs_.size():0;
         for(auto& pair:pairs_.drain(now,available)) {
           if(bytes+pair.cloud->data.size()>32*1024*1024) {clear_locked("terminal_work_queue_byte_limit",true);terminal_=true;message_.state=4;break;}
-          Job j;j.kind=Kind::Scan;j.generation=generation_;j.scan=scan_++;j.pair=pair;bytes+=pair.cloud->data.size();enqueue(j);last_received_=now;
+          Job j;j.kind=Kind::Scan;j.generation=generation_;j.scan=scan_++;j.pair=pair;bytes+=pair.cloud->data.size();
+          j.tag_context=message_.session_id+":"+std::to_string(generation_.load());j.tag_batches.assign(tag_inbox_.begin(),tag_inbox_.end());tag_inbox_.clear();enqueue(j);last_received_=now;
         }
       }
       if((message_.state==1 || message_.state==2) && message_.last_confirmed_stamp_ns>0 && (now-last_received_>stream_timeout_ || ros-message_.last_confirmed_stamp_ns>int64_t(age_*1e9) || ros<message_.last_confirmed_stamp_ns-int64_t(age_*1e9))) {
@@ -193,9 +220,13 @@ private:
       quality["pair_counters"]=pairs_.counters;quality["invalid_messages"]=invalid_;quality["queued_jobs"]=jobs_.size();quality["pair_bytes"]=pairs_.bytes();
       quality["inputs_ready"]=inputs_ready_;quality["map_loading"]=loading_;quality["public_tf_publisher"]=false;
       quality["global_search_enabled"]=global_enabled_;quality["global_search_allowed"]=search_allowed_.load();
+      quality["tag_input_dropped"]=tag_dropped_;
+      if(tag_config_)tag_context.data=Json({{"schema_version",1},{"context",message_.session_id+":"+std::to_string(generation_.load())},
+        {"calibration_id",tag_config_->calibration_id},{"time_mapping_id",tag_config_->time_mapping_id},{"map_uuid",message_.map_uuid}}).dump();
       message.quality_json=quality.dump();
     }
     publisher_->publish(message);
+    if(tag_context_publisher_)tag_context_publisher_->publish(tag_context);
   }
   static geometry_msgs::msg::Pose pose_message(const Pose& p) {
     geometry_msgs::msg::Pose out;out.position.x=p.translation().x();out.position.y=p.translation().y();out.position.z=p.translation().z();
@@ -208,8 +239,9 @@ private:
     message_.header.stamp=rclcpp::Time(result.stamp);message_.last_confirmed_stamp_ns=result.stamp;message_.latest_scan_stamp_ns=result.latest_scan;message_.scan_id=result.scan;message_.quality_json=result.quality.dump();
     if(result.valid) request_started_=0;
   }
-  void process_search(Job& job,const Cloud& cloud,const Pose& U,int64_t stamp,const std::function<bool()>& cancelled) {
-    auto result=search_->process(stamp,job.scan,U,cloud,rb::steady_seconds(),cancelled);
+  void process_search(Job& job,const Cloud& cloud,const Pose& U,int64_t stamp,const std::function<bool()>& cancelled,const std::vector<rb::tags::Prior>& priors) {
+    auto result=search_->process(stamp,job.scan,U,cloud,rb::steady_seconds(),cancelled,priors);
+    if(tag_config_){result.quality["tag_status"]=tag_reason_;result.quality["tag_buffer"]=tag_buffer_->diagnostics();}
     {
       std::lock_guard<std::mutex> lock(mutex_);if(cancelled())return;
       message_.pose_valid=false;message_.reason=result.reason;message_.state=lost_latched_?3:0;
@@ -219,10 +251,35 @@ private:
       request_started_=rb::steady_seconds();
     }
     core_->initialize(*result.confirmed,rb::steady_seconds());
+    handoff_verify_={};
+    if(result.quality.contains("selected_tag_evidence")){
+      auto selected=result.quality.at("selected_tag_evidence");
+      for(const auto& p:priors)if(p.evidence==selected){auto verify=p.verify;handoff_verify_=[verify,U](const Pose& X,const Pose& currentU,Json& d){return verify(X*currentU.inverse()*U,d);};break;}
+    }
     // C1 independently verifies the confirmed original-stamp initial pose.
     auto first=core_->process(stamp,job.scan,U,cloud,rb::steady_seconds(),cancelled);
     first.quality["global_handoff"]=result.quality;
     commit(first,job.generation);
+  }
+  void record_tags(const Result& result,const Pose& U,const Job& job,const std::vector<rb::tags::Attached>& observations){
+    if(record_context_!=job.tag_context){record_segment_=Json::array();record_context_=job.tag_context;}
+    if(!result.valid||result.reason!="map_match_confirmed"){record_segment_=Json::array();return;}
+    Pose correction=result.pose*U.inverse();
+    if(!record_segment_.empty()){
+      auto previous=parse_pose(record_segment_.back().at("correction"));int64_t stamp=record_segment_.back().at("stamp_ns");
+      if(result.stamp<=stamp||(result.stamp-stamp)*1e-9>config_.history_gap||
+         (previous.translation()-correction.translation()).norm()>config_.confirmation_consistency_translation||rb::rotation_distance(previous,correction)>config_.confirmation_consistency_rotation)record_segment_=Json::array();
+    }
+    record_segment_.push_back({{"stamp_ns",result.stamp},{"correction",rb::pose_json(correction)},{"context",job.tag_context}});
+    if(record_segment_.size()>3)record_segment_.erase(record_segment_.begin());
+    if(record_segment_.size()<3)return;
+    for(const auto& a:observations){
+      Json j={{"schema_version",1},{"map_uuid",map_->uuid},{"source_manifest_sha256",map_->manifest_sha},{"graph_version",map_->graph_version},
+        {"state",result.state},{"pose_valid",result.valid},{"reason",result.reason},{"scan_stamp_ns",result.stamp},{"last_confirmed_stamp_ns",result.stamp},
+        {"context",job.tag_context},{"visit_id",job.tag_context},{"segment_verified",true},{"segment_support",record_segment_},
+        {"T_map_imu",rb::pose_json(result.pose)},{"local_history",tag_buffer_->history_json()},{"observation",a.observation.json()},{"quality",result.quality}};
+      tag_record_<<j.dump()<<'\n';tag_record_.flush();
+    }
   }
   void work() {
     while(true) {
@@ -238,22 +295,43 @@ private:
             index=index_path_.empty()?PlaceIndex::build(map,search_config_,cancelled):PlaceIndex::load(index_path_,map,search_config_);
             search=std::make_unique<Relocalizer>(map,config_,search_config_,index,make_global_coarse(search_config_));
           }
+          tag_map_.reset();handoff_verify_={};
+          if(tag_config_)try{tag_map_=rb::tags::Map::load(tag_landmarks_path_,map->uuid,map->manifest_sha,map->graph_version,*tag_config_);tag_reason_="landmarks_ready";}
+            catch(const std::exception& e){tag_reason_=std::string("tag_branch_disabled: ")+e.what();}
           {std::lock_guard<std::mutex> lock(mutex_);if(cancelled())continue;map_=map;core_=std::move(core);loading_=false;place_index_=std::move(index);search_=std::move(search);
             message_.map_uuid=map->uuid;message_.manifest_sha256=map->manifest_sha;message_.graph_version=map->graph_version;
             message_.reason=global_enabled_&&search_allowed_?"map_loaded_searching":"map_loaded_waiting_initial_pose";message_.state=0;message_.pose_valid=false;message_.quality_json=Json({{"compatibility",map->compatibility}}).dump();}
         } else if(job.kind==Kind::Reset) {
+          handoff_verify_={};
           if(map_) core_=std::make_unique<Localizer>(map_,config_);
           if(search_)search_->reset();
         } else if(job.kind==Kind::Search) {
+          handoff_verify_={};
           if(map_)core_=std::make_unique<Localizer>(map_,config_);
           if(search_)search_->reset();
         } else if(job.kind==Kind::Initialize) {
+          handoff_verify_={};
           if(search_)search_->reset();
           if(!core_) throw std::runtime_error("map_not_loaded");core_->initialize(job.initial,rb::steady_seconds());commit(core_->result(),job.generation);
         } else if(core_) {
           auto cloud=rb::decode_cloud(*job.pair.cloud);auto U=rb::odom_pose(*job.pair.odom);auto stamp=rb::stamp_ns(job.pair.odom->header.stamp);
-          if(search_&&search_allowed_&&core_->needs_initialization())process_search(job,*cloud,U,stamp,cancelled);
-          else {auto result=core_->process(stamp,job.scan,U,*cloud,rb::steady_seconds(),cancelled);commit(result,job.generation);}
+          std::vector<rb::tags::Attached> attached;std::vector<rb::tags::Prior> priors;
+          if(tag_buffer_){tag_buffer_->add_pose(stamp,U,job.tag_context);for(const auto& [received,text]:job.tag_batches)try{
+              rb::tags::require(rb::steady_seconds()-received<=tag_config_->maximum_wait,"consumer_queue_expired");tag_buffer_->push(Json::parse(text),job.tag_context);
+            }catch(const std::exception& e){tag_reason_=e.what();}
+            attached=tag_buffer_->take(stamp,U);if(tag_map_&&tag_relocalization_)priors=rb::tags::priors(*tag_map_,attached,*tag_config_);}
+          if(search_&&search_allowed_&&core_->needs_initialization())process_search(job,*cloud,U,stamp,cancelled,priors);
+          else {auto result=core_->process(stamp,job.scan,U,*cloud,rb::steady_seconds(),cancelled);
+            if(result.valid&&handoff_verify_){Json visual;if(!handoff_verify_(result.pose,U,visual)){
+                core_=std::make_unique<Localizer>(map_,config_);if(search_)search_->reset();result.valid=false;result.state=0;result.reason="tag_handoff_c1_visual_inconsistent";
+              }result.quality["tag_handoff_validation"]=visual;handoff_verify_={};}
+            if(tag_config_){result.quality["tag_status"]=tag_reason_;result.quality["tag_buffer"]=tag_buffer_->diagnostics();}
+            if(tag_map_&&tag_monitor_&&result.valid)result.quality["tag_monitor"]=rb::tags::monitor(*tag_map_,attached,result.pose,*tag_config_);
+            if(tag_recording_&&!cancelled())try{
+              if(tag_record_.tellp()>64*1024*1024)throw std::runtime_error("tag_record_byte_limit");
+              record_tags(result,U,job,attached);
+            }catch(const std::exception& e){tag_recording_=false;result.quality["tag_record_disabled"]=e.what();}
+            commit(result,job.generation);}
         }
       } catch(const std::exception& e) {
         if(job.kind==Kind::Load && !cancelled()) {if(map_)core_=std::make_unique<Localizer>(map_,config_);if(search_)search_->reset();}

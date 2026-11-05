@@ -29,6 +29,16 @@ def specs(args):
         command += ['--params-file', str(ROOT/'config/fast_livo2/relocalizer.yaml')]
         if args.index:
             command += ['-p', 'global_index_path:='+str(args.index.resolve())]
+    if getattr(args, 'tag_relocalization', False) or getattr(args, 'tag_monitor', False) or getattr(args, 'tag_record', None):
+        if args.tag_relocalization and not args.global_search:
+            raise ValueError('Tag relocalization requires the explicit C2 entry')
+        command += ['-p', 'tag_config_path:='+str(args.tag_config.resolve()),
+                    '-p', 'enable_tag_relocalization:='+str(args.tag_relocalization).lower(),
+                    '-p', 'enable_tag_monitor:='+str(args.tag_monitor).lower()]
+        if args.tag_landmarks:
+            command += ['-p', 'tag_landmarks_path:='+str(args.tag_landmarks.resolve())]
+        if args.tag_record:
+            command += ['-p', 'landmark_recording_mode:=c1', '-p', 'tag_record_path:='+str(args.tag_record.resolve())]
     components = [Component('monitor', [sys.executable, str(ROOT/'scripts/fast_livo2/localizer/monitor.py')], ready_key='probe_live'),
                   Component('localizer', command, depends=('monitor',), requires=('probe_live',), ready_key='localizer_alive',
                             resource='fast_livo_backend')]
@@ -57,6 +67,11 @@ def main():
     p.add_argument('--offline-bridge', action='store_true')
     p.add_argument('--global-search', action='store_true', help='Explicit optional C2; no initial pose required')
     p.add_argument('--index', type=Path, help='Bound C2 index; omission builds an in-memory index')
+    p.add_argument('--tag-config', type=Path, default=ROOT/'config/fast_livo2/apriltag_camera.json')
+    p.add_argument('--tag-landmarks', type=Path)
+    p.add_argument('--tag-relocalization', action='store_true')
+    p.add_argument('--tag-monitor', action='store_true')
+    p.add_argument('--tag-record', type=Path, help='New C1 confirmed-segment JSONL, no online map edit')
     p.add_argument('--domain', type=int, default=189)
     p.add_argument('--registration', choices=['pcl_icp', 'small_gicp', 'small_vgicp'], default='pcl_icp')
     args = p.parse_args()

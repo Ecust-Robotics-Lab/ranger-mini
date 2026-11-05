@@ -1,0 +1,73 @@
+{
+  "evaluation_completed": true,
+  "new_unit_tests": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 tests/test_fast_livo_tag_assessment.py",
+    "exit_code": 0,
+    "tests": 6,
+    "passed": 6,
+    "log": "tests.log"
+  },
+  "assessment_command_exit_code": 0,
+  "assessment_log": "assessment.log",
+  "maps_postcheck": {
+    "pcl": {
+      "manifest_members_checked": 151,
+      "sha256_failures": [],
+      "manifest_sha256": "a890afe331f16ad5d65e601f390a00c7f270cd489346884a41b0b4274b9a4f58",
+      "C1_samples_unchanged": true,
+      "C1_result_unchanged": true
+    },
+    "gicp": {
+      "manifest_members_checked": 151,
+      "sha256_failures": [],
+      "manifest_sha256": "7abc51e21a5e3fd62ba8fc119c64a78a1aa4e5ca8dd8c44bb1aebf760dfdd546",
+      "C1_samples_unchanged": true,
+      "C1_result_unchanged": true
+    }
+  },
+  "camera_config_unchanged": true,
+  "physical_time_verified": false,
+  "registration_eligible": false,
+  "VALID_landmark_written": false,
+  "raw_bag_access_this_step": false,
+  "sessions": {
+    "live": {
+      "exit_code": 0,
+      "live": false,
+      "state": "STOPPED",
+      "owned": []
+    },
+    "localizer": {
+      "exit_code": 0,
+      "live": false,
+      "state": "FAILED",
+      "owned": []
+    },
+    "relocalizer": {
+      "exit_code": 0,
+      "live": false,
+      "state": "FAILED",
+      "owned": []
+    }
+  },
+  "dry_run_exit_code": 0,
+  "dry_run_created_output": false,
+  "ast_parsed": [
+    "scripts/fast_livo2/tags/assess_landmark.py",
+    "tests/test_fast_livo_tag_assessment.py",
+    "docs/fast_livo2_evidence/apriltag_landmark_assessment_20261029/plot_assessment.py"
+  ],
+  "local_markdown_link_errors": [],
+  "git_diff_check_exit_code": 0,
+  "source_files_sha256": {
+    "scripts/fast_livo2/tags/assess_landmark.py": "5e0f979e4f0261162ad918ef52eb0fb26d426a6fedab9fb7847ff837036074a7",
+    "tests/test_fast_livo_tag_assessment.py": "fa564a6cefecfb65f6578abfc7ab172efd4ba3cf847c446d47af0661beb26862",
+    "docs/fast_livo2_evidence/apriltag_landmark_assessment_20261029/plot_assessment.py": "e4fd8a835a7664f8b8ad5b8d231dda739f71ee5e79befc7c15eb17e787b57789"
+  },
+  "output_files_sha256": {
+    "time_sensitivity.jsonl": "10aa5fc9bc7ef6a9a8424a029ab53a791b36008ad3df1c0454c4a8adf365396e",
+    "assessment.json": "39c8f2b8b1aa3c7d332f05dbc8acafd483c83857ee51dfd111d8f3a8cf6aa10b",
+    "gicp_zero_offset.json": "1ed61def4bef4b22b6ac46f9cad82de0a2acecd6e2e88033fb98378530c57a3e",
+    "pcl_zero_offset.json": "bb23265fdd4ca8727a52655521ecc2c2371edbb958374a46f74122957064f0c0"
+  }
+}

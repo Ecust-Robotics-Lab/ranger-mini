@@ -1,0 +1,47 @@
+{
+  "stage": "step 1 full existing bag extraction, not landmark registration",
+  "passed": true,
+  "hardware_started": false,
+  "ros_graph_started": false,
+  "build_exit_code": 0,
+  "install_exit_code": 0,
+  "test_exit_code": 0,
+  "test_count": 4,
+  "extraction_exit_code": 0,
+  "analysis_exit_code": 0,
+  "images": 1367,
+  "tag_observations": 14,
+  "valid_pixel_hypotheses_preserved": 28,
+  "input_full_sha256_unchanged": true,
+  "input_sha256": "aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116",
+  "extraction_manifest_verified": true,
+  "production_configs_unchanged": {
+    "config/runtime.yaml": true,
+    "config/fast_livo2/ranger_mid360s_hik_trial.yaml": true,
+    "config/fast_livo2/camera_live.yaml": true
+  },
+  "prior_algorithm_source_unchanged_except_image_cli": true,
+  "sessions_live": {
+    "live": false,
+    "backend": false,
+    "c1": false,
+    "c2": false,
+    "tags": false
+  },
+  "physical_time_validated": false,
+  "fixed_installation_validated": false,
+  "real_VALID_landmark_created": false,
+  "cross_session_validated": false,
+  "git_committed": false,
+  "pushed": false,
+  "sources_sha256": {
+    "ws_fast_livo/src/ranger_fast_livo_backend/src/tag_image_tool.cpp": "f016feaee6f9393915fe51318de93580d15a9fe1f66fed21aac13c5fb1b910ed",
+    "scripts/fast_livo2/tags/extract_bag.py": "c66cc4511e18f9537a2f0af75f08f6c0a51d84368b2b5821e34c0e7ecc419dd7",
+    "scripts/fast_livo2/tags/analyze_fullbag.py": "5cf477fa4a28f02d812a462663478d6998a0e496ab1748c4bbe5a7db2370a1f1",
+    "tests/test_fast_livo_tag_fullbag.py": "04b7fa15f1138c90424878047a91dcb2e89db1f8eb8dc1e0dceb0965d8174782"
+  },
+  "outputs": {
+    "extraction": "/home/lab307/ranger_nav/outputs/fast-livo-apriltag-fullbag-20261029",
+    "analysis": "/home/lab307/ranger_nav/outputs/fast-livo-apriltag-fullbag-analysis-20261029"
+  }
+}

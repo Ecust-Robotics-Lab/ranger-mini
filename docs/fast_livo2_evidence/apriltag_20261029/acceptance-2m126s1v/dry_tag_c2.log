@@ -1,0 +1,56 @@
+{
+  "action": "DRY-RUN",
+  "domain": 190,
+  "localhost_only": true,
+  "public_tf_enabled": false,
+  "components": [
+    {
+      "name": "monitor",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/lab307/ranger_nav/scripts/fast_livo2/localizer/monitor.py"
+      ],
+      "depends": [],
+      "requires": [],
+      "ready_key": "probe_live",
+      "critical": true,
+      "start_requires": [],
+      "resource": ""
+    },
+    {
+      "name": "localizer",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node",
+        "--ros-args",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/fast_livo2/localizer.yaml",
+        "-p",
+        "use_sim_time:=true",
+        "-p",
+        "registration:=pcl_icp",
+        "-p",
+        "t_base_imu_xyz:=[0.0, 0.0, 0.556]",
+        "-p",
+        "t_base_imu_rpy:=[0.0, 0.0, 0.0]",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/fast_livo2/relocalizer.yaml",
+        "-p",
+        "tag_config_path:=/home/lab307/ranger_nav/config/fast_livo2/apriltag_camera.json",
+        "-p",
+        "enable_tag_relocalization:=true",
+        "-p",
+        "enable_tag_monitor:=true"
+      ],
+      "depends": [
+        "monitor"
+      ],
+      "requires": [
+        "probe_live"
+      ],
+      "ready_key": "localizer_alive",
+      "critical": true,
+      "start_requires": [],
+      "resource": "fast_livo_backend"
+    }
+  ]
+}

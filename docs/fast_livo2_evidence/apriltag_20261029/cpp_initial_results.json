@@ -1,0 +1,26 @@
+[
+  {
+    "argv": [
+      "ws_fast_livo/backend_build/ros/ranger_fast_livo_backend/tag_tests",
+      "--gtest_output=xml:docs/fast_livo2_evidence/apriltag_20261029/tag_tests_initial.xml"
+    ],
+    "exit_code": -15,
+    "wall_seconds": 35.93539714599956
+  },
+  {
+    "argv": [
+      "ws_fast_livo/backend_build/ros/ranger_fast_livo_backend/tag_detector_tests",
+      "--gtest_output=xml:docs/fast_livo2_evidence/apriltag_20261029/tag_detector_tests_initial.xml"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.1759420569997019
+  },
+  {
+    "argv": [
+      "ws_fast_livo/backend_build/ros/ranger_fast_livo_localizer/tag_integration_tests",
+      "--gtest_output=xml:docs/fast_livo2_evidence/apriltag_20261029/tag_integration_tests_initial.xml"
+    ],
+    "exit_code": 1,
+    "wall_seconds": 0.1672661619995779
+  }
+]

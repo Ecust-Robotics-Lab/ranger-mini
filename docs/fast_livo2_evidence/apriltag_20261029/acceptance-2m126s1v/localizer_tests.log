@@ -1,0 +1,77 @@
+Running main() from /opt/ros/humble/src/gtest_vendor/src/gtest_main.cc
+[==========] Running 30 tests from 2 test suites.
+[----------] Global test environment set-up.
+[----------] 18 tests from C1
+[ RUN      ] C1.ArchiveRoundTripAndEveryPointTransformedOnce
+[       OK ] C1.ArchiveRoundTripAndEveryPointTransformedOnce (15 ms)
+[ RUN      ] C1.RejectMissingCorruptFailedAndUncommitted
+[       OK ] C1.RejectMissingCorruptFailedAndUncommitted (14 ms)
+[ RUN      ] C1.RejectManifestAndResourceLimits
+[       OK ] C1.RejectManifestAndResourceLimits (14 ms)
+[ RUN      ] C1.RejectPathsAndSymlinks
+[       OK ] C1.RejectPathsAndSymlinks (15 ms)
+[ RUN      ] C1.RejectVersionDuplicateIdBadPoseAndTimestamp
+[       OK ] C1.RejectVersionDuplicateIdBadPoseAndTimestamp (21 ms)
+[ RUN      ] C1.RejectNonfiniteAndTruncatedPCDWithMatchingHashes
+[       OK ] C1.RejectNonfiniteAndTruncatedPCDWithMatchingHashes (17 ms)
+[ RUN      ] C1.RejectDuplicateJsonKeysAndIdentityOverride
+[       OK ] C1.RejectDuplicateJsonKeysAndIdentityOverride (14 ms)
+[ RUN      ] C1.DerivedIndexIsBoundAndNeverOverwrites
+[       OK ] C1.DerivedIndexIsBoundAndNeverOverwrites (16 ms)
+[ RUN      ] C1.SixDofInitializationTrackingAndOriginalStamp
+[       OK ] C1.SixDofInitializationTrackingAndOriginalStamp (263 ms)
+[ RUN      ] C1.RejectWrongInitialAndCovariance
+[       OK ] C1.RejectWrongInitialAndCovariance (27 ms)
+[ RUN      ] C1.RejectedMatchesNeverChangeAcceptedCacheAndLostNeedsNewInitial
+[pcl::IterativeClosestPoint::computeTransformation] Not enough correspondences found. Relax your threshold parameters.
+[pcl::IterativeClosestPoint::computeTransformation] Not enough correspondences found. Relax your threshold parameters.
+[pcl::IterativeClosestPoint::computeTransformation] Not enough correspondences found. Relax your threshold parameters.
+[       OK ] C1.RejectedMatchesNeverChangeAcceptedCacheAndLostNeedsNewInitial (380 ms)
+[ RUN      ] C1.InitialHistoricalPoseInterpolatesWithoutExtrapolation
+[       OK ] C1.InitialHistoricalPoseInterpolatesWithoutExtrapolation (273 ms)
+[ RUN      ] C1.StaticDuplicatesDoNotSupplyMotionSupportAndTimeoutRevokesValidity
+[       OK ] C1.StaticDuplicatesDoNotSupplyMotionSupportAndTimeoutRevokesValidity (621 ms)
+[ RUN      ] C1.CancellationAndSolverBudgetCannotAccept
+[       OK ] C1.CancellationAndSolverBudgetCannotAccept (28 ms)
+[ RUN      ] C1.DegeneratePlaneCannotInitialize
+[       OK ] C1.DegeneratePlaneCannotInitialize (180 ms)
+[ RUN      ] C1.SimilarSeparatedLocalSolutionsAreRejected
+[       OK ] C1.SimilarSeparatedLocalSolutionsAreRejected (271 ms)
+[ RUN      ] C1.KnownInitialOffsetGridRetainsAllSixDegreesOfFreedom
+[       OK ] C1.KnownInitialOffsetGridRetainsAllSixDegreesOfFreedom (3088 ms)
+[ RUN      ] C1.RepeatedFloatRegistrationKeepsAnOrthogonalAcceptedRotation
+[       OK ] C1.RepeatedFloatRegistrationKeepsAnOrthogonalAcceptedRotation (2187 ms)
+[----------] 18 tests from C1 (7444 ms total)
+
+[----------] 12 tests from C2
+[ RUN      ] C2.IndexRoundTripHashBindingAndNoOverwrite
+[       OK ] C2.IndexRoundTripHashBindingAndNoOverwrite (32 ms)
+[ RUN      ] C2.InvariantDescriptorRanksWithoutGlobalPositionPrior
+[       OK ] C2.InvariantDescriptorRanksWithoutGlobalPositionPrior (13 ms)
+[ RUN      ] C2.LargeCorrectionNeedsDisjointMovingQueriesThenC1OwnsValidity
+[       OK ] C2.LargeCorrectionNeedsDisjointMovingQueriesThenC1OwnsValidity (272 ms)
+[ RUN      ] C2.StaticAndRepeatedScansCannotConfirm
+[       OK ] C2.StaticAndRepeatedScansCannotConfirm (57 ms)
+[ RUN      ] C2.IdenticalStaticCloudWithDriftingOdomCannotSupplyMotionBaseline
+[       OK ] C2.IdenticalStaticCloudWithDriftingOdomCannotSupplyMotionBaseline (32 ms)
+[ RUN      ] C2.WrongCoarseAndOutsideQueriesCannotHandoff
+[pcl::IterativeClosestPoint::computeTransformation] Not enough correspondences found. Relax your threshold parameters.
+[pcl::IterativeClosestPoint::computeTransformation] Not enough correspondences found. Relax your threshold parameters.
+[       OK ] C2.WrongCoarseAndOutsideQueriesCannotHandoff (15 ms)
+[ RUN      ] C2.SeparatedSimilarPlacesAreAmbiguous
+[       OK ] C2.SeparatedSimilarPlacesAreAmbiguous (23 ms)
+[ RUN      ] C2.BudgetCancelAndResetNeverHandoffOldSupport
+[       OK ] C2.BudgetCancelAndResetNeverHandoffOldSupport (24 ms)
+[ RUN      ] C2.DegenerateGeometryNeverHandoffs
+[       OK ] C2.DegenerateGeometryNeverHandoffs (29 ms)
+[ RUN      ] C2.GeometricAliasCannotSupplyInconsistentMotionSupport
+[       OK ] C2.GeometricAliasCannotSupplyInconsistentMotionSupport (24 ms)
+[ RUN      ] C2.ExhaustionAfterGoodCandidateCannotAcceptBestSurvivor
+[       OK ] C2.ExhaustionAfterGoodCandidateCannotAcceptBestSurvivor (99 ms)
+[ RUN      ] C2.RealKissUnknownFullSixDofReturnsTotalTargetFromSource
+[       OK ] C2.RealKissUnknownFullSixDofReturnsTotalTargetFromSource (30 ms)
+[----------] 12 tests from C2 (650 ms total)
+
+[----------] Global test environment tear-down
+[==========] 30 tests from 2 test suites ran. (8094 ms total)
+[  PASSED  ] 30 tests.

@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "calibration_id": "synthetic-camera-ros-v1",
+  "time_mapping_id": "synthetic-exposure-ros-v1",
+  "time_source": "synthetic exact exposure midpoint",
+  "time_verified": true,
+  "offset_ns": 0,
+  "uncertainty_ns": 0,
+  "T_imu_camera": {
+    "xyz": [
+      0.1,
+      -0.04,
+      0.12
+    ],
+    "xyzw": [
+      0.016720234432368305,
+      -0.03419599063889974,
+      0.05046715822777448,
+      0.9980000670967732
+    ]
+  },
+  "pixel_rmse": 4.0,
+  "pixel_max": 8.0,
+  "camera": {
+    "width": 640,
+    "height": 480,
+    "frame": "front_optical_frame",
+    "pixel_domain": "raw",
+    "distortion_model": "plumb_bob",
+    "K": [
+      420.0,
+      0.0,
+      320.0,
+      0.0,
+      425.0,
+      240.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "D": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  }
+}

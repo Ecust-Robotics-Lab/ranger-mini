@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="12" failures="0" disabled="0" errors="0" time="0.013" timestamp="2026-10-29T13:27:55" name="AllTests">
+  <testsuite name="TagPixel" tests="4" failures="0" disabled="0" errors="0" time="0" timestamp="2026-10-29T13:27:55">
+    <testcase name="IndependentProjectionAndFullSixDofIPPE" status="run" result="completed" time="0" timestamp="2026-10-29T13:27:55" classname="TagPixel" />
+    <testcase name="RectifiedRotationAndNormalizedRays" status="run" result="completed" time="0" timestamp="2026-10-29T13:27:55" classname="TagPixel" />
+    <testcase name="RejectMismatchedModelsROIAndNonfinite" status="run" result="completed" time="0" timestamp="2026-10-29T13:27:55" classname="TagPixel" />
+    <testcase name="RecomputeResidualRejectsForgedQualityAndSize" status="run" result="completed" time="0" timestamp="2026-10-29T13:27:55" classname="TagPixel" />
+  </testsuite>
+  <testsuite name="TagTime" tests="4" failures="0" disabled="0" errors="0" time="0.005" timestamp="2026-10-29T13:27:55">
+    <testcase name="BracketSLERPOutOfOrderAndNoExtrapolation" status="run" result="completed" time="0" timestamp="2026-10-29T13:27:55" classname="TagTime" />
+    <testcase name="OffsetOnceSessionCalibrationAndMissingHistory" status="run" result="completed" time="0" timestamp="2026-10-29T13:27:55" classname="TagTime" />
+    <testcase name="MotionAndCameraLeverArmPropagateToDifferentScan" status="run" result="completed" time="0.001" timestamp="2026-10-29T13:27:55" classname="TagTime" />
+    <testcase name="UnverifiedTimeDuplicateInstancesAndCapacity" status="run" result="completed" time="0.004" timestamp="2026-10-29T13:27:55" classname="TagTime" />
+  </testsuite>
+  <testsuite name="TagLoop" tests="1" failures="0" disabled="0" errors="0" time="0" timestamp="2026-10-29T13:27:55">
+    <testcase name="NonunitRelativeTransformAndVisualRejection" status="run" result="completed" time="0" timestamp="2026-10-29T13:27:55" classname="TagLoop" />
+  </testsuite>
+  <testsuite name="TagMap" tests="3" failures="0" disabled="0" errors="0" time="0.008" timestamp="2026-10-29T13:27:55">
+    <testcase name="IndependentSupportRoundTripBindingAndNewCalibration" status="run" result="completed" time="0.008" timestamp="2026-10-29T13:27:55" classname="TagMap">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-tags-e2c6abc4d78aa94c0ee21598cfa0ce71"/>
+</properties>
+    </testcase>
+    <testcase name="StationaryDuplicatesAndPersistentTwoModesNeverBecomeAnchor" status="run" result="completed" time="0" timestamp="2026-10-29T13:27:55" classname="TagMap" />
+    <testcase name="ConflictingKnownTagsInvalidateEveryPrior" status="run" result="completed" time="0" timestamp="2026-10-29T13:27:55" classname="TagMap" />
+  </testsuite>
+</testsuites>

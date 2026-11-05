@@ -1,0 +1,17 @@
+test_corrupt_landmarks_disable_only_tag_and_unknown_observation_is_safe (__main__.TagRos) ... ok
+test_image_detector_c2_monitor_and_observer_exit_fallback (__main__.TagRos) ... FAIL
+
+======================================================================
+FAIL: test_image_detector_c2_monitor_and_observer_exit_fallback (__main__.TagRos)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_tags_ros.py", line 167, in test_image_detector_c2_monitor_and_observer_exit_fallback
+    self.wait(lambda: bool(self.images.get_subscription_count()))
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 144, in wait
+    self.fail('Timeout; '+str(self.directory)+'; last='+str([(m.state, m.reason) for m in self.private[-3:]]))
+AssertionError: Timeout; /home/lab307/ranger_nav/docs/fast_livo2_evidence/apriltag_20261029/ros/test_image_detector_c2_monitor_and_observer_exit_fallback-tk6j2xrn; last=[(0, 'map_loaded_searching'), (0, 'map_loaded_searching'), (0, 'map_loaded_searching')]
+
+----------------------------------------------------------------------
+Ran 2 tests in 12.236s
+
+FAILED (failures=1)

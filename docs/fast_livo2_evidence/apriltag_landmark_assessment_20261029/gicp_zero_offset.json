@@ -1,0 +1,3181 @@
+{
+  "assumed_offset_ns": 0,
+  "offset_is_calibrated": false,
+  "map_cameras": [
+    {
+      "xyz": [
+        2.5938665482462087,
+        0.7685296593980978,
+        1.0090486384266744
+      ],
+      "xyzw": [
+        -0.5770509150624561,
+        0.16659438734403026,
+        -0.40624734823988673,
+        0.6886375269901499
+      ]
+    },
+    {
+      "xyz": [
+        2.56936888816518,
+        0.7604875692251396,
+        1.0005187525691106
+      ],
+      "xyzw": [
+        -0.5807357756407605,
+        0.1593824789324056,
+        -0.4007091963270692,
+        0.6904891920075216
+      ]
+    },
+    {
+      "xyz": [
+        2.5684494623193204,
+        0.7632620160346266,
+        1.0029517785712219
+      ],
+      "xyzw": [
+        -0.580388173249852,
+        0.1594911865170618,
+        -0.3988075814453695,
+        0.6918559407541245
+      ]
+    },
+    {
+      "xyz": [
+        2.58413864791882,
+        0.7581830849728708,
+        1.0031404787443476
+      ],
+      "xyzw": [
+        -0.5812685326674348,
+        0.16182119936874448,
+        -0.39750941169840287,
+        0.691322688747229
+      ]
+    },
+    {
+      "xyz": [
+        2.5766445313923696,
+        0.7575048689653168,
+        1.0076106334479387
+      ],
+      "xyzw": [
+        -0.5798505587696126,
+        0.1610368476559091,
+        -0.3996191096465016,
+        0.691480318155877
+      ]
+    },
+    {
+      "xyz": [
+        2.5806272664001706,
+        0.7593116078262147,
+        1.0079789173621343
+      ],
+      "xyzw": [
+        -0.5805342678612783,
+        0.16147255414804346,
+        -0.39930800917340764,
+        0.6909845815252658
+      ]
+    },
+    {
+      "xyz": [
+        2.5935066715772823,
+        0.7586697022711998,
+        1.0122578678347796
+      ],
+      "xyzw": [
+        -0.5796809570042286,
+        0.16288683016766387,
+        -0.39969429127454276,
+        0.6911456736225245
+      ]
+    },
+    {
+      "xyz": [
+        2.593621819758842,
+        0.7639405977003786,
+        1.010870037574064
+      ],
+      "xyzw": [
+        -0.580382328307022,
+        0.16164590679696206,
+        -0.3994310205699767,
+        0.691000588719818
+      ]
+    },
+    {
+      "xyz": [
+        2.5918468792270253,
+        0.7638620361812847,
+        1.0089941875144377
+      ],
+      "xyzw": [
+        -0.5810415402025668,
+        0.16089724408381723,
+        -0.3991690993794033,
+        0.690772636622136
+      ]
+    },
+    {
+      "xyz": [
+        2.596440771860241,
+        0.763905723576266,
+        1.0131734106461523
+      ],
+      "xyzw": [
+        -0.580771290095447,
+        0.16177250062486057,
+        -0.39883449740502375,
+        0.69098871938848
+      ]
+    },
+    {
+      "xyz": [
+        2.591019037302111,
+        0.7600180903568822,
+        1.0105738704544267
+      ],
+      "xyzw": [
+        -0.580560501821204,
+        0.16145764209597463,
+        -0.3992193630242239,
+        0.69101724560278
+      ]
+    },
+    {
+      "xyz": [
+        2.5873823773337374,
+        0.7592609281804984,
+        1.0087362288850688
+      ],
+      "xyzw": [
+        -0.6033321148480242,
+        0.11964633771299447,
+        -0.36623362615962035,
+        0.6982464064603942
+      ]
+    },
+    {
+      "xyz": [
+        2.593502190890708,
+        0.7569077931195035,
+        1.0114097765687167
+      ],
+      "xyzw": [
+        -0.6132241304558679,
+        0.09992015017856312,
+        -0.3486411469254247,
+        0.7017274970282
+      ]
+    },
+    {
+      "xyz": [
+        2.6049404282134963,
+        0.7476352634568588,
+        1.0160315777429596
+      ],
+      "xyzw": [
+        -0.618806912096536,
+        0.08849305204922474,
+        -0.3382146081050356,
+        0.7034613451675367
+      ]
+    }
+  ],
+  "C1_support": [
+    {
+      "scan_stamp_ns": 1590195874300195217,
+      "scan_index": 726,
+      "image_stamp_ns": 1590195874200355430,
+      "attachment_delta_ns": 99839787,
+      "native_interpolation": {
+        "available": true,
+        "kind": "bracketed_slerp",
+        "pose": {
+          "xyz": [
+            2.564435030234277,
+            0.7687325456898529,
+            1.0418770560412234
+          ],
+          "xyzw": [
+            -0.12788032305257607,
+            -0.0010552859380419475,
+            0.3222765548165373,
+            0.9379676601904468
+          ]
+        },
+        "support_stamps_ns": [
+          1590195874200355291,
+          1590195874300195217
+        ],
+        "support_message_ids": [
+          1451,
+          1453
+        ],
+        "alpha": 1.3922285960027655e-06,
+        "gap_ns": 99839926,
+        "interval_speed_mps": 0.1510596649704358,
+        "interval_angular_speed_radps": 0.16634592406485132
+      },
+      "segment_scan_stamps_ns": [
+        1590195874100035429,
+        1590195874200355291,
+        1590195874300195217
+      ],
+      "C1_map_pose": {
+        "xyz": [
+          2.5457091135914465,
+          0.7762367321674651,
+          1.0381643206190985
+        ],
+        "xyzw": [
+          -0.1290951199013656,
+          -0.0021398441924596204,
+          0.3293980893664923,
+          0.935321746676612
+        ]
+      },
+      "C1_quality": {
+        "T_target_source": {
+          "xyz": [
+            2.5457091135914465,
+            0.7762367321674651,
+            1.0381643206190985
+          ],
+          "xyzw": [
+            -0.1290951199013656,
+            -0.0021398441924596204,
+            0.3293980893664923,
+            0.935321746676612
+          ]
+        },
+        "cache_bytes": 4503776,
+        "converged": true,
+        "correspondences": 2800,
+        "elapsed_ms": 72.82300199995007,
+        "geometrically_accepted": true,
+        "graph_version": 62,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "ba6fc8f61218a477d21da5e2b8afff43",
+        "method": "small_gicp",
+        "native_diagnostics": {
+          "H_eigenvalues": [
+            83307.34791723416,
+            103540.34961609665,
+            268184.97467446723,
+            797710.1610410103,
+            1874018.6379732564,
+            4589037.580160286
+          ],
+          "H_finite": true,
+          "accepted_hypotheses": 1,
+          "covariance_calibrated": false,
+          "error": 37.39861628243011,
+          "iterations": 3,
+          "local_hypotheses": 1,
+          "num_inliers": 2800,
+          "target_keyframe_ids": [
+            36,
+            35,
+            34,
+            33,
+            17,
+            16,
+            37,
+            20
+          ],
+          "target_points": 22160
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.20491945348455096,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.553081951030764,
+            0.7726896232564058,
+            1.045026309886561
+          ],
+          "xyzw": [
+            -0.1275124558367379,
+            -0.002539741455192355,
+            0.3268595194215729,
+            0.9364277750490548
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.04547116247905402,
+        "source_overlap": 1.0
+      },
+      "saved_C1_session_and_request_ids_available": false
+    },
+    {
+      "scan_stamp_ns": 1590195874400035381,
+      "scan_index": 727,
+      "image_stamp_ns": 1590195874300195430,
+      "attachment_delta_ns": 99839951,
+      "native_interpolation": {
+        "available": true,
+        "kind": "bracketed_slerp",
+        "pose": {
+          "xyz": [
+            2.5524388779412788,
+            0.7601091948144146,
+            1.0388456158662935
+          ],
+          "xyzw": [
+            -0.1307368040231778,
+            -0.002237384609258307,
+            0.3294239510803306,
+            0.9350843505473393
+          ]
+        },
+        "support_stamps_ns": [
+          1590195874300195217,
+          1590195874400035381
+        ],
+        "support_message_ids": [
+          1453,
+          1455
+        ],
+        "alpha": 2.1334099571390928e-06,
+        "gap_ns": 99840164,
+        "interval_speed_mps": 0.097902865052379,
+        "interval_angular_speed_radps": 0.037738269487281845
+      },
+      "segment_scan_stamps_ns": [
+        1590195874200355291,
+        1590195874300195217,
+        1590195874400035381
+      ],
+      "C1_map_pose": {
+        "xyz": [
+          2.539028103072464,
+          0.7702796289509122,
+          1.037087415192002
+        ],
+        "xyzw": [
+          -0.12924149949912164,
+          -0.0013607800154563983,
+          0.3326654101215213,
+          0.9341458708326276
+        ]
+      },
+      "C1_quality": {
+        "T_target_source": {
+          "xyz": [
+            2.539028103072464,
+            0.7702796289509122,
+            1.037087415192002
+          ],
+          "xyzw": [
+            -0.12924149949912164,
+            -0.0013607800154563983,
+            0.3326654101215213,
+            0.9341458708326277
+          ]
+        },
+        "cache_bytes": 4503776,
+        "converged": true,
+        "correspondences": 2847,
+        "elapsed_ms": 73.20679800000107,
+        "geometrically_accepted": true,
+        "graph_version": 62,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "ba6fc8f61218a477d21da5e2b8afff43",
+        "method": "small_gicp",
+        "native_diagnostics": {
+          "H_eigenvalues": [
+            87443.3648351565,
+            103537.63648106507,
+            252403.72459588927,
+            832391.2891307103,
+            1967292.3415808652,
+            4520900.109109948
+          ],
+          "H_finite": true,
+          "accepted_hypotheses": 1,
+          "covariance_calibrated": false,
+          "error": 49.207744543042296,
+          "iterations": 3,
+          "local_hypotheses": 1,
+          "num_inliers": 2847,
+          "target_keyframe_ids": [
+            36,
+            35,
+            34,
+            33,
+            17,
+            16,
+            37,
+            20
+          ],
+          "target_points": 22160
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.2087008021657601,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.551837813551551,
+            0.7701394015718657,
+            1.0427255865014653
+          ],
+          "xyzw": [
+            -0.12866531318473454,
+            -0.0019519855840764426,
+            0.3311364081467407,
+            0.9347674075057544
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.04678057207725558,
+        "source_overlap": 1.0
+      },
+      "saved_C1_session_and_request_ids_available": false
+    },
+    {
+      "scan_stamp_ns": 1590195874500355243,
+      "scan_index": 728,
+      "image_stamp_ns": 1590195874400035430,
+      "attachment_delta_ns": 100319813,
+      "native_interpolation": {
+        "available": true,
+        "kind": "bracketed_slerp",
+        "pose": {
+          "xyz": [
+            2.558563170608505,
+            0.7540272735861234,
+            1.043433267021422
+          ],
+          "xyzw": [
+            -0.13030726307318252,
+            -0.0020464625901581604,
+            0.33116218420008287,
+            0.934530597111231
+          ]
+        },
+        "support_stamps_ns": [
+          1590195874400035381,
+          1590195874500355243
+        ],
+        "support_message_ids": [
+          1455,
+          1457
+        ],
+        "alpha": 4.884376734888252e-07,
+        "gap_ns": 100319862,
+        "interval_speed_mps": 0.13551202660417694,
+        "interval_angular_speed_radps": 0.027929574309342793
+      },
+      "segment_scan_stamps_ns": [
+        1590195874300195217,
+        1590195874400035381,
+        1590195874500355243
+      ],
+      "C1_map_pose": {
+        "xyz": [
+          2.541163996533645,
+          0.7696692317711075,
+          1.0388815520347683
+        ],
+        "xyzw": [
+          -0.12814722873614867,
+          -6.427403885361419e-05,
+          0.33267325345262716,
+          0.9342948089727017
+        ]
+      },
+      "C1_quality": {
+        "T_target_source": {
+          "xyz": [
+            2.541163996533645,
+            0.7696692317711075,
+            1.0388815520347683
+          ],
+          "xyzw": [
+            -0.12814722873614867,
+            -6.427403885361419e-05,
+            0.33267325345262716,
+            0.9342948089727017
+          ]
+        },
+        "cache_bytes": 4503776,
+        "converged": true,
+        "correspondences": 2816,
+        "elapsed_ms": 72.36285399994813,
+        "geometrically_accepted": true,
+        "graph_version": 62,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "ba6fc8f61218a477d21da5e2b8afff43",
+        "method": "small_gicp",
+        "native_diagnostics": {
+          "H_eigenvalues": [
+            88913.50245319978,
+            100817.95837619179,
+            260793.33411109616,
+            796759.6941340634,
+            1800598.8961460728,
+            4329312.663324124
+          ],
+          "H_finite": true,
+          "accepted_hypotheses": 1,
+          "covariance_calibrated": false,
+          "error": 46.868461820499256,
+          "iterations": 2,
+          "local_hypotheses": 1,
+          "num_inliers": 2816,
+          "target_keyframe_ids": [
+            36,
+            35,
+            34,
+            33,
+            17,
+            16,
+            37,
+            20
+          ],
+          "target_points": 22160
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.2115235776676413,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.548236968625747,
+            0.761049043564756,
+            1.0409351182421112
+          ],
+          "xyzw": [
+            -0.12928177099056834,
+            3.9513915110750116e-05,
+            0.3326767581784445,
+            0.9341372472480014
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.046611022964600075,
+        "source_overlap": 1.0
+      },
+      "saved_C1_session_and_request_ids_available": false
+    },
+    {
+      "scan_stamp_ns": 1590195874700035333,
+      "scan_index": 730,
+      "image_stamp_ns": 1590195874600195430,
+      "attachment_delta_ns": 99839903,
+      "native_interpolation": {
+        "available": true,
+        "kind": "bracketed_slerp",
+        "pose": {
+          "xyz": [
+            2.570515343208095,
+            0.7396924130465028,
+            1.0466187068600732
+          ],
+          "xyzw": [
+            -0.12922035043109517,
+            -0.0002340757390731202,
+            0.3304821719164954,
+            0.934924371427106
+          ]
+        },
+        "support_stamps_ns": [
+          1590195874600195407,
+          1590195874700035333
+        ],
+        "support_message_ids": [
+          1459,
+          1461
+        ],
+        "alpha": 2.3036876048966622e-07,
+        "gap_ns": 99839926,
+        "interval_speed_mps": 0.05253979804992601,
+        "interval_angular_speed_radps": 0.03564044159107518
+      },
+      "segment_scan_stamps_ns": [
+        1590195874500355243,
+        1590195874600195407,
+        1590195874700035333
+      ],
+      "C1_map_pose": {
+        "xyz": [
+          2.543179932690973,
+          0.7720302593721337,
+          1.0370314579058395
+        ],
+        "xyzw": [
+          -0.12770398914356346,
+          -4.056235450351798e-05,
+          0.3314588026916452,
+          0.9347870086975626
+        ]
+      },
+      "C1_quality": {
+        "T_target_source": {
+          "xyz": [
+            2.543179932690973,
+            0.7720302593721337,
+            1.0370314579058395
+          ],
+          "xyzw": [
+            -0.12770398914356346,
+            -4.0562354503517974e-05,
+            0.3314588026916452,
+            0.9347870086975627
+          ]
+        },
+        "cache_bytes": 4503776,
+        "converged": true,
+        "correspondences": 2795,
+        "elapsed_ms": 73.27619300008337,
+        "geometrically_accepted": true,
+        "graph_version": 62,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "ba6fc8f61218a477d21da5e2b8afff43",
+        "method": "small_gicp",
+        "native_diagnostics": {
+          "H_eigenvalues": [
+            88798.95416306428,
+            110529.27098697789,
+            240129.80652159976,
+            909235.5555567871,
+            1859914.6683695123,
+            4332644.034522488
+          ],
+          "H_finite": true,
+          "accepted_hypotheses": 1,
+          "covariance_calibrated": false,
+          "error": 45.97680867601786,
+          "iterations": 3,
+          "local_hypotheses": 1,
+          "num_inliers": 2795,
+          "target_keyframe_ids": [
+            35,
+            34,
+            36,
+            33,
+            16,
+            17,
+            37,
+            20
+          ],
+          "target_points": 22160
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.21411931475397772,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.5372018073773757,
+            0.7659381998577437,
+            1.0383788773506195
+          ],
+          "xyzw": [
+            -0.12871483617174811,
+            -0.0010901462902259016,
+            0.3312996076077758,
+            0.9347041631068516
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.04767337653940138,
+        "source_overlap": 1.0
+      },
+      "saved_C1_session_and_request_ids_available": false
+    },
+    {
+      "scan_stamp_ns": 1590195874800355434,
+      "scan_index": 731,
+      "image_stamp_ns": 1590195874700035430,
+      "attachment_delta_ns": 100320004,
+      "native_interpolation": {
+        "available": true,
+        "kind": "bracketed_slerp",
+        "pose": {
+          "xyz": [
+            2.5658413622673426,
+            0.7378906054629112,
+            1.0481754139923392
+          ],
+          "xyzw": [
+            -0.1299526773479382,
+            -0.0014236365960769363,
+            0.329414940281183,
+            0.9351984131875384
+          ]
+        },
+        "support_stamps_ns": [
+          1590195874700035333,
+          1590195874800355434
+        ],
+        "support_message_ids": [
+          1461,
+          1463
+        ],
+        "alpha": 9.66904927657519e-07,
+        "gap_ns": 100320101,
+        "interval_speed_mps": 0.04448801783500097,
+        "interval_angular_speed_radps": 0.019934575929420235
+      },
+      "segment_scan_stamps_ns": [
+        1590195874600195407,
+        1590195874700035333,
+        1590195874800355434
+      ],
+      "C1_map_pose": {
+        "xyz": [
+          2.5442709370742995,
+          0.775084692239579,
+          1.0401830681200595
+        ],
+        "xyzw": [
+          -0.1275875827789724,
+          -7.211561199370416e-05,
+          0.3311222309477745,
+          0.9349221741365034
+        ]
+      },
+      "C1_quality": {
+        "T_target_source": {
+          "xyz": [
+            2.5442709370742995,
+            0.775084692239579,
+            1.0401830681200595
+          ],
+          "xyzw": [
+            -0.12758758277897236,
+            -7.211561199370415e-05,
+            0.33112223094777443,
+            0.9349221741365032
+          ]
+        },
+        "cache_bytes": 4503776,
+        "converged": true,
+        "correspondences": 2770,
+        "elapsed_ms": 72.50195599999643,
+        "geometrically_accepted": true,
+        "graph_version": 62,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "ba6fc8f61218a477d21da5e2b8afff43",
+        "method": "small_gicp",
+        "native_diagnostics": {
+          "H_eigenvalues": [
+            86412.01234964626,
+            106162.41481309509,
+            263491.96091398335,
+            786716.5421086407,
+            2036296.341373237,
+            4443526.665562182
+          ],
+          "H_finite": true,
+          "accepted_hypotheses": 1,
+          "covariance_calibrated": false,
+          "error": 38.91650444649489,
+          "iterations": 2,
+          "local_hypotheses": 1,
+          "num_inliers": 2770,
+          "target_keyframe_ids": [
+            36,
+            35,
+            34,
+            33,
+            17,
+            16,
+            37,
+            20
+          ],
+          "target_points": 22160
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.2185947608984612,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.54722020984252,
+            0.7738830396917216,
+            1.0374340910758193
+          ],
+          "xyzw": [
+            -0.12792900690146608,
+            0.0009332637122774392,
+            0.33144768268399916,
+            0.9347597187809576
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.046583959871721314,
+        "source_overlap": 1.0
+      },
+      "saved_C1_session_and_request_ids_available": false
+    },
+    {
+      "scan_stamp_ns": 1590195874800355434,
+      "scan_index": 731,
+      "image_stamp_ns": 1590195874800355430,
+      "attachment_delta_ns": 4,
+      "native_interpolation": {
+        "available": true,
+        "kind": "bracketed_slerp",
+        "pose": {
+          "xyz": [
+            2.569886659702621,
+            0.7397295619369445,
+            1.0485907638241756
+          ],
+          "xyzw": [
+            -0.13017580317185415,
+            -0.00044935109172637754,
+            0.3294018046787698,
+            0.9351729836915353
+          ]
+        },
+        "support_stamps_ns": [
+          1590195874700035333,
+          1590195874800355434
+        ],
+        "support_message_ids": [
+          1461,
+          1463
+        ],
+        "alpha": 0.9999999601276318,
+        "gap_ns": 100320101,
+        "interval_speed_mps": 0.04448801783500097,
+        "interval_angular_speed_radps": 0.019934575929420235
+      },
+      "segment_scan_stamps_ns": [
+        1590195874600195407,
+        1590195874700035333,
+        1590195874800355434
+      ],
+      "C1_map_pose": {
+        "xyz": [
+          2.5442709370742995,
+          0.775084692239579,
+          1.0401830681200595
+        ],
+        "xyzw": [
+          -0.1275875827789724,
+          -7.211561199370416e-05,
+          0.3311222309477745,
+          0.9349221741365034
+        ]
+      },
+      "C1_quality": {
+        "T_target_source": {
+          "xyz": [
+            2.5442709370742995,
+            0.775084692239579,
+            1.0401830681200595
+          ],
+          "xyzw": [
+            -0.12758758277897236,
+            -7.211561199370415e-05,
+            0.33112223094777443,
+            0.9349221741365032
+          ]
+        },
+        "cache_bytes": 4503776,
+        "converged": true,
+        "correspondences": 2770,
+        "elapsed_ms": 72.50195599999643,
+        "geometrically_accepted": true,
+        "graph_version": 62,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "ba6fc8f61218a477d21da5e2b8afff43",
+        "method": "small_gicp",
+        "native_diagnostics": {
+          "H_eigenvalues": [
+            86412.01234964626,
+            106162.41481309509,
+            263491.96091398335,
+            786716.5421086407,
+            2036296.341373237,
+            4443526.665562182
+          ],
+          "H_finite": true,
+          "accepted_hypotheses": 1,
+          "covariance_calibrated": false,
+          "error": 38.91650444649489,
+          "iterations": 2,
+          "local_hypotheses": 1,
+          "num_inliers": 2770,
+          "target_keyframe_ids": [
+            36,
+            35,
+            34,
+            33,
+            17,
+            16,
+            37,
+            20
+          ],
+          "target_points": 22160
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.2185947608984612,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.54722020984252,
+            0.7738830396917216,
+            1.0374340910758193
+          ],
+          "xyzw": [
+            -0.12792900690146608,
+            0.0009332637122774392,
+            0.33144768268399916,
+            0.9347597187809576
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.046583959871721314,
+        "source_overlap": 1.0
+      },
+      "saved_C1_session_and_request_ids_available": false
+    },
+    {
+      "scan_stamp_ns": 1590195875000050544,
+      "scan_index": 733,
+      "image_stamp_ns": 1590195874900195430,
+      "attachment_delta_ns": 99855114,
+      "native_interpolation": {
+        "available": true,
+        "kind": "bracketed_slerp",
+        "pose": {
+          "xyz": [
+            2.574875269168204,
+            0.7439973831913432,
+            1.0484864299653467
+          ],
+          "xyzw": [
+            -0.12899631942419257,
+            -0.0007021373982385422,
+            0.3283948879682914,
+            0.9356902554448129
+          ]
+        },
+        "support_stamps_ns": [
+          1590195874900195360,
+          1590195875000050544
+        ],
+        "support_message_ids": [
+          1465,
+          1467
+        ],
+        "alpha": 7.010151821461768e-07,
+        "gap_ns": 99855184,
+        "interval_speed_mps": 0.05471214390836395,
+        "interval_angular_speed_radps": 0.02917769187806457
+      },
+      "segment_scan_stamps_ns": [
+        1590195874800355434,
+        1590195874900195360,
+        1590195875000050544
+      ],
+      "C1_map_pose": {
+        "xyz": [
+          2.5572709609777178,
+          0.7797179670110256,
+          1.0430782665117786
+        ],
+        "xyzw": [
+          -0.12743953382633275,
+          -0.00011421588657821568,
+          0.33092979335147005,
+          0.9350104940829336
+        ]
+      },
+      "C1_quality": {
+        "T_target_source": {
+          "xyz": [
+            2.5572709609777178,
+            0.7797179670110256,
+            1.0430782665117786
+          ],
+          "xyzw": [
+            -0.12743953382633275,
+            -0.0001142158865782157,
+            0.33092979335147005,
+            0.9350104940829336
+          ]
+        },
+        "cache_bytes": 4503776,
+        "converged": true,
+        "correspondences": 2739,
+        "elapsed_ms": 71.72496399994088,
+        "geometrically_accepted": true,
+        "graph_version": 62,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "ba6fc8f61218a477d21da5e2b8afff43",
+        "method": "small_gicp",
+        "native_diagnostics": {
+          "H_eigenvalues": [
+            88016.81701321244,
+            107191.73635031782,
+            241222.99108655268,
+            795166.6267808833,
+            1888187.0392848682,
+            4244564.588893263
+          ],
+          "H_finite": true,
+          "accepted_hypotheses": 1,
+          "covariance_calibrated": false,
+          "error": 44.54363656969474,
+          "iterations": 1,
+          "local_hypotheses": 1,
+          "num_inliers": 2739,
+          "target_keyframe_ids": [
+            36,
+            35,
+            34,
+            33,
+            17,
+            16,
+            37,
+            20
+          ],
+          "target_points": 22160
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.21977514715396035,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.5546050589843756,
+            0.7811184687829561,
+            1.0406960476016371
+          ],
+          "xyzw": [
+            -0.12849666685432296,
+            -0.0003099225884201606,
+            0.3313253414707508,
+            0.9347256435203908
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.046228549583152936,
+        "source_overlap": 1.0
+      },
+      "saved_C1_session_and_request_ids_available": false
+    },
+    {
+      "scan_stamp_ns": 1590195875000050544,
+      "scan_index": 733,
+      "image_stamp_ns": 1590195875000050370,
+      "attachment_delta_ns": 174,
+      "native_interpolation": {
+        "available": true,
+        "kind": "bracketed_slerp",
+        "pose": {
+          "xyz": [
+            2.5749560161765657,
+            0.7492579693320328,
+            1.0470143164462253
+          ],
+          "xyzw": [
+            -0.13008538686117863,
+            -0.0008566279506666486,
+            0.3292386638348252,
+            0.9352427281460096
+          ]
+        },
+        "support_stamps_ns": [
+          1590195874900195360,
+          1590195875000050544
+        ],
+        "support_message_ids": [
+          1465,
+          1467
+        ],
+        "alpha": 0.9999982574765472,
+        "gap_ns": 99855184,
+        "interval_speed_mps": 0.05471214390836395,
+        "interval_angular_speed_radps": 0.02917769187806457
+      },
+      "segment_scan_stamps_ns": [
+        1590195874800355434,
+        1590195874900195360,
+        1590195875000050544
+      ],
+      "C1_map_pose": {
+        "xyz": [
+          2.5572709609777178,
+          0.7797179670110256,
+          1.0430782665117786
+        ],
+        "xyzw": [
+          -0.12743953382633275,
+          -0.00011421588657821568,
+          0.33092979335147005,
+          0.9350104940829336
+        ]
+      },
+      "C1_quality": {
+        "T_target_source": {
+          "xyz": [
+            2.5572709609777178,
+            0.7797179670110256,
+            1.0430782665117786
+          ],
+          "xyzw": [
+            -0.12743953382633275,
+            -0.0001142158865782157,
+            0.33092979335147005,
+            0.9350104940829336
+          ]
+        },
+        "cache_bytes": 4503776,
+        "converged": true,
+        "correspondences": 2739,
+        "elapsed_ms": 71.72496399994088,
+        "geometrically_accepted": true,
+        "graph_version": 62,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "ba6fc8f61218a477d21da5e2b8afff43",
+        "method": "small_gicp",
+        "native_diagnostics": {
+          "H_eigenvalues": [
+            88016.81701321244,
+            107191.73635031782,
+            241222.99108655268,
+            795166.6267808833,
+            1888187.0392848682,
+            4244564.588893263
+          ],
+          "H_finite": true,
+          "accepted_hypotheses": 1,
+          "covariance_calibrated": false,
+          "error": 44.54363656969474,
+          "iterations": 1,
+          "local_hypotheses": 1,
+          "num_inliers": 2739,
+          "target_keyframe_ids": [
+            36,
+            35,
+            34,
+            33,
+            17,
+            16,
+            37,
+            20
+          ],
+          "target_points": 22160
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.21977514715396035,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.5546050589843756,
+            0.7811184687829561,
+            1.0406960476016371
+          ],
+          "xyzw": [
+            -0.12849666685432296,
+            -0.0003099225884201606,
+            0.3313253414707508,
+            0.9347256435203908
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.046228549583152936,
+        "source_overlap": 1.0
+      },
+      "saved_C1_session_and_request_ids_available": false
+    },
+    {
+      "scan_stamp_ns": 1590195875100370407,
+      "scan_index": 734,
+      "image_stamp_ns": 1590195875100370370,
+      "attachment_delta_ns": 37,
+      "native_interpolation": {
+        "available": true,
+        "kind": "bracketed_slerp",
+        "pose": {
+          "xyz": [
+            2.5766080759401286,
+            0.7532224377348594,
+            1.0495079899780209
+          ],
+          "xyzw": [
+            -0.1306073884563605,
+            -0.0011881906487547335,
+            0.32926875906579056,
+            0.9351590145995846
+          ]
+        },
+        "support_stamps_ns": [
+          1590195875000050544,
+          1590195875100370407
+        ],
+        "support_message_ids": [
+          1467,
+          1469
+        ],
+        "alpha": 0.9999996311797196,
+        "gap_ns": 100319863,
+        "interval_speed_mps": 0.04950519587613427,
+        "interval_angular_speed_radps": 0.012455456170985325
+      },
+      "segment_scan_stamps_ns": [
+        1590195874900195360,
+        1590195875000050544,
+        1590195875100370407
+      ],
+      "C1_map_pose": {
+        "xyz": [
+          2.555471909370888,
+          0.7796478815479979,
+          1.041171025824954
+        ],
+        "xyzw": [
+          -0.12825058174599094,
+          2.3924283875817523e-05,
+          0.3315113977612209,
+          0.9346935224253162
+        ]
+      },
+      "C1_quality": {
+        "T_target_source": {
+          "xyz": [
+            2.555471909370888,
+            0.7796478815479979,
+            1.041171025824954
+          ],
+          "xyzw": [
+            -0.12825058174599094,
+            2.3924283875817523e-05,
+            0.3315113977612209,
+            0.9346935224253162
+          ]
+        },
+        "cache_bytes": 4503776,
+        "converged": true,
+        "correspondences": 2786,
+        "elapsed_ms": 73.32269499988797,
+        "geometrically_accepted": true,
+        "graph_version": 62,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "ba6fc8f61218a477d21da5e2b8afff43",
+        "method": "small_gicp",
+        "native_diagnostics": {
+          "H_eigenvalues": [
+            69311.5440375895,
+            93683.96072012995,
+            260324.77711323343,
+            699974.1570393945,
+            1959580.8453085783,
+            4374258.119567584
+          ],
+          "H_finite": true,
+          "accepted_hypotheses": 1,
+          "covariance_calibrated": false,
+          "error": 39.79988225561523,
+          "iterations": 2,
+          "local_hypotheses": 1,
+          "num_inliers": 2786,
+          "target_keyframe_ids": [
+            36,
+            35,
+            34,
+            33,
+            17,
+            16,
+            37,
+            18
+          ],
+          "target_points": 22298
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.21641473670647304,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.558919555565218,
+            0.7836765994547358,
+            1.045583469450526
+          ],
+          "xyzw": [
+            -0.12796114281083482,
+            -0.0004468085947197544,
+            0.3309599590411785,
+            0.9349284741647814
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.04571765107427805,
+        "source_overlap": 1.0
+      },
+      "saved_C1_session_and_request_ids_available": false
+    },
+    {
+      "scan_stamp_ns": 1590195875300050497,
+      "scan_index": 736,
+      "image_stamp_ns": 1590195875200210370,
+      "attachment_delta_ns": 99840127,
+      "native_interpolation": {
+        "available": true,
+        "kind": "bracketed_slerp",
+        "pose": {
+          "xyz": [
+            2.578905347856456,
+            0.7497224480917294,
+            1.050711153435642
+          ],
+          "xyzw": [
+            -0.1301429391790426,
+            -0.0004601833402719311,
+            0.3298932208628035,
+            0.9350043135953432
+          ]
+        },
+        "support_stamps_ns": [
+          1590195875200210332,
+          1590195875300050497
+        ],
+        "support_message_ids": [
+          1471,
+          1473
+        ],
+        "alpha": 3.8060834534878826e-07,
+        "gap_ns": 99840165,
+        "interval_speed_mps": 0.07204227526477629,
+        "interval_angular_speed_radps": 0.010834041667011178
+      },
+      "segment_scan_stamps_ns": [
+        1590195875100370407,
+        1590195875200210332,
+        1590195875300050497
+      ],
+      "C1_map_pose": {
+        "xyz": [
+          2.554662937086915,
+          0.7757842377738279,
+          1.042781678725638
+        ],
+        "xyzw": [
+          -0.1275636291473129,
+          -4.29428507711383e-05,
+          0.33120965839422944,
+          0.934894475789143
+        ]
+      },
+      "C1_quality": {
+        "T_target_source": {
+          "xyz": [
+            2.554662937086915,
+            0.7757842377738279,
+            1.042781678725638
+          ],
+          "xyzw": [
+            -0.12756362914731287,
+            -4.29428507711383e-05,
+            0.33120965839422933,
+            0.9348944757891429
+          ]
+        },
+        "cache_bytes": 4503776,
+        "converged": true,
+        "correspondences": 2822,
+        "elapsed_ms": 72.4938910000219,
+        "geometrically_accepted": true,
+        "graph_version": 62,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "ba6fc8f61218a477d21da5e2b8afff43",
+        "method": "small_gicp",
+        "native_diagnostics": {
+          "H_eigenvalues": [
+            88525.23873122886,
+            105102.21670717317,
+            261510.84773683938,
+            846152.790461627,
+            2004281.430390572,
+            4461374.913060743
+          ],
+          "H_finite": true,
+          "accepted_hypotheses": 1,
+          "covariance_calibrated": false,
+          "error": 43.92174211792381,
+          "iterations": 2,
+          "local_hypotheses": 1,
+          "num_inliers": 2822,
+          "target_keyframe_ids": [
+            36,
+            35,
+            34,
+            33,
+            17,
+            16,
+            37,
+            20
+          ],
+          "target_points": 22160
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.21342791662854887,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.550570846290365,
+            0.7759485571648238,
+            1.0412158379017944
+          ],
+          "xyzw": [
+            -0.1281735909877328,
+            -0.000677514816674552,
+            0.33152364517069016,
+            0.934699494083377
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.04585307276332992,
+        "source_overlap": 1.0
+      },
+      "saved_C1_session_and_request_ids_available": false
+    },
+    {
+      "scan_stamp_ns": 1590195875300050497,
+      "scan_index": 736,
+      "image_stamp_ns": 1590195875300050370,
+      "attachment_delta_ns": 127,
+      "native_interpolation": {
+        "available": true,
+        "kind": "bracketed_slerp",
+        "pose": {
+          "xyz": [
+            2.5734528346893297,
+            0.7458464668178127,
+            1.0480688412692807
+          ],
+          "xyzw": [
+            -0.1303427486972274,
+            -0.0009336553782819362,
+            0.3297274330957979,
+            0.9350346068535337
+          ]
+        },
+        "support_stamps_ns": [
+          1590195875200210332,
+          1590195875300050497
+        ],
+        "support_message_ids": [
+          1471,
+          1473
+        ],
+        "alpha": 0.9999987279668459,
+        "gap_ns": 99840165,
+        "interval_speed_mps": 0.07204227526477629,
+        "interval_angular_speed_radps": 0.010834041667011178
+      },
+      "segment_scan_stamps_ns": [
+        1590195875100370407,
+        1590195875200210332,
+        1590195875300050497
+      ],
+      "C1_map_pose": {
+        "xyz": [
+          2.554662937086915,
+          0.7757842377738279,
+          1.042781678725638
+        ],
+        "xyzw": [
+          -0.1275636291473129,
+          -4.29428507711383e-05,
+          0.33120965839422944,
+          0.934894475789143
+        ]
+      },
+      "C1_quality": {
+        "T_target_source": {
+          "xyz": [
+            2.554662937086915,
+            0.7757842377738279,
+            1.042781678725638
+          ],
+          "xyzw": [
+            -0.12756362914731287,
+            -4.29428507711383e-05,
+            0.33120965839422933,
+            0.9348944757891429
+          ]
+        },
+        "cache_bytes": 4503776,
+        "converged": true,
+        "correspondences": 2822,
+        "elapsed_ms": 72.4938910000219,
+        "geometrically_accepted": true,
+        "graph_version": 62,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "ba6fc8f61218a477d21da5e2b8afff43",
+        "method": "small_gicp",
+        "native_diagnostics": {
+          "H_eigenvalues": [
+            88525.23873122886,
+            105102.21670717317,
+            261510.84773683938,
+            846152.790461627,
+            2004281.430390572,
+            4461374.913060743
+          ],
+          "H_finite": true,
+          "accepted_hypotheses": 1,
+          "covariance_calibrated": false,
+          "error": 43.92174211792381,
+          "iterations": 2,
+          "local_hypotheses": 1,
+          "num_inliers": 2822,
+          "target_keyframe_ids": [
+            36,
+            35,
+            34,
+            33,
+            17,
+            16,
+            37,
+            20
+          ],
+          "target_points": 22160
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.21342791662854887,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.550570846290365,
+            0.7759485571648238,
+            1.0412158379017944
+          ],
+          "xyzw": [
+            -0.1281735909877328,
+            -0.000677514816674552,
+            0.33152364517069016,
+            0.934699494083377
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.04585307276332992,
+        "source_overlap": 1.0
+      },
+      "saved_C1_session_and_request_ids_available": false
+    },
+    {
+      "scan_stamp_ns": 1590195875700370550,
+      "scan_index": 740,
+      "image_stamp_ns": 1590195875700370370,
+      "attachment_delta_ns": 180,
+      "native_interpolation": {
+        "available": true,
+        "kind": "bracketed_slerp",
+        "pose": {
+          "xyz": [
+            2.5310850756789187,
+            0.7767705336020915,
+            1.030949780832914
+          ],
+          "xyzw": [
+            -0.150625562560897,
+            -0.0006053630398772706,
+            0.3808728385022981,
+            0.9122759748727387
+          ]
+        },
+        "support_stamps_ns": [
+          1590195875600050449,
+          1590195875700370550
+        ],
+        "support_message_ids": [
+          1479,
+          1481
+        ],
+        "alpha": 0.9999982057434332,
+        "gap_ns": 100320101,
+        "interval_speed_mps": 0.05511218013422375,
+        "interval_angular_speed_radps": 0.5592859161564308
+      },
+      "segment_scan_stamps_ns": [
+        1590195875500210523,
+        1590195875600050449,
+        1590195875700370550
+      ],
+      "C1_map_pose": {
+        "xyz": [
+          2.5493527098306807,
+          0.7724905014420452,
+          1.0401432755595272
+        ],
+        "xyzw": [
+          -0.14935980015367928,
+          -0.000997959263755751,
+          0.3805532338797137,
+          0.9126170557024742
+        ]
+      },
+      "C1_quality": {
+        "T_target_source": {
+          "xyz": [
+            2.5493527098306807,
+            0.7724905014420452,
+            1.0401432755595272
+          ],
+          "xyzw": [
+            -0.14935980015367925,
+            -0.0009979592637557513,
+            0.3805532338797136,
+            0.9126170557024741
+          ]
+        },
+        "cache_bytes": 4503776,
+        "converged": true,
+        "correspondences": 2787,
+        "elapsed_ms": 73.4964379998928,
+        "geometrically_accepted": true,
+        "graph_version": 62,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "ba6fc8f61218a477d21da5e2b8afff43",
+        "method": "small_gicp",
+        "native_diagnostics": {
+          "H_eigenvalues": [
+            55970.51958163911,
+            86136.65244926563,
+            248590.104084937,
+            645614.3391408623,
+            1830191.0699415738,
+            4271203.575525098
+          ],
+          "H_finite": true,
+          "accepted_hypotheses": 1,
+          "covariance_calibrated": false,
+          "error": 40.10292034088292,
+          "iterations": 3,
+          "local_hypotheses": 1,
+          "num_inliers": 2787,
+          "target_keyframe_ids": [
+            36,
+            35,
+            33,
+            17,
+            16,
+            37,
+            20,
+            18
+          ],
+          "target_points": 22166
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.2046780222112858,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.5515078584344453,
+            0.7797094866259839,
+            1.040450479436222
+          ],
+          "xyzw": [
+            -0.14975420314415913,
+            -0.0008427727693423866,
+            0.3779617508479481,
+            0.9136289636776358
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.06073175747248185,
+        "source_overlap": 0.9992828970957333
+      },
+      "saved_C1_session_and_request_ids_available": false
+    },
+    {
+      "scan_stamp_ns": 1590195875800210475,
+      "scan_index": 741,
+      "image_stamp_ns": 1590195875800210370,
+      "attachment_delta_ns": 105,
+      "native_interpolation": {
+        "available": true,
+        "kind": "bracketed_slerp",
+        "pose": {
+          "xyz": [
+            2.5590062886473537,
+            0.7594914381249188,
+            1.0421438900106557
+          ],
+          "xyzw": [
+            -0.1577690397940494,
+            -0.0008571553015021432,
+            0.4035093443967519,
+            0.9012704390757283
+          ]
+        },
+        "support_stamps_ns": [
+          1590195875700370550,
+          1590195875800210475
+        ],
+        "support_message_ids": [
+          1481,
+          1483
+        ],
+        "alpha": 0.9999989483165177,
+        "gap_ns": 99839925,
+        "interval_speed_mps": 0.34746704558578895,
+        "interval_angular_speed_radps": 0.5241606652141991
+      },
+      "segment_scan_stamps_ns": [
+        1590195875600050449,
+        1590195875700370550,
+        1590195875800210475
+      ],
+      "C1_map_pose": {
+        "xyz": [
+          2.554808156124857,
+          0.7687136443974358,
+          1.0425718013847998
+        ],
+        "xyzw": [
+          -0.15831399320453707,
+          -0.0011569855124830587,
+          0.4047317897130439,
+          0.9006261817956627
+        ]
+      },
+      "C1_quality": {
+        "T_target_source": {
+          "xyz": [
+            2.554808156124857,
+            0.7687136443974358,
+            1.0425718013847998
+          ],
+          "xyzw": [
+            -0.15831399320453707,
+            -0.0011569855124830587,
+            0.40473178971304397,
+            0.9006261817956627
+          ]
+        },
+        "cache_bytes": 4503776,
+        "converged": true,
+        "correspondences": 2792,
+        "elapsed_ms": 75.22862799987706,
+        "geometrically_accepted": true,
+        "graph_version": 62,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "ba6fc8f61218a477d21da5e2b8afff43",
+        "method": "small_gicp",
+        "native_diagnostics": {
+          "H_eigenvalues": [
+            88956.52681912703,
+            102308.34941579573,
+            262555.9358727105,
+            870710.2730684759,
+            1918943.607965246,
+            4406420.458434446
+          ],
+          "H_finite": true,
+          "accepted_hypotheses": 1,
+          "covariance_calibrated": false,
+          "error": 45.1166756582194,
+          "iterations": 4,
+          "local_hypotheses": 1,
+          "num_inliers": 2792,
+          "target_keyframe_ids": [
+            36,
+            35,
+            34,
+            33,
+            17,
+            16,
+            37,
+            20
+          ],
+          "target_points": 22160
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.21108231590992094,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.5772631257853207,
+            0.755160912222537,
+            1.0512862245384291
+          ],
+          "xyzw": [
+            -0.15651654931455605,
+            -0.0012786951782391735,
+            0.4031938814973079,
+            0.9016294297838997
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.049004485942971965,
+        "source_overlap": 1.0
+      },
+      "saved_C1_session_and_request_ids_available": false
+    },
+    {
+      "scan_stamp_ns": 1590195875900050401,
+      "scan_index": 742,
+      "image_stamp_ns": 1590195875900050370,
+      "attachment_delta_ns": 31,
+      "native_interpolation": {
+        "available": true,
+        "kind": "bracketed_slerp",
+        "pose": {
+          "xyz": [
+            2.5872938910207735,
+            0.738796400511284,
+            1.0551583039480656
+          ],
+          "xyzw": [
+            -0.16522780224627703,
+            -0.001712911655930047,
+            0.41628434068543485,
+            0.894094059368821
+          ]
+        },
+        "support_stamps_ns": [
+          1590195875800210475,
+          1590195875900050401
+        ],
+        "support_message_ids": [
+          1483,
+          1485
+        ],
+        "alpha": 0.999999689502975,
+        "gap_ns": 99839926,
+        "interval_speed_mps": 0.37447724804674515,
+        "interval_angular_speed_radps": 0.32981312032326704
+      },
+      "segment_scan_stamps_ns": [
+        1590195875700370550,
+        1590195875800210475,
+        1590195875900050401
+      ],
+      "C1_map_pose": {
+        "xyz": [
+          2.565902948677008,
+          0.7585978004060131,
+          1.0470731241309037
+        ],
+        "xyzw": [
+          -0.16343489760962954,
+          -0.0011289931081254184,
+          0.4186539579732466,
+          0.8933177615446961
+        ]
+      },
+      "C1_quality": {
+        "T_target_source": {
+          "xyz": [
+            2.565902948677008,
+            0.7585978004060131,
+            1.0470731241309037
+          ],
+          "xyzw": [
+            -0.16343489760962956,
+            -0.0011289931081254184,
+            0.41865395797324667,
+            0.8933177615446962
+          ]
+        },
+        "cache_bytes": 4503776,
+        "converged": true,
+        "correspondences": 2856,
+        "elapsed_ms": 75.24351300003218,
+        "geometrically_accepted": true,
+        "graph_version": 62,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "ba6fc8f61218a477d21da5e2b8afff43",
+        "method": "small_gicp",
+        "native_diagnostics": {
+          "H_eigenvalues": [
+            79632.99201238962,
+            86191.46834509593,
+            247468.10021249126,
+            780450.440192978,
+            1828749.9115153549,
+            4367124.036824806
+          ],
+          "H_finite": true,
+          "accepted_hypotheses": 1,
+          "covariance_calibrated": false,
+          "error": 61.20210008684115,
+          "iterations": 4,
+          "local_hypotheses": 1,
+          "num_inliers": 2856,
+          "target_keyframe_ids": [
+            36,
+            35,
+            34,
+            33,
+            17,
+            16,
+            37,
+            20
+          ],
+          "target_points": 22160
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.20530160665491295,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.5831461448387434,
+            0.7481107022677137,
+            1.0556225990401171
+          ],
+          "xyzw": [
+            -0.16577194777042115,
+            -0.002015068919138866,
+            0.4174948268464685,
+            0.8934280443248294
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.05242210602001413,
+        "source_overlap": 1.0
+      },
+      "saved_C1_session_and_request_ids_available": false
+    }
+  ],
+  "candidate_observations": [
+    {
+      "image_index": 729,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18312:tag36h11:1:0",
+      "hypothesis_id": 0,
+      "T_map_tag": {
+        "xyz": [
+          3.507855713013516,
+          2.3812011123063423,
+          1.0767764319679693
+        ],
+        "xyzw": [
+          -0.6799500132102081,
+          -0.1360083127640781,
+          -0.12038972657919951,
+          0.7104055406095113
+        ]
+      }
+    },
+    {
+      "image_index": 729,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18312:tag36h11:1:0",
+      "hypothesis_id": 1,
+      "T_map_tag": {
+        "xyz": [
+          3.504044278758552,
+          2.380293135398488,
+          1.076718029409912
+        ],
+        "xyzw": [
+          0.6519734642311608,
+          -0.2503115933056913,
+          0.4576582325915595,
+          -0.5502941489206982
+        ]
+      }
+    },
+    {
+      "image_index": 730,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18315:tag36h11:1:0",
+      "hypothesis_id": 0,
+      "T_map_tag": {
+        "xyz": [
+          3.4700633092309516,
+          2.392026409591675,
+          1.0655126323873543
+        ],
+        "xyzw": [
+          -0.6825112901263932,
+          -0.1412399841116432,
+          -0.11673170457829354,
+          0.707533260620584
+        ]
+      }
+    },
+    {
+      "image_index": 730,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18315:tag36h11:1:0",
+      "hypothesis_id": 1,
+      "T_map_tag": {
+        "xyz": [
+          3.4662414289450076,
+          2.3910068738561643,
+          1.065409309666753
+        ],
+        "xyzw": [
+          0.6514737430344217,
+          -0.24451478057124976,
+          0.45728363954125656,
+          -0.5537925218227635
+        ]
+      }
+    },
+    {
+      "image_index": 731,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18317:tag36h11:1:0",
+      "hypothesis_id": 0,
+      "T_map_tag": {
+        "xyz": [
+          3.4638416041887634,
+          2.3984795701407107,
+          1.0708416276316473
+        ],
+        "xyzw": [
+          -0.6836787796901171,
+          -0.1415559400702474,
+          -0.11593741873679275,
+          0.7064727574145448
+        ]
+      }
+    },
+    {
+      "image_index": 731,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18317:tag36h11:1:0",
+      "hypothesis_id": 1,
+      "T_map_tag": {
+        "xyz": [
+          3.4599493849993466,
+          2.397294689464399,
+          1.0707023129014823
+        ],
+        "xyzw": [
+          0.6498759438260814,
+          -0.2426244626552041,
+          0.45644919979463483,
+          -0.5571792851176995
+        ]
+      }
+    },
+    {
+      "image_index": 733,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18437:tag36h11:1:0",
+      "hypothesis_id": 0,
+      "T_map_tag": {
+        "xyz": [
+          3.4675510642372696,
+          2.3918653133539998,
+          1.0600373473110123
+        ],
+        "xyzw": [
+          -0.6856539048059771,
+          -0.14149227330722297,
+          -0.11316060777198084,
+          0.70502009635708
+        ]
+      }
+    },
+    {
+      "image_index": 733,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18437:tag36h11:1:0",
+      "hypothesis_id": 1,
+      "T_map_tag": {
+        "xyz": [
+          3.463789757252615,
+          2.39090045305052,
+          1.0599219462487905
+        ],
+        "xyzw": [
+          0.6527054373326652,
+          -0.23997850740562954,
+          0.4538098861147304,
+          -0.5571736850608398
+        ]
+      }
+    },
+    {
+      "image_index": 734,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18439:tag36h11:1:0",
+      "hypothesis_id": 0,
+      "T_map_tag": {
+        "xyz": [
+          3.458072471269202,
+          2.389942261618498,
+          1.0668834751439518
+        ],
+        "xyzw": [
+          -0.6868152809508523,
+          -0.14058423760018274,
+          -0.11602194354783239,
+          0.7036048255989727
+        ]
+      }
+    },
+    {
+      "image_index": 734,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18439:tag36h11:1:0",
+      "hypothesis_id": 1,
+      "T_map_tag": {
+        "xyz": [
+          3.4542570798764336,
+          2.388837382134433,
+          1.0667372010315361
+        ],
+        "xyzw": [
+          0.6519116118280572,
+          -0.23656402874716473,
+          0.4534870387957278,
+          -0.5598198070012681
+        ]
+      }
+    },
+    {
+      "image_index": 735,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18441:tag36h11:1:0",
+      "hypothesis_id": 0,
+      "T_map_tag": {
+        "xyz": [
+          3.455873946725374,
+          2.386745410400709,
+          1.0619888041725258
+        ],
+        "xyzw": [
+          -0.6836635864055185,
+          -0.14263161897519747,
+          -0.11399244341924095,
+          0.7065876058458493
+        ]
+      }
+    },
+    {
+      "image_index": 735,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18441:tag36h11:1:0",
+      "hypothesis_id": 1,
+      "T_map_tag": {
+        "xyz": [
+          3.451984389980042,
+          2.385553487714374,
+          1.0619019295162992
+        ],
+        "xyzw": [
+          0.6559310312935867,
+          -0.23836479442023215,
+          0.4525859421952479,
+          -0.5550699702689492
+        ]
+      }
+    },
+    {
+      "image_index": 736,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18442:tag36h11:1:0",
+      "hypothesis_id": 0,
+      "T_map_tag": {
+        "xyz": [
+          3.4719021308423814,
+          2.384959327532507,
+          1.0694688078666021
+        ],
+        "xyzw": [
+          -0.6823593108212537,
+          -0.14021750991220788,
+          -0.11565409098218495,
+          0.708059991871203
+        ]
+      }
+    },
+    {
+      "image_index": 736,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18442:tag36h11:1:0",
+      "hypothesis_id": 1,
+      "T_map_tag": {
+        "xyz": [
+          3.468136966082879,
+          2.383984801084478,
+          1.0694027342121084
+        ],
+        "xyzw": [
+          0.6563868042198255,
+          -0.23893126171012458,
+          0.4509921913279115,
+          -0.5555846099244838
+        ]
+      }
+    },
+    {
+      "image_index": 737,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18444:tag36h11:1:0",
+      "hypothesis_id": 0,
+      "T_map_tag": {
+        "xyz": [
+          3.4726227527669216,
+          2.393548447101469,
+          1.067192434465573
+        ],
+        "xyzw": [
+          -0.6865866494421288,
+          -0.13854317072739988,
+          -0.11758818392501809,
+          0.7039727137139947
+        ]
+      }
+    },
+    {
+      "image_index": 737,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18444:tag36h11:1:0",
+      "hypothesis_id": 1,
+      "T_map_tag": {
+        "xyz": [
+          3.468925549529281,
+          2.392637301464494,
+          1.06707435484866
+        ],
+        "xyzw": [
+          0.6542352089458082,
+          -0.23476284189507401,
+          0.45121035967279993,
+          -0.559706986525026
+        ]
+      }
+    },
+    {
+      "image_index": 738,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18468:tag36h11:1:0",
+      "hypothesis_id": 0,
+      "T_map_tag": {
+        "xyz": [
+          3.4695236727105767,
+          2.3944434261641065,
+          1.0625468657278128
+        ],
+        "xyzw": [
+          -0.6883978601104529,
+          -0.13916273362950005,
+          -0.11617011344430592,
+          0.7023151888621315
+        ]
+      }
+    },
+    {
+      "image_index": 738,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18468:tag36h11:1:0",
+      "hypothesis_id": 1,
+      "T_map_tag": {
+        "xyz": [
+          3.4659267215520915,
+          2.3937197411748246,
+          1.062415738737602
+        ],
+        "xyzw": [
+          0.6532941281244989,
+          -0.2344025532565361,
+          0.4519024594502945,
+          -0.5603984228454274
+        ]
+      }
+    },
+    {
+      "image_index": 739,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18493:tag36h11:1:0",
+      "hypothesis_id": 0,
+      "T_map_tag": {
+        "xyz": [
+          3.473528602420738,
+          2.3945773035860514,
+          1.0675129580688054
+        ],
+        "xyzw": [
+          -0.6852532392797983,
+          -0.1406584062720494,
+          -0.11476302452970094,
+          0.7053174171976372
+        ]
+      }
+    },
+    {
+      "image_index": 739,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18493:tag36h11:1:0",
+      "hypothesis_id": 1,
+      "T_map_tag": {
+        "xyz": [
+          3.4696885824403383,
+          2.3934371750177545,
+          1.0674098821209705
+        ],
+        "xyzw": [
+          0.6551416530472153,
+          -0.2370585688623803,
+          0.45164922696818693,
+          -0.5573200383536568
+        ]
+      }
+    },
+    {
+      "image_index": 740,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18618:tag36h11:1:0",
+      "hypothesis_id": 0,
+      "T_map_tag": {
+        "xyz": [
+          3.4712205888073657,
+          2.3856325212359364,
+          1.0667644922725552
+        ],
+        "xyzw": [
+          -0.6832632891415548,
+          -0.1416861619110928,
+          -0.11490286606743666,
+          0.7070174259548745
+        ]
+      }
+    },
+    {
+      "image_index": 740,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18618:tag36h11:1:0",
+      "hypothesis_id": 1,
+      "T_map_tag": {
+        "xyz": [
+          3.467328557645217,
+          2.384453954892554,
+          1.066678569881308
+        ],
+        "xyzw": [
+          0.6553273583031567,
+          -0.23980325115265988,
+          0.45321443540705036,
+          -0.5546504572563599
+        ]
+      }
+    },
+    {
+      "image_index": 744,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18623:tag36h11:1:0",
+      "hypothesis_id": 0,
+      "T_map_tag": {
+        "xyz": [
+          3.550550126416553,
+          2.340910306471391,
+          1.0970398639645786
+        ],
+        "xyzw": [
+          -0.680102295708919,
+          -0.12097519444633838,
+          -0.1336263396629547,
+          0.7106123212050361
+        ]
+      }
+    },
+    {
+      "image_index": 744,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18623:tag36h11:1:0",
+      "hypothesis_id": 1,
+      "T_map_tag": {
+        "xyz": [
+          3.5471410518963165,
+          2.3407771184204176,
+          1.0969690483475663
+        ],
+        "xyzw": [
+          0.6426342520507772,
+          -0.2608125829531871,
+          0.4628312793846231,
+          -0.5520735652860206
+        ]
+      }
+    },
+    {
+      "image_index": 745,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18649:tag36h11:1:0",
+      "hypothesis_id": 0,
+      "T_map_tag": {
+        "xyz": [
+          3.5187502923990706,
+          2.3697178197393645,
+          1.0852885456748098
+        ],
+        "xyzw": [
+          -0.6831069166857231,
+          -0.12852860943222497,
+          -0.1255781698090737,
+          0.7078668379016965
+        ]
+      }
+    },
+    {
+      "image_index": 745,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18649:tag36h11:1:0",
+      "hypothesis_id": 1,
+      "T_map_tag": {
+        "xyz": [
+          3.5152000100764247,
+          2.3691901397419786,
+          1.0851952560630695
+        ],
+        "xyzw": [
+          0.6486249943689387,
+          -0.24816528138441665,
+          0.4559942191282354,
+          -0.5565688474186444
+        ]
+      }
+    },
+    {
+      "image_index": 746,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18668:tag36h11:1:0",
+      "hypothesis_id": 0,
+      "T_map_tag": {
+        "xyz": [
+          3.4804366476932422,
+          2.3907067683826058,
+          1.0699541916564037
+        ],
+        "xyzw": [
+          -0.6883340609001293,
+          -0.14125263088017914,
+          -0.11273208439133706,
+          0.7025207413471501
+        ]
+      }
+    },
+    {
+      "image_index": 746,
+      "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18668:tag36h11:1:0",
+      "hypothesis_id": 1,
+      "T_map_tag": {
+        "xyz": [
+          3.476782240240438,
+          2.3898465655586993,
+          1.069813155753911
+        ],
+        "xyzw": [
+          0.6527226155035399,
+          -0.23483562539273278,
+          0.45140173137160927,
+          -0.5612859281786206
+        ]
+      }
+    }
+  ],
+  "modes": [
+    {
+      "pose": {
+        "xyz": [
+          3.4715613598248733,
+          2.390324515000552,
+          1.0673526962671893
+        ],
+        "xyzw": [
+          -0.6842890527305208,
+          -0.13818691389965698,
+          -0.11766480154128897,
+          0.7062633104008054
+        ]
+      },
+      "observation_count": 14,
+      "members": [
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18312:tag36h11:1:0",
+          "image_index": 729,
+          "hypothesis_id": 0
+        },
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18315:tag36h11:1:0",
+          "image_index": 730,
+          "hypothesis_id": 0
+        },
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18317:tag36h11:1:0",
+          "image_index": 731,
+          "hypothesis_id": 0
+        },
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18437:tag36h11:1:0",
+          "image_index": 733,
+          "hypothesis_id": 0
+        },
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18439:tag36h11:1:0",
+          "image_index": 734,
+          "hypothesis_id": 0
+        },
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18441:tag36h11:1:0",
+          "image_index": 735,
+          "hypothesis_id": 0
+        },
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18442:tag36h11:1:0",
+          "image_index": 736,
+          "hypothesis_id": 0
+        },
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18444:tag36h11:1:0",
+          "image_index": 737,
+          "hypothesis_id": 0
+        },
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18468:tag36h11:1:0",
+          "image_index": 738,
+          "hypothesis_id": 0
+        },
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18493:tag36h11:1:0",
+          "image_index": 739,
+          "hypothesis_id": 0
+        },
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18618:tag36h11:1:0",
+          "image_index": 740,
+          "hypothesis_id": 0
+        },
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18623:tag36h11:1:0",
+          "image_index": 744,
+          "hypothesis_id": 0
+        },
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18649:tag36h11:1:0",
+          "image_index": 745,
+          "hypothesis_id": 0
+        },
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18668:tag36h11:1:0",
+          "image_index": 746,
+          "hypothesis_id": 0
+        }
+      ],
+      "translation_from_center_m": {
+        "count": 14,
+        "minimum": 0.0029200061409379702,
+        "p50": 0.008870081724374382,
+        "p95": 0.06966763140828994,
+        "maximum": 0.09778710128708795
+      },
+      "rotation_from_center_deg": {
+        "count": 14,
+        "minimum": 0.37411261546120783,
+        "p50": 0.6009019896808843,
+        "p95": 1.9139137489507512,
+        "maximum": 2.777481866621068
+      },
+      "fixed_center_reprojection": [
+        {
+          "image_index": 729,
+          "rmse_px": 29.772449685228246,
+          "maximum_px": 31.769598022289127,
+          "positive_depth": true
+        },
+        {
+          "image_index": 730,
+          "rmse_px": 2.273837707461596,
+          "maximum_px": 2.585950366855202,
+          "positive_depth": true
+        },
+        {
+          "image_index": 731,
+          "rmse_px": 8.474660363009722,
+          "maximum_px": 8.641585154397099,
+          "positive_depth": true
+        },
+        {
+          "image_index": 733,
+          "rmse_px": 6.681628465246365,
+          "maximum_px": 6.809053370936829,
+          "positive_depth": true
+        },
+        {
+          "image_index": 734,
+          "rmse_px": 9.0938253732171,
+          "maximum_px": 9.615077502550259,
+          "positive_depth": true
+        },
+        {
+          "image_index": 735,
+          "rmse_px": 10.45557902747109,
+          "maximum_px": 11.244014972875096,
+          "positive_depth": true
+        },
+        {
+          "image_index": 736,
+          "rmse_px": 2.934210962643074,
+          "maximum_px": 3.5336015789573443,
+          "positive_depth": true
+        },
+        {
+          "image_index": 737,
+          "rmse_px": 0.58234120816399,
+          "maximum_px": 0.8816225883887904,
+          "positive_depth": true
+        },
+        {
+          "image_index": 738,
+          "rmse_px": 4.938924846264996,
+          "maximum_px": 5.1272061161470885,
+          "positive_depth": true
+        },
+        {
+          "image_index": 739,
+          "rmse_px": 0.44096851425558736,
+          "maximum_px": 0.6049529640534055,
+          "positive_depth": true
+        },
+        {
+          "image_index": 740,
+          "rmse_px": 1.5383849460280532,
+          "maximum_px": 1.8021427429284451,
+          "positive_depth": true
+        },
+        {
+          "image_index": 744,
+          "rmse_px": 71.84627670657207,
+          "maximum_px": 74.4381282172987,
+          "positive_depth": true
+        },
+        {
+          "image_index": 745,
+          "rmse_px": 39.292250253494,
+          "maximum_px": 40.57237896630648,
+          "positive_depth": true
+        },
+        {
+          "image_index": 746,
+          "rmse_px": 5.8278349531319815,
+          "maximum_px": 6.550417583217184,
+          "positive_depth": true
+        }
+      ]
+    },
+    {
+      "pose": {
+        "xyz": [
+          3.467732761864048,
+          2.389341973846566,
+          1.0672421184848153
+        ],
+        "xyzw": [
+          0.6523298688706987,
+          -0.24151890566388728,
+          0.4543378891914126,
+          -0.5565172439656717
+        ]
+      },
+      "observation_count": 14,
+      "members": [
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18312:tag36h11:1:0",
+          "image_index": 729,
+          "hypothesis_id": 1
+        },
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18315:tag36h11:1:0",
+          "image_index": 730,
+          "hypothesis_id": 1
+        },
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18317:tag36h11:1:0",
+          "image_index": 731,
+          "hypothesis_id": 1
+        },
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18437:tag36h11:1:0",
+          "image_index": 733,
+          "hypothesis_id": 1
+        },
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18439:tag36h11:1:0",
+          "image_index": 734,
+          "hypothesis_id": 1
+        },
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18441:tag36h11:1:0",
+          "image_index": 735,
+          "hypothesis_id": 1
+        },
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18442:tag36h11:1:0",
+          "image_index": 736,
+          "hypothesis_id": 1
+        },
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18444:tag36h11:1:0",
+          "image_index": 737,
+          "hypothesis_id": 1
+        },
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18468:tag36h11:1:0",
+          "image_index": 738,
+          "hypothesis_id": 1
+        },
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18493:tag36h11:1:0",
+          "image_index": 739,
+          "hypothesis_id": 1
+        },
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18618:tag36h11:1:0",
+          "image_index": 740,
+          "hypothesis_id": 1
+        },
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18623:tag36h11:1:0",
+          "image_index": 744,
+          "hypothesis_id": 1
+        },
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18649:tag36h11:1:0",
+          "image_index": 745,
+          "hypothesis_id": 1
+        },
+        {
+          "observation_id": "bag-aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116:18668:tag36h11:1:0",
+          "image_index": 746,
+          "hypothesis_id": 1
+        }
+      ],
+      "translation_from_center_m": {
+        "count": 14,
+        "minimum": 0.00289052833941155,
+        "p50": 0.008940259326213892,
+        "p95": 0.06969202492965994,
+        "maximum": 0.09771341805236605
+      },
+      "rotation_from_center_deg": {
+        "count": 14,
+        "minimum": 0.20574152507714943,
+        "p50": 0.6876893837490994,
+        "p95": 1.7875760110799936,
+        "maximum": 2.7072747225939877
+      },
+      "fixed_center_reprojection": [
+        {
+          "image_index": 729,
+          "rmse_px": 29.863870082975954,
+          "maximum_px": 31.15110626418722,
+          "positive_depth": true
+        },
+        {
+          "image_index": 730,
+          "rmse_px": 3.1986032569511265,
+          "maximum_px": 3.5973549678971852,
+          "positive_depth": true
+        },
+        {
+          "image_index": 731,
+          "rmse_px": 8.7687481311276,
+          "maximum_px": 10.60741314676315,
+          "positive_depth": true
+        },
+        {
+          "image_index": 733,
+          "rmse_px": 7.026518579545496,
+          "maximum_px": 7.976811270426072,
+          "positive_depth": true
+        },
+        {
+          "image_index": 734,
+          "rmse_px": 9.352995401018223,
+          "maximum_px": 11.061608384423167,
+          "positive_depth": true
+        },
+        {
+          "image_index": 735,
+          "rmse_px": 10.699042047542413,
+          "maximum_px": 11.551198259505336,
+          "positive_depth": true
+        },
+        {
+          "image_index": 736,
+          "rmse_px": 3.7611904543099106,
+          "maximum_px": 4.4017477125597555,
+          "positive_depth": true
+        },
+        {
+          "image_index": 737,
+          "rmse_px": 2.3644475541539864,
+          "maximum_px": 2.6499487242075754,
+          "positive_depth": true
+        },
+        {
+          "image_index": 738,
+          "rmse_px": 5.379073705486018,
+          "maximum_px": 6.015919958263581,
+          "positive_depth": true
+        },
+        {
+          "image_index": 739,
+          "rmse_px": 2.4132127631998417,
+          "maximum_px": 2.6825785727005,
+          "positive_depth": true
+        },
+        {
+          "image_index": 740,
+          "rmse_px": 2.8714957034536375,
+          "maximum_px": 3.7661514209029843,
+          "positive_depth": true
+        },
+        {
+          "image_index": 744,
+          "rmse_px": 71.90090162030383,
+          "maximum_px": 73.42730349622254,
+          "positive_depth": true
+        },
+        {
+          "image_index": 745,
+          "rmse_px": 39.38045614417292,
+          "maximum_px": 39.71934272439235,
+          "positive_depth": true
+        },
+        {
+          "image_index": 746,
+          "rmse_px": 6.2697477383296425,
+          "maximum_px": 6.73082000331771,
+          "positive_depth": true
+        }
+      ]
+    }
+  ],
+  "mode_comparisons": [
+    {
+      "a": 0,
+      "b": 1,
+      "translation_m": 0.003954210023616133,
+      "rotation_deg": 61.47572047298356
+    }
+  ],
+  "fixed_trajectory_train_holdout_fits": [
+    {
+      "pose": {
+        "xyz": [
+          3.4737684747229816,
+          2.4040963158912017,
+          1.0658577405789489
+        ],
+        "xyzw": [
+          -0.6863362817296269,
+          -0.136800111032759,
+          -0.11998083440629918,
+          0.7041539869788023
+        ]
+      },
+      "optimizer_success": true,
+      "evaluations": 5,
+      "train_image_indices": [
+        729,
+        730,
+        731,
+        733,
+        734,
+        735,
+        736,
+        737,
+        738
+      ],
+      "holdout_image_indices": [
+        739,
+        740,
+        744,
+        745,
+        746
+      ],
+      "train_rmse_px": {
+        "count": 9,
+        "minimum": 2.0326780174329953,
+        "p50": 5.614060504784103,
+        "p95": 22.945197886958546,
+        "maximum": 33.71708330009762
+      },
+      "holdout_rmse_px": {
+        "count": 5,
+        "minimum": 3.7373311054164735,
+        "p50": 9.255739703312962,
+        "p95": 68.97006236703966,
+        "maximum": 75.50078006735865
+      },
+      "frame_errors": [
+        {
+          "image_index": 729,
+          "rmse_px": 33.71708330009762,
+          "maximum_px": 35.9072517812005,
+          "positive_depth": true
+        },
+        {
+          "image_index": 730,
+          "rmse_px": 2.0326780174329953,
+          "maximum_px": 2.5337062770514733,
+          "positive_depth": true
+        },
+        {
+          "image_index": 731,
+          "rmse_px": 5.976200989902467,
+          "maximum_px": 6.058280839047486,
+          "positive_depth": true
+        },
+        {
+          "image_index": 733,
+          "rmse_px": 4.151161446317524,
+          "maximum_px": 4.685526810616633,
+          "positive_depth": true
+        },
+        {
+          "image_index": 734,
+          "rmse_px": 5.614060504784103,
+          "maximum_px": 6.138079867732393,
+          "positive_depth": true
+        },
+        {
+          "image_index": 735,
+          "rmse_px": 6.578875895634071,
+          "maximum_px": 7.734519238901603,
+          "positive_depth": true
+        },
+        {
+          "image_index": 736,
+          "rmse_px": 6.787369767249965,
+          "maximum_px": 7.667011096016586,
+          "positive_depth": true
+        },
+        {
+          "image_index": 737,
+          "rmse_px": 3.414310951522707,
+          "maximum_px": 3.589237602858349,
+          "positive_depth": true
+        },
+        {
+          "image_index": 738,
+          "rmse_px": 2.4125610523902266,
+          "maximum_px": 2.8401473485312074,
+          "positive_depth": true
+        },
+        {
+          "image_index": 739,
+          "rmse_px": 3.7373311054164735,
+          "maximum_px": 4.288363417898846,
+          "positive_depth": true
+        },
+        {
+          "image_index": 740,
+          "rmse_px": 5.247021143894147,
+          "maximum_px": 5.712940375783902,
+          "positive_depth": true
+        },
+        {
+          "image_index": 744,
+          "rmse_px": 75.50078006735865,
+          "maximum_px": 78.24630700071116,
+          "positive_depth": true
+        },
+        {
+          "image_index": 745,
+          "rmse_px": 42.847191565763744,
+          "maximum_px": 44.26543414380624,
+          "positive_depth": true
+        },
+        {
+          "image_index": 746,
+          "rmse_px": 9.255739703312962,
+          "maximum_px": 10.119877856430692,
+          "positive_depth": true
+        }
+      ],
+      "loss": "Huber, 1 px coordinate scale; diagnostic, not field calibrated",
+      "trajectory_optimized": false,
+      "time_optimized": false,
+      "all_frames_pass_current_pixel_limits": false
+    },
+    {
+      "pose": {
+        "xyz": [
+          3.4729527933828632,
+          2.4084774722748072,
+          1.0660686489583404
+        ],
+        "xyzw": [
+          0.6598105480913798,
+          -0.22809305466514937,
+          0.4451982293095124,
+          -0.5607335692292276
+        ]
+      },
+      "optimizer_success": true,
+      "evaluations": 11,
+      "train_image_indices": [
+        729,
+        730,
+        731,
+        733,
+        734,
+        735,
+        736,
+        737,
+        738
+      ],
+      "holdout_image_indices": [
+        739,
+        740,
+        744,
+        745,
+        746
+      ],
+      "train_rmse_px": {
+        "count": 9,
+        "minimum": 3.177368220328061,
+        "p50": 5.983526071828534,
+        "p95": 23.117965995097393,
+        "maximum": 33.78684790318705
+      },
+      "holdout_rmse_px": {
+        "count": 5,
+        "minimum": 4.367864626674509,
+        "p50": 9.450224016984594,
+        "p95": 68.99641532059141,
+        "maximum": 75.5257622084184
+      },
+      "frame_errors": [
+        {
+          "image_index": 729,
+          "rmse_px": 33.78684790318705,
+          "maximum_px": 35.48220808714109,
+          "positive_depth": true
+        },
+        {
+          "image_index": 730,
+          "rmse_px": 3.177368220328061,
+          "maximum_px": 4.186018349835891,
+          "positive_depth": true
+        },
+        {
+          "image_index": 731,
+          "rmse_px": 6.358054784576623,
+          "maximum_px": 8.31732331978236,
+          "positive_depth": true
+        },
+        {
+          "image_index": 733,
+          "rmse_px": 4.7926843738357,
+          "maximum_px": 6.707178281212464,
+          "positive_depth": true
+        },
+        {
+          "image_index": 734,
+          "rmse_px": 5.983526071828534,
+          "maximum_px": 7.519722422309878,
+          "positive_depth": true
+        },
+        {
+          "image_index": 735,
+          "rmse_px": 6.968087395638778,
+          "maximum_px": 7.699004801224277,
+          "positive_depth": true
+        },
+        {
+          "image_index": 736,
+          "rmse_px": 7.114643132962933,
+          "maximum_px": 7.9012583051278975,
+          "positive_depth": true
+        },
+        {
+          "image_index": 737,
+          "rmse_px": 4.0441242843115095,
+          "maximum_px": 4.720786398802707,
+          "positive_depth": true
+        },
+        {
+          "image_index": 738,
+          "rmse_px": 3.25775431198759,
+          "maximum_px": 5.037434641298126,
+          "positive_depth": true
+        },
+        {
+          "image_index": 739,
+          "rmse_px": 4.367864626674509,
+          "maximum_px": 4.962625666678944,
+          "positive_depth": true
+        },
+        {
+          "image_index": 740,
+          "rmse_px": 5.7531620841215805,
+          "maximum_px": 6.647231018271272,
+          "positive_depth": true
+        },
+        {
+          "image_index": 744,
+          "rmse_px": 75.5257622084184,
+          "maximum_px": 77.97811667433028,
+          "positive_depth": true
+        },
+        {
+          "image_index": 745,
+          "rmse_px": 42.87902776928351,
+          "maximum_px": 43.78860163391729,
+          "positive_depth": true
+        },
+        {
+          "image_index": 746,
+          "rmse_px": 9.450224016984594,
+          "maximum_px": 10.018321961095012,
+          "positive_depth": true
+        }
+      ],
+      "loss": "Huber, 1 px coordinate scale; diagnostic, not field calibrated",
+      "trajectory_optimized": false,
+      "time_optimized": false,
+      "all_frames_pass_current_pixel_limits": false
+    }
+  ],
+  "maximum_camera_translation_baseline_m": 0.04179553964706846,
+  "maximum_camera_rotation_deg": 12.91636840271057,
+  "maximum_view_ray_change_deg": 1.2815035788755382,
+  "independent_support_existing_motion_rule": [
+    0,
+    11,
+    13
+  ],
+  "independent_support_translation_only": [
+    0
+  ],
+  "assessed_observations": 14,
+  "formal_registration_allowed": false
+}

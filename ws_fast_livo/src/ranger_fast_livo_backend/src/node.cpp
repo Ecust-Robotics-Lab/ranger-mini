@@ -6,6 +6,7 @@
 #include <ranger_fast_livo_backend/srv/export_snapshot.hpp>
 #include <diagnostic_msgs/msg/diagnostic_array.hpp>
 #include <nav_msgs/msg/path.hpp>
+#include <std_msgs/msg/string.hpp>
 #include <atomic>
 #include <condition_variable>
 #include <deque>
@@ -69,6 +70,16 @@ public:
     config_.max_iterations = declare_parameter<int>("max_iterations", 50);
     config_.registration_threads = declare_parameter<int>("registration_threads", 1);
     config_.validate();
+    bool enable_tags=declare_parameter<bool>("enable_tag_loop",false);
+    auto tag_path=declare_parameter<std::string>("tag_config_path","");
+    if(enable_tags){
+      if(!get_parameter("use_sim_time").as_bool())throw std::invalid_argument("Tag B entry requires offline use_sim_time");
+      tag_config_=tags::Config::parse(tags::read_json(tag_path));
+      tag_context_publisher_=create_publisher<std_msgs::msg::String>("/fast_livo/tags/context",rclcpp::QoS(1).transient_local());
+      tag_subscription_=create_subscription<std_msgs::msg::String>("/fast_livo/tags/observations",rclcpp::QoS(4).best_effort(),[this](std_msgs::msg::String::ConstSharedPtr m){
+        std::lock_guard<std::mutex> lock(mutex_);if(m->data.size()>262144)return;if(tag_inbox_.size()>=8)tag_inbox_.pop_front();tag_inbox_.push_back({steady_seconds(),m->data});
+      });
+    }
     data_root_ = declare_parameter<std::string>("data_root", (fs::current_path() / ".runtime/fast_livo_backend").string());
     if (!data_root_.is_absolute()) throw std::invalid_argument("data_root must be absolute");
     std::string metadata = declare_parameter<std::string>("metadata_path", "");
@@ -148,6 +159,7 @@ private:
     Pair pair;
     uint64_t generation, scan;
     double received;
+    std::vector<std::pair<double,std::string>> tag_batches;
   };
   Config config_;
   Json metadata_;
@@ -169,6 +181,9 @@ private:
   double sample_max_age_ = .5, stream_timeout_ = 2.;
   uint64_t invalid_messages_ = 0;
   std::unique_ptr<Backend> core_;
+  std::optional<tags::Config> tag_config_;std::deque<std::pair<double,std::string>> tag_inbox_;
+  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr tag_context_publisher_;
+  rclcpp::Subscription<std_msgs::msg::String>::SharedPtr tag_subscription_;
   std::thread worker_;
   rclcpp::Subscription<Odom>::SharedPtr odom_;
   rclcpp::Subscription<Scan>::SharedPtr cloud_;
@@ -183,6 +198,7 @@ private:
     session_ = uuid();
     pairs_.clear();
     queue_.clear();
+    tag_inbox_.clear();
     scan_id_ = 0;
     have_output_ = false;
     reason_ = reason;
@@ -231,6 +247,7 @@ private:
   }
   void tick(){
     Estimate message;
+    std_msgs::msg::String tag_context;
     diagnostic_msgs::msg::DiagnosticArray diagnostics;
     {
       std::lock_guard<std::mutex> lock(mutex_);
@@ -250,13 +267,14 @@ private:
             invalidate_locked("work_queue_exhausted", true);
             break;
           }
-          queue_.push_back({pair, generation_, scan_id_++, steady});
+          Job job{pair,generation_,scan_id_++,steady,{}};job.tag_batches.assign(tag_inbox_.begin(),tag_inbox_.end());tag_inbox_.clear();queue_.push_back(std::move(job));
           condition_.notify_one();
         }
       }
       message.header.frame_id = "map";
       message.imu_frame = "fast_livo_imu";
       message.session_id = session_;
+      if(tag_config_)tag_context.data=Json({{"schema_version",1},{"context",session_},{"calibration_id",tag_config_->calibration_id},{"time_mapping_id",tag_config_->time_mapping_id}}).dump();
       message.state = state_;
       message.reason = reason_;
       if (have_output_) {
@@ -289,6 +307,7 @@ private:
       diagnostics.status.push_back(status);
     }
     publisher_->publish(message);
+    if(tag_context_publisher_)tag_context_publisher_->publish(tag_context);
     diagnostics_->publish(diagnostics);
   }
   static geometry_msgs::msg::Pose pose_message(const Pose& p){
@@ -352,6 +371,7 @@ private:
           metadata["frontend_publisher_gids"] = input_identity;
           metadata["sample_time_contract"] = "VIO-corrected IMU pose; deskewed interval ends at LIO/VIO image cut time; output stamps share integer nanoseconds";
           core_ = std::make_unique<Backend>(config_, data_root_, session, metadata);
+          if(tag_config_)core_->configure_tags(*tag_config_);
           active_generation = generation;
           continue;
         }
@@ -365,7 +385,10 @@ private:
         Snapshot snapshot;
         {
           std::lock_guard<std::mutex> lock(core_mutex_);
-          result = core_->process(stamp_ns(job.pair.odom->header.stamp), job.scan, odom_pose(*job.pair.odom), *full, cdr);
+          std::vector<Json> batches;for(const auto& [received,text]:job.tag_batches)try{
+            tags::require(tag_config_&&steady_seconds()-received<=tag_config_->maximum_wait,"consumer_queue_expired");batches.push_back(Json::parse(text));
+          }catch(const std::exception& e){RCLCPP_WARN(get_logger(),"Tag batch rejected: %s",e.what());}
+          result = core_->process(stamp_ns(job.pair.odom->header.stamp), job.scan, odom_pose(*job.pair.odom), *full, cdr,batches);
           if (result.loop_accepted || result.scan_id % 10 == 0) snapshot = core_->snapshot();
         }
         {

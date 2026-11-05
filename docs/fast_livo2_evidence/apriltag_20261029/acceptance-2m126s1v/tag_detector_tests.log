@@ -1,0 +1,15 @@
+Running main() from /opt/ros/humble/src/gtest_vendor/src/gtest_main.cc
+[==========] Running 3 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 3 tests from TagDetector
+[ RUN      ] TagDetector.OfficialCodeRotationsPreserveDecodedCornerOrder
+[       OK ] TagDetector.OfficialCodeRotationsPreserveDecodedCornerOrder (9 ms)
+[ RUN      ] TagDetector.StrideEncodingUnknownSizeAndFamily
+[       OK ] TagDetector.StrideEncodingUnknownSizeAndFamily (2 ms)
+[ RUN      ] TagDetector.SameImageDuplicatePhysicalIDIsRejected
+[       OK ] TagDetector.SameImageDuplicatePhysicalIDIsRejected (1 ms)
+[----------] 3 tests from TagDetector (12 ms total)
+
+[----------] Global test environment tear-down
+[==========] 3 tests from 1 test suite ran. (12 ms total)
+[  PASSED  ] 3 tests.

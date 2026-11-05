@@ -1,0 +1,69 @@
+{
+  "run_directory": "/home/lab307/ranger_nav/.runtime/sessions/fast_livo_relocalizer/run-001czdjc",
+  "guardian": {
+    "pid": 11028,
+    "start_ticks": 705776,
+    "ppid": 10961,
+    "state": "R",
+    "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+  },
+  "owner": {
+    "pid": 11068,
+    "start_ticks": 706018,
+    "ppid": 11028,
+    "state": "R",
+    "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+  },
+  "state": "FAILED",
+  "reason": "RuntimeError: localizer exited -9; no automatic restart; scheduler exited 2; guardian cleanup",
+  "owned": [],
+  "components": {
+    "monitor": {
+      "state": "READY",
+      "process": {
+        "pid": 11069,
+        "start_ticks": 706019,
+        "ppid": 11068,
+        "state": "R",
+        "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+      },
+      "argv": [
+        "/usr/bin/python3",
+        "/home/lab307/ranger_nav/scripts/fast_livo2/localizer/monitor.py"
+      ]
+    },
+    "localizer": {
+      "state": "EXITED",
+      "process": {
+        "pid": 11081,
+        "start_ticks": 706095,
+        "ppid": 11068,
+        "state": "R",
+        "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+      },
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node",
+        "--ros-args",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/fast_livo2/localizer.yaml",
+        "-p",
+        "use_sim_time:=true",
+        "-p",
+        "registration:=pcl_icp",
+        "-p",
+        "t_base_imu_xyz:=[0.0, 0.0, 0.556]",
+        "-p",
+        "t_base_imu_rpy:=[0.0, 0.0, 0.0]",
+        "-p",
+        "archive_path:=/home/lab307/ranger_nav/docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/test_fast_livo_relocalizer_ros/test_managed_c2_failure_preserves_unowned_processes-valefkwt/map",
+        "-p",
+        "compatibility_path:=/home/lab307/ranger_nav/docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/test_fast_livo_relocalizer_ros/test_managed_c2_failure_preserves_unowned_processes-valefkwt/map-compatibility.json",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/fast_livo2/relocalizer.yaml"
+      ],
+      "exit_code": -9
+    }
+  },
+  "updated_monotonic": 7061.442431524,
+  "guardian_cleanup_complete": true
+}

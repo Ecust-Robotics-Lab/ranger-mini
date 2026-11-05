@@ -1,0 +1,112 @@
+{
+  "schema_version": 1,
+  "extraction_summary_sha256": "fadc15fcc7e79906fe34dbd53bbf26404a8501305e0a526f2f83f9d77da00cec",
+  "csv_sources_sha256": {
+    "/home/lab307/ranger_nav/bags/fast-livo-motion-w5phdosj/sensor_assets/camera_sync.csv": "5deb5bc78c530b56ff8858f57ce3440f015faed1f1307964fc507e70d346ef25",
+    "/home/lab307/ranger_nav/bags/fast-livo-motion-w5phdosj/sensor_assets/timeshare_writer.csv": "3dc9b39c032b5ae832d41e323f06d4e5d243d97494be0eee7f1ef141d19f52f2"
+  },
+  "all_frames": 1367,
+  "images_with_detections": 14,
+  "detection_frame_fraction": 0.010241404535479151,
+  "detection_fraction_is_not_recall": true,
+  "indices_without_detection_inside_positive_window": [
+    732,
+    741,
+    742,
+    743
+  ],
+  "positive_window_seconds": 1.69969494,
+  "positive_raw_pose_available": 14,
+  "positive_replay_pose_available": 14,
+  "observations_passing_margin_50": 0,
+  "decision_margin": {
+    "count": 14,
+    "minimum": 38.95079040527344,
+    "p50": 40.61040115356445,
+    "p95": 42.306587028503415,
+    "maximum": 42.316795349121094
+  },
+  "pixel_rmse_by_per_frame_hypothesis_index": {
+    "0": {
+      "count": 14,
+      "minimum": 0.012263559585596157,
+      "p50": 0.2227760178855268,
+      "p95": 0.7570318039690647,
+      "maximum": 1.3027448173183571
+    },
+    "1": {
+      "count": 14,
+      "minimum": 2.1017930779679093,
+      "p50": 2.2979541302689035,
+      "p95": 2.3904714308236854,
+      "maximum": 2.3990191012602433
+    }
+  },
+  "camera_range_m": {
+    "count": 28,
+    "minimum": 1.8457609758458278,
+    "p50": 1.852960509178997,
+    "p95": 1.8640288570374952,
+    "maximum": 1.8655488652360948
+  },
+  "camera_csv_status_counts": {
+    "OK": 1383
+  },
+  "unique_camera_and_writer_csv_matches": 1367,
+  "v2_sequence_relation_matches": 1367,
+  "camera_arrival_after_writer_ms": {
+    "count": 1367,
+    "minimum": 16.072259,
+    "p50": 22.035142,
+    "p95": 23.3468738,
+    "maximum": 23.978489999999997
+  },
+  "camera_publish_after_arrival_ms": {
+    "count": 1367,
+    "minimum": 2.426347,
+    "p50": 4.2253359999999995,
+    "p95": 8.555163799999999,
+    "maximum": 14.717483
+  },
+  "bag_record_after_raw_header_ms": {
+    "count": 1367,
+    "minimum": 2.1624309999999998,
+    "p50": 23.649466999999998,
+    "p95": 328.0823985,
+    "maximum": 439.934819
+  },
+  "conditional_local_transitions": {
+    "minimum_over_all_pairs_translation_delta_m": {
+      "count": 13,
+      "minimum": 0.004451602577195372,
+      "p50": 0.010991055955476598,
+      "p95": 0.05160717048080061,
+      "maximum": 0.06171027980996997
+    },
+    "minimum_over_all_pairs_rotation_delta_rad": {
+      "count": 13,
+      "minimum": 0.0042069870190716094,
+      "p50": 0.008807831576293428,
+      "p95": 0.039752206087325964,
+      "maximum": 0.05365868718735022
+    }
+  },
+  "branch_selection_performed": false,
+  "physical_synchronization_validated": false,
+  "fixed_deployment_validated": false,
+  "absolute_accuracy_validated": false,
+  "real_VALID_landmark_created": false,
+  "limitations": [
+    "CSV arrival/publish times describe software timing, not exposure or trigger-edge metrology",
+    "IPPE hypothesis indices are local to each image, not persistent branch identities",
+    "Small minimum transition error over alternative pairs is not proof of the correct branch"
+  ],
+  "preserved_original_image_indices": [
+    729,
+    732,
+    737,
+    741,
+    742,
+    746
+  ]
+}

@@ -1,0 +1,62 @@
+{
+  "schema_version": 1,
+  "kind": "stage_b_graph_archive",
+  "map_uuid": "41656b4304f741e0a7b2ffcf66df31e2",
+  "session_id": "synthetic-source",
+  "graph_version": 1,
+  "transform_convention": "T_A_B maps points in B to A",
+  "cloud_frame": "fast_livo_imu",
+  "pcd_fields": [
+    "x",
+    "y",
+    "z",
+    "intensity"
+  ],
+  "provenance": {
+    "kind": "synthetic_known_truth"
+  },
+  "keyframes": [
+    {
+      "id": 0,
+      "scan_id": 0,
+      "stamp_ns": 1000000000,
+      "directory": "keyframes/0",
+      "U_local_imu": {
+        "xyz": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "xyzw": [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      },
+      "X_map_imu": {
+        "xyz": [
+          2.2010498066664526,
+          -1.0831067253350584,
+          0.7033264774887276
+        ],
+        "xyzw": [
+          0.13453755008854712,
+          -0.07563996508553175,
+          0.29917166522539623,
+          0.9416339830445238
+        ]
+      },
+      "points": 800
+    }
+  ],
+  "files": {
+    "map.pcd": "2a32f2f677785ae660dfdc39c029a0398ac990ea7adbd73ca35660914bf66c1e",
+    "original.tum": "5e29f6699480e4729a9a7b3243e4a9bf928ec5be73b436f33977d70f95dd7686",
+    "optimized.tum": "401e78cf3184ccf6e35dca7c6d2178d44e908d2cb829d1fabbc2842b16e73424",
+    "keyframes/0/match.pcd": "a9f702b9808fa61a8bbcaa6970fdc0c2e13a519c639bbfe6cb2e52768f6eb2a9",
+    "keyframes/0/full.pcd": "a9f702b9808fa61a8bbcaa6970fdc0c2e13a519c639bbfe6cb2e52768f6eb2a9",
+    "keyframes/0/scan.cdr": "6dc2a637ee88cd42608708f1bc11d7e0ffb3571b4ee43aee7e0dccb15b63e7b7"
+  },
+  "factors": []
+}

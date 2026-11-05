@@ -1,5 +1,6 @@
 #pragma once
 #include "localizer.hpp"
+#include <ranger_fast_livo_backend/tags.hpp>
 #include <set>
 
 namespace ranger_localizer {
@@ -46,11 +47,11 @@ public:
   Relocalizer(std::shared_ptr<const Archive> map,Config tracking,SearchConfig config,
     std::shared_ptr<const PlaceRetriever> index,std::unique_ptr<rb::CoarseRegistration> coarse);
   SearchResult process(int64_t stamp,uint64_t scan,const Pose& U,const Cloud& cloud,double steady,
-    const std::function<bool()>& cancelled=[] {return false;});
+    const std::function<bool()>& cancelled=[] {return false;},const std::vector<rb::tags::Prior>& priors={});
   void reset();
 private:
   struct Sample {int64_t stamp;uint64_t id;Pose U;Cloud::Ptr cloud;};
-  struct Support {int64_t stamp;Pose U,correction;std::set<uint64_t> scans;size_t count=1;};
+  struct Support {int64_t stamp;Pose U,correction;std::set<uint64_t> scans;size_t count=1;std::set<std::string> tag_images;};
   std::shared_ptr<const Archive> map_;
   Config tracking_;SearchConfig config_;
   SubmapProvider provider_;
@@ -59,7 +60,7 @@ private:
   std::unique_ptr<rb::Registration> fine_;
   std::deque<Sample> window_;
   std::optional<Support> support_;
-  double next_attempt_=0;
+  double next_attempt_=0,next_tag_attempt_=0;
   SearchResult reject(std::string reason,double steady,Json quality=Json::object());
 };
 }

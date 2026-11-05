@@ -1,0 +1,468 @@
+[
+  {
+    "T_map_tag": {
+      "xyz": [
+        2.0625131991451164,
+        -2.003062851997062,
+        3.149309074434616
+      ],
+      "xyzw": [
+        0.27621434723929505,
+        -0.16847432134306964,
+        0.3900797713499853,
+        0.8620671722149646
+      ]
+    },
+    "canonical_frame": "apriltag-native-xy-down-z-in-v1",
+    "family": "tag36h11",
+    "id": 0,
+    "reason": "single_mode_independent_view_support",
+    "size_definition": "detected_black_white_boundary",
+    "size_m": 0.6,
+    "status": "VALID",
+    "support": {
+      "absolute_accuracy_validated": false,
+      "calibration_id": "synthetic-camera-ros-v1",
+      "independent_support": 4,
+      "max_rotation_dispersion_rad": 4.0125770192081414e-16,
+      "max_translation_dispersion_m": 1.4043333874306805e-15,
+      "mode_count": 1,
+      "observation_count": 4,
+      "observations": [
+        {
+          "observation": {
+            "calibration_id": "synthetic-camera-ros-v1",
+            "canonical_frame": "apriltag-native-xy-down-z-in-v1",
+            "context": "enrollment",
+            "corners": [
+              [
+                263.9141303987926,
+                284.5638920148908
+              ],
+              [
+                360.33397043625473,
+                292.0649909148299
+              ],
+              [
+                376.0325887619524,
+                195.47844309703476
+              ],
+              [
+                275.6694030829069,
+                182.77597516998225
+              ]
+            ],
+            "decision_margin": 100.0,
+            "family": "tag36h11",
+            "hamming": 0,
+            "hypotheses": [
+              {
+                "T_camera_tag": {
+                  "xyz": [
+                    0.0,
+                    -4.440892098500626e-16,
+                    2.5000000000000004
+                  ],
+                  "xyzw": [
+                    0.10417518698837991,
+                    -0.09424585887568118,
+                    0.05943529661638147,
+                    0.9882978771690467
+                  ]
+                },
+                "hypothesis_id": 0,
+                "pixel_max": 8.038873388460929e-14,
+                "pixel_rmse": 5.1237965343830035e-14
+              }
+            ],
+            "id": 0,
+            "image_id": "enrollment-image-0",
+            "image_stamp_ns": 1010000000000,
+            "observation_id": "enrollment-image-0:0",
+            "observation_stamp_ns": 1010000000000,
+            "provenance": {
+              "camera_model": {
+                "D": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "K": [
+                  420.0,
+                  0.0,
+                  320.0,
+                  0.0,
+                  425.0,
+                  240.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "R": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "distortion_model": "plumb_bob",
+                "frame": "front_optical_frame",
+                "height": 480,
+                "pixel_domain": "raw",
+                "width": 640
+              },
+              "image_reference": "synthetic:enrollment-image-0",
+              "size_source": "synthetic exact metric"
+            },
+            "quality": {},
+            "schema_version": 1,
+            "size_m": 0.6,
+            "source_id": "independent-synthetic-truth",
+            "time_mapping_id": "synthetic-exposure-ros-v1"
+          },
+          "source": {
+            "context": "enrollment",
+            "graph_version": 1,
+            "method": "c1",
+            "records_sha256": "196a773fa08f4873a800a3803fff22fd0e4867759e6da3d8547fd8eb9675015b",
+            "scan_stamp_ns": 1010000000000,
+            "source_manifest_sha256": "c5ac26503d9f4cc20f24721668be55079a84fea1a5e15577b3e4d276951c43d2"
+          },
+          "support_id": "1010000000000",
+          "visit": "independent-synthetic-enrollment"
+        },
+        {
+          "observation": {
+            "calibration_id": "synthetic-camera-ros-v1",
+            "canonical_frame": "apriltag-native-xy-down-z-in-v1",
+            "context": "enrollment",
+            "corners": [
+              [
+                226.47244021635998,
+                288.27835407405456
+              ],
+              [
+                324.06610323710754,
+                295.5189779242952
+              ],
+              [
+                338.2087778193362,
+                199.65537843136346
+              ],
+              [
+                236.64488823135844,
+                187.05776571610943
+              ]
+            ],
+            "decision_margin": 100.0,
+            "family": "tag36h11",
+            "hamming": 0,
+            "hypotheses": [
+              {
+                "T_camera_tag": {
+                  "xyz": [
+                    -0.2246286587286226,
+                    0.022951940144059435,
+                    2.512265160666521
+                  ],
+                  "xyzw": [
+                    0.10340362693671586,
+                    -0.09910943886326574,
+                    0.06018138224063187,
+                    0.9878578897271347
+                  ]
+                },
+                "hypothesis_id": 0,
+                "pixel_max": 5.684341886080802e-14,
+                "pixel_rmse": 3.1776437161565096e-14
+              }
+            ],
+            "id": 0,
+            "image_id": "enrollment-image-1",
+            "image_stamp_ns": 1011000000000,
+            "observation_id": "enrollment-image-1:0",
+            "observation_stamp_ns": 1011000000000,
+            "provenance": {
+              "camera_model": {
+                "D": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "K": [
+                  420.0,
+                  0.0,
+                  320.0,
+                  0.0,
+                  425.0,
+                  240.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "R": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "distortion_model": "plumb_bob",
+                "frame": "front_optical_frame",
+                "height": 480,
+                "pixel_domain": "raw",
+                "width": 640
+              },
+              "image_reference": "synthetic:enrollment-image-1",
+              "size_source": "synthetic exact metric"
+            },
+            "quality": {},
+            "schema_version": 1,
+            "size_m": 0.6,
+            "source_id": "independent-synthetic-truth",
+            "time_mapping_id": "synthetic-exposure-ros-v1"
+          },
+          "source": {
+            "context": "enrollment",
+            "graph_version": 1,
+            "method": "c1",
+            "records_sha256": "196a773fa08f4873a800a3803fff22fd0e4867759e6da3d8547fd8eb9675015b",
+            "scan_stamp_ns": 1011000000000,
+            "source_manifest_sha256": "c5ac26503d9f4cc20f24721668be55079a84fea1a5e15577b3e4d276951c43d2"
+          },
+          "support_id": "1011000000000",
+          "visit": "independent-synthetic-enrollment"
+        },
+        {
+          "observation": {
+            "calibration_id": "synthetic-camera-ros-v1",
+            "canonical_frame": "apriltag-native-xy-down-z-in-v1",
+            "context": "enrollment",
+            "corners": [
+              [
+                189.03554646734915,
+                292.03179507125924
+              ],
+              [
+                288.1027041276516,
+                299.00905745311746
+              ],
+              [
+                300.7819864308989,
+                203.69713012637817
+              ],
+              [
+                197.69608105980004,
+                191.19333983439145
+              ]
+            ],
+            "decision_margin": 100.0,
+            "family": "tag36h11",
+            "hamming": 0,
+            "hypotheses": [
+              {
+                "T_camera_tag": {
+                  "xyz": [
+                    -0.44948658787907325,
+                    0.045769335548306866,
+                    2.5202773312057145
+                  ],
+                  "xyzw": [
+                    0.10262948179976385,
+                    -0.10397054112004066,
+                    0.06092596333346056,
+                    0.9873932058894307
+                  ]
+                },
+                "hypothesis_id": 0,
+                "pixel_max": 2.842170943040401e-14,
+                "pixel_rmse": 1.4210854715202004e-14
+              }
+            ],
+            "id": 0,
+            "image_id": "enrollment-image-2",
+            "image_stamp_ns": 1012000000000,
+            "observation_id": "enrollment-image-2:0",
+            "observation_stamp_ns": 1012000000000,
+            "provenance": {
+              "camera_model": {
+                "D": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "K": [
+                  420.0,
+                  0.0,
+                  320.0,
+                  0.0,
+                  425.0,
+                  240.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "R": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "distortion_model": "plumb_bob",
+                "frame": "front_optical_frame",
+                "height": 480,
+                "pixel_domain": "raw",
+                "width": 640
+              },
+              "image_reference": "synthetic:enrollment-image-2",
+              "size_source": "synthetic exact metric"
+            },
+            "quality": {},
+            "schema_version": 1,
+            "size_m": 0.6,
+            "source_id": "independent-synthetic-truth",
+            "time_mapping_id": "synthetic-exposure-ros-v1"
+          },
+          "source": {
+            "context": "enrollment",
+            "graph_version": 1,
+            "method": "c1",
+            "records_sha256": "196a773fa08f4873a800a3803fff22fd0e4867759e6da3d8547fd8eb9675015b",
+            "scan_stamp_ns": 1012000000000,
+            "source_manifest_sha256": "c5ac26503d9f4cc20f24721668be55079a84fea1a5e15577b3e4d276951c43d2"
+          },
+          "support_id": "1012000000000",
+          "visit": "independent-synthetic-enrollment"
+        },
+        {
+          "observation": {
+            "calibration_id": "synthetic-camera-ros-v1",
+            "canonical_frame": "apriltag-native-xy-down-z-in-v1",
+            "context": "enrollment",
+            "corners": [
+              [
+                151.4235018452033,
+                295.842059580073
+              ],
+              [
+                252.27628482653705,
+                302.5507313715645
+              ],
+              [
+                263.5687174500197,
+                207.62477957975767
+              ],
+              [
+                158.6266632331059,
+                195.20452019002605
+              ]
+            ],
+            "decision_margin": 100.0,
+            "family": "tag36h11",
+            "hamming": 0,
+            "hypotheses": [
+              {
+                "T_camera_tag": {
+                  "xyz": [
+                    -0.6745115624800595,
+                    0.0684458479483312,
+                    2.5240336462863415
+                  ],
+                  "xyzw": [
+                    0.10185277093111228,
+                    -0.10882904411870276,
+                    0.06166902128037922,
+                    0.986903837273006
+                  ]
+                },
+                "hypothesis_id": 0,
+                "pixel_max": 2.842170943040401e-14,
+                "pixel_rmse": 1.4210854715202004e-14
+              }
+            ],
+            "id": 0,
+            "image_id": "enrollment-image-3",
+            "image_stamp_ns": 1013000000000,
+            "observation_id": "enrollment-image-3:0",
+            "observation_stamp_ns": 1013000000000,
+            "provenance": {
+              "camera_model": {
+                "D": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "K": [
+                  420.0,
+                  0.0,
+                  320.0,
+                  0.0,
+                  425.0,
+                  240.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "R": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "distortion_model": "plumb_bob",
+                "frame": "front_optical_frame",
+                "height": 480,
+                "pixel_domain": "raw",
+                "width": 640
+              },
+              "image_reference": "synthetic:enrollment-image-3",
+              "size_source": "synthetic exact metric"
+            },
+            "quality": {},
+            "schema_version": 1,
+            "size_m": 0.6,
+            "source_id": "independent-synthetic-truth",
+            "time_mapping_id": "synthetic-exposure-ros-v1"
+          },
+          "source": {
+            "context": "enrollment",
+            "graph_version": 1,
+            "method": "c1",
+            "records_sha256": "196a773fa08f4873a800a3803fff22fd0e4867759e6da3d8547fd8eb9675015b",
+            "scan_stamp_ns": 1013000000000,
+            "source_manifest_sha256": "c5ac26503d9f4cc20f24721668be55079a84fea1a5e15577b3e4d276951c43d2"
+          },
+          "support_id": "1013000000000",
+          "visit": "independent-synthetic-enrollment"
+        }
+      ],
+      "time_mapping_id": "synthetic-exposure-ros-v1"
+    }
+  }
+]

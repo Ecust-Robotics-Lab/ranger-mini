@@ -1,0 +1,179 @@
+{
+  "head": {
+    "argv": [
+      "git",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "stdout": "acffa879cc8d52330276089cd3df83ad6a43f112\n",
+    "stderr": ""
+  },
+  "branch": {
+    "argv": [
+      "git",
+      "branch",
+      "--show-current"
+    ],
+    "exit_code": 0,
+    "stdout": "refactor/pluggable-navigation\n",
+    "stderr": ""
+  },
+  "apriltag_head": {
+    "argv": [
+      "git",
+      "-C",
+      "vendor/fast_livo2_review/apriltag",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit_code": 0,
+    "stdout": "94be783968e5091bcc9972c72c84fd63efce2935\n",
+    "stderr": ""
+  },
+  "apriltag_status": {
+    "argv": [
+      "git",
+      "-C",
+      "vendor/fast_livo2_review/apriltag",
+      "status",
+      "--porcelain"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "opencv": {
+    "argv": [
+      "pkg-config",
+      "--modversion",
+      "opencv4"
+    ],
+    "exit_code": 0,
+    "stdout": "4.5.4\n",
+    "stderr": ""
+  },
+  "hardware_started": false,
+  "binaries": {
+    "backend_node": {
+      "sha256": "66ebf73f892d0a23f01a6c05e78b561ae3aeb8c931c4db6272f007659343217f",
+      "ldd": {
+        "argv": [
+          "ldd",
+          "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/backend_node"
+        ],
+        "exit_code": 0,
+        "stdout": "\tlinux-vdso.so.1 (0x00007ffc463da000)\n\tlibdiagnostic_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/libdiagnostic_msgs__rosidl_typesupport_cpp.so (0x000075dcec527000)\n\tlibranger_backend_core.so => not found\n\tlibranger_fast_livo_backend__rosidl_typesupport_cpp.so => not found\n\tlibrclcpp.so => /opt/ros/humble/lib/librclcpp.so (0x000075dcec30f000)\n\tlibnav_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_cpp.so (0x000075dcec307000)\n\tlibsensor_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_cpp.so (0x000075dcec2fa000)\n\tliblibstatistics_collector.so => /opt/ros/humble/lib/liblibstatistics_collector.so (0x000075dcec2f3000)\n\tlibrcl.so => /opt/ros/humble/lib/librcl.so (0x000075dcec2b5000)\n\tlibstatistics_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/libstatistics_msgs__rosidl_typesupport_cpp.so (0x000075dcec2b0000)\n\tlibtracetools.so => /opt/ros/humble/lib/libtracetools.so (0x000075dcec2ab000)\n\tlibrmw.so => /opt/ros/humble/lib/librmw.so (0x000075dcec29f000)\n\tlibopencv_core.so.4.5d => /lib/x86_64-linux-gnu/libopencv_core.so.4.5d (0x000075dcebe00000)\n\tlibrcutils.so => /opt/ros/humble/lib/librcutils.so (0x000075dcec285000)\n\tlibstd_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_cpp.so (0x000075dcec27a000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x000075dceba00000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x000075dcec193000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x000075dcec173000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x000075dceb600000)\n\tlibrosidl_typesupport_cpp.so => /opt/ros/humble/lib/librosidl_typesupport_cpp.so (0x000075dcebdfa000)\n\tlibrcl_yaml_param_parser.so => /opt/ros/humble/lib/librcl_yaml_param_parser.so (0x000075dcebdee000)\n\tlibrosgraph_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/librosgraph_msgs__rosidl_typesupport_cpp.so (0x000075dcebde8000)\n\tlibrmw_implementation.so => /opt/ros/humble/lib/librmw_implementation.so (0x000075dcebddb000)\n\tlibament_index_cpp.so => /opt/ros/humble/lib/libament_index_cpp.so (0x000075dcebdd0000)\n\tlibrcl_logging_interface.so => /opt/ros/humble/lib/librcl_logging_interface.so (0x000075dcebdc9000)\n\tlibrcl_interfaces__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_cpp.so (0x000075dcebdbe000)\n\tlibrcpputils.so => /opt/ros/humble/lib/librcpputils.so (0x000075dcebdb0000)\n\t/lib64/ld-linux-x86-64.so.2 (0x000075dcec611000)\n\tlibrcl_logging_spdlog.so => /opt/ros/humble/lib/librcl_logging_spdlog.so (0x000075dcebda8000)\n\tlibrcl_interfaces__rosidl_typesupport_c.so => /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_c.so (0x000075dcebd9f000)\n\tlibrcl_interfaces__rosidl_generator_c.so => /opt/ros/humble/lib/librcl_interfaces__rosidl_generator_c.so (0x000075dcebd81000)\n\tlibrosidl_runtime_c.so => /opt/ros/humble/lib/librosidl_runtime_c.so (0x000075dcebd76000)\n\tlibz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x000075dcebd5a000)\n\tlibtbb.so.2 => /lib/x86_64-linux-gnu/libtbb.so.2 (0x000075dcebd14000)\n\tlibyaml.so => /opt/ros/humble/lib/libyaml.so (0x000075dcebcf2000)\n\tlibspdlog.so.1 => /lib/x86_64-linux-gnu/libspdlog.so.1 (0x000075dcebc75000)\n\tlibrosidl_typesupport_c.so => /opt/ros/humble/lib/librosidl_typesupport_c.so (0x000075dcebc6f000)\n\tlibbuiltin_interfaces__rosidl_generator_c.so => /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_c.so (0x000075dcebc6a000)\n\tlibfmt.so.8 => /lib/x86_64-linux-gnu/libfmt.so.8 (0x000075dcebc49000)\n",
+        "stderr": ""
+      },
+      "libapriltag_linked": false
+    },
+    "tag_observer_node": {
+      "sha256": "a87ea3a5d99a1ed825d907d9e61ff5e17d27d147140007da0eba96d29f4533f1",
+      "ldd": {
+        "argv": [
+          "ldd",
+          "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/tag_observer_node"
+        ],
+        "exit_code": 0,
+        "stdout": "\tlinux-vdso.so.1 (0x00007ffd15bad000)\n\tlibranger_tag_detector.so => not found\n\tlibranger_backend_core.so => not found\n\tlibrclcpp.so => /opt/ros/humble/lib/librclcpp.so (0x000072c6eb311000)\n\tlibsensor_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_cpp.so (0x000072c6eb306000)\n\tliblibstatistics_collector.so => /opt/ros/humble/lib/liblibstatistics_collector.so (0x000072c6eb2ff000)\n\tlibrcl.so => /opt/ros/humble/lib/librcl.so (0x000072c6eb2bf000)\n\tlibstatistics_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/libstatistics_msgs__rosidl_typesupport_cpp.so (0x000072c6eb2ba000)\n\tlibtracetools.so => /opt/ros/humble/lib/libtracetools.so (0x000072c6eb2b5000)\n\tlibopencv_core.so.4.5d => /lib/x86_64-linux-gnu/libopencv_core.so.4.5d (0x000072c6eae00000)\n\tlibrmw.so => /opt/ros/humble/lib/librmw.so (0x000072c6eb2a9000)\n\tlibstd_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_cpp.so (0x000072c6eb29e000)\n\tlibrcutils.so => /opt/ros/humble/lib/librcutils.so (0x000072c6eb284000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x000072c6eaa00000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x000072c6eb264000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x000072c6ea600000)\n\tlibrcl_yaml_param_parser.so => /opt/ros/humble/lib/librcl_yaml_param_parser.so (0x000072c6eb258000)\n\tlibrosgraph_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/librosgraph_msgs__rosidl_typesupport_cpp.so (0x000072c6eb252000)\n\tlibrmw_implementation.so => /opt/ros/humble/lib/librmw_implementation.so (0x000072c6eb243000)\n\tlibament_index_cpp.so => /opt/ros/humble/lib/libament_index_cpp.so (0x000072c6eb238000)\n\tlibrcl_logging_interface.so => /opt/ros/humble/lib/librcl_logging_interface.so (0x000072c6eb233000)\n\tlibrcl_interfaces__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_cpp.so (0x000072c6eb228000)\n\tlibrcpputils.so => /opt/ros/humble/lib/librcpputils.so (0x000072c6eb21a000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x000072c6ead19000)\n\t/lib64/ld-linux-x86-64.so.2 (0x000072c6eb5bf000)\n\tlibrosidl_typesupport_cpp.so => /opt/ros/humble/lib/librosidl_typesupport_cpp.so (0x000072c6eb212000)\n\tlibrcl_logging_spdlog.so => /opt/ros/humble/lib/librcl_logging_spdlog.so (0x000072c6eb20a000)\n\tlibrcl_interfaces__rosidl_typesupport_c.so => /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_c.so (0x000072c6eb201000)\n\tlibrcl_interfaces__rosidl_generator_c.so => /opt/ros/humble/lib/librcl_interfaces__rosidl_generator_c.so (0x000072c6eb1e5000)\n\tlibrosidl_runtime_c.so => /opt/ros/humble/lib/librosidl_runtime_c.so (0x000072c6eb1da000)\n\tlibz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x000072c6eb1bc000)\n\tlibtbb.so.2 => /lib/x86_64-linux-gnu/libtbb.so.2 (0x000072c6eb176000)\n\tlibyaml.so => /opt/ros/humble/lib/libyaml.so (0x000072c6eacf7000)\n\tlibspdlog.so.1 => /lib/x86_64-linux-gnu/libspdlog.so.1 (0x000072c6eac7c000)\n\tlibrosidl_typesupport_c.so => /opt/ros/humble/lib/librosidl_typesupport_c.so (0x000072c6eb170000)\n\tlibbuiltin_interfaces__rosidl_generator_c.so => /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_c.so (0x000072c6eac75000)\n\tlibfmt.so.8 => /lib/x86_64-linux-gnu/libfmt.so.8 (0x000072c6eac54000)\n",
+        "stderr": ""
+      },
+      "libapriltag_linked": false
+    },
+    "localizer_node": {
+      "sha256": "425a9cf59da72f827e1546aaabfc95bd04d82ff3441f0b906e2a051876e5f482",
+      "ldd": {
+        "argv": [
+          "ldd",
+          "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node"
+        ],
+        "exit_code": 0,
+        "stdout": "\tlinux-vdso.so.1 (0x00007ffd227f3000)\n\tlibranger_localizer_core.so => not found\n\tlibranger_fast_livo_localizer__rosidl_typesupport_cpp.so => not found\n\tlibranger_backend_core.so => not found\n\tlibrclcpp.so => /opt/ros/humble/lib/librclcpp.so (0x00007212e2fd6000)\n\tlibnav_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/libnav_msgs__rosidl_typesupport_cpp.so (0x00007212e2fcc000)\n\tlibsensor_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_cpp.so (0x00007212e2fc1000)\n\tliblibstatistics_collector.so => /opt/ros/humble/lib/liblibstatistics_collector.so (0x00007212e2fba000)\n\tlibrcl.so => /opt/ros/humble/lib/librcl.so (0x00007212e2f7c000)\n\tlibstatistics_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/libstatistics_msgs__rosidl_typesupport_cpp.so (0x00007212e2f77000)\n\tlibtracetools.so => /opt/ros/humble/lib/libtracetools.so (0x00007212e2f72000)\n\tlibpcl_kdtree.so.1.12 => /lib/x86_64-linux-gnu/libpcl_kdtree.so.1.12 (0x00007212e2e5c000)\n\tlibopencv_core.so.4.5d => /lib/x86_64-linux-gnu/libopencv_core.so.4.5d (0x00007212e2a00000)\n\tlibrmw.so => /opt/ros/humble/lib/librmw.so (0x00007212e2e4e000)\n\tlibrcutils.so => /opt/ros/humble/lib/librcutils.so (0x00007212e2e36000)\n\tlibstd_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_cpp.so (0x00007212e2e2b000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007212e2600000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007212e2919000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007212e2e09000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007212e2200000)\n\tlibrcl_yaml_param_parser.so => /opt/ros/humble/lib/librcl_yaml_param_parser.so (0x00007212e2dfd000)\n\tlibrosgraph_msgs__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/librosgraph_msgs__rosidl_typesupport_cpp.so (0x00007212e2df7000)\n\tlibrmw_implementation.so => /opt/ros/humble/lib/librmw_implementation.so (0x00007212e2dea000)\n\tlibament_index_cpp.so => /opt/ros/humble/lib/libament_index_cpp.so (0x00007212e2ddf000)\n\tlibrcl_logging_interface.so => /opt/ros/humble/lib/librcl_logging_interface.so (0x00007212e2dd8000)\n\tlibrcl_interfaces__rosidl_typesupport_cpp.so => /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_cpp.so (0x00007212e2dcd000)\n\tlibrcpputils.so => /opt/ros/humble/lib/librcpputils.so (0x00007212e2dbf000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007212e32d8000)\n\tlibrosidl_typesupport_cpp.so => /opt/ros/humble/lib/librosidl_typesupport_cpp.so (0x00007212e2db9000)\n\tlibrcl_logging_spdlog.so => /opt/ros/humble/lib/librcl_logging_spdlog.so (0x00007212e2db1000)\n\tlibrcl_interfaces__rosidl_typesupport_c.so => /opt/ros/humble/lib/librcl_interfaces__rosidl_typesupport_c.so (0x00007212e2da6000)\n\tlibrcl_interfaces__rosidl_generator_c.so => /opt/ros/humble/lib/librcl_interfaces__rosidl_generator_c.so (0x00007212e2d8a000)\n\tlibrosidl_runtime_c.so => /opt/ros/humble/lib/librosidl_runtime_c.so (0x00007212e2d7f000)\n\tlibpcl_common.so.1.12 => /lib/x86_64-linux-gnu/libpcl_common.so.1.12 (0x00007212e287f000)\n\tlibgomp.so.1 => /lib/x86_64-linux-gnu/libgomp.so.1 (0x00007212e2835000)\n\tliblz4.so.1 => /lib/x86_64-linux-gnu/liblz4.so.1 (0x00007212e25e0000)\n\tlibz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x00007212e25c4000)\n\tlibtbb.so.2 => /lib/x86_64-linux-gnu/libtbb.so.2 (0x00007212e257e000)\n\tlibyaml.so => /opt/ros/humble/lib/libyaml.so (0x00007212e255c000)\n\tlibspdlog.so.1 => /lib/x86_64-linux-gnu/libspdlog.so.1 (0x00007212e24e1000)\n\tlibrosidl_typesupport_c.so => /opt/ros/humble/lib/librosidl_typesupport_c.so (0x00007212e2d77000)\n\tlibbuiltin_interfaces__rosidl_generator_c.so => /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_c.so (0x00007212e2d70000)\n\tlibfmt.so.8 => /lib/x86_64-linux-gnu/libfmt.so.8 (0x00007212e24c0000)\n",
+        "stderr": ""
+      },
+      "libapriltag_linked": false
+    },
+    "tag_map_tool": {
+      "sha256": "0af958ec8efcaa892e5ee2be8ebac6fd5bca7b071cadfb5aa9568c4abba4fbdb",
+      "ldd": {
+        "argv": [
+          "ldd",
+          "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/tag_map_tool"
+        ],
+        "exit_code": 0,
+        "stdout": "\tlinux-vdso.so.1 (0x00007ffc2691f000)\n\tlibranger_localizer_core.so => not found\n\tlibranger_backend_core.so => not found\n\tlibopencv_core.so.4.5d => /lib/x86_64-linux-gnu/libopencv_core.so.4.5d (0x00007400ab000000)\n\tlibstdc++.so.6 => /lib/x86_64-linux-gnu/libstdc++.so.6 (0x00007400aac00000)\n\tlibgcc_s.so.1 => /lib/x86_64-linux-gnu/libgcc_s.so.1 (0x00007400ab4cc000)\n\tlibc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007400aa800000)\n\tlibz.so.1 => /lib/x86_64-linux-gnu/libz.so.1 (0x00007400ab4ae000)\n\tlibtbb.so.2 => /lib/x86_64-linux-gnu/libtbb.so.2 (0x00007400ab468000)\n\tlibm.so.6 => /lib/x86_64-linux-gnu/libm.so.6 (0x00007400ab381000)\n\t/lib64/ld-linux-x86-64.so.2 (0x00007400ab543000)\n",
+        "stderr": ""
+      },
+      "libapriltag_linked": false
+    }
+  },
+  "archive_integrity": [
+    {
+      "method": "pcl",
+      "files": 151,
+      "manifest_sha256": "a890afe331f16ad5d65e601f390a00c7f270cd489346884a41b0b4274b9a4f58",
+      "expected_manifest_match": true,
+      "mismatches": []
+    },
+    {
+      "method": "gicp",
+      "files": 151,
+      "manifest_sha256": "7abc51e21a5e3fd62ba8fc119c64a78a1aa4e5ca8dd8c44bb1aebf760dfdd546",
+      "expected_manifest_match": true,
+      "mismatches": []
+    }
+  ],
+  "sessions": {
+    "live": {
+      "argv": [
+        "bash",
+        "scripts/run_fast_livo2_live.sh",
+        "--status"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"live\": false,\n  \"details\": {\n    \"run_directory\": \"/home/lab307/ranger_nav/.runtime/sessions/fast_livo_live/run-4e1fptkc\",\n    \"guardian\": {\n      \"pid\": 15497,\n      \"start_ticks\": 665514,\n      \"ppid\": 7937,\n      \"state\": \"R\",\n      \"boot_id\": \"7d9266bc-caeb-4e72-9d67-82ac247914e1\"\n    },\n    \"owner\": {\n      \"pid\": 15524,\n      \"start_ticks\": 665553,\n      \"ppid\": 15497,\n      \"state\": \"R\",\n      \"boot_id\": \"7d9266bc-caeb-4e72-9d67-82ac247914e1\"\n    },\n    \"state\": \"STOPPED\",\n    \"reason\": \"\",\n    \"owned\": [],\n    \"components\": {\n      \"probe\": {\n        \"state\": \"READY\",\n        \"process\": {\n          \"pid\": 15525,\n          \"start_ticks\": 665553,\n          \"ppid\": 15524,\n          \"state\": \"R\",\n          \"boot_id\": \"7d9266bc-caeb-4e72-9d67-82ac247914e1\"\n        },\n        \"argv\": [\n          \"python3\",\n          \"/home/lab307/ranger_nav/scripts/fast_livo2/live_monitor.py\"\n        ]\n      },\n      \"lidar\": {\n        \"state\": \"READY\",\n        \"process\": {\n          \"pid\": 15538,\n          \"start_ticks\": 665780,\n          \"ppid\": 15524,\n          \"state\": \"R\",\n          \"boot_id\": \"7d9266bc-caeb-4e72-9d67-82ac247914e1\"\n        },\n        \"argv\": [\n          \"/home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/lib/livox_ros_driver2/livox_ros_driver2_node\",\n          \"--ros-args\",\n          \"-p\",\n          \"xfer_format:=0\",\n          \"-p\",\n          \"multi_topic:=0\",\n          \"-p\",\n          \"data_src:=0\",\n          \"-p\",\n          \"publish_freq:=10.0\",\n          \"-p\",\n          \"output_data_type:=0\",\n          \"-p\",\n          \"frame_id:=livox_frame\",\n          \"-p\",\n          \"user_config_path:=/home/lab307/ranger_nav/config/fast_livo2/mid360s_live.json\",\n          \"-p\",\n          \"cmdline_input_bd_code:=livox0000000001\",\n          \"-r\",\n          \"__node:=livox_lidar_publisher\"\n        ]\n      },\n      \"writer\": {\n        \"state\": \"READY\",\n        \"process\": {\n          \"pid\": 15558,\n          \"start_ticks\": 666131,\n          \"ppid\": 15524,\n          \"state\": \"R\",\n          \"boot_id\": \"7d9266bc-caeb-4e72-9d67-82ac247914e1\"\n        },\n        \"argv\": [\n          \"/home/lab307/ranger_nav/ws_camera/install/timeshare_writer/lib/timeshare_writer/timeshare_writer_node\",\n          \"--ros-args\",\n          \"-p\",\n          \"timeshare_path:=/home/lab307/ranger_nav/.runtime/sessions/fast_livo_live/sensors-typrg78w/timeshare\",\n          \"-p\",\n          \"csv_path:=/home/lab307/ranger_nav/.runtime/sessions/fast_livo_live/sensors-typrg78w/timeshare_writer.csv\"\n        ]\n      },\n      \"camera\": {\n        \"state\": \"READY\",\n        \"process\": {\n          \"pid\": 15570,\n          \"start_ticks\": 666153,\n          \"ppid\": 15524,\n          \"state\": \"R\",\n          \"boot_id\": \"7d9266bc-caeb-4e72-9d67-82ac247914e1\"\n        },\n        \"argv\": [\n          \"bash\",\n          \"-c\",\n          \"cd -- \\\"$RANGER_LIVO_DEVICE_CWD\\\" && exec \\\"$@\\\"\",\n          \"camera-device\",\n          \"/home/lab307/ranger_nav/ws_camera/install/hik_camera_trigger_driver/lib/hik_camera_trigger_driver/hik_camera_trigger_driver_node\",\n          \"--ros-args\",\n          \"--params-file\",\n          \"/home/lab307/ranger_nav/config/fast_livo2/camera_live.yaml\",\n          \"-p\",\n          \"timeshare_path:=/home/lab307/ranger_nav/.runtime/sessions/fast_livo_live/sensors-typrg78w/timeshare\",\n          \"-p\",\n          \"sync_csv_path:=/home/lab307/ranger_nav/.runtime/sessions/fast_livo_live/sensors-typrg78w/camera_sync.csv\",\n          \"-r\",\n          \"__node:=hik_camera_trigger\"\n        ]\n      },\n      \"frontend\": {\n        \"state\": \"READY\",\n        \"process\": {\n          \"pid\": 15611,\n          \"start_ticks\": 666312,\n          \"ppid\": 15524,\n          \"state\": \"D\",\n          \"boot_id\": \"7d9266bc-caeb-4e72-9d67-82ac247914e1\"\n        },\n        \"argv\": [\n          \"/home/lab307/ranger_nav/ws_fast_livo/install/fast_livo/lib/fast_livo/fastlivo_mapping\",\n          \"--ros-args\",\n          \"--params-file\",\n          \"/home/lab307/ranger_nav/config/fast_livo2/ranger_mid360s_hik_trial.yaml\",\n          \"-p\",\n          \"use_sim_time:=false\",\n          \"--log-level\",\n          \"warn\"\n        ]\n      },\n      \"rviz\": {\n        \"state\": \"EXITED\",\n        \"process\": {\n          \"pid\": 15658,\n          \"start_ticks\": 666413,\n          \"ppid\": 15524,\n          \"state\": \"R\",\n          \"boot_id\": \"7d9266bc-caeb-4e72-9d67-82ac247914e1\"\n        },\n        \"argv\": [\n          \"/opt/ros/humble/lib/rviz2/rviz2\",\n          \"-d\",\n          \"/home/lab307/ranger_nav/config/fast_livo2/live.rviz\",\n          \"--ros-args\",\n          \"-p\",\n          \"use_sim_time:=false\"\n        ],\n        \"exit_code\": 0\n      },\n      \"foxglove\": {\n        \"state\": \"READY\",\n        \"process\": {\n          \"pid\": 15659,\n          \"start_ticks\": 666413,\n          \"ppid\": 15524,\n          \"state\": \"R\",\n          \"boot_id\": \"7d9266bc-caeb-4e72-9d67-82ac247914e1\"\n        },\n        \"argv\": [\n          \"/opt/ros/humble/lib/foxglove_bridge/foxglove_bridge\",\n          \"--ros-args\",\n          \"--params-file\",\n          \"/home/lab307/ranger_nav/config/fast_livo2/foxglove.yaml\",\n          \"-p\",\n          \"port:=8765\"\n        ]\n      }\n    },\n    \"updated_monotonic\": 6837.853929049,\n    \"guardian_cleanup_complete\": true\n  }\n}\n",
+      "stderr": ""
+    },
+    "backend": {
+      "argv": [
+        "bash",
+        "scripts/run_fast_livo2_backend.sh",
+        "--status"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"live\": false,\n  \"details\": {\n    \"run_directory\": \"/home/lab307/ranger_nav/.runtime/sessions/fast_livo_backend/run-czqyocqo\",\n    \"guardian\": {\n      \"pid\": 11774,\n      \"start_ticks\": 710505,\n      \"ppid\": 11440,\n      \"state\": \"R\",\n      \"boot_id\": \"30eb3f46-af45-443c-85e6-c4627c49593b\"\n    },\n    \"owner\": {\n      \"pid\": 11843,\n      \"start_ticks\": 710754,\n      \"ppid\": 11774,\n      \"state\": \"R\",\n      \"boot_id\": \"30eb3f46-af45-443c-85e6-c4627c49593b\"\n    },\n    \"state\": \"FAILED\",\n    \"reason\": \"RuntimeError: critical health lost; stopping session, fresh start required; scheduler exited 2; guardian cleanup\",\n    \"owned\": [],\n    \"components\": {\n      \"monitor\": {\n        \"state\": \"READY\",\n        \"process\": {\n          \"pid\": 11844,\n          \"start_ticks\": 710754,\n          \"ppid\": 11843,\n          \"state\": \"R\",\n          \"boot_id\": \"30eb3f46-af45-443c-85e6-c4627c49593b\"\n        },\n        \"argv\": [\n          \"/usr/bin/python3\",\n          \"/home/lab307/ranger_nav/scripts/fast_livo2/backend/monitor.py\"\n        ]\n      },\n      \"backend\": {\n        \"state\": \"STARTING\",\n        \"process\": {\n          \"pid\": 11856,\n          \"start_ticks\": 710797,\n          \"ppid\": 11843,\n          \"state\": \"R\",\n          \"boot_id\": \"30eb3f46-af45-443c-85e6-c4627c49593b\"\n        },\n        \"argv\": [\n          \"/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/backend_node\",\n          \"--ros-args\",\n          \"--params-file\",\n          \"/home/lab307/ranger_nav/config/fast_livo2/backend.yaml\",\n          \"-p\",\n          \"use_sim_time:=true\",\n          \"-p\",\n          \"metadata_path:=/home/lab307/ranger_nav/.runtime/sessions/fast_livo_backend/provenance-1793251781956760308.json\",\n          \"-p\",\n          \"data_root:=/home/lab307/ranger_nav/.runtime/fast_livo_backend\",\n          \"-p\",\n          \"registration:=pcl_icp\"\n        ]\n      }\n    },\n    \"updated_monotonic\": 7111.515510821,\n    \"guardian_cleanup_complete\": true\n  }\n}\n",
+      "stderr": ""
+    },
+    "c1": {
+      "argv": [
+        "bash",
+        "scripts/run_fast_livo2_localizer.sh",
+        "--status"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"live\": false,\n  \"details\": {\n    \"run_directory\": \"/home/lab307/ranger_nav/.runtime/sessions/fast_livo_localizer/run-bxfez8ht\",\n    \"guardian\": {\n      \"pid\": 11345,\n      \"start_ticks\": 707803,\n      \"ppid\": 11215,\n      \"state\": \"R\",\n      \"boot_id\": \"30eb3f46-af45-443c-85e6-c4627c49593b\"\n    },\n    \"owner\": {\n      \"pid\": 11383,\n      \"start_ticks\": 708052,\n      \"ppid\": 11345,\n      \"state\": \"R\",\n      \"boot_id\": \"30eb3f46-af45-443c-85e6-c4627c49593b\"\n    },\n    \"state\": \"FAILED\",\n    \"reason\": \"RuntimeError: localizer exited -9; no automatic restart; scheduler exited 2; guardian cleanup\",\n    \"owned\": [],\n    \"components\": {\n      \"monitor\": {\n        \"state\": \"READY\",\n        \"process\": {\n          \"pid\": 11384,\n          \"start_ticks\": 708053,\n          \"ppid\": 11383,\n          \"state\": \"R\",\n          \"boot_id\": \"30eb3f46-af45-443c-85e6-c4627c49593b\"\n        },\n        \"argv\": [\n          \"/usr/bin/python3\",\n          \"/home/lab307/ranger_nav/scripts/fast_livo2/localizer/monitor.py\"\n        ]\n      },\n      \"localizer\": {\n        \"state\": \"EXITED\",\n        \"process\": {\n          \"pid\": 11396,\n          \"start_ticks\": 708095,\n          \"ppid\": 11383,\n          \"state\": \"R\",\n          \"boot_id\": \"30eb3f46-af45-443c-85e6-c4627c49593b\"\n        },\n        \"argv\": [\n          \"/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node\",\n          \"--ros-args\",\n          \"--params-file\",\n          \"/home/lab307/ranger_nav/config/fast_livo2/localizer.yaml\",\n          \"-p\",\n          \"use_sim_time:=true\",\n          \"-p\",\n          \"registration:=pcl_icp\",\n          \"-p\",\n          \"t_base_imu_xyz:=[0.0, 0.0, 0.556]\",\n          \"-p\",\n          \"t_base_imu_rpy:=[0.0, 0.0, 0.0]\",\n          \"-p\",\n          \"archive_path:=/home/lab307/ranger_nav/docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/test_fast_livo_localizer_ros/test_managed_process_failure_cleans_only_owned_children-h61cln_b/map\",\n          \"-p\",\n          \"compatibility_path:=/home/lab307/ranger_nav/docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/test_fast_livo_localizer_ros/test_managed_process_failure_cleans_only_owned_children-h61cln_b/map-compatibility.json\"\n        ],\n        \"exit_code\": -9\n      }\n    },\n    \"updated_monotonic\": 7081.442757308,\n    \"guardian_cleanup_complete\": true\n  }\n}\n",
+      "stderr": ""
+    },
+    "c2": {
+      "argv": [
+        "bash",
+        "scripts/run_fast_livo2_relocalizer.sh",
+        "--status"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"live\": false,\n  \"details\": {\n    \"run_directory\": \"/home/lab307/ranger_nav/.runtime/sessions/fast_livo_relocalizer/run-001czdjc\",\n    \"guardian\": {\n      \"pid\": 11028,\n      \"start_ticks\": 705776,\n      \"ppid\": 10961,\n      \"state\": \"R\",\n      \"boot_id\": \"30eb3f46-af45-443c-85e6-c4627c49593b\"\n    },\n    \"owner\": {\n      \"pid\": 11068,\n      \"start_ticks\": 706018,\n      \"ppid\": 11028,\n      \"state\": \"R\",\n      \"boot_id\": \"30eb3f46-af45-443c-85e6-c4627c49593b\"\n    },\n    \"state\": \"FAILED\",\n    \"reason\": \"RuntimeError: localizer exited -9; no automatic restart; scheduler exited 2; guardian cleanup\",\n    \"owned\": [],\n    \"components\": {\n      \"monitor\": {\n        \"state\": \"READY\",\n        \"process\": {\n          \"pid\": 11069,\n          \"start_ticks\": 706019,\n          \"ppid\": 11068,\n          \"state\": \"R\",\n          \"boot_id\": \"30eb3f46-af45-443c-85e6-c4627c49593b\"\n        },\n        \"argv\": [\n          \"/usr/bin/python3\",\n          \"/home/lab307/ranger_nav/scripts/fast_livo2/localizer/monitor.py\"\n        ]\n      },\n      \"localizer\": {\n        \"state\": \"EXITED\",\n        \"process\": {\n          \"pid\": 11081,\n          \"start_ticks\": 706095,\n          \"ppid\": 11068,\n          \"state\": \"R\",\n          \"boot_id\": \"30eb3f46-af45-443c-85e6-c4627c49593b\"\n        },\n        \"argv\": [\n          \"/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node\",\n          \"--ros-args\",\n          \"--params-file\",\n          \"/home/lab307/ranger_nav/config/fast_livo2/localizer.yaml\",\n          \"-p\",\n          \"use_sim_time:=true\",\n          \"-p\",\n          \"registration:=pcl_icp\",\n          \"-p\",\n          \"t_base_imu_xyz:=[0.0, 0.0, 0.556]\",\n          \"-p\",\n          \"t_base_imu_rpy:=[0.0, 0.0, 0.0]\",\n          \"-p\",\n          \"archive_path:=/home/lab307/ranger_nav/docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/test_fast_livo_relocalizer_ros/test_managed_c2_failure_preserves_unowned_processes-valefkwt/map\",\n          \"-p\",\n          \"compatibility_path:=/home/lab307/ranger_nav/docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/test_fast_livo_relocalizer_ros/test_managed_c2_failure_preserves_unowned_processes-valefkwt/map-compatibility.json\",\n          \"--params-file\",\n          \"/home/lab307/ranger_nav/config/fast_livo2/relocalizer.yaml\"\n        ],\n        \"exit_code\": -9\n      }\n    },\n    \"updated_monotonic\": 7061.442431524,\n    \"guardian_cleanup_complete\": true\n  }\n}\n",
+      "stderr": ""
+    },
+    "tags": {
+      "argv": [
+        "bash",
+        "scripts/run_fast_livo2_tags.sh",
+        "--status"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"live\": false,\n  \"details\": null\n}\n",
+      "stderr": ""
+    }
+  }
+}

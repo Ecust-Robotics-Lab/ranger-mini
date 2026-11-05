@@ -1,0 +1,65 @@
+[
+  {
+    "argv": [
+      "ws_fast_livo/backend_build/ros/ranger_fast_livo_backend/backend_tests"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.5662663140001314,
+    "log": "docs/fast_livo2_evidence/apriltag_20261029/baseline_fixed_0.log"
+  },
+  {
+    "argv": [
+      "ws_fast_livo/backend_build/ros/ranger_fast_livo_localizer/localizer_tests"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 8.197667684000407,
+    "log": "docs/fast_livo2_evidence/apriltag_20261029/baseline_fixed_1.log"
+  },
+  {
+    "argv": [
+      "python3",
+      "-c",
+      "import sys,unittest,pathlib;sys.path.insert(0,'tests');import test_fast_livo_relocalizer_ros as m;import test_fast_livo_localizer_ros as c;c.EVIDENCE=pathlib.Path('docs/fast_livo2_evidence/apriltag_20261029/baseline_ros');c.EVIDENCE.mkdir(exist_ok=True);r=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(m));sys.exit(not r.wasSuccessful())"
+    ],
+    "exit_code": 1,
+    "wall_seconds": 34.4283063619996,
+    "log": "docs/fast_livo2_evidence/apriltag_20261029/baseline_fixed_2.log"
+  },
+  {
+    "argv": [
+      "python3",
+      "-c",
+      "import sys,unittest,pathlib;sys.path.insert(0,'tests');import test_fast_livo_localizer_ros as m;import test_fast_livo_localizer_ros as c;c.EVIDENCE=pathlib.Path('docs/fast_livo2_evidence/apriltag_20261029/baseline_ros');c.EVIDENCE.mkdir(exist_ok=True);r=unittest.TextTestRunner(verbosity=2).run(unittest.defaultTestLoader.loadTestsFromModule(m));sys.exit(not r.wasSuccessful())"
+    ],
+    "exit_code": 1,
+    "wall_seconds": 76.59858023699962,
+    "log": "docs/fast_livo2_evidence/apriltag_20261029/baseline_fixed_3.log"
+  },
+  {
+    "argv": [
+      "python3",
+      "tests/test_stage5_bridge.py"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 7.038194519000172,
+    "log": "docs/fast_livo2_evidence/apriltag_20261029/baseline_fixed_4.log"
+  },
+  {
+    "argv": [
+      "python3",
+      "tests/test_bridge_pgo_guard.py"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 0.21547251800075173,
+    "log": "docs/fast_livo2_evidence/apriltag_20261029/baseline_fixed_5.log"
+  },
+  {
+    "argv": [
+      "python3",
+      "tests/test_time_alignment.py"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 4.330087012999684,
+    "log": "docs/fast_livo2_evidence/apriltag_20261029/baseline_fixed_6.log"
+  }
+]

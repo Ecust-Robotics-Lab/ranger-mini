@@ -22,3 +22,17 @@ copied implementations. In particular STD's README states GPLv2 together with a
 personal/academic restriction and commercial-contact wording; package.xml is
 TODO. iBTC's README states GPLv2 while package.xml is TODO. Do not infer blanket
 reuse permission from repository availability or package metadata.
+# Optional AprilTag observation path
+
+AprilRobotics/apriltag v3.4.5, commit
+`94be783968e5091bcc9972c72c84fd63efce2935`, is built without patches in
+`ws_fast_livo/apriltag_deps`. Its BSD-2-Clause license is retained in
+`third_party/APRILTAG-LICENSE`; per-file notices remain in the locked source
+tree. Only the optional detector and observer link this library. The backend
+and localizer consume versioned observation data without linking libapriltag.
+
+The Tag geometry code uses the existing Ubuntu OpenCV 4.5.4 packages
+(`4.5.4+dfsg-9ubuntu4`), under Apache-2.0 and the package's third-party notices.
+No apriltag_ros or apriltag_msgs code is copied or linked. Existing optional
+C2 KISS/ROBIN/PMC licensing remains applicable; this addition does not make
+the combined stack uniformly BSD, MIT, or Apache licensed.

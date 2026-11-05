@@ -1,0 +1,343 @@
+{
+  "schema_version": 1,
+  "kind": "apriltag_landmark_assessment_not_map_extension",
+  "fixedness_declaration": {
+    "family": "tag36h11",
+    "id": 1,
+    "size_m": 0.155,
+    "fixed_during_capture": true,
+    "source": "user response 2026-10-29: \u786e\u8ba4\u56fa\u5b9a\uff0c\u91c7\u96c6\u671f\u95f4\u672a\u79fb\u52a8",
+    "independent_metrology": false
+  },
+  "physical_time_verified": false,
+  "global_pose_submitted": false,
+  "real_VALID_landmark_created": false,
+  "source_provenance": {
+    "extraction_manifest_sha256": "0f966210133b5f43f7ab2c40e2ef8c8aa3be8eebe7b1dbb7520cb2b34fc863cd",
+    "config_sha256": "54af13d1316b85954514196e0bb16deada8c1a18ad55a9ca12a2daa761d9f0b1",
+    "fixedness_declaration_sha256": "0c6d827290e67662fea0c67393e9498408f58052dfd6f9fb7817befcc9ae969a"
+  },
+  "maps": {
+    "pcl": {
+      "map_uuid": "6acd0a5763786389402bf72f397d9cbc",
+      "graph_version": 62,
+      "source_manifest_sha256": "a890afe331f16ad5d65e601f390a00c7f270cd489346884a41b0b4274b9a4f58",
+      "map_gravity_aligned": false,
+      "source_C1_result_sha256": "dc1b66d667f79d1fea0a872fc0d18a78a243cfcd1a561da8ab0dcd7b40195468",
+      "source_C1_samples_sha256": "d92d6691536745851055fc53e9067b4a7b0aeed205c11f2dba38675ea7eb8186",
+      "source_C1_saved_session_request_ids_available": false,
+      "conditions": {
+        "fixedness_user_confirmed": true,
+        "C1_all_observations_have_trusted_segment": true,
+        "physical_time_verified": false,
+        "unique_pose_mode_at_zero_offset": false,
+        "single_fixed_pose_explains_all_zero_offset_observations": false
+      },
+      "assessment": "NOT_READY_FOR_VALID_REGISTRATION",
+      "geometric_state": "AMBIGUOUS",
+      "zero_offset_file": "pcl_zero_offset.json",
+      "zero_offset_mode_count": 2,
+      "mode_comparisons": [
+        {
+          "a": 0,
+          "b": 1,
+          "translation_m": 0.003824744857364816,
+          "rotation_deg": 61.47574152592532
+        }
+      ],
+      "maximum_camera_translation_baseline_m": 0.03939221652663751,
+      "maximum_camera_rotation_deg": 12.961223368039551,
+      "maximum_view_ray_change_deg": 1.1756491089160757,
+      "independent_support_existing_motion_rule": 3,
+      "independent_support_translation_only": 1,
+      "zero_offset_fits": [
+        {
+          "pose": {
+            "xyz": [
+              3.4453497747914645,
+              2.410118630758275,
+              1.0733947509306603
+            ],
+            "xyzw": [
+              -0.687496120449819,
+              -0.13997854404613916,
+              -0.11786533334692106,
+              0.7027537653888382
+            ]
+          },
+          "optimizer_success": true,
+          "evaluations": 15,
+          "train_image_indices": [
+            729,
+            730,
+            731,
+            733,
+            734,
+            735,
+            736,
+            737,
+            738
+          ],
+          "holdout_image_indices": [
+            739,
+            740,
+            744,
+            745,
+            746
+          ],
+          "train_rmse_px": {
+            "count": 9,
+            "minimum": 3.267523036435572,
+            "p50": 5.711256113249648,
+            "p95": 20.72763146375801,
+            "maximum": 30.104504464932504
+          },
+          "holdout_rmse_px": {
+            "count": 5,
+            "minimum": 3.4523253040649973,
+            "p50": 8.436330652827001,
+            "p95": 66.59033918818761,
+            "maximum": 72.90559867398194
+          },
+          "loss": "Huber, 1 px coordinate scale; diagnostic, not field calibrated",
+          "trajectory_optimized": false,
+          "time_optimized": false,
+          "all_frames_pass_current_pixel_limits": false
+        },
+        {
+          "pose": {
+            "xyz": [
+              3.447479852823362,
+              2.4194428859519506,
+              1.0731670005051748
+            ],
+            "xyzw": [
+              0.6615905999485925,
+              -0.22108009422229408,
+              0.44170052429457585,
+              -0.564200422577137
+            ]
+          },
+          "optimizer_success": true,
+          "evaluations": 15,
+          "train_image_indices": [
+            729,
+            730,
+            731,
+            733,
+            734,
+            735,
+            736,
+            737,
+            738
+          ],
+          "holdout_image_indices": [
+            739,
+            740,
+            744,
+            745,
+            746
+          ],
+          "train_rmse_px": {
+            "count": 9,
+            "minimum": 3.5806417767101024,
+            "p50": 6.361590627732472,
+            "p95": 21.03920528333855,
+            "maximum": 30.149960362369768
+          },
+          "holdout_rmse_px": {
+            "count": 5,
+            "minimum": 3.975576739423639,
+            "p50": 8.80798070061424,
+            "p95": 66.64451507688416,
+            "maximum": 72.9707155024905
+          },
+          "loss": "Huber, 1 px coordinate scale; diagnostic, not field calibrated",
+          "trajectory_optimized": false,
+          "time_optimized": false,
+          "all_frames_pass_current_pixel_limits": false
+        }
+      ],
+      "sweep_evaluated_offsets": 17
+    },
+    "gicp": {
+      "map_uuid": "ba6fc8f61218a477d21da5e2b8afff43",
+      "graph_version": 62,
+      "source_manifest_sha256": "7abc51e21a5e3fd62ba8fc119c64a78a1aa4e5ca8dd8c44bb1aebf760dfdd546",
+      "map_gravity_aligned": false,
+      "source_C1_result_sha256": "61ef2ffc40f007756e0c60dae595f3a90aef1ae219d9b9c24ceaeab54d77a326",
+      "source_C1_samples_sha256": "77c421363e3349f269dc3ddd85d53864c825297f807cad8dfbd070a1f3e93d70",
+      "source_C1_saved_session_request_ids_available": false,
+      "conditions": {
+        "fixedness_user_confirmed": true,
+        "C1_all_observations_have_trusted_segment": true,
+        "physical_time_verified": false,
+        "unique_pose_mode_at_zero_offset": false,
+        "single_fixed_pose_explains_all_zero_offset_observations": false
+      },
+      "assessment": "NOT_READY_FOR_VALID_REGISTRATION",
+      "geometric_state": "AMBIGUOUS",
+      "zero_offset_file": "gicp_zero_offset.json",
+      "zero_offset_mode_count": 2,
+      "mode_comparisons": [
+        {
+          "a": 0,
+          "b": 1,
+          "translation_m": 0.003954210023616133,
+          "rotation_deg": 61.47572047298356
+        }
+      ],
+      "maximum_camera_translation_baseline_m": 0.04179553964706846,
+      "maximum_camera_rotation_deg": 12.91636840271057,
+      "maximum_view_ray_change_deg": 1.2815035788755382,
+      "independent_support_existing_motion_rule": 3,
+      "independent_support_translation_only": 1,
+      "zero_offset_fits": [
+        {
+          "pose": {
+            "xyz": [
+              3.4737684747229816,
+              2.4040963158912017,
+              1.0658577405789489
+            ],
+            "xyzw": [
+              -0.6863362817296269,
+              -0.136800111032759,
+              -0.11998083440629918,
+              0.7041539869788023
+            ]
+          },
+          "optimizer_success": true,
+          "evaluations": 5,
+          "train_image_indices": [
+            729,
+            730,
+            731,
+            733,
+            734,
+            735,
+            736,
+            737,
+            738
+          ],
+          "holdout_image_indices": [
+            739,
+            740,
+            744,
+            745,
+            746
+          ],
+          "train_rmse_px": {
+            "count": 9,
+            "minimum": 2.0326780174329953,
+            "p50": 5.614060504784103,
+            "p95": 22.945197886958546,
+            "maximum": 33.71708330009762
+          },
+          "holdout_rmse_px": {
+            "count": 5,
+            "minimum": 3.7373311054164735,
+            "p50": 9.255739703312962,
+            "p95": 68.97006236703966,
+            "maximum": 75.50078006735865
+          },
+          "loss": "Huber, 1 px coordinate scale; diagnostic, not field calibrated",
+          "trajectory_optimized": false,
+          "time_optimized": false,
+          "all_frames_pass_current_pixel_limits": false
+        },
+        {
+          "pose": {
+            "xyz": [
+              3.4729527933828632,
+              2.4084774722748072,
+              1.0660686489583404
+            ],
+            "xyzw": [
+              0.6598105480913798,
+              -0.22809305466514937,
+              0.4451982293095124,
+              -0.5607335692292276
+            ]
+          },
+          "optimizer_success": true,
+          "evaluations": 11,
+          "train_image_indices": [
+            729,
+            730,
+            731,
+            733,
+            734,
+            735,
+            736,
+            737,
+            738
+          ],
+          "holdout_image_indices": [
+            739,
+            740,
+            744,
+            745,
+            746
+          ],
+          "train_rmse_px": {
+            "count": 9,
+            "minimum": 3.177368220328061,
+            "p50": 5.983526071828534,
+            "p95": 23.117965995097393,
+            "maximum": 33.78684790318705
+          },
+          "holdout_rmse_px": {
+            "count": 5,
+            "minimum": 4.367864626674509,
+            "p50": 9.450224016984594,
+            "p95": 68.99641532059141,
+            "maximum": 75.5257622084184
+          },
+          "loss": "Huber, 1 px coordinate scale; diagnostic, not field calibrated",
+          "trajectory_optimized": false,
+          "time_optimized": false,
+          "all_frames_pass_current_pixel_limits": false
+        }
+      ],
+      "sweep_evaluated_offsets": 17
+    }
+  },
+  "time_sensitivity": {
+    "offsets_ns": [
+      -199680000,
+      -174720000,
+      -149760000,
+      -124800000,
+      -99840000,
+      -74880000,
+      -49920000,
+      -24960000,
+      0,
+      24960000,
+      49920000,
+      74880000,
+      99840000,
+      124800000,
+      149760000,
+      174720000,
+      199680000
+    ],
+    "derived_image_period_ns": 99840000,
+    "definition": "+/-2 observed sampling periods in quarter-period steps; diagnostic only"
+  },
+  "train_count": 9,
+  "holdout_count": 5,
+  "evaluation_completed": true,
+  "registration_eligible": false,
+  "wall_seconds": 1.6028693129992462,
+  "limitations": [
+    "Single capture and a 1.7-second correlated window, not independent visits",
+    "C1 and B use the same capture; no independent map accuracy truth",
+    "No map-pose interpolation: only native local trajectory interpolation",
+    "Fixed-trajectory Tag fitting is diagnostic; no frontend, C1, map or calibration update",
+    "Offset sensitivity does not establish a physical time mapping",
+    "Old C1 saved samples omit explicit session/request IDs; these are not invented",
+    "Old maps are not gravity aligned; map z is not external vertical height"
+  ]
+}

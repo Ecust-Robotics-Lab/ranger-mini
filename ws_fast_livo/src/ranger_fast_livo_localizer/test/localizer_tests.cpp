@@ -141,6 +141,30 @@ TEST_F(C1,StaticDuplicatesDoNotSupplyMotionSupportAndTimeoutRevokesValidity) {
   loc.reset_frontend();auto good=initialize_track(loc);ASSERT_TRUE(good.valid)<<good.reason;
   auto expired=loc.expire(2.);EXPECT_FALSE(expired.valid);EXPECT_EQ(expired.state,3);EXPECT_EQ(expired.stamp,good.stamp);
 }
+TEST_F(C1,PendingSupportRechecksOneSeedButEveryPossibleCommitProbesAmbiguity) {
+  Localizer loc(map,config);loc.initialize(initial(X),0.);
+  auto first=loc.process(10000000000LL,0,Pose::Identity(),query(X),.01);
+  ASSERT_FALSE(first.valid);EXPECT_EQ(first.quality["native_diagnostics"]["local_hypotheses"],13);
+  Pose small=pose(.01,0,0,0,0,0);
+  auto pending=loc.process(10100000000LL,1,small,query(X*small),.11);
+  EXPECT_FALSE(pending.valid);EXPECT_EQ(pending.reason,"verifying_multiframe_motion_support");
+  EXPECT_EQ(pending.quality["native_diagnostics"]["local_hypotheses"],1);
+  Pose enough=pose(.08,0,0,0,0,0);
+  auto accepted=loc.process(10400000000LL,2,enough,query(X*enough),.41);
+  ASSERT_TRUE(accepted.valid)<<accepted.reason;
+  EXPECT_EQ(accepted.quality["native_diagnostics"]["local_hypotheses"],13);
+  EXPECT_TRUE(accepted.quality["native_diagnostics"]["initial_ambiguity_probe"]);
+  EXPECT_EQ(accepted.stamp,10400000000LL);
+}
+TEST_F(C1,RejectedPendingSupportRestartsFullAmbiguityProbe) {
+  Localizer loc(map,config);loc.initialize(initial(X),0.);
+  ASSERT_FALSE(loc.process(10000000000LL,0,Pose::Identity(),query(X),.01).valid);
+  auto bad=loc.process(10100000000LL,1,Pose::Identity(),Cloud{},.11);
+  EXPECT_FALSE(bad.valid);
+  auto restarted=loc.process(10200000000LL,2,Pose::Identity(),query(X),.21);
+  EXPECT_FALSE(restarted.valid);
+  EXPECT_EQ(restarted.quality["native_diagnostics"]["local_hypotheses"],13);
+}
 TEST_F(C1,CancellationAndSolverBudgetCannotAccept) {
   Localizer loc(map,config);loc.initialize(initial(X),0.);
   auto r=loc.process(10000000000LL,0,Pose::Identity(),query(X),.01,[]{return true;});EXPECT_FALSE(r.valid);EXPECT_EQ(r.reason,"cancelled_generation");

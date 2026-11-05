@@ -1,0 +1,3582 @@
+{
+  "hardware_started": false,
+  "process_exit_codes": [
+    0
+  ],
+  "private_messages": 83,
+  "valid_unique_samples": 2,
+  "sessions": [
+    "2cd580d3da419da87b6c10ae2f9633be",
+    "f7b3dd21959ecfdda05985b3c8994fdd"
+  ],
+  "bridge_health": {},
+  "estimates": [
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "2cd580d3da419da87b6c10ae2f9633be",
+      "request_generation": 0,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "2cd580d3da419da87b6c10ae2f9633be",
+      "request_generation": 1,
+      "quality": {
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "2cd580d3da419da87b6c10ae2f9633be",
+      "request_generation": 1,
+      "quality": {
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "2cd580d3da419da87b6c10ae2f9633be",
+      "request_generation": 1,
+      "quality": {
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "2cd580d3da419da87b6c10ae2f9633be",
+      "request_generation": 1,
+      "quality": {
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 12800,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "2cd580d3da419da87b6c10ae2f9633be",
+      "request_generation": 1,
+      "quality": {
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 1,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "2cd580d3da419da87b6c10ae2f9633be",
+      "request_generation": 1,
+      "quality": {
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "2cd580d3da419da87b6c10ae2f9633be",
+      "request_generation": 1,
+      "quality": {
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "2cd580d3da419da87b6c10ae2f9633be",
+      "request_generation": 1,
+      "quality": {
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 1,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_superseded_matching_and_repeated_map_request-4m5m1nyh/map/manifest.json": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "b1d7de21ea359e7336f76c57a1be3f7f488229d359fd5df7e4f37a3e6f3d99c0"
+        },
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 12800,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 1,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000170000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2617313861846924,
+            -1.054046869277954,
+            0.7138421535491943
+          ],
+          "xyzw": [
+            0.13528742679519198,
+            -0.07607122162801794,
+            0.3022936994080811,
+            0.940494019486213
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 99.62006199998541,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "initial_ambiguity_probe": true,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.30779245622186047,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.272536171913099,
+            -1.0480250098345252,
+            0.71558157763292
+          ],
+          "xyzw": [
+            0.13545366644286655,
+            -0.0760874947682441,
+            0.3029552175847627,
+            0.9402558872590197
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007516203723381947,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000170000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2617313861846924,
+            -1.054046869277954,
+            0.7138421535491943
+          ],
+          "xyzw": [
+            0.13528742679519198,
+            -0.07607122162801794,
+            0.3022936994080811,
+            0.940494019486213
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 99.62006199998541,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "initial_ambiguity_probe": true,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.30779245622186047,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.272536171913099,
+            -1.0480250098345252,
+            0.71558157763292
+          ],
+          "xyzw": [
+            0.13545366644286655,
+            -0.0760874947682441,
+            0.3029552175847627,
+            0.9402558872590197
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007516203723381947,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000170000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2617313861846924,
+            -1.054046869277954,
+            0.7138421535491943
+          ],
+          "xyzw": [
+            0.13528742679519198,
+            -0.07607122162801794,
+            0.3022936994080811,
+            0.940494019486213
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 99.62006199998541,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "initial_ambiguity_probe": true,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.30779245622186047,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.272536171913099,
+            -1.0480250098345252,
+            0.71558157763292
+          ],
+          "xyzw": [
+            0.13545366644286655,
+            -0.0760874947682441,
+            0.3029552175847627,
+            0.9402558872590197
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007516203723381947,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000170000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2617313861846924,
+            -1.054046869277954,
+            0.7138421535491943
+          ],
+          "xyzw": [
+            0.13528742679519198,
+            -0.07607122162801794,
+            0.3022936994080811,
+            0.940494019486213
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 99.62006199998541,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "initial_ambiguity_probe": true,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.30779245622186047,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.272536171913099,
+            -1.0480250098345252,
+            0.71558157763292
+          ],
+          "xyzw": [
+            0.13545366644286655,
+            -0.0760874947682441,
+            0.3029552175847627,
+            0.9402558872590197
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007516203723381947,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000170000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2617313861846924,
+            -1.054046869277954,
+            0.7138421535491943
+          ],
+          "xyzw": [
+            0.13528742679519198,
+            -0.07607122162801794,
+            0.3022936994080811,
+            0.940494019486213
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 99.62006199998541,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "initial_ambiguity_probe": true,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.30779245622186047,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.272536171913099,
+            -1.0480250098345252,
+            0.71558157763292
+          ],
+          "xyzw": [
+            0.13545366644286655,
+            -0.0760874947682441,
+            0.3029552175847627,
+            0.9402558872590197
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007516203723381947,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000170000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2617313861846924,
+            -1.054046869277954,
+            0.7138421535491943
+          ],
+          "xyzw": [
+            0.13528742679519198,
+            -0.07607122162801794,
+            0.3022936994080811,
+            0.940494019486213
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 99.62006199998541,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "initial_ambiguity_probe": true,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.30779245622186047,
+        "pair_bytes": 12800,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.272536171913099,
+            -1.0480250098345252,
+            0.71558157763292
+          ],
+          "xyzw": [
+            0.13545366644286655,
+            -0.0760874947682441,
+            0.3029552175847627,
+            0.9402558872590197
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007516203723381947,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000170000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2617313861846924,
+            -1.054046869277954,
+            0.7138421535491943
+          ],
+          "xyzw": [
+            0.13528742679519198,
+            -0.07607122162801794,
+            0.3022936994080811,
+            0.940494019486213
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 99.62006199998541,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "initial_ambiguity_probe": true,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.30779245622186047,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.272536171913099,
+            -1.0480250098345252,
+            0.71558157763292
+          ],
+          "xyzw": [
+            0.13545366644286655,
+            -0.0760874947682441,
+            0.3029552175847627,
+            0.9402558872590197
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 1,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007516203723381947,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000270000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2979578971862793,
+            -1.0363476276397705,
+            0.7203580141067505
+          ],
+          "xyzw": [
+            0.135697460468143,
+            -0.07625319286391795,
+            0.30427943871461266,
+            0.9397795874438193
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 7.068576999984089,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 1,
+          "initial_ambiguity_probe": false,
+          "local_hypotheses": 1,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.3041264589328988,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.308257004311583,
+            -1.0304428302901893,
+            0.7217213984764785
+          ],
+          "xyzw": [
+            0.1359117842135361,
+            -0.07630826221432127,
+            0.3048454046666946,
+            0.9395607033520095
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007589435073622827,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000270000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2979578971862793,
+            -1.0363476276397705,
+            0.7203580141067505
+          ],
+          "xyzw": [
+            0.135697460468143,
+            -0.07625319286391795,
+            0.30427943871461266,
+            0.9397795874438193
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 7.068576999984089,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 1,
+          "initial_ambiguity_probe": false,
+          "local_hypotheses": 1,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.3041264589328988,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.308257004311583,
+            -1.0304428302901893,
+            0.7217213984764785
+          ],
+          "xyzw": [
+            0.1359117842135361,
+            -0.07630826221432127,
+            0.3048454046666946,
+            0.9395607033520095
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007589435073622827,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000270000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2979578971862793,
+            -1.0363476276397705,
+            0.7203580141067505
+          ],
+          "xyzw": [
+            0.135697460468143,
+            -0.07625319286391795,
+            0.30427943871461266,
+            0.9397795874438193
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 7.068576999984089,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 1,
+          "initial_ambiguity_probe": false,
+          "local_hypotheses": 1,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.3041264589328988,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.308257004311583,
+            -1.0304428302901893,
+            0.7217213984764785
+          ],
+          "xyzw": [
+            0.1359117842135361,
+            -0.07630826221432127,
+            0.3048454046666946,
+            0.9395607033520095
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007589435073622827,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000270000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2979578971862793,
+            -1.0363476276397705,
+            0.7203580141067505
+          ],
+          "xyzw": [
+            0.135697460468143,
+            -0.07625319286391795,
+            0.30427943871461266,
+            0.9397795874438193
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 7.068576999984089,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 1,
+          "initial_ambiguity_probe": false,
+          "local_hypotheses": 1,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.3041264589328988,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.308257004311583,
+            -1.0304428302901893,
+            0.7217213984764785
+          ],
+          "xyzw": [
+            0.1359117842135361,
+            -0.07630826221432127,
+            0.3048454046666946,
+            0.9395607033520095
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007589435073622827,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000270000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2979578971862793,
+            -1.0363476276397705,
+            0.7203580141067505
+          ],
+          "xyzw": [
+            0.135697460468143,
+            -0.07625319286391795,
+            0.30427943871461266,
+            0.9397795874438193
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 7.068576999984089,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 1,
+          "initial_ambiguity_probe": false,
+          "local_hypotheses": 1,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.3041264589328988,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.308257004311583,
+            -1.0304428302901893,
+            0.7217213984764785
+          ],
+          "xyzw": [
+            0.1359117842135361,
+            -0.07630826221432127,
+            0.3048454046666946,
+            0.9395607033520095
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007589435073622827,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000270000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2979578971862793,
+            -1.0363476276397705,
+            0.7203580141067505
+          ],
+          "xyzw": [
+            0.135697460468143,
+            -0.07625319286391795,
+            0.30427943871461266,
+            0.9397795874438193
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 7.068576999984089,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 1,
+          "initial_ambiguity_probe": false,
+          "local_hypotheses": 1,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.3041264589328988,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.308257004311583,
+            -1.0304428302901893,
+            0.7217213984764785
+          ],
+          "xyzw": [
+            0.1359117842135361,
+            -0.07630826221432127,
+            0.3048454046666946,
+            0.9395607033520095
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007589435073622827,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000270000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2979578971862793,
+            -1.0363476276397705,
+            0.7203580141067505
+          ],
+          "xyzw": [
+            0.135697460468143,
+            -0.07625319286391795,
+            0.30427943871461266,
+            0.9397795874438193
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 7.068576999984089,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 1,
+          "initial_ambiguity_probe": false,
+          "local_hypotheses": 1,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.3041264589328988,
+        "pair_bytes": 12800,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.308257004311583,
+            -1.0304428302901893,
+            0.7217213984764785
+          ],
+          "xyzw": [
+            0.1359117842135361,
+            -0.07630826221432127,
+            0.3048454046666946,
+            0.9395607033520095
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007589435073622827,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000270000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2979578971862793,
+            -1.0363476276397705,
+            0.7203580141067505
+          ],
+          "xyzw": [
+            0.135697460468143,
+            -0.07625319286391795,
+            0.30427943871461266,
+            0.9397795874438193
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 7.068576999984089,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 1,
+          "initial_ambiguity_probe": false,
+          "local_hypotheses": 1,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.3041264589328988,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.308257004311583,
+            -1.0304428302901893,
+            0.7217213984764785
+          ],
+          "xyzw": [
+            0.1359117842135361,
+            -0.07630826221432127,
+            0.3048454046666946,
+            0.9395607033520095
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 1,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007589435073622827,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000270000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2979578971862793,
+            -1.0363476276397705,
+            0.7203580141067505
+          ],
+          "xyzw": [
+            0.135697460468143,
+            -0.07625319286391795,
+            0.30427943871461266,
+            0.9397795874438193
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 7.068576999984089,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 1,
+          "initial_ambiguity_probe": false,
+          "local_hypotheses": 1,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.3041264589328988,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.308257004311583,
+            -1.0304428302901893,
+            0.7217213984764785
+          ],
+          "xyzw": [
+            0.1359117842135361,
+            -0.07630826221432127,
+            0.3048454046666946,
+            0.9395607033520095
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007589435073622827,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000270000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2979578971862793,
+            -1.0363476276397705,
+            0.7203580141067505
+          ],
+          "xyzw": [
+            0.135697460468143,
+            -0.07625319286391795,
+            0.30427943871461266,
+            0.9397795874438193
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 7.068576999984089,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 1,
+          "initial_ambiguity_probe": false,
+          "local_hypotheses": 1,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.3041264589328988,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.308257004311583,
+            -1.0304428302901893,
+            0.7217213984764785
+          ],
+          "xyzw": [
+            0.1359117842135361,
+            -0.07630826221432127,
+            0.3048454046666946,
+            0.9395607033520095
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007589435073622827,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000270000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2979578971862793,
+            -1.0363476276397705,
+            0.7203580141067505
+          ],
+          "xyzw": [
+            0.135697460468143,
+            -0.07625319286391795,
+            0.30427943871461266,
+            0.9397795874438193
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 7.068576999984089,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 1,
+          "initial_ambiguity_probe": false,
+          "local_hypotheses": 1,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.3041264589328988,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.308257004311583,
+            -1.0304428302901893,
+            0.7217213984764785
+          ],
+          "xyzw": [
+            0.1359117842135361,
+            -0.07630826221432127,
+            0.3048454046666946,
+            0.9395607033520095
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007589435073622827,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000270000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2979578971862793,
+            -1.0363476276397705,
+            0.7203580141067505
+          ],
+          "xyzw": [
+            0.135697460468143,
+            -0.07625319286391795,
+            0.30427943871461266,
+            0.9397795874438193
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 7.068576999984089,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 1,
+          "initial_ambiguity_probe": false,
+          "local_hypotheses": 1,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.3041264589328988,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.308257004311583,
+            -1.0304428302901893,
+            0.7217213984764785
+          ],
+          "xyzw": [
+            0.1359117842135361,
+            -0.07630826221432127,
+            0.3048454046666946,
+            0.9395607033520095
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007589435073622827,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 1,
+      "reason": "map_match_confirmed",
+      "sample": 1000370000000,
+      "latest_scan": 1000370000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.333249092102051,
+            -1.0177578926086426,
+            0.7259365320205688
+          ],
+          "xyzw": [
+            0.1362298022333506,
+            -0.07642015187800469,
+            0.3062348387482971,
+            0.9390535793591382
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 773,
+        "elapsed_ms": 92.70444800000632,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "initial_ambiguity_probe": true,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.30344817238134525,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.3439778678549135,
+            -1.0128604325681074,
+            0.7278607516896405
+          ],
+          "xyzw": [
+            0.13637008875561757,
+            -0.07652661009318852,
+            0.30673458111372964,
+            0.9388614240607689
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.006509034603186291,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 1,
+      "reason": "map_match_confirmed",
+      "sample": 1000370000000,
+      "latest_scan": 1000370000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.333249092102051,
+            -1.0177578926086426,
+            0.7259365320205688
+          ],
+          "xyzw": [
+            0.1362298022333506,
+            -0.07642015187800469,
+            0.3062348387482971,
+            0.9390535793591382
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 773,
+        "elapsed_ms": 92.70444800000632,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "initial_ambiguity_probe": true,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.30344817238134525,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.3439778678549135,
+            -1.0128604325681074,
+            0.7278607516896405
+          ],
+          "xyzw": [
+            0.13637008875561757,
+            -0.07652661009318852,
+            0.30673458111372964,
+            0.9388614240607689
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.006509034603186291,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 1,
+      "reason": "map_match_confirmed",
+      "sample": 1000370000000,
+      "latest_scan": 1000370000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.333249092102051,
+            -1.0177578926086426,
+            0.7259365320205688
+          ],
+          "xyzw": [
+            0.1362298022333506,
+            -0.07642015187800469,
+            0.3062348387482971,
+            0.9390535793591382
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 773,
+        "elapsed_ms": 92.70444800000632,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "initial_ambiguity_probe": true,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.30344817238134525,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.3439778678549135,
+            -1.0128604325681074,
+            0.7278607516896405
+          ],
+          "xyzw": [
+            0.13637008875561757,
+            -0.07652661009318852,
+            0.30673458111372964,
+            0.9388614240607689
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.006509034603186291,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 1,
+      "reason": "map_match_confirmed",
+      "sample": 1000370000000,
+      "latest_scan": 1000370000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.333249092102051,
+            -1.0177578926086426,
+            0.7259365320205688
+          ],
+          "xyzw": [
+            0.1362298022333506,
+            -0.07642015187800469,
+            0.3062348387482971,
+            0.9390535793591382
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 773,
+        "elapsed_ms": 92.70444800000632,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "initial_ambiguity_probe": true,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.30344817238134525,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.3439778678549135,
+            -1.0128604325681074,
+            0.7278607516896405
+          ],
+          "xyzw": [
+            0.13637008875561757,
+            -0.07652661009318852,
+            0.30673458111372964,
+            0.9388614240607689
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.006509034603186291,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 1,
+      "reason": "map_match_confirmed",
+      "sample": 1000370000000,
+      "latest_scan": 1000370000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.333249092102051,
+            -1.0177578926086426,
+            0.7259365320205688
+          ],
+          "xyzw": [
+            0.1362298022333506,
+            -0.07642015187800469,
+            0.3062348387482971,
+            0.9390535793591382
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 773,
+        "elapsed_ms": 92.70444800000632,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "initial_ambiguity_probe": true,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.30344817238134525,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.3439778678549135,
+            -1.0128604325681074,
+            0.7278607516896405
+          ],
+          "xyzw": [
+            0.13637008875561757,
+            -0.07652661009318852,
+            0.30673458111372964,
+            0.9388614240607689
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.006509034603186291,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 1,
+      "reason": "map_match_confirmed",
+      "sample": 1000370000000,
+      "latest_scan": 1000370000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.333249092102051,
+            -1.0177578926086426,
+            0.7259365320205688
+          ],
+          "xyzw": [
+            0.1362298022333506,
+            -0.07642015187800469,
+            0.3062348387482971,
+            0.9390535793591382
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 773,
+        "elapsed_ms": 92.70444800000632,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "initial_ambiguity_probe": true,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.30344817238134525,
+        "pair_bytes": 12800,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.3439778678549135,
+            -1.0128604325681074,
+            0.7278607516896405
+          ],
+          "xyzw": [
+            0.13637008875561757,
+            -0.07652661009318852,
+            0.30673458111372964,
+            0.9388614240607689
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.006509034603186291,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 1,
+      "reason": "map_match_confirmed",
+      "sample": 1000370000000,
+      "latest_scan": 1000370000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.333249092102051,
+            -1.0177578926086426,
+            0.7259365320205688
+          ],
+          "xyzw": [
+            0.1362298022333506,
+            -0.07642015187800469,
+            0.3062348387482971,
+            0.9390535793591382
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 773,
+        "elapsed_ms": 92.70444800000632,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "initial_ambiguity_probe": true,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.30344817238134525,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.3439778678549135,
+            -1.0128604325681074,
+            0.7278607516896405
+          ],
+          "xyzw": [
+            0.13637008875561757,
+            -0.07652661009318852,
+            0.30673458111372964,
+            0.9388614240607689
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 1,
+        "reason": "geometry_valid",
+        "rmse_m": 0.006509034603186291,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    },
+    {
+      "state": 1,
+      "reason": "map_match_confirmed",
+      "sample": 1000470000000,
+      "latest_scan": 1000470000000,
+      "map": "df3fd60197c14497b5158565ade7877c",
+      "session": "f7b3dd21959ecfdda05985b3c8994fdd",
+      "request_generation": 2,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.368764638900757,
+            -1.0005875825881958,
+            0.7318779230117798
+          ],
+          "xyzw": [
+            0.13667278983722872,
+            -0.07661535072479465,
+            0.3080938626858719,
+            0.9383649654194921
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 770,
+        "elapsed_ms": 3.8454649999835055,
+        "geometrically_accepted": true,
+        "global_search_allowed": false,
+        "global_search_enabled": false,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "df3fd60197c14497b5158565ade7877c",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 1,
+          "initial_ambiguity_probe": false,
+          "local_hypotheses": 1,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.30386406725938614,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "prediction": {
+          "xyz": [
+            2.368990120118971,
+            -1.0002108720251668,
+            0.7320600794754428
+          ],
+          "xyzw": [
+            0.13668854494685534,
+            -0.07663612854672551,
+            0.30812333219609245,
+            0.9383512975629424
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007111708838206515,
+        "source_overlap": 1.0,
+        "tag_input_dropped": 0
+      }
+    }
+  ]
+}

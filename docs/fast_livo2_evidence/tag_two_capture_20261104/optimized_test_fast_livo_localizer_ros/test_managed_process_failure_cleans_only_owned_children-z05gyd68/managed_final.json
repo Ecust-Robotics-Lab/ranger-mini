@@ -1,0 +1,67 @@
+{
+  "run_directory": "/home/lab307/ranger_nav/.runtime/sessions/fast_livo_localizer/run-si3kekdu",
+  "guardian": {
+    "pid": 2845,
+    "start_ticks": 25402,
+    "ppid": 2701,
+    "state": "R",
+    "boot_id": "6bcf91d2-eb7d-4a26-89f9-61aed06c0368"
+  },
+  "owner": {
+    "pid": 2887,
+    "start_ticks": 25654,
+    "ppid": 2845,
+    "state": "R",
+    "boot_id": "6bcf91d2-eb7d-4a26-89f9-61aed06c0368"
+  },
+  "state": "FAILED",
+  "reason": "RuntimeError: localizer exited -9; no automatic restart; scheduler exited 2; guardian cleanup",
+  "owned": [],
+  "components": {
+    "monitor": {
+      "state": "READY",
+      "process": {
+        "pid": 2888,
+        "start_ticks": 25654,
+        "ppid": 2887,
+        "state": "R",
+        "boot_id": "6bcf91d2-eb7d-4a26-89f9-61aed06c0368"
+      },
+      "argv": [
+        "/usr/bin/python3",
+        "/home/lab307/ranger_nav/scripts/fast_livo2/localizer/monitor.py"
+      ]
+    },
+    "localizer": {
+      "state": "EXITED",
+      "process": {
+        "pid": 2900,
+        "start_ticks": 25697,
+        "ppid": 2887,
+        "state": "D",
+        "boot_id": "6bcf91d2-eb7d-4a26-89f9-61aed06c0368"
+      },
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node",
+        "--ros-args",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/fast_livo2/localizer.yaml",
+        "-p",
+        "use_sim_time:=true",
+        "-p",
+        "registration:=pcl_icp",
+        "-p",
+        "t_base_imu_xyz:=[0.0, 0.0, 0.556]",
+        "-p",
+        "t_base_imu_rpy:=[0.0, 0.0, 0.0]",
+        "-p",
+        "archive_path:=/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_managed_process_failure_cleans_only_owned_children-z05gyd68/map",
+        "-p",
+        "compatibility_path:=/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_test_fast_livo_localizer_ros/test_managed_process_failure_cleans_only_owned_children-z05gyd68/map-compatibility.json"
+      ],
+      "exit_code": -9
+    }
+  },
+  "updated_monotonic": 257.807025083,
+  "guardian_cleanup_complete": true
+}

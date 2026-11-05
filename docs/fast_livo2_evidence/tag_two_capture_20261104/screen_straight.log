@@ -1,0 +1,80 @@
+{
+  "kind": "read_only_capture_screening_not_registration",
+  "capture": "/home/lab307/ranger_nav/bags/fast-livo-tag140_straight_04-ryzykq2l",
+  "source": {
+    "sha256": "e6c7cd1b2d200b4629abfa7002458ace896e3c6a3b2268cc673145d21f400b6d",
+    "bytes": 7563784192,
+    "mtime_ns": 1793771861283088342
+  },
+  "source_unchanged": true,
+  "hardware_started": false,
+  "ros_graph_started": false,
+  "camera_model_matches_all_recorded_CameraInfo": true,
+  "sizes": {
+    "schema_version": 1,
+    "family": "tag36h11",
+    "sizes_m": {
+      "1": 0.14
+    },
+    "size_definition": "detected_black_white_boundary",
+    "source": "User declared 2026-10-29 for this new capture: tag36h11 ID 01, Black-border width = 140 mm",
+    "capture_scope": "new 140 mm physical tag; not the old 155 mm capture",
+    "fixed_deployment_validated": false,
+    "map_pose_registered": false
+  },
+  "counts": {
+    "images": 899,
+    "images_with_detections": 899,
+    "observations": 899,
+    "observations_with_2_hypotheses": 899,
+    "quality_eligible_observations": 899
+  },
+  "identities": {
+    "tag36h11:1": 899
+  },
+  "positive_local_pose_associations": {
+    "bracketed_slerp": 895,
+    "exact": 3,
+    "no_bracket_no_extrapolation": 1
+  },
+  "positive_time_span_s": 89.79976226000001,
+  "maximum_conditional_camera_baseline_m": 0.6414985523251823,
+  "decision_margin": {
+    "count": 899,
+    "minimum": 94.34622955322266,
+    "p50": 112.52680969238281,
+    "p95": 151.74017486572237,
+    "maximum": 166.42808532714844
+  },
+  "hypothesis_pixel_rmse_px": {
+    "count": 1798,
+    "minimum": 0.11909331678201954,
+    "p50": 0.28178739789126106,
+    "p95": 0.4876045068614767,
+    "maximum": 0.9351039246626566
+  },
+  "camera_range_m": {
+    "count": 1798,
+    "minimum": 1.0372968738812647,
+    "p50": 1.4909952251651877,
+    "p95": 1.6552222514200052,
+    "maximum": 1.6702593816151199
+  },
+  "processing_ms": {
+    "count": 899,
+    "minimum": 42.61535799923877,
+    "p50": 49.48806999891531,
+    "p95": 54.33171080039756,
+    "maximum": 67.21955600005458
+  },
+  "detector_wall_s": 55.33161814199957,
+  "sync_anomalies": [],
+  "physical_synchronization_verified": false,
+  "real_VALID_landmark_created": false,
+  "limitations": [
+    "No old map/C1 or old replay trajectory used",
+    "Zero-offset local association is conditional, not physically verified",
+    "Detection frame fraction is not recall; pose baseline is not independent truth",
+    "No fixed-landmark fit or cross-visit recovery evaluated"
+  ]
+}

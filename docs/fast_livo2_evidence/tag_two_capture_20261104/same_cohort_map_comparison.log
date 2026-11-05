@@ -1,0 +1,47 @@
+{
+  "local_livo": {
+    "frames": 584,
+    "training_frames": 55,
+    "heldout_frames": 160,
+    "training_modes": 5,
+    "seeds": 4,
+    "holdout_rmse_px": {
+      "count": 160,
+      "minimum": 0.2877288569995598,
+      "p50": 1.7442784506644902,
+      "p95": 4.852116767145095,
+      "maximum": 10.171450311851418
+    },
+    "training_huber_coordinate_cost_mean": 1.5504236305835541
+  },
+  "old_map_c1": {
+    "frames": 584,
+    "training_frames": 55,
+    "heldout_frames": 160,
+    "training_modes": 5,
+    "seeds": 4,
+    "holdout_rmse_px": {
+      "count": 160,
+      "minimum": 0.462202972235851,
+      "p50": 7.230214862424767,
+      "p95": 16.205883907441226,
+      "maximum": 20.442304985955317
+    },
+    "training_huber_coordinate_cost_mean": 5.789563394161668
+  },
+  "new_map_c1": {
+    "frames": 584,
+    "training_frames": 55,
+    "heldout_frames": 160,
+    "training_modes": 5,
+    "seeds": 4,
+    "holdout_rmse_px": {
+      "count": 160,
+      "minimum": 0.2945742531221805,
+      "p50": 2.7733559384746425,
+      "p95": 6.231314716773062,
+      "maximum": 10.539352262480183
+    },
+    "training_huber_coordinate_cost_mean": 1.849175108013275
+  }
+}

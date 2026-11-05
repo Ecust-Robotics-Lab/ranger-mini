@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "mode": "offline_experiment",
+  "source_manifest_sha256": "14658c3b156a05c3f792b9a3a1d90f2c79032f4a379c399715ce338c97faf9ef",
+  "physical_sync_validated": false,
+  "absolute_accuracy_validated": false,
+  "limitations": [
+    "Small local map from turn capture; not a whole-floor map or independently measured truth.",
+    "Current three-sensor source replay uses frozen +110 ms effective-time hypothesis; physical exposure phase not measured.",
+    "Distinct straight capture is used for global-search validation; Tag is not used for localization.",
+    "Full formal sensor/time/frontend identity attestation is not claimed by this legacy schema; source evidence is SHA-bound."
+  ],
+  "evidence_files_sha256": {
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-two-capture-20261104/new_local_map/metadata.json": "98e2303a7e609ea4a0e5da61dcc1c1b7de2660a4f7ef3236de65238ea7834f34",
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-two-capture-20261104/new_local_map/result.json": "f879286e9ec16a0e963024a7f153080fec26ed7bd3d4fe319c1f0f89630155bf",
+    "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/new_map_protocol.json": "49a4e8f491423cd887c939db04d23900803f25b91641d06325fe153a18c08bd8",
+    "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/frozen_selection.json": "466ff94ec263e962068e7e7127621b4b0d522f437aaa3ca745b23675db5b9d24"
+  }
+}

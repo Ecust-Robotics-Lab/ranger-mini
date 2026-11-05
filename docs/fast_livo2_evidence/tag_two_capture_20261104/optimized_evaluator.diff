@@ -1,0 +1,11 @@
+--- /home/lab307/ranger_nav/scripts/fast_livo2/localizer/validate_motion.py
++++ evidence-only optimized node evaluator
+@@ -114,7 +114,7 @@
+         clock = node.create_publisher(Clock, '/clock', 10)
+         odom_pub = node.create_publisher(Odometry, '/fast_livo/odometry', 16)
+         cloud_pub = node.create_publisher(PointCloud2, '/fast_livo/deskewed_imu', 16)
+-        command = [str(ROOT/'ws_fast_livo/backend_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node'),
++        command = [str(ROOT/'ws_fast_livo/install_c1_confirmation_20261104/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node'),
+                    '--ros-args', '--params-file', str(ROOT/'config/fast_livo2/localizer.yaml'),
+                    '-p', 'archive_path:='+str(archive), '-p', 'compatibility_path:='+str(args.compatibility.resolve()),
+                    '-p', 'registration:='+args.registration]

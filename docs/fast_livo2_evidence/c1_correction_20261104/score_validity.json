@@ -1,0 +1,39 @@
+{
+  "note": "nonconverged default zero RMSE excluded; frozen comparison remains an immutable selection snapshot",
+  "cases": {
+    "pcl_dynamic": {
+      "valid_geometry_score_count": 525,
+      "point_rmse_m_p50_p95": [
+        0.04950173332948144,
+        0.08695170037165223
+      ],
+      "rejected_reasons": {}
+    },
+    "pcl_frozen": {
+      "valid_geometry_score_count": 525,
+      "point_rmse_m_p50_p95": [
+        0.04877650738113442,
+        0.08653908568879232
+      ],
+      "rejected_reasons": {}
+    },
+    "pcl_aggregate_voxel": {
+      "valid_geometry_score_count": 525,
+      "point_rmse_m_p50_p95": [
+        0.07053971660121705,
+        0.10185833191269314
+      ],
+      "rejected_reasons": {}
+    },
+    "gicp_dynamic": {
+      "valid_geometry_score_count": 524,
+      "point_rmse_m_p50_p95": [
+        0.04973948473836918,
+        0.08666258008101546
+      ],
+      "rejected_reasons": {
+        "not_converged": 1
+      }
+    }
+  }
+}

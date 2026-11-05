@@ -41,14 +41,14 @@ std::optional<Pose> Localizer::history_pose(int64_t stamp)const {
   p.translation()=(1-f)*a->U.translation()+f*it->U.translation();
   p.linear()=Eigen::Quaterniond(a->U.linear()).slerp(f,Eigen::Quaterniond(it->U.linear())).toRotationMatrix();return p;
 }
-rb::RegistrationResult Localizer::match(const Cloud& cloud,const Pose& prediction,int64_t stamp,bool initializing,const std::function<bool()>& cancelled) {
+rb::RegistrationResult Localizer::match(const Cloud& cloud,const Pose& prediction,int64_t stamp,bool initializing,bool probe_ambiguity,const std::function<bool()>& cancelled) {
   double start=rb::steady_seconds();double budget=initializing?config_.initial_budget_ms:config_.tracking_budget_ms;
   auto check=[&] {if(cancelled()) throw std::runtime_error("cancelled_generation");if((rb::steady_seconds()-start)*1000>budget) throw std::runtime_error("registration_budget_exhausted");};
   auto source=rb::downsample(cloud,config_.registration.resolution);
   auto target=provider_.get(prediction,config_.submap_radius,config_.maximum_submap_frames,config_.maximum_submap_points,
     config_.exclude_identical_stamp?stamp:-1);
   std::vector<Pose> seeds{prediction};
-  if(initializing) {
+  if(initializing && probe_ambiguity) {
     // Bounded local ambiguity probes, not a global search or a guaranteed capture range.
     for(int axis=0;axis<6;++axis) for(double sign:{-1.,1.}) {
       Pose seed=prediction;
@@ -91,6 +91,7 @@ rb::RegistrationResult Localizer::match(const Cloud& cloud,const Pose& predictio
   }
   best.elapsed_ms=(rb::steady_seconds()-start)*1000;
   best.native_diagnostics["local_hypotheses"]=seeds.size();best.native_diagnostics["accepted_hypotheses"]=good.size();
+  best.native_diagnostics["initial_ambiguity_probe"]=initializing&&probe_ambiguity;
   best.native_diagnostics["target_keyframe_ids"]=provider_.selected_ids();best.native_diagnostics["target_points"]=target->size();
   return best;
 }
@@ -127,8 +128,19 @@ Result Localizer::process(int64_t stamp,uint64_t scan,const Pose& U,const Cloud&
     }
     prediction=initial_->pose*prior->inverse()*U;
   } else prediction=accepted_->X*accepted_->U.inverse()*U;
+  // Frames unable to commit yet need one geometric recheck, not thirteen
+  // repeated basin searches. Retain the full ambiguity search on the first
+  // support and every frame eligible to become VALID. No acceptance gate or
+  // timeout is relaxed, and any rejection still clears the support.
+  bool probe_ambiguity=initializing;
+  if(initializing && support_) {
+    bool baseline=(U.translation()-support_->U.translation()).norm()>=config_.confirmation_translation ||
+      rb::rotation_distance(U,support_->U)>=config_.confirmation_rotation;
+    bool time=(stamp-support_->stamp)*1e-9>=config_.confirmation_time;
+    probe_ambiguity=baseline&&time&&confirmations_+1>=config_.confirmation_frames;
+  }
   rb::RegistrationResult matched;
-  try {matched=match(cloud,prediction,stamp,initializing,cancelled);}
+  try {matched=match(cloud,prediction,stamp,initializing,probe_ambiguity,cancelled);}
   catch(const std::exception& e) {result_.quality={{"rejection",e.what()}};return reject(e.what());}
   result_.quality=matched.json();result_.quality["cache_bytes"]=provider_.cache_bytes();
   result_.quality["map_uuid"]=map_->uuid;result_.quality["graph_version"]=map_->graph_version;

@@ -56,7 +56,7 @@ private:
   size_t confirmations_=0,rejects_=0;
   Result result_;
   std::optional<Pose> history_pose(int64_t stamp)const;
-  rb::RegistrationResult match(const Cloud& source,const Pose& prediction,int64_t stamp,bool initializing,
+  rb::RegistrationResult match(const Cloud& source,const Pose& prediction,int64_t stamp,bool initializing,bool probe_ambiguity,
                                const std::function<bool()>& cancelled);
   Result reject(const std::string& reason);
 };

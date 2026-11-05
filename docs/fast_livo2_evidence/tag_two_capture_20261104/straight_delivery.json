@@ -1,0 +1,41 @@
+{
+  "camera_frames": 919,
+  "writer_samples": 935,
+  "recorded_lidar_scans": 900,
+  "recorded_lidar_scans_missing_from_writer": [],
+  "writer_age_at_camera_arrival_ms": {
+    "count": 919,
+    "minimum": 20.24214,
+    "p50": 22.14427,
+    "p95": 23.0805392,
+    "maximum": 23.835262
+  },
+  "camera_read_publish_after_arrival_ms": {
+    "count": 919,
+    "minimum": 1.5940079999999999,
+    "p50": 4.21028,
+    "p95": 6.576754899999998,
+    "maximum": 15.040315999999999
+  },
+  "consumed_minus_latest_writer_sequence_at_frame_arrival": {
+    "0": 919
+  },
+  "camera_frame_ids_contiguous": true,
+  "device_clock_monotonic": true,
+  "empirical_device_tick_to_steady_arrival_ns_per_tick": 9.999779429466495,
+  "device_to_arrival_affine_residual_abs_ms": {
+    "count": 919,
+    "minimum": 7.523465728759766e-05,
+    "p50": 0.05293933157777786,
+    "p95": 0.13460865485153184,
+    "maximum": 0.8847847465236208
+  },
+  "anomalies": [],
+  "physical_exposure_offset_identified": false,
+  "dds_publication_sequence_gap_count": 0,
+  "publisher_gids": [
+    "010fc36c3230261f00000000000013030000000000000000"
+  ],
+  "dds_lost_total_max": 0,
+  "capture": "fast-livo-tag140_straight_04-ryzykq2l"
+}

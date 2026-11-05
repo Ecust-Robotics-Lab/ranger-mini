@@ -1,0 +1,33 @@
+test_adapter_rejects_retired_sessions_and_future_stamp (test_fast_livo_localizer_ros.C1Ros) ... ok
+test_clock_reset_and_multiple_publishers_fail_closed (test_fast_livo_localizer_ros.C1Ros) ... ok
+test_initialization_external_base_and_same_time_bridge_latch (test_fast_livo_localizer_ros.C1Ros) ... ok
+test_invalid_point_and_one_ns_missing_pair_never_confirm (test_fast_livo_localizer_ros.C1Ros) ... ok
+test_managed_process_failure_cleans_only_owned_children (test_fast_livo_localizer_ros.C1Ros) ... ok
+test_map_load_failure_retains_archive_then_switch_invalidates_initial (test_fast_livo_localizer_ros.C1Ros) ... ok
+test_small_gicp_and_restart_require_fresh_initial (test_fast_livo_localizer_ros.C1Ros) ... ok
+test_superseded_matching_and_repeated_map_request (test_fast_livo_localizer_ros.C1Ros) ... ok
+test_wrong_initial_duplicate_requests_loss_and_reinitialize (test_fast_livo_localizer_ros.C1Ros) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 26.478s
+
+OK
+test_cancel_revokes_old_work_restart_and_loss_recovery (test_fast_livo_relocalizer_ros.C2Ros) ... ok
+test_managed_c2_failure_preserves_unowned_processes (test_fast_livo_relocalizer_ros.C2Ros) ... ok
+test_map_switch_invalidates_search_support_and_old_request (test_fast_livo_relocalizer_ros.C2Ros) ... ok
+test_unknown_large_correction_and_full_pose_then_tracking (test_fast_livo_relocalizer_ros.C2Ros) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 12.957s
+
+OK
+test_consumer_queue_age_uses_steady_time_when_sim_clock_pauses (test_fast_livo_tags_ros.TagRos) ... ok
+test_corrupt_landmarks_disable_only_tag_and_unknown_observation_is_safe (test_fast_livo_tags_ros.TagRos) ... ok
+test_image_detector_c2_monitor_and_observer_exit_fallback (test_fast_livo_tags_ros.TagRos) ... ok
+test_pgo_each_optimized_keyframe_then_new_disabled_revision (test_fast_livo_tags_ros.TagRos) ... ok
+test_tag_recovery_does_not_unlock_public_innovation_latch (test_fast_livo_tags_ros.TagRos) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 16.228s
+
+OK

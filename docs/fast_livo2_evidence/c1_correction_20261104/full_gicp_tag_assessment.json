@@ -1,0 +1,31 @@
+{
+  "frames": 516,
+  "rmse_px": {
+    "count": 516,
+    "minimum": 0.23034295331194998,
+    "p50": 2.5468011233382484,
+    "p95": 6.113808820875318,
+    "maximum": 14.433346431590914
+  },
+  "maximum_corner_px": {
+    "count": 516,
+    "minimum": 0.3005334459490792,
+    "p50": 2.791687438960218,
+    "p95": 6.51726738244066,
+    "maximum": 15.176566498189628
+  },
+  "passing_initial_3px_rms_6px_max": 321,
+  "negative_depth": 0,
+  "kind": "full GICP healthy cohort, fixed original Tag constant; no registration",
+  "physical_time_verified": false,
+  "VALID_landmark_created": false,
+  "source_sha256": {
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-two-capture-20261104/straight/livo_110000000/result/native_frames/native_frames_0.db3": "e0a43438d55b9d7c0d6009bffd02005b9ddc6f450e5b2a7fa0782e04b5562c59",
+    "/home/lab307/ranger_nav/bags/fast-livo-tag140_straight_04-ryzykq2l/sources/0_apriltag_camera.json": "54af13d1316b85954514196e0bb16deada8c1a18ad55a9ca12a2daa761d9f0b1",
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-straight04-screen-20261104/observations.jsonl": "6a4b38f88d7b4131e317e938d9d2faa3a031573f19158d466f22bb887f6a94f1",
+    "/home/lab307/ranger_nav/outputs/fast-livo-c1-correction-20261104/straight_gicp_runtime/result.json": "e7bbb71ae1189fb0dfcf730a79d85b1424cc333e1ee14acd75278fa754aed654",
+    "/home/lab307/ranger_nav/outputs/fast-livo-c1-correction-20261104/straight_gicp_runtime/samples.jsonl": "051f7aa5f6694ef659a9bfb21d6c4a77f19b89c900dab8aa28831284bf6707a6",
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-two-capture-20261104/new_local_map/snapshot/manifest.json": "14658c3b156a05c3f792b9a3a1d90f2c79032f4a379c399715ce338c97faf9ef",
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-two-capture-20261104/backfill_new_map_recovery/turn_fit.json": "1d28b7663714070ca522ffb6eebd611363fdaabe91ec5bf54250deea73e1755c"
+  }
+}

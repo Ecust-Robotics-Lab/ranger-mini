@@ -1,0 +1,50 @@
+{
+  "hardware_started": false,
+  "registration_implementation_changed": false,
+  "runtime_trials": [
+    {
+      "capture": "straight",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/install_c1_confirmation_20261104/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node",
+        "--ros-args",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/fast_livo2/localizer.yaml",
+        "-p",
+        "archive_path:=/home/lab307/ranger_nav/outputs/fast-livo-tag140-two-capture-20261104/new_local_map/snapshot",
+        "-p",
+        "compatibility_path:=/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/new_map_compatibility.json",
+        "-p",
+        "registration:=small_gicp",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/fast_livo2/relocalizer.yaml"
+      ],
+      "node_exit": 0,
+      "evaluator_passed": true
+    },
+    {
+      "capture": "turn",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/install_c1_confirmation_20261104/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node",
+        "--ros-args",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/fast_livo2/localizer.yaml",
+        "-p",
+        "archive_path:=/home/lab307/ranger_nav/outputs/fast-livo-tag140-two-capture-20261104/new_local_map/snapshot",
+        "-p",
+        "compatibility_path:=/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/new_map_compatibility.json",
+        "-p",
+        "registration:=small_gicp"
+      ],
+      "node_exit": 0,
+      "evaluator_passed": true
+    }
+  ],
+  "batch_record": "run_gicp_checks.sh",
+  "single_scan_probe": [
+    "ws_fast_livo/build_c1_correction_probe_20261104/c1_correction_probe",
+    "outputs/fast-livo-c1-correction-20261104/straight_inputs/job.json",
+    "outputs/fast-livo-c1-correction-20261104/straight_probe"
+  ],
+  "node_binaries_unchanged": true,
+  "node_executable_sha256": "99453aca95043aba1beb78f11fb1a08fb0805140c964e74ec7ad44a32d0bb619"
+}

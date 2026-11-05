@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.16)
+project(c1_correction_probe LANGUAGES C CXX)
+set(CMAKE_CXX_STANDARD 17)
+find_package(ranger_fast_livo_backend REQUIRED)
+get_filename_component(RANGER_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/../../../.." ABSOLUTE)
+add_executable(c1_correction_probe probe.cpp)
+target_include_directories(c1_correction_probe PRIVATE "${RANGER_ROOT}/ws_fast_livo/src/ranger_fast_livo_localizer/include")
+target_link_libraries(c1_correction_probe ranger_fast_livo_backend::ranger_backend_core "${RANGER_ROOT}/ws_fast_livo/install_c1_confirmation_20261104/ranger_fast_livo_localizer/lib/libranger_localizer_core.so")

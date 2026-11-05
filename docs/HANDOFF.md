@@ -1,125 +1,117 @@
-# 新上下文接手指南
+# 新 Agent 接手指南
 
-更新：2026-10-29。项目 `/home/lab307/ranger_nav`。**总计划未全部完成。** A/B/C1/C2 的本机实现、合成和单份运动包功能检查已有证据；C1/C2 跨会话、C2-4 完整验收、物理精度与 D 实车验收仍未完成。
+更新：2026-11-05。项目 `/home/lab307/ranger_nav`。本文件只维护当前事实、关键证据与接手顺序；过程记录见带日期报告。**总计划未全部验收，当前不能宣称真实 Tag 辅助重定位/回环已经可靠可用。**
 
-用户最新指令：后续工作交由新上下文 Agent，本上下文只更新交接，不再继续实施。新 Agent 先阅读、核对实际工作树，再按用户的新指令确定任务；不要从历史计划或旧授权恢复自动实现、采集、重启设备、提交或推送。
+## 1. 本轮边界与快速阅读
 
-## 1. 阅读顺序与事实来源
+2026-11-05先完成交接和经核对的清理，随后完成只读接手核对，并按用户“先分段提交一下本地git”的指令分组本地提交已有成果，见[本地检查点](local_git_checkpoint_20261105.md)。没有继续算法实施、长时间重放、硬件操作、部署或推送。下一 Agent 先核对实际状态并汇报，按新对话指令继续；不要从历史报告的“下一步”自动启动设备。
 
-1. [AGENTS](../AGENTS.md)：有效约束和授权；[STATUS](STATUS.md)：当前事实和未验证能力。
-2. [总计划](FAST_LIVO2_BACKEND_PLAN.md)：完整架构、C1/C2/D 步骤与验收条件；计划不是硬件许可。
-3. [C2 报告](fast_livo2_stage_c2_report.md)、[C2 契约](fast_livo2_relocalizer_interfaces.md)、[重力对齐报告](fast_livo2_gravity_alignment_report.md)：本轮最新实现、源码/许可、命令、测试与限制。
-4. [C1 报告](fast_livo2_stage_c1_report.md)、[C1 契约](fast_livo2_localizer_interfaces.md)、[B 运动报告](fast_livo2_stage_b_motion_report.md)、[B 首次报告](fast_livo2_stage_b_report.md)：复用基础，避免重复实现。
-5. [前端契约](fast_livo2_interfaces.md)、[B 契约](fast_livo2_backend_interfaces.md)、[公共定位契约](localization_backend_contract.md)。
-6. [工程目录](PROJECT_LAYOUT.md)、[根 README](../README.md)、[受管会话](managed_sessions.md)；涉及采集/标定时读 [录包指南](fast_livo2_recording.md)、[正式标定入口](../calibration/README.md)。
+依次阅读：
 
-当前事实以实际代码、工作树和带日期证据为准。历史报告的“未提交”“下一步”“尚未安装”是当时快照，不是待恢复的当前指令。
+1. [AGENTS](../AGENTS.md)、[STATUS](STATUS.md)、[总计划](FAST_LIVO2_BACKEND_PLAN.md)。
+2. [AprilTag 计划](FAST_LIVO2_APRILTAG_PLAN.md)、[前端契约](fast_livo2_interfaces.md)、[Tag 契约](fast_livo2_apriltag_interfaces.md)。
+3. 当前最关键的三份报告：[扫描相位与正式 +100 ms](fast_livo2_timestamp_phase_report.md)、[C1 修正/GICP 对照](fast_livo2_c1_correction_report.md)、[两份新包/地图对照](fast_livo2_tag_two_capture_report.md)。
+4. 涉及对应模块再读 [B](fast_livo2_backend_interfaces.md)、[C1](fast_livo2_localizer_interfaces.md)、[C2](fast_livo2_relocalizer_interfaces.md)；目录与入口见 [PROJECT_LAYOUT](PROJECT_LAYOUT.md)、[README](../README.md)。
 
-## 2. Git 提交与本机资产：先保护，再操作
+可直接复制的开场提示词见 [NEXT_AGENT_PROMPT](NEXT_AGENT_PROMPT.md)。本次清理明细见 [交接/清理报告](handoff_cleanup_20261105.md)。
 
-分支 `refactor/pluggable-navigation`；本轮提交前基线为 `d5a38311bd2ee6fab5127a8bd7593b34eefc3667`。用户随后明确要求提交净化后的状态，按下表追加重力、C2和文档三组本地提交；实际最新HEAD以 `git log -1` 为准。相对本地upstream `46c2efad12c6cd065739a747f6edfa6a06ee52c1` 共领先8个提交，本次未推送或联网刷新远端。
+## 2. 当前最重要的事实
 
-| 本地已有提交 | 内容 |
-| --- | --- |
-| `0758ac7` | 用户雷达文档修正与六份 driver 证据，独立保留 |
-| `0ced46c` | 相机/同步、正式标定整合、受管采集与既有证据 |
-| `a13fee4` | B 补充构建/故障证据 |
-| `1212b43` | C1 离线定位源码、测试与证据 |
-| `d5a3831` | C1 提交收尾、文档与 C2 开工状态 |
-| `4b49bb0` | 初始重力对齐、离线诊断和证据 |
-| `2e0f06f` | C2源码、可选依赖/许可、测试与离线证据 |
-| 本次文档提交（HEAD实查） | 过时信息清理、完整交接及提交状态同步 |
+- **正式前端试验参数现为 `time_offset.img_time_offset: 0.1`，即 +100 ms。** 用户已明确指定，勿退回 0 或改成拟合的 +110 ms。只改前端有效采样时间，原始 bag、相机/雷达驱动 header 不改；`exposure_time_init` 与 IMU/LiDAR 偏移仍为 0。
+- LIV_handhold_2 锁定配置也为 +0.1；作者解释过雷达收完整帧才发布、共享值仍是扫描起始戳造成一帧差。新两包各900扫描跨度约100 ms，1843相机会话帧均读当时最新 writer；这支持固定扫描相位机制，不等于曝光中心/剩余相位已测定。
+- **+100 ms 尚未重跑完整三融合、建图及 C2/C1 性能对照。** 当前 +110 ms 的地图/轨迹/6.11 px 结果全部保留原条件，不追认为 +100 ms 结果。仅参数语义/实际加载、dry-run及11项既有时序几何回归已验。
+- `config/fast_livo2/apriltag_camera.json` 仍为 `offset_ns=0, time_verified=false` 的既有诊断配置，Tag 功能默认关闭；不能把它当作与新前端匹配的已确认映射提交候选。以后原图分别进入前端与 Tag 时各自明确映射一次，不给已经修正的位姿戳再加一次。
+- AprilTag 候选、双解、地标归档、旧图补录、C2/B 接入及监视的主体软件和合成/隔离检查已交付。**没有真实 VALID Tag 地标表；所有已报告真实包的 C2 成功均是 Tag 关闭时的纯 LiDAR 路径。**
+- 既有 small_gicp 已在项目中实现，本轮仅通过离线 `--registration small_gicp` 选择它，影响 C1 粗/精与 C2 精配准；未换 FAST 前端、Tag PnP、KISS 全局粗配准或 B 建图默认，未部署新的生产版本。
 
-此前 B 的 `9e7c97e`、`b299078`、`46c2efa` 已按用户指令推送。原5个提交及本轮3个提交均只在本地，**C2、重力对齐、清理文档和可跟踪文本证据已提交；原包、点云/CDR、大输出、SDK、第三方树与备份仍为本机资产。** 不因Git提交完成就删除被忽略文件，也不把远端当作最新本地副本。接手仍检查 `git status --short --untracked-files=all`。
+用户已确认，不要重复询问：当前新部署为 **tag36h11、ID 01=1、打印后实测黑色检测边界140 mm**；Tag在两新包内及两包之间固定，传感器刚性安装未改变，组件在车上手动操控。新尺寸表 `config/fast_livo2/apriltag_sizes_capture_140mm.json`。旧155 mm实例及旧输出单独保留，不能按同一个ID合并。新包与早期建图包为同一场地；这不证明旧图完整覆盖或绝对精度。
 
-本轮已提交成果主要分组：
+## 3. 已验证能力及正确解释
 
-- 重力：`config/fast_livo2/ranger_mid360s_hik_trial.yaml`、`scripts/fast_livo2/replay.cpp`、重力报告/证据与当前文档。
-- C2：既有 `ws_fast_livo/src/ranger_fast_livo_localizer/` 内新增检索、索引、粗配准、重定位、工具、Relocalize 服务、测试、许可；并修改 C1 node/CMake 和极少量核心接口。不是另一个跟踪后端。
-- C2 入口：`scripts/build_fast_livo2_relocalizer.sh`、`scripts/run_fast_livo2_relocalizer.sh`、`scripts/fast_livo2/relocalization/build_kiss.py`、`config/fast_livo2/relocalizer.yaml`、`relocalization_sources.lock.json`、ROS 测试与 C1 受管/回放脚本扩展。
-- C2/重力报告和 `docs/fast_livo2_evidence/stage_c2_20261028/`、`gravity_alignment_20261028/`；目录沿用10月28日开工日期，部分最终检查在10月29日完成。
-
-禁止 reset/clean、覆盖或批量删除未跟踪目录；本次已获本地提交许可并完成，未获推送许可。原始包、地图、标定、SDK、失败证据、备份和用户 driver 证据全部保留。忽略的大文件仍在本机，不能从 Git 缺失推断可删或不存在。
-
-本次交接前备份在 `.runtime/backups/handoff_context_20261029_121955/`：四份交接文档原版、完整 tracked diff、Git 状态/提交、提交前316份未跟踪文件 SHA 清单和会话快照（可跟踪源码/证据现已纳入本轮提交）。它不是所有本机大文件的内容备份；同机新上下文应直接保留现有工程。提交前快照另见 `.runtime/backups/pre_commit_clean_20261029_123335/`。
-
-## 3. 实际实现与验收边界
-
-| 阶段 | 已有事实 | 仍不能报告通过的事项 |
+| 内容 | 已有结果 | 不能据此推断 |
 | --- | --- | --- |
-| A 前端 | 固定 ROS2 源码/补丁、本机构建、静态829对、真实三融合预览；预览已停止 | 曝光/扫描物理同步、外参真值、全场景运动精度 |
-| B 建图后端 | 严格配对、关键帧、PCL/GICP/VGICP、Pose3 iSAM2、传播、只读归档/导出、隔离桥接；同包PCL/GICP各1362对、49帧、13条回环约束 | 多环境误环/重复结构、独立真值、实时吞吐与长时稳定 |
-| C1 定位 | 严格加载B地图、显式来源兼容、人工初值、六自由度确认/跟踪、失效/切图/请求代际、适配与受管入口 | 跨会话泛化及实车/精度验收 |
-| C2 重定位 | 检索/索引、可选KISS、独立运动支持、向同一个C1交接、取消/恢复；最终C++30/30（C1 18+C2 12）、C2 ROS4/4、C1 ROS9/9 | **C2-4完整验收仍PARTIAL**：独立实采、真实相似地点/地图外负样本、动态干扰、真实遮挡和真值 |
-| D 系统/实车 | 未实施本轮真机接车和导航 | 实际T_base_imu、真实wheel历元/同刻桥接、导航安全链、持续运行 |
+| A/B/C1/C2 | 本机构建、合成/故障/接口、同包功能及部分不同采集包的全局搜索→C1跟踪 | 完整 C2-4、多地点负样本、真值、实车实时/长时、D 已验收 |
+| Tag 软件 | 首轮123项软件/合成/隔离检查；后续有相关回归，数量有重叠 | 所有真实验收已完成或可相加成互不重复的总数 |
+| +110 ms 新图直行/PCL | 895提交、894处理、1次合法超时取消，525有效，首VALID约37.000 s | 当前 +100 ms 的结果、实时吞吐、未来整层图恢复时延 |
+| +110 ms 新图直行/GICP | 895提交、894处理、1取消、520有效、DEGRADED 1，无LOST/ERROR，首VALID约37.400 s | GICP启动更快、Tag辅助成功、位置绝对正确 |
+| 冻结原Tag常量的跨访问对照 | 同516观测，像素RMS的P95约17.324→6.114 px，仅改查询使用的已有注册器 | Tag本身有6 px测量误差或机器人绝对定位误差已知 |
 
-C1 历史同包功能：PCL/GICP各1362对，第366对给初值，994/988有效，GICP另有6次不收敛拒绝，无LOST/ERROR。C2 最终同包功能：无人工初值，1362对全部处理，**979有效**，首次第384对，无LOST/ERROR/公共TF或速度，峰值RSS165840 KiB。输入确认节流不是实时性基准；同包自洽不是跨会话或真值验收。
+回投残差混合机器人定位、地图、Tag地图位姿、内外参、时间及角点误差。小残差非零正常；3 px RMS/6 px max是最初试验门槛，尚未完成整链误差预算标定，不能当普适物理标准，也不能为让当前数据通过而任意放宽。应验真实候选能否提高正确恢复、保持歧义并拒绝错误地点。
 
-最新证据入口：
+## 4. Git、源码和真实运行版本
 
-- `docs/fast_livo2_evidence/stage_c2_20261028/verification_summary.json`、`acceptance_final_results.json`、`cpp_accepted.xml`、`regression_results.json`。
-- `motion_final_result.json`、`motion_layer_summary.json`、`asset_postcheck.json`、`reference_audit_final.json`、`final_sessions.json`。
-- 重力：`docs/fast_livo2_evidence/gravity_alignment_20261028/verification.json`。
-- 早期 C2 中间版本980有效的输出保留；**最终以979有效版本为准**。逐输入快照不是完整求解事件日志，不能把候选/粗配准通过数当定位成功次数。
+当前分支 `refactor/pluggable-navigation`；本次分组提交前基线为 **`acffa879cc8d52330276089cd3df83ad6a43f112`**，当时相对本地upstream领先8提交。2026-11-05按用户指令新增7组本地提交，当前HEAD以 `git log -1` 为准，记录见[本地检查点](local_git_checkpoint_20261105.md)；未联网刷新远端，未推送。此前AprilTag、writer/录包、C1计算/评估、诊断和文档已归档提交；两份新增 `docs/03_evidence/driver-*` 单独成组。禁止reset/clean、覆盖后续未提交工作或把被忽略资产当垃圾；原包、地图及9份归档程序副本继续留在本机。
 
-## 4. 代码、构建与运行的具体位置
+C1已提交基线 `1212b43`，C2 `2e0f06f`，重力 `4b49bb0`；此前B的三个提交已按历史指令推送。本次仅按新指令本地分组提交，没有推送。
 
-- 前端：`vendor/fast_livo2_review/ros2_frontend`，humble固定 `837b7bbc1431cb04cf936528e52c83c835efba8e` 加 `patches/fast_livo2_stage_a.patch`；锁为 `config/fast_livo2/sources.lock.json`。参考过的项目不都已集成。
-- B：`ws_fast_livo/src/ranger_fast_livo_backend`；依赖 `backend_deps`，构建 `backend_build`，安装 `backend_install`（均在 ws_fast_livo 下）。
-- C1/C2：`ws_fast_livo/src/ranger_fast_livo_localizer`，复用导出的 B 核心与同一个 C1 跟踪器；安装到上述 backend_install。
-- C2依赖：`ws_fast_livo/relocalization_deps`、`relocalization_build`；锁为 `config/fast_livo2/relocalization_sources.lock.json`，构建只用固定本地树和生成的 ROBIN 投影，不升级系统库。
-- **当前公共构建缓存 `backend_build/ros/ranger_fast_livo_localizer` 为 `RANGER_ENABLE_KISS=ON`；C1默认构建脚本显式设OFF，C2脚本设ON，都会更新同一安装目录。** 独立 `ws_fast_livo/c1_default_build` 是关闭KISS的最小构建证据，不是当前安装入口。启用C2前核对实际二进制，不因目录存在认定插件已编入。
-- `config/fast_livo2/localizer.yaml` 默认关闭全局搜索；显式 C2 overlay `relocalizer.yaml` 才开启。私有 `/fast_livo/localizer/relocalize` 可启用/取消搜索；人工 Initialize 会暂停自动搜索，需显式重新允许。默认 C1 LOST 后仍需人工初值。
-- KISS自身根MIT，但传递依赖 **PMC为GPLv3+**，可选链接二进制不能宣称纯MIT；保留锁、THIRD_PARTY_NOTICES与third_party许可。SC-A-LOAM核心授权不明，没有复制；当前检索为自有三维距离分布原型，合成对照不是官方检测器排名。
-- 生产默认 **Lightning建图/定位、wheel、terrain disabled**；保留Nav2/Smac/MPPI与安全链。C1/C2独立离线入口没有接管production runtime；FAST前端/B不能配置成先验地图定位器。
-- 正式标定在 `calibration/`，`~/calibration`只是兼容链接；相机触发/同步包在 `ws_camera/src/`，原本地Hik SDK与用户修改保留，不随本轮Git分发。
-
-## 5. 重力、时间、参考体与TF
-
-新前端试验配置已设 `uav.gravity_align_en=true`，初始化后将估计重力旋转到世界−Z，+Z向上；完整三融合回放1362对、7943次视觉更新，对齐执行一次，初始重力约 `[0,0,-9.81]`。终态偏轴0.06436°是估计内部一致性，不是外部竖直精度。下一次新前端启动使用此配置，本次没有重启设备。
-
-旧B/C1地图和旧native_frames保留原世界系，**不能追认重力对齐，也没有重建新的B地图**。新对齐回放另存下表。诊断harness在隔离源码投影构建中验证，原源码Log目录全部SHA保留；普通已安装前端本来就支持对齐开关，但若需要新增summary诊断字段须按构建脚本重建对应harness，不能把隔离投影误当常规部署。
-
-输入 `/fast_livo/odometry` 是VIO后IMU位姿，`/fast_livo/deskewed_imu`是严格同戳、单区间IMU云。外参只用一次，不用累计世界云。统一 `T_A_B` 将B点变到A，完整三维，不锁roll/pitch；PGO/定位不反馈前端滤波或视觉地图。
-
-`T_map_base=T_map_imu*inverse(T_base_imu)`；唯一公共桥接按原采样时刻插值wheel后求 `T_map_odom=T_map_base*inverse(T_odom_base)`。禁止外推、latest-TF或两个最新到达值相减。旧sensor历元为2020，host/wheel为2026，不能直接拼接或重打now；离线用header-clock视图和sim_time。心跳不刷新位姿采样时间。私有节点不发公共TF；公共创新锁定不会因C2成功自动解除。
-
-## 6. 本机数据与证据资产
-
-| 资产 | 路径 |
+| 位置 | 当前用途/注意事项 |
 | --- | --- |
-| 原始三传感器运动包 | `bags/fast-livo-motion-w5phdosj/raw`，约136.6秒；末尾发布者变化错误有记录，不称完整180秒 |
-| 旧前端派生输入 | `outputs/fast-livo-demo-20261028-fHJTbGCU/frontend/native_frames`，1362对，DB SHA见C1/C2报告 |
-| B地图 | `outputs/fast-livo-backend-validation-20261028-{pcl,gicp}/snapshot`，两图最终各151文件SHA通过 |
-| C1最终输出/来源兼容 | `outputs/fast-livo-c1-final-20261028-{pcl,gicp}/`；`docs/fast_livo2_evidence/stage_c1_20261028/{pcl,gicp}_compatibility.json` |
-| C2最终输出 | `outputs/fast-livo-c2-final-20261028-pcl/`，result.json、samples.jsonl和node日志 |
-| C2派生索引 | `outputs/fast-livo-c2-index-20261028/`，绑定PCL源图49帧；不适用于另一图或不同描述子参数 |
-| C2合成选择实验 | `outputs/fast-livo-c2-selection-20261028/`，固定种子/标签/参数，仅合成结论 |
-| 新重力对齐输入 | `outputs/fast-livo-gravity-20261028/aligned/native_frames`，另有关闭对照、summary和独立build/source/Log；旧图不改写 |
-| 展示视频 | 旧demo下1080p/720p视频，B的PCL输出下 `comparison/comparison_1080p.mp4`；见演示/B报告 |
-| 静态基线 | `bags/fast-livo2-baseline-126a5fAo`、`bags/fast-livo2-dds-smoke-final`，不能代替运动/跨会话验收 |
+| `vendor/fast_livo2_review/ros2_frontend` + `patches/fast_livo2_stage_a.patch` | 锁定ROS2前端源码；版本见 `config/fast_livo2/sources.lock.json` |
+| `ws_fast_livo/src/ranger_fast_livo_backend` | B、Tag核心/检测/地标工具；正式依赖项目内前缀 |
+| `ws_fast_livo/src/ranger_fast_livo_localizer` | 同一个C1/C2，含Tag候选/复核；不是新定位后端 |
+| `ws_fast_livo/backend_install/` | 既有受管默认安装；不能当作最新隔离C1版本 |
+| `ws_fast_livo/install_c1_confirmation_20261104/` | C1等待确认计算优化的隔离安装，未替换上行默认 |
+| `ws_fast_livo/independent_time_source_20261104/`、`build_independent_time_20261104/` | 最新两包重放的锁定副本/程序，原零gyro初始化；可作固定+100 ms离线实验的来源 |
+| `ws_fast_livo/motion_diag_source_20261104/` | 旧诊断含初始化零偏实验改动，不可混为正式锁定来源 |
+| `ws_fast_livo/build_c1_correction_probe_20261104/` | 单扫描四条件配准控制实验程序，不是生产节点 |
 
-先前明确删除/回收操作不是后续删除许可：第二份180秒 `ez09stbr` 曾按请求移入回收站；四份更早试录曾另行清空回收站，不能再称可恢复。清单在 `.runtime/capture_cleanup/20261028_122508_441848/manifest.json`、`20261027_231026_079043/manifest.json`。失败启动 `58obp75g`、失败/中间C1/C2输出及所有旧备份保留。
+实际隔离节点为 `ws_fast_livo/install_c1_confirmation_20261104/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node`，SHA **`99453aca95043aba1beb78f11fb1a08fb0805140c964e74ec7ad44a32d0bb619`**。动态库与构建证据见 `docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_live_linkage.json`；不要只凭目录存在认定装载版本正确。
 
-## 7. 新Agent首次操作与接手边界
+原安装前端/生成harness与锁定源码曾发现不一致；后续实验需记录源SHA、补丁、二进制、参数和动态库。新两包录制时前端SHA `dfcf5d4d54f7b81f573a000589527afa36f4dc71c5fe44df1c94f5bff9ae7b27`，不是“任意本地构建都相同”的证明。
 
-2026-10-29 后续按用户要求清理当前入口的过时说明：删除“C1/C2未实现”“当前重力关闭”“当前无图像阻塞”和旧提交/后续目标描述，合并重复补充段落；旧底盘/Lightning采集清单标明历史用途。未找到可整份删除且没有独立价值的重复文档，历史原文、原始资产与失败证据保留。清理前副本、候选判断与核对清单在 `.runtime/backups/docs_cleanup_20261029_122711/`，未修改算法或运行设备。
+关键已完成修改勿重做：writer RELIABLE/depth5、DDS诊断与v2共享一致性；录包 PREPARING/WAITING/RECORDING及输入缺失报错；C1等待帧减少重复13初值搜索，但首支持/可提交帧仍全检；`scripts/fast_livo2/localizer/validate_motion.py`明确区分超时取消与同戳处理确认，取消不算处理成功。
 
-本次交接于2026-10-29 12:19（Asia/Shanghai）只读核对：live预览STOPPED；C1/C2受管状态为故障注入测试留下的预期FAILED，均live=false、owned=[]、清理完成。不是待自动重启的线上故障。新上下文必须重新现查，历史状态不作设备占用锁。
+## 5. 当前保留的数据、地图和展示
 
-以下均为只读或默认dry-run，不加 `--execute`：
+| 资产 | 路径及作用 |
+| --- | --- |
+| 转向90s，下一轮训练/建图来源 | `bags/fast-livo-tag140_turn_03-bk8_pjyy/raw` |
+| 直行90s，独立采集查询 | `bags/fast-livo-tag140_straight_04-ryzykq2l/raw`；已经参与过方法评估，今后不能称全新盲测 |
+| 120s同步诊断 | `bags/fast-livo-tag140_sync_diag_02-35f_m8nd/raw`；1200扫描，writer均覆盖 |
+| 60s漏写证据 | `bags/fast-livo-tag140_check_01-dguhgx2l/raw`；7个漏写与重复共享戳对应，独立失败证据保留 |
+| 早期136.6s三融合/旧图来源 | `bags/fast-livo-motion-w5phdosj/raw`；不是完整180s，也非真值 |
+| +110 ms两包前端与新地图 | `outputs/fast-livo-tag140-two-capture-20261104/` |
+| 新局部地图 | 上行 `new_local_map/snapshot`：UUID `4ec68a99c626e1c6e2652506f5ecd8d6`，graph41，31KF/10已接受LiDAR回环；**不是整层地图** |
+| 旧B图 | `outputs/fast-livo-backend-validation-20261028-{pcl,gicp}/snapshot`；PCL UUID `6acd0a5763786389402bf72f397d9cbc`，49KF/13loop |
+| 最新GICP控制与完整运行 | `outputs/fast-livo-c1-correction-20261104/`；证据 `docs/fast_livo2_evidence/c1_correction_20261104/` |
+| 静态测试固定输入 | `bags/fast-livo2-baseline-126a5fAo`；现有ROS回归引用，不可删 |
+
+转向/直行原DB SHA分别 **`23b3bdba0c4ac5497732eaae61f256bef74d57c52f0181efe58b7f5fe7a48e81`**、**`e6c7cd1b2d200b4629abfa7002458ace896e3c6a3b2268cc673145d21f400b6d`**。源包/配置、地图manifest与二进制完整性见两包及C1报告的最终核对。
+
+重用实验脚本前先读参数与默认值，输出必须新目录：`docs/fast_livo2_evidence/tag_two_capture_20261104/replays.py`默认offset为0、只应显式传100000000；`validate_optimized_recovery.py`指向隔离新C1；`docs/fast_livo2_evidence/c1_correction_20261104/run_gicp_checks.sh`归档的是+110ms历史命令，带--execute且原输出已存在，**不要直接执行覆盖或当成新+100ms入口**。
+
+可展示图片：`docs/fast_livo2_evidence/c1_correction_20261104/runtime_results.png`、`tag_reprojection_example.png`、`correction_controls.png`；地图/独立访问图在 `docs/fast_livo2_evidence/tag_two_capture_20261104/map_and_independent_visit.png`；中文图注与ZIP见 `outputs/fast-livo-apriltag-presentation-20261104/README.md`。黄角点是检测值，不是外部真值。
+
+## 6. 时间、坐标和安全边界
+
+- 保持三融合；Tag不注入ESIKF，不回灌前端状态/视觉地图，不新增在线Tag图因子。Tag给候选，原LiDAR配准/验证和合法提交决定是否接受。
+- `T_A_B`将B点变到A；后端仅用同戳 `/fast_livo/odometry` 与 `/fast_livo/deskewed_imu`，VIO后IMU参考点、单区间机体系云，外参只应用一次。
+- 本次前端重力对齐已开启；旧20261028 B图未对齐，新20261104局部图使用对齐后的+110ms轨迹。逐资产区别，不能一概称“所有地图未对齐”或默认锁roll/pitch。
+- sensor虚拟UTC约2020、host/wheel约2026，不能直接拼接或重打now。离线用独立header-clock视图/sim_time；原包不改。
+- 公共唯一桥接发布TF，按同采样时刻插值wheel，禁止外推/latest拼接。私有候选成功不绕过LOCKED，不删锁、不放宽运动/几何要求。
+- Lightning/wheel/terrain disabled仍为生产默认；FAST前端/B不是先验地图定位器。硬件、底盘/CAN、导航与部署另按该次明确指令。
+
+## 7. 下一步与首次只读核对
+
+本轮交接后先停在接手理解。收到继续指令后，优先：
+
+1. 固定 **+100 ms**，复用已有转向/直行原包与可追溯隔离源码，完整三融合另存新输出；使用同一比较集合/冻结规则与既有0/+110结果对照，不重新扫值后再宣称独立验证。
+2. 需要新时偏地图时按新轨迹重建新版本/UUID，不改+110ms旧图。继续使用已有small_gicp作受控对照，核对实际节点/库和几何、时间、会话契约。
+3. 区分定位/地图、标定、曝光相位和角点的剩余不一致，合理评估误差预算；有实证才更新Tag时间映射及其有效性，不为解锁候选直接写true。
+4. 建立绑定正确地图版本的真实地标表，分离登记和评估访问；再验Tag C2候选/歧义/合法提交与真实B回环、负样本。当前两包已用于选择，后续盲测必要时提出新的针对性数据需求。
+
+当前不要求用户重复录同类包；有需要时说明具体待测量和用途。全层图、实时资源/长时、独立真值、wheel与D仍待验收。
 
 ```bash
 cd /home/lab307/ranger_nav
 git status --short --untracked-files=all
-git log -7 --oneline
+git log -8 --oneline
 git branch -vv
 python3 scripts/runtime_config.py
 bash scripts/run_fast_livo2_live.sh --status
+bash scripts/record_fast_livo2.sh --status
 bash scripts/run_fast_livo2_localizer.sh --status
 bash scripts/run_fast_livo2_relocalizer.sh --status
-bash scripts/build_fast_livo2_relocalizer.sh
-bash scripts/run_fast_livo2_relocalizer.sh
 ```
 
-本次是文档交接，不为接手重复长时间回放、重新选型/实现C1/C2或重启设备。后续顺序与缺口看总计划：先补独立会话/真实负样本与物理证据，再分别验收C1/C2与D；原包没有真实wheel，不把合成wheel当接车。采集、设备启动、接管底盘、CAN/速度/导航以及提交/推送按用户后续明确范围处理。
+2026-11-05接手实查：FAST live/record为STOPPED，B/C1/C2的历史故障测试状态为FAILED；五者均owned=[]且不存活，不能当线上故障自动重启。另一个受管field会话 `run-u0m5bw9a` 存活、状态DEGRADED，实际有Lightning、底盘驱动和公共桥接进程；旁边 `ranger_nav_k_integration` 工作区另有雷达时间归一化和Nav2相关进程，ROS_LOCALHOST_ONLY=0。没有据此验证车辆运动、就绪或新时间方案，也没有干预既有会话。新Agent仍须现查，不能把FAST会话停止写成整机停止。清理和交接前副本/完整diff在 `.runtime/backups/handoff_cleanup_20261105_171706/`；不是所有大文件备份，已删除原录包无法从这些元数据恢复。本次提交前清单和diff另存 `.runtime/backups/local_git_checkpoint_20261105_173931/`。

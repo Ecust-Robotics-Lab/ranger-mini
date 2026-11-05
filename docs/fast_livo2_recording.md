@@ -1,6 +1,8 @@
 # FAST-LIVO2 三传感器运动录包与远程预览
 
-更新：2026-10-29。脚本不会启动底盘驱动、CAN、Nav2、公共定位桥接或发布公共 TF。运动由操作员另行控制。本页描述采集入口，不代表运动建图精度或物理同步通过。
+更新：2026-11-04。脚本不会启动底盘驱动、CAN、Nav2、公共定位桥接或发布公共 TF。运动由操作员另行控制。本页描述采集入口，不代表运动建图精度或物理同步通过。
+
+正式前端试验配置现按用户要求使用 `time_offset.img_time_offset: 0.1`（+100 ms），与 LIV_handhold_2 锁定示例一致；前端对原图 header 内部映射一次，原 bag/图像/雷达戳不改。曝光中心与剩余相位尚未实测，Tag 默认关闭；历史 +110 ms 离线结果不是新 +100 ms 的验收结果。此修改对下一次新建会话生效，接入已有会话不自动热加载 YAML，须核验实际参数与归档。源码依据和两包证据见 [时间相位核查](fast_livo2_timestamp_phase_report.md)。
 
 当前已有约136.6秒三传感器运动包，后续预览与录包均已停止；首次无图像故障是历史记录，不是已确认仍存在的当前阻塞。新前端配置已开启初始重力对齐，新采集归档须保留实际配置，不能与旧图直接混用世界系；见 [STATUS](STATUS.md) 和 [重力报告](fast_livo2_gravity_alignment_report.md)。
 
@@ -13,6 +15,10 @@ bash scripts/record_fast_livo2.sh --execute --seconds 60   # 启动传感器/前
 ```
 
 已有本工程的 FAST 预览会话时，默认自动接入该会话；没有时启动自己的传感器会话。终端出现 `CAPTURE RECORDING` 和“录制已就绪”后才开始采集动作。`--seconds` 从录包器订阅全部目标话题就绪后计时，不包含启动时间；范围 1～3600 秒，默认 60 秒。
+
+启动提示 `CAPTURE_DIR`、`SESSION_DIR` 只表示创建目录/会话。现在会明确显示 `CAPTURE PREPARING（尚未录制）` 和 `CAPTURE WAITING（尚未录制）`，列出雷达、相机、前端等未就绪组件；等待状态变化或每 10 秒刷新。`STARTING` 表示已启动但未就绪，`WAITING` 表示等待上游条件。
+
+自建采集会话在启动驱动前检查配置要求的本机雷达采集 IP。缺失时立即打印 `CAPTURE ERROR` 并以退出码 2 结束，不创建新录包目录、不改网卡配置。有该 IP 仅说明可绑定地址，后续仍检查实际数据：启动就绪总超时保留 90 秒，超时明确列出未就绪组件并清理；录包器输入预检最多 12 秒，区分无发布者、多发布者、类型/QoS 错误和有话题但无数据。录中单路断流超过 2 秒则报具体话题并失败退出。失败原因、日志路径直接打印到终端，原始/部分数据保留，不生成成功标记。实现与 29 项离线检查见 [就绪报错报告](fast_livo2_recording_readiness_report.md)。
 
 录包入口的`--visualization`默认`auto`：有`DISPLAY`时用RViz，无`DISPLAY`（普通SSH终端）时用本机只读Foxglove，不要求远程X11。可显式指定`foxglove`、`none`；显式`rviz`/`both`而没有`DISPLAY`仍在启动设备前拒绝，不伪造桌面环境变量。启动时显示实际`VISUALIZATION`，归档同时保存请求值与实际选择。已有预览的显示设置不受影响。
 
@@ -36,6 +42,8 @@ bash scripts/record_fast_livo2.sh --stop
 
 默认新目录 `bags/fast-livo-<label>-<随机串>/`。可用 `--output /绝对路径/新目录` 指定，父目录须存在，禁止覆盖。默认磁盘保留 5 GB，录前及录中检查；`--min-free-gb` 可调整，最少 1 GB。未开启压缩/分卷，兼容本工程现有单 SQLite 审查与回放工具。双份 1280×1024 RGB8 图像约 79 MB/s，另有点云与数据库开销，应按实测文件增长规划时长。
 
+本次 Tag 补录按用户新声明采用 `tag36h11`、ID `01`（整数 1）、Black-border width **140 mm**。新包尺寸表为 `config/fast_livo2/apriltag_sizes_capture_140mm.json`，后续离线处理显式选用该表；录包命令无需更改，配置会自动归档。旧包仍使用原 155 mm 表。140 mm 指黑色外边界四角之间的边长，不包含白边/纸张；新标签须在两次登记/验证访问间保持固定，不能与其他位置的同家族同 ID 标记同时部署。
+
 ## 记录内容与结果
 
 | 话题 | 类型/作用 |
@@ -51,10 +59,13 @@ bash scripts/record_fast_livo2.sh --stop
 
 录前检查每个话题恰好一个发布者、消息类型、RELIABLE QoS及实际收流；等待录包器订阅就绪。录中检测发布者消失/GID改变/重复发布者、数据断流与磁盘空间，失败保存部分结果并停止，不自动重启。复用原会话设备占用检查、资源租约和精确进程身份清理。
 
+2026-10-29 同步排查更新：受管入口显式使用 writer `lidar_reliability:=reliable`、`lidar_queue_depth:=5`，节点默认也为 reliable。保留原扫描戳、v2 原子协议和相机重复戳拒绝；没有采用假设的 100–125 ms 补偿。可靠交付仍可能有延迟，不能证明曝光与扫描物理对齐。
+
 输出包括：
 
 - `raw/`、`record.log`、实际录制命令、录前发布者/GID信息、录包器进程身份。
 - `sources/`：配置、标定配置、脚本、锁文件和补丁的原始字节与SHA256；Git HEAD、工作树状态和tracked diff。
+- `sources/` 另含 writer/相机源码与实际二进制；2026-11-04 起也归档实际前端 `fastlivo_mapping` 二进制，防止仅靠配置追认源码版本。`subscriptions_before.json` 保存录前订阅端 QoS/GID，`graph_before.json` 保持原发布端格式。
 - `session_logs/`：本次受管会话、设备日志、相机/时间writer CSV。不复制仍可能活动的共享内存文件。
 - `manifest.json`、`recorder_result.json`、`audit.json`、`result.json`；完整收尾且必需数据检查通过时才生成 `CAPTURE_COMPLETE`。
 
@@ -96,7 +107,21 @@ Bridge连接及参数依据[官方ROS2说明](https://docs.foxglove.dev/docs/get
 
 ## 采集路线与验收
 
-先60秒短包：静止15秒、缓慢直行与转弯、最后静止15秒。检查图像、消息间隔和CSV后再采集3～5分钟闭环，起终点做标记，回到起点尽量同朝向，并重复行进起始路段。可先尝试30～80m、有纹理和多方向几何结构的平缓路线，避免第一次就使用重复长走廊和急转。当前后端位置搜索3m、排除最近30秒/20关键帧，应给历史候选足够时间与运动基线。
+### 本次 140 mm 标签的车载同步诊断
+
+此项已完成采集及分析，当前不再等待或要求重录120秒包。现有输入为 `bags/fast-livo-tag140_sync_diag_02-35f_m8nd/`，1200扫描均有writer对应；动作按实际数据分段，不要求追认旧计划的时间顺序。历史动作方案、时序/Tag分析及失败证据见[120秒诊断报告](fast_livo2_tag140_sync_diag02_report.md)、[同步诊断准备报告](fast_livo2_sync_capture_diagnostics_report.md)。
+
+writer CSV 的 `arrival_ns` 是steady clock，`callback_system_ns`是主机system clock，DDS时间为中间件元数据；均不能直接与传感器虚拟UTC相减当曝光偏差。来源身份用publication sequence与GID，未知字段留空。没有重复戳只证明这一类异常未出现，不代表曝光中心已测定。
+
+### 新一轮分离动作诊断（2026-11-04）
+
+转向包 `bags/fast-livo-tag140_turn_03-bk8_pjyy/`、直行包 `bags/fast-livo-tag140_straight_04-ryzykq2l/` 已录完并完成多轮离线分析，见[两包报告](fast_livo2_tag_two_capture_report.md)、[GICP对照](fast_livo2_c1_correction_report.md)。用户已确认140mm标签与传感器安装跨两包未改变，不重复询问或执行旧采集命令。
+
+当前下一步是利用这些原包固定正式 **+100ms** 另存三融合对照；旧0/+110ms结果保持原配置，不能追认为新配置验收。此两包已参与方法选择，未来新盲测访问另行设计，当前无需重复录同类动作。具体范围和实际版本见[HANDOFF](HANDOFF.md)。
+
+### 后续一般建图采集
+
+同步诊断完成后，一般建图先60秒短包：静止15秒、缓慢直行与转弯、最后静止15秒。检查图像、消息间隔和CSV后再采集3～5分钟闭环，起终点做标记，回到起点尽量同朝向，并重复行进起始路段。可先尝试30～80m、有纹理和多方向几何结构的平缓路线，避免第一次就使用重复长走廊和急转。当前后端位置搜索3m、排除最近30秒/20关键帧，应给历史候选足够时间与运动基线。
 
 后续用同一原包重跑前端和B后端，检查VIO参与、原始漂移、回环候选/质量/拒绝原因、优化轨迹与地图结构、资源消耗及导出。不将闭合误差当作全轨迹绝对精度；无独立真值不报告APE/RPE。物理曝光/扫描对应、车体外参和实时wheel时间对齐仍需单独验收。
 

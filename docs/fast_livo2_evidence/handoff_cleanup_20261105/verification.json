@@ -1,0 +1,798 @@
+{
+  "passed": true,
+  "source_config_files_sha256_unchanged": 239,
+  "map_files_sha256_unchanged": 405,
+  "retained_databases_size_mtime_unchanged": 16,
+  "retained_databases": [
+    "bags/mid360-manual-loop-4uwmxbzb/raw/raw_0.db3",
+    "bags/fast-livo2-baseline-1OR4jydU/result/native_frames/native_frames_0.db3",
+    "bags/fast-livo2-baseline-126a5fAo/result/native_frames/native_frames_0.db3",
+    "bags/fast-livo2-dds-smoke-final/view/view_0.db3",
+    "bags/mid360-manual-loop-p42bk0yi/raw/raw_0.db3",
+    "bags/fast-livo2-baseline-T6b2g4w8/result/native_frames/native_frames_0.db3",
+    "bags/fast-livo-motion-w5phdosj/raw/raw_0.db3",
+    "bags/fast-livo2-baseline-vwxvBopg/result/native_frames/native_frames_0.db3",
+    "bags/fast-livo2-baseline-tdSmpee7/result/native_frames/native_frames_0.db3",
+    "bags/fast-livo2-baseline-ysjqws9p/result/native_frames/native_frames_0.db3",
+    "bags/mid360-static-qg8qtyiv/raw/raw_0.db3",
+    "bags/fast-livo-tag140_sync_diag_02-35f_m8nd/raw/raw_0.db3",
+    "bags/fast-livo-tag140_check_01-dguhgx2l/raw/raw_0.db3",
+    "bags/fast-livo-tag140_turn_03-bk8_pjyy/raw/raw_0.db3",
+    "bags/fast-livo-tag140_straight_04-ryzykq2l/raw/raw_0.db3",
+    "bags/mid360-manual-loop-n2cgpiz0/raw/raw_0.db3"
+  ],
+  "binary_sha256_unchanged": {
+    "ws_fast_livo/install_c1_confirmation_20261104/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node": "99453aca95043aba1beb78f11fb1a08fb0805140c964e74ec7ad44a32d0bb619",
+    "ws_fast_livo/install/fast_livo/lib/fast_livo/fastlivo_mapping": "dfcf5d4d54f7b81f573a000589527afa36f4dc71c5fe44df1c94f5bff9ae7b27"
+  },
+  "current_document_links_checked": 177,
+  "links": [
+    {
+      "source": "AGENTS.md",
+      "target": "docs/HANDOFF.md"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/STATUS.md"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "docs/FAST_LIVO2_BACKEND_PLAN.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/HANDOFF.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/STATUS.md"
+    },
+    {
+      "source": "README.md",
+      "target": "AGENTS.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/FAST_LIVO2_BACKEND_PLAN.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/README.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/NEXT_AGENT_PROMPT.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/handoff_cleanup_20261105.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/FAST_LIVO2_APRILTAG_PLAN.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/fast_livo2_apriltag_interfaces.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/fast_livo2_apriltag_report.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/HANDOFF.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/fast_livo2_demo_20261028.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/PROJECT_LAYOUT.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/consolidation_report.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/managed_sessions.md"
+    },
+    {
+      "source": "README.md",
+      "target": "calibration/README.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/fast_livo2_interfaces.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/fast_livo2_localizer_interfaces.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/fast_livo2_recording.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/fast_livo2_recording_report.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/localization_backend_contract.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/fast_livo2_stage_a_report.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/STATUS.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/STATUS.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/consolidation_report.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/fast_livo2_online_report.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/fast_livo2_stage_b_report.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/fast_livo2_backend_interfaces.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/fast_livo2_stage_c1_report.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/fast_livo2_localizer_interfaces.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/fast_livo2_stage_c2_report.md"
+    },
+    {
+      "source": "README.md",
+      "target": "docs/fast_livo2_relocalizer_interfaces.md"
+    },
+    {
+      "source": "docs/HANDOFF.md",
+      "target": "../AGENTS.md"
+    },
+    {
+      "source": "docs/HANDOFF.md",
+      "target": "STATUS.md"
+    },
+    {
+      "source": "docs/HANDOFF.md",
+      "target": "FAST_LIVO2_BACKEND_PLAN.md"
+    },
+    {
+      "source": "docs/HANDOFF.md",
+      "target": "FAST_LIVO2_APRILTAG_PLAN.md"
+    },
+    {
+      "source": "docs/HANDOFF.md",
+      "target": "fast_livo2_interfaces.md"
+    },
+    {
+      "source": "docs/HANDOFF.md",
+      "target": "fast_livo2_apriltag_interfaces.md"
+    },
+    {
+      "source": "docs/HANDOFF.md",
+      "target": "fast_livo2_timestamp_phase_report.md"
+    },
+    {
+      "source": "docs/HANDOFF.md",
+      "target": "fast_livo2_c1_correction_report.md"
+    },
+    {
+      "source": "docs/HANDOFF.md",
+      "target": "fast_livo2_tag_two_capture_report.md"
+    },
+    {
+      "source": "docs/HANDOFF.md",
+      "target": "fast_livo2_backend_interfaces.md"
+    },
+    {
+      "source": "docs/HANDOFF.md",
+      "target": "fast_livo2_localizer_interfaces.md"
+    },
+    {
+      "source": "docs/HANDOFF.md",
+      "target": "fast_livo2_relocalizer_interfaces.md"
+    },
+    {
+      "source": "docs/HANDOFF.md",
+      "target": "PROJECT_LAYOUT.md"
+    },
+    {
+      "source": "docs/HANDOFF.md",
+      "target": "../README.md"
+    },
+    {
+      "source": "docs/HANDOFF.md",
+      "target": "NEXT_AGENT_PROMPT.md"
+    },
+    {
+      "source": "docs/HANDOFF.md",
+      "target": "handoff_cleanup_20261105.md"
+    },
+    {
+      "source": "docs/STATUS.md",
+      "target": "HANDOFF.md"
+    },
+    {
+      "source": "docs/STATUS.md",
+      "target": "FAST_LIVO2_BACKEND_PLAN.md"
+    },
+    {
+      "source": "docs/STATUS.md",
+      "target": "FAST_LIVO2_APRILTAG_PLAN.md"
+    },
+    {
+      "source": "docs/STATUS.md",
+      "target": "fast_livo2_timestamp_phase_report.md"
+    },
+    {
+      "source": "docs/STATUS.md",
+      "target": "fast_livo2_timestamp_phase_report.md"
+    },
+    {
+      "source": "docs/STATUS.md",
+      "target": "fast_livo2_c1_correction_report.md"
+    },
+    {
+      "source": "docs/STATUS.md",
+      "target": "fast_livo2_tag_two_capture_report.md"
+    },
+    {
+      "source": "docs/STATUS.md",
+      "target": "fast_livo2_tag_motion_geometry_report.md"
+    },
+    {
+      "source": "docs/STATUS.md",
+      "target": "fast_livo2_tag140_sync_diag02_report.md"
+    },
+    {
+      "source": "docs/STATUS.md",
+      "target": "fast_livo2_tag140_consistency_report.md"
+    },
+    {
+      "source": "docs/STATUS.md",
+      "target": "handoff_cleanup_20261105.md"
+    },
+    {
+      "source": "docs/STATUS.md",
+      "target": "README.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "HANDOFF.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "NEXT_AGENT_PROMPT.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "handoff_cleanup_20261105.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "STATUS.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "../README.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "../AGENTS.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "PROJECT_LAYOUT.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "../calibration/README.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "localization_backend_contract.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "managed_sessions.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_interfaces.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_recording.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "FAST_LIVO2_BACKEND_PLAN.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "FAST_LIVO2_APRILTAG_PLAN.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_apriltag_interfaces.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_localizer_interfaces.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_relocalizer_interfaces.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_gravity_alignment_report.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "handoff_cleanup_20261105.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_timestamp_phase_report.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_c1_correction_report.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_tag_two_capture_report.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_tag_motion_geometry_report.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_cross_session_global_report.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_tag140_sync_diag02_report.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_sync_capture_diagnostics_report.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_tag140_consistency_report.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_tag140_check_report.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_recording_readiness_report.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_apriltag_landmark_assessment_report.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_apriltag_fullbag_report.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_apriltag_report.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_stage_c2_report.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_stage_c1_report.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_stage_b_motion_report.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_demo_20261028.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_recording_report.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_stage_b_report.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_backend_interfaces.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_source_review.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_stage_a_report.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "fast_livo2_online_report.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "consolidation_report.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "documentation_refresh_report.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "00_environment_audit.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "LIDAR_CONNECTION.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "02_base_interface.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "02_ros_motion_test.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "02_base_manual_tests.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "03_mid360_validation.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "04_mapping_report.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "04_manual_capture.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "05_localization_interface.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "06_flat_navigation_acceptance.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "architecture_baseline.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "architecture_batch2_report.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "architecture_batch3_report.md"
+    },
+    {
+      "source": "docs/README.md",
+      "target": "github_publication.md"
+    },
+    {
+      "source": "docs/PROJECT_LAYOUT.md",
+      "target": "HANDOFF.md"
+    },
+    {
+      "source": "docs/PROJECT_LAYOUT.md",
+      "target": "consolidation_report.md"
+    },
+    {
+      "source": "docs/PROJECT_LAYOUT.md",
+      "target": "fast_livo2_localizer_interfaces.md"
+    },
+    {
+      "source": "docs/PROJECT_LAYOUT.md",
+      "target": "fast_livo2_relocalizer_interfaces.md"
+    },
+    {
+      "source": "docs/PROJECT_LAYOUT.md",
+      "target": "HANDOFF.md"
+    },
+    {
+      "source": "docs/PROJECT_LAYOUT.md",
+      "target": "FAST_LIVO2_BACKEND_PLAN.md"
+    },
+    {
+      "source": "docs/PROJECT_LAYOUT.md",
+      "target": "README.md"
+    },
+    {
+      "source": "docs/PROJECT_LAYOUT.md",
+      "target": "fast_livo2_recording.md"
+    },
+    {
+      "source": "docs/PROJECT_LAYOUT.md",
+      "target": "handoff_cleanup_20261105.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "HANDOFF.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "handoff_cleanup_20261105.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "STATUS.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "fast_livo2_stage_c1_report.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "fast_livo2_stage_c2_report.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "fast_livo2_timestamp_phase_report.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "fast_livo2_c1_correction_report.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "fast_livo2_tag_two_capture_report.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "FAST_LIVO2_APRILTAG_PLAN.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "fast_livo2_apriltag_report.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "fast_livo2_stage_b_motion_report.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "fast_livo2_stage_b_report.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "fast_livo2_backend_interfaces.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "fast_livo2_interfaces.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "fast_livo2_gravity_alignment_report.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "../config/fast_livo2/sources.lock.json"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "fast_livo2_evidence/stage_b_20261026/reference_audit.json"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "fast_livo2_source_review.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "../ws_fast_livo/src/ranger_fast_livo_backend/THIRD_PARTY_NOTICES.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "fast_livo2_localizer_interfaces.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "fast_livo2_stage_c1_report.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "fast_livo2_stage_c2_report.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "fast_livo2_relocalizer_interfaces.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "fast_livo2_cross_session_global_report.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "fast_livo2_recording.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "STATUS.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "HANDOFF.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "target": "../AGENTS.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_APRILTAG_PLAN.md",
+      "target": "fast_livo2_apriltag_report.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_APRILTAG_PLAN.md",
+      "target": "fast_livo2_apriltag_interfaces.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_APRILTAG_PLAN.md",
+      "target": "HANDOFF.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_APRILTAG_PLAN.md",
+      "target": "fast_livo2_timestamp_phase_report.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_APRILTAG_PLAN.md",
+      "target": "fast_livo2_c1_correction_report.md"
+    },
+    {
+      "source": "docs/FAST_LIVO2_APRILTAG_PLAN.md",
+      "target": "fast_livo2_tag_two_capture_report.md"
+    },
+    {
+      "source": "docs/fast_livo2_recording.md",
+      "target": "fast_livo2_timestamp_phase_report.md"
+    },
+    {
+      "source": "docs/fast_livo2_recording.md",
+      "target": "STATUS.md"
+    },
+    {
+      "source": "docs/fast_livo2_recording.md",
+      "target": "fast_livo2_gravity_alignment_report.md"
+    },
+    {
+      "source": "docs/fast_livo2_recording.md",
+      "target": "fast_livo2_recording_readiness_report.md"
+    },
+    {
+      "source": "docs/fast_livo2_recording.md",
+      "target": "fast_livo2_tag140_sync_diag02_report.md"
+    },
+    {
+      "source": "docs/fast_livo2_recording.md",
+      "target": "fast_livo2_sync_capture_diagnostics_report.md"
+    },
+    {
+      "source": "docs/fast_livo2_recording.md",
+      "target": "fast_livo2_tag_two_capture_report.md"
+    },
+    {
+      "source": "docs/fast_livo2_recording.md",
+      "target": "fast_livo2_c1_correction_report.md"
+    },
+    {
+      "source": "docs/fast_livo2_recording.md",
+      "target": "HANDOFF.md"
+    },
+    {
+      "source": "docs/fast_livo2_recording.md",
+      "target": "fast_livo2_recording_report.md"
+    },
+    {
+      "source": "docs/handoff_cleanup_20261105.md",
+      "target": "HANDOFF.md"
+    },
+    {
+      "source": "docs/handoff_cleanup_20261105.md",
+      "target": "STATUS.md"
+    },
+    {
+      "source": "docs/handoff_cleanup_20261105.md",
+      "target": "NEXT_AGENT_PROMPT.md"
+    }
+  ],
+  "frontend_trial_img_time_offset_s": 0.1,
+  "tag_offset_ns": 0,
+  "tag_time_verified": false,
+  "raw_capture_directories_deleted": 3,
+  "payload_bytes_removed": 15139703674,
+  "free_bytes_before": 830165786624,
+  "free_bytes_after": 845299474432,
+  "free_bytes_change": 15133687808,
+  "sessions": [
+    {
+      "kind": "fast_livo_live",
+      "state": "STOPPED",
+      "owned": [],
+      "matching_live_identities": []
+    },
+    {
+      "kind": "fast_livo_record",
+      "state": "STOPPED",
+      "owned": [],
+      "matching_live_identities": []
+    },
+    {
+      "kind": "fast_livo_backend",
+      "state": "FAILED",
+      "owned": [],
+      "matching_live_identities": []
+    },
+    {
+      "kind": "fast_livo_localizer",
+      "state": "FAILED",
+      "owned": [],
+      "matching_live_identities": []
+    },
+    {
+      "kind": "fast_livo_relocalizer",
+      "state": "FAILED",
+      "owned": [],
+      "matching_live_identities": []
+    }
+  ],
+  "git_head_unchanged": "acffa879cc8d52330276089cd3df83ad6a43f112",
+  "git_branch": "refactor/pluggable-navigation",
+  "new_algorithm_tests_run": false,
+  "hardware_started": false,
+  "binary_deployment_performed": false,
+  "git_commit_or_push": false,
+  "current_docs_sha256": {
+    "AGENTS.md": "5722799763948e69abf6efe4c62b907370c51b9510ee1a880bd7bec4c3522b0d",
+    "README.md": "54d82a2da2f492a6ab6efdd1e5488d183bc5ac290180e694ab5e850fb9cf3766",
+    "docs/HANDOFF.md": "de18ede07ae49784d25f4e8e8632a26678ed0dc5aa0ccc717399a098b5db2c09",
+    "docs/STATUS.md": "6e48845428b685bb5bd0a7bcfd21e18693dd5617f46ea88a16c6ba0f3ca0cb97",
+    "docs/README.md": "844b47a47ee5f3b2e61ea887e58630cffe9ef73977118e9a1b7a81def2d20b1a",
+    "docs/PROJECT_LAYOUT.md": "3febb387499010852b0d3e6918421632651abe01ab35d49cd7f48aee1460a595",
+    "docs/FAST_LIVO2_BACKEND_PLAN.md": "624cc9f14aeb84b6be6f467a3637ea05fce1142a82c967acfbb14e4b45f9bb3d",
+    "docs/FAST_LIVO2_APRILTAG_PLAN.md": "916bf89411403ff0d4c25f1402da13316116c170d570c5e74f24422e3ea45219",
+    "docs/fast_livo2_recording.md": "75df880068ad126794c50c2548ac23d82ba8b83f40d3c6d01fe436e9a9033ed3",
+    "docs/NEXT_AGENT_PROMPT.md": "1dba95856f08e1c6527fe732f75b0d6cecb5a4155faea4335562cf9861f5aae5",
+    "docs/handoff_cleanup_20261105.md": "1d3b6052622dccc92263e690175b30f7443b8340bc9134b58e158accac758dc6"
+  }
+}

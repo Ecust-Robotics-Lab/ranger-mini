@@ -1,6 +1,6 @@
 # 当前工程结构
 
-更新：2026-10-29，目录沿用已完成的清理、标定迁移与配置切换。设备会话保持停止；FAST-LIVO2 B、C1 和 C2 已实现离线范围，D 未实施。整合详情见 [整合报告](consolidation_report.md)，定位入口见 [C1 契约](fast_livo2_localizer_interfaces.md) 和 [C2 契约](fast_livo2_relocalizer_interfaces.md)。
+更新：2026-11-05。FAST-LIVO2 B/C1/C2与Tag增量已有软件/离线成果并已分组本地提交，真实Tag与D仍未验。FAST专用会话未运行，field及旁边工作区另有活动进程；最新会话、构建前缀、+100ms配置、原包/地图和清理状态见[HANDOFF](HANDOFF.md)。历史整合见[整合报告](consolidation_report.md)，定位入口见[C1](fast_livo2_localizer_interfaces.md)、[C2](fast_livo2_relocalizer_interfaces.md)。
 
 新上下文先读 [HANDOFF](HANDOFF.md)，下一步见 [后端/重定位计划](FAST_LIVO2_BACKEND_PLAN.md)，当前与历史文档分类见 [文档索引](README.md)。
 
@@ -60,6 +60,7 @@
 ## 资产保留边界
 
 - 原始录包、正式基线、地图、失败证据、源码与回退备份保留；历史删除清单和迁移完整性记录见整合报告，不将旧磁盘容量当作当前容量。
+- 2026-11-05按用户当次明确指令删除的3份过时试录、3空目录和6处缓存是本次例外，具体名单/哈希见[清理报告](handoff_cleanup_20261105.md)；未删除当前+100ms对照所需原包、任何地图或唯一失败证据，不继承为后续任意删除许可。
 - vendor 中前端、B和可选C2的实际依赖按各自sources.lock固定；审查仓库也保留，不将“参考过”当作已集成，也不将不同提交误认为重复目录。
 - 不整体清空 build/install：Lightning 从 `ws_slam/build/lightning/bin/` 运行，部分旧相机部署链接指向 build。新增标定构建使用 integrated 目录。
 

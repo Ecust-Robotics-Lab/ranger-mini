@@ -1,6 +1,6 @@
 # FAST-LIVO2 C1 离线先验地图定位契约
 
-更新：2026-10-29。实现为 `ws_fast_livo/src/ranger_fast_livo_localizer`；实际命令、结果和限制见 [C1 报告](fast_livo2_stage_c1_report.md)。本页描述默认 C1 人工初值模式；显式启用的 [C2](fast_livo2_relocalizer_interfaces.md) 在同一包提供全局确认初值和丢失恢复，仍由 C1 跟踪。人工 Initialize 会暂停可选自动搜索，需显式重新允许。生产 runtime 仍使用 Lightning。
+更新：2026-11-04。实现为 `ws_fast_livo/src/ranger_fast_livo_localizer`；原始验收见 [C1 报告](fast_livo2_stage_c1_report.md)，初始化计算优化与隔离新构建见 [两份新包对照](fast_livo2_tag_two_capture_report.md)。本页描述默认 C1 人工初值模式；显式启用的 [C2](fast_livo2_relocalizer_interfaces.md) 在同一包提供全局确认初值和丢失恢复，仍由 C1 跟踪。人工 Initialize 会暂停可选自动搜索，需显式重新允许。生产 runtime 仍使用 Lightning。
 
 ## 模式与地图
 
@@ -42,11 +42,15 @@ C1 直接读取 `schema_version=1 / kind=stage_b_graph_archive`。读取器检�
 
 PCL float 求解矩阵先通过既有刚体合法性检查，再将微小旋转数值误差投影到 SO(3)，并对实际接受的变换重新计算几何门控，避免连续预测累积非正交应变；非法原始结果仍拒绝。
 
+2026-11-04 源码优化：首个初始化支持帧，以及达到帧数/时间/运动条件、可能提交 VALID 的每一帧，保留完整 13 初值歧义检查。未满足提交条件的等待帧只运行一个初值的粗/精配准和原几何、修正一致性检查，保持无效；任何拒绝仍清空支持。诊断增加 `native_diagnostics.initial_ambiguity_probe`，与 `local_hypotheses` 一同记录。没有放宽几何、运动或超时门槛；目前仅安装于独立 `install_c1_confirmation_20261104/`，原 `backend_install/` 尚未替换。
+
 默认初值单次预算 2000 ms、跟踪 500 ms、50 次迭代、单线程；库内求解不能硬中断，返回后检查预算，超时结果不提交。初始化总墙钟超时 10 s，确认健康时间从几何确认完成计；位姿采样时间独立检查。连续 3 次拒绝或确认超过 1 s 触发 LOST，重新给初值才能恢复。
 
 输入配对 32 项/64 MiB，缺对超时 0.25 s、乱序等待 0.02 s；worker 队列 8 项/32 MiB；ROS 输入 depth=16。前端历史最多 5 s/1000 项、插值最大间隔 0.15 s。默认位姿年龄 0.5 s、流超时 2 s。以上上限不能代替原速及长期压力验收。
 
 ## 离线入口与公共适配
+
+2026-11-04 [C1 修正归因与 GICP 对照](fast_livo2_c1_correction_report.md)通过现有 `--registration small_gicp` 显式选项运行完整两包；这同时选择C2精配准与C1既有实现，没有改默认 `pcl_icp`。实际验收使用 `install_c1_confirmation_20261104/` 隔离节点；受管入口的原 `backend_install/` 尚未替换，不能把默认入口视作相同构建版本。Tag、物理时间与真实回环仍单独验收。
 
 ```bash
 bash scripts/build_fast_livo2_localizer.sh                 # dry-run

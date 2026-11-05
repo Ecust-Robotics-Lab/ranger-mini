@@ -1,12 +1,13 @@
 # 文档入口
 
-更新：2026-10-29。当前操作与历史证据分开阅读；旧阶段文档中的“当前/下一步/未授权”仅指该报告日期，不能替代当前指令与 AGENTS。
+更新：2026-11-05。当前入口与带日期证据分开阅读；旧报告的“当前/下一步/未授权”只指当时快照，不能覆盖最新HANDOFF/STATUS或自动触发执行。
 
 ## 接手与当前操作
 
 | 文档 | 用途 |
 | --- | --- |
 | [HANDOFF](HANDOFF.md) | 新上下文快速接手、代码/数据/工作树及关键接口 |
+| [新Agent提示词](NEXT_AGENT_PROMPT.md)、[交接/清理报告](handoff_cleanup_20261105.md) | 可复制开场词、本次删除名单/原包和证据保留边界 |
 | [STATUS](STATUS.md) | 当前能力、验收边界和最近验证日期 |
 | [根 README](../README.md)、[AGENTS](../AGENTS.md) | 当前命令、默认配置与工程约束 |
 | [PROJECT_LAYOUT](PROJECT_LAYOUT.md) | 整合后的文件职责、保留/删除范围 |
@@ -15,11 +16,42 @@
 | [FAST 前端接口](fast_livo2_interfaces.md) | 后端必须遵守的点云/位姿/时间语义 |
 | [三传感器录包与远程预览](fast_livo2_recording.md) | 一键采集、日志归档、RViz/Foxglove及路线验收 |
 | [后端与重定位计划](FAST_LIVO2_BACKEND_PLAN.md) | B/C1/C2 离线实现；D 与真实泛化仍待验 |
+| [AprilTag 增量计划](FAST_LIVO2_APRILTAG_PLAN.md)、[接口与操作](fast_livo2_apriltag_interfaces.md) | 在既有 B/C1/C2 上增加观测、地标与候选，默认关闭 |
 | [C1 接口与操作](fast_livo2_localizer_interfaces.md) | 归档加载、给定初值、持续定位、状态与隔离桥接 |
 | [C2 接口与操作](fast_livo2_relocalizer_interfaces.md) | 全局检索、六自由度粗配准、独立运动确认、取消和恢复 |
 | [重力对齐报告](fast_livo2_gravity_alignment_report.md) | 新前端 +Z 朝上；旧地图不追认对齐 |
 
 ## 最新实现与验证报告
+
+- [20261105本地分组提交](local_git_checkpoint_20261105.md)：按用户后续指令保存7组本地检查点；记录完整性/静态检查和活动field会话区别，无新实验、设备操作或推送。
+
+- [20261105交接与清理](handoff_cleanup_20261105.md)：精简当前交接/状态、修正旧配置与地图说明，删除3份过时未引用试录、3空目录和6处缓存约14.1GiB；当前源码、地图和后续必要原包保持，不运行新算法实验。
+
+- [同戳与扫描相位核查](fast_livo2_timestamp_phase_report.md)：核实上游+100ms配置和作者的一帧差解释，两新包1800扫描/1843相机会话帧只读审查；按用户要求正式前端试验改为+0.1s，11项既有回归和dry-run通过，曝光参考点与Tag时间仍未实测。
+
+- [C1 修正归因与 GICP 对照](fast_livo2_c1_correction_report.md)：525扫描×4控制、原PCL逐帧精确复现；既有GICP完整C2/C1运行及冻结旧Tag跨访问17.32→6.11px，6项新/3项相关测试通过。一次短暂DEGRADED按原规则拒绝，默认与部署未改，真实Tag时间/地标/回环仍待验。
+
+- [两份新包与地图对照](fast_livo2_tag_two_capture_report.md)：两新包训练冻结/独立验证、转向新建局部图与独立直行C2→C1功能通过；同帧旧图16.21→新图6.23 px，Tag跨访问仍17.29 px、无VALID地标；C1计算与离线取消评估修正，74项相关测试通过，未部署或启动硬件。
+
+- [Tag 运动几何与初始化对照](fast_livo2_tag_motion_geometry_report.md)：新增5次隔离重放、固定LiDAR–IMU时间扫描与图像稳定窗口诊断；时间/零偏单项调整仍未解决三融合残差，3项新和5项相关测试通过，准备分离动作独立验证，未部署或登记VALID。
+
+- [独立包 C2 全局定位与标定复核](fast_livo2_cross_session_global_report.md)：纯LiDAR候选路径已实际运行；1195对输入、936有效采样，无LOST/ERROR，位置正确性待确认；独立静态板边界复核和5项新测试完成，Tag与公共桥接仍分开验收。
+
+- [120 秒车载 Tag 同步与受控重放](fast_livo2_tag140_sync_diag02_report.md)：可靠 writer 本次实采无漏扫描；Tag/原始 gyro 与当前源码独立重放表明 +120 ms 候选改善尾部误差，仍未通过固定地标门槛；25 项相关测试通过，实机补偿未部署。
+
+- [同步漏收缓解与车载诊断准备](fast_livo2_sync_capture_diagnostics_report.md)：writer 可靠订阅、DDS 来源/时序/事件和录包归档；7 项交付测试、4 项录包回归及共享协议检查通过，120 秒用户手动录制待执行，物理同步仍 PARTIAL。
+
+- [140 mm 同步与固定地标一致性](fast_livo2_tag140_consistency_report.md)：writer 漏收 7 个已录扫描与重复戳对应；固定轨迹/时偏诊断仍未通过，5 项新测试，无驱动或时偏修改。
+
+- [140 mm Tag 检查包](fast_livo2_tag140_check_report.md)：60 s 真实新采集，593 帧全量筛查、556 次检测；重复共享戳仍 PARTIAL，原包 SHA 不变，无地标注册。
+
+- [录包就绪与报错修复](fast_livo2_recording_readiness_report.md)：启动前采集 IP 校验、未就绪组件/话题及断流错误直达终端；29 项离线测试通过，无硬件操作。
+
+- [AprilTag 旧地图补录评估](fast_livo2_apriltag_landmark_assessment_report.md)：固定性用户确认，14 帧均有健康 C1 支持；双模式、约 4 cm 平移基线及跨帧回投不一致，暂不登记 VALID，6 项专项测试通过。
+
+- [AprilTag 现有包全量报告](fast_livo2_apriltag_fullbag_report.md)：1367 帧、14 次 ID 1/28 支假设，原戳关联与日志核对，原包 SHA 不变；物理同步/真实地标仍 PARTIAL。
+
+- [AprilTag 离线增量报告](fast_livo2_apriltag_report.md)：22 项新 C++、5 项 ROS/工具及原系统回归；真实样本 ID 1/0.155 m 双解检测，真实地标/跨访问验收仍 PARTIAL。
 
 - [阶段 C2 报告](fast_livo2_stage_c2_report.md)：可选离线全局重定位、30项数值/4项ROS、1362对同包检查；跨会话仍 PARTIAL。
 - [阶段 C1 报告](fast_livo2_stage_c1_report.md)：只读先验地图、六自由度初值/跟踪、故障及隔离桥接；独立会话与真值精度仍 PARTIAL。

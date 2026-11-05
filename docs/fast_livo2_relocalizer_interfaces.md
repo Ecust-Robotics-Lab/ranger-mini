@@ -64,3 +64,5 @@ bash scripts/run_fast_livo2_relocalizer.sh --execute \
 索引最多 10000 关键帧（可配置且有硬上限），目标子图沿用 C1 的最多 8 帧/100000 点。C1 与 C2 各自有 128 MiB LRU，并非进程总内存上限；另有索引、查询、工作队列、配准器临时内存。求解器内部不能硬中断；每层返回后重新检查预算/代际，超时拒绝整次尝试，不能选取此前最好候选凑成功。
 
 这是受检索数量和几何可辨识性限制的离线实现，不保证所有环境召回或消歧。实际证据与未完成项见 [C2 报告](fast_livo2_stage_c2_report.md)，跨会话、真值精度与实时接车仍 PARTIAL。
+
+2026-11-04 新增一次不同采集包的 [无初值功能试验](fast_livo2_cross_session_global_report.md)：1195对查询、936个VALID采样，无LOST/ERROR；场地覆盖与绝对位置未确认。离线评估工具支持 `--query-provenance` 绑定地图/native DB SHA，独立输入禁止同图推导初值；`--allow-recovery` 只调整试验结果如何容纳一次真实丢失后恢复，不改变节点门槛/锁。新日志额外保存 `T_map_imu` 和请求代际。真实Tag尚无VALID表不阻止纯LiDAR C2测试。

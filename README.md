@@ -1,8 +1,12 @@
 # Ranger Mini 导航系统
 
-ROS 2 Humble / Ubuntu 22.04 / x86_64，实物为 **Ranger Mini V2 + Livox Mid-360S + 海康相机**。Lightning-LM 保持生产默认；FAST-LIVO2 三传感器前端、独立回环后端 B 和给定初值的 C1 离线先验定位已实现。C2 无初值重定位已完成离线实现与同包功能检查，独立会话、实车精度和实时接车仍待验。
+ROS 2 Humble / Ubuntu 22.04 / x86_64，实物为 **Ranger Mini V2 + Livox Mid-360S + 海康相机**。Lightning-LM 保持生产默认；FAST-LIVO2 三传感器前端、独立回环后端 B、C1先验定位与C2全局重定位已实现，已有不同采集包的离线功能对照；完整泛化、真值精度和实时接车仍待验。
 
 **新上下文从 [交接指南](docs/HANDOFF.md) 开始**，再读 [当前状态](docs/STATUS.md)、[工程约束](AGENTS.md)、[后端与重定位计划](docs/FAST_LIVO2_BACKEND_PLAN.md)。全部文档见 [docs 索引](docs/README.md)。
+
+2026-11-05交接已更新，复制 [新Agent提示词](docs/NEXT_AGENT_PROMPT.md) 可快速接手。正式前端试验现使用用户指定的 **+100ms**，完整新配置评估尚未重跑；历史+110ms结果保持原条件。过时试录清理名单与保留理由见 [清理报告](docs/handoff_cleanup_20261105.md)。
+
+AprilTag 候选与地标增量已完成软件及离线检查，默认关闭；见 [细化计划](docs/FAST_LIVO2_APRILTAG_PLAN.md)、[接口与操作](docs/fast_livo2_apriltag_interfaces.md)、[交付报告](docs/fast_livo2_apriltag_report.md)。真实地标与跨访问性能仍待验，既有成果已按用户指令[分组本地提交](docs/local_git_checkpoint_20261105.md)，未推送。
 
 ## 当前能力
 
@@ -10,12 +14,12 @@ ROS 2 Humble / Ubuntu 22.04 / x86_64，实物为 **Ranger Mini V2 + Livox Mid-36
 | --- | --- |
 | 生产导航路线 | Lightning、轮速、公共定位桥接、Nav2、安全速度链已有实现；完整真机导航仍 PARTIAL |
 | 定位契约 | LocalizationEstimate 携带地图系车体位姿、原采样时刻和健康；按定位时刻插值轮速，唯一管理公共 TF |
-| FAST-LIVO2 | 保留 LiDAR–IMU–Camera 更新；静态基线与在线 RViz 通过，用户要求停止后会话保持停止 |
+| FAST-LIVO2 | 保留LiDAR–IMU–Camera更新；已有真实运动重放、B/C1/C2与Tag软件检查；FAST会话未运行，其他现场会话状态见HANDOFF |
 | 配置切换 | mapping_backend 选择 Lightning / FAST-LIVO2 前端；localization_backend 独立选择 lightning / standard |
 | 标定与同步 | 已整合到本工程；v2 共享戳保护已修复，物理同步、几何标定与实时历元仍待验 |
 | 待验收 | C1/C2跨会话与真实负样本、同步/外参/真值、实时wheel与D接车；高程/坡道另立范围 |
 
-目前保留一份约136.6秒三传感器运动采集包，已生成[建图演示视频](docs/fast_livo2_demo_20261028.md)；画面与合成测试不代表真值精度、真实回环或自动定位验收。standard 是外部标准消息接口，不是另一套现成定位算法。
+当前保留旧136.6秒建图包、140mm同步/转向/直行诊断包及固定回归基线；具体用途和当前局部图见[HANDOFF](docs/HANDOFF.md)。旧包的[建图演示视频](docs/fast_livo2_demo_20261028.md)和后续图片仅展示各自条件的结果，不代表真值精度或真实Tag辅助验收。standard是外部标准消息接口，不是另一套现成定位算法。
 
 ## 目录与配置
 

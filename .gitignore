@@ -74,10 +74,16 @@ calibration/**/*.mcap
 /outputs/fast-livo-c1-*/
 /outputs/fast-livo-gravity-*/
 /outputs/fast-livo-c2-*/
+/outputs/fast-livo-apriltag-*/
+/outputs/fast-livo-tag140-*/
 
 # Evidence manifests/logs are versioned; full scan/database payloads stay local.
 docs/fast_livo2_evidence/**/*.pcd
 docs/fast_livo2_evidence/**/*.cdr
 docs/fast_livo2_evidence/**/*.db3
+# Captured executable copies stay local; evidence manifests retain their hashes.
+docs/fast_livo2_evidence/**/sources/*_hik_camera_trigger_driver_node
+docs/fast_livo2_evidence/**/sources/*_timeshare_writer_node
+docs/fast_livo2_evidence/**/sources/*_fastlivo_mapping
 /ws_nav/c1_adapter_log/
 /ws_nav/c2_adapter_log/

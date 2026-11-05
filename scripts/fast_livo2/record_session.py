@@ -5,6 +5,7 @@ from collections import Counter
 import csv
 from dataclasses import asdict
 import hashlib
+import ipaddress
 import json
 import math
 import os
@@ -34,6 +35,41 @@ SESSION_ROOT = Path(os.environ.get('RANGER_CAPTURE_SESSION_ROOT', ROOT/'.runtime
 SESSION = SESSION_ROOT/'fast_livo_record'
 
 
+def check_lidar_host_address(cfg):
+    """Read-only check of local bind addresses, without contacting a sensor."""
+    path = Path(cfg['FAST_LIVO_LIDAR_CONFIG'])
+    config = json.loads(path.read_text())
+    required = {entry['host_ip'] for model in config.values() if isinstance(model, dict)
+                for entry in model.get('host_net_info', [])}
+    if not required:
+        raise ValueError('雷达配置缺少 host_net_info.host_ip: '+str(path))
+    addresses = json.loads(subprocess.check_output(['ip', '-j', '-4', 'address', 'show'], text=True))
+    local = {entry['local'] for interface in addresses for entry in interface.get('addr_info', [])
+             if entry.get('family') == 'inet'}
+    missing = sorted(address for address in required if not ipaddress.ip_address(address).is_unspecified
+                     and address not in local)
+    if missing:
+        raise RuntimeError('雷达采集网卡地址未就绪：配置要求 '+', '.join(missing)
+                           +'；本机当前 IPv4 为 '+', '.join(sorted(local))
+                           +'。请检查雷达连接与采集网卡配置；未启动驱动或录包。配置: '+str(path))
+
+
+def input_problems(topics, publishers, counts):
+    """Explain absent streams separately from discovery/type/QoS failures."""
+    problems = []
+    for topic, kind in topics.items():
+        endpoints = publishers.get(topic, [])
+        if len(endpoints) != 1:
+            problems.append(topic+(' 无发布者' if not endpoints else ' 存在多个发布者'))
+        elif endpoints[0]['type'] != kind:
+            problems.append(topic+' 消息类型不匹配')
+        elif endpoints[0]['reliability'] != 'RELIABLE':
+            problems.append(topic+' QoS 不是 RELIABLE')
+        elif not counts.get(topic, 0):
+            problems.append(topic+' 有发布者但未收到数据')
+    return problems
+
+
 def recorder_command(folder, topics):
     return ['ros2', 'bag', 'record', '-s', 'sqlite3', '-o', str(folder/'raw'),
             '--max-cache-size', '268435456', '--qos-profile-overrides-path',
@@ -52,6 +88,15 @@ def snapshot_sources(folder, cfg):
         paths.update(p for p in base.rglob('*') if p.is_file() and p.suffix in ('.yaml', '.json', '.rviz'))
     paths.update(p for p in (ROOT/'scripts/fast_livo2').rglob('*.py'))
     paths.add(ROOT/'scripts/record_fast_livo2.sh')
+    # Attribute the actual local synchronization implementation to this capture.
+    paths.update(ROOT/p for p in (
+        'ws_camera/src/timeshare_writer/src/timeshare_writer_node.cpp',
+        'ws_camera/src/timeshare_writer/CMakeLists.txt',
+        'ws_camera/src/timeshare_writer/package.xml',
+        'ws_camera/src/hik_camera_trigger_driver/src/hik_camera_node.cpp',
+        'ws_camera/install/timeshare_writer/lib/timeshare_writer/timeshare_writer_node',
+        'ws_camera/install/hik_camera_trigger_driver/lib/hik_camera_trigger_driver/hik_camera_trigger_driver_node',
+        'ws_fast_livo/install/fast_livo/lib/fast_livo/fastlivo_mapping'))
     files = []
     dest = folder/'sources'
     dest.mkdir()
@@ -83,8 +128,11 @@ class CaptureHealth(JsonHealth):
     def __init__(self, path, folder):
         super().__init__(path)
         self.folder, self.last = folder, None
+        self.last_waiting, self.last_progress = None, float('-inf')
 
     def __call__(self):
+        checks = super().__call__()
+        status = None
         try:
             status = json.loads((self.folder/'recording.json').read_text())['state']
             if status != self.last:
@@ -94,7 +142,20 @@ class CaptureHealth(JsonHealth):
                 self.last = status
         except (OSError, ValueError, KeyError):
             pass
-        return super().__call__()
+        if status is None or status == 'PREFLIGHT':
+            try:
+                state = json.loads((self.path.parent/'state.json').read_text())
+                names = {'probe': '输入检查', 'lidar': '雷达', 'writer': '同步时间',
+                         'camera': '相机', 'frontend': '前端', 'capture': '录包器'}
+                waiting = tuple(names[name]+'='+info['state'] for name, info in state['components'].items()
+                                if name in names and info['state'] != 'READY')
+                now = time.monotonic()
+                if waiting and (waiting != self.last_waiting or now-self.last_progress >= 10):
+                    print('CAPTURE WAITING（尚未录制）：'+', '.join(waiting), flush=True)
+                    self.last_waiting, self.last_progress = waiting, now
+            except (OSError, ValueError, KeyError):
+                pass
+        return checks
 
 
 def quality_report(audit, expected):
@@ -236,10 +297,13 @@ def main():
                 raise RuntimeError('missing executable: '+executable)
         if args.visualization in ('rviz', 'both') and not os.environ.get('DISPLAY', '').strip():
             p.error('RViz requires DISPLAY; use --visualization auto, foxglove or none')
+        if any(component.name == 'lidar' for component in components):
+            check_lidar_host_address(cfg)
     if args.output:folder.mkdir()
     else:folder = Path(tempfile.mkdtemp(prefix='fast-livo-'+args.label+'-', dir=ROOT/'bags'))
     print('CAPTURE_DIR='+str(folder), flush=True)
     print('VISUALIZATION='+('existing session' if attach else args.visualization), flush=True)
+    print('CAPTURE PREPARING（尚未录制）：等待雷达、相机和前端数据就绪。', flush=True)
     (folder/'sensor_assets').mkdir()
     sensor_environment(cfg, folder/'sensor_assets')
     manifest = {'schema_version': 1, 'created_unix_ns': time.time_ns(), 'folder': str(folder),
@@ -272,6 +336,8 @@ def main():
     own_run, state = read_session(SESSION)
     if source_run is None:source_run = own_run
     result = json.loads((folder/'recorder_result.json').read_text()) if (folder/'recorder_result.json').exists() else {}
+    if result.get('error'):
+        result['recorder_error'] = result['error']
     result.update(session_exit=code, session_state=state, folder=str(folder), capture_complete=False)
     try:
         archive_logs(folder, own_run, source_run, sensor_dir, not attach)
@@ -296,6 +362,11 @@ def main():
         result['error'] = str(exc)
         code = 2
     atomic_json(folder/'result.json', result)
+    if not result['capture_complete']:
+        reason = state.get('reason') if state else None
+        print('CAPTURE ERROR：录制未完成；'+(reason or result.get('error', '未知错误'))
+              +('；输入诊断：'+result['recorder_error'] if result.get('recorder_error') else '')
+              +'；诊断日志: '+str(folder/'session_logs'), file=sys.stderr, flush=True)
     if result['capture_complete']:
         (folder/'CAPTURE_COMPLETE').write_text('Recording finalized and data checks passed; physical sync/SLAM accuracy remain unverified.\n')
     print(json.dumps(result, indent=2), flush=True)
@@ -303,4 +374,8 @@ def main():
 
 
 if __name__ == '__main__':
-    raise SystemExit(main())
+    try:
+        raise SystemExit(main())
+    except (RuntimeError, OSError, ValueError) as exc:
+        print('CAPTURE ERROR：'+str(exc), file=sys.stderr, flush=True)
+        raise SystemExit(2)

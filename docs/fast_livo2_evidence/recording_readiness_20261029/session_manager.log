@@ -1,0 +1,72 @@
+test_control_start_requires_explicit_flag (__main__.ProcessTests) ... ok
+test_critical_health_loss_stops_without_auto_restart (__main__.ProcessTests) ... ok
+test_dependency_wait_and_normal_stop (__main__.ProcessTests) ... ok
+test_escaped_child_after_parent_exit (__main__.ProcessTests) ... ok
+test_guardian_sigkill_scheduler_cleans (__main__.ProcessTests) ... ok
+test_occupied_interface_rejected_before_components_start (__main__.ProcessTests) ... ok
+test_optional_exit_degrades_without_restarting (__main__.ProcessTests) ... ok
+test_resource_lease_and_duplicate_session (__main__.ProcessTests) ... ok
+test_scheduler_sigkill_guardian_cleans_orphans (__main__.ProcessTests) ... ok
+test_stale_identity_does_not_signal_reused_pid (__main__.ProcessTests) ... ok
+test_startup_timeout (__main__.ProcessTests) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 4.571s
+
+OK
+health_loss0.log SESSION_DIR=/tmp/ranger-session-test-7_ifr2ya/sessions/one/run-9z8ozsyw
+SESSION ERROR: RuntimeError: critical health lost; stopping session, fresh start required; logs: /tmp/ranger-session-test-7_ifr2ya/sessions/one/run-9z8ozsyw; stopping owned processes
+
+dependency0.log SESSION_DIR=/tmp/ranger-session-test-fyg7usad/sessions/one/run-c28zt7yp
+
+escape0.log SESSION_DIR=/tmp/ranger-session-test-kpxczant/sessions/one/run-zz66php_
+SESSION ERROR: RuntimeError: escape exited 7; no automatic restart; logs: /tmp/ranger-session-test-kpxczant/sessions/one/run-zz66php_; stopping owned processes
+
+normal0.log SESSION_DIR=/tmp/ranger-session-test-r07wswi0/sessions/one/run-aos7crcn
+
+preflight0.log SESSION_DIR=/tmp/ranger-session-test-jhdjmeq3/sessions/one/run-bi6ub107
+SESSION ERROR: RuntimeError: preflight rejects occupied interface: free; logs: /tmp/ranger-session-test-jhdjmeq3/sessions/one/run-bi6ub107; stopping owned processes
+
+optional0.log SESSION_DIR=/tmp/ranger-session-test-rtrs8ew_/sessions/one/run-qkixjt5f
+
+resource_two2.log Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/scripts/session_manager.py", line 214, in run_guarded
+    fcntl.flock(handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
+BlockingIOError: [Errno 11] Resource temporarily unavailable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_session_manager.py", line 195, in <module>
+    if len(sys.argv)>1 and sys.argv[1]=='--worker':raise SystemExit(worker(sys.argv[2],sys.argv[3]))
+  File "/home/lab307/ranger_nav/tests/test_session_manager.py", line 63, in worker
+    return run_guarded(session,specs,health_factory=provider,startup_timeout=.8 if scenario=='timeout' else 5.,
+  File "/home/lab307/ranger_nav/scripts/session_manager.py", line 216, in run_guarded
+    raise RuntimeError(f'resource already owned by another session: {resource}')
+RuntimeError: resource already owned by another session: shared
+
+normal0.log SESSION_DIR=/tmp/ranger-session-test-h30os9if/sessions/one/run-m47qqyrx
+
+normal1.log Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/scripts/session_manager.py", line 200, in run_guarded
+    fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+BlockingIOError: [Errno 11] Resource temporarily unavailable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_session_manager.py", line 195, in <module>
+    if len(sys.argv)>1 and sys.argv[1]=='--worker':raise SystemExit(worker(sys.argv[2],sys.argv[3]))
+  File "/home/lab307/ranger_nav/tests/test_session_manager.py", line 63, in worker
+    return run_guarded(session,specs,health_factory=provider,startup_timeout=.8 if scenario=='timeout' else 5.,
+  File "/home/lab307/ranger_nav/scripts/session_manager.py", line 202, in run_guarded
+    raise RuntimeError('session is already active')
+RuntimeError: session is already active
+
+normal3.log SESSION_DIR=/tmp/ranger-session-test-h30os9if/sessions/one/run-owmkpflr
+
+normal0.log SESSION_DIR=/tmp/ranger-session-test-jpkc0iga/sessions/one/run-x9uj9c68
+
+timeout0.log SESSION_DIR=/tmp/ranger-session-test-fqn0_n0b/sessions/one/run-3nt2mmxj
+SESSION ERROR: RuntimeError: startup readiness timeout; not ready: waiting(WAITING, health=process); logs: /tmp/ranger-session-test-fqn0_n0b/sessions/one/run-3nt2mmxj; stopping owned processes
+

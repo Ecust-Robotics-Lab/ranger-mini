@@ -1,0 +1,1212 @@
+diff --git a/.gitignore b/.gitignore
+index d8a736b..bf925fa 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -74,6 +74,7 @@ calibration/**/*.mcap
+ /outputs/fast-livo-c1-*/
+ /outputs/fast-livo-gravity-*/
+ /outputs/fast-livo-c2-*/
++/outputs/fast-livo-apriltag-*/
+ 
+ # Evidence manifests/logs are versioned; full scan/database payloads stay local.
+ docs/fast_livo2_evidence/**/*.pcd
+diff --git a/AGENTS.md b/AGENTS.md
+index 61e1beb..7055cbd 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -4,10 +4,12 @@
+ 
+ ## 当前范围与授权
+ 
++- 2026-10-29 后续用户已明确授权并完成 AprilTag 增量的软件/离线范围，计划与证据见 `docs/FAST_LIVO2_APRILTAG_PLAN.md`、`docs/fast_livo2_apriltag_report.md`。本轮工作树有未提交改动，未推送。Tag 默认关闭；旧包 tag36h11:1、0.155 m 已由用户确认，采集期间固定已获用户确认；物理时间未验，补录评估存在双模式与跨帧不一致，没有真实 VALID Tag 表（见 `docs/fast_livo2_apriltag_landmark_assessment_report.md`）。后续仍不得从计划自动启动设备、运动、提交或推送。
++
+ - 在 `/home/lab307/ranger_nav` 核对实际代码、工作树和证据；优先复用，不推倒重建。
+ - FAST-LIVO2 阶段 A、独立后端 B 已完成本机构建与合成/离线测试；单份真实三传感器运动包的后端闭环管线已验证。见 `docs/fast_livo2_stage_b_motion_report.md`；物理同步、真值精度、误环泛化、实时接车和长时稳定性仍 PARTIAL。
+ - 阶段 B 三个提交已按用户指令推送；C1 与其他既有成果已分组本地提交，C1 为 `1212b43`。后续授权的 C2 源码/构建/合成及同包功能检查已交付，C2-4 跨会话与真实负样本验收仍 PARTIAL，D 未完成；C2、重力对齐及净化交接已按用户后续指令分组本地提交，未推送（提交记录见HANDOFF和Git）。总计划未全部完成。
+-- 2026-10-29 用户将后续工作转交新上下文，本上下文只完成文档交接，不再继续实施。新 Agent 先核对工作树和证据，再按用户新指令确定范围；历史计划不构成自动续跑、采集/重启设备、提交或推送许可。不启动真实硬件、底盘/导航运动，不实施在线前端恢复、高程/坡道。
++- 2026-10-29 接手前已完成文档交接，后续用户另行授权的 AprilTag 离线工作见上条。新 Agent 仍须先核对工作树和证据，再按用户新指令确定范围；历史计划不构成自动续跑、采集/重启设备、提交或推送许可。不启动真实硬件、底盘/导航运动，不实施在线前端恢复、高程/坡道。
+ - 下一阶段收到明确实施指令后，在授权范围内自主完成源码、编译与离线测试，不必逐步等待确认。缺少独立运动定位包不阻止可执行的离线开发，但对应真实性能不得报告通过。
+ - 阶段结束更新 STATUS 和对应报告，记录实际命令、退出码、文件、证据、PASS/PARTIAL/未实施及最少人工待办。计划文件不构成硬件操作许可。
+ 
+diff --git a/README.md b/README.md
+index 86d80fa..3a6f02d 100644
+--- a/README.md
++++ b/README.md
+@@ -4,6 +4,8 @@ ROS 2 Humble / Ubuntu 22.04 / x86_64，实物为 **Ranger Mini V2 + Livox Mid-36
+ 
+ **新上下文从 [交接指南](docs/HANDOFF.md) 开始**，再读 [当前状态](docs/STATUS.md)、[工程约束](AGENTS.md)、[后端与重定位计划](docs/FAST_LIVO2_BACKEND_PLAN.md)。全部文档见 [docs 索引](docs/README.md)。
+ 
++AprilTag 候选与地标增量已完成软件及离线检查，默认关闭；见 [细化计划](docs/FAST_LIVO2_APRILTAG_PLAN.md)、[接口与操作](docs/fast_livo2_apriltag_interfaces.md)、[交付报告](docs/fast_livo2_apriltag_report.md)。真实地标与跨访问性能仍待验，本轮新增改动尚未提交。
++
+ ## 当前能力
+ 
+ | 模块 | 已有结果与边界 |
+diff --git a/docs/FAST_LIVO2_BACKEND_PLAN.md b/docs/FAST_LIVO2_BACKEND_PLAN.md
+index 9b05e7f..4d0492e 100644
+--- a/docs/FAST_LIVO2_BACKEND_PLAN.md
++++ b/docs/FAST_LIVO2_BACKEND_PLAN.md
+@@ -4,6 +4,8 @@
+ 
+ ## 1. 当前基线、目标与顺序
+ 
++2026-10-29 后续新增的 AprilTag 候选/地标工作独立细化在 [AprilTag 增量计划](FAST_LIVO2_APRILTAG_PLAN.md)，软件与离线结果见 [报告](fast_livo2_apriltag_report.md)。它复用本计划的 B/C1/C2，不替代 D、物理同步、跨会话或真值验收。
++
+ 目标：保留 FAST-LIVO2 LiDAR–IMU–Camera 前端，提供独立回环建图、地图归档、给定初值定位和无初值重定位，复用现有定位契约接入 Ranger 工程。
+ 
+ | 阶段 | 内容 | 截至本次更新的事实 |
+diff --git a/docs/HANDOFF.md b/docs/HANDOFF.md
+index 888b691..10dc8a0 100644
+--- a/docs/HANDOFF.md
++++ b/docs/HANDOFF.md
+@@ -4,8 +4,16 @@
+ 
+ 用户最新指令：后续工作交由新上下文 Agent，本上下文只更新交接，不再继续实施。新 Agent 先阅读、核对实际工作树，再按用户的新指令确定任务；不要从历史计划或旧授权恢复自动实现、采集、重启设备、提交或推送。
+ 
++**后续更新 2026-10-29：** 上段是本轮接手前的交接边界。用户随后明确授权“计划落盘后继续离线编码与测试”，AprilTag 增量现已完成软件/合成与隔离 ROS 检查，未实施硬件、Git 提交或推送。计划在 [FAST_LIVO2_APRILTAG_PLAN](FAST_LIVO2_APRILTAG_PLAN.md)，实际变更/证据在 [AprilTag 报告](fast_livo2_apriltag_report.md)，操作见 [接口](fast_livo2_apriltag_interfaces.md)。现工作树有本轮未提交改动，接手不可按此前“工作树干净”快照覆盖。
++
++新增实现复用既有后端包中的 tags 核心和同一个 C1/C2，不是新定位后端。官方 AprilTag 位于项目内前缀，当前 build 启用可选观察器；runtime 功能开关默认关闭。用户确认旧包中 tag36h11:1 边长 0.155 m，尺寸表已保存；固定部署现已由用户确认；曝光时间仍未验证，没有真实 VALID Tag 地标表。最终 16 条命令、123 项检查通过，证据为 `docs/fast_livo2_evidence/apriltag_20261029/acceptance-2m126s1v/results.json`；EACCES 地标写入失败另行补验通过。两份旧 B 图各 151 文件 SHA 保持，原包只读，真实跨访问性能与 D 仍 PARTIAL。
++
+ ## 1. 阅读顺序与事实来源
+ 
++2026-10-29 用户随后授权的“第 1 项全包处理”也已完成，见 [全包报告](fast_livo2_apriltag_fullbag_report.md)。1367 帧全量提取，ID 1 检测 14 次/28 支假设，14 次均可关联原始及回放位姿，两套局部坐标独立保留；输入完整 SHA 不变。outputs 新目录与 `docs/fast_livo2_evidence/apriltag_fullbag_20261029/` 保存派生数据和证据。当前仍无真实 VALID Tag 地图、time_verified 保持 false；后续第 2 项评估见下段，本轮新增改动也未提交。
++
++用户随后要求“先来评估试试”，并确认 Tag 1 固定未移动；[第 2 项离线评估](fast_livo2_apriltag_landmark_assessment_report.md)已完成。14 次观测都有健康 C1 支持，但平移基线仅约 4 cm、两模式朝向差约 61°，零时偏跨帧回投不通过；假设时偏扫描不能替代物理同步。新增 6 项测试通过，结论 NOT_READY_FOR_VALID_REGISTRATION / AMBIGUOUS，没有真实地标表。输出在 `outputs/fast-livo-apriltag-landmark-assessment-20261029/`，证据在 `docs/fast_livo2_evidence/apriltag_landmark_assessment_20261029/`。用户表示可重新录包；报告有采集建议，尚未实施硬件动作，不据此自动启动采集。
++
+ 1. [AGENTS](../AGENTS.md)：有效约束和授权；[STATUS](STATUS.md)：当前事实和未验证能力。
+ 2. [总计划](FAST_LIVO2_BACKEND_PLAN.md)：完整架构、C1/C2/D 步骤与验收条件；计划不是硬件许可。
+ 3. [C2 报告](fast_livo2_stage_c2_report.md)、[C2 契约](fast_livo2_relocalizer_interfaces.md)、[重力对齐报告](fast_livo2_gravity_alignment_report.md)：本轮最新实现、源码/许可、命令、测试与限制。
+diff --git a/docs/README.md b/docs/README.md
+index e109f1b..be7b6bb 100644
+--- a/docs/README.md
++++ b/docs/README.md
+@@ -15,12 +15,19 @@
+ | [FAST 前端接口](fast_livo2_interfaces.md) | 后端必须遵守的点云/位姿/时间语义 |
+ | [三传感器录包与远程预览](fast_livo2_recording.md) | 一键采集、日志归档、RViz/Foxglove及路线验收 |
+ | [后端与重定位计划](FAST_LIVO2_BACKEND_PLAN.md) | B/C1/C2 离线实现；D 与真实泛化仍待验 |
++| [AprilTag 增量计划](FAST_LIVO2_APRILTAG_PLAN.md)、[接口与操作](fast_livo2_apriltag_interfaces.md) | 在既有 B/C1/C2 上增加观测、地标与候选，默认关闭 |
+ | [C1 接口与操作](fast_livo2_localizer_interfaces.md) | 归档加载、给定初值、持续定位、状态与隔离桥接 |
+ | [C2 接口与操作](fast_livo2_relocalizer_interfaces.md) | 全局检索、六自由度粗配准、独立运动确认、取消和恢复 |
+ | [重力对齐报告](fast_livo2_gravity_alignment_report.md) | 新前端 +Z 朝上；旧地图不追认对齐 |
+ 
+ ## 最新实现与验证报告
+ 
++- [AprilTag 旧地图补录评估](fast_livo2_apriltag_landmark_assessment_report.md)：固定性用户确认，14 帧均有健康 C1 支持；双模式、约 4 cm 平移基线及跨帧回投不一致，暂不登记 VALID，6 项专项测试通过。
++
++- [AprilTag 现有包全量报告](fast_livo2_apriltag_fullbag_report.md)：1367 帧、14 次 ID 1/28 支假设，原戳关联与日志核对，原包 SHA 不变；物理同步/真实地标仍 PARTIAL。
++
++- [AprilTag 离线增量报告](fast_livo2_apriltag_report.md)：22 项新 C++、5 项 ROS/工具及原系统回归；真实样本 ID 1/0.155 m 双解检测，真实地标/跨访问验收仍 PARTIAL。
++
+ - [阶段 C2 报告](fast_livo2_stage_c2_report.md)：可选离线全局重定位、30项数值/4项ROS、1362对同包检查；跨会话仍 PARTIAL。
+ - [阶段 C1 报告](fast_livo2_stage_c1_report.md)：只读先验地图、六自由度初值/跟踪、故障及隔离桥接；独立会话与真值精度仍 PARTIAL。
+ - [阶段B真实运动后端验证](fast_livo2_stage_b_motion_report.md)：PCL/GICP各1362对、13条回环约束、快照/传播/故障回归及优化前后对比视频，单包离线管线通过，真值精度仍PARTIAL。
+diff --git a/docs/STATUS.md b/docs/STATUS.md
+index 015158e..b2c180f 100644
+--- a/docs/STATUS.md
++++ b/docs/STATUS.md
+@@ -4,6 +4,12 @@
+ 
+ ## 当前结论
+ 
++2026-10-29 第 2 项补录评估完成，见 [评估报告](fast_livo2_apriltag_landmark_assessment_report.md)。用户确认 Tag 1 在采集期间固定未移动；14 次观测均有健康 C1 段支持，但最大相机平移仅约 4 cm、两模式朝向差约 61°，零时偏跨帧回投不一致。17 个假设时偏的敏感性诊断也没有得到全部帧通过的结果；不能认定已校准。6 项新增测试通过，未登记真实 VALID 地标，Tag 默认关闭。用户表示可重新录包；报告给出同步核查、多位置观察与独立登记/验证访问建议，未启动设备。
++
++第 1 项全包处理已完成：1367/1367 图像全部处理，tag36h11:1 检测 14 次、双解 28 支全部保留；原包完整 SHA 不变，图像/CameraInfo/同步 CSV 来源已核对。见 [全包报告](fast_livo2_apriltag_fullbag_report.md)。
++
++2026-10-29 后续已按新指令完成 AprilTag 的软件增量与离线检查：官方检测器、双解/时间/地标、C2/B 候选及 C1 监视/补录；16 条命令、123 项测试/检查通过。已有真实包确认 tag36h11:1、0.155 m，完成 12 帧抽样检测/PnP。固定部署已获用户确认；物理时间、真实 VALID 地标登记、独立访问与性能仍 PARTIAL；Tag 默认关闭、生产 runtime 未接管，新增内容尚未 Git 提交或推送。见 [计划](FAST_LIVO2_APRILTAG_PLAN.md)、[接口](fast_livo2_apriltag_interfaces.md)、[报告](fast_livo2_apriltag_report.md)。
++
+ | 项目 | 状态与边界 |
+ | --- | --- |
+ | 硬件/环境 | Ranger Mini V2、Mid-360S、海康相机；Ubuntu 22.04 / ROS 2 Humble / x86_64 |
+@@ -21,6 +27,12 @@
+ 
+ ## 最近完成
+ 
++- 2026-10-29：[AprilTag 地标补录评估](fast_livo2_apriltag_landmark_assessment_report.md)。固定性用户声明已保存；两旧图各 151 文件 SHA 通过，6 项专项测试通过。14 帧的两姿态模式保留，跨帧一致性与物理时间不足以支持 VALID 登记；未修改生产配置、未采集硬件。
++
++- 2026-10-29：[AprilTag 全包提取与时间关联](fast_livo2_apriltag_fullbag_report.md)。1367 帧中 14 次 ID 1 观测，全部双解保留；新增流式单图工具模式及只读提取/分析脚本，4 项专项测试通过。原包 11.49 GB 的 SHA 前后一致，软件时序不冒充曝光相位，未创建真实 VALID 地标、未启动硬件。
++
++- 2026-10-29：[AprilTag 增量](fast_livo2_apriltag_report.md)。在同一 B/C1/C2 上接入可关闭的观测与候选；地标扩展绑定旧图 UUID/manifest/graph version，支持逐优化关键帧生成、C1 旧图补录、禁用新版本。新 Tag 22 项 C++、5 项 ROS/工具及原系统回归通过，含多解仲裁、观察器退出、仿真暂停时队列超龄、恢复后公共创新锁不解除和写盘失败。用户补充尺寸 0.155 m；真实样本双解保留，不将同包检测当真实重定位验收。两份旧 B 地图各 151 文件 SHA 不变，无硬件操作。
++
+ - 2026-10-29：按用户新指令将净化后的状态分组本地提交：重力 `4b49bb0`、C2 `2e0f06f`、清理/交接文档随本次文档提交。未推送；原包、地图、点云和备份仍在本机，不因提交而删除。沿用已通过的源码/离线检查，本次只核对暂存内容与文档，不重启设备或重复回放。
+ 
+ - 2026-10-29：清理当前README、接口、标定/录包说明及profile注释中的过时状态与重复段落；历史底盘/Lightning清单退出当前操作用途，原文保留。没有删除独立历史报告或资产，没有改运行参数或算法；清单、原版与验证在 `.runtime/backups/docs_cleanup_20261029_122711/`。
+diff --git a/scripts/fast_livo2/backend/session.py b/scripts/fast_livo2/backend/session.py
+index a87d98d..7e6aedd 100755
+--- a/scripts/fast_livo2/backend/session.py
++++ b/scripts/fast_livo2/backend/session.py
+@@ -23,6 +23,8 @@ def specs(args, metadata):
+     command = [str(backend), '--ros-args', '--params-file', str(ROOT/'config/fast_livo2/backend.yaml'),
+                '-p', 'use_sim_time:='+str(args.sim_time).lower(), '-p', 'metadata_path:='+str(metadata),
+                '-p', 'data_root:='+str(ROOT/'.runtime/fast_livo_backend'), '-p', 'registration:='+args.registration]
++    if getattr(args, 'tag_loop', False):
++        command += ['-p', 'enable_tag_loop:=true', '-p', 'tag_config_path:='+str(args.tag_config.resolve())]
+     components = [Component('monitor', [sys.executable, str(ROOT/'scripts/fast_livo2/backend/monitor.py')], ready_key='probe_live'),
+                   Component('backend', command, depends=('monitor',), ready_key='backend_healthy',
+                             requires=('probe_live',), resource='fast_livo_backend')]
+@@ -57,11 +59,15 @@ def main():
+     p.add_argument('--domain', type=int, default=187)
+     p.add_argument('--registration', choices=['pcl_icp', 'small_gicp', 'small_vgicp'], default='pcl_icp')
+     p.add_argument('--source-id', default='unspecified DDS input; archived scan hashes identify the selected data')
++    p.add_argument('--tag-loop', action='store_true')
++    p.add_argument('--tag-config', type=Path, default=ROOT/'config/fast_livo2/apriltag_camera.json')
+     args = p.parse_args()
+     if not 0 <= args.domain <= 232:
+         p.error('domain must be 0..232')
+     if args.offline_bridge and not args.sim_time:
+         p.error('public bridge entry is offline only and requires simulated time')
++    if args.tag_loop and (not args.sim_time or args.domain == 0):
++        p.error('Tag loop entry requires simulated time and an isolated domain 1..232')
+     directory = ROOT/'.runtime/sessions'/('fast_livo_backend_bridge' if args.offline_bridge else 'fast_livo_backend')
+     if args.status:
+         _, state = read_session(directory)
+diff --git a/scripts/fast_livo2/localizer/session.py b/scripts/fast_livo2/localizer/session.py
+index 63b2df1..2af07a9 100644
+--- a/scripts/fast_livo2/localizer/session.py
++++ b/scripts/fast_livo2/localizer/session.py
+@@ -29,6 +29,16 @@ def specs(args):
+         command += ['--params-file', str(ROOT/'config/fast_livo2/relocalizer.yaml')]
+         if args.index:
+             command += ['-p', 'global_index_path:='+str(args.index.resolve())]
++    if getattr(args, 'tag_relocalization', False) or getattr(args, 'tag_monitor', False) or getattr(args, 'tag_record', None):
++        if args.tag_relocalization and not args.global_search:
++            raise ValueError('Tag relocalization requires the explicit C2 entry')
++        command += ['-p', 'tag_config_path:='+str(args.tag_config.resolve()),
++                    '-p', 'enable_tag_relocalization:='+str(args.tag_relocalization).lower(),
++                    '-p', 'enable_tag_monitor:='+str(args.tag_monitor).lower()]
++        if args.tag_landmarks:
++            command += ['-p', 'tag_landmarks_path:='+str(args.tag_landmarks.resolve())]
++        if args.tag_record:
++            command += ['-p', 'landmark_recording_mode:=c1', '-p', 'tag_record_path:='+str(args.tag_record.resolve())]
+     components = [Component('monitor', [sys.executable, str(ROOT/'scripts/fast_livo2/localizer/monitor.py')], ready_key='probe_live'),
+                   Component('localizer', command, depends=('monitor',), requires=('probe_live',), ready_key='localizer_alive',
+                             resource='fast_livo_backend')]
+@@ -57,6 +67,11 @@ def main():
+     p.add_argument('--offline-bridge', action='store_true')
+     p.add_argument('--global-search', action='store_true', help='Explicit optional C2; no initial pose required')
+     p.add_argument('--index', type=Path, help='Bound C2 index; omission builds an in-memory index')
++    p.add_argument('--tag-config', type=Path, default=ROOT/'config/fast_livo2/apriltag_camera.json')
++    p.add_argument('--tag-landmarks', type=Path)
++    p.add_argument('--tag-relocalization', action='store_true')
++    p.add_argument('--tag-monitor', action='store_true')
++    p.add_argument('--tag-record', type=Path, help='New C1 confirmed-segment JSONL, no online map edit')
+     p.add_argument('--domain', type=int, default=189)
+     p.add_argument('--registration', choices=['pcl_icp', 'small_gicp', 'small_vgicp'], default='pcl_icp')
+     args = p.parse_args()
+diff --git a/scripts/fast_livo2/record_session.py b/scripts/fast_livo2/record_session.py
+index 9619924..4250805 100644
+--- a/scripts/fast_livo2/record_session.py
++++ b/scripts/fast_livo2/record_session.py
+@@ -5,6 +5,7 @@ from collections import Counter
+ import csv
+ from dataclasses import asdict
+ import hashlib
++import ipaddress
+ import json
+ import math
+ import os
+@@ -34,6 +35,41 @@ SESSION_ROOT = Path(os.environ.get('RANGER_CAPTURE_SESSION_ROOT', ROOT/'.runtime
+ SESSION = SESSION_ROOT/'fast_livo_record'
+ 
+ 
++def check_lidar_host_address(cfg):
++    """Read-only check of local bind addresses, without contacting a sensor."""
++    path = Path(cfg['FAST_LIVO_LIDAR_CONFIG'])
++    config = json.loads(path.read_text())
++    required = {entry['host_ip'] for model in config.values() if isinstance(model, dict)
++                for entry in model.get('host_net_info', [])}
++    if not required:
++        raise ValueError('雷达配置缺少 host_net_info.host_ip: '+str(path))
++    addresses = json.loads(subprocess.check_output(['ip', '-j', '-4', 'address', 'show'], text=True))
++    local = {entry['local'] for interface in addresses for entry in interface.get('addr_info', [])
++             if entry.get('family') == 'inet'}
++    missing = sorted(address for address in required if not ipaddress.ip_address(address).is_unspecified
++                     and address not in local)
++    if missing:
++        raise RuntimeError('雷达采集网卡地址未就绪：配置要求 '+', '.join(missing)
++                           +'；本机当前 IPv4 为 '+', '.join(sorted(local))
++                           +'。请检查雷达连接与采集网卡配置；未启动驱动或录包。配置: '+str(path))
++
++
++def input_problems(topics, publishers, counts):
++    """Explain absent streams separately from discovery/type/QoS failures."""
++    problems = []
++    for topic, kind in topics.items():
++        endpoints = publishers.get(topic, [])
++        if len(endpoints) != 1:
++            problems.append(topic+(' 无发布者' if not endpoints else ' 存在多个发布者'))
++        elif endpoints[0]['type'] != kind:
++            problems.append(topic+' 消息类型不匹配')
++        elif endpoints[0]['reliability'] != 'RELIABLE':
++            problems.append(topic+' QoS 不是 RELIABLE')
++        elif not counts.get(topic, 0):
++            problems.append(topic+' 有发布者但未收到数据')
++    return problems
++
++
+ def recorder_command(folder, topics):
+     return ['ros2', 'bag', 'record', '-s', 'sqlite3', '-o', str(folder/'raw'),
+             '--max-cache-size', '268435456', '--qos-profile-overrides-path',
+@@ -83,8 +119,11 @@ class CaptureHealth(JsonHealth):
+     def __init__(self, path, folder):
+         super().__init__(path)
+         self.folder, self.last = folder, None
++        self.last_waiting, self.last_progress = None, float('-inf')
+ 
+     def __call__(self):
++        checks = super().__call__()
++        status = None
+         try:
+             status = json.loads((self.folder/'recording.json').read_text())['state']
+             if status != self.last:
+@@ -94,7 +133,20 @@ class CaptureHealth(JsonHealth):
+                 self.last = status
+         except (OSError, ValueError, KeyError):
+             pass
+-        return super().__call__()
++        if status is None or status == 'PREFLIGHT':
++            try:
++                state = json.loads((self.path.parent/'state.json').read_text())
++                names = {'probe': '输入检查', 'lidar': '雷达', 'writer': '同步时间',
++                         'camera': '相机', 'frontend': '前端', 'capture': '录包器'}
++                waiting = tuple(names[name]+'='+info['state'] for name, info in state['components'].items()
++                                if name in names and info['state'] != 'READY')
++                now = time.monotonic()
++                if waiting and (waiting != self.last_waiting or now-self.last_progress >= 10):
++                    print('CAPTURE WAITING（尚未录制）：'+', '.join(waiting), flush=True)
++                    self.last_waiting, self.last_progress = waiting, now
++            except (OSError, ValueError, KeyError):
++                pass
++        return checks
+ 
+ 
+ def quality_report(audit, expected):
+@@ -236,10 +288,13 @@ def main():
+                 raise RuntimeError('missing executable: '+executable)
+         if args.visualization in ('rviz', 'both') and not os.environ.get('DISPLAY', '').strip():
+             p.error('RViz requires DISPLAY; use --visualization auto, foxglove or none')
++        if any(component.name == 'lidar' for component in components):
++            check_lidar_host_address(cfg)
+     if args.output:folder.mkdir()
+     else:folder = Path(tempfile.mkdtemp(prefix='fast-livo-'+args.label+'-', dir=ROOT/'bags'))
+     print('CAPTURE_DIR='+str(folder), flush=True)
+     print('VISUALIZATION='+('existing session' if attach else args.visualization), flush=True)
++    print('CAPTURE PREPARING（尚未录制）：等待雷达、相机和前端数据就绪。', flush=True)
+     (folder/'sensor_assets').mkdir()
+     sensor_environment(cfg, folder/'sensor_assets')
+     manifest = {'schema_version': 1, 'created_unix_ns': time.time_ns(), 'folder': str(folder),
+@@ -272,6 +327,8 @@ def main():
+     own_run, state = read_session(SESSION)
+     if source_run is None:source_run = own_run
+     result = json.loads((folder/'recorder_result.json').read_text()) if (folder/'recorder_result.json').exists() else {}
++    if result.get('error'):
++        result['recorder_error'] = result['error']
+     result.update(session_exit=code, session_state=state, folder=str(folder), capture_complete=False)
+     try:
+         archive_logs(folder, own_run, source_run, sensor_dir, not attach)
+@@ -296,6 +353,11 @@ def main():
+         result['error'] = str(exc)
+         code = 2
+     atomic_json(folder/'result.json', result)
++    if not result['capture_complete']:
++        reason = state.get('reason') if state else None
++        print('CAPTURE ERROR：录制未完成；'+(reason or result.get('error', '未知错误'))
++              +('；输入诊断：'+result['recorder_error'] if result.get('recorder_error') else '')
++              +'；诊断日志: '+str(folder/'session_logs'), file=sys.stderr, flush=True)
+     if result['capture_complete']:
+         (folder/'CAPTURE_COMPLETE').write_text('Recording finalized and data checks passed; physical sync/SLAM accuracy remain unverified.\n')
+     print(json.dumps(result, indent=2), flush=True)
+@@ -303,4 +365,8 @@ def main():
+ 
+ 
+ if __name__ == '__main__':
+-    raise SystemExit(main())
++    try:
++        raise SystemExit(main())
++    except (RuntimeError, OSError, ValueError) as exc:
++        print('CAPTURE ERROR：'+str(exc), file=sys.stderr, flush=True)
++        raise SystemExit(2)
+diff --git a/scripts/fast_livo2/record_worker.py b/scripts/fast_livo2/record_worker.py
+index 7c67a1e..2f5c546 100644
+--- a/scripts/fast_livo2/record_worker.py
++++ b/scripts/fast_livo2/record_worker.py
+@@ -9,7 +9,7 @@ import signal
+ import subprocess
+ import time
+ 
+-from record_session import recorder_command
++from record_session import input_problems, recorder_command
+ from session_manager import atomic_json, identity
+ 
+ 
+@@ -60,7 +60,8 @@ def run(folder):
+             before = graph()
+             if valid(before) and all(counts.values()):break
+         else:
+-            raise RuntimeError('required topics missing, duplicate, incompatible, or no live data')
++            raise RuntimeError('输入未就绪：'+'；'.join(input_problems(topics, graph(), counts))
++                               if not stopping[0] else '录制启动已中止')
+         atomic_json(folder/'graph_before.json', before)
+         command = recorder_command(folder, topics)
+         atomic_json(folder/'record_command.json', command)
+@@ -84,14 +85,16 @@ def run(folder):
+             current = graph()
+             if not valid(current) or any(current[t][0]['gid'] != before[t][0]['gid'] for t in topics):
+                 raise RuntimeError('input publisher disappeared, changed, or became ambiguous')
+-            if any(time.monotonic()-last_receipt.get(t, 0) > 2 for t in topics):
+-                raise RuntimeError('required input stream stalled for over 2 seconds')
++            stalled = [t for t in topics if time.monotonic()-last_receipt.get(t, 0) > 2]
++            if stalled:
++                raise RuntimeError('required input stream stalled for over 2 seconds: '+', '.join(stalled))
+             if shutil.disk_usage(folder).free < manifest['min_free_bytes']:
+                 raise RuntimeError('disk free space below configured reserve')
+         outcome['elapsed_seconds'] = time.monotonic()-started
+         outcome['stopped_by_signal'] = stopping[0]
+     except Exception as exc:
+         outcome['error'] = str(exc)
++        print('CAPTURE ERROR：'+str(exc), flush=True)
+     finally:
+         atomic_json(folder/'recording.json', {'state': 'FINALIZING'})
+         if child and child.poll() is None:
+diff --git a/scripts/session_manager.py b/scripts/session_manager.py
+index b036e14..0404dd8 100644
+--- a/scripts/session_manager.py
++++ b/scripts/session_manager.py
+@@ -11,6 +11,7 @@ import os
+ from pathlib import Path
+ import signal
+ import subprocess
++import sys
+ import tempfile
+ import time
+ 
+@@ -339,13 +340,17 @@ def _schedule(run, state, components, health_factory, timeout, fail_on_loss, los
+                 if fail_on_loss and time.monotonic()-lost_since >= loss_grace:
+                     raise RuntimeError('critical health lost; stopping session, fresh start required')
+             elif time.monotonic()-started > timeout:
+-                raise RuntimeError('startup readiness timeout')
++                pending = [f'{c.name}({state["components"][c.name]["state"]}, health={c.ready_key})'
++                           for c in components if c.critical and not ready.get(c.name, False)]
++                raise RuntimeError('startup readiness timeout; not ready: '+', '.join(pending))
+             save()
+             time.sleep(.1)
+     except Exception as exc:
+         code = 2
+         state['reason'] = f'{type(exc).__name__}: {exc}'
+         event('failure', reason=state['reason'])
++        print('SESSION ERROR: '+state['reason']+'; logs: '+str(run)
++              +'; stopping owned processes', file=sys.stderr, flush=True)
+     finally:
+         state['state'] = 'STOPPING'; save()
+         leftovers = cleanup_tree(os.getpid(), records.values(), grace)
+diff --git a/tests/test_fast_livo_recording.py b/tests/test_fast_livo_recording.py
+index 87ad536..50f4d31 100644
+--- a/tests/test_fast_livo_recording.py
++++ b/tests/test_fast_livo_recording.py
+@@ -10,11 +10,13 @@ import sys
+ import tempfile
+ import time
+ import unittest
++from unittest.mock import patch
+ 
+ ROOT = Path(__file__).resolve().parents[1]
+ sys.path.insert(0, str(ROOT/'scripts/fast_livo2'))
+ sys.path.insert(0, str(ROOT/'scripts'))
+-from record_session import TOPICS, quality_report, recorder_command, sync_summary
++from record_session import (TOPICS, check_lidar_host_address, input_problems,
++                            quality_report, recorder_command, sync_summary)
+ from session_manager import atomic_json, identity
+ 
+ 
+@@ -69,6 +71,59 @@ def wait_until(predicate, timeout=30):
+ 
+ 
+ class CaptureUnit(unittest.TestCase):
++    def test_lidar_bind_address_missing_is_rejected_without_device_access(self):
++        interfaces = [{'addr_info': [{'family': 'inet', 'local': '192.168.3.18'}]}]
++        with patch('record_session.subprocess.check_output', return_value=json.dumps(interfaces)) as read:
++            with self.assertRaisesRegex(RuntimeError, '192.168.1.50.*192.168.3.18.*未启动驱动或录包'):
++                check_lidar_host_address({'FAST_LIVO_LIDAR_CONFIG': str(ROOT/'config/fast_livo2/mid360s_live.json')})
++            read.assert_called_once_with(['ip', '-j', '-4', 'address', 'show'], text=True)
++
++    def test_present_bind_address_does_not_claim_sensor_is_ready(self):
++        interfaces = [{'addr_info': [{'family': 'inet', 'local': '192.168.1.50'}]}]
++        with patch('record_session.subprocess.check_output', return_value=json.dumps(interfaces)):
++            check_lidar_host_address({'FAST_LIVO_LIDAR_CONFIG': str(ROOT/'config/fast_livo2/mid360s_live.json')})
++        missing = input_problems(TOPICS, {}, {})
++        self.assertEqual(len(missing), len(TOPICS))
++        self.assertTrue(all('无发布者' in problem for problem in missing))
++
++    def test_input_diagnostics_distinguish_discovery_from_live_data(self):
++        topics = {'/missing': 'T', '/duplicate': 'T', '/type': 'T', '/qos': 'T', '/silent': 'T', '/healthy': 'T'}
++        good = {'type': 'T', 'reliability': 'RELIABLE'}
++        graph = {'/duplicate': [good, good], '/type': [dict(good, type='Wrong')],
++                 '/qos': [dict(good, reliability='BEST_EFFORT')], '/silent': [good], '/healthy': [good]}
++        self.assertEqual(input_problems(topics, graph, {'/healthy': 1}),
++                         ['/missing 无发布者', '/duplicate 存在多个发布者', '/type 消息类型不匹配',
++                          '/qos QoS 不是 RELIABLE', '/silent 有发布者但未收到数据'])
++
++    def missing_stage(self, stage):
++        with tempfile.TemporaryDirectory() as tmp:
++            output = Path(tmp)/'capture'
++            env = dict(os.environ, RANGER_CAPTURE_SESSION_ROOT=str(Path(tmp)/'sessions'), PYTHONDONTWRITEBYTECODE='1')
++            result = subprocess.run([sys.executable, __file__, '--fake-missing', stage, '--execute',
++                                     '--start-sensors', '--visualization', 'none', '--output', str(output)],
++                                    env=env, text=True, capture_output=True, timeout=12)
++            self.assertEqual(result.returncode, 2, result.stdout+result.stderr)
++            self.assertIn('尚未录制', result.stdout)
++            self.assertIn('CAPTURE WAITING', result.stdout)
++            self.assertIn('SESSION ERROR: RuntimeError: startup readiness timeout', result.stderr)
++            self.assertIn(stage+'(STARTING', result.stderr)
++            self.assertIn('CAPTURE ERROR', result.stderr)
++            self.assertNotIn('CAPTURE RECORDING', result.stdout)
++            self.assertFalse((output/'raw').exists())
++            self.assertFalse((output/'CAPTURE_COMPLETE').exists())
++            state = json.loads((output/'result.json').read_text())['session_state']
++            self.assertEqual(state['owned'], [])
++            self.assertTrue(state['guardian_cleanup_complete'])
++
++    def test_missing_lidar_reports_error_and_never_records(self):
++        self.missing_stage('lidar')
++
++    def test_missing_camera_reports_error_and_never_records(self):
++        self.missing_stage('camera')
++
++    def test_missing_frontend_reports_error_and_never_records(self):
++        self.missing_stage('frontend')
++
+     def test_auto_visualization_for_remote_and_desktop(self):
+         with tempfile.TemporaryDirectory() as tmp:
+             for display, expected in [('', 'foxglove'), (':0', 'rviz')]:
+@@ -260,6 +315,30 @@ class CaptureROS(unittest.TestCase):
+ 
+ if __name__ == '__main__':
+     if len(sys.argv)>1 and sys.argv[1] == '--publish':publish(Path(sys.argv[2]))
++    elif len(sys.argv)>1 and sys.argv[1] == '--fake-missing':
++        stage = sys.argv[2]
++        del sys.argv[1:3]
++        import record_session
++        from session_manager import Component, run_guarded
++        sleep = [sys.executable, '-c', 'import time; time.sleep(30)']
++        def missing_specs(cfg, visualization='none', port=8765):
++            return [Component('probe', sleep),
++                    Component('lidar', sleep, depends=('probe',), ready_key='lidar'),
++                    Component('camera', sleep, depends=('lidar',), ready_key='camera'),
++                    Component('frontend', sleep, depends=('camera',), ready_key='frontend')]
++        original_health = record_session.CaptureHealth.__call__
++        def missing_health(self):
++            original_health(self)
++            return {name: name != stage for name in ('probe_live', 'lidar', 'camera', 'frontend')}
++        def short_guard(*args, **kwargs):
++            kwargs.update(startup_timeout=.6, cleanup_grace=.2)
++            return run_guarded(*args, **kwargs)
++        record_session.specs = missing_specs
++        record_session.CaptureHealth.__call__ = missing_health
++        record_session.run_guarded = short_guard
++        record_session.check_sensor_processes = lambda: None
++        record_session.check_lidar_host_address = lambda cfg: None
++        raise SystemExit(record_session.main())
+     elif len(sys.argv)>1 and sys.argv[1] == '--fake-owned':
+         sys.argv.pop(1)
+         import record_session
+diff --git a/ws_fast_livo/src/ranger_fast_livo_backend/CMakeLists.txt b/ws_fast_livo/src/ranger_fast_livo_backend/CMakeLists.txt
+index a48dd88..dc021ce 100644
+--- a/ws_fast_livo/src/ranger_fast_livo_backend/CMakeLists.txt
++++ b/ws_fast_livo/src/ranger_fast_livo_backend/CMakeLists.txt
+@@ -18,17 +18,32 @@ find_package(small_gicp REQUIRED CONFIG)
+ find_package(PCL 1.12 REQUIRED COMPONENTS common io filters kdtree registration features)
+ find_package(OpenSSL REQUIRED)
+ find_package(nlohmann_json REQUIRED)
++find_package(OpenCV 4.5 REQUIRED COMPONENTS core imgproc calib3d imgcodecs)
+ rosidl_generate_interfaces(${PROJECT_NAME} "msg/BackendEstimate.msg" "srv/ExportSnapshot.srv"
+   DEPENDENCIES std_msgs geometry_msgs)
+-add_library(ranger_backend_core src/input.cpp src/registration.cpp src/graph.cpp src/backend.cpp src/archive.cpp)
++add_library(ranger_backend_core src/input.cpp src/registration.cpp src/graph.cpp src/backend.cpp src/archive.cpp src/tag_geometry.cpp src/tag_store.cpp)
+ target_include_directories(ranger_backend_core PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include> $<INSTALL_INTERFACE:include> ${PCL_INCLUDE_DIRS})
+-target_link_libraries(ranger_backend_core Eigen3::Eigen gtsam small_gicp::small_gicp ${PCL_LIBRARIES} OpenSSL::Crypto nlohmann_json::nlohmann_json)
++target_link_libraries(ranger_backend_core Eigen3::Eigen gtsam small_gicp::small_gicp ${PCL_LIBRARIES} OpenSSL::Crypto nlohmann_json::nlohmann_json ${OpenCV_LIBS})
++target_include_directories(ranger_backend_core PUBLIC ${OpenCV_INCLUDE_DIRS})
+ ament_target_dependencies(ranger_backend_core rclcpp nav_msgs sensor_msgs pcl_conversions)
+ target_compile_options(ranger_backend_core PRIVATE -Wall -Wextra -Wpedantic)
+ add_executable(backend_node src/node.cpp)
+ ament_target_dependencies(backend_node rclcpp std_msgs geometry_msgs nav_msgs sensor_msgs diagnostic_msgs)
+ rosidl_get_typesupport_target(cpp_typesupport_target ${PROJECT_NAME} rosidl_typesupport_cpp)
+ target_link_libraries(backend_node ranger_backend_core "${cpp_typesupport_target}")
++option(RANGER_ENABLE_APRILTAG "Build optional official AprilTag image observer" OFF)
++if(RANGER_ENABLE_APRILTAG)
++  find_package(apriltag 3.4.5 EXACT REQUIRED CONFIG)
++  add_library(ranger_tag_detector src/tag_detector.cpp)
++  target_link_libraries(ranger_tag_detector ranger_backend_core apriltag::apriltag)
++  add_executable(tag_observer_node src/tag_observer_node.cpp)
++  ament_target_dependencies(tag_observer_node rclcpp std_msgs sensor_msgs)
++  target_link_libraries(tag_observer_node ranger_tag_detector)
++  add_executable(tag_image_tool src/tag_image_tool.cpp)
++  target_link_libraries(tag_image_tool ranger_tag_detector)
++  install(TARGETS tag_observer_node tag_image_tool DESTINATION lib/${PROJECT_NAME})
++  install(TARGETS ranger_tag_detector DESTINATION lib)
++endif()
+ install(TARGETS backend_node DESTINATION lib/${PROJECT_NAME})
+ install(TARGETS ranger_backend_core EXPORT ranger_backend_targets DESTINATION lib)
+ install(DIRECTORY include/ DESTINATION include)
+@@ -38,7 +53,13 @@ if(BUILD_TESTING)
+   find_package(ament_cmake_gtest REQUIRED)
+   ament_add_gtest(backend_tests test/backend_tests.cpp TIMEOUT 180)
+   target_link_libraries(backend_tests ranger_backend_core)
++  ament_add_gtest(tag_tests test/tag_tests.cpp TIMEOUT 180)
++  target_link_libraries(tag_tests ranger_backend_core)
++  if(RANGER_ENABLE_APRILTAG)
++    ament_add_gtest(tag_detector_tests test/tag_detector_tests.cpp TIMEOUT 180)
++    target_link_libraries(tag_detector_tests ranger_tag_detector)
++  endif()
+ endif()
+ ament_export_targets(ranger_backend_targets HAS_LIBRARY_TARGET)
+-ament_export_dependencies(rosidl_default_runtime rclcpp nav_msgs sensor_msgs pcl_conversions Eigen3 GTSAM small_gicp PCL OpenSSL nlohmann_json)
++ament_export_dependencies(rosidl_default_runtime rclcpp nav_msgs sensor_msgs pcl_conversions Eigen3 GTSAM small_gicp PCL OpenSSL nlohmann_json OpenCV)
+ ament_package()
+diff --git a/ws_fast_livo/src/ranger_fast_livo_backend/THIRD_PARTY_NOTICES.md b/ws_fast_livo/src/ranger_fast_livo_backend/THIRD_PARTY_NOTICES.md
+index 2fdabb1..99b7864 100644
+--- a/ws_fast_livo/src/ranger_fast_livo_backend/THIRD_PARTY_NOTICES.md
++++ b/ws_fast_livo/src/ranger_fast_livo_backend/THIRD_PARTY_NOTICES.md
+@@ -22,3 +22,17 @@ copied implementations. In particular STD's README states GPLv2 together with a
+ personal/academic restriction and commercial-contact wording; package.xml is
+ TODO. iBTC's README states GPLv2 while package.xml is TODO. Do not infer blanket
+ reuse permission from repository availability or package metadata.
++# Optional AprilTag observation path
++
++AprilRobotics/apriltag v3.4.5, commit
++`94be783968e5091bcc9972c72c84fd63efce2935`, is built without patches in
++`ws_fast_livo/apriltag_deps`. Its BSD-2-Clause license is retained in
++`third_party/APRILTAG-LICENSE`; per-file notices remain in the locked source
++tree. Only the optional detector and observer link this library. The backend
++and localizer consume versioned observation data without linking libapriltag.
++
++The Tag geometry code uses the existing Ubuntu OpenCV 4.5.4 packages
++(`4.5.4+dfsg-9ubuntu4`), under Apache-2.0 and the package's third-party notices.
++No apriltag_ros or apriltag_msgs code is copied or linked. Existing optional
++C2 KISS/ROBIN/PMC licensing remains applicable; this addition does not make
++the combined stack uniformly BSD, MIT, or Apache licensed.
+diff --git a/ws_fast_livo/src/ranger_fast_livo_backend/include/ranger_fast_livo_backend/backend.hpp b/ws_fast_livo/src/ranger_fast_livo_backend/include/ranger_fast_livo_backend/backend.hpp
+index 70511cd..045d30e 100644
+--- a/ws_fast_livo/src/ranger_fast_livo_backend/include/ranger_fast_livo_backend/backend.hpp
++++ b/ws_fast_livo/src/ranger_fast_livo_backend/include/ranger_fast_livo_backend/backend.hpp
+@@ -2,6 +2,7 @@
+ #include "archive.hpp"
+ #include "graph.hpp"
+ #include "registration.hpp"
++#include "tags.hpp"
+ #include <fstream>
+ namespace ranger_backend {
+ // A single owner calls all mutable methods. ROS callbacks never mutate this object.
+@@ -9,7 +10,9 @@ class Backend {
+ public:
+   Backend(Config config, fs::path root, std::string session, Json metadata = Json::object(),
+           std::unique_ptr<CandidateSearch> search = {});
+-  Output process(int64_t stamp, uint64_t scan_id, const Pose& U, const Cloud& full, const std::vector<uint8_t>& cdr);
++  Output process(int64_t stamp, uint64_t scan_id, const Pose& U, const Cloud& full, const std::vector<uint8_t>& cdr,
++    const std::vector<Json>& tag_batches={});
++  void configure_tags(tags::Config config);
+   Snapshot snapshot() const;
+   bool is_keyframe(int64_t stamp, const Pose& U) const;
+   bool task_current(const MatchTask& task) const;
+@@ -31,6 +34,10 @@ private:
+   int64_t last_stamp_ = -1;
+   uint64_t last_scan_ = 0;
+   std::ofstream log_;
++  std::optional<tags::Config> tag_config_;
++  std::unique_ptr<tags::Buffer> tag_buffer_;
++  std::map<uint64_t,std::vector<tags::Attached>> tag_history_;
++  uint64_t next_tag_keyframe_=0;
+   struct Pending {
+     MatchTask task;
+     Factor factor;
+diff --git a/ws_fast_livo/src/ranger_fast_livo_backend/include/ranger_fast_livo_backend/types.hpp b/ws_fast_livo/src/ranger_fast_livo_backend/include/ranger_fast_livo_backend/types.hpp
+index 07f06be..c515db2 100644
+--- a/ws_fast_livo/src/ranger_fast_livo_backend/include/ranger_fast_livo_backend/types.hpp
++++ b/ws_fast_livo/src/ranger_fast_livo_backend/include/ranger_fast_livo_backend/types.hpp
+@@ -8,6 +8,8 @@
+ #include <memory>
+ #include <string>
+ #include <vector>
++#include <optional>
++#include <functional>
+ 
+ namespace ranger_backend {
+ using Pose = Eigen::Isometry3d;
+@@ -71,9 +73,14 @@ struct Snapshot {
+   fs::path session_directory;
+ };
+ struct Candidate {
+-  uint64_t id;
+-  double distance;
++  uint64_t id=0;
++  double distance=0;
+   std::string origin = "position";
++  std::optional<Pose> initial;
++  Json evidence=Json::object();
++  std::function<bool(const Pose&,Json&)> verify;
++  Candidate()=default;
++  Candidate(uint64_t key,double d,std::string source="position"):id(key),distance(d),origin(std::move(source)){}
+ };
+ struct RegistrationResult {
+   bool converged = false, accepted = false;
+diff --git a/ws_fast_livo/src/ranger_fast_livo_backend/package.xml b/ws_fast_livo/src/ranger_fast_livo_backend/package.xml
+index 71d7ca2..900cca5 100644
+--- a/ws_fast_livo/src/ranger_fast_livo_backend/package.xml
++++ b/ws_fast_livo/src/ranger_fast_livo_backend/package.xml
+@@ -9,6 +9,7 @@
+   <depend>sensor_msgs</depend><depend>nav_msgs</depend><depend>diagnostic_msgs</depend>
+   <depend>pcl_conversions</depend><depend>eigen</depend>
+   <depend>nlohmann_json</depend><depend>openssl</depend>
++  <depend>opencv</depend>
+   <exec_depend>rosidl_default_runtime</exec_depend>
+   <test_depend>ament_cmake_gtest</test_depend>
+   <member_of_group>rosidl_interface_packages</member_of_group>
+diff --git a/ws_fast_livo/src/ranger_fast_livo_backend/src/backend.cpp b/ws_fast_livo/src/ranger_fast_livo_backend/src/backend.cpp
+index 7d33bd4..5947be9 100644
+--- a/ws_fast_livo/src/ranger_fast_livo_backend/src/backend.cpp
++++ b/ws_fast_livo/src/ranger_fast_livo_backend/src/backend.cpp
+@@ -19,6 +19,7 @@ void Backend::log(Json j){
+   log_ << j.dump() << '\n';
+   log_.flush();
+ }
++void Backend::configure_tags(tags::Config config){tag_config_=config;tag_buffer_=std::make_unique<tags::Buffer>(config);tag_buffer_->reset(session_);tag_history_.clear();}
+ Snapshot Backend::snapshot()const {
+   Snapshot s;
+   s.session = session_;
+@@ -89,6 +90,20 @@ bool Backend::detect_loops(){
+   auto s = snapshot();
+   uint64_t j = s.frames.size() - 1;
+   auto candidates = search_->find(s, j);
++  if(tag_config_&&tag_history_.count(j)&&j>=next_tag_keyframe_){
++    std::vector<Candidate> additional;
++    for(auto history=tag_history_.rbegin();history!=tag_history_.rend();++history){auto i=history->first;
++      if(i>=j||j-i<=config_.exclude_ids||s.frames[j].stamp_ns-s.frames[i].stamp_ns<=int64_t(config_.exclude_time*1e9))continue;
++      for(const auto& old:history->second)for(const auto& current:tag_history_.at(j))if(tag_config_->fixed_tags.count(current.observation.key()))for(auto& p:tags::loop_priors(old,current,*tag_config_)){
++        Candidate c{i,0,"apriltag"};c.initial=p.initial;c.evidence=p.evidence;c.verify=p.verify;additional.push_back(std::move(c));
++      }
++      // Complete all branches of the current historical identity or drop this
++      // Tag attempt; never accept only a prefix of ambiguous branches.
++      if(additional.size()>tag_config_->max_hypotheses){additional.clear();log({{"event","tag_candidate_capacity"},{"j",j}});break;}
++      if(additional.size()>=4)break;
++    }
++    candidates.insert(candidates.end(),additional.begin(),additional.end());
++  }
+   struct Evaluation {
+     Candidate candidate;
+     MatchTask task;
+@@ -110,14 +125,19 @@ bool Backend::detect_loops(){
+     }
+     else try{
+         auto target = submap(s, candidate.id, j, e.task);
+-        Pose initial = s.frames[candidate.id].X.inverse() * s.frames[j].X;
++        Pose initial = candidate.initial.value_or(s.frames[candidate.id].X.inverse() * s.frames[j].X);
+         e.result = registration_->align(*target, *source, initial);
++        Json visual;
++        if(e.result.accepted&&candidate.verify&&!candidate.verify(e.result.T_target_source,visual)){
++          e.result.accepted=false;e.result.reason="tag_visual_inconsistent";
++        }
+         if ((steady_seconds() - started) * 1000 > config_.candidate_budget_ms) {
+           e.result.accepted = false;
+           e.result.reason = "candidate_time_budget";
+         }
+         e.log = {{"i", candidate.id}, {"j", j}, {"candidate_source", candidate.origin}, {"time_separation_s", (s.frames[j].stamp_ns - s.frames[candidate.id].stamp_ns) * 1e-9},
+           {"initial_T_i_j", pose_json(initial)}, {"target_scan_ids", e.task.target_scans}, {"thresholds", config_.json()}};
++        if(candidate.origin=="apriltag"){e.log["tag_evidence"]=candidate.evidence;e.log["visual_verification"]=visual;}
+       }
+       catch (const std::exception& x) {
+         e.result.reason = std::string("submap_or_registration_failure: ") + x.what();
+@@ -126,6 +146,10 @@ bool Backend::detect_loops(){
+     evaluations.push_back(std::move(e));
+   }
+   std::vector<size_t> valid;
++  // An incompletely evaluated Tag hypothesis set cannot establish uniqueness.
++  bool tag_incomplete=false;
++  for(const auto& e:evaluations)if(e.candidate.origin=="apriltag"&&(e.result.reason=="candidate_time_budget"||e.result.reason.find("submap_or_registration_failure")==0))tag_incomplete=true;
++  if(tag_incomplete){next_tag_keyframe_=j+4;for(auto& e:evaluations){e.result.accepted=false;e.log["decision"]="tag_attempt_incomplete";}}
+   for (size_t k = 0; k < evaluations.size(); ++k) if (evaluations[k].result.accepted) valid.push_back(k);
+   std::sort(valid.begin(), valid.end(), [&](auto a, auto b){
+       auto& x = evaluations[a].result;
+@@ -140,6 +164,10 @@ bool Backend::detect_loops(){
+       auto& other = evaluations[valid[n]];
+       double separation = (s.frames[best.candidate.id].X.translation() - s.frames[other.candidate.id].X.translation()).norm();
+       if (separation > config_.ambiguity_separation && std::abs(best.result.rmse - other.result.rmse) < config_.ambiguity_rmse && std::abs(best.result.overlap - other.result.overlap) < config_.ambiguity_overlap) ambiguous = true;
++      if(best.candidate.origin=="apriltag"||other.candidate.origin=="apriltag"){
++        Pose a=s.frames[best.candidate.id].X*best.result.T_target_source,b=s.frames[other.candidate.id].X*other.result.T_target_source;
++        if((a.translation()-b.translation()).norm()>.3||rotation_distance(a,b)>.15)ambiguous=true;
++      }
+     }
+     if (ambiguous) best.log["decision"] = "rejected_ambiguous_places";
+     else if (!task_current(best.task)) best.log["decision"] = "rejected_stale_task";
+@@ -205,9 +233,10 @@ bool Backend::detect_loops(){
+   }
+   return committed;
+ }
+-Output Backend::process(int64_t stamp, uint64_t scan_id, const Pose& U, const Cloud& full, const std::vector<uint8_t>& cdr){
++Output Backend::process(int64_t stamp, uint64_t scan_id, const Pose& U, const Cloud& full, const std::vector<uint8_t>& cdr,const std::vector<Json>& tag_batches){
+   if (stamp < 0 || stamp <= last_stamp_ || (last_stamp_ >= 0 && scan_id <= last_scan_) || !valid_pose(U) || full.empty()) throw std::invalid_argument("invalid or regressed scan/id");
+   bool loop = false;
++  if(tag_buffer_){tag_buffer_->add_pose(stamp,U,session_);for(const auto& batch:tag_batches)try{tag_buffer_->push(batch,session_);}catch(const std::exception& e){log({{"event","tag_rejected"},{"reason",e.what()}});}}
+   if (is_keyframe(stamp, U)) {
+     if (graph_.frames().size() >= config_.max_keyframes) throw std::runtime_error("keyframe budget exhausted");
+     auto match = downsample(full, config_.resolution);
+@@ -219,6 +248,12 @@ Output Backend::process(int64_t stamp, uint64_t scan_id, const Pose& U, const Cl
+     k = store_keyframe(directory_, k, full, *match, cdr);
+     std::string reason;
+     if (!graph_.append(k, reason)) throw std::runtime_error(reason);
++    if(tag_buffer_){
++      tag_history_[k.id]=tag_buffer_->take(stamp,U);
++      for(const auto& a:tag_history_[k.id]){Json Z=Json::array();for(const auto& h:a.observation.hypotheses)Z.push_back({{"hypothesis_id",h.id},{"T_keyframe_tag",pose_json(a.A*h.T)}});
++        log({{"event","tag_attachment"},{"keyframe_id",k.id},{"scan_id",scan_id},{"scan_stamp_ns",stamp},{"observation",a.observation.json()},{"T_keyframe_camera",pose_json(a.A)},{"hypotheses",Z}});}
++      while(tag_history_.size()>1024)tag_history_.erase(tag_history_.begin());
++    }
+     loop = detect_loops();
+   }
+   last_stamp_ = stamp;
+diff --git a/ws_fast_livo/src/ranger_fast_livo_backend/src/node.cpp b/ws_fast_livo/src/ranger_fast_livo_backend/src/node.cpp
+index 0c10173..5f9fee5 100644
+--- a/ws_fast_livo/src/ranger_fast_livo_backend/src/node.cpp
++++ b/ws_fast_livo/src/ranger_fast_livo_backend/src/node.cpp
+@@ -6,6 +6,7 @@
+ #include <ranger_fast_livo_backend/srv/export_snapshot.hpp>
+ #include <diagnostic_msgs/msg/diagnostic_array.hpp>
+ #include <nav_msgs/msg/path.hpp>
++#include <std_msgs/msg/string.hpp>
+ #include <atomic>
+ #include <condition_variable>
+ #include <deque>
+@@ -69,6 +70,16 @@ public:
+     config_.max_iterations = declare_parameter<int>("max_iterations", 50);
+     config_.registration_threads = declare_parameter<int>("registration_threads", 1);
+     config_.validate();
++    bool enable_tags=declare_parameter<bool>("enable_tag_loop",false);
++    auto tag_path=declare_parameter<std::string>("tag_config_path","");
++    if(enable_tags){
++      if(!get_parameter("use_sim_time").as_bool())throw std::invalid_argument("Tag B entry requires offline use_sim_time");
++      tag_config_=tags::Config::parse(tags::read_json(tag_path));
++      tag_context_publisher_=create_publisher<std_msgs::msg::String>("/fast_livo/tags/context",rclcpp::QoS(1).transient_local());
++      tag_subscription_=create_subscription<std_msgs::msg::String>("/fast_livo/tags/observations",rclcpp::QoS(4).best_effort(),[this](std_msgs::msg::String::ConstSharedPtr m){
++        std::lock_guard<std::mutex> lock(mutex_);if(m->data.size()>262144)return;if(tag_inbox_.size()>=8)tag_inbox_.pop_front();tag_inbox_.push_back({steady_seconds(),m->data});
++      });
++    }
+     data_root_ = declare_parameter<std::string>("data_root", (fs::current_path() / ".runtime/fast_livo_backend").string());
+     if (!data_root_.is_absolute()) throw std::invalid_argument("data_root must be absolute");
+     std::string metadata = declare_parameter<std::string>("metadata_path", "");
+@@ -148,6 +159,7 @@ private:
+     Pair pair;
+     uint64_t generation, scan;
+     double received;
++    std::vector<std::pair<double,std::string>> tag_batches;
+   };
+   Config config_;
+   Json metadata_;
+@@ -169,6 +181,9 @@ private:
+   double sample_max_age_ = .5, stream_timeout_ = 2.;
+   uint64_t invalid_messages_ = 0;
+   std::unique_ptr<Backend> core_;
++  std::optional<tags::Config> tag_config_;std::deque<std::pair<double,std::string>> tag_inbox_;
++  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr tag_context_publisher_;
++  rclcpp::Subscription<std_msgs::msg::String>::SharedPtr tag_subscription_;
+   std::thread worker_;
+   rclcpp::Subscription<Odom>::SharedPtr odom_;
+   rclcpp::Subscription<Scan>::SharedPtr cloud_;
+@@ -183,6 +198,7 @@ private:
+     session_ = uuid();
+     pairs_.clear();
+     queue_.clear();
++    tag_inbox_.clear();
+     scan_id_ = 0;
+     have_output_ = false;
+     reason_ = reason;
+@@ -231,6 +247,7 @@ private:
+   }
+   void tick(){
+     Estimate message;
++    std_msgs::msg::String tag_context;
+     diagnostic_msgs::msg::DiagnosticArray diagnostics;
+     {
+       std::lock_guard<std::mutex> lock(mutex_);
+@@ -250,13 +267,14 @@ private:
+             invalidate_locked("work_queue_exhausted", true);
+             break;
+           }
+-          queue_.push_back({pair, generation_, scan_id_++, steady});
++          Job job{pair,generation_,scan_id_++,steady,{}};job.tag_batches.assign(tag_inbox_.begin(),tag_inbox_.end());tag_inbox_.clear();queue_.push_back(std::move(job));
+           condition_.notify_one();
+         }
+       }
+       message.header.frame_id = "map";
+       message.imu_frame = "fast_livo_imu";
+       message.session_id = session_;
++      if(tag_config_)tag_context.data=Json({{"schema_version",1},{"context",session_},{"calibration_id",tag_config_->calibration_id},{"time_mapping_id",tag_config_->time_mapping_id}}).dump();
+       message.state = state_;
+       message.reason = reason_;
+       if (have_output_) {
+@@ -289,6 +307,7 @@ private:
+       diagnostics.status.push_back(status);
+     }
+     publisher_->publish(message);
++    if(tag_context_publisher_)tag_context_publisher_->publish(tag_context);
+     diagnostics_->publish(diagnostics);
+   }
+   static geometry_msgs::msg::Pose pose_message(const Pose& p){
+@@ -352,6 +371,7 @@ private:
+           metadata["frontend_publisher_gids"] = input_identity;
+           metadata["sample_time_contract"] = "VIO-corrected IMU pose; deskewed interval ends at LIO/VIO image cut time; output stamps share integer nanoseconds";
+           core_ = std::make_unique<Backend>(config_, data_root_, session, metadata);
++          if(tag_config_)core_->configure_tags(*tag_config_);
+           active_generation = generation;
+           continue;
+         }
+@@ -365,7 +385,10 @@ private:
+         Snapshot snapshot;
+         {
+           std::lock_guard<std::mutex> lock(core_mutex_);
+-          result = core_->process(stamp_ns(job.pair.odom->header.stamp), job.scan, odom_pose(*job.pair.odom), *full, cdr);
++          std::vector<Json> batches;for(const auto& [received,text]:job.tag_batches)try{
++            tags::require(tag_config_&&steady_seconds()-received<=tag_config_->maximum_wait,"consumer_queue_expired");batches.push_back(Json::parse(text));
++          }catch(const std::exception& e){RCLCPP_WARN(get_logger(),"Tag batch rejected: %s",e.what());}
++          result = core_->process(stamp_ns(job.pair.odom->header.stamp), job.scan, odom_pose(*job.pair.odom), *full, cdr,batches);
+           if (result.loop_accepted || result.scan_id % 10 == 0) snapshot = core_->snapshot();
+         }
+         {
+diff --git a/ws_fast_livo/src/ranger_fast_livo_localizer/CMakeLists.txt b/ws_fast_livo/src/ranger_fast_livo_localizer/CMakeLists.txt
+index 16daf74..adfbc7b 100644
+--- a/ws_fast_livo/src/ranger_fast_livo_localizer/CMakeLists.txt
++++ b/ws_fast_livo/src/ranger_fast_livo_localizer/CMakeLists.txt
+@@ -35,7 +35,9 @@ add_executable(archive_tool src/archive_tool.cpp)
+ target_link_libraries(archive_tool ranger_localizer_core)
+ add_executable(place_index_tool src/place_index_tool.cpp)
+ target_link_libraries(place_index_tool ranger_localizer_core)
+-install(TARGETS localizer_node archive_tool place_index_tool DESTINATION lib/${PROJECT_NAME})
++add_executable(tag_map_tool src/tag_map_tool.cpp)
++target_link_libraries(tag_map_tool ranger_localizer_core)
++install(TARGETS localizer_node archive_tool place_index_tool tag_map_tool DESTINATION lib/${PROJECT_NAME})
+ install(TARGETS ranger_localizer_core DESTINATION lib)
+ install(DIRECTORY include/ DESTINATION include)
+ install(FILES LICENSE THIRD_PARTY_NOTICES.md DESTINATION share/${PROJECT_NAME})
+@@ -46,6 +48,8 @@ if(BUILD_TESTING)
+   find_package(ament_cmake_gtest REQUIRED)
+   ament_add_gtest(localizer_tests test/localizer_tests.cpp TIMEOUT 180)
+   target_link_libraries(localizer_tests ranger_localizer_core)
++  ament_add_gtest(tag_integration_tests test/tag_integration_tests.cpp TIMEOUT 180)
++  target_link_libraries(tag_integration_tests ranger_localizer_core)
+ endif()
+ ament_export_dependencies(rosidl_default_runtime)
+ ament_package()
+diff --git a/ws_fast_livo/src/ranger_fast_livo_localizer/include/ranger_fast_livo_localizer/relocalizer.hpp b/ws_fast_livo/src/ranger_fast_livo_localizer/include/ranger_fast_livo_localizer/relocalizer.hpp
+index 42997f8..90c9a11 100644
+--- a/ws_fast_livo/src/ranger_fast_livo_localizer/include/ranger_fast_livo_localizer/relocalizer.hpp
++++ b/ws_fast_livo/src/ranger_fast_livo_localizer/include/ranger_fast_livo_localizer/relocalizer.hpp
+@@ -1,5 +1,6 @@
+ #pragma once
+ #include "localizer.hpp"
++#include <ranger_fast_livo_backend/tags.hpp>
+ #include <set>
+ 
+ namespace ranger_localizer {
+@@ -46,11 +47,11 @@ public:
+   Relocalizer(std::shared_ptr<const Archive> map,Config tracking,SearchConfig config,
+     std::shared_ptr<const PlaceRetriever> index,std::unique_ptr<rb::CoarseRegistration> coarse);
+   SearchResult process(int64_t stamp,uint64_t scan,const Pose& U,const Cloud& cloud,double steady,
+-    const std::function<bool()>& cancelled=[] {return false;});
++    const std::function<bool()>& cancelled=[] {return false;},const std::vector<rb::tags::Prior>& priors={});
+   void reset();
+ private:
+   struct Sample {int64_t stamp;uint64_t id;Pose U;Cloud::Ptr cloud;};
+-  struct Support {int64_t stamp;Pose U,correction;std::set<uint64_t> scans;size_t count=1;};
++  struct Support {int64_t stamp;Pose U,correction;std::set<uint64_t> scans;size_t count=1;std::set<std::string> tag_images;};
+   std::shared_ptr<const Archive> map_;
+   Config tracking_;SearchConfig config_;
+   SubmapProvider provider_;
+@@ -59,7 +60,7 @@ private:
+   std::unique_ptr<rb::Registration> fine_;
+   std::deque<Sample> window_;
+   std::optional<Support> support_;
+-  double next_attempt_=0;
++  double next_attempt_=0,next_tag_attempt_=0;
+   SearchResult reject(std::string reason,double steady,Json quality=Json::object());
+ };
+ }
+diff --git a/ws_fast_livo/src/ranger_fast_livo_localizer/src/node.cpp b/ws_fast_livo/src/ranger_fast_livo_localizer/src/node.cpp
+index 8310f1b..8266aac 100644
+--- a/ws_fast_livo/src/ranger_fast_livo_localizer/src/node.cpp
++++ b/ws_fast_livo/src/ranger_fast_livo_localizer/src/node.cpp
+@@ -5,6 +5,7 @@
+ #include <ranger_fast_livo_localizer/srv/load_map.hpp>
+ #include <ranger_fast_livo_localizer/srv/initialize.hpp>
+ #include <ranger_fast_livo_localizer/srv/relocalize.hpp>
++#include <std_msgs/msg/string.hpp>
+ #include <rclcpp/rclcpp.hpp>
+ #include <atomic>
+ #include <condition_variable>
+@@ -12,6 +13,7 @@
+ #include <thread>
+ #include <sstream>
+ #include <iomanip>
++#include <fstream>
+ 
+ namespace ranger_localizer {
+ using Estimate=ranger_fast_livo_localizer::msg::LocalizerEstimate;
+@@ -47,6 +49,22 @@ public:
+     GLOBAL_DBL(consistency_translation);GLOBAL_DBL(consistency_rotation);
+ #undef GLOBAL_DBL
+     search_config_.validate();if(global_enabled_)(void)make_global_coarse(search_config_);
++    tag_relocalization_=declare_parameter<bool>("enable_tag_relocalization",false);
++    tag_monitor_=declare_parameter<bool>("enable_tag_monitor",false);
++    auto recording_mode=declare_parameter<std::string>("landmark_recording_mode","off");
++    if(recording_mode!="off"&&recording_mode!="c1")throw std::invalid_argument("landmark_recording_mode must be off or c1");
++    tag_recording_=recording_mode=="c1";
++    auto record_path=declare_parameter<std::string>("tag_record_path","");
++    if(tag_recording_){rb::tags::require(fs::path(record_path).is_absolute()&&!fs::exists(record_path),"new_c1_record_path_required");tag_record_.open(record_path);tag_record_.exceptions(std::ios::badbit|std::ios::failbit);}
++    auto tag_config=declare_parameter<std::string>("tag_config_path","");tag_landmarks_path_=declare_parameter<std::string>("tag_landmarks_path","");
++    if(tag_relocalization_&&!global_enabled_)throw std::invalid_argument("Tag relocalization requires explicit C2 entry");
++    if(tag_relocalization_||tag_monitor_||tag_recording_){
++      tag_config_=rb::tags::Config::parse(rb::tags::read_json(tag_config));tag_buffer_=std::make_unique<rb::tags::Buffer>(*tag_config_);
++      tag_context_publisher_=create_publisher<std_msgs::msg::String>("/fast_livo/tags/context",rclcpp::QoS(1).transient_local());
++      tag_subscription_=create_subscription<std_msgs::msg::String>("/fast_livo/tags/observations",rclcpp::QoS(4).best_effort(),[this](std_msgs::msg::String::ConstSharedPtr m){
++        std::lock_guard<std::mutex> lock(mutex_);if(m->data.size()>262144){++tag_dropped_;return;}if(tag_inbox_.size()>=8){tag_inbox_.pop_front();++tag_dropped_;}tag_inbox_.push_back({rb::steady_seconds(),m->data});
++      });
++    }
+     age_=declare_parameter<double>("sample_max_age",.5);stream_timeout_=declare_parameter<double>("stream_timeout",2.);
+     if(!std::isfinite(age_) || !std::isfinite(stream_timeout_) || age_<=0 || stream_timeout_<=0) throw std::invalid_argument("invalid age limits");
+     auto xyz=declare_parameter<std::vector<double>>("t_base_imu_xyz",{0.,0.,.556});
+@@ -72,10 +90,17 @@ public:
+   ~LocalizerNode()override {{std::lock_guard<std::mutex> lock(mutex_);stopping_=true;++generation_;}condition_.notify_all();if(worker_.joinable())worker_.join();}
+ private:
+   enum class Kind {Reset,Load,Initialize,Search,Scan};
+-  struct Job {Kind kind=Kind::Reset;uint64_t generation=0,scan=0;rb::Pair pair;InitialPose initial;fs::path archive,declaration;};
++  struct Job {Kind kind=Kind::Reset;uint64_t generation=0,scan=0;rb::Pair pair;InitialPose initial;fs::path archive,declaration;std::string tag_context;std::vector<std::pair<double,std::string>> tag_batches;};
+   Config config_;Compatibility compatibility_;ArchiveLimits limits_;Pose T_base_imu_;
+   SearchConfig search_config_;bool global_enabled_=false;std::atomic<bool> search_allowed_{false};std::string index_path_;
+   std::shared_ptr<PlaceIndex> place_index_;std::unique_ptr<Relocalizer> search_;
++  bool tag_relocalization_=false,tag_monitor_=false;std::string tag_landmarks_path_,tag_reason_;
++  std::optional<rb::tags::Config> tag_config_;std::optional<rb::tags::Map> tag_map_;
++  std::unique_ptr<rb::tags::Buffer> tag_buffer_;std::deque<std::pair<double,std::string>> tag_inbox_;size_t tag_dropped_=0;
++  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr tag_context_publisher_;
++  rclcpp::Subscription<std_msgs::msg::String>::SharedPtr tag_subscription_;
++  std::function<bool(const Pose&,const Pose&,Json&)> handoff_verify_;
++  bool tag_recording_=false;std::ofstream tag_record_;Json record_segment_=Json::array();std::string record_context_;
+   std::mutex mutex_;std::condition_variable condition_;std::deque<Job> jobs_;std::atomic<uint64_t> generation_{1};
+   bool stopping_=false,terminal_=false,inputs_ready_=false,loading_=false,lost_latched_=false;
+   rb::PairBuffer pairs_;std::shared_ptr<Archive> map_;std::unique_ptr<Localizer> core_;
+@@ -92,7 +117,7 @@ private:
+   static bool request_id(const std::string& id) {return !id.empty() && id.size()<=128;}
+   void enqueue(Job j) {jobs_.push_back(std::move(j));condition_.notify_one();}
+   void clear_locked(const std::string& reason,bool frontend_reset) {
+-    ++generation_;jobs_.clear();pairs_.clear();message_.pose_valid=false;message_.state=0;message_.reason=reason;request_started_=0;lost_latched_=false;
++    ++generation_;jobs_.clear();pairs_.clear();tag_inbox_.clear();message_.pose_valid=false;message_.state=0;message_.reason=reason;request_started_=0;lost_latched_=false;
+     if(frontend_reset) {message_.session_id=rb::uuid();scan_=0;message_.header.stamp=builtin_interfaces::msg::Time{};message_.last_confirmed_stamp_ns=0;message_.latest_scan_stamp_ns=0;init_ids_.clear();search_ids_.clear();message_.initialization_request_id.clear();}
+   }
+   void load_request(const Load::Request& req,Load::Response& res) {
+@@ -168,6 +193,7 @@ private:
+   }
+   void tick() {
+     Estimate message;
++    std_msgs::msg::String tag_context;
+     {
+       std::lock_guard<std::mutex> lock(mutex_);double now=rb::steady_seconds();auto ros=get_clock()->now().nanoseconds();
+       if(last_clock_>=0 && ros<last_clock_ && !terminal_) {clear_locked("clock_regressed_requires_initial_pose",true);loading_=false;Job j;j.generation=generation_;enqueue(j);}
+@@ -178,7 +204,8 @@ private:
+         size_t available=jobs_.size()<8?8-jobs_.size():0;
+         for(auto& pair:pairs_.drain(now,available)) {
+           if(bytes+pair.cloud->data.size()>32*1024*1024) {clear_locked("terminal_work_queue_byte_limit",true);terminal_=true;message_.state=4;break;}
+-          Job j;j.kind=Kind::Scan;j.generation=generation_;j.scan=scan_++;j.pair=pair;bytes+=pair.cloud->data.size();enqueue(j);last_received_=now;
++          Job j;j.kind=Kind::Scan;j.generation=generation_;j.scan=scan_++;j.pair=pair;bytes+=pair.cloud->data.size();
++          j.tag_context=message_.session_id+":"+std::to_string(generation_.load());j.tag_batches.assign(tag_inbox_.begin(),tag_inbox_.end());tag_inbox_.clear();enqueue(j);last_received_=now;
+         }
+       }
+       if((message_.state==1 || message_.state==2) && message_.last_confirmed_stamp_ns>0 && (now-last_received_>stream_timeout_ || ros-message_.last_confirmed_stamp_ns>int64_t(age_*1e9) || ros<message_.last_confirmed_stamp_ns-int64_t(age_*1e9))) {
+@@ -193,9 +220,13 @@ private:
+       quality["pair_counters"]=pairs_.counters;quality["invalid_messages"]=invalid_;quality["queued_jobs"]=jobs_.size();quality["pair_bytes"]=pairs_.bytes();
+       quality["inputs_ready"]=inputs_ready_;quality["map_loading"]=loading_;quality["public_tf_publisher"]=false;
+       quality["global_search_enabled"]=global_enabled_;quality["global_search_allowed"]=search_allowed_.load();
++      quality["tag_input_dropped"]=tag_dropped_;
++      if(tag_config_)tag_context.data=Json({{"schema_version",1},{"context",message_.session_id+":"+std::to_string(generation_.load())},
++        {"calibration_id",tag_config_->calibration_id},{"time_mapping_id",tag_config_->time_mapping_id},{"map_uuid",message_.map_uuid}}).dump();
+       message.quality_json=quality.dump();
+     }
+     publisher_->publish(message);
++    if(tag_context_publisher_)tag_context_publisher_->publish(tag_context);
+   }
+   static geometry_msgs::msg::Pose pose_message(const Pose& p) {
+     geometry_msgs::msg::Pose out;out.position.x=p.translation().x();out.position.y=p.translation().y();out.position.z=p.translation().z();
+@@ -208,8 +239,9 @@ private:
+     message_.header.stamp=rclcpp::Time(result.stamp);message_.last_confirmed_stamp_ns=result.stamp;message_.latest_scan_stamp_ns=result.latest_scan;message_.scan_id=result.scan;message_.quality_json=result.quality.dump();
+     if(result.valid) request_started_=0;
+   }
+-  void process_search(Job& job,const Cloud& cloud,const Pose& U,int64_t stamp,const std::function<bool()>& cancelled) {
+-    auto result=search_->process(stamp,job.scan,U,cloud,rb::steady_seconds(),cancelled);
++  void process_search(Job& job,const Cloud& cloud,const Pose& U,int64_t stamp,const std::function<bool()>& cancelled,const std::vector<rb::tags::Prior>& priors) {
++    auto result=search_->process(stamp,job.scan,U,cloud,rb::steady_seconds(),cancelled,priors);
++    if(tag_config_){result.quality["tag_status"]=tag_reason_;result.quality["tag_buffer"]=tag_buffer_->diagnostics();}
+     {
+       std::lock_guard<std::mutex> lock(mutex_);if(cancelled())return;
+       message_.pose_valid=false;message_.reason=result.reason;message_.state=lost_latched_?3:0;
+@@ -219,11 +251,36 @@ private:
+       request_started_=rb::steady_seconds();
+     }
+     core_->initialize(*result.confirmed,rb::steady_seconds());
++    handoff_verify_={};
++    if(result.quality.contains("selected_tag_evidence")){
++      auto selected=result.quality.at("selected_tag_evidence");
++      for(const auto& p:priors)if(p.evidence==selected){auto verify=p.verify;handoff_verify_=[verify,U](const Pose& X,const Pose& currentU,Json& d){return verify(X*currentU.inverse()*U,d);};break;}
++    }
+     // C1 independently verifies the confirmed original-stamp initial pose.
+     auto first=core_->process(stamp,job.scan,U,cloud,rb::steady_seconds(),cancelled);
+     first.quality["global_handoff"]=result.quality;
+     commit(first,job.generation);
+   }
++  void record_tags(const Result& result,const Pose& U,const Job& job,const std::vector<rb::tags::Attached>& observations){
++    if(record_context_!=job.tag_context){record_segment_=Json::array();record_context_=job.tag_context;}
++    if(!result.valid||result.reason!="map_match_confirmed"){record_segment_=Json::array();return;}
++    Pose correction=result.pose*U.inverse();
++    if(!record_segment_.empty()){
++      auto previous=parse_pose(record_segment_.back().at("correction"));int64_t stamp=record_segment_.back().at("stamp_ns");
++      if(result.stamp<=stamp||(result.stamp-stamp)*1e-9>config_.history_gap||
++         (previous.translation()-correction.translation()).norm()>config_.confirmation_consistency_translation||rb::rotation_distance(previous,correction)>config_.confirmation_consistency_rotation)record_segment_=Json::array();
++    }
++    record_segment_.push_back({{"stamp_ns",result.stamp},{"correction",rb::pose_json(correction)},{"context",job.tag_context}});
++    if(record_segment_.size()>3)record_segment_.erase(record_segment_.begin());
++    if(record_segment_.size()<3)return;
++    for(const auto& a:observations){
++      Json j={{"schema_version",1},{"map_uuid",map_->uuid},{"source_manifest_sha256",map_->manifest_sha},{"graph_version",map_->graph_version},
++        {"state",result.state},{"pose_valid",result.valid},{"reason",result.reason},{"scan_stamp_ns",result.stamp},{"last_confirmed_stamp_ns",result.stamp},
++        {"context",job.tag_context},{"visit_id",job.tag_context},{"segment_verified",true},{"segment_support",record_segment_},
++        {"T_map_imu",rb::pose_json(result.pose)},{"local_history",tag_buffer_->history_json()},{"observation",a.observation.json()},{"quality",result.quality}};
++      tag_record_<<j.dump()<<'\n';tag_record_.flush();
++    }
++  }
+   void work() {
+     while(true) {
+       Job job;
+@@ -238,22 +295,43 @@ private:
+             index=index_path_.empty()?PlaceIndex::build(map,search_config_,cancelled):PlaceIndex::load(index_path_,map,search_config_);
+             search=std::make_unique<Relocalizer>(map,config_,search_config_,index,make_global_coarse(search_config_));
+           }
++          tag_map_.reset();handoff_verify_={};
++          if(tag_config_)try{tag_map_=rb::tags::Map::load(tag_landmarks_path_,map->uuid,map->manifest_sha,map->graph_version,*tag_config_);tag_reason_="landmarks_ready";}
++            catch(const std::exception& e){tag_reason_=std::string("tag_branch_disabled: ")+e.what();}
+           {std::lock_guard<std::mutex> lock(mutex_);if(cancelled())continue;map_=map;core_=std::move(core);loading_=false;place_index_=std::move(index);search_=std::move(search);
+             message_.map_uuid=map->uuid;message_.manifest_sha256=map->manifest_sha;message_.graph_version=map->graph_version;
+             message_.reason=global_enabled_&&search_allowed_?"map_loaded_searching":"map_loaded_waiting_initial_pose";message_.state=0;message_.pose_valid=false;message_.quality_json=Json({{"compatibility",map->compatibility}}).dump();}
+         } else if(job.kind==Kind::Reset) {
++          handoff_verify_={};
+           if(map_) core_=std::make_unique<Localizer>(map_,config_);
+           if(search_)search_->reset();
+         } else if(job.kind==Kind::Search) {
++          handoff_verify_={};
+           if(map_)core_=std::make_unique<Localizer>(map_,config_);
+           if(search_)search_->reset();
+         } else if(job.kind==Kind::Initialize) {
++          handoff_verify_={};
+           if(search_)search_->reset();
+           if(!core_) throw std::runtime_error("map_not_loaded");core_->initialize(job.initial,rb::steady_seconds());commit(core_->result(),job.generation);
+         } else if(core_) {
+           auto cloud=rb::decode_cloud(*job.pair.cloud);auto U=rb::odom_pose(*job.pair.odom);auto stamp=rb::stamp_ns(job.pair.odom->header.stamp);
+-          if(search_&&search_allowed_&&core_->needs_initialization())process_search(job,*cloud,U,stamp,cancelled);
+-          else {auto result=core_->process(stamp,job.scan,U,*cloud,rb::steady_seconds(),cancelled);commit(result,job.generation);}
++          std::vector<rb::tags::Attached> attached;std::vector<rb::tags::Prior> priors;
++          if(tag_buffer_){tag_buffer_->add_pose(stamp,U,job.tag_context);for(const auto& [received,text]:job.tag_batches)try{
++              rb::tags::require(rb::steady_seconds()-received<=tag_config_->maximum_wait,"consumer_queue_expired");tag_buffer_->push(Json::parse(text),job.tag_context);
++            }catch(const std::exception& e){tag_reason_=e.what();}
++            attached=tag_buffer_->take(stamp,U);if(tag_map_&&tag_relocalization_)priors=rb::tags::priors(*tag_map_,attached,*tag_config_);}
++          if(search_&&search_allowed_&&core_->needs_initialization())process_search(job,*cloud,U,stamp,cancelled,priors);
++          else {auto result=core_->process(stamp,job.scan,U,*cloud,rb::steady_seconds(),cancelled);
++            if(result.valid&&handoff_verify_){Json visual;if(!handoff_verify_(result.pose,U,visual)){
++                core_=std::make_unique<Localizer>(map_,config_);if(search_)search_->reset();result.valid=false;result.state=0;result.reason="tag_handoff_c1_visual_inconsistent";
++              }result.quality["tag_handoff_validation"]=visual;handoff_verify_={};}
++            if(tag_config_){result.quality["tag_status"]=tag_reason_;result.quality["tag_buffer"]=tag_buffer_->diagnostics();}
++            if(tag_map_&&tag_monitor_&&result.valid)result.quality["tag_monitor"]=rb::tags::monitor(*tag_map_,attached,result.pose,*tag_config_);
++            if(tag_recording_&&!cancelled())try{
++              if(tag_record_.tellp()>64*1024*1024)throw std::runtime_error("tag_record_byte_limit");
++              record_tags(result,U,job,attached);
++            }catch(const std::exception& e){tag_recording_=false;result.quality["tag_record_disabled"]=e.what();}
++            commit(result,job.generation);}
+         }
+       } catch(const std::exception& e) {
+         if(job.kind==Kind::Load && !cancelled()) {if(map_)core_=std::make_unique<Localizer>(map_,config_);if(search_)search_->reset();}
+diff --git a/ws_fast_livo/src/ranger_fast_livo_localizer/src/relocalizer.cpp b/ws_fast_livo/src/ranger_fast_livo_localizer/src/relocalizer.cpp
+index e47c39b..9b50e7b 100644
+--- a/ws_fast_livo/src/ranger_fast_livo_localizer/src/relocalizer.cpp
++++ b/ws_fast_livo/src/ranger_fast_livo_localizer/src/relocalizer.cpp
+@@ -8,11 +8,11 @@ Relocalizer::Relocalizer(std::shared_ptr<const Archive> map,Config tracking,Sear
+   tracking_.validate();config_.validate();if(!index_||!coarse_)throw std::invalid_argument("missing C2 stages");
+   fine_=rb::make_registration(tracking_.registration);
+ }
+-void Relocalizer::reset() {window_.clear();support_.reset();next_attempt_=0;}
++void Relocalizer::reset() {window_.clear();support_.reset();next_attempt_=0;next_tag_attempt_=0;}
+ SearchResult Relocalizer::reject(std::string reason,double steady,Json quality) {
+   support_.reset();next_attempt_=steady+config_.retry_seconds;return {std::move(reason),std::move(quality),std::nullopt};
+ }
+-SearchResult Relocalizer::process(int64_t stamp,uint64_t scan,const Pose& U,const Cloud& cloud,double steady,const std::function<bool()>& cancelled) {
++SearchResult Relocalizer::process(int64_t stamp,uint64_t scan,const Pose& U,const Cloud& cloud,double steady,const std::function<bool()>& cancelled,const std::vector<rb::tags::Prior>& priors) {
+   const double start=rb::steady_seconds();
+   auto completed_steady=[&] {return steady+(rb::steady_seconds()-start);};
+   auto check=[&] {if(cancelled())throw std::runtime_error("cancelled_generation");
+@@ -32,7 +32,7 @@ SearchResult Relocalizer::process(int64_t stamp,uint64_t scan,const Pose& U,cons
+     Cloud query;
+     for(const auto& s:window_)query+=*rb::transformed(*s.cloud,U.inverse()*s.U);
+     auto candidates=index_->query(query,config_.candidates);check();
+-    if(candidates.empty()||candidates.size()>config_.candidates)return reject("invalid_or_empty_candidates",completed_steady());
++    if(candidates.size()>config_.candidates)return reject("invalid_candidates",completed_steady());
+     std::set<uint64_t> candidate_ids;
+     Json diagnostics=Json::array();std::vector<rb::RegistrationResult> matches;
+     for(const auto& candidate:candidates) {
+@@ -61,7 +61,30 @@ SearchResult Relocalizer::process(int64_t stamp,uint64_t scan,const Pose& U,cons
+       }
+       diagnostics.push_back(std::move(d));
+     }
+-    check();Json quality={{"candidates",diagnostics},{"query_scan_ids",ids},{"query_stamp_ns",stamp},{"query_points",query.size()},
++    // LiDAR always receives its original budget first. A broken/over-budget Tag
++    // branch contributes no survivor and cannot disable the independent path.
++    Json tag_diagnostics=Json::array();std::vector<rb::RegistrationResult> tag_matches;
++    if(!priors.empty()&&steady>=next_tag_attempt_&&priors.size()<=8)try {
++      for(const auto& prior:priors){check();
++        if(prior.evidence.at("scan_stamp_ns")!=stamp||prior.evidence.at("map_uuid")!=map_->uuid||prior.evidence.at("source_manifest_sha256")!=map_->manifest_sha)
++          throw std::runtime_error("tag_prior_identity_mismatch");
++        auto target=provider_.get(prior.initial,tracking_.submap_radius,tracking_.maximum_submap_frames,tracking_.maximum_submap_points,tracking_.exclude_identical_stamp?stamp:-1);
++        auto result=fine_->align(*target,query,prior.initial);check();
++        if(result.converged&&rb::valid_pose(result.T_target_source)){result.T_target_source.linear()=Eigen::Quaterniond(result.T_target_source.linear()).normalized().toRotationMatrix();rb::evaluate_registration(*target,query,tracking_.registration,result);}
++        Json d={{"evidence",prior.evidence},{"registration",result.json()}};Json visual;
++        if(result.accepted&&prior.verify&&prior.verify(result.T_target_source,visual)){
++          result.native_diagnostics["tag_evidence"]=prior.evidence;tag_matches.push_back(result);
++        }
++        d["visual_verification"]=visual;tag_diagnostics.push_back(std::move(d));check();
++      }
++      matches.insert(matches.end(),tag_matches.begin(),tag_matches.end());
++    }catch(const std::exception& e){
++      next_tag_attempt_=completed_steady()+std::max(1.,4*config_.retry_seconds);
++      return reject(std::string("tag_attempt_incomplete: ")+e.what(),completed_steady(),{{"tag_candidates",tag_diagnostics},{"fallback","next attempt reserves pure LiDAR during Tag backoff"}});
++    }
++    else if(priors.size()>8&&steady>=next_tag_attempt_){next_tag_attempt_=completed_steady()+1.;return reject("tag_candidate_capacity",completed_steady());}
++    if(cancelled())throw std::runtime_error("cancelled_generation");
++    Json quality={{"candidates",diagnostics},{"tag_candidates",tag_diagnostics},{"query_scan_ids",ids},{"query_stamp_ns",stamp},{"query_points",query.size()},
+       {"map_uuid",map_->uuid},{"graph_version",map_->graph_version},{"source_manifest_sha256",map_->manifest_sha},
+       {"elapsed_ms",(rb::steady_seconds()-start)*1000},{"cache_bytes",provider_.cache_bytes()}};
+     if(matches.empty())return reject("global_no_geometric_match",completed_steady(),quality);
+@@ -69,13 +92,17 @@ SearchResult Relocalizer::process(int64_t stamp,uint64_t scan,const Pose& U,cons
+     for(size_t k=1;k<matches.size();++k) {
+       const auto& other=matches[k];
+       bool separated=(best.T_target_source.translation()-other.T_target_source.translation()).norm()>.75||rb::rotation_distance(best.T_target_source,other.T_target_source)>.3;
+-      if(separated&&other.rmse<=best.rmse+tracking_.registration.ambiguity_rmse&&other.overlap>=best.overlap-tracking_.registration.ambiguity_overlap)
++      if(separated&&(!tag_matches.empty()||(other.rmse<=best.rmse+tracking_.registration.ambiguity_rmse&&other.overlap>=best.overlap-tracking_.registration.ambiguity_overlap)))
+         return reject("global_ambiguous_places",completed_steady(),quality);
+     }
+     Pose correction=best.T_target_source*U.inverse();quality["verified_pose"]=rb::pose_json(best.T_target_source);
++    std::string tag_image;
++    if(best.native_diagnostics.contains("tag_evidence"))tag_image=best.native_diagnostics.at("tag_evidence").value("image_id",best.native_diagnostics.at("tag_evidence").value("observation_id",""));
++    if(best.native_diagnostics.contains("tag_evidence"))quality["selected_tag_evidence"]=best.native_diagnostics.at("tag_evidence");
+     if(!support_) {
+-      support_=Support{stamp,U,correction,ids,1};return {"verifying_independent_motion_support",quality,std::nullopt};
++      support_=Support{stamp,U,correction,ids,1,{}};if(!tag_image.empty())support_->tag_images.insert(tag_image);return {"verifying_independent_motion_support",quality,std::nullopt};
+     }
++    if(!tag_image.empty()&&support_->tag_images.count(tag_image))return {"verifying_wait_independent_tag_image",quality,std::nullopt};
+     if((support_->correction.translation()-correction.translation()).norm()>config_.consistency_translation||rb::rotation_distance(support_->correction,correction)>config_.consistency_rotation)
+       return reject("global_inconsistent_motion_support",completed_steady(),quality);
+     bool motion=(U.translation()-support_->U.translation()).norm()>=config_.support_translation||rb::rotation_distance(U,support_->U)>=config_.support_rotation;
+@@ -85,6 +112,7 @@ SearchResult Relocalizer::process(int64_t stamp,uint64_t scan,const Pose& U,cons
+     bool time=(stamp-support_->stamp)*1e-9>=config_.support_time;
+     if(!motion||!map_motion||!time)return {"verifying_insufficient_time_or_motion_baseline",quality,std::nullopt};
+     ++support_->count;support_->scans.insert(ids.begin(),ids.end());
++    if(!tag_image.empty())support_->tag_images.insert(tag_image);
+     if(support_->count<config_.support_queries)return {"verifying_independent_motion_support",quality,std::nullopt};
+     check();InitialPose initial;initial.pose=best.T_target_source;initial.stamp=stamp;initial.request_id="global-"+rb::uuid();initial.covariance.diagonal().setConstant(.01);
+     validate_initial(initial);quality["confirmed_support_queries"]=support_->count;quality["independent_scan_ids"]=support_->scans;

@@ -1,0 +1,21 @@
+test_plan_no_motion_and_qos_and_no_sim_clock (__main__.CaptureUnit) ... ok
+test_validation_and_sync_evidence (__main__.CaptureUnit) ... ok
+test_finite_capture_archives_and_preserves_external_preview (__main__.CaptureROS) ... ok
+test_owned_synthetic_session_is_cleaned_after_finite_capture (__main__.CaptureROS) ... FAIL
+
+======================================================================
+FAIL: test_owned_synthetic_session_is_cleaned_after_finite_capture (__main__.CaptureROS)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_recording.py", line 310, in test_owned_synthetic_session_is_cleaned_after_finite_capture
+    self.ready(p, output)
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_recording.py", line 237, in ready
+    wait_until(check)
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_recording.py", line 74, in wait_until
+    raise AssertionError('timed out waiting for synthetic capture')
+AssertionError: timed out waiting for synthetic capture
+
+----------------------------------------------------------------------
+Ran 4 tests in 35.789s
+
+FAILED (failures=1)

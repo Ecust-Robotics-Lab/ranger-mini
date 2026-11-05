@@ -30,6 +30,7 @@ def specs(cfg, visualization='rviz', foxglove_port=8765):
         '-p','cmdline_input_bd_code:=livox0000000001','-r','__node:=livox_lidar_publisher'],
         depends=('probe',),ready_key='lidar',start_requires=('lidar_unclaimed',),resource='livox_lidar'),
       Component('writer',[str(writer),'--ros-args','-p','timeshare_path:='+str(share),
+        '-p','lidar_reliability:=reliable','-p','lidar_queue_depth:=5',
         '-p','csv_path:='+str(share.parent/'timeshare_writer.csv')],depends=('lidar',),requires=('lidar',),ready_key='writer',resource='camera_timeshare'),
       Component('camera',['bash','-c','cd -- "$RANGER_LIVO_DEVICE_CWD" && exec "$@"','camera-device',str(camera),'--ros-args','--params-file',str(cparams),
         '-p','timeshare_path:='+str(share),'-p','sync_csv_path:='+str(share.parent/'camera_sync.csv'),

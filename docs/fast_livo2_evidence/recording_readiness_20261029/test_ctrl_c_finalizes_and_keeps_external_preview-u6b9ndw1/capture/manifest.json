@@ -1,0 +1,345 @@
+{
+  "schema_version": 1,
+  "created_unix_ns": 1793278098425853201,
+  "folder": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/recording_readiness_20261029/test_ctrl_c_finalizes_and_keeps_external_preview-u6b9ndw1/capture",
+  "owns_sensors": false,
+  "mode": "attach",
+  "seconds": 60.0,
+  "min_free_bytes": 5000000000,
+  "topics": {
+    "/livox/lidar": "sensor_msgs/msg/PointCloud2",
+    "/livox/imu": "sensor_msgs/msg/Imu",
+    "/front/image_sync": "sensor_msgs/msg/Image",
+    "/front/image": "sensor_msgs/msg/Image",
+    "/front/camera_info": "sensor_msgs/msg/CameraInfo",
+    "/fast_livo/odometry": "nav_msgs/msg/Odometry"
+  },
+  "domain": 189,
+  "physical_sync_proven": false,
+  "visualization": "existing",
+  "requested_visualization": "auto",
+  "no_base_or_navigation": true,
+  "source_files": [
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/apriltag_camera.json",
+      "file": "sources/0_apriltag_camera.json",
+      "sha256": "54af13d1316b85954514196e0bb16deada8c1a18ad55a9ca12a2daa761d9f0b1"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/apriltag_sizes.json",
+      "file": "sources/1_apriltag_sizes.json",
+      "sha256": "3b8facc4cb14c2eb3f73e05a9690364fcfb1c6f6dded8af74f89de6899310269"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/apriltag_sources.lock.json",
+      "file": "sources/2_apriltag_sources.lock.json",
+      "sha256": "cd719fc11850aa3d6f6e4034a936533d16c326603aa3ed809ea6f8fe7b06161f"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/backend.yaml",
+      "file": "sources/3_backend.yaml",
+      "sha256": "22d1eac223160ba5620e046e1deee7efa084bc77e5ab604ca3c098d9817407db"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/calibration_provenance.json",
+      "file": "sources/4_calibration_provenance.json",
+      "sha256": "f7fd48810eb3483bb9b6473229b3ded64e6fa997b9b554a1d94468c9f50b0e31"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/calibration_snapshot/camera_intrinsics.yaml",
+      "file": "sources/5_camera_intrinsics.yaml",
+      "sha256": "466cb1595c4d296f51e6cbe1011ddc1c5ba329b51f7b28053d0faede7ba8926f"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/calibration_snapshot/extrinsics.yaml",
+      "file": "sources/6_extrinsics.yaml",
+      "sha256": "3e0953b8577e4d58458c34f7ab198477f0611ac6eff2ec2e8165246f1adf1dc0"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/camera_live.yaml",
+      "file": "sources/7_camera_live.yaml",
+      "sha256": "2a0202023e685316deff5a00b36a69c13e6a5244e3f5999824f70e4f2919bf52"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/foxglove.yaml",
+      "file": "sources/8_foxglove.yaml",
+      "sha256": "9a639cd366b4c2301984ad4593157b72b6f8ad3947187963e758cb72e277b962"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/live.rviz",
+      "file": "sources/9_live.rviz",
+      "sha256": "c55eb1d8d5a28aff4a344c7c6f2e85da773b7523f7b6e66198095379c4f48d01"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/localizer.yaml",
+      "file": "sources/10_localizer.yaml",
+      "sha256": "2d0e143d45037890b13509879ec3d62a7fb03262572b050289ee78f579be99f9"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/mid360s_live.json",
+      "file": "sources/11_mid360s_live.json",
+      "sha256": "f98839dd786b279c828dd47bdf9823e2ba99528eee4f577d75864e2afc06dac8"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/ranger_mid360s_hik_trial.yaml",
+      "file": "sources/12_ranger_mid360s_hik_trial.yaml",
+      "sha256": "63f8d3614ad23e41bbf130d4f64899db503aeff9a58888b0a5c9df95b043956f"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/relocalization_sources.lock.json",
+      "file": "sources/13_relocalization_sources.lock.json",
+      "sha256": "e8fcd6de5f81e446a765c27a49dcecc545df05140422439785bb07b532f3ee47"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/relocalizer.yaml",
+      "file": "sources/14_relocalizer.yaml",
+      "sha256": "5a3fd7122d913010f6c4b5a6a1635a95bbd47060a07d1537458f51b508d2fdfb"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/sources.lock.json",
+      "file": "sources/15_sources.lock.json",
+      "sha256": "8fb74d2eac073c645416fe5532ac902229c92df820f02d0bf43f57d9c1a2fd60"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/mid360/bag_qos.yaml",
+      "file": "sources/16_bag_qos.yaml",
+      "sha256": "46007cabab8d356d21c932f99334b6a204b74ef7ece6809bdea617d866486f88"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/profiles/fast_livo2_frontend.yaml",
+      "file": "sources/17_fast_livo2_frontend.yaml",
+      "sha256": "25488c6c21502a5caaf6f208863e7eacd3fb7f1adb92527d41ad5ffbe3eb52e6"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/profiles/lightning.yaml",
+      "file": "sources/18_lightning.yaml",
+      "sha256": "4888d0326bac525e9c64000f461746ac7e99e47d93e39dd4f8ed595ae8335dbf"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/runtime.yaml",
+      "file": "sources/19_runtime.yaml",
+      "sha256": "7f434e1d7e9cced047070051a4aa342672e4351cf045b29e02a6f21e40fdabf6"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/recording_readiness_20261029/test_ctrl_c_finalizes_and_keeps_external_preview-u6b9ndw1/runtime.yaml",
+      "file": "sources/20_runtime.yaml",
+      "sha256": "c537848022d5c6f8fc47ca9d602abda5794df640b105263fc7d3dd22bd8a340a"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/patches/fast_livo2_stage_a.patch",
+      "file": "sources/21_fast_livo2_stage_a.patch",
+      "sha256": "8dc20b4ef91133cab3f6e9dc6f6bdbdda67a75d1deefa80ccfd233c4b1ce1e09"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/analyze_baseline.py",
+      "file": "sources/22_analyze_baseline.py",
+      "sha256": "f518235429fa56e77b7cac2b747e26bbb0e0370a5623e524ce68300014088d5a"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/audit_bag.py",
+      "file": "sources/23_audit_bag.py",
+      "sha256": "5cf6eb8e190da16e964638e1276a5a41ae40526b10a6a5cbd593bd44284f03ec"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/backend/analyze_motion.py",
+      "file": "sources/24_analyze_motion.py",
+      "sha256": "76ee1b2e67afeae9d1eb621f5bb5b47b1beb4f9a5d2119a1e1bdc96aca7a8a27"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/backend/audit_build.py",
+      "file": "sources/25_audit_build.py",
+      "sha256": "190f298bc8e79540feb29120126b8e6095329233083b7a82360c196d5b69c80b"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/backend/monitor.py",
+      "file": "sources/26_monitor.py",
+      "sha256": "b4e78d322d0be7fad097d3fd9512a7cdd2d4e8358e53359bad7434473f69737d"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/backend/run_checks.py",
+      "file": "sources/27_run_checks.py",
+      "sha256": "fc03502c8941e866d77cf80aa768d9c90e3c609e202cd2f87765da71e29c45f3"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/backend/session.py",
+      "file": "sources/28_session.py",
+      "sha256": "d17dac6575abca3660a19f69de73d09f13ea88c8a9f9219cff33b90271b8c1a4"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/backend/validate_motion.py",
+      "file": "sources/29_validate_motion.py",
+      "sha256": "f84a857370a6d26fb043827dac4b4093a459ff2f61c0ffa30b4d07554093ebcb"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/check_patch.py",
+      "file": "sources/30_check_patch.py",
+      "sha256": "56788355ac2569900d611aac70a12b228dbb856fdba461d54c44e492ec37fc6c"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/dds_smoke.py",
+      "file": "sources/31_dds_smoke.py",
+      "sha256": "096d5f628e5ac1f077329f5db970026e9ee5912b16d688707229b3e842d754d7"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/fetch_sources.py",
+      "file": "sources/32_fetch_sources.py",
+      "sha256": "ce7848713cab12d9c2edd0c4a2d81db9206795e6a0f7423bb095d72542d5d502"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/live_monitor.py",
+      "file": "sources/33_live_monitor.py",
+      "sha256": "bfa293810514fbe9dc675b7c464e5c1fc5e772a3eb4eee2a756701465a920f75"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/localizer/compatibility.py",
+      "file": "sources/34_compatibility.py",
+      "sha256": "598aea625127c5678c22d171ee12be80c2e2532af08514c0bc52422cd4909b2b"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/localizer/monitor.py",
+      "file": "sources/35_monitor.py",
+      "sha256": "9460ebbfadda56b61b415dea664535f1a76fb3d2453008f8d7420e23da6b7058"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/localizer/run_checks.py",
+      "file": "sources/36_run_checks.py",
+      "sha256": "ca48a35f9df50befd26ccb012073494ae60a3d559fa900820249b6780ce89418"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/localizer/session.py",
+      "file": "sources/37_session.py",
+      "sha256": "2b10c03437c63b1abe49841760634ba1a2e9d4a9b81d0052d4e895ccd10fcf1c"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/localizer/validate_motion.py",
+      "file": "sources/38_validate_motion.py",
+      "sha256": "6bdffb2153cbfbc389597d919ca99aa4034b4385af5b4946baeb31c35897ada9"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/make_replay_view.py",
+      "file": "sources/39_make_replay_view.py",
+      "sha256": "3d8f9ac70b0accc144f00e4b5be535c8bd50c7eb71e23953561e01ea119e60f0"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/make_share_video.py",
+      "file": "sources/40_make_share_video.py",
+      "sha256": "7a1a3149f54bac47e31f82e6cb9e84c8bf5e42af647733a9608e7fd2edea7486"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/online_session.py",
+      "file": "sources/41_online_session.py",
+      "sha256": "75fedc7bbba8a73ddb43554f63e9d3d759721eee085dd2dcba25b379cb506758"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/record_session.py",
+      "file": "sources/42_record_session.py",
+      "sha256": "ac1ddec549581cd713f735b80b319b0a971bac3810739a72b013f332b2744b1a"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/record_worker.py",
+      "file": "sources/43_record_worker.py",
+      "sha256": "6ed33b06017e295477b6ff7a975221a607a377777a05f6e623bca7071d65571b"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/relocalization/build_kiss.py",
+      "file": "sources/44_build_kiss.py",
+      "sha256": "26f9480a3e80c0a6df39b147223dc7246ddd44502e545aafc2d5ee214e549d51"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/render_demo.py",
+      "file": "sources/45_render_demo.py",
+      "sha256": "b06585f8b9cb91345c4dd689fe91c650294f88c97eb2067087872eb65f52b2f7"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/tags/analyze_fullbag.py",
+      "file": "sources/46_analyze_fullbag.py",
+      "sha256": "5cf477fa4a28f02d812a462663478d6998a0e496ab1748c4bbe5a7db2370a1f1"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/tags/assess_landmark.py",
+      "file": "sources/47_assess_landmark.py",
+      "sha256": "5e0f979e4f0261162ad918ef52eb0fb26d426a6fedab9fb7847ff837036074a7"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/tags/audit_bag.py",
+      "file": "sources/48_audit_bag.py",
+      "sha256": "718968ff508d0f5722d8d981ac99731f2ed4c348294ebe5679f121fe8e3e23dc"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/tags/extract_bag.py",
+      "file": "sources/49_extract_bag.py",
+      "sha256": "c66cc4511e18f9537a2f0af75f08f6c0a51d84368b2b5821e34c0e7ecc419dd7"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/tags/run_checks.py",
+      "file": "sources/50_run_checks.py",
+      "sha256": "ebf7ee23c06d50cada3388b24c69b896bb21cb49a05f51d838957bb2a54a7287"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/tags/session.py",
+      "file": "sources/51_session.py",
+      "sha256": "e7cbeba0fd3dcb303d7ac71420554a09258f72066d56651bae84da0fd91b4486"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/test_timeshare_writer.py",
+      "file": "sources/52_test_timeshare_writer.py",
+      "sha256": "449bfe69c76197d08b7e6b8985d908f33d83195038fcecffae3b83ace6e543bc"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/validate_live.py",
+      "file": "sources/53_validate_live.py",
+      "sha256": "9bb04921287f8d8bc66fef20f7449902dbca4d80f1ebdd5e74b1e4da034b5a16"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/record_fast_livo2.sh",
+      "file": "sources/54_record_fast_livo2.sh",
+      "sha256": "08bb2c7cbf7b70230e2705fa5fe9776bbe6f854846e606a9d7337429c9f0c673"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/ws_camera/install/hik_camera_trigger_driver/share/hik_camera_trigger_driver/config/camera_info.yaml",
+      "file": "sources/55_camera_info.yaml",
+      "sha256": "3b8536bf5331cc7a07f98751dfa322c7c1f3f7fdc08a5e91272030735f475932"
+    }
+  ],
+  "attached_session": {
+    "guardian": {
+      "pid": 19431,
+      "start_ticks": 3342344,
+      "ppid": 19429,
+      "state": "S",
+      "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+    },
+    "owner": null,
+    "owned": [],
+    "state": "RUNNING",
+    "synthetic": true,
+    "components": {
+      "writer": {
+        "argv": [
+          "synthetic",
+          "timeshare_path:=/home/lab307/ranger_nav/docs/fast_livo2_evidence/recording_readiness_20261029/test_ctrl_c_finalizes_and_keeps_external_preview-u6b9ndw1/assets/timeshare"
+        ]
+      },
+      "lidar": {
+        "argv": [
+          "synthetic",
+          "user_config_path:=/home/lab307/ranger_nav/config/fast_livo2/mid360s_live.json"
+        ]
+      },
+      "camera": {
+        "argv": [
+          "synthetic",
+          "--params-file",
+          "/home/lab307/ranger_nav/config/fast_livo2/camera_live.yaml"
+        ]
+      },
+      "frontend": {
+        "argv": [
+          "synthetic",
+          "--params-file",
+          "/home/lab307/ranger_nav/config/fast_livo2/ranger_mid360s_hik_trial.yaml"
+        ]
+      }
+    }
+  }
+}

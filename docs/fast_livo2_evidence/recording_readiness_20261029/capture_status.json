@@ -1,0 +1,89 @@
+{
+  "live": false,
+  "session": {
+    "run_directory": "/home/lab307/ranger_nav/.runtime/sessions/fast_livo_record/run-rfj4tpbp",
+    "guardian": {
+      "pid": 17884,
+      "start_ticks": 3297487,
+      "ppid": 17601,
+      "state": "R",
+      "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+    },
+    "owner": {
+      "pid": 17930,
+      "start_ticks": 3297528,
+      "ppid": 17884,
+      "state": "R",
+      "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+    },
+    "state": "FAILED",
+    "reason": "RuntimeError: startup readiness timeout; scheduler exited 2; guardian cleanup",
+    "owned": [],
+    "components": {
+      "probe": {
+        "state": "READY",
+        "process": {
+          "pid": 17931,
+          "start_ticks": 3297529,
+          "ppid": 17930,
+          "state": "R",
+          "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+        },
+        "argv": [
+          "python3",
+          "/home/lab307/ranger_nav/scripts/fast_livo2/live_monitor.py"
+        ]
+      },
+      "lidar": {
+        "state": "STARTING",
+        "process": {
+          "pid": 17943,
+          "start_ticks": 3297751,
+          "ppid": 17930,
+          "state": "R",
+          "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+        },
+        "argv": [
+          "/home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/lib/livox_ros_driver2/livox_ros_driver2_node",
+          "--ros-args",
+          "-p",
+          "xfer_format:=0",
+          "-p",
+          "multi_topic:=0",
+          "-p",
+          "data_src:=0",
+          "-p",
+          "publish_freq:=10.0",
+          "-p",
+          "output_data_type:=0",
+          "-p",
+          "frame_id:=livox_frame",
+          "-p",
+          "user_config_path:=/home/lab307/ranger_nav/config/fast_livo2/mid360s_live.json",
+          "-p",
+          "cmdline_input_bd_code:=livox0000000001",
+          "-r",
+          "__node:=livox_lidar_publisher"
+        ]
+      },
+      "writer": {
+        "state": "WAITING"
+      },
+      "camera": {
+        "state": "WAITING"
+      },
+      "frontend": {
+        "state": "WAITING"
+      },
+      "foxglove": {
+        "state": "WAITING"
+      },
+      "capture": {
+        "state": "WAITING"
+      }
+    },
+    "updated_monotonic": 33107.498647764,
+    "guardian_cleanup_complete": true
+  },
+  "capture": {}
+}

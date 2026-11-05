@@ -21,6 +21,7 @@
 // measurable in the logs.
 
 #include <rclcpp/rclcpp.hpp>
+#include <rmw/rmw.h>
 #include <sensor_msgs/msg/point_cloud2.hpp>
 
 #include <cinttypes>
@@ -30,6 +31,9 @@
 #include <cerrno>
 #include <deque>
 #include <fstream>
+#include <iomanip>
+#include <sstream>
+#include <stdexcept>
 #include <string>
 
 #include <fcntl.h>
@@ -66,6 +70,13 @@ public:
       this->declare_parameter<int>("expected_period_ms", 100);
     history_size_ = this->declare_parameter<int>("history_size", 120);
     csv_path_ = this->declare_parameter<std::string>("csv_path", "");
+    const auto reliability = this->declare_parameter<std::string>("lidar_reliability", "reliable");
+    const auto depth = this->declare_parameter<int>("lidar_queue_depth", 5);
+    if ((reliability != "reliable" && reliability != "best_effort") || depth < 1 || depth > 100 ||
+        expected_period_ms_ < 1 || history_size_ < 1 || history_size_ > 10000) {
+      throw std::invalid_argument("invalid writer QoS/limits: lidar_reliability must be reliable or "
+        "best_effort; lidar_queue_depth 1..100; expected_period_ms > 0; history_size 1..10000");
+    }
 
     std::string path =
       this->declare_parameter<std::string>("timeshare_path", "");
@@ -82,22 +93,45 @@ public:
     if (!csv_path_.empty()) {
       csv_.open(csv_path_, std::ios::out | std::ios::trunc);
       if (csv_.is_open()) {
-        csv_ << "seq,scan_start_ns,arrival_ns,delta_stamp_ms,delta_arr_ms\n";
+        csv_ << "seq,scan_start_ns,arrival_ns,delta_stamp_ms,delta_arr_ms,callback_system_ns,"
+                "dds_source_ns,dds_received_ns,publication_sequence_number,publisher_gid_hex,"
+                "dds_lost_total\n";
       }
     }
 
-    rclcpp::QoS qos(rclcpp::KeepLast(5));
-    qos.best_effort();
-    sub_ = this->create_subscription<sensor_msgs::msg::PointCloud2>(
-      topic_, qos,
-      [this](sensor_msgs::msg::PointCloud2::ConstSharedPtr msg) {
-        onScan(std::move(msg));
-      });
+    rclcpp::QoS qos{rclcpp::KeepLast(static_cast<size_t>(depth))};
+    if (reliability == "reliable") {qos.reliable();} else {qos.best_effort();}
+    rclcpp::SubscriptionOptions subscription_options;
+    subscription_options.event_callbacks.message_lost_callback = [this](rclcpp::QOSMessageLostInfo & info) {
+        dds_lost_total_ = info.total_count;
+        RCLCPP_WARN(this->get_logger(), "DDS message_lost: total=%zu change=%zu; not all loss paths are reported",
+          info.total_count, info.total_count_change);
+      };
+    subscription_options.event_callbacks.incompatible_qos_callback = [this](rclcpp::QOSRequestedIncompatibleQoSInfo & info) {
+        RCLCPP_ERROR(this->get_logger(), "DDS incompatible QoS: total=%d last_policy=%d; no automatic fallback",
+          info.total_count, static_cast<int>(info.last_policy_kind));
+      };
+    auto callback = [this](sensor_msgs::msg::PointCloud2::ConstSharedPtr msg, const rclcpp::MessageInfo & info) {
+        onScan(std::move(msg), info);
+      };
+    try {
+      sub_ = this->create_subscription<sensor_msgs::msg::PointCloud2>(topic_, qos, callback, subscription_options);
+    } catch (const rclcpp::UnsupportedEventTypeException & error) {
+      events_available_ = false;
+      RCLCPP_WARN(this->get_logger(), "DDS event diagnostics unavailable: %s; QoS unchanged", error.what());
+      sub_ = this->create_subscription<sensor_msgs::msg::PointCloud2>(topic_, qos, callback);
+    }
 
     RCLCPP_INFO(
       this->get_logger(),
       "timeshare_writer ready: topic=%s file=%s (expected period %d ms)",
       topic_.c_str(), path.c_str(), expected_period_ms_);
+    const auto actual = sub_->get_actual_qos().get_rmw_qos_profile();
+    RCLCPP_INFO(this->get_logger(), "writer QoS: reliability=%s actual=%d depth=%zu rmw=%s; "
+      "CSV v2: arrival_ns is steady; callback_system_ns is host system; DDS times are middleware "
+      "metadata, not exposure times; unsupported timestamps/sequence are empty",
+      reliability.c_str(), static_cast<int>(actual.reliability), actual.depth,
+      rmw_get_implementation_identifier());
   }
 
   ~TimeshareWriter() override
@@ -161,9 +195,12 @@ private:
     return true;
   }
 
-  void onScan(const sensor_msgs::msg::PointCloud2::ConstSharedPtr & msg)
+  void onScan(const sensor_msgs::msg::PointCloud2::ConstSharedPtr & msg, const rclcpp::MessageInfo & info)
   {
     const int64_t now = steadyNs();
+    const auto system_ns = std::chrono::duration_cast<std::chrono::nanoseconds>(
+      std::chrono::system_clock::now().time_since_epoch()).count();
+    const auto & metadata = info.get_rmw_message_info();
     // Integer-nanosecond extraction; rclcpp::Time keeps int64 ns internally,
     // no float rounding is involved.
     const int64_t stamp_ns =
@@ -218,7 +255,21 @@ private:
 
     if (csv_.is_open()) {
       csv_ << seq_ << ',' << stamp_ns << ',' << now << ','
-           << delta_stamp_ms << ',' << delta_arr_ms << '\n';
+           << delta_stamp_ms << ',' << delta_arr_ms << ',' << system_ns << ',';
+      if (metadata.source_timestamp > 0) {csv_ << metadata.source_timestamp;}
+      csv_ << ',';
+      if (metadata.received_timestamp > 0) {csv_ << metadata.received_timestamp;}
+      csv_ << ',';
+      if (metadata.publication_sequence_number != RMW_MESSAGE_INFO_SEQUENCE_NUMBER_UNSUPPORTED) {
+        csv_ << metadata.publication_sequence_number;
+      }
+      std::ostringstream gid;
+      for (auto byte : metadata.publisher_gid.data) {
+        gid << std::hex << std::setw(2) << std::setfill('0') << static_cast<unsigned>(byte);
+      }
+      csv_ << ',' << gid.str() << ',';
+      if (events_available_) {csv_ << dds_lost_total_;}
+      csv_ << '\n';
       csv_.flush();
     }
 
@@ -265,6 +316,8 @@ private:
   unsigned long long regressions_{0};
   unsigned long long stamp_gaps_{0};
   unsigned long long arrival_gaps_{0};
+  size_t dds_lost_total_{0};
+  bool events_available_{true};
   int64_t last_summary_ns_{0};
   std::deque<std::pair<int64_t, int64_t>> history_;
   std::ofstream csv_;
@@ -275,7 +328,13 @@ private:
 int main(int argc, char ** argv)
 {
   rclcpp::init(argc, argv);
-  rclcpp::spin(std::make_shared<TimeshareWriter>(rclcpp::NodeOptions()));
+  try {
+    rclcpp::spin(std::make_shared<TimeshareWriter>(rclcpp::NodeOptions()));
+  } catch (const std::exception & error) {
+    fprintf(stderr, "timeshare_writer error: %s\n", error.what());
+    rclcpp::shutdown();
+    return 2;
+  }
   rclcpp::shutdown();
   return 0;
 }

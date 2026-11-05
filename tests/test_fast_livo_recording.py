@@ -10,11 +10,13 @@ import sys
 import tempfile
 import time
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'scripts/fast_livo2'))
 sys.path.insert(0, str(ROOT/'scripts'))
-from record_session import TOPICS, quality_report, recorder_command, sync_summary
+from record_session import (TOPICS, check_lidar_host_address, input_problems,
+                            quality_report, recorder_command, sync_summary)
 from session_manager import atomic_json, identity
 
 
@@ -30,7 +32,11 @@ def publish(folder):
             for name, cls in zip(TOPICS, classes)}
     def tick():
         now = node.get_clock().now().nanoseconds
+        omit_file = folder/'omit_topics.json'
+        omitted = json.loads(omit_file.read_text()) if omit_file.exists() else []
         for (name, pub), cls in zip(pubs.items(), classes):
+            if name in omitted:
+                continue
             msg = cls()
             msg.header.stamp.sec, msg.header.stamp.nanosec = divmod(now, 10**9)
             msg.header.frame_id = 'livox_frame'
@@ -69,6 +75,59 @@ def wait_until(predicate, timeout=30):
 
 
 class CaptureUnit(unittest.TestCase):
+    def test_lidar_bind_address_missing_is_rejected_without_device_access(self):
+        interfaces = [{'addr_info': [{'family': 'inet', 'local': '192.168.3.18'}]}]
+        with patch('record_session.subprocess.check_output', return_value=json.dumps(interfaces)) as read:
+            with self.assertRaisesRegex(RuntimeError, '192.168.1.50.*192.168.3.18.*未启动驱动或录包'):
+                check_lidar_host_address({'FAST_LIVO_LIDAR_CONFIG': str(ROOT/'config/fast_livo2/mid360s_live.json')})
+            read.assert_called_once_with(['ip', '-j', '-4', 'address', 'show'], text=True)
+
+    def test_present_bind_address_does_not_claim_sensor_is_ready(self):
+        interfaces = [{'addr_info': [{'family': 'inet', 'local': '192.168.1.50'}]}]
+        with patch('record_session.subprocess.check_output', return_value=json.dumps(interfaces)):
+            check_lidar_host_address({'FAST_LIVO_LIDAR_CONFIG': str(ROOT/'config/fast_livo2/mid360s_live.json')})
+        missing = input_problems(TOPICS, {}, {})
+        self.assertEqual(len(missing), len(TOPICS))
+        self.assertTrue(all('无发布者' in problem for problem in missing))
+
+    def test_input_diagnostics_distinguish_discovery_from_live_data(self):
+        topics = {'/missing': 'T', '/duplicate': 'T', '/type': 'T', '/qos': 'T', '/silent': 'T', '/healthy': 'T'}
+        good = {'type': 'T', 'reliability': 'RELIABLE'}
+        graph = {'/duplicate': [good, good], '/type': [dict(good, type='Wrong')],
+                 '/qos': [dict(good, reliability='BEST_EFFORT')], '/silent': [good], '/healthy': [good]}
+        self.assertEqual(input_problems(topics, graph, {'/healthy': 1}),
+                         ['/missing 无发布者', '/duplicate 存在多个发布者', '/type 消息类型不匹配',
+                          '/qos QoS 不是 RELIABLE', '/silent 有发布者但未收到数据'])
+
+    def missing_stage(self, stage):
+        with tempfile.TemporaryDirectory() as tmp:
+            output = Path(tmp)/'capture'
+            env = dict(os.environ, RANGER_CAPTURE_SESSION_ROOT=str(Path(tmp)/'sessions'), PYTHONDONTWRITEBYTECODE='1')
+            result = subprocess.run([sys.executable, __file__, '--fake-missing', stage, '--execute',
+                                     '--start-sensors', '--visualization', 'none', '--output', str(output)],
+                                    env=env, text=True, capture_output=True, timeout=12)
+            self.assertEqual(result.returncode, 2, result.stdout+result.stderr)
+            self.assertIn('尚未录制', result.stdout)
+            self.assertIn('CAPTURE WAITING', result.stdout)
+            self.assertIn('SESSION ERROR: RuntimeError: startup readiness timeout', result.stderr)
+            self.assertIn(stage+'(STARTING', result.stderr)
+            self.assertIn('CAPTURE ERROR', result.stderr)
+            self.assertNotIn('CAPTURE RECORDING', result.stdout)
+            self.assertFalse((output/'raw').exists())
+            self.assertFalse((output/'CAPTURE_COMPLETE').exists())
+            state = json.loads((output/'result.json').read_text())['session_state']
+            self.assertEqual(state['owned'], [])
+            self.assertTrue(state['guardian_cleanup_complete'])
+
+    def test_missing_lidar_reports_error_and_never_records(self):
+        self.missing_stage('lidar')
+
+    def test_missing_camera_reports_error_and_never_records(self):
+        self.missing_stage('camera')
+
+    def test_missing_frontend_reports_error_and_never_records(self):
+        self.missing_stage('frontend')
+
     def test_auto_visualization_for_remote_and_desktop(self):
         with tempfile.TemporaryDirectory() as tmp:
             for display, expected in [('', 'foxglove'), (':0', 'rviz')]:
@@ -112,6 +171,9 @@ class CaptureUnit(unittest.TestCase):
         self.assertIn('rviz', names)
         self.assertIn('foxglove', names)
         self.assertFalse({'base', 'navigation', 'bridge'} & set(names))
+        writer = next(c['argv'] for c in plan['components'] if c['name']=='writer')
+        self.assertIn('lidar_reliability:=reliable', writer)
+        self.assertIn('lidar_queue_depth:=5', writer)
 
     def test_validation_and_sync_evidence(self):
         report = {'topics': {t: {'type': kind, 'count': 10, 'nonincreasing': 0} for t, kind in TOPICS.items()},
@@ -193,6 +255,15 @@ class CaptureROS(unittest.TestCase):
         self.assertEqual(result['quality']['data_checks'], 'PASS')
         self.assertTrue((output/'CAPTURE_COMPLETE').exists())
         self.assertTrue((output/'session_logs/sync/camera_sync.csv').exists())
+        subscribers = json.loads((output/'subscriptions_before.json').read_text())
+        self.assertTrue(any(e['node']=='ranger_fast_livo_record_preflight' and
+                            e['reliability']=='RELIABLE' for e in subscribers['/livox/lidar']))
+        sources = json.loads((output/'manifest.json').read_text())['source_files']
+        for suffix in ('timeshare_writer/src/timeshare_writer_node.cpp',
+                       'timeshare_writer/lib/timeshare_writer/timeshare_writer_node',
+                       'fast_livo/lib/fast_livo/fastlivo_mapping'):
+            entry = next(e for e in sources if e['source'].endswith(suffix))
+            self.assertEqual((output/entry['file']).read_bytes(), Path(entry['source']).read_bytes())
         self.assertFalse(result['session_state']['owned'])
         self.assertIsNone(self.source.poll())
         overwrite = subprocess.run(['bash', str(ROOT/'scripts/record_fast_livo2.sh'), '--execute', '--attach',
@@ -257,9 +328,58 @@ class CaptureROS(unittest.TestCase):
         self.assertFalse(json.loads((output/'result.json').read_text())['capture_complete'])
         self.assertIsNone(self.source.poll())
 
+    def test_camera_publisher_without_data_is_reported_before_recording(self):
+        atomic_json(self.folder/'assets/omit_topics.json', ['/front/image_sync'])
+        p, output = self.record(2)
+        self.assertEqual(p.wait(timeout=35), 2)
+        result = json.loads((output/'result.json').read_text())
+        self.assertFalse(result['capture_complete'])
+        self.assertIn('/front/image_sync 有发布者但未收到数据', result['recorder_error'])
+        self.assertIn('/front/image_sync 有发布者但未收到数据', (self.folder/'entry.log').read_text())
+        self.assertFalse((output/'raw').exists())
+        self.assertFalse((output/'CAPTURE_COMPLETE').exists())
+        self.assertIsNone(self.source.poll())
+
+    def test_frontend_stream_loss_reports_topic_and_stops(self):
+        p, output = self.record(60)
+        self.ready(p, output)
+        atomic_json(self.folder/'assets/omit_topics.json', ['/fast_livo/odometry'])
+        self.assertEqual(p.wait(timeout=20), 2)
+        result = json.loads((output/'result.json').read_text())
+        self.assertFalse(result['capture_complete'])
+        self.assertIn('stalled for over 2 seconds: /fast_livo/odometry', result['recorder_error'])
+        self.assertIn('stalled for over 2 seconds: /fast_livo/odometry', (self.folder/'entry.log').read_text())
+        self.assertFalse((output/'CAPTURE_COMPLETE').exists())
+        self.assertEqual(result['session_state']['owned'], [])
+        self.assertIsNone(self.source.poll())
+
 
 if __name__ == '__main__':
     if len(sys.argv)>1 and sys.argv[1] == '--publish':publish(Path(sys.argv[2]))
+    elif len(sys.argv)>1 and sys.argv[1] == '--fake-missing':
+        stage = sys.argv[2]
+        del sys.argv[1:3]
+        import record_session
+        from session_manager import Component, run_guarded
+        sleep = [sys.executable, '-c', 'import time; time.sleep(30)']
+        def missing_specs(cfg, visualization='none', port=8765):
+            return [Component('probe', sleep),
+                    Component('lidar', sleep, depends=('probe',), ready_key='lidar'),
+                    Component('camera', sleep, depends=('lidar',), ready_key='camera'),
+                    Component('frontend', sleep, depends=('camera',), ready_key='frontend')]
+        original_health = record_session.CaptureHealth.__call__
+        def missing_health(self):
+            original_health(self)
+            return {name: name != stage for name in ('probe_live', 'lidar', 'camera', 'frontend')}
+        def short_guard(*args, **kwargs):
+            kwargs.update(startup_timeout=.6, cleanup_grace=.2)
+            return run_guarded(*args, **kwargs)
+        record_session.specs = missing_specs
+        record_session.CaptureHealth.__call__ = missing_health
+        record_session.run_guarded = short_guard
+        record_session.check_sensor_processes = lambda: None
+        record_session.check_lidar_host_address = lambda cfg: None
+        raise SystemExit(record_session.main())
     elif len(sys.argv)>1 and sys.argv[1] == '--fake-owned':
         sys.argv.pop(1)
         import record_session

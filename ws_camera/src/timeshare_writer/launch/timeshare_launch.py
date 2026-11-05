@@ -21,6 +21,8 @@ def generate_launch_description():
             description="Per-scan writer log CSV path"),
         DeclareLaunchArgument("timeshare_path", default_value="",
                               description="Per-session shared timestamp file"),
+        DeclareLaunchArgument("lidar_reliability", default_value="reliable",
+                              description="reliable or best_effort; no automatic fallback"),
         Node(
             package="timeshare_writer",
             executable="timeshare_writer_node",
@@ -31,6 +33,7 @@ def generate_launch_description():
                 {"csv_path": LaunchConfiguration("csv")},
                 {"timeshare_path": LaunchConfiguration("timeshare_path")},
                 {"expected_period_ms": 100},
+                {"lidar_reliability": LaunchConfiguration("lidar_reliability")},
             ],
         ),
     ])

@@ -11,6 +11,7 @@ import os
 from pathlib import Path
 import signal
 import subprocess
+import sys
 import tempfile
 import time
 
@@ -339,13 +340,17 @@ def _schedule(run, state, components, health_factory, timeout, fail_on_loss, los
                 if fail_on_loss and time.monotonic()-lost_since >= loss_grace:
                     raise RuntimeError('critical health lost; stopping session, fresh start required')
             elif time.monotonic()-started > timeout:
-                raise RuntimeError('startup readiness timeout')
+                pending = [f'{c.name}({state["components"][c.name]["state"]}, health={c.ready_key})'
+                           for c in components if c.critical and not ready.get(c.name, False)]
+                raise RuntimeError('startup readiness timeout; not ready: '+', '.join(pending))
             save()
             time.sleep(.1)
     except Exception as exc:
         code = 2
         state['reason'] = f'{type(exc).__name__}: {exc}'
         event('failure', reason=state['reason'])
+        print('SESSION ERROR: '+state['reason']+'; logs: '+str(run)
+              +'; stopping owned processes', file=sys.stderr, flush=True)
     finally:
         state['state'] = 'STOPPING'; save()
         leftovers = cleanup_tree(os.getpid(), records.values(), grace)

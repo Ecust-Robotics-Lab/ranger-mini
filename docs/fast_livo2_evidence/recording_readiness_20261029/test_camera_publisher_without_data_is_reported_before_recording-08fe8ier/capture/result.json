@@ -1,0 +1,70 @@
+{
+  "exit": null,
+  "forced": false,
+  "requested_seconds": 2.0,
+  "error": "session or recorder failed; preserved all partial data",
+  "observed_messages": {
+    "/livox/lidar": 241,
+    "/livox/imu": 240,
+    "/front/image_sync": 0,
+    "/front/image": 240,
+    "/front/camera_info": 240,
+    "/fast_livo/odometry": 240
+  },
+  "recorder_error": "输入未就绪：/front/image_sync 有发布者但未收到数据",
+  "session_exit": 2,
+  "session_state": {
+    "run_directory": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/recording_readiness_20261029/test_camera_publisher_without_data_is_reported_before_recording-08fe8ier/sessions/fast_livo_record/run-6c3by41o",
+    "guardian": {
+      "pid": 20178,
+      "start_ticks": 3347076,
+      "ppid": 20165,
+      "state": "R",
+      "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+    },
+    "owner": {
+      "pid": 20224,
+      "start_ticks": 3347115,
+      "ppid": 20178,
+      "state": "R",
+      "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+    },
+    "state": "FAILED",
+    "reason": "RuntimeError: capture exited 2; no automatic restart; scheduler exited 2; guardian cleanup",
+    "owned": [],
+    "components": {
+      "capture": {
+        "state": "EXITED",
+        "process": {
+          "pid": 20225,
+          "start_ticks": 3347115,
+          "ppid": 20224,
+          "state": "R",
+          "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+        },
+        "argv": [
+          "/usr/bin/python3",
+          "/home/lab307/ranger_nav/scripts/fast_livo2/record_worker.py",
+          "--folder",
+          "/home/lab307/ranger_nav/docs/fast_livo2_evidence/recording_readiness_20261029/test_camera_publisher_without_data_is_reported_before_recording-08fe8ier/capture"
+        ],
+        "exit_code": 2
+      }
+    },
+    "updated_monotonic": 33483.540876877,
+    "guardian_cleanup_complete": true
+  },
+  "folder": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/recording_readiness_20261029/test_camera_publisher_without_data_is_reported_before_recording-08fe8ier/capture",
+  "capture_complete": false,
+  "sync": {
+    "available": true,
+    "source": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/recording_readiness_20261029/test_camera_publisher_without_data_is_reported_before_recording-08fe8ier/assets/camera_sync.csv",
+    "status_counts": {
+      "OK": 2
+    },
+    "hardware_frame_id_missing": 0,
+    "hardware_frame_id_nonincreasing": 0,
+    "scope": "entire sensor session; may include time outside this recording",
+    "physical_sync_proven": false
+  }
+}

@@ -9,7 +9,7 @@ import signal
 import subprocess
 import time
 
-from record_session import recorder_command
+from record_session import input_problems, recorder_command
 from session_manager import atomic_json, identity
 
 
@@ -49,6 +49,12 @@ def run(folder):
                          'gid': list(e.endpoint_gid), 'reliability': e.qos_profile.reliability.name,
                          'durability': e.qos_profile.durability.name}
                         for e in node.get_publishers_info_by_topic(topic)] for topic in topics}
+    def subscriptions():
+        return {topic: [{'node': e.node_name, 'namespace': e.node_namespace, 'type': e.topic_type,
+                         'gid': list(e.endpoint_gid), 'reliability': e.qos_profile.reliability.name,
+                         'durability': e.qos_profile.durability.name,
+                         'history': e.qos_profile.history.name, 'depth': e.qos_profile.depth}
+                        for e in node.get_subscriptions_info_by_topic(topic)] for topic in topics}
     def valid(g):
         return all(len(g[t]) == 1 and g[t][0]['type'] == kind and
                    g[t][0]['reliability'] == 'RELIABLE' for t, kind in topics.items())
@@ -60,8 +66,10 @@ def run(folder):
             before = graph()
             if valid(before) and all(counts.values()):break
         else:
-            raise RuntimeError('required topics missing, duplicate, incompatible, or no live data')
+            raise RuntimeError('输入未就绪：'+'；'.join(input_problems(topics, graph(), counts))
+                               if not stopping[0] else '录制启动已中止')
         atomic_json(folder/'graph_before.json', before)
+        atomic_json(folder/'subscriptions_before.json', subscriptions())
         command = recorder_command(folder, topics)
         atomic_json(folder/'record_command.json', command)
         log = (folder/'record.log').open('xb')
@@ -84,14 +92,16 @@ def run(folder):
             current = graph()
             if not valid(current) or any(current[t][0]['gid'] != before[t][0]['gid'] for t in topics):
                 raise RuntimeError('input publisher disappeared, changed, or became ambiguous')
-            if any(time.monotonic()-last_receipt.get(t, 0) > 2 for t in topics):
-                raise RuntimeError('required input stream stalled for over 2 seconds')
+            stalled = [t for t in topics if time.monotonic()-last_receipt.get(t, 0) > 2]
+            if stalled:
+                raise RuntimeError('required input stream stalled for over 2 seconds: '+', '.join(stalled))
             if shutil.disk_usage(folder).free < manifest['min_free_bytes']:
                 raise RuntimeError('disk free space below configured reserve')
         outcome['elapsed_seconds'] = time.monotonic()-started
         outcome['stopped_by_signal'] = stopping[0]
     except Exception as exc:
         outcome['error'] = str(exc)
+        print('CAPTURE ERROR：'+str(exc), flush=True)
     finally:
         atomic_json(folder/'recording.json', {'state': 'FINALIZING'})
         if child and child.poll() is None:

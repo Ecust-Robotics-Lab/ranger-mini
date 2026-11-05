@@ -7,11 +7,12 @@ add_definitions(-Wall -Werror)
 
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+find_package(rmw REQUIRED)
 find_package(sensor_msgs REQUIRED)
 
 add_executable(timeshare_writer_node src/timeshare_writer_node.cpp)
 target_compile_features(timeshare_writer_node PUBLIC cxx_std_17)
-ament_target_dependencies(timeshare_writer_node rclcpp sensor_msgs)
+ament_target_dependencies(timeshare_writer_node rclcpp rmw sensor_msgs)
 
 install(TARGETS timeshare_writer_node
   DESTINATION lib/${PROJECT_NAME})

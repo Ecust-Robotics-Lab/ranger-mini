@@ -1,0 +1,4 @@
+[INFO] [1793284899.116551283] [timeshare_writer]: timeshare_writer ready: topic=/synthetic_timeshare/p24001 file=/home/lab307/ranger_nav/docs/fast_livo2_evidence/sync_capture_diagnostics_20261029/test_incompatible_best_effort_publisher_has_no_silent_fallback-oqvuoezu/timeshare (expected period 100 ms)
+[INFO] [1793284899.116608472] [timeshare_writer]: writer QoS: reliability=reliable actual=1 depth=5 rmw=rmw_fastrtps_cpp; CSV v2: arrival_ns is steady; callback_system_ns is host system; DDS times are middleware metadata, not exposure times; unsupported timestamps/sequence are empty
+[ERROR] [1793284899.116696741] [timeshare_writer]: DDS incompatible QoS: total=1 last_policy=16; no automatic fallback
+[INFO] [1793284899.276154548] [rclcpp]: signal_handler(SIGINT/SIGTERM)

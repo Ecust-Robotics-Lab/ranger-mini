@@ -23,6 +23,7 @@ public:
   bool push(Scan::ConstSharedPtr cloud, double steady);
   std::vector<Pair> drain(double steady, size_t limit = 128);
   void clear();
+  bool contains(int64_t stamp) const {return entries_.count(stamp) != 0;}
   Json counters = Json::object();
   size_t size() const {
     return entries_.size();

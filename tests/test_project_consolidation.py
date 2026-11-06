@@ -40,7 +40,7 @@ class BackendRouting(unittest.TestCase):
     def test_routes_both_modes_to_correct_existing_entry(self):
         runner = module('mapping_session_test', ROOT/'scripts/mapping_session.py')
         for profile, expected in [('lightning.yaml', ('run_slam_online.sh', 'run_slam_offline.sh')),
-                                  ('fast_livo2_frontend.yaml', ('run_fast_livo2_live.sh', 'run_fast_livo2_replay.sh'))]:
+                                  ('fast_livo2_frontend.yaml', ('map_fast_livo2.sh', 'run_fast_livo2_replay.sh'))]:
             cfg = self.profile('config/profiles/'+profile)
             for mode, name in zip(('online', 'offline'), expected):
                 dry = runner.command(mode, cfg)

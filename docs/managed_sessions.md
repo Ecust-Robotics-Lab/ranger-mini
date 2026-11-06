@@ -4,6 +4,8 @@
 
 2026-10-27新增 [FAST三传感器录包](fast_livo2_recording.md)：独立 `fast_livo_record` 会话复用本管理器及设备资源锁。自行启动的设备随录包清理；接入已有 `fast_livo_live` 预览时仅清理录包进程，归档来源会话状态与日志。只读Foxglove Bridge是可选显示组件，不启动公共TF或控制。`RANGER_CAPTURE_SESSION_ROOT`仅用于明确的会话根目录覆盖；隔离合成测试仍同时指定独立ROS domain。
 
+2026-11-05新增[在线预建图](fast_livo2_online_mapping.md)：`fast_livo_mapping`会话复用资源锁、精确进程身份、监护清理，并在常规清理前调用有总时限的封存钩子。前端发布者保持存活，B封存/排空/导出后再停止组件。`Component.preflight_requires`可将外部占用检查与会话内部启动条件分开；未指定时沿用原行为。B是可降级组件，运行中失败不自动停止仍健康的采集和前端，但本次建图不能报告完成。该入口默认dry-run，专用录包入口的默认执行例外不扩展到它。
+
 ## 1. 定位与轮速如何按采样时刻组合
 
 公共桥接缓存最近 2 s 轮速位姿，最多 1000 条，使用整数纳秒索引。收到采样时刻为 t 的标准定位消息后：
@@ -60,7 +62,7 @@ bash scripts/field_session.sh --execute --control-authorized
 bash scripts/run_navigation.sh --execute --control-authorized
 ```
 
-新导航进程的门禁默认无运动许可；后续使能与目标操作仍遵守原逐次授权流程。程序不发送运动使能，也不自动恢复进程。雷达/可视化等不含底盘控制的会话只需 --execute；本批自动测试仅在隔离 domain 中使用合成传感器及不带底盘的配置。
+新导航进程的门禁默认无运动许可；后续使能与目标操作仍遵守原逐次授权流程。程序不发送运动使能，也不自动恢复进程。雷达/可视化等原有入口使用--execute；专用 `record_fast_livo2.sh` 已按2026-11-05用户指令默认执行并自行启动传感器，仅预演须显式--dry-run，已有预览须--attach，见[录包指南](fast_livo2_recording.md)。本批自动测试仅在隔离domain中使用合成传感器及不带底盘的配置。
 
 查看/停止本次会话：
 

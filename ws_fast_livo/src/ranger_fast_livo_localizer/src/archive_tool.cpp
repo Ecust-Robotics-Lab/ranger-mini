@@ -9,6 +9,13 @@ int main(int argc,char** argv) {
       std::string option=argv[k],value=argv[k+1];
       if(option=="--archive") root=value;
       else if(option=="--compatibility") c.declaration=value;
+      else if(option=="--identity-file") {
+        auto identity=read_json_bounded(value,1024*1024);
+        if(identity.at("schema_version")!=1)throw std::invalid_argument("unsupported identity schema");
+        c.sensor_configuration_sha256=identity.at("sensor_configuration_sha256");
+        c.time_contract_sha256=identity.at("time_contract_sha256");
+        c.frontend_sources_sha256=identity.at("frontend_sources_sha256");
+      }
       else if(option=="--index-output") index=value;
       else throw std::invalid_argument("unknown archive tool option");
     }

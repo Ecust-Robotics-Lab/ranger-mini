@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "sensor_configuration_sha256": "2f73c5f2475d4e48e29fa8ff36af2bfe627cdb13f8607ee95e15807201cd4346",
+  "time_contract_sha256": "849fa5e4b3713bcf49ef08211c187d7e4a840e51977bb2f2ecf30eb1e5b0472b",
+  "frontend_sources_sha256": "55feceb3ec5a48f6980bd86c4ce2fcfa7c48cc312c49c043683a585382e6582d",
+  "definitions": {
+    "sensor_configuration_sha256": {
+      "schema": 1,
+      "extrin_calib": {
+        "extrinsic_T": [
+          -0.011,
+          -0.02329,
+          0.04412
+        ],
+        "extrinsic_R": [
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0,
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ],
+        "Rcl": [
+          0.012996,
+          -0.999911,
+          0.003075,
+          0.367388,
+          0.001915,
+          -0.930066,
+          0.929977,
+          0.013217,
+          0.36738
+        ],
+        "Pcl": [
+          -0.003503,
+          -0.088245,
+          0.000141
+        ]
+      },
+      "camera": {
+        "width": 1280,
+        "height": 1024,
+        "scale": 0.5,
+        "fx": 1299.9988190926874,
+        "fy": 1299.8402206328024,
+        "cx": 640.2595320942488,
+        "cy": 484.9367557425784,
+        "k1": -0.08288339607839673,
+        "k2": 0.15032436811294939,
+        "p1": -0.0005625494644882011,
+        "p2": -0.00039491110944710704,
+        "k3": -0.08810366754215963
+      },
+      "preprocess": {
+        "point_filter_num": 3,
+        "filter_size_surf": 0.1,
+        "lidar_type": 100,
+        "scan_line": 6,
+        "blind": 0.5
+      },
+      "camera_driver": {
+        "/**": {
+          "ros__parameters": {
+            "camera_info_url": "package://hik_camera_trigger_driver/config/camera_info.yaml",
+            "camera_name": "front",
+            "frame_id": "front_optical_frame",
+            "camera_sn": "DB1216907",
+            "pixel_format": "",
+            "image_width": 1280,
+            "image_height": 1024,
+            "auto_adjust_resolution": true,
+            "strict_camera_profile": false,
+            "trigger_enable": true,
+            "trigger_source": "Line0",
+            "disable_exposure_auto": true,
+            "exposure_time": 20000.0,
+            "disable_gain_auto": true,
+            "gain": 10.0,
+            "sync_image_topic": "/front/image_sync",
+            "timeshare_path": "",
+            "timeshare_stale_ms": 300,
+            "frame_timeout_ms": 1500,
+            "image_node_num": 8,
+            "startup_frame_timeout_ms": 3000,
+            "timeout_recovery_threshold": 3,
+            "reconnect_interval_ms": 2000,
+            "open_settle_ms": 500,
+            "enable_auto_reconnect": true,
+            "reuse_camera_profile_on_reconnect": true,
+            "use_sensor_data_qos": false,
+            "qos_reliability": "reliable",
+            "qos_depth": 5
+          }
+        }
+      },
+      "lidar_driver": {
+        "lidar_summary_info": {
+          "lidar_type": 8
+        },
+        "Mid360s": {
+          "lidar_net_info": {
+            "cmd_data_port": 56100,
+            "push_msg_port": 56200,
+            "point_data_port": 56300,
+            "imu_data_port": 56400,
+            "log_data_port": 56500
+          },
+          "host_net_info": [
+            {
+              "host_ip": "192.168.1.50",
+              "cmd_data_port": 56101,
+              "push_msg_port": 56201,
+              "point_data_port": 56301,
+              "imu_data_port": 56401,
+              "log_data_port": 56501
+            }
+          ]
+        },
+        "lidar_configs": [
+          {
+            "ip": "192.168.1.101",
+            "pcl_data_type": 1,
+            "pattern_mode": 0,
+            "extrinsic_parameter": {
+              "roll": 0.0,
+              "pitch": 0.0,
+              "yaw": 0.0,
+              "x": 0,
+              "y": 0,
+              "z": 0
+            }
+          }
+        ]
+      }
+    },
+    "time_contract_sha256": {
+      "schema": 1,
+      "time_offset": {
+        "imu_time_offset": 0.0,
+        "img_time_offset": 0.1,
+        "exposure_time_init": 0.0,
+        "lidar_time_offset": 0.0
+      },
+      "pose": "VIO-corrected IMU",
+      "cloud": "same-stamp deskewed IMU interval",
+      "raw_header_rewritten": false
+    },
+    "frontend_sources_sha256": {
+      "schema": 1,
+      "binary_sha256": "83600c6f6781019466ff629f8fc8a1f820763004adc804dcbff2ad855a12900a",
+      "sources_lock_sha256": "8fb74d2eac073c645416fe5532ac902229c92df820f02d0bf43f57d9c1a2fd60",
+      "patch_sha256": "8dc20b4ef91133cab3f6e9dc6f6bdbdda67a75d1deefa80ccfd233c4b1ce1e09",
+      "online_io_patch_sha256": "7d0a48bf8717eca0a82c234f70c82dd95ab134981ee969c09684ff32ebf977e9"
+    }
+  },
+  "physical_sync_validated": false
+}

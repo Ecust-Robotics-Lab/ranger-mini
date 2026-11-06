@@ -18,7 +18,8 @@ def command(mode,cfg,extra=(),execute=False):
     if backend=='lightning':
         argv=['bash',str(ROOT/f'scripts/run_slam_{mode}.sh'),'--config',cfg['LIGHTNING_MAPPING_CONFIG']]
     elif backend=='fast_livo2':
-        argv=['bash',str(ROOT/('scripts/run_fast_livo2_live.sh' if mode=='online' else 'scripts/run_fast_livo2_replay.sh'))]
+        argv=['bash',str(ROOT/('scripts/map_fast_livo2.sh' if mode=='online' else 'scripts/run_fast_livo2_replay.sh'))]
+        if mode=='online':argv+=['--runtime-config',cfg['RANGER_RUNTIME_CONFIG']]
     else:raise ValueError('Unknown mapping backend: '+backend)
     return [*argv,*(['--execute'] if execute else []),*extra]
 

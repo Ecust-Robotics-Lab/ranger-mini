@@ -25,6 +25,17 @@ def specs(args):
         command += ['-p', 'archive_path:='+str(args.archive.resolve())]
     if args.compatibility:
         command += ['-p', 'compatibility_path:='+str(args.compatibility.resolve())]
+    if getattr(args, 'identity_file', None):
+        if args.compatibility:
+            raise ValueError('choose expected source identities or an offline compatibility declaration')
+        identity = json.loads(args.identity_file.read_text())
+        if identity.get('schema_version') != 1:
+            raise ValueError('unsupported source identity schema')
+        for name in ('sensor_configuration_sha256', 'time_contract_sha256', 'frontend_sources_sha256'):
+            value = identity[name]
+            if len(value) != 64 or any(c not in '0123456789abcdef' for c in value):
+                raise ValueError('invalid expected source identity: '+name)
+            command += ['-p', name+':='+value]
     if getattr(args, 'global_search', False):
         command += ['--params-file', str(ROOT/'config/fast_livo2/relocalizer.yaml')]
         if args.index:
@@ -64,6 +75,7 @@ def main():
     action.add_argument('--stop', action='store_true')
     p.add_argument('--archive', type=Path)
     p.add_argument('--compatibility', type=Path)
+    p.add_argument('--identity-file', type=Path, help='Expected frontend source identities; does not attest physical accuracy')
     p.add_argument('--offline-bridge', action='store_true')
     p.add_argument('--global-search', action='store_true', help='Explicit optional C2; no initial pose required')
     p.add_argument('--index', type=Path, help='Bound C2 index; omission builds an in-memory index')

@@ -20,7 +20,7 @@ def header(data):
     return sec*10**9+ns, data[16:16+length-1].decode()
 
 
-def audit(bag):
+def audit(bag, selected_topics=None):
     dbs = sorted(bag.glob('*.db3'))
     if len(dbs) != 1:
         raise ValueError('This audit requires one SQLite database')
@@ -29,6 +29,8 @@ def audit(bag):
         report = {'bag': str(bag.resolve()), 'topics': {}, 'physical_sync_proven': False}
         times = {}
         for topic_id, name, kind in topics:
+            if selected_topics is not None and name not in selected_topics:
+                continue
             values, frames, delays = [], set(), []
             # Read just the CDR header even for multi-megabyte images.
             for stamp, prefix in conn.execute('SELECT timestamp,substr(data,1,256) FROM messages WHERE topic_id=? ORDER BY timestamp,id', (topic_id,)):

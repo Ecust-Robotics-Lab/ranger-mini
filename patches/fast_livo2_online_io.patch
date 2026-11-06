@@ -1,0 +1,36 @@
+--- a/src/LIVMapper.cpp
++++ b/src/LIVMapper.cpp
+@@ -271,8 +271,8 @@
+ void LIVMapper::initializeSubscribersAndPublishers(rclcpp::Node::SharedPtr &node, image_transport::ImageTransport &it_)
+ {
+   image_transport::ImageTransport it(this->node);
+-  backend_cloud_pub = this->node->create_publisher<sensor_msgs::msg::PointCloud2>("/fast_livo/deskewed_imu", 10);
+-  backend_odom_pub = this->node->create_publisher<nav_msgs::msg::Odometry>("/fast_livo/odometry", 10);
++  backend_cloud_pub = this->node->create_publisher<sensor_msgs::msg::PointCloud2>("/fast_livo/deskewed_imu", 32);
++  backend_odom_pub = this->node->create_publisher<nav_msgs::msg::Odometry>("/fast_livo/odometry", 32);
+   if (p_pre->lidar_type == AVIA) {
+     sub_pcl = this->node->create_subscription<livox_ros_driver2::msg::CustomMsg>(lid_topic, rclcpp::QoS(20).reliable(), std::bind(&LIVMapper::livox_pcl_cbk, this, std::placeholders::_1));
+   } else {
+@@ -624,10 +624,12 @@
+ 
+ void LIVMapper::run(rclcpp::Node::SharedPtr &node) 
+ {
+-  rclcpp::Rate rate(5000);
++  rclcpp::Rate rate(500);
++  rclcpp::executors::SingleThreadedExecutor executor;
++  executor.add_node(this->node);
+   while (rclcpp::ok()) 
+   {
+-    rclcpp::spin_some(this->node);
++    executor.spin_some();
+     if (!sync_packages(LidarMeasures)) 
+     {
+       rate.sleep();
+@@ -641,6 +643,7 @@
+ 
+     stateEstimationAndMapping();
+   }
++  executor.remove_node(this->node);
+   savePCD();
+ }
+ 

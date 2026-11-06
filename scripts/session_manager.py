@@ -114,6 +114,9 @@ class Component:
     critical: bool = True
     start_requires: tuple = ()
     resource: str = ''
+    # None preserves legacy occupancy checks. Explicit tuples distinguish
+    # external preflight ownership from prerequisites created inside a session.
+    preflight_requires: tuple | None = None
 
 
 class JsonHealth:
@@ -185,7 +188,8 @@ def validate(components):
 
 
 def run_guarded(directory, components, health_factory=JsonHealth, startup_timeout=60.,
-                fail_on_health_loss=False, health_loss_grace=1., cleanup_grace=16.):
+                fail_on_health_loss=False, health_loss_grace=1., cleanup_grace=16.,
+                shutdown_hook=None, shutdown_timeout=0.):
     """Run in the foreground. Guardian survives scheduler death and reaps orphans.
 
     An unexpected guardian death delivers SIGTERM to the scheduler. Concurrent
@@ -234,7 +238,7 @@ def run_guarded(directory, components, health_factory=JsonHealth, startup_timeou
                 os._exit(2)
             subreaper()
             result = _schedule(run, state, components, health_factory, startup_timeout,
-                               fail_on_health_loss, health_loss_grace, cleanup_grace)
+                               fail_on_health_loss, health_loss_grace, cleanup_grace, shutdown_hook)
         finally:
             os._exit(result)
     stopping = [False]
@@ -250,7 +254,7 @@ def run_guarded(directory, components, health_factory=JsonHealth, startup_timeou
             pid, status = os.waitpid(owner, os.WNOHANG)
             if pid:
                 break
-            if stop_started[0] is not None and time.monotonic()-stop_started[0] > cleanup_grace+5.:
+            if stop_started[0] is not None and time.monotonic()-stop_started[0] > cleanup_grace+shutdown_timeout+5.:
                 notify(identity(owner), signal.SIGKILL)
             time.sleep(.05)
         code = os.waitstatus_to_exitcode(status)
@@ -272,7 +276,8 @@ def run_guarded(directory, components, health_factory=JsonHealth, startup_timeou
             handle.close()
 
 
-def _schedule(run, state, components, health_factory, timeout, fail_on_loss, loss_grace, grace):
+def _schedule(run, state, components, health_factory, timeout, fail_on_loss, loss_grace, grace,
+              shutdown_hook=None):
     stopping = [False]
     def request_stop(*_):
         stopping[0] = True
@@ -298,7 +303,8 @@ def _schedule(run, state, components, health_factory, timeout, fail_on_loss, los
         while not stopping[0]:
             checks = health()
             if not preflight_passed and checks.get('probe_live'):
-                occupied = sorted({key for c in components if c.critical for key in c.start_requires
+                occupied = sorted({key for c in components if c.critical
+                                   for key in (c.start_requires if c.preflight_requires is None else c.preflight_requires)
                                    if not checks.get(key, False)})
                 if occupied:
                     raise RuntimeError('preflight rejects occupied interface: '+', '.join(occupied))
@@ -353,6 +359,14 @@ def _schedule(run, state, components, health_factory, timeout, fail_on_loss, los
               +'; stopping owned processes', file=sys.stderr, flush=True)
     finally:
         state['state'] = 'STOPPING'; save()
+        if shutdown_hook is not None:
+            try:
+                shutdown_hook(run, state, records)
+            except Exception as exc:
+                code = 2
+                state['reason'] += '; shutdown: '+str(exc)
+                event('shutdown_failure', reason=str(exc))
+                save()
         leftovers = cleanup_tree(os.getpid(), records.values(), grace)
         for p in processes.values():
             try:

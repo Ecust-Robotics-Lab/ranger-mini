@@ -54,6 +54,7 @@ def create_view(source, output, seconds):
               'record_time':'original message header, only in this new bag',
               'header_or_point_timestamp_modified':False,'physical_sync_proven':False}
     (output.parent/'view_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
+    (output/'view_manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
     return manifest
 
 

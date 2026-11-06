@@ -12,6 +12,8 @@ C1 直接读取 `schema_version=1 / kind=stage_b_graph_archive`。读取器检�
 
 完整来源身份模式要求归档 provenance 与当前显式期望的 `sensor_configuration_sha256`、`time_contract_sha256`、`frontend_sources_sha256` 三项一致。当前 B 运动归档缺这些完整绑定，默认不能静默接受。可提供独立 `compatibility_path`：版本 1、`offline_experiment`、源 manifest SHA、证据文件的绝对路径/SHA、非空 limitations，且同步/绝对精度标志必须为 false。它不能覆盖已经指定的期望身份，不会补写原档或把当前配置冒充历史配置。
 
+2026-11-05统一在线建图的新归档提供这三项身份及`source_identity.json`中的构成。C1/C2受管入口与`archive_tool`新增`--identity-file ABS`以传入期望身份，与旧图`--compatibility`互斥。身份应来自当前查询前端实际配置和版本；匹配只证明配置/来源兼容，不证明物理同步或绝对精度。旧归档缺身份的处理规则保持。
+
 `archive_tool --archive ABS --compatibility ABS` 在新进程中执行上述加载。可加 `--index-output NEW_ABS_DIR`，以不可覆盖的原子提交写出派生索引身份、优化位姿、参数及哈希。内存三维 KD-tree 从归档优化位姿建立，运行不依赖派生索引文件。每个 map 实例拥有独立 LRU，切图不会按重复 ID 复用旧缓存。
 
 ## 私有服务与结果

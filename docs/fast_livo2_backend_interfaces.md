@@ -72,6 +72,8 @@ Pose3 噪声顺序为 **旋转 xyz、平移 xyz**，分别配置标准差，非 
 
 另外发布 raw_path、optimized_path 与 private health；不创建 TF broadcaster。路径最多约 2000 个显示点；完整轨迹在快照中。
 
+2026-11-05在线入口补充：`publish_map_view=true`时，独立显示线程发布`/fast_livo/backend/view/map`、`view/loops`和`view/status`，按冻结关键帧各自的X重建采样显示云。显示最多20万点、默认3秒周期、单次重建5秒预算，不修改完整归档；会话改变清空旧显示，旧代际结果不提交。health metrics另包含`sealed`、`worker_busy`、`processed_pairs`及最后入队/处理整数戳。
+
 适配器 `fast_livo_adapter` 计算 `T_map_base=T_map_imu×inverse(T_base_imu)`，使用既有 runtime 中的 xyz/rpy 和公共 `LocalizationEstimate` 五态。不做 latest-TF 查询；心跳保留位姿 stamp，错误、过期、断流和无效 pose 不产生 VALID。
 
 正常受管入口仅启动 monitor 和后端。显式 `--offline-bridge` 才增加适配器与公共桥接，强制模拟时间和 localhost；没有传感器/底盘/导航/速度节点。仍需调用者在同一隔离域提供合成 wheel。公共 TF 的唯一拥有者是原桥接。
@@ -83,6 +85,10 @@ Pose3 噪声顺序为 **旋转 xyz、平移 xyz**，分别配置标准差，非 
 ## 一致性导出与后续接口
 
 服务 `/fast_livo/backend/export_snapshot`：请求 `destination` 为不存在的绝对目录，父目录须存在；响应 success/reason/session_id/graph_version/manifest_path。
+
+在线停止使用新增`/fast_livo/backend/finalize_mapping`：请求明确`expected_session_id`、新绝对目标目录及1～180秒排空时限。先拒绝新戳，允许封存边界已有配对的另一半进入，再等待配对/工作队列及执行中的任务完成。最后入队戳必须已处理，无非法输入/容量丢失/缺对超时才导出成功。封存后前端发布者消失不重置此图；错误会话请求拒绝且不封存。导出长操作仍复用原快照机制；受管会话对整个封存/导出另设总时限，失败保留诊断资产。
+
+图事务提交的同因子目标检查现与原运动验收统一为`after <= before + 1e-6`。使用iSAM2完整回代估计，必要时最多三次强制重线性化/完整求解；仍增加或不有限则回滚。没有放宽几何、歧义、大修正确认或图目标验收门槛。
 
 先冻结图与因子、分片清单、候选日志字节前缀；释放图锁后进行长时间导出。复制并校验不可变 full.pcd/match.pcd/scan.cdr，流式逐帧用各自 `X_i` 构建 map.pcd，每点只变换一次。内存中只装一份完整分片，不积累完整全局云。
 

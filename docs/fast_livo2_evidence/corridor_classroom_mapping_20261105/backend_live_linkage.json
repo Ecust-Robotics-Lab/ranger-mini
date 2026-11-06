@@ -1,0 +1,22 @@
+{
+  "pid": 6139,
+  "argv": [
+    "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/backend_node",
+    "--ros-args",
+    "--params-file",
+    "/home/lab307/ranger_nav/config/fast_livo2/backend.yaml",
+    "-p",
+    "use_sim_time:=true",
+    "-p",
+    "data_root:=/home/lab307/ranger_nav/outputs/fast-livo-demo-20261105-corridor-classroom/backend_pcl/shards",
+    "-p",
+    "metadata_path:=/home/lab307/ranger_nav/outputs/fast-livo-demo-20261105-corridor-classroom/backend_pcl/metadata.json",
+    "-p",
+    "registration:=pcl_icp"
+  ],
+  "libraries": [
+    "/home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/libgtsam.so.4.2.0",
+    "/home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/libsmall_gicp.so",
+    "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/libranger_backend_core.so"
+  ]
+}

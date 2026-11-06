@@ -1,0 +1,30 @@
+{
+  "acknowledged_pairs": 3899,
+  "snapshot_uuid": "2c08461dbe605a9929d1d885b32d4ab7",
+  "graph_version": 414,
+  "keyframes": 306,
+  "loop_factors": 108,
+  "candidate_decisions": {
+    "high_residual": 26,
+    "accepted_and_optimized": 108,
+    "rejected_lower_ranked_candidate": 337,
+    "rejected_ambiguous_places": 55,
+    "low_overlap": 8
+  },
+  "graph_objective_increase_count": 1,
+  "graph_objective_increases": [
+    {
+      "i": 3,
+      "j": 299,
+      "before": 7.046691187341748,
+      "after": 7.047751047517642,
+      "increase": 0.0010598601758937676,
+      "relative_increase": 0.00015040536724493286
+    }
+  ],
+  "snapshot_files_checked": 922,
+  "snapshot_sha_mismatches": [],
+  "backend_validation_passed": false,
+  "failure": "Accepted graph objective increased",
+  "snapshot_retained_as_diagnostic_only": true
+}

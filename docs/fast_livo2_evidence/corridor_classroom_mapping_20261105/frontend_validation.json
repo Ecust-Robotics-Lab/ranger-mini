@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "selected_raw_messages": 85875,
+  "all_selected_raw_messages_consumed": true,
+  "paired_native_topics": {
+    "/fast_livo/deskewed_imu": 3899,
+    "/fast_livo/odometry": 3899
+  },
+  "unpaired_database_stamps": 0,
+  "startup_and_end_boundary_note": "3904 raw image messages yielded 3899 initialized paired VIO intervals; every filtered input message was consumed",
+  "frontend_summary": {
+    "messages": 85875,
+    "paired_frames": 3899,
+    "vio_frames": 3899,
+    "visual_solver_updates": 25575,
+    "gravity_alignment_enabled": true,
+    "gravity_alignment_finished": true,
+    "gravity_alignment_events": 1,
+    "initial_aligned_gravity": [
+      4.440892098500626e-16,
+      0,
+      -9.810000000000002
+    ],
+    "final_gravity": [
+      -0.05367216936232297,
+      0.032642894896257886,
+      -9.810506055082511
+    ],
+    "max_lidar_queue": 5,
+    "max_imu_queue": 114,
+    "max_image_queue": 2,
+    "wall_seconds": 52.433208079,
+    "mode": "offline_direct_callbacks",
+    "physical_sync_proven": false,
+    "accuracy_validated": false
+  },
+  "estimated_frontend_path_length_m": 93.34765169484169,
+  "full_map_expected_points": 23337461
+}

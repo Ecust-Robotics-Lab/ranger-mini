@@ -1,0 +1,129 @@
+{
+  "frontend_delivery": {
+    "paired_frames": 3899,
+    "full_map_points": 23337461,
+    "display_marker_points": 33767,
+    "mode": "frontend",
+    "kind_label": "前端三融合 · 未应用回环优化",
+    "map_uuid": null,
+    "graph_version": null,
+    "keyframes": 0,
+    "applied_loop_factors": 0,
+    "input_frame": "fast_livo_imu",
+    "output_frame": "fast_livo_local",
+    "transform_convention": "T_A_B maps B to A",
+    "point_transform": "p_local = U_t * p_imu",
+    "frontend_point_transform": "p_local = U_t * p_imu",
+    "lidar_imu_extrinsic_reapplied": false,
+    "per_interval_cloud_used_once": true,
+    "estimated_path_length_m": 93.34765169725904,
+    "endpoint_separation_m": 0.0963906411526113,
+    "source_duration_s": 389.800034523,
+    "bounds_m": [
+      [
+        -65.24476623535156,
+        -35.14432144165039,
+        -4.252078056335449
+      ],
+      [
+        37.18867111206055,
+        19.552448272705078,
+        16.560888290405273
+      ]
+    ],
+    "height_aligned_frontend": true,
+    "tag_used": false,
+    "independent_accuracy_validated": false,
+    "source_manifest_sha256": null,
+    "overlay_is_for_visualization_only": true,
+    "display": {
+      "display_voxel_m": 0.08,
+      "display_points": 213359,
+      "height_slice_m": [
+        -0.07678729775697253,
+        1.6732127022430274
+      ],
+      "detail_xy_margin_m": 5.0
+    },
+    "files_sha256": {
+      "frontend_map_full.pcd": "2b9f0d46644f0092ebbfc0d15afc6007543d854f77425db1887bf3ff586e6d7e",
+      "map_detail.png": "94eaba20b95c37ca733a9e3bbf119c63396d32a7aeed07fc3228b78de3a81bbd",
+      "map_full.pcd": "2b9f0d46644f0092ebbfc0d15afc6007543d854f77425db1887bf3ff586e6d7e",
+      "map_overview.png": "dfdd0e31dc83229db490d966d39b1f060dea4318e3470b1b20ff38a2147583b0",
+      "map_with_trajectory.pcd": "d399920161113f912fcbe242a938468e5028954bbe3b1a4461bdffd3094ae343",
+      "trajectory.pcd": "64f46599f14c8c37632badf091a61e204926d7d1983694f1e0440e58c6750bc4",
+      "trajectory_imu.csv": "5a75534284e73a7a6802a9a4413cfe9b099b058f71286a9811c5e8aef8477bb9",
+      "trajectory_imu.tum": "e3b01be744ec2a5566654b0e6770dd17433e3759cc526681d68bd6861c271ba3"
+    }
+  },
+  "backend_diagnostic": {
+    "acknowledged_pairs": 3899,
+    "snapshot_uuid": "2c08461dbe605a9929d1d885b32d4ab7",
+    "graph_version": 414,
+    "keyframes": 306,
+    "loop_factors": 108,
+    "candidate_decisions": {
+      "high_residual": 26,
+      "accepted_and_optimized": 108,
+      "rejected_lower_ranked_candidate": 337,
+      "rejected_ambiguous_places": 55,
+      "low_overlap": 8
+    },
+    "graph_objective_increase_count": 1,
+    "graph_objective_increases": [
+      {
+        "i": 3,
+        "j": 299,
+        "before": 7.046691187341748,
+        "after": 7.047751047517642,
+        "increase": 0.0010598601758937676,
+        "relative_increase": 0.00015040536724493286
+      }
+    ],
+    "snapshot_files_checked": 922,
+    "snapshot_sha_mismatches": [],
+    "backend_validation_passed": false,
+    "failure": "Accepted graph objective increased",
+    "snapshot_retained_as_diagnostic_only": true
+  },
+  "files": {
+    "summary.json": {
+      "bytes": 2039,
+      "sha256": null
+    },
+    "frontend_map_full.pcd": {
+      "bytes": 373399539,
+      "sha256": "2b9f0d46644f0092ebbfc0d15afc6007543d854f77425db1887bf3ff586e6d7e"
+    },
+    "map_overview.png": {
+      "bytes": 877316,
+      "sha256": "dfdd0e31dc83229db490d966d39b1f060dea4318e3470b1b20ff38a2147583b0"
+    },
+    "map_detail.png": {
+      "bytes": 620137,
+      "sha256": "94eaba20b95c37ca733a9e3bbf119c63396d32a7aeed07fc3228b78de3a81bbd"
+    },
+    "map_full.pcd": {
+      "bytes": 373399539,
+      "sha256": "2b9f0d46644f0092ebbfc0d15afc6007543d854f77425db1887bf3ff586e6d7e"
+    },
+    "trajectory_imu.tum": {
+      "bytes": 509092,
+      "sha256": "e3b01be744ec2a5566654b0e6770dd17433e3759cc526681d68bd6861c271ba3"
+    },
+    "trajectory.pcd": {
+      "bytes": 62539,
+      "sha256": "64f46599f14c8c37632badf091a61e204926d7d1983694f1e0440e58c6750bc4"
+    },
+    "trajectory_imu.csv": {
+      "bytes": 679950,
+      "sha256": "5a75534284e73a7a6802a9a4413cfe9b099b058f71286a9811c5e8aef8477bb9"
+    },
+    "map_with_trajectory.pcd": {
+      "bytes": 373939805,
+      "sha256": "d399920161113f912fcbe242a938468e5028954bbe3b1a4461bdffd3094ae343"
+    }
+  },
+  "raw_input_unchanged": true,
+  "hardware_started": false
+}

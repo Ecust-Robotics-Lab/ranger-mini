@@ -1,0 +1,21 @@
+test_adapter_interpolation_loss_and_large_jump_latch (test_fast_livo_backend_ros.RosBackendTests) ... ok
+test_clock_reset_process_failure_and_restart (test_fast_livo_backend_ros.RosBackendTests) ... ok
+test_existing_static_native_frames_preserve_stamps (test_fast_livo_backend_ros.RosBackendTests) ... ok
+test_invalid_messages_and_nonfinite_cloud_fail_closed (test_fast_livo_backend_ros.RosBackendTests) ... ok
+test_managed_entry_health_failure_cleans_owned_children (test_fast_livo_backend_ros.RosBackendTests) ... FAIL
+test_private_export_and_multiple_publisher_rejection (test_fast_livo_backend_ros.RosBackendTests) ... ok
+
+======================================================================
+FAIL: test_managed_entry_health_failure_cleans_owned_children (test_fast_livo_backend_ros.RosBackendTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_backend_ros.py", line 236, in test_managed_entry_health_failure_cleans_owned_children
+    self.latest_valid()
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_backend_ros.py", line 128, in latest_valid
+    self.assertTrue(valid, 'No valid private estimate; see '+str(self.directory))
+AssertionError: [] is not true : No valid private estimate; see /home/lab307/ranger_nav/docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/test_fast_livo_backend_ros/test_managed_entry_health_failure_cleans_owned_children-y8o9pn9w
+
+----------------------------------------------------------------------
+Ran 6 tests in 32.373s
+
+FAILED (failures=1)

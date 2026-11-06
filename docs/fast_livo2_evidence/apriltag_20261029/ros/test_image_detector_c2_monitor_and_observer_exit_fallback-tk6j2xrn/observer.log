@@ -1,0 +1,3 @@
+[ERROR] [1793251042.446140630] [rcl]: Failed to parse global arguments
+terminate called after throwing an instance of 'rclcpp::exceptions::RCLInvalidROSArgsError'
+  what():  failed to initialize rcl: Couldn't parse parameter override rule: '-p tag_sizes_json:={"0":0.6}'. Error: Unknown YAML event, at ./src/parse.c:944, at ./src/rcl/arguments.c:343

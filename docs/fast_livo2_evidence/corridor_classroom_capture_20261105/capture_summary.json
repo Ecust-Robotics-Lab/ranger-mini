@@ -1,0 +1,32 @@
+{
+  "capture": "/home/lab307/ranger_nav/bags/fast-livo-corridor_classroom_map01-182fdzyj",
+  "recorder_result": {
+    "exit": 0,
+    "forced": false,
+    "requested_seconds": 900.0,
+    "elapsed_seconds": 390.383635411,
+    "stopped_by_signal": true,
+    "observed_messages": {
+      "/livox/lidar": 3911,
+      "/livox/imu": 78220,
+      "/front/image_sync": 3911,
+      "/front/image": 3911,
+      "/front/camera_info": 3911,
+      "/fast_livo/odometry": 3912
+    }
+  },
+  "actual_message_counts": {
+    "/livox/lidar": 3903,
+    "/livox/imu": 78068,
+    "/front/image_sync": 3904,
+    "/front/image": 3904,
+    "/front/camera_info": 3904,
+    "/fast_livo/odometry": 3904
+  },
+  "source_files": 68,
+  "original_audit_exists": false,
+  "original_result_exists": false,
+  "original_complete_marker_exists": false,
+  "agent_hardware_operation": false,
+  "original_outputs_rewritten": false
+}

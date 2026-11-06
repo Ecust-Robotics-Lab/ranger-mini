@@ -1,0 +1,13 @@
+# All configs must come from calib.py make-config; do not copy upstream example config.
+# Paths must be absolute. Each scene needs its own result dir and quality review.
+run_name: UNCONFIGURED
+scenes:
+  - name: scene_01
+    config: UNCONFIGURED
+    review: UNCONFIGURED
+  - name: scene_02
+    config: UNCONFIGURED
+    review: UNCONFIGURED
+  - name: scene_03
+    config: UNCONFIGURED
+    review: UNCONFIGURED

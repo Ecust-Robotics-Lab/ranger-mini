@@ -1,0 +1,32 @@
+{
+  "capture": "/home/lab307/ranger_nav/bags/fast-livo-corridor_classroom_map01-182fdzyj",
+  "raw_sha256": "b6f7902c1b5fbffbaea69bf241efff540d48c0a85358d1267a4f98d468496137",
+  "source_files_checked": 55,
+  "source_manifest": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/isolated_source.json",
+  "binary_sha256": "e84f21c2a98d339fc0f79d0aa56fecf328878ef05543ab51389e2c9e0348876e",
+  "configuration_sha256": "4451caf0463dcbf94ab7dcae1f7be3dd1adf3d90e05538841ce68491d08e1255",
+  "frontend_offset_s": 0.1,
+  "gravity_alignment": true,
+  "gyro_initialization": "original zero bias",
+  "argv": [
+    "/home/lab307/ranger_nav/ws_fast_livo/build_independent_time_20261104/ranger_livo_replay",
+    "--ros-args",
+    "--params-file",
+    "/home/lab307/ranger_nav/outputs/fast-livo-demo-20261105-corridor-classroom/frontend/trial.yaml",
+    "-p",
+    "offline.bag:=/home/lab307/ranger_nav/bags/fast-livo-corridor_classroom_map01-182fdzyj/raw",
+    "-p",
+    "offline.output:=/home/lab307/ranger_nav/outputs/fast-livo-demo-20261105-corridor-classroom/frontend/result",
+    "-p",
+    "offline.max_frames:=0",
+    "--log-level",
+    "warn"
+  ],
+  "domain": 202,
+  "localhost_only": true,
+  "hardware_started": false,
+  "all_frames": true,
+  "output": "/home/lab307/ranger_nav/outputs/fast-livo-demo-20261105-corridor-classroom",
+  "backup": "/home/lab307/ranger_nav/.runtime/backups/corridor_classroom_mapping_20261105_183251",
+  "backend_validation_script_sha256": "f5fd42d4000429ae1f62f9a4282377d6f8999251387f92a8effdd652ea4523b5"
+}

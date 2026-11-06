@@ -1,0 +1,70 @@
+{
+  "exit": 0,
+  "forced": false,
+  "requested_seconds": 60.0,
+  "error": "session or recorder failed; preserved all partial data",
+  "observed_messages": {
+    "/livox/lidar": 11,
+    "/livox/imu": 10,
+    "/front/image_sync": 10,
+    "/front/image": 10,
+    "/front/camera_info": 10,
+    "/fast_livo/odometry": 10
+  },
+  "recorder_error": "input publisher disappeared, changed, or became ambiguous",
+  "session_exit": 2,
+  "session_state": {
+    "run_directory": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/recording_readiness_20261029/test_duplicate_publisher_preserves_failure_without_success_marker-l3q0y1mk/sessions/fast_livo_record/run-rqj8oa5r",
+    "guardian": {
+      "pid": 19680,
+      "start_ticks": 3342764,
+      "ppid": 19429,
+      "state": "R",
+      "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+    },
+    "owner": {
+      "pid": 19726,
+      "start_ticks": 3342805,
+      "ppid": 19680,
+      "state": "R",
+      "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+    },
+    "state": "FAILED",
+    "reason": "RuntimeError: capture exited 2; no automatic restart; scheduler exited 2; guardian cleanup",
+    "owned": [],
+    "components": {
+      "capture": {
+        "state": "EXITED",
+        "process": {
+          "pid": 19727,
+          "start_ticks": 3342805,
+          "ppid": 19726,
+          "state": "R",
+          "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+        },
+        "argv": [
+          "/usr/bin/python3",
+          "/home/lab307/ranger_nav/scripts/fast_livo2/record_worker.py",
+          "--folder",
+          "/home/lab307/ranger_nav/docs/fast_livo2_evidence/recording_readiness_20261029/test_duplicate_publisher_preserves_failure_without_success_marker-l3q0y1mk/capture"
+        ],
+        "exit_code": 2
+      }
+    },
+    "updated_monotonic": 33429.144320476,
+    "guardian_cleanup_complete": true
+  },
+  "folder": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/recording_readiness_20261029/test_duplicate_publisher_preserves_failure_without_success_marker-l3q0y1mk/capture",
+  "capture_complete": false,
+  "sync": {
+    "available": true,
+    "source": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/recording_readiness_20261029/test_duplicate_publisher_preserves_failure_without_success_marker-l3q0y1mk/assets/camera_sync.csv",
+    "status_counts": {
+      "OK": 2
+    },
+    "hardware_frame_id_missing": 0,
+    "hardware_frame_id_nonincreasing": 0,
+    "scope": "entire sensor session; may include time outside this recording",
+    "physical_sync_proven": false
+  }
+}

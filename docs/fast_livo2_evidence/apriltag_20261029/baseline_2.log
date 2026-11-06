@@ -1,0 +1,41 @@
+F.FF
+======================================================================
+FAIL: test_cancel_revokes_old_work_restart_and_loss_recovery (__main__.C2Ros)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_relocalizer_ros.py", line 71, in test_cancel_revokes_old_work_restart_and_loss_recovery
+    self.launch()
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_relocalizer_ros.py", line 32, in launch
+    self.wait(lambda: self.private and self.private[-1].map_uuid and json.loads(self.private[-1].quality_json).get('inputs_ready'))
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 144, in wait
+    self.fail('Timeout; '+str(self.directory)+'; last='+str([(m.state, m.reason) for m in self.private[-3:]]))
+AssertionError: Timeout; /home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_c2_20261028/test_cancel_revokes_old_work_restart_and_loss_recovery-invj4naj; last=[]
+
+======================================================================
+FAIL: test_map_switch_invalidates_search_support_and_old_request (__main__.C2Ros)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_relocalizer_ros.py", line 95, in test_map_switch_invalidates_search_support_and_old_request
+    self.launch()
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_relocalizer_ros.py", line 32, in launch
+    self.wait(lambda: self.private and self.private[-1].map_uuid and json.loads(self.private[-1].quality_json).get('inputs_ready'))
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 144, in wait
+    self.fail('Timeout; '+str(self.directory)+'; last='+str([(m.state, m.reason) for m in self.private[-3:]]))
+AssertionError: Timeout; /home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_c2_20261028/test_map_switch_invalidates_search_support_and_old_request-cbd9d7w5; last=[]
+
+======================================================================
+FAIL: test_unknown_large_correction_and_full_pose_then_tracking (__main__.C2Ros)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_relocalizer_ros.py", line 56, in test_unknown_large_correction_and_full_pose_then_tracking
+    self.launch()
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_relocalizer_ros.py", line 32, in launch
+    self.wait(lambda: self.private and self.private[-1].map_uuid and json.loads(self.private[-1].quality_json).get('inputs_ready'))
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 144, in wait
+    self.fail('Timeout; '+str(self.directory)+'; last='+str([(m.state, m.reason) for m in self.private[-3:]]))
+AssertionError: Timeout; /home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_c2_20261028/test_unknown_large_correction_and_full_pose_then_tracking-yd4p4o5w; last=[]
+
+----------------------------------------------------------------------
+Ran 4 tests in 34.050s
+
+FAILED (failures=3)

@@ -1,0 +1,39 @@
+{"processed": 1, "total": 1367, "detections": 0, "wall_seconds": 0.0948144379981386}
+{"processed": 101, "total": 1367, "detections": 0, "wall_seconds": 4.457456905998697}
+{"processed": 201, "total": 1367, "detections": 0, "wall_seconds": 8.847484142999747}
+{"processed": 301, "total": 1367, "detections": 0, "wall_seconds": 13.21409013399898}
+{"processed": 401, "total": 1367, "detections": 0, "wall_seconds": 17.529120847997547}
+{"processed": 501, "total": 1367, "detections": 0, "wall_seconds": 22.497514429000148}
+{"processed": 601, "total": 1367, "detections": 0, "wall_seconds": 27.380524745000002}
+{"processed": 701, "total": 1367, "detections": 0, "wall_seconds": 32.571506349999254}
+{"processed": 801, "total": 1367, "detections": 14, "wall_seconds": 37.618407849000505}
+{"processed": 901, "total": 1367, "detections": 14, "wall_seconds": 42.650750238997716}
+{"processed": 1001, "total": 1367, "detections": 14, "wall_seconds": 47.58829478899861}
+{"processed": 1101, "total": 1367, "detections": 14, "wall_seconds": 52.52691654500086}
+{"processed": 1201, "total": 1367, "detections": 14, "wall_seconds": 57.468516719000036}
+{"processed": 1301, "total": 1367, "detections": 14, "wall_seconds": 62.41522620999967}
+{"processed": 1367, "total": 1367, "detections": 14, "wall_seconds": 65.65868448499896}
+{"passed": true, "counts": {"unique_raw_copy_matches": 1367, "camera_model_matches": 1367, "processed_images": 1367, "images_with_detections": 14, "observations": 14, "observations_with_2_hypotheses": 14, "metric_quality_eligible_observations": 14, "quality_eligible_branches": 28}, "family_ids": {"tag36h11:1": 14}}
+	Command being timed: "python3 -u scripts/fast_livo2/tags/extract_bag.py --execute --output outputs/fast-livo-apriltag-fullbag-20261029"
+	User time (seconds): 73.91
+	System time (seconds): 8.50
+	Percent of CPU this job got: 102%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:20.14
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 129564
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 3359120
+	Voluntary context switches: 203218
+	Involuntary context switches: 1383
+	Swaps: 0
+	File system inputs: 781120
+	File system outputs: 7480
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

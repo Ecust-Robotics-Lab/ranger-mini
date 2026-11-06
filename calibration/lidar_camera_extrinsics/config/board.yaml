@@ -1,0 +1,21 @@
+units: m
+measurements_confirmed: true
+orientation_verified: true
+dictionary: DICT_6X6_250
+ids_tl_tr_br_bl:
+- 1
+- 2
+- 4
+- 3
+marker_size: 0.2
+delta_width_qr_center: 0.55
+delta_height_qr_center: 0.35
+delta_width_circles: 0.5
+delta_height_circles: 0.4
+circle_radius: 0.12
+measurement_notes: User confirmed HKU-MARS official target dimensions on 2026-10-21;
+  dictionary/IDs/orientation require actual image verification.
+overall_width: 1.4
+overall_height: 1.0
+orientation_evidence: 'results/scene_01_20261021_181558/image/aruco.png: real DICT_6X6_250
+  IDs TL1 TR2 BL3 BR4; all canonical corners upright; observed 2026-10-21.'

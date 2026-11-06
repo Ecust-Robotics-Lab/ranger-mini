@@ -1,0 +1,11 @@
+--- original backend evaluator
++++ new local-map evaluator (correct input gravity metadata)
+@@ -214,7 +214,7 @@
+             if node.get_publishers_info_by_topic(topic):raise RuntimeError('Occupied validation domain: '+topic)
+         for topic in ('/fast_livo/odometry','/fast_livo/deskewed_imu'):
+             if len(node.get_publishers_info_by_topic(topic))!=1:raise RuntimeError('Input topic is not exclusive')
+-        metadata={'source_native':str(args.native.resolve()),'frontend_gravity_aligned':False,
++        metadata={'source_native':str(args.native.resolve()),'frontend_gravity_aligned':True,
+                   'physical_sync':'PARTIAL','hardware_started':False,
+                   'native_database_sha256':sha(next(args.native.glob('*.db3'))),
+                   'backend_config_sha256':sha(ROOT/'config/fast_livo2/backend.yaml')}

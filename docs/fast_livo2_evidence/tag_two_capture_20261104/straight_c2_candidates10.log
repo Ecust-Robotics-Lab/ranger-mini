@@ -1,0 +1,15 @@
+{"processed": 1, "valid": 0, "reason": "searching_waiting_query_window"}
+{"processed": 101, "valid": 0, "reason": "verifying_insufficient_time_or_motion_baseline"}
+{"processed": 201, "valid": 0, "reason": "retry_backoff"}
+{"processed": 301, "valid": 0, "reason": "verifying_wait_disjoint_query_scans"}
+{"processed": 401, "valid": 0, "reason": "verifying_insufficient_time_or_motion_baseline"}
+{"processed": 501, "valid": 0, "reason": "verifying_independent_motion_support"}
+{"processed": 601, "valid": 0, "reason": "retry_backoff"}
+{"processed": 701, "valid": 0, "reason": "retry_backoff"}
+{"processed": 801, "valid": 0, "reason": "verifying_insufficient_time_or_motion_baseline"}
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/validate_more_candidates.py", line 262, in <module>
+    raise SystemExit(main())
+  File "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/validate_more_candidates.py", line 236, in main
+    raise AssertionError('insufficient confirmation, tracking loss/errors, or unexpected public outputs')
+AssertionError: insufficient confirmation, tracking loss/errors, or unexpected public outputs

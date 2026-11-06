@@ -8,6 +8,8 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include <optional>
+#include <functional>
 
 namespace ranger_backend {
 using Pose = Eigen::Isometry3d;
@@ -71,9 +73,14 @@ struct Snapshot {
   fs::path session_directory;
 };
 struct Candidate {
-  uint64_t id;
-  double distance;
+  uint64_t id=0;
+  double distance=0;
   std::string origin = "position";
+  std::optional<Pose> initial;
+  Json evidence=Json::object();
+  std::function<bool(const Pose&,Json&)> verify;
+  Candidate()=default;
+  Candidate(uint64_t key,double d,std::string source="position"):id(key),distance(d),origin(std::move(source)){}
 };
 struct RegistrationResult {
   bool converged = false, accepted = false;

@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "mode": "offline_experiment",
+  "source_manifest_sha256": "9413daff7d4f68ac14613887c2e5858009f98e32a0626bb2f7c545f5dfb4da95",
+  "physical_sync_validated": false,
+  "absolute_accuracy_validated": false,
+  "limitations": [
+    "Historical archive lacks complete attested sensor/calibration/source identity.",
+    "Referenced evidence is traceability, not physical calibration validation.",
+    "Same-capture localization is a function test; no independent-session or accuracy claim."
+  ],
+  "evidence_files_sha256": {
+    "/home/lab307/ranger_nav/docs/fast_livo2_evidence/apriltag_20261029/acceptance-txyvkw28/test_fast_livo_relocalizer_ros/test_cancel_revokes_old_work_restart_and_loss_recovery-lyofg0hs/map/manifest.json": "9413daff7d4f68ac14613887c2e5858009f98e32a0626bb2f7c545f5dfb4da95"
+  }
+}

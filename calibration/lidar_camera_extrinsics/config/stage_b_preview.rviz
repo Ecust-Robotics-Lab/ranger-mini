@@ -1,0 +1,80 @@
+Panels:
+  - Class: rviz_common/Displays
+    Name: Displays
+  - Class: rviz_common/Views
+    Name: Views
+Visualization Manager:
+  Class: ""
+  Displays:
+    - Class: rviz_default_plugins/Grid
+      Name: Grid
+      Enabled: true
+      Cell Size: 1
+      Plane Cell Count: 10
+      Color: 100; 100; 100
+      Reference Frame: <Fixed Frame>
+      Value: true
+    - Class: rviz_default_plugins/PointCloud2
+      Name: Mid360S raw cloud
+      Enabled: true
+      Topic:
+        Value: /livox/lidar
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Depth: 5
+      Queue Size: 5
+      Position Transformer: XYZ
+      Color Transformer: Intensity
+      Channel Name: intensity
+      Autocompute Intensity Bounds: true
+      Style: Points
+      Size (Pixels): 2
+      Size (m): 0.005
+      Alpha: 1
+      Decay Time: 0
+      Use Fixed Frame: true
+      Value: true
+    - Class: rviz_default_plugins/Image
+      Name: Front synchronized image
+      Enabled: true
+      Topic:
+        Value: /front/image_sync
+        Reliability Policy: Reliable
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Depth: 5
+      Normalize Range: true
+      Value: true
+  Enabled: true
+  Global Options:
+    Background Color: 35; 35; 35
+    Fixed Frame: livox_frame
+    Frame Rate: 20
+  Name: root
+  Tools:
+    - Class: rviz_default_plugins/MoveCamera
+    - Class: rviz_default_plugins/Select
+    - Class: rviz_default_plugins/FocusCamera
+    - Class: rviz_default_plugins/Measure
+  Transformation:
+    Current:
+      Class: rviz_default_plugins/TF
+  Value: true
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 5
+      Focal Point: {X: 2, Y: 0, Z: 0}
+      Name: Current View
+      Near Clip Distance: 0.01
+      Pitch: 0.35
+      Yaw: 3.14
+      Target Frame: <Fixed Frame>
+      Value: Orbit (rviz)
+    Saved: ~
+Window Geometry:
+  Height: 900
+  Width: 1400
+  Hide Left Dock: false
+  Hide Right Dock: false

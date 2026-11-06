@@ -1,0 +1,41 @@
+{
+  "seconds": 5.0003295420028735,
+  "topics": {
+    "/livox/lidar": {
+      "count": 50,
+      "sensor_rate_hz": 9.999230263335646,
+      "nonincreasing": 0,
+      "publishers": [
+        "livox_lidar_publisher"
+      ]
+    },
+    "/livox/imu": {
+      "count": 1000,
+      "sensor_rate_hz": 199.96840419146343,
+      "nonincreasing": 0,
+      "publishers": [
+        "livox_lidar_publisher"
+      ]
+    },
+    "/front/image_sync": {
+      "count": 49,
+      "sensor_rate_hz": 9.999880834753386,
+      "nonincreasing": 0,
+      "publishers": [
+        "hik_camera_trigger"
+      ]
+    },
+    "/fast_livo/odometry": {
+      "count": 50,
+      "sensor_rate_hz": 10.000210008491896,
+      "nonincreasing": 0,
+      "publishers": [
+        "laserMapping"
+      ]
+    }
+  },
+  "image_lidar_equal_headers": 48,
+  "tf_publishers": [],
+  "base_cmd_publishers": [],
+  "physical_sync_proven": false
+}

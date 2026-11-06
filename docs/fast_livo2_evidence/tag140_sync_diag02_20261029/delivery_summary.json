@@ -1,0 +1,36 @@
+{
+  "writer_rows": 1239,
+  "camera_rows": 1224,
+  "dds_lost_total_max": 0,
+  "publication_sequence_gaps": 0,
+  "publisher_gids": [
+    "010fc36cc263573900000000000013030000000000000000"
+  ],
+  "dds_source_to_callback_ms": {
+    "min": 0.184112,
+    "p50": 0.7676689999999999,
+    "p95": 1.5176821999999994,
+    "max": 10.765583
+  },
+  "dds_source_to_receive_ms": {
+    "min": 0.034318,
+    "p50": 0.175897,
+    "p95": 0.3474334999999999,
+    "max": 3.427348
+  },
+  "dds_receive_to_callback_ms": {
+    "min": 0.11662,
+    "p50": 0.571804,
+    "p95": 1.2245098999999993,
+    "max": 10.575149
+  },
+  "writer_stamp_gap_ms": {
+    "min": 99.84,
+    "p50": 99.84,
+    "p95": 100.32,
+    "max": 100.335
+  },
+  "camera_status": [
+    "OK"
+  ]
+}

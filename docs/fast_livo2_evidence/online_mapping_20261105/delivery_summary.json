@@ -1,0 +1,78 @@
+{
+  "run": "/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/full_replay_12",
+  "workflow_success": true,
+  "mapping_complete_marker": true,
+  "geometry_checks": {
+    "checksummed_files": 919,
+    "map_points": 1829386,
+    "maximum_map_rebuild_coordinate_error_m": 1.907257214384117e-06,
+    "scan_self_match_count": 0,
+    "accepted_loop_updates": 114,
+    "loop_factors": 114,
+    "candidate_decisions": {
+      "high_residual": 24,
+      "accepted_and_optimized": 114,
+      "rejected_lower_ranked_candidate": 332,
+      "rejected_ambiguous_places": 48,
+      "low_overlap": 7
+    },
+    "candidate_count": 525,
+    "keyframes": 305,
+    "factors": 419
+  },
+  "re_recorded_sensor_payloads": {
+    "/livox/lidar": {
+      "count": 3903,
+      "sha256": "6ce51c58d933c7db68adfef853e29e92ccf781675d29d121ab00991c4255aefa",
+      "matches_source": true
+    },
+    "/livox/imu": {
+      "count": 78068,
+      "sha256": "0542f420d2bfb931f8e7205d7adf3f61006765ffc4fb909fdbef6336463f2535",
+      "matches_source": true
+    },
+    "/front/image_sync": {
+      "count": 3903,
+      "sha256": "08ddbfa8035f09004ce831fdeacb05568edfd8d924cbdddb698916fe12bc4bbc",
+      "matches_source": true
+    }
+  },
+  "arrival_gaps": {
+    "/livox/lidar": {
+      "maximum_recorded_arrival_gap_seconds": 0.101375067,
+      "arrival_gap_seconds_p50_p95_p99": [
+        0.0999605405,
+        0.10061575875,
+        0.10085172457
+      ]
+    },
+    "/livox/imu": {
+      "maximum_recorded_arrival_gap_seconds": 0.012510364,
+      "arrival_gap_seconds_p50_p95_p99": [
+        0.004989006,
+        0.0059707803999999995,
+        0.007276345979999993
+      ]
+    },
+    "/front/image_sync": {
+      "maximum_recorded_arrival_gap_seconds": 0.106783702,
+      "arrival_gap_seconds_p50_p95_p99": [
+        0.099997914,
+        0.1026573898,
+        0.10385561914
+      ]
+    }
+  },
+  "recorded_paired_frontend_frames": 3900,
+  "archived_inputs_checked": 305,
+  "backend_heartbeat_states": {
+    "0": 66,
+    "1": 7763,
+    "3": 45
+  },
+  "unique_valid_scan_heartbeats": 2649,
+  "accepted_objective_increases": 0,
+  "physical_sync": "PARTIAL",
+  "absolute_accuracy": "NOT_EVALUATED",
+  "hardware_started": false
+}

@@ -1,0 +1,19 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/home/lab307/ranger_nav/docs/fast_livo2_evidence/corridor_classroom_mapping_20261105/export_and_plot.py",
+    "--execute",
+    "--native",
+    "/home/lab307/ranger_nav/outputs/fast-livo-demo-20261105-corridor-classroom/frontend/result/native_frames",
+    "--frames",
+    "/home/lab307/ranger_nav/outputs/fast-livo-demo-20261105-corridor-classroom/frontend/result/frames.csv",
+    "--mode",
+    "frontend",
+    "--output",
+    "/home/lab307/ranger_nav/outputs/fast-livo-demo-20261105-corridor-classroom/pcd_and_trajectory"
+  ],
+  "mode": "frontend",
+  "backend_validation_passed": false,
+  "backend_failure": "Accepted graph objective increased",
+  "hardware_started": false
+}

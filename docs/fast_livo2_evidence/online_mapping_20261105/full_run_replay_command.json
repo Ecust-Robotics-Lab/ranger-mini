@@ -1,0 +1,20 @@
+[
+  "ros2",
+  "bag",
+  "play",
+  "/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/replay_view",
+  "--clock",
+  "100",
+  "--rate",
+  "1",
+  "--delay",
+  "3",
+  "--qos-profile-overrides-path",
+  "/home/lab307/ranger_nav/config/mid360/bag_qos.yaml",
+  "--topics",
+  "/livox/lidar",
+  "/livox/imu",
+  "/front/image_sync",
+  "/front/image",
+  "/front/camera_info"
+]

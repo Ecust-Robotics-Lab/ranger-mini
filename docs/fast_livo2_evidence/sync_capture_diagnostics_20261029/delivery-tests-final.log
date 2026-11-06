@@ -1,0 +1,35 @@
+test_backlog_is_visible_in_host_metadata_not_rewritten_sensor_time (__main__.Delivery) ... /home/lab307/ranger_nav/tests/test_timeshare_delivery.py:74: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/lab307/ranger_nav/docs/fast_livo2_evidence/sync_capture_diagnostics_20261029/test_backlog_is_visible_in_host_metadata_not_rewritten_sensor_time-fujjndx9/writer.csv' mode='r' encoding='UTF-8'>
+  return list(csv.DictReader(path.open())) if path.exists() else []
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_best_effort_explicit_comparison (__main__.Delivery) ... /home/lab307/ranger_nav/tests/test_timeshare_delivery.py:74: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/lab307/ranger_nav/docs/fast_livo2_evidence/sync_capture_diagnostics_20261029/test_best_effort_explicit_comparison-rnkioyr7/writer.csv' mode='r' encoding='UTF-8'>
+  return list(csv.DictReader(path.open())) if path.exists() else []
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+FAIL
+test_incompatible_best_effort_publisher_has_no_silent_fallback (__main__.Delivery) ... [WARN] [1793284899.123874926] [synthetic_writer_check]: New subscription discovered on topic '/synthetic_timeshare/p24001', requesting incompatible QoS. No messages will be sent to it. Last incompatible policy: RELIABILITY
+/home/lab307/ranger_nav/tests/test_timeshare_delivery.py:74: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/lab307/ranger_nav/docs/fast_livo2_evidence/sync_capture_diagnostics_20261029/test_incompatible_best_effort_publisher_has_no_silent_fallback-oqvuoezu/writer.csv' mode='r' encoding='UTF-8'>
+  return list(csv.DictReader(path.open())) if path.exists() else []
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+test_invalid_parameters_do_not_touch_existing_shared_file (__main__.Delivery) ... ok
+test_reliable_large_cloud_delivery_and_metadata (__main__.Delivery) ... /home/lab307/ranger_nav/tests/test_timeshare_delivery.py:74: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/lab307/ranger_nav/docs/fast_livo2_evidence/sync_capture_diagnostics_20261029/test_reliable_large_cloud_delivery_and_metadata-hi6c3v7e/writer.csv' mode='r' encoding='UTF-8'>
+  return list(csv.DictReader(path.open())) if path.exists() else []
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+ok
+
+======================================================================
+FAIL: test_best_effort_explicit_comparison (__main__.Delivery)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_timeshare_delivery.py", line 125, in test_best_effort_explicit_comparison
+    self.load('best_effort')
+  File "/home/lab307/ranger_nav/tests/test_timeshare_delivery.py", line 101, in load
+    self.wait(lambda:bool(self.rows()) and int(self.rows()[-1]['scan_start_ns'])==BASE+(count-1)*100000000)
+  File "/home/lab307/ranger_nav/tests/test_timeshare_delivery.py", line 54, in wait
+    self.fail('timeout; evidence: '+str(self.folder))
+AssertionError: timeout; evidence: /home/lab307/ranger_nav/docs/fast_livo2_evidence/sync_capture_diagnostics_20261029/test_best_effort_explicit_comparison-rnkioyr7
+
+----------------------------------------------------------------------
+Ran 5 tests in 10.324s
+
+FAILED (failures=1)

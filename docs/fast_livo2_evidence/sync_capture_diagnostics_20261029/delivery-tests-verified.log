@@ -1,0 +1,11 @@
+test_backlog_is_visible_in_host_metadata_not_rewritten_sensor_time (__main__.Delivery) ... ok
+test_best_effort_explicit_comparison (__main__.Delivery) ... ok
+test_incompatible_best_effort_publisher_has_no_silent_fallback (__main__.Delivery) ... [WARN] [1793285061.829306314] [synthetic_writer_check]: New subscription discovered on topic '/synthetic_timeshare/p24422', requesting incompatible QoS. No messages will be sent to it. Last incompatible policy: RELIABILITY
+ok
+test_invalid_parameters_do_not_touch_existing_shared_file (__main__.Delivery) ... ok
+test_reliable_large_cloud_delivery_and_metadata (__main__.Delivery) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 6.547s
+
+OK

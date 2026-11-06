@@ -1,0 +1,319 @@
+{
+  "fast_livo_live": {
+    "live": false,
+    "details": {
+      "run_directory": "/home/lab307/ranger_nav/.runtime/sessions/fast_livo_live/run-4e1fptkc",
+      "guardian": {
+        "pid": 15497,
+        "start_ticks": 665514,
+        "ppid": 7937,
+        "state": "R",
+        "boot_id": "7d9266bc-caeb-4e72-9d67-82ac247914e1"
+      },
+      "owner": {
+        "pid": 15524,
+        "start_ticks": 665553,
+        "ppid": 15497,
+        "state": "R",
+        "boot_id": "7d9266bc-caeb-4e72-9d67-82ac247914e1"
+      },
+      "state": "STOPPED",
+      "reason": "",
+      "owned": [],
+      "components": {
+        "probe": {
+          "state": "READY",
+          "process": {
+            "pid": 15525,
+            "start_ticks": 665553,
+            "ppid": 15524,
+            "state": "R",
+            "boot_id": "7d9266bc-caeb-4e72-9d67-82ac247914e1"
+          },
+          "argv": [
+            "python3",
+            "/home/lab307/ranger_nav/scripts/fast_livo2/live_monitor.py"
+          ]
+        },
+        "lidar": {
+          "state": "READY",
+          "process": {
+            "pid": 15538,
+            "start_ticks": 665780,
+            "ppid": 15524,
+            "state": "R",
+            "boot_id": "7d9266bc-caeb-4e72-9d67-82ac247914e1"
+          },
+          "argv": [
+            "/home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/lib/livox_ros_driver2/livox_ros_driver2_node",
+            "--ros-args",
+            "-p",
+            "xfer_format:=0",
+            "-p",
+            "multi_topic:=0",
+            "-p",
+            "data_src:=0",
+            "-p",
+            "publish_freq:=10.0",
+            "-p",
+            "output_data_type:=0",
+            "-p",
+            "frame_id:=livox_frame",
+            "-p",
+            "user_config_path:=/home/lab307/ranger_nav/config/fast_livo2/mid360s_live.json",
+            "-p",
+            "cmdline_input_bd_code:=livox0000000001",
+            "-r",
+            "__node:=livox_lidar_publisher"
+          ]
+        },
+        "writer": {
+          "state": "READY",
+          "process": {
+            "pid": 15558,
+            "start_ticks": 666131,
+            "ppid": 15524,
+            "state": "R",
+            "boot_id": "7d9266bc-caeb-4e72-9d67-82ac247914e1"
+          },
+          "argv": [
+            "/home/lab307/ranger_nav/ws_camera/install/timeshare_writer/lib/timeshare_writer/timeshare_writer_node",
+            "--ros-args",
+            "-p",
+            "timeshare_path:=/home/lab307/ranger_nav/.runtime/sessions/fast_livo_live/sensors-typrg78w/timeshare",
+            "-p",
+            "csv_path:=/home/lab307/ranger_nav/.runtime/sessions/fast_livo_live/sensors-typrg78w/timeshare_writer.csv"
+          ]
+        },
+        "camera": {
+          "state": "READY",
+          "process": {
+            "pid": 15570,
+            "start_ticks": 666153,
+            "ppid": 15524,
+            "state": "R",
+            "boot_id": "7d9266bc-caeb-4e72-9d67-82ac247914e1"
+          },
+          "argv": [
+            "bash",
+            "-c",
+            "cd -- \"$RANGER_LIVO_DEVICE_CWD\" && exec \"$@\"",
+            "camera-device",
+            "/home/lab307/ranger_nav/ws_camera/install/hik_camera_trigger_driver/lib/hik_camera_trigger_driver/hik_camera_trigger_driver_node",
+            "--ros-args",
+            "--params-file",
+            "/home/lab307/ranger_nav/config/fast_livo2/camera_live.yaml",
+            "-p",
+            "timeshare_path:=/home/lab307/ranger_nav/.runtime/sessions/fast_livo_live/sensors-typrg78w/timeshare",
+            "-p",
+            "sync_csv_path:=/home/lab307/ranger_nav/.runtime/sessions/fast_livo_live/sensors-typrg78w/camera_sync.csv",
+            "-r",
+            "__node:=hik_camera_trigger"
+          ]
+        },
+        "frontend": {
+          "state": "READY",
+          "process": {
+            "pid": 15611,
+            "start_ticks": 666312,
+            "ppid": 15524,
+            "state": "D",
+            "boot_id": "7d9266bc-caeb-4e72-9d67-82ac247914e1"
+          },
+          "argv": [
+            "/home/lab307/ranger_nav/ws_fast_livo/install/fast_livo/lib/fast_livo/fastlivo_mapping",
+            "--ros-args",
+            "--params-file",
+            "/home/lab307/ranger_nav/config/fast_livo2/ranger_mid360s_hik_trial.yaml",
+            "-p",
+            "use_sim_time:=false",
+            "--log-level",
+            "warn"
+          ]
+        },
+        "rviz": {
+          "state": "EXITED",
+          "process": {
+            "pid": 15658,
+            "start_ticks": 666413,
+            "ppid": 15524,
+            "state": "R",
+            "boot_id": "7d9266bc-caeb-4e72-9d67-82ac247914e1"
+          },
+          "argv": [
+            "/opt/ros/humble/lib/rviz2/rviz2",
+            "-d",
+            "/home/lab307/ranger_nav/config/fast_livo2/live.rviz",
+            "--ros-args",
+            "-p",
+            "use_sim_time:=false"
+          ],
+          "exit_code": 0
+        },
+        "foxglove": {
+          "state": "READY",
+          "process": {
+            "pid": 15659,
+            "start_ticks": 666413,
+            "ppid": 15524,
+            "state": "R",
+            "boot_id": "7d9266bc-caeb-4e72-9d67-82ac247914e1"
+          },
+          "argv": [
+            "/opt/ros/humble/lib/foxglove_bridge/foxglove_bridge",
+            "--ros-args",
+            "--params-file",
+            "/home/lab307/ranger_nav/config/fast_livo2/foxglove.yaml",
+            "-p",
+            "port:=8765"
+          ]
+        }
+      },
+      "updated_monotonic": 6837.853929049,
+      "guardian_cleanup_complete": true
+    }
+  },
+  "fast_livo_backend": {
+    "live": false,
+    "details": {
+      "run_directory": "/home/lab307/ranger_nav/.runtime/sessions/fast_livo_backend/run-erq0zk4_",
+      "guardian": {
+        "pid": 8803,
+        "start_ticks": 1111320,
+        "ppid": 8632,
+        "state": "R",
+        "boot_id": "80fd34bf-920c-4fce-b102-9ee5d50c25cf"
+      },
+      "owner": {
+        "pid": 8842,
+        "start_ticks": 1111576,
+        "ppid": 8803,
+        "state": "R",
+        "boot_id": "80fd34bf-920c-4fce-b102-9ee5d50c25cf"
+      },
+      "state": "FAILED",
+      "reason": "RuntimeError: critical health lost; stopping session, fresh start required; scheduler exited 2; guardian cleanup",
+      "owned": [],
+      "components": {
+        "monitor": {
+          "state": "READY",
+          "process": {
+            "pid": 8843,
+            "start_ticks": 1111576,
+            "ppid": 8842,
+            "state": "R",
+            "boot_id": "80fd34bf-920c-4fce-b102-9ee5d50c25cf"
+          },
+          "argv": [
+            "/usr/bin/python3",
+            "/home/lab307/ranger_nav/scripts/fast_livo2/backend/monitor.py"
+          ]
+        },
+        "backend": {
+          "state": "STARTING",
+          "process": {
+            "pid": 8855,
+            "start_ticks": 1111621,
+            "ppid": 8842,
+            "state": "R",
+            "boot_id": "80fd34bf-920c-4fce-b102-9ee5d50c25cf"
+          },
+          "argv": [
+            "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/backend_node",
+            "--ros-args",
+            "--params-file",
+            "/home/lab307/ranger_nav/config/fast_livo2/backend.yaml",
+            "-p",
+            "use_sim_time:=true",
+            "-p",
+            "metadata_path:=/home/lab307/ranger_nav/.runtime/sessions/fast_livo_backend/provenance-1793170242972698377.json",
+            "-p",
+            "data_root:=/home/lab307/ranger_nav/.runtime/fast_livo_backend",
+            "-p",
+            "registration:=pcl_icp"
+          ]
+        }
+      },
+      "updated_monotonic": 11119.586369312,
+      "guardian_cleanup_complete": true
+    }
+  },
+  "fast_livo_backend_bridge": {
+    "live": false,
+    "details": null
+  },
+  "fast_livo_localizer": {
+    "live": false,
+    "details": {
+      "run_directory": "/home/lab307/ranger_nav/.runtime/sessions/fast_livo_localizer/run-xs_ipqw0",
+      "guardian": {
+        "pid": 5953,
+        "start_ticks": 155191,
+        "ppid": 5823,
+        "state": "R",
+        "boot_id": "18872a22-3c77-4e11-ae3e-df815708155d"
+      },
+      "owner": {
+        "pid": 5990,
+        "start_ticks": 155436,
+        "ppid": 5953,
+        "state": "R",
+        "boot_id": "18872a22-3c77-4e11-ae3e-df815708155d"
+      },
+      "state": "FAILED",
+      "reason": "RuntimeError: localizer exited -9; no automatic restart; scheduler exited 2; guardian cleanup",
+      "owned": [],
+      "components": {
+        "monitor": {
+          "state": "READY",
+          "process": {
+            "pid": 5991,
+            "start_ticks": 155437,
+            "ppid": 5990,
+            "state": "R",
+            "boot_id": "18872a22-3c77-4e11-ae3e-df815708155d"
+          },
+          "argv": [
+            "/usr/bin/python3",
+            "/home/lab307/ranger_nav/scripts/fast_livo2/localizer/monitor.py"
+          ]
+        },
+        "localizer": {
+          "state": "EXITED",
+          "process": {
+            "pid": 6003,
+            "start_ticks": 155479,
+            "ppid": 5990,
+            "state": "R",
+            "boot_id": "18872a22-3c77-4e11-ae3e-df815708155d"
+          },
+          "argv": [
+            "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node",
+            "--ros-args",
+            "--params-file",
+            "/home/lab307/ranger_nav/config/fast_livo2/localizer.yaml",
+            "-p",
+            "use_sim_time:=true",
+            "-p",
+            "registration:=pcl_icp",
+            "-p",
+            "t_base_imu_xyz:=[0.0, 0.0, 0.556]",
+            "-p",
+            "t_base_imu_rpy:=[0.0, 0.0, 0.0]",
+            "-p",
+            "archive_path:=/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_c1_20261028/test_managed_process_failure_cleans_only_owned_children-2b2sp0vy/map",
+            "-p",
+            "compatibility_path:=/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_c1_20261028/test_managed_process_failure_cleans_only_owned_children-2b2sp0vy/map-compatibility.json"
+          ],
+          "exit_code": -9
+        }
+      },
+      "updated_monotonic": 1555.283173725,
+      "guardian_cleanup_complete": true
+    }
+  },
+  "fast_livo_localizer_bridge": {
+    "live": false,
+    "details": null
+  }
+}

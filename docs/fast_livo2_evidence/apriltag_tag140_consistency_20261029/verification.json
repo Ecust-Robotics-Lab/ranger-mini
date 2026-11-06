@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-29",
+  "tests": {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 tests/test_fast_livo_tag_consistency.py",
+    "count": 5,
+    "exit_code": 0,
+    "evidence": "tests.log",
+    "rerun_after_declaration": false
+  },
+  "analysis_exit_code": 0,
+  "analysis_evidence": "analysis.log",
+  "syntax_parsed_files": [
+    "scripts/fast_livo2/tags/analyze_capture_consistency.py",
+    "tests/test_fast_livo_tag_consistency.py",
+    "/home/lab307/ranger_nav/docs/fast_livo2_evidence/apriltag_tag140_consistency_20261029/post_analysis.py"
+  ],
+  "dry_run_exit_code": 0,
+  "dry_run_output_created": false,
+  "git_diff_check_exit_code": 0,
+  "source_file_sha_checks": {
+    "/home/lab307/ranger_nav/outputs/fast-livo-apriltag-tag140-check-20261029-v2/summary.json": true,
+    "/home/lab307/ranger_nav/outputs/fast-livo-apriltag-tag140-check-20261029-v2/observations.jsonl": true,
+    "/home/lab307/ranger_nav/outputs/fast-livo-apriltag-tag140-check-20261029-v2/frames.jsonl": true,
+    "/home/lab307/ranger_nav/bags/fast-livo-tag140_check_01-dguhgx2l/sources/0_apriltag_camera.json": true,
+    "docs/fast_livo2_evidence/apriltag_tag140_consistency_20261029/fixedness_declaration.json": true
+  },
+  "capture_config_sha_checks": {
+    "/home/lab307/ranger_nav/config/fast_livo2/apriltag_camera.json": true,
+    "/home/lab307/ranger_nav/config/fast_livo2/apriltag_sizes.json": true,
+    "/home/lab307/ranger_nav/config/fast_livo2/apriltag_sizes_capture_140mm.json": true,
+    "/home/lab307/ranger_nav/config/fast_livo2/camera_live.yaml": true,
+    "/home/lab307/ranger_nav/config/fast_livo2/ranger_mid360s_hik_trial.yaml": true
+  },
+  "T_imu_camera_vs_frontend_chain_max_element_difference": 7.771561172376096e-16,
+  "report_local_links_missing": [],
+  "setup_declaration_sha256": "ad6508706da23d5a265e8b5be0b8d161148ecd22a4f07914e04064af89bc50cc",
+  "raw_database": {
+    "sha256_checked_before_and_after_original_analysis": "190637437b9cd7cb8e27ca4cda3168cc59a6af11c425334bf12b44a330432479",
+    "sha256_recomputed_in_this_final_check": false,
+    "size": 5017432064,
+    "mtime_ns": 1793282169442763196
+  },
+  "record_session_status_exit_code": 0,
+  "record_session_live": false,
+  "record_session_state": "STOPPED",
+  "record_session_owned": [],
+  "artifacts_sha256": {
+    "scripts/fast_livo2/tags/analyze_capture_consistency.py": "a3eb8a5a4d59e525f9aaaa4297024ef30454fa84f599e51e878c003c9da12f4a",
+    "tests/test_fast_livo_tag_consistency.py": "64ac488c57ea2e935d632f890db83b41f98ecbc7ced443e59c803befd9b386ad",
+    "/home/lab307/ranger_nav/docs/fast_livo2_evidence/apriltag_tag140_consistency_20261029/post_analysis.py": "d730b7c80fae5d26fdd539fb3e3762c4dac828caf2b63a9ac352d292b1604880",
+    "/home/lab307/ranger_nav/docs/fast_livo2_tag140_consistency_report.md": "140347b3eaa02e7f224f08938dd6a61eac6c7e76d488a64710574fd837e21b34",
+    "/home/lab307/ranger_nav/docs/fast_livo2_evidence/apriltag_tag140_consistency_20261029/setup_declaration.json": "ad6508706da23d5a265e8b5be0b8d161148ecd22a4f07914e04064af89bc50cc"
+  },
+  "hardware_started": false,
+  "clock_mapping_changed": false,
+  "VALID_landmark_created": false,
+  "physical_time_verified": false
+}

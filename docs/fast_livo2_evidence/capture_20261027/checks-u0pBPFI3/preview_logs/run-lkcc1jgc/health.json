@@ -1,0 +1,24 @@
+{
+  "monotonic": 6056.725848312,
+  "checks": {
+    "probe_live": true,
+    "lidar": true,
+    "camera": false,
+    "frontend": false,
+    "lidar_unclaimed": false,
+    "camera_unclaimed": false,
+    "frontend_unclaimed": true,
+    "writer": true
+  },
+  "counts": {
+    "/livox/imu": 253,
+    "/livox/lidar": 231
+  },
+  "paired_frames": 0,
+  "map_points": 0,
+  "sample_ns": null,
+  "first_pose": null,
+  "frame_contract_ok": true,
+  "physical_sync_proven": false,
+  "map_optimized": false
+}

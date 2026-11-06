@@ -1,0 +1,44 @@
+{
+  "existing_archive_files": [
+    {
+      "method": "pcl",
+      "files_verified": 151,
+      "manifest_sha256": "a890afe331f16ad5d65e601f390a00c7f270cd489346884a41b0b4274b9a4f58"
+    },
+    {
+      "method": "gicp",
+      "files_verified": 151,
+      "manifest_sha256": "7abc51e21a5e3fd62ba8fc119c64a78a1aa4e5ca8dd8c44bb1aebf760dfdd546"
+    }
+  ],
+  "original_frontend_logs_unchanged": true,
+  "baseline_files": 3864,
+  "missing_files": [],
+  "changed_baseline_files": [
+    ".gitignore",
+    "AGENTS.md",
+    "README.md",
+    "config/fast_livo2/ranger_mid360s_hik_trial.yaml",
+    "docs/FAST_LIVO2_BACKEND_PLAN.md",
+    "docs/HANDOFF.md",
+    "docs/PROJECT_LAYOUT.md",
+    "docs/README.md",
+    "docs/STATUS.md",
+    "docs/fast_livo2_interfaces.md",
+    "docs/fast_livo2_localizer_interfaces.md",
+    "scripts/build_fast_livo2_localizer.sh",
+    "scripts/fast_livo2/localizer/session.py",
+    "scripts/fast_livo2/localizer/validate_motion.py",
+    "scripts/fast_livo2/replay.cpp",
+    "tests/test_fast_livo_localizer_ros.py",
+    "ws_fast_livo/src/ranger_fast_livo_localizer/CMakeLists.txt",
+    "ws_fast_livo/src/ranger_fast_livo_localizer/README.md",
+    "ws_fast_livo/src/ranger_fast_livo_localizer/THIRD_PARTY_NOTICES.md",
+    "ws_fast_livo/src/ranger_fast_livo_localizer/include/ranger_fast_livo_localizer/localizer.hpp",
+    "ws_fast_livo/src/ranger_fast_livo_localizer/src/node.cpp",
+    "ws_fast_livo/src/ranger_fast_livo_localizer/test/localizer_tests.cpp"
+  ],
+  "new_commits_created_during_c2": false,
+  "pushed": false,
+  "unchanged_baseline_files": 3842
+}

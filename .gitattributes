@@ -11,3 +11,6 @@ docs/consolidation_evidence/**/*.log -whitespace
 docs/consolidation_evidence/**/*.txt -whitespace
 # Retain the upstream license text verbatim, including its original whitespace.
 ws_fast_livo/src/ranger_fast_livo_backend/third_party/GTSAM_LICENSE.txt -whitespace
+ws_fast_livo/src/ranger_fast_livo_localizer/third_party/ROBIN-LICENSE -whitespace
+# Retain the captured compiler flags exactly as emitted by CMake.
+docs/fast_livo2_evidence/stage_c2_20261028/localizer_core_flags.make -whitespace

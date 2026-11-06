@@ -1,0 +1,134 @@
+{
+  "context": "test-offline-stream",
+  "observations": [
+    {
+      "calibration_id": "ranger-camera-imu-410a6f212a4d206d60e67ccbaba54a0544f664332685395c7cb314a065a45679",
+      "canonical_frame": "apriltag-native-xy-down-z-in-v1",
+      "context": "test-offline-stream",
+      "corners": [
+        [
+          386.24389648437506,
+          743.7365112304686
+        ],
+        [
+          484.8181152343751,
+          732.5304565429688
+        ],
+        [
+          486.6723937988282,
+          625.4616088867189
+        ],
+        [
+          389.82800292968744,
+          631.1953125
+        ]
+      ],
+      "decision_margin": 41.98602294921875,
+      "family": "tag36h11",
+      "hamming": 0,
+      "hypotheses": [
+        {
+          "T_camera_tag": {
+            "xyz": [
+              -0.283507877636027,
+              0.27821557654029566,
+              1.8165009298680637
+            ],
+            "xyzw": [
+              0.01263462416135085,
+              -0.32274146171187623,
+              0.01164361289149502,
+              0.9463312007131626
+            ]
+          },
+          "hypothesis_id": 0,
+          "pixel_max": 0.502987602097404,
+          "pixel_rmse": 0.47655618880407286
+        },
+        {
+          "T_camera_tag": {
+            "xyz": [
+              -0.2858281847464287,
+              0.2769865311947504,
+              1.8140068880771798
+            ],
+            "xyzw": [
+              -0.1553411569401939,
+              0.17272694192614826,
+              -0.0387143395743222,
+              0.9718722798828285
+            ]
+          },
+          "hypothesis_id": 1,
+          "pixel_max": 2.224730883755874,
+          "pixel_rmse": 2.1267108305639795
+        }
+      ],
+      "id": 1,
+      "image_id": "image-2",
+      "image_stamp_ns": 1590195801300123322,
+      "observation_id": "image-2:tag36h11:1:0",
+      "observation_stamp_ns": 1590195801300123322,
+      "provenance": {
+        "camera_model": {
+          "D": [
+            -0.08288339607839673,
+            0.15032436811294939,
+            -0.0005625494644882011,
+            -0.00039491110944710704,
+            -0.08810366754215963
+          ],
+          "K": [
+            1299.9988190926874,
+            0.0,
+            640.2595320942488,
+            0.0,
+            1299.8402206328024,
+            484.9367557425784,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "R": [
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ],
+          "distortion_model": "plumb_bob",
+          "frame": "front_optical_frame",
+          "height": 1024,
+          "pixel_domain": "raw",
+          "width": 1280
+        },
+        "image_reference": "synthetic or existing read-only fixture",
+        "offset_application_count": 1,
+        "offset_ns": 0,
+        "size_source": "explicit_measured_size_table",
+        "time_source": "/front/image_sync copies LiDAR-domain timeshare stamp; exposure phase not physically validated",
+        "time_verified": false,
+        "uncertainty_ns": 0
+      },
+      "quality": {
+        "area_pixels": 10705.941248918884,
+        "border_distance_pixels": 279.26348876953136,
+        "pose_status": "multiple_hypotheses",
+        "shortest_edge_pixels": 97.01397528160498
+      },
+      "schema_version": 1,
+      "size_m": 0.155,
+      "source_id": "official_apriltag_3.4.5",
+      "time_mapping_id": "unverified-timeshare-v2-zero-offset"
+    }
+  ],
+  "processing_ms": 50.93680800200673,
+  "public_tf_publisher": false,
+  "request_id": 2,
+  "schema_version": 1,
+  "success": true
+}

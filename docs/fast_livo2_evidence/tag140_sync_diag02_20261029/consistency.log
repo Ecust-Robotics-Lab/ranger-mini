@@ -1,0 +1,192 @@
+{
+  "kind": "conditional_fixed_local_tag_and_software_timing_not_registration",
+  "source_database_sha256": "753c9b4af470821d190c0187d920d9412a70f52ab774ff0adddec5e3d04589d2",
+  "fixedness_declaration": {
+    "capture": "bags/fast-livo-tag140_sync_diag_02-35f_m8nd",
+    "family": "tag36h11",
+    "id": 1,
+    "size_m": 0.14,
+    "fixed_during_capture": true,
+    "fixedness_basis": "continued fixed-tag setup and user-followed diagnostic capture; prior user declaration retained, not independent metrology",
+    "rigid_mount_unchanged": "prior user confirmation",
+    "manual_vehicle_motion": true,
+    "motion_order": "user reports forward/back and left/right motions were performed, not in prescribed time order",
+    "physical_time_verified": false
+  },
+  "source_files_sha256": {
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-sync-diag02-screen-20261029/summary.json": "1daf2949fbe2c7eb7b79c96eb49579f1830934d813ec28035c8edcdc8cce6038",
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-sync-diag02-screen-20261029/observations.jsonl": "47bcafcbd9266ecf7716ec33b016aded639731ab011479b23b457bc215d7d563",
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-sync-diag02-screen-20261029/frames.jsonl": "33c8fb928ef757839dc423fce30632b63608926c8440f43551acb6e308be9f18",
+    "/home/lab307/ranger_nav/bags/fast-livo-tag140_sync_diag_02-35f_m8nd/sources/0_apriltag_camera.json": "54af13d1316b85954514196e0bb16deada8c1a18ad55a9ca12a2daa761d9f0b1",
+    "docs/fast_livo2_evidence/tag140_sync_diag02_20261029/declaration.json": "5b8c09c14d7968fa03dd9c4f5a9b5fb8d5d98a0c3ce66a18a3e788e3330ce423"
+  },
+  "observations": 1067,
+  "zero_offset_supported": 1065,
+  "common_offset_cohort": 1064,
+  "training_count": 103,
+  "holdout_count": 274,
+  "time_offset_grid_ns": [
+    -199680000,
+    -174720000,
+    -149760000,
+    -124800000,
+    -99840000,
+    -74880000,
+    -49920000,
+    -24960000,
+    0,
+    24960000,
+    49920000,
+    74880000,
+    99840000,
+    124800000,
+    149760000,
+    174720000,
+    199680000
+  ],
+  "zero_offset_fit": {
+    "pose": {
+      "xyz": [
+        1.0092561867915897,
+        0.09974188277947504,
+        -0.17661984643013773
+      ],
+      "xyzw": [
+        0.48627168685768307,
+        0.5319582730867578,
+        0.5167374910143467,
+        0.46210670589738884
+      ]
+    },
+    "optimizer_success": true,
+    "evaluations": 19,
+    "training_huber_coordinate_cost_mean": 4.736483123065328,
+    "train_rmse_px": {
+      "count": 103,
+      "minimum": 0.18746122912404414,
+      "p50": 4.594684505012337,
+      "p95": 26.221848820705855,
+      "maximum": 165.0813139246974
+    },
+    "holdout_rmse_px": {
+      "count": 274,
+      "minimum": 0.3403280078422626,
+      "p50": 4.633082918128393,
+      "p95": 30.475323616021342,
+      "maximum": 113.71149275300704
+    },
+    "all_cohort_rmse_px": {
+      "count": 1064,
+      "minimum": 0.18746122912404414,
+      "p50": 4.460253925681357,
+      "p95": 30.213312458454546,
+      "maximum": 165.0813139246974
+    },
+    "all_cohort_maximum_corner_px": {
+      "count": 1064,
+      "minimum": 0.3318464759718098,
+      "p50": 4.9987264032612675,
+      "p95": 31.622162485353837,
+      "maximum": 176.2101802182157
+    },
+    "frames_passing_initial_3px_rms_6px_max": 340,
+    "negative_depth_frames": 0,
+    "trajectory_optimized": false,
+    "extrinsic_optimized": false,
+    "clock_calibrated": false
+  },
+  "diagnostic_training_minimum_offset_ns": 124800000,
+  "diagnostic_training_minimum_fit": {
+    "pose": {
+      "xyz": [
+        1.0111956641911075,
+        0.10007162657910107,
+        -0.1764257179585366
+      ],
+      "xyzw": [
+        0.48491561606645034,
+        0.5330096167082378,
+        0.5180415146101237,
+        0.46085852811017974
+      ]
+    },
+    "optimizer_success": true,
+    "evaluations": 11,
+    "training_huber_coordinate_cost_mean": 3.401218483539046,
+    "train_rmse_px": {
+      "count": 103,
+      "minimum": 0.4543614881117135,
+      "p50": 3.7211307601208943,
+      "p95": 14.98051378923837,
+      "maximum": 74.21985503059253
+    },
+    "holdout_rmse_px": {
+      "count": 274,
+      "minimum": 0.32855042120214323,
+      "p50": 4.126528691581705,
+      "p95": 17.452462381956895,
+      "maximum": 48.61634556039738
+    },
+    "all_cohort_rmse_px": {
+      "count": 1064,
+      "minimum": 0.32855042120214323,
+      "p50": 3.996543523464532,
+      "p95": 17.3513827014195,
+      "maximum": 79.29123824502179
+    },
+    "all_cohort_maximum_corner_px": {
+      "count": 1064,
+      "minimum": 0.4392934757124629,
+      "p50": 4.4075472599311745,
+      "p95": 18.53599379162163,
+      "maximum": 84.02291583701171
+    },
+    "frames_passing_initial_3px_rms_6px_max": 399,
+    "negative_depth_frames": 0,
+    "trajectory_optimized": false,
+    "extrinsic_optimized": false,
+    "clock_calibrated": false
+  },
+  "zero_offset_primary_local_tag_position_spread_m": {
+    "count": 1065,
+    "minimum": 0.0003612413473248505,
+    "p50": 0.00568414488468277,
+    "p95": 0.030402360792435155,
+    "maximum": 0.13950164468091267
+  },
+  "wall_seconds": 8.576462411998364,
+  "physical_time_verified": false,
+  "clock_mapping_changed": false,
+  "real_VALID_landmark_created": false,
+  "map_pose_estimated": false,
+  "limitations": [
+    "One capture; temporal holdout is not independent-visit evidence",
+    "Local trajectory may contain drift and is not independent of images",
+    "Fixed extrinsics and pixel model; error sources cannot be individually identified",
+    "Offset sweep is diagnostic, not a physical exposure calibration",
+    "Pose modes beyond four-seed budget remain untested; no uniqueness claim"
+  ]
+}
+	Command being timed: "python3 -u scripts/fast_livo2/tags/analyze_capture_consistency.py --execute --capture bags/fast-livo-tag140_sync_diag_02-35f_m8nd --screen outputs/fast-livo-tag140-sync-diag02-screen-20261029 --fixedness docs/fast_livo2_evidence/tag140_sync_diag02_20261029/declaration.json --output outputs/fast-livo-tag140-sync-diag02-consistency-20261029"
+	User time (seconds): 11.67
+	System time (seconds): 1.55
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:13.23
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 232472
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 43268
+	Voluntary context switches: 2
+	Involuntary context switches: 72
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8296
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

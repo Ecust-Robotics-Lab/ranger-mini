@@ -1,0 +1,40 @@
+{
+  "run_directory": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/recording_readiness_20261029/test_finite_capture_archives_and_preserves_external_preview-ah595sf8/sessions/fast_livo_record/run-5a61za73",
+  "guardian": {
+    "pid": 19805,
+    "start_ticks": 3343021,
+    "ppid": 19429,
+    "state": "R",
+    "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+  },
+  "owner": {
+    "pid": 19851,
+    "start_ticks": 3343062,
+    "ppid": 19805,
+    "state": "R",
+    "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+  },
+  "state": "STOPPED",
+  "reason": "",
+  "owned": [],
+  "components": {
+    "capture": {
+      "state": "READY",
+      "process": {
+        "pid": 19852,
+        "start_ticks": 3343062,
+        "ppid": 19851,
+        "state": "R",
+        "boot_id": "30eb3f46-af45-443c-85e6-c4627c49593b"
+      },
+      "argv": [
+        "/usr/bin/python3",
+        "/home/lab307/ranger_nav/scripts/fast_livo2/record_worker.py",
+        "--folder",
+        "/home/lab307/ranger_nav/docs/fast_livo2_evidence/recording_readiness_20261029/test_finite_capture_archives_and_preserves_external_preview-ah595sf8/capture"
+      ]
+    }
+  },
+  "updated_monotonic": 33433.449907155,
+  "guardian_cleanup_complete": true
+}

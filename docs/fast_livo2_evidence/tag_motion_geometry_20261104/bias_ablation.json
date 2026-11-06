@@ -1,0 +1,13 @@
+{
+  "mode": "existing IMU initialization mean as gyro bias, experimental only",
+  "initial_stillness_evidence": "independently measured Tag corner stability in initial 0-15 s; see prior bias diagnostic",
+  "production_source_modified": false,
+  "deployed_binary_modified": false,
+  "baseline_imu_source_sha256": "2558005b624e44df9b98fc9b43ed6d02dd25db1fea8499076c7dafa04d816291",
+  "diagnostic_imu_source_sha256": "f89f490b8fc084f83d6806b3dc4dfeacd47a62e9cb6d62a2be62e6fd55b32c68",
+  "baseline_binary_sha256": {
+    "ranger_motion_diagnostic": "cd688e3e8ba81d1a109276a1450ba1e34b6dfc271227ed92d3f12c26b4f0d7cd",
+    "ranger_livo_replay": "9a43dd46940598bb450e9c32deef9fbf9eec50bea758b4349461438f9270fb70"
+  },
+  "warning": "not valid for moving initialization; no production behavior changed"
+}

@@ -1,0 +1,89 @@
+pcl_icp ACK 1/895 graph=1 loop_event=0
+pcl_icp ACK 101/895 graph=1 loop_event=0
+pcl_icp ACK 201/895 graph=1 loop_event=0
+pcl_icp ACK 301/895 graph=4 loop_event=0
+pcl_icp ACK 401/895 graph=9 loop_event=0
+pcl_icp ACK 501/895 graph=14 loop_event=0
+pcl_icp ACK 601/895 graph=19 loop_event=0
+pcl_icp ACK 701/895 graph=25 loop_event=2
+pcl_icp ACK 801/895 graph=33 loop_event=6
+{
+  "passed": true,
+  "hardware_started": false,
+  "domain": 200,
+  "registration": "pcl_icp",
+  "pacing": "one input pair; wait for actual backend output stamp; not a real-time benchmark",
+  "backend_argv": [
+    "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/backend_node",
+    "--ros-args",
+    "--params-file",
+    "/home/lab307/ranger_nav/config/fast_livo2/backend.yaml",
+    "-p",
+    "use_sim_time:=true",
+    "-p",
+    "data_root:=/home/lab307/ranger_nav/outputs/fast-livo-tag140-two-capture-20261104/new_local_map/shards",
+    "-p",
+    "metadata_path:=/home/lab307/ranger_nav/outputs/fast-livo-tag140-two-capture-20261104/new_local_map/metadata.json",
+    "-p",
+    "registration:=pcl_icp"
+  ],
+  "source_pairs": 895,
+  "acknowledged_pairs": 895,
+  "source_duration_s": 89.400400877,
+  "wall_seconds": 134.90899915499904,
+  "session_id": "d275c7027fbe49b376332c091bb24df0",
+  "graph_version": 41,
+  "loop_events": 10,
+  "snapshot_checks": {
+    "checksummed_files": 97,
+    "map_points": 184315,
+    "maximum_map_rebuild_coordinate_error_m": 2.3839375185019662e-07,
+    "scan_self_match_count": 0,
+    "accepted_loop_updates": 10,
+    "loop_factors": 10,
+    "candidate_decisions": {
+      "accepted_and_optimized": 10,
+      "rejected_lower_ranked_candidate": 2
+    },
+    "candidate_count": 12,
+    "keyframes": 31,
+    "factors": 41,
+    "archived_keyframes_checked": 31,
+    "unique_source_scan_ids": 31,
+    "cloud_fields_header_and_payload_preserved": true,
+    "raw_pose_and_integer_stamp_preserved": true
+  },
+  "diagnostics": {
+    "graph_version": 41,
+    "invalid_messages": 0,
+    "pair_cache_entries": 0,
+    "pair_counters": {},
+    "public_tf_publisher": false,
+    "session_id": "d275c7027fbe49b376332c091bb24df0",
+    "work_queue_entries": 0
+  },
+  "nonkeyframe_propagation_checks": 864,
+  "max_nonkeyframe_propagation_error": 4.440892098500626e-16,
+  "final_propagation_error": 2.220446049250313e-16,
+  "public_publishers": {
+    "/tf": 0,
+    "/tf_static": 0,
+    "/cmd_vel": 0,
+    "/base/safe_cmd_vel": 0
+  },
+  "raw_endpoint_distance_m": 0.008581071504232887,
+  "optimized_endpoint_distance_m": 0.006275087437909324,
+  "keyframe_correction_m_p50_p95_max": [
+    0.0024203644311953988,
+    0.0031692913429355357,
+    0.003250219516903275
+  ],
+  "acknowledgment_latency_ms_p50_p95_max": [
+    149.48356999957468,
+    150.18760660041153,
+    199.59840099909343
+  ],
+  "accuracy_validated": false,
+  "physical_sync_proven": false,
+  "backend_exit": 0
+}

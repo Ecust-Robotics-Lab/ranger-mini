@@ -1,0 +1,129 @@
+{
+  "probe": {
+    "identity": {
+      "pid": 22268,
+      "start_ticks": 900154,
+      "ppid": 22267,
+      "state": "R",
+      "boot_id": "d3b08c4d-b5a8-437d-8670-1afeafa4f39a"
+    },
+    "executable": "/usr/bin/python3.10",
+    "binary_sha256": "a2f33a6e006989270f4340528eb61f8f97366e00a5d1b602ac8672ea44fc56ae",
+    "command": [
+      "/usr/bin/python3",
+      "/home/lab307/ranger_nav/scripts/fast_livo2/mapping_monitor.py",
+      "--folder",
+      "/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/full_replay_09",
+      "--replay"
+    ],
+    "project_libraries_sha256": {
+      "/home/lab307/ranger_nav/ws_fast_livo/online_install/ranger_fast_livo_backend/lib/libranger_fast_livo_backend__rosidl_generator_c.so": "72c798dc6427652733481980433be33f2f6fd8d709d426134addc89e091647bf",
+      "/home/lab307/ranger_nav/ws_fast_livo/online_install/ranger_fast_livo_backend/lib/libranger_fast_livo_backend__rosidl_generator_py.so": "0da208f79685def0cdc704c9c7c33efbb8466b50d10007df3d3700cc9e7e6731",
+      "/home/lab307/ranger_nav/ws_fast_livo/online_install/ranger_fast_livo_backend/lib/libranger_fast_livo_backend__rosidl_typesupport_c.so": "7645916f502e7d8ac13b64c2ae8b55bf3212cc78cb28615ef801f195e435aa61",
+      "/home/lab307/ranger_nav/ws_fast_livo/online_install/ranger_fast_livo_backend/lib/libranger_fast_livo_backend__rosidl_typesupport_fastrtps_c.so": "d41d03ef6ee4fc991b13771465e07634905358d9d4e22149c5542acf3a36419a",
+      "/home/lab307/ranger_nav/ws_fast_livo/online_install/ranger_fast_livo_backend/lib/libranger_fast_livo_backend__rosidl_typesupport_introspection_c.so": "d40457834947f6566a3e9dfe41eda14a373433632153e278b8152a9735fd4d74",
+      "/home/lab307/ranger_nav/ws_fast_livo/online_install/ranger_fast_livo_backend/local/lib/python3.10/dist-packages/ranger_fast_livo_backend/ranger_fast_livo_backend_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so": "1d6975f2aa273ad006153552039c4cd834395000cc07476bfe01b2634eca9fcb"
+    }
+  },
+  "backend": {
+    "identity": {
+      "pid": 22284,
+      "start_ticks": 900371,
+      "ppid": 22267,
+      "state": "R",
+      "boot_id": "d3b08c4d-b5a8-437d-8670-1afeafa4f39a"
+    },
+    "executable": "/home/lab307/ranger_nav/ws_fast_livo/online_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/backend_node",
+    "binary_sha256": "ea1b0b78800279915ebeba8674a5e267429b5e7237cba72d185d4cc05fd0742e",
+    "command": [
+      "/home/lab307/ranger_nav/ws_fast_livo/online_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/backend_node",
+      "--ros-args",
+      "--params-file",
+      "/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/full_replay_09/config/backend.yaml",
+      "-p",
+      "use_sim_time:=true",
+      "-p",
+      "metadata_path:=/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/full_replay_09/provenance.json",
+      "-p",
+      "data_root:=/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/full_replay_09/backend_work",
+      "-p",
+      "publish_map_view:=true",
+      "-p",
+      "enable_tag_loop:=false",
+      "-p",
+      "registration:=pcl_icp"
+    ],
+    "project_libraries_sha256": {
+      "/home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/libgtsam.so.4.2.0": "55d0b3d67d24abc136b3faa7bfaeaadee2b0e34032303ad13c58e9db58cfa206",
+      "/home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/libmetis-gtsam.so": "4959f78e0f9ed6c7825e36fdde32730bc959846b52320ceaf6b10f9521ebea67",
+      "/home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/libsmall_gicp.so": "f6a5dd5d50301b051c948d4d0b024b6a137fc63eb9b607bcd7d5817625ecf15d",
+      "/home/lab307/ranger_nav/ws_fast_livo/online_install/ranger_fast_livo_backend/lib/libranger_backend_core.so": "7b43f9a317574f755a0b534256b5817d8ef0fe5cf0e82730f7d1957fa443dd13",
+      "/home/lab307/ranger_nav/ws_fast_livo/online_install/ranger_fast_livo_backend/lib/libranger_fast_livo_backend__rosidl_typesupport_cpp.so": "f9e4e41b789a47f9a715151fd060434c5f44bbe23241487b308a73eb3c1d2dac",
+      "/home/lab307/ranger_nav/ws_fast_livo/online_install/ranger_fast_livo_backend/lib/libranger_fast_livo_backend__rosidl_typesupport_fastrtps_cpp.so": "dfba3358ae8b5879448c9742cf3db5a5d691721cd40cc10b16a2ed3d14c543de",
+      "/home/lab307/ranger_nav/ws_fast_livo/online_install/ranger_fast_livo_backend/lib/libranger_fast_livo_backend__rosidl_typesupport_introspection_cpp.so": "71a3ff32aae5fe861d850ea12a172addf98ee4a3ba05c9bfb05d8864c76fd077"
+    }
+  },
+  "capture": {
+    "identity": {
+      "pid": 22285,
+      "start_ticks": 900371,
+      "ppid": 22267,
+      "state": "R",
+      "boot_id": "d3b08c4d-b5a8-437d-8670-1afeafa4f39a"
+    },
+    "executable": "/usr/bin/python3.10",
+    "binary_sha256": "a2f33a6e006989270f4340528eb61f8f97366e00a5d1b602ac8672ea44fc56ae",
+    "command": [
+      "/usr/bin/python3",
+      "/home/lab307/ranger_nav/scripts/fast_livo2/record_worker.py",
+      "--folder",
+      "/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/full_replay_09"
+    ],
+    "project_libraries_sha256": {}
+  },
+  "frontend": {
+    "identity": {
+      "pid": 22326,
+      "start_ticks": 900414,
+      "ppid": 22267,
+      "state": "R",
+      "boot_id": "d3b08c4d-b5a8-437d-8670-1afeafa4f39a"
+    },
+    "executable": "/home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/lib/fast_livo/fastlivo_mapping",
+    "binary_sha256": "83600c6f6781019466ff629f8fc8a1f820763004adc804dcbff2ad855a12900a",
+    "command": [
+      "/home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/lib/fast_livo/fastlivo_mapping",
+      "--ros-args",
+      "--params-file",
+      "/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/full_replay_09/config/ranger_mid360s_hik_trial.yaml",
+      "-p",
+      "use_sim_time:=true",
+      "--log-level",
+      "warn"
+    ],
+    "project_libraries_sha256": {
+      "/home/lab307/ranger_nav/ws_fast_livo/deps_install/lib/libvikit_common.so": "9da3cfa8b385c63b93a1a2aa2bc1089136b30a763fca2a80e05d6e93231523be",
+      "/home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/lib/liblivox_ros_driver2__rosidl_typesupport_cpp.so": "079c88e25c98dfaff98bb2dbeb509952d8b5c9c56d0cd1b3d1facce8e4d82b36"
+    }
+  },
+  "player": {
+    "identity": {
+      "pid": 22286,
+      "start_ticks": 900371,
+      "ppid": 22267,
+      "state": "R",
+      "boot_id": "d3b08c4d-b5a8-437d-8670-1afeafa4f39a"
+    },
+    "executable": "/usr/bin/python3.10",
+    "binary_sha256": "a2f33a6e006989270f4340528eb61f8f97366e00a5d1b602ac8672ea44fc56ae",
+    "command": [
+      "/usr/bin/python3",
+      "/home/lab307/ranger_nav/scripts/fast_livo2/mapping_replay.py",
+      "--view",
+      "/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/replay_view",
+      "--folder",
+      "/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/full_replay_09"
+    ],
+    "project_libraries_sha256": {}
+  }
+}

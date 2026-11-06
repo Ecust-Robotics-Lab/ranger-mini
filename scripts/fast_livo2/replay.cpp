@@ -42,6 +42,8 @@ int main(int argc, char **argv)
     timing << "stamp_s,points,visual_points,visual_solver_updates,visual_update_translation_m,visual_update_rotation_rad,processing_ms,lidar_queue,imu_queue,image_queue\n";
     size_t messages=0, frames=0, vio_frames=0;
     size_t max_lidar=0,max_imu=0,max_image=0;
+    Eigen::Vector3d aligned_gravity = Eigen::Vector3d::Zero();
+    size_t gravity_alignment_events = 0;
     auto start = std::chrono::steady_clock::now();
     while(reader.has_next() && rclcpp::ok()) {
       auto msg = reader.read_next(); ++messages;
@@ -53,7 +55,12 @@ int main(int argc, char **argv)
       max_image=std::max(max_image,mapper.img_buffer.size());
       while(mapper.sync_packages(mapper.LidarMeasures)) {
         auto t0=std::chrono::steady_clock::now();
+        const bool was_aligned = mapper.gravity_align_finished;
         mapper.handleFirstFrame(); mapper.processImu();
+        if (!was_aligned && mapper.gravity_align_finished) {
+          aligned_gravity = mapper._state.gravity;
+          ++gravity_alignment_events;
+        }
         auto before=mapper._state;
         size_t old_updates=mapper.vio_manager->ranger_solver_updates;
         mapper.stateEstimationAndMapping();
@@ -81,6 +88,13 @@ int main(int argc, char **argv)
     std::ofstream summary(output + "/summary.json");
     summary << "{\"messages\":" << messages << ",\"paired_frames\":" << frames << ",\"vio_frames\":" << vio_frames
       << ",\"visual_solver_updates\":" << mapper.vio_manager->ranger_solver_updates
+      << ",\"gravity_alignment_enabled\":" << (mapper.gravity_align_en ? "true" : "false")
+      << ",\"gravity_alignment_finished\":" << (mapper.gravity_align_finished ? "true" : "false")
+      << ",\"gravity_alignment_events\":" << gravity_alignment_events
+      << ",\"initial_aligned_gravity\":[" << std::setprecision(17)
+      << aligned_gravity.x() << ',' << aligned_gravity.y() << ',' << aligned_gravity.z() << ']'
+      << ",\"final_gravity\":[" << mapper._state.gravity.x() << ','
+      << mapper._state.gravity.y() << ',' << mapper._state.gravity.z() << ']'
       << ",\"max_lidar_queue\":" << max_lidar << ",\"max_imu_queue\":" << max_imu << ",\"max_image_queue\":" << max_image
       << ",\"wall_seconds\":" << std::chrono::duration<double>(std::chrono::steady_clock::now()-start).count()
       << ",\"mode\":\"offline_direct_callbacks\",\"physical_sync_proven\":false,\"accuracy_validated\":false}\n";

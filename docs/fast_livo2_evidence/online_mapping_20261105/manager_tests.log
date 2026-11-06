@@ -1,0 +1,61 @@
+...........
+----------------------------------------------------------------------
+Ran 11 tests in 4.690s
+
+OK
+health_loss0.log SESSION_DIR=/tmp/ranger-session-test-193jfjf4/sessions/one/run-45g3wbt9
+SESSION ERROR: RuntimeError: critical health lost; stopping session, fresh start required; logs: /tmp/ranger-session-test-193jfjf4/sessions/one/run-45g3wbt9; stopping owned processes
+
+dependency0.log SESSION_DIR=/tmp/ranger-session-test-mlbdfv3v/sessions/one/run-tww03j2_
+
+escape0.log SESSION_DIR=/tmp/ranger-session-test-ymffycsd/sessions/one/run-3433j_cz
+SESSION ERROR: RuntimeError: escape exited 7; no automatic restart; logs: /tmp/ranger-session-test-ymffycsd/sessions/one/run-3433j_cz; stopping owned processes
+
+normal0.log SESSION_DIR=/tmp/ranger-session-test-ajmfrw67/sessions/one/run-1yj84c8k
+
+preflight0.log SESSION_DIR=/tmp/ranger-session-test-yqjd9o0k/sessions/one/run-ved8z7ui
+SESSION ERROR: RuntimeError: preflight rejects occupied interface: free; logs: /tmp/ranger-session-test-yqjd9o0k/sessions/one/run-ved8z7ui; stopping owned processes
+
+optional0.log SESSION_DIR=/tmp/ranger-session-test-u02stks5/sessions/one/run-a9eidzpu
+
+resource_two2.log Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/scripts/session_manager.py", line 218, in run_guarded
+    fcntl.flock(handle, fcntl.LOCK_EX | fcntl.LOCK_NB)
+BlockingIOError: [Errno 11] Resource temporarily unavailable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_session_manager.py", line 195, in <module>
+    if len(sys.argv)>1 and sys.argv[1]=='--worker':raise SystemExit(worker(sys.argv[2],sys.argv[3]))
+  File "/home/lab307/ranger_nav/tests/test_session_manager.py", line 63, in worker
+    return run_guarded(session,specs,health_factory=provider,startup_timeout=.8 if scenario=='timeout' else 5.,
+  File "/home/lab307/ranger_nav/scripts/session_manager.py", line 220, in run_guarded
+    raise RuntimeError(f'resource already owned by another session: {resource}')
+RuntimeError: resource already owned by another session: shared
+
+normal0.log SESSION_DIR=/tmp/ranger-session-test-esddnnzy/sessions/one/run-1ea5h7mh
+
+normal1.log Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/scripts/session_manager.py", line 204, in run_guarded
+    fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+BlockingIOError: [Errno 11] Resource temporarily unavailable
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_session_manager.py", line 195, in <module>
+    if len(sys.argv)>1 and sys.argv[1]=='--worker':raise SystemExit(worker(sys.argv[2],sys.argv[3]))
+  File "/home/lab307/ranger_nav/tests/test_session_manager.py", line 63, in worker
+    return run_guarded(session,specs,health_factory=provider,startup_timeout=.8 if scenario=='timeout' else 5.,
+  File "/home/lab307/ranger_nav/scripts/session_manager.py", line 206, in run_guarded
+    raise RuntimeError('session is already active')
+RuntimeError: session is already active
+
+normal3.log SESSION_DIR=/tmp/ranger-session-test-esddnnzy/sessions/one/run-py3d3k14
+
+normal0.log SESSION_DIR=/tmp/ranger-session-test-gmw3dwd_/sessions/one/run-apmd7lyl
+
+timeout0.log SESSION_DIR=/tmp/ranger-session-test-q7_eyema/sessions/one/run-d1a19slh
+SESSION ERROR: RuntimeError: startup readiness timeout; not ready: waiting(WAITING, health=process); logs: /tmp/ranger-session-test-q7_eyema/sessions/one/run-d1a19slh; stopping owned processes
+

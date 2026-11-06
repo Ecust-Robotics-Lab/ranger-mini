@@ -1,0 +1,75 @@
+ M .gitignore
+ M AGENTS.md
+ M README.md
+ M docs/FAST_LIVO2_BACKEND_PLAN.md
+ M docs/HANDOFF.md
+ M docs/README.md
+ M docs/STATUS.md
+ M docs/fast_livo2_recording.md
+ M scripts/fast_livo2/backend/session.py
+ M scripts/fast_livo2/localizer/session.py
+ M scripts/fast_livo2/online_session.py
+ M scripts/fast_livo2/record_session.py
+ M scripts/fast_livo2/record_worker.py
+ M scripts/session_manager.py
+ M tests/test_fast_livo_recording.py
+ M ws_camera/src/timeshare_writer/CMakeLists.txt
+ M ws_camera/src/timeshare_writer/launch/timeshare_launch.py
+ M ws_camera/src/timeshare_writer/package.xml
+ M ws_camera/src/timeshare_writer/src/timeshare_writer_node.cpp
+ M ws_fast_livo/src/ranger_fast_livo_backend/CMakeLists.txt
+ M ws_fast_livo/src/ranger_fast_livo_backend/THIRD_PARTY_NOTICES.md
+ M ws_fast_livo/src/ranger_fast_livo_backend/include/ranger_fast_livo_backend/backend.hpp
+ M ws_fast_livo/src/ranger_fast_livo_backend/include/ranger_fast_livo_backend/types.hpp
+ M ws_fast_livo/src/ranger_fast_livo_backend/package.xml
+ M ws_fast_livo/src/ranger_fast_livo_backend/src/backend.cpp
+ M ws_fast_livo/src/ranger_fast_livo_backend/src/node.cpp
+ M ws_fast_livo/src/ranger_fast_livo_localizer/CMakeLists.txt
+ M ws_fast_livo/src/ranger_fast_livo_localizer/include/ranger_fast_livo_localizer/relocalizer.hpp
+ M ws_fast_livo/src/ranger_fast_livo_localizer/src/node.cpp
+ M ws_fast_livo/src/ranger_fast_livo_localizer/src/relocalizer.cpp
+?? config/fast_livo2/apriltag_camera.json
+?? config/fast_livo2/apriltag_sizes.json
+?? config/fast_livo2/apriltag_sizes_capture_140mm.json
+?? config/fast_livo2/apriltag_sources.lock.json
+?? docs/FAST_LIVO2_APRILTAG_PLAN.md
+?? docs/fast_livo2_apriltag_fullbag_report.md
+?? docs/fast_livo2_apriltag_interfaces.md
+?? docs/fast_livo2_apriltag_landmark_assessment_report.md
+?? docs/fast_livo2_apriltag_report.md
+?? docs/fast_livo2_evidence/apriltag_140mm_capture_20261029/
+?? docs/fast_livo2_evidence/apriltag_20261029/
+?? docs/fast_livo2_evidence/apriltag_fullbag_20261029/
+?? docs/fast_livo2_evidence/apriltag_landmark_assessment_20261029/
+?? docs/fast_livo2_evidence/apriltag_tag140_check_20261029/
+?? docs/fast_livo2_evidence/apriltag_tag140_consistency_20261029/
+?? docs/fast_livo2_evidence/recording_readiness_20261029/
+?? docs/fast_livo2_evidence/sync_capture_diagnostics_20261029/
+?? docs/fast_livo2_evidence/tag140_sync_diag02_20261029/
+?? docs/fast_livo2_evidence/tag140_sync_diag02_20261104/
+?? docs/fast_livo2_recording_readiness_report.md
+?? docs/fast_livo2_sync_capture_diagnostics_report.md
+?? docs/fast_livo2_tag140_check_report.md
+?? docs/fast_livo2_tag140_consistency_report.md
+?? scripts/build_fast_livo2_tags.sh
+?? scripts/fast_livo2/tags/
+?? scripts/run_fast_livo2_tags.sh
+?? tests/test_fast_livo_tag_assessment.py
+?? tests/test_fast_livo_tag_consistency.py
+?? tests/test_fast_livo_tag_fullbag.py
+?? tests/test_fast_livo_tags_ros.py
+?? tests/test_tag_imu_timing.py
+?? tests/test_timeshare_delivery.py
+?? ws_fast_livo/src/ranger_fast_livo_backend/include/ranger_fast_livo_backend/tag_detector.hpp
+?? ws_fast_livo/src/ranger_fast_livo_backend/include/ranger_fast_livo_backend/tags.hpp
+?? ws_fast_livo/src/ranger_fast_livo_backend/src/tag_detector.cpp
+?? ws_fast_livo/src/ranger_fast_livo_backend/src/tag_geometry.cpp
+?? ws_fast_livo/src/ranger_fast_livo_backend/src/tag_image_tool.cpp
+?? ws_fast_livo/src/ranger_fast_livo_backend/src/tag_observer_node.cpp
+?? ws_fast_livo/src/ranger_fast_livo_backend/src/tag_store.cpp
+?? ws_fast_livo/src/ranger_fast_livo_backend/test/tag_detector_tests.cpp
+?? ws_fast_livo/src/ranger_fast_livo_backend/test/tag_fixture.hpp
+?? ws_fast_livo/src/ranger_fast_livo_backend/test/tag_tests.cpp
+?? ws_fast_livo/src/ranger_fast_livo_backend/third_party/APRILTAG-LICENSE
+?? ws_fast_livo/src/ranger_fast_livo_localizer/src/tag_map_tool.cpp
+?? ws_fast_livo/src/ranger_fast_livo_localizer/test/tag_integration_tests.cpp

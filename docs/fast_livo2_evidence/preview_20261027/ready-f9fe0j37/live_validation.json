@@ -1,0 +1,81 @@
+{
+  "domain": 175,
+  "localhost_only": true,
+  "recording_started": false,
+  "topics": {
+    "/livox/lidar": {
+      "count": 50,
+      "header_hz": 10.000212167766726,
+      "nonincreasing": 0,
+      "first_ns": 1590192323500444620,
+      "last_ns": 1590192328400340660,
+      "publishers": [
+        {
+          "node": "livox_lidar_publisher",
+          "type": "sensor_msgs/msg/PointCloud2"
+        }
+      ]
+    },
+    "/livox/imu": {
+      "count": 1000,
+      "header_hz": 199.97174012980176,
+      "nonincreasing": 0,
+      "first_ns": 1590192323581408260,
+      "last_ns": 1590192328577114150,
+      "publishers": [
+        {
+          "node": "livox_lidar_publisher",
+          "type": "sensor_msgs/msg/Imu"
+        }
+      ]
+    },
+    "/front/image_sync": {
+      "count": 50,
+      "header_hz": 10.000212167766726,
+      "nonincreasing": 0,
+      "first_ns": 1590192323500444620,
+      "last_ns": 1590192328400340660,
+      "publishers": [
+        {
+          "node": "hik_camera_trigger",
+          "type": "sensor_msgs/msg/Image"
+        }
+      ]
+    },
+    "/fast_livo/odometry": {
+      "count": 50,
+      "header_hz": 10.000212441247726,
+      "nonincreasing": 0,
+      "first_ns": 1590192323400124788,
+      "last_ns": 1590192328300020694,
+      "publishers": [
+        {
+          "node": "laserMapping",
+          "type": "nav_msgs/msg/Odometry"
+        }
+      ]
+    },
+    "/fast_livo/deskewed_imu": {
+      "count": 50,
+      "header_hz": 10.000212441247726,
+      "nonincreasing": 0,
+      "first_ns": 1590192323400124788,
+      "last_ns": 1590192328300020694,
+      "publishers": [
+        {
+          "node": "laserMapping",
+          "type": "sensor_msgs/msg/PointCloud2"
+        }
+      ]
+    }
+  },
+  "sample_wall_unix_ns": 1793110535411586208,
+  "physical_sync_proven": false,
+  "matched_cloud_pose_stamps": 50,
+  "public_publishers": {
+    "/tf": [],
+    "/tf_static": [],
+    "/cmd_vel": [],
+    "/base/safe_cmd_vel": []
+  }
+}

@@ -1,0 +1,34 @@
+test_adapter_interpolation_loss_and_large_jump_latch (test_fast_livo_backend_ros.RosBackendTests) ... ok
+test_clock_reset_process_failure_and_restart (test_fast_livo_backend_ros.RosBackendTests) ... ok
+test_existing_static_native_frames_preserve_stamps (test_fast_livo_backend_ros.RosBackendTests) ... ok
+test_invalid_messages_and_nonfinite_cloud_fail_closed (test_fast_livo_backend_ros.RosBackendTests) ... ok
+test_managed_entry_health_failure_cleans_owned_children (test_fast_livo_backend_ros.RosBackendTests) ... ok
+test_private_export_and_multiple_publisher_rejection (test_fast_livo_backend_ros.RosBackendTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 35.845s
+
+OK
+	Command being timed: "python3 -"
+	User time (seconds): 12.11
+	System time (seconds): 0.97
+	Percent of CPU this job got: 36%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:36.12
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 79020
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 40
+	Minor (reclaiming a frame) page faults: 115608
+	Voluntary context switches: 37993
+	Involuntary context switches: 340
+	Swaps: 0
+	File system inputs: 8
+	File system outputs: 3184
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

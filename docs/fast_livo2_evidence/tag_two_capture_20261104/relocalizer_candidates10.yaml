@@ -1,0 +1,19 @@
+ranger_fast_livo_localizer:
+  ros__parameters:
+    global_search_enabled: true
+    global_candidates: 10
+    global_maximum_points: 4000
+    global_window_frames: 2
+    global_maximum_index_frames: 10000
+    global_resolution: 0.2
+    global_window_seconds: 1.0
+    global_window_translation: 3.0
+    global_window_rotation: 1.0
+    global_budget_ms: 10000.0
+    global_retry_seconds: 0.5
+    global_support_queries: 2
+    global_support_time: 0.25
+    global_support_translation: 0.15
+    global_support_rotation: 0.08
+    global_consistency_translation: 0.3
+    global_consistency_rotation: 0.15

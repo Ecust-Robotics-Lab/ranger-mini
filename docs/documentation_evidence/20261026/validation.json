@@ -1,0 +1,101 @@
+{
+  "current_document_links": {
+    "documents": 12,
+    "links": 100,
+    "broken": []
+  },
+  "obsolete_files_deleted": {
+    "ARCHITECTURE_PLAN.md": true,
+    "docs/INITIALIZATION.md": true
+  },
+  "old_file_links_removed": true,
+  "historical_bodies_preserved": {
+    "docs/00_environment_audit.md": true,
+    "docs/LIDAR_CONNECTION.md": true,
+    "docs/02_base_interface.md": true,
+    "docs/02_ros_motion_test.md": true,
+    "docs/03_mid360_validation.md": true,
+    "docs/04_mapping_report.md": true,
+    "docs/05_localization_interface.md": true,
+    "docs/06_flat_navigation_acceptance.md": true,
+    "docs/architecture_baseline.md": true,
+    "docs/architecture_batch2_report.md": true,
+    "docs/architecture_batch3_report.md": true,
+    "docs/fast_livo2_stage_a_report.md": true,
+    "docs/fast_livo2_online_report.md": true
+  },
+  "locked_sources": {
+    "fastlio_backend": {
+      "expected": "7baa59f7339ba88ce3b646fe35b23f61031c5d3f",
+      "actual": "7baa59f7339ba88ce3b646fe35b23f61031c5d3f",
+      "matches": true
+    },
+    "global_lvba": {
+      "expected": "10493a2b0f695e32db83dde49dad843a4826e090",
+      "actual": "10493a2b0f695e32db83dde49dad843a4826e090",
+      "matches": true
+    },
+    "handheld_mapper": {
+      "expected": "3abbde381e2ae6ec382a9cec8376fc5d47d95545",
+      "actual": "3abbde381e2ae6ec382a9cec8376fc5d47d95545",
+      "matches": true
+    },
+    "hardware": {
+      "expected": "30507028a7c00c99ac992322507701e0efe72a2a",
+      "actual": "30507028a7c00c99ac992322507701e0efe72a2a",
+      "matches": true
+    },
+    "holoagent": {
+      "expected": "ef14d3152ca6246d8ae64920694c6c74581d246c",
+      "actual": "ef14d3152ca6246d8ae64920694c6c74581d246c",
+      "matches": true
+    },
+    "longxiaoze": {
+      "expected": "6130a580e43bb9c3763477dffc70b6a9a148aa4c",
+      "actual": "6130a580e43bb9c3763477dffc70b6a9a148aa4c",
+      "matches": true
+    },
+    "official": {
+      "expected": "0d2c0346107b75b59934975adec9a6eeeb913c64",
+      "actual": "0d2c0346107b75b59934975adec9a6eeeb913c64",
+      "matches": true
+    },
+    "openflex": {
+      "expected": "0e891ff05dc562868d84716933bb68fdc74476f4",
+      "actual": "0e891ff05dc562868d84716933bb68fdc74476f4",
+      "matches": true
+    },
+    "openflex_docs": {
+      "expected": "980592bd06c355730e6867e79cb77bf6c86d91a5",
+      "actual": "980592bd06c355730e6867e79cb77bf6c86d91a5",
+      "matches": true
+    },
+    "ros2_frontend": {
+      "expected": "837b7bbc1431cb04cf936528e52c83c835efba8e",
+      "actual": "837b7bbc1431cb04cf936528e52c83c835efba8e",
+      "matches": true
+    },
+    "rpg_vikit": {
+      "expected": "4b7abc838f5d2ca9137f70f122eaaeff9eaf0f50",
+      "actual": "4b7abc838f5d2ca9137f70f122eaaeff9eaf0f50",
+      "matches": true
+    },
+    "sc_fast_livo2": {
+      "expected": "f39e3d0008af7cbd838b05ccfbad794c66161596",
+      "actual": "f39e3d0008af7cbd838b05ccfbad794c66161596",
+      "matches": true
+    },
+    "sophus": {
+      "expected": "de0f8d3d92bf776271e16de56d1803940ebccab9",
+      "actual": "de0f8d3d92bf776271e16de56d1803940ebccab9",
+      "matches": true
+    }
+  },
+  "git_diff_check": {
+    "exit_code": 0,
+    "output": ""
+  },
+  "no_word_files_in_maintained_tree": true,
+  "scope": "Documentation only; no hardware startup, backend implementation or algorithm retest.",
+  "passed": true
+}

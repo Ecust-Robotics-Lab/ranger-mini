@@ -1,0 +1,12 @@
+# Requires the current map and frontend session from LocalizerEstimate.
+# stamp=0 explicitly binds this pose to the NEXT paired input after acceptance.
+string request_id
+string map_uuid
+uint64 map_generation
+string session_id
+string reference_body
+geometry_msgs/PoseWithCovarianceStamped initial_pose
+---
+bool accepted
+string reason
+uint64 request_generation

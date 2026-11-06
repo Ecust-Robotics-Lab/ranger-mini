@@ -1,0 +1,189 @@
+{
+  "success": true,
+  "hardware_started": false,
+  "reason": "committed",
+  "session_id": "6ca8709c065ea0ca9e93ab684b05be89",
+  "graph_version": 1,
+  "last_stamp_ns": 1590192070300087213,
+  "processed_pairs": 56,
+  "manifest_path": "/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/eof_case/final_control/map/manifest.json",
+  "snapshot": {
+    "checksummed_files": 7,
+    "keyframes": 1,
+    "loop_factors": 0,
+    "accepted_loop_updates": 0,
+    "map_uuid": "a9de8ad8e59256cf6c0bc2f616ecacbb",
+    "session_id": "6ca8709c065ea0ca9e93ab684b05be89",
+    "graph_version": 1
+  },
+  "recorder": {
+    "exit": 0,
+    "forced": false,
+    "requested_seconds": 900.0,
+    "elapsed_seconds": 6.145862749999651,
+    "stopped_by_signal": true,
+    "observed_messages": {
+      "/livox/lidar": 60,
+      "/livox/imu": 1199,
+      "/front/image_sync": 60,
+      "/fast_livo/odometry": 56,
+      "/fast_livo/deskewed_imu": 56
+    }
+  },
+  "data_quality": {
+    "data_checks": "PASS",
+    "failures": [],
+    "warnings": [],
+    "physical_sync": "PARTIAL",
+    "motion_mapping_accuracy": "NOT_EVALUATED",
+    "note": "Header equality is not physical synchronization; no APE/RPE or loop accuracy is inferred."
+  },
+  "sync": {
+    "available": false
+  },
+  "session_exit": 0,
+  "session_state": {
+    "run_directory": "/home/lab307/ranger_nav/.runtime/sessions/fast_livo_mapping/run-ler1rdz5",
+    "guardian": {
+      "pid": 26418,
+      "start_ticks": 1130035,
+      "ppid": 26414,
+      "state": "R",
+      "boot_id": "d3b08c4d-b5a8-437d-8670-1afeafa4f39a"
+    },
+    "owner": {
+      "pid": 26519,
+      "start_ticks": 1130115,
+      "ppid": 26418,
+      "state": "R",
+      "boot_id": "d3b08c4d-b5a8-437d-8670-1afeafa4f39a"
+    },
+    "state": "STOPPED",
+    "reason": "",
+    "owned": [],
+    "components": {
+      "probe": {
+        "state": "READY",
+        "process": {
+          "pid": 26520,
+          "start_ticks": 1130115,
+          "ppid": 26519,
+          "state": "R",
+          "boot_id": "d3b08c4d-b5a8-437d-8670-1afeafa4f39a"
+        },
+        "argv": [
+          "/usr/bin/python3",
+          "/home/lab307/ranger_nav/scripts/fast_livo2/mapping_monitor.py",
+          "--folder",
+          "/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/eof_case/final_control",
+          "--replay"
+        ]
+      },
+      "backend": {
+        "state": "READY",
+        "process": {
+          "pid": 26538,
+          "start_ticks": 1130348,
+          "ppid": 26519,
+          "state": "R",
+          "boot_id": "d3b08c4d-b5a8-437d-8670-1afeafa4f39a"
+        },
+        "argv": [
+          "/home/lab307/ranger_nav/ws_fast_livo/online_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/backend_node",
+          "--ros-args",
+          "--params-file",
+          "/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/eof_case/final_control/config/backend.yaml",
+          "-p",
+          "use_sim_time:=true",
+          "-p",
+          "metadata_path:=/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/eof_case/final_control/provenance.json",
+          "-p",
+          "data_root:=/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/eof_case/final_control/backend_work",
+          "-p",
+          "publish_map_view:=true",
+          "-p",
+          "enable_tag_loop:=false",
+          "-p",
+          "registration:=pcl_icp"
+        ]
+      },
+      "receipts": {
+        "state": "READY",
+        "process": {
+          "pid": 26539,
+          "start_ticks": 1130348,
+          "ppid": 26519,
+          "state": "R",
+          "boot_id": "d3b08c4d-b5a8-437d-8670-1afeafa4f39a"
+        },
+        "argv": [
+          "/home/lab307/ranger_nav/ws_fast_livo/online_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/receipt_probe",
+          "--ros-args",
+          "-p",
+          "context:=/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/eof_case/final_control",
+          "-p",
+          "topics_json:=\"{\\\"/livox/lidar\\\":\\\"sensor_msgs/msg/PointCloud2\\\",\\\"/livox/imu\\\":\\\"sensor_msgs/msg/Imu\\\",\\\"/front/image_sync\\\":\\\"sensor_msgs/msg/Image\\\",\\\"/fast_livo/odometry\\\":\\\"nav_msgs/msg/Odometry\\\",\\\"/fast_livo/deskewed_imu\\\":\\\"sensor_msgs/msg/PointCloud2\\\"}\""
+        ]
+      },
+      "frontend": {
+        "state": "READY",
+        "process": {
+          "pid": 26571,
+          "start_ticks": 1130390,
+          "ppid": 26519,
+          "state": "R",
+          "boot_id": "d3b08c4d-b5a8-437d-8670-1afeafa4f39a"
+        },
+        "argv": [
+          "/home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/lib/fast_livo/fastlivo_mapping",
+          "--ros-args",
+          "--params-file",
+          "/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/eof_case/final_control/config/ranger_mid360s_hik_trial.yaml",
+          "-p",
+          "use_sim_time:=true",
+          "--log-level",
+          "warn"
+        ]
+      },
+      "capture": {
+        "state": "READY",
+        "process": {
+          "pid": 26572,
+          "start_ticks": 1130390,
+          "ppid": 26519,
+          "state": "R",
+          "boot_id": "d3b08c4d-b5a8-437d-8670-1afeafa4f39a"
+        },
+        "argv": [
+          "/usr/bin/python3",
+          "/home/lab307/ranger_nav/scripts/fast_livo2/record_worker.py",
+          "--folder",
+          "/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/eof_case/final_control"
+        ]
+      },
+      "player": {
+        "state": "READY",
+        "process": {
+          "pid": 26573,
+          "start_ticks": 1130390,
+          "ppid": 26519,
+          "state": "R",
+          "boot_id": "d3b08c4d-b5a8-437d-8670-1afeafa4f39a"
+        },
+        "argv": [
+          "/usr/bin/python3",
+          "/home/lab307/ranger_nav/scripts/fast_livo2/mapping_replay.py",
+          "--view",
+          "/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/eof_case/view",
+          "--folder",
+          "/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/eof_case/final_control"
+        ]
+      }
+    },
+    "updated_monotonic": 11314.427367301,
+    "guardian_cleanup_complete": true
+  },
+  "absolute_accuracy": "NOT_EVALUATED",
+  "physical_sync": "PARTIAL",
+  "online_hardware_acceptance": "NOT_EVALUATED"
+}

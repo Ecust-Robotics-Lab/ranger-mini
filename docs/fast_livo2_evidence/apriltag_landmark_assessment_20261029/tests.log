@@ -1,0 +1,11 @@
+test_fixed_trajectory_fit_recovers_truth_on_heldout_frames (__main__.FixedTag) ... ok
+test_inconsistent_heldout_image_cannot_be_accepted_as_static_landmark (__main__.FixedTag) ... ok
+test_mirror_modes_keep_identity_and_do_not_average_normals (__main__.FixedTag) ... ok
+test_degraded_map_mismatch_and_unbound_native_rejected (__main__.HealthyC1) ... ok
+test_global_correction_jump_is_not_interpolated_or_hidden (__main__.HealthyC1) ... ok
+test_noncommuting_pose_lever_arm_and_different_image_time (__main__.HealthyC1) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.014s
+
+OK

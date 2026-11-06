@@ -1,0 +1,55 @@
+{
+  "scope": "offline only; no physical sensor or chassis started",
+  "tests": [
+    {
+      "log": "unit.log",
+      "count": 10,
+      "exit_code": 0,
+      "passed": 10
+    },
+    {
+      "log": "ros.log",
+      "count": 6,
+      "exit_code": 0,
+      "passed": 6
+    },
+    {
+      "log": "missing_streams_ros.log",
+      "count": 2,
+      "exit_code": 0,
+      "passed": 2
+    },
+    {
+      "log": "session_manager.log",
+      "count": 11,
+      "exit_code": 0,
+      "passed": 11
+    }
+  ],
+  "test_count": 29,
+  "source_sha256": {
+    "scripts/fast_livo2/record_session.py": "ac1ddec549581cd713f735b80b319b0a971bac3810739a72b013f332b2744b1a",
+    "scripts/fast_livo2/record_worker.py": "6ed33b06017e295477b6ff7a975221a607a377777a05f6e623bca7071d65571b",
+    "scripts/session_manager.py": "29ad23b16c7271a025b2dd90ed9b8d1703a5bd917784daecfc4c12f0c9ca785e",
+    "tests/test_fast_livo_recording.py": "be4dbf88b27a53ab93ff2fe08421b16c85bb05c8cce2232b849ebe8c3580c068"
+  },
+  "backup": ".runtime/backups/recording_errors_20261029_204543",
+  "git_head": "acffa879cc8d52330276089cd3df83ad6a43f112",
+  "git_diff_check_exit_code": 0,
+  "dryrun_exit_code": 0,
+  "sessions": {
+    "capture": {
+      "live": false,
+      "state": "FAILED",
+      "owned": []
+    },
+    "preview": {
+      "live": false,
+      "state": "STOPPED",
+      "owned": []
+    }
+  },
+  "production_configs_changed_in_this_task": false,
+  "hardware_disconnect_validation": "NOT_PERFORMED",
+  "local_markdown_link_errors": []
+}

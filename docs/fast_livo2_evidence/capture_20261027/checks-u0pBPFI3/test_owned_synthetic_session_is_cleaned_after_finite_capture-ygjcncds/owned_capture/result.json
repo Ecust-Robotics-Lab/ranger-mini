@@ -1,0 +1,87 @@
+{
+  "exit": 0,
+  "forced": false,
+  "requested_seconds": 2.0,
+  "elapsed_seconds": 2.0014347679998536,
+  "stopped_by_signal": false,
+  "observed_messages": {
+    "/livox/lidar": 44,
+    "/livox/imu": 43,
+    "/front/image_sync": 43,
+    "/front/image": 43,
+    "/front/camera_info": 43,
+    "/fast_livo/odometry": 43
+  },
+  "session_exit": 0,
+  "session_state": {
+    "run_directory": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/checks-u0pBPFI3/test_owned_synthetic_session_is_cleaned_after_finite_capture-ygjcncds/sessions/fast_livo_record/run-qhjgz9y1",
+    "guardian": {
+      "pid": 14335,
+      "start_ticks": 621081,
+      "ppid": 13921,
+      "state": "R",
+      "boot_id": "7d9266bc-caeb-4e72-9d67-82ac247914e1"
+    },
+    "owner": {
+      "pid": 14340,
+      "start_ticks": 621089,
+      "ppid": 14335,
+      "state": "R",
+      "boot_id": "7d9266bc-caeb-4e72-9d67-82ac247914e1"
+    },
+    "state": "STOPPED",
+    "reason": "",
+    "owned": [],
+    "components": {
+      "frontend": {
+        "state": "READY",
+        "process": {
+          "pid": 14341,
+          "start_ticks": 621089,
+          "ppid": 14340,
+          "state": "R",
+          "boot_id": "7d9266bc-caeb-4e72-9d67-82ac247914e1"
+        },
+        "argv": [
+          "/usr/bin/python3",
+          "/home/lab307/ranger_nav/tests/test_fast_livo_recording.py",
+          "--publish",
+          "/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/checks-u0pBPFI3/test_owned_synthetic_session_is_cleaned_after_finite_capture-ygjcncds/owned_capture/sensor_assets"
+        ]
+      },
+      "capture": {
+        "state": "READY",
+        "process": {
+          "pid": 14342,
+          "start_ticks": 621089,
+          "ppid": 14340,
+          "state": "R",
+          "boot_id": "7d9266bc-caeb-4e72-9d67-82ac247914e1"
+        },
+        "argv": [
+          "/usr/bin/python3",
+          "/home/lab307/ranger_nav/scripts/fast_livo2/record_worker.py",
+          "--folder",
+          "/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/checks-u0pBPFI3/test_owned_synthetic_session_is_cleaned_after_finite_capture-ygjcncds/owned_capture"
+        ]
+      }
+    },
+    "updated_monotonic": 6213.763694078,
+    "guardian_cleanup_complete": true
+  },
+  "folder": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/checks-u0pBPFI3/test_owned_synthetic_session_is_cleaned_after_finite_capture-ygjcncds/owned_capture",
+  "capture_complete": true,
+  "sync": {
+    "available": false
+  },
+  "quality": {
+    "data_checks": "PARTIAL",
+    "failures": [],
+    "warnings": [
+      "sync_csv_unavailable"
+    ],
+    "physical_sync": "PARTIAL",
+    "motion_mapping_accuracy": "NOT_EVALUATED",
+    "note": "Header equality is not physical synchronization; no APE/RPE or loop accuracy is inferred."
+  }
+}

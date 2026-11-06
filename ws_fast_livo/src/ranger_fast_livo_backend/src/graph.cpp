@@ -54,11 +54,9 @@ bool Graph::transaction(std::vector<Keyframe> frames, std::vector<Factor> factor
     for (size_t i = frames_.size(); i < frames.size(); ++i) initial.insert(i, gpose(frames[i].X));
     impl_->isam.update(changes, initial);
     for (int k = 0; k < 3; ++k) impl_->isam.update();
-    auto estimates = impl_->isam.calculateEstimate();
-    for (auto& f:frames) {
-      f.X.matrix() = estimates.at<gtsam::Pose3>(f.id).matrix();
-      if (!valid_pose(f.X)) throw std::runtime_error("non-finite/non-rigid optimization");
-    }
+    // A wildfire-truncated delta is suitable for incremental propagation, but
+    // not for deciding whether to commit the complete nonlinear objective.
+    auto estimates = impl_->isam.calculateBestEstimate();
     gtsam::NonlinearFactorGraph all;
     for (auto& f:factors) add_factor(all, f, config_);
     gtsam::Values before;
@@ -67,8 +65,20 @@ bool Graph::transaction(std::vector<Keyframe> frames, std::vector<Factor> factor
     for (auto& f:frames_) before.insert(f.id, gpose(f.X));
     for (size_t i = frames_.size(); i < frames.size(); ++i) before.insert(i, initial.at<gtsam::Pose3>(i));
     double error_before = all.error(before), error_after = all.error(estimates);
+    for (int retry = 0; retry < 3 && error_after > error_before + 1e-6; ++retry) {
+      gtsam::ISAM2UpdateParams parameters;
+      parameters.force_relinearize = true;
+      parameters.forceFullSolve = true;
+      impl_->isam.update({}, {}, parameters);
+      estimates = impl_->isam.calculateBestEstimate();
+      error_after = all.error(estimates);
+    }
     if (!std::isfinite(error_before) || !std::isfinite(error_after)) throw std::runtime_error("non-finite graph error");
-    if (error_after > error_before + std::max(1e-6, error_before * .01)) throw std::runtime_error("optimization objective increased");
+    if (error_after > error_before + 1e-6) throw std::runtime_error("optimization objective increased");
+    for (auto& f:frames) {
+      f.X.matrix() = estimates.at<gtsam::Pose3>(f.id).matrix();
+      if (!valid_pose(f.X)) throw std::runtime_error("non-finite/non-rigid optimization");
+    }
     if (validator) validator();
     frames_ = std::move(frames);
     factors_ = std::move(factors);

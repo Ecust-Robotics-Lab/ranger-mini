@@ -1,0 +1,32 @@
+Running main() from /opt/ros/humble/src/gtest_vendor/src/gtest_main.cc
+Note: Google Test filter = Graph.*:Input.*:Archive.*
+[==========] Running 8 tests from 3 test suites.
+[----------] Global test environment set-up.
+[----------] 5 tests from Input
+[ RUN      ] Input.StrictIntegerPairingReorderAndDuplicates
+[       OK ] Input.StrictIntegerPairingReorderAndDuplicates (0 ms)
+[ RUN      ] Input.LossCapacityAndClockReset
+[       OK ] Input.LossCapacityAndClockReset (1 ms)
+[ RUN      ] Input.RejectInvalidFieldsAndValues
+[       OK ] Input.RejectInvalidFieldsAndValues (0 ms)
+[ RUN      ] Input.ByteBudgetPreservesOtherPairs
+[       OK ] Input.ByteBudgetPreservesOtherPairs (0 ms)
+[ RUN      ] Input.BoundedDrainDoesNotDiscardMatchedSuccessors
+[       OK ] Input.BoundedDrainDoesNotDiscardMatchedSuccessors (0 ms)
+[----------] 5 tests from Input (1 ms total)
+
+[----------] 1 test from Graph
+[ RUN      ] Graph.Pose3OdomLoopAndRollback
+[       OK ] Graph.Pose3OdomLoopAndRollback (0 ms)
+[----------] 1 test from Graph (0 ms total)
+
+[----------] 2 tests from Archive
+[ RUN      ] Archive.FrozenVersionPerFrameTransformChecksumsAndNoOverwrite
+[       OK ] Archive.FrozenVersionPerFrameTransformChecksumsAndNoOverwrite (30 ms)
+[ RUN      ] Archive.WriteFailureCannotCommitSuccessMarker
+[       OK ] Archive.WriteFailureCannotCommitSuccessMarker (6 ms)
+[----------] 2 tests from Archive (36 ms total)
+
+[----------] Global test environment tear-down
+[==========] 8 tests from 3 test suites ran. (37 ms total)
+[  PASSED  ] 8 tests.

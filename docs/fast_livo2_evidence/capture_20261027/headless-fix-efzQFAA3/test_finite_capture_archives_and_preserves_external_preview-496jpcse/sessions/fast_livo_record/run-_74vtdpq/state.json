@@ -1,0 +1,40 @@
+{
+  "run_directory": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/headless-fix-efzQFAA3/test_finite_capture_archives_and_preserves_external_preview-496jpcse/sessions/fast_livo_record/run-_74vtdpq",
+  "guardian": {
+    "pid": 3752,
+    "start_ticks": 93364,
+    "ppid": 3451,
+    "state": "R",
+    "boot_id": "9ee4990c-890d-4dc7-bdf2-768bdacc709f"
+  },
+  "owner": {
+    "pid": 3782,
+    "start_ticks": 93405,
+    "ppid": 3752,
+    "state": "R",
+    "boot_id": "9ee4990c-890d-4dc7-bdf2-768bdacc709f"
+  },
+  "state": "STOPPED",
+  "reason": "",
+  "owned": [],
+  "components": {
+    "capture": {
+      "state": "READY",
+      "process": {
+        "pid": 3783,
+        "start_ticks": 93405,
+        "ppid": 3782,
+        "state": "R",
+        "boot_id": "9ee4990c-890d-4dc7-bdf2-768bdacc709f"
+      },
+      "argv": [
+        "/usr/bin/python3",
+        "/home/lab307/ranger_nav/scripts/fast_livo2/record_worker.py",
+        "--folder",
+        "/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/headless-fix-efzQFAA3/test_finite_capture_archives_and_preserves_external_preview-496jpcse/capture"
+      ]
+    }
+  },
+  "updated_monotonic": 936.781111882,
+  "guardian_cleanup_complete": true
+}

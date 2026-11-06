@@ -1,0 +1,152 @@
+{
+  "action": "DRY-RUN",
+  "domain": 175,
+  "runtime_config": "/home/lab307/ranger_nav/config/profiles/fast_livo2_frontend.yaml",
+  "components": [
+    {
+      "name": "probe",
+      "argv": [
+        "python3",
+        "/home/lab307/ranger_nav/scripts/fast_livo2/live_monitor.py"
+      ],
+      "depends": [],
+      "requires": [],
+      "ready_key": "probe_live",
+      "critical": true,
+      "start_requires": [],
+      "resource": ""
+    },
+    {
+      "name": "lidar",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/lib/livox_ros_driver2/livox_ros_driver2_node",
+        "--ros-args",
+        "-p",
+        "xfer_format:=0",
+        "-p",
+        "multi_topic:=0",
+        "-p",
+        "data_src:=0",
+        "-p",
+        "publish_freq:=10.0",
+        "-p",
+        "output_data_type:=0",
+        "-p",
+        "frame_id:=livox_frame",
+        "-p",
+        "user_config_path:=/home/lab307/ranger_nav/config/fast_livo2/mid360s_live.json",
+        "-p",
+        "cmdline_input_bd_code:=livox0000000001",
+        "-r",
+        "__node:=livox_lidar_publisher"
+      ],
+      "depends": [
+        "probe"
+      ],
+      "requires": [],
+      "ready_key": "lidar",
+      "critical": true,
+      "start_requires": [
+        "lidar_unclaimed"
+      ],
+      "resource": "livox_lidar"
+    },
+    {
+      "name": "writer",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_camera/install/timeshare_writer/lib/timeshare_writer/timeshare_writer_node",
+        "--ros-args",
+        "-p",
+        "timeshare_path:=/home/lab307/ranger_nav/.runtime/sessions/fast_livo_live/sensors-NEW/timeshare",
+        "-p",
+        "csv_path:=/home/lab307/ranger_nav/.runtime/sessions/fast_livo_live/sensors-NEW/timeshare_writer.csv"
+      ],
+      "depends": [
+        "lidar"
+      ],
+      "requires": [
+        "lidar"
+      ],
+      "ready_key": "writer",
+      "critical": true,
+      "start_requires": [],
+      "resource": "camera_timeshare"
+    },
+    {
+      "name": "camera",
+      "argv": [
+        "bash",
+        "-c",
+        "cd -- \"$RANGER_LIVO_DEVICE_CWD\" && exec \"$@\"",
+        "camera-device",
+        "/home/lab307/ranger_nav/ws_camera/install/hik_camera_trigger_driver/lib/hik_camera_trigger_driver/hik_camera_trigger_driver_node",
+        "--ros-args",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/fast_livo2/camera_live.yaml",
+        "-p",
+        "timeshare_path:=/home/lab307/ranger_nav/.runtime/sessions/fast_livo_live/sensors-NEW/timeshare",
+        "-p",
+        "sync_csv_path:=/home/lab307/ranger_nav/.runtime/sessions/fast_livo_live/sensors-NEW/camera_sync.csv",
+        "-r",
+        "__node:=hik_camera_trigger"
+      ],
+      "depends": [
+        "writer"
+      ],
+      "requires": [
+        "writer"
+      ],
+      "ready_key": "camera",
+      "critical": true,
+      "start_requires": [
+        "camera_unclaimed"
+      ],
+      "resource": "hik_camera"
+    },
+    {
+      "name": "frontend",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/install/fast_livo/lib/fast_livo/fastlivo_mapping",
+        "--ros-args",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/fast_livo2/ranger_mid360s_hik_trial.yaml",
+        "-p",
+        "use_sim_time:=false",
+        "--log-level",
+        "warn"
+      ],
+      "depends": [
+        "camera"
+      ],
+      "requires": [
+        "lidar",
+        "camera"
+      ],
+      "ready_key": "frontend",
+      "critical": true,
+      "start_requires": [
+        "frontend_unclaimed"
+      ],
+      "resource": "fast_livo_frontend"
+    },
+    {
+      "name": "rviz",
+      "argv": [
+        "/opt/ros/humble/lib/rviz2/rviz2",
+        "-d",
+        "/home/lab307/ranger_nav/config/fast_livo2/live.rviz",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=false"
+      ],
+      "depends": [
+        "frontend"
+      ],
+      "requires": [],
+      "ready_key": "process",
+      "critical": false,
+      "start_requires": [],
+      "resource": "fast_livo_rviz"
+    }
+  ]
+}

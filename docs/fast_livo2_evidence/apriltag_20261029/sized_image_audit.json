@@ -1,0 +1,514 @@
+{
+  "hardware_started": false,
+  "raw_open_mode": "sqlite mode=ro",
+  "bag": "/home/lab307/ranger_nav/bags/fast-livo-motion-w5phdosj/raw/raw_0.db3",
+  "topics": {
+    "/livox/lidar": {
+      "type": "sensor_msgs/msg/PointCloud2",
+      "count": 1367
+    },
+    "/livox/imu": {
+      "type": "sensor_msgs/msg/Imu",
+      "count": 27343
+    },
+    "/front/image_sync": {
+      "type": "sensor_msgs/msg/Image",
+      "count": 1367
+    },
+    "/front/image": {
+      "type": "sensor_msgs/msg/Image",
+      "count": 1367
+    },
+    "/front/camera_info": {
+      "type": "sensor_msgs/msg/CameraInfo",
+      "count": 1367
+    },
+    "/fast_livo/odometry": {
+      "type": "nav_msgs/msg/Odometry",
+      "count": 1367
+    }
+  },
+  "detector_samples": [
+    {
+      "image_index": 0,
+      "message_id": 20,
+      "stamp_ns": 1590195801300123320,
+      "message_sha256": "91a6243f7728fc49d3907cb57a3aa64430c13e95b24269a2c1847804948c2315",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/tag_image_tool",
+        "/home/lab307/ranger_nav/config/fast_livo2/apriltag_camera.json",
+        "outputs/fast-livo-apriltag-20261029-sized-audit/image_0.png",
+        "1590195801300123320",
+        "tag36h11",
+        "{\"1\":0.155}"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "result": {
+        "context": "offline-image-audit",
+        "observations": [],
+        "processing_ms": 45.39218300033099,
+        "public_tf_publisher": false,
+        "schema_version": 1
+      }
+    },
+    {
+      "image_index": 124,
+      "message_id": 3120,
+      "stamp_ns": 1590195813700142800,
+      "message_sha256": "211bdef7779116122fc967d920e084bc95838a32fe49e571d4b1159d04eb3e68",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/tag_image_tool",
+        "/home/lab307/ranger_nav/config/fast_livo2/apriltag_camera.json",
+        "outputs/fast-livo-apriltag-20261029-sized-audit/image_124.png",
+        "1590195813700142800",
+        "tag36h11",
+        "{\"1\":0.155}"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "result": {
+        "context": "offline-image-audit",
+        "observations": [],
+        "processing_ms": 44.33671599963418,
+        "public_tf_publisher": false,
+        "schema_version": 1
+      }
+    },
+    {
+      "image_index": 248,
+      "message_id": 6219,
+      "stamp_ns": 1590195826100177210,
+      "message_sha256": "fa21b35bf9b1f19876ee383fb98b351b9a9b50d8eb9b982a631b5acc636cfc86",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/tag_image_tool",
+        "/home/lab307/ranger_nav/config/fast_livo2/apriltag_camera.json",
+        "outputs/fast-livo-apriltag-20261029-sized-audit/image_248.png",
+        "1590195826100177210",
+        "tag36h11",
+        "{\"1\":0.155}"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "result": {
+        "context": "offline-image-audit",
+        "observations": [],
+        "processing_ms": 44.217605000085314,
+        "public_tf_publisher": false,
+        "schema_version": 1
+      }
+    },
+    {
+      "image_index": 372,
+      "message_id": 9316,
+      "stamp_ns": 1590195838500196710,
+      "message_sha256": "fbeadfeb044acb3d106d455c9ee7f6225500ae04de13d4f30feaddcb3fbee8e8",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/tag_image_tool",
+        "/home/lab307/ranger_nav/config/fast_livo2/apriltag_camera.json",
+        "outputs/fast-livo-apriltag-20261029-sized-audit/image_372.png",
+        "1590195838500196710",
+        "tag36h11",
+        "{\"1\":0.155}"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "result": {
+        "context": "offline-image-audit",
+        "observations": [],
+        "processing_ms": 46.34415800046554,
+        "public_tf_publisher": false,
+        "schema_version": 1
+      }
+    },
+    {
+      "image_index": 496,
+      "message_id": 12421,
+      "stamp_ns": 1590195850900216350,
+      "message_sha256": "d8c96981a0351c94ad91485e1bddc70fb698cc1a3e092cb7f99d753f8c1fcaf0",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/tag_image_tool",
+        "/home/lab307/ranger_nav/config/fast_livo2/apriltag_camera.json",
+        "outputs/fast-livo-apriltag-20261029-sized-audit/image_496.png",
+        "1590195850900216350",
+        "tag36h11",
+        "{\"1\":0.155}"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "result": {
+        "context": "offline-image-audit",
+        "observations": [],
+        "processing_ms": 52.49069999990752,
+        "public_tf_publisher": false,
+        "schema_version": 1
+      }
+    },
+    {
+      "image_index": 620,
+      "message_id": 15518,
+      "stamp_ns": 1590195863300070870,
+      "message_sha256": "d2fdd213f28830639555688c153a4c9c2b83cfbae38a2071d7199dc289be48d8",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/tag_image_tool",
+        "/home/lab307/ranger_nav/config/fast_livo2/apriltag_camera.json",
+        "outputs/fast-livo-apriltag-20261029-sized-audit/image_620.png",
+        "1590195863300070870",
+        "tag36h11",
+        "{\"1\":0.155}"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "result": {
+        "context": "offline-image-audit",
+        "observations": [],
+        "processing_ms": 52.88938600006077,
+        "public_tf_publisher": false,
+        "schema_version": 1
+      }
+    },
+    {
+      "image_index": 745,
+      "message_id": 18649,
+      "stamp_ns": 1590195875800210370,
+      "message_sha256": "f9c6352aedc4e1cccc9817c5ebea0f4de0e4f71062bfdf412ab35314f8b43bec",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/tag_image_tool",
+        "/home/lab307/ranger_nav/config/fast_livo2/apriltag_camera.json",
+        "outputs/fast-livo-apriltag-20261029-sized-audit/image_745.png",
+        "1590195875800210370",
+        "tag36h11",
+        "{\"1\":0.155}"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "result": {
+        "context": "offline-image-audit",
+        "observations": [
+          {
+            "calibration_id": "ranger-camera-imu-410a6f212a4d206d60e67ccbaba54a0544f664332685395c7cb314a065a45679",
+            "canonical_frame": "apriltag-native-xy-down-z-in-v1",
+            "context": "offline-image-audit",
+            "corners": [
+              [
+                386.24389648437506,
+                743.7365112304686
+              ],
+              [
+                484.8181152343751,
+                732.5304565429688
+              ],
+              [
+                486.6723937988282,
+                625.4616088867189
+              ],
+              [
+                389.82800292968744,
+                631.1953125
+              ]
+            ],
+            "decision_margin": 41.98602294921875,
+            "family": "tag36h11",
+            "hamming": 0,
+            "hypotheses": [
+              {
+                "T_camera_tag": {
+                  "xyz": [
+                    -0.283507877636027,
+                    0.27821557654029566,
+                    1.8165009298680637
+                  ],
+                  "xyzw": [
+                    0.01263462416135085,
+                    -0.32274146171187623,
+                    0.01164361289149502,
+                    0.9463312007131626
+                  ]
+                },
+                "hypothesis_id": 0,
+                "pixel_max": 0.502987602097404,
+                "pixel_rmse": 0.47655618880407286
+              },
+              {
+                "T_camera_tag": {
+                  "xyz": [
+                    -0.2858281847464287,
+                    0.2769865311947504,
+                    1.8140068880771798
+                  ],
+                  "xyzw": [
+                    -0.1553411569401939,
+                    0.17272694192614826,
+                    -0.0387143395743222,
+                    0.9718722798828285
+                  ]
+                },
+                "hypothesis_id": 1,
+                "pixel_max": 2.224730883755874,
+                "pixel_rmse": 2.1267108305639795
+              }
+            ],
+            "id": 1,
+            "image_id": "file:outputs/fast-livo-apriltag-20261029-sized-audit/image_745.png",
+            "image_stamp_ns": 1590195875800210370,
+            "observation_id": "file:outputs/fast-livo-apriltag-20261029-sized-audit/image_745.png:tag36h11:1:0",
+            "observation_stamp_ns": 1590195875800210370,
+            "provenance": {
+              "camera_model": {
+                "D": [
+                  -0.08288339607839673,
+                  0.15032436811294939,
+                  -0.0005625494644882011,
+                  -0.00039491110944710704,
+                  -0.08810366754215963
+                ],
+                "K": [
+                  1299.9988190926874,
+                  0.0,
+                  640.2595320942488,
+                  0.0,
+                  1299.8402206328024,
+                  484.9367557425784,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "R": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "distortion_model": "plumb_bob",
+                "frame": "front_optical_frame",
+                "height": 1024,
+                "pixel_domain": "raw",
+                "width": 1280
+              },
+              "image_reference": "outputs/fast-livo-apriltag-20261029-sized-audit/image_745.png",
+              "offset_application_count": 1,
+              "offset_ns": 0,
+              "size_source": "explicit_measured_size_table",
+              "time_source": "/front/image_sync copies LiDAR-domain timeshare stamp; exposure phase not physically validated",
+              "time_verified": false,
+              "uncertainty_ns": 0
+            },
+            "quality": {
+              "area_pixels": 10705.941248918884,
+              "border_distance_pixels": 279.26348876953136,
+              "pose_status": "multiple_hypotheses",
+              "shortest_edge_pixels": 97.01397528160498
+            },
+            "schema_version": 1,
+            "size_m": 0.155,
+            "source_id": "official_apriltag_3.4.5",
+            "time_mapping_id": "unverified-timeshare-v2-zero-offset"
+          }
+        ],
+        "processing_ms": 57.23362699973222,
+        "public_tf_publisher": false,
+        "schema_version": 1
+      }
+    },
+    {
+      "image_index": 869,
+      "message_id": 21767,
+      "stamp_ns": 1590195888200244810,
+      "message_sha256": "cacc59c060988bd9362b1c25018290304c13feb37187dda6fd6b47021e7916cf",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/tag_image_tool",
+        "/home/lab307/ranger_nav/config/fast_livo2/apriltag_camera.json",
+        "outputs/fast-livo-apriltag-20261029-sized-audit/image_869.png",
+        "1590195888200244810",
+        "tag36h11",
+        "{\"1\":0.155}"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "result": {
+        "context": "offline-image-audit",
+        "observations": [],
+        "processing_ms": 49.54892900059349,
+        "public_tf_publisher": false,
+        "schema_version": 1
+      }
+    },
+    {
+      "image_index": 993,
+      "message_id": 24886,
+      "stamp_ns": 1590195900600263940,
+      "message_sha256": "02077e49cb8d4d4d1d6f88fbd6a12137bcb4b9ad5e2bae8b0ccf9f6235f9d7de",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/tag_image_tool",
+        "/home/lab307/ranger_nav/config/fast_livo2/apriltag_camera.json",
+        "outputs/fast-livo-apriltag-20261029-sized-audit/image_993.png",
+        "1590195900600263940",
+        "tag36h11",
+        "{\"1\":0.155}"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "result": {
+        "context": "offline-image-audit",
+        "observations": [],
+        "processing_ms": 44.67669800033036,
+        "public_tf_publisher": false,
+        "schema_version": 1
+      }
+    },
+    {
+      "image_index": 1117,
+      "message_id": 27944,
+      "stamp_ns": 1590195913000298170,
+      "message_sha256": "685289efb0d36059cf94f6afaa2726c6dd4750efec39e9ce26258c79a2f6d249",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/tag_image_tool",
+        "/home/lab307/ranger_nav/config/fast_livo2/apriltag_camera.json",
+        "outputs/fast-livo-apriltag-20261029-sized-audit/image_1117.png",
+        "1590195913000298170",
+        "tag36h11",
+        "{\"1\":0.155}"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "result": {
+        "context": "offline-image-audit",
+        "observations": [],
+        "processing_ms": 46.11939699952927,
+        "public_tf_publisher": false,
+        "schema_version": 1
+      }
+    },
+    {
+      "image_index": 1241,
+      "message_id": 31044,
+      "stamp_ns": 1590195925400317360,
+      "message_sha256": "4612c34e5fe07ee541fb523ecf463ee1c953d5bfa282ead16cb8784093bc8a2a",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/tag_image_tool",
+        "/home/lab307/ranger_nav/config/fast_livo2/apriltag_camera.json",
+        "outputs/fast-livo-apriltag-20261029-sized-audit/image_1241.png",
+        "1590195925400317360",
+        "tag36h11",
+        "{\"1\":0.155}"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "result": {
+        "context": "offline-image-audit",
+        "observations": [],
+        "processing_ms": 49.515228000018396,
+        "public_tf_publisher": false,
+        "schema_version": 1
+      }
+    },
+    {
+      "image_index": 1366,
+      "message_id": 34169,
+      "stamp_ns": 1590195937900176500,
+      "message_sha256": "f4168d280f202271d564e53c51e4c735e1f0a9550d1d81526cfd267540a6e6e0",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/tag_image_tool",
+        "/home/lab307/ranger_nav/config/fast_livo2/apriltag_camera.json",
+        "outputs/fast-livo-apriltag-20261029-sized-audit/image_1366.png",
+        "1590195937900176500",
+        "tag36h11",
+        "{\"1\":0.155}"
+      ],
+      "exit_code": 0,
+      "stderr": "",
+      "result": {
+        "context": "offline-image-audit",
+        "observations": [],
+        "processing_ms": 48.13261900017096,
+        "public_tf_publisher": false,
+        "schema_version": 1
+      }
+    }
+  ],
+  "scope": "sampled image inventory, not labeled recall or absolute pose acceptance",
+  "first_headers": {
+    "camera_info_ns": 1793114008338316578,
+    "raw_image_ns": 1793114008338316578,
+    "sync_image_ns": 1590195801300123320,
+    "sync_minus_info_ns": -202918207038193258
+  },
+  "image": {
+    "width": 1280,
+    "height": 1024,
+    "encoding": "rgb8",
+    "step": 3840,
+    "frame": "front_optical_frame"
+  },
+  "camera_info": {
+    "width": 1280,
+    "height": 1024,
+    "distortion_model": "plumb_bob",
+    "K": [
+      1299.9988190926874,
+      0.0,
+      640.2595320942488,
+      0.0,
+      1299.8402206328024,
+      484.9367557425784,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "D": [
+      -0.08288339607839673,
+      0.15032436811294939,
+      -0.0005625494644882011,
+      -0.00039491110944710704,
+      -0.08810366754215963
+    ],
+    "R": [
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "P": [
+      1299.9988190926874,
+      0.0,
+      640.2595320942488,
+      0.0,
+      0.0,
+      1299.8402206328024,
+      484.9367557425784,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0
+    ],
+    "binning_x": 0,
+    "binning_y": 0,
+    "roi": {
+      "x": 0,
+      "y": 0,
+      "width": 0,
+      "height": 0
+    }
+  },
+  "odometry": {
+    "count": 1367,
+    "first_stamp_ns": 1590195801200283288,
+    "last_stamp_ns": 1590195937800336360,
+    "median_interval_ns": 99840164,
+    "nonpositive_intervals": 0
+  },
+  "raw_stat_unchanged": true,
+  "detected_tags_in_samples": 1,
+  "independent_tag_dataset_available": false
+}

@@ -1,0 +1,22 @@
+{
+  "argv": [
+    "/usr/bin/python3",
+    "/home/lab307/ranger_nav/docs/fast_livo2_evidence/corridor_classroom_mapping_20261105/validate_backend.py",
+    "--execute",
+    "--native",
+    "/home/lab307/ranger_nav/outputs/fast-livo-demo-20261105-corridor-classroom/frontend/result/native_frames",
+    "--output",
+    "/home/lab307/ranger_nav/outputs/fast-livo-demo-20261105-corridor-classroom/backend_pcl",
+    "--domain",
+    "203",
+    "--registration",
+    "pcl_icp"
+  ],
+  "node_sha256": "9129afb4ecb4e127ba1d902764e25bfc8df2f62dcf26e8c9b5ee92e489a05b26",
+  "domain": 203,
+  "localhost_only": true,
+  "registration": "pcl_icp",
+  "frontend_gravity_aligned": true,
+  "tag_enabled": false,
+  "hardware_started": false
+}

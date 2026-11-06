@@ -1,0 +1,23 @@
+{
+  "purpose": "independent capture validation of effective image-to-local-pose time mapping",
+  "primary_frozen_prior_offset_ns": 110000000,
+  "comparator_offset_ns": 0,
+  "primary_no_new_offset_selection_on_either_bag": true,
+  "secondary_turn_refinement": {
+    "selection_capture": "fast-livo-tag140_turn_03-bk8_pjyy",
+    "grid_ns": [
+      -50000000,
+      250000000,
+      5000000
+    ],
+    "criterion": "training-only Huber coordinate reprojection cost; fixed LIO trajectory, K/D/E/size",
+    "holdout": "existing 5 s blocks, boundary purge, 0.5 s train thinning",
+    "maximum_pose_seeds": 4,
+    "use_for_straight": "write immutable frozen_selection.json before evaluating straight geometry; no straight offset sweep"
+  },
+  "tag_size_m": 0.14,
+  "declared_tag_fixedness": "user recorded prescribed fixed-Tag procedure; new within-capture fixedness remains a conditional assumption to check from geometry",
+  "formal_configuration_change": false,
+  "physical_sync_acceptance": "do not infer physical exposure clock or absolute accuracy from minimum internal cost",
+  "hardware_started": false
+}

@@ -1,0 +1,12 @@
+{"processed": 1, "valid": 0, "reason": "searching_waiting_query_window"}
+{"processed": 101, "valid": 0, "reason": "verifying_insufficient_time_or_motion_baseline"}
+{"processed": 201, "valid": 0, "reason": "verifying_insufficient_time_or_motion_baseline"}
+{"processed": 301, "valid": 0, "reason": "verifying_multiframe_motion_support"}
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/validate_optimized_node.py", line 262, in <module>
+    raise SystemExit(main())
+  File "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/validate_optimized_node.py", line 187, in main
+    wait(lambda: latest and latest[-1].latest_scan_stamp_ns == ns)
+  File "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/validate_optimized_node.py", line 144, in wait
+    raise TimeoutError('C1 did not confirm processing/state; last reason '+(latest[-1].reason if latest else 'none'))
+TimeoutError: C1 did not confirm processing/state; last reason initial_verification_timeout

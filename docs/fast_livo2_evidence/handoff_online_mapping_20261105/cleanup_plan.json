@@ -1,0 +1,103 @@
+{
+  "authorization": "User requested removal of obsolete records/results and a handoff prompt; only reproducible header-clock view and untracked Python caches selected.",
+  "backup": "/home/lab307/ranger_nav/.runtime/backups/handoff_online_mapping_20261105_214554",
+  "targets": [
+    "outputs/fast-livo-demo-online-mapping-20261105/replay_view",
+    "scripts/__pycache__",
+    "scripts/fast_livo2/__pycache__",
+    "scripts/fast_livo2/backend/__pycache__",
+    "tests/__pycache__"
+  ],
+  "files": [
+    {
+      "path": "outputs/fast-livo-demo-online-mapping-20261105/replay_view/metadata.yaml",
+      "size": 2919,
+      "mtime_ns": 1793881173283404027,
+      "sha256": "d6b6ebfa6f6f2faeffd400217af2348bf2f90819d054fcebe9c70c2e3cd610b3"
+    },
+    {
+      "path": "outputs/fast-livo-demo-online-mapping-20261105/replay_view/replay_view_0.db3",
+      "size": 17432174592,
+      "mtime_ns": 1793881173283404027,
+      "sha256": "ca8e3971dbec06ddfb93ffaa119ad2c484499d67f7d6b765acdfda3541207121"
+    },
+    {
+      "path": "outputs/fast-livo-demo-online-mapping-20261105/replay_view/view_manifest.json",
+      "size": 1075,
+      "mtime_ns": 1793881188955605071,
+      "sha256": "75d71514241cf42ee3b13befb21ec21e2435383a070d8fbca2d37f4c13a83790"
+    },
+    {
+      "path": "scripts/__pycache__/mapping_session.cpython-310.pyc",
+      "size": 2035,
+      "mtime_ns": 1793882196913592661,
+      "sha256": "756cc7bed1ccc500bd40c4774f5a164ff89eeaae0c68c36b79fa631f2be42621"
+    },
+    {
+      "path": "scripts/__pycache__/session_manager.cpython-310.pyc",
+      "size": 15198,
+      "mtime_ns": 1793881482284375255,
+      "sha256": "85483888b6bf0c2dec57efa50a864d577ee0e85c0223ce278affd39cf7fe86ca"
+    },
+    {
+      "path": "scripts/fast_livo2/__pycache__/audit_bag.cpython-310.pyc",
+      "size": 4915,
+      "mtime_ns": 1793881122428752005,
+      "sha256": "fca837dd6a346870208874dbe8e335b857fff5573df110f7bbfcc148da19c13b"
+    },
+    {
+      "path": "scripts/fast_livo2/__pycache__/mapping_monitor.cpython-310.pyc",
+      "size": 9195,
+      "mtime_ns": 1793883859332603964,
+      "sha256": "6e7f08880a74ca3c4e7649f5c9f772a71fc33db7c4ddab5696ecfb96b42cba0f"
+    },
+    {
+      "path": "scripts/fast_livo2/__pycache__/online_session.cpython-310.pyc",
+      "size": 6662,
+      "mtime_ns": 1793881563270418085,
+      "sha256": "a2d601cd6939918194be26e15cd20de90d8b2b6899a36f2ec70a018da4b0b5d1"
+    },
+    {
+      "path": "scripts/fast_livo2/__pycache__/record_session.cpython-310.pyc",
+      "size": 19486,
+      "mtime_ns": 1793882377392923821,
+      "sha256": "849200de1c3ecfce2e5d41157e17efe05bf225ef5b79201a077c21beb3d1b569"
+    },
+    {
+      "path": "scripts/fast_livo2/backend/__pycache__/validate_motion.cpython-310.pyc",
+      "size": 17442,
+      "mtime_ns": 1793885059526225270,
+      "sha256": "dc5a6ad87c385aeeae4e7ce4d4b18d8d89ce23b77120bb93ac149106e84d40ca"
+    },
+    {
+      "path": "tests/__pycache__/test_fast_livo_recording.cpython-310.pyc",
+      "size": 26168,
+      "mtime_ns": 1793882377377923627,
+      "sha256": "06adf4c3536595f12382952c3b454b3baa7733474edc0e23d70868a0af4cd5c9"
+    },
+    {
+      "path": "tests/__pycache__/test_project_consolidation.cpython-310.pyc",
+      "size": 8706,
+      "mtime_ns": 1793882196688589755,
+      "sha256": "5d59eee4dcd468469a7617668d96bee23b9ffea0fe102b2d3425c25614798436"
+    },
+    {
+      "path": "tests/__pycache__/test_session_manager.cpython-310.pyc",
+      "size": 12520,
+      "mtime_ns": 1793881286236854000,
+      "sha256": "105dd736af1134d6137ed4e57f36c4b007128126ef6248d85428fd8a21ee852f"
+    }
+  ],
+  "payload_bytes": 17432300913,
+  "source_bag": "/home/lab307/ranger_nav/bags/fast-livo-corridor_classroom_map01-182fdzyj/raw",
+  "source_sha256": "b6f7902c1b5fbffbaea69bf241efff540d48c0a85358d1267a4f98d468496137",
+  "protected_files": 17363,
+  "active_same_user_users": [],
+  "inaccessible_same_user_proc_links": [
+    "/proc/1462/fd",
+    "/proc/1550/fd",
+    "/proc/8522/fd",
+    "/proc/16876/fd"
+  ],
+  "executed": false
+}

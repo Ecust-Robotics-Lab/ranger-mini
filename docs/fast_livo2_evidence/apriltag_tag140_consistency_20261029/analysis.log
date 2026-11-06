@@ -1,0 +1,189 @@
+{
+  "kind": "conditional_fixed_local_tag_and_software_timing_not_registration",
+  "source_database_sha256": "190637437b9cd7cb8e27ca4cda3168cc59a6af11c425334bf12b44a330432479",
+  "fixedness_declaration": {
+    "family": "tag36h11",
+    "id": 1,
+    "size_m": 0.14,
+    "capture": "bags/fast-livo-tag140_check_01-dguhgx2l",
+    "fixed_during_capture": true,
+    "source": "User reply 2026-10-29: \u56fa\u5b9a\u5728\u540c\u4e00\u4f4d\u7f6e\uff0c\u672a\u79fb\u52a8",
+    "independent_metrology": false
+  },
+  "source_files_sha256": {
+    "/home/lab307/ranger_nav/outputs/fast-livo-apriltag-tag140-check-20261029-v2/summary.json": "230fec0ae57c2b8432c2f9e23cb01110cec9117c379eb48d6747e188bdd1e5ba",
+    "/home/lab307/ranger_nav/outputs/fast-livo-apriltag-tag140-check-20261029-v2/observations.jsonl": "875d38918e213fda45a9ad04963eb1299565e470968748d27bf34daf9137ea4f",
+    "/home/lab307/ranger_nav/outputs/fast-livo-apriltag-tag140-check-20261029-v2/frames.jsonl": "8e14fe296b29f70adaa73c72f984a1e0f70b33429f5c9ae953508931544d27ce",
+    "/home/lab307/ranger_nav/bags/fast-livo-tag140_check_01-dguhgx2l/sources/0_apriltag_camera.json": "54af13d1316b85954514196e0bb16deada8c1a18ad55a9ca12a2daa761d9f0b1",
+    "docs/fast_livo2_evidence/apriltag_tag140_consistency_20261029/fixedness_declaration.json": "0732f55821c52dfdd9cd8e61cd4d6f43ae0111785eeb4bc0a2e16187c94cd913"
+  },
+  "observations": 556,
+  "zero_offset_supported": 552,
+  "common_offset_cohort": 528,
+  "training_count": 56,
+  "holdout_count": 112,
+  "time_offset_grid_ns": [
+    -199680000,
+    -174720000,
+    -149760000,
+    -124800000,
+    -99840000,
+    -74880000,
+    -49920000,
+    -24960000,
+    0,
+    24960000,
+    49920000,
+    74880000,
+    99840000,
+    124800000,
+    149760000,
+    174720000,
+    199680000
+  ],
+  "zero_offset_fit": {
+    "pose": {
+      "xyz": [
+        0.7338636732081438,
+        -0.059098723152170185,
+        -0.17468365067827177
+      ],
+      "xyzw": [
+        0.5015683743211896,
+        0.5006011058794204,
+        0.5037109971897127,
+        0.4940677382538204
+      ]
+    },
+    "optimizer_success": true,
+    "evaluations": 5,
+    "training_huber_coordinate_cost_mean": 3.5293255190572035,
+    "train_rmse_px": {
+      "count": 56,
+      "minimum": 0.7849131253300119,
+      "p50": 2.4808302395414286,
+      "p95": 24.33535401224104,
+      "maximum": 37.296207201204616
+    },
+    "holdout_rmse_px": {
+      "count": 112,
+      "minimum": 0.6583476368600029,
+      "p50": 3.5394804032300913,
+      "p95": 33.10161623491473,
+      "maximum": 92.19671270280006
+    },
+    "all_cohort_rmse_px": {
+      "count": 528,
+      "minimum": 0.6583476368600029,
+      "p50": 2.984926240682387,
+      "p95": 29.13448721197599,
+      "maximum": 92.19671270280006
+    },
+    "all_cohort_maximum_corner_px": {
+      "count": 528,
+      "minimum": 0.8349073854202879,
+      "p50": 3.67418857921843,
+      "p95": 30.773374324688753,
+      "maximum": 95.687396778682
+    },
+    "frames_passing_initial_3px_rms_6px_max": 266,
+    "negative_depth_frames": 0,
+    "trajectory_optimized": false,
+    "extrinsic_optimized": false,
+    "clock_calibrated": false
+  },
+  "diagnostic_training_minimum_offset_ns": 124800000,
+  "diagnostic_training_minimum_fit": {
+    "pose": {
+      "xyz": [
+        0.7349709752891046,
+        -0.05910917878715261,
+        -0.17495251162282235
+      ],
+      "xyzw": [
+        0.5050248269081651,
+        0.5003116536747033,
+        0.499763244741824,
+        0.4948483329352392
+      ]
+    },
+    "optimizer_success": true,
+    "evaluations": 5,
+    "training_huber_coordinate_cost_mean": 2.2517966393583584,
+    "train_rmse_px": {
+      "count": 56,
+      "minimum": 0.6356834499559824,
+      "p50": 2.3186306959363643,
+      "p95": 19.037004786930424,
+      "maximum": 22.331300737857966
+    },
+    "holdout_rmse_px": {
+      "count": 112,
+      "minimum": 0.7263469618221009,
+      "p50": 3.407502765000765,
+      "p95": 19.28410702143157,
+      "maximum": 32.36601545616675
+    },
+    "all_cohort_rmse_px": {
+      "count": 528,
+      "minimum": 0.6356834499559824,
+      "p50": 2.5551454896166534,
+      "p95": 15.987197609976041,
+      "maximum": 32.36601545616675
+    },
+    "all_cohort_maximum_corner_px": {
+      "count": 528,
+      "minimum": 0.886850221171173,
+      "p50": 3.235023084862495,
+      "p95": 18.02025775013859,
+      "maximum": 34.38570765676322
+    },
+    "frames_passing_initial_3px_rms_6px_max": 304,
+    "negative_depth_frames": 0,
+    "trajectory_optimized": false,
+    "extrinsic_optimized": false,
+    "clock_calibrated": false
+  },
+  "zero_offset_primary_local_tag_position_spread_m": {
+    "count": 552,
+    "minimum": 0.00014765335451674295,
+    "p50": 0.0020732666946035533,
+    "p95": 0.022389306870171717,
+    "maximum": 0.07213414240280983
+  },
+  "wall_seconds": 4.343156777998956,
+  "physical_time_verified": false,
+  "clock_mapping_changed": false,
+  "real_VALID_landmark_created": false,
+  "map_pose_estimated": false,
+  "limitations": [
+    "One capture; temporal holdout is not independent-visit evidence",
+    "Local trajectory may contain drift and is not independent of images",
+    "Fixed extrinsics and pixel model; error sources cannot be individually identified",
+    "Offset sweep is diagnostic, not a physical exposure calibration",
+    "Pose modes beyond four-seed budget remain untested; no uniqueness claim"
+  ]
+}
+	Command being timed: "python3 -u scripts/fast_livo2/tags/analyze_capture_consistency.py --execute --capture bags/fast-livo-tag140_check_01-dguhgx2l --screen outputs/fast-livo-apriltag-tag140-check-20261029-v2 --fixedness docs/fast_livo2_evidence/apriltag_tag140_consistency_20261029/fixedness_declaration.json --output outputs/fast-livo-apriltag-tag140-consistency-20261029"
+	User time (seconds): 5.95
+	System time (seconds): 0.81
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:06.78
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 208172
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 36661
+	Voluntary context switches: 2
+	Involuntary context switches: 48
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 4432
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

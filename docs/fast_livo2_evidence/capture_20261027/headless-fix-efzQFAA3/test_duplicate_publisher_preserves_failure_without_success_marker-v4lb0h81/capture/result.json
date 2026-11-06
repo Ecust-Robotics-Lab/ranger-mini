@@ -1,0 +1,69 @@
+{
+  "exit": 0,
+  "forced": false,
+  "requested_seconds": 60.0,
+  "error": "session or recorder failed; preserved all partial data",
+  "observed_messages": {
+    "/livox/lidar": 10,
+    "/livox/imu": 8,
+    "/front/image_sync": 8,
+    "/front/image": 8,
+    "/front/camera_info": 8,
+    "/fast_livo/odometry": 8
+  },
+  "session_exit": 2,
+  "session_state": {
+    "run_directory": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/headless-fix-efzQFAA3/test_duplicate_publisher_preserves_failure_without_success_marker-v4lb0h81/sessions/fast_livo_record/run-d_ep7_mv",
+    "guardian": {
+      "pid": 3643,
+      "start_ticks": 93132,
+      "ppid": 3451,
+      "state": "R",
+      "boot_id": "9ee4990c-890d-4dc7-bdf2-768bdacc709f"
+    },
+    "owner": {
+      "pid": 3673,
+      "start_ticks": 93171,
+      "ppid": 3643,
+      "state": "R",
+      "boot_id": "9ee4990c-890d-4dc7-bdf2-768bdacc709f"
+    },
+    "state": "FAILED",
+    "reason": "RuntimeError: capture exited 2; no automatic restart; scheduler exited 2; guardian cleanup",
+    "owned": [],
+    "components": {
+      "capture": {
+        "state": "EXITED",
+        "process": {
+          "pid": 3674,
+          "start_ticks": 93172,
+          "ppid": 3673,
+          "state": "R",
+          "boot_id": "9ee4990c-890d-4dc7-bdf2-768bdacc709f"
+        },
+        "argv": [
+          "/usr/bin/python3",
+          "/home/lab307/ranger_nav/scripts/fast_livo2/record_worker.py",
+          "--folder",
+          "/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/headless-fix-efzQFAA3/test_duplicate_publisher_preserves_failure_without_success_marker-v4lb0h81/capture"
+        ],
+        "exit_code": 2
+      }
+    },
+    "updated_monotonic": 932.712054033,
+    "guardian_cleanup_complete": true
+  },
+  "folder": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/headless-fix-efzQFAA3/test_duplicate_publisher_preserves_failure_without_success_marker-v4lb0h81/capture",
+  "capture_complete": false,
+  "sync": {
+    "available": true,
+    "source": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/headless-fix-efzQFAA3/test_duplicate_publisher_preserves_failure_without_success_marker-v4lb0h81/assets/camera_sync.csv",
+    "status_counts": {
+      "OK": 2
+    },
+    "hardware_frame_id_missing": 0,
+    "hardware_frame_id_nonincreasing": 0,
+    "scope": "entire sensor session; may include time outside this recording",
+    "physical_sync_proven": false
+  }
+}

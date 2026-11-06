@@ -1,0 +1,103 @@
+{
+  "head": "a76d83a767d5691ca40351f3a57f65b398572a52",
+  "tests": [
+    {
+      "command": "source /opt/ros/humble/setup.bash; PYTHONDONTWRITEBYTECODE=1 python3 tests/test_fast_livo_recording.py",
+      "exit": 0,
+      "passed": 8,
+      "log": "recording_tests_verified.log"
+    },
+    {
+      "command": "source /opt/ros/humble/setup.bash; PYTHONDONTWRITEBYTECODE=1 python3 tests/test_fast_livo_foxglove.py",
+      "exit": 0,
+      "passed": 1,
+      "log": "foxglove_tests_final.log"
+    },
+    {
+      "command": "PYTHONDONTWRITEBYTECODE=1 python3 tests/test_project_consolidation.py",
+      "exit": 0,
+      "passed": 10,
+      "log": "project_regression_verified.log"
+    }
+  ],
+  "preview": {
+    "sensors_started": true,
+    "rviz_started": false,
+    "reason": "Line0 camera connected but no images; MV_E_NODATA",
+    "stop_exit": 0,
+    "live": false,
+    "owned": []
+  },
+  "physical_synchronization": "PARTIAL",
+  "real_motion_recording": "NOT_PERFORMED",
+  "files": [
+    {
+      "path": "scripts/record_fast_livo2.sh",
+      "sha256": "08bb2c7cbf7b70230e2705fa5fe9776bbe6f854846e606a9d7337429c9f0c673"
+    },
+    {
+      "path": "scripts/fast_livo2/record_session.py",
+      "sha256": "d8ba9d489523b06079b6beb886af4cc298254f487031ec5960069af7d78af650"
+    },
+    {
+      "path": "scripts/fast_livo2/record_worker.py",
+      "sha256": "23f5ebd884b9bbe3ec28d4fab8603c881dab6605ad9b2074d4dbb12a83c69f75"
+    },
+    {
+      "path": "scripts/fast_livo2/online_session.py",
+      "sha256": "75fedc7bbba8a73ddb43554f63e9d3d759721eee085dd2dcba25b379cb506758"
+    },
+    {
+      "path": "scripts/fast_livo2/audit_bag.py",
+      "sha256": "5cf6eb8e190da16e964638e1276a5a41ae40526b10a6a5cbd593bd44284f03ec"
+    },
+    {
+      "path": "config/fast_livo2/foxglove.yaml",
+      "sha256": "9a639cd366b4c2301984ad4593157b72b6f8ad3947187963e758cb72e277b962"
+    },
+    {
+      "path": "tests/test_fast_livo_recording.py",
+      "sha256": "792f7999fe966a4345f62becaa20d4058fbce994849b3bef01b19c5f9216c627"
+    },
+    {
+      "path": "tests/test_fast_livo_foxglove.py",
+      "sha256": "2b69fd54a96267294a4c21e028ed7b53072bd4811b722c3a9ee300c649f9e3b9"
+    },
+    {
+      "path": "docs/fast_livo2_recording.md",
+      "sha256": "7f15f607dceab65368a2c8f6b050911d3fb4bf3c8d9211db98d3d34c23019498"
+    },
+    {
+      "path": "docs/fast_livo2_recording_report.md",
+      "sha256": "131ea8562ef030890a32e05471f99e1e4a9cd151104ce2b1050c23b44123262a"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "90d7541ca66191f39171a96fb1561cf592f3eee57fa294401920abde8f3131db"
+    },
+    {
+      "path": "README.md",
+      "sha256": "f5e77467d87fc8c29783db639183884e1222e9fa7926b2fd9cc2c331fe7f6b06"
+    },
+    {
+      "path": "docs/README.md",
+      "sha256": "4ab03cab88ebff94ad7ecdf3aad84948fa4fd6274a5d200529e64ccfa2e3701c"
+    },
+    {
+      "path": "docs/STATUS.md",
+      "sha256": "51b755cdd015362122e5711c7c0ab16563bb7fc25b4397e01cdb94102dbf7c8b"
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "sha256": "1fb320c8e2d087ca1486fd95a78f8a66e3cb2cd6dbef75af3f758fee690fd212"
+    },
+    {
+      "path": "docs/PROJECT_LAYOUT.md",
+      "sha256": "48f21507c3cc3c0b87128c1cdcc7381ad1f4e69d113054f06a6a2bf9d4d22b31"
+    },
+    {
+      "path": "docs/managed_sessions.md",
+      "sha256": "83deaacd295f6b1f494bdb5b85e77a9bd73941291a547dc1fd3bb0b0686ff6d6"
+    }
+  ]
+}

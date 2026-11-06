@@ -1,0 +1,9 @@
+string request_id
+string map_uuid
+uint64 map_generation
+string session_id
+bool enable
+---
+bool accepted
+string reason
+uint64 request_generation

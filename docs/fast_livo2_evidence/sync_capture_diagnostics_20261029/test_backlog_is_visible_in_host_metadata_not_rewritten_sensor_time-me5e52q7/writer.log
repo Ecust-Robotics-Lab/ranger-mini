@@ -1,0 +1,5 @@
+[INFO] [1793285058.147973637] [timeshare_writer]: timeshare_writer ready: topic=/synthetic_timeshare/p24422 file=/home/lab307/ranger_nav/docs/fast_livo2_evidence/sync_capture_diagnostics_20261029/test_backlog_is_visible_in_host_metadata_not_rewritten_sensor_time-me5e52q7/timeshare (expected period 100 ms)
+[INFO] [1793285058.148011126] [timeshare_writer]: writer QoS: reliability=reliable actual=1 depth=5 rmw=rmw_fastrtps_cpp; CSV v2: arrival_ns is steady; callback_system_ns is host system; DDS times are middleware metadata, not exposure times; unsupported timestamps/sequence are empty
+[INFO] [1793285058.157463073] [timeshare_writer]: summary: scans=1 regressions=0 stamp_gaps=0 arrival_gaps=0 last=1590193436000000000
+[WARN] [1793285058.418253116] [timeshare_writer]: arrival gap 260.80 ms: subscription latency or queue backlog
+[INFO] [1793285058.429343165] [rclcpp]: signal_handler(SIGINT/SIGTERM)

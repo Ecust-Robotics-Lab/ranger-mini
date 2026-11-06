@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="30" failures="0" disabled="0" errors="0" time="8.691" timestamp="2026-10-28T23:04:16" name="AllTests">
+  <testsuite name="C1" tests="18" failures="0" disabled="0" errors="0" time="8.007" timestamp="2026-10-28T23:04:16">
+    <testcase name="ArchiveRoundTripAndEveryPointTransformedOnce" status="run" result="completed" time="0.028" timestamp="2026-10-28T23:04:16" classname="C1">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-72d6fe07cacd61daa2129520816c59a0"/>
+</properties>
+    </testcase>
+    <testcase name="RejectMissingCorruptFailedAndUncommitted" status="run" result="completed" time="0.011" timestamp="2026-10-28T23:04:16" classname="C1">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-2624e1de475410694a43dd6471a917e2"/>
+</properties>
+    </testcase>
+    <testcase name="RejectManifestAndResourceLimits" status="run" result="completed" time="0.01" timestamp="2026-10-28T23:04:16" classname="C1">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-77c14c92c499f8eda6adc068f1ef7833"/>
+</properties>
+    </testcase>
+    <testcase name="RejectPathsAndSymlinks" status="run" result="completed" time="0.011" timestamp="2026-10-28T23:04:16" classname="C1">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-109f0581f2e4615e4cb3d8dc32f09fbe"/>
+</properties>
+    </testcase>
+    <testcase name="RejectVersionDuplicateIdBadPoseAndTimestamp" status="run" result="completed" time="0.018" timestamp="2026-10-28T23:04:16" classname="C1">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-053dc1c5142da5e670e65c088eb09526"/>
+</properties>
+    </testcase>
+    <testcase name="RejectNonfiniteAndTruncatedPCDWithMatchingHashes" status="run" result="completed" time="0.012" timestamp="2026-10-28T23:04:16" classname="C1">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-71f93c7667bf924f88d291e3b61a0247"/>
+</properties>
+    </testcase>
+    <testcase name="RejectDuplicateJsonKeysAndIdentityOverride" status="run" result="completed" time="0.009" timestamp="2026-10-28T23:04:16" classname="C1">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-2f2bbe39396a832350cb5110bdcb9725"/>
+</properties>
+    </testcase>
+    <testcase name="DerivedIndexIsBoundAndNeverOverwrites" status="run" result="completed" time="0.011" timestamp="2026-10-28T23:04:16" classname="C1">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-64d53c12c500a2c3790b985acc97247a"/>
+</properties>
+    </testcase>
+    <testcase name="SixDofInitializationTrackingAndOriginalStamp" status="run" result="completed" time="0.257" timestamp="2026-10-28T23:04:16" classname="C1">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-2338556e03f8237798b05db295a8a22b"/>
+</properties>
+    </testcase>
+    <testcase name="RejectWrongInitialAndCovariance" status="run" result="completed" time="0.01" timestamp="2026-10-28T23:04:16" classname="C1">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-014d7321d7ed5a5ea7321e8e8a2df673"/>
+</properties>
+    </testcase>
+    <testcase name="RejectedMatchesNeverChangeAcceptedCacheAndLostNeedsNewInitial" status="run" result="completed" time="0.369" timestamp="2026-10-28T23:04:16" classname="C1">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-dda4b31be8532bf69c4f338d2b112aa3"/>
+</properties>
+    </testcase>
+    <testcase name="InitialHistoricalPoseInterpolatesWithoutExtrapolation" status="run" result="completed" time="0.27" timestamp="2026-10-28T23:04:16" classname="C1">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-bc5e9e77491c1116644f4ba2624f1ad8"/>
+</properties>
+    </testcase>
+    <testcase name="StaticDuplicatesDoNotSupplyMotionSupportAndTimeoutRevokesValidity" status="run" result="completed" time="0.618" timestamp="2026-10-28T23:04:17" classname="C1">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-2f2e2fe171dcac0d303cd581cad12f2f"/>
+</properties>
+    </testcase>
+    <testcase name="CancellationAndSolverBudgetCannotAccept" status="run" result="completed" time="0.028" timestamp="2026-10-28T23:04:17" classname="C1">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-62132692db313ad248e3bee0df2acb70"/>
+</properties>
+    </testcase>
+    <testcase name="DegeneratePlaneCannotInitialize" status="run" result="completed" time="0.179" timestamp="2026-10-28T23:04:17" classname="C1">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-7b097ff9902ee36ca7dbd66b1552299c"/>
+</properties>
+    </testcase>
+    <testcase name="SimilarSeparatedLocalSolutionsAreRejected" status="run" result="completed" time="0.267" timestamp="2026-10-28T23:04:18" classname="C1">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-45b2b11be0b105f56247b1a576dd3335"/>
+</properties>
+    </testcase>
+    <testcase name="KnownInitialOffsetGridRetainsAllSixDegreesOfFreedom" status="run" result="completed" time="3.408" timestamp="2026-10-28T23:04:18" classname="C1">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-908c69c3d845851af92cc789414993f0"/>
+</properties>
+    </testcase>
+    <testcase name="RepeatedFloatRegistrationKeepsAnOrthogonalAcceptedRotation" status="run" result="completed" time="2.49" timestamp="2026-10-28T23:04:21" classname="C1">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-c6ce06146ab50c1be14327a84bb107c0"/>
+</properties>
+    </testcase>
+  </testsuite>
+  <testsuite name="C2" tests="12" failures="0" disabled="0" errors="0" time="0.684" timestamp="2026-10-28T23:04:24">
+    <testcase name="IndexRoundTripHashBindingAndNoOverwrite" status="run" result="completed" time="0.03" timestamp="2026-10-28T23:04:24" classname="C2">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-a3e6f4688dc355aaad7420aeff70e235"/>
+</properties>
+    </testcase>
+    <testcase name="InvariantDescriptorRanksWithoutGlobalPositionPrior" status="run" result="completed" time="0.011" timestamp="2026-10-28T23:04:24" classname="C2">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-ecae4f4e4267583fa6efbb3ec53a79a0"/>
+</properties>
+    </testcase>
+    <testcase name="LargeCorrectionNeedsDisjointMovingQueriesThenC1OwnsValidity" status="run" result="completed" time="0.294" timestamp="2026-10-28T23:04:24" classname="C2">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-2a54d237136c5acf266592e36a34e405"/>
+</properties>
+    </testcase>
+    <testcase name="StaticAndRepeatedScansCannotConfirm" status="run" result="completed" time="0.066" timestamp="2026-10-28T23:04:24" classname="C2">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-ab1b56c5652613178357d711ea4fdfb3"/>
+</properties>
+    </testcase>
+    <testcase name="IdenticalStaticCloudWithDriftingOdomCannotSupplyMotionBaseline" status="run" result="completed" time="0.03" timestamp="2026-10-28T23:04:24" classname="C2">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-ae46839cb6b1e185ae52763ad49ee808"/>
+</properties>
+    </testcase>
+    <testcase name="WrongCoarseAndOutsideQueriesCannotHandoff" status="run" result="completed" time="0.021" timestamp="2026-10-28T23:04:24" classname="C2">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-75d4ee270dd6a2acff9c39e5c751f953"/>
+</properties>
+    </testcase>
+    <testcase name="SeparatedSimilarPlacesAreAmbiguous" status="run" result="completed" time="0.036" timestamp="2026-10-28T23:04:24" classname="C2">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-61c6dc5a50069c05e394062c8cbbe653"/>
+</properties>
+    </testcase>
+    <testcase name="BudgetCancelAndResetNeverHandoffOldSupport" status="run" result="completed" time="0.023" timestamp="2026-10-28T23:04:24" classname="C2">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-5540c88f15c38314188c70ee564d0e88"/>
+</properties>
+    </testcase>
+    <testcase name="DegenerateGeometryNeverHandoffs" status="run" result="completed" time="0.031" timestamp="2026-10-28T23:04:24" classname="C2">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-be11170d7c054cec114983e4e100e131"/>
+</properties>
+    </testcase>
+    <testcase name="GeometricAliasCannotSupplyInconsistentMotionSupport" status="run" result="completed" time="0.024" timestamp="2026-10-28T23:04:24" classname="C2">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-9f8d125315be40dc613b51ba831807a1"/>
+</properties>
+    </testcase>
+    <testcase name="ExhaustionAfterGoodCandidateCannotAcceptBestSurvivor" status="run" result="completed" time="0.099" timestamp="2026-10-28T23:04:24" classname="C2">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-df272dc9a344330105734ccc97acfc40"/>
+</properties>
+    </testcase>
+    <testcase name="RealKissUnknownFullSixDofReturnsTotalTargetFromSource" status="run" result="completed" time="0.019" timestamp="2026-10-28T23:04:24" classname="C2">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-c1-tests-c0ff972cbcc0f350c9e7424a7742dce6"/>
+<property name="kiss_diagnostics" value="{&quot;T_target_source&quot;:{&quot;xyz&quot;:[3.999999977832996,-3.0000000205392814,2.0000000171618333],&quot;xyzw&quot;:[0.3337406219531209,0.09233074799008181,0.7421670073637171,0.5738295595511971]},&quot;converged&quot;:true,&quot;correspondences&quot;:222,&quot;elapsed_ms&quot;:7.428215999880194,&quot;geometrically_accepted&quot;:true,&quot;method&quot;:&quot;kiss_matcher_full6d&quot;,&quot;native_diagnostics&quot;:{&quot;rotation_inliers&quot;:222,&quot;translation_inliers&quot;:222,&quot;use_quatro&quot;:false},&quot;normalized_plane_hessian_eigen_ratio&quot;:0.0,&quot;reason&quot;:&quot;coarse_hypothesis_requires_fine_validation&quot;,&quot;rmse_m&quot;:0.0,&quot;source_overlap&quot;:0.0}"/>
+</properties>
+    </testcase>
+  </testsuite>
+</testsuites>

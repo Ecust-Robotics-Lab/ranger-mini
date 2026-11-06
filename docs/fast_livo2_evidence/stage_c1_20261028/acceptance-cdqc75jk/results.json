@@ -1,0 +1,116 @@
+{
+  "hardware_started": false,
+  "started_utc": "2026-10-28T13:28:50.159457+00:00",
+  "commands": [
+    {
+      "name": "c1_cpp",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_build/ros/ranger_fast_livo_localizer/localizer_tests",
+        "--gtest_output=xml:/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_c1_20261028/acceptance-cdqc75jk/c1_cpp.xml"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/stage_c1_20261028/acceptance-cdqc75jk/c1_cpp.log"
+    },
+    {
+      "name": "c1_ros",
+      "argv": [
+        "/usr/bin/python3",
+        "tests/test_fast_livo_localizer_ros.py"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/stage_c1_20261028/acceptance-cdqc75jk/c1_ros.log"
+    },
+    {
+      "name": "backend_cpp",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_build/ros/ranger_fast_livo_backend/backend_tests",
+        "--gtest_output=xml:/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_c1_20261028/acceptance-cdqc75jk/backend_cpp.xml"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/stage_c1_20261028/acceptance-cdqc75jk/backend_cpp.log"
+    },
+    {
+      "name": "bridge_guard",
+      "argv": [
+        "/usr/bin/python3",
+        "tests/test_bridge_pgo_guard.py"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/stage_c1_20261028/acceptance-cdqc75jk/bridge_guard.log"
+    },
+    {
+      "name": "bridge_legacy",
+      "argv": [
+        "/usr/bin/python3",
+        "tests/test_stage5_bridge.py"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/stage_c1_20261028/acceptance-cdqc75jk/bridge_legacy.log"
+    },
+    {
+      "name": "time_alignment",
+      "argv": [
+        "/usr/bin/python3",
+        "tests/test_time_alignment.py"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/stage_c1_20261028/acceptance-cdqc75jk/time_alignment.log"
+    },
+    {
+      "name": "adapter_contract",
+      "argv": [
+        "/usr/bin/python3",
+        "tests/test_fast_livo_adapter_contract.py"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/stage_c1_20261028/acceptance-cdqc75jk/adapter_contract.log"
+    },
+    {
+      "name": "architecture_contract",
+      "argv": [
+        "/usr/bin/python3",
+        "tests/test_architecture_contract.py"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/stage_c1_20261028/acceptance-cdqc75jk/architecture_contract.log"
+    },
+    {
+      "name": "project_config",
+      "argv": [
+        "/usr/bin/python3",
+        "tests/test_project_consolidation.py"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/stage_c1_20261028/acceptance-cdqc75jk/project_config.log"
+    },
+    {
+      "name": "dry_build",
+      "argv": [
+        "bash",
+        "scripts/build_fast_livo2_localizer.sh"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/stage_c1_20261028/acceptance-cdqc75jk/dry_build.log"
+    },
+    {
+      "name": "dry_private",
+      "argv": [
+        "bash",
+        "scripts/run_fast_livo2_localizer.sh"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/stage_c1_20261028/acceptance-cdqc75jk/dry_private.log"
+    },
+    {
+      "name": "dry_bridge",
+      "argv": [
+        "bash",
+        "scripts/run_fast_livo2_localizer.sh",
+        "--offline-bridge"
+      ],
+      "exit_code": 0,
+      "log": "docs/fast_livo2_evidence/stage_c1_20261028/acceptance-cdqc75jk/dry_bridge.log"
+    }
+  ],
+  "passed": true
+}

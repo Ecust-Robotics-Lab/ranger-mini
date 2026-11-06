@@ -1,0 +1,98 @@
+test_adapter_rejects_retired_sessions_and_future_stamp (test_fast_livo_localizer_ros.C1Ros) ... ok
+test_clock_reset_and_multiple_publishers_fail_closed (test_fast_livo_localizer_ros.C1Ros) ... FAIL
+test_initialization_external_base_and_same_time_bridge_latch (test_fast_livo_localizer_ros.C1Ros) ... FAIL
+test_invalid_point_and_one_ns_missing_pair_never_confirm (test_fast_livo_localizer_ros.C1Ros) ... FAIL
+test_managed_process_failure_cleans_only_owned_children (test_fast_livo_localizer_ros.C1Ros) ... ok
+test_map_load_failure_retains_archive_then_switch_invalidates_initial (test_fast_livo_localizer_ros.C1Ros) ... FAIL
+test_small_gicp_and_restart_require_fresh_initial (test_fast_livo_localizer_ros.C1Ros) ... FAIL
+test_superseded_matching_and_repeated_map_request (test_fast_livo_localizer_ros.C1Ros) ... FAIL
+test_wrong_initial_duplicate_requests_loss_and_reinitialize (test_fast_livo_localizer_ros.C1Ros) ... FAIL
+
+======================================================================
+FAIL: test_clock_reset_and_multiple_publishers_fail_closed (test_fast_livo_localizer_ros.C1Ros)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 336, in test_clock_reset_and_multiple_publishers_fail_closed
+    self.launch()
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 151, in launch
+    self.wait(lambda: self.private and self.private[-1].map_uuid and json.loads(self.private[-1].quality_json).get('inputs_ready'))
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 144, in wait
+    self.fail('Timeout; '+str(self.directory)+'; last='+str([(m.state, m.reason) for m in self.private[-3:]]))
+AssertionError: Timeout; docs/fast_livo2_evidence/apriltag_20261029/baseline_ros/test_clock_reset_and_multiple_publishers_fail_closed-fmuyw_zc; last=[(0, 'waiting_map'), (0, 'waiting_map'), (0, 'waiting_map')]
+
+======================================================================
+FAIL: test_initialization_external_base_and_same_time_bridge_latch (test_fast_livo_localizer_ros.C1Ros)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 262, in test_initialization_external_base_and_same_time_bridge_latch
+    self.launch()
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 151, in launch
+    self.wait(lambda: self.private and self.private[-1].map_uuid and json.loads(self.private[-1].quality_json).get('inputs_ready'))
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 144, in wait
+    self.fail('Timeout; '+str(self.directory)+'; last='+str([(m.state, m.reason) for m in self.private[-3:]]))
+AssertionError: Timeout; docs/fast_livo2_evidence/apriltag_20261029/baseline_ros/test_initialization_external_base_and_same_time_bridge_latch-t27255er; last=[(0, 'waiting_map'), (0, 'waiting_map'), (0, 'waiting_map')]
+
+======================================================================
+FAIL: test_invalid_point_and_one_ns_missing_pair_never_confirm (test_fast_livo_localizer_ros.C1Ros)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 354, in test_invalid_point_and_one_ns_missing_pair_never_confirm
+    self.launch()
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 151, in launch
+    self.wait(lambda: self.private and self.private[-1].map_uuid and json.loads(self.private[-1].quality_json).get('inputs_ready'))
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 144, in wait
+    self.fail('Timeout; '+str(self.directory)+'; last='+str([(m.state, m.reason) for m in self.private[-3:]]))
+AssertionError: Timeout; docs/fast_livo2_evidence/apriltag_20261029/baseline_ros/test_invalid_point_and_one_ns_missing_pair_never_confirm-u09rx56i; last=[(0, 'waiting_map'), (0, 'waiting_map'), (0, 'waiting_map')]
+
+======================================================================
+FAIL: test_map_load_failure_retains_archive_then_switch_invalidates_initial (test_fast_livo_localizer_ros.C1Ros)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 314, in test_map_load_failure_retains_archive_then_switch_invalidates_initial
+    self.launch()
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 151, in launch
+    self.wait(lambda: self.private and self.private[-1].map_uuid and json.loads(self.private[-1].quality_json).get('inputs_ready'))
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 144, in wait
+    self.fail('Timeout; '+str(self.directory)+'; last='+str([(m.state, m.reason) for m in self.private[-3:]]))
+AssertionError: Timeout; docs/fast_livo2_evidence/apriltag_20261029/baseline_ros/test_map_load_failure_retains_archive_then_switch_invalidates_initial-527ne6f5; last=[(0, 'waiting_map'), (0, 'waiting_map'), (0, 'waiting_map')]
+
+======================================================================
+FAIL: test_small_gicp_and_restart_require_fresh_initial (test_fast_livo_localizer_ros.C1Ros)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 371, in test_small_gicp_and_restart_require_fresh_initial
+    proc = self.launch('small_gicp')
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 151, in launch
+    self.wait(lambda: self.private and self.private[-1].map_uuid and json.loads(self.private[-1].quality_json).get('inputs_ready'))
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 144, in wait
+    self.fail('Timeout; '+str(self.directory)+'; last='+str([(m.state, m.reason) for m in self.private[-3:]]))
+AssertionError: Timeout; docs/fast_livo2_evidence/apriltag_20261029/baseline_ros/test_small_gicp_and_restart_require_fresh_initial-9citf5k4; last=[(0, 'waiting_map'), (0, 'waiting_map'), (0, 'waiting_map')]
+
+======================================================================
+FAIL: test_superseded_matching_and_repeated_map_request (test_fast_livo_localizer_ros.C1Ros)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 384, in test_superseded_matching_and_repeated_map_request
+    self.launch()
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 151, in launch
+    self.wait(lambda: self.private and self.private[-1].map_uuid and json.loads(self.private[-1].quality_json).get('inputs_ready'))
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 144, in wait
+    self.fail('Timeout; '+str(self.directory)+'; last='+str([(m.state, m.reason) for m in self.private[-3:]]))
+AssertionError: Timeout; docs/fast_livo2_evidence/apriltag_20261029/baseline_ros/test_superseded_matching_and_repeated_map_request-nvbcvmps; last=[(0, 'waiting_map'), (0, 'waiting_map'), (0, 'waiting_map')]
+
+======================================================================
+FAIL: test_wrong_initial_duplicate_requests_loss_and_reinitialize (test_fast_livo_localizer_ros.C1Ros)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 291, in test_wrong_initial_duplicate_requests_loss_and_reinitialize
+    self.launch()
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 151, in launch
+    self.wait(lambda: self.private and self.private[-1].map_uuid and json.loads(self.private[-1].quality_json).get('inputs_ready'))
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 144, in wait
+    self.fail('Timeout; '+str(self.directory)+'; last='+str([(m.state, m.reason) for m in self.private[-3:]]))
+AssertionError: Timeout; docs/fast_livo2_evidence/apriltag_20261029/baseline_ros/test_wrong_initial_duplicate_requests_loss_and_reinitialize-gerj0vix; last=[(0, 'waiting_map'), (0, 'waiting_map'), (0, 'waiting_map')]
+
+----------------------------------------------------------------------
+Ran 9 tests in 76.304s
+
+FAILED (failures=7)

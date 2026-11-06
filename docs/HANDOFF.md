@@ -1,93 +1,125 @@
-# 新上下文接手指南
+# 新 Agent 接手指南
 
-最新2026-10-28阶段B验证：用户明确要求完成后端验证并提交Git。已有运动包的1362对输入已实际接入独立ROS后端，PCL/GICP均49关键帧、35候选、13条接受并优化的回环约束、3项歧义拒绝，严格配对/传播/快照逐点重建通过；构建和16项原验收命令及3项新测试退出0。见[运动后端报告](fast_livo2_stage_b_motion_report.md)，证据`docs/fast_livo2_evidence/stage_b_motion_20261028/run-PYV5azso/`，完整输出在`outputs/fast-livo-backend-validation-20261028-{pcl,gicp}/`。不再套用“该包后端未验证”；物理同步、真值精度、误环泛化、实时wheel与长时仍PARTIAL，C1/C2未实施，本次无硬件启动。
+更新：2026-11-06。项目 `/home/lab307/ranger_nav`。**在线预建图软件流程已打通，390秒真实包原速联调通过；真机、连续新鲜度、长时和独立访问定位尚未完成验收。** 总计划及真实Tag辅助定位/回环仍未全面验收，过程记录以带日期报告为准。
 
-最新追加2026-10-28：用户新增两份有效录包，要求删除第二份180秒并将第一份制成展示视频。保留`bags/fast-livo-motion-w5phdosj/raw`（约136.6秒）；`ez09stbr`完整180秒已移入系统回收站，另一个`58obp75g`无raw失败目录保留。三融合离线重放1362对/10911次视觉更新，视频交付位于`outputs/fast-livo-demo-20261028-fHJTbGCU/`，见[演示报告](fast_livo2_demo_20261028.md)。本轮不启动硬件；现已具备运动采集数据，勿继续套用“没有三传感器运动包”的旧结论。视频是前端重建，不是该包回环或真值精度验收。
+## 1. 本轮边界与快速阅读
 
-交接更新：2026-10-26，项目 `/home/lab307/ranger_nav`。当前已完成独立后端阶段 B 的代码、构建与隔离离线验证，真实设备保持停止。阶段 B 报告见 [交付报告](fast_livo2_stage_b_report.md)，实际接口见 [B 契约](fast_livo2_backend_interfaces.md)。下一阶段 C1/C2 未获自动实施授权。
+2026-11-05后续已按用户指令完成统一在线预建图的软件与离线范围，见[操作说明](fast_livo2_online_mapping.md)、[交付报告](fast_livo2_online_mapping_report.md)。最终原速390秒会话3900对、305KF/114接受回环，录制/封存/文件与共用读取器加载PASS；实物、连续新鲜度、长时和D仍待验。此前交接清理与7组本地提交见[本地检查点](local_git_checkpoint_20261105.md)。2026-11-06用户另行要求合理保存并上传Git，本阶段源码、配置、证据及交接已分组保存，见[Git检查点](git_checkpoint_20261106.md)。Agent未开实物设备。下一Agent先核对实际状态和未提交改动，不从历史计划自动续跑或开设备。
 
-2026-10-27追加：用户要求完整运动录包脚本、Foxglove远程预览，并授权先用RViz查看。已完成[录包入口](fast_livo2_recording.md)与[本次报告](fast_livo2_recording_report.md)。本次雷达收流，但海康Line0模式连接后没有图像，前端/GUI未启动；已受管停止，owned=[]。待确认外触发线/源与供电，不切自由运行绕过。用户本次未授权底盘、导航或C1/C2；无新的真实运动包。
+依次阅读：
 
-随后用户明确“已经准备好传感器了”，本次受管重试`run-4e1fptkc`已RUNNING：Line0图像恢复、三融合云位姿输出、RViz与localhost:8765只读Foxglove正常。会话保留运行供查看；使用`run_fast_livo2_live.sh --status/--stop`管理，不重复启动。尚未录包，可用`record_fast_livo2.sh --execute --attach --seconds 60`接入。新证据在`docs/fast_livo2_evidence/preview_20261027/ready-f9fe0j37/`；物理同步/精度仍PARTIAL，传感器2020历元仍未与wheel对齐。
+1. [AGENTS](../AGENTS.md)、[STATUS](STATUS.md)、[总计划](FAST_LIVO2_BACKEND_PLAN.md)。
+2. [AprilTag 计划](FAST_LIVO2_APRILTAG_PLAN.md)、[前端契约](fast_livo2_interfaces.md)、[Tag 契约](fast_livo2_apriltag_interfaces.md)。
+3. 当前重点：[在线预建图报告](fast_livo2_online_mapping_report.md)、[操作说明](fast_livo2_online_mapping.md)、[本次交接清理](handoff_cleanup_online_mapping_20261105.md)。原390秒包的录制中断审查见[录制核验](fast_livo2_corridor_classroom_capture_report.md)。
+4. 涉及对应模块再读 [B](fast_livo2_backend_interfaces.md)、[C1](fast_livo2_localizer_interfaces.md)、[C2](fast_livo2_relocalizer_interfaces.md)；目录与入口见 [PROJECT_LAYOUT](PROJECT_LAYOUT.md)、[README](../README.md)。
+5. 时间/Tag后续工作再读[扫描相位与正式 +100 ms](fast_livo2_timestamp_phase_report.md)、[C1修正/GICP对照](fast_livo2_c1_correction_report.md)、[两份新包/地图对照](fast_livo2_tag_two_capture_report.md)，不将其中+110ms结果追认为新配置结果。
 
-最新：用户确认成功并要求关闭原程序准备录包，已执行`run_fast_livo2_live.sh --stop`，退出0；STOPPED、live=false、owned=[]、所有组件身份均已退出，见上述证据目录`stopped_summary.json`。没有启动录包。下一次录包应使用`record_fast_livo2.sh --execute --start-sensors --seconds 60`，不再使用`--attach`接入已停止的预览。
+可直接复制的开场提示词见 [NEXT_AGENT_PROMPT](NEXT_AGENT_PROMPT.md)。最新清理见[在线建图交接清理](handoff_cleanup_online_mapping_20261105.md)；此前删除早期试录的历史记录见[早期清理](handoff_cleanup_20261105.md)。新清理已移除约16.24GiB的可再生`replay_view`及缓存，原始390秒包、`full_replay_12`、其他地图和失败证据均保留；重放前按最新清理报告重建视图，勿把历史命令中的旧路径当作仍然存在。
 
-随后用户在无DISPLAY远程终端录包遇到默认RViz检查失败；已将录包默认改为`--visualization auto`，远程自动选Foxglove、有桌面选RViz，显式rviz无桌面仍拒绝。修复过程仅离线测试，不启动真实设备；用户可原命令重试，或显式加`--visualization foxglove`。
+用户后续已要求简化专用录包入口：`record_fast_livo2.sh` 默认执行、独立启动传感器并读取FAST profile；只看计划必须显式 `--dry-run`，接入已有预览必须 `--attach`。其他入口的dry-run默认不变。实现与隔离验证见[录包默认行为报告](fast_livo2_recording_defaults_report.md)；本轮没有启动真实设备。
 
-最新：用户已确认Foxglove话题可见/连通，要求删除之前采集数据。本轮4份`bags/fast-livo-motion-{9sbycm9a,tzj_swlp,unfaf7sz,kp3yt18t}`已移入系统回收站，不再位于bags原路径，可恢复；合计约29.4GB，移入回收站不等于释放磁盘。删除前确认会话已停止且无打开文件；未启动新采集。操作清单与原manifest/result在`.runtime/capture_cleanup/20261027_231026_079043/manifest.json`，历史包/地图/标定仍保留。
+正式在线预建图用`map_fast_livo2.sh --execute`，FAST profile的统一online入口也转到它。它默认dry-run，在单会话中启动前端/B/录包/显示，停止先封存再清理。实物建图使用固定雷达header/steady锚点的私有时钟，不等于wheel同步。单独录包现也补存去畸变云，但不启动B；旧走廊包缺该话题的事实不改。新数据面DDS共享段256MiB/队列8192，低带宽封存控制面仅回环UDP，均为会话内配置，不改系统网络。
 
+## 2. 当前最重要的事实
 
-随后用户明确要求清空系统回收站，已执行`gio trash --empty`退出0，并核实`trash:///`为空；上述4份数据现已永久删除，不能再从回收站恢复。当前磁盘可用约848GiB。
+- **正式前端试验参数现为 `time_offset.img_time_offset: 0.1`，即 +100 ms。** 用户已明确指定，勿退回 0 或改成拟合的 +110 ms。只改前端有效采样时间，原始 bag、相机/雷达驱动 header 不改；`exposure_time_init` 与 IMU/LiDAR 偏移仍为 0。
+- LIV_handhold_2 锁定配置也为 +0.1；作者解释过雷达收完整帧才发布、共享值仍是扫描起始戳造成一帧差。新两包各900扫描跨度约100 ms，1843相机会话帧均读当时最新 writer；这支持固定扫描相位机制，不等于曝光中心/剩余相位已测定。
+- **原两90秒包固定+100 ms完整对照及C2/C1评估仍待做。** 用户随后新录的390秒走廊/教室包已完成+100ms全量三融合和前端PCD/轨迹展示；额外B有一项图目标检查FAIL，见[展示报告](fast_livo2_corridor_classroom_mapping_report.md)。历史+110ms地图/轨迹/6.11px结果保留原条件，不追认为+100ms。
+- 该B失败快照保留原FAIL。后续修复并新建的+100ms地图在`outputs/fast-livo-demo-online-mapping-20261105/full_replay_12/map`，UUID`253f573d7a7eabbc363a225ab192cc14`、graph419、305KF/114回环；原三路payload完整保真、305关键帧输入逐份核验。新图不追认旧结果，也没有完成独立访问定位或绝对精度验收。
+- `config/fast_livo2/apriltag_camera.json` 仍为 `offset_ns=0, time_verified=false` 的既有诊断配置，Tag 功能默认关闭；不能把它当作与新前端匹配的已确认映射提交候选。以后原图分别进入前端与 Tag 时各自明确映射一次，不给已经修正的位姿戳再加一次。
+- AprilTag 候选、双解、地标归档、旧图补录、C2/B 接入及监视的主体软件和合成/隔离检查已交付。**没有真实 VALID Tag 地标表；所有已报告真实包的 C2 成功均是 Tag 关闭时的纯 LiDAR 路径。**
+- 既有 small_gicp 已在项目中实现，本轮仅通过离线 `--registration small_gicp` 选择它，影响 C1 粗/精与 C2 精配准；未换 FAST 前端、Tag PnP、KISS 全局粗配准或 B 建图默认，未部署新的生产版本。
 
-## 建议阅读顺序
+用户已确认，不要重复询问：当前新部署为 **tag36h11、ID 01=1、打印后实测黑色检测边界140 mm**；Tag在两新包内及两包之间固定，传感器刚性安装未改变，组件在车上手动操控。新尺寸表 `config/fast_livo2/apriltag_sizes_capture_140mm.json`。旧155 mm实例及旧输出单独保留，不能按同一个ID合并。新包与早期建图包为同一场地；这不证明旧图完整覆盖或绝对精度。
 
-1. [AGENTS](../AGENTS.md)：当前约束和逐次真机授权。
-2. [STATUS](STATUS.md)、[根 README](../README.md)：当前能力、入口和验收边界。
-3. [工程结构](PROJECT_LAYOUT.md)、[标定流程](../calibration/README.md)：整合后的路径。
-4. [后端与重定位计划](FAST_LIVO2_BACKEND_PLAN.md)：下一阶段实施顺序与验收。
-5. [前端接口](fast_livo2_interfaces.md)、[源码审查](fast_livo2_source_review.md)：后端接入前必须读源码核对。
-6. [定位接口契约](localization_backend_contract.md)、[受管会话](managed_sessions.md)：复用已有桥接和安全链。
+## 3. 已验证能力及正确解释
 
-## 不要重做或误判的事实
+| 内容 | 已有结果 | 不能据此推断 |
+| --- | --- | --- |
+| A/B/C1/C2 | 本机构建、合成/故障/接口、同包功能及部分不同采集包的全局搜索→C1跟踪 | 完整 C2-4、多地点负样本、真值、实车实时/长时、D 已验收 |
+| Tag 软件 | 首轮123项软件/合成/隔离检查；后续有相关回归，数量有重叠 | 所有真实验收已完成或可相加成互不重复的总数 |
+| +110 ms 新图直行/PCL | 895提交、894处理、1次合法超时取消，525有效，首VALID约37.000 s | 当前 +100 ms 的结果、实时吞吐、未来整层图恢复时延 |
+| +110 ms 新图直行/GICP | 895提交、894处理、1取消、520有效、DEGRADED 1，无LOST/ERROR，首VALID约37.400 s | GICP启动更快、Tag辅助成功、位置绝对正确 |
+| 冻结原Tag常量的跨访问对照 | 同516观测，像素RMS的P95约17.324→6.114 px，仅改查询使用的已有注册器 | Tag本身有6 px测量误差或机器人绝对定位误差已知 |
 
-- 实物 **Ranger Mini V2**，不是任务早期的 3.0；Ubuntu 22.04、Humble、x86_64。生产默认仍 Lightning，FAST-LIVO2 前端可通过配置切换。
-- FAST-LIVO2 已能真实在线三融合并在 RViz 显示，用户反馈“看上去效果不错”后要求停止。不能重新从选型/安装建议开始，也不能把显示效果当作闭环/重定位通过。
-- 同步 writer 的 O_TRUNC/flock 顺序与读写一致性已经修复成配套 v2；不要重复要求先修。曝光相位和时间历元问题仍未解决，不硬编码 ±100 ms。
-- `~/calibration` 已原子迁入 `ranger_nav/calibration`，旧路径只是链接；当前同步包在 `ws_camera/src/`。新入口去掉兼容链接仍能离线运行；不要重新复制一个标定工程。
-- 截至10月26日没有三传感器运动录包；10月28日已新增并保留`w5phdosj`，详见本页最新追加。`calibration/bags/stageB_sync_run2`仍为静态包，不能冒充运动验收。新包已用于前端视频，后端回环及定位精度还需单独验证。
-- 本项目B已有关键帧/回环/PGO、非关键帧传播、几何图快照导出、标准适配器隔离联调，且单份真实三传感器运动包的后端闭环管线已验证。没有独立真值和实车泛化验收。C1统一加载/给定初值定位、C2无初值重定位未实施。
+回投残差混合机器人定位、地图、Tag地图位姿、内外参、时间及角点误差。小残差非零正常；3 px RMS/6 px max是最初试验门槛，尚未完成整链误差预算标定，不能当普适物理标准，也不能为让当前数据通过而任意放宽。应验真实候选能否提高正确恢复、保持歧义并拒绝错误地点。
 
-## 工作树、源码与入口
+## 4. Git、源码和真实运行版本
 
-- 主仓库分支 `refactor/pluggable-navigation`，交接 HEAD `a76d83a767d5691ca40351f3a57f65b398572a52`；**大量阶段 A、同步修复和整合文件未提交**。开始先 `git status --short`，不可 reset/clean，不因 HEAD 相同就忽略工作树。
-- 用户原有 `docs/03_mid360_validation.md` IP 修改和六个 `docs/03_evidence/driver-*` 未跟踪目录保留；原相机驱动有用户修改。不要混入无关提交或删除证据。
-- 部署前端：`vendor/fast_livo2_review/ros2_frontend`，humble，`837b7bbc1431cb04cf936528e52c83c835efba8e` 加 `patches/fast_livo2_stage_a.patch`。构建入口 `scripts/build_fast_livo2.sh`，产物 `ws_fast_livo/`；15 仓库（含 B 依赖）固定 SHA 见 `config/fast_livo2/sources.lock.json`。
-- 优先参考后端：`vendor/fast_livo2_review/fastlio_backend`，main，`7baa59f7339ba88ce3b646fe35b23f61031c5d3f`。pgo/localizer/interface 已审查；B 以独立包实现必要算法，未启动参考原版节点；许可证、缺陷和其他候选对照见源码审查。第一版不整体引入 OpenFleX/HoloAgent，也不修改前端滤波器。
-- runtime 默认 `mapping_backend: lightning`、`localization_backend: lightning`、`odometry_backend: wheel`、`terrain_backend: disabled`。FAST profile 为 `config/profiles/fast_livo2_frontend.yaml`，只切前端，不切导航定位。
-- SDK 复用原 `ws_camera/src/hik_camera_ros2_driver/hikSDK`，不随 Git 分发。FAST-Calib 新编译路径为 `calibration/lidar_camera_extrinsics/ws/{build_integrated,install_integrated}`，旧工作空间保留追溯。
+当前分支 `refactor/pluggable-navigation`。2026-11-05的7组本地提交见[历史检查点](local_git_checkpoint_20261105.md)；2026-11-06保存前HEAD为 **`4f4977992438dcca6e84c5d2a904d7dea94d1f70`**，刷新远端后仍领先15提交、无分叉。本轮按用户新指令分4组保存119份既有改动及Git交接更新，上传目标为 `origin/refactor/pluggable-navigation`；分组与核对见[Git检查点](git_checkpoint_20261106.md)，最终HEAD及远端同步状态以Git现查为准。此前AprilTag、writer/录包、C1计算/评估、诊断和文档已归档提交；两份新增 `docs/03_evidence/driver-*` 单独成组。禁止reset/clean、覆盖后续未提交工作或把被忽略资产当垃圾；原包、地图及9份归档程序副本继续留在本机。
 
-安全接手命令，均不打开实物：
+C1已提交基线 `1212b43`，C2 `2e0f06f`，重力 `4b49bb0`；此前B的三个提交已按历史指令推送。2026-11-06用户明确授权将此前未上传提交与本轮分组提交一并上传，不构成未来自动提交、推送或设备操作许可。
+
+| 位置 | 当前用途/注意事项 |
+| --- | --- |
+| `vendor/fast_livo2_review/ros2_frontend` + `patches/fast_livo2_stage_a.patch` | 锁定ROS2前端源码；版本见 `config/fast_livo2/sources.lock.json` |
+| `ws_fast_livo/src/ranger_fast_livo_backend` | B、Tag核心/检测/地标工具；正式依赖项目内前缀 |
+| `ws_fast_livo/src/ranger_fast_livo_localizer` | 同一个C1/C2，含Tag候选/复核；不是新定位后端 |
+| `ws_fast_livo/backend_install/` | 既有受管默认安装；不能当作最新隔离C1版本 |
+| `ws_fast_livo/online_frontend_source/`、`online_frontend_install/`、`online_install/` | 本轮统一建图的I/O派生前端、严格图事务后端和C++收流计数；配置/来源/实际库见新报告，不替换原安装 |
+| `ws_fast_livo/install_c1_confirmation_20261104/` | C1等待确认计算优化的隔离安装，未替换上行默认 |
+| `ws_fast_livo/independent_time_source_20261104/`、`build_independent_time_20261104/` | 最新两包重放的锁定副本/程序，原零gyro初始化；可作固定+100 ms离线实验的来源 |
+| `ws_fast_livo/motion_diag_source_20261104/` | 旧诊断含初始化零偏实验改动，不可混为正式锁定来源 |
+| `ws_fast_livo/build_c1_correction_probe_20261104/` | 单扫描四条件配准控制实验程序，不是生产节点 |
+
+实际隔离节点为 `ws_fast_livo/install_c1_confirmation_20261104/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node`，SHA **`99453aca95043aba1beb78f11fb1a08fb0805140c964e74ec7ad44a32d0bb619`**。动态库与构建证据见 `docs/fast_livo2_evidence/tag_two_capture_20261104/optimized_live_linkage.json`；不要只凭目录存在认定装载版本正确。
+
+原安装前端/生成harness与锁定源码曾发现不一致；后续实验需记录源SHA、补丁、二进制、参数和动态库。新两包录制时前端SHA `dfcf5d4d54f7b81f573a000589527afa36f4dc71c5fe44df1c94f5bff9ae7b27`，不是“任意本地构建都相同”的证明。
+
+关键已完成修改勿重做：writer RELIABLE/depth5、DDS诊断与v2共享一致性；录包 PREPARING/WAITING/RECORDING及输入缺失报错；C1等待帧减少重复13初值搜索，但首支持/可提交帧仍全检；`scripts/fast_livo2/localizer/validate_motion.py`明确区分超时取消与同戳处理确认，取消不算处理成功。
+
+## 5. 当前保留的数据、地图和展示
+
+| 资产 | 路径及作用 |
+| --- | --- |
+| 转向90s，下一轮训练/建图来源 | `bags/fast-livo-tag140_turn_03-bk8_pjyy/raw` |
+| 新走廊/教室390s，用户随后自行录制 | `bags/fast-livo-corridor_classroom_map01-182fdzyj/raw`；归档+100ms，原DB SHA `b6f7902c1b5fbffbaea69bf241efff540d48c0a85358d1267a4f98d468496137`；停录后审查曾中断，另存基本审查PASS，见[录制核验](fast_livo2_corridor_classroom_capture_report.md) |
+| 直行90s，独立采集查询 | `bags/fast-livo-tag140_straight_04-ryzykq2l/raw`；已经参与过方法评估，今后不能称全新盲测 |
+| 120s同步诊断 | `bags/fast-livo-tag140_sync_diag_02-35f_m8nd/raw`；1200扫描，writer均覆盖 |
+| 60s漏写证据 | `bags/fast-livo-tag140_check_01-dguhgx2l/raw`；7个漏写与重复共享戳对应，独立失败证据保留 |
+| 早期136.6s三融合/旧图来源 | `bags/fast-livo-motion-w5phdosj/raw`；不是完整180s，也非真值 |
+| +110 ms两包前端与新地图 | `outputs/fast-livo-tag140-two-capture-20261104/` |
+| 新局部地图 | 上行 `new_local_map/snapshot`：UUID `4ec68a99c626e1c6e2652506f5ecd8d6`，graph41，31KF/10已接受LiDAR回环；**不是整层地图** |
+| 旧B图 | `outputs/fast-livo-backend-validation-20261028-{pcl,gicp}/snapshot`；PCL UUID `6acd0a5763786389402bf72f397d9cbc`，49KF/13loop |
+| 最新GICP控制与完整运行 | `outputs/fast-livo-c1-correction-20261104/`；证据 `docs/fast_livo2_evidence/c1_correction_20261104/` |
+| 静态测试固定输入 | `bags/fast-livo2-baseline-126a5fAo`；现有ROS回归引用，不可删 |
+
+转向/直行原DB SHA分别 **`23b3bdba0c4ac5497732eaae61f256bef74d57c52f0181efe58b7f5fe7a48e81`**、**`e6c7cd1b2d200b4629abfa7002458ace896e3c6a3b2268cc673145d21f400b6d`**。源包/配置、地图manifest与二进制完整性见两包及C1报告的最终核对。
+
+重用实验脚本前先读参数与默认值，输出必须新目录：`docs/fast_livo2_evidence/tag_two_capture_20261104/replays.py`默认offset为0、只应显式传100000000；`validate_optimized_recovery.py`指向隔离新C1；`docs/fast_livo2_evidence/c1_correction_20261104/run_gicp_checks.sh`归档的是+110ms历史命令，带--execute且原输出已存在，**不要直接执行覆盖或当成新+100ms入口**。
+
+可展示图片：`docs/fast_livo2_evidence/c1_correction_20261104/runtime_results.png`、`tag_reprojection_example.png`、`correction_controls.png`；地图/独立访问图在 `docs/fast_livo2_evidence/tag_two_capture_20261104/map_and_independent_visit.png`；中文图注与ZIP见 `outputs/fast-livo-apriltag-presentation-20261104/README.md`。黄角点是检测值，不是外部真值。
+
+## 6. 时间、坐标和安全边界
+
+- 保持三融合；Tag不注入ESIKF，不回灌前端状态/视觉地图，不新增在线Tag图因子。Tag给候选，原LiDAR配准/验证和合法提交决定是否接受。
+- `T_A_B`将B点变到A；后端仅用同戳 `/fast_livo/odometry` 与 `/fast_livo/deskewed_imu`，VIO后IMU参考点、单区间机体系云，外参只应用一次。
+- 本次前端重力对齐已开启；旧20261028 B图未对齐，新20261104局部图使用对齐后的+110ms轨迹。逐资产区别，不能一概称“所有地图未对齐”或默认锁roll/pitch。
+- sensor虚拟UTC约2020、host/wheel约2026，不能直接拼接或重打now。离线用独立header-clock视图/sim_time；原包不改。
+- 公共唯一桥接发布TF，按同采样时刻插值wheel，禁止外推/latest拼接。私有候选成功不绕过LOCKED，不删锁、不放宽运动/几何要求。
+- Lightning/wheel/terrain disabled仍为生产默认；FAST前端/B不是先验地图定位器。硬件、底盘/CAN、导航与部署另按该次明确指令。
+
+## 7. 下一步与首次只读核对
+
+本轮停在交接，新Agent先汇报理解和建议，不自动开展实验。用户后续授权时按目标选择：
+
+1. 在线预建图验收：先核对冻结配置、真实程序和会话归属；获得该次硬件许可后，再验证真机采集/前端/B/录包/封存。保留真实接收停顿证据，并查明整包中45个LOST后端心跳的原因，连续新鲜度尚不能标PASS。
+2. 先验定位/重定位：绑定新地图UUID和实际查询来源，用独立访问分别验C1跟踪、C2全局初始化与丢失恢复。共用读取器加载PASS不代表完成这些验收。
+3. 原两90秒包固定+100ms对照、Tag时间映射/真实地标表仍是单独待办；收到对应指令后复用已有数据与实现，不默认接续旧Tag计划，也不追认+110ms结果。
+
+已有数据足够继续软件与离线验证，当前无需重录同类包。新独立访问、曝光测量、长时、真值及wheel/D测试如需采集，说明具体用途并遵循该次授权。
 
 ```bash
 cd /home/lab307/ranger_nav
-git status --short
+git status --short --untracked-files=all
+git log -8 --oneline
+git branch -vv
 python3 scripts/runtime_config.py
-bash scripts/run_mapping.sh online
-bash scripts/run_mapping.sh online --runtime-config config/profiles/fast_livo2_frontend.yaml
+bash scripts/map_fast_livo2.sh --status
 bash scripts/run_fast_livo2_live.sh --status
-bash scripts/run_calibration.sh status
-PYTHONDONTWRITEBYTECODE=1 python3 tests/test_project_consolidation.py
+bash scripts/record_fast_livo2.sh --status
+bash scripts/run_fast_livo2_localizer.sh --status
+bash scripts/run_fast_livo2_relocalizer.sh --status
 ```
 
-`--execute` online 会开真实设备，本次交接不运行。离线 ROS 测试先 source Humble / 对应 workspace，按原脚本使用隔离 domain。构建脚本默认 dry-run。
-
-## 后端最关键的接口
-
-输入必须用 `/fast_livo/odometry` 与 `/fast_livo/deskewed_imu`，同一 stamp、同一 VIO 后 IMU 参考点。点云是已去畸变的单图像区间 IMU 机体系云；里程计为 T_fast_livo_local_imu。不能拿 `/cloud_registered` 累计世界云或 VIO 前 `/aft_mapped_to_init` 重映射充数。
-
-后端先得到 T_map_imu(t)，适配器用真实方向的 T_base_imu 转成 T_map_base(t)，发布 `LocalizationEstimate`；现有公共桥接按同一采样时刻插值轮速，唯一发布 map→odom、odom→base_link。FAST 局部系不是 wheel odom；参考节点的 TF 必须关闭。车体安装外参仍近似，不能将相机–雷达外参当作车体标定。
-
-实时传感器曾使用 2020 年 header、主机/存储时间为 2026 年。当前隔离展示未接公共桥接；直接接轮速/Nav2 会产生跨历元问题。后端离线使用 header-clock 调度与 use_sim_time，保留原消息；真机接公共 TF 前必须解决实际时钟一致性，不重打 now 掩盖。
-
-## 已有证据与清理结果
-
-- 前端完整静态基线 829 对，828 帧 VIO，4222 次视觉迭代；DDS 55/55，定向 C++ 13/13。
-- 本次在线约 10/200/10 Hz，最终显示 3925 对；没有公共 TF/速度输出，已停止。最新在线雷达 SN/IP 在在线报告中，与 9 月旧雷达不同，不能套用旧 `.145`；当前配置为 `.101`。
-- 整合后配置/迁移 10/10、标定 11/11、时间对齐 7/7、进程 11/11、定位契约 11/11；新入口静态短回放 20 对 / 20 VIO / 121 迭代。Nav2 全量 37/37 等结果保留原 10 月 20 日日期。
-- 保留 `bags/fast-livo2-baseline-126a5fAo`、`bags/fast-livo2-dds-smoke-final`、全部原始数据与地图。约 541 MiB 重复 DDS/XWD/缓存已清理，不要重新生成多份全量等价回放。
-- [整合报告](consolidation_report.md)、`docs/consolidation_evidence/20261026/verification_summary.json`、[在线报告](fast_livo2_online_report.md)、[阶段 A](fast_livo2_stage_a_report.md)。
-- 回退资产：`.runtime/backups/consolidation_20261026/`，含迁前 tracked diff、源码检查点、原标定 `.git` 及完整 bundle；另有本轮文档备份 `.runtime/backups/docs_handoff_20261026/`。不要整目录清空 `.runtime/` 或 build。
-
-## 阶段 B 新入口与边界
-
-- 源码 `ws_fast_livo/src/ranger_fast_livo_backend` 已纳入可跟踪路径；前端旧 build/install 保留。后端依赖在 `backend_deps`，构建在 `backend_build`，安装在 `backend_install`，不覆盖前端部署。
-- `bash scripts/build_fast_livo2_backend.sh`、`bash scripts/run_fast_livo2_backend.sh` 默认 dry-run。后者只有显式 `--offline-bridge` 才启动公共适配器和 TF 桥接；本轮未启动硬件。
-- PCL、small_gicp、small_vgicp 可配置；正常默认 PCL。图基准保留 FAST local 轴，当前未验证重力对齐，不可默认水平。
-- 配对队列启动缺对造成批量释放的问题已修复；创新失败写入修正缓存的问题已修复。B 离线桥接首次创新失败锁定，不影响私有 PGO。
-- GTSAM SHA 同时有 4.2 / 4.2.0 标签，源码显示字符串仍含 a9；记录事实，不更改上游版本字符串。完整依赖/参考审查和测试命令见 B 报告。
-
-## 下一窗口应做什么
-
-B 已完成本轮交付。后续按 [计划](FAST_LIVO2_BACKEND_PLAN.md) 的 C1→C2→D 顺序：先定义归档加载/完整性/标定兼容和给定初值定位，再做无初值搜索与系统验收。不要把局部 ICP 当全局重定位，不宣称没有数据的成功率或精度。
-
-下一阶段获 C1 明确授权后，复查 B 归档与当前 localizer，先实现新进程加载及失败状态，不重做 B、不把局部 ICP 称为全局重定位。高程地图与坡道不在这个阶段。
+2026-11-05接手实查：FAST live/record为STOPPED，B/C1/C2的历史故障测试状态为FAILED；五者均owned=[]且不存活，不能当线上故障自动重启。另一个受管field会话 `run-u0m5bw9a` 存活、状态DEGRADED，实际有Lightning、底盘驱动和公共桥接进程；旁边 `ranger_nav_k_integration` 工作区另有雷达时间归一化和Nav2相关进程，ROS_LOCALHOST_ONLY=0。没有据此验证车辆运动、就绪或新时间方案，也没有干预既有会话。新Agent仍须现查，不能把FAST会话停止写成整机停止。清理和交接前副本/完整diff在 `.runtime/backups/handoff_cleanup_20261105_171706/`；不是所有大文件备份，已删除原录包无法从这些元数据恢复。本次提交前清单和diff另存 `.runtime/backups/local_git_checkpoint_20261105_173931/`。

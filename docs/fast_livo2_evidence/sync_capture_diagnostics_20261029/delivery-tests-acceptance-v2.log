@@ -1,0 +1,13 @@
+test_backlog_is_visible_in_host_metadata_not_rewritten_sensor_time (__main__.Delivery) ... ok
+test_best_effort_at_sensor_rate (__main__.Delivery) ... ok
+test_best_effort_explicit_comparison (__main__.Delivery) ... ok
+test_incompatible_best_effort_publisher_has_no_silent_fallback (__main__.Delivery) ... [WARN] [1793285280.964699450] [synthetic_writer_check]: New subscription discovered on topic '/synthetic_timeshare/p25110/test_incompatible_best_effort_publisher_has_no_silent_fallback', requesting incompatible QoS. No messages will be sent to it. Last incompatible policy: RELIABILITY
+ok
+test_invalid_parameters_do_not_touch_existing_shared_file (__main__.Delivery) ... ok
+test_reliable_at_sensor_rate (__main__.Delivery) ... ok
+test_reliable_large_cloud_delivery_and_metadata (__main__.Delivery) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 13.840s
+
+OK

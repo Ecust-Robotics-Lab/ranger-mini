@@ -1,0 +1,302 @@
+{
+  "same_cohort": {
+    "turn_pcl": {
+      "common_images": 618,
+      "train": 56,
+      "heldout": 178,
+      "heldout_rmse_px": {
+        "count": 178,
+        "minimum": 0.26996148621371935,
+        "p50": 2.718904492637078,
+        "p95": 6.0257124566055325,
+        "maximum": 10.708491382651717
+      }
+    },
+    "turn_gicp": {
+      "common_images": 618,
+      "train": 56,
+      "heldout": 178,
+      "heldout_rmse_px": {
+        "count": 178,
+        "minimum": 0.21807086933989075,
+        "p50": 1.649940425521042,
+        "p95": 4.328137309178528,
+        "maximum": 9.580836675368035
+      }
+    },
+    "turn_local_native": {
+      "common_images": 618,
+      "train": 56,
+      "heldout": 178,
+      "heldout_rmse_px": {
+        "count": 178,
+        "minimum": 0.2738259907656891,
+        "p50": 1.7734871192925383,
+        "p95": 4.774827754931306,
+        "maximum": 10.095876201273853
+      }
+    },
+    "straight_pcl": {
+      "common_images": 516,
+      "train": 45,
+      "heldout": 160,
+      "heldout_rmse_px": {
+        "count": 160,
+        "minimum": 1.2326016499965795,
+        "p50": 5.481168020287702,
+        "p95": 15.184628620322602,
+        "maximum": 21.746307686349613
+      }
+    },
+    "straight_gicp": {
+      "common_images": 516,
+      "train": 45,
+      "heldout": 160,
+      "heldout_rmse_px": {
+        "count": 160,
+        "minimum": 0.24740995563531426,
+        "p50": 2.608281103785014,
+        "p95": 6.552542553788251,
+        "maximum": 10.61493135643475
+      }
+    },
+    "straight_local_native": {
+      "common_images": 516,
+      "train": 45,
+      "heldout": 160,
+      "heldout_rmse_px": {
+        "count": 160,
+        "minimum": 0.2963082161533799,
+        "p50": 2.651880505587788,
+        "p95": 8.949393125961373,
+        "maximum": 15.470199205952321
+      }
+    }
+  },
+  "cross_visit": {
+    "pcl_turn_landmark_to_pcl_straight": {
+      "frames": 516,
+      "rmse_px": {
+        "count": 516,
+        "minimum": 0.35312618599271584,
+        "p50": 5.3148607173593305,
+        "p95": 17.324485653280895,
+        "maximum": 24.956720800466243
+      },
+      "maximum_corner_px": {
+        "count": 516,
+        "minimum": 0.5094322249979731,
+        "p50": 5.868025160938663,
+        "p95": 18.21650233449992,
+        "maximum": 25.631351881822578
+      },
+      "passing_initial_3px_rms_6px_max": 146,
+      "negative_depth": 0
+    },
+    "pcl_turn_landmark_to_gicp_straight": {
+      "frames": 516,
+      "rmse_px": {
+        "count": 516,
+        "minimum": 0.23034295331194998,
+        "p50": 2.5468011233382484,
+        "p95": 6.113808820875318,
+        "maximum": 14.433346431590914
+      },
+      "maximum_corner_px": {
+        "count": 516,
+        "minimum": 0.3005334459490792,
+        "p50": 2.791687438960218,
+        "p95": 6.51726738244066,
+        "maximum": 15.176566498189628
+      },
+      "passing_initial_3px_rms_6px_max": 321,
+      "negative_depth": 0
+    },
+    "gicp_turn_landmark_to_gicp_straight": {
+      "frames": 516,
+      "rmse_px": {
+        "count": 516,
+        "minimum": 0.2574982848051137,
+        "p50": 2.555744786116273,
+        "p95": 6.117020931497569,
+        "maximum": 14.44219629992479
+      },
+      "maximum_corner_px": {
+        "count": 516,
+        "minimum": 0.31549133833448784,
+        "p50": 2.7750630383922097,
+        "p95": 6.375613603758897,
+        "maximum": 15.085114160889008
+      },
+      "passing_initial_3px_rms_6px_max": 315,
+      "negative_depth": 0
+    },
+    "legacy_frozen_tag_to_gicp": {
+      "frames": 516,
+      "rmse_px": {
+        "count": 516,
+        "minimum": 0.23034295331194998,
+        "p50": 2.5468011233382484,
+        "p95": 6.113808820875318,
+        "maximum": 14.433346431590914
+      },
+      "maximum_corner_px": {
+        "count": 516,
+        "minimum": 0.3005334459490792,
+        "p50": 2.791687438960218,
+        "p95": 6.51726738244066,
+        "maximum": 15.176566498189628
+      },
+      "passing_initial_3px_rms_6px_max": 321,
+      "negative_depth": 0
+    }
+  },
+  "trials": {
+    "turn_pcl": {
+      "passed": true,
+      "processed_pairs": 895,
+      "submitted_pairs": null,
+      "cancelled_pairs": null,
+      "valid_samples": 625,
+      "states": {
+        "0": 270,
+        "1": 625
+      },
+      "reasons": {
+        "waiting_initial_pose": 267,
+        "verifying_multiframe_motion_support": 3,
+        "map_match_confirmed": 625
+      },
+      "wall_seconds": 119.17552067500003,
+      "solve_ms_p50_p95_max": [
+        88.84848100001363,
+        99.37701799999559,
+        1599.290558000007
+      ],
+      "node_peak_rss_kib": 88868,
+      "public_publishers": {
+        "/tf": 0,
+        "/tf_static": 0,
+        "/cmd_vel": 0,
+        "/base/safe_cmd_vel": 0
+      },
+      "localizer_exit": 0,
+      "global_search": false,
+      "initial_pose_source": "same B graph; earlier keyframe X * inverse(U) * current U",
+      "first_valid_query_relative_seconds": 27.000407934000002
+    },
+    "turn_gicp": {
+      "passed": true,
+      "processed_pairs": 895,
+      "submitted_pairs": 895,
+      "cancelled_pairs": 0,
+      "valid_samples": 622,
+      "states": {
+        "0": 273,
+        "1": 622
+      },
+      "reasons": {
+        "waiting_initial_pose": 267,
+        "verifying_multiframe_motion_support": 5,
+        "not_converged": 1,
+        "map_match_confirmed": 622
+      },
+      "wall_seconds": 109.16289444400081,
+      "solve_ms_p50_p95_max": [
+        79.12599400015097,
+        80.33595484985199,
+        1105.9887940000408
+      ],
+      "node_peak_rss_kib": 89900,
+      "public_publishers": {
+        "/tf": 0,
+        "/tf_static": 0,
+        "/cmd_vel": 0,
+        "/base/safe_cmd_vel": 0
+      },
+      "localizer_exit": 0,
+      "global_search": false,
+      "initial_pose_source": "same B graph; earlier keyframe X * inverse(U) * current U",
+      "first_valid_query_relative_seconds": 27.300408125
+    },
+    "straight_pcl": {
+      "passed": true,
+      "processed_pairs": 894,
+      "submitted_pairs": 895,
+      "cancelled_pairs": 1,
+      "valid_samples": 525,
+      "states": {
+        "0": 370,
+        "1": 525
+      },
+      "reasons": {
+        "searching_waiting_query_window": 2,
+        "verifying_independent_motion_support": 2,
+        "verifying_wait_disjoint_query_scans": 2,
+        "verifying_insufficient_time_or_motion_baseline": 304,
+        "global_confirmed_handoff_requires_c1_verification": 2,
+        "verifying_multiframe_motion_support": 57,
+        "initial_verification_timeout": 1,
+        "map_match_confirmed": 525
+      },
+      "wall_seconds": 302.78240644599987,
+      "solve_ms_p50_p95_max": [
+        90.02526399990529,
+        100.05113540037199,
+        1434.3485600002168
+      ],
+      "node_peak_rss_kib": 546456,
+      "public_publishers": {
+        "/tf": 0,
+        "/tf_static": 0,
+        "/cmd_vel": 0,
+        "/base/safe_cmd_vel": 0
+      },
+      "localizer_exit": 0,
+      "global_search": true,
+      "initial_pose_source": "none; global search",
+      "first_valid_query_relative_seconds": 36.999919892
+    },
+    "straight_gicp": {
+      "passed": true,
+      "processed_pairs": 894,
+      "submitted_pairs": 895,
+      "cancelled_pairs": 1,
+      "valid_samples": 520,
+      "states": {
+        "0": 374,
+        "1": 520,
+        "2": 1
+      },
+      "reasons": {
+        "searching_waiting_query_window": 3,
+        "verifying_independent_motion_support": 2,
+        "verifying_wait_disjoint_query_scans": 2,
+        "verifying_insufficient_time_or_motion_baseline": 302,
+        "global_confirmed_handoff_requires_c1_verification": 2,
+        "verifying_multiframe_motion_support": 59,
+        "not_converged": 3,
+        "initial_pose_history_unavailable": 1,
+        "initial_verification_timeout": 1,
+        "map_match_confirmed": 520
+      },
+      "wall_seconds": 246.80010665900045,
+      "solve_ms_p50_p95_max": [
+        79.4614735000323,
+        81.1405983507484,
+        1095.4432669996095
+      ],
+      "node_peak_rss_kib": 550968,
+      "public_publishers": {
+        "/tf": 0,
+        "/tf_static": 0,
+        "/cmd_vel": 0,
+        "/base/safe_cmd_vel": 0
+      },
+      "localizer_exit": 0,
+      "global_search": true,
+      "initial_pose_source": "none; global search",
+      "first_valid_query_relative_seconds": 37.399760008
+    }
+  }
+}

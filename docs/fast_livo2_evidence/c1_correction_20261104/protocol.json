@@ -1,0 +1,19 @@
+{
+  "purpose": "attribute C1-versus-local fixed-Tag dynamic inconsistency; no calibration/map registration or trajectory smoothing",
+  "source": "new local turn map and successful independent straight C2/C1 trial; original native source at +110ms hypothesis",
+  "primary_cases": [
+    "exact recorded PCL baseline",
+    "same PCL with frozen first-VALID eight-keyframe target",
+    "same PCL with aggregate target voxelized once at existing 0.15m resolution",
+    "existing small_gicp with dynamic raw target, same original gates"
+  ],
+  "initial_guess": "identical recorded prediction for each scan; no Tag pose used by matcher",
+  "frozen_target": "first-VALID target IDs; not selected from reprojection scores",
+  "all_gates": "original min-correspondences, overlap, RMSE, degeneracy and tracking innovation; no relaxation",
+  "budgets": "at most 525 straight scans x 4 conditions first; one thread; existing point/cache bounds; no public outputs",
+  "evidence": "keep every rejected result; fixed common cohort for case comparisons; training-only constant Tag fitting with previous exact time split; no interpreting heldout winners as a validated production change",
+  "followup": "only if a concrete problem and meaningful improvement is found, apply minimal source fix and verify independently on turn plus ROS regressions",
+  "physical_time_verified": false,
+  "VALID_landmark_created": false,
+  "hardware_started": false
+}

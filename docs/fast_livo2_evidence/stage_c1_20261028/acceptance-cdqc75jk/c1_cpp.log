@@ -1,0 +1,46 @@
+Running main() from /opt/ros/humble/src/gtest_vendor/src/gtest_main.cc
+[==========] Running 17 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 17 tests from C1
+[ RUN      ] C1.ArchiveRoundTripAndEveryPointTransformedOnce
+[       OK ] C1.ArchiveRoundTripAndEveryPointTransformedOnce (28 ms)
+[ RUN      ] C1.RejectMissingCorruptFailedAndUncommitted
+[       OK ] C1.RejectMissingCorruptFailedAndUncommitted (11 ms)
+[ RUN      ] C1.RejectManifestAndResourceLimits
+[       OK ] C1.RejectManifestAndResourceLimits (10 ms)
+[ RUN      ] C1.RejectPathsAndSymlinks
+[       OK ] C1.RejectPathsAndSymlinks (11 ms)
+[ RUN      ] C1.RejectVersionDuplicateIdBadPoseAndTimestamp
+[       OK ] C1.RejectVersionDuplicateIdBadPoseAndTimestamp (15 ms)
+[ RUN      ] C1.RejectNonfiniteAndTruncatedPCDWithMatchingHashes
+[       OK ] C1.RejectNonfiniteAndTruncatedPCDWithMatchingHashes (16 ms)
+[ RUN      ] C1.RejectDuplicateJsonKeysAndIdentityOverride
+[       OK ] C1.RejectDuplicateJsonKeysAndIdentityOverride (10 ms)
+[ RUN      ] C1.DerivedIndexIsBoundAndNeverOverwrites
+[       OK ] C1.DerivedIndexIsBoundAndNeverOverwrites (11 ms)
+[ RUN      ] C1.SixDofInitializationTrackingAndOriginalStamp
+[       OK ] C1.SixDofInitializationTrackingAndOriginalStamp (202 ms)
+[ RUN      ] C1.RejectWrongInitialAndCovariance
+[       OK ] C1.RejectWrongInitialAndCovariance (28 ms)
+[ RUN      ] C1.RejectedMatchesNeverChangeAcceptedCacheAndLostNeedsNewInitial
+[pcl::IterativeClosestPoint::computeTransformation] Not enough correspondences found. Relax your threshold parameters.
+[pcl::IterativeClosestPoint::computeTransformation] Not enough correspondences found. Relax your threshold parameters.
+[pcl::IterativeClosestPoint::computeTransformation] Not enough correspondences found. Relax your threshold parameters.
+[       OK ] C1.RejectedMatchesNeverChangeAcceptedCacheAndLostNeedsNewInitial (313 ms)
+[ RUN      ] C1.InitialHistoricalPoseInterpolatesWithoutExtrapolation
+[       OK ] C1.InitialHistoricalPoseInterpolatesWithoutExtrapolation (222 ms)
+[ RUN      ] C1.StaticDuplicatesDoNotSupplyMotionSupportAndTimeoutRevokesValidity
+[       OK ] C1.StaticDuplicatesDoNotSupplyMotionSupportAndTimeoutRevokesValidity (488 ms)
+[ RUN      ] C1.CancellationAndSolverBudgetCannotAccept
+[       OK ] C1.CancellationAndSolverBudgetCannotAccept (31 ms)
+[ RUN      ] C1.DegeneratePlaneCannotInitialize
+[       OK ] C1.DegeneratePlaneCannotInitialize (164 ms)
+[ RUN      ] C1.SimilarSeparatedLocalSolutionsAreRejected
+[       OK ] C1.SimilarSeparatedLocalSolutionsAreRejected (230 ms)
+[ RUN      ] C1.KnownInitialOffsetGridRetainsAllSixDegreesOfFreedom
+[       OK ] C1.KnownInitialOffsetGridRetainsAllSixDegreesOfFreedom (2617 ms)
+[----------] 17 tests from C1 (4407 ms total)
+
+[----------] Global test environment tear-down
+[==========] 17 tests from 1 test suite ran. (4407 ms total)
+[  PASSED  ] 17 tests.

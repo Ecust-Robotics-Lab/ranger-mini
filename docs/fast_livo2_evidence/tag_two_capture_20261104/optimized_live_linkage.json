@@ -1,0 +1,24 @@
+[
+  {
+    "pid": 3660,
+    "argv": "/home/lab307/ranger_nav/ws_fast_livo/install_c1_confirmation_20261104/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node --ros-args --params-file /home/lab307/ranger_nav/config/fast_livo2/localizer.yaml -p archive_path:=/home/lab307/ranger_nav/outputs/fast-livo-tag140-two-capture-20261104/new_local_map/snapshot -p compatibility_path:=/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_two_capture_20261104/new_map_compatibility.json -p registration:=pcl_icp --params-file /home/lab307/ranger_nav/config/fast_livo2/relocalizer.yaml ",
+    "libraries": [
+      {
+        "path": "/home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/libgtsam.so.4.2.0",
+        "sha256": "55d0b3d67d24abc136b3faa7bfaeaadee2b0e34032303ad13c58e9db58cfa206"
+      },
+      {
+        "path": "/home/lab307/ranger_nav/ws_fast_livo/backend_deps/lib/libsmall_gicp.so",
+        "sha256": "f6a5dd5d50301b051c948d4d0b024b6a137fc63eb9b607bcd7d5817625ecf15d"
+      },
+      {
+        "path": "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/libranger_backend_core.so",
+        "sha256": "2dabadf824b16082a07742fb177913da1760c1b03fd08e0f6559b307b8321e96"
+      },
+      {
+        "path": "/home/lab307/ranger_nav/ws_fast_livo/install_c1_confirmation_20261104/ranger_fast_livo_localizer/lib/libranger_localizer_core.so",
+        "sha256": "073fdd05ccdf65c65e0d0f633845ce31eee39e46034a79b52f72a9f75f629665"
+      }
+    ]
+  }
+]

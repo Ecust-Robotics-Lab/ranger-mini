@@ -15,7 +15,9 @@ python3 scripts/fast_livo2/backend/run_checks.py
 See `docs/fast_livo2_backend_interfaces.md` for transforms, thresholds, session
 and snapshot semantics, and `docs/fast_livo2_stage_b_report.md` for actual test
 commands, results and limits. Default production navigation remains Lightning.
-C1/C2 map loading and relocalization are not implemented.
+Read-only prior-map loading and optional C2 relocalization are implemented in
+`ranger_fast_livo_localizer`; B remains the mapping backend. Independent-session
+and real-robot acceptance remain PARTIAL.
 
 Recorded-motion validation is available via
 `python3 scripts/fast_livo2/backend/validate_motion.py --native PATH --output NEW_PATH`

@@ -1,0 +1,18 @@
+{
+  "source_queries": 1362,
+  "final_valid_samples": 979,
+  "first_valid_index_zero_based": 383,
+  "first_valid_stamp_ns": 1590195840000226497,
+  "recorded_search_attempts": 136,
+  "recorded_coarse_calls": 680,
+  "recorded_coarse_hypotheses_passed": 165,
+  "recorded_fine_calls": 165,
+  "recorded_fine_geometric_passed": 165,
+  "recorded_handoffs": 0,
+  "search_elapsed_ms_p50_p95_max": [
+    200.65713350004444,
+    460.42862799993145,
+    535.5708849997427
+  ],
+  "counting_note": "Per-input acknowledged snapshots, not a complete solver-event trace. Static baseline waiting is included; layers/denominators must not be mixed."
+}

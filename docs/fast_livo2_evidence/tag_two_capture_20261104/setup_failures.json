@@ -1,0 +1,20 @@
+{
+  "attempts": [
+    {
+      "scope": "first direct C++ launch",
+      "exit": 127,
+      "reason": "libgtsam.so.4 missing from LD_LIBRARY_PATH",
+      "original_logs": [
+        "localizer_tests.log",
+        "tag_integration_tests.log"
+      ],
+      "resolution": "explicit project dependency lib prefixes; retry tests passed"
+    },
+    {
+      "scope": "first optimized experiment runner launch",
+      "exit": 1,
+      "reason": "ROS Humble setup.bash is not nounset safe (AMENT_TRACE_SETUP_FILES)",
+      "resolution": "removed nounset before ROS setup; no node launched in failed attempt"
+    }
+  ]
+}

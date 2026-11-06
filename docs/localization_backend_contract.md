@@ -1,6 +1,6 @@
 # 定位后端接口与统一配置
 
-更新：2026-10-26。公共契约沿用批次 3，保持轮速里程计、Lightning 全局定位和既有速度链。FAST-LIVO2 前端已部署并可配置选择，但独立先验全局定位尚未实现；阶段 B 已实现私有 PGO 和仅显式离线启用的标准适配器，见 [B 接口](fast_livo2_backend_interfaces.md)。生产入口不自动启用它。受管入口、时间对齐和 TF 细节见 [操作说明](managed_sessions.md)，后续接入见 [后端计划](FAST_LIVO2_BACKEND_PLAN.md)。
+更新：2026-10-29。公共契约沿用批次 3，保持 wheel、Lightning 全局定位和既有速度链。FAST-LIVO2 前端可配置选择；B 已实现私有 PGO，C1 已实现独立离线先验定位与适配器，可选 C2 向同一个 C1 提供全局确认初值，见 [B](fast_livo2_backend_interfaces.md)、[C1](fast_livo2_localizer_interfaces.md)、[C2](fast_livo2_relocalizer_interfaces.md) 接口。生产入口不自动启用它们。受管入口、时间对齐和 TF 细节见 [操作说明](managed_sessions.md)，后续接入见 [总计划](FAST_LIVO2_BACKEND_PLAN.md)。
 
 ## 1. 模块边界
 
@@ -81,4 +81,4 @@ source install/setup.bash
 
 回退应在进程停止后回到批次前提交 `1420575dc6436f60b8ad7b4277193fc6d3edd1db` 的独立 checkout 并重建 ws_nav；不能仅切源代码而继续使用本批安装副本。保留本分支及所有地图、bag、历史证据，不执行删除或硬重置；回退也不继承任何运动许可。
 
-现有受管会话使用 PID/start_ticks/boot_id 和 Linux subreaper 管理所属子孙进程，异常不自动重启。FAST-LIVO2 前端与相机同步包已构建并完成一次在线展示，现已停止；独立后端/先验定位、物理同步及运动精度仍待实现或验收。高程地图仍禁用，坡道能力未验收。
+现有受管会话使用 PID/start_ticks/boot_id 和 Linux subreaper 管理所属子孙进程，异常不自动重启。FAST-LIVO2 前端与相机同步包已完成在线展示并停止；独立 B 后端与 C1 离线先验定位已实现，见 [C1 契约](fast_livo2_localizer_interfaces.md)。C1/C2 共用独立适配模块消费 LocalizerEstimate，沿用本页公共消息和 TF/时间规则；物理同步、跨会话泛化及实车精度仍待验。高程地图仍禁用，坡道能力未验收。

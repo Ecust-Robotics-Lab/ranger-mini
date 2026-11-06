@@ -1,0 +1,3657 @@
+[
+  {
+    "assumed_offset_ns": -199680000,
+    "offset_is_calibrated": false,
+    "common_cohort_count": 528,
+    "training_pose_modes": 6,
+    "seed_budget": 4,
+    "evaluated_seeds": 4,
+    "fits": [
+      {
+        "pose": {
+          "xyz": [
+            0.7341349280734869,
+            -0.05866089814169183,
+            -0.17494405484352982
+          ],
+          "xyzw": [
+            0.5005214006673258,
+            0.5007745223354939,
+            0.5047171228042273,
+            0.49392694925656616
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 5,
+        "training_huber_coordinate_cost_mean": 6.765926063607064,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.8787863612788442,
+          "p50": 2.893842160069255,
+          "p95": 60.90598355163486,
+          "maximum": 83.47728986197966
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6951974822400426,
+          "p50": 3.6737327523382772,
+          "p95": 85.27049496130816,
+          "maximum": 223.46650801617594
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6423999416064069,
+          "p50": 2.9630796166423625,
+          "p95": 73.27720726203522,
+          "maximum": 223.46650801617594
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8275652552836211,
+          "p50": 3.697818477627025,
+          "p95": 76.7457360843212,
+          "maximum": 224.88446573626723
+        },
+        "frames_passing_initial_3px_rms_6px_max": 268,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7341349100437232,
+            -0.0586608894405565,
+            -0.17494405648316338
+          ],
+          "xyzw": [
+            0.5005214630332525,
+            0.500774069073241,
+            0.5047170035710745,
+            0.4939274674414424
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 12,
+        "training_huber_coordinate_cost_mean": 6.765926063770078,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.8787852208344678,
+          "p50": 2.8938421775796987,
+          "p95": 60.90597474496934,
+          "maximum": 83.47728672384949
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6951963118191102,
+          "p50": 3.673733506575611,
+          "p95": 85.27050364222778,
+          "maximum": 223.4665096132761
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.642398738336599,
+          "p50": 2.96307885384495,
+          "p95": 73.2772030459311,
+          "maximum": 223.4665096132761
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8275710541184433,
+          "p50": 3.6977913364504094,
+          "p95": 76.74571170664844,
+          "maximum": 224.88448327793685
+        },
+        "frames_passing_initial_3px_rms_6px_max": 268,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7341348987265932,
+            -0.05866088913884518,
+            -0.1749440556501332
+          ],
+          "xyzw": [
+            0.5005214006264924,
+            0.5007740385647375,
+            0.5047170661556951,
+            0.49392749766098754
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 16,
+        "training_huber_coordinate_cost_mean": 6.765926063763397,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.8787855948220927,
+          "p50": 2.8938424930609687,
+          "p95": 60.905971828624104,
+          "maximum": 83.47728455841519
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6951969290809691,
+          "p50": 3.673734083399112,
+          "p95": 85.27050908294684,
+          "maximum": 223.46651149908962
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6423995741278717,
+          "p50": 2.9630790240611513,
+          "p95": 73.27720029272234,
+          "maximum": 223.46651149908962
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8275726752996689,
+          "p50": 3.697791872255641,
+          "p95": 76.74571297769005,
+          "maximum": 224.8844798712677
+        },
+        "frames_passing_initial_3px_rms_6px_max": 268,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7341348800675889,
+            -0.05866089832623743,
+            -0.1749440508665193
+          ],
+          "xyzw": [
+            0.5005211049592957,
+            0.5007744627267141,
+            0.5047174292661586,
+            0.4939269961907901
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 25,
+        "training_huber_coordinate_cost_mean": 6.765926063546353,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.8787882364657832,
+          "p50": 2.893843563969365,
+          "p95": 60.90597193023849,
+          "maximum": 83.47728063043621
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6952004502438014,
+          "p50": 3.6737352107195385,
+          "p95": 85.27051803250507,
+          "maximum": 223.46651627225017
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6424039411728509,
+          "p50": 2.9630805373410265,
+          "p95": 73.27719555160874,
+          "maximum": 223.46651627225017
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8275717963605336,
+          "p50": 3.6978256125441966,
+          "p95": 76.74574598928731,
+          "maximum": 224.88444699586654
+        },
+        "frames_passing_initial_3px_rms_6px_max": 268,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      }
+    ],
+    "training_selected_seed": 3
+  },
+  {
+    "assumed_offset_ns": -174720000,
+    "offset_is_calibrated": false,
+    "common_cohort_count": 528,
+    "training_pose_modes": 6,
+    "seed_budget": 4,
+    "evaluated_seeds": 4,
+    "fits": [
+      {
+        "pose": {
+          "xyz": [
+            0.7338334489266048,
+            -0.058744600496911444,
+            -0.1749030287834716
+          ],
+          "xyzw": [
+            0.5003121729997311,
+            0.5002323243820687,
+            0.5049342352655457,
+            0.49446614570504055
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 5,
+        "training_huber_coordinate_cost_mean": 6.1813854082369355,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.7789724873506074,
+          "p50": 2.823736358623749,
+          "p95": 52.54992627878188,
+          "maximum": 78.4370779536401
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.8628619084528354,
+          "p50": 3.410485789768029,
+          "p95": 76.57404802848507,
+          "maximum": 207.20923307559954
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6330121024565881,
+          "p50": 2.7646185742371787,
+          "p95": 67.3453029463831,
+          "maximum": 207.20923307559954
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8206332389110446,
+          "p50": 3.480238668612153,
+          "p95": 70.51672834674521,
+          "maximum": 208.4236977906466
+        },
+        "frames_passing_initial_3px_rms_6px_max": 282,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7338334351298964,
+            -0.058744574457909524,
+            -0.17490303545161953
+          ],
+          "xyzw": [
+            0.5003128663180981,
+            0.5002308765780552,
+            0.5049333303631832,
+            0.49446783293037727
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 11,
+        "training_huber_coordinate_cost_mean": 6.18138540701932,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.7789739177117868,
+          "p50": 2.823745727484064,
+          "p95": 52.54989906806084,
+          "maximum": 78.43708684551673
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.8628577154986428,
+          "p50": 3.410484387222948,
+          "p95": 76.57403970550163,
+          "maximum": 207.20923889946053
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6330096216168499,
+          "p50": 2.7646082578175566,
+          "p95": 67.34532516526517,
+          "maximum": 207.20923889946053
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8206710667067986,
+          "p50": 3.4802859099429986,
+          "p95": 70.51680829345591,
+          "maximum": 208.42378716998377
+        },
+        "frames_passing_initial_3px_rms_6px_max": 282,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.733833390936484,
+            -0.05874455800261625,
+            -0.17490303628693246
+          ],
+          "xyzw": [
+            0.5003130966680223,
+            0.500229926464987,
+            0.5049329772849004,
+            0.4944689215931515
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 19,
+        "training_huber_coordinate_cost_mean": 6.181385407076199,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.7789766391474107,
+          "p50": 2.8237512343230575,
+          "p95": 52.54987315861626,
+          "maximum": 78.43708512460073
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.8628571220429729,
+          "p50": 3.410482074259434,
+          "p95": 76.57404530244295,
+          "maximum": 207.20924819981562
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.63301084135786,
+          "p50": 2.7646039953278496,
+          "p95": 67.3453311467301,
+          "maximum": 207.20924819981562
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8206923363325819,
+          "p50": 3.480316296421676,
+          "p95": 70.51685182579483,
+          "maximum": 208.42386272024206
+        },
+        "frames_passing_initial_3px_rms_6px_max": 282,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7338334550616036,
+            -0.05874457319447514,
+            -0.1749030377397723
+          ],
+          "xyzw": [
+            0.5003130200593954,
+            0.5002308263781644,
+            0.5049331600380108,
+            0.494467902086773
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 30,
+        "training_huber_coordinate_cost_mean": 6.181385406994636,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.7789729341120881,
+          "p50": 2.823746422711247,
+          "p95": 52.5499028290312,
+          "maximum": 78.43709153213422
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.8628563143836598,
+          "p50": 3.4104851385367354,
+          "p95": 76.57403300217761,
+          "maximum": 207.20923591292657
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6330078894494956,
+          "p50": 2.7646064549305667,
+          "p95": 67.34533090409916,
+          "maximum": 207.20923591292657
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8206744071425633,
+          "p50": 3.480293387481355,
+          "p95": 70.51681625789622,
+          "maximum": 208.42378048509937
+        },
+        "frames_passing_initial_3px_rms_6px_max": 282,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      }
+    ],
+    "training_selected_seed": 3
+  },
+  {
+    "assumed_offset_ns": -149760000,
+    "offset_is_calibrated": false,
+    "common_cohort_count": 528,
+    "training_pose_modes": 6,
+    "seed_budget": 4,
+    "evaluated_seeds": 4,
+    "fits": [
+      {
+        "pose": {
+          "xyz": [
+            0.7337827752891232,
+            -0.058820739605977286,
+            -0.17485775574886606
+          ],
+          "xyzw": [
+            0.5008763712259886,
+            0.4992929330711204,
+            0.5041941585535001,
+            0.4955983032792297
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 5,
+        "training_huber_coordinate_cost_mean": 5.683843733055498,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.7310759549058605,
+          "p50": 2.664341395750336,
+          "p95": 47.24495283840475,
+          "maximum": 73.42135947381121
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.7469393024461954,
+          "p50": 3.471905812889521,
+          "p95": 70.83728187750577,
+          "maximum": 190.9932883288205
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6503122308918879,
+          "p50": 2.737926552195534,
+          "p95": 62.686013710668526,
+          "maximum": 190.9932883288205
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.9362913673713009,
+          "p50": 3.4215806017919372,
+          "p95": 65.54413369063381,
+          "maximum": 192.08410479877887
+        },
+        "frames_passing_initial_3px_rms_6px_max": 283,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7337827690238412,
+            -0.05882074692211135,
+            -0.17485775374301277
+          ],
+          "xyzw": [
+            0.5008761212444279,
+            0.4992932894482323,
+            0.5041944702154468,
+            0.4955978798211972
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 10,
+        "training_huber_coordinate_cost_mean": 5.683843733020495,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.7310749714995872,
+          "p50": 2.664339358780726,
+          "p95": 47.24494528625907,
+          "maximum": 73.42135600834918
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.7469377156952556,
+          "p50": 3.471905724898207,
+          "p95": 70.83728682363272,
+          "maximum": 190.99328918632338
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6503120923575886,
+          "p50": 2.7379248483343033,
+          "p95": 62.68601593789856,
+          "maximum": 190.99328918632338
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.9362903725566305,
+          "p50": 3.4215965082905497,
+          "p95": 65.54407969135829,
+          "maximum": 192.0840907036539
+        },
+        "frames_passing_initial_3px_rms_6px_max": 283,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7337828080591714,
+            -0.05882071698793807,
+            -0.1748577631866802
+          ],
+          "xyzw": [
+            0.5008772153725514,
+            0.49929184519746356,
+            0.5041931196960984,
+            0.4955996029972853
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 28,
+        "training_huber_coordinate_cost_mean": 5.683843733995426,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.7310782127511563,
+          "p50": 2.6643477277412533,
+          "p95": 47.244975797900956,
+          "maximum": 73.42137283452821
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.7469435731676409,
+          "p50": 3.4719058443912667,
+          "p95": 70.83726002227192,
+          "maximum": 190.99328349076058
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6503117942388206,
+          "p50": 2.737931747345418,
+          "p95": 62.6860103107395,
+          "maximum": 190.99328349076058
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.9362932358676781,
+          "p50": 3.421529652944068,
+          "p95": 65.54430711311528,
+          "maximum": 192.08414122904108
+        },
+        "frames_passing_initial_3px_rms_6px_max": 283,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7337828041545996,
+            -0.05882074225963855,
+            -0.17485775786435395
+          ],
+          "xyzw": [
+            0.5008764476524288,
+            0.49929309527310695,
+            0.5041940945553,
+            0.495598127735815
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 34,
+        "training_huber_coordinate_cost_mean": 5.683843733033878,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.7310737870650785,
+          "p50": 2.664340761988707,
+          "p95": 47.24494925023416,
+          "maximum": 73.42136439935315
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.74693725748048,
+          "p50": 3.471905222630171,
+          "p95": 70.83726838726352,
+          "maximum": 190.99328357959112
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6503101485854565,
+          "p50": 2.7379257743763397,
+          "p95": 62.686022592908046,
+          "maximum": 190.99328357959112
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.9362880008948885,
+          "p50": 3.421582338537542,
+          "p95": 65.54412945054668,
+          "maximum": 192.0840829053488
+        },
+        "frames_passing_initial_3px_rms_6px_max": 283,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      }
+    ],
+    "training_selected_seed": 1
+  },
+  {
+    "assumed_offset_ns": -124800000,
+    "offset_is_calibrated": false,
+    "common_cohort_count": 528,
+    "training_pose_modes": 6,
+    "seed_budget": 4,
+    "evaluated_seeds": 4,
+    "fits": [
+      {
+        "pose": {
+          "xyz": [
+            0.7344848449034967,
+            -0.0588860514773491,
+            -0.1748924435900118
+          ],
+          "xyzw": [
+            0.5026668916105118,
+            0.5009028898388345,
+            0.5024695820766278,
+            0.493909516123621
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 5,
+        "training_huber_coordinate_cost_mean": 5.311491179819192,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6779365003745713,
+          "p50": 2.538515896370245,
+          "p95": 44.65067895906414,
+          "maximum": 68.40912688549649
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.7222824251138614,
+          "p50": 3.5374803992797608,
+          "p95": 65.85673035009548,
+          "maximum": 174.64794907954996
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6104944949888825,
+          "p50": 2.755448965284887,
+          "p95": 56.55209549192608,
+          "maximum": 174.64794907954996
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8546187617767051,
+          "p50": 3.4174854452646315,
+          "p95": 59.69814184122763,
+          "maximum": 175.34716760962888
+        },
+        "frames_passing_initial_3px_rms_6px_max": 283,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7344848110135894,
+            -0.05888605821787158,
+            -0.17489243891625897
+          ],
+          "xyzw": [
+            0.5026665059582134,
+            0.5009032005407531,
+            0.5024700353154075,
+            0.4939091324180238
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 11,
+        "training_huber_coordinate_cost_mean": 5.3114911796993125,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6779390380418168,
+          "p50": 2.5385160925824852,
+          "p95": 44.65067223512537,
+          "maximum": 68.40911748914883
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.7222811054578381,
+          "p50": 3.53747963094177,
+          "p95": 65.85675079633884,
+          "maximum": 174.64795391620106
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6104942390870425,
+          "p50": 2.755445997264232,
+          "p95": 56.55209970399761,
+          "maximum": 174.64795391620106
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8546124346023757,
+          "p50": 3.417471618692537,
+          "p95": 59.698155017636985,
+          "maximum": 175.34716863812906
+        },
+        "frames_passing_initial_3px_rms_6px_max": 283,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7344848850240555,
+            -0.058886052220727625,
+            -0.17489244628592807
+          ],
+          "xyzw": [
+            0.5026671495206577,
+            0.5009029887541994,
+            0.5024693152606597,
+            0.49390942476467364
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 27,
+        "training_huber_coordinate_cost_mean": 5.31149117989903,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6779359477563363,
+          "p50": 2.538512323628731,
+          "p95": 44.650680281862115,
+          "maximum": 68.40913606756753
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.7222832007696698,
+          "p50": 3.537480337910152,
+          "p95": 65.8567076469246,
+          "maximum": 174.6479437395343
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6104943782394711,
+          "p50": 2.755450942169584,
+          "p95": 56.55208438672215,
+          "maximum": 174.6479437395343
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8546190954562766,
+          "p50": 3.4174896435448066,
+          "p95": 59.698136063005045,
+          "maximum": 175.34714258069297
+        },
+        "frames_passing_initial_3px_rms_6px_max": 283,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7344848150715285,
+            -0.05888605731888792,
+            -0.17489243950527159
+          ],
+          "xyzw": [
+            0.5026665543333376,
+            0.500903158396238,
+            0.5024699780920436,
+            0.4939091841416844
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 22,
+        "training_huber_coordinate_cost_mean": 5.311491179705244,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6779387077995888,
+          "p50": 2.538516105610947,
+          "p95": 44.650673115167976,
+          "maximum": 68.40911863811482
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.7222812735726044,
+          "p50": 3.5374797333571344,
+          "p95": 65.85674832906994,
+          "maximum": 174.64795333554986
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6104942742276972,
+          "p50": 2.755446372278964,
+          "p95": 56.55209926688433,
+          "maximum": 174.64795333554986
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8546132690290317,
+          "p50": 3.417473406882313,
+          "p95": 59.698153331357304,
+          "maximum": 175.34716876749795
+        },
+        "frames_passing_initial_3px_rms_6px_max": 283,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      }
+    ],
+    "training_selected_seed": 1
+  },
+  {
+    "assumed_offset_ns": -99840000,
+    "offset_is_calibrated": false,
+    "common_cohort_count": 528,
+    "training_pose_modes": 6,
+    "seed_budget": 4,
+    "evaluated_seeds": 4,
+    "fits": [
+      {
+        "pose": {
+          "xyz": [
+            0.7349872726076243,
+            -0.05895235830226105,
+            -0.17492067869775257
+          ],
+          "xyzw": [
+            0.5034642745915008,
+            0.502066925784125,
+            0.5017402598436403,
+            0.4926552931774594
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 6,
+        "training_huber_coordinate_cost_mean": 5.078283875454529,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6746227862983791,
+          "p50": 2.7844263839222525,
+          "p95": 42.41347592734566,
+          "maximum": 63.34168010736
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.7623675677348537,
+          "p50": 3.6155505722374004,
+          "p95": 59.48607231981956,
+          "maximum": 158.43301527652855
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6681744757303413,
+          "p50": 2.9490741829538107,
+          "p95": 51.39183850691597,
+          "maximum": 158.43301527652855
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.7978656050396956,
+          "p50": 3.5536985307222886,
+          "p95": 53.162211413340856,
+          "maximum": 159.45903267689692
+        },
+        "frames_passing_initial_3px_rms_6px_max": 270,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7349873290686982,
+            -0.058952341010363764,
+            -0.17492069081610281
+          ],
+          "xyzw": [
+            0.5034647955303431,
+            0.5020661211945305,
+            0.5017396058517151,
+            0.4926562468192548
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 20,
+        "training_huber_coordinate_cost_mean": 5.078283875673795,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6746192099163587,
+          "p50": 2.7844264787628132,
+          "p95": 42.413480492530724,
+          "maximum": 63.34168929563062
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.7623679069484038,
+          "p50": 3.615551947330962,
+          "p95": 59.48603986299511,
+          "maximum": 158.43300129517172
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6681731627195127,
+          "p50": 2.9490699836958965,
+          "p95": 51.391846033376055,
+          "maximum": 158.43300129517172
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.797900119820524,
+          "p50": 3.5537135681315855,
+          "p95": 53.162244067578534,
+          "maximum": 159.45895356702823
+        },
+        "frames_passing_initial_3px_rms_6px_max": 270,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7349873343247428,
+            -0.05895235542002699,
+            -0.17492068489283744
+          ],
+          "xyzw": [
+            0.5034646546398888,
+            0.5020668846258075,
+            0.501739844499966,
+            0.4926553697379373
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 27,
+        "training_huber_coordinate_cost_mean": 5.078283875434686,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6746238133850604,
+          "p50": 2.7844262952194985,
+          "p95": 42.413477116526735,
+          "maximum": 63.34169197406347
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.7623680675112884,
+          "p50": 3.6155509160684574,
+          "p95": 59.486034758370494,
+          "maximum": 158.43300470880678
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.668175285255511,
+          "p50": 2.949073408815228,
+          "p95": 51.391847182878585,
+          "maximum": 158.43300470880678
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.7978842073215019,
+          "p50": 3.553708304107248,
+          "p95": 53.16221899439095,
+          "maximum": 159.45900146875667
+        },
+        "frames_passing_initial_3px_rms_6px_max": 270,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7349872698711264,
+            -0.05895235767296474,
+            -0.17492067874964992
+          ],
+          "xyzw": [
+            0.503464266912965,
+            0.5020668881742661,
+            0.5017402639087626,
+            0.4926553352127276
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 22,
+        "training_huber_coordinate_cost_mean": 5.078283875457055,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6746225142787683,
+          "p50": 2.784426397997115,
+          "p95": 42.413476056377405,
+          "maximum": 63.34167949527376
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.7623675400507407,
+          "p50": 3.6155506125882875,
+          "p95": 59.48607408338605,
+          "maximum": 158.43301552243767
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6681743351848913,
+          "p50": 2.949074037132136,
+          "p95": 51.39183810104452,
+          "maximum": 158.43301552243767
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.7978656936062666,
+          "p50": 3.553698426982264,
+          "p95": 53.162212402184196,
+          "maximum": 159.45903144719364
+        },
+        "frames_passing_initial_3px_rms_6px_max": 270,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      }
+    ],
+    "training_selected_seed": 2
+  },
+  {
+    "assumed_offset_ns": -74880000,
+    "offset_is_calibrated": false,
+    "common_cohort_count": 528,
+    "training_pose_modes": 6,
+    "seed_budget": 4,
+    "evaluated_seeds": 4,
+    "fits": [
+      {
+        "pose": {
+          "xyz": [
+            0.7353351866481586,
+            -0.05900978495476928,
+            -0.17490742649511376
+          ],
+          "xyzw": [
+            0.50345789062859,
+            0.502804040593932,
+            0.5018778723667217,
+            0.4917691026842566
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 5,
+        "training_huber_coordinate_cost_mean": 4.553995979477051,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6717389860710564,
+          "p50": 2.5452306627671057,
+          "p95": 37.68105222345405,
+          "maximum": 56.89696119881052
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.8470254589810716,
+          "p50": 3.206453061166039,
+          "p95": 50.96387078136139,
+          "maximum": 141.54155778519856
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6478377637718281,
+          "p50": 2.761577595624008,
+          "p95": 46.23520041543996,
+          "maximum": 141.54155778519856
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8621200438422816,
+          "p50": 3.402021028221014,
+          "p95": 48.6629740896349,
+          "maximum": 143.3575667274478
+        },
+        "frames_passing_initial_3px_rms_6px_max": 279,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7353351205033422,
+            -0.05900976912844833,
+            -0.17490742370966464
+          ],
+          "xyzw": [
+            0.5034580091002998,
+            0.5028031804529215,
+            0.50187764652393,
+            0.49177009132194127
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 12,
+        "training_huber_coordinate_cost_mean": 4.553995979473469,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6717295240112662,
+          "p50": 2.5452293661310383,
+          "p95": 37.6810637460821,
+          "maximum": 56.89695155191754
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.8470198141046061,
+          "p50": 3.206452307355821,
+          "p95": 50.96390702694732,
+          "maximum": 141.54156759331246
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6478291880965021,
+          "p50": 2.7615752749091076,
+          "p95": 46.235184293931646,
+          "maximum": 141.54156759331246
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8621186902430026,
+          "p50": 3.4020207050353486,
+          "p95": 48.663135549972964,
+          "maximum": 143.3575213476446
+        },
+        "frames_passing_initial_3px_rms_6px_max": 279,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7353351339588383,
+            -0.05900977794090535,
+            -0.1749074230673798
+          ],
+          "xyzw": [
+            0.5034578267654877,
+            0.5028036266868731,
+            0.5018778959237832,
+            0.4917695672184444
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 25,
+        "training_huber_coordinate_cost_mean": 4.553995979419717,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6717344459483641,
+          "p50": 2.5452299732633716,
+          "p95": 37.68105725545837,
+          "maximum": 56.89695220638983
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.8470222648167464,
+          "p50": 3.2064526338032957,
+          "p95": 50.9639008204426,
+          "maximum": 141.54156595593983
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6478333335117168,
+          "p50": 2.7615766096601826,
+          "p95": 46.23518606919383,
+          "maximum": 141.54156595593983
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8621226277754607,
+          "p50": 3.4020213112428843,
+          "p95": 48.663043510634814,
+          "maximum": 143.35755468194313
+        },
+        "frames_passing_initial_3px_rms_6px_max": 279,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7353351336989095,
+            -0.05900978218523848,
+            -0.17490742213444532
+          ],
+          "xyzw": [
+            0.5034577051899605,
+            0.5028038317254869,
+            0.5018780518894436,
+            0.49176932287271014
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 28,
+        "training_huber_coordinate_cost_mean": 4.553995979448797,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6717367087936381,
+          "p50": 2.5452302316250055,
+          "p95": 37.68105410902625,
+          "maximum": 56.896951167198786
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.8470232489586669,
+          "p50": 3.2064527635882274,
+          "p95": 50.96390185549937,
+          "maximum": 141.54156627446207
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6478351394237163,
+          "p50": 2.7615772627000035,
+          "p95": 46.23518485094273,
+          "maximum": 141.54156627446207
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8621254485753315,
+          "p50": 3.4020217132116635,
+          "p95": 48.662998647034094,
+          "maximum": 143.35757306735508
+        },
+        "frames_passing_initial_3px_rms_6px_max": 279,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      }
+    ],
+    "training_selected_seed": 2
+  },
+  {
+    "assumed_offset_ns": -49920000,
+    "offset_is_calibrated": false,
+    "common_cohort_count": 528,
+    "training_pose_modes": 6,
+    "seed_budget": 4,
+    "evaluated_seeds": 4,
+    "fits": [
+      {
+        "pose": {
+          "xyz": [
+            0.73519036577817,
+            -0.059035472322424294,
+            -0.17484413736501714
+          ],
+          "xyzw": [
+            0.5028826230981964,
+            0.5021332062380802,
+            0.50242892890903,
+            0.49247993052942546
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 5,
+        "training_huber_coordinate_cost_mean": 4.140162076214716,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6897925837268427,
+          "p50": 2.4477322682083713,
+          "p95": 33.073798986804036,
+          "maximum": 50.38452815707723
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6992524736230141,
+          "p50": 3.136192609354308,
+          "p95": 45.68627483841226,
+          "maximum": 124.87052445540715
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6358488930505013,
+          "p50": 2.7545083224015805,
+          "p95": 40.368567698830695,
+          "maximum": 124.87052445540715
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.7598858061357516,
+          "p50": 3.3303384418523816,
+          "p95": 42.38844228845118,
+          "maximum": 127.33272040102736
+        },
+        "frames_passing_initial_3px_rms_6px_max": 284,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7351904370344486,
+            -0.05903545071365451,
+            -0.17484414833799183
+          ],
+          "xyzw": [
+            0.5028835482675317,
+            0.5021323147129815,
+            0.5024278250693289,
+            0.4924810209530355
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 22,
+        "training_huber_coordinate_cost_mean": 4.14016207611854,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6897913879387589,
+          "p50": 2.4477316002885177,
+          "p95": 33.0738120175746,
+          "maximum": 50.38454538071195
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6992468168491008,
+          "p50": 3.136188077611907,
+          "p95": 45.68624649078475,
+          "maximum": 124.87050874125346
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6358459278528619,
+          "p50": 2.7545062903482904,
+          "p95": 40.36855111439134,
+          "maximum": 124.87050874125346
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.7598335767658588,
+          "p50": 3.3303946383853766,
+          "p95": 42.388307478072655,
+          "maximum": 127.33260702264451
+        },
+        "frames_passing_initial_3px_rms_6px_max": 284,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7351903585750283,
+            -0.05903547461181013,
+            -0.17484413623082465
+          ],
+          "xyzw": [
+            0.5028825269917717,
+            0.5021333013888545,
+            0.5024290439053218,
+            0.4924798143305816
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 16,
+        "training_huber_coordinate_cost_mean": 4.140162076283392,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.689792717012326,
+          "p50": 2.4477323377194513,
+          "p95": 33.07379761161495,
+          "maximum": 50.3845264034848
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6992530780175529,
+          "p50": 3.1361930872737545,
+          "p95": 45.6862777311001,
+          "maximum": 124.87052606164602
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.63584921511815,
+          "p50": 2.7545085365761395,
+          "p95": 40.36856929026194,
+          "maximum": 124.87052606164602
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.7598913145175137,
+          "p50": 3.330332554726171,
+          "p95": 42.38845648614643,
+          "maximum": 127.3327322991003
+        },
+        "frames_passing_initial_3px_rms_6px_max": 284,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7351905478927073,
+            -0.05903546520816246,
+            -0.17484415504563755
+          ],
+          "xyzw": [
+            0.5028837401106333,
+            0.5021331439721288,
+            0.5024277150612471,
+            0.4924800917756379
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 28,
+        "training_huber_coordinate_cost_mean": 4.1401620760467575,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6897928240268626,
+          "p50": 2.447732367549284,
+          "p95": 33.07380451710027,
+          "maximum": 50.38456731854014
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6992512331310526,
+          "p50": 3.1361889710870114,
+          "p95": 45.68621338377222,
+          "maximum": 124.87049295832537
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6358512012054225,
+          "p50": 2.7545070780668057,
+          "p95": 40.36848644136063,
+          "maximum": 124.87049295832537
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.7598485293366953,
+          "p50": 3.3303861473882206,
+          "p95": 42.388348769848456,
+          "maximum": 127.33262856044067
+        },
+        "frames_passing_initial_3px_rms_6px_max": 284,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      }
+    ],
+    "training_selected_seed": 3
+  },
+  {
+    "assumed_offset_ns": -24960000,
+    "offset_is_calibrated": false,
+    "common_cohort_count": 528,
+    "training_pose_modes": 6,
+    "seed_budget": 4,
+    "evaluated_seeds": 4,
+    "fits": [
+      {
+        "pose": {
+          "xyz": [
+            0.7346962694039976,
+            -0.05905060758417454,
+            -0.17475982602636903
+          ],
+          "xyzw": [
+            0.5027645388669335,
+            0.501406374874174,
+            0.5025698840005518,
+            0.4931966923947593
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 6,
+        "training_huber_coordinate_cost_mean": 3.7846794897327776,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.7840597597231951,
+          "p50": 2.336631366303146,
+          "p95": 28.625919465245826,
+          "maximum": 43.83881002808471
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6936397218527086,
+          "p50": 3.341140296488952,
+          "p95": 40.91590480474092,
+          "maximum": 108.41008437159664
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6388997370273799,
+          "p50": 2.8463662376355705,
+          "p95": 33.92096742504121,
+          "maximum": 108.41008437159664
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8974777256983814,
+          "p50": 3.4649845157479726,
+          "p95": 36.908349723182205,
+          "maximum": 111.41201366705899
+        },
+        "frames_passing_initial_3px_rms_6px_max": 283,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7346962844737619,
+            -0.059050610805455345,
+            -0.1747598266397989
+          ],
+          "xyzw": [
+            0.5027645371959828,
+            0.5014065434507233,
+            0.5025699067777939,
+            0.49319649950528505
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 10,
+        "training_huber_coordinate_cost_mean": 3.7846794897288483,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.7840596523580836,
+          "p50": 2.3366314883373214,
+          "p95": 28.625918089070574,
+          "maximum": 43.838813182192936
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6936401542218854,
+          "p50": 3.341140343383759,
+          "p95": 40.915901050181496,
+          "maximum": 108.41008259477154
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6389000852626611,
+          "p50": 2.8463660789290115,
+          "p95": 33.92095793206673,
+          "maximum": 108.41008259477154
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8974747341881179,
+          "p50": 3.4649807981730554,
+          "p95": 36.908344661395056,
+          "maximum": 111.41202160222878
+        },
+        "frames_passing_initial_3px_rms_6px_max": 283,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7346962559915691,
+            -0.05905060902035135,
+            -0.17475982448858018
+          ],
+          "xyzw": [
+            0.5027644286128714,
+            0.5014064240603052,
+            0.5025700095717659,
+            0.49319662682510884
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 23,
+        "training_huber_coordinate_cost_mean": 3.784679489730338,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.784059648776853,
+          "p50": 2.3366319652570953,
+          "p95": 28.62591825792361,
+          "maximum": 43.83880672844216
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6936398705906391,
+          "p50": 3.3411404190323104,
+          "p95": 40.91590917009633,
+          "maximum": 108.41008678866557
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6388997410319739,
+          "p50": 2.8463659786608515,
+          "p95": 33.92097253817009,
+          "maximum": 108.41008678866557
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8974756613923988,
+          "p50": 3.4649803740447123,
+          "p95": 36.90834162870377,
+          "maximum": 111.41202473003422
+        },
+        "frames_passing_initial_3px_rms_6px_max": 283,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7346962798884311,
+            -0.05905061173788537,
+            -0.17475982601297269
+          ],
+          "xyzw": [
+            0.5027644880678516,
+            0.5014065807098022,
+            0.5025699646602589,
+            0.49319645272463336
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 23,
+        "training_huber_coordinate_cost_mean": 3.7846794897301277,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.7840595948997359,
+          "p50": 2.336631766015159,
+          "p95": 28.625917428397727,
+          "maximum": 43.838812003811576
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6936402613847525,
+          "p50": 3.34114040225506,
+          "p95": 40.91590264773053,
+          "maximum": 108.41008350708496
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6389001189091509,
+          "p50": 2.8463659484212998,
+          "p95": 33.92095933788094,
+          "maximum": 108.41008350708496
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8974735364881727,
+          "p50": 3.4649786125245567,
+          "p95": 36.90834059990585,
+          "maximum": 111.4120272471006
+        },
+        "frames_passing_initial_3px_rms_6px_max": 283,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      }
+    ],
+    "training_selected_seed": 1
+  },
+  {
+    "assumed_offset_ns": 0,
+    "offset_is_calibrated": false,
+    "common_cohort_count": 528,
+    "training_pose_modes": 6,
+    "seed_budget": 4,
+    "evaluated_seeds": 4,
+    "fits": [
+      {
+        "pose": {
+          "xyz": [
+            0.7338636732081438,
+            -0.059098723152170185,
+            -0.17468365067827177
+          ],
+          "xyzw": [
+            0.5015683743211896,
+            0.5006011058794204,
+            0.5037109971897127,
+            0.4940677382538204
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 5,
+        "training_huber_coordinate_cost_mean": 3.5293255190572035,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.7849131253300119,
+          "p50": 2.4808302395414286,
+          "p95": 24.33535401224104,
+          "maximum": 37.296207201204616
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6583476368600029,
+          "p50": 3.5394804032300913,
+          "p95": 33.10161623491473,
+          "maximum": 92.19671270280006
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6583476368600029,
+          "p50": 2.984926240682387,
+          "p95": 29.13448721197599,
+          "maximum": 92.19671270280006
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8349073854202879,
+          "p50": 3.67418857921843,
+          "p95": 30.773374324688753,
+          "maximum": 95.687396778682
+        },
+        "frames_passing_initial_3px_rms_6px_max": 266,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7338636542001408,
+            -0.05909871777843199,
+            -0.17468364979638035
+          ],
+          "xyzw": [
+            0.5015684271016362,
+            0.5006008511672994,
+            0.5037109082247024,
+            0.4940680334537055
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 9,
+        "training_huber_coordinate_cost_mean": 3.529325519067506,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.7849129931600249,
+          "p50": 2.480826960822306,
+          "p95": 24.335356346340006,
+          "maximum": 37.29620313132532
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.658344918862127,
+          "p50": 3.539480636258981,
+          "p95": 33.10162107445188,
+          "maximum": 92.19671454270024
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.658344918862127,
+          "p50": 2.9849264985786554,
+          "p95": 29.13448778128053,
+          "maximum": 92.19671454270024
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8349081823095938,
+          "p50": 3.6741988824276284,
+          "p95": 30.77337443999696,
+          "maximum": 95.6873807526197
+        },
+        "frames_passing_initial_3px_rms_6px_max": 266,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7338636245534186,
+            -0.05909869884846756,
+            -0.17468365030187186
+          ],
+          "xyzw": [
+            0.5015688030017796,
+            0.5005999926749766,
+            0.5037103933972239,
+            0.4940690465641308
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 23,
+        "training_huber_coordinate_cost_mean": 3.5293255194319157,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.7849110824156805,
+          "p50": 2.4808146310948627,
+          "p95": 24.335365505646052,
+          "maximum": 37.296197752812844
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6583297581442114,
+          "p50": 3.539481173701538,
+          "p95": 33.10162684926771,
+          "maximum": 92.19671488937438
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6583297581442114,
+          "p50": 2.984927129638425,
+          "p95": 29.134492958865135,
+          "maximum": 92.19671488937438
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8349037732094147,
+          "p50": 3.6742377700083235,
+          "p95": 30.773318192109056,
+          "maximum": 95.6873101975956
+        },
+        "frames_passing_initial_3px_rms_6px_max": 266,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7338636501365585,
+            -0.05909872718360778,
+            -0.17468364772442255
+          ],
+          "xyzw": [
+            0.5015681445504473,
+            0.5006012580704097,
+            0.5037112659581675,
+            0.49406754329480596
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 21,
+        "training_huber_coordinate_cost_mean": 3.5293255190766772,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.7849146753889742,
+          "p50": 2.480833501538293,
+          "p95": 24.335351310749733,
+          "maximum": 37.29620128140166
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6583553029400531,
+          "p50": 3.5394805162705953,
+          "p95": 33.10162389269418,
+          "maximum": 92.19671745554245
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6583553029400531,
+          "p50": 2.9849263252069314,
+          "p95": 29.134483600463046,
+          "maximum": 92.19671745554245
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8349139762531927,
+          "p50": 3.6741782552010775,
+          "p95": 30.773430948230136,
+          "maximum": 95.68742299856648
+        },
+        "frames_passing_initial_3px_rms_6px_max": 266,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      }
+    ],
+    "training_selected_seed": 0
+  },
+  {
+    "assumed_offset_ns": 24960000,
+    "offset_is_calibrated": false,
+    "common_cohort_count": 528,
+    "training_pose_modes": 6,
+    "seed_budget": 4,
+    "evaluated_seeds": 4,
+    "fits": [
+      {
+        "pose": {
+          "xyz": [
+            0.7341508810587466,
+            -0.059060621447738874,
+            -0.17476292898523188
+          ],
+          "xyzw": [
+            0.502086018917288,
+            0.5008634523312241,
+            0.5031870477606402,
+            0.4938099094718205
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 5,
+        "training_huber_coordinate_cost_mean": 2.9819925379092345,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.7973011939289132,
+          "p50": 2.4405958820522877,
+          "p95": 19.514457815376083,
+          "maximum": 29.362063071743858
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.7426721917263172,
+          "p50": 3.2662609077328337,
+          "p95": 27.198919187188462,
+          "maximum": 70.41578098988413
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6669564102987207,
+          "p50": 2.8027224444569105,
+          "p95": 23.216666154837288,
+          "maximum": 70.41578098988413
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.9346770643297704,
+          "p50": 3.4497196167782356,
+          "p95": 26.17621068434021,
+          "maximum": 74.79877843000513
+        },
+        "frames_passing_initial_3px_rms_6px_max": 285,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7341508583631374,
+            -0.05906062878922707,
+            -0.17476292492494985
+          ],
+          "xyzw": [
+            0.5020857322224913,
+            0.5008637609042832,
+            0.5031873993435464,
+            0.4938095297311506
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 10,
+        "training_huber_coordinate_cost_mean": 2.9819925378187784,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.7973030332878015,
+          "p50": 2.4406037713827025,
+          "p95": 19.514458890251813,
+          "maximum": 29.36205731870862
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.7426822480817113,
+          "p50": 3.266260749147788,
+          "p95": 27.19892683681945,
+          "maximum": 70.41578758324563
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6669581134545132,
+          "p50": 2.802723113523574,
+          "p95": 23.21666193939226,
+          "maximum": 70.41578758324563
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.9347020396758151,
+          "p50": 3.4497454868755795,
+          "p95": 26.17612928670533,
+          "maximum": 74.79881791836543
+        },
+        "frames_passing_initial_3px_rms_6px_max": 285,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7341508707471286,
+            -0.0590606208595202,
+            -0.1747629281394657
+          ],
+          "xyzw": [
+            0.5020859769887727,
+            0.5008634163598666,
+            0.5031870889142649,
+            0.4938099466531027
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 14,
+        "training_huber_coordinate_cost_mean": 2.9819925379099677,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.7973014063944441,
+          "p50": 2.4405968885115814,
+          "p95": 19.514458492479385,
+          "maximum": 29.362060375369577
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.742674075018748,
+          "p50": 3.2662609862284837,
+          "p95": 27.198922464359523,
+          "maximum": 70.41578247607985
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6669566667005091,
+          "p50": 2.80272254482911,
+          "p95": 23.21666713546882,
+          "maximum": 70.41578247607985
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.9346774680763432,
+          "p50": 3.4497199605163535,
+          "p95": 26.17620980120627,
+          "maximum": 74.79878031964974
+        },
+        "frames_passing_initial_3px_rms_6px_max": 285,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7341508584145788,
+            -0.059060627574148754,
+            -0.1747629252388486
+          ],
+          "xyzw": [
+            0.5020857598095803,
+            0.500863706434695,
+            0.5031873623732304,
+            0.4938095946018134
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 21,
+        "training_huber_coordinate_cost_mean": 2.9819925378239125,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.797302838813374,
+          "p50": 2.4406029660169315,
+          "p95": 19.514458943440108,
+          "maximum": 29.362057304487806
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.7426814054814288,
+          "p50": 3.2662607956167315,
+          "p95": 27.198926760855862,
+          "maximum": 70.41578710595746
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6669579517323687,
+          "p50": 2.802723049613504,
+          "p95": 23.21666283039655,
+          "maximum": 70.41578710595746
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.9346986437923972,
+          "p50": 3.4497419465648056,
+          "p95": 26.176140488396186,
+          "maximum": 74.79881292895053
+        },
+        "frames_passing_initial_3px_rms_6px_max": 285,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      }
+    ],
+    "training_selected_seed": 1
+  },
+  {
+    "assumed_offset_ns": 49920000,
+    "offset_is_calibrated": false,
+    "common_cohort_count": 528,
+    "training_pose_modes": 6,
+    "seed_budget": 4,
+    "evaluated_seeds": 4,
+    "fits": [
+      {
+        "pose": {
+          "xyz": [
+            0.7333538011277487,
+            -0.05904334850853253,
+            -0.17467535985321178
+          ],
+          "xyzw": [
+            0.5003337244731777,
+            0.500839729984448,
+            0.5050504873987879,
+            0.49371017226926817
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 5,
+        "training_huber_coordinate_cost_mean": 2.6603711893462436,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6349407652649529,
+          "p50": 2.441976206364889,
+          "p95": 16.973348818940096,
+          "maximum": 21.29877525453155
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.7611304027889129,
+          "p50": 3.2153910923222626,
+          "p95": 22.71882955529349,
+          "maximum": 49.14114790740926
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6349407652649529,
+          "p50": 2.7899393805300052,
+          "p95": 18.79073257255782,
+          "maximum": 49.14114790740926
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 1.0245477980363693,
+          "p50": 3.410620850893267,
+          "p95": 20.925463800269025,
+          "maximum": 54.30846151291735
+        },
+        "frames_passing_initial_3px_rms_6px_max": 288,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7333538018856942,
+            -0.05904336505464151,
+            -0.17467535646240406
+          ],
+          "xyzw": [
+            0.5003332101327868,
+            0.5008404164566437,
+            0.505051132490919,
+            0.4937093372130976
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 11,
+        "training_huber_coordinate_cost_mean": 2.66037118922685,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.634946849146238,
+          "p50": 2.4419787974122595,
+          "p95": 16.97336936116335,
+          "maximum": 21.298773466189846
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.7611322743675814,
+          "p50": 3.2153884823948244,
+          "p95": 22.718834529918762,
+          "maximum": 49.141154972441925
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.634946849146238,
+          "p50": 2.789938208746138,
+          "p95": 18.790738857522502,
+          "maximum": 49.141154972441925
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 1.0245713518291892,
+          "p50": 3.4106591860942235,
+          "p95": 20.925393287460913,
+          "maximum": 54.30853806468625
+        },
+        "frames_passing_initial_3px_rms_6px_max": 288,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.73335379911127,
+            -0.05904335687100297,
+            -0.1746753579308937
+          ],
+          "xyzw": [
+            0.5003334297862059,
+            0.5008400885710453,
+            0.5050508511107692,
+            0.4937097350780182
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 25,
+        "training_huber_coordinate_cost_mean": 2.660371189219405,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6349442736517178,
+          "p50": 2.4419781020587243,
+          "p95": 16.973360137568818,
+          "maximum": 21.29877280420334
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.7611316556277236,
+          "p50": 3.21538892267638,
+          "p95": 22.7188338980455,
+          "maximum": 49.141151407402035
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6349442736517178,
+          "p50": 2.7899379981525962,
+          "p95": 18.790734486477813,
+          "maximum": 49.141151407402035
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 1.024561044816934,
+          "p50": 3.4106422262508707,
+          "p95": 20.92542560354594,
+          "maximum": 54.30850273790835
+        },
+        "frames_passing_initial_3px_rms_6px_max": 288,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7333537965409933,
+            -0.059043356295507506,
+            -0.17467535779280205
+          ],
+          "xyzw": [
+            0.5003334344951118,
+            0.5008400619163547,
+            0.50505084265972,
+            0.49370976599076355
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 29,
+        "training_huber_coordinate_cost_mean": 2.6603711892224156,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6349442628371119,
+          "p50": 2.441978118786065,
+          "p95": 16.973358842170814,
+          "maximum": 21.298772206770714
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.7611317781062311,
+          "p50": 3.215389002117428,
+          "p95": 22.71883462187495,
+          "maximum": 49.141151622778814
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6349442628371119,
+          "p50": 2.789938049608038,
+          "p95": 18.790732792470486,
+          "maximum": 49.141151622778814
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 1.0245606157868017,
+          "p50": 3.4106414183788143,
+          "p95": 20.925427198138287,
+          "maximum": 54.30850117117522
+        },
+        "frames_passing_initial_3px_rms_6px_max": 288,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      }
+    ],
+    "training_selected_seed": 2
+  },
+  {
+    "assumed_offset_ns": 74880000,
+    "offset_is_calibrated": false,
+    "common_cohort_count": 528,
+    "training_pose_modes": 6,
+    "seed_budget": 4,
+    "evaluated_seeds": 4,
+    "fits": [
+      {
+        "pose": {
+          "xyz": [
+            0.7332436033181495,
+            -0.05898426933112388,
+            -0.17466682017902876
+          ],
+          "xyzw": [
+            0.5012582934831522,
+            0.49963471030951123,
+            0.5038369822830968,
+            0.49523082976744415
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 5,
+        "training_huber_coordinate_cost_mean": 2.4817252042506532,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.7378180318956056,
+          "p50": 2.247865525087342,
+          "p95": 15.337587039598468,
+          "maximum": 16.936276413393223
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.8605346901484839,
+          "p50": 3.3709799255574504,
+          "p95": 20.493789113244702,
+          "maximum": 28.096771702943798
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.7206528398440157,
+          "p50": 2.7504927127992147,
+          "p95": 16.63098236684901,
+          "maximum": 32.48128697616901
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.9866798518739642,
+          "p50": 3.5411271004963103,
+          "p95": 18.817214765660342,
+          "maximum": 36.21459464027228
+        },
+        "frames_passing_initial_3px_rms_6px_max": 286,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7332435187508717,
+            -0.05898431124393868,
+            -0.17466680070140272
+          ],
+          "xyzw": [
+            0.5012567409422892,
+            0.4996362643984287,
+            0.5038388792364897,
+            0.4952289033645112
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 9,
+        "training_huber_coordinate_cost_mean": 2.4817252041914393,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.7378227705325193,
+          "p50": 2.247871337136358,
+          "p95": 15.337574233567159,
+          "maximum": 16.936306216059563
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.8605302638134171,
+          "p50": 3.3709822540129535,
+          "p95": 20.493805030132837,
+          "maximum": 28.096821358207514
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.720651168467449,
+          "p50": 2.7504893041111056,
+          "p95": 16.631004625128188,
+          "maximum": 32.48126188043473
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.9865865079352963,
+          "p50": 3.541050754128674,
+          "p95": 18.817249079440778,
+          "maximum": 36.21488297623455
+        },
+        "frames_passing_initial_3px_rms_6px_max": 286,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7332435557600443,
+            -0.058984274552651934,
+            -0.17466681298098383
+          ],
+          "xyzw": [
+            0.5012579240865145,
+            0.49963485985643086,
+            0.5038374081738879,
+            0.4952306194909013
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 24,
+        "training_huber_coordinate_cost_mean": 2.481725204028387,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.737821445121981,
+          "p50": 2.24786813855905,
+          "p95": 15.337580636977908,
+          "maximum": 16.936271367621273
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.8605363161180748,
+          "p50": 3.3709812036337956,
+          "p95": 20.493795546585797,
+          "maximum": 28.09678489630222
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.7206547566545112,
+          "p50": 2.7504923670209975,
+          "p95": 16.630990396493672,
+          "maximum": 32.48128770166984
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.9866629413538986,
+          "p50": 3.541117564214426,
+          "p95": 18.817224103265108,
+          "maximum": 36.21463697094365
+        },
+        "frames_passing_initial_3px_rms_6px_max": 286,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7332435691536298,
+            -0.058984277127241774,
+            -0.17466681358022182
+          ],
+          "xyzw": [
+            0.501257926977662,
+            0.4996349838863047,
+            0.5038374213976566,
+            0.49523047797803105
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 28,
+        "training_huber_coordinate_cost_mean": 2.4817252039765307,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.737820676929936,
+          "p50": 2.2478679511540918,
+          "p95": 15.337582322449284,
+          "maximum": 16.93627770321847
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.8605352728775821,
+          "p50": 3.370981080589208,
+          "p95": 20.493794361029078,
+          "maximum": 28.096784356588635
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.7206536603300693,
+          "p50": 2.750491924731201,
+          "p95": 16.630989212858108,
+          "maximum": 32.48128367518428
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.9866599440456155,
+          "p50": 3.5411132445192135,
+          "p95": 18.817223147431378,
+          "maximum": 36.21465116103076
+        },
+        "frames_passing_initial_3px_rms_6px_max": 286,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      }
+    ],
+    "training_selected_seed": 3
+  },
+  {
+    "assumed_offset_ns": 99840000,
+    "offset_is_calibrated": false,
+    "common_cohort_count": 528,
+    "training_pose_modes": 6,
+    "seed_budget": 4,
+    "evaluated_seeds": 4,
+    "fits": [
+      {
+        "pose": {
+          "xyz": [
+            0.7338893111722493,
+            -0.0589613070607164,
+            -0.1747344931317975
+          ],
+          "xyzw": [
+            0.5027130089462052,
+            0.4998087099906721,
+            0.5022625936789668,
+            0.4951799380473627
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 5,
+        "training_huber_coordinate_cost_mean": 2.3972824579509817,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6485960669191109,
+          "p50": 2.254600970189882,
+          "p95": 17.813207308679424,
+          "maximum": 19.76098567359365
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6949390381467732,
+          "p50": 3.36510337573396,
+          "p95": 18.890322447500505,
+          "maximum": 27.17411277977753
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6485960669191109,
+          "p50": 2.76402917382692,
+          "p95": 16.71460172581378,
+          "maximum": 33.15333826935882
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8931985562845228,
+          "p50": 3.415493929740755,
+          "p95": 18.5334188292736,
+          "maximum": 37.464898421247206
+        },
+        "frames_passing_initial_3px_rms_6px_max": 284,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7338892974124211,
+            -0.05896133275869447,
+            -0.17473448837985342
+          ],
+          "xyzw": [
+            0.502712160942626,
+            0.49980977480780175,
+            0.5022636664107035,
+            0.4951786361007992
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 11,
+        "training_huber_coordinate_cost_mean": 2.3972824581878363,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6485882796686988,
+          "p50": 2.254594490950898,
+          "p95": 17.81323096436197,
+          "maximum": 19.760955152738934
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6949317160704958,
+          "p50": 3.3651007259588352,
+          "p95": 18.890333865061976,
+          "maximum": 27.174105817787442
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6485882796686988,
+          "p50": 2.764026155245759,
+          "p95": 16.71459834495064,
+          "maximum": 33.153322394893
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8932303544229384,
+          "p50": 3.415469594265166,
+          "p95": 18.533592715084833,
+          "maximum": 37.46507488838915
+        },
+        "frames_passing_initial_3px_rms_6px_max": 284,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7338892955571048,
+            -0.05896132269726585,
+            -0.17473448959880347
+          ],
+          "xyzw": [
+            0.5027124528360761,
+            0.4998093491846717,
+            0.5022632892554602,
+            0.4951791519212182
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 19,
+        "training_huber_coordinate_cost_mean": 2.3972824579473953,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6485914825158225,
+          "p50": 2.25459646638134,
+          "p95": 17.8132207057098,
+          "maximum": 19.76096826376745
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6949347018563509,
+          "p50": 3.365101755916429,
+          "p95": 18.890331654083333,
+          "maximum": 27.174106708568022
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6485914825158225,
+          "p50": 2.7640273546619287,
+          "p95": 16.71459897796923,
+          "maximum": 33.15332925340188
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8932194640240563,
+          "p50": 3.4154783339064156,
+          "p95": 18.533528489379158,
+          "maximum": 37.46500763446899
+        },
+        "frames_passing_initial_3px_rms_6px_max": 284,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7338893061415958,
+            -0.05896131979977485,
+            -0.17473449093014315
+          ],
+          "xyzw": [
+            0.5027125986474124,
+            0.49980924022922046,
+            0.5022631146589519,
+            0.4951792909600963
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 34,
+        "training_huber_coordinate_cost_mean": 2.3972824579082923,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6485921667165376,
+          "p50": 2.25459789542342,
+          "p95": 17.813219276417236,
+          "maximum": 19.76097026315139
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6949353786835472,
+          "p50": 3.3651020618819563,
+          "p95": 18.89032755007404,
+          "maximum": 27.174109781556655
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6485921667165376,
+          "p50": 2.7640276717815926,
+          "p95": 16.714600220636417,
+          "maximum": 33.15333024701498
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8932139346769437,
+          "p50": 3.4154820720348846,
+          "p95": 18.53350403943602,
+          "maximum": 37.46498549108968
+        },
+        "frames_passing_initial_3px_rms_6px_max": 284,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      }
+    ],
+    "training_selected_seed": 3
+  },
+  {
+    "assumed_offset_ns": 124800000,
+    "offset_is_calibrated": false,
+    "common_cohort_count": 528,
+    "training_pose_modes": 6,
+    "seed_budget": 4,
+    "evaluated_seeds": 4,
+    "fits": [
+      {
+        "pose": {
+          "xyz": [
+            0.7349709752891046,
+            -0.05910917878715261,
+            -0.17495251162282235
+          ],
+          "xyzw": [
+            0.5050248269081651,
+            0.5003116536747033,
+            0.499763244741824,
+            0.4948483329352392
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 5,
+        "training_huber_coordinate_cost_mean": 2.2517966393583584,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6356834499559824,
+          "p50": 2.3186306959363643,
+          "p95": 19.037004786930424,
+          "maximum": 22.331300737857966
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.7263469618221009,
+          "p50": 3.407502765000765,
+          "p95": 19.28410702143157,
+          "maximum": 32.36601545616675
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6356834499559824,
+          "p50": 2.5551454896166534,
+          "p95": 15.987197609976041,
+          "maximum": 32.36601545616675
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.886850221171173,
+          "p50": 3.235023084862495,
+          "p95": 18.02025775013859,
+          "maximum": 34.38570765676322
+        },
+        "frames_passing_initial_3px_rms_6px_max": 304,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7349709924099418,
+            -0.0591091804981811,
+            -0.1749525125819283
+          ],
+          "xyzw": [
+            0.5050248713836976,
+            0.5003117680482535,
+            0.4997632103266984,
+            0.49484820666570317
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 21,
+        "training_huber_coordinate_cost_mean": 2.251796639373955,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6356835178659843,
+          "p50": 2.3186318437092215,
+          "p95": 19.037009530010337,
+          "maximum": 22.331297146135185
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.726347132213465,
+          "p50": 3.407502690878254,
+          "p95": 19.284109308785485,
+          "maximum": 32.36601890957005
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6356835178659843,
+          "p50": 2.555147042806225,
+          "p95": 15.987200559445593,
+          "maximum": 32.36601890957005
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8868489045730874,
+          "p50": 3.235020284380437,
+          "p95": 18.020263153866384,
+          "maximum": 34.385717648506954
+        },
+        "frames_passing_initial_3px_rms_6px_max": 304,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7349709773897116,
+            -0.059109180564862474,
+            -0.17495251156451097
+          ],
+          "xyzw": [
+            0.505024781095614,
+            0.5003117276573255,
+            0.49976330446685674,
+            0.49484824457224946
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 24,
+        "training_huber_coordinate_cost_mean": 2.2517966393627753,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6356825227910888,
+          "p50": 2.318630795636765,
+          "p95": 19.037005376530274,
+          "maximum": 22.331298426881848
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.7263464011041935,
+          "p50": 3.4075025921685778,
+          "p95": 19.28410701714964,
+          "maximum": 32.3660157043596
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6356825227910888,
+          "p50": 2.5551449000935786,
+          "p95": 15.987198649284116,
+          "maximum": 32.3660157043596
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8868470766998775,
+          "p50": 3.23502444466169,
+          "p95": 18.020269213779304,
+          "maximum": 34.385717945559044
+        },
+        "frames_passing_initial_3px_rms_6px_max": 304,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7349709508573117,
+            -0.0591091708138279,
+            -0.1749525099950306
+          ],
+          "xyzw": [
+            0.5050249150994671,
+            0.5003113661604727,
+            0.4997631059948191,
+            0.494848673743629
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 21,
+        "training_huber_coordinate_cost_mean": 2.251796639386933,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6356860516770816,
+          "p50": 2.318628454949223,
+          "p95": 19.037000346391803,
+          "maximum": 22.3313107340811
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.7263498584229408,
+          "p50": 3.4075031421471875,
+          "p95": 19.284101727221483,
+          "maximum": 32.366008143125526
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6356860516770816,
+          "p50": 2.5551462037675226,
+          "p95": 15.9871924439749,
+          "maximum": 32.366008143125526
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.8868592978735498,
+          "p50": 3.2350197309006505,
+          "p95": 18.02022452457605,
+          "maximum": 34.385675401454385
+        },
+        "frames_passing_initial_3px_rms_6px_max": 304,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      }
+    ],
+    "training_selected_seed": 0
+  },
+  {
+    "assumed_offset_ns": 149760000,
+    "offset_is_calibrated": false,
+    "common_cohort_count": 528,
+    "training_pose_modes": 6,
+    "seed_budget": 4,
+    "evaluated_seeds": 4,
+    "fits": [
+      {
+        "pose": {
+          "xyz": [
+            0.7354019784278224,
+            -0.05920768726295262,
+            -0.17508354133702528
+          ],
+          "xyzw": [
+            0.5049217500769185,
+            0.5013430574568433,
+            0.5000195138287176,
+            0.4936493196891687
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 5,
+        "training_huber_coordinate_cost_mean": 2.523608281141238,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6167758488672416,
+          "p50": 2.395117823416846,
+          "p95": 20.489569338557494,
+          "maximum": 25.927470370648535
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6881640527269927,
+          "p50": 3.2133266338188413,
+          "p95": 24.252312637742605,
+          "maximum": 47.74724565856779
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6115424628651114,
+          "p50": 2.7315733198517735,
+          "p95": 17.44260919062247,
+          "maximum": 47.74724565856779
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.712367507538818,
+          "p50": 3.3662076733046717,
+          "p95": 19.058324829494214,
+          "maximum": 55.57950933764384
+        },
+        "frames_passing_initial_3px_rms_6px_max": 294,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.735401929197418,
+            -0.05920768470480813,
+            -0.17508353742272187
+          ],
+          "xyzw": [
+            0.5049215441401854,
+            0.5013428941189436,
+            0.5000197171183871,
+            0.4936494902989174
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 22,
+        "training_huber_coordinate_cost_mean": 2.5236082811333156,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6167731399248557,
+          "p50": 2.3951164310914805,
+          "p95": 20.489556487137918,
+          "maximum": 25.927466325246765
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.688161953858227,
+          "p50": 3.213327541637998,
+          "p95": 24.2523054326312,
+          "maximum": 47.747236127035784
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6115404439104656,
+          "p50": 2.73157253821915,
+          "p95": 17.44259644690473,
+          "maximum": 47.747236127035784
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.7123712552152971,
+          "p50": 3.3662145135057067,
+          "p95": 19.058323694443448,
+          "maximum": 55.579515300211305
+        },
+        "frames_passing_initial_3px_rms_6px_max": 294,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7354019292645257,
+            -0.05920768440447266,
+            -0.17508353745582098
+          ],
+          "xyzw": [
+            0.5049215546706683,
+            0.50134288209123,
+            0.5000197041845489,
+            0.49364950484388265
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 22,
+        "training_huber_coordinate_cost_mean": 2.5236082811334057,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6167732489018568,
+          "p50": 2.395116471158513,
+          "p95": 20.489556433115606,
+          "maximum": 25.927466026180255
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.688162025273214,
+          "p50": 3.2133275038076663,
+          "p95": 24.25230551248217,
+          "maximum": 47.74723601664632
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6115405653098366,
+          "p50": 2.7315725667998025,
+          "p95": 17.442596545062344,
+          "maximum": 47.74723601664632
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.7123709421440103,
+          "p50": 3.366214011257659,
+          "p95": 19.058323975278817,
+          "maximum": 55.579514030110474
+        },
+        "frames_passing_initial_3px_rms_6px_max": 294,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7354019529444159,
+            -0.05920768507093747,
+            -0.17508353938970192
+          ],
+          "xyzw": [
+            0.5049216728332738,
+            0.5013429377888471,
+            0.5000195829015284,
+            0.4936494502655486
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 27,
+        "training_huber_coordinate_cost_mean": 2.5236082811328164,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.616774747952322,
+          "p50": 2.39511721422061,
+          "p95": 20.489562479178147,
+          "maximum": 25.927467406293275
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.688163162812746,
+          "p50": 3.2133269975323544,
+          "p95": 24.25230911138757,
+          "maximum": 47.747240369330534
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6115417529804431,
+          "p50": 2.731572992660965,
+          "p95": 17.442602826480964,
+          "maximum": 47.747240369330534
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.7123685854511311,
+          "p50": 3.366209803337826,
+          "p95": 19.058325025208404,
+          "maximum": 55.57950882966751
+        },
+        "frames_passing_initial_3px_rms_6px_max": 294,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      }
+    ],
+    "training_selected_seed": 3
+  },
+  {
+    "assumed_offset_ns": 174720000,
+    "offset_is_calibrated": false,
+    "common_cohort_count": 528,
+    "training_pose_modes": 6,
+    "seed_budget": 4,
+    "evaluated_seeds": 4,
+    "fits": [
+      {
+        "pose": {
+          "xyz": [
+            0.7356287297452745,
+            -0.05922991847222069,
+            -0.175176027116408
+          ],
+          "xyzw": [
+            0.5032235161333343,
+            0.5016999506931512,
+            0.5019825312073386,
+            0.4930281844352986
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 5,
+        "training_huber_coordinate_cost_mean": 2.916660342786297,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6127357378529851,
+          "p50": 2.355358420756556,
+          "p95": 21.58003712851542,
+          "maximum": 31.794466070671604
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6664786147402983,
+          "p50": 3.339880826294137,
+          "p95": 29.57673707372329,
+          "maximum": 73.79717184440116
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6007074647858623,
+          "p50": 2.79454212118409,
+          "p95": 21.37822195357089,
+          "maximum": 73.79717184440116
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.718590847550559,
+          "p50": 3.3557348128353577,
+          "p95": 23.297749614043777,
+          "maximum": 82.89395288207078
+        },
+        "frames_passing_initial_3px_rms_6px_max": 285,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7356287045665443,
+            -0.059229914544952335,
+            -0.17517602572974303
+          ],
+          "xyzw": [
+            0.5032234798559218,
+            0.5016997360284059,
+            0.5019825471965212,
+            0.49302842362364585
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 23,
+        "training_huber_coordinate_cost_mean": 2.9166603427741515,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6127347801867453,
+          "p50": 2.35535792313643,
+          "p95": 21.580029889968344,
+          "maximum": 31.794460548365798
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6664775609468838,
+          "p50": 3.339880665455097,
+          "p95": 29.576731194856077,
+          "maximum": 73.79716619221315
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6007065868035432,
+          "p50": 2.794542244683531,
+          "p95": 21.378214621567803,
+          "maximum": 73.79716619221315
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.718590364274301,
+          "p50": 3.3557388986875667,
+          "p95": 23.297761054920056,
+          "maximum": 82.89394738278115
+        },
+        "frames_passing_initial_3px_rms_6px_max": 285,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7356286772058743,
+            -0.05922991851436327,
+            -0.17517602260048282
+          ],
+          "xyzw": [
+            0.5032232194248826,
+            0.5016998810309754,
+            0.5019828421646466,
+            0.49302824156174363
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 22,
+        "training_huber_coordinate_cost_mean": 2.916660342822877,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.61273501880343,
+          "p50": 2.355357179686443,
+          "p95": 21.580023702360435,
+          "maximum": 31.794461840119975
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6664780616156223,
+          "p50": 3.3398808839924032,
+          "p95": 29.5767234737381,
+          "maximum": 73.7971616857651
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.60070659119486,
+          "p50": 2.7945424809333597,
+          "p95": 21.378208170343363,
+          "maximum": 73.7971616857651
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.7185965503733062,
+          "p50": 3.355725653265088,
+          "p95": 23.297788914214227,
+          "maximum": 82.89396877430782
+        },
+        "frames_passing_initial_3px_rms_6px_max": 285,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7356287120517709,
+            -0.05922991499348119,
+            -0.1751760262844394
+          ],
+          "xyzw": [
+            0.5032235098462616,
+            0.50169976688651,
+            0.501982518315087,
+            0.49302839101828033
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 26,
+        "training_huber_coordinate_cost_mean": 2.916660342772961,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6127349540322532,
+          "p50": 2.3553580856050598,
+          "p95": 21.580031899437156,
+          "maximum": 31.794461556891576
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6664777301123052,
+          "p50": 3.339880679058884,
+          "p95": 29.57673305495553,
+          "maximum": 73.79716773302513
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6007067640152624,
+          "p50": 2.794542199435362,
+          "p95": 21.37821667293026,
+          "maximum": 73.79716773302513
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.7185899273000198,
+          "p50": 3.3557392172041363,
+          "p95": 23.29775631381895,
+          "maximum": 82.89394664238976
+        },
+        "frames_passing_initial_3px_rms_6px_max": 285,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      }
+    ],
+    "training_selected_seed": 3
+  },
+  {
+    "assumed_offset_ns": 199680000,
+    "offset_is_calibrated": false,
+    "common_cohort_count": 528,
+    "training_pose_modes": 6,
+    "seed_budget": 4,
+    "evaluated_seeds": 4,
+    "fits": [
+      {
+        "pose": {
+          "xyz": [
+            0.7356960772175074,
+            -0.059247748542861106,
+            -0.1752342686302548
+          ],
+          "xyzw": [
+            0.5024218529589297,
+            0.5012914206420217,
+            0.5027567771369051,
+            0.49347220418472604
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 5,
+        "training_huber_coordinate_cost_mean": 3.40245128581726,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6306489604714471,
+          "p50": 2.7768820717789646,
+          "p95": 24.546852100607083,
+          "maximum": 38.000768684528545
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.692771203346998,
+          "p50": 3.7328988189519237,
+          "p95": 38.044720390703226,
+          "maximum": 99.74224560277646
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6193724349835794,
+          "p50": 2.9332760894891194,
+          "p95": 23.99335000472544,
+          "maximum": 99.74224560277646
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.755604403470166,
+          "p50": 3.484552388632197,
+          "p95": 26.352742052523652,
+          "maximum": 109.80657892366315
+        },
+        "frames_passing_initial_3px_rms_6px_max": 270,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.735696061732982,
+            -0.059247746344349796,
+            -0.1752342682851948
+          ],
+          "xyzw": [
+            0.5024217986076782,
+            0.5012912933121579,
+            0.5027568196578666,
+            0.49347234554811364
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 22,
+        "training_huber_coordinate_cost_mean": 3.4024512858126092,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6306491947452576,
+          "p50": 2.7768814857034494,
+          "p95": 24.546855195162465,
+          "maximum": 38.00076572027966
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6927715123883416,
+          "p50": 3.732899293251968,
+          "p95": 38.04471518042739,
+          "maximum": 99.74224263563569
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6193726055951392,
+          "p50": 2.933276611570988,
+          "p95": 23.99335174848422,
+          "maximum": 99.74224263563569
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.7556051367184661,
+          "p50": 3.4845544050948947,
+          "p95": 26.35274084281705,
+          "maximum": 109.80657896425417
+        },
+        "frames_passing_initial_3px_rms_6px_max": 270,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7356960391566397,
+            -0.05924774777094957,
+            -0.17523426596586258
+          ],
+          "xyzw": [
+            0.5024216392345294,
+            0.501291332660144,
+            0.502756993151988,
+            0.4934722910817558
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 27,
+        "training_huber_coordinate_cost_mean": 3.4024512858168245,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.6306497624161926,
+          "p50": 2.776881037097113,
+          "p95": 24.546859130080353,
+          "maximum": 38.00076446113364
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6927717033757063,
+          "p50": 3.732899880411125,
+          "p95": 38.04470762736745,
+          "maximum": 99.74223818384671
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6193731204908908,
+          "p50": 2.933277183054927,
+          "p95": 23.993354909218812,
+          "maximum": 99.74223818384671
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.7556068237091831,
+          "p50": 3.4845538237885774,
+          "p95": 26.352753802101056,
+          "maximum": 109.80658966935346
+        },
+        "frames_passing_initial_3px_rms_6px_max": 270,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      },
+      {
+        "pose": {
+          "xyz": [
+            0.7356960769442764,
+            -0.059247747469113404,
+            -0.1752342690257777
+          ],
+          "xyzw": [
+            0.5024218700449457,
+            0.5012913682324148,
+            0.5027567527844987,
+            0.4934722648394734
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 18,
+        "training_huber_coordinate_cost_mean": 3.4024512858162597,
+        "train_rmse_px": {
+          "count": 56,
+          "minimum": 0.630648912005585,
+          "p50": 2.7768819726907035,
+          "p95": 24.54685228135969,
+          "maximum": 38.00076794459038
+        },
+        "holdout_rmse_px": {
+          "count": 112,
+          "minimum": 0.6927712632392014,
+          "p50": 3.73289884818595,
+          "p95": 38.044720290895896,
+          "maximum": 99.74224557693198
+        },
+        "all_cohort_rmse_px": {
+          "count": 528,
+          "minimum": 0.6193723776556178,
+          "p50": 2.93327613983838,
+          "p95": 23.993349895828658,
+          "maximum": 99.74224557693198
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 528,
+          "minimum": 0.7556042656239566,
+          "p50": 3.4845532195504108,
+          "p95": 26.352738719833745,
+          "maximum": 109.80657651832104
+        },
+        "frames_passing_initial_3px_rms_6px_max": 270,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      }
+    ],
+    "training_selected_seed": 1
+  }
+]

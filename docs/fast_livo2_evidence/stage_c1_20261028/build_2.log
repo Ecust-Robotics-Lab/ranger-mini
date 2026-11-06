@@ -1,0 +1,15 @@
+Starting >>> ranger_fast_livo_backend
+Finished <<< ranger_fast_livo_backend [0.36s]
+Starting >>> ranger_fast_livo_localizer
+--- stderr: ranger_fast_livo_localizer
+/usr/bin/ld: 找不到 -lranger_backend_core: 没有那个文件或目录
+collect2: error: ld returned 1 exit status
+gmake[2]: *** [CMakeFiles/ranger_localizer_core.dir/build.make:335：libranger_localizer_core.so] 错误 1
+gmake[1]: *** [CMakeFiles/Makefile2:636：CMakeFiles/ranger_localizer_core.dir/all] 错误 2
+gmake: *** [Makefile:146：all] 错误 2
+---
+Failed   <<< ranger_fast_livo_localizer [17.2s, exited with code 2]
+
+Summary: 1 package finished [17.7s]
+  1 package failed: ranger_fast_livo_localizer
+  1 package had stderr output: ranger_fast_livo_localizer

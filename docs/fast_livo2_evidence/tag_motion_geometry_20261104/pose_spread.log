@@ -1,0 +1,146 @@
+[
+  {
+    "name": "livo_0",
+    "cohort": {
+      "count": 1061,
+      "position_distance_to_reference_m": {
+        "count": 1061,
+        "minimum": 0.00046979139642070724,
+        "p50": 0.005374553062535478,
+        "p95": 0.027004177317833205,
+        "maximum": 0.12350810302662658
+      },
+      "orientation_distance_to_reference_deg": {
+        "count": 1061,
+        "minimum": 0.21089311948228107,
+        "p50": 1.2207873440716195,
+        "p95": 2.285514982756364,
+        "maximum": 16.95769311041487
+      },
+      "maximum_pairwise_position_m": 0.17719284418793826,
+      "maximum_pairwise_orientation_deg": 30.590833539719007
+    },
+    "heldout": {
+      "count": 274,
+      "position_distance_to_reference_m": {
+        "count": 274,
+        "minimum": 0.0005737279958833874,
+        "p50": 0.005068416659207826,
+        "p95": 0.032817933163837465,
+        "maximum": 0.10438684936178581
+      },
+      "orientation_distance_to_reference_deg": {
+        "count": 274,
+        "minimum": 0.21089311948228107,
+        "p50": 1.2206791321139334,
+        "p95": 2.612019012317456,
+        "maximum": 14.75184230299218
+      },
+      "maximum_pairwise_position_m": 0.15087433378487583,
+      "maximum_pairwise_orientation_deg": 24.456234629216052
+    },
+    "two_hypothesis_angular_separation_deg": {
+      "count": 1061,
+      "minimum": 4.2048509510275744,
+      "p50": 11.761568504206574,
+      "p95": 15.953845512140068,
+      "maximum": 42.2664994706814
+    }
+  },
+  {
+    "name": "livo_120000000",
+    "cohort": {
+      "count": 1061,
+      "position_distance_to_reference_m": {
+        "count": 1061,
+        "minimum": 0.00025184268403443376,
+        "p50": 0.0040123220315337665,
+        "p95": 0.012123766706885383,
+        "maximum": 0.07094471075975659
+      },
+      "orientation_distance_to_reference_deg": {
+        "count": 1061,
+        "minimum": 0.07381786069527264,
+        "p50": 0.9173652339791265,
+        "p95": 1.6428269267910307,
+        "maximum": 16.35549682075524
+      },
+      "maximum_pairwise_position_m": 0.08634096065712485,
+      "maximum_pairwise_orientation_deg": 30.20274325420678
+    },
+    "heldout": {
+      "count": 274,
+      "position_distance_to_reference_m": {
+        "count": 274,
+        "minimum": 0.00025184268403443376,
+        "p50": 0.004445203671714422,
+        "p95": 0.013827631158242284,
+        "maximum": 0.03424136641865452
+      },
+      "orientation_distance_to_reference_deg": {
+        "count": 274,
+        "minimum": 0.31061333402536867,
+        "p50": 0.9822502811373841,
+        "p95": 1.9780678620955605,
+        "maximum": 13.212805910251483
+      },
+      "maximum_pairwise_position_m": 0.04901444513690453,
+      "maximum_pairwise_orientation_deg": 24.8060919808889
+    },
+    "two_hypothesis_angular_separation_deg": {
+      "count": 1061,
+      "minimum": 4.204850951027574,
+      "p50": 11.761568504206574,
+      "p95": 15.953845512140068,
+      "maximum": 42.26649947068141
+    }
+  },
+  {
+    "name": "lio_110000000",
+    "cohort": {
+      "count": 1061,
+      "position_distance_to_reference_m": {
+        "count": 1061,
+        "minimum": 0.0001807842616594852,
+        "p50": 0.0017497568510780295,
+        "p95": 0.004298141626263399,
+        "maximum": 0.07246014351156191
+      },
+      "orientation_distance_to_reference_deg": {
+        "count": 1061,
+        "minimum": 0.15910084269613345,
+        "p50": 0.9755026686708645,
+        "p95": 1.6388359770056182,
+        "maximum": 16.02434428702786
+      },
+      "maximum_pairwise_position_m": 0.07842464974106331,
+      "maximum_pairwise_orientation_deg": 30.355145850683066
+    },
+    "heldout": {
+      "count": 274,
+      "position_distance_to_reference_m": {
+        "count": 274,
+        "minimum": 0.00019029124604727415,
+        "p50": 0.0017636507882127323,
+        "p95": 0.0035704546294896417,
+        "maximum": 0.04033788742717411
+      },
+      "orientation_distance_to_reference_deg": {
+        "count": 274,
+        "minimum": 0.16429113267758208,
+        "p50": 1.016299790458234,
+        "p95": 2.1604113380039416,
+        "maximum": 13.788094775674862
+      },
+      "maximum_pairwise_position_m": 0.043567368468285336,
+      "maximum_pairwise_orientation_deg": 24.679686015347592
+    },
+    "two_hypothesis_angular_separation_deg": {
+      "count": 1061,
+      "minimum": 4.204850951027574,
+      "p50": 11.76156850420658,
+      "p95": 15.953845512140065,
+      "maximum": 42.2664994706814
+    }
+  }
+]

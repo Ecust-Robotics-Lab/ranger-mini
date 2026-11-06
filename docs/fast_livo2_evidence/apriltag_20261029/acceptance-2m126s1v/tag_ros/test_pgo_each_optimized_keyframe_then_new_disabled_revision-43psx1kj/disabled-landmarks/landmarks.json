@@ -1,0 +1,464 @@
+[
+  {
+    "T_map_tag": {
+      "xyz": [
+        2.0625131991451164,
+        -2.0030628519970626,
+        3.1493090744346155
+      ],
+      "xyzw": [
+        0.27621434723929505,
+        -0.1684743213430696,
+        0.3900797713499853,
+        0.8620671722149646
+      ]
+    },
+    "canonical_frame": "apriltag-native-xy-down-z-in-v1",
+    "family": "tag36h11",
+    "id": 0,
+    "reason": "synthetic operator disable test",
+    "size_definition": "detected_black_white_boundary",
+    "size_m": 0.6,
+    "status": "DISABLED",
+    "support": {
+      "absolute_accuracy_validated": false,
+      "calibration_id": "synthetic-camera-ros-v1",
+      "independent_support": 4,
+      "max_rotation_dispersion_rad": 4.0125770192081414e-16,
+      "max_translation_dispersion_m": 6.280369834735101e-16,
+      "mode_count": 1,
+      "observation_count": 4,
+      "observations": [
+        {
+          "observation": {
+            "calibration_id": "synthetic-camera-ros-v1",
+            "canonical_frame": "apriltag-native-xy-down-z-in-v1",
+            "context": "synthetic-source",
+            "corners": [
+              [
+                263.9141303987926,
+                284.5638920148908
+              ],
+              [
+                360.33397043625473,
+                292.0649909148299
+              ],
+              [
+                376.0325887619524,
+                195.47844309703476
+              ],
+              [
+                275.6694030829069,
+                182.77597516998225
+              ]
+            ],
+            "decision_margin": 100.0,
+            "family": "tag36h11",
+            "hamming": 0,
+            "hypotheses": [
+              {
+                "T_camera_tag": {
+                  "xyz": [
+                    0.0,
+                    -4.440892098500626e-16,
+                    2.5000000000000004
+                  ],
+                  "xyzw": [
+                    0.10417518698837991,
+                    -0.09424585887568118,
+                    0.05943529661638147,
+                    0.9882978771690467
+                  ]
+                },
+                "hypothesis_id": 0,
+                "pixel_max": 8.038873388460929e-14,
+                "pixel_rmse": 5.1237965343830035e-14
+              }
+            ],
+            "id": 0,
+            "image_id": "pgo-image-0",
+            "image_stamp_ns": 10000000000,
+            "observation_id": "pgo-image-0:0",
+            "observation_stamp_ns": 10000000000,
+            "provenance": {
+              "camera_model": {
+                "D": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "K": [
+                  420.0,
+                  0.0,
+                  320.0,
+                  0.0,
+                  425.0,
+                  240.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "R": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "distortion_model": "plumb_bob",
+                "frame": "front_optical_frame",
+                "height": 480,
+                "pixel_domain": "raw",
+                "width": 640
+              },
+              "image_reference": "synthetic:pgo-image-0",
+              "size_source": "synthetic exact metric"
+            },
+            "quality": {},
+            "schema_version": 1,
+            "size_m": 0.6,
+            "source_id": "independent-synthetic-truth",
+            "time_mapping_id": "synthetic-exposure-ros-v1"
+          },
+          "source": {
+            "graph_version": 9,
+            "keyframe_id": 0,
+            "method": "pgo",
+            "records_sha256": "c91cb94367ca183b1e1a39935afbbbf3e020b057a37d6cd4dfef23e5eceb325f",
+            "source_manifest_sha256": "02ba709db529ae66f81aaa458d18ceac425723c452d200926bbbbc712c72aa19"
+          },
+          "support_id": "0",
+          "visit": "79c90e1f371f4dc6a14b68d1df6b2f83"
+        },
+        {
+          "observation": {
+            "calibration_id": "synthetic-camera-ros-v1",
+            "canonical_frame": "apriltag-native-xy-down-z-in-v1",
+            "context": "synthetic-source",
+            "corners": [
+              [
+                222.33346717862526,
+                292.53150459657724
+              ],
+              [
+                320.2679924796293,
+                298.8780004031089
+              ],
+              [
+                333.51371329096116,
+                202.86244816606626
+              ],
+              [
+                231.8783367403148,
+                191.02428987677555
+              ]
+            ],
+            "decision_margin": 100.0,
+            "family": "tag36h11",
+            "hamming": 0,
+            "hypotheses": [
+              {
+                "T_camera_tag": {
+                  "xyz": [
+                    -0.2501762447930873,
+                    0.04433877415198184,
+                    2.5115897678059658
+                  ],
+                  "xyzw": [
+                    0.09701264669063045,
+                    -0.10380754685028054,
+                    0.056834793607965284,
+                    0.988221810037881
+                  ]
+                },
+                "hypothesis_id": 0,
+                "pixel_max": 0.0,
+                "pixel_rmse": 0.0
+              }
+            ],
+            "id": 0,
+            "image_id": "pgo-image-1",
+            "image_stamp_ns": 11000000000,
+            "observation_id": "pgo-image-1:0",
+            "observation_stamp_ns": 11000000000,
+            "provenance": {
+              "camera_model": {
+                "D": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "K": [
+                  420.0,
+                  0.0,
+                  320.0,
+                  0.0,
+                  425.0,
+                  240.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "R": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "distortion_model": "plumb_bob",
+                "frame": "front_optical_frame",
+                "height": 480,
+                "pixel_domain": "raw",
+                "width": 640
+              },
+              "image_reference": "synthetic:pgo-image-1",
+              "size_source": "synthetic exact metric"
+            },
+            "quality": {},
+            "schema_version": 1,
+            "size_m": 0.6,
+            "source_id": "independent-synthetic-truth",
+            "time_mapping_id": "synthetic-exposure-ros-v1"
+          },
+          "source": {
+            "graph_version": 9,
+            "keyframe_id": 1,
+            "method": "pgo",
+            "records_sha256": "c91cb94367ca183b1e1a39935afbbbf3e020b057a37d6cd4dfef23e5eceb325f",
+            "source_manifest_sha256": "02ba709db529ae66f81aaa458d18ceac425723c452d200926bbbbc712c72aa19"
+          },
+          "support_id": "1",
+          "visit": "79c90e1f371f4dc6a14b68d1df6b2f83"
+        },
+        {
+          "observation": {
+            "calibration_id": "synthetic-camera-ros-v1",
+            "canonical_frame": "apriltag-native-xy-down-z-in-v1",
+            "context": "synthetic-source",
+            "corners": [
+              [
+                180.29791837954488,
+                301.26189932714084
+              ],
+              [
+                280.40383963451046,
+                306.41493869322653
+              ],
+              [
+                291.553969581087,
+                210.61792063921172
+              ],
+              [
+                187.95169944458922,
+                199.63655791900194
+              ]
+            ],
+            "decision_margin": 100.0,
+            "family": "tag36h11",
+            "hamming": 0,
+            "hypotheses": [
+              {
+                "T_camera_tag": {
+                  "xyz": [
+                    -0.5004763950330422,
+                    0.09209056067922328,
+                    2.5137650512475997
+                  ],
+                  "xyzw": [
+                    0.08994291495417266,
+                    -0.11340524367092225,
+                    0.0543168928345988,
+                    0.9879773266175089
+                  ]
+                },
+                "hypothesis_id": 0,
+                "pixel_max": 5.684341886080802e-14,
+                "pixel_rmse": 2.842170943040401e-14
+              }
+            ],
+            "id": 0,
+            "image_id": "pgo-image-2",
+            "image_stamp_ns": 12000000000,
+            "observation_id": "pgo-image-2:0",
+            "observation_stamp_ns": 12000000000,
+            "provenance": {
+              "camera_model": {
+                "D": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "K": [
+                  420.0,
+                  0.0,
+                  320.0,
+                  0.0,
+                  425.0,
+                  240.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "R": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "distortion_model": "plumb_bob",
+                "frame": "front_optical_frame",
+                "height": 480,
+                "pixel_domain": "raw",
+                "width": 640
+              },
+              "image_reference": "synthetic:pgo-image-2",
+              "size_source": "synthetic exact metric"
+            },
+            "quality": {},
+            "schema_version": 1,
+            "size_m": 0.6,
+            "source_id": "independent-synthetic-truth",
+            "time_mapping_id": "synthetic-exposure-ros-v1"
+          },
+          "source": {
+            "graph_version": 9,
+            "keyframe_id": 2,
+            "method": "pgo",
+            "records_sha256": "c91cb94367ca183b1e1a39935afbbbf3e020b057a37d6cd4dfef23e5eceb325f",
+            "source_manifest_sha256": "02ba709db529ae66f81aaa458d18ceac425723c452d200926bbbbc712c72aa19"
+          },
+          "support_id": "2",
+          "visit": "79c90e1f371f4dc6a14b68d1df6b2f83"
+        },
+        {
+          "observation": {
+            "calibration_id": "synthetic-camera-ros-v1",
+            "canonical_frame": "apriltag-native-xy-down-z-in-v1",
+            "context": "synthetic-source",
+            "corners": [
+              [
+                137.36551662814963,
+                310.81174152157496
+              ],
+              [
+                240.35876441329427,
+                314.70724408590945
+              ],
+              [
+                249.72109916814486,
+                218.7730807982022
+              ],
+              [
+                143.40609655300526,
+                208.6582671023918
+              ]
+            ],
+            "decision_margin": 100.0,
+            "family": "tag36h11",
+            "hamming": 0,
+            "hypotheses": [
+              {
+                "T_camera_tag": {
+                  "xyz": [
+                    -0.7506147343954026,
+                    0.14294641502389727,
+                    2.5064091871595773
+                  ],
+                  "xyzw": [
+                    0.0829687458958821,
+                    -0.12303668692565149,
+                    0.05188290987823441,
+                    0.98756585832915
+                  ]
+                },
+                "hypothesis_id": 0,
+                "pixel_max": 2.842170943040401e-14,
+                "pixel_rmse": 1.4210854715202004e-14
+              }
+            ],
+            "id": 0,
+            "image_id": "pgo-image-3",
+            "image_stamp_ns": 13000000000,
+            "observation_id": "pgo-image-3:0",
+            "observation_stamp_ns": 13000000000,
+            "provenance": {
+              "camera_model": {
+                "D": [
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  0.0
+                ],
+                "K": [
+                  420.0,
+                  0.0,
+                  320.0,
+                  0.0,
+                  425.0,
+                  240.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "R": [
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0,
+                  0.0,
+                  0.0,
+                  0.0,
+                  1.0
+                ],
+                "distortion_model": "plumb_bob",
+                "frame": "front_optical_frame",
+                "height": 480,
+                "pixel_domain": "raw",
+                "width": 640
+              },
+              "image_reference": "synthetic:pgo-image-3",
+              "size_source": "synthetic exact metric"
+            },
+            "quality": {},
+            "schema_version": 1,
+            "size_m": 0.6,
+            "source_id": "independent-synthetic-truth",
+            "time_mapping_id": "synthetic-exposure-ros-v1"
+          },
+          "source": {
+            "graph_version": 9,
+            "keyframe_id": 3,
+            "method": "pgo",
+            "records_sha256": "c91cb94367ca183b1e1a39935afbbbf3e020b057a37d6cd4dfef23e5eceb325f",
+            "source_manifest_sha256": "02ba709db529ae66f81aaa458d18ceac425723c452d200926bbbbc712c72aa19"
+          },
+          "support_id": "3",
+          "visit": "79c90e1f371f4dc6a14b68d1df6b2f83"
+        }
+      ],
+      "time_mapping_id": "synthetic-exposure-ros-v1"
+    }
+  }
+]

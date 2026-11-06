@@ -1,0 +1,694 @@
+poses:
+- image: image_001.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.17171238618706053
+  - 0.09019363187522733
+  - 3.065434108624143
+  tvec_m:
+  - 0.07432590720052808
+  - 0.01376310008528719
+  - 0.44173429756996235
+- image: image_002.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.23468531676453774
+  - 0.33735853114989706
+  - 2.9947485158063953
+  tvec_m:
+  - 0.10144013926810257
+  - 0.06006945330351478
+  - 0.5697253055548042
+- image: image_004.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.7642984341945852
+  - 0.11618459980350467
+  - 2.910781286803611
+  tvec_m:
+  - 0.004447693802164225
+  - 0.047458195986465834
+  - 0.5354855985516809
+- image: image_005.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.09036767725445596
+  - 0.2848512477648677
+  - 3.0869816553951206
+  tvec_m:
+  - 0.15509648591159403
+  - 0.08644311580745688
+  - 0.5477295704632928
+- image: image_006.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - 0.24331035001586326
+  - 0.11053352180695074
+  - 2.994003429373742
+  tvec_m:
+  - 0.17297762686842522
+  - 0.05131758820306716
+  - 0.5102960820311953
+- image: image_007.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - 0.24758351831278325
+  - 0.1773510103061843
+  - 2.964667418824072
+  tvec_m:
+  - 0.08054302037964156
+  - 0.028619318649503893
+  - 0.5466354100690134
+- image: image_009.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.08080924313408151
+  - -0.11750696524228786
+  - 2.996513231026488
+  tvec_m:
+  - 0.09383502452490214
+  - 0.10468259980148452
+  - 0.5340239661843751
+- image: image_010.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.3541139879383173
+  - 0.16367565911075815
+  - 2.9423464976249636
+  tvec_m:
+  - 0.1647474739283854
+  - 0.1201174914452505
+  - 0.47489878738569236
+- image: image_011.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - 0.44237013055175545
+  - 0.2346985789513478
+  - 2.913310891532175
+  tvec_m:
+  - 0.0688650884487348
+  - 0.061652475095859825
+  - 0.4273196203805952
+- image: image_012.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - 0.49808101743271926
+  - 0.23337023061688272
+  - 2.910834248193411
+  tvec_m:
+  - 0.08568626644506437
+  - 0.06013882756842016
+  - 0.4185804573787429
+- image: image_014.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.006644138948005195
+  - 0.26460261404539986
+  - 3.0635837807259665
+  tvec_m:
+  - 0.1191621878812431
+  - 0.05681788037033934
+  - 0.43748861015900237
+- image: image_015.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.353058532533341
+  - 0.3940856855280859
+  - 3.0303601096599047
+  tvec_m:
+  - 0.08787278850411315
+  - 0.05084867223765518
+  - 0.4379147332960838
+- image: image_016.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.6946862696260874
+  - 0.2756572038741404
+  - 2.972925101811096
+  tvec_m:
+  - 0.035227891780113575
+  - 0.013446384427360633
+  - 0.4523047569297745
+- image: image_017.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.522368464992007
+  - 0.0020512555039311204
+  - 3.002873739793058
+  tvec_m:
+  - 0.0790541466936754
+  - 0.021147030496535296
+  - 0.46293211299089676
+- image: image_019.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.7048018255174651
+  - -0.03112367294601441
+  - 2.949203751114438
+  tvec_m:
+  - 0.07850149399708835
+  - 0.0405817463607328
+  - 0.44139623125299904
+- image: image_020.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.8842714594625964
+  - 0.10051301695368849
+  - 2.9423118016823318
+  tvec_m:
+  - 0.07686698067590012
+  - 0.06622462777684111
+  - 0.4692227764091638
+- image: image_021.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.5623454708675413
+  - 0.33294946111290785
+  - 2.995337452781798
+  tvec_m:
+  - 0.11380287776259577
+  - 0.10579738860160814
+  - 0.5061985064948773
+- image: image_022.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.6203989932151965
+  - 0.22659473432473978
+  - 3.0203864419975086
+  tvec_m:
+  - 0.055995434134829415
+  - 0.08790957511553019
+  - 0.657529040510624
+- image: image_024.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - 0.14867158617353504
+  - -0.2963144536704439
+  - 2.912025363809264
+  tvec_m:
+  - 0.07980859303659278
+  - 0.009962462034758484
+  - 0.6390566651295673
+- image: image_025.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - 0.11991770567259506
+  - -0.14584315050078367
+  - 2.9038588576399333
+  tvec_m:
+  - 0.0652409484336133
+  - 0.07930186041105422
+  - 0.6433186046246511
+- image: image_026.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.3430698666526343
+  - 0.35332753057954575
+  - 2.9511470873129184
+  tvec_m:
+  - 0.07390178217383529
+  - 0.043239540019986325
+  - 0.5988393962850131
+- image: image_027.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.32531462111213755
+  - 0.33496691643412135
+  - 2.8102763102789394
+  tvec_m:
+  - 0.1440974105585177
+  - 0.0005632459039522862
+  - 0.471669218618794
+- image: image_029.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.5809227048407373
+  - 0.20583206429666998
+  - 2.8389675800639425
+  tvec_m:
+  - 0.13303489249032496
+  - -0.009431250003511646
+  - 0.4737669178126317
+- image: image_030.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.6361591673495068
+  - 0.28756953734851926
+  - 2.8355957119217416
+  tvec_m:
+  - 0.11235702565171894
+  - 0.02283382982745864
+  - 0.4822744123246119
+- image: image_031.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.4785047390262787
+  - -0.2246412097040783
+  - 2.832292985407168
+  tvec_m:
+  - 0.11992499729025521
+  - 0.011552860285835711
+  - 0.46931884435636617
+- image: image_032.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - 0.1683291312347335
+  - -0.06256665551590398
+  - 2.9686929241606603
+  tvec_m:
+  - 0.0903222199915098
+  - 0.027818858358504586
+  - 0.4464427243621781
+- image: image_034.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - 0.07490441491770795
+  - 0.059094910904685084
+  - -2.5856288544015484
+  tvec_m:
+  - 0.0135220919264218
+  - 0.1046329323656219
+  - 0.4542242500224792
+- image: image_035.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - 0.16885258245584636
+  - 0.007426714353180757
+  - -2.4111508095924585
+  tvec_m:
+  - -0.031604349175658006
+  - 0.11722369349609824
+  - 0.4431400659774816
+- image: image_036.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.33529504244255776
+  - 0.23676416563853803
+  - 2.404731026539914
+  tvec_m:
+  - 0.09160962625729809
+  - 0.0241021400620169
+  - 0.5279494962187486
+- image: image_037.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.32944687361231834
+  - 0.25645876934466544
+  - 2.3438279484470996
+  tvec_m:
+  - 0.096516652353299
+  - 0.029942387446088653
+  - 0.5198242079971364
+- image: image_039.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.23414897801516266
+  - 0.289351378848651
+  - 1.9565325233579878
+  tvec_m:
+  - 0.05762496333860993
+  - -0.052025660601828436
+  - 0.5387460771333518
+- image: image_040.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.28380501738729025
+  - 0.29012662527430666
+  - 1.7093722679082641
+  tvec_m:
+  - -0.01712601236030883
+  - -0.06305043803496777
+  - 0.5549484709178769
+- image: image_041.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.2530934854425679
+  - 0.2752181232204888
+  - 1.7306241210335258
+  tvec_m:
+  - -0.010756082171908755
+  - -0.09205273945507031
+  - 0.5523545849563775
+- image: image_042.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.19070393760545468
+  - 0.12587920416929568
+  - 1.5248176084965535
+  tvec_m:
+  - -0.08378803061019281
+  - -0.13679942196499528
+  - 0.6100923801494927
+- image: zz_01_session_20261021_171804__image_001.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.43597168176295975
+  - 0.0201103218342365
+  - -3.108225238679284
+  tvec_m:
+  - 0.044912509375104485
+  - 0.06441586837280108
+  - 0.3736962074203889
+- image: zz_01_session_20261021_171804__image_002.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - 0.7956314740118656
+  - -0.1780983315769664
+  - 2.967111039376175
+  tvec_m:
+  - 0.02695684368228944
+  - 0.0741987065793338
+  - 0.3942794560387692
+- image: zz_01_session_20261021_171804__image_003.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - 1.0242166048229717
+  - -0.270892344740695
+  - 2.8608531633164804
+  tvec_m:
+  - 0.08278561185170871
+  - 0.03654144970850256
+  - 0.3830376430048653
+- image: zz_01_session_20261021_171804__image_004.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - 0.852044200159781
+  - -0.12293113571956998
+  - 2.9360084686228602
+  tvec_m:
+  - 0.018138655509383508
+  - 0.1079182190461488
+  - 0.37077981807398497
+- image: zz_01_session_20261021_171804__image_006.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - 0.8258797792058357
+  - -0.33212624445177635
+  - 2.928813948448229
+  tvec_m:
+  - 0.0037054670329841094
+  - 0.06122941044093286
+  - 0.41059362770530267
+- image: zz_01_session_20261021_171804__image_007.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.7305784473461222
+  - 0.10717469397707233
+  - -3.0442938469822756
+  tvec_m:
+  - 0.05878789228080704
+  - 0.06341622339240582
+  - 0.384650421532133
+- image: zz_01_session_20261021_171804__image_008.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - 0.4865689376682136
+  - -0.5142396653338993
+  - 2.622503819882305
+  tvec_m:
+  - 0.08956969286971657
+  - 0.04702045247813229
+  - 0.445820409295744
+- image: zz_01_session_20261021_171804__image_009.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - 0.6397948239053107
+  - -0.7281051660438859
+  - 2.8075186055995056
+  tvec_m:
+  - 0.05231368332923684
+  - 0.06521187507915543
+  - 0.4871961518472339
+- image: zz_01_session_20261021_171804__image_011.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.2572118467100609
+  - 1.2197223626102696
+  - -2.874660413865944
+  tvec_m:
+  - 0.07473848263533307
+  - 0.06603956862753699
+  - 0.45297377392143606
+- image: zz_01_session_20261021_171804__image_012.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - 0.2741790018519247
+  - -1.214828929884104
+  - 2.873855827135326
+  tvec_m:
+  - 0.08248327529627349
+  - 0.06240645410606907
+  - 0.4485572721233543
+- image: zz_01_session_20261021_171804__image_013.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - 0.2051306427601891
+  - -1.1299528208765277
+  - 2.8462752044860724
+  tvec_m:
+  - 0.1260092862630778
+  - 0.07555889941757447
+  - 0.42380993391553956
+- image: zz_01_session_20261021_171804__image_014.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - 0.06927560698519192
+  - 0.9209670173862358
+  - -2.9732814822637383
+  tvec_m:
+  - 0.08695481011338373
+  - 0.0704924234094728
+  - 0.4468811349364141
+- image: zz_01_session_20261021_171804__image_016.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.23022958970151727
+  - -0.6471911553827465
+  - 2.8426198403367886
+  tvec_m:
+  - 0.13053688844711933
+  - 0.11279807112153972
+  - 0.4799125463672429
+- image: zz_01_session_20261021_171804__image_017.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.3479778495234178
+  - -0.636526234467643
+  - 2.8767942065373115
+  tvec_m:
+  - 0.1313650562271097
+  - 0.06828237266088427
+  - 0.4870157955221374
+- image: zz_01_session_20261021_171804__image_018.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - 0.23413085193949487
+  - -1.026140636216614
+  - 2.883934271242061
+  tvec_m:
+  - 0.14681850847870032
+  - 0.0922237630417209
+  - 0.5024452482751317
+- image: zz_01_session_20261021_171804__image_019.png
+  split: train
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.38245653902622084
+  - -0.28870350216067053
+  - 2.8473845186353985
+  tvec_m:
+  - 0.18536199814036858
+  - 0.007015036242785955
+  - 0.5300859427339369
+- image: image_003.png
+  split: holdout
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.4438307942203155
+  - 0.08364482561258847
+  - 3.04923780851
+  tvec_m:
+  - 0.0394918008592213
+  - 0.02899322949177379
+  - 0.5638051399308344
+- image: image_008.png
+  split: holdout
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.04127023283049538
+  - -0.22499584587795954
+  - 2.9440647556444968
+  tvec_m:
+  - 0.09969318848515314
+  - 0.05313043214682464
+  - 0.5313191281441446
+- image: image_013.png
+  split: holdout
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - 0.3843144122673229
+  - 0.19154744697909148
+  - 2.9538629826703158
+  tvec_m:
+  - 0.06016015328293891
+  - 0.04380823336141988
+  - 0.43590096316674065
+- image: image_018.png
+  split: holdout
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.569468133214415
+  - 0.03966707576432129
+  - 2.9874703821985316
+  tvec_m:
+  - 0.05722695875012137
+  - 0.04032951902331016
+  - 0.4574397310764554
+- image: image_023.png
+  split: holdout
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - 0.11120685087633923
+  - 0.23729173185558217
+  - 2.953465976362179
+  tvec_m:
+  - 0.12009668890047848
+  - 0.056131201358953095
+  - 0.6441733639044757
+- image: image_028.png
+  split: holdout
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.518876194433393
+  - 0.4043488893877215
+  - 2.7220787800666533
+  tvec_m:
+  - 0.12919547146488067
+  - -0.016748354364275016
+  - 0.4742325628964462
+- image: image_033.png
+  split: holdout
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - 0.05654774756793358
+  - -0.023559607716213175
+  - -2.7616094175768824
+  tvec_m:
+  - 0.030758022303279692
+  - 0.12644231792971286
+  - 0.44448724862228717
+- image: image_038.png
+  split: holdout
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.2930128359735577
+  - 0.30447142489938733
+  - 2.1220610205692854
+  tvec_m:
+  - 0.06126353448386865
+  - 0.013043541598506228
+  - 0.5283297489699921
+- image: image_043.png
+  split: holdout
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - 0.4887186376746826
+  - 0.271031885295601
+  - 2.857769453720252
+  tvec_m:
+  - 0.08660486946075463
+  - 0.044311390252608523
+  - 0.33915814536842465
+- image: zz_01_session_20261021_171804__image_005.png
+  split: holdout
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - 0.7448044063594724
+  - -0.2574715653073236
+  - 2.901946617791923
+  tvec_m:
+  - 0.03253401681484089
+  - 0.09424210438524498
+  - 0.36333282000504663
+- image: zz_01_session_20261021_171804__image_010.png
+  split: holdout
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - 0.812072392643053
+  - -0.925278197446277
+  - 2.8043327762428594
+  tvec_m:
+  - 0.07664461131217942
+  - 0.056788059493607136
+  - 0.4186193869808049
+- image: zz_01_session_20261021_171804__image_015.png
+  split: holdout
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - 0.06306015357886083
+  - -0.9376475745412609
+  - 2.891680506856811
+  tvec_m:
+  - 0.13869933413546431
+  - 0.06727553549189401
+  - 0.5036335779726049
+- image: zz_01_session_20261021_171804__image_020.png
+  split: holdout
+  transform: X_camera = Rodrigues(rvec) @ X_board + tvec; translation in meters
+  rvec:
+  - -0.48496778723982364
+  - 0.21669213403746526
+  - 2.999295921903444
+  tvec_m:
+  - 0.10306419269894176
+  - 0.01695255523273399
+  - 0.4217327725023875

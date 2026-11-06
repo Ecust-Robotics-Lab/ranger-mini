@@ -1,0 +1,98 @@
+{
+  "gicp_dynamic": {
+    "training_huber_coordinate_cost_mean": 1.1032673431511422,
+    "heldout_rmse_px": {
+      "count": 160,
+      "minimum": 0.2699544428760626,
+      "p50": 2.69232834669893,
+      "p95": 6.135623567515955,
+      "maximum": 11.433416756610226
+    },
+    "scan_gates_passed": 524,
+    "scan_count": 525,
+    "elapsed_ms": {
+      "count": 525,
+      "minimum": 37.31990500000393,
+      "p50": 68.62625400026445,
+      "p95": 70.15542939971056,
+      "maximum": 71.90876099957677
+    }
+  },
+  "pcl_aggregate_voxel": {
+    "training_huber_coordinate_cost_mean": 2.647758736008157,
+    "heldout_rmse_px": {
+      "count": 160,
+      "minimum": 0.9624600514968501,
+      "p50": 5.039347412077524,
+      "p95": 14.578954906866617,
+      "maximum": 25.117447340845406
+    },
+    "scan_gates_passed": 525,
+    "scan_count": 525,
+    "elapsed_ms": {
+      "count": 525,
+      "minimum": 20.813135999560473,
+      "p50": 29.344628999751876,
+      "p95": 39.27915460008079,
+      "maximum": 80.77002199934213
+    }
+  },
+  "pcl_dynamic": {
+    "training_huber_coordinate_cost_mean": 2.8923940376551722,
+    "heldout_rmse_px": {
+      "count": 160,
+      "minimum": 1.1675455290939125,
+      "p50": 5.345657101286021,
+      "p95": 15.625598594460334,
+      "maximum": 22.215779683504547
+    },
+    "scan_gates_passed": 525,
+    "scan_count": 525,
+    "elapsed_ms": {
+      "count": 525,
+      "minimum": 68.34193299982871,
+      "p50": 77.98028100023657,
+      "p95": 86.09378519959137,
+      "maximum": 131.72519399995508
+    }
+  },
+  "pcl_frozen": {
+    "training_huber_coordinate_cost_mean": 3.008294945785363,
+    "heldout_rmse_px": {
+      "count": 160,
+      "minimum": 1.0537399531609795,
+      "p50": 4.916233644925949,
+      "p95": 13.618113020423328,
+      "maximum": 19.35751641769061
+    },
+    "scan_gates_passed": 525,
+    "scan_count": 525,
+    "elapsed_ms": {
+      "count": 525,
+      "minimum": 67.05660599982366,
+      "p50": 77.00027999999293,
+      "p95": 86.04925339950569,
+      "maximum": 132.9358240000147
+    }
+  },
+  "local_native": {
+    "training_huber_coordinate_cost_mean": 1.1938275685139663,
+    "heldout_rmse_px": {
+      "count": 160,
+      "minimum": 0.29238960696310073,
+      "p50": 2.743896722185477,
+      "p95": 9.067842256799773,
+      "maximum": 15.327260229592678
+    }
+  },
+  "recorded_c1": {
+    "training_huber_coordinate_cost_mean": 2.8923940376551722,
+    "heldout_rmse_px": {
+      "count": 160,
+      "minimum": 1.1675455290939125,
+      "p50": 5.345657101286021,
+      "p95": 15.625598594460334,
+      "maximum": 22.215779683504547
+    }
+  }
+}

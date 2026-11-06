@@ -1,0 +1,20 @@
+{"processed": 1, "valid": 0, "reason": "waiting_initial_pose"}
+{"processed": 101, "valid": 0, "reason": "waiting_initial_pose"}
+{"processed": 201, "valid": 0, "reason": "waiting_initial_pose"}
+{"processed": 301, "valid": 0, "reason": "waiting_initial_pose"}
+{"processed": 401, "valid": 1, "reason": "map_confirmation_expired_requires_initial_pose"}
+{"processed": 501, "valid": 1, "reason": "map_confirmation_expired_requires_initial_pose"}
+{"processed": 601, "valid": 1, "reason": "map_confirmation_expired_requires_initial_pose"}
+{"processed": 701, "valid": 1, "reason": "map_confirmation_expired_requires_initial_pose"}
+{"processed": 801, "valid": 1, "reason": "map_confirmation_expired_requires_initial_pose"}
+{"processed": 901, "valid": 1, "reason": "map_confirmation_expired_requires_initial_pose"}
+{"processed": 1001, "valid": 1, "reason": "map_confirmation_expired_requires_initial_pose"}
+{"processed": 1101, "valid": 1, "reason": "map_confirmation_expired_requires_initial_pose"}
+{"processed": 1201, "valid": 1, "reason": "map_confirmation_expired_requires_initial_pose"}
+{"processed": 1301, "valid": 1, "reason": "map_confirmation_expired_requires_initial_pose"}
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/scripts/fast_livo2/localizer/validate_motion.py", line 210, in <module>
+    raise SystemExit(main())
+  File "/home/lab307/ranger_nav/scripts/fast_livo2/localizer/validate_motion.py", line 184, in main
+    raise AssertionError('insufficient confirmed localization or unexpected errors/public outputs')
+AssertionError: insufficient confirmed localization or unexpected errors/public outputs

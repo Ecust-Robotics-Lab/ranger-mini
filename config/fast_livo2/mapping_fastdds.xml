@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Private, localhost-only mapping participants. No system settings changed.
+     Fast DDS 2.6 SHM defaults (512 KiB / 512 descriptors) are unsuitable for
+     3.9 MiB images mixed with 200 Hz IMU. Keep transport resources bounded. -->
+<profiles xmlns="http://www.eprosima.com/XMLSchemas/fastRTPS_Profiles">
+  <transport_descriptors>
+    <transport_descriptor>
+      <transport_id>ranger_mapping_shm</transport_id>
+      <type>SHM</type>
+      <segment_size>268435456</segment_size>
+      <port_queue_capacity>8192</port_queue_capacity>
+    </transport_descriptor>
+    <transport_descriptor>
+      <transport_id>ranger_mapping_loopback</transport_id>
+      <type>UDPv4</type>
+      <interfaceWhiteList><address>127.0.0.1</address></interfaceWhiteList>
+    </transport_descriptor>
+  </transport_descriptors>
+  <participant profile_name="ranger_private_mapping" is_default_profile="true">
+    <rtps>
+      <userTransports>
+        <transport_id>ranger_mapping_shm</transport_id>
+        <transport_id>ranger_mapping_loopback</transport_id>
+      </userTransports>
+      <useBuiltinTransports>false</useBuiltinTransports>
+    </rtps>
+  </participant>
+</profiles>

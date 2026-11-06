@@ -23,6 +23,8 @@ def specs(args, metadata):
     command = [str(backend), '--ros-args', '--params-file', str(ROOT/'config/fast_livo2/backend.yaml'),
                '-p', 'use_sim_time:='+str(args.sim_time).lower(), '-p', 'metadata_path:='+str(metadata),
                '-p', 'data_root:='+str(ROOT/'.runtime/fast_livo_backend'), '-p', 'registration:='+args.registration]
+    if getattr(args, 'tag_loop', False):
+        command += ['-p', 'enable_tag_loop:=true', '-p', 'tag_config_path:='+str(args.tag_config.resolve())]
     components = [Component('monitor', [sys.executable, str(ROOT/'scripts/fast_livo2/backend/monitor.py')], ready_key='probe_live'),
                   Component('backend', command, depends=('monitor',), ready_key='backend_healthy',
                             requires=('probe_live',), resource='fast_livo_backend')]
@@ -57,11 +59,15 @@ def main():
     p.add_argument('--domain', type=int, default=187)
     p.add_argument('--registration', choices=['pcl_icp', 'small_gicp', 'small_vgicp'], default='pcl_icp')
     p.add_argument('--source-id', default='unspecified DDS input; archived scan hashes identify the selected data')
+    p.add_argument('--tag-loop', action='store_true')
+    p.add_argument('--tag-config', type=Path, default=ROOT/'config/fast_livo2/apriltag_camera.json')
     args = p.parse_args()
     if not 0 <= args.domain <= 232:
         p.error('domain must be 0..232')
     if args.offline_bridge and not args.sim_time:
         p.error('public bridge entry is offline only and requires simulated time')
+    if args.tag_loop and (not args.sim_time or args.domain == 0):
+        p.error('Tag loop entry requires simulated time and an isolated domain 1..232')
     directory = ROOT/'.runtime/sessions'/('fast_livo_backend_bridge' if args.offline_bridge else 'fast_livo_backend')
     if args.status:
         _, state = read_session(directory)

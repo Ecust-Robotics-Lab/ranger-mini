@@ -1,0 +1,14 @@
+# Capture: 2026-10-21T16:33:58.429328+08:00 to 2026-10-21T17:27:08.047486+08:00
+# Resolution: 1280x1024; plumb_bob; training-only fit, independent holdout retained.
+# PROVISIONAL camera-only fragment: no local FAST-Calib version found.
+# Reference: https://github.com/hku-mars/FAST-Calib/blob/main/config/qr_params.yaml
+# Separate four-coefficient calibration with k3 fixed to zero; NOT the main 5-coefficient model.
+# Verify installed schema before merging. No target geometry, extrinsics, or paths are supplied.
+fx: 1299.9243093829689
+fy: 1299.7688125941456
+cx: 640.2514561358767
+cy: 484.91610083416714
+k1: -0.08058610527446257
+k2: 0.12249574273413627
+p1: -0.0005626841419798357
+p2: -0.0003957718653253932

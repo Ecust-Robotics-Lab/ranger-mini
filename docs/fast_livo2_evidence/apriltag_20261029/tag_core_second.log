@@ -1,0 +1,42 @@
+Running main() from /opt/ros/humble/src/gtest_vendor/src/gtest_main.cc
+[==========] Running 12 tests from 4 test suites.
+[----------] Global test environment set-up.
+[----------] 4 tests from TagPixel
+[ RUN      ] TagPixel.IndependentProjectionAndFullSixDofIPPE
+[       OK ] TagPixel.IndependentProjectionAndFullSixDofIPPE (0 ms)
+[ RUN      ] TagPixel.RectifiedRotationAndNormalizedRays
+[       OK ] TagPixel.RectifiedRotationAndNormalizedRays (0 ms)
+[ RUN      ] TagPixel.RejectMismatchedModelsROIAndNonfinite
+[       OK ] TagPixel.RejectMismatchedModelsROIAndNonfinite (0 ms)
+[ RUN      ] TagPixel.RecomputeResidualRejectsForgedQualityAndSize
+[       OK ] TagPixel.RecomputeResidualRejectsForgedQualityAndSize (0 ms)
+[----------] 4 tests from TagPixel (0 ms total)
+
+[----------] 4 tests from TagTime
+[ RUN      ] TagTime.BracketSLERPOutOfOrderAndNoExtrapolation
+[       OK ] TagTime.BracketSLERPOutOfOrderAndNoExtrapolation (0 ms)
+[ RUN      ] TagTime.OffsetOnceSessionCalibrationAndMissingHistory
+[       OK ] TagTime.OffsetOnceSessionCalibrationAndMissingHistory (0 ms)
+[ RUN      ] TagTime.MotionAndCameraLeverArmPropagateToDifferentScan
+[       OK ] TagTime.MotionAndCameraLeverArmPropagateToDifferentScan (0 ms)
+[ RUN      ] TagTime.UnverifiedTimeDuplicateInstancesAndCapacity
+[       OK ] TagTime.UnverifiedTimeDuplicateInstancesAndCapacity (5 ms)
+[----------] 4 tests from TagTime (5 ms total)
+
+[----------] 1 test from TagLoop
+[ RUN      ] TagLoop.NonunitRelativeTransformAndVisualRejection
+[       OK ] TagLoop.NonunitRelativeTransformAndVisualRejection (0 ms)
+[----------] 1 test from TagLoop (0 ms total)
+
+[----------] 3 tests from TagMap
+[ RUN      ] TagMap.IndependentSupportRoundTripBindingAndNewCalibration
+[       OK ] TagMap.IndependentSupportRoundTripBindingAndNewCalibration (6 ms)
+[ RUN      ] TagMap.StationaryDuplicatesAndPersistentTwoModesNeverBecomeAnchor
+[       OK ] TagMap.StationaryDuplicatesAndPersistentTwoModesNeverBecomeAnchor (0 ms)
+[ RUN      ] TagMap.ConflictingKnownTagsInvalidateEveryPrior
+[       OK ] TagMap.ConflictingKnownTagsInvalidateEveryPrior (0 ms)
+[----------] 3 tests from TagMap (6 ms total)
+
+[----------] Global test environment tear-down
+[==========] 12 tests from 4 test suites ran. (11 ms total)
+[  PASSED  ] 12 tests.

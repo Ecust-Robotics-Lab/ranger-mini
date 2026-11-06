@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/scripts/fast_livo2/record_session.py", line 298, in <module>
+    raise SystemExit(main())
+  File "/home/lab307/ranger_nav/scripts/fast_livo2/record_session.py", line 225, in main
+    if shutil.disk_usage(folder.parent).free < args.min_free_gb*1e9:raise RuntimeError('insufficient free disk')
+RuntimeError: insufficient free disk

@@ -1,0 +1,1679 @@
+{
+  "kind": "full-source diagnostic; not production downsampled/normal-filtered quality or absolute accuracy",
+  "sampling_rule": "five uniformly spaced recorded scans plus five largest robot-origin correction steps; no image residual selection",
+  "selected_scan_indices": [
+    370,
+    501,
+    549,
+    561,
+    632,
+    763,
+    843,
+    845,
+    848,
+    894
+  ],
+  "records": [
+    {
+      "scan_index": 370,
+      "stamp_ns": 1590202623210189819,
+      "case": "pcl_dynamic",
+      "registration_accepted": true,
+      "diagnostic_full_source_points": 5937,
+      "diagnostic_matched_points": 5937,
+      "full_source_match_fraction": 1.0,
+      "full_source_point_rms_m": 0.04039223330366465,
+      "full_source_residual_m_p50_p95_max": [
+        0.029430261265300208,
+        0.073969330648607,
+        0.2332516943908968
+      ],
+      "nearest_target_frame_counts": {
+        "16": 611,
+        "25": 914,
+        "14": 767,
+        "17": 909,
+        "15": 798,
+        "6": 578,
+        "5": 667,
+        "30": 693
+      },
+      "largest_target_frame_fraction": 0.15394980629947785,
+      "inlier_source_octants": {
+        "5": 1185,
+        "7": 1375,
+        "6": 1294,
+        "4": 1232,
+        "1": 148,
+        "3": 266,
+        "2": 257,
+        "0": 180
+      },
+      "inlier_map_xyz_covariance_eigenvalues_m2": [
+        1.0588055660232885,
+        5.181218043107662,
+        5.538408566541262
+      ],
+      "mean_nearest_target_minus_transformed_source_m": [
+        0.0009401277730071698,
+        -0.0004169316942503327,
+        7.223766968805255e-05
+      ],
+      "range_bins": [
+        {
+          "low_m": 0,
+          "high_m": 2,
+          "source_points": 952,
+          "matched_points": 952,
+          "rms_m": 0.03948234872220951
+        },
+        {
+          "low_m": 2,
+          "high_m": 5,
+          "source_points": 4313,
+          "matched_points": 4313,
+          "rms_m": 0.03882923717822442
+        },
+        {
+          "low_m": 5,
+          "high_m": 10,
+          "source_points": 672,
+          "matched_points": 672,
+          "rms_m": 0.0502912052261523
+        },
+        {
+          "low_m": 10,
+          "high_m": 20,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        },
+        {
+          "low_m": 20,
+          "high_m": 1000000,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        }
+      ]
+    },
+    {
+      "scan_index": 370,
+      "stamp_ns": 1590202623210189819,
+      "case": "gicp_dynamic",
+      "registration_accepted": true,
+      "diagnostic_full_source_points": 5937,
+      "diagnostic_matched_points": 5937,
+      "full_source_match_fraction": 1.0,
+      "full_source_point_rms_m": 0.040482437303834946,
+      "full_source_residual_m_p50_p95_max": [
+        0.029414029212580302,
+        0.07455634897504912,
+        0.23230447981715144
+      ],
+      "nearest_target_frame_counts": {
+        "16": 616,
+        "25": 907,
+        "14": 775,
+        "17": 903,
+        "15": 761,
+        "5": 680,
+        "6": 595,
+        "30": 700
+      },
+      "largest_target_frame_fraction": 0.1527707596429173,
+      "inlier_source_octants": {
+        "5": 1185,
+        "7": 1375,
+        "6": 1294,
+        "4": 1232,
+        "1": 148,
+        "3": 266,
+        "2": 257,
+        "0": 180
+      },
+      "inlier_map_xyz_covariance_eigenvalues_m2": [
+        1.058805566023288,
+        5.181218043107667,
+        5.538408566541246
+      ],
+      "mean_nearest_target_minus_transformed_source_m": [
+        0.0011789832902537388,
+        -0.000767378397537593,
+        -0.0003407788814569999
+      ],
+      "range_bins": [
+        {
+          "low_m": 0,
+          "high_m": 2,
+          "source_points": 952,
+          "matched_points": 952,
+          "rms_m": 0.03973437294679724
+        },
+        {
+          "low_m": 2,
+          "high_m": 5,
+          "source_points": 4313,
+          "matched_points": 4313,
+          "rms_m": 0.038896553825051125
+        },
+        {
+          "low_m": 5,
+          "high_m": 10,
+          "source_points": 672,
+          "matched_points": 672,
+          "rms_m": 0.05031692425650333
+        },
+        {
+          "low_m": 10,
+          "high_m": 20,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        },
+        {
+          "low_m": 20,
+          "high_m": 1000000,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        }
+      ]
+    },
+    {
+      "scan_index": 501,
+      "stamp_ns": 1590202636310066699,
+      "case": "pcl_dynamic",
+      "registration_accepted": true,
+      "diagnostic_full_source_points": 5875,
+      "diagnostic_matched_points": 5874,
+      "full_source_match_fraction": 0.9998297872340426,
+      "full_source_point_rms_m": 0.04193718435151611,
+      "full_source_residual_m_p50_p95_max": [
+        0.030280959551886408,
+        0.07377411645541389,
+        0.42539142810857766
+      ],
+      "nearest_target_frame_counts": {
+        "9": 873,
+        "2": 634,
+        "21": 656,
+        "12": 627,
+        "7": 735,
+        "4": 950,
+        "3": 660,
+        "11": 739
+      },
+      "largest_target_frame_fraction": 0.16172965611167858,
+      "inlier_source_octants": {
+        "7": 1301,
+        "6": 1451,
+        "4": 1329,
+        "5": 1064,
+        "2": 181,
+        "0": 177,
+        "1": 122,
+        "3": 249
+      },
+      "inlier_map_xyz_covariance_eigenvalues_m2": [
+        1.0419005320920594,
+        5.1342454467962275,
+        5.663939203244761
+      ],
+      "mean_nearest_target_minus_transformed_source_m": [
+        -0.0009932965431258794,
+        -0.000515596726994197,
+        -0.0007738552670744159
+      ],
+      "range_bins": [
+        {
+          "low_m": 0,
+          "high_m": 2,
+          "source_points": 849,
+          "matched_points": 849,
+          "rms_m": 0.04072179560844322
+        },
+        {
+          "low_m": 2,
+          "high_m": 5,
+          "source_points": 4375,
+          "matched_points": 4374,
+          "rms_m": 0.040483317708407206
+        },
+        {
+          "low_m": 5,
+          "high_m": 10,
+          "source_points": 651,
+          "matched_points": 651,
+          "rms_m": 0.05191204266261619
+        },
+        {
+          "low_m": 10,
+          "high_m": 20,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        },
+        {
+          "low_m": 20,
+          "high_m": 1000000,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        }
+      ]
+    },
+    {
+      "scan_index": 501,
+      "stamp_ns": 1590202636310066699,
+      "case": "gicp_dynamic",
+      "registration_accepted": true,
+      "diagnostic_full_source_points": 5875,
+      "diagnostic_matched_points": 5874,
+      "full_source_match_fraction": 0.9998297872340426,
+      "full_source_point_rms_m": 0.041886599277935095,
+      "full_source_residual_m_p50_p95_max": [
+        0.03040797018276504,
+        0.07428723201505524,
+        0.4205766679173099
+      ],
+      "nearest_target_frame_counts": {
+        "9": 877,
+        "2": 645,
+        "21": 641,
+        "12": 640,
+        "7": 747,
+        "4": 936,
+        "3": 665,
+        "11": 723
+      },
+      "largest_target_frame_fraction": 0.15934627170582227,
+      "inlier_source_octants": {
+        "7": 1301,
+        "6": 1451,
+        "4": 1329,
+        "5": 1064,
+        "2": 181,
+        "0": 177,
+        "1": 122,
+        "3": 249
+      },
+      "inlier_map_xyz_covariance_eigenvalues_m2": [
+        1.0419005320920576,
+        5.134245446796231,
+        5.663939203244745
+      ],
+      "mean_nearest_target_minus_transformed_source_m": [
+        -0.00020132667872297863,
+        -0.00033087305012997366,
+        0.0006672486693052852
+      ],
+      "range_bins": [
+        {
+          "low_m": 0,
+          "high_m": 2,
+          "source_points": 849,
+          "matched_points": 849,
+          "rms_m": 0.04078995039420747
+        },
+        {
+          "low_m": 2,
+          "high_m": 5,
+          "source_points": 4375,
+          "matched_points": 4374,
+          "rms_m": 0.04039543082778639
+        },
+        {
+          "low_m": 5,
+          "high_m": 10,
+          "source_points": 651,
+          "matched_points": 651,
+          "rms_m": 0.05193375024839343
+        },
+        {
+          "low_m": 10,
+          "high_m": 20,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        },
+        {
+          "low_m": 20,
+          "high_m": 1000000,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        }
+      ]
+    },
+    {
+      "scan_index": 549,
+      "stamp_ns": 1590202641110142469,
+      "case": "pcl_dynamic",
+      "registration_accepted": true,
+      "diagnostic_full_source_points": 5878,
+      "diagnostic_matched_points": 5878,
+      "full_source_match_fraction": 1.0,
+      "full_source_point_rms_m": 0.03893572278602678,
+      "full_source_residual_m_p50_p95_max": [
+        0.02984325433702039,
+        0.06805393910428877,
+        0.28920425744522305
+      ],
+      "nearest_target_frame_counts": {
+        "9": 687,
+        "11": 680,
+        "7": 709,
+        "2": 808,
+        "6": 663,
+        "4": 797,
+        "0": 765,
+        "8": 769
+      },
+      "largest_target_frame_fraction": 0.13746172167403878,
+      "inlier_source_octants": {
+        "6": 1401,
+        "4": 1341,
+        "5": 1071,
+        "7": 1252,
+        "2": 222,
+        "0": 171,
+        "1": 147,
+        "3": 273
+      },
+      "inlier_map_xyz_covariance_eigenvalues_m2": [
+        1.0573149168716518,
+        5.087200757170374,
+        5.551101273461901
+      ],
+      "mean_nearest_target_minus_transformed_source_m": [
+        0.00010121186359418995,
+        -0.0008373241060962673,
+        -0.0005377541946237686
+      ],
+      "range_bins": [
+        {
+          "low_m": 0,
+          "high_m": 2,
+          "source_points": 900,
+          "matched_points": 900,
+          "rms_m": 0.038810270745118586
+        },
+        {
+          "low_m": 2,
+          "high_m": 5,
+          "source_points": 4320,
+          "matched_points": 4320,
+          "rms_m": 0.036843647630158294
+        },
+        {
+          "low_m": 5,
+          "high_m": 10,
+          "source_points": 658,
+          "matched_points": 658,
+          "rms_m": 0.05069690502651109
+        },
+        {
+          "low_m": 10,
+          "high_m": 20,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        },
+        {
+          "low_m": 20,
+          "high_m": 1000000,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        }
+      ]
+    },
+    {
+      "scan_index": 549,
+      "stamp_ns": 1590202641110142469,
+      "case": "gicp_dynamic",
+      "registration_accepted": true,
+      "diagnostic_full_source_points": 5878,
+      "diagnostic_matched_points": 5878,
+      "full_source_match_fraction": 1.0,
+      "full_source_point_rms_m": 0.03889960157148996,
+      "full_source_residual_m_p50_p95_max": [
+        0.029715621578967785,
+        0.06777581156430132,
+        0.29241108009296757
+      ],
+      "nearest_target_frame_counts": {
+        "8": 773,
+        "11": 682,
+        "7": 693,
+        "2": 812,
+        "9": 690,
+        "6": 665,
+        "4": 803,
+        "0": 760
+      },
+      "largest_target_frame_fraction": 0.13814222524668254,
+      "inlier_source_octants": {
+        "6": 1401,
+        "4": 1341,
+        "5": 1071,
+        "7": 1252,
+        "2": 222,
+        "0": 171,
+        "1": 147,
+        "3": 273
+      },
+      "inlier_map_xyz_covariance_eigenvalues_m2": [
+        1.0573149168716476,
+        5.0872007571703595,
+        5.551101273461887
+      ],
+      "mean_nearest_target_minus_transformed_source_m": [
+        -0.000908193281181483,
+        -0.00017362179149414008,
+        2.3457930645636305e-05
+      ],
+      "range_bins": [
+        {
+          "low_m": 0,
+          "high_m": 2,
+          "source_points": 900,
+          "matched_points": 900,
+          "rms_m": 0.03847150465721184
+        },
+        {
+          "low_m": 2,
+          "high_m": 5,
+          "source_points": 4320,
+          "matched_points": 4320,
+          "rms_m": 0.036871760199792526
+        },
+        {
+          "low_m": 5,
+          "high_m": 10,
+          "source_points": 658,
+          "matched_points": 658,
+          "rms_m": 0.05066817715130106
+        },
+        {
+          "low_m": 10,
+          "high_m": 20,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        },
+        {
+          "low_m": 20,
+          "high_m": 1000000,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        }
+      ]
+    },
+    {
+      "scan_index": 561,
+      "stamp_ns": 1590202642310157537,
+      "case": "pcl_dynamic",
+      "registration_accepted": true,
+      "diagnostic_full_source_points": 5890,
+      "diagnostic_matched_points": 5886,
+      "full_source_match_fraction": 0.999320882852292,
+      "full_source_point_rms_m": 0.03806384363736465,
+      "full_source_residual_m_p50_p95_max": [
+        0.027663439185371286,
+        0.06331778987643258,
+        0.3793956085294765
+      ],
+      "nearest_target_frame_counts": {
+        "14": 535,
+        "30": 1927,
+        "25": 554,
+        "17": 487,
+        "16": 550,
+        "5": 543,
+        "6": 641,
+        "15": 649
+      },
+      "largest_target_frame_fraction": 0.32738702004757053,
+      "inlier_source_octants": {
+        "6": 1333,
+        "4": 1352,
+        "5": 1124,
+        "7": 1279,
+        "3": 232,
+        "2": 237,
+        "0": 185,
+        "1": 144
+      },
+      "inlier_map_xyz_covariance_eigenvalues_m2": [
+        1.0336689698608836,
+        5.06768156145159,
+        5.5866606027068455
+      ],
+      "mean_nearest_target_minus_transformed_source_m": [
+        0.0018964197545053433,
+        -0.0010093696396841871,
+        -8.390665370581096e-05
+      ],
+      "range_bins": [
+        {
+          "low_m": 0,
+          "high_m": 2,
+          "source_points": 965,
+          "matched_points": 965,
+          "rms_m": 0.03947816367419035
+        },
+        {
+          "low_m": 2,
+          "high_m": 5,
+          "source_points": 4203,
+          "matched_points": 4199,
+          "rms_m": 0.036036939476820636
+        },
+        {
+          "low_m": 5,
+          "high_m": 10,
+          "source_points": 722,
+          "matched_points": 722,
+          "rms_m": 0.046645254070810126
+        },
+        {
+          "low_m": 10,
+          "high_m": 20,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        },
+        {
+          "low_m": 20,
+          "high_m": 1000000,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        }
+      ]
+    },
+    {
+      "scan_index": 561,
+      "stamp_ns": 1590202642310157537,
+      "case": "gicp_dynamic",
+      "registration_accepted": true,
+      "diagnostic_full_source_points": 5890,
+      "diagnostic_matched_points": 5886,
+      "full_source_match_fraction": 0.999320882852292,
+      "full_source_point_rms_m": 0.038015970029078264,
+      "full_source_residual_m_p50_p95_max": [
+        0.027397787052966673,
+        0.06464011307143432,
+        0.3869111314209326
+      ],
+      "nearest_target_frame_counts": {
+        "14": 555,
+        "16": 576,
+        "6": 641,
+        "25": 579,
+        "17": 533,
+        "15": 670,
+        "5": 545,
+        "30": 1787
+      },
+      "largest_target_frame_fraction": 0.3036017669045192,
+      "inlier_source_octants": {
+        "6": 1333,
+        "4": 1352,
+        "5": 1124,
+        "7": 1279,
+        "3": 232,
+        "2": 237,
+        "0": 185,
+        "1": 144
+      },
+      "inlier_map_xyz_covariance_eigenvalues_m2": [
+        1.0336689698608867,
+        5.06768156145158,
+        5.586660602706839
+      ],
+      "mean_nearest_target_minus_transformed_source_m": [
+        -0.0012725735914787435,
+        -0.0005777642705268037,
+        3.7944769206222665e-05
+      ],
+      "range_bins": [
+        {
+          "low_m": 0,
+          "high_m": 2,
+          "source_points": 965,
+          "matched_points": 965,
+          "rms_m": 0.03861736649534381
+        },
+        {
+          "low_m": 2,
+          "high_m": 5,
+          "source_points": 4203,
+          "matched_points": 4199,
+          "rms_m": 0.036009092955823996
+        },
+        {
+          "low_m": 5,
+          "high_m": 10,
+          "source_points": 722,
+          "matched_points": 722,
+          "rms_m": 0.04740890970713438
+        },
+        {
+          "low_m": 10,
+          "high_m": 20,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        },
+        {
+          "low_m": 20,
+          "high_m": 1000000,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        }
+      ]
+    },
+    {
+      "scan_index": 632,
+      "stamp_ns": 1590202649410423517,
+      "case": "pcl_dynamic",
+      "registration_accepted": true,
+      "diagnostic_full_source_points": 6038,
+      "diagnostic_matched_points": 5999,
+      "full_source_match_fraction": 0.9935409075852931,
+      "full_source_point_rms_m": 0.06370880496697635,
+      "full_source_residual_m_p50_p95_max": [
+        0.03258828674109007,
+        0.11438708660715563,
+        0.4996438455945606
+      ],
+      "nearest_target_frame_counts": {
+        "25": 734,
+        "24": 696,
+        "17": 661,
+        "5": 805,
+        "16": 682,
+        "15": 676,
+        "30": 869,
+        "14": 876
+      },
+      "largest_target_frame_fraction": 0.14602433738956494,
+      "inlier_source_octants": {
+        "6": 1362,
+        "4": 1281,
+        "5": 1280,
+        "7": 1277,
+        "2": 247,
+        "0": 147,
+        "1": 194,
+        "3": 211
+      },
+      "inlier_map_xyz_covariance_eigenvalues_m2": [
+        1.0158321044987646,
+        4.882054144210841,
+        5.334111380010161
+      ],
+      "mean_nearest_target_minus_transformed_source_m": [
+        -0.0008453572391579219,
+        -0.0016223000785092285,
+        -0.0005201909314433746
+      ],
+      "range_bins": [
+        {
+          "low_m": 0,
+          "high_m": 2,
+          "source_points": 1183,
+          "matched_points": 1183,
+          "rms_m": 0.059716983217346246
+        },
+        {
+          "low_m": 2,
+          "high_m": 5,
+          "source_points": 4099,
+          "matched_points": 4062,
+          "rms_m": 0.06276314091692223
+        },
+        {
+          "low_m": 5,
+          "high_m": 10,
+          "source_points": 756,
+          "matched_points": 754,
+          "rms_m": 0.0740010028412697
+        },
+        {
+          "low_m": 10,
+          "high_m": 20,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        },
+        {
+          "low_m": 20,
+          "high_m": 1000000,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        }
+      ]
+    },
+    {
+      "scan_index": 632,
+      "stamp_ns": 1590202649410423517,
+      "case": "gicp_dynamic",
+      "registration_accepted": true,
+      "diagnostic_full_source_points": 6038,
+      "diagnostic_matched_points": 5994,
+      "full_source_match_fraction": 0.9927128188141768,
+      "full_source_point_rms_m": 0.06279278902887972,
+      "full_source_residual_m_p50_p95_max": [
+        0.031106876842724077,
+        0.1168093423835056,
+        0.49330757366189887
+      ],
+      "nearest_target_frame_counts": {
+        "25": 767,
+        "24": 702,
+        "16": 687,
+        "5": 824,
+        "17": 679,
+        "14": 818,
+        "30": 859,
+        "15": 658
+      },
+      "largest_target_frame_fraction": 0.14330997664330997,
+      "inlier_source_octants": {
+        "6": 1362,
+        "4": 1281,
+        "5": 1275,
+        "7": 1277,
+        "2": 247,
+        "0": 147,
+        "1": 194,
+        "3": 211
+      },
+      "inlier_map_xyz_covariance_eigenvalues_m2": [
+        1.016297802305218,
+        4.8853621587929466,
+        5.323546769561245
+      ],
+      "mean_nearest_target_minus_transformed_source_m": [
+        0.0034102092338597375,
+        -0.0016026776236532385,
+        0.0020505496909881435
+      ],
+      "range_bins": [
+        {
+          "low_m": 0,
+          "high_m": 2,
+          "source_points": 1183,
+          "matched_points": 1183,
+          "rms_m": 0.06182912125490576
+        },
+        {
+          "low_m": 2,
+          "high_m": 5,
+          "source_points": 4099,
+          "matched_points": 4057,
+          "rms_m": 0.06114058232113957
+        },
+        {
+          "low_m": 5,
+          "high_m": 10,
+          "source_points": 756,
+          "matched_points": 754,
+          "rms_m": 0.07234028009436294
+        },
+        {
+          "low_m": 10,
+          "high_m": 20,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        },
+        {
+          "low_m": 20,
+          "high_m": 1000000,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        }
+      ]
+    },
+    {
+      "scan_index": 763,
+      "stamp_ns": 1590202662510300397,
+      "case": "pcl_dynamic",
+      "registration_accepted": true,
+      "diagnostic_full_source_points": 5903,
+      "diagnostic_matched_points": 5903,
+      "full_source_match_fraction": 1.0,
+      "full_source_point_rms_m": 0.038097247566173956,
+      "full_source_residual_m_p50_p95_max": [
+        0.02966097407742304,
+        0.06591838367977333,
+        0.28990024878604037
+      ],
+      "nearest_target_frame_counts": {
+        "4": 671,
+        "8": 819,
+        "0": 637,
+        "1": 688,
+        "19": 779,
+        "18": 742,
+        "20": 796,
+        "9": 771
+      },
+      "largest_target_frame_fraction": 0.13874301202778247,
+      "inlier_source_octants": {
+        "5": 1217,
+        "7": 1329,
+        "6": 1297,
+        "4": 1235,
+        "1": 126,
+        "3": 267,
+        "2": 250,
+        "0": 182
+      },
+      "inlier_map_xyz_covariance_eigenvalues_m2": [
+        1.0680681013434674,
+        5.230363311756485,
+        5.598675640735006
+      ],
+      "mean_nearest_target_minus_transformed_source_m": [
+        1.2520860900969752e-05,
+        -0.000626931335817573,
+        0.00047194096450862755
+      ],
+      "range_bins": [
+        {
+          "low_m": 0,
+          "high_m": 2,
+          "source_points": 923,
+          "matched_points": 923,
+          "rms_m": 0.03459531883662259
+        },
+        {
+          "low_m": 2,
+          "high_m": 5,
+          "source_points": 4328,
+          "matched_points": 4328,
+          "rms_m": 0.036144573513593736
+        },
+        {
+          "low_m": 5,
+          "high_m": 10,
+          "source_points": 652,
+          "matched_points": 652,
+          "rms_m": 0.05266962398828338
+        },
+        {
+          "low_m": 10,
+          "high_m": 20,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        },
+        {
+          "low_m": 20,
+          "high_m": 1000000,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        }
+      ]
+    },
+    {
+      "scan_index": 763,
+      "stamp_ns": 1590202662510300397,
+      "case": "gicp_dynamic",
+      "registration_accepted": true,
+      "diagnostic_full_source_points": 5903,
+      "diagnostic_matched_points": 5903,
+      "full_source_match_fraction": 1.0,
+      "full_source_point_rms_m": 0.03851742119137994,
+      "full_source_residual_m_p50_p95_max": [
+        0.029845630597867837,
+        0.06706410148184386,
+        0.2898762049428312
+      ],
+      "nearest_target_frame_counts": {
+        "4": 700,
+        "8": 790,
+        "0": 662,
+        "1": 710,
+        "19": 751,
+        "9": 773,
+        "18": 722,
+        "20": 795
+      },
+      "largest_target_frame_fraction": 0.13467728273759105,
+      "inlier_source_octants": {
+        "5": 1217,
+        "7": 1329,
+        "6": 1297,
+        "4": 1235,
+        "1": 126,
+        "3": 267,
+        "2": 250,
+        "0": 182
+      },
+      "inlier_map_xyz_covariance_eigenvalues_m2": [
+        1.068068101343468,
+        5.230363311756507,
+        5.598675640735015
+      ],
+      "mean_nearest_target_minus_transformed_source_m": [
+        4.118781543059373e-05,
+        -0.0021668007404239266,
+        0.00027895937588091657
+      ],
+      "range_bins": [
+        {
+          "low_m": 0,
+          "high_m": 2,
+          "source_points": 923,
+          "matched_points": 923,
+          "rms_m": 0.0351044629307766
+        },
+        {
+          "low_m": 2,
+          "high_m": 5,
+          "source_points": 4328,
+          "matched_points": 4328,
+          "rms_m": 0.036737565365856324
+        },
+        {
+          "low_m": 5,
+          "high_m": 10,
+          "source_points": 652,
+          "matched_points": 652,
+          "rms_m": 0.05223425259940113
+        },
+        {
+          "low_m": 10,
+          "high_m": 20,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        },
+        {
+          "low_m": 20,
+          "high_m": 1000000,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        }
+      ]
+    },
+    {
+      "scan_index": 843,
+      "stamp_ns": 1590202670510101318,
+      "case": "pcl_dynamic",
+      "registration_accepted": true,
+      "diagnostic_full_source_points": 6064,
+      "diagnostic_matched_points": 5995,
+      "full_source_match_fraction": 0.9886213720316622,
+      "full_source_point_rms_m": 0.07472517275943033,
+      "full_source_residual_m_p50_p95_max": [
+        0.03281364978222217,
+        0.1552366557440388,
+        0.49633127880213246
+      ],
+      "nearest_target_frame_counts": {
+        "24": 739,
+        "16": 640,
+        "30": 748,
+        "25": 743,
+        "5": 853,
+        "17": 728,
+        "15": 759,
+        "14": 785
+      },
+      "largest_target_frame_fraction": 0.14228523769808174,
+      "inlier_source_octants": {
+        "5": 1382,
+        "7": 1325,
+        "6": 1314,
+        "4": 1214,
+        "3": 178,
+        "2": 241,
+        "0": 139,
+        "1": 202
+      },
+      "inlier_map_xyz_covariance_eigenvalues_m2": [
+        1.0229847836130799,
+        4.427684735320464,
+        5.540324955120127
+      ],
+      "mean_nearest_target_minus_transformed_source_m": [
+        0.00044549722886488,
+        -0.002875177237041745,
+        0.00021287427517498495
+      ],
+      "range_bins": [
+        {
+          "low_m": 0,
+          "high_m": 2,
+          "source_points": 1333,
+          "matched_points": 1333,
+          "rms_m": 0.07118376001939757
+        },
+        {
+          "low_m": 2,
+          "high_m": 5,
+          "source_points": 3955,
+          "matched_points": 3890,
+          "rms_m": 0.07388197522303183
+        },
+        {
+          "low_m": 5,
+          "high_m": 10,
+          "source_points": 776,
+          "matched_points": 772,
+          "rms_m": 0.08430578465878563
+        },
+        {
+          "low_m": 10,
+          "high_m": 20,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        },
+        {
+          "low_m": 20,
+          "high_m": 1000000,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        }
+      ]
+    },
+    {
+      "scan_index": 843,
+      "stamp_ns": 1590202670510101318,
+      "case": "gicp_dynamic",
+      "registration_accepted": true,
+      "diagnostic_full_source_points": 6064,
+      "diagnostic_matched_points": 5994,
+      "full_source_match_fraction": 0.9884564643799473,
+      "full_source_point_rms_m": 0.07429961661555141,
+      "full_source_residual_m_p50_p95_max": [
+        0.032494798206660055,
+        0.15511177330736794,
+        0.49368040172843064
+      ],
+      "nearest_target_frame_counts": {
+        "24": 747,
+        "16": 640,
+        "30": 750,
+        "25": 730,
+        "5": 831,
+        "14": 777,
+        "17": 734,
+        "15": 785
+      },
+      "largest_target_frame_fraction": 0.13863863863863865,
+      "inlier_source_octants": {
+        "5": 1381,
+        "7": 1325,
+        "6": 1314,
+        "4": 1214,
+        "3": 178,
+        "2": 241,
+        "0": 139,
+        "1": 202
+      },
+      "inlier_map_xyz_covariance_eigenvalues_m2": [
+        1.0231071402727896,
+        4.428166932127247,
+        5.538541081009504
+      ],
+      "mean_nearest_target_minus_transformed_source_m": [
+        -3.5372107308034886e-06,
+        -0.0010121314923077402,
+        0.0012496269879295808
+      ],
+      "range_bins": [
+        {
+          "low_m": 0,
+          "high_m": 2,
+          "source_points": 1333,
+          "matched_points": 1333,
+          "rms_m": 0.06948999928446403
+        },
+        {
+          "low_m": 2,
+          "high_m": 5,
+          "source_points": 3955,
+          "matched_points": 3889,
+          "rms_m": 0.07371759215102318
+        },
+        {
+          "low_m": 5,
+          "high_m": 10,
+          "source_points": 776,
+          "matched_points": 772,
+          "rms_m": 0.08454907121916999
+        },
+        {
+          "low_m": 10,
+          "high_m": 20,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        },
+        {
+          "low_m": 20,
+          "high_m": 1000000,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        }
+      ]
+    },
+    {
+      "scan_index": 845,
+      "stamp_ns": 1590202670710261344,
+      "case": "pcl_dynamic",
+      "registration_accepted": true,
+      "diagnostic_full_source_points": 6072,
+      "diagnostic_matched_points": 6001,
+      "full_source_match_fraction": 0.9883069828722003,
+      "full_source_point_rms_m": 0.07510799990262695,
+      "full_source_residual_m_p50_p95_max": [
+        0.03238290750795946,
+        0.15773592260205607,
+        0.49706076078702793
+      ],
+      "nearest_target_frame_counts": {
+        "17": 677,
+        "30": 761,
+        "15": 711,
+        "16": 651,
+        "25": 785,
+        "24": 764,
+        "14": 778,
+        "5": 874
+      },
+      "largest_target_frame_fraction": 0.14564239293451092,
+      "inlier_source_octants": {
+        "6": 1324,
+        "4": 1335,
+        "5": 1281,
+        "7": 1300,
+        "3": 163,
+        "2": 247,
+        "0": 138,
+        "1": 213
+      },
+      "inlier_map_xyz_covariance_eigenvalues_m2": [
+        1.0242567536310239,
+        4.500086258031343,
+        5.391325509344865
+      ],
+      "mean_nearest_target_minus_transformed_source_m": [
+        0.0006195422750207307,
+        -0.0023065314392408283,
+        -0.0001955952043928576
+      ],
+      "range_bins": [
+        {
+          "low_m": 0,
+          "high_m": 2,
+          "source_points": 1315,
+          "matched_points": 1315,
+          "rms_m": 0.07397789319835099
+        },
+        {
+          "low_m": 2,
+          "high_m": 5,
+          "source_points": 3993,
+          "matched_points": 3927,
+          "rms_m": 0.07394716301993888
+        },
+        {
+          "low_m": 5,
+          "high_m": 10,
+          "source_points": 764,
+          "matched_points": 759,
+          "rms_m": 0.08263383817254626
+        },
+        {
+          "low_m": 10,
+          "high_m": 20,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        },
+        {
+          "low_m": 20,
+          "high_m": 1000000,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        }
+      ]
+    },
+    {
+      "scan_index": 845,
+      "stamp_ns": 1590202670710261344,
+      "case": "gicp_dynamic",
+      "registration_accepted": true,
+      "diagnostic_full_source_points": 6072,
+      "diagnostic_matched_points": 6002,
+      "full_source_match_fraction": 0.988471673254282,
+      "full_source_point_rms_m": 0.07557148917152859,
+      "full_source_residual_m_p50_p95_max": [
+        0.032044858032986984,
+        0.158460452609415,
+        0.4999114348832726
+      ],
+      "nearest_target_frame_counts": {
+        "17": 693,
+        "30": 739,
+        "15": 732,
+        "25": 749,
+        "16": 631,
+        "24": 780,
+        "14": 782,
+        "5": 896
+      },
+      "largest_target_frame_fraction": 0.14928357214261911,
+      "inlier_source_octants": {
+        "6": 1324,
+        "4": 1335,
+        "5": 1282,
+        "7": 1300,
+        "3": 163,
+        "2": 247,
+        "0": 138,
+        "1": 213
+      },
+      "inlier_map_xyz_covariance_eigenvalues_m2": [
+        1.0241453951437727,
+        4.499429844003056,
+        5.393199288321079
+      ],
+      "mean_nearest_target_minus_transformed_source_m": [
+        -0.0006669570849677499,
+        -0.002038386600599151,
+        0.0012493785628906726
+      ],
+      "range_bins": [
+        {
+          "low_m": 0,
+          "high_m": 2,
+          "source_points": 1315,
+          "matched_points": 1315,
+          "rms_m": 0.07369922355123275
+        },
+        {
+          "low_m": 2,
+          "high_m": 5,
+          "source_points": 3993,
+          "matched_points": 3928,
+          "rms_m": 0.07476598465676945
+        },
+        {
+          "low_m": 5,
+          "high_m": 10,
+          "source_points": 764,
+          "matched_points": 759,
+          "rms_m": 0.08259515080713101
+        },
+        {
+          "low_m": 10,
+          "high_m": 20,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        },
+        {
+          "low_m": 20,
+          "high_m": 1000000,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        }
+      ]
+    },
+    {
+      "scan_index": 848,
+      "stamp_ns": 1590202671010261297,
+      "case": "pcl_dynamic",
+      "registration_accepted": true,
+      "diagnostic_full_source_points": 6127,
+      "diagnostic_matched_points": 6067,
+      "full_source_match_fraction": 0.9902072792557532,
+      "full_source_point_rms_m": 0.08151639458987311,
+      "full_source_residual_m_p50_p95_max": [
+        0.0329827348415288,
+        0.17782019677899838,
+        0.49989106397757727
+      ],
+      "nearest_target_frame_counts": {
+        "17": 618,
+        "25": 813,
+        "29": 907,
+        "30": 800,
+        "16": 677,
+        "5": 842,
+        "14": 735,
+        "15": 675
+      },
+      "largest_target_frame_fraction": 0.14949728036921048,
+      "inlier_source_octants": {
+        "6": 1311,
+        "4": 1377,
+        "5": 1298,
+        "7": 1298,
+        "1": 210,
+        "3": 205,
+        "2": 255,
+        "0": 113
+      },
+      "inlier_map_xyz_covariance_eigenvalues_m2": [
+        1.00274332815812,
+        4.37657407215242,
+        5.4621572124797515
+      ],
+      "mean_nearest_target_minus_transformed_source_m": [
+        -0.00015720154811671368,
+        -0.0022278132699389943,
+        -3.246151409471962e-05
+      ],
+      "range_bins": [
+        {
+          "low_m": 0,
+          "high_m": 2,
+          "source_points": 1368,
+          "matched_points": 1368,
+          "rms_m": 0.06936982806555692
+        },
+        {
+          "low_m": 2,
+          "high_m": 5,
+          "source_points": 3981,
+          "matched_points": 3926,
+          "rms_m": 0.08499260649815885
+        },
+        {
+          "low_m": 5,
+          "high_m": 10,
+          "source_points": 778,
+          "matched_points": 773,
+          "rms_m": 0.0833583340516782
+        },
+        {
+          "low_m": 10,
+          "high_m": 20,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        },
+        {
+          "low_m": 20,
+          "high_m": 1000000,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        }
+      ]
+    },
+    {
+      "scan_index": 848,
+      "stamp_ns": 1590202671010261297,
+      "case": "gicp_dynamic",
+      "registration_accepted": true,
+      "diagnostic_full_source_points": 6127,
+      "diagnostic_matched_points": 6066,
+      "full_source_match_fraction": 0.9900440672433491,
+      "full_source_point_rms_m": 0.08166867234465632,
+      "full_source_residual_m_p50_p95_max": [
+        0.03255111420362282,
+        0.17850545483952976,
+        0.4977501173613203
+      ],
+      "nearest_target_frame_counts": {
+        "17": 650,
+        "25": 817,
+        "29": 915,
+        "30": 791,
+        "16": 701,
+        "14": 712,
+        "5": 805,
+        "15": 675
+      },
+      "largest_target_frame_fraction": 0.15084075173095945,
+      "inlier_source_octants": {
+        "6": 1311,
+        "4": 1377,
+        "5": 1297,
+        "7": 1298,
+        "1": 210,
+        "3": 205,
+        "2": 255,
+        "0": 113
+      },
+      "inlier_map_xyz_covariance_eigenvalues_m2": [
+        1.0027708040971772,
+        4.377132481363464,
+        5.460326431699258
+      ],
+      "mean_nearest_target_minus_transformed_source_m": [
+        -0.0002479260903234888,
+        -0.0019402855596129156,
+        0.002769721980521531
+      ],
+      "range_bins": [
+        {
+          "low_m": 0,
+          "high_m": 2,
+          "source_points": 1368,
+          "matched_points": 1368,
+          "rms_m": 0.06980714068358342
+        },
+        {
+          "low_m": 2,
+          "high_m": 5,
+          "source_points": 3981,
+          "matched_points": 3925,
+          "rms_m": 0.0852652648223071
+        },
+        {
+          "low_m": 5,
+          "high_m": 10,
+          "source_points": 778,
+          "matched_points": 773,
+          "rms_m": 0.08246778827007424
+        },
+        {
+          "low_m": 10,
+          "high_m": 20,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        },
+        {
+          "low_m": 20,
+          "high_m": 1000000,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        }
+      ]
+    },
+    {
+      "scan_index": 894,
+      "stamp_ns": 1590202675610177040,
+      "case": "pcl_dynamic",
+      "registration_accepted": true,
+      "diagnostic_full_source_points": 6151,
+      "diagnostic_matched_points": 6081,
+      "full_source_match_fraction": 0.9886197366281906,
+      "full_source_point_rms_m": 0.08578761860667938,
+      "full_source_residual_m_p50_p95_max": [
+        0.03358928954958193,
+        0.19720745618611846,
+        0.4861201674883127
+      ],
+      "nearest_target_frame_counts": {
+        "14": 667,
+        "16": 687,
+        "30": 876,
+        "5": 826,
+        "29": 823,
+        "17": 733,
+        "25": 769,
+        "15": 700
+      },
+      "largest_target_frame_fraction": 0.14405525407005426,
+      "inlier_source_octants": {
+        "7": 1322,
+        "6": 1446,
+        "4": 1279,
+        "5": 1263,
+        "2": 222,
+        "0": 128,
+        "1": 230,
+        "3": 191
+      },
+      "inlier_map_xyz_covariance_eigenvalues_m2": [
+        0.9938814667285326,
+        4.130793183854668,
+        5.5951173706916375
+      ],
+      "mean_nearest_target_minus_transformed_source_m": [
+        -0.0016133035987302253,
+        -0.0027958438244771694,
+        0.0002975746701052078
+      ],
+      "range_bins": [
+        {
+          "low_m": 0,
+          "high_m": 2,
+          "source_points": 1407,
+          "matched_points": 1407,
+          "rms_m": 0.0705549831457717
+        },
+        {
+          "low_m": 2,
+          "high_m": 5,
+          "source_points": 3938,
+          "matched_points": 3881,
+          "rms_m": 0.09138420445568868
+        },
+        {
+          "low_m": 5,
+          "high_m": 10,
+          "source_points": 806,
+          "matched_points": 793,
+          "rms_m": 0.08205007404737458
+        },
+        {
+          "low_m": 10,
+          "high_m": 20,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        },
+        {
+          "low_m": 20,
+          "high_m": 1000000,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        }
+      ]
+    },
+    {
+      "scan_index": 894,
+      "stamp_ns": 1590202675610177040,
+      "case": "gicp_dynamic",
+      "registration_accepted": true,
+      "diagnostic_full_source_points": 6151,
+      "diagnostic_matched_points": 6082,
+      "full_source_match_fraction": 0.9887823118192164,
+      "full_source_point_rms_m": 0.0861916360441977,
+      "full_source_residual_m_p50_p95_max": [
+        0.033135049484939075,
+        0.2003108806936106,
+        0.4993762376251098
+      ],
+      "nearest_target_frame_counts": {
+        "14": 679,
+        "16": 713,
+        "29": 829,
+        "5": 810,
+        "30": 832,
+        "17": 726,
+        "25": 782,
+        "15": 711
+      },
+      "largest_target_frame_fraction": 0.13679710621506083,
+      "inlier_source_octants": {
+        "7": 1322,
+        "6": 1446,
+        "4": 1279,
+        "5": 1264,
+        "2": 222,
+        "0": 128,
+        "1": 230,
+        "3": 191
+      },
+      "inlier_map_xyz_covariance_eigenvalues_m2": [
+        0.9937607744449954,
+        4.130226384134879,
+        5.596934838378885
+      ],
+      "mean_nearest_target_minus_transformed_source_m": [
+        -0.003212622249460824,
+        -0.001748530822387556,
+        0.0026430988745642934
+      ],
+      "range_bins": [
+        {
+          "low_m": 0,
+          "high_m": 2,
+          "source_points": 1407,
+          "matched_points": 1407,
+          "rms_m": 0.0696131516548659
+        },
+        {
+          "low_m": 2,
+          "high_m": 5,
+          "source_points": 3938,
+          "matched_points": 3882,
+          "rms_m": 0.09230577967104484
+        },
+        {
+          "low_m": 5,
+          "high_m": 10,
+          "source_points": 806,
+          "matched_points": 793,
+          "rms_m": 0.08166637522352757
+        },
+        {
+          "low_m": 10,
+          "high_m": 20,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        },
+        {
+          "low_m": 20,
+          "high_m": 1000000,
+          "source_points": 0,
+          "matched_points": 0,
+          "rms_m": null
+        }
+      ]
+    }
+  ],
+  "hardware_started": false
+}

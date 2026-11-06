@@ -1,0 +1,19 @@
+[
+  "ros2",
+  "bag",
+  "record",
+  "-s",
+  "sqlite3",
+  "-o",
+  "/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/headless-fix-efzQFAA3/test_owned_synthetic_session_is_cleaned_after_finite_capture-pqbz_dgj/owned_capture/raw",
+  "--max-cache-size",
+  "268435456",
+  "--qos-profile-overrides-path",
+  "/home/lab307/ranger_nav/config/mid360/bag_qos.yaml",
+  "/livox/lidar",
+  "/livox/imu",
+  "/front/image_sync",
+  "/front/image",
+  "/front/camera_info",
+  "/fast_livo/odometry"
+]

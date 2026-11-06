@@ -1,0 +1,45 @@
+{
+  "alias_restored": true,
+  "results": {
+    "camera_package_resolution": {
+      "command": "source /opt/ros/humble/setup.bash; source ws_camera/install/setup.bash; ros2 pkg prefix hik_camera_trigger_driver; ros2 pkg prefix timeshare_writer",
+      "exit_code": 0,
+      "legacy_alias_absent": true
+    },
+    "calibration_cpp_checks": {
+      "command": "source /opt/ros/humble/setup.bash; calibration/lidar_camera_extrinsics/ws/install_integrated/fast_calib/lib/fast_calib/offline_checks",
+      "exit_code": 0,
+      "legacy_alias_absent": true
+    },
+    "calibration_real_bag_reader": {
+      "command": "source /opt/ros/humble/setup.bash; calibration/lidar_camera_extrinsics/ws/install_integrated/fast_calib/lib/fast_calib/input_probe calibration/bags/stageB_sync_run2",
+      "exit_code": 0,
+      "legacy_alias_absent": true
+    },
+    "real_writer_synthetic_ros": {
+      "command": "source /opt/ros/humble/setup.bash; export ROS_DOMAIN_ID=176 ROS_LOCALHOST_ONLY=1; python3 scripts/fast_livo2/test_timeshare_writer.py",
+      "exit_code": 0,
+      "legacy_alias_absent": true
+    },
+    "livo_cpp_checks": {
+      "command": "source /opt/ros/humble/setup.bash; export LD_LIBRARY_PATH=\"$PWD/ws_fast_livo/deps_install/lib:${LD_LIBRARY_PATH:-}\"; ws_fast_livo/install/fast_livo/lib/fast_livo/ranger_livo_checks",
+      "exit_code": 0,
+      "legacy_alias_absent": true
+    },
+    "fast_live_plan": {
+      "command": "bash scripts/run_fast_livo2_live.sh --runtime-config config/profiles/fast_livo2_frontend.yaml",
+      "exit_code": 0,
+      "legacy_alias_absent": true
+    },
+    "calibration_sync_plan": {
+      "command": "bash scripts/run_calibration.sh sync --execute -- --dry-run",
+      "exit_code": 0,
+      "legacy_alias_absent": true
+    },
+    "fast_short_replay": {
+      "command": "bash scripts/run_mapping.sh offline --runtime-config config/profiles/fast_livo2_frontend.yaml --execute --max-frames 20",
+      "exit_code": 0,
+      "legacy_alias_absent": true
+    }
+  }
+}

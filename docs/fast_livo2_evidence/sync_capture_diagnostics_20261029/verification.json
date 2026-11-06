@@ -1,0 +1,69 @@
+{
+  "build_exit_code": 0,
+  "delivery_tests": {
+    "count": 7,
+    "exit_code": 0,
+    "log": "delivery-tests-acceptance-v2.log"
+  },
+  "recording_tests": {
+    "count": 4,
+    "exit_code": 0,
+    "log": "recording-tests-final.log"
+  },
+  "seqlock_check": {
+    "duplicate_writer_rejected": true,
+    "duplicate_did_not_truncate": true,
+    "consistent_snapshots_checked": 5976,
+    "last_sequence": 202,
+    "passed": true
+  },
+  "dry_run_exit_code": 0,
+  "git_diff_check_exit_code": 0,
+  "syntax_files": [
+    "scripts/fast_livo2/online_session.py",
+    "scripts/fast_livo2/record_session.py",
+    "scripts/fast_livo2/record_worker.py",
+    "tests/test_timeshare_delivery.py",
+    "tests/test_fast_livo_recording.py",
+    "ws_camera/src/timeshare_writer/launch/timeshare_launch.py"
+  ],
+  "local_links_missing": [],
+  "sessions": {
+    "fast_livo_record": {
+      "live": false,
+      "state": "STOPPED",
+      "owned": []
+    },
+    "fast_livo_live": {
+      "live": false,
+      "state": "STOPPED",
+      "owned": []
+    }
+  },
+  "calibration_and_time_config_sha_checks": {
+    "/home/lab307/ranger_nav/config/fast_livo2/apriltag_camera.json": true,
+    "/home/lab307/ranger_nav/config/fast_livo2/apriltag_sizes.json": true,
+    "/home/lab307/ranger_nav/config/fast_livo2/apriltag_sizes_capture_140mm.json": true,
+    "/home/lab307/ranger_nav/config/fast_livo2/camera_live.yaml": true,
+    "/home/lab307/ranger_nav/config/fast_livo2/ranger_mid360s_hik_trial.yaml": true
+  },
+  "source_and_binary_sha256": {
+    "scripts/fast_livo2/online_session.py": "8c10fd8805bd5eb8763b58de030fa07e9b491029e005db80efaee6cd7bc27b76",
+    "scripts/fast_livo2/record_session.py": "14ef34e7eb619f484035640d0d74cf1440bf22e69472305ceb36e129389e7723",
+    "scripts/fast_livo2/record_worker.py": "aa1f491fff9ae5aca944dae32d0c26c25e684d41fae2b5221039ea597d9348ab",
+    "tests/test_timeshare_delivery.py": "411a821929d7e15714cec268d262d9f83355fe99b64a998e0b5682e773d56964",
+    "tests/test_fast_livo_recording.py": "e07a8e767a1f0d0c1d87e8e3a4e6083da909af7f5c7f8146ddd5721237fd91bf",
+    "ws_camera/src/timeshare_writer/launch/timeshare_launch.py": "c2e50e7cd10c828c9ed74a5ec751fc4ca652f9a25cd68bfa909d2699816732b5",
+    "ws_camera/src/timeshare_writer/src/timeshare_writer_node.cpp": "ec2a8b4738e3c3eb38e8a79e3285777df95f93cf3a7b27f845635f2efdd5967e",
+    "ws_camera/src/timeshare_writer/CMakeLists.txt": "bf68cef0410198912a8768acc9597e0bd72e64179634f49db896613df2fda859",
+    "ws_camera/src/timeshare_writer/package.xml": "d05346122000eb54ef95dc6692fee70bb38d92a970d8f2b009f5dca10bafc4dd",
+    "ws_camera/install/timeshare_writer/lib/timeshare_writer/timeshare_writer_node": "3595b4f0a88344f3dd0eec0ad61f53e195de9f6e44e9449953ceaee8ee85df16"
+  },
+  "installed_versions": "ros-humble-rclcpp 16.0.19-1jammy.20260724.021311\nros-humble-rmw-fastrtps-cpp 6.2.10-1jammy.20260724.002510\n",
+  "raw_database_stat_unchanged": true,
+  "raw_database_sha_recomputed": false,
+  "hardware_started": false,
+  "time_offset_applied_ns": 0,
+  "physical_sync_verified": false,
+  "real_VALID_landmark_created": false
+}

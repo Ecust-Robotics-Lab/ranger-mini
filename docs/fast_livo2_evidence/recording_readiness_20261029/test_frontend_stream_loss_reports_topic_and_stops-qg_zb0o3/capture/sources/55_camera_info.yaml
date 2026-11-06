@@ -1,0 +1,57 @@
+# Capture: 2026-10-21T16:33:58.429328+08:00 to 2026-10-21T17:27:08.047486+08:00
+# Resolution: 1280x1024; plumb_bob; training-only fit, independent holdout retained.
+image_width: 1280
+image_height: 1024
+camera_name: front
+camera_matrix:
+  rows: 3
+  cols: 3
+  data:
+  - 1299.9988190926874
+  - 0.0
+  - 640.2595320942488
+  - 0.0
+  - 1299.8402206328024
+  - 484.9367557425784
+  - 0.0
+  - 0.0
+  - 1.0
+distortion_model: plumb_bob
+distortion_coefficients:
+  rows: 1
+  cols: 5
+  data:
+  - -0.08288339607839673
+  - 0.15032436811294939
+  - -0.0005625494644882011
+  - -0.00039491110944710704
+  - -0.08810366754215963
+rectification_matrix:
+  rows: 3
+  cols: 3
+  data:
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.0
+projection_matrix:
+  rows: 3
+  cols: 4
+  data:
+  - 1299.9988190926874
+  - 0.0
+  - 640.2595320942488
+  - 0.0
+  - 0.0
+  - 1299.8402206328024
+  - 484.9367557425784
+  - 0.0
+  - 0.0
+  - 0.0
+  - 1.0
+  - 0.0

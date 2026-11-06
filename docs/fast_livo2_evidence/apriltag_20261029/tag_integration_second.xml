@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="5" failures="0" disabled="0" errors="0" time="0.432" timestamp="2026-10-29T13:17:19" name="AllTests">
+  <testsuite name="TagIntegration" tests="5" failures="0" disabled="0" errors="0" time="0.432" timestamp="2026-10-29T13:17:19">
+    <testcase name="TagOnlyCandidatesUseOriginalConfirmationThenC1" status="run" result="completed" time="0.31" timestamp="2026-10-29T13:17:19" classname="TagIntegration">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-tag-integration-a6fd2113cacbad6c8ad8d563dc7548ca"/>
+</properties>
+    </testcase>
+    <testcase name="GeometricMatchButVisualConflictCannotConfirm" status="run" result="completed" time="0.049" timestamp="2026-10-29T13:17:19" classname="TagIntegration">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-tag-integration-2067919dd18cc8a7b3e7c45b44395f29"/>
+</properties>
+    </testcase>
+    <testcase name="StaleMapAndCancellationCannotConfirm" status="run" result="completed" time="0.01" timestamp="2026-10-29T13:17:19" classname="TagIntegration">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-tag-integration-3a7b5785b671356dc9656c6da7a515ba"/>
+</properties>
+    </testcase>
+    <testcase name="RepeatedImageDoesNotBecomeIndependentSupportAndNoTagIsSafe" status="run" result="completed" time="0.024" timestamp="2026-10-29T13:17:19" classname="TagIntegration">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-tag-integration-bee6e6bfdbabad3ee20f27e3c644570a"/>
+</properties>
+    </testcase>
+    <testcase name="BLoopBeyondPositionRadiusUsesNonunitTagInitial" status="run" result="completed" time="0.039" timestamp="2026-10-29T13:17:19" classname="TagIntegration">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-tag-integration-34acd0e5f4cbecc6b559a6efae1aa434"/>
+</properties>
+    </testcase>
+  </testsuite>
+</testsuites>

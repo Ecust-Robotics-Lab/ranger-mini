@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites tests="7" failures="0" disabled="0" errors="0" time="0.566" timestamp="2026-10-29T14:36:38" name="AllTests">
+  <testsuite name="TagIntegration" tests="7" failures="0" disabled="0" errors="0" time="0.566" timestamp="2026-10-29T14:36:38">
+    <testcase name="TagOnlyCandidatesUseOriginalConfirmationThenC1" status="run" result="completed" time="0.34" timestamp="2026-10-29T14:36:38" classname="TagIntegration">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-tag-integration-d1181dc72b3b45a54158237e79334465"/>
+</properties>
+    </testcase>
+    <testcase name="GeometricMatchButVisualConflictCannotConfirm" status="run" result="completed" time="0.056" timestamp="2026-10-29T14:36:38" classname="TagIntegration">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-tag-integration-9ad3d67962ef491e87914d3daa0363f0"/>
+</properties>
+    </testcase>
+    <testcase name="StaleMapAndCancellationCannotConfirm" status="run" result="completed" time="0.014" timestamp="2026-10-29T14:36:38" classname="TagIntegration">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-tag-integration-1509ea8cf113d03e3d1b5bd16d63b7fe"/>
+</properties>
+    </testcase>
+    <testcase name="RepeatedImageDoesNotBecomeIndependentSupportAndNoTagIsSafe" status="run" result="completed" time="0.026" timestamp="2026-10-29T14:36:38" classname="TagIntegration">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-tag-integration-2cf28f7ca3969ecb7f7c2085a3f2ae25"/>
+</properties>
+    </testcase>
+    <testcase name="DifferentValidPhysicalSolutionsRemainAmbiguous" status="run" result="completed" time="0.044" timestamp="2026-10-29T14:36:38" classname="TagIntegration">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-tag-integration-e81ff40fff5e9a8dda1bb904496b213f"/>
+</properties>
+    </testcase>
+    <testcase name="TwoInitialHypothesesConvergingToSamePoseAreNotTwoSupports" status="run" result="completed" time="0.044" timestamp="2026-10-29T14:36:38" classname="TagIntegration">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-tag-integration-c1037ea1845e15642f7f06bdf0b5382d"/>
+</properties>
+    </testcase>
+    <testcase name="BLoopBeyondPositionRadiusUsesNonunitTagInitial" status="run" result="completed" time="0.042" timestamp="2026-10-29T14:36:38" classname="TagIntegration">
+<properties>
+<property name="retained_test_directory" value="/tmp/ranger-tag-integration-84e2460695a32cf5ca43322a12d071fb"/>
+</properties>
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,71 @@
+[
+  {
+    "mode": "lio",
+    "offset_ns": 0,
+    "argv": [
+      "/home/lab307/ranger_nav/ws_fast_livo/build_motion_diag_20261104/ranger_motion_diagnostic",
+      "--ros-args",
+      "--params-file",
+      "/home/lab307/ranger_nav/outputs/fast-livo-tag140-motion-geometry-20261104/bias_lio_0/trial.yaml",
+      "-p",
+      "offline.bag:=/home/lab307/ranger_nav/bags/fast-livo-tag140_sync_diag_02-35f_m8nd/raw",
+      "-p",
+      "offline.output:=/home/lab307/ranger_nav/outputs/fast-livo-tag140-motion-geometry-20261104/bias_lio_0/result",
+      "--log-level",
+      "warn"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 7.231732645000193,
+    "binary_sha256": "4b546e727e7421138663325b205675357f62d0ac8b81627954c788cb567b0e32",
+    "config_sha256": "f11c5b353c7370108ee1e59cb34f08af73fc83933fc12cb1a295e182103e1954",
+    "diagnostic_source_sha256": "f89f490b8fc084f83d6806b3dc4dfeacd47a62e9cb6d62a2be62e6fd55b32c68",
+    "diagnostic_only": true,
+    "initial_static_segment_verified_from_images": true
+  },
+  {
+    "mode": "livo",
+    "offset_ns": 0,
+    "argv": [
+      "/home/lab307/ranger_nav/ws_fast_livo/build_motion_diag_20261104/ranger_livo_replay",
+      "--ros-args",
+      "--params-file",
+      "/home/lab307/ranger_nav/outputs/fast-livo-tag140-motion-geometry-20261104/bias_livo_0/trial.yaml",
+      "-p",
+      "offline.bag:=/home/lab307/ranger_nav/bags/fast-livo-tag140_sync_diag_02-35f_m8nd/raw",
+      "-p",
+      "offline.output:=/home/lab307/ranger_nav/outputs/fast-livo-tag140-motion-geometry-20261104/bias_livo_0/result",
+      "--log-level",
+      "warn"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 16.05474105300027,
+    "binary_sha256": "dad8ee6ee9a41134107968761fb36fbe6caddb1b68ef25945d117971bbeff18e",
+    "config_sha256": "a5e24d136ea68c0723b8b4bc8c2b254e7e774b986b5b76822fefa990f4b3fe96",
+    "diagnostic_source_sha256": "f89f490b8fc084f83d6806b3dc4dfeacd47a62e9cb6d62a2be62e6fd55b32c68",
+    "diagnostic_only": true,
+    "initial_static_segment_verified_from_images": true
+  },
+  {
+    "mode": "livo",
+    "offset_ns": 110000000,
+    "argv": [
+      "/home/lab307/ranger_nav/ws_fast_livo/build_motion_diag_20261104/ranger_livo_replay",
+      "--ros-args",
+      "--params-file",
+      "/home/lab307/ranger_nav/outputs/fast-livo-tag140-motion-geometry-20261104/bias_livo_110000000/trial.yaml",
+      "-p",
+      "offline.bag:=/home/lab307/ranger_nav/bags/fast-livo-tag140_sync_diag_02-35f_m8nd/raw",
+      "-p",
+      "offline.output:=/home/lab307/ranger_nav/outputs/fast-livo-tag140-motion-geometry-20261104/bias_livo_110000000/result",
+      "--log-level",
+      "warn"
+    ],
+    "exit_code": 0,
+    "wall_seconds": 14.405338694999955,
+    "binary_sha256": "dad8ee6ee9a41134107968761fb36fbe6caddb1b68ef25945d117971bbeff18e",
+    "config_sha256": "39db466c983b7dbbc28c6ed89e1c1aa1b4a03de3db106dfaefbf6d69d0e0f908",
+    "diagnostic_source_sha256": "f89f490b8fc084f83d6806b3dc4dfeacd47a62e9cb6d62a2be62e6fd55b32c68",
+    "diagnostic_only": true,
+    "initial_static_segment_verified_from_images": true
+  }
+]

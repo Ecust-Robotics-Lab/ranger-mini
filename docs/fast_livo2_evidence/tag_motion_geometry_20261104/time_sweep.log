@@ -1,0 +1,30 @@
+{
+  "training_selected": {
+    "offset_ns": 110000000,
+    "training_cost": 0.807146408598478,
+    "training_rmse_px": {
+      "count": 103,
+      "minimum": 0.26170526138242023,
+      "p50": 1.6218344353147043,
+      "p95": 3.9334539780082625,
+      "maximum": 6.484190575342071
+    },
+    "heldout_rmse_px": {
+      "count": 274,
+      "minimum": 0.2245548226401293,
+      "p50": 1.5746156851483324,
+      "p95": 3.3765998281688567,
+      "maximum": 6.585588135448733
+    }
+  },
+  "common_cohort": 1060,
+  "source_sha256": {
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-motion-geometry-20261104/lio/states.jsonl": "7002c7dcc2272977aa1a3396e8c635055c610fd29e860ddab4d739c1debce9c1",
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-sync-diag02-screen-20261029/observations.jsonl": "47bcafcbd9266ecf7716ec33b016aded639731ab011479b23b457bc215d7d563"
+  },
+  "fixed_extrinsics": true,
+  "fixed_camera_model": true,
+  "fixed_LIO_trajectory": true,
+  "physical_time_verified": false,
+  "production_offset_changed": false
+}

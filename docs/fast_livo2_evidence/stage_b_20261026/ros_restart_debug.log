@@ -1,0 +1,14 @@
+test_clock_reset_process_failure_and_restart (__main__.RosBackendTests) ... FAIL
+
+======================================================================
+FAIL: test_clock_reset_process_failure_and_restart (__main__.RosBackendTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_backend_ros.py", line 178, in test_clock_reset_process_failure_and_restart
+    self.assertIsNone(restarted.poll()); self.assertNotEqual(self.latest_valid().session_id, new.session_id)
+AssertionError: 'f025d22189144ab87db1a000dd039818' == 'f025d22189144ab87db1a000dd039818'
+
+----------------------------------------------------------------------
+Ran 1 test in 7.261s
+
+FAILED (failures=1)

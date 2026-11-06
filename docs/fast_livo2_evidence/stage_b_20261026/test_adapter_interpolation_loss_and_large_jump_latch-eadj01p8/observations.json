@@ -1,0 +1,31 @@
+{
+  "private_messages": 112,
+  "valid_samples": 46,
+  "sessions": [
+    "be25bd800f19412b868134124c5814d5"
+  ],
+  "bridge_health": {
+    "backend_alive": "1",
+    "backend_valid": "0",
+    "innovation": "1",
+    "innovation_skipped": "0",
+    "innovation_unlocked": "1",
+    "loc_tf": "1",
+    "loc_tf_age_ok": "0",
+    "map_transform": "1",
+    "odom_age": "1",
+    "odom_present": "1",
+    "time_aligned": "0",
+    "backend_state": "3",
+    "backend_reason": "pose_or_stream_stale; session=be25bd800f19412b868134124c5814d5; graph=3; loop_event=0",
+    "alignment_reason": "interpolated",
+    "aligned_sample_time": "1004.7900000000001",
+    "sample_time": "1004.79"
+  },
+  "process_exit_codes": [
+    0,
+    0,
+    0
+  ],
+  "hardware": false
+}

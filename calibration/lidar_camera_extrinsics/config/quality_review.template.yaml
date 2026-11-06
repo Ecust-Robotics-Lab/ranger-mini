@@ -1,0 +1,12 @@
+# Copy to each dataset run after inspecting BOTH image and LiDAR diagnostics.
+scene: UNCONFIGURED
+bag: UNCONFIGURED
+image_diagnostic: UNCONFIGURED
+lidar_diagnostic: UNCONFIGURED
+reviewer: UNCONFIGURED
+reviewed_at: UNCONFIGURED
+rigid_static_confirmed: false
+marker_ids_layout_orientation_verified: false
+four_hole_correspondence_verified: false
+pointcloud_support_accepted: false
+# This gate is a human feature review, not a declaration of final calibration accuracy.

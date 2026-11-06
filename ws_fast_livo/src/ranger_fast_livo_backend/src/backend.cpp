@@ -19,6 +19,7 @@ void Backend::log(Json j){
   log_ << j.dump() << '\n';
   log_.flush();
 }
+void Backend::configure_tags(tags::Config config){tag_config_=config;tag_buffer_=std::make_unique<tags::Buffer>(config);tag_buffer_->reset(session_);tag_history_.clear();}
 Snapshot Backend::snapshot()const {
   Snapshot s;
   s.session = session_;
@@ -89,6 +90,20 @@ bool Backend::detect_loops(){
   auto s = snapshot();
   uint64_t j = s.frames.size() - 1;
   auto candidates = search_->find(s, j);
+  if(tag_config_&&tag_history_.count(j)&&j>=next_tag_keyframe_){
+    std::vector<Candidate> additional;
+    for(auto history=tag_history_.rbegin();history!=tag_history_.rend();++history){auto i=history->first;
+      if(i>=j||j-i<=config_.exclude_ids||s.frames[j].stamp_ns-s.frames[i].stamp_ns<=int64_t(config_.exclude_time*1e9))continue;
+      for(const auto& old:history->second)for(const auto& current:tag_history_.at(j))if(tag_config_->fixed_tags.count(current.observation.key()))for(auto& p:tags::loop_priors(old,current,*tag_config_)){
+        Candidate c{i,0,"apriltag"};c.initial=p.initial;c.evidence=p.evidence;c.verify=p.verify;additional.push_back(std::move(c));
+      }
+      // Complete all branches of the current historical identity or drop this
+      // Tag attempt; never accept only a prefix of ambiguous branches.
+      if(additional.size()>tag_config_->max_hypotheses){additional.clear();log({{"event","tag_candidate_capacity"},{"j",j}});break;}
+      if(additional.size()>=4)break;
+    }
+    candidates.insert(candidates.end(),additional.begin(),additional.end());
+  }
   struct Evaluation {
     Candidate candidate;
     MatchTask task;
@@ -110,14 +125,19 @@ bool Backend::detect_loops(){
     }
     else try{
         auto target = submap(s, candidate.id, j, e.task);
-        Pose initial = s.frames[candidate.id].X.inverse() * s.frames[j].X;
+        Pose initial = candidate.initial.value_or(s.frames[candidate.id].X.inverse() * s.frames[j].X);
         e.result = registration_->align(*target, *source, initial);
+        Json visual;
+        if(e.result.accepted&&candidate.verify&&!candidate.verify(e.result.T_target_source,visual)){
+          e.result.accepted=false;e.result.reason="tag_visual_inconsistent";
+        }
         if ((steady_seconds() - started) * 1000 > config_.candidate_budget_ms) {
           e.result.accepted = false;
           e.result.reason = "candidate_time_budget";
         }
         e.log = {{"i", candidate.id}, {"j", j}, {"candidate_source", candidate.origin}, {"time_separation_s", (s.frames[j].stamp_ns - s.frames[candidate.id].stamp_ns) * 1e-9},
           {"initial_T_i_j", pose_json(initial)}, {"target_scan_ids", e.task.target_scans}, {"thresholds", config_.json()}};
+        if(candidate.origin=="apriltag"){e.log["tag_evidence"]=candidate.evidence;e.log["visual_verification"]=visual;}
       }
       catch (const std::exception& x) {
         e.result.reason = std::string("submap_or_registration_failure: ") + x.what();
@@ -126,6 +146,10 @@ bool Backend::detect_loops(){
     evaluations.push_back(std::move(e));
   }
   std::vector<size_t> valid;
+  // An incompletely evaluated Tag hypothesis set cannot establish uniqueness.
+  bool tag_incomplete=false;
+  for(const auto& e:evaluations)if(e.candidate.origin=="apriltag"&&(e.result.reason=="candidate_time_budget"||e.result.reason.find("submap_or_registration_failure")==0))tag_incomplete=true;
+  if(tag_incomplete){next_tag_keyframe_=j+4;for(auto& e:evaluations){e.result.accepted=false;e.log["decision"]="tag_attempt_incomplete";}}
   for (size_t k = 0; k < evaluations.size(); ++k) if (evaluations[k].result.accepted) valid.push_back(k);
   std::sort(valid.begin(), valid.end(), [&](auto a, auto b){
       auto& x = evaluations[a].result;
@@ -140,6 +164,10 @@ bool Backend::detect_loops(){
       auto& other = evaluations[valid[n]];
       double separation = (s.frames[best.candidate.id].X.translation() - s.frames[other.candidate.id].X.translation()).norm();
       if (separation > config_.ambiguity_separation && std::abs(best.result.rmse - other.result.rmse) < config_.ambiguity_rmse && std::abs(best.result.overlap - other.result.overlap) < config_.ambiguity_overlap) ambiguous = true;
+      if(best.candidate.origin=="apriltag"||other.candidate.origin=="apriltag"){
+        Pose a=s.frames[best.candidate.id].X*best.result.T_target_source,b=s.frames[other.candidate.id].X*other.result.T_target_source;
+        if((a.translation()-b.translation()).norm()>.3||rotation_distance(a,b)>.15)ambiguous=true;
+      }
     }
     if (ambiguous) best.log["decision"] = "rejected_ambiguous_places";
     else if (!task_current(best.task)) best.log["decision"] = "rejected_stale_task";
@@ -205,9 +233,10 @@ bool Backend::detect_loops(){
   }
   return committed;
 }
-Output Backend::process(int64_t stamp, uint64_t scan_id, const Pose& U, const Cloud& full, const std::vector<uint8_t>& cdr){
+Output Backend::process(int64_t stamp, uint64_t scan_id, const Pose& U, const Cloud& full, const std::vector<uint8_t>& cdr,const std::vector<Json>& tag_batches){
   if (stamp < 0 || stamp <= last_stamp_ || (last_stamp_ >= 0 && scan_id <= last_scan_) || !valid_pose(U) || full.empty()) throw std::invalid_argument("invalid or regressed scan/id");
   bool loop = false;
+  if(tag_buffer_){tag_buffer_->add_pose(stamp,U,session_);for(const auto& batch:tag_batches)try{tag_buffer_->push(batch,session_);}catch(const std::exception& e){log({{"event","tag_rejected"},{"reason",e.what()}});}}
   if (is_keyframe(stamp, U)) {
     if (graph_.frames().size() >= config_.max_keyframes) throw std::runtime_error("keyframe budget exhausted");
     auto match = downsample(full, config_.resolution);
@@ -219,6 +248,12 @@ Output Backend::process(int64_t stamp, uint64_t scan_id, const Pose& U, const Cl
     k = store_keyframe(directory_, k, full, *match, cdr);
     std::string reason;
     if (!graph_.append(k, reason)) throw std::runtime_error(reason);
+    if(tag_buffer_){
+      tag_history_[k.id]=tag_buffer_->take(stamp,U);
+      for(const auto& a:tag_history_[k.id]){Json Z=Json::array();for(const auto& h:a.observation.hypotheses)Z.push_back({{"hypothesis_id",h.id},{"T_keyframe_tag",pose_json(a.A*h.T)}});
+        log({{"event","tag_attachment"},{"keyframe_id",k.id},{"scan_id",scan_id},{"scan_stamp_ns",stamp},{"observation",a.observation.json()},{"T_keyframe_camera",pose_json(a.A)},{"hypotheses",Z}});}
+      while(tag_history_.size()>1024)tag_history_.erase(tag_history_.begin());
+    }
     loop = detect_loops();
   }
   last_stamp_ = stamp;

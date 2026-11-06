@@ -1,0 +1,75 @@
+CAPTURE_DIR=/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/checks-u0pBPFI3/test_duplicate_publisher_preserves_failure_without_success_marker-x0iop33p/capture
+SESSION_DIR=/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/checks-u0pBPFI3/test_duplicate_publisher_preserves_failure_without_success_marker-x0iop33p/sessions/fast_livo_record/run-vvgg2bnx
+CAPTURE PREFLIGHT /home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/checks-u0pBPFI3/test_duplicate_publisher_preserves_failure_without_success_marker-x0iop33p/capture
+CAPTURE RECORDING /home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/checks-u0pBPFI3/test_duplicate_publisher_preserves_failure_without_success_marker-x0iop33p/capture
+录制已就绪；现在可以开始人工采集动作。Ctrl+C 停录并归档。
+CAPTURE FINALIZING /home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/checks-u0pBPFI3/test_duplicate_publisher_preserves_failure_without_success_marker-x0iop33p/capture
+{
+  "exit": 0,
+  "forced": false,
+  "requested_seconds": 60.0,
+  "error": "session or recorder failed; preserved all partial data",
+  "observed_messages": {
+    "/livox/lidar": 11,
+    "/livox/imu": 9,
+    "/front/image_sync": 9,
+    "/front/image": 9,
+    "/front/camera_info": 9,
+    "/fast_livo/odometry": 9
+  },
+  "session_exit": 2,
+  "session_state": {
+    "run_directory": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/checks-u0pBPFI3/test_duplicate_publisher_preserves_failure_without_success_marker-x0iop33p/sessions/fast_livo_record/run-vvgg2bnx",
+    "guardian": {
+      "pid": 12593,
+      "start_ticks": 596225,
+      "ppid": 12274,
+      "state": "R",
+      "boot_id": "7d9266bc-caeb-4e72-9d67-82ac247914e1"
+    },
+    "owner": {
+      "pid": 12627,
+      "start_ticks": 596259,
+      "ppid": 12593,
+      "state": "R",
+      "boot_id": "7d9266bc-caeb-4e72-9d67-82ac247914e1"
+    },
+    "state": "FAILED",
+    "reason": "RuntimeError: capture exited 2; no automatic restart; scheduler exited 2; guardian cleanup",
+    "owned": [],
+    "components": {
+      "capture": {
+        "state": "EXITED",
+        "process": {
+          "pid": 12628,
+          "start_ticks": 596259,
+          "ppid": 12627,
+          "state": "R",
+          "boot_id": "7d9266bc-caeb-4e72-9d67-82ac247914e1"
+        },
+        "argv": [
+          "/usr/bin/python3",
+          "/home/lab307/ranger_nav/scripts/fast_livo2/record_worker.py",
+          "--folder",
+          "/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/checks-u0pBPFI3/test_duplicate_publisher_preserves_failure_without_success_marker-x0iop33p/capture"
+        ],
+        "exit_code": 2
+      }
+    },
+    "updated_monotonic": 5963.627500624,
+    "guardian_cleanup_complete": true
+  },
+  "folder": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/checks-u0pBPFI3/test_duplicate_publisher_preserves_failure_without_success_marker-x0iop33p/capture",
+  "capture_complete": false,
+  "sync": {
+    "available": true,
+    "source": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/capture_20261027/checks-u0pBPFI3/test_duplicate_publisher_preserves_failure_without_success_marker-x0iop33p/assets/camera_sync.csv",
+    "status_counts": {
+      "OK": 2
+    },
+    "hardware_frame_id_missing": 0,
+    "hardware_frame_id_nonincreasing": 0,
+    "scope": "entire sensor session; may include time outside this recording",
+    "physical_sync_proven": false
+  }
+}

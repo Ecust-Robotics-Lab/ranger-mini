@@ -1,0 +1,33 @@
+# C1 offline experiment defaults, separate from B; no field-calibrated accuracy claim.
+ranger_fast_livo_localizer:
+  ros__parameters:
+    use_sim_time: true
+    registration: pcl_icp
+    resolution: 0.15
+    coarse_resolution: 0.3
+    correspondence_distance: 0.5
+    min_overlap: 0.45
+    max_rmse: 0.2
+    degeneracy_ratio: 0.0001
+    max_iterations: 50
+    submap_radius: 8.0
+    maximum_submap_frames: 8
+    maximum_submap_points: 100000
+    cache_bytes: 134217728
+    initial_budget_ms: 2000.0
+    tracking_budget_ms: 500.0
+    max_tracking_translation: 0.75
+    max_tracking_rotation: 0.35
+    confirmation_frames: 2
+    confirmation_time: 0.2
+    confirmation_translation: 0.05
+    confirmation_rotation: 0.03
+    history_seconds: 5.0
+    history_gap: 0.15
+    history_capacity: 1000
+    initial_timeout: 10.0
+    lost_after: 1.0
+    reject_limit: 3
+    exclude_identical_stamp: true
+    sample_max_age: 0.5
+    stream_timeout: 2.0

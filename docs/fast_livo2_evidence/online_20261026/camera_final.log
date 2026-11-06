@@ -1,0 +1,95 @@
+[INFO] [1792996308.730879017] [hik_camera_trigger]: Starting HikCameraRos2DriverNode
+[INFO] [1792996308.758601052] [hik_camera_trigger]: Image publisher QoS: topic=front/image, reliability=reliable, durability=volatile, depth=5
+[INFO] [1792996308.758872381] [hik_camera_trigger]: Sync image publisher enabled: topic=/front/image_sync reliability=reliable (lidar-domain stamps via timeshare)
+[INFO] [1792996308.759013034] [hik_camera_trigger]: camera calibration URL: file:///home/lab307/calibration/camera_intrinsics/results/camera_info.yaml
+[INFO] [1792996308.759329348] [hik_camera_trigger]: Camera capture thread started
+[INFO] [1792996308.878308405] [hik_camera_trigger]: Matched target camera: SN=DB1216907, transport=USB3
+[INFO] [1792996310.107143577] [hik_camera_trigger]: Trigger profile applied: source=Line0, exposure=20000.0 us (requested 20000.0), gain=10.02 (requested 10.00)
+[INFO] [1792996310.107262291] [hik_camera_trigger]: timeshare mapped: /home/lab307/ranger_nav/.runtime/sessions/fast_livo_live/sensors-mng4paqh/timeshare
+[INFO] [1792996310.107318245] [hik_camera_trigger]: sync CSV log: /home/lab307/ranger_nav/.runtime/sessions/fast_livo_live/sensors-mng4paqh/camera_sync.csv
+[INFO] [1792996310.120012348] [hik_camera_trigger]: Camera connected and grabbing started: index=0, transport=USB3, SN=DB1216907
+[INFO] [1792996310.259558445] [hik_camera_trigger]: sync summary: total=1 ok=1 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1792996310.259609113] [hik_camera_trigger]: Publishing image: 1280x1024 RGB8, first frame=0, source_pixel=BayerGB8 (0x0108000A)
+[INFO] [1792996315.343143773] [hik_camera_trigger]: sync summary: total=52 ok=51 no_map=0 no_writer=0 unstable=0 stale=0 backward=1
+[INFO] [1792996320.343318420] [hik_camera_trigger]: sync summary: total=102 ok=99 no_map=0 no_writer=0 unstable=0 stale=0 backward=3
+[INFO] [1792996325.345088662] [hik_camera_trigger]: sync summary: total=152 ok=148 no_map=0 no_writer=0 unstable=0 stale=0 backward=4
+[INFO] [1792996330.443260170] [hik_camera_trigger]: sync summary: total=203 ok=197 no_map=0 no_writer=0 unstable=0 stale=0 backward=6
+[INFO] [1792996335.443758489] [hik_camera_trigger]: sync summary: total=253 ok=246 no_map=0 no_writer=0 unstable=0 stale=0 backward=7
+[INFO] [1792996340.544326178] [hik_camera_trigger]: sync summary: total=304 ok=293 no_map=0 no_writer=0 unstable=0 stale=0 backward=11
+[INFO] [1792996345.545082152] [hik_camera_trigger]: sync summary: total=354 ok=340 no_map=0 no_writer=0 unstable=0 stale=0 backward=14
+[INFO] [1792996350.546197580] [hik_camera_trigger]: sync summary: total=404 ok=386 no_map=0 no_writer=0 unstable=0 stale=0 backward=18
+[INFO] [1792996355.647483974] [hik_camera_trigger]: sync summary: total=455 ok=435 no_map=0 no_writer=0 unstable=0 stale=0 backward=20
+[INFO] [1792996360.746057301] [hik_camera_trigger]: sync summary: total=506 ok=483 no_map=0 no_writer=0 unstable=0 stale=0 backward=23
+[INFO] [1792996365.746559130] [hik_camera_trigger]: sync summary: total=556 ok=530 no_map=0 no_writer=0 unstable=0 stale=0 backward=26
+[INFO] [1792996370.748123805] [hik_camera_trigger]: sync summary: total=606 ok=577 no_map=0 no_writer=0 unstable=0 stale=0 backward=29
+[INFO] [1792996375.748160789] [hik_camera_trigger]: sync summary: total=656 ok=623 no_map=0 no_writer=0 unstable=0 stale=0 backward=33
+[INFO] [1792996380.848326083] [hik_camera_trigger]: sync summary: total=707 ok=669 no_map=0 no_writer=0 unstable=0 stale=0 backward=38
+[INFO] [1792996385.848805141] [hik_camera_trigger]: sync summary: total=757 ok=719 no_map=0 no_writer=0 unstable=0 stale=0 backward=38
+[INFO] [1792996390.849398458] [hik_camera_trigger]: sync summary: total=807 ok=767 no_map=0 no_writer=0 unstable=0 stale=0 backward=40
+[INFO] [1792996395.946299629] [hik_camera_trigger]: sync summary: total=858 ok=816 no_map=0 no_writer=0 unstable=0 stale=0 backward=42
+[INFO] [1792996400.948536061] [hik_camera_trigger]: sync summary: total=908 ok=862 no_map=0 no_writer=0 unstable=0 stale=0 backward=46
+[INFO] [1792996406.049791975] [hik_camera_trigger]: sync summary: total=959 ok=913 no_map=0 no_writer=0 unstable=0 stale=0 backward=46
+[INFO] [1792996411.146629112] [hik_camera_trigger]: sync summary: total=1010 ok=960 no_map=0 no_writer=0 unstable=0 stale=0 backward=50
+[INFO] [1792996416.147633833] [hik_camera_trigger]: sync summary: total=1060 ok=1009 no_map=0 no_writer=0 unstable=0 stale=0 backward=51
+[INFO] [1792996421.149172231] [hik_camera_trigger]: sync summary: total=1110 ok=1059 no_map=0 no_writer=0 unstable=0 stale=0 backward=51
+[INFO] [1792996426.150037759] [hik_camera_trigger]: sync summary: total=1160 ok=1109 no_map=0 no_writer=0 unstable=0 stale=0 backward=51
+[INFO] [1792996431.249536719] [hik_camera_trigger]: sync summary: total=1211 ok=1160 no_map=0 no_writer=0 unstable=0 stale=0 backward=51
+[INFO] [1792996436.251195579] [hik_camera_trigger]: sync summary: total=1261 ok=1208 no_map=0 no_writer=0 unstable=0 stale=0 backward=53
+[INFO] [1792996441.349977819] [hik_camera_trigger]: sync summary: total=1312 ok=1257 no_map=0 no_writer=0 unstable=0 stale=0 backward=55
+[INFO] [1792996446.350299450] [hik_camera_trigger]: sync summary: total=1362 ok=1305 no_map=0 no_writer=0 unstable=0 stale=0 backward=57
+[INFO] [1792996451.350389564] [hik_camera_trigger]: sync summary: total=1412 ok=1355 no_map=0 no_writer=0 unstable=0 stale=0 backward=57
+[INFO] [1792996456.449896240] [hik_camera_trigger]: sync summary: total=1463 ok=1406 no_map=0 no_writer=0 unstable=0 stale=0 backward=57
+[INFO] [1792996461.549901611] [hik_camera_trigger]: sync summary: total=1514 ok=1455 no_map=0 no_writer=0 unstable=0 stale=0 backward=59
+[INFO] [1792996466.550873142] [hik_camera_trigger]: sync summary: total=1564 ok=1505 no_map=0 no_writer=0 unstable=0 stale=0 backward=59
+[INFO] [1792996471.649960352] [hik_camera_trigger]: sync summary: total=1615 ok=1556 no_map=0 no_writer=0 unstable=0 stale=0 backward=59
+[INFO] [1792996476.749625782] [hik_camera_trigger]: sync summary: total=1666 ok=1607 no_map=0 no_writer=0 unstable=0 stale=0 backward=59
+[INFO] [1792996481.852678699] [hik_camera_trigger]: sync summary: total=1717 ok=1658 no_map=0 no_writer=0 unstable=0 stale=0 backward=59
+[INFO] [1792996486.952618887] [hik_camera_trigger]: sync summary: total=1768 ok=1709 no_map=0 no_writer=0 unstable=0 stale=0 backward=59
+[INFO] [1792996492.050617097] [hik_camera_trigger]: sync summary: total=1819 ok=1760 no_map=0 no_writer=0 unstable=0 stale=0 backward=59
+[INFO] [1792996497.051930537] [hik_camera_trigger]: sync summary: total=1869 ok=1810 no_map=0 no_writer=0 unstable=0 stale=0 backward=59
+[INFO] [1792996502.052279805] [hik_camera_trigger]: sync summary: total=1919 ok=1860 no_map=0 no_writer=0 unstable=0 stale=0 backward=59
+[INFO] [1792996507.151236815] [hik_camera_trigger]: sync summary: total=1970 ok=1910 no_map=0 no_writer=0 unstable=0 stale=0 backward=60
+[INFO] [1792996512.151264552] [hik_camera_trigger]: sync summary: total=2020 ok=1960 no_map=0 no_writer=0 unstable=0 stale=0 backward=60
+[INFO] [1792996517.153458639] [hik_camera_trigger]: sync summary: total=2070 ok=2009 no_map=0 no_writer=0 unstable=0 stale=0 backward=61
+[INFO] [1792996522.252679315] [hik_camera_trigger]: sync summary: total=2121 ok=2059 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996527.257928558] [hik_camera_trigger]: sync summary: total=2171 ok=2109 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996532.357749956] [hik_camera_trigger]: sync summary: total=2222 ok=2160 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996537.453439424] [hik_camera_trigger]: sync summary: total=2273 ok=2211 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996542.552225055] [hik_camera_trigger]: sync summary: total=2324 ok=2262 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996547.553756045] [hik_camera_trigger]: sync summary: total=2374 ok=2312 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996552.554438080] [hik_camera_trigger]: sync summary: total=2424 ok=2362 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996557.652803184] [hik_camera_trigger]: sync summary: total=2475 ok=2413 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996562.655750126] [hik_camera_trigger]: sync summary: total=2525 ok=2463 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996567.655987519] [hik_camera_trigger]: sync summary: total=2575 ok=2513 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996572.659864884] [hik_camera_trigger]: sync summary: total=2625 ok=2563 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996577.753534621] [hik_camera_trigger]: sync summary: total=2676 ok=2614 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996582.755571004] [hik_camera_trigger]: sync summary: total=2726 ok=2664 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996587.759060133] [hik_camera_trigger]: sync summary: total=2776 ok=2714 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996592.759864214] [hik_camera_trigger]: sync summary: total=2826 ok=2764 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996597.761950293] [hik_camera_trigger]: sync summary: total=2876 ok=2814 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996602.855645711] [hik_camera_trigger]: sync summary: total=2927 ok=2865 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996607.858823406] [hik_camera_trigger]: sync summary: total=2977 ok=2915 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996612.860063299] [hik_camera_trigger]: sync summary: total=3027 ok=2965 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996617.860542857] [hik_camera_trigger]: sync summary: total=3077 ok=3015 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996622.956724173] [hik_camera_trigger]: sync summary: total=3128 ok=3066 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996627.957414792] [hik_camera_trigger]: sync summary: total=3178 ok=3116 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996633.059357788] [hik_camera_trigger]: sync summary: total=3229 ok=3167 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996638.158082967] [hik_camera_trigger]: sync summary: total=3280 ok=3218 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996643.263385707] [hik_camera_trigger]: sync summary: total=3331 ok=3269 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996648.360100720] [hik_camera_trigger]: sync summary: total=3382 ok=3320 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996653.457894296] [hik_camera_trigger]: sync summary: total=3433 ok=3371 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996658.458304664] [hik_camera_trigger]: sync summary: total=3483 ok=3421 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996663.560436690] [hik_camera_trigger]: sync summary: total=3534 ok=3472 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996668.659845555] [hik_camera_trigger]: sync summary: total=3585 ok=3523 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996673.662931291] [hik_camera_trigger]: sync summary: total=3635 ok=3573 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996678.663102471] [hik_camera_trigger]: sync summary: total=3685 ok=3623 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996683.759222326] [hik_camera_trigger]: sync summary: total=3736 ok=3674 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996688.860706156] [hik_camera_trigger]: sync summary: total=3787 ok=3725 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996693.959948840] [hik_camera_trigger]: sync summary: total=3838 ok=3776 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996699.064687548] [hik_camera_trigger]: sync summary: total=3889 ok=3827 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996704.162236954] [hik_camera_trigger]: sync summary: total=3940 ok=3878 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996709.260222675] [hik_camera_trigger]: sync summary: total=3991 ok=3929 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996709.925388603] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[INFO] [1792996709.957925034] [hik_camera_trigger]: Camera capture thread stopped
+[INFO] [1792996709.965020891] [hik_camera_trigger]: sync summary: total=3997 ok=3935 no_map=0 no_writer=0 unstable=0 stale=0 backward=62
+[INFO] [1792996709.965033854] [hik_camera_trigger]: HikCameraRos2DriverNode destroyed

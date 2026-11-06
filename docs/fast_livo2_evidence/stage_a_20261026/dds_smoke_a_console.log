@@ -1,0 +1,29 @@
+[INFO] [1792993953.323716683] [rosbag2_storage]: Opened database 'bags/fast-livo2-dds-smoke-a/view/view_0.db3' for READ_WRITE.
+getifaddrs: Operation not permitted
+getifaddrs: Operation not permitted
+getifaddrs: Operation not permitted
+getifaddrs: Operation not permitted
+[37;1m2026-10-26 13:52:33.984 [31;1m[[37;1mTRANSPORT[31;1m Error] [37mAll whitelist interfaces were filtered out[34;1m -> Function [36mUDPv4Transport[m
+[37;1m2026-10-26 13:52:33.984 [31;1m[[37;1mTRANSPORT_UDP[31;1m Error] [37mError creating socket: Operation not permitted[34;1m -> Function [36minit[m
+[37;1m2026-10-26 13:52:33.984 [31;1m[[37;1mRTPS_PARTICIPANT[31;1m Error] [37mUser transport failed to register.[34;1m -> Function [36mRTPSParticipantImpl[m
+[WARN] [1792993954.389403991] [ranger_livo_dds_smoke]: New publisher discovered on topic '/clock', offering incompatible QoS. No messages will be received from it. Last incompatible policy: RELIABILITY
+{
+  "player_exit": 0,
+  "odom_count": 55,
+  "cloud_count": 55,
+  "exact_pairs": 55,
+  "finite": true,
+  "pose_frames_correct": true,
+  "cloud_frame_correct": true,
+  "no_tf_publisher": true,
+  "clock_matches_sensor_epoch": false,
+  "serialized_payloads_preserved": true,
+  "first_stamp_ns": 1590193436500015974,
+  "last_stamp_ns": 1590193441900085449,
+  "max_points": 4499,
+  "success_criteria": "player exit 0, >=45 exact pairs in 6s, finite and correct frames, no TF publisher, sensor-clock epoch",
+  "ROS_DOMAIN_ID": "174",
+  "ROS_LOCALHOST_ONLY": "1",
+  "passed": false,
+  "frontend_exit": 0
+}

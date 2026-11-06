@@ -1,5 +1,7 @@
 # OFFLINE TRIAL: intrinsic/extrinsic acceptance remains PARTIAL.
-# All time offsets are zero hypotheses; physical synchronization is unproven.
+# LIV_handhold_2 image scan-phase correction: +0.1 s (user confirmed 2026-11-04).
+# Exposure midpoint/residual phase is not physically calibrated; see
+# docs/fast_livo2_timestamp_phase_report.md. Raw image headers remain unchanged.
 /**:
   ros__parameters:
     common:
@@ -41,7 +43,7 @@
       - 0.000141
     time_offset:
       imu_time_offset: 0.0
-      img_time_offset: 0.0
+      img_time_offset: 0.1
       exposure_time_init: 0.0
       lidar_time_offset: 0.0
     preprocess:
@@ -89,7 +91,9 @@
       sliding_thresh: 8.0
     uav:
       imu_rate_odom: false
-      gravity_align_en: false
+      # Initial IMU gravity points along world -Z; world +Z is up.
+      # Applies to new frontend sessions only; existing maps keep their frame.
+      gravity_align_en: true
     publish:
       dense_map_en: true
       pub_effect_point_en: false

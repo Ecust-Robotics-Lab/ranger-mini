@@ -1,0 +1,43 @@
+/**:
+  ros__parameters:
+    camera_info_url: "package://hik_camera_trigger_driver/config/camera_info.yaml"
+    camera_name: "front"
+    frame_id: "front_optical_frame"
+
+    # ==== device (Stage A verified) ====
+    camera_sn: "DB1216907"
+    pixel_format: ""            # camera default (BayerGB8) -> converted to RGB8
+    image_width: 1280
+    image_height: 1024
+    auto_adjust_resolution: true
+    strict_camera_profile: false
+
+    # ==== external trigger (Stage B) ====
+    trigger_enable: true
+    trigger_source: "Line0"
+    disable_exposure_auto: true
+    exposure_time: 20000.0      # us; raise to 40000 for static calibration
+    disable_gain_auto: true
+    gain: 10.0
+
+    # ==== timeshare timestamp bridge (Stage B) ====
+    sync_image_topic: "/front/image_sync"
+    timeshare_path: ""          # empty -> $HOME/timeshare
+    timeshare_stale_ms: 300     # value older than this => skip sync publish
+
+    # ==== runtime ====
+    frame_timeout_ms: 1500      # trigger pulses at 10 Hz; 1.5 s = 15 missed pulses
+    image_node_num: 8
+    startup_frame_timeout_ms: 3000
+    timeout_recovery_threshold: 3
+    reconnect_interval_ms: 2000
+    open_settle_ms: 500
+    enable_auto_reconnect: true
+    reuse_camera_profile_on_reconnect: true
+
+    use_sensor_data_qos: false
+    # reliable: 3.9 MB images over best_effort FastDDS lose ~10-60% of
+    # messages at subscribers (verified); RTPS fragmentation retransmit
+    # guarantees delivery on loopback.
+    qos_reliability: "reliable"
+    qos_depth: 5

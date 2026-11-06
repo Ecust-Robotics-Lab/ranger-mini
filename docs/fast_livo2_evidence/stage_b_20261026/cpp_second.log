@@ -1,0 +1,67 @@
+Running main() from /opt/ros/humble/src/gtest_vendor/src/gtest_main.cc
+[==========] Running 17 tests from 8 test suites.
+[----------] Global test environment set-up.
+[----------] 4 tests from Input
+[ RUN      ] Input.StrictIntegerPairingReorderAndDuplicates
+[       OK ] Input.StrictIntegerPairingReorderAndDuplicates (0 ms)
+[ RUN      ] Input.LossCapacityAndClockReset
+[       OK ] Input.LossCapacityAndClockReset (0 ms)
+[ RUN      ] Input.RejectInvalidFieldsAndValues
+[       OK ] Input.RejectInvalidFieldsAndValues (0 ms)
+[ RUN      ] Input.ByteBudgetPreservesOtherPairs
+[       OK ] Input.ByteBudgetPreservesOtherPairs (0 ms)
+[----------] 4 tests from Input (0 ms total)
+
+[----------] 1 test from Geometry
+[ RUN      ] Geometry.TransformDirectionsAndIncrementComposition
+[       OK ] Geometry.TransformDirectionsAndIncrementComposition (0 ms)
+[----------] 1 test from Geometry (0 ms total)
+
+[----------] 2 tests from Registration
+[ RUN      ] Registration.SameInputPclGicpAndVgicpTotalTransform
+REGISTRATION_COMPARISON [{"T_target_source":{"xyz":[0.39999985694885254,-0.30000007152557373,0.20000091195106506],"xyzw":[0.055070011916572376,-0.055162709899497245,0.09258950971588624,0.9926487083514851]},"converged":true,"correspondences":600,"elapsed_ms":2.0562949939630926,"geometrically_accepted":true,"method":"pcl_icp","normalized_plane_hessian_eigen_ratio":0.3121313656620975,"reason":"geometry_valid","rmse_m":1.6669214845659032e-06,"source_overlap":1.0},{"T_target_source":{"xyz":[0.40004093671985785,-0.3000487964744217,0.20014187803602013],"xyzw":[0.055088309972783335,-0.05516212943127727,0.09257875396473063,0.9926487756982766]},"converged":true,"correspondences":600,"elapsed_ms":2.076584001770243,"geometrically_accepted":true,"method":"small_gicp","normalized_plane_hessian_eigen_ratio":0.312127027679686,"reason":"geometry_valid","rmse_m":0.00025003373903651047,"source_overlap":1.0},{"T_target_source":{"xyz":[0.39998511062470776,-0.3001119203455309,0.19993774949058596],"xyzw":[0.05505184951893804,-0.055153897634842936,0.09259027136521236,0.9926501816293319]},"converged":true,"correspondences":600,"elapsed_ms":1.881831994978711,"geometrically_accepted":true,"method":"small_vgicp","normalized_plane_hessian_eigen_ratio":0.31213515038262646,"reason":"geometry_valid","rmse_m":0.0002184447279210252,"source_overlap":1.0}]
+[       OK ] Registration.SameInputPclGicpAndVgicpTotalTransform (6 ms)
+[ RUN      ] Registration.RejectLowOverlapWrongInitialAndDegenerate
+[pcl::IterativeClosestPoint::computeTransformation] Not enough correspondences found. Relax your threshold parameters.
+[pcl::IterativeClosestPoint::computeTransformation] Not enough correspondences found. Relax your threshold parameters.
+[       OK ] Registration.RejectLowOverlapWrongInitialAndDegenerate (2 ms)
+[----------] 2 tests from Registration (8 ms total)
+
+[----------] 1 test from Graph
+[ RUN      ] Graph.Pose3OdomLoopAndRollback
+[       OK ] Graph.Pose3OdomLoopAndRollback (0 ms)
+[----------] 1 test from Graph (0 ms total)
+
+[----------] 1 test from Keyframes
+[ RUN      ] Keyframes.StationaryRotationMinimumIntervalAndResume
+[       OK ] Keyframes.StationaryRotationMinimumIntervalAndResume (24 ms)
+[----------] 1 test from Keyframes (24 ms total)
+
+[----------] 1 test from Candidates
+[ RUN      ] Candidates.PositionTimeIdsHeightAndDescriptorSeparation
+[       OK ] Candidates.PositionTimeIdsHeightAndDescriptorSeparation (0 ms)
+[----------] 1 test from Candidates (0 ms total)
+
+[----------] 6 tests from Backend
+[ RUN      ] Backend.NoSelfScanSubmapSessionIsolationAndPropagation
+[       OK ] Backend.NoSelfScanSubmapSessionIsolationAndPropagation (28 ms)
+[ RUN      ] Backend.SyntheticLoopActuallyRunsRegistrationAndPgo
+[       OK ] Backend.SyntheticLoopActuallyRunsRegistrationAndPgo (21 ms)
+[ RUN      ] Backend.LargeCorrectionRequiresIndependentConsistentObservations
+[       OK ] Backend.LargeCorrectionRequiresIndependentConsistentObservations (64 ms)
+[ RUN      ] Backend.IndependentCandidatesAreNotPositionFilteredAndAmbiguityRejected
+[       OK ] Backend.IndependentCandidatesAreNotPositionFilteredAndAmbiguityRejected (37 ms)
+[ RUN      ] Backend.NoLoopAndRepeatedScanIdRejected
+[       OK ] Backend.NoLoopAndRepeatedScanIdRejected (30 ms)
+[ RUN      ] Backend.StaleSnapshotDependenciesAndBudgetFailure
+[       OK ] Backend.StaleSnapshotDependenciesAndBudgetFailure (22 ms)
+[----------] 6 tests from Backend (202 ms total)
+
+[----------] 1 test from Archive
+[ RUN      ] Archive.FrozenVersionPerFrameTransformChecksumsAndNoOverwrite
+[       OK ] Archive.FrozenVersionPerFrameTransformChecksumsAndNoOverwrite (20 ms)
+[----------] 1 test from Archive (20 ms total)
+
+[----------] Global test environment tear-down
+[==========] 17 tests from 8 test suites ran. (254 ms total)
+[  PASSED  ] 17 tests.

@@ -1,0 +1,52 @@
+{
+  "retrieved_at": "2026-10-21",
+  "method": "Web raw text, numbered lines reassembled after completeness checks; git clone failed due sandbox proxy/DNS; no Git tree fetched",
+  "repositories": {
+    "official": {
+      "url": "https://github.com/hku-mars/FAST-Calib",
+      "branch": "main",
+      "git_commit": "UNVERIFIED"
+    },
+    "ichangjian": {
+      "url": "https://github.com/ichangjian/FAST-Calib-ROS2",
+      "branch": "dev_humble",
+      "git_commit": "UNVERIFIED"
+    },
+    "zhi-calf": {
+      "url": "https://github.com/Zhi-Calf/calibration",
+      "branch": "master",
+      "subdirectory": "FAST-Calib",
+      "last_subtree_commit_observed_on_github": "84d92f846a61d188bae2511dcba6d346f7b72485",
+      "git_tree_verified": false,
+      "note": "SHA seen in commit history; immutable raw URL unavailable, cannot assert fetched master files verified against this tree"
+    }
+  },
+  "files": {
+    "upstream/ichangjian/CMakeLists.txt": "1cc610fbe7eef433cfc20b90ba0639badc5acda4cc8f25d2d50b50e8095007ca",
+    "upstream/ichangjian/README.md": "aa5f51acbf8794330aa635a15c60baded490f24f930463c8f04f0ba954113b8f",
+    "upstream/ichangjian/config/qr_params.yaml": "86eac09833fd1902ecff334c05e1d0dc514b192017b3a01f991cc99f6b040e72",
+    "upstream/ichangjian/package.xml": "32d381ce4460c9184a889a123bb4210f4494af8123db6d8f10c9c615dccd75c3",
+    "upstream/ichangjian/src/data_preprocess.hpp": "9efd37eff0aecb0d002e3a84e6a8f1e89cc32f9342ec97d9b2eab3a18798d1e2",
+    "upstream/ichangjian/src/main.cpp": "0be02119b5aaa52906b23efddf9421fcd3bc9f422f5cd563998979dcc70bf0df",
+    "upstream/official/CMakeLists.txt": "d19c4ab97eb5c53a112b4f869ad4814e4b21f5e9c78ec0a52059308a03367e50",
+    "upstream/official/README.md": "d28995c115d7e745992a3c5f7bdfe31d437810a507ef307ce695e15ee82a89fc",
+    "upstream/official/config/qr_params.yaml": "40a087debad0ffd9b587d875ceb687d7c2eb8f7149e674a00aad83d982ae45ea",
+    "upstream/official/package.xml": "e90d4dc61d2711321ed457abdcaeb5a2e41d326bae33ade4febbb26ad4c1ddb1",
+    "upstream/official/src/data_preprocess.hpp": "324ddda6ee0418d2ef809fc99a1d5ca245c22f2db39df6629fccf63070d899bc",
+    "upstream/official/src/main.cpp": "7379a69ad41cada8bc83cfc30ecb1b4c9a721caca0958d67cec41a9f30d4e7ca",
+    "upstream/zhi-calf/FAST-Calib/CMakeLists.txt": "b68b7a8f0933ec9ea19217fd4b2112fe9353319f6056b6777c0013b5280bbf95",
+    "upstream/zhi-calf/FAST-Calib/LICENSE": "cc6a6e6642baa31f3c761050754afc680bca7ca3f305b3035024244e7880e037",
+    "upstream/zhi-calf/FAST-Calib/README.md": "114512c0f25fc2255aae712d560dde48ba7b6a32a434f8039ba26953fed88917",
+    "upstream/zhi-calf/FAST-Calib/config/qr_params.yaml": "d982547052a293e34df2126e4753251069c3809547ae7e5498c6bf644b08a8f9",
+    "upstream/zhi-calf/FAST-Calib/include/common_lib.h": "9269a7123dd114aafac976f5c47935a2f9a689ed2355ae887388a6a7ce1799b0",
+    "upstream/zhi-calf/FAST-Calib/launch/calib.launch.py": "34cd67c5c02d070ca865061aaab826e6bfeab53289e4b2065c860318cb2168ec",
+    "upstream/zhi-calf/FAST-Calib/launch/multi_calib.launch.py": "b6e96c2c5f78372546228441a0cacfc3fa6f6d0e6de549c7ee4c9d5d2edb7409",
+    "upstream/zhi-calf/FAST-Calib/package.xml": "d52e55791243c0b606778d5ed011304effca47d58a8278725d25b083a79928b8",
+    "upstream/zhi-calf/FAST-Calib/scripts/distance_filter_tool.py": "ec6460c0410128500b12bd1c9d08a9e8d32df30e7c275a109b34b8ed67f0d848",
+    "upstream/zhi-calf/FAST-Calib/src/data_preprocess.hpp": "40d451660bb6bb323585409e2ae4bf7869cb0c4e58e5d83d79796214d4a34821",
+    "upstream/zhi-calf/FAST-Calib/src/lidar_detect.hpp": "b5b286728b5c2d55e1bf8b4de8255edbfeaf90b57179942c14d2de17de838b2a",
+    "upstream/zhi-calf/FAST-Calib/src/main.cpp": "55df9d346a514027bf9b376dd2b948fab7090a6b23d3c6ce3868ea34a7873a60",
+    "upstream/zhi-calf/FAST-Calib/src/multi_scene.cpp": "5eabb10b009f2e5a563a905674df046ec2e9a57c13763351ece2a207e989f799",
+    "upstream/zhi-calf/FAST-Calib/src/qr_detect.hpp": "10638bfa2bbb1de116776506f2e9080b91c48d38e61d5e845556fbff5cd02952"
+  }
+}

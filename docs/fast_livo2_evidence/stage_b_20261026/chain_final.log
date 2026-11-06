@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/scripts/fast_livo2/dds_smoke.py", line 147, in <module>
+    raise SystemExit(run(args.source,args.data,args.out,args.with_backend,args.existing_view))
+  File "/home/lab307/ranger_nav/scripts/fast_livo2/dds_smoke.py", line 95, in run
+    if backend.poll() is not None:raise RuntimeError('Backend startup failed')
+RuntimeError: Backend startup failed

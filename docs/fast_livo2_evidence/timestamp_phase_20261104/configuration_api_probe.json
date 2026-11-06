@@ -1,0 +1,11 @@
+{
+  "attempted_helper": "rclpy.parameter.parameter_dict_from_yaml_file",
+  "result": "ImportError: cannot import name parameter_dict_from_yaml_file from rclpy.parameter",
+  "attempts": 2,
+  "exit_codes": [
+    1,
+    1
+  ],
+  "side_effects": "import failed before configuration writes or ROS context creation",
+  "resolution": "existing Humble Context/Node parameters from --params-file in domain211 localhost, exited0 and destroyed node"
+}

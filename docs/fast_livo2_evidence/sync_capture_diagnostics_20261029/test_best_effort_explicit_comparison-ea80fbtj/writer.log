@@ -1,0 +1,40 @@
+[INFO] [1793285187.928084003] [timeshare_writer]: timeshare_writer ready: topic=/synthetic_timeshare/p24894 file=/home/lab307/ranger_nav/docs/fast_livo2_evidence/sync_capture_diagnostics_20261029/test_best_effort_explicit_comparison-ea80fbtj/timeshare (expected period 100 ms)
+[INFO] [1793285187.928144867] [timeshare_writer]: writer QoS: reliability=best_effort actual=2 depth=5 rmw=rmw_fastrtps_cpp; CSV v2: arrival_ns is steady; callback_system_ns is host system; DDS times are middleware metadata, not exposure times; unsupported timestamps/sequence are empty
+[INFO] [1793285187.937582140] [timeshare_writer]: summary: scans=1 regressions=0 stamp_gaps=0 arrival_gaps=0 last=1590193435900000000
+[WARN] [1793285188.007127758] [timeshare_writer]: DDS message_lost: total=1 change=1; not all loss paths are reported
+[WARN] [1793285188.030103556] [timeshare_writer]: DDS message_lost: total=2 change=1; not all loss paths are reported
+[WARN] [1793285188.053325927] [timeshare_writer]: DDS message_lost: total=3 change=1; not all loss paths are reported
+[WARN] [1793285188.076512968] [timeshare_writer]: DDS message_lost: total=4 change=1; not all loss paths are reported
+[WARN] [1793285188.099842268] [timeshare_writer]: DDS message_lost: total=5 change=1; not all loss paths are reported
+[WARN] [1793285188.123067627] [timeshare_writer]: DDS message_lost: total=6 change=1; not all loss paths are reported
+[WARN] [1793285188.146468122] [timeshare_writer]: DDS message_lost: total=7 change=1; not all loss paths are reported
+[WARN] [1793285188.170329703] [timeshare_writer]: DDS message_lost: total=8 change=1; not all loss paths are reported
+[WARN] [1793285188.193884549] [timeshare_writer]: DDS message_lost: total=9 change=1; not all loss paths are reported
+[WARN] [1793285188.217411597] [timeshare_writer]: stamp gap: 1100.00 ms (expected ~100 ms)
+[WARN] [1793285188.217429030] [timeshare_writer]: arrival gap 279.88 ms: subscription latency or queue backlog
+[WARN] [1793285188.217460340] [timeshare_writer]: DDS message_lost: total=10 change=1; not all loss paths are reported
+[WARN] [1793285188.264651948] [timeshare_writer]: stamp gap: 200.00 ms (expected ~100 ms)
+[WARN] [1793285188.264680743] [timeshare_writer]: DDS message_lost: total=11 change=1; not all loss paths are reported
+[WARN] [1793285188.335325514] [timeshare_writer]: stamp gap: 200.00 ms (expected ~100 ms)
+[WARN] [1793285188.335350796] [timeshare_writer]: DDS message_lost: total=12 change=1; not all loss paths are reported
+[WARN] [1793285188.430240593] [timeshare_writer]: stamp gap: 200.00 ms (expected ~100 ms)
+[WARN] [1793285188.430265472] [timeshare_writer]: DDS message_lost: total=13 change=1; not all loss paths are reported
+[WARN] [1793285188.572686373] [timeshare_writer]: DDS message_lost: total=14 change=1; not all loss paths are reported
+[WARN] [1793285188.596460938] [timeshare_writer]: stamp gap: 300.00 ms (expected ~100 ms)
+[WARN] [1793285188.596485967] [timeshare_writer]: DDS message_lost: total=15 change=1; not all loss paths are reported
+[WARN] [1793285188.762536936] [timeshare_writer]: DDS message_lost: total=16 change=1; not all loss paths are reported
+[WARN] [1793285188.762624270] [timeshare_writer]: stamp gap: 200.00 ms (expected ~100 ms)
+[WARN] [1793285189.048076496] [timeshare_writer]: stamp gap: 200.00 ms (expected ~100 ms)
+[WARN] [1793285189.048107657] [timeshare_writer]: DDS message_lost: total=17 change=1; not all loss paths are reported
+[WARN] [1793285189.119474119] [timeshare_writer]: stamp gap: 200.00 ms (expected ~100 ms)
+[WARN] [1793285189.119499274] [timeshare_writer]: DDS message_lost: total=18 change=1; not all loss paths are reported
+[WARN] [1793285189.214487277] [timeshare_writer]: stamp gap: 200.00 ms (expected ~100 ms)
+[WARN] [1793285189.214512366] [timeshare_writer]: DDS message_lost: total=19 change=1; not all loss paths are reported
+[WARN] [1793285189.404848965] [timeshare_writer]: DDS message_lost: total=20 change=1; not all loss paths are reported
+[WARN] [1793285189.404905865] [timeshare_writer]: stamp gap: 200.00 ms (expected ~100 ms)
+[WARN] [1793285189.500381431] [timeshare_writer]: stamp gap: 200.00 ms (expected ~100 ms)
+[WARN] [1793285189.500415821] [timeshare_writer]: DDS message_lost: total=21 change=1; not all loss paths are reported
+[WARN] [1793285189.595715283] [timeshare_writer]: stamp gap: 200.00 ms (expected ~100 ms)
+[WARN] [1793285189.595744585] [timeshare_writer]: DDS message_lost: total=22 change=1; not all loss paths are reported
+[WARN] [1793285190.863302393] [timeshare_writer]: arrival gap 1005.42 ms: subscription latency or queue backlog
+[INFO] [1793285190.865260082] [rclcpp]: signal_handler(SIGINT/SIGTERM)

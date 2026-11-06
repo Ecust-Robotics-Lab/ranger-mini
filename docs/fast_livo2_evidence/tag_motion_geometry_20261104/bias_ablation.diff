@@ -1,0 +1,5 @@
+--- isolated baseline IMU_Processing.cpp
++++ isolated diagnostic IMU_Processing.cpp
+@@ IMU_init @@
+-  state_inout.bias_g = Zero3d; // mean_gyr;
++  state_inout.bias_g = mean_gyr; // DIAGNOSTIC ONLY: independently image-static initialization segment

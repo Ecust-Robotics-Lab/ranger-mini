@@ -1,0 +1,164 @@
+{
+  "bag": "/home/lab307/ranger_nav/bags/fast-livo-tag140_check_01-dguhgx2l/raw",
+  "topics": {
+    "/livox/lidar": {
+      "type": "sensor_msgs/msg/PointCloud2",
+      "count": 600,
+      "frames": [
+        "livox_frame"
+      ],
+      "first_header_ns": 1590195569700082520,
+      "last_header_ns": 1590195629600164900,
+      "nonincreasing": 0,
+      "period_ns_p0_p50_p100": [
+        99840000.0,
+        99840000.0,
+        100334750.0
+      ],
+      "record_minus_header_ns_p0_p50_p100": [
+        2.0308653974379018e+17,
+        2.0308653974602675e+17,
+        2.0308653975555606e+17
+      ]
+    },
+    "/livox/imu": {
+      "type": "sensor_msgs/msg/Imu",
+      "count": 12001,
+      "frames": [
+        "livox_frame"
+      ],
+      "first_header_ns": 1590195569799371940,
+      "last_header_ns": 1590195629800243750,
+      "nonincreasing": 0,
+      "period_ns_p0_p50_p100": [
+        3949020.0,
+        4952630.0,
+        6028240.0
+      ],
+      "record_minus_header_ns_p0_p50_p100": [
+        2.0308653964230128e+17,
+        2.0308653964345024e+17,
+        2.0308653964974496e+17
+      ]
+    },
+    "/front/image_sync": {
+      "type": "sensor_msgs/msg/Image",
+      "count": 593,
+      "frames": [
+        "front_optical_frame"
+      ],
+      "first_header_ns": 1590195569700082520,
+      "last_header_ns": 1590195629600164900,
+      "nonincreasing": 0,
+      "period_ns_p0_p50_p100": [
+        99840000.0,
+        99840000.0,
+        200174680.0
+      ],
+      "record_minus_header_ns_p0_p50_p100": [
+        2.030865397708072e+17,
+        2.0308653978414064e+17,
+        2.0308653980554538e+17
+      ],
+      "image": {
+        "width": 1280,
+        "height": 1024,
+        "encoding": "rgb8",
+        "step": 3840
+      }
+    },
+    "/front/image": {
+      "type": "sensor_msgs/msg/Image",
+      "count": 600,
+      "frames": [
+        "front_optical_frame"
+      ],
+      "first_header_ns": 1793282109468284786,
+      "last_header_ns": 1793282169369927216,
+      "nonincreasing": 0,
+      "period_ns_p0_p50_p100": [
+        97750374.0,
+        99980421.0,
+        101758489.0
+      ],
+      "record_minus_header_ns_p0_p50_p100": [
+        1590692.0,
+        11903584.5,
+        39067327.0
+      ],
+      "image": {
+        "width": 1280,
+        "height": 1024,
+        "encoding": "rgb8",
+        "step": 3840
+      }
+    },
+    "/front/camera_info": {
+      "type": "sensor_msgs/msg/CameraInfo",
+      "count": 600,
+      "frames": [
+        "front_optical_frame"
+      ],
+      "first_header_ns": 1793282109468284786,
+      "last_header_ns": 1793282169369927216,
+      "nonincreasing": 0,
+      "period_ns_p0_p50_p100": [
+        97750374.0,
+        99980421.0,
+        101758489.0
+      ],
+      "record_minus_header_ns_p0_p50_p100": [
+        726049.0,
+        1475916.5,
+        7153322.0
+      ]
+    },
+    "/fast_livo/odometry": {
+      "type": "nav_msgs/msg/Odometry",
+      "count": 593,
+      "frames": [
+        "fast_livo_local"
+      ],
+      "first_header_ns": 1590195569600242376,
+      "last_header_ns": 1590195629500324964,
+      "nonincreasing": 0,
+      "period_ns_p0_p50_p100": [
+        99839925.0,
+        99840164.0,
+        200174809.0
+      ],
+      "record_minus_header_ns_p0_p50_p100": [
+        2.030865398470333e+17,
+        2.0308653985462544e+17,
+        2.0308654076647075e+17
+      ]
+    }
+  },
+  "physical_sync_proven": false,
+  "point_times": {
+    "encoding": "absolute nanoseconds FLOAT64",
+    "total": 11999904,
+    "before_header": 0,
+    "nonfinite": 0,
+    "backwards_steps_inside_scans": 0,
+    "scans_last_point_not_latest": 0,
+    "min_offset_ns": 0.0,
+    "max_offset_ns": 100324608.0,
+    "precision_note": "FLOAT64 epoch ns has approximately 256 ns spacing; input unchanged"
+  },
+  "imu": {
+    "acceleration_norm_p0_p50_p100": [
+      0.8520061816810912,
+      1.0019915291357848,
+      1.2114194049873996
+    ],
+    "angular_speed_p0_p50_p100": [
+      0.005880064213139243,
+      0.04707017700107051,
+      1.0785944817215507
+    ],
+    "nonfinite_messages": 0
+  },
+  "exact_image_lidar_headers": 593,
+  "interpretation": "Header equality verifies copied timestamps only; physical trigger/scan/exposure phase remains unproven."
+}

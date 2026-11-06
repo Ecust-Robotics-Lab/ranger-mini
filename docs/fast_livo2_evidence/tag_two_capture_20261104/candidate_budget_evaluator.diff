@@ -1,0 +1,11 @@
+--- original validate_motion.py
++++ offline experiment validate_more_candidates.py
+@@ -119,7 +119,7 @@
+                    '-p', 'archive_path:='+str(archive), '-p', 'compatibility_path:='+str(args.compatibility.resolve()),
+                    '-p', 'registration:='+args.registration]
+         if args.global_search:
+-            command += ['--params-file', str(ROOT/'config/fast_livo2/relocalizer.yaml')]
++            command += ['--params-file', str(ROOT/'docs/fast_livo2_evidence/tag_two_capture_20261104/relocalizer_candidates10.yaml')]
+         result['argv'] = command
+         log = (args.output/'localizer.log').open('w')
+         proc = subprocess.Popen(command, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)

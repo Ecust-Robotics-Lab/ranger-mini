@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/opt/ros/humble/_local_setup_util.py", line 422, in <module>
+    rc = main()
+  File "/opt/ros/humble/_local_setup_util.py", line 67, in main
+    packages = get_packages(Path(__file__).parent)
+  File "/opt/ros/humble/_local_setup_util.py", line 104, in get_packages
+    if not p.is_file():
+  File "/usr/lib/python3.10/pathlib.py", line 1322, in is_file
+    return S_ISREG(self.stat().st_mode)
+  File "/usr/lib/python3.10/pathlib.py", line 1097, in stat
+    return self._accessor.stat(self, follow_symlinks=follow_symlinks)
+KeyboardInterrupt

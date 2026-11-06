@@ -1,0 +1,22 @@
+[
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 docs/fast_livo2_evidence/handoff_cleanup_20261105/cleanup.py --prepare",
+    "exit_code": 0,
+    "log": "prepare.log"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 docs/fast_livo2_evidence/handoff_cleanup_20261105/cleanup.py --execute",
+    "exit_code": 0,
+    "log": "deletion.log"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 docs/fast_livo2_evidence/handoff_cleanup_20261105/verify.py",
+    "exit_code": 0,
+    "log": "verification.log"
+  },
+  {
+    "command": "git diff --check -- AGENTS.md README.md docs/HANDOFF.md docs/STATUS.md docs/README.md docs/PROJECT_LAYOUT.md docs/FAST_LIVO2_BACKEND_PLAN.md docs/FAST_LIVO2_APRILTAG_PLAN.md docs/fast_livo2_recording.md",
+    "exit_code": 0,
+    "log": "whitespace.log"
+  }
+]

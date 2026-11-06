@@ -1,0 +1,32 @@
+Starting >>> ranger_fast_livo_backend
+Finished <<< ranger_fast_livo_backend [2.45s]
+Starting >>> ranger_fast_livo_localizer
+--- stderr: ranger_fast_livo_localizer
+CMake Error at /opt/ros/humble/share/ament_cmake_gtest/cmake/ament_add_gtest_executable.cmake:50 (add_executable):
+  Cannot find source file:
+
+    test/localizer_tests.cpp
+
+  Tried extensions .c .C .c++ .cc .cpp .cxx .cu .mpp .m .M .mm .ixx .cppm .h
+  .hh .h++ .hm .hpp .hxx .in .txx .f .F .for .f77 .f90 .f95 .f03 .hip .ispc
+Call Stack (most recent call first):
+  /opt/ros/humble/share/ament_cmake_gtest/cmake/ament_add_gtest_executable.cmake:37 (_ament_add_gtest_executable)
+  /opt/ros/humble/share/ament_cmake_gtest/cmake/ament_add_gtest.cmake:68 (ament_add_gtest_executable)
+  CMakeLists.txt:34 (ament_add_gtest)
+
+
+CMake Error at /opt/ros/humble/share/ament_cmake_gtest/cmake/ament_add_gtest_executable.cmake:50 (add_executable):
+  No SOURCES given to target: localizer_tests
+Call Stack (most recent call first):
+  /opt/ros/humble/share/ament_cmake_gtest/cmake/ament_add_gtest_executable.cmake:37 (_ament_add_gtest_executable)
+  /opt/ros/humble/share/ament_cmake_gtest/cmake/ament_add_gtest.cmake:68 (ament_add_gtest_executable)
+  CMakeLists.txt:34 (ament_add_gtest)
+
+
+CMake Generate step failed.  Build files cannot be regenerated correctly.
+---
+Failed   <<< ranger_fast_livo_localizer [3.51s, exited with code 1]
+
+Summary: 1 package finished [6.10s]
+  1 package failed: ranger_fast_livo_localizer
+  1 package had stderr output: ranger_fast_livo_localizer

@@ -1,0 +1,4 @@
+[INFO] [1793284899.923950338] [timeshare_writer]: timeshare_writer ready: topic=/synthetic_timeshare/p24001 file=/home/lab307/ranger_nav/docs/fast_livo2_evidence/sync_capture_diagnostics_20261029/test_reliable_large_cloud_delivery_and_metadata-hi6c3v7e/timeshare (expected period 100 ms)
+[INFO] [1793284899.924033320] [timeshare_writer]: writer QoS: reliability=reliable actual=1 depth=5 rmw=rmw_fastrtps_cpp; CSV v2: arrival_ns is steady; callback_system_ns is host system; DDS times are middleware metadata, not exposure times; unsupported timestamps/sequence are empty
+[INFO] [1793284900.025114318] [timeshare_writer]: summary: scans=1 regressions=0 stamp_gaps=0 arrival_gaps=0 last=1590193436000000000
+[INFO] [1793284901.780113020] [rclcpp]: signal_handler(SIGINT/SIGTERM)

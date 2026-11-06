@@ -1,0 +1,33 @@
+{
+  "missing_local_markdown_links": [],
+  "commands": [
+    {
+      "argv": [
+        "bash",
+        "scripts/run_fast_livo2_backend.sh",
+        "--tag-loop"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"action\": \"DRY-RUN\",\n  \"domain\": 187,\n  \"localhost_only\": true,\n  \"public_tf_enabled\": false,\n  \"components\": [\n    {\n      \"name\": \"monitor\",\n      \"argv\": [\n        \"/usr/bin/python3\",\n        \"/home/lab307/ranger_nav/scripts/fast_livo2/backend/monitor.py\"\n      ],\n      \"depends\": [],\n      \"requires\": [],\n      \"ready_key\": \"probe_live\",\n      \"critical\": true,\n      \"start_requires\": [],\n      \"resource\": \"\"\n    },\n    {\n      \"name\": \"backend\",\n      \"argv\": [\n        \"/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/backend_node\",\n        \"--ros-args\",\n        \"--params-file\",\n        \"/home/lab307/ranger_nav/config/fast_livo2/backend.yaml\",\n        \"-p\",\n        \"use_sim_time:=true\",\n        \"-p\",\n        \"metadata_path:=/home/lab307/ranger_nav/.runtime/sessions/fast_livo_backend/provenance-NEW.json\",\n        \"-p\",\n        \"data_root:=/home/lab307/ranger_nav/.runtime/fast_livo_backend\",\n        \"-p\",\n        \"registration:=pcl_icp\",\n        \"-p\",\n        \"enable_tag_loop:=true\",\n        \"-p\",\n        \"tag_config_path:=/home/lab307/ranger_nav/config/fast_livo2/apriltag_camera.json\"\n      ],\n      \"depends\": [\n        \"monitor\"\n      ],\n      \"requires\": [\n        \"probe_live\"\n      ],\n      \"ready_key\": \"backend_healthy\",\n      \"critical\": true,\n      \"start_requires\": [],\n      \"resource\": \"fast_livo_backend\"\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "bash",
+        "scripts/run_fast_livo2_tags.sh"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"action\": \"DRY-RUN\",\n  \"hardware_started\": false,\n  \"localhost_only\": true,\n  \"domain\": 189,\n  \"components\": [\n    {\n      \"name\": \"tag_observer\",\n      \"argv\": [\n        \"/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/tag_observer_node\",\n        \"--ros-args\",\n        \"-p\",\n        \"use_sim_time:=true\",\n        \"-p\",\n        \"tag_config_path:=/home/lab307/ranger_nav/config/fast_livo2/apriltag_camera.json\",\n        \"-p\",\n        \"family:=tag36h11\",\n        \"-p\",\n        \"tag_sizes_json:='{\\\"1\\\": 0.155}'\",\n        \"-p\",\n        \"image_topic:=/front/image_sync\"\n      ],\n      \"depends\": [],\n      \"requires\": [],\n      \"ready_key\": \"process\",\n      \"critical\": true,\n      \"start_requires\": [],\n      \"resource\": \"fast_livo_tag_observer\"\n    }\n  ]\n}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/fast_livo2/tags/run_checks.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"action\": \"DRY-RUN\",\n  \"hardware_started\": false,\n  \"commands\": [\n    [\n      \"tag_tests\",\n      [\n        \"/home/lab307/ranger_nav/ws_fast_livo/backend_build/ros/ranger_fast_livo_backend/tag_tests\"\n      ],\n      \"cpp\"\n    ],\n    [\n      \"tag_detector_tests\",\n      [\n        \"/home/lab307/ranger_nav/ws_fast_livo/backend_build/ros/ranger_fast_livo_backend/tag_detector_tests\"\n      ],\n      \"cpp\"\n    ],\n    [\n      \"tag_integration_tests\",\n      [\n        \"/home/lab307/ranger_nav/ws_fast_livo/backend_build/ros/ranger_fast_livo_localizer/tag_integration_tests\"\n      ],\n      \"cpp\"\n    ],\n    [\n      \"tag_ros\",\n      [\n        \"/usr/bin/python3\",\n        \"tests/test_fast_livo_tags_ros.py\"\n      ],\n      \"python\"\n    ],\n    [\n      \"backend_tests\",\n      [\n        \"/home/lab307/ranger_nav/ws_fast_livo/backend_build/ros/ranger_fast_livo_backend/backend_tests\"\n      ],\n      \"cpp\"\n    ],\n    [\n      \"localizer_tests\",\n      [\n        \"/home/lab307/ranger_nav/ws_fast_livo/backend_build/ros/ranger_fast_livo_localizer/localizer_tests\"\n      ],\n      \"cpp\"\n    ],\n    [\n      \"test_fast_livo_backend_ros\",\n      [],\n      \"ros\"\n    ],\n    [\n      \"test_fast_livo_relocalizer_ros\",\n      [],\n      \"ros\"\n    ],\n    [\n      \"test_fast_livo_localizer_ros\",\n      [],\n      \"ros\"\n    ],\n    [\n      \"test_stage5_bridge\",\n      [\n        \"/usr/bin/python3\",\n        \"tests/test_stage5_bridge.py\"\n      ],\n      \"python\"\n    ],\n    [\n      \"test_bridge_pgo_guard\",\n      [\n        \"/usr/bin/python3\",\n        \"tests/test_bridge_pgo_guard.py\"\n      ],\n      \"python\"\n    ],\n    [\n      \"test_time_alignment\",\n      [\n        \"/usr/bin/python3\",\n        \"tests/test_time_alignment.py\"\n      ],\n      \"python\"\n    ],\n    [\n      \"test_fast_livo_adapter_contract\",\n      [\n        \"/usr/bin/python3\",\n        \"tests/test_fast_livo_adapter_contract.py\"\n      ],\n      \"python\"\n    ],\n    [\n      \"dry_tag_build\",\n      [\n        \"bash\",\n        \"scripts/build_fast_livo2_tags.sh\"\n      ],\n      \"dry\"\n    ],\n    [\n      \"dry_tag_observer\",\n      [\n        \"bash\",\n        \"scripts/run_fast_livo2_tags.sh\"\n      ],\n      \"dry\"\n    ],\n    [\n      \"dry_tag_c2\",\n      [\n        \"bash\",\n        \"scripts/run_fast_livo2_relocalizer.sh\",\n        \"--tag-relocalization\",\n        \"--tag-monitor\"\n      ],\n      \"dry\"\n    ]\n  ]\n}\n",
+      "stderr": ""
+    }
+  ]
+}

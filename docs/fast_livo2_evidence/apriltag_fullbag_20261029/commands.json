@@ -1,0 +1,71 @@
+{
+  "environment": {
+    "ROS_LOCALHOST_ONLY": "1",
+    "ROS_DOMAIN_ID": "208",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "setup": "/opt/ros/humble/setup.bash; ws_fast_livo/backend_install/setup.bash",
+    "project_library_paths": [
+      "ws_fast_livo/apriltag_deps/lib",
+      "ws_fast_livo/backend_deps/lib"
+    ]
+  },
+  "commands": [
+    {
+      "argv": [
+        "cmake",
+        "--build",
+        "ws_fast_livo/backend_build/ros/ranger_fast_livo_backend",
+        "--target",
+        "tag_image_tool",
+        "-j2"
+      ],
+      "exit_code": 0,
+      "log": "build_image_tool.log"
+    },
+    {
+      "argv": [
+        "cmake",
+        "--install",
+        "ws_fast_livo/backend_build/ros/ranger_fast_livo_backend"
+      ],
+      "exit_code": 0,
+      "log": "install_image_tool.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "tests/test_fast_livo_tag_fullbag.py"
+      ],
+      "exit_code": 0,
+      "tests": 4,
+      "log": "test_fullbag.log"
+    },
+    {
+      "argv": [
+        "/usr/bin/time",
+        "-v",
+        "python3",
+        "-u",
+        "scripts/fast_livo2/tags/extract_bag.py",
+        "--execute",
+        "--output",
+        "outputs/fast-livo-apriltag-fullbag-20261029"
+      ],
+      "exit_code": 0,
+      "log": "extraction.log"
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/fast_livo2/tags/analyze_fullbag.py",
+        "--execute",
+        "--extraction",
+        "outputs/fast-livo-apriltag-fullbag-20261029",
+        "--output",
+        "outputs/fast-livo-apriltag-fullbag-analysis-20261029"
+      ],
+      "exit_code": 0,
+      "log": "analysis.log"
+    }
+  ]
+}

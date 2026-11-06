@@ -1,0 +1,56 @@
+{
+  "pcl": {
+    "all_14_valid": true,
+    "camera_span_m": 0.027884273704960518,
+    "camera_rotation_span_rad": 0.22621602285871895,
+    "branches": {
+      "0": {
+        "median_xyz": [
+          3.443855247136642,
+          2.39634776756128,
+          1.0736108126574675
+        ],
+        "max_position_from_median_m": 0.09385834259929372,
+        "max_rotation_from_mean_rad": 0.05272801363502906,
+        "minmax_pair_rotation_rad": 0.06644590107024795
+      },
+      "1": {
+        "median_xyz": [
+          3.440180836528204,
+          2.39529181902237,
+          1.0734996704615618
+        ],
+        "max_position_from_median_m": 0.09373915464678413,
+        "max_rotation_from_mean_rad": 0.0514333033995597,
+        "minmax_pair_rotation_rad": 0.06646029965811194
+      }
+    }
+  },
+  "gicp": {
+    "all_14_valid": true,
+    "camera_span_m": 0.02465700794447858,
+    "camera_rotation_span_rad": 0.22543315602786027,
+    "branches": {
+      "0": {
+        "median_xyz": [
+          3.4715613598248733,
+          2.390324515000552,
+          1.0673526962671893
+        ],
+        "max_position_from_median_m": 0.09778710128708795,
+        "max_rotation_from_mean_rad": 0.04847620348697558,
+        "minmax_pair_rotation_rad": 0.06264375973413705
+      },
+      "1": {
+        "median_xyz": [
+          3.467732761864048,
+          2.389341973846566,
+          1.0672421184848153
+        ],
+        "max_position_from_median_m": 0.09771341805236605,
+        "max_rotation_from_mean_rad": 0.04725085766528109,
+        "minmax_pair_rotation_rad": 0.06345299154564767
+      }
+    }
+  }
+}

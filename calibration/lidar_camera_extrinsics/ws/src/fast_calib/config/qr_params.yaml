@@ -1,0 +1,4 @@
+# Deliberately unconfigured. Generate a measured config with scripts/calib.py make-config.
+fast_calib:
+  ros__parameters:
+    configuration_validated: false

@@ -1,0 +1,4 @@
+DRY-RUN: offline FAST-LIVO2 direct-callback rosbag2 replay: /home/lab307/ranger_nav/calibration/bags/stageB_sync_run2
+LiDAR+IMU+camera required; zero time offsets; trial calibration; no public TF; max_frames=0
+Configuration: /home/lab307/ranger_nav/config/fast_livo2/ranger_mid360s_hik_trial.yaml
+Execute: bash scripts/run_fast_livo2_replay.sh --execute [--bag PATH] [--max-frames N]

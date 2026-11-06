@@ -1,0 +1,94 @@
+{
+  "kind": "conditional backfill assessment; not a loadable Tag map",
+  "offset_assumption_ns": 110000000,
+  "map_uuid": "4ec68a99c626e1c6e2652506f5ecd8d6",
+  "graph_version": 41,
+  "map_manifest_sha256": "14658c3b156a05c3f792b9a3a1d90f2c79032f4a379c399715ce338c97faf9ef",
+  "physical_time_verified": false,
+  "real_VALID_landmark_created": false,
+  "hypothesis": "same fixed physical Tag, explicit user confirmation",
+  "source_sha256": {
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-two-capture-20261104/turn/livo_110000000/result/native_frames/native_frames_0.db3": "d2d24f4fe35aac98e29a3b5882349196719bdd38dda71fbdd8031c1166cd9d81",
+    "/home/lab307/ranger_nav/bags/fast-livo-tag140_turn_03-bk8_pjyy/sources/0_apriltag_camera.json": "54af13d1316b85954514196e0bb16deada8c1a18ad55a9ca12a2daa761d9f0b1",
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-turn03-screen-20261104/observations.jsonl": "74e9d95178216cee95edc50bd4428381bee7c5439cc2ec05a2a0a8be4da3ef18",
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-two-capture-20261104/turn/c1_new_map_optimized/result.json": "de40d13380c332c1214cfb8a7ae82270d5b874883a0f0f48a1949bc995b2ff4b",
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-two-capture-20261104/turn/c1_new_map_optimized/samples.jsonl": "bf037afcf25714847f1c9ef62b60b6fef57c5d850a742d1331291a61d16c92c0",
+    "outputs/fast-livo-tag140-two-capture-20261104/new_local_map/snapshot/manifest.json": "14658c3b156a05c3f792b9a3a1d90f2c79032f4a379c399715ce338c97faf9ef",
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-two-capture-20261104/straight/livo_110000000/result/native_frames/native_frames_0.db3": "e0a43438d55b9d7c0d6009bffd02005b9ddc6f450e5b2a7fa0782e04b5562c59",
+    "/home/lab307/ranger_nav/bags/fast-livo-tag140_straight_04-ryzykq2l/sources/0_apriltag_camera.json": "54af13d1316b85954514196e0bb16deada8c1a18ad55a9ca12a2daa761d9f0b1",
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-straight04-screen-20261104/observations.jsonl": "6a4b38f88d7b4131e317e938d9d2faa3a031573f19158d466f22bb887f6a94f1",
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-two-capture-20261104/straight/c2_new_map_optimized/result.json": "a2610c767172551d836a26b6b55350234f25c8f94acdf3d0c693bc5d9a52d588",
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-two-capture-20261104/straight/c2_new_map_optimized/samples.jsonl": "7672b47aba75969f6d062381e099a4ed11ea771889a8540d7c7a1cd8caada29f"
+  },
+  "turn": {
+    "healthy_C1_attached_observations": 621,
+    "rejections": {
+      "native pose cannot bracket image: no_bracket_no_extrapolation": 5,
+      "insufficient C1 segment or no following sample": 1,
+      "C1 sample not geometrically confirmed": 270
+    },
+    "C2_output": "/home/lab307/ranger_nav/outputs/fast-livo-tag140-two-capture-20261104/turn/c1_new_map_optimized",
+    "C2_passed": true
+  },
+  "straight": {
+    "healthy_C1_attached_observations": 0,
+    "rejections": {
+      "native pose cannot bracket image: no_bracket_no_extrapolation": 5,
+      "insufficient C1 segment or no following sample": 574,
+      "C1 sample not geometrically confirmed": 320
+    },
+    "C2_output": "/home/lab307/ranger_nav/outputs/fast-livo-tag140-two-capture-20261104/straight/c2_new_map_optimized",
+    "C2_passed": false
+  },
+  "turn_training_count": 56,
+  "turn_heldout_count": 181,
+  "turn_heldout_rmse_px": {
+    "count": 181,
+    "minimum": 0.26996148621371935,
+    "p50": 2.7093813649636758,
+    "p95": 5.985640704434275,
+    "maximum": 10.708491382651717
+  },
+  "turn_training_modes": 5,
+  "candidate_T_map_tag": {
+    "xyz": [
+      1.4973160662436176,
+      -0.07107732740661142,
+      -0.1844863584752258
+    ],
+    "xyzw": [
+      0.5281084131999092,
+      0.5060632429115753,
+      0.4773702915172091,
+      0.48694876820674743
+    ]
+  },
+  "candidate_quality": "UNVERIFIED; disabled, not registered",
+  "turn_fit_geometry": {
+    "frames": 621,
+    "rmse_px": {
+      "count": 621,
+      "minimum": 0.26996148621371935,
+      "p50": 2.9533756035121352,
+      "p95": 7.209267023459094,
+      "maximum": 12.227381676176812
+    },
+    "maximum_corner_px": {
+      "count": 621,
+      "minimum": 0.3602044388081014,
+      "p50": 3.2077169932976317,
+      "p95": 7.6473761762556896,
+      "maximum": 13.175932655752995
+    },
+    "passing_initial_3px_rms_6px_max": 313,
+    "negative_depth": 0
+  },
+  "turn_local_same_cohort_heldout_rmse_px": {
+    "count": 181,
+    "minimum": 0.2738259907656891,
+    "p50": 1.7977149145759401,
+    "p95": 4.754246398770937,
+    "maximum": 10.095876201273853
+  },
+  "status": "NO_INDEPENDENT_STRAIGHT_C1_SUPPORT"
+}

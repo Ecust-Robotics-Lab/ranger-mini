@@ -1,0 +1,29 @@
+{
+  "access_date": "2026-11-04",
+  "sources": [
+    {
+      "url": "https://github.com/hku-mars/LIV_handhold_2/blob/30507028a7c00c99ac992322507701e0efe72a2a/FAST-LIVO2-Mid360-Config/config/mid360.yaml",
+      "role": "locked official example img_time_offset=0.1"
+    },
+    {
+      "url": "https://github.com/hku-mars/LIV_handhold_2/blob/30507028a7c00c99ac992322507701e0efe72a2a/mvs_ros_driver/src/grab_trigger.cpp",
+      "role": "shared latest timestamp camera assignment"
+    },
+    {
+      "url": "https://github.com/hku-mars/LIV_handhold_2/blob/30507028a7c00c99ac992322507701e0efe72a2a/livox_ros_driver2/src/lddc.cpp",
+      "role": "scan base_time in header/shared memory"
+    },
+    {
+      "url": "https://github.com/hku-mars/FAST-LIVO/issues/96",
+      "role": "author 2024-06-01 explains one-frame mismatch; historical different hardware is mechanism evidence only"
+    },
+    {
+      "url": "https://github.com/hku-mars/FAST-LIVO2/issues/163",
+      "role": "author confirms most recent timestamp continuously refreshed"
+    },
+    {
+      "url": "https://github.com/hku-mars/LIV_handhold_2/issues/13",
+      "role": "maintainer 2026-03-21 explains virtual UTC"
+    }
+  ]
+}

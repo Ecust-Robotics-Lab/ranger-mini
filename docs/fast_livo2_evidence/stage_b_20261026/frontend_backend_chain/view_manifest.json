@@ -1,0 +1,22 @@
+{
+  "source": "/home/lab307/calibration/bags/stageB_sync_run2",
+  "output": "/home/lab307/ranger_nav/bags/fast-livo2-dds-smoke-final/view",
+  "start_ns": 1590193436100175970,
+  "end_ns": 1590193442100175970,
+  "counts": {
+    "/front/image_sync": 60,
+    "/livox/lidar": 60,
+    "/livox/imu": 1188
+  },
+  "serialized_payload_sha256": {
+    "/front/image_sync": "5905294f90b7095b4fdc4b79d5445a79b275e07165110bfca0bf3635c9ca1464",
+    "/livox/lidar": "aabe02f133d037c87aa53db63908e4592ccdec99462f821ba907eecff070ec43",
+    "/livox/imu": "ee15a7f0c09fd076379f7216c8ca173f490142243d6b1b185fcbebf3107bf4c1"
+  },
+  "payloads_identical": true,
+  "record_time": "original message header, only in this new bag",
+  "header_or_point_timestamp_modified": false,
+  "physical_sync_proven": false,
+  "reused_view": true,
+  "independent_payload_verification": true
+}

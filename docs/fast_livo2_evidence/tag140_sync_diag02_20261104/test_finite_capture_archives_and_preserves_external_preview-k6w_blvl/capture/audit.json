@@ -1,0 +1,164 @@
+{
+  "bag": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag140_sync_diag02_20261104/test_finite_capture_archives_and_preserves_external_preview-k6w_blvl/capture/raw",
+  "topics": {
+    "/livox/lidar": {
+      "type": "sensor_msgs/msg/PointCloud2",
+      "count": 41,
+      "frames": [
+        "livox_frame"
+      ],
+      "first_header_ns": 1793761690603701494,
+      "last_header_ns": 1793761692603763674,
+      "nonincreasing": 0,
+      "period_ns_p0_p50_p100": [
+        49688032.0,
+        50025463.0,
+        50232554.0
+      ],
+      "record_minus_header_ns_p0_p50_p100": [
+        276065.0,
+        684242.0,
+        1475860.0
+      ]
+    },
+    "/livox/imu": {
+      "type": "sensor_msgs/msg/Imu",
+      "count": 40,
+      "frames": [
+        "livox_frame"
+      ],
+      "first_header_ns": 1793761690653768247,
+      "last_header_ns": 1793761692603763674,
+      "nonincreasing": 0,
+      "period_ns_p0_p50_p100": [
+        49688032.0,
+        50024524.0,
+        50232554.0
+      ],
+      "record_minus_header_ns_p0_p50_p100": [
+        283909.0,
+        707208.0,
+        916123.0
+      ]
+    },
+    "/front/image_sync": {
+      "type": "sensor_msgs/msg/Image",
+      "count": 40,
+      "frames": [
+        "livox_frame"
+      ],
+      "first_header_ns": 1793761690653768247,
+      "last_header_ns": 1793761692603763674,
+      "nonincreasing": 0,
+      "period_ns_p0_p50_p100": [
+        49688032.0,
+        50024524.0,
+        50232554.0
+      ],
+      "record_minus_header_ns_p0_p50_p100": [
+        287976.0,
+        785209.0,
+        1118573.0
+      ],
+      "image": {
+        "width": 1,
+        "height": 1,
+        "encoding": "rgb8",
+        "step": 3
+      }
+    },
+    "/front/image": {
+      "type": "sensor_msgs/msg/Image",
+      "count": 40,
+      "frames": [
+        "livox_frame"
+      ],
+      "first_header_ns": 1793761690653768247,
+      "last_header_ns": 1793761692603763674,
+      "nonincreasing": 0,
+      "period_ns_p0_p50_p100": [
+        49688032.0,
+        50024524.0,
+        50232554.0
+      ],
+      "record_minus_header_ns_p0_p50_p100": [
+        291509.0,
+        814160.5,
+        1225907.0
+      ],
+      "image": {
+        "width": 1,
+        "height": 1,
+        "encoding": "rgb8",
+        "step": 3
+      }
+    },
+    "/front/camera_info": {
+      "type": "sensor_msgs/msg/CameraInfo",
+      "count": 40,
+      "frames": [
+        "livox_frame"
+      ],
+      "first_header_ns": 1793761690653768247,
+      "last_header_ns": 1793761692603763674,
+      "nonincreasing": 0,
+      "period_ns_p0_p50_p100": [
+        49688032.0,
+        50024524.0,
+        50232554.0
+      ],
+      "record_minus_header_ns_p0_p50_p100": [
+        295367.0,
+        843521.5,
+        1350972.0
+      ]
+    },
+    "/fast_livo/odometry": {
+      "type": "nav_msgs/msg/Odometry",
+      "count": 40,
+      "frames": [
+        "fast_livo_local"
+      ],
+      "first_header_ns": 1793761690653768247,
+      "last_header_ns": 1793761692603763674,
+      "nonincreasing": 0,
+      "period_ns_p0_p50_p100": [
+        49688032.0,
+        50024524.0,
+        50232554.0
+      ],
+      "record_minus_header_ns_p0_p50_p100": [
+        392373.0,
+        1111881.5,
+        1539854.0
+      ]
+    }
+  },
+  "physical_sync_proven": false,
+  "point_times": {
+    "encoding": "absolute nanoseconds FLOAT64",
+    "total": 41,
+    "before_header": 0,
+    "nonfinite": 0,
+    "backwards_steps_inside_scans": 0,
+    "scans_last_point_not_latest": 0,
+    "min_offset_ns": 999936.0,
+    "max_offset_ns": 1000192.0,
+    "precision_note": "FLOAT64 epoch ns has approximately 256 ns spacing; input unchanged"
+  },
+  "imu": {
+    "acceleration_norm_p0_p50_p100": [
+      9.81,
+      9.81,
+      9.81
+    ],
+    "angular_speed_p0_p50_p100": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "nonfinite_messages": 0
+  },
+  "exact_image_lidar_headers": 40,
+  "interpretation": "Header equality verifies copied timestamps only; physical trigger/scan/exposure phase remains unproven."
+}

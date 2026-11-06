@@ -1,0 +1,138 @@
+{
+  "passed": true,
+  "canonical_evidence": "docs/fast_livo2_evidence/stage_b_20261026/acceptance-glzazt73",
+  "commands": [
+    {
+      "name": "build_audit",
+      "exit_code": 0
+    },
+    {
+      "name": "cpp",
+      "exit_code": 0
+    },
+    {
+      "name": "bridge_guard",
+      "exit_code": 0
+    },
+    {
+      "name": "adapter_contract",
+      "exit_code": 0
+    },
+    {
+      "name": "ros",
+      "exit_code": 0
+    },
+    {
+      "name": "project",
+      "exit_code": 0
+    },
+    {
+      "name": "contract",
+      "exit_code": 0
+    },
+    {
+      "name": "time",
+      "exit_code": 0
+    },
+    {
+      "name": "bridge_legacy",
+      "exit_code": 0
+    },
+    {
+      "name": "gate",
+      "exit_code": 0
+    },
+    {
+      "name": "frontend_cpp",
+      "exit_code": 0
+    },
+    {
+      "name": "frontend_patch",
+      "exit_code": 0
+    },
+    {
+      "name": "dry_private",
+      "exit_code": 0
+    },
+    {
+      "name": "dry_bridge",
+      "exit_code": 0
+    },
+    {
+      "name": "dry_build",
+      "exit_code": 0
+    },
+    {
+      "name": "frontend_backend_chain",
+      "exit_code": 0
+    }
+  ],
+  "test_counts": {
+    "cpp": 21,
+    "ros": 6,
+    "adapter_contract": 3,
+    "bridge_guard": 2,
+    "project": 10,
+    "contract": 11,
+    "time": 7,
+    "bridge_legacy": 14,
+    "gate": 12,
+    "frontend_cpp": 13
+  },
+  "frontend_backend_chain": {
+    "player_exit": 0,
+    "odom_count": 55,
+    "cloud_count": 55,
+    "exact_pairs": 55,
+    "finite": true,
+    "pose_frames_correct": true,
+    "cloud_frame_correct": true,
+    "no_tf_publisher": true,
+    "clock_matches_sensor_epoch": true,
+    "serialized_payloads_preserved": true,
+    "first_stamp_ns": 1590193436500015974,
+    "last_stamp_ns": 1590193441900085449,
+    "max_points": 4499,
+    "success_criteria": "player exit 0, >=45 exact pairs in 6s, finite and correct frames, no TF publisher, sensor-clock epoch",
+    "ROS_DOMAIN_ID": "174",
+    "ROS_LOCALHOST_ONLY": "1",
+    "passed": true,
+    "backend_valid_samples": 55,
+    "backend_stamps_subset_of_frontend": true,
+    "backend_errors": [],
+    "backend_exit": 0,
+    "frontend_exit": 0
+  },
+  "timing": [
+    {
+      "max_translation_error_m": 1.2514704543615378e-06,
+      "median_total_ms": 1.6255429945886135,
+      "method": "pcl_icp",
+      "p95_total_ms": 1.6660580004099756,
+      "points_per_cloud": 600,
+      "repetitions": 25,
+      "threads": 1
+    },
+    {
+      "max_translation_error_m": 0.0001499627434159253,
+      "median_total_ms": 1.9347330089658499,
+      "method": "small_gicp",
+      "p95_total_ms": 1.97249001939781,
+      "points_per_cloud": 600,
+      "repetitions": 25,
+      "threads": 1
+    },
+    {
+      "max_translation_error_m": 0.0012464223546563152,
+      "median_total_ms": 1.878655981272459,
+      "method": "small_vgicp",
+      "p95_total_ms": 1.901409006677568,
+      "points_per_cloud": 600,
+      "repetitions": 25,
+      "threads": 1
+    }
+  ],
+  "hardware_started": false,
+  "real_motion_loop_acceptance": "PARTIAL; no tri-sensor motion bag",
+  "C1_C2": "not implemented"
+}

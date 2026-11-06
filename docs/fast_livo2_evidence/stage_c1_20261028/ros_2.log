@@ -1,0 +1,21 @@
+test_clock_reset_and_multiple_publishers_fail_closed (__main__.C1Ros) ... ok
+test_initialization_external_base_and_same_time_bridge_latch (__main__.C1Ros) ... FAIL
+test_invalid_point_and_one_ns_missing_pair_never_confirm (__main__.C1Ros) ... ok
+test_map_load_failure_retains_archive_then_switch_invalidates_initial (__main__.C1Ros) ... ok
+test_small_gicp_and_restart_require_fresh_initial (__main__.C1Ros) ... ok
+test_wrong_initial_duplicate_requests_loss_and_reinitialize (__main__.C1Ros) ... ok
+
+======================================================================
+FAIL: test_initialization_external_base_and_same_time_bridge_latch (__main__.C1Ros)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 280, in test_initialization_external_base_and_same_time_bridge_latch
+    self.wait(lambda: self.ready)
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 144, in wait
+    self.fail('Timeout; '+str(self.directory)+'; last='+str([(m.state, m.reason) for m in self.private[-3:]]))
+AssertionError: Timeout; /home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_c1_20261028/test_initialization_external_base_and_same_time_bridge_latch-1mbr5wk8; last=[(3, 'confirmed_sample_or_stream_expired_requires_initial_pose'), (3, 'confirmed_sample_or_stream_expired_requires_initial_pose'), (3, 'confirmed_sample_or_stream_expired_requires_initial_pose')]
+
+----------------------------------------------------------------------
+Ran 6 tests in 28.234s
+
+FAILED (failures=1)

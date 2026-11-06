@@ -1,0 +1,208 @@
+{
+  "kind": "read_only_capture_screening_not_registration",
+  "capture": "/home/lab307/ranger_nav/bags/fast-livo-tag140_check_01-dguhgx2l",
+  "source": {
+    "sha256": "190637437b9cd7cb8e27ca4cda3168cc59a6af11c425334bf12b44a330432479",
+    "bytes": 5017432064,
+    "mtime_ns": 1793282169442763196
+  },
+  "source_unchanged": true,
+  "hardware_started": false,
+  "ros_graph_started": false,
+  "camera_model_matches_all_recorded_CameraInfo": true,
+  "sizes": {
+    "schema_version": 1,
+    "family": "tag36h11",
+    "sizes_m": {
+      "1": 0.14
+    },
+    "size_definition": "detected_black_white_boundary",
+    "source": "User declared 2026-10-29 for this new capture: tag36h11 ID 01, Black-border width = 140 mm",
+    "capture_scope": "new 140 mm physical tag; not the old 155 mm capture",
+    "fixed_deployment_validated": false,
+    "map_pose_registered": false
+  },
+  "counts": {
+    "images": 593,
+    "images_with_detections": 556,
+    "observations": 556,
+    "observations_with_2_hypotheses": 556,
+    "quality_eligible_observations": 556
+  },
+  "identities": {
+    "tag36h11:1": 556
+  },
+  "positive_local_pose_associations": {
+    "bracketed_slerp": 550,
+    "pose_gap_excessive": 4,
+    "exact": 2
+  },
+  "positive_time_span_s": 58.80038768000001,
+  "maximum_conditional_camera_baseline_m": 0.5457363902907226,
+  "decision_margin": {
+    "count": 556,
+    "minimum": 119.86225891113281,
+    "p50": 199.99324798583984,
+    "p95": 208.31468200683594,
+    "maximum": 212.1234893798828
+  },
+  "hypothesis_pixel_rmse_px": {
+    "count": 1112,
+    "minimum": 0.11605883677530661,
+    "p50": 2.80236116771492,
+    "p95": 6.161381165900323,
+    "maximum": 11.791782388779632
+  },
+  "camera_range_m": {
+    "count": 1112,
+    "minimum": 0.6322652030959913,
+    "p50": 0.7455224229483857,
+    "p95": 0.8962884911953728,
+    "maximum": 0.9357812046305961
+  },
+  "processing_ms": {
+    "count": 593,
+    "minimum": 30.51491999940481,
+    "p50": 33.29859999939799,
+    "p95": 39.782378399104346,
+    "maximum": 47.7118659982807
+  },
+  "detector_wall_s": 25.99523273199884,
+  "sync_anomalies": [
+    {
+      "frame_id": "14",
+      "dev_ts_ticks": "3744009750396",
+      "arrival_ns": "37434728273005",
+      "ts_seq": "60",
+      "ts_low_ns": "1590195569300242520",
+      "status": "BACKWARD",
+      "publish_ns": "0",
+      "from_first_sync_s": -0.39984000000000003,
+      "inside_recorded_sync_stamp_range": false,
+      "same_as_previous_shared_stamp": true,
+      "same_as_previous_shared_seq": true
+    },
+    {
+      "frame_id": "125",
+      "dev_ts_ticks": "3745119743155",
+      "arrival_ns": "37445828614744",
+      "ts_seq": "280",
+      "ts_low_ns": "1590195580400404130",
+      "status": "BACKWARD",
+      "publish_ns": "0",
+      "from_first_sync_s": 10.700321610000001,
+      "inside_recorded_sync_stamp_range": true,
+      "same_as_previous_shared_stamp": true,
+      "same_as_previous_shared_seq": true
+    },
+    {
+      "frame_id": "356",
+      "dev_ts_ticks": "3747429728038",
+      "arrival_ns": "37468929208905",
+      "ts_seq": "740",
+      "ts_low_ns": "1590195603500262540",
+      "status": "BACKWARD",
+      "publish_ns": "0",
+      "from_first_sync_s": 33.80018002,
+      "inside_recorded_sync_stamp_range": true,
+      "same_as_previous_shared_stamp": true,
+      "same_as_previous_shared_seq": true
+    },
+    {
+      "frame_id": "399",
+      "dev_ts_ticks": "3747859725238",
+      "arrival_ns": "37473229346935",
+      "ts_seq": "824",
+      "ts_low_ns": "1590195607800161340",
+      "status": "BACKWARD",
+      "publish_ns": "0",
+      "from_first_sync_s": 38.10007882,
+      "inside_recorded_sync_stamp_range": true,
+      "same_as_previous_shared_stamp": true,
+      "same_as_previous_shared_seq": true
+    },
+    {
+      "frame_id": "440",
+      "dev_ts_ticks": "3748269722563",
+      "arrival_ns": "37477329424082",
+      "ts_seq": "904",
+      "ts_low_ns": "1590195611900380100",
+      "status": "BACKWARD",
+      "publish_ns": "0",
+      "from_first_sync_s": 42.200297580000004,
+      "inside_recorded_sync_stamp_range": true,
+      "same_as_previous_shared_stamp": true,
+      "same_as_previous_shared_seq": true
+    },
+    {
+      "frame_id": "555",
+      "dev_ts_ticks": "3749419715025",
+      "arrival_ns": "37488829875801",
+      "ts_seq": "1132",
+      "ts_low_ns": "1590195623400396790",
+      "status": "BACKWARD",
+      "publish_ns": "0",
+      "from_first_sync_s": 53.70031427,
+      "inside_recorded_sync_stamp_range": true,
+      "same_as_previous_shared_stamp": true,
+      "same_as_previous_shared_seq": true
+    },
+    {
+      "frame_id": "580",
+      "dev_ts_ticks": "3749669713396",
+      "arrival_ns": "37491329875367",
+      "ts_seq": "1180",
+      "ts_low_ns": "1590195625900266140",
+      "status": "BACKWARD",
+      "publish_ns": "0",
+      "from_first_sync_s": 56.200183620000004,
+      "inside_recorded_sync_stamp_range": true,
+      "same_as_previous_shared_stamp": true,
+      "same_as_previous_shared_seq": true
+    },
+    {
+      "frame_id": "596",
+      "dev_ts_ticks": "3749829712350",
+      "arrival_ns": "37492929742535",
+      "ts_seq": "1210",
+      "ts_low_ns": "1590195627500135510",
+      "status": "BACKWARD",
+      "publish_ns": "0",
+      "from_first_sync_s": 57.800052990000005,
+      "inside_recorded_sync_stamp_range": true,
+      "same_as_previous_shared_stamp": true,
+      "same_as_previous_shared_seq": true
+    }
+  ],
+  "physical_synchronization_verified": false,
+  "real_VALID_landmark_created": false,
+  "limitations": [
+    "No old map/C1 or old replay trajectory used",
+    "Zero-offset local association is conditional, not physically verified",
+    "Detection frame fraction is not recall; pose baseline is not independent truth",
+    "No fixed-landmark fit or cross-visit recovery evaluated"
+  ]
+}
+	Command being timed: "python3 -u scripts/fast_livo2/tags/screen_capture.py --execute --capture bags/fast-livo-tag140_check_01-dguhgx2l --sizes config/fast_livo2/apriltag_sizes_capture_140mm.json --output outputs/fast-livo-apriltag-tag140-check-20261029-v2"
+	User time (seconds): 27.62
+	System time (seconds): 2.13
+	Percent of CPU this job got: 102%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:28.98
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 219484
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 56118
+	Voluntary context switches: 83884
+	Involuntary context switches: 345
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 15432
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

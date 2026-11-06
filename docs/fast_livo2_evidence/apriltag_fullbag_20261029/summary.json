@@ -1,0 +1,153 @@
+{
+  "schema_version": 1,
+  "kind": "passive_apriltag_fullbag_audit",
+  "source_before": {
+    "path": "/home/lab307/ranger_nav/bags/fast-livo-motion-w5phdosj/raw/raw_0.db3",
+    "bytes": 11493613568,
+    "mtime_ns": 1793114144995710316,
+    "sha256": "aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116"
+  },
+  "source_after": {
+    "bytes": 11493613568,
+    "mtime_ns": 1793114144995710316,
+    "sha256": "aed4dedacc5bdc4713b2be5acbfe09bc777fa9e6d67fc49b5565ec162e7b2116"
+  },
+  "source_sha256_unchanged": true,
+  "hardware_started": false,
+  "ros_graph_started": false,
+  "source_open_mode": "SQLite mode=ro and PRAGMA query_only=ON",
+  "detector_argv": [
+    "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/tag_image_tool",
+    "--stream",
+    "/home/lab307/ranger_nav/config/fast_livo2/apriltag_camera.json",
+    "tag36h11",
+    "{\"1\":0.155}"
+  ],
+  "detector_exit_code": 0,
+  "detector_sha256": "5d8bf12fa0785187e6e6cb6718f8cbcfe5154d528e723ca8238b89f7693d6f6e",
+  "config_sha256": "54af13d1316b85954514196e0bb16deada8c1a18ad55a9ca12a2daa761d9f0b1",
+  "sizes_sha256": "3b8facc4cb14c2eb3f73e05a9690364fcfb1c6f6dded8af74f89de6899310269",
+  "measured_sizes": {
+    "schema_version": 1,
+    "family": "tag36h11",
+    "sizes_m": {
+      "1": 0.155
+    },
+    "size_definition": "detected_black_white_boundary",
+    "source": "User confirmed 2026-10-29: existing capture includes april_tag_Tag36h11 ID 1, 15.5 cm, in reply to boundary-size question",
+    "fixed_deployment_validated": false,
+    "map_pose_registered": false
+  },
+  "configured_time_verified": false,
+  "raw_image_count": 1367,
+  "camera_model_versions": 1,
+  "raw_pose_history": {
+    "count": 1367,
+    "strictly_monotonic": true,
+    "first_stamp_ns": 1590195801200283288,
+    "last_stamp_ns": 1590195937800336360,
+    "interval_ms": {
+      "count": 1366,
+      "minimum": 99.839925,
+      "p50": 99.840164,
+      "p95": 100.320101,
+      "maximum": 100.40020899999999
+    }
+  },
+  "replay_pose_history": {
+    "count": 1362,
+    "strictly_monotonic": true,
+    "first_stamp_ns": 1590195801700443506,
+    "last_stamp_ns": 1590195937800336360,
+    "interval_ms": {
+      "count": 1361,
+      "minimum": 99.839925,
+      "p50": 99.840164,
+      "p95": 100.320101,
+      "maximum": 100.40020899999999
+    }
+  },
+  "replay_identity": {
+    "path": "/home/lab307/ranger_nav/outputs/fast-livo-demo-20261028-fHJTbGCU/frontend/native_frames/native_frames_0.db3",
+    "sha256": "2eecd2c75e0c33eac80cda41f043f4c8ebe6bd5c089da06e6018b40deeaf62b4"
+  },
+  "counts": {
+    "unique_raw_copy_matches": 1367,
+    "camera_model_matches": 1367,
+    "processed_images": 1367,
+    "images_with_detections": 14,
+    "observations": 14,
+    "observations_with_2_hypotheses": 14,
+    "metric_quality_eligible_observations": 14,
+    "quality_eligible_branches": 28
+  },
+  "family_ids": {
+    "tag36h11:1": 14
+  },
+  "pose_associations": {
+    "raw:bracketed_slerp": 1361,
+    "replay:no_bracket_no_extrapolation": 7,
+    "replay:bracketed_slerp": 1356,
+    "raw:exact": 4,
+    "replay:exact": 4,
+    "raw:no_bracket_no_extrapolation": 2
+  },
+  "sync_stamp_strictly_monotonic": true,
+  "detection_intervals": [
+    {
+      "first_image_index": 729,
+      "last_image_index": 731,
+      "first_stamp_ns": 1590195874200355430,
+      "last_stamp_ns": 1590195874400035430,
+      "frames": 3
+    },
+    {
+      "first_image_index": 733,
+      "last_image_index": 740,
+      "first_stamp_ns": 1590195874600195430,
+      "last_stamp_ns": 1590195875300050370,
+      "frames": 8
+    },
+    {
+      "first_image_index": 744,
+      "last_image_index": 746,
+      "first_stamp_ns": 1590195875700370370,
+      "last_stamp_ns": 1590195875900050370,
+      "frames": 3
+    }
+  ],
+  "detector_ms": {
+    "count": 1367,
+    "minimum": 32.613366998702986,
+    "p50": 40.680101003090385,
+    "p95": 45.32369290027418,
+    "maximum": 58.46929899780662
+  },
+  "positive_frame_detector_ms": {
+    "count": 14,
+    "minimum": 42.01558900240343,
+    "p50": 44.15243349831144,
+    "p95": 48.26058479848143,
+    "maximum": 49.46271299922955
+  },
+  "all_hypothesis_pixel_rmse": {
+    "count": 28,
+    "minimum": 0.012263559585596157,
+    "p50": 1.7022689476431332,
+    "p95": 2.382341102026267,
+    "maximum": 2.3990191012602433
+  },
+  "processing_wall_seconds": 70.60732636899775,
+  "absolute_accuracy_validated": false,
+  "physical_synchronization_validated": false,
+  "cross_session_validated": false,
+  "real_VALID_landmark_created": false,
+  "global_localization_or_loop_submitted": false,
+  "limitations": [
+    "No frame-by-frame truth labels: detection frequency is not recall or false-positive rate",
+    "Header-clock interpolation is not physical exposure synchronization",
+    "Raw and replay pose coordinate systems are kept separate",
+    "Conditional local Tag transforms do not establish fixedness or map accuracy"
+  ],
+  "passed": true
+}

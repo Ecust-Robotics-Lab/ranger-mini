@@ -1,0 +1,19 @@
+Running main() from /opt/ros/humble/src/gtest_vendor/src/gtest_main.cc
+[==========] Running 5 tests from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 5 tests from TagIntegration
+[ RUN      ] TagIntegration.TagOnlyCandidatesUseOriginalConfirmationThenC1
+[       OK ] TagIntegration.TagOnlyCandidatesUseOriginalConfirmationThenC1 (310 ms)
+[ RUN      ] TagIntegration.GeometricMatchButVisualConflictCannotConfirm
+[       OK ] TagIntegration.GeometricMatchButVisualConflictCannotConfirm (49 ms)
+[ RUN      ] TagIntegration.StaleMapAndCancellationCannotConfirm
+[       OK ] TagIntegration.StaleMapAndCancellationCannotConfirm (10 ms)
+[ RUN      ] TagIntegration.RepeatedImageDoesNotBecomeIndependentSupportAndNoTagIsSafe
+[       OK ] TagIntegration.RepeatedImageDoesNotBecomeIndependentSupportAndNoTagIsSafe (24 ms)
+[ RUN      ] TagIntegration.BLoopBeyondPositionRadiusUsesNonunitTagInitial
+[       OK ] TagIntegration.BLoopBeyondPositionRadiusUsesNonunitTagInitial (39 ms)
+[----------] 5 tests from TagIntegration (432 ms total)
+
+[----------] Global test environment tear-down
+[==========] 5 tests from 1 test suite ran. (432 ms total)
+[  PASSED  ] 5 tests.

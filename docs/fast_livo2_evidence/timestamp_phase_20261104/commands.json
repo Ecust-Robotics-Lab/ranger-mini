@@ -1,0 +1,29 @@
+[
+  {
+    "command": "/usr/bin/python3 docs/fast_livo2_evidence/timestamp_phase_20261104/investigate.py --execute",
+    "exit_code": 0,
+    "log": "investigation.log"
+  },
+  {
+    "command": "bash scripts/record_fast_livo2.sh --seconds 60 --visualization foxglove",
+    "exit_code": 0,
+    "log": "record_dry_run.log"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 -m unittest discover -s tests -p test_tag_imu_timing.py -v",
+    "exit_code": 0,
+    "tests": 6,
+    "log": "timing_tests.log"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 -m unittest discover -s tests -p test_fast_livo_tag_consistency.py -v",
+    "exit_code": 0,
+    "tests": 5,
+    "log": "association_tests.log"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 /usr/bin/python3 docs/fast_livo2_evidence/timestamp_phase_20261104/check_config.py",
+    "exit_code": 0,
+    "log": "configuration_check.log"
+  }
+]

@@ -1,0 +1,249 @@
+{
+  "git_head": "a76d83a767d5691ca40351f3a57f65b398572a52",
+  "stage_b_files": [
+    {
+      "path": ".gitignore",
+      "sha256": "142f08090dc8f78f4ff610c1db7b59cdbdfe9b00c6c402b9570edf90dd5c4a64"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "1604292cb9a0483981151639c0967a03b8579c076ac871c3af5b1b3f3670ecb4"
+    },
+    {
+      "path": "README.md",
+      "sha256": "60f102180d928ea59c8d68d098b5b02657145913d1f9d2c134c1b86ef00ac8e8"
+    },
+    {
+      "path": "config/fast_livo2/backend.yaml",
+      "sha256": "22d1eac223160ba5620e046e1deee7efa084bc77e5ab604ca3c098d9817407db"
+    },
+    {
+      "path": "config/fast_livo2/sources.lock.json",
+      "sha256": "8fb74d2eac073c645416fe5532ac902229c92df820f02d0bf43f57d9c1a2fd60"
+    },
+    {
+      "path": "docs/FAST_LIVO2_BACKEND_PLAN.md",
+      "sha256": "e37ae26c1acf34cedb961b1bc5836f8de5536440eed708d83d60998c7e0a31e0"
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "sha256": "e772f6399fdcfe755370a6c74e65999f85d73db646657acf318874b26f722b95"
+    },
+    {
+      "path": "docs/PROJECT_LAYOUT.md",
+      "sha256": "4ded20c9660fdcba993edb37a0be37a9b57fe861abe6eec9ad08173b933ebb76"
+    },
+    {
+      "path": "docs/README.md",
+      "sha256": "e9e1071ffcc7a8db7636c11dd06756f70959d66a54b54f25e8a136ca41dbadb2"
+    },
+    {
+      "path": "docs/STATUS.md",
+      "sha256": "ef0de227bf18330520db863f6491ae64d424afb1afe750c7c1ec353aecbc7a93"
+    },
+    {
+      "path": "docs/fast_livo2_backend_interfaces.md",
+      "sha256": "d85b6ec8590d63f0c3ece7eafc25aef8cccf604db35ed3e23b3c4f85225c72be"
+    },
+    {
+      "path": "docs/fast_livo2_interfaces.md",
+      "sha256": "0edab551ac16955b42584a06909d01d83051cbc2d2b5acdef0b9ef46283f71ca"
+    },
+    {
+      "path": "docs/fast_livo2_stage_b_report.md",
+      "sha256": "479183194ffbdd9e17c0a2a4661c79c0aac3296e4a73d49370cd07456eafb3dc"
+    },
+    {
+      "path": "docs/localization_backend_contract.md",
+      "sha256": "1879a22a02e3c9c4709787f93af6b50fa637e2bb8c19ff77ace055f4f0837eff"
+    },
+    {
+      "path": "scripts/build_fast_livo2_backend.sh",
+      "sha256": "e45deb2de4886bfdda00f882c284bb240e1e2374c662919d21ddbd2a209a9d72"
+    },
+    {
+      "path": "scripts/fast_livo2/backend/audit_build.py",
+      "sha256": "190f298bc8e79540feb29120126b8e6095329233083b7a82360c196d5b69c80b"
+    },
+    {
+      "path": "scripts/fast_livo2/backend/monitor.py",
+      "sha256": "b4e78d322d0be7fad097d3fd9512a7cdd2d4e8358e53359bad7434473f69737d"
+    },
+    {
+      "path": "scripts/fast_livo2/backend/run_checks.py",
+      "sha256": "fc03502c8941e866d77cf80aa768d9c90e3c609e202cd2f87765da71e29c45f3"
+    },
+    {
+      "path": "scripts/fast_livo2/backend/session.py",
+      "sha256": "71cd77db9739c0ce421240e75af54eb09009983bb903ff3aeb9df3a3a7540d3a"
+    },
+    {
+      "path": "scripts/fast_livo2/backend/uncrustify.cfg",
+      "sha256": "8d75f1a1bc5df66e43e168ef95b928441ccb3bbde9dc641e2bcf561451466bfb"
+    },
+    {
+      "path": "scripts/fast_livo2/dds_smoke.py",
+      "sha256": "096d5f628e5ac1f077329f5db970026e9ee5912b16d688707229b3e842d754d7"
+    },
+    {
+      "path": "scripts/fast_livo2/fetch_sources.py",
+      "sha256": "ce7848713cab12d9c2edd0c4a2d81db9206795e6a0f7423bb095d72542d5d502"
+    },
+    {
+      "path": "scripts/run_fast_livo2_backend.sh",
+      "sha256": "fafaab033b57b2895f7bd7386129b21edb45457ffeb78297b0126efc99d526db"
+    },
+    {
+      "path": "tests/test_bridge_pgo_guard.py",
+      "sha256": "04ced6d27e9ce9b08664590c47111ead477b90200426d7109b925e48d4455ec1"
+    },
+    {
+      "path": "tests/test_fast_livo_adapter_contract.py",
+      "sha256": "0930c140d35cc3f4270b6f79e956acb6d720a1cbc96e9caebdfdb8d108c3ef82"
+    },
+    {
+      "path": "tests/test_fast_livo_backend_ros.py",
+      "sha256": "bf9955be4e6e08f62a06cad10eef70ba4a85b5a9e81293701c62006630967605"
+    },
+    {
+      "path": "ws_fast_livo/src/ranger_fast_livo_backend/CMakeLists.txt",
+      "sha256": "1937138b26b051ba01b22c696872d056767583a7880c9624e471c7a79ce78d43"
+    },
+    {
+      "path": "ws_fast_livo/src/ranger_fast_livo_backend/LICENSE",
+      "sha256": "292b8b403ab9ba33098723a8401341f683aa5ba9ffbb167227b4ddc1065f8227"
+    },
+    {
+      "path": "ws_fast_livo/src/ranger_fast_livo_backend/README.md",
+      "sha256": "476060c878c9f7ade20dc73a7b646f605a6b8099acc756e43ad4e62011f9e27d"
+    },
+    {
+      "path": "ws_fast_livo/src/ranger_fast_livo_backend/THIRD_PARTY_NOTICES.md",
+      "sha256": "30a792a234b95089a8944937b0df9b24f90f3d225756a96c7f7ee99b0b8320ad"
+    },
+    {
+      "path": "ws_fast_livo/src/ranger_fast_livo_backend/include/ranger_fast_livo_backend/archive.hpp",
+      "sha256": "4db04d8784a390fc6128d2831e4958be7fbd6eaf95b8336c78718c965d9a8fe9"
+    },
+    {
+      "path": "ws_fast_livo/src/ranger_fast_livo_backend/include/ranger_fast_livo_backend/backend.hpp",
+      "sha256": "b57afab3afc582071fbddc74020ca2dbbe6dd92497b599ac3fa82699e035a19a"
+    },
+    {
+      "path": "ws_fast_livo/src/ranger_fast_livo_backend/include/ranger_fast_livo_backend/graph.hpp",
+      "sha256": "30be5b36ee89abb56d05e5f0ae586e670ce79a92728cd153769760b5de9b714d"
+    },
+    {
+      "path": "ws_fast_livo/src/ranger_fast_livo_backend/include/ranger_fast_livo_backend/input.hpp",
+      "sha256": "9c8c9fba6729ade06047b3c98c57f52d6ddcd2d23fe722488c59309bee792cd6"
+    },
+    {
+      "path": "ws_fast_livo/src/ranger_fast_livo_backend/include/ranger_fast_livo_backend/registration.hpp",
+      "sha256": "6a9c00a5ab0c5f8500f95b738ae4528c7adfabee5c02adba0302b02069861d85"
+    },
+    {
+      "path": "ws_fast_livo/src/ranger_fast_livo_backend/include/ranger_fast_livo_backend/types.hpp",
+      "sha256": "b5301b2a680b5bf1266686f4e70242979519a96c723ec2123f5cc7df635a2d5e"
+    },
+    {
+      "path": "ws_fast_livo/src/ranger_fast_livo_backend/msg/BackendEstimate.msg",
+      "sha256": "1afbbc1aa1682c4201ff734feedba3c885bb1114592e0640dbd4f18d6984c0bb"
+    },
+    {
+      "path": "ws_fast_livo/src/ranger_fast_livo_backend/package.xml",
+      "sha256": "7406079bc7749795b4ce9655b000e480fb9d0c0fbeb5db4d8dd7fe133ce99b3a"
+    },
+    {
+      "path": "ws_fast_livo/src/ranger_fast_livo_backend/src/archive.cpp",
+      "sha256": "b3fef3e0c10e80dad95cc67df8442a02078eae5bac5152f33b3a649390d4ecf9"
+    },
+    {
+      "path": "ws_fast_livo/src/ranger_fast_livo_backend/src/backend.cpp",
+      "sha256": "a0d83bf19ceee158eca86014c08fc44ac0648373ccb375a752d4616457d0e765"
+    },
+    {
+      "path": "ws_fast_livo/src/ranger_fast_livo_backend/src/graph.cpp",
+      "sha256": "32cf82374f4f75508a8f6c810d7cd40f55bf288d6ea3f8b8c511bdc3a8877fa2"
+    },
+    {
+      "path": "ws_fast_livo/src/ranger_fast_livo_backend/src/input.cpp",
+      "sha256": "9571fe45c67b9aae38f091b0a9d78f94497c535260b03add7b938fbd6262d8b4"
+    },
+    {
+      "path": "ws_fast_livo/src/ranger_fast_livo_backend/src/node.cpp",
+      "sha256": "b9ae8d2daf4f8941f4c370b8a08a0ea2abb1728157bea8cce2b4a98f7fecd02d"
+    },
+    {
+      "path": "ws_fast_livo/src/ranger_fast_livo_backend/src/registration.cpp",
+      "sha256": "db5028e7fcfd3949fd2cc67a741820637b6b3ac3a0de8065ec2f7a79888d74a7"
+    },
+    {
+      "path": "ws_fast_livo/src/ranger_fast_livo_backend/srv/ExportSnapshot.srv",
+      "sha256": "44194d9aa6a9e36470c0a111a1af3cba8450f91359e173707ca4471d1e051545"
+    },
+    {
+      "path": "ws_fast_livo/src/ranger_fast_livo_backend/test/backend_tests.cpp",
+      "sha256": "00d89d94697eb3a09ef0e057b0db70c7a8efca0f69d5557ce810973c62d15728"
+    },
+    {
+      "path": "ws_fast_livo/src/ranger_fast_livo_backend/third_party/GTSAM_LICENSE.BSD",
+      "sha256": "ec9746ecc24d4b36c4c8412ced73a9c7351238396d1fd17b70b3ba1e6a2e5bd0"
+    },
+    {
+      "path": "ws_fast_livo/src/ranger_fast_livo_backend/third_party/GTSAM_LICENSE.txt",
+      "sha256": "798f8f25b01a3d5c1401bd81dce80c0433f0a50684ca29348a959cdfecee2b2c"
+    },
+    {
+      "path": "ws_fast_livo/src/ranger_fast_livo_backend/third_party/SimplePGO_LICENSE.txt",
+      "sha256": "e4da13b8ee8adf3c184f3cfaa765c1b002efd9e1b7a200fe7c507a30391f8fb9"
+    },
+    {
+      "path": "ws_fast_livo/src/ranger_fast_livo_backend/third_party/small_gicp_LICENSE.txt",
+      "sha256": "c1a3ab7ff9bf54e320aa78c653acca70f0b4f955d9d129c91a70866059e8d8d0"
+    },
+    {
+      "path": "ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/bridge_node.py",
+      "sha256": "cb1bf81d978921311139e0d0cbfb3e7aa02aac0a464e3b290504fa62796964ef"
+    },
+    {
+      "path": "ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/fast_livo_adapter.py",
+      "sha256": "497a071c7722365ff975dde377f8a7a7b2c4905501574cff47970ba2579004e2"
+    },
+    {
+      "path": "ws_nav/src/ranger_localization_bridge/setup.py",
+      "sha256": "617e204c641caa5e707c87030a6b3a05e0378164420c3957226e673cf10fc210"
+    }
+  ],
+  "unrelated_initial_tracked_diff_sections_unchanged": [
+    ".gitattributes",
+    "ARCHITECTURE_PLAN.md",
+    "config/__pycache__/base_mini_v2.launch.cpython-310.pyc",
+    "config/runtime.yaml",
+    "docs/00_environment_audit.md",
+    "docs/02_base_interface.md",
+    "docs/02_ros_motion_test.md",
+    "docs/03_mid360_validation.md",
+    "docs/04_mapping_report.md",
+    "docs/05_localization_interface.md",
+    "docs/06_flat_navigation_acceptance.md",
+    "docs/INITIALIZATION.md",
+    "docs/LIDAR_CONNECTION.md",
+    "docs/architecture_baseline.md",
+    "docs/architecture_batch2_report.md",
+    "docs/architecture_batch3_report.md",
+    "docs/managed_sessions.md",
+    "scripts/__pycache__/analyze_slam_experiment.cpython-310.pyc",
+    "scripts/__pycache__/check_mid360_bag.cpython-310.pyc",
+    "scripts/__pycache__/check_slam_map.cpython-310.pyc",
+    "scripts/__pycache__/prepare_lightning_deps.cpython-310.pyc",
+    "scripts/__pycache__/record_mid360.cpython-310.pyc",
+    "scripts/__pycache__/slam_run.cpython-310.pyc",
+    "scripts/__pycache__/start_mid360.cpython-310.pyc",
+    "tests/__pycache__/test_stage5_bridge.cpython-310.pyc",
+    "ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/__pycache__/__init__.cpython-310.pyc",
+    "ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/__pycache__/bridge_node.cpython-310.pyc",
+    "ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/runtime_config.py"
+  ],
+  "unexpected_changes": [],
+  "source_assets": "Original bags/maps/calibration/backups were never mutated or deleted by this stage; offline view opened read-only and payload hashes rechecked."
+}

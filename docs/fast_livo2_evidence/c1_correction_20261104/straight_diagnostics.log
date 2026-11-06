@@ -1,0 +1,76 @@
+{
+  "frames": 525,
+  "target_sets": 47,
+  "absolute_accuracy_validated": false,
+  "physical_time_verified": false,
+  "body_residual_from_first_alignment_m": {
+    "count": 525,
+    "minimum": 0.0,
+    "p50": 0.00892458129867648,
+    "p95": 0.01816545655544361,
+    "maximum": 0.023273775999201763
+  },
+  "rotation_residual_from_first_alignment_deg": {
+    "count": 525,
+    "minimum": 2.0490254530823145e-16,
+    "p50": 0.1325002084358882,
+    "p95": 0.3112646231825064,
+    "maximum": 0.39542924358067616
+  },
+  "rmse_m": {
+    "count": 525,
+    "minimum": 0.034122492172534526,
+    "p50": 0.04950173332948144,
+    "p95": 0.08695170037165223,
+    "maximum": 0.09459446614549191
+  },
+  "plane_hessian_eigen_ratio": {
+    "count": 525,
+    "minimum": 0.2298706706969317,
+    "p50": 0.2548223731829298,
+    "p95": 0.26666209550343023,
+    "maximum": 0.27549707157496994
+  },
+  "consecutive_steps": 524,
+  "target_changes": 208,
+  "steps_by_target_change": {
+    "false": {
+      "count": 316,
+      "translation_m": {
+        "count": 316,
+        "minimum": 0.000824325014004689,
+        "p50": 0.005171634008563048,
+        "p95": 0.010545080544445227,
+        "maximum": 0.023300642633291877
+      },
+      "rotation_deg": {
+        "count": 316,
+        "minimum": 0.019803261511074706,
+        "p50": 0.12286684717179176,
+        "p95": 0.2640783608478342,
+        "maximum": 0.4422327757641974
+      }
+    },
+    "true": {
+      "count": 208,
+      "translation_m": {
+        "count": 208,
+        "minimum": 0.0005563544159339728,
+        "p50": 0.005185830029164694,
+        "p95": 0.01340803507558511,
+        "maximum": 0.018606899534105492
+      },
+      "rotation_deg": {
+        "count": 208,
+        "minimum": 0.021393263543915252,
+        "p50": 0.15317857100117177,
+        "p95": 0.3043479568353942,
+        "maximum": 0.4285454088908549
+      }
+    }
+  },
+  "source_sha256": {
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-two-capture-20261104/straight/c2_new_map_recovery/samples.jsonl": "efd6cfbf3b65cafd8023f8ac7ee4d9750569ed0a89a84abd204bf2d7f9c53f66",
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-two-capture-20261104/straight/livo_110000000/result/native_frames/native_frames_0.db3": "e0a43438d55b9d7c0d6009bffd02005b9ddc6f450e5b2a7fa0782e04b5562c59"
+  }
+}

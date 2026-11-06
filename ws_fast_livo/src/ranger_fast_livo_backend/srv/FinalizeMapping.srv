@@ -1,0 +1,12 @@
+# Seal this exact session before draining all previously received input.
+string expected_session_id
+string destination
+float64 timeout_seconds
+---
+bool success
+string reason
+string session_id
+uint64 graph_version
+int64 last_stamp_ns
+uint64 processed_pairs
+string manifest_path

@@ -1,0 +1,14 @@
+test_loopback_readonly_channels_and_message_delivery (__main__.FoxgloveTest) ... FAIL
+
+======================================================================
+FAIL: test_loopback_readonly_channels_and_message_delivery (__main__.FoxgloveTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_foxglove.py", line 80, in test_loopback_readonly_channels_and_message_delivery
+    self.assertIn(b'101 Switching Protocols', response)
+AssertionError: b'101 Switching Protocols' not found in bytearray(b'HTTP/1.1 400 Bad Request\r\n\r\n')
+
+----------------------------------------------------------------------
+Ran 1 test in 0.819s
+
+FAILED (failures=1)

@@ -1,0 +1,148 @@
+{
+  "cloud_frame": "fast_livo_imu",
+  "config": {
+    "ambiguity_overlap": 0.1,
+    "ambiguity_rmse": 0.03,
+    "ambiguity_separation": 1.0,
+    "cache_bytes": 134217728,
+    "candidate_budget_ms": 1000.0,
+    "correspondence_distance": 0.5,
+    "degeneracy_ratio": 0.0001,
+    "exclude_ids": 20,
+    "exclude_time": 30.0,
+    "gravity_aligned": false,
+    "height_threshold": 1.0,
+    "horizontal_search": false,
+    "huber": 1.345,
+    "key_min_time": 0.1,
+    "key_rotation": 0.17453292519943295,
+    "key_time": 2.0,
+    "key_translation": 0.5,
+    "large_rotation": 0.5235987755982988,
+    "large_translation": 1.0,
+    "loop_rotation_sigma": 0.05,
+    "loop_translation_sigma": 0.1,
+    "max_candidates": 5,
+    "max_iterations": 50,
+    "max_keyframes": 100000,
+    "max_rmse": 0.2,
+    "max_submap_points": 300000,
+    "min_correspondences": 30,
+    "min_overlap": 0.45,
+    "odom_rotation_sigma": 0.02,
+    "odom_translation_sigma": 0.05,
+    "registration": "pcl_icp",
+    "registration_threads": 1,
+    "resolution": 0.15,
+    "robust_kernel": "huber",
+    "search_radius": 3.0,
+    "submap_half": 3,
+    "support_consistency_rotation": 0.17453292519943295,
+    "support_consistency_translation": 0.3,
+    "support_rotation": 0.08726646259971647,
+    "support_time": 1.0,
+    "support_translation": 0.5,
+    "time_min_rotation": 0.03490658503988659,
+    "time_min_translation": 0.05
+  },
+  "factors": [
+    {
+      "Z_i_j": {
+        "xyz": [
+          2.2530282100615846,
+          -1.032963803021959,
+          0.7165304629318436
+        ],
+        "xyzw": [
+          0.11466917905536317,
+          -0.06718067381481192,
+          0.30315711989317956,
+          0.9436278382384812
+        ]
+      },
+      "i": 0,
+      "id": 0,
+      "j": 0,
+      "loop": false,
+      "prior": true,
+      "rotation_sigma_rad": 1e-05,
+      "translation_sigma_m": 1e-05
+    }
+  ],
+  "files": {
+    "candidates.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "keyframes/0/full.pcd": "f2da4889ace0bc48250b9139bbc27ae47a9ceb07171fdca55de0cfdf56356e65",
+    "keyframes/0/match.pcd": "4dacf72d256a02c82f154d37daf64fcb85ab0b6a8bfc543267a4f6cad5c8927f",
+    "keyframes/0/scan.cdr": "e1a75f99a38a81af31f3763e669fdd9c386a430fa26ba2dbe0cae50da9c64e5c",
+    "map.pcd": "85737e64c6126d494d544198ef9305d69b65c1a9a675e483e132d9911f0511c5",
+    "optimized.tum": "5ecbeb7d408ce7073dba15848282743b5dae3bf752000a064562117bcf86d719",
+    "original.tum": "5ecbeb7d408ce7073dba15848282743b5dae3bf752000a064562117bcf86d719"
+  },
+  "graph_version": 1,
+  "keyframes": [
+    {
+      "U_local_imu": {
+        "xyz": [
+          2.2530282100615846,
+          -1.032963803021959,
+          0.7165304629318436
+        ],
+        "xyzw": [
+          0.11466917905536317,
+          -0.06718067381481192,
+          0.30315711989317956,
+          0.9436278382384812
+        ]
+      },
+      "X_map_imu": {
+        "xyz": [
+          2.2530282100615846,
+          -1.032963803021959,
+          0.7165304629318436
+        ],
+        "xyzw": [
+          0.11466917905536317,
+          -0.06718067381481192,
+          0.30315711989317956,
+          0.9436278382384812
+        ]
+      },
+      "directory": "keyframes/0",
+      "id": 0,
+      "points": 600,
+      "scan_id": 0,
+      "stamp_ns": 1000390000000
+    }
+  ],
+  "kind": "stage_b_graph_archive",
+  "loop_event_id": 0,
+  "map_basis": "FAST local origin, axes and yaw retained; not assumed gravity-aligned",
+  "map_uuid": "13857d6a03e5d17c10b0b790cdc951db",
+  "original_scan": "scan.cdr retains every PointCloud2 field and header",
+  "pcd_fields": [
+    "x",
+    "y",
+    "z",
+    "intensity"
+  ],
+  "provenance": {
+    "candidate_log_bytes": 0,
+    "frontend_publisher_gids": "/fast_livo/odometry010f2e545231c5d500000500000013030000000000000000/fast_livo/deskewed_imu010f2e545231c5d500000500000014030000000000000000",
+    "node_parameters": {
+      "pair_cache_bytes": 67108864,
+      "pair_cache_entries": 32,
+      "pair_reorder_window_s": 0.05,
+      "pair_timeout_s": 0.25,
+      "sample_max_age_s": 0.5,
+      "stream_timeout_s": 2.0,
+      "use_sim_time": true,
+      "work_queue_bytes": 67108864,
+      "work_queue_capacity": 16
+    },
+    "sample_time_contract": "VIO-corrected IMU pose; deskewed interval ends at LIO/VIO image cut time; output stamps share integer nanoseconds",
+    "source_provenance": "standalone invocation; not supplied"
+  },
+  "schema_version": 1,
+  "session_id": "a1ce68cf715c391982a24f457219f244",
+  "transform_convention": "T_A_B maps points in B to A"
+}

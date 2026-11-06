@@ -1,0 +1,141 @@
+{
+  "source_database_sha256": "753c9b4af470821d190c0187d920d9412a70f52ab774ff0adddec5e3d04589d2",
+  "replay_database_sha256": {
+    "outputs/fast-livo-tag140-sync-diag02-replay-20261029/0/result/native_frames/native_frames_0.db3": "5da7167046d35f4b018f017433e31680f8da7290ebd58c90021e7c8889c69242",
+    "outputs/fast-livo-tag140-sync-diag02-replay-20261029/120000000/result/native_frames/native_frames_0.db3": "f4e5b7b3ff7cae2f65253a142ef695c6ce510c7f9a0c6f8cfa0adb62436941ff"
+  },
+  "replay_root": "/home/lab307/ranger_nav/outputs/fast-livo-tag140-sync-diag02-replay-20261029",
+  "observations": 1067,
+  "common_cohort": 1061,
+  "training_count": 103,
+  "holdout_count": 274,
+  "purged_count": 208,
+  "cases": [
+    {
+      "offset_ns": 0,
+      "native_count": 1195,
+      "training_modes": 5,
+      "seed_budget": 4,
+      "evaluated_seeds": 4,
+      "selected_fit": {
+        "pose": {
+          "xyz": [
+            1.0120666390392468,
+            0.09912607985306339,
+            -0.17636409146245158
+          ],
+          "xyzw": [
+            0.4881819147913123,
+            0.5344919007177555,
+            0.5142077666124927,
+            0.45998608554303155
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 9,
+        "training_huber_coordinate_cost_mean": 3.911653285566481,
+        "train_rmse_px": {
+          "count": 103,
+          "minimum": 0.3533292022453685,
+          "p50": 3.276618779648436,
+          "p95": 18.196115175825128,
+          "maximum": 153.63575334689295
+        },
+        "holdout_rmse_px": {
+          "count": 274,
+          "minimum": 0.7009025689469698,
+          "p50": 5.074905511927479,
+          "p95": 17.396944656127978,
+          "maximum": 123.70515770993559
+        },
+        "all_cohort_rmse_px": {
+          "count": 1061,
+          "minimum": 0.22628760105662993,
+          "p50": 3.9639329055494303,
+          "p95": 19.318614758573865,
+          "maximum": 153.63575334689295
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 1061,
+          "minimum": 0.3329797871339196,
+          "p50": 4.502570679930867,
+          "p95": 22.324304992675643,
+          "maximum": 166.1528829169082
+        },
+        "frames_passing_initial_3px_rms_6px_max": 407,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      }
+    },
+    {
+      "offset_ns": 120000000,
+      "native_count": 1195,
+      "training_modes": 6,
+      "seed_budget": 4,
+      "evaluated_seeds": 4,
+      "selected_fit": {
+        "pose": {
+          "xyz": [
+            1.0101879562197709,
+            0.0996054299864913,
+            -0.17757883347680853
+          ],
+          "xyzw": [
+            0.48451911734506625,
+            0.5326341334947267,
+            0.5186303748265486,
+            0.46104732844986024
+          ]
+        },
+        "optimizer_success": true,
+        "evaluations": 9,
+        "training_huber_coordinate_cost_mean": 2.0850292793692686,
+        "train_rmse_px": {
+          "count": 103,
+          "minimum": 0.313219601654476,
+          "p50": 3.258577704728225,
+          "p95": 8.832489324691446,
+          "maximum": 24.83520480608315
+        },
+        "holdout_rmse_px": {
+          "count": 274,
+          "minimum": 0.40992375605901227,
+          "p50": 3.3484837525133644,
+          "p95": 11.110707383836024,
+          "maximum": 17.842945106088305
+        },
+        "all_cohort_rmse_px": {
+          "count": 1061,
+          "minimum": 0.27270034163743445,
+          "p50": 3.278173709675964,
+          "p95": 9.939586391432613,
+          "maximum": 24.83520480608315
+        },
+        "all_cohort_maximum_corner_px": {
+          "count": 1061,
+          "minimum": 0.31529682194970926,
+          "p50": 3.6935281473435357,
+          "p95": 10.88608051384866,
+          "maximum": 27.56242515475816
+        },
+        "frames_passing_initial_3px_rms_6px_max": 473,
+        "negative_depth_frames": 0,
+        "trajectory_optimized": false,
+        "extrinsic_optimized": false,
+        "clock_calibrated": false
+      }
+    }
+  ],
+  "geometry_convention": "T_O_C(tc)=T_O_I(tc+assumed_offset)*T_I_C; one free fixed Tag per replay",
+  "same_temporal_split": true,
+  "hypothesis_offset_selection": "120 ms selected from prior gyro training diagnosis; not from these heldout fits",
+  "physical_sync_verified": false,
+  "runtime_configuration_changed": false,
+  "limitations": [
+    "Same capture temporal holdout, not independent visits",
+    "Source trajectory uses image fusion; gyro timing diagnosis is the separate check",
+    "Bounded four seed fits do not prove global uniqueness or absolute accuracy"
+  ]
+}

@@ -2,6 +2,7 @@
 #include "archive.hpp"
 #include "graph.hpp"
 #include "registration.hpp"
+#include "tags.hpp"
 #include <fstream>
 namespace ranger_backend {
 // A single owner calls all mutable methods. ROS callbacks never mutate this object.
@@ -9,7 +10,9 @@ class Backend {
 public:
   Backend(Config config, fs::path root, std::string session, Json metadata = Json::object(),
           std::unique_ptr<CandidateSearch> search = {});
-  Output process(int64_t stamp, uint64_t scan_id, const Pose& U, const Cloud& full, const std::vector<uint8_t>& cdr);
+  Output process(int64_t stamp, uint64_t scan_id, const Pose& U, const Cloud& full, const std::vector<uint8_t>& cdr,
+    const std::vector<Json>& tag_batches={});
+  void configure_tags(tags::Config config);
   Snapshot snapshot() const;
   bool is_keyframe(int64_t stamp, const Pose& U) const;
   bool task_current(const MatchTask& task) const;
@@ -31,6 +34,10 @@ private:
   int64_t last_stamp_ = -1;
   uint64_t last_scan_ = 0;
   std::ofstream log_;
+  std::optional<tags::Config> tag_config_;
+  std::unique_ptr<tags::Buffer> tag_buffer_;
+  std::map<uint64_t,std::vector<tags::Attached>> tag_history_;
+  uint64_t next_tag_keyframe_=0;
   struct Pending {
     MatchTask task;
     Factor factor;

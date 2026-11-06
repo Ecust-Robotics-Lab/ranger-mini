@@ -1,0 +1,92 @@
+{
+  "packages": [
+    {
+      "source": "calibration/ws_calib/src/hik_camera_trigger_driver",
+      "canonical": "ws_camera/src/hik_camera_trigger_driver",
+      "files": [
+        {
+          "path": ".gitignore",
+          "sha256": "4ef2991a1e42a59020b010ff86c257ce03b0733fd9c3aef3cbdc76e7e5e67aa7"
+        },
+        {
+          "path": ".clang-tidy",
+          "sha256": "dd6960f5e4722bfbe1087c0c7c8fd6f4929a2684f693e64724675686bc306f2f"
+        },
+        {
+          "path": "README_raw.md",
+          "sha256": "86af9426c6ad9434accb3034606aadbc598db49e2cb97dc8f84c5ca36bd70fbd"
+        },
+        {
+          "path": "CMakeLists.txt",
+          "sha256": "cc1989181185113db751a2050ca6216cc151657e8f82106df4ec8a3879eaedcc"
+        },
+        {
+          "path": "package.xml",
+          "sha256": "7e283487d081138aecc5d2345141ab339bdd14e9ecb047691ffee63495928b76"
+        },
+        {
+          "path": "README.md",
+          "sha256": "86dae2865feb7cca9f615489d67d706ffb2b503e7e018a3949ff741f5406660a"
+        },
+        {
+          "path": ".clang-format",
+          "sha256": "39d316067e73187125a7f222d954478052f55cd25e2831c3a44578f5f173d5c3"
+        },
+        {
+          "path": "LICENSE",
+          "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+        },
+        {
+          "path": "src/hik_camera_node.cpp",
+          "sha256": "451bc5add8cf2fdff7f2954fe361f2baa182bcb0c83dba06fc14eb2b52d81efa"
+        },
+        {
+          "path": "config/camera_params_trigger.yaml",
+          "sha256": "a4f73b2904e4a76d3ab5e8bb35f95a21761a1472d64eef0c7866c6f67a91adaf"
+        },
+        {
+          "path": "config/camera_params.yaml",
+          "sha256": "181a81b3701dd34b7949fc8b6da57bf7111db73151a39bb7b3ff5d2284fe0384"
+        },
+        {
+          "path": "config/camera_info.yaml",
+          "sha256": "c615d2dfd0f32206a4da32eaa299fc33988188f8054a0b39e4a8c4d870608b9b"
+        },
+        {
+          "path": "launch/trigger_launch.py",
+          "sha256": "2722d6dd3908ac472b1e5403b36e4ddff1814bfb9344c4d349b289e2aac4208d"
+        },
+        {
+          "path": "launch/hik_camera_launch.py",
+          "sha256": "60d07412714e877c1d2d1c63fa23835aaf411299ad9d40849be282e822481318"
+        }
+      ]
+    },
+    {
+      "source": "calibration/ws_calib/src/timeshare_writer",
+      "canonical": "ws_camera/src/timeshare_writer",
+      "files": [
+        {
+          "path": "CMakeLists.txt",
+          "sha256": "2b1c3137305f2a5d08ae306b0d496008cf4ae9454a49b5fb26dccf3179d32d6b"
+        },
+        {
+          "path": "package.xml",
+          "sha256": "174aefbd980fb4c880740898dc1946aa6535d371885384c85a75221fdf218421"
+        },
+        {
+          "path": "src/timeshare_writer_node.cpp",
+          "sha256": "30ce102b3001db5b09413d94fec9aa1124f1dfec140d86bb1d715040cd465739"
+        },
+        {
+          "path": "launch/timeshare_launch.py",
+          "sha256": "2dc6419477c028228d8051daa25a2a0ca5a080e18b1430199a7b1cd1cd87b762"
+        }
+      ]
+    }
+  ],
+  "shared_sdk": "ws_camera/src/hik_camera_ros2_driver/hikSDK",
+  "shared_sdk_bytes_verified_identical": true,
+  "camera_info_source": "calibration/camera_intrinsics/results/camera_info.yaml",
+  "camera_info_sha256": "3b8536bf5331cc7a07f98751dfa322c7c1f3f7fdc08a5e91272030735f475932"
+}

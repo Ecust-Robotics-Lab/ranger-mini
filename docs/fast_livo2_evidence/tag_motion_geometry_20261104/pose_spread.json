@@ -1,0 +1,702 @@
+{
+  "cases": [
+    {
+      "case": {
+        "name": "livo_0",
+        "offset_ns": 0,
+        "format": "native_db",
+        "path": "/home/lab307/ranger_nav/outputs/fast-livo-tag140-sync-diag02-replay-current-20261104/0/result/native_frames/native_frames_0.db3"
+      },
+      "primary_hypothesis_rule": "smallest same-image pixel RMSE; no map-reference branch selection",
+      "reference": "single fixed Tag pose fitted on 103 training frames only; not ground truth",
+      "reference_pose": {
+        "xyz": [
+          1.0095143112922902,
+          0.09941692496911679,
+          -0.1758399973745179
+        ],
+        "xyzw": [
+          0.4829482269710749,
+          0.5300797188599085,
+          0.5204611264168193,
+          0.46356953912852283
+        ]
+      },
+      "all_cohort": {
+        "count": 1061,
+        "position_distance_to_reference_m": {
+          "count": 1061,
+          "minimum": 0.00046979139642070724,
+          "p50": 0.005374553062535478,
+          "p95": 0.027004177317833205,
+          "maximum": 0.12350810302662658
+        },
+        "orientation_distance_to_reference_deg": {
+          "count": 1061,
+          "minimum": 0.21089311948228107,
+          "p50": 1.2207873440716195,
+          "p95": 2.285514982756364,
+          "maximum": 16.95769311041487
+        },
+        "maximum_pairwise_position_m": 0.17719284418793826,
+        "maximum_pairwise_orientation_deg": 30.590833539719007
+      },
+      "heldout": {
+        "count": 274,
+        "position_distance_to_reference_m": {
+          "count": 274,
+          "minimum": 0.0005737279958833874,
+          "p50": 0.005068416659207826,
+          "p95": 0.032817933163837465,
+          "maximum": 0.10438684936178581
+        },
+        "orientation_distance_to_reference_deg": {
+          "count": 274,
+          "minimum": 0.21089311948228107,
+          "p50": 1.2206791321139334,
+          "p95": 2.612019012317456,
+          "maximum": 14.75184230299218
+        },
+        "maximum_pairwise_position_m": 0.15087433378487583,
+        "maximum_pairwise_orientation_deg": 24.456234629216052
+      },
+      "two_hypothesis_angular_separation_deg": {
+        "count": 1061,
+        "minimum": 4.2048509510275744,
+        "p50": 11.761568504206574,
+        "p95": 15.953845512140068,
+        "maximum": 42.2664994706814
+      },
+      "static_windows": [
+        {
+          "start_s": 0,
+          "observed_corner_spread_px": {
+            "count": 47,
+            "minimum": 0.02307103676625352,
+            "p50": 0.0399392238151325,
+            "p95": 0.06294463453410352,
+            "maximum": 0.06988685972539688
+          },
+          "spread": {
+            "count": 47,
+            "position_distance_to_reference_m": {
+              "count": 47,
+              "minimum": 0.0004791963604482098,
+              "p50": 0.0021141897733855212,
+              "p95": 0.005730772928711568,
+              "maximum": 0.006615060598614289
+            },
+            "orientation_distance_to_reference_deg": {
+              "count": 47,
+              "minimum": 0.9449517732845236,
+              "p50": 1.4161638166695858,
+              "p95": 1.5589704931034383,
+              "maximum": 1.6199935787969542
+            },
+            "maximum_pairwise_position_m": 0.012618418022020194,
+            "maximum_pairwise_orientation_deg": 0.9619350515620171
+          },
+          "position_reference": "componentwise median in this window, diagnostic only; orientation reference remains fixed training fit"
+        },
+        {
+          "start_s": 5,
+          "observed_corner_spread_px": {
+            "count": 50,
+            "minimum": 0.018544421681334293,
+            "p50": 0.045047051691272315,
+            "p95": 0.06626471678218075,
+            "maximum": 0.08198098540114905
+          },
+          "spread": {
+            "count": 50,
+            "position_distance_to_reference_m": {
+              "count": 50,
+              "minimum": 0.0003589549203418719,
+              "p50": 0.0017200790545807006,
+              "p95": 0.006179011360207863,
+              "maximum": 0.009256718419070047
+            },
+            "orientation_distance_to_reference_deg": {
+              "count": 50,
+              "minimum": 1.1516334372876458,
+              "p50": 1.4365597851900342,
+              "p95": 1.5933151424090948,
+              "maximum": 1.6897999385752267
+            },
+            "maximum_pairwise_position_m": 0.012913519910844128,
+            "maximum_pairwise_orientation_deg": 0.7904774917015601
+          },
+          "position_reference": "componentwise median in this window, diagnostic only; orientation reference remains fixed training fit"
+        },
+        {
+          "start_s": 10,
+          "observed_corner_spread_px": {
+            "count": 50,
+            "minimum": 0.020277433720456213,
+            "p50": 0.04265666896506919,
+            "p95": 0.0695538717691806,
+            "maximum": 0.0891832430558567
+          },
+          "spread": {
+            "count": 50,
+            "position_distance_to_reference_m": {
+              "count": 50,
+              "minimum": 0.0006409059798892892,
+              "p50": 0.0023665376707899914,
+              "p95": 0.004846129403344997,
+              "maximum": 0.007034028979315442
+            },
+            "orientation_distance_to_reference_deg": {
+              "count": 50,
+              "minimum": 0.9905097724813948,
+              "p50": 1.4330549315218688,
+              "p95": 1.6251826515101706,
+              "maximum": 1.6900849874659856
+            },
+            "maximum_pairwise_position_m": 0.011516338975956797,
+            "maximum_pairwise_orientation_deg": 1.0344155542534401
+          },
+          "position_reference": "componentwise median in this window, diagnostic only; orientation reference remains fixed training fit"
+        },
+        {
+          "start_s": 55,
+          "observed_corner_spread_px": {
+            "count": 50,
+            "minimum": 0.020585877983517378,
+            "p50": 0.03963083884475131,
+            "p95": 0.06638738084599505,
+            "maximum": 0.08186098612465628
+          },
+          "spread": {
+            "count": 50,
+            "position_distance_to_reference_m": {
+              "count": 50,
+              "minimum": 0.0007603527323455519,
+              "p50": 0.0018649879794798677,
+              "p95": 0.005048808017420206,
+              "maximum": 0.00812248049572229
+            },
+            "orientation_distance_to_reference_deg": {
+              "count": 50,
+              "minimum": 0.810045651095482,
+              "p50": 1.0197047234295498,
+              "p95": 1.2294921805635015,
+              "maximum": 1.2807662753317686
+            },
+            "maximum_pairwise_position_m": 0.013393642754822424,
+            "maximum_pairwise_orientation_deg": 0.9746959832543812
+          },
+          "position_reference": "componentwise median in this window, diagnostic only; orientation reference remains fixed training fit"
+        },
+        {
+          "start_s": 90,
+          "observed_corner_spread_px": {
+            "count": 49,
+            "minimum": 0.028026071712216296,
+            "p50": 0.04841253085056623,
+            "p95": 0.07034896456324059,
+            "maximum": 0.0871875323572753
+          },
+          "spread": {
+            "count": 49,
+            "position_distance_to_reference_m": {
+              "count": 49,
+              "minimum": 0.0008313367841061022,
+              "p50": 0.00349023522691211,
+              "p95": 0.0064630045571762,
+              "maximum": 0.007767442381327531
+            },
+            "orientation_distance_to_reference_deg": {
+              "count": 49,
+              "minimum": 1.0838900044965112,
+              "p50": 1.3094617038123713,
+              "p95": 1.472467241502841,
+              "maximum": 1.5005820483400243
+            },
+            "maximum_pairwise_position_m": 0.012987237691402271,
+            "maximum_pairwise_orientation_deg": 0.643974298914165
+          },
+          "position_reference": "componentwise median in this window, diagnostic only; orientation reference remains fixed training fit"
+        }
+      ],
+      "reprojection_heldout_px": {
+        "count": 274,
+        "minimum": 0.43592317155833143,
+        "p50": 4.427327736365243,
+        "p95": 27.569147156839726,
+        "maximum": 108.11889221868492
+      }
+    },
+    {
+      "case": {
+        "name": "livo_120000000",
+        "offset_ns": 120000000,
+        "format": "native_db",
+        "path": "/home/lab307/ranger_nav/outputs/fast-livo-tag140-sync-diag02-replay-current-20261104/120000000/result/native_frames/native_frames_0.db3"
+      },
+      "primary_hypothesis_rule": "smallest same-image pixel RMSE; no map-reference branch selection",
+      "reference": "single fixed Tag pose fitted on 103 training frames only; not ground truth",
+      "reference_pose": {
+        "xyz": [
+          1.010157129672577,
+          0.09914604247986124,
+          -0.17762770049616164
+        ],
+        "xyzw": [
+          0.484884007809244,
+          0.5320967464935864,
+          0.5182280723742727,
+          0.46173608949813616
+        ]
+      },
+      "all_cohort": {
+        "count": 1061,
+        "position_distance_to_reference_m": {
+          "count": 1061,
+          "minimum": 0.00025184268403443376,
+          "p50": 0.0040123220315337665,
+          "p95": 0.012123766706885383,
+          "maximum": 0.07094471075975659
+        },
+        "orientation_distance_to_reference_deg": {
+          "count": 1061,
+          "minimum": 0.07381786069527264,
+          "p50": 0.9173652339791265,
+          "p95": 1.6428269267910307,
+          "maximum": 16.35549682075524
+        },
+        "maximum_pairwise_position_m": 0.08634096065712485,
+        "maximum_pairwise_orientation_deg": 30.20274325420678
+      },
+      "heldout": {
+        "count": 274,
+        "position_distance_to_reference_m": {
+          "count": 274,
+          "minimum": 0.00025184268403443376,
+          "p50": 0.004445203671714422,
+          "p95": 0.013827631158242284,
+          "maximum": 0.03424136641865452
+        },
+        "orientation_distance_to_reference_deg": {
+          "count": 274,
+          "minimum": 0.31061333402536867,
+          "p50": 0.9822502811373841,
+          "p95": 1.9780678620955605,
+          "maximum": 13.212805910251483
+        },
+        "maximum_pairwise_position_m": 0.04901444513690453,
+        "maximum_pairwise_orientation_deg": 24.8060919808889
+      },
+      "two_hypothesis_angular_separation_deg": {
+        "count": 1061,
+        "minimum": 4.204850951027574,
+        "p50": 11.761568504206574,
+        "p95": 15.953845512140068,
+        "maximum": 42.26649947068141
+      },
+      "static_windows": [
+        {
+          "start_s": 0,
+          "observed_corner_spread_px": {
+            "count": 47,
+            "minimum": 0.02307103676625352,
+            "p50": 0.0399392238151325,
+            "p95": 0.06294463453410352,
+            "maximum": 0.06988685972539688
+          },
+          "spread": {
+            "count": 47,
+            "position_distance_to_reference_m": {
+              "count": 47,
+              "minimum": 0.00014793492955833543,
+              "p50": 0.002205501824193285,
+              "p95": 0.0043316996132017884,
+              "maximum": 0.006463547731426662
+            },
+            "orientation_distance_to_reference_deg": {
+              "count": 47,
+              "minimum": 0.6701963660807841,
+              "p50": 1.0724258270071745,
+              "p95": 1.2678363410349551,
+              "maximum": 1.3027931269595192
+            },
+            "maximum_pairwise_position_m": 0.009663189986053292,
+            "maximum_pairwise_orientation_deg": 0.9710970788139078
+          },
+          "position_reference": "componentwise median in this window, diagnostic only; orientation reference remains fixed training fit"
+        },
+        {
+          "start_s": 5,
+          "observed_corner_spread_px": {
+            "count": 50,
+            "minimum": 0.018544421681334293,
+            "p50": 0.045047051691272315,
+            "p95": 0.06626471678218075,
+            "maximum": 0.08198098540114905
+          },
+          "spread": {
+            "count": 50,
+            "position_distance_to_reference_m": {
+              "count": 50,
+              "minimum": 0.0002571663326883764,
+              "p50": 0.002021918058927915,
+              "p95": 0.006057338567445774,
+              "maximum": 0.0091617750403328
+            },
+            "orientation_distance_to_reference_deg": {
+              "count": 50,
+              "minimum": 0.8284943965704261,
+              "p50": 1.098131781488332,
+              "p95": 1.2315448196765324,
+              "maximum": 1.3580842947625456
+            },
+            "maximum_pairwise_position_m": 0.015050787038402248,
+            "maximum_pairwise_orientation_deg": 0.8539617643595077
+          },
+          "position_reference": "componentwise median in this window, diagnostic only; orientation reference remains fixed training fit"
+        },
+        {
+          "start_s": 10,
+          "observed_corner_spread_px": {
+            "count": 50,
+            "minimum": 0.020277433720456213,
+            "p50": 0.04265666896506919,
+            "p95": 0.0695538717691806,
+            "maximum": 0.0891832430558567
+          },
+          "spread": {
+            "count": 50,
+            "position_distance_to_reference_m": {
+              "count": 50,
+              "minimum": 0.0003730690907078099,
+              "p50": 0.0015937735308448968,
+              "p95": 0.003986983770784677,
+              "maximum": 0.004398300751105057
+            },
+            "orientation_distance_to_reference_deg": {
+              "count": 50,
+              "minimum": 0.5929511024101882,
+              "p50": 1.1136075268523027,
+              "p95": 1.3182549354008937,
+              "maximum": 1.3845205926546402
+            },
+            "maximum_pairwise_position_m": 0.008443045417032237,
+            "maximum_pairwise_orientation_deg": 1.0093614762542444
+          },
+          "position_reference": "componentwise median in this window, diagnostic only; orientation reference remains fixed training fit"
+        },
+        {
+          "start_s": 55,
+          "observed_corner_spread_px": {
+            "count": 50,
+            "minimum": 0.020585877983517378,
+            "p50": 0.03963083884475131,
+            "p95": 0.06638738084599505,
+            "maximum": 0.08186098612465628
+          },
+          "spread": {
+            "count": 50,
+            "position_distance_to_reference_m": {
+              "count": 50,
+              "minimum": 0.000909742136637199,
+              "p50": 0.004754703062589526,
+              "p95": 0.008819571896321076,
+              "maximum": 0.010986519328642136
+            },
+            "orientation_distance_to_reference_deg": {
+              "count": 50,
+              "minimum": 0.42471811247006125,
+              "p50": 0.6357748435332469,
+              "p95": 0.8139373859836213,
+              "maximum": 0.8516754599311952
+            },
+            "maximum_pairwise_position_m": 0.020436163946210808,
+            "maximum_pairwise_orientation_deg": 0.9575839488184688
+          },
+          "position_reference": "componentwise median in this window, diagnostic only; orientation reference remains fixed training fit"
+        },
+        {
+          "start_s": 90,
+          "observed_corner_spread_px": {
+            "count": 49,
+            "minimum": 0.028026071712216296,
+            "p50": 0.04841253085056623,
+            "p95": 0.07034896456324059,
+            "maximum": 0.0871875323572753
+          },
+          "spread": {
+            "count": 49,
+            "position_distance_to_reference_m": {
+              "count": 49,
+              "minimum": 0.0005145297894623819,
+              "p50": 0.003792896405516824,
+              "p95": 0.008307127121050962,
+              "maximum": 0.009784268891426575
+            },
+            "orientation_distance_to_reference_deg": {
+              "count": 49,
+              "minimum": 0.7997144481129324,
+              "p50": 1.136094182267361,
+              "p95": 1.3121687949105885,
+              "maximum": 1.3753802789561862
+            },
+            "maximum_pairwise_position_m": 0.017649303358580278,
+            "maximum_pairwise_orientation_deg": 0.7141874543629178
+          },
+          "position_reference": "componentwise median in this window, diagnostic only; orientation reference remains fixed training fit"
+        }
+      ],
+      "reprojection_heldout_px": {
+        "count": 274,
+        "minimum": 0.19153224821220524,
+        "p50": 3.2793329248298413,
+        "p95": 8.896049114769857,
+        "maximum": 18.69088404456917
+      }
+    },
+    {
+      "case": {
+        "name": "lio_110000000",
+        "offset_ns": 110000000,
+        "format": "diagnostic_states",
+        "path": "/home/lab307/ranger_nav/outputs/fast-livo-tag140-motion-geometry-20261104/lio/states.jsonl"
+      },
+      "primary_hypothesis_rule": "smallest same-image pixel RMSE; no map-reference branch selection",
+      "reference": "single fixed Tag pose fitted on 103 training frames only; not ground truth",
+      "reference_pose": {
+        "xyz": [
+          1.009479771682715,
+          0.10010075091558068,
+          -0.17688809986027562
+        ],
+        "xyzw": [
+          0.48383221904422863,
+          0.5296888573006042,
+          0.5187150982086434,
+          0.46504918573922394
+        ]
+      },
+      "all_cohort": {
+        "count": 1061,
+        "position_distance_to_reference_m": {
+          "count": 1061,
+          "minimum": 0.0001807842616594852,
+          "p50": 0.0017497568510780295,
+          "p95": 0.004298141626263399,
+          "maximum": 0.07246014351156191
+        },
+        "orientation_distance_to_reference_deg": {
+          "count": 1061,
+          "minimum": 0.15910084269613345,
+          "p50": 0.9755026686708645,
+          "p95": 1.6388359770056182,
+          "maximum": 16.02434428702786
+        },
+        "maximum_pairwise_position_m": 0.07842464974106331,
+        "maximum_pairwise_orientation_deg": 30.355145850683066
+      },
+      "heldout": {
+        "count": 274,
+        "position_distance_to_reference_m": {
+          "count": 274,
+          "minimum": 0.00019029124604727415,
+          "p50": 0.0017636507882127323,
+          "p95": 0.0035704546294896417,
+          "maximum": 0.04033788742717411
+        },
+        "orientation_distance_to_reference_deg": {
+          "count": 274,
+          "minimum": 0.16429113267758208,
+          "p50": 1.016299790458234,
+          "p95": 2.1604113380039416,
+          "maximum": 13.788094775674862
+        },
+        "maximum_pairwise_position_m": 0.043567368468285336,
+        "maximum_pairwise_orientation_deg": 24.679686015347592
+      },
+      "two_hypothesis_angular_separation_deg": {
+        "count": 1061,
+        "minimum": 4.204850951027574,
+        "p50": 11.76156850420658,
+        "p95": 15.953845512140065,
+        "maximum": 42.2664994706814
+      },
+      "static_windows": [
+        {
+          "start_s": 0,
+          "observed_corner_spread_px": {
+            "count": 47,
+            "minimum": 0.02307103676625352,
+            "p50": 0.0399392238151325,
+            "p95": 0.06294463453410352,
+            "maximum": 0.06988685972539688
+          },
+          "spread": {
+            "count": 47,
+            "position_distance_to_reference_m": {
+              "count": 47,
+              "minimum": 0.0003524469187819749,
+              "p50": 0.0011950048390775934,
+              "p95": 0.0021502363511804244,
+              "maximum": 0.0024510777148028903
+            },
+            "orientation_distance_to_reference_deg": {
+              "count": 47,
+              "minimum": 0.8452172820490118,
+              "p50": 1.2372182471107,
+              "p95": 1.3686734718061482,
+              "maximum": 1.3777950153278082
+            },
+            "maximum_pairwise_position_m": 0.004011766642428488,
+            "maximum_pairwise_orientation_deg": 0.9638823394294025
+          },
+          "position_reference": "componentwise median in this window, diagnostic only; orientation reference remains fixed training fit"
+        },
+        {
+          "start_s": 5,
+          "observed_corner_spread_px": {
+            "count": 50,
+            "minimum": 0.018544421681334293,
+            "p50": 0.045047051691272315,
+            "p95": 0.06626471678218075,
+            "maximum": 0.08198098540114905
+          },
+          "spread": {
+            "count": 50,
+            "position_distance_to_reference_m": {
+              "count": 50,
+              "minimum": 0.00020620117702899575,
+              "p50": 0.0009712327230825346,
+              "p95": 0.0018249558391480332,
+              "maximum": 0.0021203493304158185
+            },
+            "orientation_distance_to_reference_deg": {
+              "count": 50,
+              "minimum": 1.0122316861590324,
+              "p50": 1.2188695694497182,
+              "p95": 1.40151282841689,
+              "maximum": 1.4524277474410292
+            },
+            "maximum_pairwise_position_m": 0.003976569179846208,
+            "maximum_pairwise_orientation_deg": 0.8141400457949645
+          },
+          "position_reference": "componentwise median in this window, diagnostic only; orientation reference remains fixed training fit"
+        },
+        {
+          "start_s": 10,
+          "observed_corner_spread_px": {
+            "count": 50,
+            "minimum": 0.020277433720456213,
+            "p50": 0.04265666896506919,
+            "p95": 0.0695538717691806,
+            "maximum": 0.0891832430558567
+          },
+          "spread": {
+            "count": 50,
+            "position_distance_to_reference_m": {
+              "count": 50,
+              "minimum": 0.000281986046060076,
+              "p50": 0.0009619193268493287,
+              "p95": 0.0018396187781477761,
+              "maximum": 0.002113579871228054
+            },
+            "orientation_distance_to_reference_deg": {
+              "count": 50,
+              "minimum": 0.930777615739818,
+              "p50": 1.2267157015854424,
+              "p95": 1.4091698690845695,
+              "maximum": 1.4649853514253963
+            },
+            "maximum_pairwise_position_m": 0.003909892938968429,
+            "maximum_pairwise_orientation_deg": 1.0178745677288727
+          },
+          "position_reference": "componentwise median in this window, diagnostic only; orientation reference remains fixed training fit"
+        },
+        {
+          "start_s": 55,
+          "observed_corner_spread_px": {
+            "count": 50,
+            "minimum": 0.020585877983517378,
+            "p50": 0.03963083884475131,
+            "p95": 0.06638738084599505,
+            "maximum": 0.08186098612465628
+          },
+          "spread": {
+            "count": 50,
+            "position_distance_to_reference_m": {
+              "count": 50,
+              "minimum": 0.00019148839465689564,
+              "p50": 0.0011429595862176717,
+              "p95": 0.0018719769303798938,
+              "maximum": 0.0027450182129227538
+            },
+            "orientation_distance_to_reference_deg": {
+              "count": 50,
+              "minimum": 0.6892069199358124,
+              "p50": 0.9448191420099272,
+              "p95": 1.1352392993185292,
+              "maximum": 1.2341127209409994
+            },
+            "maximum_pairwise_position_m": 0.004189235805715188,
+            "maximum_pairwise_orientation_deg": 0.946203063180506
+          },
+          "position_reference": "componentwise median in this window, diagnostic only; orientation reference remains fixed training fit"
+        },
+        {
+          "start_s": 90,
+          "observed_corner_spread_px": {
+            "count": 49,
+            "minimum": 0.028026071712216296,
+            "p50": 0.04841253085056623,
+            "p95": 0.07034896456324059,
+            "maximum": 0.0871875323572753
+          },
+          "spread": {
+            "count": 49,
+            "position_distance_to_reference_m": {
+              "count": 49,
+              "minimum": 0.00026648156343306084,
+              "p50": 0.0010168416843233023,
+              "p95": 0.0018366713832682186,
+              "maximum": 0.0019128898176742335
+            },
+            "orientation_distance_to_reference_deg": {
+              "count": 49,
+              "minimum": 0.7448267537373816,
+              "p50": 0.9824624389438731,
+              "p95": 1.119007219226167,
+              "maximum": 1.1886480780751112
+            },
+            "maximum_pairwise_position_m": 0.0038019362839404516,
+            "maximum_pairwise_orientation_deg": 0.6878418229384065
+          },
+          "position_reference": "componentwise median in this window, diagnostic only; orientation reference remains fixed training fit"
+        }
+      ],
+      "reprojection_heldout_px": {
+        "count": 274,
+        "minimum": 0.2245548226401293,
+        "p50": 1.5746156851483324,
+        "p95": 3.3765998281688567,
+        "maximum": 6.585588135448733
+      }
+    }
+  ],
+  "source_sha256": {
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-sync-diag02-screen-20261029/observations.jsonl": "47bcafcbd9266ecf7716ec33b016aded639731ab011479b23b457bc215d7d563",
+    "/home/lab307/ranger_nav/bags/fast-livo-tag140_sync_diag_02-35f_m8nd/sources/0_apriltag_camera.json": "54af13d1316b85954514196e0bb16deada8c1a18ad55a9ca12a2daa761d9f0b1",
+    "/home/lab307/ranger_nav/docs/fast_livo2_evidence/tag_motion_geometry_20261104/cohort.json": "2b2041604c8efb7ac099a0c12748cf1a9f07bbcdd79cdf0d1eb030048e86a5c1",
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-motion-geometry-20261104/comparison_final/livo_0.json": "6decc5063c39608ea864c10994b05ac97128de00abd23776d2a8f8635ff92f67",
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-sync-diag02-replay-current-20261104/0/result/native_frames/native_frames_0.db3": "083196bd30ed96ac81368864ce96e2b7089ea9ae26ed7e91ae54966875f38513",
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-motion-geometry-20261104/comparison_final/livo_120000000.json": "6838a14447620f25c5884b90af5b0dcd48a1fe85b90b40ac1ec2280b628e9a7f",
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-sync-diag02-replay-current-20261104/120000000/result/native_frames/native_frames_0.db3": "920f592879a69c7995dc83be6889cf43caff04359784617572f043b7d0ab3dd0",
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-motion-geometry-20261104/comparison_final/lio_110000000.json": "69627408e4826462014fe90dce7e55023f4d2181438fd13ceb78188c76d23bf2",
+    "/home/lab307/ranger_nav/outputs/fast-livo-tag140-motion-geometry-20261104/lio/states.jsonl": "7002c7dcc2272977aa1a3396e8c635055c610fd29e860ddab4d739c1debce9c1"
+  },
+  "source_capture": "fast-livo-tag140_sync_diag_02-35f_m8nd",
+  "source_kind": "same-capture current-source offline replay; not an independent truth trajectory",
+  "uncertainty": "primary branch spread includes planar-PnP ambiguity and camera/time/trajectory errors; not absolute robot localization error",
+  "landmark_created": false,
+  "hardware_started": false,
+  "configuration_changed": false
+}

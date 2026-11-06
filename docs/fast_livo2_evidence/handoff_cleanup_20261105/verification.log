@@ -1,0 +1,53 @@
+{
+  "passed": true,
+  "source_config_files_sha256_unchanged": 239,
+  "map_files_sha256_unchanged": 405,
+  "retained_databases_size_mtime_unchanged": 16,
+  "current_document_links_checked": 177,
+  "frontend_trial_img_time_offset_s": 0.1,
+  "tag_offset_ns": 0,
+  "tag_time_verified": false,
+  "raw_capture_directories_deleted": 3,
+  "payload_bytes_removed": 15139703674,
+  "free_bytes_before": 830165786624,
+  "free_bytes_after": 845299474432,
+  "free_bytes_change": 15133687808,
+  "sessions": [
+    {
+      "kind": "fast_livo_live",
+      "state": "STOPPED",
+      "owned": [],
+      "matching_live_identities": []
+    },
+    {
+      "kind": "fast_livo_record",
+      "state": "STOPPED",
+      "owned": [],
+      "matching_live_identities": []
+    },
+    {
+      "kind": "fast_livo_backend",
+      "state": "FAILED",
+      "owned": [],
+      "matching_live_identities": []
+    },
+    {
+      "kind": "fast_livo_localizer",
+      "state": "FAILED",
+      "owned": [],
+      "matching_live_identities": []
+    },
+    {
+      "kind": "fast_livo_relocalizer",
+      "state": "FAILED",
+      "owned": [],
+      "matching_live_identities": []
+    }
+  ],
+  "git_head_unchanged": "acffa879cc8d52330276089cd3df83ad6a43f112",
+  "git_branch": "refactor/pluggable-navigation",
+  "new_algorithm_tests_run": false,
+  "hardware_started": false,
+  "binary_deployment_performed": false,
+  "git_commit_or_push": false
+}

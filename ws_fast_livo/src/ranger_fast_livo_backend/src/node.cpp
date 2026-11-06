@@ -1,11 +1,14 @@
 #include "ranger_fast_livo_backend/backend.hpp"
 #include "ranger_fast_livo_backend/input.hpp"
+#include "ranger_fast_livo_backend/map_view.hpp"
 #include <rclcpp/rclcpp.hpp>
 #include <rclcpp/serialization.hpp>
 #include <ranger_fast_livo_backend/msg/backend_estimate.hpp>
 #include <ranger_fast_livo_backend/srv/export_snapshot.hpp>
+#include <ranger_fast_livo_backend/srv/finalize_mapping.hpp>
 #include <diagnostic_msgs/msg/diagnostic_array.hpp>
 #include <nav_msgs/msg/path.hpp>
+#include <std_msgs/msg/string.hpp>
 #include <atomic>
 #include <condition_variable>
 #include <deque>
@@ -69,6 +72,16 @@ public:
     config_.max_iterations = declare_parameter<int>("max_iterations", 50);
     config_.registration_threads = declare_parameter<int>("registration_threads", 1);
     config_.validate();
+    bool enable_tags=declare_parameter<bool>("enable_tag_loop",false);
+    auto tag_path=declare_parameter<std::string>("tag_config_path","");
+    if(enable_tags){
+      if(!get_parameter("use_sim_time").as_bool())throw std::invalid_argument("Tag B entry requires offline use_sim_time");
+      tag_config_=tags::Config::parse(tags::read_json(tag_path));
+      tag_context_publisher_=create_publisher<std_msgs::msg::String>("/fast_livo/tags/context",rclcpp::QoS(1).transient_local());
+      tag_subscription_=create_subscription<std_msgs::msg::String>("/fast_livo/tags/observations",rclcpp::QoS(4).best_effort(),[this](std_msgs::msg::String::ConstSharedPtr m){
+        std::lock_guard<std::mutex> lock(mutex_);if(m->data.size()>262144)return;if(tag_inbox_.size()>=8)tag_inbox_.pop_front();tag_inbox_.push_back({steady_seconds(),m->data});
+      });
+    }
     data_root_ = declare_parameter<std::string>("data_root", (fs::current_path() / ".runtime/fast_livo_backend").string());
     if (!data_root_.is_absolute()) throw std::invalid_argument("data_root must be absolute");
     std::string metadata = declare_parameter<std::string>("metadata_path", "");
@@ -102,6 +115,7 @@ public:
     diagnostics_ = create_publisher<diagnostic_msgs::msg::DiagnosticArray>("/fast_livo/backend/health", 10);
     raw_path_ = create_publisher<nav_msgs::msg::Path>("/fast_livo/backend/raw_path", 1);
     optimized_path_ = create_publisher<nav_msgs::msg::Path>("/fast_livo/backend/optimized_path", 1);
+    if (declare_parameter<bool>("publish_map_view", false)) view_ = std::make_unique<MapView>(*this);
     odom_ = create_subscription<Odom>("/fast_livo/odometry", rclcpp::QoS(32).reliable(), [this](Odom::ConstSharedPtr m){
         receive(m);
       });
@@ -126,7 +140,14 @@ public:
         res->graph_version = s.version;
         res->manifest_path = r.manifest.string();
       }, rmw_qos_profile_services_default, export_group_);
+    finalize_service_ = create_service<ranger_fast_livo_backend::srv::FinalizeMapping>(
+      "/fast_livo/backend/finalize_mapping", [this](
+        const std::shared_ptr<ranger_fast_livo_backend::srv::FinalizeMapping::Request> request,
+        std::shared_ptr<ranger_fast_livo_backend::srv::FinalizeMapping::Response> response) {
+        finalize(*request, *response);
+      }, rmw_qos_profile_services_default, export_group_);
     session_ = uuid();
+    if (view_) view_->reset(generation_);
     worker_ = std::thread([this] {
         work();
       });
@@ -148,6 +169,7 @@ private:
     Pair pair;
     uint64_t generation, scan;
     double received;
+    std::vector<std::pair<double,std::string>> tag_batches;
   };
   Config config_;
   Json metadata_;
@@ -158,7 +180,9 @@ private:
   uint64_t scan_id_ = 0;
   std::mutex mutex_, core_mutex_;
   std::condition_variable condition_;
-  bool stopping_ = false, terminal_ = false, inputs_ready_ = false;
+  bool stopping_ = false, terminal_ = false, inputs_ready_ = false, sealed_ = false, worker_busy_ = false;
+  uint64_t processed_pairs_ = 0;
+  int64_t last_enqueued_stamp_ = -1;
   std::atomic<uint64_t> generation_{1};
   std::string session_, identity_, reason_ = "waiting_for_publishers";
   uint8_t state_ = Estimate::INITIALIZING;
@@ -169,6 +193,10 @@ private:
   double sample_max_age_ = .5, stream_timeout_ = 2.;
   uint64_t invalid_messages_ = 0;
   std::unique_ptr<Backend> core_;
+  std::unique_ptr<MapView> view_;
+  std::optional<tags::Config> tag_config_;std::deque<std::pair<double,std::string>> tag_inbox_;
+  rclcpp::Publisher<std_msgs::msg::String>::SharedPtr tag_context_publisher_;
+  rclcpp::Subscription<std_msgs::msg::String>::SharedPtr tag_subscription_;
   std::thread worker_;
   rclcpp::Subscription<Odom>::SharedPtr odom_;
   rclcpp::Subscription<Scan>::SharedPtr cloud_;
@@ -177,17 +205,70 @@ private:
   rclcpp::Publisher<nav_msgs::msg::Path>::SharedPtr raw_path_, optimized_path_;
   rclcpp::CallbackGroup::SharedPtr export_group_;
   rclcpp::Service<ranger_fast_livo_backend::srv::ExportSnapshot>::SharedPtr service_;
+  rclcpp::Service<ranger_fast_livo_backend::srv::FinalizeMapping>::SharedPtr finalize_service_;
   rclcpp::TimerBase::SharedPtr timer_;
+  void finalize(const ranger_fast_livo_backend::srv::FinalizeMapping::Request& request,
+                ranger_fast_livo_backend::srv::FinalizeMapping::Response& response) {
+    try {
+      if (!std::isfinite(request.timeout_seconds) || request.timeout_seconds < 1 || request.timeout_seconds > 180)
+        throw std::invalid_argument("finalization timeout must be 1..180s");
+      {
+        std::lock_guard<std::mutex> lock(mutex_);
+        if (request.expected_session_id.empty() || request.expected_session_id != session_)
+          throw std::runtime_error("finalization session mismatch");
+        if (terminal_ || !have_output_) throw std::runtime_error("cannot finalize failed or empty backend");
+        sealed_ = true; // Publishers stay alive; their later messages cannot enter this graph.
+      }
+      double deadline = steady_seconds() + request.timeout_seconds;
+      for (;;) {
+        {
+          std::lock_guard<std::mutex> lock(mutex_);
+          if (terminal_ || session_ != request.expected_session_id)
+            throw std::runtime_error("backend failed or changed during finalization");
+          if (pairs_.size()==0 && queue_.empty() && !worker_busy_) {
+            if (!have_output_ || output_.stamp_ns != last_enqueued_stamp_)
+              throw std::runtime_error("last enqueued frame was not processed");
+            if (invalid_messages_ || pairs_.counters.value("full_complete", 0) ||
+                pairs_.counters.value("cloud_byte_budget_rejected", 0) ||
+                pairs_.counters.value("capacity_evicted_unpaired", 0) ||
+                pairs_.counters.value("unpaired_timeout", 0))
+              throw std::runtime_error("invalid input or capacity loss; diagnostic export remains available");
+            response.last_stamp_ns=output_.stamp_ns;
+            response.processed_pairs=processed_pairs_;
+            break;
+          }
+        }
+        if (steady_seconds() >= deadline) throw std::runtime_error("sealed input drain timeout; graph retained");
+        std::this_thread::sleep_for(std::chrono::milliseconds(20));
+      }
+      Snapshot snapshot;
+      {
+        std::lock_guard<std::mutex> lock(core_mutex_);
+        if (!core_) throw std::runtime_error("backend not initialized");
+        snapshot=core_->snapshot();
+      }
+      if (snapshot.session != request.expected_session_id || snapshot.frames.empty())
+        throw std::runtime_error("frozen snapshot identity mismatch");
+      auto result=export_snapshot(snapshot, request.destination);
+      response.success=result.success; response.reason=result.reason;
+      response.session_id=snapshot.session; response.graph_version=snapshot.version;
+      response.manifest_path=result.manifest.string();
+    } catch (const std::exception& e) {response.reason=e.what();}
+  }
   void invalidate_locked(const std::string& reason, bool terminal = false){
     ++generation_;
     session_ = uuid();
     pairs_.clear();
     queue_.clear();
+    tag_inbox_.clear();
     scan_id_ = 0;
+    processed_pairs_ = 0;
+    last_enqueued_stamp_ = -1;
     have_output_ = false;
     reason_ = reason;
     state_ = terminal?Estimate::ERROR:Estimate::INITIALIZING;
     terminal_ = terminal;
+    if (view_) view_->reset(generation_);
     condition_.notify_all();
   }
   template<class T>void receive(std::shared_ptr<const T> m){
@@ -196,6 +277,8 @@ private:
     try{
       auto now = get_clock()->now().nanoseconds();
       auto ns = stamp_ns(m->header.stamp);
+      // Finish a pair already present at the sealing boundary; admit no new stamp.
+      if (sealed_ && !pairs_.contains(ns)) return;
       if (now == 0 || ns > now + int64_t(sample_max_age_ * 1e9) || ns < now - int64_t(stream_timeout_ * 1e9)) throw std::invalid_argument("input epoch/age mismatch");
       if (!pairs_.push(m, steady_seconds())) reason_ = "duplicate_or_capacity_rejection";
     }
@@ -231,14 +314,15 @@ private:
   }
   void tick(){
     Estimate message;
+    std_msgs::msg::String tag_context;
     diagnostic_msgs::msg::DiagnosticArray diagnostics;
     {
       std::lock_guard<std::mutex> lock(mutex_);
       auto ros_now = get_clock()->now().nanoseconds();
       double steady = steady_seconds();
-      if (last_clock_ >= 0 && ros_now < last_clock_ && !terminal_) invalidate_locked("ros_clock_regressed");
+      if (last_clock_ >= 0 && ros_now < last_clock_ && !terminal_ && !sealed_) invalidate_locked("ros_clock_regressed");
       last_clock_ = ros_now;
-      if (steady - last_discovery_ > .2 && !terminal_) {
+      if (steady - last_discovery_ > .2 && !terminal_ && !sealed_) {
         discover_locked();
         last_discovery_ = steady;
       }
@@ -250,13 +334,15 @@ private:
             invalidate_locked("work_queue_exhausted", true);
             break;
           }
-          queue_.push_back({pair, generation_, scan_id_++, steady});
+          Job job{pair,generation_,scan_id_++,steady,{}};job.tag_batches.assign(tag_inbox_.begin(),tag_inbox_.end());tag_inbox_.clear();queue_.push_back(std::move(job));
+          last_enqueued_stamp_=stamp_ns(pair.odom->header.stamp);
           condition_.notify_one();
         }
       }
       message.header.frame_id = "map";
       message.imu_frame = "fast_livo_imu";
       message.session_id = session_;
+      if(tag_config_)tag_context.data=Json({{"schema_version",1},{"context",session_},{"calibration_id",tag_config_->calibration_id},{"time_mapping_id",tag_config_->time_mapping_id}}).dump();
       message.state = state_;
       message.reason = reason_;
       if (have_output_) {
@@ -281,7 +367,9 @@ private:
       status.name = "ranger_fast_livo_backend";
       status.level = message.state == Estimate::VALID?0:2;
       status.message = message.reason;
-      Json counts = {{"session_id", session_}, {"graph_version", message.graph_version}, {"pair_cache_entries", pairs_.size()}, {"work_queue_entries", queue_.size()}, {"invalid_messages", invalid_messages_}, {"pair_counters", pairs_.counters}, {"public_tf_publisher", false}};
+      Json counts = {{"session_id", session_}, {"graph_version", message.graph_version}, {"pair_cache_entries", pairs_.size()}, {"work_queue_entries", queue_.size()}, {"invalid_messages", invalid_messages_}, {"pair_counters", pairs_.counters}, {"public_tf_publisher", false},
+        {"sealed", sealed_}, {"worker_busy", worker_busy_}, {"processed_pairs", processed_pairs_},
+        {"last_enqueued_stamp_ns", last_enqueued_stamp_}, {"last_processed_stamp_ns", have_output_?output_.stamp_ns:-1}};
       diagnostic_msgs::msg::KeyValue kv;
       kv.key = "metrics";
       kv.value = counts.dump();
@@ -289,6 +377,7 @@ private:
       diagnostics.status.push_back(status);
     }
     publisher_->publish(message);
+    if(tag_context_publisher_)tag_context_publisher_->publish(tag_context);
     diagnostics_->publish(diagnostics);
   }
   static geometry_msgs::msg::Pose pose_message(const Pose& p){
@@ -343,6 +432,7 @@ private:
         if (generation == active_generation) {
           job = queue_.front();
           queue_.pop_front();
+          worker_busy_=true;
         }
       }
       try{
@@ -352,6 +442,7 @@ private:
           metadata["frontend_publisher_gids"] = input_identity;
           metadata["sample_time_contract"] = "VIO-corrected IMU pose; deskewed interval ends at LIO/VIO image cut time; output stamps share integer nanoseconds";
           core_ = std::make_unique<Backend>(config_, data_root_, session, metadata);
+          if(tag_config_)core_->configure_tags(*tag_config_);
           active_generation = generation;
           continue;
         }
@@ -365,22 +456,31 @@ private:
         Snapshot snapshot;
         {
           std::lock_guard<std::mutex> lock(core_mutex_);
-          result = core_->process(stamp_ns(job.pair.odom->header.stamp), job.scan, odom_pose(*job.pair.odom), *full, cdr);
+          std::vector<Json> batches;for(const auto& [received,text]:job.tag_batches)try{
+            tags::require(tag_config_&&steady_seconds()-received<=tag_config_->maximum_wait,"consumer_queue_expired");batches.push_back(Json::parse(text));
+          }catch(const std::exception& e){RCLCPP_WARN(get_logger(),"Tag batch rejected: %s",e.what());}
+          result = core_->process(stamp_ns(job.pair.odom->header.stamp), job.scan, odom_pose(*job.pair.odom), *full, cdr,batches);
           if (result.loop_accepted || result.scan_id % 10 == 0) snapshot = core_->snapshot();
         }
         {
           std::lock_guard<std::mutex> lock(mutex_);
+          worker_busy_=false;
           if (job.generation != generation_) continue;
           output_ = result;
           have_output_ = true;
+          ++processed_pairs_;
           last_received_ = job.received;
           state_ = Estimate::VALID;
           reason_ = result.loop_accepted?"loop_accepted_optimization_committed":"frontend_tracking_with_pgo";
         }
-        if (!snapshot.frames.empty() && job.generation == generation_) paths(snapshot);
+        if (!snapshot.frames.empty() && job.generation == generation_) {
+          paths(snapshot);
+          if (view_) view_->offer(std::move(snapshot), job.generation);
+        }
       }
       catch (const std::exception& e) {
         std::lock_guard<std::mutex> lock(mutex_);
+        worker_busy_=false;
         active_generation = generation;
         if (generation == generation_) {
           terminal_ = true;

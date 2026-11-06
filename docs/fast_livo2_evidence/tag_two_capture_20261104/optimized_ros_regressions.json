@@ -1,0 +1,33 @@
+{
+  "executable": "/home/lab307/ranger_nav/ws_fast_livo/install_c1_confirmation_20261104/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node",
+  "executable_sha256": "99453aca95043aba1beb78f11fb1a08fb0805140c964e74ec7ad44a32d0bb619",
+  "suites": [
+    {
+      "module": "test_fast_livo_localizer_ros",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": true,
+      "wall_seconds": 26.477886777000037
+    },
+    {
+      "module": "test_fast_livo_relocalizer_ros",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": true,
+      "wall_seconds": 12.95764460099997
+    },
+    {
+      "module": "test_fast_livo_tags_ros",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "passed": true,
+      "wall_seconds": 16.228268334999996
+    }
+  ]
+}

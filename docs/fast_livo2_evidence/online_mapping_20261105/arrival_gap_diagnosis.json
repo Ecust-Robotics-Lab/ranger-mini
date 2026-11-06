@@ -1,0 +1,64 @@
+{
+  "full_replay_10": {
+    "watchdog_stalled_topics": [
+      "/livox/imu"
+    ],
+    "recorder_arrival_evidence": {
+      "/livox/imu": {
+        "messages_in_last_15s": 3000,
+        "maximum_recorder_arrival_gap_seconds": 0.110643929,
+        "header_gap_at_that_arrival_gap_seconds": 0.00570662,
+        "last_arrival_seconds_before_record_end": 0.0
+      },
+      "/livox/lidar": {
+        "messages_in_last_15s": 150,
+        "maximum_recorder_arrival_gap_seconds": 0.100846094,
+        "header_gap_at_that_arrival_gap_seconds": 0.10032,
+        "last_arrival_seconds_before_record_end": 0.010447587
+      },
+      "/front/image_sync": {
+        "messages_in_last_15s": 157,
+        "maximum_recorder_arrival_gap_seconds": 0.989678487,
+        "header_gap_at_that_arrival_gap_seconds": 0.09984,
+        "last_arrival_seconds_before_record_end": 0.068533087
+      },
+      "/fast_livo/odometry": {
+        "messages_in_last_15s": 152,
+        "maximum_recorder_arrival_gap_seconds": 1.739479545,
+        "header_gap_at_that_arrival_gap_seconds": 0.099839926,
+        "last_arrival_seconds_before_record_end": 0.004236232
+      }
+    }
+  },
+  "full_replay_11": {
+    "watchdog_stalled_topics": [
+      "/livox/imu"
+    ],
+    "recorder_arrival_evidence": {
+      "/livox/imu": {
+        "messages_in_last_15s": 3001,
+        "maximum_recorder_arrival_gap_seconds": 1.111578992,
+        "header_gap_at_that_arrival_gap_seconds": 0.0042504,
+        "last_arrival_seconds_before_record_end": 0.0
+      },
+      "/livox/lidar": {
+        "messages_in_last_15s": 150,
+        "maximum_recorder_arrival_gap_seconds": 0.101331128,
+        "header_gap_at_that_arrival_gap_seconds": 0.10032,
+        "last_arrival_seconds_before_record_end": 0.095580433
+      },
+      "/front/image_sync": {
+        "messages_in_last_15s": 155,
+        "maximum_recorder_arrival_gap_seconds": 1.002516069,
+        "header_gap_at_that_arrival_gap_seconds": 0.09984,
+        "last_arrival_seconds_before_record_end": 0.052350733
+      },
+      "/fast_livo/odometry": {
+        "messages_in_last_15s": 149,
+        "maximum_recorder_arrival_gap_seconds": 1.066655409,
+        "header_gap_at_that_arrival_gap_seconds": 0.099839926,
+        "last_arrival_seconds_before_record_end": 0.003321535
+      }
+    }
+  }
+}

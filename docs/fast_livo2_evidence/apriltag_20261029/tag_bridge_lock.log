@@ -1,0 +1,16 @@
+test_tag_recovery_does_not_unlock_public_innovation_latch (__main__.TagRos) ... FAIL
+
+======================================================================
+FAIL: test_tag_recovery_does_not_unlock_public_innovation_latch (__main__.TagRos)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_tags_ros.py", line 285, in test_tag_recovery_does_not_unlock_public_innovation_latch
+    self.wait(lambda: self.health.get('innovation_unlocked') == '0')
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 144, in wait
+    self.fail('Timeout; '+str(self.directory)+'; last='+str([(m.state, m.reason) for m in self.private[-3:]]))
+AssertionError: Timeout; /home/lab307/ranger_nav/docs/fast_livo2_evidence/apriltag_20261029/ros/test_tag_recovery_does_not_unlock_public_innovation_latch-yyw1kdfu; last=[(3, 'confirmed_sample_or_stream_expired_requires_initial_pose'), (3, 'confirmed_sample_or_stream_expired_requires_initial_pose'), (3, 'confirmed_sample_or_stream_expired_requires_initial_pose')]
+
+----------------------------------------------------------------------
+Ran 1 test in 12.810s
+
+FAILED (failures=1)

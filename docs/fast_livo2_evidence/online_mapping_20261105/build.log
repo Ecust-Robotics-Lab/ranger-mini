@@ -1,0 +1,124 @@
+/home/lab307/ranger_nav/ws_fast_livo/online_frontend_source
+-- Build Type: Release
+-- Current CPU architecture: x86_64
+-- Using portable x86 optimizations: -O3 -funroll-loops
+-- Processor count: 32
+-- Multithreading enabled. Cores: 4
+-- OpenMP found
+-- mimalloc not found, proceeding without it
+-- Found rosbag2_cpp: 0.15.16 (/opt/ros/humble/share/rosbag2_cpp/cmake)
+-- Found rosidl_generator_c: 3.1.9 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+-- Found rosidl_adapter: 3.1.9 (/opt/ros/humble/share/rosidl_adapter/cmake)
+-- Found rosidl_generator_cpp: 3.1.9 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 6.1.3 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 6.2.10 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+-- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+-- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+-- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+-- Found TinyXML2 via Config file: TinyXML2_DIR-NOTFOUND
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Found rclpy: 3.3.21 (/opt/ros/humble/share/rclpy/cmake)
+-- Found geometry_msgs: 4.9.2 (/opt/ros/humble/share/geometry_msgs/cmake)
+-- Found nav_msgs: 4.9.2 (/opt/ros/humble/share/nav_msgs/cmake)
+-- Found sensor_msgs: 4.9.2 (/opt/ros/humble/share/sensor_msgs/cmake)
+-- Found visualization_msgs: 4.9.2 (/opt/ros/humble/share/visualization_msgs/cmake)
+-- Found pcl_conversions: 2.4.5 (/opt/ros/humble/share/pcl_conversions/cmake)
+-- Eigen found (include: /usr/include/eigen3, version: 3.4.0)
+-- FLANN found (include: /usr/include, lib: /usr/lib/x86_64-linux-gnu/libflann_cpp.so)
+-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+-- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+-- Eigen found (include: /usr/include/eigen3, version: 3.4.0)
+-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+-- OpenNI2 found (version: 2.2.0.33, include: /usr/include/openni2, lib: /usr/lib/x86_64-linux-gnu/libOpenNI2.so;libusb::libusb)
+-- Found Qhull version 8.0.2
+-- OpenNI found (version: 1.5.4.0, include: /usr/include/ni, lib: /usr/lib/libOpenNI.so;libusb::libusb)
+-- Found tf2_ros: 0.25.22 (/opt/ros/humble/share/tf2_ros/cmake)
+-- Found tf2_geometry_msgs: 0.25.22 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)
+-- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+-- Found Eigen3: TRUE (found version "3.4.0") 
+-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+-- Found livox_ros_driver2: 1.0.0 (/home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/share/livox_ros_driver2/cmake)
+-- Found cv_bridge: 3.2.1 (/opt/ros/humble/share/cv_bridge/cmake)
+-- Found image_transport: 3.1.13 (/opt/ros/humble/share/image_transport/cmake)
+CMake Warning (dev) at CMakeLists.txt:97 (find_package):
+  Policy CMP0074 is not set: find_package uses <PackageName>_ROOT variables.
+  Run "cmake --help-policy CMP0074" for policy details.  Use the cmake_policy
+  command to set the policy and suppress this warning.
+
+  CMake variable PCL_ROOT is set to:
+
+    /usr
+
+  For compatibility, CMake is ignoring the variable.
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+-- Found Eigen3: TRUE (found suitable version "3.4.0", minimum required is "3.4.0") 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_build
+Consolidate compiler generated dependencies of target utils
+[ 10%] Built target utils
+Consolidate compiler generated dependencies of target vio
+Consolidate compiler generated dependencies of target pre
+[ 30%] Built target vio
+[ 40%] Built target pre
+Consolidate compiler generated dependencies of target imu_proc
+Consolidate compiler generated dependencies of target laser_mapping
+[ 50%] Built target imu_proc
+[ 60%] Built target laser_mapping
+Consolidate compiler generated dependencies of target ranger_livo_checks
+Consolidate compiler generated dependencies of target lio
+[ 70%] Built target ranger_livo_checks
+[ 80%] Built target lio
+Consolidate compiler generated dependencies of target ranger_livo_replay
+Consolidate compiler generated dependencies of target fastlivo_mapping
+[ 90%] Built target ranger_livo_replay
+[100%] Built target fastlivo_mapping
+-- Install configuration: "Release"
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/lib/fast_livo/fastlivo_mapping
+-- Set runtime path of "/home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/lib/fast_livo/fastlivo_mapping" to ""
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/lib/fast_livo/ranger_livo_replay
+-- Set runtime path of "/home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/lib/fast_livo/ranger_livo_replay" to ""
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/lib/fast_livo/ranger_livo_checks
+-- Set runtime path of "/home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/lib/fast_livo/ranger_livo_checks" to ""
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/config
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/config/avia.yaml
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/config/camera_pinhole.yaml
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/config/camera_MARS_LVIG.yaml
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/config/camera_NTU_VIRAL.yaml
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/config/HILTI22.yaml
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/config/MARS_LVIG.yaml
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/config/NTU_VIRAL.yaml
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/config/camera_fisheye_HILTI22.yaml
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/launch
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/launch/mapping_aviz.launch.py
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/launch/mapping_hesaixt32_hilti22.launch
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/launch/mapping_avia_marslvig.launch.py
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/launch/mapping_ouster_ntu.launch.py
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/rviz_cfg
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/rviz_cfg/M300.rviz
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/rviz_cfg/fast_livo2.rviz
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/rviz_cfg/hilti.rviz
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/rviz_cfg/ntu_viral.rviz
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/ament_index/resource_index/package_run_dependencies/fast_livo
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/ament_index/resource_index/parent_prefix_path/fast_livo
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/environment/ament_prefix_path.sh
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/environment/ament_prefix_path.dsv
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/environment/path.sh
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/environment/path.dsv
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/local_setup.bash
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/local_setup.sh
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/local_setup.zsh
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/local_setup.dsv
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/package.dsv
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/ament_index/resource_index/packages/fast_livo
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/cmake/fast_livoConfig.cmake
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/cmake/fast_livoConfig-version.cmake
+-- Installing: /home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/share/fast_livo/package.xml
+Starting >>> ranger_fast_livo_backend
+Finished <<< ranger_fast_livo_backend [0.41s]
+
+Summary: 1 package finished [0.53s]

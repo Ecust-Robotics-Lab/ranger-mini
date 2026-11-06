@@ -1,0 +1,31 @@
+{
+  "action": "DRY-RUN",
+  "hardware_started": false,
+  "localhost_only": true,
+  "domain": 189,
+  "components": [
+    {
+      "name": "tag_observer",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/tag_observer_node",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true",
+        "-p",
+        "tag_config_path:=/home/lab307/ranger_nav/config/fast_livo2/apriltag_camera.json",
+        "-p",
+        "family:=tag36h11",
+        "-p",
+        "tag_sizes_json:='{\"1\":0.140}'",
+        "-p",
+        "image_topic:=/front/image_sync"
+      ],
+      "depends": [],
+      "requires": [],
+      "ready_key": "process",
+      "critical": true,
+      "start_requires": [],
+      "resource": "fast_livo_tag_observer"
+    }
+  ]
+}

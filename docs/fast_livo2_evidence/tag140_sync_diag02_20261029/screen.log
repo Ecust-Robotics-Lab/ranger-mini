@@ -1,0 +1,103 @@
+{
+  "kind": "read_only_capture_screening_not_registration",
+  "capture": "/home/lab307/ranger_nav/bags/fast-livo-tag140_sync_diag_02-35f_m8nd",
+  "source": {
+    "sha256": "753c9b4af470821d190c0187d920d9412a70f52ab774ff0adddec5e3d04589d2",
+    "bytes": 10089824256,
+    "mtime_ns": 1793286195009595983
+  },
+  "source_unchanged": true,
+  "hardware_started": false,
+  "ros_graph_started": false,
+  "camera_model_matches_all_recorded_CameraInfo": true,
+  "sizes": {
+    "schema_version": 1,
+    "family": "tag36h11",
+    "sizes_m": {
+      "1": 0.14
+    },
+    "size_definition": "detected_black_white_boundary",
+    "source": "User declared 2026-10-29 for this new capture: tag36h11 ID 01, Black-border width = 140 mm",
+    "capture_scope": "new 140 mm physical tag; not the old 155 mm capture",
+    "fixed_deployment_validated": false,
+    "map_pose_registered": false
+  },
+  "counts": {
+    "images": 1200,
+    "images_with_detections": 1067,
+    "observations": 1067,
+    "observations_with_2_hypotheses": 1067,
+    "quality_eligible_observations": 1067
+  },
+  "identities": {
+    "tag36h11:1": 1067
+  },
+  "positive_local_pose_associations": {
+    "bracketed_slerp": 1054,
+    "exact": 11,
+    "no_bracket_no_extrapolation": 2
+  },
+  "positive_time_span_s": 119.90003969000001,
+  "maximum_conditional_camera_baseline_m": 0.7206271999086962,
+  "decision_margin": {
+    "count": 1067,
+    "minimum": 77.60096740722656,
+    "p50": 179.77415466308594,
+    "p95": 204.8053787231445,
+    "maximum": 207.74009704589844
+  },
+  "hypothesis_pixel_rmse_px": {
+    "count": 2134,
+    "minimum": 0.024707089954585048,
+    "p50": 0.6917503194421983,
+    "p95": 2.1553832629897083,
+    "maximum": 5.674990953281055
+  },
+  "camera_range_m": {
+    "count": 2134,
+    "minimum": 0.6816708497111345,
+    "p50": 0.9734276188438458,
+    "p95": 1.152216701771907,
+    "maximum": 1.3710218803177627
+  },
+  "processing_ms": {
+    "count": 1200,
+    "minimum": 32.06161599518964,
+    "p50": 42.444212500413414,
+    "p95": 45.589599100640044,
+    "maximum": 50.80249599996023
+  },
+  "detector_wall_s": 61.90145093699539,
+  "sync_anomalies": [],
+  "physical_synchronization_verified": false,
+  "real_VALID_landmark_created": false,
+  "limitations": [
+    "No old map/C1 or old replay trajectory used",
+    "Zero-offset local association is conditional, not physically verified",
+    "Detection frame fraction is not recall; pose baseline is not independent truth",
+    "No fixed-landmark fit or cross-visit recovery evaluated"
+  ]
+}
+	Command being timed: "python3 -u scripts/fast_livo2/tags/screen_capture.py --execute --capture bags/fast-livo-tag140_sync_diag_02-35f_m8nd --sizes config/fast_livo2/apriltag_sizes_capture_140mm.json --output outputs/fast-livo-tag140-sync-diag02-screen-20261029"
+	User time (seconds): 64.18
+	System time (seconds): 4.40
+	Percent of CPU this job got: 102%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 1:06.84
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 219088
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 7
+	Minor (reclaiming a frame) page faults: 56814
+	Voluntary context switches: 171143
+	Involuntary context switches: 549
+	Swaps: 0
+	File system inputs: 392
+	File system outputs: 20800
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

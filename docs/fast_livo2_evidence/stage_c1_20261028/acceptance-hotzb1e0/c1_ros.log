@@ -1,0 +1,14 @@
+test_adapter_rejects_retired_sessions_and_future_stamp (__main__.C1Ros) ... ok
+test_clock_reset_and_multiple_publishers_fail_closed (__main__.C1Ros) ... ok
+test_initialization_external_base_and_same_time_bridge_latch (__main__.C1Ros) ... ok
+test_invalid_point_and_one_ns_missing_pair_never_confirm (__main__.C1Ros) ... ok
+test_managed_process_failure_cleans_only_owned_children (__main__.C1Ros) ... ok
+test_map_load_failure_retains_archive_then_switch_invalidates_initial (__main__.C1Ros) ... ok
+test_small_gicp_and_restart_require_fresh_initial (__main__.C1Ros) ... ok
+test_superseded_matching_and_repeated_map_request (__main__.C1Ros) ... ok
+test_wrong_initial_duplicate_requests_loss_and_reinitialize (__main__.C1Ros) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 26.619s
+
+OK

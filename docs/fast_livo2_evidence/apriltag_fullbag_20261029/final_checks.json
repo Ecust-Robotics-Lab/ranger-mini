@@ -1,0 +1,30 @@
+{
+  "missing_local_links": [],
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "scripts/fast_livo2/tags/extract_bag.py",
+        "--output",
+        "outputs/fast-livo-apriltag-dry-placeholder"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"action\": \"DRY-RUN\", \"bag\": \"/home/lab307/ranger_nav/bags/fast-livo-motion-w5phdosj/raw/raw_0.db3\", \"output\": \"/home/lab307/ranger_nav/outputs/fast-livo-apriltag-dry-placeholder\", \"all_images\": true, \"hardware_started\": false, \"ros_graph_started\": false}\n",
+      "stderr": ""
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/fast_livo2/tags/analyze_fullbag.py",
+        "--extraction",
+        "outputs/fast-livo-apriltag-fullbag-20261029",
+        "--output",
+        "outputs/fast-livo-apriltag-analysis-dry-placeholder"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"action\": \"DRY-RUN\", \"extraction\": \"outputs/fast-livo-apriltag-fullbag-20261029\", \"output\": \"outputs/fast-livo-apriltag-analysis-dry-placeholder\"}\n",
+      "stderr": ""
+    }
+  ],
+  "dry_run_created_output": false
+}

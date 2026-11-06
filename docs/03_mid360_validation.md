@@ -1,12 +1,14 @@
 # 阶段 3：Mid-360S 驱动、网络、时间戳与静止录包验证
 
+> 历史阶段报告：正文保留当时的实现、命令、失败与验收范围；当前状态以 [STATUS](STATUS.md) 为准，当前入口见 [根 README](../README.md)。旧文中的“下一步/尚未授权/未部署”不构成本次任务指令。
+
 日期：2026-09-15，Asia/Shanghai。**阶段 PARTIAL**。实物由用户更正为 **Mid-360S**，随后设备协议确认 type=35、SN=`ARMCP870038745`。历史 Mid-360 名称/配置不能作为本机型号证据。
 
 ## 结论与验收范围
 
 | 项目 | 结果 | 证据与边界 |
 |---|---|---|
-| 采集时网络与设备识别 | PASS | enp2s0，主机 192.168.1.50/24；雷达 192.168.1.145，MAC ec:72:f7:da:cf:c8；实际协议 type=35、上述完整 SN；采集后载波丢失，见下文 |
+| 采集时网络与设备识别 | PASS | enp2s0，主机 192.168.1.50/24；雷达 192.168.1.101，MAC ec:72:f7:da:cf:c8；实际协议 type=35、上述完整 SN；采集后载波丢失，见下文 |
 | 固定源码与独立构建 | PASS | SDK2 + ROS2 driver 均构建成功；编译警告保留，没有运行 SDK 样例/升级程序 |
 | 点云和 IMU 原始收流 | PASS | 298 帧 CustomMsg，5962 条 IMU，约 10/200 Hz |
 | SQLite3 录包、读取和计数一致性 | PASS | 29.804909820 s，6260 条全部反序列化，数据库完整性 ok，与 metadata 一致 |
@@ -46,7 +48,7 @@
 用户执行恢复后，[本次网络证据](03_evidence/network_restored.json)：
 
 - enp2s0 `192.168.1.50/24`，100 Mbit/s、full duplex、carrier=1。
-- 到 `192.168.1.145` 经 enp2s0；邻居 MAC 与历史记录一致。先读路由/邻居，再只对这个已知地址 ping，3/3 响应；未扫描公司网络。
+- 到 `192.168.1.101` 经 enp2s0；邻居 MAC 与历史记录一致。先读路由/邻居，再只对这个已知地址 ping，3/3 响应；未扫描公司网络。
 - SDK 的发现 socket 绑定主机雷达地址；`ip route get 255.255.255.255 from 192.168.1.50` 实测走 enp2s0。没有遍历 Wi-Fi 子网。
 - 默认路由仍 `via 192.168.3.1 dev wlo1 metric 600`。雷达连接无 gateway，`ipv4.never-default=yes`，IPv6 disabled。
 - 没有关闭/修改防火墙。`/etc/ufw/ufw.conf` 可读值为 ENABLED=no；本助手的 `sudo -n ufw status verbose` 因需要本机认证退出 1，因此不声称已完整审计运行中的 nftables/iptables 规则。实际 UDP 收流已通过。
@@ -97,7 +99,7 @@ sudo bash /home/lab307/ranger_nav/scripts/persist_mid360_network.sh --execute
 
 配置副本：[MID360S_config.json](../config/mid360/MID360S_config.json)。正确设备键是 `Mid360s`，SDK 映射见 [parse_cfg_file.cpp:33](/home/lab307/ranger_nav/vendor/livox/Livox-SDK2/sdk_core/parse_cfg_file.cpp:33)，协议 type=35 见 [livox_lidar_def.h:69](/home/lab307/ranger_nav/vendor/livox/Livox-SDK2/include/livox_lidar_def.h:69)。`lidar_summary_info.lidar_type=8` 是驱动内部协议类别位，不是此处设备 type=35，不能简单改成 35。
 
-- 主机数据端口 56101/56201/56301/56401/56501，雷达对应端口 56100/56200/56300/56400/56500；指定雷达 IP 列表，仅目标 192.168.1.145。
+- 主机数据端口 56101/56201/56301/56401/56501，雷达对应端口 56100/56200/56300/56400/56500；指定雷达 IP 列表，仅目标 192.168.1.101。
 - xfer_format=1，publish_freq=10.0，multi_topic=0，use_sim_time=false，frame_id=livox_frame。
 - 驱动会配置点格式、扫描模式、安装姿态参数并进入 Normal、启用 IMU；启动不是设备纯只读操作。配置 identity 表示保留原生点坐标，**不表示安装标定完成**，也不是 IMU-LiDAR 外参。
 - 单实例文件锁、已运行程序检查和 UDP 端口占用检查阻止重复驱动。曾实际因锁占用拒绝第二进程；旧进程退出后才重新启动。

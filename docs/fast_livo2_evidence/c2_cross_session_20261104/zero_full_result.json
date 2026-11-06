@@ -1,0 +1,93 @@
+{
+  "passed": true,
+  "hardware_started": false,
+  "absolute_accuracy_validated": false,
+  "independent_session_validated": false,
+  "physical_sync_validated": false,
+  "registration": "pcl_icp",
+  "domain": 193,
+  "source_pairs": 1195,
+  "source_native": "/home/lab307/ranger_nav/outputs/fast-livo-tag140-sync-diag02-replay-current-20261104/0/result/native_frames",
+  "source_database_sha256": "083196bd30ed96ac81368864ce96e2b7089ea9ae26ed7e91ae54966875f38513",
+  "source_manifest_sha256": "a890afe331f16ad5d65e601f390a00c7f270cd489346884a41b0b4274b9a4f58",
+  "initial_index": 0,
+  "initial_pose_source": "none; global search",
+  "global_search": true,
+  "skip_pairs": 0,
+  "pacing": "acknowledge each input stamp; not a real-time benchmark",
+  "exclude_identical_stamp": true,
+  "query_provenance": {
+    "map_source_capture": "bags/fast-livo-motion-w5phdosj",
+    "query_capture": "bags/fast-livo-tag140_sync_diag_02-35f_m8nd",
+    "different_capture": true,
+    "spatial_overlap": "awaiting user declaration",
+    "query_frontend": "current locked-source isolated replay, zero image offset",
+    "tag_candidates_enabled": false,
+    "manual_initial_pose_provided": false,
+    "map_gravity_aligned": false,
+    "query_gravity_aligned": true,
+    "coarse_registration": "full 6DoF; no gravity assumption",
+    "external_ground_truth": false,
+    "source_manifest_sha256": "a890afe331f16ad5d65e601f390a00c7f270cd489346884a41b0b4274b9a4f58",
+    "source_database_sha256": "083196bd30ed96ac81368864ce96e2b7089ea9ae26ed7e91ae54966875f38513"
+  },
+  "query_provenance_sha256": "a88c5a69833fcefb0fc75c44387f63dd772cb6307fadd9328c95d6ab87c7d6e5",
+  "independent_capture_used": true,
+  "allow_recovery": true,
+  "argv": [
+    "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node",
+    "--ros-args",
+    "--params-file",
+    "/home/lab307/ranger_nav/config/fast_livo2/localizer.yaml",
+    "-p",
+    "archive_path:=/home/lab307/ranger_nav/outputs/fast-livo-backend-validation-20261028-pcl/snapshot",
+    "-p",
+    "compatibility_path:=/home/lab307/ranger_nav/docs/fast_livo2_evidence/c2_cross_session_20261104/compatibility.json",
+    "-p",
+    "registration:=pcl_icp",
+    "--params-file",
+    "/home/lab307/ranger_nav/config/fast_livo2/relocalizer.yaml"
+  ],
+  "processed_pairs": 1195,
+  "valid_samples": 936,
+  "states": {
+    "0": 259,
+    "1": 936
+  },
+  "reasons": {
+    "searching_waiting_query_window": 1,
+    "verifying_independent_motion_support": 12,
+    "verifying_wait_disjoint_query_scans": 12,
+    "verifying_insufficient_time_or_motion_baseline": 135,
+    "global_no_geometric_match": 12,
+    "retry_backoff": 84,
+    "global_confirmed_handoff_requires_c1_verification": 1,
+    "verifying_multiframe_motion_support": 2,
+    "map_match_confirmed": 936
+  },
+  "node_peak_rss_kib": 192456,
+  "wall_seconds": 209.96952162500003,
+  "ack_latency_ms_p50_p95_max": [
+    140.45930700001463,
+    361.12942629998486,
+    3287.367212999982
+  ],
+  "solve_ms_p50_p95_max": [
+    87.54556849999062,
+    104.91480199998193,
+    1429.4270610000126
+  ],
+  "public_publishers": {
+    "/tf": 0,
+    "/tf_static": 0,
+    "/cmd_vel": 0,
+    "/base/safe_cmd_vel": 0
+  },
+  "post_initial_queries": 1195,
+  "tracking_complete_without_loss": true,
+  "loss_transitions": 0,
+  "recovery_transitions": 0,
+  "recovery_pending_at_end": false,
+  "final_state": 1,
+  "localizer_exit": 0
+}

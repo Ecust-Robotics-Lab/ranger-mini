@@ -1,0 +1,32 @@
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/scripts/fast_livo2/tags/screen_capture.py", line 162, in <module>
+    raise SystemExit(main())
+  File "/home/lab307/ranger_nav/scripts/fast_livo2/tags/screen_capture.py", line 93, in main
+    response = common.request_frame(process, request, payload)
+  File "/home/lab307/ranger_nav/scripts/fast_livo2/tags/extract_bag.py", line 131, in request_frame
+    process.stdin.write(pixels)
+BrokenPipeError: [Errno 32] Broken pipe
+Command exited with non-zero status 1
+	Command being timed: "python3 -u scripts/fast_livo2/tags/screen_capture.py --execute --capture bags/fast-livo-tag140_check_01-dguhgx2l --sizes config/fast_livo2/apriltag_sizes_capture_140mm.json --output outputs/fast-livo-apriltag-tag140-check-20261029"
+	User time (seconds): 2.58
+	System time (seconds): 0.49
+	Percent of CPU this job got: 99%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:03.09
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 187200
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 14
+	Minor (reclaiming a frame) page faults: 27963
+	Voluntary context switches: 19
+	Involuntary context switches: 20
+	Swaps: 0
+	File system inputs: 824
+	File system outputs: 16
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 1

@@ -1,0 +1,3323 @@
+{
+  "hardware_started": false,
+  "process_exit_codes": [
+    0
+  ],
+  "private_messages": 97,
+  "valid_unique_samples": 2,
+  "sessions": [
+    "95e992e445e9850cb33ee638bedb1f69"
+  ],
+  "bridge_health": {},
+  "estimates": [
+    {
+      "state": 0,
+      "reason": "map_loaded_waiting_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 0,
+      "quality": {
+        "compatibility": {
+          "absolute_accuracy_validated": false,
+          "evidence_files_sha256": {
+            "/home/lab307/ranger_nav/docs/fast_livo2_evidence/stage_c1_20261028/test_invalid_point_and_one_ns_missing_pair_never_confirm-v4_cp6gt/map/manifest.json": "c2bb742df14fed67e3bc00b41ccc71fe3a86e608c3b9d2327713bf3134553120"
+          },
+          "limitations": [
+            "Historical archive lacks complete attested sensor/calibration/source identity.",
+            "Referenced evidence is traceability, not physical calibration validation.",
+            "Same-capture localization is a function test; no independent-session or accuracy claim."
+          ],
+          "mode": "offline_experiment",
+          "physical_sync_validated": false,
+          "schema_version": 1,
+          "source_manifest_sha256": "c2bb742df14fed67e3bc00b41ccc71fe3a86e608c3b9d2327713bf3134553120"
+        },
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 12800,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "waiting_next_pair_for_initial_pose",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 1
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 12800,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 12800,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 12800,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 12800,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 12800,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 12800,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 12800,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 12800,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 12800,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 12800,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 12800,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 12800,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 12800,
+        "pair_counters": {},
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 12800,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 1
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 4,
+      "reason": "processing_error: non-finite cloud point",
+      "sample": 0,
+      "latest_scan": 0,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000270000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2979564666748047,
+            -1.036345362663269,
+            0.7203547954559326
+          ],
+          "xyzw": [
+            0.13569745308002557,
+            -0.07625328160295333,
+            0.3042794685123803,
+            0.9397796015992792
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 85.74867800007269,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.3041264106729967,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.2367929730638396,
+            -1.0655659700493345,
+            0.7094542626706803
+          ],
+          "xyzw": [
+            0.13499550853589765,
+            -0.07586493702119793,
+            0.30106393743958704,
+            0.9409469855306815
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007589361930592496,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000270000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2979564666748047,
+            -1.036345362663269,
+            0.7203547954559326
+          ],
+          "xyzw": [
+            0.13569745308002557,
+            -0.07625328160295333,
+            0.3042794685123803,
+            0.9397796015992792
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 85.74867800007269,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.3041264106729967,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.2367929730638396,
+            -1.0655659700493345,
+            0.7094542626706803
+          ],
+          "xyzw": [
+            0.13499550853589765,
+            -0.07586493702119793,
+            0.30106393743958704,
+            0.9409469855306815
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007589361930592496,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000270000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2979564666748047,
+            -1.036345362663269,
+            0.7203547954559326
+          ],
+          "xyzw": [
+            0.13569745308002557,
+            -0.07625328160295333,
+            0.3042794685123803,
+            0.9397796015992792
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 85.74867800007269,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.3041264106729967,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.2367929730638396,
+            -1.0655659700493345,
+            0.7094542626706803
+          ],
+          "xyzw": [
+            0.13499550853589765,
+            -0.07586493702119793,
+            0.30106393743958704,
+            0.9409469855306815
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007589361930592496,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000270000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2979564666748047,
+            -1.036345362663269,
+            0.7203547954559326
+          ],
+          "xyzw": [
+            0.13569745308002557,
+            -0.07625328160295333,
+            0.3042794685123803,
+            0.9397796015992792
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 85.74867800007269,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.3041264106729967,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.2367929730638396,
+            -1.0655659700493345,
+            0.7094542626706803
+          ],
+          "xyzw": [
+            0.13499550853589765,
+            -0.07586493702119793,
+            0.30106393743958704,
+            0.9409469855306815
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007589361930592496,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000270000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2979564666748047,
+            -1.036345362663269,
+            0.7203547954559326
+          ],
+          "xyzw": [
+            0.13569745308002557,
+            -0.07625328160295333,
+            0.3042794685123803,
+            0.9397796015992792
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 85.74867800007269,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.3041264106729967,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.2367929730638396,
+            -1.0655659700493345,
+            0.7094542626706803
+          ],
+          "xyzw": [
+            0.13499550853589765,
+            -0.07586493702119793,
+            0.30106393743958704,
+            0.9409469855306815
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007589361930592496,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000270000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2979564666748047,
+            -1.036345362663269,
+            0.7203547954559326
+          ],
+          "xyzw": [
+            0.13569745308002557,
+            -0.07625328160295333,
+            0.3042794685123803,
+            0.9397796015992792
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 85.74867800007269,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.3041264106729967,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.2367929730638396,
+            -1.0655659700493345,
+            0.7094542626706803
+          ],
+          "xyzw": [
+            0.13499550853589765,
+            -0.07586493702119793,
+            0.30106393743958704,
+            0.9409469855306815
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007589361930592496,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000270000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2979564666748047,
+            -1.036345362663269,
+            0.7203547954559326
+          ],
+          "xyzw": [
+            0.13569745308002557,
+            -0.07625328160295333,
+            0.3042794685123803,
+            0.9397796015992792
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 85.74867800007269,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.3041264106729967,
+        "pair_bytes": 12800,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.2367929730638396,
+            -1.0655659700493345,
+            0.7094542626706803
+          ],
+          "xyzw": [
+            0.13499550853589765,
+            -0.07586493702119793,
+            0.30106393743958704,
+            0.9409469855306815
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007589361930592496,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000270000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2979564666748047,
+            -1.036345362663269,
+            0.7203547954559326
+          ],
+          "xyzw": [
+            0.13569745308002557,
+            -0.07625328160295333,
+            0.3042794685123803,
+            0.9397796015992792
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 85.74867800007269,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.3041264106729967,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.2367929730638396,
+            -1.0655659700493345,
+            0.7094542626706803
+          ],
+          "xyzw": [
+            0.13499550853589765,
+            -0.07586493702119793,
+            0.30106393743958704,
+            0.9409469855306815
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 1,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007589361930592496,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000270000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2979564666748047,
+            -1.036345362663269,
+            0.7203547954559326
+          ],
+          "xyzw": [
+            0.13569745308002557,
+            -0.07625328160295333,
+            0.3042794685123803,
+            0.9397796015992792
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 85.74867800007269,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.3041264106729967,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.2367929730638396,
+            -1.0655659700493345,
+            0.7094542626706803
+          ],
+          "xyzw": [
+            0.13499550853589765,
+            -0.07586493702119793,
+            0.30106393743958704,
+            0.9409469855306815
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007589361930592496,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000270000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2979564666748047,
+            -1.036345362663269,
+            0.7203547954559326
+          ],
+          "xyzw": [
+            0.13569745308002557,
+            -0.07625328160295333,
+            0.3042794685123803,
+            0.9397796015992792
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 85.74867800007269,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.3041264106729967,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.2367929730638396,
+            -1.0655659700493345,
+            0.7094542626706803
+          ],
+          "xyzw": [
+            0.13499550853589765,
+            -0.07586493702119793,
+            0.30106393743958704,
+            0.9409469855306815
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007589361930592496,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000270000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.2979564666748047,
+            -1.036345362663269,
+            0.7203547954559326
+          ],
+          "xyzw": [
+            0.13569745308002557,
+            -0.07625328160295333,
+            0.3042794685123803,
+            0.9397796015992792
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 768,
+        "elapsed_ms": 85.74867800007269,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.3041264106729967,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.2367929730638396,
+            -1.0655659700493345,
+            0.7094542626706803
+          ],
+          "xyzw": [
+            0.13499550853589765,
+            -0.07586493702119793,
+            0.30106393743958704,
+            0.9409469855306815
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007589361930592496,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000370000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.333251953125,
+            -1.0177608728408813,
+            0.7259381413459778
+          ],
+          "xyzw": [
+            0.13622992708619713,
+            -0.0764201095819272,
+            0.30623498682407113,
+            0.9390538134308004
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 773,
+        "elapsed_ms": 78.90167999994446,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.30344821362684704,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.272662112247172,
+            -1.0482579502693037,
+            0.715508167638176
+          ],
+          "xyzw": [
+            0.13545499544061257,
+            -0.07608394624899985,
+            0.30295573305213813,
+            0.9402558168627326
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.006509052091069136,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000370000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.333251953125,
+            -1.0177608728408813,
+            0.7259381413459778
+          ],
+          "xyzw": [
+            0.13622992708619713,
+            -0.0764201095819272,
+            0.30623498682407113,
+            0.9390538134308004
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 773,
+        "elapsed_ms": 78.90167999994446,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.30344821362684704,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.272662112247172,
+            -1.0482579502693037,
+            0.715508167638176
+          ],
+          "xyzw": [
+            0.13545499544061257,
+            -0.07608394624899985,
+            0.30295573305213813,
+            0.9402558168627326
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.006509052091069136,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000370000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.333251953125,
+            -1.0177608728408813,
+            0.7259381413459778
+          ],
+          "xyzw": [
+            0.13622992708619713,
+            -0.0764201095819272,
+            0.30623498682407113,
+            0.9390538134308004
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 773,
+        "elapsed_ms": 78.90167999994446,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.30344821362684704,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.272662112247172,
+            -1.0482579502693037,
+            0.715508167638176
+          ],
+          "xyzw": [
+            0.13545499544061257,
+            -0.07608394624899985,
+            0.30295573305213813,
+            0.9402558168627326
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.006509052091069136,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000370000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.333251953125,
+            -1.0177608728408813,
+            0.7259381413459778
+          ],
+          "xyzw": [
+            0.13622992708619713,
+            -0.0764201095819272,
+            0.30623498682407113,
+            0.9390538134308004
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 773,
+        "elapsed_ms": 78.90167999994446,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.30344821362684704,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.272662112247172,
+            -1.0482579502693037,
+            0.715508167638176
+          ],
+          "xyzw": [
+            0.13545499544061257,
+            -0.07608394624899985,
+            0.30295573305213813,
+            0.9402558168627326
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.006509052091069136,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000370000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.333251953125,
+            -1.0177608728408813,
+            0.7259381413459778
+          ],
+          "xyzw": [
+            0.13622992708619713,
+            -0.0764201095819272,
+            0.30623498682407113,
+            0.9390538134308004
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 773,
+        "elapsed_ms": 78.90167999994446,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.30344821362684704,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.272662112247172,
+            -1.0482579502693037,
+            0.715508167638176
+          ],
+          "xyzw": [
+            0.13545499544061257,
+            -0.07608394624899985,
+            0.30295573305213813,
+            0.9402558168627326
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.006509052091069136,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000370000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.333251953125,
+            -1.0177608728408813,
+            0.7259381413459778
+          ],
+          "xyzw": [
+            0.13622992708619713,
+            -0.0764201095819272,
+            0.30623498682407113,
+            0.9390538134308004
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 773,
+        "elapsed_ms": 78.90167999994446,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.30344821362684704,
+        "pair_bytes": 12800,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.272662112247172,
+            -1.0482579502693037,
+            0.715508167638176
+          ],
+          "xyzw": [
+            0.13545499544061257,
+            -0.07608394624899985,
+            0.30295573305213813,
+            0.9402558168627326
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.006509052091069136,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000370000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.333251953125,
+            -1.0177608728408813,
+            0.7259381413459778
+          ],
+          "xyzw": [
+            0.13622992708619713,
+            -0.0764201095819272,
+            0.30623498682407113,
+            0.9390538134308004
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 773,
+        "elapsed_ms": 78.90167999994446,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.30344821362684704,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.272662112247172,
+            -1.0482579502693037,
+            0.715508167638176
+          ],
+          "xyzw": [
+            0.13545499544061257,
+            -0.07608394624899985,
+            0.30295573305213813,
+            0.9402558168627326
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 1,
+        "reason": "geometry_valid",
+        "rmse_m": 0.006509052091069136,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000370000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.333251953125,
+            -1.0177608728408813,
+            0.7259381413459778
+          ],
+          "xyzw": [
+            0.13622992708619713,
+            -0.0764201095819272,
+            0.30623498682407113,
+            0.9390538134308004
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 773,
+        "elapsed_ms": 78.90167999994446,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.30344821362684704,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.272662112247172,
+            -1.0482579502693037,
+            0.715508167638176
+          ],
+          "xyzw": [
+            0.13545499544061257,
+            -0.07608394624899985,
+            0.30295573305213813,
+            0.9402558168627326
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.006509052091069136,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000370000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.333251953125,
+            -1.0177608728408813,
+            0.7259381413459778
+          ],
+          "xyzw": [
+            0.13622992708619713,
+            -0.0764201095819272,
+            0.30623498682407113,
+            0.9390538134308004
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 773,
+        "elapsed_ms": 78.90167999994446,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.30344821362684704,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.272662112247172,
+            -1.0482579502693037,
+            0.715508167638176
+          ],
+          "xyzw": [
+            0.13545499544061257,
+            -0.07608394624899985,
+            0.30295573305213813,
+            0.9402558168627326
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.006509052091069136,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000370000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.333251953125,
+            -1.0177608728408813,
+            0.7259381413459778
+          ],
+          "xyzw": [
+            0.13622992708619713,
+            -0.0764201095819272,
+            0.30623498682407113,
+            0.9390538134308004
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 773,
+        "elapsed_ms": 78.90167999994446,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.30344821362684704,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.272662112247172,
+            -1.0482579502693037,
+            0.715508167638176
+          ],
+          "xyzw": [
+            0.13545499544061257,
+            -0.07608394624899985,
+            0.30295573305213813,
+            0.9402558168627326
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.006509052091069136,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "sample": 0,
+      "latest_scan": 1000370000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.333251953125,
+            -1.0177608728408813,
+            0.7259381413459778
+          ],
+          "xyzw": [
+            0.13622992708619713,
+            -0.0764201095819272,
+            0.30623498682407113,
+            0.9390538134308004
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 773,
+        "elapsed_ms": 78.90167999994446,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.30344821362684704,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.272662112247172,
+            -1.0482579502693037,
+            0.715508167638176
+          ],
+          "xyzw": [
+            0.13545499544061257,
+            -0.07608394624899985,
+            0.30295573305213813,
+            0.9402558168627326
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.006509052091069136,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 1,
+      "reason": "map_match_confirmed",
+      "sample": 1000470000000,
+      "latest_scan": 1000470000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.3687522411346436,
+            -1.000605821609497,
+            0.7318613529205322
+          ],
+          "xyzw": [
+            0.1366732630037491,
+            -0.07662210179203972,
+            0.3080958261967206,
+            0.9383638852183908
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 770,
+        "elapsed_ms": 85.06143199997496,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.303863650564857,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.308531282886165,
+            -1.0309497056997028,
+            0.7215616060069863
+          ],
+          "xyzw": [
+            0.13591467530015564,
+            -0.07630053794727705,
+            0.30484652235965143,
+            0.939560549806257
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007111860900801938,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 1,
+      "reason": "map_match_confirmed",
+      "sample": 1000470000000,
+      "latest_scan": 1000470000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.3687522411346436,
+            -1.000605821609497,
+            0.7318613529205322
+          ],
+          "xyzw": [
+            0.1366732630037491,
+            -0.07662210179203972,
+            0.3080958261967206,
+            0.9383638852183908
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 770,
+        "elapsed_ms": 85.06143199997496,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.303863650564857,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.308531282886165,
+            -1.0309497056997028,
+            0.7215616060069863
+          ],
+          "xyzw": [
+            0.13591467530015564,
+            -0.07630053794727705,
+            0.30484652235965143,
+            0.939560549806257
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007111860900801938,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 1,
+      "reason": "map_match_confirmed",
+      "sample": 1000470000000,
+      "latest_scan": 1000470000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.3687522411346436,
+            -1.000605821609497,
+            0.7318613529205322
+          ],
+          "xyzw": [
+            0.1366732630037491,
+            -0.07662210179203972,
+            0.3080958261967206,
+            0.9383638852183908
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 770,
+        "elapsed_ms": 85.06143199997496,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.303863650564857,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.308531282886165,
+            -1.0309497056997028,
+            0.7215616060069863
+          ],
+          "xyzw": [
+            0.13591467530015564,
+            -0.07630053794727705,
+            0.30484652235965143,
+            0.939560549806257
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007111860900801938,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 1,
+      "reason": "map_match_confirmed",
+      "sample": 1000470000000,
+      "latest_scan": 1000470000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.3687522411346436,
+            -1.000605821609497,
+            0.7318613529205322
+          ],
+          "xyzw": [
+            0.1366732630037491,
+            -0.07662210179203972,
+            0.3080958261967206,
+            0.9383638852183908
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 770,
+        "elapsed_ms": 85.06143199997496,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.303863650564857,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.308531282886165,
+            -1.0309497056997028,
+            0.7215616060069863
+          ],
+          "xyzw": [
+            0.13591467530015564,
+            -0.07630053794727705,
+            0.30484652235965143,
+            0.939560549806257
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007111860900801938,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 1,
+      "reason": "map_match_confirmed",
+      "sample": 1000470000000,
+      "latest_scan": 1000470000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.3687522411346436,
+            -1.000605821609497,
+            0.7318613529205322
+          ],
+          "xyzw": [
+            0.1366732630037491,
+            -0.07662210179203972,
+            0.3080958261967206,
+            0.9383638852183908
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 770,
+        "elapsed_ms": 85.06143199997496,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.303863650564857,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.308531282886165,
+            -1.0309497056997028,
+            0.7215616060069863
+          ],
+          "xyzw": [
+            0.13591467530015564,
+            -0.07630053794727705,
+            0.30484652235965143,
+            0.939560549806257
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007111860900801938,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 1,
+      "reason": "map_match_confirmed",
+      "sample": 1000470000000,
+      "latest_scan": 1000470000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.3687522411346436,
+            -1.000605821609497,
+            0.7318613529205322
+          ],
+          "xyzw": [
+            0.1366732630037491,
+            -0.07662210179203972,
+            0.3080958261967206,
+            0.9383638852183908
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 770,
+        "elapsed_ms": 85.06143199997496,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.303863650564857,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.308531282886165,
+            -1.0309497056997028,
+            0.7215616060069863
+          ],
+          "xyzw": [
+            0.13591467530015564,
+            -0.07630053794727705,
+            0.30484652235965143,
+            0.939560549806257
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007111860900801938,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 1,
+      "reason": "map_match_confirmed",
+      "sample": 1000470000000,
+      "latest_scan": 1000470000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.3687522411346436,
+            -1.000605821609497,
+            0.7318613529205322
+          ],
+          "xyzw": [
+            0.1366732630037491,
+            -0.07662210179203972,
+            0.3080958261967206,
+            0.9383638852183908
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 770,
+        "elapsed_ms": 85.06143199997496,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.303863650564857,
+        "pair_bytes": 12800,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.308531282886165,
+            -1.0309497056997028,
+            0.7215616060069863
+          ],
+          "xyzw": [
+            0.13591467530015564,
+            -0.07630053794727705,
+            0.30484652235965143,
+            0.939560549806257
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007111860900801938,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 1,
+      "reason": "map_match_confirmed",
+      "sample": 1000470000000,
+      "latest_scan": 1000470000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.3687522411346436,
+            -1.000605821609497,
+            0.7318613529205322
+          ],
+          "xyzw": [
+            0.1366732630037491,
+            -0.07662210179203972,
+            0.3080958261967206,
+            0.9383638852183908
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 770,
+        "elapsed_ms": 85.06143199997496,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 13,
+          "local_hypotheses": 13,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.303863650564857,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.308531282886165,
+            -1.0309497056997028,
+            0.7215616060069863
+          ],
+          "xyzw": [
+            0.13591467530015564,
+            -0.07630053794727705,
+            0.30484652235965143,
+            0.939560549806257
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 1,
+        "reason": "geometry_valid",
+        "rmse_m": 0.007111860900801938,
+        "source_overlap": 1.0
+      }
+    },
+    {
+      "state": 1,
+      "reason": "map_match_confirmed",
+      "sample": 1000570000000,
+      "latest_scan": 1000570000000,
+      "map": "82bc95752ade4db8adbee7b3c868d5d7",
+      "session": "95e992e445e9850cb33ee638bedb1f69",
+      "request_generation": 1,
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            2.4045767784118652,
+            -0.9828251600265503,
+            0.7376922369003296
+          ],
+          "xyzw": [
+            0.13714847706424577,
+            -0.0768123696516056,
+            0.31000322762407084,
+            0.9376506604887953
+          ]
+        },
+        "cache_bytes": 25600,
+        "converged": true,
+        "correspondences": 771,
+        "elapsed_ms": 2.20128000000841,
+        "geometrically_accepted": true,
+        "graph_version": 1,
+        "inputs_ready": true,
+        "invalid_messages": 0,
+        "map_loading": false,
+        "map_uuid": "82bc95752ade4db8adbee7b3c868d5d7",
+        "method": "pcl_icp",
+        "native_diagnostics": {
+          "accepted_hypotheses": 1,
+          "local_hypotheses": 1,
+          "target_keyframe_ids": [
+            0
+          ],
+          "target_points": 800
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.29795001174031943,
+        "pair_bytes": 0,
+        "pair_counters": {
+          "unpaired_timeout": 2
+        },
+        "prediction": {
+          "xyz": [
+            2.4044944627792106,
+            -0.9830604154197315,
+            0.7379828748133064
+          ],
+          "xyzw": [
+            0.13713221299413786,
+            -0.07683564198463586,
+            0.3099833095007436,
+            0.9376575783145217
+          ]
+        },
+        "public_tf_publisher": false,
+        "queued_jobs": 0,
+        "reason": "geometry_valid",
+        "rmse_m": 0.008058028278156415,
+        "source_overlap": 1.0
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+scenes:
+  scene_01:
+    description: 正对传感器
+    roi:
+      x_min: 1.1
+      x_max: 1.85
+      y_min: -0.85
+      y_max: 0.85
+      z_min: 0.02
+      z_max: 1.2
+    roi_evidence: 'Observed board in 50-frame actual point cloud overview: results/scene_01_20261021_181558/cloud_overview.png;
+      validate by diagnostic'
+    bag: datasets/scene_01/20261021_181558_055290/bag
+  scene_02:
+    description: 标定板向左偏转
+    roi:
+      x_min: 1.4
+      x_max: 2.45
+      y_min: -0.85
+      y_max: 0.9
+      z_min: 0.2
+      z_max: 1.45
+    bag: datasets/scene_02/20261021_182754_515500/bag
+    roi_evidence: 'Observed actual 50-frame point cloud: results/scene_02_20261021_182754/cloud_overview.png;
+      validate by diagnostic'
+  scene_03:
+    description: 标定板向右偏转
+    roi:
+      x_min: 1.2
+      x_max: 2.15
+      y_min: -0.85
+      y_max: 0.85
+      z_min: 0.1
+      z_max: 1.35
+    bag: datasets/scene_03/20261021_182958_009120/bag
+    roi_evidence: 'Observed actual 50-frame point cloud: results/scene_03_20261021_182958/cloud_overview.png;
+      validate by diagnostic'

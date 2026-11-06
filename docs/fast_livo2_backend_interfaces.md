@@ -1,7 +1,7 @@
 # FAST-LIVO2 阶段 B 后端契约
 
-更新：2026-10-26。实现位于 `ws_fast_livo/src/ranger_fast_livo_backend`。
-本页描述已实现的 B 接口；真实三传感器运动回环、定位精度仍未验收。
+更新：2026-10-29。实现位于 `ws_fast_livo/src/ranger_fast_livo_backend`。
+本页描述 B 接口。后续 2026-10-28 已完成单份真实运动包的后端离线验证，见 [运动报告](fast_livo2_stage_b_motion_report.md)；独立精度/泛化仍未验收。先验地图定位由独立 [C1](fast_livo2_localizer_interfaces.md) 实现，不改变 B 的建图角色。
 
 ## 输入、时刻与坐标
 
@@ -19,7 +19,7 @@
 
 ## 图、候选与配准
 
-地图保留 FAST 局部原点、轴和 yaw，首帧先验为 `X_0=U_0`，不把首 IMU 姿态强制变成水平。当前配置 `gravity_align_en=false`，地图重力方向未验证。默认使用 3D 距离检索；XY/独立高度模式还要求 gravity 标志和 metadata 中的重力对齐证据。重力因子未实施、默认无此额外信息。
+B 保留前端传入的 FAST 局部原点、轴和 yaw，首帧先验为 `X_0=U_0`，不额外平面化姿态。新前端试验配置已启用 `gravity_align_en=true`；已有 B 归档由关闭对齐的会话生成，不能追认其重力方向。每份新图须绑定自身来源和对齐证据，见 [重力报告](fast_livo2_gravity_alignment_report.md)。默认使用 3D 距离检索；XY/独立高度模式还要求 gravity 标志和 metadata 中的重力对齐证据。重力因子未实施、默认无此额外信息。
 
 ```text
 相邻观测 Z_ij = inverse(U_i) × U_j
@@ -30,9 +30,9 @@ BetweenFactor<Pose3>(i, j, Z_ij, noise)
 非关键帧：X(t) = X_k_optimized × inverse(U_k) × U(t)
 ```
 
-PCL ICP 与 small_gicp/GICP/VGICP 共用 `Registration` 接口。二者直接接收自己的 body source 与历史 i 系 target，返回总变换，不再左乘一次初值。未来的 `CoarseRegistration` 无可靠初值接口仅预留，不包含 KISS-Matcher 求解器。
+PCL ICP 与 small_gicp/GICP/VGICP 共用 `Registration` 接口。二者直接接收自己的 body source 与历史 i 系 target，返回总变换，不再左乘一次初值。`CoarseRegistration` 无可靠初值接口已在可选 C2 中实现 KISS-Matcher 插件，位于 localizer 包；B 自身仍不调用该全局粗配准插件。
 
-`CandidateSearch` 与几何验证分开。当前 `PositionSearch` 对优化位置做有界线性空间检索，按距离/ID 排序、时间和 ID 排除、邻近历史窗口去重，再限制候选数。未来描述子实现返回的候选不再经过位置半径过滤。位置先验超出搜索范围会漏环，尚无描述子大漂移恢复能力。
+`CandidateSearch` 与几何验证分开。当前 `PositionSearch` 对优化位置做有界线性空间检索，按距离/ID 排序、时间和 ID 排除、邻近历史窗口去重，再限制候选数。C2 的独立 `PlaceRetriever` 已实现外部查询且不经过该位置半径过滤；这没有替换 B 的位置回环搜索。B 的位置先验超出搜索范围仍会漏环，不能把 C2 重定位当作 B 已有描述子回环能力。
 
 历史子图只含排除窗口外、与当前 source 不同的 scan ID，逐帧变到 i 系；本版不聚合额外非关键帧扫描。位姿关键帧记录与匹配云缓存分开，full/match 分片关联同一 scan ID；后续聚合必须维护去重后的扫描集合。
 
@@ -72,6 +72,8 @@ Pose3 噪声顺序为 **旋转 xyz、平移 xyz**，分别配置标准差，非 
 
 另外发布 raw_path、optimized_path 与 private health；不创建 TF broadcaster。路径最多约 2000 个显示点；完整轨迹在快照中。
 
+2026-11-05在线入口补充：`publish_map_view=true`时，独立显示线程发布`/fast_livo/backend/view/map`、`view/loops`和`view/status`，按冻结关键帧各自的X重建采样显示云。显示最多20万点、默认3秒周期、单次重建5秒预算，不修改完整归档；会话改变清空旧显示，旧代际结果不提交。health metrics另包含`sealed`、`worker_busy`、`processed_pairs`及最后入队/处理整数戳。
+
 适配器 `fast_livo_adapter` 计算 `T_map_base=T_map_imu×inverse(T_base_imu)`，使用既有 runtime 中的 xyz/rpy 和公共 `LocalizationEstimate` 五态。不做 latest-TF 查询；心跳保留位姿 stamp，错误、过期、断流和无效 pose 不产生 VALID。
 
 正常受管入口仅启动 monitor 和后端。显式 `--offline-bridge` 才增加适配器与公共桥接，强制模拟时间和 localhost；没有传感器/底盘/导航/速度节点。仍需调用者在同一隔离域提供合成 wheel。公共 TF 的唯一拥有者是原桥接。
@@ -84,6 +86,10 @@ Pose3 噪声顺序为 **旋转 xyz、平移 xyz**，分别配置标准差，非 
 
 服务 `/fast_livo/backend/export_snapshot`：请求 `destination` 为不存在的绝对目录，父目录须存在；响应 success/reason/session_id/graph_version/manifest_path。
 
+在线停止使用新增`/fast_livo/backend/finalize_mapping`：请求明确`expected_session_id`、新绝对目标目录及1～180秒排空时限。先拒绝新戳，允许封存边界已有配对的另一半进入，再等待配对/工作队列及执行中的任务完成。最后入队戳必须已处理，无非法输入/容量丢失/缺对超时才导出成功。封存后前端发布者消失不重置此图；错误会话请求拒绝且不封存。导出长操作仍复用原快照机制；受管会话对整个封存/导出另设总时限，失败保留诊断资产。
+
+图事务提交的同因子目标检查现与原运动验收统一为`after <= before + 1e-6`。使用iSAM2完整回代估计，必要时最多三次强制重线性化/完整求解；仍增加或不有限则回滚。没有放宽几何、歧义、大修正确认或图目标验收门槛。
+
 先冻结图与因子、分片清单、候选日志字节前缀；释放图锁后进行长时间导出。复制并校验不可变 full.pcd/match.pcd/scan.cdr，流式逐帧用各自 `X_i` 构建 map.pcd，每点只变换一次。内存中只装一份完整分片，不积累完整全局云。
 
 最终目录包含 manifest.json、COMMITTED、original.tum、optimized.tum、map.pcd、keyframes/、candidates.jsonl。manifest 包含 schema/map UUID/session/graph version、整数 ns、位姿方向、全部因子与唯一 ID、字段定义、分片 SHA256、参数及提供的时间/标定/代码来源。TUM 只是兼容展示，权威时间仍为整数 ns。
@@ -92,4 +98,4 @@ scan.cdr 是完整 **后端输入 PointCloud2**，不是原始雷达包。原始
 
 同文件系统 `.partial-UUID` 完整写入、校验与 fsync 后，以 Linux renameat2(RENAME_NOREPLACE) 提交，拒绝覆盖和目标竞争；失败去掉成功标记，保留 FAILED.json/partial 证据。文件大小限制注入、不可写路径、损坏分片均有测试；未实际填满磁盘或模拟突然断电。
 
-这是 B 几何图归档，不是 C1 已实现的加载格式。几何、字段、整数时刻及来源信息为后续 HBA/LVBA 转换保留；LVBA 所需原始图像还需从绑定的原始 bag 提取。C1 应先定义加载校验、标定兼容与定位入口；C2 在独立 CandidateSearch/CoarseRegistration 接口增加检索和无初值几何验证。均未在本阶段实现。
+这是 B 几何图归档，后续 C1 已实现只读加载校验、来源兼容和初值定位，见 [C1 契约](fast_livo2_localizer_interfaces.md)。几何、字段、整数时刻及来源信息为后续 HBA/LVBA 转换保留；LVBA 所需原始图像还需从绑定的原始 bag 提取。C2 已在独立定位包实现检索和无初值几何验证，完整跨会话验收仍 PARTIAL；不把 B 的图内 PositionSearch 当作跨会话检索。

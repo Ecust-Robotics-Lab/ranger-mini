@@ -1,0 +1,14 @@
+{
+  "exit": -9,
+  "forced": false,
+  "requested_seconds": 60.0,
+  "error": "recorder exited unexpectedly",
+  "observed_messages": {
+    "/livox/lidar": 8,
+    "/livox/imu": 7,
+    "/front/image_sync": 7,
+    "/front/image": 7,
+    "/front/camera_info": 7,
+    "/fast_livo/odometry": 7
+  }
+}

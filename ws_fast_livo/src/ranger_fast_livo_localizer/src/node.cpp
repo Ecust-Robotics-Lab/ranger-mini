@@ -8,6 +8,7 @@
 #include <std_msgs/msg/string.hpp>
 #include <rclcpp/rclcpp.hpp>
 #include <atomic>
+#include <algorithm>
 #include <condition_variable>
 #include <mutex>
 #include <thread>
@@ -35,11 +36,12 @@ public:
 #define REG(x) config_.registration.x=declare_parameter<double>(#x,config_.registration.x)
     REG(resolution);REG(correspondence_distance);REG(min_overlap);REG(max_rmse);REG(degeneracy_ratio);
 #undef REG
-    config_.registration.registration=declare_parameter<std::string>("registration","pcl_icp");
+    config_.registration.registration=declare_parameter<std::string>("registration","small_gicp");
     config_.registration.max_iterations=declare_parameter<int>("max_iterations",50);
     config_.exclude_identical_stamp=declare_parameter<bool>("exclude_identical_stamp",true);config_.validate();
     global_enabled_=declare_parameter<bool>("global_search_enabled",false);search_allowed_=global_enabled_;
     index_path_=declare_parameter<std::string>("global_index_path","");
+    search_config_.descriptor=declare_parameter<std::string>("global_descriptor",search_config_.descriptor);
 #define GLOBAL_SIZE(x) {auto n=declare_parameter<int64_t>("global_" #x,search_config_.x);if(n<1)throw std::invalid_argument("global_" #x);search_config_.x=size_t(n);}
     GLOBAL_SIZE(candidates);GLOBAL_SIZE(maximum_points);GLOBAL_SIZE(window_frames);GLOBAL_SIZE(maximum_index_frames);GLOBAL_SIZE(support_queries);
 #undef GLOBAL_SIZE
@@ -66,6 +68,7 @@ public:
       });
     }
     age_=declare_parameter<double>("sample_max_age",.5);stream_timeout_=declare_parameter<double>("stream_timeout",2.);
+    online_=declare_parameter<bool>("online_scheduling",false);
     if(!std::isfinite(age_) || !std::isfinite(stream_timeout_) || age_<=0 || stream_timeout_<=0) throw std::invalid_argument("invalid age limits");
     auto xyz=declare_parameter<std::vector<double>>("t_base_imu_xyz",{0.,0.,.556});
     auto rpy=declare_parameter<std::vector<double>>("t_base_imu_rpy",{0.,0.,0.});
@@ -106,6 +109,8 @@ private:
   rb::PairBuffer pairs_;std::shared_ptr<Archive> map_;std::unique_ptr<Localizer> core_;
   Estimate message_;std::string identity_;uint64_t scan_=0;
   double age_=.5,stream_timeout_=2.,last_discovery_=0,last_received_=0,request_started_=0;
+  bool online_=false;
+  uint64_t skipped_scans_=0,processed_scans_=0,stale_results_=0;
   int64_t last_clock_=-1;size_t invalid_=0;
   std::map<std::string,std::pair<std::string,uint64_t>> load_ids_,init_ids_;
   std::map<std::string,std::pair<bool,uint64_t>> search_ids_;
@@ -201,8 +206,15 @@ private:
       if(!terminal_ && now-last_discovery_>.2) {discover();last_discovery_=now;}
       if(!terminal_ && !loading_ && inputs_ready_) {
         size_t bytes=0;for(auto& j:jobs_) if(j.pair.cloud) bytes+=j.pair.cloud->data.size();
-        size_t available=jobs_.size()<8?8-jobs_.size():0;
+        size_t available=online_?32:(jobs_.size()<8?8-jobs_.size():0);
         for(auto& pair:pairs_.drain(now,available)) {
+          if(online_) {
+            size_t pending=0;for(const auto& j:jobs_)if(j.kind==Kind::Scan)++pending;
+            while(pending>=2) {
+              auto old=std::find_if(jobs_.begin(),jobs_.end(),[](const Job& j){return j.kind==Kind::Scan;});
+              bytes-=old->pair.cloud->data.size();jobs_.erase(old);--pending;++skipped_scans_;
+            }
+          }
           if(bytes+pair.cloud->data.size()>32*1024*1024) {clear_locked("terminal_work_queue_byte_limit",true);terminal_=true;message_.state=4;break;}
           Job j;j.kind=Kind::Scan;j.generation=generation_;j.scan=scan_++;j.pair=pair;bytes+=pair.cloud->data.size();
           j.tag_context=message_.session_id+":"+std::to_string(generation_.load());j.tag_batches.assign(tag_inbox_.begin(),tag_inbox_.end());tag_inbox_.clear();enqueue(j);last_received_=now;
@@ -219,7 +231,10 @@ private:
       Json quality;try {quality=Json::parse(message.quality_json.empty()?"{}":message.quality_json);}catch(...) {quality=Json::object();}
       quality["pair_counters"]=pairs_.counters;quality["invalid_messages"]=invalid_;quality["queued_jobs"]=jobs_.size();quality["pair_bytes"]=pairs_.bytes();
       quality["inputs_ready"]=inputs_ready_;quality["map_loading"]=loading_;quality["public_tf_publisher"]=false;
-      quality["global_search_enabled"]=global_enabled_;quality["global_search_allowed"]=search_allowed_.load();
+      quality["global_descriptor"]=search_config_.descriptor;quality["global_search_enabled"]=global_enabled_;quality["global_search_allowed"]=search_allowed_.load();
+      quality["online_scheduling"]=online_;quality["skipped_scans"]=skipped_scans_;
+      quality["processed_scans"]=processed_scans_;quality["stale_results"]=stale_results_;
+      quality["sample_age_seconds"]=message.last_confirmed_stamp_ns>0?(ros-message.last_confirmed_stamp_ns)*1e-9:-1.;
       quality["tag_input_dropped"]=tag_dropped_;
       if(tag_config_)tag_context.data=Json({{"schema_version",1},{"context",message_.session_id+":"+std::to_string(generation_.load())},
         {"calibration_id",tag_config_->calibration_id},{"time_mapping_id",tag_config_->time_mapping_id},{"map_uuid",message_.map_uuid}}).dump();
@@ -235,6 +250,16 @@ private:
   void commit(const Result& result,uint64_t generation) {
     std::lock_guard<std::mutex> lock(mutex_);if(generation!=generation_) return;
     if(lost_latched_) {message_.latest_scan_stamp_ns=result.latest_scan;message_.scan_id=result.scan;return;}
+    if(online_ && result.valid) {
+      auto now=get_clock()->now().nanoseconds();
+      if(now<=0 || std::abs(now-result.stamp)>int64_t(age_*1e9)) {
+        ++stale_results_;message_.pose_valid=false;
+        message_.state=message_.last_confirmed_stamp_ns>0?2:0;
+        message_.reason="geometric_support_waiting_fresh_scan";
+        message_.latest_scan_stamp_ns=result.latest_scan;message_.scan_id=result.scan;
+        message_.quality_json=result.quality.dump();return;
+      }
+    }
     message_.state=result.state;message_.reason=result.reason;message_.pose_valid=result.valid;message_.pose=pose_message(result.pose);
     message_.header.stamp=rclcpp::Time(result.stamp);message_.last_confirmed_stamp_ns=result.stamp;message_.latest_scan_stamp_ns=result.latest_scan;message_.scan_id=result.scan;message_.quality_json=result.quality.dump();
     if(result.valid) request_started_=0;
@@ -332,6 +357,7 @@ private:
               record_tags(result,U,job,attached);
             }catch(const std::exception& e){tag_recording_=false;result.quality["tag_record_disabled"]=e.what();}
             commit(result,job.generation);}
+          {std::lock_guard<std::mutex> lock(mutex_);++processed_scans_;}
         }
       } catch(const std::exception& e) {
         if(job.kind==Kind::Load && !cancelled()) {if(map_)core_=std::make_unique<Localizer>(map_,config_);if(search_)search_->reset();}

@@ -71,6 +71,14 @@ def restore_frontend_logs(folder):
         'session_logs': str(after)})
 
 
+def restore_stopped_frontend_logs(folder, state):
+    # The guardian is this caller and stays alive after run_guarded returns.
+    # Restore once its cleanup is complete and all managed children are gone.
+    if state and state.get('guardian_cleanup_complete') and not any(
+            same_process(r) for r in [state.get('owner'), *state.get('owned', [])]):
+        restore_frontend_logs(folder)
+
+
 def sha(path):
     digest = hashlib.sha256()
     with Path(path).open('rb') as handle:
@@ -81,6 +89,26 @@ def sha(path):
 def load(path, default=None):
     try: return json.loads(Path(path).read_text())
     except (OSError, ValueError): return default
+
+
+def frontend_identity(cfg):
+    """The existing map identity, computed from the actual query frontend."""
+    frontend = yaml.safe_load(Path(cfg['FAST_LIVO_CONFIG']).read_text())['/**']['ros__parameters']
+    definitions = {
+        'sensor_configuration_sha256': {'schema': 1, 'extrin_calib': frontend['extrin_calib'],
+            'camera': frontend['camera'], 'preprocess': frontend['preprocess'],
+            'camera_driver': yaml.safe_load(Path(cfg['FAST_LIVO_CAMERA_CONFIG']).read_text()),
+            'lidar_driver': load(cfg['FAST_LIVO_LIDAR_CONFIG'])},
+        'time_contract_sha256': {'schema': 1, 'time_offset': frontend['time_offset'],
+            'pose': 'VIO-corrected IMU', 'cloud': 'same-stamp deskewed IMU interval',
+            'raw_header_rewritten': False},
+        'frontend_sources_sha256': {'schema': 1, 'binary_sha256': sha(FRONTEND),
+            'sources_lock_sha256': sha(ROOT/'config/fast_livo2/sources.lock.json'),
+            'patch_sha256': sha(ROOT/'patches/fast_livo2_stage_a.patch'),
+            'online_io_patch_sha256': sha(ROOT/'patches/fast_livo2_online_io.patch')}}
+    return {'schema_version': 1, **{key: hashlib.sha256(json.dumps(value,
+        sort_keys=True, separators=(',', ':')).encode()).hexdigest() for key, value in definitions.items()},
+        'definitions': definitions, 'physical_sync_validated': False}
 
 
 def environment(cfg, folder):
@@ -397,35 +425,20 @@ def main():
         'files_sha256': {str(f): sha(f) for f in [*runtime_files, *source_paths]},
         'T_imu_lidar': {'already_applied_by_frontend': True, 'declared_extrinsics': frontend['extrin_calib']},
         'git_head': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()}
-    identity_definitions = {
-        'sensor_configuration_sha256': {'schema': 1, 'extrin_calib': frontend['extrin_calib'],
-            'camera': frontend['camera'], 'preprocess': frontend['preprocess'],
-            'camera_driver': yaml.safe_load(Path(cfg['FAST_LIVO_CAMERA_CONFIG']).read_text()),
-            'lidar_driver': load(cfg['FAST_LIVO_LIDAR_CONFIG'])},
-        'time_contract_sha256': {'schema': 1, 'time_offset': frontend['time_offset'],
-            'pose': 'VIO-corrected IMU', 'cloud': 'same-stamp deskewed IMU interval',
-            'raw_header_rewritten': False},
-        'frontend_sources_sha256': {'schema': 1,
-            'binary_sha256': sha(FRONTEND),
-            'sources_lock_sha256': sha(ROOT/'config/fast_livo2/sources.lock.json'),
-            'patch_sha256': sha(ROOT/'patches/fast_livo2_stage_a.patch'),
-            'online_io_patch_sha256': sha(ROOT/'patches/fast_livo2_online_io.patch')}}
-    identities = {key: hashlib.sha256(json.dumps(value, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
-                  for key, value in identity_definitions.items()}
-    provenance.update(identities)
-    atomic_json(folder/'source_identity.json', {'schema_version': 1, **identities,
-        'definitions': identity_definitions, 'physical_sync_validated': False})
+    identity = frontend_identity(cfg)
+    provenance.update({key: identity[key] for key in ('sensor_configuration_sha256', 'time_contract_sha256', 'frontend_sources_sha256')})
+    atomic_json(folder/'source_identity.json', identity)
     atomic_json(folder/'provenance.json', provenance)
     print('MAP_DIR='+str(folder), flush=True)
-    backup_frontend_logs(folder)
     try:
         code = run_guarded(SESSION, components(cfg, args, folder),
             health_factory=lambda path: MappingHealth(path, folder), startup_timeout=100,
             fail_on_health_loss=True, health_loss_grace=3, cleanup_grace=40,
             shutdown_timeout=args.finalize_timeout+155,
+            prepare_hook=lambda: backup_frontend_logs(folder),
             shutdown_hook=lambda run, state, records: finalize(folder, args.finalize_timeout, run, state, records))
     finally:
-        if not session_live(read_session(SESSION)[1]): restore_frontend_logs(folder)
+        restore_stopped_frontend_logs(folder, read_session(SESSION)[1])
     run, state = read_session(SESSION)
     archive_logs(folder, run, run, folder/'sensor_assets', True)
     result = load(folder/'mapping_result.json', {'success': False})

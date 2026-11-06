@@ -60,7 +60,7 @@ def main():
     p.add_argument('--compatibility', type=Path, required=True)
     p.add_argument('--native', type=Path, required=True)
     p.add_argument('--output', type=Path, required=True)
-    p.add_argument('--registration', choices=['pcl_icp', 'small_gicp'], default='pcl_icp')
+    p.add_argument('--registration', choices=['pcl_icp', 'small_gicp'], default='small_gicp')
     p.add_argument('--domain', type=int, default=197)
     p.add_argument('--initial-index', type=int, default=366)
     p.add_argument('--max-pairs', type=int)

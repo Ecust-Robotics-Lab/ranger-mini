@@ -85,7 +85,7 @@ def main():
     p.add_argument('--tag-monitor', action='store_true')
     p.add_argument('--tag-record', type=Path, help='New C1 confirmed-segment JSONL, no online map edit')
     p.add_argument('--domain', type=int, default=189)
-    p.add_argument('--registration', choices=['pcl_icp', 'small_gicp', 'small_vgicp'], default='pcl_icp')
+    p.add_argument('--registration', choices=['pcl_icp', 'small_gicp', 'small_vgicp'], default='small_gicp')
     args = p.parse_args()
     if not 1 <= args.domain <= 232:
         p.error('offline domain must be 1..232')

@@ -249,6 +249,17 @@ TEST_F(C2,InvariantDescriptorRanksWithoutGlobalPositionPrior) {
   double difference=0;for(size_t k=0;k<a.size();++k)difference+=std::abs(a[k]-b[k]);EXPECT_LT(difference,.1);
   EXPECT_THROW(radial_pair_descriptor(Cloud{},search),std::exception);
 }
+TEST_F(C2,MultiscaleIndexKeepsSixDofAndCannotLoadAnotherDescriptor) {
+  auto improved=search;improved.descriptor="radial_pair_multiscale_v2";
+  auto index=PlaceIndex::build(map,improved);auto dest=root/"multiscale-index";index->save(dest);
+  auto loaded=PlaceIndex::load(dest,map,improved);
+  auto transformed=rb::transformed(body,pose(40,-30,10,.9,-.8,2.4));
+  auto result=loaded->query(*transformed,5);ASSERT_EQ(result.size(),1U);EXPECT_EQ(result[0].id,7U);
+  auto a=radial_pair_descriptor(body,improved),b=radial_pair_descriptor(*transformed,improved);
+  double distance=0.;for(size_t k=0;k<a.size();++k)distance+=(a[k]-b[k])*(a[k]-b[k]);
+  EXPECT_LT(distance,.02);EXPECT_THROW(PlaceIndex::load(dest,map,search),std::exception);
+  improved.descriptor="STD_not_implemented";EXPECT_THROW(PlaceIndex::build(map,improved),std::exception);
+}
 TEST_F(C2,LargeCorrectionNeedsDisjointMovingQueriesThenC1OwnsValidity) {
   auto global=create();EXPECT_FALSE(step(*global,0).confirmed);auto r=step(*global,1);EXPECT_FALSE(r.confirmed);EXPECT_EQ(r.reason,"verifying_independent_motion_support")<<r.quality;
   r=step(*global,2);EXPECT_FALSE(r.confirmed);EXPECT_EQ(r.reason,"verifying_wait_disjoint_query_scans");

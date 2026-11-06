@@ -10,18 +10,19 @@
 
 namespace ranger_localizer {
 namespace {
-constexpr size_t dimension=131;
-void check_descriptor(const std::vector<double>& d) {
-  if(d.size()!=dimension) throw std::invalid_argument("descriptor dimension");
+size_t descriptor_dimension(const SearchConfig& c) { return c.descriptor=="radial_pair_distribution_v1"?131:195; }
+void check_descriptor(const std::vector<double>& d,const SearchConfig& c) {
+  if(d.size()!=descriptor_dimension(c)) throw std::invalid_argument("descriptor dimension");
   for(double x:d) if(!std::isfinite(x)||x<0||x>1.00001) throw std::invalid_argument("descriptor value");
 }
 Json binding(const Archive& map,const SearchConfig& config) {
-  return {{"schema_version",1},{"kind","c2_place_index"},{"algorithm","radial_pair_distribution_v1"},
+  return {{"schema_version",1},{"kind","c2_place_index"},{"algorithm",config.descriptor},
     {"source_manifest_sha256",map.manifest_sha},{"map_uuid",map.uuid},{"graph_version",map.graph_version},
     {"frame","keyframe_imu"},{"gravity_convention","none_full_3d_invariant"},{"parameters",config.index_parameters()}};
 }
 }
 void SearchConfig::validate()const {
+  if(descriptor!="radial_pair_distribution_v1" && descriptor!="radial_pair_multiscale_v2") throw std::invalid_argument("unknown C2 descriptor");
   if(candidates<1||candidates>16||maximum_points<100||maximum_points>20000||window_frames<2||window_frames>8||
      maximum_index_frames<1||maximum_index_frames>100000||support_queries<2||support_queries>8)
     throw std::invalid_argument("C2 resource bounds");
@@ -30,7 +31,8 @@ void SearchConfig::validate()const {
     if(!std::isfinite(v)||v<=0) throw std::invalid_argument("C2 positive bounds");
 }
 Json SearchConfig::index_parameters()const {
-  return {{"resolution",resolution},{"maximum_points",maximum_points},{"descriptor_dimension",dimension},
+  if(descriptor=="radial_pair_multiscale_v2") return {{"resolution",resolution},{"maximum_points",maximum_points},{"descriptor_dimension",195},{"bins",64},{"histogram_ranges_m",{24.,12.,48.}},{"pair_samples",8192},{"smoothing","linear"},{"embedding","hellinger"}};
+  return {{"resolution",resolution},{"maximum_points",maximum_points},{"descriptor_dimension",descriptor_dimension(*this)},
     {"bins",64},{"histogram_range_m",80.},{"pair_samples",8192}};
 }
 std::vector<double> radial_pair_descriptor(const Cloud& input,const SearchConfig& config) {
@@ -41,7 +43,25 @@ std::vector<double> radial_pair_descriptor(const Cloud& input,const SearchConfig
   size_t count=std::min(config.maximum_points,cloud->size());points.reserve(count);
   for(size_t k=0;k<count;++k) points.push_back(cloud->at(k*cloud->size()/count).getVector3fMap().cast<double>());
   Eigen::Vector3d center=Eigen::Vector3d::Zero();for(const auto& p:points) {if(!p.allFinite())throw std::invalid_argument("nonfinite descriptor input");center+=p;}center/=count;
-  Eigen::Matrix3d covariance=Eigen::Matrix3d::Zero();std::vector<double> d(dimension,0.);
+  Eigen::Matrix3d covariance=Eigen::Matrix3d::Zero();std::vector<double> d(descriptor_dimension(config),0.);
+  if(config.descriptor=="radial_pair_multiscale_v2") {
+    // Smooth, independently normalized distance scales retain indoor detail.
+    // Hellinger embedding reduces dominance of dense surfaces; no gravity prior.
+    auto add=[&](size_t offset,double distance,double range,double weight) {
+      double coordinate=std::clamp(distance/range*63.,0.,63.);
+      size_t lo=size_t(coordinate),hi=std::min(size_t(63),lo+1);
+      d[offset+lo]+=weight*(1.-(coordinate-lo));d[offset+hi]+=weight*(coordinate-lo);
+    };
+    for(const auto& p:points) {auto v=(p-center).eval();covariance+=v*v.transpose();add(0,v.norm(),24.,1./count);}
+    std::mt19937 rng(91637);std::uniform_int_distribution<size_t> pick(0,count-1);
+    for(size_t k=0;k<8192;++k) {double distance=(points[pick(rng)]-points[pick(rng)]).norm();
+      add(64,distance,12.,1./8192);add(128,distance,48.,1./8192);}
+    for(size_t k=0;k<192;++k)d[k]=std::sqrt(d[k]);
+    Eigen::SelfAdjointEigenSolver<Eigen::Matrix3d> eig(covariance);
+    if(eig.info()!=Eigen::Success||eig.eigenvalues().sum()<=0)throw std::invalid_argument("invalid descriptor covariance");
+    for(int k=0;k<3;++k)d[192+k]=std::sqrt(std::max(0.,eig.eigenvalues()[k]/eig.eigenvalues().sum()));
+    check_descriptor(d,config);return d;
+  }
   auto bin=[](double x) {return std::min(size_t(63),size_t(std::max(0.,x)*.8));};
   for(const auto& p:points) {auto v=(p-center).eval();covariance+=v*v.transpose();d[bin(v.norm())]+=1./count;}
   std::mt19937 rng(91637);std::uniform_int_distribution<size_t> pick(0,count-1);
@@ -49,7 +69,7 @@ std::vector<double> radial_pair_descriptor(const Cloud& input,const SearchConfig
   Eigen::SelfAdjointEigenSolver<Eigen::Matrix3d> eig(covariance);
   if(eig.info()!=Eigen::Success||eig.eigenvalues().sum()<=0)throw std::invalid_argument("invalid descriptor covariance");
   for(int k=0;k<3;++k)d[128+k]=std::max(0.,eig.eigenvalues()[k]/eig.eigenvalues().sum());
-  check_descriptor(d);return d;
+  check_descriptor(d,config);return d;
 }
 std::shared_ptr<PlaceIndex> PlaceIndex::build(std::shared_ptr<const Archive> map,const SearchConfig& c,const std::function<bool()>& cancelled) {
   c.validate();if(map->frames.size()>c.maximum_index_frames)throw std::runtime_error("index frame limit");
@@ -98,14 +118,14 @@ std::shared_ptr<PlaceIndex> PlaceIndex::load(const fs::path& root,std::shared_pt
   for(size_t k=0;k<entries.size();++k) {
     const auto& e=entries[k];const auto& f=map->frames[k];
     if(!e["id"].is_number_unsigned()||!e["scan_id"].is_number_unsigned()||e.at("id").get<uint64_t>()!=f.id||e.at("scan_id").get<uint64_t>()!=f.scan_id)throw std::runtime_error("index keyframe identity/order");
-    auto d=e.at("descriptor").get<std::vector<double>>();check_descriptor(d);out->entries_.push_back({f.id,f.scan_id,std::move(d)});
+    auto d=e.at("descriptor").get<std::vector<double>>();check_descriptor(d,c);out->entries_.push_back({f.id,f.scan_id,std::move(d)});
   }
   return out;
 }
 std::vector<PlaceCandidate> PlaceIndex::query(const Cloud& cloud,size_t count)const {
   if(count<1||count>16)throw std::invalid_argument("candidate limit");
   auto d=radial_pair_descriptor(cloud,config_);std::vector<PlaceCandidate> found;found.reserve(entries_.size());
-  for(const auto& e:entries_) {double distance=0;for(size_t k=0;k<dimension;++k)distance+=std::abs(d[k]-e.descriptor[k]);found.push_back({e.id,distance});}
+  for(const auto& e:entries_) {double distance=0;for(size_t k=0;k<d.size();++k) {double delta=d[k]-e.descriptor[k];distance+=config_.descriptor=="radial_pair_distribution_v1"?std::abs(delta):delta*delta;}found.push_back({e.id,distance});}
   std::sort(found.begin(),found.end(),[](const auto& a,const auto& b){return a.distance==b.distance?a.id<b.id:a.distance<b.distance;});
   if(found.size()>count)found.resize(count);
   return found;

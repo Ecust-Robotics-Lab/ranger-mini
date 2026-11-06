@@ -5,6 +5,7 @@
 
 namespace ranger_localizer {
 struct SearchConfig {
+  std::string descriptor="radial_pair_distribution_v1";
   size_t candidates=5, maximum_points=4000, window_frames=2, maximum_index_frames=10000;
   double resolution=.2, window_seconds=1., window_translation=3., window_rotation=1.;
   double budget_ms=10000., retry_seconds=.5, support_time=.25, support_translation=.15, support_rotation=.08;

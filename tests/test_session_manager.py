@@ -61,7 +61,8 @@ def worker(scenario,base):
               "Path(%r).write_text(str(p.pid)); time.sleep(120)")%(sleeping,str(base/'escaped'))
         specs=[Component('parent',[python,'-c',code],resource='shared')];provider=lambda _:lambda:{}
     return run_guarded(session,specs,health_factory=provider,startup_timeout=.8 if scenario=='timeout' else 5.,
-                       cleanup_grace=.2,fail_on_health_loss=scenario=='health_loss',health_loss_grace=.2)
+                       cleanup_grace=.2,fail_on_health_loss=scenario=='health_loss',health_loss_grace=.2,
+                       prepare_hook=lambda:(base/('prepared_'+scenario)).touch())
 
 
 class ProcessTests(unittest.TestCase):
@@ -137,6 +138,8 @@ class ProcessTests(unittest.TestCase):
         self.assertTrue(wait_for(lambda:(self.base/'escaped').exists() and self.state()['state']=='RUNNING'))
         duplicate=self.spawn('normal');self.assertNotEqual(duplicate.wait(timeout=4),0)
         competing=self.spawn('resource_two');self.assertNotEqual(competing.wait(timeout=4),0)
+        self.assertTrue((self.base/'prepared_normal').exists())
+        self.assertFalse((self.base/'prepared_resource_two').exists())
         self.assertIsNone(p.poll())
         self.assertTrue(stop_session(self.base/'sessions/one'))
         self.assertEqual(p.wait(timeout=5),0)

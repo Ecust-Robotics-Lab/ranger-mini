@@ -21,9 +21,10 @@ from session_manager import atomic_json
 
 
 class Monitor(Node):
-    def __init__(self, folder, replay):
+    def __init__(self, folder, replay, localization=False):
         super().__init__('ranger_online_mapping_monitor')
         self.folder, self.replay = folder, replay
+        self.localization = localization
         self.output = Path(os.environ['RANGER_SESSION_HEALTH_FILE'])
         self.started = time.monotonic()
         self.last, self.counts = {}, {}
@@ -39,7 +40,13 @@ class Monitor(Node):
         output_qos = QoSProfile(depth=32, reliability=ReliabilityPolicy.BEST_EFFORT)
         self.create_subscription(Odometry, '/fast_livo/odometry', self.odom, output_qos)
         self.create_subscription(PointCloud2, '/fast_livo/deskewed_imu', self.cloud, output_qos)
-        self.create_subscription(BackendEstimate, '/fast_livo/backend/estimate', self.estimate, 10)
+        if localization:
+            from ranger_fast_livo_localizer.msg import LocalizerEstimate
+            from rclpy.parameter import Parameter
+            self.set_parameters([Parameter('use_sim_time', value=True)])
+            self.create_subscription(LocalizerEstimate, '/fast_livo/localizer/estimate', self.estimate, 10)
+        else:
+            self.create_subscription(BackendEstimate, '/fast_livo/backend/estimate', self.estimate, 10)
         self.create_subscription(DiagnosticArray, '/fast_livo/backend/health', self.diagnostics, 10)
         from std_msgs.msg import String
         self.create_subscription(String, '/fast_livo/capture/input_receipts', self.receipts, 10)
@@ -111,7 +118,18 @@ class Monitor(Node):
         self.backend = {'session_id': message.session_id, 'state': message.state,
             'reason': message.reason, 'pose_valid': message.pose_valid,
             'stamp_ns': self.stamp(message), 'graph_version': message.graph_version,
-            'scan_id': message.scan_id, 'loop_event_id': message.loop_event_id}
+            'scan_id': message.scan_id, 'loop_event_id': getattr(message, 'loop_event_id', 0)}
+        if self.localization:
+            self.metrics = json.loads(message.quality_json or '{}')
+            self.backend['map_uuid'] = message.map_uuid
+            self.backend['request_id'] = message.initialization_request_id
+            self.backend['pose'] = {'xyz': [message.pose.position.x, message.pose.position.y, message.pose.position.z],
+                'xyzw': [message.pose.orientation.x, message.pose.orientation.y, message.pose.orientation.z, message.pose.orientation.w]}
+            with (self.folder/'localization_samples.jsonl').open('a') as handle:
+                handle.write(json.dumps({**self.backend, 'received_steady': self.backend_receipt,
+                    'clock_ns': self.get_clock().now().nanoseconds,
+                    'metrics': {k: self.metrics.get(k) for k in ('queued_jobs', 'skipped_scans',
+                        'processed_scans', 'stale_results', 'sample_age_seconds', 'elapsed_ms')}})+'\n')
 
     def diagnostics(self, message):
         for status in message.status:
@@ -134,13 +152,15 @@ class Monitor(Node):
         checks = {'probe_live': now-self.started > 2 and not self.clock_error, 'lidar': alive('lidar') and alive('imu'),
             'camera': alive('camera'), 'frontend': alive('paired') and self.pairs >= 3 and self.frames_ok,
             'backend_ready': backend_ready, 'clock_ok': not self.clock_error,
-            'backend_listening': any(e.node_name == 'ranger_fast_livo_backend' for e in
+            'backend_listening': any(e.node_name == ('ranger_fast_livo_localizer' if self.localization else 'ranger_fast_livo_backend') for e in
                 self.get_subscriptions_info_by_topic('/fast_livo/deskewed_imu'))}
+        if self.localization:
+            checks['localizer_alive'] = backend_ok and bool(self.backend.get('map_uuid'))
         checks['receipt_probe_live']=self.receipt_time is not None and now-self.receipt_time<1.
         for key, topic in [('lidar_unclaimed', '/livox/lidar'), ('camera_unclaimed', '/front/image_sync'),
                            ('frontend_unclaimed', '/fast_livo/odometry'),
                            ('receipts_unclaimed', '/fast_livo/capture/input_receipts'),
-                           ('backend_unclaimed', '/fast_livo/backend/estimate')]:
+                           ('backend_unclaimed', '/fast_livo/localizer/estimate' if self.localization else '/fast_livo/backend/estimate')]:
             checks[key] = not self.get_publishers_info_by_topic(topic)
         clocks = self.get_publishers_info_by_topic('/clock')
         checks['clock_unclaimed'] = not clocks if self.replay else len(clocks) == 1 and clocks[0].node_name == self.get_name()
@@ -164,16 +184,17 @@ class Monitor(Node):
             'clock': {'mode': 'replay_clock' if self.replay else 'fixed_lidar_header_steady_anchor',
                 'anchor': self.anchor, 'error': self.clock_error, 'physical_host_sync_proven': False}}
         atomic_json(self.output, state)
-        atomic_json(self.folder/'mapping_health.json', state)
+        atomic_json(self.folder/('localization_health.json' if self.localization else 'mapping_health.json'), state)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--folder', required=True, type=Path)
     parser.add_argument('--replay', action='store_true')
+    parser.add_argument('--localization', action='store_true')
     args = parser.parse_args()
     rclpy.init()
-    node = Monitor(args.folder, args.replay)
+    node = Monitor(args.folder, args.replay, args.localization)
     from rclpy.executors import MultiThreadedExecutor
     executor = MultiThreadedExecutor(num_threads=3)
     executor.add_node(node)

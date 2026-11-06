@@ -189,7 +189,7 @@ def validate(components):
 
 def run_guarded(directory, components, health_factory=JsonHealth, startup_timeout=60.,
                 fail_on_health_loss=False, health_loss_grace=1., cleanup_grace=16.,
-                shutdown_hook=None, shutdown_timeout=0.):
+                shutdown_hook=None, shutdown_timeout=0., prepare_hook=None):
     """Run in the foreground. Guardian survives scheduler death and reaps orphans.
 
     An unexpected guardian death delivers SIGTERM to the scheduler. Concurrent
@@ -219,6 +219,8 @@ def run_guarded(directory, components, health_factory=JsonHealth, startup_timeou
         except BlockingIOError:
             raise RuntimeError(f'resource already owned by another session: {resource}')
         resource_locks.append(handle)
+    if prepare_hook is not None:
+        prepare_hook()
     run = Path(tempfile.mkdtemp(prefix='run-', dir=directory))
     guardian = identity(os.getpid())
     subreaper()

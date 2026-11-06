@@ -68,14 +68,17 @@ int main(int argc,char** argv) {
         {"physical_sync_validated",false},{"absolute_accuracy_validated",false},{"limitations",{"synthetic transform/occlusion only"}},
         {"evidence_files_sha256",{{evidence.string(),rb::sha256(evidence)}}}});
       auto map=Archive::load(archive,{},compatibility);SearchConfig config;auto index=PlaceIndex::build(map,config);
+      auto multiscale=config;multiscale.descriptor="radial_pair_multiscale_v2";auto index_v2=PlaceIndex::build(map,multiscale);
       Json groups=Json::array();
       for(bool tilted:{false,true}) {
-        size_t radial1=0,radial5=0,polar1=0,polar5=0;
+        size_t radial1=0,radial5=0,radial_v2_1=0,radial_v2_5=0,polar1=0,polar5=0;
         for(int i=0;i<10;++i)for(bool occluded:{false,true}) {
           Pose t=Pose::Identity();t.linear()=(Eigen::AngleAxisd(1.7,Eigen::Vector3d::UnitZ())*
             Eigen::AngleAxisd(tilted?-.6:0,Eigen::Vector3d::UnitY())*Eigen::AngleAxisd(tilted?.7:0,Eigen::Vector3d::UnitX())).toRotationMatrix();
           Cloud source;for(size_t k=0;k<clouds[i].size();++k)if(!occluded||k%4!=0)source.push_back(clouds[i][k]);
-          auto query=rb::transformed(source,t);auto candidates=index->query(*query,5);
+          auto query=rb::transformed(source,t);auto candidates=index->query(*query,5);auto improved_candidates=index_v2->query(*query,5);
+          radial_v2_1+=improved_candidates.front().id==uint64_t(i);
+          radial_v2_5+=std::any_of(improved_candidates.begin(),improved_candidates.end(),[&](auto c){return c.id==uint64_t(i);});
           radial1+=candidates.front().id==uint64_t(i);radial5+=std::any_of(candidates.begin(),candidates.end(),[&](auto c){return c.id==uint64_t(i);});
           std::vector<std::pair<double,int>> scores;auto d=polar(*query);
           for(int j=0;j<10;++j)scores.emplace_back(polar_distance(d,prototypes[j]),j);
@@ -83,7 +86,7 @@ int main(int argc,char** argv) {
           polar5+=std::any_of(scores.begin(),scores.begin()+5,[&](auto s){return s.second==i;});
         }
         groups.push_back({{"orientation",tilted?"yaw_roll_pitch":"yaw"},{"queries",20},
-          {"radial_hits_at_1",radial1},{"radial_hits_at_5",radial5},{"polar_hits_at_1",polar1},{"polar_hits_at_5",polar5}});
+          {"radial_hits_at_1",radial1},{"radial_hits_at_5",radial5},{"radial_v2_hits_at_1",radial_v2_1},{"radial_v2_hits_at_5",radial_v2_5},{"polar_hits_at_1",polar1},{"polar_hits_at_5",polar5}});
       }
       result["datasets"].push_back({{"split",split},{"places",10},{"groups",groups}});
     }

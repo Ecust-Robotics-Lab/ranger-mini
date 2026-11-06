@@ -194,6 +194,8 @@ LOST 后由操作员重新给定初值并完成确认，本阶段不暗中增加
 
 ## 5. C2：无人工初值全局重定位
 
+2026-11-06后续：按用户指令实现自有多尺度v2并与固定官方STD/Scan Context做独立离线比较，随后对照并默认small_gicp，见[对照报告](fast_livo2_retrieval_comparison_report.md)。在线入口默认v2；STD/SC未成为在线插件，单访问估计参考不等于真值排名或完整C2-4通过。
+
 本节源码、构建、合成与同包功能检查已交付，实际代码/命令/证据见 [C2 报告](fast_livo2_stage_c2_report.md) 和 [契约](fast_livo2_relocalizer_interfaces.md)。这不表示 C2-0 至 C2-4 全部验收完成：C2-4 跨会话、真实负样本及真实条件验证仍 PARTIAL，不以同包功能代替。
 
 2026-11-04 后续：[独立包 C2 功能试验](fast_livo2_cross_session_global_report.md)已实际执行。旧 B 图配新 120 秒采集的查询，无人工初值、Tag 关闭；1195 对完整处理，约 25.90 秒首次 VALID，之后 936 有效，无 LOST/ERROR。场地覆盖和正确位置尚待确认，缺少独立真值与真实负样本，C2-4 仍 PARTIAL。纯 LiDAR 候选 C2 可以继续测试，不把 Tag 时间/地标尚未通过设为整个 C2 的前置条件。

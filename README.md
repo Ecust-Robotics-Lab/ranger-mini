@@ -70,6 +70,8 @@ FAST-LIVO2 前端与 B 不能设为先验地图定位后端；C1/C2 使用独立
 
 正式FAST在线预建图使用 `map_fast_livo2.sh --execute`，在一个会话中运行三融合、B回环、优化地图显示、原始/去畸变数据录制及停止封存。`run_mapping.sh online` 选择FAST profile时也转到该入口；Lightning默认不变。单独录包入口现也保存去畸变云，但不启动回环后端。新入口默认dry-run，详细命令、时间契约与地图目录见[在线预建图](docs/fast_livo2_online_mapping.md)。
 
+FAST在线先验地图定位/重定位使用 `localize_fast_livo2.sh`，默认dry-run，支持auto/manual与无设备原速重放；软件/离线首版及新282秒独立访问功能结果见[报告](docs/fast_livo2_online_localization_report.md)，命令见[指南](docs/fast_livo2_online_localization.md)。它使用同一C1/C2与独立安装，不接管生产Lightning或公共TF。
+
 ## 公共定位与 TF
 
 ```text
@@ -116,3 +118,5 @@ bash scripts/run_fast_livo2_backend.sh --offline-bridge
 阶段 B 交付见 [报告](docs/fast_livo2_stage_b_report.md) 和 [后端接口](docs/fast_livo2_backend_interfaces.md)。C1 见 [报告](docs/fast_livo2_stage_c1_report.md) 和 [接口/操作](docs/fast_livo2_localizer_interfaces.md)：`bash scripts/build_fast_livo2_localizer.sh`、`bash scripts/run_fast_livo2_localizer.sh` 默认 dry-run，显式 `--offline-bridge` 才接隔离公共桥接。C2 见 [报告](docs/fast_livo2_stage_c2_report.md) 与 [接口](docs/fast_livo2_relocalizer_interfaces.md)，使用独立 dry-run 入口 `scripts/run_fast_livo2_relocalizer.sh`。不自动进入真机或高程阶段。
 
 项目维护：[ujd66](https://github.com/ujd66) · [Ecust Robotics Lab](https://github.com/Ecust-Robotics-Lab)。
+
+在线重定位及检索对照的本地保存见[Git检查点](docs/git_checkpoint_online_localization_20261106.md)；后续建议见[定位接入导航计划](docs/FAST_NAVIGATION_INTEGRATION_PLAN.md)。

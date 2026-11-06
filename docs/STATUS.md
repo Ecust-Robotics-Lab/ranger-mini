@@ -1,8 +1,14 @@
 # 当前项目状态
 
-更新：2026-11-06。**在线预建图软件链路及390秒原速离线联调已完成，真机、连续新鲜度、长时和独立访问定位仍待验收。** 真实Tag辅助定位/回环和总计划未全面完成。快速接手见 [HANDOFF](HANDOFF.md)，阶段/参考架构见 [总计划](FAST_LIVO2_BACKEND_PLAN.md)，Tag细化见 [增量计划](FAST_LIVO2_APRILTAG_PLAN.md)。日期报告只描述其当时条件。
+更新：2026-11-06。**在线预建图已有原速联调；在线定位首版完成软件/离线交付，新282秒独立采集包原速无初值C2→C1功能通过，连续新鲜度泛化、真机、长时及D仍待验收。** 真实Tag辅助定位/回环和总计划未全面完成。快速接手见 [HANDOFF](HANDOFF.md)，阶段/参考架构见 [总计划](FAST_LIVO2_BACKEND_PLAN.md)，Tag细化见 [增量计划](FAST_LIVO2_APRILTAG_PLAN.md)。日期报告只描述其当时条件。
 
 ## 当前配置与工作树
+
+当前推荐的FAST在线重定位默认组合为：自有检索v2＋KISS完整六自由度粗配准＋small_gicp精配准＋C1确认/跟踪。用户再次要求设为默认后，已核验实际入口参数及现用二进制与默认短包检查时SHA一致；配置原已生效，无需重复修改。选择依据及SC对照边界见[报告](fast_livo2_retrieval_comparison_report.md)。
+
+- 2026-11-06后续按用户指令完成[自有检索v2/STD/Scan Context对照及GICP切换](fast_livo2_retrieval_comparison_report.md)：新282秒包v2/PCL首VALID24.394秒、2579有效扫描，v2/GICP22.315秒、2590有效扫描；后者10个不同扫描短暂未收敛、无LOST/ERROR。在线默认v2检索，C1/C2入口默认small_gicp，PCL/v1可显式选择。检索区域参考来自估计轨迹，不是真值；SC在后段共同几何通过数更高，不能宣称v2全面胜出。改动已分组本地保存，未新增推送，见[检查点](git_checkpoint_online_localization_20261106.md)。
+
+- 2026-11-06新增独立采集查询包 `fast-livo-relocalization_visit01-trpozzyj`：282.10秒、73,353条消息、2821对前端位姿/云，停录正常、父进程后审查被中断；只读补验基本数据PASS，原结果/无完成标志保持，见[新包核验](fast_livo2_relocalization_visit01_capture_report.md)。用户随后明确授权在线重定位源码、隔离构建与离线开发，首版已交付，见[报告](fast_livo2_online_localization_report.md)；实物操作未授权。
 
 - 正式FAST-LIVO2试验 `img_time_offset=+0.1 s`，由用户明确要求，原包/驱动header不改；曝光中心/剩余相位未实测。新390秒包已完成+100ms整包前端/B联调，原两90秒包固定+100ms对照及C1/C2评估仍待完成。上游配置、作者解释与两包检查见 [扫描相位报告](fast_livo2_timestamp_phase_report.md)。
 - Tag默认关闭；独立诊断配置仍 `offset_ns=0, time_verified=false`，没有真实VALID地标表。启用前明确其原图映射，与前端保持采样语义一致且不重复补偿。
@@ -13,7 +19,11 @@
 - 分支 `refactor/pluggable-navigation`。2026-11-05的7组提交见[历史检查点](local_git_checkpoint_20261105.md)。2026-11-06用户授权合理保存并上传Git；保存前HEAD为 `4f4977992438dcca6e84c5d2a904d7dea94d1f70`，刷新远端后领先15提交、无分叉，本轮新增4组，目标为 `origin/refactor/pluggable-navigation`。分组与核对见[Git检查点](git_checkpoint_20261106.md)，最终HEAD和远端状态以Git现查为准。原包、地图和被忽略资产继续保留，后续未提交修改仍须保护。
 - 早期交接/本地提交之后，按用户新指令完成录包简化、新包展示及上述在线建图的软件/离线工作，Agent没有启动实物设备。新建图验证会话已结束；历史field/旁边K工程的保存状态不能作为当前活进程依据，下一次操作先按boot/PID身份重新现查，未获授权不接管或停止。
 
+- 新入口 `localize_fast_livo2.sh` 默认dry-run，auto/manual、同一C1/C2、有界最新扫描调度、原采样年龄门控及录包/停止已实现；[指南](fast_livo2_online_localization.md)、[计划](FAST_LIVO2_ONLINE_LOCALIZATION_PLAN.md)、[报告](fast_livo2_online_localization_report.md)。新282秒包约51.494秒首次VALID、2309个不同有效扫描，之后无DEGRADED/LOST/ERROR；同包390秒2978个不同有效扫描，但仍有新鲜度LOST及自动恢复，不称连续性能全面通过。阶段改动已分组本地保存，未新增推送。
+
 ## 能力与验收边界
+
+2026-11-06冷启动后续调研已核对KISS、Scan Context、STD/BTC、3D-BBS和iBTC一手资料；建议优先检查采样/局部特征、候选覆盖和临时支持验证，见[在线定位计划调研附录](FAST_LIVO2_ONLINE_LOCALIZATION_PLAN.md#2026-11-06-冷启动改进调研与建议未实施)。该句对应早期仅调研阶段；后续已实现v2及GICP默认，实际结果见上方最新状态和对照报告。
 
 | 项目 | 已有证据 | 当前限制 |
 | --- | --- | --- |
@@ -46,7 +56,7 @@
 
 ## 下一步与用户待办
 
-本轮已完成统一在线预建图的软件与离线范围。下一步按明确指令安排实物建图/长时测试及新地图的独立访问定位验收；原两90秒包固定+100ms同集合对照仍可离线继续。保留已有GICP对照和原安全/几何/时间门槛，先核对版本、采样戳与地图身份；真实Tag、wheel同步和D分别验收。
+本轮已完成在线预建图、私有在线定位及自有检索对照的软件/离线范围，已按用户指令分组本地保存。下一步建议按[导航接入计划](FAST_NAVIGATION_INTEGRATION_PLAN.md)先补真实时间/wheel/公共TF、导航占据图、车体外参与几何一致性，再复用现有Smac Hybrid-A*和MPPI做受控闭环；本次仅规划，硬件/运动仍按该次明确授权。独立盲测/负样本、真实Tag和D分别验收。
 
 当前无需重新录同类包。后续新盲测访问、特定曝光/触发测量、整层地图和真实wheel/系统测试如确有需要，须说明具体目的并遵循该次硬件/运动授权。未获独立真值时不报告APE/RPE或绝对精度。
 

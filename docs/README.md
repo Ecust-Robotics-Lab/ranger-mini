@@ -24,6 +24,10 @@
 
 ## 最新实现与验证报告
 
+- [20261106在线定位与重定位首轮交付](fast_livo2_online_localization_report.md)：统一私有入口、实时扫描调度、原速新282秒包无初值功能、390秒同包失效/恢复与限制；[操作](fast_livo2_online_localization.md)、[计划](FAST_LIVO2_ONLINE_LOCALIZATION_PLAN.md)。
+
+- [20261106新查询包核验](fast_livo2_relocalization_visit01_capture_report.md)：正常录制282秒，后审查中断，原包只读补验PASS，现场保持。
+
 - [20261105统一在线预建图](fast_livo2_online_mapping_report.md)：新入口及隔离I/O前端/B/收流/显示/封存，390秒原速3900对、305KF/114回环、原始payload保真和共用归档加载PASS；真实接收延迟证据与会话DDS配置留档，连续新鲜度/实物仍PARTIAL。
 
 - [20261105走廊/教室PCD与轨迹](fast_livo2_corridor_classroom_mapping_report.md)：完整+100ms三融合、2333万点前端PCD与轨迹图；额外B图目标单项FAIL，诊断快照保留。
@@ -92,3 +96,8 @@
 `*_evidence/`、地图 manifest/acceptance、标定原始结果保留作为证据，不因失败或接口过时删除。旧文档中的设备地址、参数、授权和“待执行”清单仅属于当时记录；当前操作以HANDOFF、STATUS和专用入口契约为准。
 
 - [2026-11-06 Git分组保存与上传检查点](git_checkpoint_20261106.md)：录包、走廊证据、在线预建图及交接的提交范围、资产保护与验证。
+
+- [自有检索v2、STD/Scan Context对照与GICP默认](fast_livo2_retrieval_comparison_report.md)：2026-11-06后续，真实包检索与原速对照、参数/许可、默认切换与限制。
+
+- [在线重定位本地Git检查点](git_checkpoint_online_localization_20261106.md)：本轮分组保存与资产边界。
+- [FAST定位接入导航与闭环计划](FAST_NAVIGATION_INTEGRATION_PLAN.md)：wheel/TF、占据图、车体几何、Smac/MPPI与分步验收。

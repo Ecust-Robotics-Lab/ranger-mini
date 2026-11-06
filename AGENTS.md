@@ -47,6 +47,10 @@
 
 ## 真机与测试
 
+- 2026-11-06后续已按用户指令完成自有检索v2、官方STD/Scan Context离线对照，及新282秒包同v2/PCL与GICP原速对照，见`docs/fast_livo2_retrieval_comparison_report.md`。在线入口默认自有v2，C1/C2入口默认small_gicp；旧v1/PCL可显式选择，B/生产默认不变。官方STD/SC仅用于独立benchmark，许可和参考标签限制见报告；不当作在线集成或完整真值/泛化验收。
+
+- 2026-11-06后续用户已授权在线重定位软件/离线开发，首版见 `docs/fast_livo2_online_localization_report.md`，入口 `localize_fast_livo2.sh` 默认dry-run，使用隔离 `online_localization_install` 和既有在线派生前端。新282秒独立采集包有原速C2→C1功能证据，390秒同包仍有新鲜度失效/自动恢复；真机、公共wheel/TF、长期泛化和D未验。本阶段已按用户后续指令分组本地保存，未新增推送，见`docs/git_checkpoint_online_localization_20261106.md`；实物操作不从软件授权继承。
+
 - 2026-11-05后续已按用户指令实施FAST统一在线预建图，操作见`docs/fast_livo2_online_mapping.md`，证据见对应交付报告。`map_fast_livo2.sh`默认dry-run，显式执行才启动本次传感器/前端/B/录包；FAST profile的统一online入口转到它。使用`ws_fast_livo/online_frontend_source`的可追溯I/O派生构建及`online_install`后端，保留原安装。停止先封存B、排空并导出，再清理发布者；私有sensor-clock不等于wheel同步，不接公共TF/控制。单独录包也已补存去畸变云，但不启动B。软件/离线授权不自动扩展为实物测试许可。
 
 - 自动入口通常默认dry-run；专用 `record_fast_livo2.sh` 已按2026-11-05用户后续指令改为默认执行、独立启动传感器、读取FAST profile，显式 `--dry-run` 才显示计划，接入预览须显式 `--attach`。此入口默认行为不构成Agent自动开设备的许可，其余入口仍保持原规则。早期曾查到field和 `ranger_nav_k_integration` 进程，属于当时快照，不能当成当前存活状态。FAST会话停止不能代表整机设备停止；开始先按boot/PID身份查会话与进程归属，不抢占或擅自停止既有会话。C1/C2 离线阶段不启动或重启设备。

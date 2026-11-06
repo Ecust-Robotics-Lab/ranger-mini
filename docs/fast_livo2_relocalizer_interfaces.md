@@ -1,5 +1,7 @@
 # C2 离线全局重定位接口
 
+2026-11-06增补：显式[在线定位入口](fast_livo2_online_localization.md)已复用本C2确认与C1跟踪链，实现原速输入的有界调度和过期结果抑制，私有服务/消息不变。生产默认及本页旧离线入口保持，实际新包功能结果和未验范围见[首轮报告](fast_livo2_online_localization_report.md)。
+
 更新：2026-10-29。C2 在既有 `ranger_fast_livo_localizer` 内向 C1 提供确认后的初值；C1 继续负责精确初始化和持续定位。默认 C1 配置关闭全局搜索，生产 runtime 继续 Lightning。本阶段没有硬件、前端恢复或导航授权。
 
 ## 数据与地图
@@ -66,3 +68,5 @@ bash scripts/run_fast_livo2_relocalizer.sh --execute \
 这是受检索数量和几何可辨识性限制的离线实现，不保证所有环境召回或消歧。实际证据与未完成项见 [C2 报告](fast_livo2_stage_c2_report.md)，跨会话、真值精度与实时接车仍 PARTIAL。
 
 2026-11-04 新增一次不同采集包的 [无初值功能试验](fast_livo2_cross_session_global_report.md)：1195对查询、936个VALID采样，无LOST/ERROR；场地覆盖与绝对位置未确认。离线评估工具支持 `--query-provenance` 绑定地图/native DB SHA，独立输入禁止同图推导初值；`--allow-recovery` 只调整试验结果如何容纳一次真实丢失后恢复，不改变节点门槛/锁。新日志额外保存 `T_map_imu` 和请求代际。真实Tag尚无VALID表不阻止纯LiDAR C2测试。
+
+2026-11-06检索增补：新增自有`radial_pair_multiscale_v2`（195维、平滑多尺度距离分布与Hellinger嵌入），`global_descriptor`控制索引绑定与比较；在线入口默认v2，旧v1索引/离线配置兼容。官方STD/Scan Context仅进入独立离线benchmark，不是在线插件。C1/C2入口默认注册器已按用户指令改为small_gicp，KISS全局粗配准保持。对照与限制见[报告](fast_livo2_retrieval_comparison_report.md)。

@@ -2,6 +2,12 @@
 
 更新：2026-11-06。项目 `/home/lab307/ranger_nav`。**在线预建图软件流程已打通，390秒真实包原速联调通过；真机、连续新鲜度、长时和独立访问定位尚未完成验收。** 总计划及真实Tag辅助定位/回环仍未全面验收，过程记录以带日期报告为准。
 
+2026-11-06后续：用户录得独立访问282秒包，要求检查后立即开发在线重定位。首版软件/离线已完成，新包原速无初值C2→C1有2309个不同有效扫描，首次VALID约51.494秒，之后持续跟踪；390秒同包仍有LOST并能恢复。先读[在线定位报告](fast_livo2_online_localization_report.md)、[操作](fast_livo2_online_localization.md)、[实施计划](FAST_LIVO2_ONLINE_LOCALIZATION_PLAN.md)。新入口默认dry-run、隔离online_localization_install；本阶段后续已分组本地保存，见[检查点](git_checkpoint_online_localization_20261106.md)，未新增推送/未开设备。此更新优先于下方上一轮“停在交接”的历史范围，后续不自动开设备或扩展D。
+
+2026-11-06再后续：自有v2与官方STD/Scan Context已做离线同条件比较；同一新282秒包v2/PCL首VALID24.394秒、v2/GICP22.315秒。在线入口默认自有v2，C1/C2入口默认small_gicp。先读[本轮对照及默认切换](fast_livo2_retrieval_comparison_report.md)；参考标签为估计轨迹，GICP有短暂拒绝，无LOST。原390秒限制未重新验收，改动已本地保存、未新增推送。
+
+下一阶段建议进入[定位接入导航与受控闭环](FAST_NAVIGATION_INTEGRATION_PLAN.md)：先真实时间/wheel/TF、占据图与车体几何，再复用Smac/MPPI。当前只完成规划，不从计划启动硬件或运动。
+
 ## 1. 本轮边界与快速阅读
 
 2026-11-05后续已按用户指令完成统一在线预建图的软件与离线范围，见[操作说明](fast_livo2_online_mapping.md)、[交付报告](fast_livo2_online_mapping_report.md)。最终原速390秒会话3900对、305KF/114接受回环，录制/封存/文件与共用读取器加载PASS；实物、连续新鲜度、长时和D仍待验。此前交接清理与7组本地提交见[本地检查点](local_git_checkpoint_20261105.md)。2026-11-06用户另行要求合理保存并上传Git，本阶段源码、配置、证据及交接已分组保存，见[Git检查点](git_checkpoint_20261106.md)。Agent未开实物设备。下一Agent先核对实际状态和未提交改动，不从历史计划自动续跑或开设备。
@@ -73,6 +79,7 @@ C1已提交基线 `1212b43`，C2 `2e0f06f`，重力 `4b49bb0`；此前B的三个
 | 资产 | 路径及作用 |
 | --- | --- |
 | 转向90s，下一轮训练/建图来源 | `bags/fast-livo-tag140_turn_03-bk8_pjyy/raw` |
+| 新独立重定位访问282s | `bags/fast-livo-relocalization_visit01-trpozzyj/raw`；2821对位姿/云，七话题基本检查PASS，原审查中断现场保留，见[核验](fast_livo2_relocalization_visit01_capture_report.md)；地图覆盖/定位未验 |
 | 新走廊/教室390s，用户随后自行录制 | `bags/fast-livo-corridor_classroom_map01-182fdzyj/raw`；归档+100ms，原DB SHA `b6f7902c1b5fbffbaea69bf241efff540d48c0a85358d1267a4f98d468496137`；停录后审查曾中断，另存基本审查PASS，见[录制核验](fast_livo2_corridor_classroom_capture_report.md) |
 | 直行90s，独立采集查询 | `bags/fast-livo-tag140_straight_04-ryzykq2l/raw`；已经参与过方法评估，今后不能称全新盲测 |
 | 120s同步诊断 | `bags/fast-livo-tag140_sync_diag_02-35f_m8nd/raw`；1200扫描，writer均覆盖 |

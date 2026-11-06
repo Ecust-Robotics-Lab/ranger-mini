@@ -1,10 +1,10 @@
 # FAST-LIVO2 建图、先验定位与重定位总计划
 
-更新：2026-11-05。总计划未全部完成；已有AprilTag软件/离线成果和不同采集数据的C2无初值功能对照，完整泛化验收仍PARTIAL。本轮先完成交接/过时资产清理，后按用户新指令[分组本地提交](local_git_checkpoint_20261105.md)，没有继续算法实施；详见[HANDOFF](HANDOFF.md)和[清理报告](handoff_cleanup_20261105.md)。本文件维护架构、阶段与验收要求，**计划不是后续阶段或硬件操作授权**；真实状态以[STATUS](STATUS.md)和带日期报告为准。C1/C2实现见[C1报告](fast_livo2_stage_c1_report.md)、[C2报告](fast_livo2_stage_c2_report.md)。
+更新：2026-11-06。总计划未全部完成；已有AprilTag软件/离线成果、不同采集数据的C2功能对照，以及用户后续授权的[统一在线预建图软件与离线交付](fast_livo2_online_mapping_report.md)，完整泛化/真机验收仍PARTIAL。此前交接清理和[本地提交](local_git_checkpoint_20261105.md)分别保留记录，最新实施改动已按2026-11-06用户指令分组保存并纳入上传范围，见[Git检查点](git_checkpoint_20261106.md)。本文件维护架构、阶段与验收要求，**计划不是后续阶段或硬件操作授权**；真实状态以[STATUS](STATUS.md)和带日期报告为准。C1/C2实现见[C1报告](fast_livo2_stage_c1_report.md)、[C2报告](fast_livo2_stage_c2_report.md)。
 
 ## 1. 当前基线、目标与顺序
 
-当前正式前端试验时偏已按用户明确要求设为 **+100ms**，依据见[扫描相位报告](fast_livo2_timestamp_phase_report.md)。只验了参数/相关回归，完整+100ms轨迹/建图/定位尚未重跑；下文历史+110ms的地图和GICP结果保留原条件。收到继续指令后优先用已有两包固定+100ms另存对照，再推进Tag时间/地标与真实C2/B验收，当前无需重复录同类包。
+当前正式前端试验时偏已按用户明确要求设为 **+100ms**，依据见[扫描相位报告](fast_livo2_timestamp_phase_report.md)。用户后续授权统一在线预建图，已用新390秒包完成原速三融合/B/录制/封存及归档加载，见[交付报告](fast_livo2_online_mapping_report.md)。原两90秒固定+100ms对照及C1/C2评估仍待做；下文历史+110ms的地图和GICP结果保留原条件。真实Tag、物理同步、独立精度和D仍须分别验收，当前无需重复录同类包。
 
 最新[C1 修正归因与 GICP 对照](fast_livo2_c1_correction_report.md)已完成控制实验和既有GICP完整离线运行；同一冻结Tag的跨访问回投P95约17.32→6.11px。原C2/C1及安全门槛保持，正式默认/部署未改，真实Tag辅助与D仍待验。
 

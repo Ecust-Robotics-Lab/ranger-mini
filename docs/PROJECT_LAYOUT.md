@@ -1,6 +1,6 @@
 # 当前工程结构
 
-更新：2026-11-05。FAST-LIVO2 B/C1/C2与Tag增量已有软件/离线成果并已分组本地提交，真实Tag与D仍未验。FAST专用会话未运行，field及旁边工作区另有活动进程；最新会话、构建前缀、+100ms配置、原包/地图和清理状态见[HANDOFF](HANDOFF.md)。历史整合见[整合报告](consolidation_report.md)，定位入口见[C1](fast_livo2_localizer_interfaces.md)、[C2](fast_livo2_relocalizer_interfaces.md)。
+更新：2026-11-06。FAST-LIVO2 B/C1/C2、Tag及在线预建图已有软件/离线成果，Git保存与上传范围见[检查点](git_checkpoint_20261106.md)，真实Tag与D仍未验。本次只读核对FAST会话均不存活，历史field身份不属于本次启动，当前进程扫描未发现相关传感器/导航进程；最新会话、构建前缀、+100ms配置、原包/地图和清理状态见[HANDOFF](HANDOFF.md)。历史整合见[整合报告](consolidation_report.md)，定位入口见[C1](fast_livo2_localizer_interfaces.md)、[C2](fast_livo2_relocalizer_interfaces.md)。
 
 新上下文先读 [HANDOFF](HANDOFF.md)，下一步见 [后端/重定位计划](FAST_LIVO2_BACKEND_PLAN.md)，当前与历史文档分类见 [文档索引](README.md)。
 
@@ -53,7 +53,9 @@
 | 标定/同步 | `bash scripts/run_calibration.sh ACTION` | camera、capture、intrinsics、sync、extrinsics、solve；默认显示计划 |
 | 现场定位与导航 | field_session.sh、run_navigation.sh | 既有定位契约、公共 TF 与安全链 |
 | 算法专用入口 | run_fast_livo2_live/replay.sh、run_slam_online/offline.sh | 保留环境装载、专用参数与状态控制，不是重复算法 |
-| 三传感器录包 | record_fast_livo2.sh | 默认dry-run；自动启动或接入预览，录包/配置/同步CSV归档与录后审查，见[指南](fast_livo2_recording.md) |
+| FAST在线预建图 | map_fast_livo2.sh、fast_livo2/mapping_session.py | 统一前端/B/录包/显示与封存；FAST profile的统一online入口转到它 |
+| FAST在线隔离构建 | build_fast_livo2_online.sh、prepare_online_frontend.py | 复用锁定依赖；I/O派生源码在online_frontend_source，保留原安装与vendor修改 |
+| 三传感器录包 | record_fast_livo2.sh | 默认执行、独立启动传感器及FAST profile；显式--dry-run预演、--attach接入预览，保留归档与录后审查，见[指南](fast_livo2_recording.md) |
 
 `mapping_backend` 与 `localization_backend` 分别选择前端/建图和全局定位。FAST 前端与 B 的连续局部里程计/回环建图不能作为先验地图定位后端；C1/C2 使用独立离线入口，不接管生产配置。配置解析器继续拒绝将局部前端冒充全局定位。`standard` 是既有外部标准定位输入接口。
 

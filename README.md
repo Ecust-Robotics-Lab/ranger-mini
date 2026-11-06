@@ -4,9 +4,9 @@ ROS 2 Humble / Ubuntu 22.04 / x86_64，实物为 **Ranger Mini V2 + Livox Mid-36
 
 **新上下文从 [交接指南](docs/HANDOFF.md) 开始**，再读 [当前状态](docs/STATUS.md)、[工程约束](AGENTS.md)、[后端与重定位计划](docs/FAST_LIVO2_BACKEND_PLAN.md)。全部文档见 [docs 索引](docs/README.md)。
 
-2026-11-05交接已更新，复制 [新Agent提示词](docs/NEXT_AGENT_PROMPT.md) 可快速接手。正式前端试验现使用用户指定的 **+100ms**，完整新配置评估尚未重跑；历史+110ms结果保持原条件。过时试录清理名单与保留理由见 [清理报告](docs/handoff_cleanup_20261105.md)。
+2026-11-05交接已更新，复制 [新Agent提示词](docs/NEXT_AGENT_PROMPT.md) 可快速接手。正式前端试验使用用户指定的 **+100ms**；新走廊包已完成完整三融合展示，原两90秒包固定+100ms对照及C1/C2评估仍待完成，历史+110ms结果保持原条件。在线预建图统一入口见[操作说明](docs/fast_livo2_online_mapping.md)，验证边界见对应报告。过时试录清理名单与保留理由见 [清理报告](docs/handoff_cleanup_20261105.md)。
 
-AprilTag 候选与地标增量已完成软件及离线检查，默认关闭；见 [细化计划](docs/FAST_LIVO2_APRILTAG_PLAN.md)、[接口与操作](docs/fast_livo2_apriltag_interfaces.md)、[交付报告](docs/fast_livo2_apriltag_report.md)。真实地标与跨访问性能仍待验，既有成果已按用户指令[分组本地提交](docs/local_git_checkpoint_20261105.md)，未推送。
+AprilTag 候选与地标增量已完成软件及离线检查，默认关闭；见 [细化计划](docs/FAST_LIVO2_APRILTAG_PLAN.md)、[接口与操作](docs/fast_livo2_apriltag_interfaces.md)、[交付报告](docs/fast_livo2_apriltag_report.md)。真实地标与跨访问性能仍待验，既有成果及在线建图已按用户指令分组保存，本次上传范围见[Git检查点](docs/git_checkpoint_20261106.md)。
 
 ## 当前能力
 
@@ -41,7 +41,7 @@ bags/、maps/、docs/     数据、地图和验证证据
 
 正式标定根目录为 `calibration/`，`~/calibration` 仅是兼容链接；新入口已在临时无链接条件下通过离线验证。原相机驱动/SDK及用户修改保留。职责与清理范围见 [工程结构](docs/PROJECT_LAYOUT.md)、[整合报告](docs/consolidation_report.md)。
 
-本地原始图片/rosbag、SDK、第三方工作空间、构建与 .runtime 不进入主仓库。相机只纳入两个维护包源码。A/整合、C1、C2、重力对齐与净化文档已有本地提交，本轮未推送；原始数据和本机部署仍须保留，远端副本不能代替当前工程；第三方完整 SHA/补丁来源见交接指南与版本锁。
+本地原始图片/rosbag、SDK、第三方工作空间、构建与 .runtime 不进入主仓库。相机只纳入两个维护包源码。A/整合、C1、C2、重力对齐与净化文档已有提交，并纳入2026-11-06用户授权的上传范围；原始数据和本机部署仍须保留，远端副本不能代替当前工程；第三方完整 SHA/补丁来源见交接指南与版本锁。
 
 ## 统一入口
 
@@ -56,16 +56,19 @@ bash scripts/run_calibration.sh sync
 bash scripts/field_session.sh
 bash scripts/run_navigation.sh
 bash scripts/run_fast_livo2_live.sh --status
-bash scripts/record_fast_livo2.sh --seconds 60
+bash scripts/record_fast_livo2.sh --dry-run --seconds 60
+bash scripts/map_fast_livo2.sh --dry-run
 ```
 
 可修改 runtime 的 mapping_backend，或用 `--runtime-config` / `RANGER_RUNTIME_CONFIG` 选择 profile。profile 的 extends 与相对路径以工程根目录为准；地图通过 map_bundle 检查来源和后端兼容性。
 
-实际执行须显式 `--execute`，online 会打开相应实物，不能从默认 dry-run 推断获准测试。底盘/导航还必须有该次用户授权及 `--control-authorized`，运动许可不跨重启；不自动恢复运动。完整流程见 [受管会话说明](docs/managed_sessions.md)。相机内参、外参和同步的入口/依赖见 [标定说明](calibration/README.md)。
+上述其他入口实际执行须显式 `--execute`，online会打开相应实物，不能从默认dry-run推断获准测试。专用 `record_fast_livo2.sh` 按用户指令默认直接录制并自行启动传感器，默认使用FAST profile；查看其计划须加 `--dry-run`。底盘/导航还必须有该次用户授权及 `--control-authorized`，运动许可不跨重启；不自动恢复运动。完整流程见 [受管会话说明](docs/managed_sessions.md)。相机内参、外参和同步的入口/依赖见 [标定说明](calibration/README.md)。
 
 FAST-LIVO2 前端与 B 不能设为先验地图定位后端；C1/C2 使用独立离线入口，未接管生产 runtime。FAST 局部世界系不等于 wheel odom。输入输出的参考点与时钟见 [前端接口](docs/fast_livo2_interfaces.md) 和 [C1 契约](docs/fast_livo2_localizer_interfaces.md)。
 
-三传感器运动采集使用新入口 `record_fast_livo2.sh`，支持完整归档、定时/中断收尾及已有预览接入。`run_fast_livo2_live.sh --visualization rviz|foxglove|both|none` 选择显示，Foxglove经SSH隧道访问本机只读Bridge。命令、采集检查和历史故障记录见[录包指南](docs/fast_livo2_recording.md)、[采集入口报告](docs/fast_livo2_recording_report.md)。
+三传感器运动采集使用 `record_fast_livo2.sh`，默认执行、独立启动传感器并读取 `config/profiles/fast_livo2_frontend.yaml`；`--attach` 才接入已有预览，支持完整归档和定时/中断收尾。`run_fast_livo2_live.sh --visualization rviz|foxglove|both|none` 选择显示，Foxglove经SSH隧道访问本机只读Bridge。命令、采集检查和历史故障记录见[录包指南](docs/fast_livo2_recording.md)、[采集入口报告](docs/fast_livo2_recording_report.md)。
+
+正式FAST在线预建图使用 `map_fast_livo2.sh --execute`，在一个会话中运行三融合、B回环、优化地图显示、原始/去畸变数据录制及停止封存。`run_mapping.sh online` 选择FAST profile时也转到该入口；Lightning默认不变。单独录包入口现也保存去畸变云，但不启动回环后端。新入口默认dry-run，详细命令、时间契约与地图目录见[在线预建图](docs/fast_livo2_online_mapping.md)。
 
 ## 公共定位与 TF
 

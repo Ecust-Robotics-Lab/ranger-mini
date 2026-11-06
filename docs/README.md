@@ -7,7 +7,7 @@
 | 文档 | 用途 |
 | --- | --- |
 | [HANDOFF](HANDOFF.md) | 新上下文快速接手、代码/数据/工作树及关键接口 |
-| [新Agent提示词](NEXT_AGENT_PROMPT.md)、[交接/清理报告](handoff_cleanup_20261105.md) | 可复制开场词、本次删除名单/原包和证据保留边界 |
+| [新Agent提示词](NEXT_AGENT_PROMPT.md)、[最新交接清理](handoff_cleanup_online_mapping_20261105.md) | 当前在线预建图交接、可复制开场词、可再生视图删除名单及重建命令；[早期清理](handoff_cleanup_20261105.md)另存 |
 | [STATUS](STATUS.md) | 当前能力、验收边界和最近验证日期 |
 | [根 README](../README.md)、[AGENTS](../AGENTS.md) | 当前命令、默认配置与工程约束 |
 | [PROJECT_LAYOUT](PROJECT_LAYOUT.md) | 整合后的文件职责、保留/删除范围 |
@@ -15,6 +15,7 @@
 | [定位契约](localization_backend_contract.md)、[受管会话](managed_sessions.md) | 标准位姿/健康、同刻 TF、启动/清理/故障处理 |
 | [FAST 前端接口](fast_livo2_interfaces.md) | 后端必须遵守的点云/位姿/时间语义 |
 | [三传感器录包与远程预览](fast_livo2_recording.md) | 一键采集、日志归档、RViz/Foxglove及路线验收 |
+| [FAST在线预建图](fast_livo2_online_mapping.md) | 同一会话的前端、B回环、录制、优化地图显示与停止封存 |
 | [后端与重定位计划](FAST_LIVO2_BACKEND_PLAN.md) | B/C1/C2 离线实现；D 与真实泛化仍待验 |
 | [AprilTag 增量计划](FAST_LIVO2_APRILTAG_PLAN.md)、[接口与操作](fast_livo2_apriltag_interfaces.md) | 在既有 B/C1/C2 上增加观测、地标与候选，默认关闭 |
 | [C1 接口与操作](fast_livo2_localizer_interfaces.md) | 归档加载、给定初值、持续定位、状态与隔离桥接 |
@@ -22,6 +23,14 @@
 | [重力对齐报告](fast_livo2_gravity_alignment_report.md) | 新前端 +Z 朝上；旧地图不追认对齐 |
 
 ## 最新实现与验证报告
+
+- [20261105统一在线预建图](fast_livo2_online_mapping_report.md)：新入口及隔离I/O前端/B/收流/显示/封存，390秒原速3900对、305KF/114回环、原始payload保真和共用归档加载PASS；真实接收延迟证据与会话DDS配置留档，连续新鲜度/实物仍PARTIAL。
+
+- [20261105走廊/教室PCD与轨迹](fast_livo2_corridor_classroom_mapping_report.md)：完整+100ms三融合、2333万点前端PCD与轨迹图；额外B图目标单项FAIL，诊断快照保留。
+
+- [20261105走廊/教室录制核验](fast_livo2_corridor_classroom_capture_report.md)：用户自行录制390秒、约32.8GB；停录正常，后续审查被中断；Agent只读补验基本数据PASS并保留原现场。
+
+- [20261105录包默认行为](fast_livo2_recording_defaults_report.md)：默认执行、独立启动传感器及FAST profile；保留显式dry-run/attach、占用检查与受管收尾，仅做隔离合成验证。
 
 - [20261105本地分组提交](local_git_checkpoint_20261105.md)：按用户后续指令保存7组本地检查点；记录完整性/静态检查和活动field会话区别，无新实验、设备操作或推送。
 
@@ -81,3 +90,5 @@
 | 仓库维护 | [发布/作者历史](github_publication.md) |
 
 `*_evidence/`、地图 manifest/acceptance、标定原始结果保留作为证据，不因失败或接口过时删除。旧文档中的设备地址、参数、授权和“待执行”清单仅属于当时记录；当前操作以HANDOFF、STATUS和专用入口契约为准。
+
+- [2026-11-06 Git分组保存与上传检查点](git_checkpoint_20261106.md)：录包、走廊证据、在线预建图及交接的提交范围、资产保护与验证。

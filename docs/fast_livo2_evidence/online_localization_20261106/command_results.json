@@ -1,0 +1,37 @@
+[
+  {
+    "command": "bash scripts/build_fast_livo2_online_localization.sh --execute",
+    "exit": 0,
+    "log": "build.log"
+  },
+  {
+    "command": "ws_fast_livo/online_localization_build/ranger_fast_livo_localizer/localizer_tests --gtest_output=xml:docs/fast_livo2_evidence/online_localization_20261106/core_tests.xml",
+    "exit": 0,
+    "log": "core_tests.log"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 tests/test_fast_livo_online_localization_ros.py",
+    "exit": 0,
+    "log": "online_ros_tests_final.log"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 tests/test_session_manager.py",
+    "exit": 0,
+    "log": "session_tests.log"
+  },
+  {
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 tests/test_session_manager.py ProcessTests.test_resource_lease_and_duplicate_session",
+    "exit": 0,
+    "log": "prepare_hook_test.log"
+  },
+  {
+    "command": "inline unittest selection of C1 clock/reset, invalid input, superseded request; C2 full-pose, cancel/loss/recovery, map switch",
+    "exit": 0,
+    "log": "existing_ros_regressions.log"
+  },
+  {
+    "command": "manual_check.py with the existing private Initialize service, then bash scripts/localize_fast_livo2.sh --stop",
+    "exit": 0,
+    "log": "manual_check.log"
+  }
+]

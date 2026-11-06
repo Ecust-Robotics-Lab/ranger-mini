@@ -1,0 +1,310 @@
+--- /home/lab307/ranger_nav/outputs/fast-livo-demo-retrieval-comparison-20261106/deps/STD/src/STDesc.cpp
++++ STDesc.cpp
+@@ -1,4 +1,4 @@
+-#include "include/STDesc.h"
++#include "STDesc.h"
+ void down_sampling_voxel(pcl::PointCloud<pcl::PointXYZI> &pl_feat,
+                          double voxel_size) {
+   int intensity = rand() % 255;
+@@ -51,60 +51,7 @@
+   }
+ }
+ 
+-void read_parameters(ros::NodeHandle &nh, ConfigSetting &config_setting) {
+-
+-  // pre-preocess
+-  nh.param<double>("ds_size", config_setting.ds_size_, 0.5);
+-  nh.param<int>("maximum_corner_num", config_setting.maximum_corner_num_, 100);
+-
+-  // key points
+-  nh.param<double>("plane_merge_normal_thre",
+-                   config_setting.plane_merge_normal_thre_, 0.1);
+-  nh.param<double>("plane_detection_thre", config_setting.plane_detection_thre_,
+-                   0.01);
+-  nh.param<double>("voxel_size", config_setting.voxel_size_, 2.0);
+-  nh.param<int>("voxel_init_num", config_setting.voxel_init_num_, 10);
+-  nh.param<double>("proj_image_resolution",
+-                   config_setting.proj_image_resolution_, 0.5);
+-  nh.param<double>("proj_dis_min", config_setting.proj_dis_min_, 0);
+-  nh.param<double>("proj_dis_max", config_setting.proj_dis_max_, 2);
+-  nh.param<double>("corner_thre", config_setting.corner_thre_, 10);
+-
+-  // std descriptor
+-  nh.param<int>("descriptor_near_num", config_setting.descriptor_near_num_, 10);
+-  nh.param<double>("descriptor_min_len", config_setting.descriptor_min_len_, 2);
+-  nh.param<double>("descriptor_max_len", config_setting.descriptor_max_len_,
+-                   50);
+-  nh.param<double>("non_max_suppression_radius",
+-                   config_setting.non_max_suppression_radius_, 2.0);
+-  nh.param<double>("std_side_resolution", config_setting.std_side_resolution_,
+-                   0.2);
+-
+-  // candidate search
+-  nh.param<int>("skip_near_num", config_setting.skip_near_num_, 50);
+-  nh.param<int>("candidate_num", config_setting.candidate_num_, 50);
+-  nh.param<int>("sub_frame_num", config_setting.sub_frame_num_, 10);
+-  nh.param<double>("rough_dis_threshold", config_setting.rough_dis_threshold_,
+-                   0.01);
+-  nh.param<double>("vertex_diff_threshold",
+-                   config_setting.vertex_diff_threshold_, 0.5);
+-  nh.param<double>("icp_threshold", config_setting.icp_threshold_, 0.5);
+-  nh.param<double>("normal_threshold", config_setting.normal_threshold_, 0.2);
+-  nh.param<double>("dis_threshold", config_setting.dis_threshold_, 0.5);
+-
+-  std::cout << "Sucessfully load parameters:" << std::endl;
+-  std::cout << "----------------Main Parameters-------------------"
+-            << std::endl;
+-  std::cout << "voxel size:" << config_setting.voxel_size_ << std::endl;
+-  std::cout << "loop detection threshold: " << config_setting.icp_threshold_
+-            << std::endl;
+-  std::cout << "sub-frame number: " << config_setting.sub_frame_num_
+-            << std::endl;
+-  std::cout << "candidate number: " << config_setting.candidate_num_
+-            << std::endl;
+-  std::cout << "maximum corners size: " << config_setting.maximum_corner_num_
+-            << std::endl;
+-}
++
+ 
+ void load_pose_with_time(
+     const std::string &pose_file,
+@@ -173,137 +120,7 @@
+   return (a.first > b.first);
+ }
+ 
+-void publish_std_pairs(
+-    const std::vector<std::pair<STDesc, STDesc>> &match_std_pairs,
+-    const ros::Publisher &std_publisher) {
+-  visualization_msgs::MarkerArray ma_line;
+-  visualization_msgs::Marker m_line;
+-  m_line.type = visualization_msgs::Marker::LINE_LIST;
+-  m_line.action = visualization_msgs::Marker::ADD;
+-  m_line.ns = "lines";
+-  // Don't forget to set the alpha!
+-  m_line.scale.x = 0.25;
+-  m_line.pose.orientation.w = 1.0;
+-  m_line.header.frame_id = "camera_init";
+-  m_line.id = 0;
+-  int max_pub_cnt = 1;
+-  for (auto var : match_std_pairs) {
+-    if (max_pub_cnt > 100) {
+-      break;
+-    }
+-    max_pub_cnt++;
+-    m_line.color.a = 0.8;
+-    m_line.points.clear();
+-    m_line.color.r = 138.0 / 255;
+-    m_line.color.g = 226.0 / 255;
+-    m_line.color.b = 52.0 / 255;
+-    geometry_msgs::Point p;
+-    p.x = var.second.vertex_A_[0];
+-    p.y = var.second.vertex_A_[1];
+-    p.z = var.second.vertex_A_[2];
+-    Eigen::Vector3d t_p;
+-    t_p << p.x, p.y, p.z;
+-    p.x = t_p[0];
+-    p.y = t_p[1];
+-    p.z = t_p[2];
+-    m_line.points.push_back(p);
+-    p.x = var.second.vertex_B_[0];
+-    p.y = var.second.vertex_B_[1];
+-    p.z = var.second.vertex_B_[2];
+-    t_p << p.x, p.y, p.z;
+-    p.x = t_p[0];
+-    p.y = t_p[1];
+-    p.z = t_p[2];
+-    m_line.points.push_back(p);
+-    ma_line.markers.push_back(m_line);
+-    m_line.id++;
+-    m_line.points.clear();
+-    p.x = var.second.vertex_C_[0];
+-    p.y = var.second.vertex_C_[1];
+-    p.z = var.second.vertex_C_[2];
+-    t_p << p.x, p.y, p.z;
+-    p.x = t_p[0];
+-    p.y = t_p[1];
+-    p.z = t_p[2];
+-    m_line.points.push_back(p);
+-    p.x = var.second.vertex_B_[0];
+-    p.y = var.second.vertex_B_[1];
+-    p.z = var.second.vertex_B_[2];
+-    t_p << p.x, p.y, p.z;
+-    p.x = t_p[0];
+-    p.y = t_p[1];
+-    p.z = t_p[2];
+-    m_line.points.push_back(p);
+-    ma_line.markers.push_back(m_line);
+-    m_line.id++;
+-    m_line.points.clear();
+-    p.x = var.second.vertex_C_[0];
+-    p.y = var.second.vertex_C_[1];
+-    p.z = var.second.vertex_C_[2];
+-    t_p << p.x, p.y, p.z;
+-    p.x = t_p[0];
+-    p.y = t_p[1];
+-    p.z = t_p[2];
+-    m_line.points.push_back(p);
+-    p.x = var.second.vertex_A_[0];
+-    p.y = var.second.vertex_A_[1];
+-    p.z = var.second.vertex_A_[2];
+-    t_p << p.x, p.y, p.z;
+-    p.x = t_p[0];
+-    p.y = t_p[1];
+-    p.z = t_p[2];
+-    m_line.points.push_back(p);
+-    ma_line.markers.push_back(m_line);
+-    m_line.id++;
+-    m_line.points.clear();
+-    // another
+-    m_line.points.clear();
+-    m_line.color.r = 1;
+-    m_line.color.g = 1;
+-    m_line.color.b = 1;
+-    p.x = var.first.vertex_A_[0];
+-    p.y = var.first.vertex_A_[1];
+-    p.z = var.first.vertex_A_[2];
+-    m_line.points.push_back(p);
+-    p.x = var.first.vertex_B_[0];
+-    p.y = var.first.vertex_B_[1];
+-    p.z = var.first.vertex_B_[2];
+-    m_line.points.push_back(p);
+-    ma_line.markers.push_back(m_line);
+-    m_line.id++;
+-    m_line.points.clear();
+-    p.x = var.first.vertex_C_[0];
+-    p.y = var.first.vertex_C_[1];
+-    p.z = var.first.vertex_C_[2];
+-    m_line.points.push_back(p);
+-    p.x = var.first.vertex_B_[0];
+-    p.y = var.first.vertex_B_[1];
+-    p.z = var.first.vertex_B_[2];
+-    m_line.points.push_back(p);
+-    ma_line.markers.push_back(m_line);
+-    m_line.id++;
+-    m_line.points.clear();
+-    p.x = var.first.vertex_C_[0];
+-    p.y = var.first.vertex_C_[1];
+-    p.z = var.first.vertex_C_[2];
+-    m_line.points.push_back(p);
+-    p.x = var.first.vertex_A_[0];
+-    p.y = var.first.vertex_A_[1];
+-    p.z = var.first.vertex_A_[2];
+-    m_line.points.push_back(p);
+-    ma_line.markers.push_back(m_line);
+-    m_line.id++;
+-    m_line.points.clear();
+-  }
+-  for (int j = 0; j < 100 * 6; j++) {
+-    m_line.color.a = 0.00;
+-    ma_line.markers.push_back(m_line);
+-    m_line.id++;
+-  }
+-  std_publisher.publish(ma_line);
+-  m_line.id = 0;
+-  ma_line.markers.clear();
+-}
++
+ 
+ void STDescManager::GenerateSTDescs(
+     pcl::PointCloud<pcl::PointXYZI>::Ptr &input_cloud,
+@@ -348,7 +165,7 @@
+     std::vector<std::pair<STDesc, STDesc>> &loop_std_pair) {
+ 
+   if (stds_vec.size() == 0) {
+-    ROS_ERROR_STREAM("No STDescs!");
++    PCL_ERROR_STREAM("No STDescs!");
+     loop_result = std::pair<int, double>(-1, 0);
+     return;
+   }
+@@ -1384,90 +1201,7 @@
+   return useful_match / source_cloud->size();
+ }
+ 
+-void STDescManager::PlaneGeomrtricIcp(
+-    const pcl::PointCloud<pcl::PointXYZINormal>::Ptr &source_cloud,
+-    const pcl::PointCloud<pcl::PointXYZINormal>::Ptr &target_cloud,
+-    std::pair<Eigen::Vector3d, Eigen::Matrix3d> &transform) {
+-  pcl::KdTreeFLANN<pcl::PointXYZ>::Ptr kd_tree(
+-      new pcl::KdTreeFLANN<pcl::PointXYZ>);
+-  pcl::PointCloud<pcl::PointXYZ>::Ptr input_cloud(
+-      new pcl::PointCloud<pcl::PointXYZ>);
+-  for (size_t i = 0; i < target_cloud->size(); i++) {
+-    pcl::PointXYZ pi;
+-    pi.x = target_cloud->points[i].x;
+-    pi.y = target_cloud->points[i].y;
+-    pi.z = target_cloud->points[i].z;
+-    input_cloud->push_back(pi);
+-  }
+-  kd_tree->setInputCloud(input_cloud);
+-  ceres::Manifold *quaternion_manifold = new ceres::EigenQuaternionManifold;
+-  ceres::Problem problem;
+-  ceres::LossFunction *loss_function = nullptr;
+-  Eigen::Matrix3d rot = transform.second;
+-  Eigen::Quaterniond q(rot);
+-  Eigen::Vector3d t = transform.first;
+-  double para_q[4] = {q.x(), q.y(), q.z(), q.w()};
+-  double para_t[3] = {t(0), t(1), t(2)};
+-  problem.AddParameterBlock(para_q, 4, quaternion_manifold);
+-  problem.AddParameterBlock(para_t, 3);
+-  Eigen::Map<Eigen::Quaterniond> q_last_curr(para_q);
+-  Eigen::Map<Eigen::Vector3d> t_last_curr(para_t);
+-  std::vector<int> pointIdxNKNSearch(1);
+-  std::vector<float> pointNKNSquaredDistance(1);
+-  int useful_match = 0;
+-  for (size_t i = 0; i < source_cloud->size(); i++) {
+-    pcl::PointXYZINormal searchPoint = source_cloud->points[i];
+-    Eigen::Vector3d pi(searchPoint.x, searchPoint.y, searchPoint.z);
+-    pi = rot * pi + t;
+-    pcl::PointXYZ use_search_point;
+-    use_search_point.x = pi[0];
+-    use_search_point.y = pi[1];
+-    use_search_point.z = pi[2];
+-    Eigen::Vector3d ni(searchPoint.normal_x, searchPoint.normal_y,
+-                       searchPoint.normal_z);
+-    ni = rot * ni;
+-    if (kd_tree->nearestKSearch(use_search_point, 1, pointIdxNKNSearch,
+-                                pointNKNSquaredDistance) > 0) {
+-      pcl::PointXYZINormal nearstPoint =
+-          target_cloud->points[pointIdxNKNSearch[0]];
+-      Eigen::Vector3d tpi(nearstPoint.x, nearstPoint.y, nearstPoint.z);
+-      Eigen::Vector3d tni(nearstPoint.normal_x, nearstPoint.normal_y,
+-                          nearstPoint.normal_z);
+-      Eigen::Vector3d normal_inc = ni - tni;
+-      Eigen::Vector3d normal_add = ni + tni;
+-      double point_to_point_dis = (pi - tpi).norm();
+-      double point_to_plane = fabs(tni.transpose() * (pi - tpi));
+-      if ((normal_inc.norm() < config_setting_.normal_threshold_ ||
+-           normal_add.norm() < config_setting_.normal_threshold_) &&
+-          point_to_plane < config_setting_.dis_threshold_ &&
+-          point_to_point_dis < 3) {
+-        useful_match++;
+-        ceres::CostFunction *cost_function;
+-        Eigen::Vector3d curr_point(source_cloud->points[i].x,
+-                                   source_cloud->points[i].y,
+-                                   source_cloud->points[i].z);
+-        Eigen::Vector3d curr_normal(source_cloud->points[i].normal_x,
+-                                    source_cloud->points[i].normal_y,
+-                                    source_cloud->points[i].normal_z);
+-
+-        cost_function = PlaneSolver::Create(curr_point, curr_normal, tpi, tni);
+-        problem.AddResidualBlock(cost_function, loss_function, para_q, para_t);
+-      }
+-    }
+-  }
+-  ceres::Solver::Options options;
+-  options.linear_solver_type = ceres::SPARSE_NORMAL_CHOLESKY;
+-  options.max_num_iterations = 100;
+-  options.minimizer_progress_to_stdout = false;
+-  ceres::Solver::Summary summary;
+-  ceres::Solve(options, &problem, &summary);
+-  Eigen::Quaterniond q_opt(para_q[3], para_q[0], para_q[1], para_q[2]);
+-  rot = q_opt.toRotationMatrix();
+-  t << t_last_curr(0), t_last_curr(1), t_last_curr(2);
+-  transform.first = t;
+-  transform.second = rot;
+-  // std::cout << "useful match for icp:" << useful_match << std::endl;
+-}
++
+ 
+ void OctoTree::init_plane() {
+   plane_ptr_->covariance_ = Eigen::Matrix3d::Zero();

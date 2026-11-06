@@ -1,0 +1,10 @@
+MAP_DIR=/home/lab307/ranger_nav/outputs/fast-livo-demo-online-localization-20261106/mapping_regression_02
+SESSION_DIR=/home/lab307/ranger_nav/.runtime/sessions/fast_livo_mapping/run-71s2tkl8
+MAP PREPARING: 前端=0 对，图版本=0，回环事件=0，队列=0，延迟=None 秒；等待输入
+MAP DEGRADED: 前端=2 对，图版本=0，回环事件=0，队列=2，延迟=None 秒；ros_clock_regressed
+MAP MAPPING: 前端=4 对，图版本=1，回环事件=0，队列=1，延迟=0.200160027 秒；frontend_tracking_with_pgo
+在线建图已就绪；先静止15秒，再人工采集。Ctrl+C 封存地图并停录。
+MAP FINALIZING：封存后端输入，排空已接收队列，再保存地图。
+MAP FINALIZING：待配对=0，待处理=0，工作线程=False；地图导出可能仍在进行。
+MAP SAVED /home/lab307/ranger_nav/outputs/fast-livo-demo-online-localization-20261106/mapping_regression_02/map
+MAP COMPLETE /home/lab307/ranger_nav/outputs/fast-livo-demo-online-localization-20261106/mapping_regression_02

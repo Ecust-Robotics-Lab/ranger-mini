@@ -1,0 +1,16 @@
+{
+  "recommended_combination": [
+    "radial_pair_multiscale_v2",
+    "KISS-Matcher full6d",
+    "small_gicp",
+    "C1 tracking"
+  ],
+  "effective_online_default_verified": true,
+  "configuration_change_needed": false,
+  "reason": "Defaults were already set after the preceding comparison; verified actual entry and unchanged tested binaries.",
+  "tested_binaries_sha256": {
+    "/home/lab307/ranger_nav/ws_fast_livo/online_localization_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node": "b0d54d6943eaaa5163c519bb7a5b1b6782d32b430458514492b765a46173caf5",
+    "/home/lab307/ranger_nav/ws_fast_livo/online_localization_install/ranger_fast_livo_localizer/lib/libranger_localizer_core.so": "2e59dc0f9376e4fc57d94f739113d42baa4c5f1871c181f267ff4cc74c55648e"
+  },
+  "hardware_started": false
+}

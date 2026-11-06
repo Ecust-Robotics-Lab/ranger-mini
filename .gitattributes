@@ -14,3 +14,5 @@ ws_fast_livo/src/ranger_fast_livo_backend/third_party/GTSAM_LICENSE.txt -whitesp
 ws_fast_livo/src/ranger_fast_livo_localizer/third_party/ROBIN-LICENSE -whitespace
 # Retain the captured compiler flags exactly as emitted by CMake.
 docs/fast_livo2_evidence/stage_c2_20261028/localizer_core_flags.make -whitespace
+# Evidence diffs preserve upstream context whitespace verbatim.
+/docs/fast_livo2_evidence/retrieval_comparison_20261106/*.patch -whitespace

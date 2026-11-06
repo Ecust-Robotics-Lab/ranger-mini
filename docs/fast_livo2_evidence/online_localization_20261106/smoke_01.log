@@ -1,0 +1,13 @@
+LOCALIZATION_DIR=/home/lab307/ranger_nav/outputs/fast-livo-demo-online-localization-20261106/smoke_01
+SESSION_DIR=/home/lab307/ranger_nav/.runtime/sessions/fast_livo_online_localization/run-mve405_x
+LOCALIZATION state=None valid=False waiting_inputs; processed=0 skipped=0 age=None
+SESSION ERROR: RuntimeError: probe exited 1; no automatic restart; logs: /home/lab307/ranger_nav/.runtime/sessions/fast_livo_online_localization/run-mve405_x; stopping owned processes
+{
+  "workflow_success": false,
+  "session_exit": 2,
+  "session_state": "FAILED",
+  "recorder": {},
+  "localization_acceptance": "NOT_EVALUATED",
+  "physical_sync": "PARTIAL",
+  "hardware_started": false
+}

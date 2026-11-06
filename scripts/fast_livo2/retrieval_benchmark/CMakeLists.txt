@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.16)
+project(retrieval_comparison LANGUAGES C CXX)
+set(CMAKE_CXX_STANDARD 17)
+find_package(ranger_fast_livo_backend REQUIRED)
+find_package(PCL REQUIRED COMPONENTS common io filters kdtree)
+find_package(OpenCV REQUIRED)
+find_package(Ceres REQUIRED)
+find_package(OpenMP REQUIRED)
+find_package(TBB REQUIRED)
+add_executable(retrieval_comparison benchmark.cpp ${ADAPTED}/STDesc.cpp ${ADAPTED}/Scancontext.cpp)
+target_compile_definitions(retrieval_comparison PRIVATE MP_PROC_NUM=1)
+target_include_directories(retrieval_comparison PRIVATE ${ADAPTED} ${PCL_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS}
+  ${CMAKE_CURRENT_SOURCE_DIR}/../../../ws_fast_livo/src/ranger_fast_livo_localizer/include)
+get_filename_component(REPO "${CMAKE_CURRENT_SOURCE_DIR}/../../.." ABSOLUTE)
+target_link_libraries(retrieval_comparison ${REPO}/ws_fast_livo/online_localization_install/ranger_fast_livo_localizer/lib/libranger_localizer_core.so
+  ranger_fast_livo_backend::ranger_backend_core ${PCL_LIBRARIES} ${OpenCV_LIBS} Ceres::ceres OpenMP::OpenMP_CXX TBB::tbb)

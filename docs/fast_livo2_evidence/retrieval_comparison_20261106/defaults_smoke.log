@@ -1,0 +1,41 @@
+LOCALIZATION_DIR=/home/lab307/ranger_nav/outputs/fast-livo-demo-retrieval-comparison-20261106/defaults_smoke
+SESSION_DIR=/home/lab307/ranger_nav/.runtime/sessions/fast_livo_online_localization/run-1_cgyi36
+LOCALIZATION state=None valid=False waiting_inputs; processed=0 skipped=0 age=None
+LOCALIZATION state=0 valid=False map_loading; processed=0 skipped=0 age=-1.0
+LOCALIZATION state=0 valid=False map_loaded_searching; processed=0 skipped=0 age=-1.0
+LOCALIZATION state=0 valid=False clock_regressed_requires_initial_pose; processed=0 skipped=0 age=-1.0
+LOCALIZATION state=0 valid=False verifying_independent_motion_support; processed=2 skipped=0 age=-1.0
+LOCALIZATION state=0 valid=False retry_backoff; processed=5 skipped=0 age=-1.0
+LOCALIZATION state=0 valid=False global_no_geometric_match; processed=18 skipped=0 age=-1.0
+LOCALIZATION state=0 valid=False retry_backoff; processed=20 skipped=0 age=-1.0
+LOCALIZATION state=0 valid=False verifying_wait_disjoint_query_scans; processed=25 skipped=0 age=-1.0
+LOCALIZATION state=0 valid=False retry_backoff; processed=28 skipped=1 age=-1.0
+LOCALIZATION state=0 valid=False global_no_geometric_match; processed=35 skipped=1 age=-1.0
+LOCALIZATION state=0 valid=False retry_backoff; processed=37 skipped=1 age=-1.0
+LOCALIZATION state=0 valid=False verifying_wait_disjoint_query_scans; processed=42 skipped=1 age=-1.0
+LOCALIZATION state=0 valid=False retry_backoff; processed=45 skipped=2 age=-1.0
+LOCALIZATION state=0 valid=False verifying_wait_disjoint_query_scans; processed=57 skipped=2 age=-1.0
+LOCALIZATION state=0 valid=False verifying_insufficient_time_or_motion_baseline; processed=59 skipped=2 age=-1.0
+LOCALIZATION state=0 valid=False retry_backoff; processed=63 skipped=5 age=-1.0
+{
+  "workflow_success": true,
+  "session_exit": 0,
+  "session_state": "STOPPED",
+  "recorder": {
+    "exit": 0,
+    "forced": false,
+    "requested_seconds": 30.0,
+    "elapsed_seconds": 7.7410903989984945,
+    "stopped_by_signal": true,
+    "observed_messages": {
+      "/livox/lidar": 80,
+      "/livox/imu": 1592,
+      "/front/image_sync": 80,
+      "/fast_livo/odometry": 77,
+      "/fast_livo/deskewed_imu": 77
+    }
+  },
+  "localization_acceptance": "NOT_EVALUATED",
+  "physical_sync": "PARTIAL",
+  "hardware_started": false
+}

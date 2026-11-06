@@ -1,0 +1,27 @@
+--- /home/lab307/ranger_nav/outputs/fast-livo-demo-retrieval-comparison-20261106/deps/scancontext_tro/cpp/module/Scancontext/Scancontext.h
++++ Scancontext.h
+@@ -15,12 +15,10 @@
+ #include <opencv2/opencv.hpp>
+ #include <opencv2/core/eigen.hpp>
+ #include <opencv2/highgui/highgui.hpp>
+-#include <cv_bridge/cv_bridge.h>
+ 
+ #include <pcl/point_cloud.h>
+ #include <pcl/point_types.h>
+ #include <pcl/filters/voxel_grid.h>
+-#include <pcl_conversions/pcl_conversions.h>
+ 
+ #include "nanoflann.hpp"
+ #include "KDTreeVectorOfVectorsAdaptor.h"
+@@ -78,9 +76,9 @@
+ 
+     const int    PC_NUM_RING = 20; // 20 in the original paper (IROS 18)
+     const int    PC_NUM_SECTOR = 60; // 60 in the original paper (IROS 18)
+-    const double PC_MAX_RADIUS = 80.0; // 80 meter max in the original paper (IROS 18)
++    double PC_MAX_RADIUS = 80.0; // 80 meter max in the original paper (IROS 18)
+     const double PC_UNIT_SECTORANGLE = 360.0 / double(PC_NUM_SECTOR);
+-    const double PC_UNIT_RINGGAP = PC_MAX_RADIUS / double(PC_NUM_RING);
++    double PC_UNIT_RINGGAP = PC_MAX_RADIUS / double(PC_NUM_RING);
+ 
+     // tree
+     const int    NUM_EXCLUDE_RECENT = 50; // simply just keyframe gap, but node position distance-based exclusion is ok. 

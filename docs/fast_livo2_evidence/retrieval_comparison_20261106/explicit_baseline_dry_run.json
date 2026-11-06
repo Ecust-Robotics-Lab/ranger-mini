@@ -1,0 +1,236 @@
+{
+  "action": "DRY-RUN",
+  "output": "/home/lab307/ranger_nav/bags/fast-livo-localization-NEW",
+  "mode": "auto",
+  "hardware_started": false,
+  "would_start_sensors": true,
+  "public_tf": false,
+  "components": [
+    {
+      "name": "probe",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/lab307/ranger_nav/scripts/fast_livo2/mapping_monitor.py",
+        "--folder",
+        "/home/lab307/ranger_nav/bags/fast-livo-localization-NEW",
+        "--localization"
+      ],
+      "depends": [],
+      "requires": [],
+      "ready_key": "probe_live",
+      "critical": true,
+      "start_requires": [],
+      "resource": "",
+      "preflight_requires": null
+    },
+    {
+      "name": "localizer",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/online_localization_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node",
+        "--ros-args",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/fast_livo2/localizer.yaml",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/fast_livo2/relocalizer.yaml",
+        "-p",
+        "archive_path:=/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/full_replay_12/map",
+        "-p",
+        "use_sim_time:=true",
+        "-p",
+        "online_scheduling:=true",
+        "-p",
+        "registration:=pcl_icp",
+        "-p",
+        "global_search_enabled:=true",
+        "-p",
+        "global_descriptor:=radial_pair_distribution_v1",
+        "-p",
+        "sensor_configuration_sha256:=2f73c5f2475d4e48e29fa8ff36af2bfe627cdb13f8607ee95e15807201cd4346",
+        "-p",
+        "time_contract_sha256:=849fa5e4b3713bcf49ef08211c187d7e4a840e51977bb2f2ecf30eb1e5b0472b",
+        "-p",
+        "frontend_sources_sha256:=55feceb3ec5a48f6980bd86c4ce2fcfa7c48cc312c49c043683a585382e6582d"
+      ],
+      "depends": [
+        "probe"
+      ],
+      "requires": [],
+      "ready_key": "localizer_alive",
+      "critical": true,
+      "start_requires": [
+        "backend_unclaimed",
+        "clock_unclaimed"
+      ],
+      "resource": "fast_livo_backend",
+      "preflight_requires": null
+    },
+    {
+      "name": "receipts",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/online_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/receipt_probe",
+        "--ros-args",
+        "-p",
+        "context:=/home/lab307/ranger_nav/bags/fast-livo-localization-NEW",
+        "-p",
+        "topics_json:=\"{\\\"/livox/lidar\\\":\\\"sensor_msgs/msg/PointCloud2\\\",\\\"/livox/imu\\\":\\\"sensor_msgs/msg/Imu\\\",\\\"/front/image_sync\\\":\\\"sensor_msgs/msg/Image\\\",\\\"/front/image\\\":\\\"sensor_msgs/msg/Image\\\",\\\"/front/camera_info\\\":\\\"sensor_msgs/msg/CameraInfo\\\",\\\"/fast_livo/odometry\\\":\\\"nav_msgs/msg/Odometry\\\",\\\"/fast_livo/deskewed_imu\\\":\\\"sensor_msgs/msg/PointCloud2\\\"}\""
+      ],
+      "depends": [
+        "probe"
+      ],
+      "requires": [],
+      "ready_key": "receipt_probe_live",
+      "critical": true,
+      "start_requires": [
+        "receipts_unclaimed"
+      ],
+      "resource": "fast_livo_capture_receipts",
+      "preflight_requires": null
+    },
+    {
+      "name": "capture",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/lab307/ranger_nav/scripts/fast_livo2/record_worker.py",
+        "--folder",
+        "/home/lab307/ranger_nav/bags/fast-livo-localization-NEW"
+      ],
+      "depends": [
+        "receipts"
+      ],
+      "requires": [],
+      "ready_key": "capture_recording",
+      "critical": true,
+      "start_requires": [],
+      "resource": "fast_livo_recorder",
+      "preflight_requires": [
+        "backend_unclaimed",
+        "clock_unclaimed"
+      ]
+    },
+    {
+      "name": "lidar",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/lib/livox_ros_driver2/livox_ros_driver2_node",
+        "--ros-args",
+        "-p",
+        "xfer_format:=0",
+        "-p",
+        "multi_topic:=0",
+        "-p",
+        "data_src:=0",
+        "-p",
+        "publish_freq:=10.0",
+        "-p",
+        "output_data_type:=0",
+        "-p",
+        "frame_id:=livox_frame",
+        "-p",
+        "user_config_path:=/home/lab307/ranger_nav/config/fast_livo2/mid360s_live.json",
+        "-p",
+        "cmdline_input_bd_code:=livox0000000001",
+        "-r",
+        "__node:=livox_lidar_publisher"
+      ],
+      "depends": [
+        "receipts"
+      ],
+      "requires": [],
+      "ready_key": "lidar",
+      "critical": true,
+      "start_requires": [
+        "lidar_unclaimed",
+        "clock_unclaimed"
+      ],
+      "resource": "livox_lidar",
+      "preflight_requires": null
+    },
+    {
+      "name": "writer",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_camera/install/timeshare_writer/lib/timeshare_writer/timeshare_writer_node",
+        "--ros-args",
+        "-p",
+        "timeshare_path:=/home/lab307/ranger_nav/bags/fast-livo-localization-NEW/sensor_assets/timeshare",
+        "-p",
+        "lidar_reliability:=reliable",
+        "-p",
+        "lidar_queue_depth:=5",
+        "-p",
+        "csv_path:=/home/lab307/ranger_nav/bags/fast-livo-localization-NEW/sensor_assets/timeshare_writer.csv"
+      ],
+      "depends": [
+        "lidar"
+      ],
+      "requires": [
+        "lidar"
+      ],
+      "ready_key": "writer",
+      "critical": true,
+      "start_requires": [],
+      "resource": "camera_timeshare",
+      "preflight_requires": null
+    },
+    {
+      "name": "camera",
+      "argv": [
+        "bash",
+        "-c",
+        "cd -- \"$RANGER_LIVO_DEVICE_CWD\" && exec \"$@\"",
+        "camera-device",
+        "/home/lab307/ranger_nav/ws_camera/install/hik_camera_trigger_driver/lib/hik_camera_trigger_driver/hik_camera_trigger_driver_node",
+        "--ros-args",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/fast_livo2/camera_live.yaml",
+        "-p",
+        "timeshare_path:=/home/lab307/ranger_nav/bags/fast-livo-localization-NEW/sensor_assets/timeshare",
+        "-p",
+        "sync_csv_path:=/home/lab307/ranger_nav/bags/fast-livo-localization-NEW/sensor_assets/camera_sync.csv",
+        "-r",
+        "__node:=hik_camera_trigger"
+      ],
+      "depends": [
+        "writer"
+      ],
+      "requires": [
+        "writer"
+      ],
+      "ready_key": "camera",
+      "critical": true,
+      "start_requires": [
+        "camera_unclaimed"
+      ],
+      "resource": "hik_camera",
+      "preflight_requires": null
+    },
+    {
+      "name": "frontend",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/lib/fast_livo/fastlivo_mapping",
+        "--ros-args",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/fast_livo2/ranger_mid360s_hik_trial.yaml",
+        "-p",
+        "use_sim_time:=true",
+        "--log-level",
+        "warn"
+      ],
+      "depends": [
+        "camera"
+      ],
+      "requires": [
+        "lidar",
+        "camera"
+      ],
+      "ready_key": "frontend",
+      "critical": true,
+      "start_requires": [
+        "frontend_unclaimed",
+        "backend_listening"
+      ],
+      "resource": "fast_livo_frontend",
+      "preflight_requires": [
+        "frontend_unclaimed"
+      ]
+    }
+  ]
+}

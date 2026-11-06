@@ -1,0 +1,77 @@
+{
+  "folder": "/home/lab307/ranger_nav/outputs/fast-livo-demo-online-localization-20261106/visit01_manual_01",
+  "workflow": {
+    "workflow_success": true,
+    "session_exit": 0,
+    "session_state": "STOPPED",
+    "recorder": {
+      "exit": 0,
+      "forced": false,
+      "requested_seconds": 100.0,
+      "elapsed_seconds": 33.53099724299682,
+      "stopped_by_signal": true,
+      "observed_messages": {
+        "/livox/lidar": 340,
+        "/livox/imu": 6790,
+        "/front/image_sync": 340,
+        "/fast_livo/odometry": 337,
+        "/fast_livo/deskewed_imu": 337
+      }
+    },
+    "localization_acceptance": "NOT_EVALUATED",
+    "physical_sync": "PARTIAL",
+    "hardware_started": false
+  },
+  "heartbeat_count": 1878,
+  "states": {
+    "0": 1840,
+    "1": 38
+  },
+  "reasons": {
+    "map_loading": 9,
+    "map_loaded_waiting_initial_pose": 165,
+    "clock_regressed_requires_initial_pose": 22,
+    "waiting_initial_pose": 1484,
+    "waiting_next_pair_for_initial_pose": 79,
+    "verifying_multiframe_motion_support": 77,
+    "geometric_support_waiting_fresh_scan": 4,
+    "map_match_confirmed": 38
+  },
+  "unique_valid_scans": 9,
+  "valid_heartbeat_fraction": 0.02023429179978701,
+  "first_valid_clock_ns": 1590192242427192868,
+  "first_valid_pose": {
+    "xyz": [
+      1.3972034454345703,
+      -2.469031810760498,
+      -0.02622566558420658
+    ],
+    "xyzw": [
+      0.07844071680379523,
+      0.1651721362573356,
+      -0.35487266163328346,
+      0.9168591022489792
+    ]
+  },
+  "pose_age_seconds_p50_p95_max": [
+    0.287100289,
+    0.46699073760000004,
+    0.48695970400000005
+  ],
+  "valid_age_violations_at_receipt": 0,
+  "registration_ms_p50_p95_max": [
+    79.93969200106221,
+    88.82456379869836,
+    90.18548899985035
+  ],
+  "longest_invalid_heartbeat_span_seconds": 36.78216243100178,
+  "counters": {
+    "processed_scans": 308,
+    "skipped_scans": 27,
+    "stale_results": 1,
+    "queued_jobs": 2
+  },
+  "location_correctness": "NOT_EVALUATED",
+  "absolute_accuracy": "NOT_EVALUATED",
+  "note": "Heartbeat frequency is not localization frequency; receipt age includes transport delay. Same-map source replay is a functional check, not independent localization evidence."
+}

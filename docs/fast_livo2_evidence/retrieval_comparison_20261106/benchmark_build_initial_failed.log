@@ -1,0 +1,26 @@
+[ 25%] Building CXX object CMakeFiles/retrieval_comparison.dir/benchmark.cpp.o
+[ 50%] Building CXX object CMakeFiles/retrieval_comparison.dir/home/lab307/ranger_nav/outputs/fast-livo-demo-retrieval-comparison-20261106/adapted/STDesc.cpp.o
+/home/lab307/ranger_nav/outputs/fast-livo-demo-retrieval-comparison-20261106/adapted/STDesc.cpp: In member function ‘void STDescManager::SearchLoop(const std::vector<STDesc>&, std::pair<int, double>&, std::pair<Eigen::Matrix<double, 3, 1>, Eigen::Matrix<double, 3, 3> >&, std::vector<std::pair<STDesc, STDesc> >&)’:
+/home/lab307/ranger_nav/outputs/fast-livo-demo-retrieval-comparison-20261106/adapted/STDesc.cpp:168:5: error: ‘ROS_ERROR_STREAM’ was not declared in this scope; did you mean ‘PCL_ERROR_STREAM’?
+  168 |     ROS_ERROR_STREAM("No STDescs!");
+      |     ^~~~~~~~~~~~~~~~
+      |     PCL_ERROR_STREAM
+/home/lab307/ranger_nav/outputs/fast-livo-demo-retrieval-comparison-20261106/adapted/STDesc.cpp: In member function ‘void STDescManager::PlaneGeomrtricIcp(const Ptr&, const Ptr&, std::pair<Eigen::Matrix<double, 3, 1>, Eigen::Matrix<double, 3, 3> >&)’:
+/home/lab307/ranger_nav/outputs/fast-livo-demo-retrieval-comparison-20261106/adapted/STDesc.cpp:1220:10: error: ‘Manifold’ is not a member of ‘ceres’
+ 1220 |   ceres::Manifold *quaternion_manifold = new ceres::EigenQuaternionManifold;
+      |          ^~~~~~~~
+/home/lab307/ranger_nav/outputs/fast-livo-demo-retrieval-comparison-20261106/adapted/STDesc.cpp:1220:20: error: ‘quaternion_manifold’ was not declared in this scope
+ 1220 |   ceres::Manifold *quaternion_manifold = new ceres::EigenQuaternionManifold;
+      |                    ^~~~~~~~~~~~~~~~~~~
+/home/lab307/ranger_nav/outputs/fast-livo-demo-retrieval-comparison-20261106/adapted/STDesc.cpp:1220:53: error: ‘EigenQuaternionManifold’ in namespace ‘ceres’ does not name a type
+ 1220 |   ceres::Manifold *quaternion_manifold = new ceres::EigenQuaternionManifold;
+      |                                                     ^~~~~~~~~~~~~~~~~~~~~~~
+[ 75%] Building CXX object CMakeFiles/retrieval_comparison.dir/home/lab307/ranger_nav/outputs/fast-livo-demo-retrieval-comparison-20261106/adapted/Scancontext.cpp.o
+gmake[2]: *** [CMakeFiles/retrieval_comparison.dir/build.make:90：CMakeFiles/retrieval_comparison.dir/home/lab307/ranger_nav/outputs/fast-livo-demo-retrieval-comparison-20261106/adapted/STDesc.cpp.o] 错误 1
+gmake[2]: *** 正在等待未完成的任务....
+/home/lab307/ranger_nav/outputs/fast-livo-demo-retrieval-comparison-20261106/adapted/Scancontext.cpp: In function ‘float xy2theta(const float&, const float&)’:
+/home/lab307/ranger_nav/outputs/fast-livo-demo-retrieval-comparison-20261106/adapted/Scancontext.cpp:36:1: warning: control reaches end of non-void function [-Wreturn-type]
+   36 | } // xy2theta
+      | ^
+gmake[1]: *** [CMakeFiles/Makefile2:137：CMakeFiles/retrieval_comparison.dir/all] 错误 2
+gmake: *** [Makefile:101：all] 错误 2

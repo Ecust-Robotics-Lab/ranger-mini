@@ -1,0 +1,11 @@
+test_clock_reset_and_multiple_publishers_fail_closed (test_fast_livo_localizer_ros.C1Ros) ... ok
+test_invalid_point_and_one_ns_missing_pair_never_confirm (test_fast_livo_localizer_ros.C1Ros) ... ok
+test_superseded_matching_and_repeated_map_request (test_fast_livo_localizer_ros.C1Ros) ... ok
+test_unknown_large_correction_and_full_pose_then_tracking (test_fast_livo_relocalizer_ros.C2Ros) ... ok
+test_cancel_revokes_old_work_restart_and_loss_recovery (test_fast_livo_relocalizer_ros.C2Ros) ... ok
+test_map_switch_invalidates_search_support_and_old_request (test_fast_livo_relocalizer_ros.C2Ros) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 16.215s
+
+OK

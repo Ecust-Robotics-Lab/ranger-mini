@@ -1,0 +1,21 @@
+[INFO] [1793949476.120435944] [rosbag2_storage]: Opened database 'outputs/fast-livo-demo-online-localization-20261106/inputs/manual/view/view_0.db3' for READ_WRITE.
+{
+  "source": "/home/lab307/ranger_nav/bags/fast-livo-relocalization_visit01-trpozzyj/raw",
+  "output": "/home/lab307/ranger_nav/outputs/fast-livo-demo-online-localization-20261106/inputs/manual/view",
+  "start_ns": 1590192209100091090,
+  "end_ns": 1590192279100091090,
+  "counts": {
+    "/livox/lidar": 701,
+    "/front/image_sync": 701,
+    "/livox/imu": 13991
+  },
+  "serialized_payload_sha256": {
+    "/livox/lidar": "829ca97332050199aa45d945f6fdc40e002c22b9999e059d8cd4e52a62d3b0d6",
+    "/front/image_sync": "51290c76a9a598e128d8592e23ba9e159f51f14b448440f18efc91da4f036deb",
+    "/livox/imu": "2368819f270a64461d45a274d2a45ac934e462213918bf38c9d8dbc510b9104b"
+  },
+  "payloads_identical": true,
+  "record_time": "original message header, only in this new bag",
+  "header_or_point_timestamp_modified": false,
+  "physical_sync_proven": false
+}

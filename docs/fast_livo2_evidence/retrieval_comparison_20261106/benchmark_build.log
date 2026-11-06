@@ -1,0 +1,10 @@
+Consolidate compiler generated dependencies of target retrieval_comparison
+[ 25%] Building CXX object CMakeFiles/retrieval_comparison.dir/benchmark.cpp.o
+[ 50%] Building CXX object CMakeFiles/retrieval_comparison.dir/home/lab307/ranger_nav/outputs/fast-livo-demo-retrieval-comparison-20261106/adapted/STDesc.cpp.o
+[ 75%] Building CXX object CMakeFiles/retrieval_comparison.dir/home/lab307/ranger_nav/outputs/fast-livo-demo-retrieval-comparison-20261106/adapted/Scancontext.cpp.o
+/home/lab307/ranger_nav/outputs/fast-livo-demo-retrieval-comparison-20261106/adapted/Scancontext.cpp: In function ‘float xy2theta(const float&, const float&)’:
+/home/lab307/ranger_nav/outputs/fast-livo-demo-retrieval-comparison-20261106/adapted/Scancontext.cpp:36:1: warning: control reaches end of non-void function [-Wreturn-type]
+   36 | } // xy2theta
+      | ^
+[100%] Linking CXX executable retrieval_comparison
+[100%] Built target retrieval_comparison

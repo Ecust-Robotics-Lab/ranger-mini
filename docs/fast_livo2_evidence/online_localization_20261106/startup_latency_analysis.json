@@ -1,0 +1,226 @@
+{
+  "first_state_times": {
+    "map_loaded_searching": {
+      "t": 0.020514568,
+      "scan": 0,
+      "metrics": {
+        "queued_jobs": 0,
+        "skipped_scans": 0,
+        "processed_scans": 0,
+        "stale_results": 0,
+        "sample_age_seconds": -1.0,
+        "elapsed_ms": null
+      }
+    },
+    "clock_regressed_requires_initial_pose": {
+      "t": 0.015150055,
+      "scan": 0,
+      "metrics": {
+        "queued_jobs": 1,
+        "skipped_scans": 0,
+        "processed_scans": 0,
+        "stale_results": 0,
+        "sample_age_seconds": -1.0,
+        "elapsed_ms": null
+      }
+    },
+    "searching_waiting_query_window": {
+      "t": 0.44504230800000005,
+      "scan": 0,
+      "metrics": {
+        "queued_jobs": 1,
+        "skipped_scans": 0,
+        "processed_scans": 1,
+        "stale_results": 0,
+        "sample_age_seconds": -1.0,
+        "elapsed_ms": null
+      }
+    },
+    "global_no_geometric_match": {
+      "t": 0.534960102,
+      "scan": 1,
+      "metrics": {
+        "queued_jobs": 0,
+        "skipped_scans": 0,
+        "processed_scans": 2,
+        "stale_results": 0,
+        "sample_age_seconds": -1.0,
+        "elapsed_ms": 76.65188499959186
+      }
+    },
+    "retry_backoff": {
+      "t": 0.655081035,
+      "scan": 2,
+      "metrics": {
+        "queued_jobs": 0,
+        "skipped_scans": 0,
+        "processed_scans": 3,
+        "stale_results": 0,
+        "sample_age_seconds": -1.0,
+        "elapsed_ms": null
+      }
+    },
+    "verifying_wait_disjoint_query_scans": {
+      "t": 5.394849254,
+      "scan": 49,
+      "metrics": {
+        "queued_jobs": 0,
+        "skipped_scans": 0,
+        "processed_scans": 50,
+        "stale_results": 0,
+        "sample_age_seconds": -1.0,
+        "elapsed_ms": null
+      }
+    },
+    "verifying_insufficient_time_or_motion_baseline": {
+      "t": 12.094798493,
+      "scan": 115,
+      "metrics": {
+        "queued_jobs": 0,
+        "skipped_scans": 0,
+        "processed_scans": 116,
+        "stale_results": 0,
+        "sample_age_seconds": -1.0,
+        "elapsed_ms": 159.02873400045792
+      }
+    },
+    "global_confirmed_handoff_requires_c1_verification": {
+      "t": 49.514426763,
+      "scan": 489,
+      "metrics": {
+        "queued_jobs": 1,
+        "skipped_scans": 9,
+        "processed_scans": 480,
+        "stale_results": 0,
+        "sample_age_seconds": -1.0,
+        "elapsed_ms": 117.53700100052811
+      }
+    },
+    "verifying_multiframe_motion_support": {
+      "t": 50.49441104300001,
+      "scan": 489,
+      "metrics": {
+        "queued_jobs": 1,
+        "skipped_scans": 18,
+        "processed_scans": 481,
+        "stale_results": 0,
+        "sample_age_seconds": -1.0,
+        "elapsed_ms": 997.705498999494
+      }
+    },
+    "geometric_support_waiting_fresh_scan": {
+      "t": 51.434272235,
+      "scan": 499,
+      "metrics": {
+        "queued_jobs": 2,
+        "skipped_scans": 26,
+        "processed_scans": 482,
+        "stale_results": 1,
+        "sample_age_seconds": -1.0,
+        "elapsed_ms": 929.2209510003886
+      }
+    },
+    "map_match_confirmed": {
+      "t": 51.494292672,
+      "scan": 508,
+      "metrics": {
+        "queued_jobs": 1,
+        "skipped_scans": 26,
+        "processed_scans": 483,
+        "stale_results": 1,
+        "sample_age_seconds": 0.38417760900000003,
+        "elapsed_ms": 63.215591999323806
+      }
+    }
+  },
+  "published_query_bins": [
+    {
+      "range_seconds": [
+        0,
+        15
+      ],
+      "published_queries": 12,
+      "coarse": {
+        "coarse_not_converged_or_low_inliers": 59,
+        "coarse_hypothesis_requires_fine_validation": 1
+      },
+      "fine": {
+        "not_run": 59,
+        "geometry_valid": 1
+      },
+      "query_elapsed_ms_p50_p95_max": [
+        64.30077450022509,
+        116.25358730043439,
+        159.02873400045792
+      ]
+    },
+    {
+      "range_seconds": [
+        15,
+        30
+      ],
+      "published_queries": 22,
+      "coarse": {
+        "coarse_not_converged_or_low_inliers": 106,
+        "coarse_hypothesis_requires_fine_validation": 4
+      },
+      "fine": {
+        "not_run": 106,
+        "geometry_valid": 4
+      },
+      "query_elapsed_ms_p50_p95_max": [
+        56.00625549959659,
+        188.7192715009405,
+        323.1110720007564
+      ]
+    },
+    {
+      "range_seconds": [
+        30,
+        45
+      ],
+      "published_queries": 9,
+      "coarse": {
+        "coarse_not_converged_or_low_inliers": 45
+      },
+      "fine": {
+        "not_run": 45
+      },
+      "query_elapsed_ms_p50_p95_max": [
+        51.36898199998541,
+        57.88456839945866,
+        58.93611799911014
+      ]
+    },
+    {
+      "range_seconds": [
+        45,
+        52
+      ],
+      "published_queries": 10,
+      "coarse": {
+        "coarse_not_converged_or_low_inliers": 37,
+        "coarse_hypothesis_requires_fine_validation": 13
+      },
+      "fine": {
+        "not_run": 37,
+        "geometry_valid": 13
+      },
+      "query_elapsed_ms_p50_p95_max": [
+        123.74889249986154,
+        206.46882560067752,
+        209.42444899992552
+      ]
+    }
+  ],
+  "local_motion_threshold_times": {
+    "translation_0.05m": 18.900262246,
+    "translation_0.15m": 19.500268349000002,
+    "translation_0.5m": 21.100119958,
+    "translation_1.0m": 22.800285706,
+    "rotation_0.03rad": 29.400046954,
+    "rotation_0.08rad": 29.600286851000003
+  },
+  "published_queries": 53,
+  "note": "Only published diagnostics observed, not a complete per-attempt trace. Local odometry motion is not external truth."
+}

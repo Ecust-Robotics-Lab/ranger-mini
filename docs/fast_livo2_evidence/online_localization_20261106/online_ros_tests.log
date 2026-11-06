@@ -1,0 +1,18 @@
+test_burst_coalesces_complete_pairs_and_keeps_fresh_output (__main__.OnlineRos) ... ok
+test_clock_advance_revokes_pose_and_manual_requires_new_initial (__main__.OnlineRos) ... FAIL
+test_slow_initial_evidence_cannot_publish_old_pose (__main__.OnlineRos) ... ok
+
+======================================================================
+FAIL: test_clock_advance_revokes_pose_and_manual_requires_new_initial (__main__.OnlineRos)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_online_localization_ros.py", line 65, in test_clock_advance_revokes_pose_and_manual_requires_new_initial
+    self.assertTrue(self.valid().pose_valid)
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_online_localization_ros.py", line 37, in valid
+    self.assertTrue(response.accepted, response.reason)
+AssertionError: False is not true : request_id_reused_with_different_payload
+
+----------------------------------------------------------------------
+Ran 3 tests in 4.088s
+
+FAILED (failures=1)

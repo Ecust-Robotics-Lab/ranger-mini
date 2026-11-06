@@ -1,0 +1,70 @@
+{
+  "datasets": [
+    {
+      "groups": [
+        {
+          "orientation": "yaw",
+          "polar_hits_at_1": 18,
+          "polar_hits_at_5": 20,
+          "queries": 20,
+          "radial_hits_at_1": 20,
+          "radial_hits_at_5": 20,
+          "radial_v2_hits_at_1": 20,
+          "radial_v2_hits_at_5": 20
+        },
+        {
+          "orientation": "yaw_roll_pitch",
+          "polar_hits_at_1": 5,
+          "polar_hits_at_5": 18,
+          "queries": 20,
+          "radial_hits_at_1": 20,
+          "radial_hits_at_5": 20,
+          "radial_v2_hits_at_1": 20,
+          "radial_v2_hits_at_5": 20
+        }
+      ],
+      "places": 10,
+      "split": "development"
+    },
+    {
+      "groups": [
+        {
+          "orientation": "yaw",
+          "polar_hits_at_1": 14,
+          "polar_hits_at_5": 20,
+          "queries": 20,
+          "radial_hits_at_1": 20,
+          "radial_hits_at_5": 20,
+          "radial_v2_hits_at_1": 20,
+          "radial_v2_hits_at_5": 20
+        },
+        {
+          "orientation": "yaw_roll_pitch",
+          "polar_hits_at_1": 6,
+          "polar_hits_at_5": 18,
+          "queries": 20,
+          "radial_hits_at_1": 20,
+          "radial_hits_at_5": 20,
+          "radial_v2_hits_at_1": 19,
+          "radial_v2_hits_at_5": 20
+        }
+      ],
+      "places": 10,
+      "split": "heldout"
+    }
+  ],
+  "frozen_seeds": {
+    "development": 47,
+    "heldout": 104729
+  },
+  "independent_capture_validated": false,
+  "kind": "synthetic_labeled_retrieval_only",
+  "physical_sync_validated": false,
+  "polar_prototype": {
+    "height_offset_m": 2,
+    "independent_implementation": true,
+    "radius_m": 80,
+    "rings": 20,
+    "sectors": 60
+  }
+}

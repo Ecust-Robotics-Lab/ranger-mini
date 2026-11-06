@@ -1,0 +1,161 @@
+{
+  "action": "DRY-RUN",
+  "output": "/home/lab307/ranger_nav/bags/fast-livo-localization-NEW",
+  "mode": "auto",
+  "hardware_started": false,
+  "would_start_sensors": false,
+  "public_tf": false,
+  "components": [
+    {
+      "name": "probe",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/lab307/ranger_nav/scripts/fast_livo2/mapping_monitor.py",
+        "--folder",
+        "/home/lab307/ranger_nav/bags/fast-livo-localization-NEW",
+        "--replay",
+        "--localization"
+      ],
+      "depends": [],
+      "requires": [],
+      "ready_key": "probe_live",
+      "critical": true,
+      "start_requires": [],
+      "resource": "",
+      "preflight_requires": null
+    },
+    {
+      "name": "localizer",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/online_localization_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node",
+        "--ros-args",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/fast_livo2/localizer.yaml",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/fast_livo2/relocalizer.yaml",
+        "-p",
+        "archive_path:=/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/full_replay_12/map",
+        "-p",
+        "use_sim_time:=true",
+        "-p",
+        "online_scheduling:=true",
+        "-p",
+        "registration:=small_gicp",
+        "-p",
+        "global_search_enabled:=true",
+        "-p",
+        "global_descriptor:=radial_pair_multiscale_v2",
+        "-p",
+        "sensor_configuration_sha256:=2f73c5f2475d4e48e29fa8ff36af2bfe627cdb13f8607ee95e15807201cd4346",
+        "-p",
+        "time_contract_sha256:=849fa5e4b3713bcf49ef08211c187d7e4a840e51977bb2f2ecf30eb1e5b0472b",
+        "-p",
+        "frontend_sources_sha256:=55feceb3ec5a48f6980bd86c4ce2fcfa7c48cc312c49c043683a585382e6582d"
+      ],
+      "depends": [
+        "probe"
+      ],
+      "requires": [],
+      "ready_key": "localizer_alive",
+      "critical": true,
+      "start_requires": [
+        "backend_unclaimed",
+        "clock_unclaimed"
+      ],
+      "resource": "fast_livo_backend",
+      "preflight_requires": null
+    },
+    {
+      "name": "receipts",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/online_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/receipt_probe",
+        "--ros-args",
+        "-p",
+        "context:=/home/lab307/ranger_nav/bags/fast-livo-localization-NEW",
+        "-p",
+        "topics_json:=\"{\\\"/livox/lidar\\\":\\\"sensor_msgs/msg/PointCloud2\\\",\\\"/livox/imu\\\":\\\"sensor_msgs/msg/Imu\\\",\\\"/front/image_sync\\\":\\\"sensor_msgs/msg/Image\\\",\\\"/fast_livo/odometry\\\":\\\"nav_msgs/msg/Odometry\\\",\\\"/fast_livo/deskewed_imu\\\":\\\"sensor_msgs/msg/PointCloud2\\\"}\""
+      ],
+      "depends": [
+        "probe"
+      ],
+      "requires": [],
+      "ready_key": "receipt_probe_live",
+      "critical": true,
+      "start_requires": [
+        "receipts_unclaimed"
+      ],
+      "resource": "fast_livo_capture_receipts",
+      "preflight_requires": null
+    },
+    {
+      "name": "capture",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/lab307/ranger_nav/scripts/fast_livo2/record_worker.py",
+        "--folder",
+        "/home/lab307/ranger_nav/bags/fast-livo-localization-NEW"
+      ],
+      "depends": [
+        "receipts"
+      ],
+      "requires": [],
+      "ready_key": "capture_recording",
+      "critical": true,
+      "start_requires": [],
+      "resource": "fast_livo_recorder",
+      "preflight_requires": [
+        "backend_unclaimed",
+        "clock_unclaimed"
+      ]
+    },
+    {
+      "name": "frontend",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/lib/fast_livo/fastlivo_mapping",
+        "--ros-args",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/fast_livo2/ranger_mid360s_hik_trial.yaml",
+        "-p",
+        "use_sim_time:=true",
+        "--log-level",
+        "warn"
+      ],
+      "depends": [
+        "probe"
+      ],
+      "requires": [],
+      "ready_key": "frontend",
+      "critical": true,
+      "start_requires": [
+        "frontend_unclaimed",
+        "backend_listening"
+      ],
+      "resource": "fast_livo_frontend",
+      "preflight_requires": [
+        "frontend_unclaimed"
+      ]
+    },
+    {
+      "name": "player",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/lab307/ranger_nav/scripts/fast_livo2/mapping_replay.py",
+        "--view",
+        "/home/lab307/ranger_nav/outputs/fast-livo-demo-online-localization-20261106/inputs/visit01/view",
+        "--folder",
+        "/home/lab307/ranger_nav/bags/fast-livo-localization-NEW"
+      ],
+      "depends": [
+        "receipts"
+      ],
+      "requires": [],
+      "ready_key": "process",
+      "critical": true,
+      "start_requires": [
+        "frontend_subscribed"
+      ],
+      "resource": "fast_livo_replay",
+      "preflight_requires": []
+    }
+  ]
+}

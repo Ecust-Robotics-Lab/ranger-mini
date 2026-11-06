@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "<stdin>", line 3, in <module>
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_online_localization_ros.py", line 7, in <module>
+    import test_fast_livo_localizer_ros as c1
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 31, in <module>
+    from ranger_localization_msgs.msg import LocalizationEstimate
+ModuleNotFoundError: No module named 'ranger_localization_msgs'

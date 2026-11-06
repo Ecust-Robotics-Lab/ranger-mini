@@ -1,0 +1,35 @@
+LOCALIZATION_DIR=/home/lab307/ranger_nav/outputs/fast-livo-demo-online-localization-20261106/visit01_manual_01
+SESSION_DIR=/home/lab307/ranger_nav/.runtime/sessions/fast_livo_online_localization/run-1d7xj_35
+LOCALIZATION state=None valid=False waiting_inputs; processed=0 skipped=0 age=None
+LOCALIZATION state=0 valid=False map_loading; processed=0 skipped=0 age=-1.0
+LOCALIZATION state=0 valid=False map_loaded_waiting_initial_pose; processed=0 skipped=0 age=-1.0
+LOCALIZATION state=0 valid=False clock_regressed_requires_initial_pose; processed=0 skipped=0 age=-1.0
+LOCALIZATION state=0 valid=False waiting_initial_pose; processed=1 skipped=0 age=-1.0
+LOCALIZATION state=0 valid=False waiting_initial_pose; processed=101 skipped=0 age=-1.0
+LOCALIZATION state=0 valid=False waiting_initial_pose; processed=201 skipped=0 age=-1.0
+LOCALIZATION state=0 valid=False waiting_next_pair_for_initial_pose; processed=297 skipped=0 age=-1.0
+LOCALIZATION state=0 valid=False verifying_multiframe_motion_support; processed=298 skipped=14 age=-1.0
+LOCALIZATION state=0 valid=False geometric_support_waiting_fresh_scan; processed=299 skipped=26 age=-1.0
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=301 skipped=27 age=0.44712413900000003
+{
+  "workflow_success": true,
+  "session_exit": 0,
+  "session_state": "STOPPED",
+  "recorder": {
+    "exit": 0,
+    "forced": false,
+    "requested_seconds": 100.0,
+    "elapsed_seconds": 33.53099724299682,
+    "stopped_by_signal": true,
+    "observed_messages": {
+      "/livox/lidar": 340,
+      "/livox/imu": 6790,
+      "/front/image_sync": 340,
+      "/fast_livo/odometry": 337,
+      "/fast_livo/deskewed_imu": 337
+    }
+  },
+  "localization_acceptance": "NOT_EVALUATED",
+  "physical_sync": "PARTIAL",
+  "hardware_started": false
+}

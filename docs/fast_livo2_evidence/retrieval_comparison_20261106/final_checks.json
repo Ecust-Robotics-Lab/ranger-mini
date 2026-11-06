@@ -1,0 +1,58 @@
+{
+  "head": "e8f1317a519cf08919691bf4c09643fd7e3700f7",
+  "map_files_sha_checked": 919,
+  "manifest_sha256": "e81d4a05a8da6cf3c1badfc0a6171295020bec59e5615408796c92a85b49b247",
+  "protected_sha256": {
+    "ws_fast_livo/online_frontend_install/fast_livo/lib/fast_livo/fastlivo_mapping": "83600c6f6781019466ff629f8fc8a1f820763004adc804dcbff2ad855a12900a",
+    "ws_fast_livo/install_c1_confirmation_20261104/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node": "99453aca95043aba1beb78f11fb1a08fb0805140c964e74ec7ad44a32d0bb619",
+    "bags/fast-livo-relocalization_visit01-trpozzyj/raw/raw_0.db3": "9720afcc7d2d696c23bb580c3a35fe6786af63f18c632abf5f309530a983c21d"
+  },
+  "shared_frontend_logs_restored": true,
+  "sessions": {
+    "fast_livo_online_localization": {
+      "state": "STOPPED",
+      "live": false,
+      "owned": []
+    },
+    "fast_livo_mapping": {
+      "state": "STOPPED",
+      "live": false,
+      "owned": []
+    },
+    "fast_livo_record": {
+      "state": "STOPPED",
+      "live": false,
+      "owned": []
+    }
+  },
+  "default_smoke": {
+    "workflow_success": true,
+    "session_exit": 0,
+    "session_state": "STOPPED",
+    "recorder": {
+      "exit": 0,
+      "forced": false,
+      "requested_seconds": 30.0,
+      "elapsed_seconds": 7.7410903989984945,
+      "stopped_by_signal": true,
+      "observed_messages": {
+        "/livox/lidar": 80,
+        "/livox/imu": 1592,
+        "/front/image_sync": 80,
+        "/fast_livo/odometry": 77,
+        "/fast_livo/deskewed_imu": 77
+      }
+    },
+    "localization_acceptance": "NOT_EVALUATED",
+    "physical_sync": "PARTIAL",
+    "hardware_started": false
+  },
+  "tests": {
+    "core": 33,
+    "online_ros_small_gicp_defaults": 3
+  },
+  "git_diff_check": 0,
+  "hardware_started": false,
+  "committed": false,
+  "pushed": false
+}

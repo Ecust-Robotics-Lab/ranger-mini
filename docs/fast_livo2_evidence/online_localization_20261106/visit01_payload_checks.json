@@ -1,0 +1,23 @@
+{
+  "recorded_inputs": {
+    "/livox/lidar": {
+      "count": 2821,
+      "sha256": "e59120352df619f4482f876dba6c984e919f9656cfdf545ff43b39f542706a00",
+      "matches_view": true
+    },
+    "/livox/imu": {
+      "count": 56427,
+      "sha256": "2fd088bcbab0c54c498d1c1f8cf967dd8fcc7f658245df3c4172fea101465f8d",
+      "matches_view": true
+    },
+    "/front/image_sync": {
+      "count": 2821,
+      "sha256": "110bb8a37c5a24d00fe8deea7be96efd86703c55b0829b2aa3685dc6eaf77307",
+      "matches_view": true
+    }
+  },
+  "frontend_pairs": 2817,
+  "strictly_paired": true,
+  "independent_source": "new visit01 bag; map is the preceding corridor capture",
+  "hardware_started": false
+}

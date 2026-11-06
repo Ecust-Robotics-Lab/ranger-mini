@@ -1,0 +1,83 @@
+{
+  "folder": "/home/lab307/ranger_nav/outputs/fast-livo-demo-online-localization-20261106/corridor_auto_pcl_01",
+  "workflow": {
+    "workflow_success": true,
+    "session_exit": 0,
+    "session_state": "STOPPED",
+    "recorder": {
+      "exit": 0,
+      "forced": false,
+      "requested_seconds": 500.0,
+      "elapsed_seconds": 390.338018552,
+      "stopped_by_signal": true,
+      "observed_messages": {
+        "/livox/lidar": 3903,
+        "/livox/imu": 78068,
+        "/front/image_sync": 3903,
+        "/fast_livo/odometry": 3900,
+        "/fast_livo/deskewed_imu": 3900
+      }
+    },
+    "localization_acceptance": "NOT_EVALUATED",
+    "physical_sync": "PARTIAL",
+    "hardware_started": false
+  },
+  "heartbeat_count": 19723,
+  "states": {
+    "0": 1750,
+    "1": 14975,
+    "3": 2998
+  },
+  "reasons": {
+    "map_loading": 14,
+    "map_loaded_searching": 165,
+    "clock_regressed_requires_initial_pose": 22,
+    "searching_waiting_query_window": 87,
+    "verifying_wait_disjoint_query_scans": 294,
+    "verifying_insufficient_time_or_motion_baseline": 1058,
+    "global_confirmed_handoff_requires_c1_verification": 478,
+    "verifying_multiframe_motion_support": 454,
+    "geometric_support_waiting_fresh_scan": 29,
+    "map_match_confirmed": 14975,
+    "confirmed_sample_or_stream_expired_requires_initial_pose": 31,
+    "global_no_geometric_match": 68,
+    "retry_backoff": 2048
+  },
+  "unique_valid_scans": 2978,
+  "valid_heartbeat_fraction": 0.7592658317700147,
+  "first_valid_clock_ns": 1590192087655082015,
+  "first_valid_pose": {
+    "xyz": [
+      0.589863657951355,
+      -0.022606827318668365,
+      -0.006418491248041391
+    ],
+    "xyzw": [
+      0.019859837464305682,
+      0.18639087981599858,
+      -0.05230633656959977,
+      0.9808812741264751
+    ]
+  },
+  "pose_age_seconds_p50_p95_max": [
+    0.273299134,
+    0.37289346770000004,
+    0.493703761
+  ],
+  "valid_age_violations_at_receipt": 0,
+  "registration_ms_p50_p95_max": [
+    82.52258449829242,
+    109.16064609937166,
+    160.20945499985828
+  ],
+  "longest_invalid_heartbeat_span_seconds": 37.82063027800177,
+  "counters": {
+    "processed_scans": 3513,
+    "skipped_scans": 376,
+    "stale_results": 6,
+    "queued_jobs": 2
+  },
+  "location_correctness": "NOT_EVALUATED",
+  "absolute_accuracy": "NOT_EVALUATED",
+  "note": "Heartbeat frequency is not localization frequency; receipt age includes transport delay. Same-map source replay is a functional check, not independent localization evidence."
+}

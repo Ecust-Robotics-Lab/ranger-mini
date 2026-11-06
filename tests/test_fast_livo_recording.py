@@ -16,7 +16,7 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT/'scripts/fast_livo2'))
 sys.path.insert(0, str(ROOT/'scripts'))
 from record_session import (TOPICS, check_lidar_host_address, input_problems,
-                            quality_report, recorder_command, sync_summary)
+                            main, quality_report, recorder_command, sync_summary)
 from session_manager import atomic_json, identity
 
 
@@ -27,7 +27,7 @@ def publish(folder):
     from nav_msgs.msg import Odometry
     rclpy.init()
     node = rclpy.create_node('capture_synthetic_'+str(os.getpid()))
-    classes = [PointCloud2, Imu, Image, Image, CameraInfo, Odometry]
+    classes = [PointCloud2, Imu, Image, Image, CameraInfo, Odometry, PointCloud2]
     pubs = {name: node.create_publisher(cls, name, QoSProfile(depth=10, reliability=ReliabilityPolicy.RELIABLE))
             for name, cls in zip(TOPICS, classes)}
     def tick():
@@ -41,11 +41,18 @@ def publish(folder):
             msg.header.stamp.sec, msg.header.stamp.nanosec = divmod(now, 10**9)
             msg.header.frame_id = 'livox_frame'
             if cls is PointCloud2:
+                backend_cloud = name == '/fast_livo/deskewed_imu'
                 msg.height, msg.width, msg.point_step, msg.row_step = 1, 1, 24, 24
                 for i, name in enumerate(('x', 'y', 'z')):
                     msg.fields.append(PointField(name=name, offset=i*4, datatype=PointField.FLOAT32, count=1))
                 msg.fields.append(PointField(name='timestamp', offset=16, datatype=PointField.FLOAT64, count=1))
                 msg.data = struct.pack('<fff4xd', 1., 2., 3., float(now+1_000_000))
+                if backend_cloud:
+                    msg.header.frame_id = 'fast_livo_imu'
+                    msg.point_step = msg.row_step = 16
+                    msg.fields = [PointField(name=n, offset=i*4, datatype=PointField.FLOAT32, count=1)
+                                  for i,n in enumerate(('x','y','z','intensity'))]
+                    msg.data = struct.pack('<ffff', 1., 2., 3., 1.)
             elif cls is Image:
                 msg.height, msg.width, msg.encoding, msg.step = 1, 1, 'rgb8', 3
                 msg.data = b'\x00\x80\xff'
@@ -75,6 +82,53 @@ def wait_until(predicate, timeout=30):
 
 
 class CaptureUnit(unittest.TestCase):
+    def test_defaults_execute_owned_capture_with_fast_profile_before_device_access(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            output = Path(tmp)/'capture'
+            with patch.dict(os.environ, RANGER_RUNTIME_CONFIG=str(Path(tmp)/'unused.yaml')), \
+                 patch.object(sys, 'argv', ['record_session.py', '--output', str(output), '--visualization', 'none']), \
+                 patch('record_session.read_session', return_value=(None, None)), \
+                 patch('record_session.check_sensor_processes', side_effect=RuntimeError('mock device occupancy')) as probe, \
+                 patch('record_session.run_guarded') as start:
+                with self.assertRaisesRegex(RuntimeError, 'mock device occupancy'):
+                    main()
+                self.assertEqual(Path(os.environ['RANGER_RUNTIME_CONFIG']), ROOT/'config/profiles/fast_livo2_frontend.yaml')
+                probe.assert_called_once_with()
+                start.assert_not_called()
+            self.assertFalse(output.exists())
+
+    def test_default_refuses_existing_preview_without_implicit_attach(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            output = Path(tmp)/'capture'
+            with patch.dict(os.environ), \
+                 patch.object(sys, 'argv', ['record_session.py', '--output', str(output), '--visualization', 'none']), \
+                 patch('record_session.read_session', side_effect=[(Path(tmp)/'preview', {'live': True}), (None, None)]), \
+                 patch('record_session.session_live', side_effect=[True, False]), \
+                 patch('record_session.check_sensor_processes') as probe, \
+                 patch('record_session.run_guarded') as start:
+                with self.assertRaisesRegex(RuntimeError, 'preview already active; use --attach'):
+                    main()
+                probe.assert_not_called()
+                start.assert_not_called()
+            self.assertFalse(output.exists())
+
+    def test_dry_run_accepts_explicit_profile_override_without_output(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            profile = Path(tmp)/'custom.yaml'
+            profile.write_text('extends: '+str(ROOT/'config/runtime.yaml')+'\nmapping:\n  fast_livo2:\n    ros_domain_id: 191\n')
+            output = Path(tmp)/'capture'
+            env = dict(os.environ, RANGER_CAPTURE_SESSION_ROOT=str(Path(tmp)/'sessions'))
+            p = subprocess.run(['bash', str(ROOT/'scripts/record_fast_livo2.sh'), '--dry-run',
+                                '--runtime-config', str(profile), '--output', str(output)],
+                               env=env, check=True, capture_output=True, text=True)
+            plan = json.loads(p.stdout)
+            self.assertEqual(plan['action'], 'DRY-RUN')
+            self.assertEqual(plan['mode'], 'start-sensors')
+            self.assertEqual(plan['runtime_config'], str(profile))
+            self.assertEqual(plan['domain'], 191)
+            self.assertFalse(output.exists())
+            self.assertFalse((Path(tmp)/'sessions').exists())
+
     def test_lidar_bind_address_missing_is_rejected_without_device_access(self):
         interfaces = [{'addr_info': [{'family': 'inet', 'local': '192.168.3.18'}]}]
         with patch('record_session.subprocess.check_output', return_value=json.dumps(interfaces)) as read:
@@ -133,7 +187,7 @@ class CaptureUnit(unittest.TestCase):
             for display, expected in [('', 'foxglove'), (':0', 'rviz')]:
                 env = dict(os.environ, DISPLAY=display, RANGER_CAPTURE_SESSION_ROOT=tmp,
                            PYTHONDONTWRITEBYTECODE='1')
-                p = subprocess.run(['bash', str(ROOT/'scripts/record_fast_livo2.sh'), '--start-sensors'],
+                p = subprocess.run(['bash', str(ROOT/'scripts/record_fast_livo2.sh'), '--dry-run'],
                                    env=env, check=True, capture_output=True, text=True)
                 plan = json.loads(p.stdout)
                 self.assertEqual(plan['requested_visualization'], 'auto')
@@ -148,7 +202,7 @@ class CaptureUnit(unittest.TestCase):
             output = Path(tmp)/'capture'
             env = dict(os.environ, DISPLAY='', RANGER_CAPTURE_SESSION_ROOT=tmp,
                        PYTHONDONTWRITEBYTECODE='1')
-            p = subprocess.run(['bash', str(ROOT/'scripts/record_fast_livo2.sh'), '--execute', '--start-sensors',
+            p = subprocess.run([sys.executable, __file__, '--fake-owned',
                                '--visualization', 'rviz', '--output', str(output)],
                               env=env, capture_output=True, text=True)
             self.assertEqual(p.returncode, 2)
@@ -162,11 +216,13 @@ class CaptureUnit(unittest.TestCase):
         self.assertIn('/front/image', command)
         self.assertNotIn('--use-sim-time', command)
         self.assertNotIn('/cmd_vel', command)
-        p = subprocess.run(['bash', str(ROOT/'scripts/record_fast_livo2.sh'), '--visualization', 'both'],
+        p = subprocess.run(['bash', str(ROOT/'scripts/record_fast_livo2.sh'), '--dry-run', '--visualization', 'both'],
                            check=True, capture_output=True, text=True)
         plan = json.loads(p.stdout)
         self.assertEqual(plan['action'], 'DRY-RUN')
         self.assertEqual(plan['domain'], 175)
+        self.assertEqual(Path(plan['runtime_config']), ROOT/'config/profiles/fast_livo2_frontend.yaml')
+        self.assertEqual(Path(plan['frontend_config']), ROOT/'config/fast_livo2/ranger_mid360s_hik_trial.yaml')
         names = [c['name'] for c in plan['components']]
         self.assertIn('rviz', names)
         self.assertIn('foxglove', names)
@@ -305,7 +361,7 @@ class CaptureROS(unittest.TestCase):
         self.source.wait(timeout=5)
         output = self.folder/'owned_capture'
         self.env['DISPLAY'] = ''
-        p = self.start([sys.executable, __file__, '--fake-owned', '--execute', '--start-sensors',
+        p = self.start([sys.executable, __file__, '--fake-owned',
             '--seconds', '2', '--output', str(output),
             '--runtime-config', str(self.profile)], 'owned_entry')
         self.ready(p, output)
@@ -388,5 +444,7 @@ if __name__ == '__main__':
             return [Component('frontend', [sys.executable, __file__, '--publish',
                 str(Path(os.environ['RANGER_LIVO_TIMESHARE']).parent)], resource='fast_livo_frontend')]
         record_session.specs = fake_specs
+        record_session.check_sensor_processes = lambda: None
+        record_session.check_lidar_host_address = lambda cfg: None
         raise SystemExit(record_session.main())
     else:unittest.main(verbosity=2)

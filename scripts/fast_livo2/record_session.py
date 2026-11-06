@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""One-command tri-sensor capture, ownership-aware cleanup, immutable evidence."""
+"""Record with owned sensors and the FAST profile by default; --dry-run previews the plan."""
 import argparse
 from collections import Counter
 import csv
@@ -30,6 +30,7 @@ TOPICS = {
     '/front/image': 'sensor_msgs/msg/Image',
     '/front/camera_info': 'sensor_msgs/msg/CameraInfo',
     '/fast_livo/odometry': 'nav_msgs/msg/Odometry',
+    '/fast_livo/deskewed_imu': 'sensor_msgs/msg/PointCloud2',
 }
 SESSION_ROOT = Path(os.environ.get('RANGER_CAPTURE_SESSION_ROOT', ROOT/'.runtime/sessions'))
 SESSION = SESSION_ROOT/'fast_livo_record'
@@ -220,16 +221,18 @@ def sync_summary(sensor_dir):
 def parser():
     p = argparse.ArgumentParser(description=__doc__)
     action = p.add_mutually_exclusive_group()
-    action.add_argument('--execute', action='store_true')
+    action.add_argument('--execute', action='store_true', help='Compatibility option; recording is now the default')
+    action.add_argument('--dry-run', action='store_true', help='Show the plan without starting devices or recording')
     action.add_argument('--status', action='store_true')
     action.add_argument('--stop', action='store_true')
     mode = p.add_mutually_exclusive_group()
     mode.add_argument('--attach', action='store_true', help='Record an existing managed preview; leave it running')
-    mode.add_argument('--start-sensors', action='store_true', help='Own sensors/front-end and stop them after recording')
+    mode.add_argument('--start-sensors', action='store_true', help='Compatibility option; owning sensors/front-end is now the default')
     p.add_argument('--seconds', type=float, default=60)
     p.add_argument('--label', default='motion')
     p.add_argument('--output', type=Path, help='NEW output directory; parent must already exist')
-    p.add_argument('--runtime-config')
+    p.add_argument('--runtime-config', default=str(ROOT/'config/profiles/fast_livo2_frontend.yaml'),
+                   help='Runtime profile (default: config/profiles/fast_livo2_frontend.yaml)')
     p.add_argument('--visualization', choices=('auto', 'rviz', 'foxglove', 'both', 'none'), default='auto',
                    help='auto: RViz with DISPLAY, otherwise localhost Foxglove')
     p.add_argument('--foxglove-port', type=int, default=8765)
@@ -241,6 +244,8 @@ def parser():
 def main():
     p = parser()
     args = p.parse_args()
+    args.execute = not args.dry_run
+    args.start_sensors = not args.attach
     requested_visualization = args.visualization
     if args.visualization == 'auto':
         args.visualization = 'rviz' if os.environ.get('DISPLAY', '').strip() else 'foxglove'
@@ -266,7 +271,7 @@ def main():
     validate_fast_livo_config(cfg['FAST_LIVO_CONFIG'])
     preview_run, preview = read_session(SESSION_ROOT/'fast_livo_live')
     live = bool(session_live(preview))
-    attach = args.attach or (live and not args.start_sensors)
+    attach = args.attach
     topics = dict(TOPICS)
     if args.record_wheel:topics['/wheel/odom'] = 'nav_msgs/msg/Odometry'
     folder = args.output.expanduser().absolute() if args.output else ROOT/'bags'/('fast-livo-'+args.label+'-NEW')
@@ -275,6 +280,7 @@ def main():
     worker = [sys.executable, str(ROOT/'scripts/fast_livo2/record_worker.py'), '--folder', str(folder)]
     if not args.execute:
         print(json.dumps({'action': 'DRY-RUN', 'mode': 'attach' if attach else 'start-sensors',
+            'runtime_config': cfg['RANGER_RUNTIME_CONFIG'], 'frontend_config': cfg['FAST_LIVO_CONFIG'],
             'domain': int(cfg['FAST_LIVO_ROS_DOMAIN_ID']), 'localhost_only': cfg['FAST_LIVO_LOCALHOST_ONLY'],
             'seconds': args.seconds, 'output': str(folder), 'topics': topics,
             'recorder': recorder_command(folder, topics), 'components': [asdict(c) for c in components],
@@ -358,8 +364,9 @@ def main():
             result['quality']['data_checks'] = 'PARTIAL'
         if result['quality']['failures']:raise RuntimeError('recorded input validation failed')
         result['capture_complete'] = True
-    except Exception as exc:
-        result['error'] = str(exc)
+    except (Exception, KeyboardInterrupt) as exc:
+        result['error'] = (str(exc) if not isinstance(exc, KeyboardInterrupt) else
+                           'Post-record audit interrupted; finalized bag retained; audit must be rerun')
         code = 2
     atomic_json(folder/'result.json', result)
     if not result['capture_complete']:

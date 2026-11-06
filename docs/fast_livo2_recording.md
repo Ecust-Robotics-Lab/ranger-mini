@@ -1,20 +1,24 @@
 # FAST-LIVO2 三传感器运动录包与远程预览
 
-更新：2026-11-04。脚本不会启动底盘驱动、CAN、Nav2、公共定位桥接或发布公共 TF。运动由操作员另行控制。本页描述采集入口，不代表运动建图精度或物理同步通过。
+更新：2026-11-05。按用户新指令，录包入口默认直接执行、独立启动传感器并读取FAST profile；`--dry-run` 仅显示计划。脚本不会启动底盘驱动、CAN、Nav2、公共定位桥接或发布公共TF。运动由操作员另行控制。本页描述采集入口，不代表运动建图精度或物理同步通过。
 
 正式前端试验配置现按用户要求使用 `time_offset.img_time_offset: 0.1`（+100 ms），与 LIV_handhold_2 锁定示例一致；前端对原图 header 内部映射一次，原 bag/图像/雷达戳不改。曝光中心与剩余相位尚未实测，Tag 默认关闭；历史 +110 ms 离线结果不是新 +100 ms 的验收结果。此修改对下一次新建会话生效，接入已有会话不自动热加载 YAML，须核验实际参数与归档。源码依据和两包证据见 [时间相位核查](fast_livo2_timestamp_phase_report.md)。
 
 当前已有约136.6秒三传感器运动包，后续预览与录包均已停止；首次无图像故障是历史记录，不是已确认仍存在的当前阻塞。新前端配置已开启初始重力对齐，新采集归档须保留实际配置，不能与旧图直接混用世界系；见 [STATUS](STATUS.md) 和 [重力报告](fast_livo2_gravity_alignment_report.md)。
 
+需要边采集边进行B回环和全局地图优化时，使用[在线预建图入口](fast_livo2_online_mapping.md)。本页的独立录包入口运行前端并保存数据，仍不启动回环后端。2026-11-05后续已补存 `/fast_livo/deskewed_imu`；此前走廊包没有该话题，已通过保留的原始数据离线重放生成，不追认旧包原本已保存它。
+
 ## 开始录制
 
 ```bash
 cd /home/lab307/ranger_nav
-bash scripts/record_fast_livo2.sh --seconds 60             # dry-run，不启动设备
-bash scripts/record_fast_livo2.sh --execute --seconds 60   # 启动传感器/前端和适合当前终端的可视化并录包
+bash scripts/record_fast_livo2.sh --dry-run --seconds 60   # 只显示计划，不启动设备
+bash scripts/record_fast_livo2.sh --seconds 60             # 启动传感器/前端和适合当前终端的可视化并录包
 ```
 
-已有本工程的 FAST 预览会话时，默认自动接入该会话；没有时启动自己的传感器会话。终端出现 `CAPTURE RECORDING` 和“录制已就绪”后才开始采集动作。`--seconds` 从录包器订阅全部目标话题就绪后计时，不包含启动时间；范围 1～3600 秒，默认 60 秒。
+默认使用 `config/profiles/fast_livo2_frontend.yaml` 并启动自己的传感器会话，省去 `--execute --start-sensors --runtime-config config/profiles/fast_livo2_frontend.yaml`。旧的两个显式开关仍兼容；需要其他配置时仍可传 `--runtime-config PATH`。仅设置环境变量 `RANGER_RUNTIME_CONFIG` 不替代本入口默认profile，入口参数可显式覆盖。
+
+已有本工程的FAST预览会话时，默认拒绝启动，须显式 `--attach` 接入，或由操作员通过所属入口停止原会话；不自动接管、停止或重启设备。终端出现 `CAPTURE RECORDING` 和“录制已就绪”后才开始采集动作。`--seconds` 从录包器订阅全部目标话题就绪后计时，不包含启动时间；范围1～3600秒，默认60秒。
 
 启动提示 `CAPTURE_DIR`、`SESSION_DIR` 只表示创建目录/会话。现在会明确显示 `CAPTURE PREPARING（尚未录制）` 和 `CAPTURE WAITING（尚未录制）`，列出雷达、相机、前端等未就绪组件；等待状态变化或每 10 秒刷新。`STARTING` 表示已启动但未就绪，`WAITING` 表示等待上游条件。
 
@@ -24,18 +28,24 @@ bash scripts/record_fast_livo2.sh --execute --seconds 60   # 启动传感器/前
 
 ```bash
 # 明确接入已有预览；结束只停止录包，已有预览继续运行
-bash scripts/record_fast_livo2.sh --execute --attach --seconds 60
+bash scripts/record_fast_livo2.sh --attach --seconds 60
 
-# 明确要求拥有本次设备会话；有其他预览占用时拒绝，不接管
-bash scripts/record_fast_livo2.sh --execute --start-sensors --seconds 300 --label loop01
+# 默认拥有本次设备会话；有其他预览占用时拒绝，不接管
+bash scripts/record_fast_livo2.sh --seconds 300 --label loop01
 
 # 无GUI录制，或用Foxglove代替RViz
-bash scripts/record_fast_livo2.sh --execute --seconds 300 --visualization none
-bash scripts/record_fast_livo2.sh --execute --seconds 300 --visualization foxglove
+bash scripts/record_fast_livo2.sh --seconds 300 --visualization none
+bash scripts/record_fast_livo2.sh --seconds 300 --visualization foxglove
 
 # 状态/停止；Ctrl+C也会正常收尾，SSH断开由受管会话清理
 bash scripts/record_fast_livo2.sh --status
 bash scripts/record_fast_livo2.sh --stop
+```
+
+本次走廊/教室大范围采集可用：
+
+```bash
+bash scripts/record_fast_livo2.sh --seconds 900 --label corridor_classroom_map01 --visualization none --min-free-gb 100
 ```
 
 自行启动的设备会话在录制结束时一同停止；接入已有会话不会停止对方。关闭 RViz 本身不停止采集。`--attach` 模式不重新启动可视化，使用被接入会话原有的可视化设置。
@@ -54,6 +64,7 @@ bash scripts/record_fast_livo2.sh --stop
 | `/front/image` | Image，同步检查前的图像；主机写戳不代表曝光时刻 |
 | `/front/camera_info` | CameraInfo，驱动内参 |
 | `/fast_livo/odometry` | Odometry，在线前端基线；回环后端可离线重新运行 |
+| `/fast_livo/deskewed_imu` | PointCloud2，与上述位姿严格同戳的去畸变IMU机体系区间云 |
 
 `--record-wheel` 可增加已有 `/wheel/odom`，但不会启动底盘；不存在时拒绝，不伪造 wheel 数据。默认不录 wheel，也不处理传感器与 wheel 历元差异。保留原 header/逐点时间，录包器使用主机存储时间，不使用 `--use-sim-time`。新包的回放调度需要遵循现有 header-clock 视图流程，不能修改原始包。
 

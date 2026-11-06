@@ -1,0 +1,39 @@
+{
+  "passed": true,
+  "python_syntax_exit": 0,
+  "shell_syntax_exit": 0,
+  "diff_check_exit": 0,
+  "document_links_checked": 152,
+  "main_binaries_unchanged": [
+    {
+      "path": "ws_fast_livo/install_c1_confirmation_20261104/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node",
+      "sha256": "99453aca95043aba1beb78f11fb1a08fb0805140c964e74ec7ad44a32d0bb619"
+    },
+    {
+      "path": "ws_fast_livo/install/fast_livo/lib/fast_livo/fastlivo_mapping",
+      "sha256": "dfcf5d4d54f7b81f573a000589527afa36f4dc71c5fe44df1c94f5bff9ae7b27"
+    }
+  ],
+  "sessions": [
+    {
+      "session": "field",
+      "run": "/home/lab307/ranger_nav/.runtime/sessions/field/run-u0m5bw9a",
+      "state": "DEGRADED",
+      "live": true
+    },
+    {
+      "session": "fast_livo_live",
+      "run": "/home/lab307/ranger_nav/.runtime/sessions/fast_livo_live/run-4e1fptkc",
+      "state": "STOPPED",
+      "live": false
+    },
+    {
+      "session": "fast_livo_record",
+      "run": "/home/lab307/ranger_nav/.runtime/sessions/fast_livo_record/run-t_4ldnsu",
+      "state": "STOPPED",
+      "live": false
+    }
+  ],
+  "real_hardware_started": false,
+  "commit_or_push": false
+}

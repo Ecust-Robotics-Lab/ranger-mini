@@ -1,6 +1,8 @@
 # 文档入口
 
-更新：2026-11-05。当前入口与带日期证据分开阅读；旧报告的“当前/下一步/未授权”只指当时快照，不能覆盖最新HANDOFF/STATUS或自动触发执行。
+2026-11-09最新交接：[本地保存检查点](git_checkpoint_handoff_20261109.md)、[新Agent提示词](NEXT_AGENT_PROMPT.md)、[相机/局部恢复修复](fast_livo2_failure_fix_report_20261109.md)、[原因研究](fast_livo2_failure_research_20261109.md)。
+
+更新：2026-11-09。当前入口与带日期证据分开阅读；旧报告的“当前/下一步/未授权”只指当时快照，不能覆盖最新HANDOFF/STATUS或自动触发执行。
 
 ## 接手与当前操作
 
@@ -23,6 +25,26 @@
 | [重力对齐报告](fast_livo2_gravity_alignment_report.md) | 新前端 +Z 朝上；旧地图不追认对齐 |
 
 ## 最新实现与验证报告
+
+- [20261109第三次现场复测与剩余阻塞](fast_livo2_field_gate_acceptance_report_20261109.md)：wheel等待clock/TF唯一修正实测通过；相机交付/同步积压导致连续就绪仍PARTIAL，规划控制软件可并行开展。
+
+- [20261109第二次90秒现场联调](fast_livo2_field_retest_report_20261109.md)：稳定锚点/真实C2→C1有效，公共就绪仍反复；wheel等待clock和空TF端点已离线修正，未再实测。
+
+- [20261109首次现场联调与启动锚点修正](fast_livo2_field_localization_report_20261109.md)：实物授权已执行，首帧积压污染时钟锚点导致零VALID/就绪；提前封包、全清理，稳定窗口修正已离线/ROS复验，未重启实物。
+
+- [20261109在线公共TF联调与短测准备](fast_livo2_live_chain_report_20261109.md)：实际适配/桥接的断流恢复与锚点异常锁定检查通过，显式auto-wheel及录后功能摘要已接入；真实短测未执行。
+
+- [20261109在线每会话时间映射](fast_livo2_live_clock_report_20261109.md)：复用receipt/steady锚点、派生wheel时间轴、显式公共TF在线入口；核心/隔离ROS与真实包时间代理检查通过，现场接车仍待验。
+
+- [20261109同录包完整公共TF离线链路](fast_livo2_offline_wheel_chain_report_20261109.md)：本包限定时钟、实际C2/C1＋诊断wheel，1801对、1502有效；断流/恢复/过期、唯一TF及raw创新拒绝反例通过，物理同步/真实接车仍未验。
+
+- [20261109同录包与wheel接入](fast_livo2_wheel_alignment_report_20261109.md)：180秒8话题核验、V2反馈符号修复、用户授权运动估计工作外参及FAST入口统一；本包时间映射诊断、物理同步仍PARTIAL，无新硬件启动。
+
+- [20261106录包自动wheel](fast_livo2_recording_wheel_report.md)：默认复用/自启receive-only底盘反馈，保持遥控器控制；隔离构建、28项Python及生命周期/机型检查通过，不重启现有base；真实同录待用户执行。
+
+- [20261106当前wheel实物启动检查](wheel_start_report_20261106.md)：用户本次授权CAN/底盘启动，domain175约50Hz wheel可用；原始帧发现V2故障/模式解码差异，运动就绪未通过，未发速度或开导航。
+
+- [20261106导航前置接入](fast_livo2_navigation_prep_report.md)：正式3D图派生占据候选图、来源绑定、隔离地图/C1适配/同刻wheel公共TF与名义传感器TF；8项针对性软件检查通过，真实wheel同录包/同步待验。规划控制按用户后续大改方案。
 
 - [20261106在线定位与重定位首轮交付](fast_livo2_online_localization_report.md)：统一私有入口、实时扫描调度、原速新282秒包无初值功能、390秒同包失效/恢复与限制；[操作](fast_livo2_online_localization.md)、[计划](FAST_LIVO2_ONLINE_LOCALIZATION_PLAN.md)。
 

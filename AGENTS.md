@@ -1,8 +1,10 @@
 # Ranger 导航工程约束
 
-更新：2026-11-06。新上下文先读 [HANDOFF](docs/HANDOFF.md)、[STATUS](docs/STATUS.md)，再读 [总计划](docs/FAST_LIVO2_BACKEND_PLAN.md)。目录与操作见 `docs/PROJECT_LAYOUT.md`、根 README；历史事实以带日期报告为准，本文件只维护有效约束。
+更新：2026-11-09。新上下文先读 [HANDOFF](docs/HANDOFF.md)、[STATUS](docs/STATUS.md)，再读 [总计划](docs/FAST_LIVO2_BACKEND_PLAN.md)。目录与操作见 `docs/PROJECT_LAYOUT.md`、根 README；历史事实以带日期报告为准，本文件只维护有效约束。
 
 ## 当前范围与授权
+
+- 2026-11-09用户要求新窗口前本地保存：已将本轮及此前未提交的wheel/导航接入、相机与C2恢复、证据/文档分组本地提交，见`docs/git_checkpoint_handoff_20261109.md`。本次无推送，不继承为后续自动提交/推送或设备操作授权；新Agent用`docs/NEXT_AGENT_PROMPT.md`先只读接手。
 
 - AprilTag 增量主体软件/离线范围已完成，计划与证据见 `docs/FAST_LIVO2_APRILTAG_PLAN.md`、`docs/fast_livo2_apriltag_report.md` 及后续带日期报告。当前140 mm的tag36h11:1、实测黑色边界、跨两新包固定及传感器安装未变已由用户确认，不重复询问；旧155 mm实例分开保留。Tag 默认关闭、独立时间未确认，无真实 VALID 表，真实Tag恢复/回环未验。既有成果已按2026-11-05用户指令分组本地提交；2026-11-06用户另行授权分组保存并上传，记录见 `docs/git_checkpoint_20261106.md`；禁止从计划自动启动设备、运动、提交或推送。
 
@@ -46,6 +48,28 @@
 - 给定初值定位与无初值全局搜索分别验收，初始化、退化、丢失和恢复必须可观测。跨会话或旧异步结果不得污染新估计。
 
 ## 真机与测试
+
+- 2026-11-09用户授权按故障研究方案实施：已完成相机取帧/发布分线程、有限队列、设备tick/scan相对进度检查与分段计时，以及仅显式C2的短时局部恢复；见`docs/fast_livo2_failure_fix_report_20261109.md`。在线定位引用隔离`ws_camera/latency_install`，原安装保留；36核心及7项针对性ROS回归、原CSV/点云检查通过。没有启硬件或运动，USB最初停顿根因、实车连续就绪仍未验；原包/失败记录保留，未提交/推送。方案实施授权不自动扩展为新一次设备启动。
+
+- 2026-11-09第三次现场最新：用户“开始吧”授权下完成88k5eclm的90.045秒复测。4200派生wheel零领先已记录clock，60个图快照动态TF唯一；整体连续就绪仍PARTIAL。相机取帧交付约0.53秒间隔及4帧同步BACKWARD、FAST输出0.66秒间隔与C1过期吻合，约34秒自动恢复；具体SDK等待/调度/发布原因未分离。见`docs/fast_livo2_field_gate_acceptance_report_20261109.md`。已清理全部本次设备，下一项用现有包离线排查，不自动续开硬件；规划控制软件可并行进入，不能宣称自主闭环已通过。原包和失败记录保留，未提交/推送。
+
+- 2026-11-09第二次现场最新：用户“重新启动”授权下完成jbwq4yhi的90.027秒真实采集，486个不同有效C1确认，稳定锚点已生效；公共TF有输出，但就绪频繁切换，连续接入仍PARTIAL，见`docs/fast_livo2_field_retest_report_20261109.md`。已修正wheel等待后续clock刻度再转发、底盘TF关闭时不创建广播器；隔离ROS/源码shim和rx重建通过，新驱动df58f4…未实测。实际采集仍ae5f3f…，原安装不变，全部本次设备已清理；没有自动重启，原包/失败保留，未提交/推送。
+
+- 2026-11-09现场最新：用户明确确认后已尝试本次90秒实物测试。首个驱动加载失败已补在线入口base安装环境，随后设备首次启动录得um88vo7b；37.945秒提前正常封包，但启动积压污染首帧锚点，C1零VALID/零就绪，现场FAIL。所有本次设备进程已清理，CAN从DOWN启为UP500k后保留。已修为真实在线定位启动稳定窗口、monitor唯一锚点供wheel使用；原失败包和合成ROS复验通过，未自动重启实物。读`docs/fast_livo2_field_localization_report_20261109.md`，保留两次失败与原包；下一次设备重启仍须该次明确授权，源码未提交。
+
+- 2026-11-09最新继续已完成时间转换→实际适配器/公共桥接的隔离合成ROS断流/恢复/锚点锁定联调。在线入口显式`--public-tf --auto-wheel --navigation-map`可复用录包receive-only准备与base_control资源锁，已有源借用、自启源受管清理；默认仍不启动底盘。新增录后功能摘要，公共模式无有效就绪/时间错误/创新锁定不得退出0；见`docs/fast_livo2_live_chain_report_20261109.md`。真实短测命令已准备，但未获本次具体设备启动许可，未开硬件/运动，修改未提交。
+
+- 2026-11-09再后续用户要求开始计划，已实现在线每会话receipt/steady时间映射与显式公共TF入口，见`docs/fast_livo2_live_clock_report_20261109.md`。`localize_fast_livo2.sh --public-tf --navigation-map`消费已有同域host-clock wheel、复用既有公共桥接，不自启底盘；默认dry-run/私有定位保留。4项核心＋1项隔离ROS和真实包记录时间代理检查通过；首帧接收偏差未知，物理同步/实车公共TF未验，未开硬件/运动/提交/推送。转换绑定当前receipt context与固定锚点，跳时或偏差锁定后须新会话。
+
+- 2026-11-09后续用户要求立即推进，已完成本包限定时间转换及180秒C2/C1→适配器→wheel公共TF隔离联调，见`docs/fast_livo2_offline_wheel_chain_report_20261109.md`。新`replay_fast_livo2_wheel.sh`默认dry-run；最终1801对、1502有效、1494次公式检查，断流/恢复/过期及TF唯一通过。旧wheel诊断重建不等于修复驱动真实输出，候选时钟不跨会话复用；raw反例按创新锁定拒绝，保留检查器旧失败。仅离线功能PASS，物理同步、绝对精度和真实接车未验；本轮无硬件操作、提交或推送。
+
+- 2026-11-09最新：已检查用户180秒FAST＋wheel包pwr5lx7u，8话题及receive-only采集/收尾流程PASS。确认V2反馈角左负右正，已修UpdateOdometry反馈符号并构建隔离录包版本，控制编码/原安装不变。用户明确授权约RPY=[1°,21°,-179°]先用；config/fast_livo2/navigation_prep.yaml、FAST profile、C1/C2入口及公共适配器已统一运动估计工作外参，不再以缺实测标定阻塞软件。XYZ按旋转与既有近似安装位置重算，仍非实测标定；当前时间映射仅本包诊断、物理同步/真实公共TF仍PARTIAL，见docs/fast_livo2_wheel_alignment_report_20261109.md。本轮未启硬件/导航，工作树未提交，历史零旋转/尚无同录包语句仅属先前阶段。
+
+- 2026-11-06再后续用户要求录包脚本自动启动底盘驱动、仍由遥控器控制。现`record_fast_livo2.sh`默认录wheel：有新鲜发布者复用，无发布者则检查跨域占用、用已授权的固定免密命令启用can0并启动receive_only驱动；`--no-wheel`才关闭，`--record-wheel`兼容保留。新隔离安装`ws_base/install_recording_rx`不请求CAN模式、不订阅速度、退出不发零速，原安装和原运行节点保留；自启进程随录包清理、已有源不代停，见`docs/fast_livo2_recording_wheel_report.md`。本轮28项Python/生命周期shim检查通过，未新开实物录制或重启底盘，真实receive-only采集仍待用户执行；入口默认行为不等于Agent自动开设备许可。
+
+- 2026-11-06更后续用户明确授权尝试CAN/底盘wheel启动，用户自行配置免密CAN并启用can0；Agent经审查后用原受管入口启动domain175/localhost的base会话，约50Hz wheel已验，检查结束时留运行，见`docs/wheel_start_report_20261106.md`。没有启动传感器/录包/导航或发速度。原始0x211显示vehicle异常2、待机0、完整故障0x00000200；旧SDK只读16位error_code使ROS显示0，旧控制模式枚举也与V2手册不符，运动就绪未通过。该次许可不继承为未来运动、周期控制心跳、自动重启或清除保护的授权；新操作先现查boot/PID与真实反馈。
+
+- 2026-11-06最新用户要求先完成导航前置软件、之后另行大改规划控制。本轮占据候选图与隔离`bridge_fast_livo2_offline.sh`、地图身份绑定、原公共TF桥接及名义传感器静态TF已交付，见`docs/fast_livo2_navigation_prep_report.md`，修改尚未提交。用户授权查Ranger Mini V2模型选合适base_link，已采用轴间中点地面投影，不再以原点未知阻塞软件；`config/fast_livo2/navigation_prep.yaml`的`T_base_imu=[0.120,0.02329,0.55588]`m/RPY0仅为估算，生产runtime不变。用户当前仅确认雷达距车头约26cm，没有当前FAST三融合＋wheel同录包、愿意补录。复用现有`--record-wheel`，不启动底盘驱动，不把旧包header重叠或合成TF通过当作真实同步/接车通过。规划控制方案按用户后续设计，不从旧计划自动继续Smac/MPPI。
 
 - 2026-11-06后续已按用户指令完成自有检索v2、官方STD/Scan Context离线对照，及新282秒包同v2/PCL与GICP原速对照，见`docs/fast_livo2_retrieval_comparison_report.md`。在线入口默认自有v2，C1/C2入口默认small_gicp；旧v1/PCL可显式选择，B/生产默认不变。官方STD/SC仅用于独立benchmark，许可和参考标签限制见报告；不当作在线集成或完整真值/泛化验收。
 

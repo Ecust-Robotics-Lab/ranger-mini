@@ -1,31 +1,37 @@
-# 新 Agent 开场提示词
+# 新 Agent 接手提示词
 
-复制下方内容到新上下文。先核对并汇报接手理解，后续实施范围由用户另行指定。
+更新：2026-11-09。下方可直接复制。此次只要求接手核对，后续实施和设备操作按新的明确指令执行。
 
 ```text
-请接手 /home/lab307/ranger_nav，先做只读交接，暂不继续实施。
+请接手 /home/lab307/ranger_nav。先只读核对，简短汇报接手理解、现有成果、剩余问题和下一步，暂不继续实施或启动设备。
 
-依次读 AGENTS.md、docs/HANDOFF.md、docs/STATUS.md、docs/FAST_LIVO2_BACKEND_PLAN.md、docs/FAST_LIVO2_APRILTAG_PLAN.md，再重点读：
-- docs/fast_livo2_online_mapping_report.md
-- docs/fast_livo2_online_mapping.md
-- docs/handoff_cleanup_online_mapping_20261105.md（最新清理）
-- docs/fast_livo2_corridor_classroom_capture_report.md
-- docs/local_git_checkpoint_20261105.md
-时间/Tag历史再查HANDOFF指定报告，勿直接执行历史实验脚本。
+先读：AGENTS.md、docs/HANDOFF.md、docs/STATUS.md、docs/FAST_LIVO2_BACKEND_PLAN.md、docs/FAST_LIVO2_APRILTAG_PLAN.md。然后按当前重点读：
+1. docs/fast_livo2_failure_fix_report_20261109.md（最新修复、构建、验证与限制）
+2. docs/fast_livo2_failure_research_20261109.md（原因和解决方案）
+3. docs/fast_livo2_field_gate_acceptance_report_20261109.md（最新真实现场结果）
+4. docs/fast_livo2_field_retest_report_20261109.md
+5. docs/fast_livo2_live_chain_report_20261109.md、docs/fast_livo2_live_clock_report_20261109.md
+6. docs/fast_livo2_wheel_alignment_report_20261109.md、docs/fast_livo2_navigation_prep_report.md
+7. docs/git_checkpoint_handoff_20261109.md（本次分组本地保存）
+8. docs/handoff_cleanup_online_mapping_20261105.md（最近清理，仅为历史固定清单，禁止据此继续删除）
+需要追溯时再按HANDOFF查旧报告，不直接执行历史命令。
 
-核对实际Git分支/HEAD、未提交改动、会话的boot/PID身份、配置、二进制与动态库、原包和地图，保护全部未提交成果。先简短汇报当前已完成能力、剩余限制和建议下一步；不自动开设备、重放实验、提交或推送。
+现查Git分支/完整HEAD/工作树、会话boot/PID和进程归属、配置、实际二进制/动态库、原包与地图。保护未提交修改及全部原包、地图、失败证据、标定和.runtime/backups。本次交接已分组本地提交，没有推送；不要自动提交、推送、清理或升级依赖。原包/地图/构建主要保存在本机，Git包含源码、配置、补丁、报告和可版本化证据，Git并非这些大资产的完整备份。
 
-当前重点是完整在线预建图。map_fast_livo2.sh已统一三融合前端、B回环优化、C++收流计数、录包、显示及停止封存，默认dry-run，显式--execute才运行。record_fast_livo2.sh单独录包默认执行/启动传感器/读取FAST profile，现补存去畸变云，但不启动B；不要把入口默认行为当Agent的硬件许可。
+当前进展：在线预建图软件链路已打通，390秒真实包原速DDS验证3900对、305关键帧、114接受回环。正式地图为 outputs/fast-livo-demo-online-mapping-20261105/full_replay_12/map，UUID 253f573d7a7eabbc363a225ab192cc14。候选导航占据图为 outputs/fast-livo-demo-navigation-prep-20261106/navigation_map_final。在线定位默认自有三维距离分布v2→KISS全6DoF粗配准→small_gicp→C1，Tag关闭。保持三融合、正式img_time_offset=+0.1秒和初始重力对齐。
 
-软件链路已用390秒真实包原速DDS重放验证：3900对输出，305关键帧、114条接受回环，地图归档和共用读取器加载PASS。正式成果：outputs/fast-livo-demo-online-mapping-20261105/full_replay_12/，地图UUID253f573d7a7eabbc363a225ab192cc14，map/map.pcd与map_trajectory.png可直接查看。来源原包：bags/fast-livo-corridor_classroom_map01-182fdzyj/raw。它原先没有去畸变云，停录后审查中断的事实仍保留；另有审查PASS证据。
+当前重点是在线定位连续性。最新90秒实机包为 bags/fast-livo-localization-88k5eclm；修复前得到58个不同有效确认、首次定位距首FAST约50.6秒。4200派生wheel无领先已记录clock，60个运行图快照动态TF唯一。相机USB3交付积压约0.53秒，迟到540帧被赋予不对应的较新scan时间，随后4帧BACKWARD，FAST输出间隔约0.66秒，C1过期后约33.58秒全局恢复。失败搜索单轮中位约63ms，大量候选在KISS粗配准内点门槛被拒，不能把34秒全部归咎small_gicp耗时。
 
-这还不是成熟系统验收：此前确有约1.11秒实际接收延迟；交付配置整包IMU最大记录到达间隔12.51ms，但仍有45个LOST后端心跳。真机同时运行、连续新鲜度、长时、误回环泛化、绝对精度、独立访问定位/重定位、wheel同步与D仍待验。不得把旧停顿统称误报或把地图加载当定位通过。最终整包收尾曾有SHM警告但成功，随后仅UDP控制面调整另做6秒回归，未再次重跑390秒。
+最新已实施但尚未实机验证的两项修复：
+- 相机取帧与发布/日志分线程、两帧有限队列、采集时保存scan快照、设备tick/scan相对进度检查、CSV分段计时和批量flush。原CSV重检拒绝540–543、544通过。
+- 仅显式C2在短时过期后保留已验证地点作为内部先验，以新鲜扫描局部几何重验；2秒/0.75m/0.35rad范围，至少两新采样/0.1秒一致，静止也可恢复。失败/超范围回全局搜索。旧候选不得当新有效修正，0.5秒新鲜度未放宽，独立C1人工初值语义保持。
+36项核心测试、7项针对性ROS测试通过；失效处真实记录点云可用两帧局部恢复。原包点云实验使用已接受位姿先验，不是完整原速重跑或实车恢复耗时。软件/离线PASS，实车连续就绪、SDK/USB最初停顿根因、物理同步和绝对精度仍PARTIAL。
 
-新程序在ws_fast_livo/online_frontend_install与online_install，可追溯派生源码在online_frontend_source；原安装保留。C1优化隔离版本在install_c1_confirmation_20261104，与旧backend_install不可混用。2026-11-06用户已另行授权分组保存并上传Git，提交分组和核对见docs/git_checkpoint_20261106.md；分支refactor/pluggable-navigation，当前HEAD和远端同步状态须现查，不沿用旧的领先15提交快照。
+实际构建：C1/C2在 ws_fast_livo/online_localization_install；前端在 online_frontend_install。新相机在 ws_camera/latency_install，在线localize_fast_livo2.sh已指向它，原ws_camera/install保留。最新二进制/库完整SHA与依赖见 docs/fast_livo2_evidence/failure_fix_20261109/binary_hashes.json 及实施报告。新底盘只接收版本为 ws_base/install_recording_rx，接收角符号和关闭TF时的空发布端点已修；原安装保留。
 
-正式前端img_time_offset固定+0.1秒、重力对齐开启。新390秒前端/B整包已完成；原两90秒固定+100ms对照及C1/C2评估仍待完成，历史+110ms结果不能追认为新配置结果。Tag默认关闭、独立时间未确认、没有真实VALID地标表，所有已报真实C2成功均Tag关闭。tag36h11:1实测140mm黑色边界，跨两90秒包Tag及传感器安装未变，用户已确认，不必再问，当前无需重录同类包。
+用户已授权先用约RPY=[1°,21°,-179°]的工作外参；准确当前XYZ/RPY从 config/fast_livo2/navigation_prep.yaml 和FAST profile读，不能退回历史零旋转或当作实测标定。公共桥接唯一发布map→odom、odom→base_link，同一采样时刻使用wheel历史插值；现有时间映射含未知接收偏差，不是物理同步标定。
 
-最新清理仅删除可从原包重建的replay_view和Python缓存，重建方法见清理报告。原包、全部地图、失败记录、构建与.runtime/backups均保留，不继续批量清理。最近会话指针是已停止的6秒final_control回归，不是正式full_replay_12；会话历史不能代替当前活进程核对。
+建议下一步：先复核上述改动、构建/来源与待验点，准备一轮带新分段日志的现场短测，验证USB/SDK等待、队列丢帧、时间关联和连续就绪/局部恢复。此次提示词不授权开设备；收到该次明确许可后才能启动相机/雷达/receive-only底盘。自动运动、速度、导航目标另须明确授权。历史设备已受管停止，但须按当前boot/PID核实，不能把旧快照当现状。不要因修复软件通过便宣称实车通过。
 
-后续依我的新指令决定是真机在线建图验收、新地图独立访问定位，还是原两90秒/Tag离线工作；不默认续跑旧计划。生产Lightning/wheel/公共TF/导航链保持，私有sensor-clock不等于wheel物理同步。
+全局候选召回/长查询窗口和C1初始化预处理缓存尚未修改，按新证据决定优先级。用户准备另行大改规划控制，不自动继续旧Smac/MPPI方案。生产仍Lightning-LM、wheel和既有安全链。请用中文简洁汇报，开发偏快速、复用现有实现，避免过多防御性设计。
 ```

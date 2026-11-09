@@ -1,6 +1,6 @@
 # FAST-LIVO2 三传感器运动录包与远程预览
 
-更新：2026-11-05。按用户新指令，录包入口默认直接执行、独立启动传感器并读取FAST profile；`--dry-run` 仅显示计划。脚本不会启动底盘驱动、CAN、Nav2、公共定位桥接或发布公共TF。运动由操作员另行控制。本页描述采集入口，不代表运动建图精度或物理同步通过。
+更新：2026-11-06。录包入口默认直接执行、独立启动传感器并读取FAST profile，现默认同时记录wheel：已有新鲜发布者则复用，没有则自动启用can0并启动只接收反馈的底盘驱动；`--no-wheel`用于纯传感器录制，`--dry-run`仅显示计划。自启wheel驱动不请求CAN控制模式、不订阅速度、退出不发送停车命令，保持操作员使用遥控器；不启动Nav2、公共定位桥接或发布公共TF。实现/验证见[自动wheel报告](fast_livo2_recording_wheel_report.md)。本页不代表运动建图精度或物理同步通过。
 
 正式前端试验配置现按用户要求使用 `time_offset.img_time_offset: 0.1`（+100 ms），与 LIV_handhold_2 锁定示例一致；前端对原图 header 内部映射一次，原 bag/图像/雷达戳不改。曝光中心与剩余相位尚未实测，Tag 默认关闭；历史 +110 ms 离线结果不是新 +100 ms 的验收结果。此修改对下一次新建会话生效，接入已有会话不自动热加载 YAML，须核验实际参数与归档。源码依据和两包证据见 [时间相位核查](fast_livo2_timestamp_phase_report.md)。
 
@@ -10,10 +10,13 @@
 
 ## 开始录制
 
+2026-11-09补充：首份180秒自动wheel真实包已完整归档。后续诊断确认Mini V2反馈转向符号问题，当前隔离录包驱动已修正；原包保留原值，不追认成修复后采集。工作外参按用户授权更新，具体版本、哈希与限制见[本轮报告](fast_livo2_wheel_alignment_report_20261109.md)。
+
 ```bash
 cd /home/lab307/ranger_nav
 bash scripts/record_fast_livo2.sh --dry-run --seconds 60   # 只显示计划，不启动设备
 bash scripts/record_fast_livo2.sh --seconds 60             # 启动传感器/前端和适合当前终端的可视化并录包
+bash scripts/record_fast_livo2.sh --seconds 60 --no-wheel  # 不连接底盘的采集
 ```
 
 默认使用 `config/profiles/fast_livo2_frontend.yaml` 并启动自己的传感器会话，省去 `--execute --start-sensors --runtime-config config/profiles/fast_livo2_frontend.yaml`。旧的两个显式开关仍兼容；需要其他配置时仍可传 `--runtime-config PATH`。仅设置环境变量 `RANGER_RUNTIME_CONFIG` 不替代本入口默认profile，入口参数可显式覆盖。
@@ -48,7 +51,7 @@ bash scripts/record_fast_livo2.sh --stop
 bash scripts/record_fast_livo2.sh --seconds 900 --label corridor_classroom_map01 --visualization none --min-free-gb 100
 ```
 
-自行启动的设备会话在录制结束时一同停止；接入已有会话不会停止对方。关闭 RViz 本身不停止采集。`--attach` 模式不重新启动可视化，使用被接入会话原有的可视化设置。
+自行启动的设备会话和wheel驱动在录制结束时一同停止；接入/复用已有会话或wheel不会停止对方。CAN接口保持启用，其录前状态和回退命令写入manifest。关闭RViz本身不停止采集。`--attach`模式不重新启动可视化，但仍按默认wheel策略复用/启动反馈。
 
 默认新目录 `bags/fast-livo-<label>-<随机串>/`。可用 `--output /绝对路径/新目录` 指定，父目录须存在，禁止覆盖。默认磁盘保留 5 GB，录前及录中检查；`--min-free-gb` 可调整，最少 1 GB。未开启压缩/分卷，兼容本工程现有单 SQLite 审查与回放工具。双份 1280×1024 RGB8 图像约 79 MB/s，另有点云与数据库开销，应按实测文件增长规划时长。
 
@@ -65,8 +68,9 @@ bash scripts/record_fast_livo2.sh --seconds 900 --label corridor_classroom_map01
 | `/front/camera_info` | CameraInfo，驱动内参 |
 | `/fast_livo/odometry` | Odometry，在线前端基线；回环后端可离线重新运行 |
 | `/fast_livo/deskewed_imu` | PointCloud2，与上述位姿严格同戳的去畸变IMU机体系区间云 |
+| `/wheel/odom` | 默认启用；底盘反馈积分的Odometry，odom/base_link、原主机header |
 
-`--record-wheel` 可增加已有 `/wheel/odom`，但不会启动底盘；不存在时拒绝，不伪造 wheel 数据。默认不录 wheel，也不处理传感器与 wheel 历元差异。保留原 header/逐点时间，录包器使用主机存储时间，不使用 `--use-sim-time`。新包的回放调度需要遵循现有 header-clock 视图流程，不能修改原始包。
+默认自动记录`/wheel/odom`，`--record-wheel`保留为显式兼容选项；`--no-wheel`才关闭。缺少wheel时检查跨ROS域的底盘进程，发现已有驱动则拒绝重复启动；否则需要已构建`ws_base/install_recording_rx`。can0已为500k/ERROR-ACTIVE时不改配置；DOWN时用固定免密`sudo -n /usr/sbin/ip link set can0 up type can bitrate 500000`启用，没有权限则报错。自启驱动为receive_only、TF关闭；已有wheel发布者只复用、不改变其模式。新鲜度/坐标系/类型/QoS不符时拒绝，不替换已有节点。保留原header/逐点时间，录包器使用主机存储时间，不使用`--use-sim-time`；不处理传感器与wheel历元差异。新包回放仍需有依据的派生时间视图，不能修改原始包。
 
 录前检查每个话题恰好一个发布者、消息类型、RELIABLE QoS及实际收流；等待录包器订阅就绪。录中检测发布者消失/GID改变/重复发布者、数据断流与磁盘空间，失败保存部分结果并停止，不自动重启。复用原会话设备占用检查、资源租约和精确进程身份清理。
 
@@ -79,6 +83,7 @@ bash scripts/record_fast_livo2.sh --seconds 900 --label corridor_classroom_map01
 - `sources/` 另含 writer/相机源码与实际二进制；2026-11-04 起也归档实际前端 `fastlivo_mapping` 二进制，防止仅靠配置追认源码版本。`subscriptions_before.json` 保存录前订阅端 QoS/GID，`graph_before.json` 保持原发布端格式。
 - `session_logs/`：本次受管会话、设备日志、相机/时间writer CSV。不复制仍可能活动的共享内存文件。
 - `manifest.json`、`recorder_result.json`、`audit.json`、`result.json`；完整收尾且必需数据检查通过时才生成 `CAPTURE_COMPLETE`。
+- `manifest.wheel`记录disabled/external/owned_receive_only、已有发布者身份或自启命令及CAN前后配置；自启时另归档实际wheel二进制、驱动源码和增量补丁。结束只清理本次拥有的进程。
 
 `CAPTURE_COMPLETE` 仅表示录包完成及必需输入检查通过。相机同步异常、超过0.5秒的间隔会列入 `result.json`，数据质量可为 PARTIAL；该标志不表示物理同步、回环或定位精度通过。审查检查整数header顺序、数量/间隔、点时间和非有限IMU值。同步CSV统计覆盖整个设备会话，接入已有长会话时可能包含录制时间之外的数据。接入会话的日志属于活动文件快照，明确标记可能不完整；原会话资产继续保留。
 

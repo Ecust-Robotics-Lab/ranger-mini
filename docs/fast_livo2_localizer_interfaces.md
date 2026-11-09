@@ -1,5 +1,7 @@
 # FAST-LIVO2 C1 离线先验地图定位契约
 
+2026-11-09增补：用户授权暂用约RPY=[1°,21°,-179°]的运动估计工作外参，详见[同录包报告](fast_livo2_wheel_alignment_report_20261109.md)。FAST profile、默认C1/C2离线入口及在线节点参数、公共适配器已统一XYZ/RPY；默认离线入口新增--runtime-config，选择FAST profile，仍可显式选其他profile。生产runtime默认未变，工作外参不是实测标定，原始两历元仍须有依据地映射，不直接拼接实车TF。
+
 2026-11-06增补：默认离线入口保持本契约；显式[在线定位入口](fast_livo2_online_localization.md)复用同一C1/C2，使用独立安装和私有sensor-clock。节点新参数online_scheduling默认false，在线入口开启后仅保留最新两对待处理扫描，并在提交时拒绝发布过期VALID；旧几何、运动、歧义与代际规则保持。实际结果与限制见[首轮报告](fast_livo2_online_localization_report.md)。
 
 更新：2026-11-04。实现为 `ws_fast_livo/src/ranger_fast_livo_localizer`；原始验收见 [C1 报告](fast_livo2_stage_c1_report.md)，初始化计算优化与隔离新构建见 [两份新包对照](fast_livo2_tag_two_capture_report.md)。本页描述默认 C1 人工初值模式；显式启用的 [C2](fast_livo2_relocalizer_interfaces.md) 在同一包提供全局确认初值和丢失恢复，仍由 C1 跟踪。人工 Initialize 会暂停可选自动搜索，需显式重新允许。生产 runtime 仍使用 Lightning。
@@ -71,5 +73,7 @@ bash scripts/run_fast_livo2_localizer.sh --execute \
 只有显式 `--offline-bridge` 才启动独立 C1 适配器和现有公共桥接。适配器计算 `T_map_base=T_map_imu*inverse(T_base_imu)`，保留原戳，检查确认身份、代际、已退休 session、采样和 steady 心跳新鲜度。公共消息保持既有 `LocalizationEstimate`，没有伪造 B loop_event。
 
 公共桥接继续唯一发布 map→odom、odom→base_link，复用 wheel 原时刻历史插值、禁止外推和首次创新失败锁定。调用者在占用检查完成后提供同域合成 wheel；私有定位成功、桥接接纳分别记录，不能自动解除锁定。配置内 T_base_imu 仍是近似值，合成外参通过不等于实物标定通过。
+
+2026-11-06新增可选适配参数`expected_map_uuid`和`expected_manifest_sha256`，必须一同指定；绑定后，私有结果地图身份不符即ERROR且不更新已接受身份缓存。新增`scripts/bridge_fast_livo2_offline.sh`复用本适配器与桥接、Nav2地图服务及名义传感器静态TF，自动从占据候选图取对应3D源身份；默认dry-run、domain219/localhost、use_sim_time=true，不启动C1或硬件。操作及名义外参见[前置接入报告](fast_livo2_navigation_prep_report.md)。
 
 2026-11-06默认注册器增补：按用户要求在完成检索比较和同包GICP对照后，C1/C2入口默认small_gicp；可显式选择pcl_icp。独立几何、运动、歧义和新鲜度门槛保持；旧安装未重建，在线使用online_localization_install。结果与未收敛拒绝见[报告](fast_livo2_retrieval_comparison_report.md)。

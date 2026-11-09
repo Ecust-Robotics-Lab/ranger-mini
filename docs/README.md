@@ -1,5 +1,7 @@
 # 文档入口
 
+2026-11-09修复后最新实机：[90秒实机结果](fast_livo2_field_latency_retest_report_20261109.md)，本次已清理设备、未触发LOST/局部恢复，连续就绪仍PARTIAL。
+
 2026-11-09最新交接：[本地保存检查点](git_checkpoint_handoff_20261109.md)、[新Agent提示词](NEXT_AGENT_PROMPT.md)、[相机/局部恢复修复](fast_livo2_failure_fix_report_20261109.md)、[原因研究](fast_livo2_failure_research_20261109.md)。
 
 更新：2026-11-09。当前入口与带日期证据分开阅读；旧报告的“当前/下一步/未授权”只指当时快照，不能覆盖最新HANDOFF/STATUS或自动触发执行。
@@ -123,3 +125,5 @@
 
 - [在线重定位本地Git检查点](git_checkpoint_online_localization_20261106.md)：本轮分组保存与资产边界。
 - [FAST定位接入导航与闭环计划](FAST_NAVIGATION_INTEGRATION_PLAN.md)：wheel/TF、占据图、车体几何、Smac/MPPI与分步验收。
+
+- [2026-11-09 首次定位优化：静止确认与预处理复用](fast_livo2_initialization_optimization_report_20261109.md)

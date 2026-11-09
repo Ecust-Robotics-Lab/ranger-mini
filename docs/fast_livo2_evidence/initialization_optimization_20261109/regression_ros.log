@@ -1,0 +1,12 @@
+test_long_outage_returns_to_global_search (test_fast_livo_local_recovery_ros.Recovery) ... ok
+test_short_outages_retain_request_and_stationary_recovers (test_fast_livo_local_recovery_ros.Recovery) ... ok
+test_burst_coalesces_complete_pairs_and_keeps_fresh_output (test_fast_livo_online_localization_ros.OnlineRos) ... ok
+test_clock_advance_revokes_pose_and_manual_requires_new_initial (test_fast_livo_online_localization_ros.OnlineRos) ... ok
+test_slow_initial_evidence_cannot_publish_old_pose (test_fast_livo_online_localization_ros.OnlineRos) ... ok
+test_cancel_revokes_old_work_restart_and_loss_recovery (test_fast_livo_relocalizer_ros.C2Ros) ... ok
+test_map_switch_invalidates_search_support_and_old_request (test_fast_livo_relocalizer_ros.C2Ros) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 16.375s
+
+OK

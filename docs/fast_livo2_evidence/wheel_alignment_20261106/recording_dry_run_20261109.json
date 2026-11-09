@@ -1,0 +1,205 @@
+{
+  "action": "DRY-RUN",
+  "mode": "start-sensors",
+  "runtime_config": "/home/lab307/ranger_nav/config/profiles/fast_livo2_frontend.yaml",
+  "frontend_config": "/home/lab307/ranger_nav/config/fast_livo2/ranger_mid360s_hik_trial.yaml",
+  "domain": 175,
+  "localhost_only": "1",
+  "seconds": 180.0,
+  "output": "/home/lab307/ranger_nav/bags/fast-livo-motion-NEW",
+  "topics": {
+    "/livox/lidar": "sensor_msgs/msg/PointCloud2",
+    "/livox/imu": "sensor_msgs/msg/Imu",
+    "/front/image_sync": "sensor_msgs/msg/Image",
+    "/front/image": "sensor_msgs/msg/Image",
+    "/front/camera_info": "sensor_msgs/msg/CameraInfo",
+    "/fast_livo/odometry": "nav_msgs/msg/Odometry",
+    "/fast_livo/deskewed_imu": "sensor_msgs/msg/PointCloud2",
+    "/wheel/odom": "nav_msgs/msg/Odometry"
+  },
+  "recorder": [
+    "ros2",
+    "bag",
+    "record",
+    "-s",
+    "sqlite3",
+    "-o",
+    "/home/lab307/ranger_nav/bags/fast-livo-motion-NEW/raw",
+    "--max-cache-size",
+    "268435456",
+    "--qos-profile-overrides-path",
+    "/home/lab307/ranger_nav/config/mid360/bag_qos.yaml",
+    "/livox/lidar",
+    "/livox/imu",
+    "/front/image_sync",
+    "/front/image",
+    "/front/camera_info",
+    "/fast_livo/odometry",
+    "/fast_livo/deskewed_imu",
+    "/wheel/odom"
+  ],
+  "components": [
+    {
+      "name": "probe",
+      "argv": [
+        "python3",
+        "/home/lab307/ranger_nav/scripts/fast_livo2/live_monitor.py"
+      ],
+      "depends": [],
+      "requires": [],
+      "ready_key": "probe_live",
+      "critical": true,
+      "start_requires": [],
+      "resource": "",
+      "preflight_requires": null
+    },
+    {
+      "name": "lidar",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_livox/install/livox_ros_driver2/lib/livox_ros_driver2/livox_ros_driver2_node",
+        "--ros-args",
+        "-p",
+        "xfer_format:=0",
+        "-p",
+        "multi_topic:=0",
+        "-p",
+        "data_src:=0",
+        "-p",
+        "publish_freq:=10.0",
+        "-p",
+        "output_data_type:=0",
+        "-p",
+        "frame_id:=livox_frame",
+        "-p",
+        "user_config_path:=/home/lab307/ranger_nav/config/fast_livo2/mid360s_live.json",
+        "-p",
+        "cmdline_input_bd_code:=livox0000000001",
+        "-r",
+        "__node:=livox_lidar_publisher"
+      ],
+      "depends": [
+        "probe"
+      ],
+      "requires": [],
+      "ready_key": "lidar",
+      "critical": true,
+      "start_requires": [
+        "lidar_unclaimed"
+      ],
+      "resource": "livox_lidar",
+      "preflight_requires": null
+    },
+    {
+      "name": "writer",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_camera/install/timeshare_writer/lib/timeshare_writer/timeshare_writer_node",
+        "--ros-args",
+        "-p",
+        "timeshare_path:=/home/lab307/ranger_nav/bags/fast-livo-motion-NEW/sensor_assets/timeshare",
+        "-p",
+        "lidar_reliability:=reliable",
+        "-p",
+        "lidar_queue_depth:=5",
+        "-p",
+        "csv_path:=/home/lab307/ranger_nav/bags/fast-livo-motion-NEW/sensor_assets/timeshare_writer.csv"
+      ],
+      "depends": [
+        "lidar"
+      ],
+      "requires": [
+        "lidar"
+      ],
+      "ready_key": "writer",
+      "critical": true,
+      "start_requires": [],
+      "resource": "camera_timeshare",
+      "preflight_requires": null
+    },
+    {
+      "name": "camera",
+      "argv": [
+        "bash",
+        "-c",
+        "cd -- \"$RANGER_LIVO_DEVICE_CWD\" && exec \"$@\"",
+        "camera-device",
+        "/home/lab307/ranger_nav/ws_camera/install/hik_camera_trigger_driver/lib/hik_camera_trigger_driver/hik_camera_trigger_driver_node",
+        "--ros-args",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/fast_livo2/camera_live.yaml",
+        "-p",
+        "timeshare_path:=/home/lab307/ranger_nav/bags/fast-livo-motion-NEW/sensor_assets/timeshare",
+        "-p",
+        "sync_csv_path:=/home/lab307/ranger_nav/bags/fast-livo-motion-NEW/sensor_assets/camera_sync.csv",
+        "-r",
+        "__node:=hik_camera_trigger"
+      ],
+      "depends": [
+        "writer"
+      ],
+      "requires": [
+        "writer"
+      ],
+      "ready_key": "camera",
+      "critical": true,
+      "start_requires": [
+        "camera_unclaimed"
+      ],
+      "resource": "hik_camera",
+      "preflight_requires": null
+    },
+    {
+      "name": "frontend",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/install/fast_livo/lib/fast_livo/fastlivo_mapping",
+        "--ros-args",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/fast_livo2/ranger_mid360s_hik_trial.yaml",
+        "-p",
+        "use_sim_time:=false",
+        "--log-level",
+        "warn"
+      ],
+      "depends": [
+        "camera"
+      ],
+      "requires": [
+        "lidar",
+        "camera"
+      ],
+      "ready_key": "frontend",
+      "critical": true,
+      "start_requires": [
+        "frontend_unclaimed"
+      ],
+      "resource": "fast_livo_frontend",
+      "preflight_requires": null
+    },
+    {
+      "name": "wheel",
+      "argv": [
+        "/home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/lib/ranger_base/ranger_base_node",
+        "--ros-args",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/base_mini_v2.yaml",
+        "-p",
+        "receive_only:=true",
+        "-p",
+        "publish_odom_tf:=false"
+      ],
+      "depends": [],
+      "requires": [],
+      "ready_key": "process",
+      "critical": true,
+      "start_requires": [],
+      "resource": "base_control",
+      "preflight_requires": null
+    }
+  ],
+  "visualization": "none",
+  "requested_visualization": "none",
+  "wheel_policy": "auto-reuse-or-receive-only",
+  "wheel_plan_note": "Execution reuses an existing healthy publisher instead of starting the planned wheel component.",
+  "no_base_or_navigation": false,
+  "no_base_control_or_navigation": true,
+  "physical_sync_proven": false
+}

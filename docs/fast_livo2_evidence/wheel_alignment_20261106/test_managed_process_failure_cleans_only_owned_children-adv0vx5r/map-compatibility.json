@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "mode": "offline_experiment",
+  "source_manifest_sha256": "296f281ee3f3fc6cccc91351bf08952cf302a0fefce48aaad0745eba441d4f55",
+  "physical_sync_validated": false,
+  "absolute_accuracy_validated": false,
+  "limitations": [
+    "Historical archive lacks complete attested sensor/calibration/source identity.",
+    "Referenced evidence is traceability, not physical calibration validation.",
+    "Same-capture localization is a function test; no independent-session or accuracy claim."
+  ],
+  "evidence_files_sha256": {
+    "/home/lab307/ranger_nav/docs/fast_livo2_evidence/wheel_alignment_20261106/test_managed_process_failure_cleans_only_owned_children-adv0vx5r/map/manifest.json": "296f281ee3f3fc6cccc91351bf08952cf302a0fefce48aaad0745eba441d4f55"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "mode": "offline_experiment",
+  "source_manifest_sha256": "e81d4a05a8da6cf3c1badfc0a6171295020bec59e5615408796c92a85b49b247",
+  "physical_sync_validated": false,
+  "absolute_accuracy_validated": false,
+  "limitations": [
+    "Historical archive lacks complete attested sensor/calibration/source identity.",
+    "Referenced evidence is traceability, not physical calibration validation.",
+    "Same-capture localization is a function test; no independent-session or accuracy claim."
+  ],
+  "evidence_files_sha256": {
+    "/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/full_replay_12/map/manifest.json": "e81d4a05a8da6cf3c1badfc0a6171295020bec59e5615408796c92a85b49b247"
+  }
+}

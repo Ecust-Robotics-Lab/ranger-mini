@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "calibration_id": "ranger-camera-imu-410a6f212a4d206d60e67ccbaba54a0544f664332685395c7cb314a065a45679",
+  "time_mapping_id": "unverified-timeshare-v2-zero-offset",
+  "time_source": "/front/image_sync copies LiDAR-domain timeshare stamp; exposure phase not physically validated",
+  "time_verified": false,
+  "offset_ns": 0,
+  "uncertainty_ns": 0,
+  "T_imu_camera": {
+    "xyz": [
+      0.021334544516467522,
+      -0.02662557125309533,
+      -0.037994688761074244
+    ],
+    "xyzw": [
+      -0.40115495137262874,
+      0.394188647777693,
+      -0.5814785097984034,
+      0.5878543676754012
+    ]
+  },
+  "camera": {
+    "width": 1280,
+    "height": 1024,
+    "frame": "front_optical_frame",
+    "pixel_domain": "raw",
+    "distortion_model": "plumb_bob",
+    "K": [
+      1299.9988190926874,
+      0.0,
+      640.2595320942488,
+      0.0,
+      1299.8402206328024,
+      484.9367557425784,
+      0.0,
+      0.0,
+      1.0
+    ],
+    "D": [
+      -0.08288339607839673,
+      0.15032436811294939,
+      -0.0005625494644882011,
+      -0.00039491110944710704,
+      -0.08810366754215963
+    ],
+    "R": [
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  },
+  "source_files_sha256": {
+    "ws_camera/src/hik_camera_trigger_driver/config/camera_info.yaml": "3b8536bf5331cc7a07f98751dfa322c7c1f3f7fdc08a5e91272030735f475932",
+    "config/fast_livo2/ranger_mid360s_hik_trial.yaml": "63f8d3614ad23e41bbf130d4f64899db503aeff9a58888b0a5c9df95b043956f"
+  },
+  "threshold_status": "Initial offline values, not field calibrated",
+  "pixel_rmse": 3.0,
+  "pixel_max": 6.0,
+  "min_margin": 0.0,
+  "min_area": 16.0,
+  "max_hamming": 0
+}

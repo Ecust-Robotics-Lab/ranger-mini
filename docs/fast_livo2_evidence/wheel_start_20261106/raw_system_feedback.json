@@ -1,0 +1,31 @@
+{
+  "receive_only": true,
+  "id": "0x211",
+  "samples": 96,
+  "unique_payloads": [
+    {
+      "payload_hex": "0200022700000200",
+      "vehicle_state": 2,
+      "control_mode_raw": 0,
+      "battery_voltage": 55.1,
+      "manual_error_u32_be": 512,
+      "sdk_error_u16_from_bytes4_5": 0
+    },
+    {
+      "payload_hex": "0200022800000200",
+      "vehicle_state": 2,
+      "control_mode_raw": 0,
+      "battery_voltage": 55.2,
+      "manual_error_u32_be": 512,
+      "sdk_error_u16_from_bytes4_5": 0
+    },
+    {
+      "payload_hex": "0200022600000200",
+      "vehicle_state": 2,
+      "control_mode_raw": 0,
+      "battery_voltage": 55.0,
+      "manual_error_u32_be": 512,
+      "sdk_error_u16_from_bytes4_5": 0
+    }
+  ]
+}

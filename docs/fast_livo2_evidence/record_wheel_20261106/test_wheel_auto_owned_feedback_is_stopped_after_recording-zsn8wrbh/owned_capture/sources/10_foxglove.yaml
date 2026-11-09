@@ -1,0 +1,20 @@
+/**:
+  ros__parameters:
+    address: 127.0.0.1
+    port: 8765
+    use_sim_time: false
+    remote_access: false
+    capabilities: [connectionGraph]
+    topic_whitelist:
+      - ^/fast_livo/view/.*$
+      - ^/fast_livo/odometry$
+      - ^/front/image_sync$
+      - ^/front/camera_info$
+      - ^/rgb_img$
+    client_topic_whitelist: ['(?!)']
+    service_whitelist: ['(?!)']
+    param_whitelist: ['(?!)']
+    num_threads: 2
+    max_qos_depth: 2
+    send_buffer_limit: 10000000
+    sysinfo: false

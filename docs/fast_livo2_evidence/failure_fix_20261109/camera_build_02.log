@@ -1,0 +1,11 @@
+Starting >>> hik_camera_trigger_driver
+--- stderr: hik_camera_trigger_driver
+In file included from /home/lab307/ranger_nav/ws_camera/src/hik_camera_trigger_driver/src/hik_camera_node.cpp:30:
+/opt/ros/humble/include/camera_info_manager/camera_info_manager/camera_info_manager.h:41:93: note: ‘#pragma message: Warning: This header is deprecated. Use 'camera_info_manager.hpp' instead’
+   41 | #pragma message ("Warning: This header is deprecated. Use 'camera_info_manager.hpp' instead")
+      |                                                                                             ^
+---
+Finished <<< hik_camera_trigger_driver [4.93s]
+
+Summary: 1 package finished [5.04s]
+  1 package had stderr output: hik_camera_trigger_driver

@@ -1,0 +1,305 @@
+{
+  "physical_sync_validated": false,
+  "recorded_geometry_only": true,
+  "recovered": true,
+  "results": [
+    {
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            3.8376714726023358,
+            -3.57781170097381,
+            -0.12239124152369982
+          ],
+          "xyzw": [
+            0.09107303049371974,
+            0.15360355703492898,
+            -0.47867996198236645,
+            0.8596377983659557
+          ]
+        },
+        "cache_bytes": 521184,
+        "converged": true,
+        "correspondences": 1997,
+        "elapsed_ms": 723.0792570007907,
+        "geometrically_accepted": true,
+        "graph_version": 419,
+        "map_uuid": "253f573d7a7eabbc363a225ab192cc14",
+        "method": "small_gicp",
+        "native_diagnostics": {
+          "H_eigenvalues": [
+            45731.56591935472,
+            62652.29322585151,
+            149855.0802050427,
+            907662.9734567297,
+            1374532.1865224782,
+            1818788.9621713222
+          ],
+          "H_finite": true,
+          "accepted_hypotheses": 13,
+          "covariance_calibrated": false,
+          "error": 93.24879611081798,
+          "initial_ambiguity_probe": true,
+          "iterations": 4,
+          "local_hypotheses": 13,
+          "num_inliers": 1996,
+          "target_keyframe_ids": [
+            63,
+            64,
+            272,
+            271,
+            28,
+            29,
+            27,
+            30
+          ],
+          "target_points": 16287
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.2494762542417066,
+        "prediction": {
+          "xyz": [
+            3.834629529109863,
+            -3.5922406271221283,
+            -0.12528484329779824
+          ],
+          "xyzw": [
+            0.09165221216530102,
+            0.15439698662476695,
+            -0.47795066773195605,
+            0.859839869825176
+          ]
+        },
+        "reason": "geometry_valid",
+        "rmse_m": 0.08201062290779107,
+        "source_overlap": 0.9861728395061728
+      },
+      "reason": "verifying_multiframe_motion_support",
+      "stamp": 1590193863300417900,
+      "valid": false
+    },
+    {
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            3.8730223172530587,
+            -3.6687283095750214,
+            -0.13281762587703047
+          ],
+          "xyzw": [
+            0.09843592092813949,
+            0.14831322236607544,
+            -0.527010775302129,
+            0.8310073406762837
+          ]
+        },
+        "cache_bytes": 521184,
+        "converged": true,
+        "correspondences": 1966,
+        "elapsed_ms": 726.149763999274,
+        "geometrically_accepted": true,
+        "graph_version": 419,
+        "map_uuid": "253f573d7a7eabbc363a225ab192cc14",
+        "method": "small_gicp",
+        "native_diagnostics": {
+          "H_eigenvalues": [
+            39895.72813300738,
+            53826.57376306491,
+            154915.98044820517,
+            841457.8647518589,
+            1366261.055269548,
+            1988769.0909249308
+          ],
+          "H_finite": true,
+          "accepted_hypotheses": 13,
+          "covariance_calibrated": false,
+          "error": 95.97130877931406,
+          "initial_ambiguity_probe": true,
+          "iterations": 6,
+          "local_hypotheses": 13,
+          "num_inliers": 1964,
+          "target_keyframe_ids": [
+            64,
+            63,
+            271,
+            272,
+            28,
+            29,
+            27,
+            30
+          ],
+          "target_points": 16287
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.22897798917627815,
+        "prediction": {
+          "xyz": [
+            3.8730769174208244,
+            -3.668747665983793,
+            -0.13259482464165556
+          ],
+          "xyzw": [
+            0.0984669545612174,
+            0.14829725354795298,
+            -0.5270069117334694,
+            0.8310089641121357
+          ]
+        },
+        "reason": "geometry_valid",
+        "rmse_m": 0.09453926642243532,
+        "source_overlap": 0.9909274193548387
+      },
+      "reason": "map_match_confirmed",
+      "stamp": 1590193863800097942,
+      "valid": true
+    },
+    {
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            3.904315582733884,
+            -3.8567661763470005,
+            -0.15787301033576895
+          ],
+          "xyzw": [
+            0.10702820482940405,
+            0.13903168629903045,
+            -0.6134491016352502,
+            0.7699969826426254
+          ]
+        },
+        "cache_bytes": 715840,
+        "converged": true,
+        "correspondences": 3829,
+        "elapsed_ms": 57.675062998896465,
+        "geometrically_accepted": true,
+        "graph_version": 419,
+        "local_recovery": true,
+        "map_uuid": "253f573d7a7eabbc363a225ab192cc14",
+        "method": "small_gicp",
+        "native_diagnostics": {
+          "H_eigenvalues": [
+            68804.0874097738,
+            90706.6405598879,
+            282894.11843832495,
+            3143578.1184404623,
+            3865111.006358615,
+            6399251.87869143
+          ],
+          "H_finite": true,
+          "accepted_hypotheses": 1,
+          "covariance_calibrated": false,
+          "error": 246.19089278171134,
+          "initial_ambiguity_probe": false,
+          "iterations": 7,
+          "local_hypotheses": 1,
+          "num_inliers": 3829,
+          "target_keyframe_ids": [
+            64,
+            271,
+            272,
+            63,
+            270,
+            65,
+            273,
+            28
+          ],
+          "target_points": 16209
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.16385835615379354,
+        "prediction": {
+          "xyz": [
+            3.9138428974995536,
+            -3.859039411721473,
+            -0.11877811398331592
+          ],
+          "xyzw": [
+            0.11273128728313855,
+            0.13543123481531302,
+            -0.6121980247122112,
+            0.7708200931750243
+          ]
+        },
+        "reason": "geometry_valid",
+        "rmse_m": 0.10969686747436946,
+        "source_overlap": 0.9830551989730424
+      },
+      "reason": "local_recovery_verifying_fresh_frames",
+      "stamp": 1590193864700110197,
+      "valid": false
+    },
+    {
+      "quality": {
+        "T_target_source": {
+          "xyz": [
+            3.898137274896942,
+            -3.861781112957673,
+            -0.1738463639526104
+          ],
+          "xyzw": [
+            0.10690009540900859,
+            0.1383735040286126,
+            -0.6205850537831736,
+            0.764394750116276
+          ]
+        },
+        "cache_bytes": 715840,
+        "converged": true,
+        "correspondences": 1944,
+        "elapsed_ms": 50.27793999943242,
+        "geometrically_accepted": true,
+        "graph_version": 419,
+        "local_recovery": true,
+        "map_uuid": "253f573d7a7eabbc363a225ab192cc14",
+        "method": "small_gicp",
+        "native_diagnostics": {
+          "H_eigenvalues": [
+            39589.89823609777,
+            54244.3790445053,
+            151043.47871718468,
+            965250.2631996606,
+            1398763.5457136307,
+            1770270.6336814915
+          ],
+          "H_finite": true,
+          "accepted_hypotheses": 1,
+          "covariance_calibrated": false,
+          "error": 98.84003284462123,
+          "initial_ambiguity_probe": false,
+          "iterations": 5,
+          "local_hypotheses": 1,
+          "num_inliers": 1944,
+          "target_keyframe_ids": [
+            64,
+            271,
+            272,
+            63,
+            270,
+            65,
+            273,
+            28
+          ],
+          "target_points": 16209
+        },
+        "normalized_plane_hessian_eigen_ratio": 0.168193375400607,
+        "prediction": {
+          "xyz": [
+            3.9069404543006594,
+            -3.8667595783564908,
+            -0.12119083082017955
+          ],
+          "xyzw": [
+            0.11338516683971234,
+            0.13600215296997745,
+            -0.6194298597476071,
+            0.7648227684773261
+          ]
+        },
+        "reason": "geometry_valid",
+        "rmse_m": 0.08832135590571924,
+        "source_overlap": 0.9918367346938776
+      },
+      "reason": "map_match_confirmed",
+      "stamp": 1590193864800430297,
+      "valid": true
+    }
+  ]
+}

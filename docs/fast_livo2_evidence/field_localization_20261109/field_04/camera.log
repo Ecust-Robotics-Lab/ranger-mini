@@ -1,0 +1,35 @@
+[INFO] [1794210826.866240724] [hik_camera_trigger]: Starting HikCameraRos2DriverNode
+[INFO] [1794210826.895820059] [hik_camera_trigger]: Image publisher QoS: topic=front/image, reliability=reliable, durability=volatile, depth=5
+[INFO] [1794210826.896082553] [hik_camera_trigger]: Sync image publisher enabled: topic=/front/image_sync reliability=reliable (lidar-domain stamps via timeshare)
+[INFO] [1794210826.896473099] [hik_camera_trigger]: camera calibration URL: package://hik_camera_trigger_driver/config/camera_info.yaml
+[INFO] [1794210826.896841053] [hik_camera_trigger]: Camera capture thread started
+[INFO] [1794210827.008396352] [hik_camera_trigger]: Matched target camera: SN=DB1216907, transport=USB3
+[INFO] [1794210828.221454189] [hik_camera_trigger]: Trigger profile applied: source=Line0, exposure=20000.0 us (requested 20000.0), gain=10.02 (requested 10.00)
+[INFO] [1794210828.221624865] [hik_camera_trigger]: timeshare mapped: /home/lab307/ranger_nav/bags/fast-livo-localization-88k5eclm/sensor_assets/timeshare
+[INFO] [1794210828.221702383] [hik_camera_trigger]: sync CSV log: /home/lab307/ranger_nav/bags/fast-livo-localization-88k5eclm/sensor_assets/camera_sync.csv
+[INFO] [1794210828.235216227] [hik_camera_trigger]: Camera connected and grabbing started: index=0, transport=USB3, SN=DB1216907
+[INFO] [1794210828.322001052] [hik_camera_trigger]: sync summary: total=1 ok=1 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1794210828.322064480] [hik_camera_trigger]: Publishing image: 1280x1024 RGB8, first frame=0, source_pixel=BayerGB8 (0x0108000A)
+*******XOpenDisplay Fail ******* 
+[INFO] [1794210833.408383324] [hik_camera_trigger]: sync summary: total=52 ok=52 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1794210838.411556290] [hik_camera_trigger]: sync summary: total=102 ok=102 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1794210843.508477993] [hik_camera_trigger]: sync summary: total=153 ok=153 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1794210848.607772228] [hik_camera_trigger]: sync summary: total=204 ok=204 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1794210853.607832739] [hik_camera_trigger]: sync summary: total=254 ok=254 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1794210858.610197387] [hik_camera_trigger]: sync summary: total=304 ok=304 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1794210863.709730536] [hik_camera_trigger]: sync summary: total=355 ok=355 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1794210868.807290042] [hik_camera_trigger]: sync summary: total=406 ok=406 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1794210873.807735487] [hik_camera_trigger]: sync summary: total=456 ok=456 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1794210878.907864143] [hik_camera_trigger]: sync summary: total=507 ok=507 no_map=0 no_writer=0 unstable=0 stale=0 backward=0
+[INFO] [1794210884.006176035] [hik_camera_trigger]: sync summary: total=558 ok=554 no_map=0 no_writer=0 unstable=0 stale=0 backward=4
+[INFO] [1794210889.006661710] [hik_camera_trigger]: sync summary: total=608 ok=604 no_map=0 no_writer=0 unstable=0 stale=0 backward=4
+[INFO] [1794210894.007733721] [hik_camera_trigger]: sync summary: total=658 ok=654 no_map=0 no_writer=0 unstable=0 stale=0 backward=4
+[INFO] [1794210899.108265922] [hik_camera_trigger]: sync summary: total=709 ok=705 no_map=0 no_writer=0 unstable=0 stale=0 backward=4
+[INFO] [1794210904.205830206] [hik_camera_trigger]: sync summary: total=760 ok=756 no_map=0 no_writer=0 unstable=0 stale=0 backward=4
+[INFO] [1794210909.209192885] [hik_camera_trigger]: sync summary: total=810 ok=806 no_map=0 no_writer=0 unstable=0 stale=0 backward=4
+[INFO] [1794210914.305938312] [hik_camera_trigger]: sync summary: total=861 ok=857 no_map=0 no_writer=0 unstable=0 stale=0 backward=4
+[INFO] [1794210919.307587168] [hik_camera_trigger]: sync summary: total=911 ok=907 no_map=0 no_writer=0 unstable=0 stale=0 backward=4
+[INFO] [1794210920.453846822] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[INFO] [1794210920.502935504] [hik_camera_trigger]: Camera capture thread stopped
+[INFO] [1794210920.510453703] [hik_camera_trigger]: sync summary: total=922 ok=918 no_map=0 no_writer=0 unstable=0 stale=0 backward=4
+[INFO] [1794210920.510462308] [hik_camera_trigger]: HikCameraRos2DriverNode destroyed

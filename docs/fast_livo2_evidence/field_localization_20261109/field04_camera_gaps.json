@@ -1,0 +1,76 @@
+{
+  "/front/image_sync": {
+    "count": 918,
+    "largest_gaps": [
+      {
+        "from_record_ns": 1794210882217739067,
+        "to_record_ns": 1794210882744968680,
+        "receive_gap_s": 0.527229613,
+        "header_gap_s": 0.49968
+      },
+      {
+        "from_record_ns": 1794210887410924275,
+        "to_record_ns": 1794210887518544457,
+        "receive_gap_s": 0.10762018200000001,
+        "header_gap_s": 0.09984000000000001
+      },
+      {
+        "from_record_ns": 1794210828711243992,
+        "to_record_ns": 1794210828818663737,
+        "receive_gap_s": 0.10741974500000001,
+        "header_gap_s": 0.09986
+      },
+      {
+        "from_record_ns": 1794210874010506593,
+        "to_record_ns": 1794210874116663109,
+        "receive_gap_s": 0.106156516,
+        "header_gap_s": 0.09985221000000001
+      }
+    ],
+    "near_loss_gaps": [
+      {
+        "from_record_ns": 1794210882217739067,
+        "to_record_ns": 1794210882744968680,
+        "receive_gap_s": 0.527229613,
+        "header_gap_s": 0.49968
+      }
+    ]
+  },
+  "/front/image": {
+    "count": 922,
+    "largest_gaps": [
+      {
+        "from_record_ns": 1794210882214701375,
+        "to_record_ns": 1794210882743445458,
+        "receive_gap_s": 0.5287440830000001,
+        "header_gap_s": 0.5289867650000001
+      },
+      {
+        "from_record_ns": 1794210887409586731,
+        "to_record_ns": 1794210887515563147,
+        "receive_gap_s": 0.105976416,
+        "header_gap_s": 0.102361589
+      },
+      {
+        "from_record_ns": 1794210828709883469,
+        "to_record_ns": 1794210828815837110,
+        "receive_gap_s": 0.105953641,
+        "header_gap_s": 0.10099403400000001
+      },
+      {
+        "from_record_ns": 1794210877809940867,
+        "to_record_ns": 1794210877915485921,
+        "receive_gap_s": 0.10554505400000001,
+        "header_gap_s": 0.104909864
+      }
+    ],
+    "near_loss_gaps": [
+      {
+        "from_record_ns": 1794210882214701375,
+        "to_record_ns": 1794210882743445458,
+        "receive_gap_s": 0.5287440830000001,
+        "header_gap_s": 0.5289867650000001
+      }
+    ]
+  }
+}

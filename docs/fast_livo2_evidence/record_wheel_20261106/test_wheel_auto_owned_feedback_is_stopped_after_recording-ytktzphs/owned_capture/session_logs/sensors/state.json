@@ -1,0 +1,72 @@
+{
+  "run_directory": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/record_wheel_20261106/test_wheel_auto_owned_feedback_is_stopped_after_recording-ytktzphs/sessions/fast_livo_record/run-89q_xoe7",
+  "guardian": {
+    "pid": 23143,
+    "start_ticks": 1032063,
+    "ppid": 23130,
+    "state": "R",
+    "boot_id": "aa4657c7-68c6-4f44-a0f0-4bd959d6130f"
+  },
+  "owner": {
+    "pid": 23176,
+    "start_ticks": 1032079,
+    "ppid": 23143,
+    "state": "R",
+    "boot_id": "aa4657c7-68c6-4f44-a0f0-4bd959d6130f"
+  },
+  "state": "STOPPED",
+  "reason": "",
+  "owned": [],
+  "components": {
+    "frontend": {
+      "state": "READY",
+      "process": {
+        "pid": 23177,
+        "start_ticks": 1032079,
+        "ppid": 23176,
+        "state": "R",
+        "boot_id": "aa4657c7-68c6-4f44-a0f0-4bd959d6130f"
+      },
+      "argv": [
+        "/usr/bin/python3",
+        "/home/lab307/ranger_nav/tests/test_fast_livo_recording.py",
+        "--publish",
+        "/home/lab307/ranger_nav/docs/fast_livo2_evidence/record_wheel_20261106/test_wheel_auto_owned_feedback_is_stopped_after_recording-ytktzphs/owned_capture/sensor_assets"
+      ]
+    },
+    "wheel": {
+      "state": "READY",
+      "process": {
+        "pid": 23178,
+        "start_ticks": 1032079,
+        "ppid": 23176,
+        "state": "R",
+        "boot_id": "aa4657c7-68c6-4f44-a0f0-4bd959d6130f"
+      },
+      "argv": [
+        "/usr/bin/python3",
+        "/home/lab307/ranger_nav/tests/test_fast_livo_recording.py",
+        "--publish-wheel",
+        "/home/lab307/ranger_nav/docs/fast_livo2_evidence/record_wheel_20261106/test_wheel_auto_owned_feedback_is_stopped_after_recording-ytktzphs/owned_capture/sensor_assets"
+      ]
+    },
+    "capture": {
+      "state": "READY",
+      "process": {
+        "pid": 23179,
+        "start_ticks": 1032079,
+        "ppid": 23176,
+        "state": "R",
+        "boot_id": "aa4657c7-68c6-4f44-a0f0-4bd959d6130f"
+      },
+      "argv": [
+        "/usr/bin/python3",
+        "/home/lab307/ranger_nav/scripts/fast_livo2/record_worker.py",
+        "--folder",
+        "/home/lab307/ranger_nav/docs/fast_livo2_evidence/record_wheel_20261106/test_wheel_auto_owned_feedback_is_stopped_after_recording-ytktzphs/owned_capture"
+      ]
+    }
+  },
+  "updated_monotonic": 10323.699629297,
+  "guardian_cleanup_complete": true
+}

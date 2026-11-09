@@ -1,0 +1,12 @@
+upstream exit= 0 
+ranger variant/geometry PASS
+ranger_mini_v1 variant/geometry PASS
+ranger_mini_v2 variant/geometry PASS
+ranger_mini_v3 variant/geometry PASS
+
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/scripts/check_base_model_selection.py", line 92, in <module>
+    main()
+  File "/home/lab307/ranger_nav/scripts/check_base_model_selection.py", line 86, in main
+    assert check(original, folder, 'upstream') == 1, 'Regression must reproduce upstream V2 failure'
+AssertionError: Regression must reproduce upstream V2 failure

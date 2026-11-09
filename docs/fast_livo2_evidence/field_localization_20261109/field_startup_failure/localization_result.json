@@ -1,0 +1,25 @@
+{
+  "workflow_success": true,
+  "session_exit": 0,
+  "session_state": "STOPPED",
+  "recorder": {
+    "exit": 0,
+    "forced": false,
+    "requested_seconds": 90.0,
+    "elapsed_seconds": 37.94471342399993,
+    "stopped_by_signal": true,
+    "observed_messages": {
+      "/livox/lidar": 435,
+      "/livox/imu": 8980,
+      "/front/image_sync": 397,
+      "/front/image": 397,
+      "/front/camera_info": 397,
+      "/fast_livo/odometry": 386,
+      "/fast_livo/deskewed_imu": 386
+    }
+  },
+  "localization_acceptance": "NOT_EVALUATED",
+  "physical_sync": "PARTIAL",
+  "hardware_started": true,
+  "navigation_functional_result": "INCOMPLETE_OR_REJECTED"
+}

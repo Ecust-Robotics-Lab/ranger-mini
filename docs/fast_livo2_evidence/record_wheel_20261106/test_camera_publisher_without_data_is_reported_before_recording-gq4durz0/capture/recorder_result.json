@@ -1,0 +1,15 @@
+{
+  "exit": null,
+  "forced": false,
+  "requested_seconds": 2.0,
+  "error": "输入未就绪：/front/image_sync 有发布者但未收到数据",
+  "observed_messages": {
+    "/livox/lidar": 242,
+    "/livox/imu": 242,
+    "/front/image_sync": 0,
+    "/front/image": 242,
+    "/front/camera_info": 242,
+    "/fast_livo/odometry": 241,
+    "/fast_livo/deskewed_imu": 241
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "reviewed_at": "2026-11-06T13:23:36.002673+00:00",
+  "sources": [
+    {
+      "repository": "agilexrobotics/ranger_ros2",
+      "branch_at_review": "humble",
+      "commit": "b6ea21a275ca5e7168130cc6470e61474681d679",
+      "path": "ranger_base/include/ranger_base/ranger_params.hpp",
+      "raw_sha256": "e5e6836189904ffcafc8ee9cdfb8f04fc4e19409ff118b9076ea14001b68fb51",
+      "pinned_url": "https://github.com/agilexrobotics/ranger_ros2/blob/b6ea21a275ca5e7168130cc6470e61474681d679/ranger_base/include/ranger_base/ranger_params.hpp"
+    },
+    {
+      "repository": "agilexrobotics/ugv_gazebo_sim",
+      "branch_at_review": "master",
+      "commit": "27633a956c845903ee630538afeb17fe70afdd84",
+      "path": "ranger_mini/ranger_mini_v2/urdf/ranger_mini.xacro",
+      "raw_sha256": "f0acbb96375b551979f058428a6a6772fee652d507f32fb41074cee28b6ec51a",
+      "pinned_url": "https://github.com/agilexrobotics/ugv_gazebo_sim/blob/27633a956c845903ee630538afeb17fe70afdd84/ranger_mini/ranger_mini_v2/urdf/ranger_mini.xacro"
+    }
+  ],
+  "selected_base_origin": "midpoint between axles, centerline, ground projection; project engineering convention",
+  "model_caveat": "Official v2 xacro contains base_x_size=1.0, track=0.58306 and unit collision boxes; do not import those dimensions as calibrated robot geometry.",
+  "adopted_nominal_dimensions_source": "AgileX Ranger Mini 2.0 manual V2.0.1: 0.738 x 0.500 x 0.338 m; driver V2 wheelbase/track 0.494/0.364 m.",
+  "nominal_sensor_pose_derivation": "T_base_L=[0.738/2-0.260,0,0.600], R=I; T_base_I=T_base_L*T_L_I. Height/centerline/axes remain assumptions."
+}

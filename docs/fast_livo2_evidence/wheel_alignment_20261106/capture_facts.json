@@ -1,0 +1,122 @@
+{
+  "capture_complete": true,
+  "quality": {
+    "data_checks": "PASS",
+    "failures": [],
+    "warnings": [],
+    "physical_sync": "PARTIAL",
+    "motion_mapping_accuracy": "NOT_EVALUATED",
+    "note": "Header equality is not physical synchronization; no APE/RPE or loop accuracy is inferred."
+  },
+  "elapsed_seconds": 180.04760712999996,
+  "database_message_counts": {
+    "/wheel/odom": 9005,
+    "/livox/lidar": 1801,
+    "/livox/imu": 36021,
+    "/front/image_sync": 1800,
+    "/front/image": 1801,
+    "/front/camera_info": 1801,
+    "/fast_livo/odometry": 1801,
+    "/fast_livo/deskewed_imu": 1801
+  },
+  "wheel_source": {
+    "source": "owned_receive_only",
+    "publishers": [],
+    "sample": null,
+    "can": {
+      "before": {
+        "ifindex": 5,
+        "ifname": "can0",
+        "flags": [
+          "NOARP",
+          "UP",
+          "LOWER_UP",
+          "ECHO"
+        ],
+        "mtu": 16,
+        "qdisc": "pfifo_fast",
+        "operstate": "UP",
+        "linkmode": "DEFAULT",
+        "group": "default",
+        "txqlen": 10,
+        "link_type": "can",
+        "promiscuity": 0,
+        "min_mtu": 0,
+        "max_mtu": 0,
+        "linkinfo": {
+          "info_kind": "can",
+          "info_data": {
+            "state": "ERROR-ACTIVE",
+            "restart_ms": 0,
+            "bittiming": {
+              "bitrate": 500000,
+              "sample_point": 0.875,
+              "tq": 125,
+              "prop_seg": 6,
+              "phase_seg1": 7,
+              "phase_seg2": 2,
+              "sjw": 1
+            },
+            "bittiming_const": {
+              "name": "gs_usb",
+              "tseg1": {
+                "min": 1,
+                "max": 16
+              },
+              "tseg2": {
+                "min": 1,
+                "max": 8
+              },
+              "sjw": {
+                "min": 1,
+                "max": 4
+              },
+              "brp": {
+                "min": 1,
+                "max": 1024
+              },
+              "brp_inc": 1
+            },
+            "clock": 48000000
+          }
+        },
+        "num_tx_queues": 1,
+        "num_rx_queues": 1,
+        "gso_max_size": 65536,
+        "gso_max_segs": 65535,
+        "parentbus": "usb",
+        "parentdev": "1-11:1.0"
+      },
+      "enabled_by_capture": false,
+      "left_up_after_capture": true
+    },
+    "driver_command": [
+      "/home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/lib/ranger_base/ranger_base_node",
+      "--ros-args",
+      "--params-file",
+      "/home/lab307/ranger_nav/config/base_mini_v2.yaml",
+      "-p",
+      "receive_only:=true",
+      "-p",
+      "publish_odom_tf:=false"
+    ]
+  },
+  "archived_wheel_binary": {
+    "source": "/home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/lib/ranger_base/ranger_base_node",
+    "file": "sources/88_ranger_base_node",
+    "sha256": "474cadbb61ca744235ffda6bf23b5fab3709809597ef705ccaad47382c6af835"
+  },
+  "sync": {
+    "available": true,
+    "source": "/home/lab307/ranger_nav/bags/fast-livo-wheel_alignment_visit01-pwr5lx7u/sensor_assets/camera_sync.csv",
+    "status_counts": {
+      "OK": 1818
+    },
+    "hardware_frame_id_missing": 0,
+    "hardware_frame_id_nonincreasing": 0,
+    "scope": "entire sensor session; may include time outside this recording",
+    "physical_sync_proven": false
+  },
+  "exact_image_lidar_headers": 1800,
+  "frontend_cloud_pairs": 1801
+}

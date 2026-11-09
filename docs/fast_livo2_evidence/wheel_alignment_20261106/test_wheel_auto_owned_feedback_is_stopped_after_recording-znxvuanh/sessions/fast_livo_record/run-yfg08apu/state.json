@@ -1,0 +1,72 @@
+{
+  "run_directory": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/wheel_alignment_20261106/test_wheel_auto_owned_feedback_is_stopped_after_recording-znxvuanh/sessions/fast_livo_record/run-yfg08apu",
+  "guardian": {
+    "pid": 2340,
+    "start_ticks": 47920,
+    "ppid": 2327,
+    "state": "R",
+    "boot_id": "dc7ccd75-a884-43af-921e-f285f18e2264"
+  },
+  "owner": {
+    "pid": 2375,
+    "start_ticks": 47936,
+    "ppid": 2340,
+    "state": "R",
+    "boot_id": "dc7ccd75-a884-43af-921e-f285f18e2264"
+  },
+  "state": "STOPPED",
+  "reason": "",
+  "owned": [],
+  "components": {
+    "frontend": {
+      "state": "READY",
+      "process": {
+        "pid": 2376,
+        "start_ticks": 47936,
+        "ppid": 2375,
+        "state": "R",
+        "boot_id": "dc7ccd75-a884-43af-921e-f285f18e2264"
+      },
+      "argv": [
+        "/usr/bin/python3",
+        "/home/lab307/ranger_nav/tests/test_fast_livo_recording.py",
+        "--publish",
+        "/home/lab307/ranger_nav/docs/fast_livo2_evidence/wheel_alignment_20261106/test_wheel_auto_owned_feedback_is_stopped_after_recording-znxvuanh/owned_capture/sensor_assets"
+      ]
+    },
+    "wheel": {
+      "state": "READY",
+      "process": {
+        "pid": 2377,
+        "start_ticks": 47937,
+        "ppid": 2375,
+        "state": "R",
+        "boot_id": "dc7ccd75-a884-43af-921e-f285f18e2264"
+      },
+      "argv": [
+        "/usr/bin/python3",
+        "/home/lab307/ranger_nav/tests/test_fast_livo_recording.py",
+        "--publish-wheel",
+        "/home/lab307/ranger_nav/docs/fast_livo2_evidence/wheel_alignment_20261106/test_wheel_auto_owned_feedback_is_stopped_after_recording-znxvuanh/owned_capture/sensor_assets"
+      ]
+    },
+    "capture": {
+      "state": "READY",
+      "process": {
+        "pid": 2378,
+        "start_ticks": 47937,
+        "ppid": 2375,
+        "state": "R",
+        "boot_id": "dc7ccd75-a884-43af-921e-f285f18e2264"
+      },
+      "argv": [
+        "/usr/bin/python3",
+        "/home/lab307/ranger_nav/scripts/fast_livo2/record_worker.py",
+        "--folder",
+        "/home/lab307/ranger_nav/docs/fast_livo2_evidence/wheel_alignment_20261106/test_wheel_auto_owned_feedback_is_stopped_after_recording-znxvuanh/owned_capture"
+      ]
+    }
+  },
+  "updated_monotonic": 482.496646936,
+  "guardian_cleanup_complete": true
+}

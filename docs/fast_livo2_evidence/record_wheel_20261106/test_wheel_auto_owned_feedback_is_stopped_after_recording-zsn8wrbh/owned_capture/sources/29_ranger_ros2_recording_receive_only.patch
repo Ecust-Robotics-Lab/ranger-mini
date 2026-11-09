@@ -1,0 +1,50 @@
+--- a/ranger_base/include/ranger_base/ranger_messenger.hpp
++++ b/ranger_base/include/ranger_base/ranger_messenger.hpp
+@@ -97,6 +97,7 @@
+   std::string odom_topic_name_;
+   int update_rate_;
+   bool publish_odom_tf_;
++  bool receive_only_;
+ 
+   uint8_t motion_mode_ = 0;
+   bool parking_mode_;
+--- a/ranger_base/src/ranger_messenger.cpp
++++ b/ranger_base/src/ranger_messenger.cpp
+@@ -41,7 +41,7 @@
+       RCLCPP_ERROR(node_->get_logger(),"Failed to connect to the CAN port");
+       return;
+     }
+-    robot_->EnableCommandedMode();
++    if (!receive_only_) robot_->EnableCommandedMode();
+   } else {
+     RCLCPP_ERROR(node_->get_logger(),"Invalid port name: %s", port_name_.c_str());
+     return;
+@@ -52,7 +52,7 @@
+ 
+ RangerROSMessenger::~RangerROSMessenger() {
+   // Best effort only: SIGKILL, process failure or CAN loss can bypass this.
+-  if (robot_) robot_->SetMotionCommand(0.0, 0.0, 0.0);
++  if (robot_ && !receive_only_) robot_->SetMotionCommand(0.0, 0.0, 0.0);
+ }
+ 
+ void RangerROSMessenger::Run() {
+@@ -73,6 +73,10 @@
+   update_rate_ = node_->declare_parameter<int>("update_rate", 50);
+   odom_topic_name_ = node_->declare_parameter<std::string>("odom_topic_name", "odom");
+   publish_odom_tf_ = node_->declare_parameter<bool>("publish_odom_tf",false);
++  receive_only_ = node_->declare_parameter<bool>("receive_only", false);
++  if (receive_only_ && publish_odom_tf_) {
++    throw std::invalid_argument("receive_only requires publish_odom_tf=false");
++  }
+ 
+   RCLCPP_INFO(node_->get_logger(),
+       "Successfully loaded the following parameters: \n port_name: %s\n "
+@@ -170,7 +174,7 @@
+       node_->create_publisher<sensor_msgs::msg::BatteryState>("/battery_state", 10);
+ 
+   // subscriber
+-  motion_cmd_sub_ = node_->create_subscription<geometry_msgs::msg::Twist>(
++  if (!receive_only_) motion_cmd_sub_ = node_->create_subscription<geometry_msgs::msg::Twist>(
+       "/cmd_vel", 5, std::bind(&RangerROSMessenger::TwistCmdCallback, this, std::placeholders::_1)
+       );
+   tf_broadcaster_ = std::make_shared<tf2_ros::TransformBroadcaster>(node_);

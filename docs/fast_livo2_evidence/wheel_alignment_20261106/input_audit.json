@@ -1,0 +1,168 @@
+{
+  "schema_version": 1,
+  "kind": "navigation_input_readiness_audit",
+  "bags": [
+    {
+      "path": "/home/lab307/ranger_nav/bags/fast-livo-wheel_alignment_visit01-pwr5lx7u/raw",
+      "metadata_sha256": "a70142d33e31c748ea96674fb1ec93d90035d11f545ffb2fbeea7c99fa15e1c9",
+      "topics": {
+        "/wheel/odom": {
+          "type": "nav_msgs/msg/Odometry",
+          "total_messages": 9005,
+          "errors": [],
+          "sample_count": 120,
+          "header_range_ns": [
+            1793974815789677819,
+            1793974995869677519
+          ],
+          "sampled_header_monotonic": true,
+          "record_minus_header_seconds_p1_p50_p99": [
+            4.760885e-05,
+            0.00015785750000000002,
+            0.0010234301100000016
+          ],
+          "header_span_seconds": 180.0799997,
+          "record_span_seconds": 180.07999171
+        },
+        "/livox/lidar": {
+          "type": "sensor_msgs/msg/PointCloud2",
+          "total_messages": 1801,
+          "errors": [],
+          "sample_count": 120,
+          "header_range_ns": [
+            1590192063000381740,
+            1590192243000328740
+          ],
+          "sampled_header_monotonic": true,
+          "record_minus_header_seconds_p1_p50_p99": [
+            203782752.83249184,
+            203782752.84518713,
+            203782752.85286266
+          ],
+          "header_span_seconds": 179.99994700000002,
+          "record_span_seconds": 179.980998637
+        },
+        "/livox/imu": {
+          "type": "sensor_msgs/msg/Imu",
+          "total_messages": 36021,
+          "errors": [],
+          "sample_count": 120,
+          "header_range_ns": [
+            1590192063038046060,
+            1590192243139135120
+          ],
+          "sampled_header_monotonic": true,
+          "record_minus_header_seconds_p1_p50_p99": [
+            203782752.7306311,
+            203782752.74152684,
+            203782752.74722224
+          ],
+          "header_span_seconds": 180.10108906000002,
+          "record_span_seconds": 180.085950177
+        },
+        "/front/image_sync": {
+          "type": "sensor_msgs/msg/Image",
+          "total_messages": 1800,
+          "errors": [],
+          "sample_count": 120,
+          "header_range_ns": [
+            1590192063000381740,
+            1590192242900483110
+          ],
+          "sampled_header_monotonic": true,
+          "record_minus_header_seconds_p1_p50_p99": [
+            203782752.86291206,
+            203782752.89120156,
+            203782753.11192384
+          ],
+          "header_span_seconds": 179.90010137000002,
+          "record_span_seconds": 179.85703456500002
+        },
+        "/fast_livo/odometry": {
+          "type": "nav_msgs/msg/Odometry",
+          "total_messages": 1801,
+          "errors": [],
+          "sample_count": 120,
+          "header_range_ns": [
+            1590192062900217533,
+            1590192242900162935
+          ],
+          "sampled_header_monotonic": true,
+          "record_minus_header_seconds_p1_p50_p99": [
+            203782752.84786314,
+            203782752.94819993,
+            203782753.1128008
+          ],
+          "header_span_seconds": 179.999945402,
+          "record_span_seconds": 179.897520606
+        }
+      },
+      "wheel_sensor_clock_observation": "DISJOINT_HEADER_EPOCHS",
+      "physical_time_mapping_verified": false,
+      "storage_time_is_not_sample_time": true
+    }
+  ],
+  "geometry": {
+    "t_base_imu_xyz": [
+      0.0,
+      0.0,
+      0.556
+    ],
+    "t_base_imu_rpy": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "installation_evidence": "config/mid360/extrinsics_pending.yaml",
+    "base_imu_field_calibrated": false,
+    "base_link_origin_verified": false,
+    "reference_body_length_width_m": [
+      0.74,
+      0.52
+    ],
+    "stop_polygon_xy": [
+      [
+        0.39,
+        0.28
+      ],
+      [
+        0.39,
+        -0.28
+      ],
+      [
+        -0.39,
+        -0.28
+      ],
+      [
+        -0.39,
+        0.28
+      ]
+    ],
+    "costmaps": {
+      "global_costmap": {
+        "robot_radius": 0.1,
+        "reference_body_half_width_m": 0.26,
+        "circle_can_contain_reference_body": false
+      },
+      "local_costmap": {
+        "robot_radius": 0.1,
+        "reference_body_half_width_m": 0.26,
+        "circle_can_contain_reference_body": false
+      }
+    },
+    "geometry_consistent_for_navigation": false,
+    "source_files_sha256": {
+      "config/runtime.yaml": "7f434e1d7e9cced047070051a4aa342672e4351cf045b29e02a6f21e40fdabf6",
+      "ws_nav/src/ranger_navigation/config/nav2_params.yaml": "0b6299820c96790dbd47e5f9d3d770ef020e3f216966ad42aa78afb2bcbb5792",
+      "ws_nav/src/ranger_navigation/config/collision_monitor.yaml": "94e5a5f97b51446c6c5a2e7b5b6b57231ed9dfb5c02cdacd2a9d483fbb2a5bef",
+      "config/mid360/extrinsics_pending.yaml": "ad1406e8fb1cb337bc37dd863e1effa7f9e60f24d11effe52a34446bc4d09bc3"
+    }
+  },
+  "hardware_started": false,
+  "planner_controller_changed": false,
+  "field_navigation_ready": false,
+  "limitations": [
+    "Header/storage comparisons observe epoch/transport behavior only, not physical synchronization.",
+    "Current FAST capture and measured base extrinsics still require their own evidence."
+  ]
+}

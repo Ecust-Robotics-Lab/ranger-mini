@@ -1,0 +1,75 @@
+{
+  "run_directory": "/home/lab307/ranger_nav/.runtime/sessions/base/run-qqesz8kq",
+  "guardian": {
+    "pid": 20533,
+    "start_ticks": 969303,
+    "ppid": 12757,
+    "state": "R",
+    "boot_id": "aa4657c7-68c6-4f44-a0f0-4bd959d6130f"
+  },
+  "owner": {
+    "pid": 20536,
+    "start_ticks": 969309,
+    "ppid": 20533,
+    "state": "R",
+    "boot_id": "aa4657c7-68c6-4f44-a0f0-4bd959d6130f"
+  },
+  "state": "RUNNING",
+  "reason": "",
+  "owned": [
+    {
+      "pid": 20537,
+      "start_ticks": 969309,
+      "ppid": 20536,
+      "state": "S",
+      "boot_id": "aa4657c7-68c6-4f44-a0f0-4bd959d6130f"
+    },
+    {
+      "pid": 20572,
+      "start_ticks": 969385,
+      "ppid": 20536,
+      "state": "S",
+      "boot_id": "aa4657c7-68c6-4f44-a0f0-4bd959d6130f"
+    },
+    {
+      "pid": 20584,
+      "start_ticks": 969412,
+      "ppid": 20572,
+      "state": "S",
+      "boot_id": "aa4657c7-68c6-4f44-a0f0-4bd959d6130f"
+    }
+  ],
+  "components": {
+    "probe": {
+      "state": "READY",
+      "process": {
+        "pid": 20537,
+        "start_ticks": 969309,
+        "ppid": 20536,
+        "state": "R",
+        "boot_id": "aa4657c7-68c6-4f44-a0f0-4bd959d6130f"
+      },
+      "argv": [
+        "bash",
+        "-c",
+        "source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_livox/install/setup.bash && source /home/lab307/ranger_nav/ws_nav/install/setup.bash && exec python3 /home/lab307/ranger_nav/scripts/session_probe.py"
+      ]
+    },
+    "base": {
+      "state": "READY",
+      "process": {
+        "pid": 20572,
+        "start_ticks": 969385,
+        "ppid": 20536,
+        "state": "R",
+        "boot_id": "aa4657c7-68c6-4f44-a0f0-4bd959d6130f"
+      },
+      "argv": [
+        "bash",
+        "-c",
+        "source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_base/install/local_setup.bash && exec ros2 launch /home/lab307/ranger_nav/config/base_mini_v2.launch.py execute:=true confirmed_model:=ranger_mini_v2 control_authorized:=true"
+      ]
+    }
+  },
+  "updated_monotonic": 9838.908808141
+}

@@ -1,0 +1,15 @@
+{
+  "exit": 0,
+  "forced": false,
+  "requested_seconds": 60.0,
+  "error": "input publisher disappeared, changed, or became ambiguous",
+  "observed_messages": {
+    "/livox/lidar": 27,
+    "/livox/imu": 27,
+    "/front/image_sync": 27,
+    "/front/image": 27,
+    "/front/camera_info": 27,
+    "/fast_livo/odometry": 27,
+    "/fast_livo/deskewed_imu": 27
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "domain": 175,
+  "localhost_only": true,
+  "messages": 351,
+  "observed_hz": 50.683879020494565,
+  "first": {
+    "received": 9713.788654201,
+    "stamp_ns": 1793972783816000920,
+    "age_s": 0.095477777,
+    "frame": "odom",
+    "child": "base_link",
+    "xyz": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "vx": 0.0,
+    "wz": 0.0
+  },
+  "last": {
+    "received": 9720.694203002,
+    "stamp_ns": 1793972790816237373,
+    "age_s": 0.0007987020000000001,
+    "frame": "odom",
+    "child": "base_link",
+    "xyz": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "vx": 0.0,
+    "wz": 0.0
+  },
+  "maximum_sample_age_s": 0.095477777,
+  "header_strictly_increasing": true,
+  "all_frames_expected": true,
+  "parameters": {
+    "robot_model": "ranger_mini_v2",
+    "port_name": "can0",
+    "odom_topic_name": "/wheel/odom",
+    "publish_odom_tf": false,
+    "use_sim_time": false,
+    "update_rate": 50
+  },
+  "latest_system_state": {
+    "vehicle_state": 2,
+    "control_mode": 0,
+    "error_code": 0,
+    "battery_voltage": 55.099998474121094,
+    "motion_mode": 0
+  },
+  "system_messages": 350,
+  "latest_motion_mode": 0,
+  "wheel_publishers": [
+    {
+      "node": "ranger_base_node",
+      "namespace": "/",
+      "type": "nav_msgs/msg/Odometry"
+    }
+  ],
+  "velocity_publishers": {
+    "/cmd_vel": [],
+    "/base/safe_cmd_vel": []
+  },
+  "dynamic_tf_publishers": [
+    "ranger_base_node"
+  ]
+}

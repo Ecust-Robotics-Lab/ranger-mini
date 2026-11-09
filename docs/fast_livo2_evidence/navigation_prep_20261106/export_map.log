@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "kind": "fast_livo_navigation_map_candidate",
+  "map_uuid": "253f573d7a7eabbc363a225ab192cc14",
+  "source_archive": "/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/full_replay_12/map",
+  "source_manifest_sha256": "e81d4a05a8da6cf3c1badfc0a6171295020bec59e5615408796c92a85b49b247",
+  "graph_version": 419,
+  "frame": "map",
+  "projection": "optimized keyframes transformed once; planar navigation image only",
+  "floor_plane_abc": [
+    -0.023502636948384985,
+    0.009689600649982255,
+    -0.584046975783619
+  ],
+  "floor_quality": {
+    "candidate_points": 170588,
+    "sample_points": 12000,
+    "inliers": 7306,
+    "inlier_fraction": 0.6088333333333333,
+    "inlier_vertical_residual_p95_m": 0.0410166836010705,
+    "model": "map_z = a*map_x + b*map_y + c; projection only, source map unchanged",
+    "field_floor_verified": false
+  },
+  "resolution": 0.05,
+  "origin": [
+    -10.450000000000001,
+    -35.45,
+    0.0
+  ],
+  "width": 453,
+  "height": 835,
+  "cells": {
+    "unknown": 318704,
+    "free": 36136,
+    "occupied": 23415,
+    "sensor_origins_in_occupied_cells": 50
+  },
+  "parameters": {
+    "maximum_range_m": 12.0,
+    "obstacle_height_m": [
+      0.1,
+      1.2
+    ],
+    "ground_vertical_band_m": [
+      -0.08,
+      0.08
+    ],
+    "ray_bins": 720,
+    "minimum_obstacle_hits": 1
+  },
+  "map_image_sha256": "0c105764f2746373e5cf7332275f77a2874f2f51347fd06fabb8e8cb94019d01",
+  "map_yaml_sha256": "44cb5036bb4a222fcc397d3057670af6cee1d24e2a60dfa4d18bfa5b2639aeca",
+  "generator_sha256": {
+    "scripts/fast_livo2/navigation/export_map.py": "5e4fff0cda422f6280a55c3407563d26d2cfb3b626c5684e5b54a1602d789e15",
+    "scripts/fast_livo2/navigation/grid.py": "b52ee0a5546a18903b5d425b67c4ba44ad1359e9715f60bb6e2127386da5689e"
+  },
+  "field_navigation_acceptance": "NOT_EVALUATED",
+  "source_physical_sync_verified": false,
+  "limitations": [
+    "Floor estimated from this map; actual floor and body-height band need field review.",
+    "Observed free rays do not certify full swept-body clearance.",
+    "Unknown space remains unknown; no start-area obstacle erasing."
+  ]
+}

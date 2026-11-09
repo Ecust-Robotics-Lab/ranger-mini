@@ -1,0 +1,31 @@
+{
+  "boot_id": "dc7ccd75-a884-43af-921e-f285f18e2264",
+  "user_authorization": "2026-11-09 user confirmed 90s field test; manual RC driving only",
+  "field_acceptance": "FAIL: startup anchor contaminated by burst receipts; no valid C1 or ready",
+  "hardware_restarted_after_field_stop": false,
+  "attempts": [
+    {
+      "capture": "/home/lab307/ranger_nav/bags/fast-livo-localization-iqt9d470",
+      "session": "/home/lab307/ranger_nav/.runtime/sessions/fast_livo_online_localization/run-hl243mhj",
+      "state": "FAILED",
+      "reason": "RuntimeError: wheel exited 127; no automatic restart; scheduler exited 2; guardian cleanup",
+      "owned": [],
+      "cleanup_complete": true
+    },
+    {
+      "capture": "/home/lab307/ranger_nav/bags/fast-livo-localization-um88vo7b",
+      "session": "/home/lab307/ranger_nav/.runtime/sessions/fast_livo_online_localization/run-58oo6bv3",
+      "state": "STOPPED",
+      "reason": "",
+      "owned": [],
+      "cleanup_complete": true
+    }
+  ],
+  "fixed_source_sha256": {
+    "scripts/localize_fast_livo2.sh": "399da93ff3acb03909e89f8dffb8348cd76e699ad85c55b883f4d353e309440f",
+    "scripts/fast_livo2/mapping_monitor.py": "0ee9df2d10b66909891ee06e11b11a02b5405727abb37e14bcc1f0acc4df8cb2",
+    "scripts/fast_livo2/navigation/live_clock.py": "f44141b207c5118428392d0935f827d64d69b91139d29b5d9e87c8fd707fc1ff",
+    "scripts/fast_livo2/navigation/wheel_clock_node.py": "7a02e5a2919077738a7b958e1a4b86edd02a2d7a189ee755c877f06fb12328ee"
+  },
+  "remaining_sensor_base_localizer_processes": []
+}

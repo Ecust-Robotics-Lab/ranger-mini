@@ -1,0 +1,18 @@
+stdin is not a terminal device. Keyboard handling disabled.[INFO] [1793973294.731433287] [rosbag2_recorder]: Press SPACE for pausing/resuming
+[INFO] [1793973294.732047425] [rosbag2_storage]: Opened database '/home/lab307/ranger_nav/docs/fast_livo2_evidence/record_wheel_20261106/test_frontend_stream_loss_reports_topic_and_stops-kem2zvjh/capture/raw/raw_0.db3' for READ_WRITE.
+[INFO] [1793973294.732351583] [rosbag2_recorder]: Listening for topics...
+[INFO] [1793973294.732363948] [rosbag2_recorder]: Event publisher thread: Starting
+[INFO] [1793973294.732675106] [rosbag2_recorder]: Overriding subscription profile for /livox/lidar
+[INFO] [1793973294.733256011] [rosbag2_recorder]: Subscribed to topic '/livox/lidar'
+[INFO] [1793973294.733363342] [rosbag2_recorder]: Overriding subscription profile for /livox/imu
+[INFO] [1793973294.733573655] [rosbag2_recorder]: Subscribed to topic '/livox/imu'
+[INFO] [1793973294.733807948] [rosbag2_recorder]: Subscribed to topic '/front/image_sync'
+[INFO] [1793973294.734002236] [rosbag2_recorder]: Subscribed to topic '/front/image'
+[INFO] [1793973294.734253394] [rosbag2_recorder]: Subscribed to topic '/front/camera_info'
+[INFO] [1793973294.734755394] [rosbag2_recorder]: Subscribed to topic '/fast_livo/odometry'
+[INFO] [1793973294.734984152] [rosbag2_recorder]: Subscribed to topic '/fast_livo/deskewed_imu'
+[INFO] [1793973294.735016630] [rosbag2_recorder]: Recording...
+[INFO] [1793973294.735369163] [rosbag2_recorder]: All requested topics are subscribed. Stopping discovery...
+[INFO] [1793973296.754544509] [rosbag2_cpp]: Writing remaining messages from cache to the bag. It may take a while
+[INFO] [1793973296.756124465] [rosbag2_recorder]: Event publisher thread: Exiting
+[INFO] [1793973296.756324498] [rosbag2_recorder]: Recording stopped

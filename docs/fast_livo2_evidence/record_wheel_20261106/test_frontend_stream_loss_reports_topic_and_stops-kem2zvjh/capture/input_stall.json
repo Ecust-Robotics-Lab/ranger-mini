@@ -1,0 +1,24 @@
+{
+  "monotonic": 10226.630598361,
+  "last_receipt": {
+    "/livox/lidar": 10226.612611255,
+    "/livox/imu": 10226.61290576,
+    "/front/image_sync": 10226.613267255,
+    "/front/image": 10226.6132863,
+    "/front/camera_info": 10226.61330178,
+    "/fast_livo/odometry": 10224.612504944,
+    "/fast_livo/deskewed_imu": 10226.613315317
+  },
+  "observed_messages": {
+    "/livox/lidar": 45,
+    "/livox/imu": 44,
+    "/front/image_sync": 44,
+    "/front/image": 44,
+    "/front/camera_info": 44,
+    "/fast_livo/odometry": 4,
+    "/fast_livo/deskewed_imu": 44
+  },
+  "stalled": [
+    "/fast_livo/odometry"
+  ]
+}

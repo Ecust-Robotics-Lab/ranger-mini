@@ -1,0 +1,182 @@
+{
+  "schema_version": 1,
+  "kind": "wheel_alignment_diagnostic",
+  "streams": {
+    "wheel": {
+      "messages": 9005,
+      "span_seconds": 180.0799997,
+      "path_length_m": 37.37712164676317,
+      "header_strictly_increasing": true
+    },
+    "fast": {
+      "messages": 1801,
+      "span_seconds": 179.999945402,
+      "path_length_m": 39.549955989177505,
+      "header_strictly_increasing": true
+    }
+  },
+  "receipt_coarse_offset_ns": 203782752741349211,
+  "receipt_residual_ms_p0_p1_p50_p99_p100": [
+    -11.452862999999999,
+    -10.9770016,
+    0.0,
+    6.324637200000016,
+    13.283043999999999
+  ],
+  "raw_angular_fit": {
+    "lag_seconds": -0.008,
+    "gain": 0.3569245215359008,
+    "bias_rad_s": -0.0346243089961667,
+    "rms_rad_s": 0.17394532910002233,
+    "correlation": 0.35297975911173224,
+    "samples": 33973
+  },
+  "sign_corrected_angular_fits": {
+    "full": {
+      "lag_seconds": 0.002,
+      "gain": 0.9993481399411475,
+      "bias_rad_s": -0.03340564425108069,
+      "rms_rad_s": 0.027251730930594985,
+      "correlation": 0.9891982595400646,
+      "samples": 33973
+    },
+    "first_half": {
+      "lag_seconds": 0.002,
+      "gain": 1.0005849860287566,
+      "bias_rad_s": -0.03230850777238286,
+      "rms_rad_s": 0.023525290486581973,
+      "correlation": 0.9938157615143808,
+      "samples": 16987
+    },
+    "second_half": {
+      "lag_seconds": -0.018,
+      "gain": 0.9955865976824799,
+      "bias_rad_s": -0.03456349288312954,
+      "rms_rad_s": 0.030246105112049518,
+      "correlation": 0.9802690929696448,
+      "samples": 16986
+    }
+  },
+  "candidate_sensor_to_host_offset_ns": 203782752743349211,
+  "candidate_offset_valid_for_this_capture_only": true,
+  "physical_sync_verified": false,
+  "live_clock_mapping_enabled": false,
+  "spin_axis_in_imu": [
+    -0.3602273600629248,
+    0.015798837631600254,
+    0.932730746674294
+  ],
+  "spin_axis_tilt_deg": 21.13542976348477,
+  "spin_axis_quality": {
+    "samples": 1421,
+    "gyro_per_wheel_spin_scale": 1.0004971644404257,
+    "bias_xyz_rad_s": [
+      0.004008772246030766,
+      -0.0007492077769572231,
+      -0.03619939718125463
+    ]
+  },
+  "extrinsic_rotation_candidates": {
+    "full": {
+      "samples": 430,
+      "rpy_rad": [
+        0.0169366422492582,
+        0.3685116044554271,
+        -3.1260938402392293
+      ],
+      "rpy_deg": [
+        0.9703981200054524,
+        21.114159636890356,
+        -179.1119834075517
+      ],
+      "spin_axis_in_imu": [
+        -0.3602273600629248,
+        0.015798837631600254,
+        0.932730746674294
+      ],
+      "spin_samples": 1421
+    },
+    "first_half": {
+      "samples": 264,
+      "rpy_rad": [
+        0.01784024947929163,
+        0.3691254600824647,
+        -3.1257787261651697
+      ],
+      "rpy_deg": [
+        1.022171000623875,
+        21.14933097354997,
+        -179.0939287010429
+      ],
+      "spin_axis_in_imu": [
+        -0.36079993630359264,
+        0.016637705416009424,
+        0.9324948218203755
+      ],
+      "spin_samples": 771
+    },
+    "second_half": {
+      "samples": 166,
+      "rpy_rad": [
+        0.013443812246070923,
+        0.37031523972473446,
+        -3.1273243568855507
+      ],
+      "rpy_deg": [
+        0.7702737022661557,
+        21.21750032560261,
+        -179.18248681800648
+      ],
+      "spin_axis_in_imu": [
+        -0.3619093206079228,
+        0.012532123119567584,
+        0.9321290627092516
+      ],
+      "spin_samples": 650
+    }
+  },
+  "extrinsic_translation_candidate_m": [
+    0.11485917776401003,
+    -0.023945937986232936,
+    0.5552533734244779
+  ],
+  "extrinsics_field_calibrated": false,
+  "wheel_brackets_original_epochs": {
+    "total": 1801,
+    "bracketed_without_extrapolation": 0,
+    "max_bracket_gap_seconds": 0.1
+  },
+  "wheel_brackets_diagnostic_mapping": {
+    "total": 1801,
+    "bracketed_without_extrapolation": 1799,
+    "max_bracket_gap_seconds": 0.1
+  },
+  "yaw_changes_rad": {
+    "fast": 0.12541816925698898,
+    "raw_wheel": 1.336421562490881,
+    "diagnostic_wheel": 0.29093380777405153
+  },
+  "trajectory_comparison": {
+    "raw": {
+      "median_disagreement_m": 11.317136430146881,
+      "p95_disagreement_m": 21.421777873201727,
+      "end_disagreement_m": 11.30749392737031,
+      "not_ground_truth": true
+    },
+    "diagnostic_sign_corrected": {
+      "median_disagreement_m": 0.5297425227233346,
+      "p95_disagreement_m": 2.339444469085678,
+      "end_disagreement_m": 0.5434498421204857,
+      "not_ground_truth": true
+    }
+  },
+  "limitations": [
+    "No raw CAN motion-mode stream in this bag; old-wheel repair is diagnostic and infers moving vs spin from twist.",
+    "Motion time fits include transport/feedback lag; neither receipt time nor a fitted lag certifies physical synchronization.",
+    "Axis assumes planar spin; forward axis assumes signed wheel vx during straight driving. Same-capture split is a consistency check.",
+    "No APE/RPE or absolute navigation accuracy; no global map/C1/TF acceptance is claimed."
+  ],
+  "source_bag": "/home/lab307/ranger_nav/bags/fast-livo-wheel_alignment_visit01-pwr5lx7u/raw",
+  "source_metadata_sha256": "a70142d33e31c748ea96674fb1ec93d90035d11f545ffb2fbeea7c99fa15e1c9",
+  "script_sha256": "3d837cab397268b75f985cab5ac4ac3d8047edc6388bbe21ab194a1ab72785ad"
+}

@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "repositories": [
+    {
+      "name": "kiss_matcher",
+      "path": "vendor/fast_livo2_review/kiss_matcher",
+      "commit": "8b58b118e00c7a5a22448741f8d956d638a44ae2",
+      "origin": "https://github.com/MIT-SPARK/KISS-Matcher.git",
+      "license": "MIT",
+      "role": "C2 optional coarse matcher"
+    },
+    {
+      "name": "robin",
+      "path": "vendor/fast_livo2_review/robin",
+      "commit": "5623f02f62c63711052bbb8d6096a410ddca0ee4",
+      "origin": "https://github.com/MIT-SPARK/ROBIN.git",
+      "license": "BSD-2-Clause",
+      "role": "KISS transitive"
+    },
+    {
+      "name": "pmc",
+      "path": "vendor/fast_livo2_review/pmc",
+      "commit": "4bbd40ababd8e925c4e1845c509173afe766b443",
+      "origin": "https://github.com/MIT-SPARK/pmc.git",
+      "license": "GPL-3.0-or-later",
+      "role": "KISS transitive; binary is not MIT-only"
+    },
+    {
+      "name": "xenium",
+      "path": "vendor/fast_livo2_review/xenium",
+      "commit": "1c449ae953ce2a440b0d16c5ed1181d2754860ab",
+      "origin": "https://github.com/mpoeter/xenium.git",
+      "license": "MIT",
+      "role": "KISS transitive"
+    },
+    {
+      "name": "sc_a_loam",
+      "path": "vendor/fast_livo2_review/sc_a_loam",
+      "commit": "321cb4b07b7815c114237ce5d87014d2e46b972c",
+      "origin": "https://github.com/gisbi-kim/SC-A-LOAM.git",
+      "license": "UNRESOLVED",
+      "role": "review only, do not copy"
+    }
+  ]
+}

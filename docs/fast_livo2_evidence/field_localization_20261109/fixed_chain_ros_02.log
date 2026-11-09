@@ -1,0 +1,19 @@
+test_conversion_tf_loss_recovery_and_clock_fault (__main__.LiveChain) ... wheel clock {'ready': True, 'error': None, 'context': '/tmp/tmpekkb98pt', 'anchor': (1590000001101076313, 5414249772937), 'host_minus_steady_ns': 1794204042763528524, 'residual_ns': 0, 'source_anchor': (1589999997100000000, 5413148696624), 'tolerance_ns': 100000000, 'physical_sync_verified': False, 'method': 'fixed lidar receipt anchor plus host/steady offset; transport bias unmeasured'}
+ready tail [True, True, True, False, False, False, False, False, False, False, False, False, False, False, False]
+FAIL
+
+======================================================================
+FAIL: test_conversion_tf_loss_recovery_and_clock_fault (__main__.LiveChain)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_live_chain_ros.py", line 69, in test_conversion_tf_loss_recovery_and_clock_fault
+    pump(.7);self.assertTrue(ready[-1])
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 1 test in 6.561s
+
+FAILED (failures=1)
+bridge_node.log [INFO] [1794209457.204802791] [ranger_localization_bridge]: generic bridge: map -> odom -> base_link; max pose age 0.500s
+
+fast_livo_localizer_adapter.log 

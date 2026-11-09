@@ -1,0 +1,40 @@
+{
+  "run_directory": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/record_wheel_20261106/test_wheel_auto_reuses_external_publisher_without_stopping_it-vfw0atsq/sessions/fast_livo_record/run-jm9voodr",
+  "guardian": {
+    "pid": 22854,
+    "start_ticks": 1023840,
+    "ppid": 21512,
+    "state": "R",
+    "boot_id": "aa4657c7-68c6-4f44-a0f0-4bd959d6130f"
+  },
+  "owner": {
+    "pid": 22980,
+    "start_ticks": 1024161,
+    "ppid": 22854,
+    "state": "R",
+    "boot_id": "aa4657c7-68c6-4f44-a0f0-4bd959d6130f"
+  },
+  "state": "STOPPED",
+  "reason": "",
+  "owned": [],
+  "components": {
+    "capture": {
+      "state": "READY",
+      "process": {
+        "pid": 22981,
+        "start_ticks": 1024161,
+        "ppid": 22980,
+        "state": "R",
+        "boot_id": "aa4657c7-68c6-4f44-a0f0-4bd959d6130f"
+      },
+      "argv": [
+        "/usr/bin/python3",
+        "/home/lab307/ranger_nav/scripts/fast_livo2/record_worker.py",
+        "--folder",
+        "/home/lab307/ranger_nav/docs/fast_livo2_evidence/record_wheel_20261106/test_wheel_auto_reuses_external_publisher_without_stopping_it-vfw0atsq/capture"
+      ]
+    }
+  },
+  "updated_monotonic": 10244.47386751,
+  "guardian_cleanup_complete": true
+}

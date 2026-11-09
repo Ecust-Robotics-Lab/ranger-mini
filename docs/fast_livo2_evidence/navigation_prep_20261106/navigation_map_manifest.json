@@ -1,0 +1,71 @@
+{
+  "schema_version": 1,
+  "kind": "fast_livo_navigation_map_candidate",
+  "map_uuid": "253f573d7a7eabbc363a225ab192cc14",
+  "source_archive": "/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/full_replay_12/map",
+  "source_manifest_sha256": "e81d4a05a8da6cf3c1badfc0a6171295020bec59e5615408796c92a85b49b247",
+  "graph_version": 419,
+  "frame": "map",
+  "projection": "optimized keyframes transformed once; planar navigation image only",
+  "floor_plane_abc": [
+    -0.023502636948384985,
+    0.009689600649982255,
+    -0.584046975783619
+  ],
+  "floor_quality": {
+    "candidate_points": 170588,
+    "sample_points": 12000,
+    "inliers": 7306,
+    "inlier_fraction": 0.6088333333333333,
+    "inlier_vertical_residual_p95_m": 0.0410166836010705,
+    "model": "map_z = a*map_x + b*map_y + c; projection only, source map unchanged",
+    "field_floor_verified": false
+  },
+  "resolution": 0.05,
+  "origin": [
+    -10.450000000000001,
+    -35.45,
+    0.0
+  ],
+  "width": 453,
+  "height": 835,
+  "cells": {
+    "unknown": 302738,
+    "free": 61776,
+    "occupied": 13741,
+    "evidence_fusion": {
+      "hit_logodds": 0.85,
+      "miss_logodds": -0.4,
+      "occupied_threshold": 0.6,
+      "free_threshold": -0.4
+    },
+    "sensor_origins_in_occupied_cells": 2
+  },
+  "parameters": {
+    "maximum_range_m": 12.0,
+    "obstacle_height_m": [
+      0.1,
+      1.2
+    ],
+    "ground_vertical_band_m": [
+      -0.08,
+      0.08
+    ],
+    "ray_bins": 720,
+    "minimum_obstacle_hits": 1,
+    "fusion": "per-keyframe hit/miss evidence; occupied/free thresholds in cells.evidence_fusion"
+  },
+  "map_image_sha256": "2d4fc4336d5493aa266c1f09878fb21c493d3cb5a062921633a85e33a86f8309",
+  "map_yaml_sha256": "44cb5036bb4a222fcc397d3057670af6cee1d24e2a60dfa4d18bfa5b2639aeca",
+  "generator_sha256": {
+    "scripts/fast_livo2/navigation/export_map.py": "a29174e175b6cf04296e0ba1c8c44b697086f26a713c154477ddb9e9f81b546a",
+    "scripts/fast_livo2/navigation/grid.py": "1266a7c21c20723436898a65ea493b417ebb9cb8194b758c222c8cfb71e56a00"
+  },
+  "field_navigation_acceptance": "NOT_EVALUATED",
+  "source_physical_sync_verified": false,
+  "limitations": [
+    "Floor estimated from this map; actual floor and body-height band need field review.",
+    "Observed free rays do not certify full swept-body clearance.",
+    "Unknown space remains unknown; no start-area obstacle erasing."
+  ]
+}

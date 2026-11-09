@@ -1,0 +1,65 @@
+{
+  "checks": [
+    {
+      "command": "python3 scripts/check_base_feedback_sign.py",
+      "log": "feedback_sign_check.log",
+      "exit_code": 0,
+      "cases": 6
+    },
+    {
+      "command": "bash scripts/build_base_recording.sh --execute",
+      "log": "build_feedback.log",
+      "exit_code": 0,
+      "elapsed_seconds": 11.3,
+      "started_2026_11_06_verified_2026_11_09": true
+    },
+    {
+      "command": "analyze_wheel_alignment.py --bag bags/fast-livo-wheel_alignment_visit01-pwr5lx7u/raw --output outputs/fast-livo-demo-wheel-alignment-20261106/analysis_20261109_split",
+      "log": "analysis_final_20261109.log",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 -m unittest discover -s tests -p test_fast_livo_wheel_alignment.py -v",
+      "log": "alignment_tests_final_20261109.log",
+      "exit_code": 0,
+      "tests": 5
+    },
+    {
+      "command": "python3 tests/test_fast_livo_navigation_ros.py",
+      "log": "navigation_ros_candidate_20261109.log",
+      "exit_code": 0,
+      "tests": 2,
+      "seconds": 11.666,
+      "domain": 196
+    },
+    {
+      "command": "python3 tests/test_fast_livo_recording.py CaptureROS.test_wheel_auto_owned_feedback_is_stopped_after_recording",
+      "log": "recording_regression_20261109.log",
+      "exit_code": 0,
+      "tests": 1,
+      "seconds": 4.364,
+      "domain": 189
+    },
+    {
+      "command": "python3 -m unittest test_fast_livo_localizer_ros.C1Ros.test_managed_process_failure_cleans_only_owned_children",
+      "log": "c1_entry_regression_20261109.log",
+      "exit_code": 0,
+      "tests": 1,
+      "seconds": 3.598,
+      "domain": 196
+    },
+    {
+      "command": "python3 scripts/check_base_receive_only.py",
+      "log": "receive_only_regression_20261109.log",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 scripts/check_base_model_selection.py",
+      "log": "model_regression_20261109.log",
+      "exit_code": 0
+    }
+  ],
+  "raw_bag_unchanged": true,
+  "no_hardware_or_navigation_started": true,
+  "physical_sync_verified": false
+}

@@ -18,3 +18,8 @@ ws_fast_livo/src/ranger_fast_livo_localizer/third_party/ROBIN-LICENSE -whitespac
 docs/fast_livo2_evidence/stage_c2_20261028/localizer_core_flags.make -whitespace
 # Evidence diffs preserve upstream context whitespace verbatim.
 /docs/fast_livo2_evidence/retrieval_comparison_20261106/*.patch -whitespace
+
+# Patches and frozen source snapshots preserve original context whitespace.
+patches/hik_camera_live_latency.patch -whitespace
+docs/fast_livo2_evidence/**/sources/** -whitespace
+docs/fast_livo2_evidence/**/*.patch -whitespace

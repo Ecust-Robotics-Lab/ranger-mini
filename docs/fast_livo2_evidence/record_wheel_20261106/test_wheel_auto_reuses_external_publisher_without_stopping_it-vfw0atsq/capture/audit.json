@@ -1,0 +1,204 @@
+{
+  "bag": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/record_wheel_20261106/test_wheel_auto_reuses_external_publisher_without_stopping_it-vfw0atsq/capture/raw",
+  "topics": {
+    "/wheel/odom": {
+      "type": "nav_msgs/msg/Odometry",
+      "count": 102,
+      "frames": [
+        "odom"
+      ],
+      "first_header_ns": 1793973312182138677,
+      "last_header_ns": 1793973314202375498,
+      "nonincreasing": 0,
+      "period_ns_p0_p50_p100": [
+        19649550.0,
+        20003626.0,
+        20433764.0
+      ],
+      "record_minus_header_ns_p0_p50_p100": [
+        250502.0,
+        436267.0,
+        676497.0
+      ]
+    },
+    "/livox/lidar": {
+      "type": "sensor_msgs/msg/PointCloud2",
+      "count": 41,
+      "frames": [
+        "livox_frame"
+      ],
+      "first_header_ns": 1793973312203563136,
+      "last_header_ns": 1793973314203468569,
+      "nonincreasing": 0,
+      "period_ns_p0_p50_p100": [
+        49762669.0,
+        49970688.5,
+        50243789.0
+      ],
+      "record_minus_header_ns_p0_p50_p100": [
+        396680.0,
+        636895.0,
+        872747.0
+      ]
+    },
+    "/livox/imu": {
+      "type": "sensor_msgs/msg/Imu",
+      "count": 41,
+      "frames": [
+        "livox_frame"
+      ],
+      "first_header_ns": 1793973312203563136,
+      "last_header_ns": 1793973314203468569,
+      "nonincreasing": 0,
+      "period_ns_p0_p50_p100": [
+        49762669.0,
+        49970688.5,
+        50243789.0
+      ],
+      "record_minus_header_ns_p0_p50_p100": [
+        409425.0,
+        664064.0,
+        1003344.0
+      ]
+    },
+    "/front/image_sync": {
+      "type": "sensor_msgs/msg/Image",
+      "count": 41,
+      "frames": [
+        "livox_frame"
+      ],
+      "first_header_ns": 1793973312203563136,
+      "last_header_ns": 1793973314203468569,
+      "nonincreasing": 0,
+      "period_ns_p0_p50_p100": [
+        49762669.0,
+        49970688.5,
+        50243789.0
+      ],
+      "record_minus_header_ns_p0_p50_p100": [
+        413602.0,
+        722669.0,
+        1027660.0
+      ],
+      "image": {
+        "width": 1,
+        "height": 1,
+        "encoding": "rgb8",
+        "step": 3
+      }
+    },
+    "/front/image": {
+      "type": "sensor_msgs/msg/Image",
+      "count": 41,
+      "frames": [
+        "livox_frame"
+      ],
+      "first_header_ns": 1793973312203563136,
+      "last_header_ns": 1793973314203468569,
+      "nonincreasing": 0,
+      "period_ns_p0_p50_p100": [
+        49762669.0,
+        49970688.5,
+        50243789.0
+      ],
+      "record_minus_header_ns_p0_p50_p100": [
+        417388.0,
+        765562.0,
+        1100198.0
+      ],
+      "image": {
+        "width": 1,
+        "height": 1,
+        "encoding": "rgb8",
+        "step": 3
+      }
+    },
+    "/front/camera_info": {
+      "type": "sensor_msgs/msg/CameraInfo",
+      "count": 41,
+      "frames": [
+        "livox_frame"
+      ],
+      "first_header_ns": 1793973312203563136,
+      "last_header_ns": 1793973314203468569,
+      "nonincreasing": 0,
+      "period_ns_p0_p50_p100": [
+        49762669.0,
+        49970688.5,
+        50243789.0
+      ],
+      "record_minus_header_ns_p0_p50_p100": [
+        421467.0,
+        801636.0,
+        1171062.0
+      ]
+    },
+    "/fast_livo/odometry": {
+      "type": "nav_msgs/msg/Odometry",
+      "count": 41,
+      "frames": [
+        "fast_livo_local"
+      ],
+      "first_header_ns": 1793973312203563136,
+      "last_header_ns": 1793973314203468569,
+      "nonincreasing": 0,
+      "period_ns_p0_p50_p100": [
+        49762669.0,
+        49970688.5,
+        50243789.0
+      ],
+      "record_minus_header_ns_p0_p50_p100": [
+        427862.0,
+        1003932.0,
+        1405295.0
+      ]
+    },
+    "/fast_livo/deskewed_imu": {
+      "type": "sensor_msgs/msg/PointCloud2",
+      "count": 41,
+      "frames": [
+        "fast_livo_imu"
+      ],
+      "first_header_ns": 1793973312203563136,
+      "last_header_ns": 1793973314203468569,
+      "nonincreasing": 0,
+      "period_ns_p0_p50_p100": [
+        49762669.0,
+        49970688.5,
+        50243789.0
+      ],
+      "record_minus_header_ns_p0_p50_p100": [
+        446146.0,
+        1087863.0,
+        1770891.0
+      ]
+    }
+  },
+  "physical_sync_proven": false,
+  "point_times": {
+    "encoding": "absolute nanoseconds FLOAT64",
+    "total": 41,
+    "before_header": 0,
+    "nonfinite": 0,
+    "backwards_steps_inside_scans": 0,
+    "scans_last_point_not_latest": 0,
+    "min_offset_ns": 999936.0,
+    "max_offset_ns": 1000192.0,
+    "precision_note": "FLOAT64 epoch ns has approximately 256 ns spacing; input unchanged"
+  },
+  "imu": {
+    "acceleration_norm_p0_p50_p100": [
+      9.81,
+      9.81,
+      9.81
+    ],
+    "angular_speed_p0_p50_p100": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "nonfinite_messages": 0
+  },
+  "exact_image_lidar_headers": 41,
+  "interpretation": "Header equality verifies copied timestamps only; physical trigger/scan/exposure phase remains unproven."
+}

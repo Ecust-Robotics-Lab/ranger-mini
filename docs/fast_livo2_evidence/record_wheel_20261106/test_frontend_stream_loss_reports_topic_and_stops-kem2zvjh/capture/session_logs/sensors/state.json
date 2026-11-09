@@ -1,0 +1,41 @@
+{
+  "guardian": {
+    "pid": 22194,
+    "start_ticks": 1022353,
+    "ppid": 21512,
+    "state": "S",
+    "boot_id": "aa4657c7-68c6-4f44-a0f0-4bd959d6130f"
+  },
+  "owner": null,
+  "owned": [],
+  "state": "RUNNING",
+  "synthetic": true,
+  "components": {
+    "writer": {
+      "argv": [
+        "synthetic",
+        "timeshare_path:=/home/lab307/ranger_nav/docs/fast_livo2_evidence/record_wheel_20261106/test_frontend_stream_loss_reports_topic_and_stops-kem2zvjh/assets/timeshare"
+      ]
+    },
+    "lidar": {
+      "argv": [
+        "synthetic",
+        "user_config_path:=/home/lab307/ranger_nav/config/fast_livo2/mid360s_live.json"
+      ]
+    },
+    "camera": {
+      "argv": [
+        "synthetic",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/fast_livo2/camera_live.yaml"
+      ]
+    },
+    "frontend": {
+      "argv": [
+        "synthetic",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/fast_livo2/ranger_mid360s_hik_trial.yaml"
+      ]
+    }
+  }
+}

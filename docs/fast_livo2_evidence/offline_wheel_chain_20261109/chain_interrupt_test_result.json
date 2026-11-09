@@ -1,0 +1,92 @@
+{
+  "passed": false,
+  "hardware_started": false,
+  "physical_sync_verified": false,
+  "absolute_accuracy_validated": false,
+  "wheel_source": "diagnostic",
+  "wheel_note": "diagnostic reconstruction is not newly recorded corrected CAN output",
+  "pacing": "scan acknowledgments; not real-time benchmark",
+  "clock_mapping": 203782752743349211,
+  "wheel_gap": {
+    "start_seconds": 145.0,
+    "duration_seconds": 0.8
+  },
+  "argv": {
+    "localizer": [
+      "/home/lab307/ranger_nav/ws_fast_livo/online_localization_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node",
+      "--ros-args",
+      "--params-file",
+      "/home/lab307/ranger_nav/config/fast_livo2/localizer.yaml",
+      "--params-file",
+      "/home/lab307/ranger_nav/config/fast_livo2/relocalizer.yaml",
+      "-p",
+      "archive_path:=/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/full_replay_12/map",
+      "-p",
+      "global_descriptor:=radial_pair_multiscale_v2",
+      "-p",
+      "registration:=small_gicp",
+      "-p",
+      "t_base_imu_xyz:=[0.11485917776401003, -0.023945937986232936, 0.5552533734244779]",
+      "-p",
+      "t_base_imu_rpy:=[0.0169366422492582, 0.3685116044554271, -3.1260938402392293]",
+      "-p",
+      "sensor_configuration_sha256:=2f73c5f2475d4e48e29fa8ff36af2bfe627cdb13f8607ee95e15807201cd4346",
+      "-p",
+      "time_contract_sha256:=849fa5e4b3713bcf49ef08211c187d7e4a840e51977bb2f2ecf30eb1e5b0472b",
+      "-p",
+      "frontend_sources_sha256:=55feceb3ec5a48f6980bd86c4ce2fcfa7c48cc312c49c043683a585382e6582d"
+    ],
+    "adapter": [
+      "/usr/bin/python3",
+      "-m",
+      "ranger_localization_bridge.fast_livo_localizer_adapter",
+      "--ros-args",
+      "-p",
+      "use_sim_time:=true",
+      "-p",
+      "expected_map_uuid:=253f573d7a7eabbc363a225ab192cc14",
+      "-p",
+      "expected_manifest_sha256:=e81d4a05a8da6cf3c1badfc0a6171295020bec59e5615408796c92a85b49b247",
+      "-p",
+      "t_base_imu_xyz:=[0.11485917776401003, -0.023945937986232936, 0.5552533734244779]",
+      "-p",
+      "t_base_imu_rpy:=[0.0169366422492582, 0.3685116044554271, -3.1260938402392293]"
+    ],
+    "bridge": [
+      "/usr/bin/python3",
+      "-m",
+      "ranger_localization_bridge.bridge_node",
+      "--ros-args",
+      "-p",
+      "use_sim_time:=true",
+      "-p",
+      "adapter_backend:=external",
+      "-p",
+      "latch_on_innovation_failure:=true"
+    ]
+  },
+  "source_capture": "/home/lab307/ranger_nav/bags/fast-livo-wheel_alignment_visit01-pwr5lx7u",
+  "map_uuid": "253f573d7a7eabbc363a225ab192cc14",
+  "query_frontend_note": "Recorded query frontend output; map identity file validates archive. Query binary provenance remains separate.",
+  "query_compatibility": {
+    "checks": {
+      "extrin_calib": true,
+      "camera": true,
+      "preprocess": true,
+      "time_offset": true,
+      "camera_driver": true,
+      "lidar_driver": true
+    },
+    "query_binary_sha256": "dfcf5d4d54f7b81f573a000589527afa36f4dc71c5fe44df1c94f5bff9ae7b27",
+    "map_frontend_binary_sha256": "83600c6f6781019466ff629f8fc8a1f820763004adc804dcbff2ad855a12900a",
+    "binary_note": "original recorded frontend versus online I/O-derived frontend; offline compatibility, not identical binaries"
+  },
+  "source_binary_sha256": "b0d54d6943eaaa5163c519bb7a5b1b6782d32b430458514492b765a46173caf5",
+  "source_metadata_sha256": "a70142d33e31c748ea96674fb1ec93d90035d11f545ffb2fbeea7c99fa15e1c9",
+  "error": "KeyboardInterrupt('offline replay interrupted by signal 15')",
+  "child_exit_codes": [
+    2,
+    -2,
+    -2
+  ]
+}

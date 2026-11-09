@@ -1,0 +1,281 @@
+{
+  "run_directory": "/home/lab307/ranger_nav/.runtime/sessions/fast_livo_online_localization/run-hl243mhj",
+  "guardian": {
+    "pid": 5585,
+    "start_ticks": 503244,
+    "ppid": 5583,
+    "state": "R",
+    "boot_id": "dc7ccd75-a884-43af-921e-f285f18e2264"
+  },
+  "owner": {
+    "pid": 5704,
+    "start_ticks": 503870,
+    "ppid": 5585,
+    "state": "R",
+    "boot_id": "dc7ccd75-a884-43af-921e-f285f18e2264"
+  },
+  "state": "FAILED",
+  "reason": "RuntimeError: wheel exited 127; no automatic restart; scheduler exited 2; guardian cleanup",
+  "owned": [],
+  "components": {
+    "probe": {
+      "state": "READY",
+      "process": {
+        "pid": 5705,
+        "start_ticks": 503870,
+        "ppid": 5704,
+        "state": "R",
+        "boot_id": "dc7ccd75-a884-43af-921e-f285f18e2264"
+      },
+      "argv": [
+        "/usr/bin/python3",
+        "/home/lab307/ranger_nav/scripts/fast_livo2/mapping_monitor.py",
+        "--folder",
+        "/home/lab307/ranger_nav/bags/fast-livo-localization-iqt9d470",
+        "--localization"
+      ]
+    },
+    "localizer": {
+      "state": "STARTING",
+      "process": {
+        "pid": 5725,
+        "start_ticks": 504102,
+        "ppid": 5704,
+        "state": "R",
+        "boot_id": "dc7ccd75-a884-43af-921e-f285f18e2264"
+      },
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/online_localization_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node",
+        "--ros-args",
+        "--params-file",
+        "/home/lab307/ranger_nav/bags/fast-livo-localization-iqt9d470/config/localizer.yaml",
+        "--params-file",
+        "/home/lab307/ranger_nav/bags/fast-livo-localization-iqt9d470/config/relocalizer.yaml",
+        "-p",
+        "archive_path:=/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/full_replay_12/map",
+        "-p",
+        "use_sim_time:=true",
+        "-p",
+        "online_scheduling:=true",
+        "-p",
+        "registration:=small_gicp",
+        "-p",
+        "global_search_enabled:=true",
+        "-p",
+        "global_descriptor:=radial_pair_multiscale_v2",
+        "-p",
+        "t_base_imu_xyz:=[0.11485917776401003, -0.023945937986232936, 0.5552533734244779]",
+        "-p",
+        "t_base_imu_rpy:=[0.0169366422492582, 0.3685116044554271, -3.1260938402392293]",
+        "-p",
+        "sensor_configuration_sha256:=2f73c5f2475d4e48e29fa8ff36af2bfe627cdb13f8607ee95e15807201cd4346",
+        "-p",
+        "time_contract_sha256:=849fa5e4b3713bcf49ef08211c187d7e4a840e51977bb2f2ecf30eb1e5b0472b",
+        "-p",
+        "frontend_sources_sha256:=55feceb3ec5a48f6980bd86c4ce2fcfa7c48cc312c49c043683a585382e6582d"
+      ]
+    },
+    "receipts": {
+      "state": "STARTING",
+      "process": {
+        "pid": 5726,
+        "start_ticks": 504102,
+        "ppid": 5704,
+        "state": "D",
+        "boot_id": "dc7ccd75-a884-43af-921e-f285f18e2264"
+      },
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/online_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/receipt_probe",
+        "--ros-args",
+        "-p",
+        "context:=/home/lab307/ranger_nav/bags/fast-livo-localization-iqt9d470",
+        "-p",
+        "topics_json:=\"{\\\"/livox/lidar\\\":\\\"sensor_msgs/msg/PointCloud2\\\",\\\"/livox/imu\\\":\\\"sensor_msgs/msg/Imu\\\",\\\"/front/image_sync\\\":\\\"sensor_msgs/msg/Image\\\",\\\"/front/image\\\":\\\"sensor_msgs/msg/Image\\\",\\\"/front/camera_info\\\":\\\"sensor_msgs/msg/CameraInfo\\\",\\\"/fast_livo/odometry\\\":\\\"nav_msgs/msg/Odometry\\\",\\\"/fast_livo/deskewed_imu\\\":\\\"sensor_msgs/msg/PointCloud2\\\"}\""
+      ]
+    },
+    "wheel": {
+      "state": "EXITED",
+      "process": {
+        "pid": 5727,
+        "start_ticks": 504103,
+        "ppid": 5704,
+        "state": "R",
+        "boot_id": "dc7ccd75-a884-43af-921e-f285f18e2264"
+      },
+      "argv": [
+        "/home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/lib/ranger_base/ranger_base_node",
+        "--ros-args",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/base_mini_v2.yaml",
+        "-p",
+        "receive_only:=true",
+        "-p",
+        "publish_odom_tf:=false"
+      ],
+      "exit_code": 127
+    },
+    "map_server": {
+      "state": "READY",
+      "process": {
+        "pid": 5728,
+        "start_ticks": 504103,
+        "ppid": 5704,
+        "state": "R",
+        "boot_id": "dc7ccd75-a884-43af-921e-f285f18e2264"
+      },
+      "argv": [
+        "/opt/ros/humble/lib/nav2_map_server/map_server",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true",
+        "-r",
+        "__node:=fast_livo_navigation_map",
+        "-p",
+        "yaml_filename:=/home/lab307/ranger_nav/outputs/fast-livo-demo-navigation-prep-20261106/navigation_map_final/map.yaml",
+        "-p",
+        "topic_name:=map",
+        "-p",
+        "frame_id:=map"
+      ]
+    },
+    "capture": {
+      "state": "WAITING"
+    },
+    "lidar": {
+      "state": "WAITING"
+    },
+    "wheel_clock": {
+      "state": "WAITING"
+    },
+    "map_lifecycle": {
+      "state": "READY",
+      "process": {
+        "pid": 5729,
+        "start_ticks": 504103,
+        "ppid": 5704,
+        "state": "R",
+        "boot_id": "dc7ccd75-a884-43af-921e-f285f18e2264"
+      },
+      "argv": [
+        "/opt/ros/humble/lib/nav2_lifecycle_manager/lifecycle_manager",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true",
+        "-r",
+        "__node:=fast_livo_navigation_map_lifecycle",
+        "-p",
+        "autostart:=true",
+        "-p",
+        "node_names:=[fast_livo_navigation_map]"
+      ]
+    },
+    "writer": {
+      "state": "WAITING"
+    },
+    "static_imu": {
+      "state": "READY",
+      "process": {
+        "pid": 5730,
+        "start_ticks": 504103,
+        "ppid": 5704,
+        "state": "R",
+        "boot_id": "dc7ccd75-a884-43af-921e-f285f18e2264"
+      },
+      "argv": [
+        "/opt/ros/humble/lib/tf2_ros/static_transform_publisher",
+        "--x",
+        "0.11485917776401003",
+        "--y",
+        "-0.023945937986232936",
+        "--z",
+        "0.5552533734244779",
+        "--roll",
+        "0.0169366422492582",
+        "--pitch",
+        "0.3685116044554271",
+        "--yaw",
+        "-3.1260938402392293",
+        "--frame-id",
+        "base_link",
+        "--child-frame-id",
+        "fast_livo_imu",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true",
+        "-r",
+        "__node:=fast_livo_static_imu"
+      ]
+    },
+    "static_lidar": {
+      "state": "READY",
+      "process": {
+        "pid": 5731,
+        "start_ticks": 504103,
+        "ppid": 5704,
+        "state": "R",
+        "boot_id": "dc7ccd75-a884-43af-921e-f285f18e2264"
+      },
+      "argv": [
+        "/opt/ros/humble/lib/tf2_ros/static_transform_publisher",
+        "--x",
+        "0.109",
+        "--y",
+        "0.0",
+        "--z",
+        "0.6",
+        "--roll",
+        "0.0169366422492582",
+        "--pitch",
+        "0.3685116044554271",
+        "--yaw",
+        "-3.1260938402392293",
+        "--frame-id",
+        "base_link",
+        "--child-frame-id",
+        "livox_frame",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true",
+        "-r",
+        "__node:=fast_livo_static_lidar"
+      ]
+    },
+    "adapter": {
+      "state": "READY",
+      "process": {
+        "pid": 5732,
+        "start_ticks": 504103,
+        "ppid": 5704,
+        "state": "R",
+        "boot_id": "dc7ccd75-a884-43af-921e-f285f18e2264"
+      },
+      "argv": [
+        "/usr/bin/python3",
+        "-m",
+        "ranger_localization_bridge.fast_livo_localizer_adapter",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true",
+        "-p",
+        "t_base_imu_xyz:=[0.11485917776401003, -0.023945937986232936, 0.5552533734244779]",
+        "-p",
+        "t_base_imu_rpy:=[0.0169366422492582, 0.3685116044554271, -3.1260938402392293]",
+        "-p",
+        "expected_map_uuid:=253f573d7a7eabbc363a225ab192cc14",
+        "-p",
+        "expected_manifest_sha256:=e81d4a05a8da6cf3c1badfc0a6171295020bec59e5615408796c92a85b49b247"
+      ]
+    },
+    "camera": {
+      "state": "WAITING"
+    },
+    "bridge": {
+      "state": "WAITING"
+    },
+    "frontend": {
+      "state": "WAITING"
+    }
+  },
+  "updated_monotonic": 5045.969914209,
+  "guardian_cleanup_complete": true
+}

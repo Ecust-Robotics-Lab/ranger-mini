@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "apriltag": {
+    "url": "https://github.com/AprilRobotics/apriltag.git",
+    "tag": "v3.4.5",
+    "commit": "94be783968e5091bcc9972c72c84fd63efce2935",
+    "source": "vendor/fast_livo2_review/apriltag",
+    "prefix": "ws_fast_livo/apriltag_deps",
+    "license": "BSD-2-Clause; preserve per-file notices",
+    "patches": []
+  },
+  "opencv": {
+    "source": "Ubuntu 22.04 installed packages",
+    "version": "4.5.4+dfsg-9ubuntu4",
+    "components": ["core", "imgproc", "calib3d", "imgcodecs"],
+    "license": "Apache-2.0 with packaged third-party notices"
+  },
+  "apriltag_ros": "not installed or integrated; no second production detector",
+  "apriltag_msgs": "not installed or integrated; versioned private JSON observation wire contract"
+}

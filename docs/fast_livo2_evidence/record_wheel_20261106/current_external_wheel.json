@@ -1,0 +1,42 @@
+{
+  "source": "external",
+  "publishers": [
+    {
+      "node": "ranger_base_node",
+      "namespace": "/",
+      "type": "nav_msgs/msg/Odometry",
+      "reliability": "RELIABLE",
+      "gid": [
+        1,
+        15,
+        46,
+        84,
+        104,
+        80,
+        31,
+        88,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        21,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "sample": {
+    "frame": "odom",
+    "child": "base_link",
+    "stamp_ns": 1793973333776039121
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "checks": [
+    {
+      "command": "bash scripts/build_base_recording.sh --execute",
+      "log": "build_02.log",
+      "exit_code": 0,
+      "elapsed_seconds": 13.1
+    },
+    {
+      "command": "python3 tests/test_fast_livo_recording.py CaptureUnit",
+      "log": "unit_01.log",
+      "exit_code": 0,
+      "tests": 13
+    },
+    {
+      "command": "python3 tests/test_fast_livo_recording.py CaptureROS",
+      "log": "capture_ros_01.log",
+      "exit_code": 0,
+      "tests": 10,
+      "domain": 189,
+      "localhost_only": true
+    },
+    {
+      "command": "python3 -m unittest discover -s tests -p test_fast_livo_wheel_capture.py -v",
+      "log": "wheel_unit.log",
+      "exit_code": 0,
+      "tests": 5
+    },
+    {
+      "command": "python3 scripts/check_base_receive_only.py",
+      "log": "receive_only_check_02.log",
+      "exit_code": 0,
+      "no_io_shim": true
+    },
+    {
+      "command": "python3 scripts/check_base_model_selection.py",
+      "log": "model_selection_02.log",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 tests/test_fast_livo_recording.py CaptureROS.test_wheel_auto_owned_feedback_is_stopped_after_recording",
+      "log": "owned_source_snapshot.log",
+      "exit_code": 0,
+      "repeat_not_added_to_count": true
+    },
+    {
+      "command": "wheel_capture.prepare() with domain175/localhost",
+      "log": "current_external_wheel.json",
+      "exit_code": 0,
+      "read_only_external_source": true
+    }
+  ],
+  "python_test_count_without_repeats": 28,
+  "source_environment": [
+    "/opt/ros/humble/setup.bash",
+    "ws_nav/install/setup.bash",
+    "ws_camera/install/setup.bash",
+    "ws_livox/install/setup.bash",
+    "ws_base/install/setup.bash"
+  ],
+  "real_hardware_started_this_stage": false,
+  "real_recording_started_this_stage": false
+}

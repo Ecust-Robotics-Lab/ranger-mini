@@ -1,0 +1,78 @@
+{
+  "exit": 0,
+  "forced": false,
+  "requested_seconds": 60.0,
+  "elapsed_seconds": 0.6530558150006982,
+  "stopped_by_signal": true,
+  "observed_messages": {
+    "/livox/lidar": 21,
+    "/livox/imu": 20,
+    "/front/image_sync": 20,
+    "/front/image": 20,
+    "/front/camera_info": 20,
+    "/fast_livo/odometry": 20,
+    "/fast_livo/deskewed_imu": 20
+  },
+  "session_exit": 0,
+  "session_state": {
+    "run_directory": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/record_wheel_20261106/test_ctrl_c_finalizes_and_keeps_external_preview-d4ru6add/sessions/fast_livo_record/run-tgeu7egj",
+    "guardian": {
+      "pid": 21653,
+      "start_ticks": 1021159,
+      "ppid": 21512,
+      "state": "R",
+      "boot_id": "aa4657c7-68c6-4f44-a0f0-4bd959d6130f"
+    },
+    "owner": {
+      "pid": 21719,
+      "start_ticks": 1021210,
+      "ppid": 21653,
+      "state": "R",
+      "boot_id": "aa4657c7-68c6-4f44-a0f0-4bd959d6130f"
+    },
+    "state": "STOPPED",
+    "reason": "",
+    "owned": [],
+    "components": {
+      "capture": {
+        "state": "READY",
+        "process": {
+          "pid": 21720,
+          "start_ticks": 1021210,
+          "ppid": 21719,
+          "state": "R",
+          "boot_id": "aa4657c7-68c6-4f44-a0f0-4bd959d6130f"
+        },
+        "argv": [
+          "/usr/bin/python3",
+          "/home/lab307/ranger_nav/scripts/fast_livo2/record_worker.py",
+          "--folder",
+          "/home/lab307/ranger_nav/docs/fast_livo2_evidence/record_wheel_20261106/test_ctrl_c_finalizes_and_keeps_external_preview-d4ru6add/capture"
+        ]
+      }
+    },
+    "updated_monotonic": 10213.448916386,
+    "guardian_cleanup_complete": true
+  },
+  "folder": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/record_wheel_20261106/test_ctrl_c_finalizes_and_keeps_external_preview-d4ru6add/capture",
+  "capture_complete": true,
+  "sync": {
+    "available": true,
+    "source": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/record_wheel_20261106/test_ctrl_c_finalizes_and_keeps_external_preview-d4ru6add/assets/camera_sync.csv",
+    "status_counts": {
+      "OK": 2
+    },
+    "hardware_frame_id_missing": 0,
+    "hardware_frame_id_nonincreasing": 0,
+    "scope": "entire sensor session; may include time outside this recording",
+    "physical_sync_proven": false
+  },
+  "quality": {
+    "data_checks": "PASS",
+    "failures": [],
+    "warnings": [],
+    "physical_sync": "PARTIAL",
+    "motion_mapping_accuracy": "NOT_EVALUATED",
+    "note": "Header equality is not physical synchronization; no APE/RPE or loop accuracy is inferred."
+  }
+}

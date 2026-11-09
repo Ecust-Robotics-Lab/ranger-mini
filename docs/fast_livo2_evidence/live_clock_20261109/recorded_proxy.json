@@ -1,0 +1,26 @@
+{
+  "kind": "bag receipt proxy; not actual online/physical sync validation",
+  "lidar_samples": 1801,
+  "wheel_forwardable": 8947,
+  "wheel_withheld": 58,
+  "first_fault": null,
+  "residual_min_max_ns": [
+    -3309519,
+    20518311
+  ],
+  "final_status": {
+    "ready": true,
+    "error": null,
+    "context": "recorded-proxy",
+    "anchor": [
+      1590192063000381740,
+      10061930585
+    ],
+    "host_minus_steady_ns": 1793974805789846592,
+    "residual_ns": 18948363,
+    "tolerance_ns": 100000000,
+    "physical_sync_verified": false,
+    "method": "fixed lidar receipt anchor plus host/steady offset; transport bias unmeasured"
+  },
+  "source_read_only": true
+}

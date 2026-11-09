@@ -1,0 +1,138 @@
+{
+  "scope": "isolated offline function only; diagnostic reconstructed wheel and capture-bound clock",
+  "hardware_started": false,
+  "physical_sync_verified": false,
+  "absolute_accuracy_validated": false,
+  "runs": {
+    "chain_01": {
+      "passed": true,
+      "processed_pairs": 1801,
+      "valid_samples": 1502,
+      "first_valid_source_seconds": 28.800119876,
+      "ready_samples": 1494,
+      "tf_checks": 1493,
+      "tf_translation_error_max_m": 7.364386412590295e-16,
+      "gap_ready_samples": [
+        false,
+        false
+      ],
+      "post_gap_ready_recovered": true,
+      "end_stale_ready": false,
+      "dynamic_tf_publishers": 1,
+      "velocity_publishers": {
+        "/cmd_vel": 0,
+        "/base/safe_cmd_vel": 0
+      },
+      "child_exit_codes": [
+        0,
+        0,
+        0
+      ],
+      "wall_seconds": 294.1315165840001
+    },
+    "chain_final": {
+      "passed": false,
+      "processed_pairs": 1801,
+      "valid_samples": 1502,
+      "first_valid_source_seconds": 28.800119876,
+      "ready_samples": 1494,
+      "tf_checks": 1493,
+      "tf_translation_error_max_m": 0.02415498664065588,
+      "gap_ready_samples": [
+        false,
+        false
+      ],
+      "post_gap_ready_recovered": true,
+      "end_stale_ready": false,
+      "dynamic_tf_publishers": 1,
+      "velocity_publishers": {
+        "/cmd_vel": 0,
+        "/base/safe_cmd_vel": 0
+      },
+      "child_exit_codes": [
+        0,
+        0,
+        0
+      ],
+      "wall_seconds": 313.95858209300013
+    },
+    "chain_raw_control": {
+      "passed": false,
+      "processed_pairs": 1801,
+      "valid_samples": 1502,
+      "first_valid_source_seconds": 28.800119876,
+      "ready_samples": 215,
+      "tf_checks": 215,
+      "tf_translation_error_max_m": 1.0175362097255202e-15,
+      "gap_ready_samples": [
+        false,
+        false
+      ],
+      "post_gap_ready_recovered": false,
+      "end_stale_ready": false,
+      "dynamic_tf_publishers": 1,
+      "velocity_publishers": {
+        "/cmd_vel": 0,
+        "/base/safe_cmd_vel": 0
+      },
+      "child_exit_codes": [
+        0,
+        0,
+        0
+      ],
+      "wall_seconds": 312.7865561650001
+    },
+    "chain_interrupt_test": {
+      "passed": false,
+      "child_exit_codes": [
+        2,
+        -2,
+        -2
+      ],
+      "error": "KeyboardInterrupt('offline replay interrupted by signal 15')"
+    },
+    "chain_verified": {
+      "passed": true,
+      "processed_pairs": 1801,
+      "valid_samples": 1502,
+      "first_valid_source_seconds": 28.800119876,
+      "ready_samples": 1494,
+      "tf_checks": 1494,
+      "tf_translation_error_max_m": 7.364386412590295e-16,
+      "gap_ready_samples": [
+        false,
+        false
+      ],
+      "post_gap_ready_recovered": true,
+      "end_stale_ready": false,
+      "dynamic_tf_publishers": 1,
+      "velocity_publishers": {
+        "/cmd_vel": 0,
+        "/base/safe_cmd_vel": 0
+      },
+      "child_exit_codes": [
+        0,
+        0,
+        0
+      ],
+      "wall_seconds": 292.77214588200013
+    }
+  },
+  "verified_rotation_max_rad": 0.0,
+  "checks": {
+    "strict_current_acceptance": true,
+    "translation_below_2cm": true,
+    "rotation_below_1e_minus_6_rad": true,
+    "all_tf_matches_causal_and_within_half_second": true,
+    "matching_age_seconds_min_max": [
+      0.02582283,
+      0.085877861
+    ],
+    "tf_trace_count": 1494,
+    "tf_rotation_error_max_rad": 0.0,
+    "all_verified_children_exit_zero": true,
+    "raw_wheel_innovation_refusal": true,
+    "interrupt_recorded": true,
+    "rotation_aggregation_note": "Derived from original chain_verified trace. Result and executed runner snapshot preserved; rotation aggregate was added to runner during this run."
+  }
+}

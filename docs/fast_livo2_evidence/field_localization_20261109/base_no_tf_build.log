@@ -1,0 +1,76 @@
+Starting >>> ranger_base
+[0.329s] WARNING:colcon.colcon_core.shell:The following packages are in the workspace but haven't been built:
+- ranger_msgs
+- ugv_sdk
+They are being used from the following locations instead:
+- /home/lab307/ranger_nav/ws_base/install/ranger_msgs
+- /home/lab307/ranger_nav/ws_base/install/ugv_sdk
+To suppress this warning ignore these packages in the workspace:
+--packages-ignore ranger_msgs ugv_sdk
+Consolidate compiler generated dependencies of target ranger_base_node
+[ 33%] Building CXX object CMakeFiles/ranger_base_node.dir/src/ranger_messenger.cpp.o
+In file included from /home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp:12:
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/include/ranger_base/kinematics_model.hpp: In member function ‘void westonrobot::SpinningModel::operator()(const state_type&, westonrobot::SpinningModel::state_type&, double)’:
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/include/ranger_base/kinematics_model.hpp:90:37: warning: unused parameter ‘x’ [-Wunused-parameter]
+   90 |   void operator()(const state_type& x, state_type& xd, double) {
+      |                   ~~~~~~~~~~~~~~~~~~^
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp: In member function ‘double westonrobot::RangerROSMessenger::CalculateSteeringAngle(geometry_msgs::msg::Twist, double&)’:
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp:545:13: warning: variable ‘w’ set but not used [-Wunused-but-set-variable]
+  545 |   double l, w, phi_i, x;
+      |             ^
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp:545:23: warning: variable ‘x’ set but not used [-Wunused-but-set-variable]
+  545 |   double l, w, phi_i, x;
+      |                       ^
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp: In member function ‘void westonrobot::RangerROSMessenger::TwistCmdCallback(geometry_msgs::msg::Twist_<std::allocator<void> >::SharedPtr)’:
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp:452:7: warning: ‘steer_cmd’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+  452 |       if (steer_cmd > robot_params_.max_steer_angle_ackermann) {
+      |       ^~
+[ 66%] Linking CXX executable ranger_base_node
+[100%] Built target ranger_base_node
+-- Install configuration: "RelWithDebInfo"
+-- Installing: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/lib/ranger_base/ranger_base_node
+-- Set runtime path of "/home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/lib/ranger_base/ranger_base_node" to ""
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base//launch
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base//launch/ranger_mini_v2.launch.py
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base//launch/ranger_mini_v3.launch.py
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base//launch/ranger_mini_v1.launch.py
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base//launch/ranger.launch.py
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base//launch/include
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base//launch/include/ranger_robot_base.launch.xml
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ament_index/resource_index/package_run_dependencies/ranger_base
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ament_index/resource_index/parent_prefix_path/ranger_base
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base/environment/ament_prefix_path.sh
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base/environment/ament_prefix_path.dsv
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base/environment/path.sh
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base/environment/path.dsv
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base/local_setup.bash
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base/local_setup.sh
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base/local_setup.zsh
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base/local_setup.dsv
+-- Installing: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base/package.dsv
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ament_index/resource_index/packages/ranger_base
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base/cmake/ranger_baseConfig.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base/cmake/ranger_baseConfig-version.cmake
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base/package.xml
+--- stderr: ranger_base
+In file included from /home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp:12:
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/include/ranger_base/kinematics_model.hpp: In member function ‘void westonrobot::SpinningModel::operator()(const state_type&, westonrobot::SpinningModel::state_type&, double)’:
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/include/ranger_base/kinematics_model.hpp:90:37: warning: unused parameter ‘x’ [-Wunused-parameter]
+   90 |   void operator()(const state_type& x, state_type& xd, double) {
+      |                   ~~~~~~~~~~~~~~~~~~^
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp: In member function ‘double westonrobot::RangerROSMessenger::CalculateSteeringAngle(geometry_msgs::msg::Twist, double&)’:
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp:545:13: warning: variable ‘w’ set but not used [-Wunused-but-set-variable]
+  545 |   double l, w, phi_i, x;
+      |             ^
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp:545:23: warning: variable ‘x’ set but not used [-Wunused-but-set-variable]
+  545 |   double l, w, phi_i, x;
+      |                       ^
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp: In member function ‘void westonrobot::RangerROSMessenger::TwistCmdCallback(geometry_msgs::msg::Twist_<std::allocator<void> >::SharedPtr)’:
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp:452:7: warning: ‘steer_cmd’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+  452 |       if (steer_cmd > robot_params_.max_steer_angle_ackermann) {
+      |       ^~
+---
+Finished <<< ranger_base [12.2s]
+
+Summary: 1 package finished [12.4s]
+  1 package had stderr output: ranger_base

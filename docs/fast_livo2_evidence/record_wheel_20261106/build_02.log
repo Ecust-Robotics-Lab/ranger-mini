@@ -1,0 +1,119 @@
+Starting >>> ranger_base
+[0.261s] WARNING:colcon.colcon_core.shell:The following packages are in the workspace but haven't been built:
+- ranger_msgs
+- ugv_sdk
+They are being used from the following locations instead:
+- /home/lab307/ranger_nav/ws_base/install/ranger_msgs
+- /home/lab307/ranger_nav/ws_base/install/ugv_sdk
+To suppress this warning ignore these packages in the workspace:
+--packages-ignore ranger_msgs ugv_sdk
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Found rclcpp: 16.0.19 (/opt/ros/humble/share/rclcpp/cmake)
+-- Found rosidl_generator_c: 3.1.9 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+-- Found rosidl_adapter: 3.1.9 (/opt/ros/humble/share/rosidl_adapter/cmake)
+-- Found rosidl_generator_cpp: 3.1.9 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 6.1.3 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 6.2.10 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+-- Found FastRTPS: /opt/ros/humble/include  
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Found geometry_msgs: 4.9.2 (/opt/ros/humble/share/geometry_msgs/cmake)
+-- Found nav_msgs: 4.9.2 (/opt/ros/humble/share/nav_msgs/cmake)
+-- Found sensor_msgs: 4.9.2 (/opt/ros/humble/share/sensor_msgs/cmake)
+-- Found tf2: 0.25.22 (/opt/ros/humble/share/tf2/cmake)
+-- Found tf2_ros: 0.25.22 (/opt/ros/humble/share/tf2_ros/cmake)
+-- Found ranger_msgs: 0.0.1 (/home/lab307/ranger_nav/ws_base/install/ranger_msgs/share/ranger_msgs/cmake)
+-- Found tf2_geometry_msgs: 0.25.22 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)
+-- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+-- Found Eigen3: TRUE (found version "3.4.0") 
+-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/lab307/ranger_nav/ws_base/build_recording_rx/ranger_base
+[ 33%] Building CXX object CMakeFiles/ranger_base_node.dir/src/ranger_base_node.cpp.o
+[ 66%] Building CXX object CMakeFiles/ranger_base_node.dir/src/ranger_messenger.cpp.o
+In file included from /home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp:12:
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/include/ranger_base/kinematics_model.hpp: In member function ‘void westonrobot::SpinningModel::operator()(const state_type&, westonrobot::SpinningModel::state_type&, double)’:
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/include/ranger_base/kinematics_model.hpp:90:37: warning: unused parameter ‘x’ [-Wunused-parameter]
+   90 |   void operator()(const state_type& x, state_type& xd, double) {
+      |                   ~~~~~~~~~~~~~~~~~~^
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp: In member function ‘double westonrobot::RangerROSMessenger::CalculateSteeringAngle(geometry_msgs::msg::Twist, double&)’:
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp:542:13: warning: variable ‘w’ set but not used [-Wunused-but-set-variable]
+  542 |   double l, w, phi_i, x;
+      |             ^
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp:542:23: warning: variable ‘x’ set but not used [-Wunused-but-set-variable]
+  542 |   double l, w, phi_i, x;
+      |                       ^
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp: In member function ‘void westonrobot::RangerROSMessenger::TwistCmdCallback(geometry_msgs::msg::Twist_<std::allocator<void> >::SharedPtr)’:
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp:449:7: warning: ‘steer_cmd’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+  449 |       if (steer_cmd > robot_params_.max_steer_angle_ackermann) {
+      |       ^~
+[100%] Linking CXX executable ranger_base_node
+[100%] Built target ranger_base_node
+-- Install configuration: "RelWithDebInfo"
+-- Installing: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/lib/ranger_base/ranger_base_node
+-- Set runtime path of "/home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/lib/ranger_base/ranger_base_node" to ""
+-- Installing: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base//launch
+-- Installing: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base//launch/ranger_mini_v2.launch.py
+-- Installing: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base//launch/ranger_mini_v3.launch.py
+-- Installing: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base//launch/ranger_mini_v1.launch.py
+-- Installing: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base//launch/ranger.launch.py
+-- Installing: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base//launch/include
+-- Installing: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base//launch/include/ranger_robot_base.launch.xml
+-- Installing: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ament_index/resource_index/package_run_dependencies/ranger_base
+-- Installing: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ament_index/resource_index/parent_prefix_path/ranger_base
+-- Installing: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base/environment/ament_prefix_path.sh
+-- Installing: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base/environment/ament_prefix_path.dsv
+-- Installing: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base/environment/path.sh
+-- Installing: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base/environment/path.dsv
+-- Installing: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base/local_setup.bash
+-- Installing: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base/local_setup.sh
+-- Installing: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base/local_setup.zsh
+-- Installing: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base/local_setup.dsv
+-- Installing: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base/package.dsv
+-- Installing: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ament_index/resource_index/packages/ranger_base
+-- Installing: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base/cmake/ranger_baseConfig.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base/cmake/ranger_baseConfig-version.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/share/ranger_base/package.xml
+--- stderr: ranger_base
+In file included from /home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp:12:
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/include/ranger_base/kinematics_model.hpp: In member function ‘void westonrobot::SpinningModel::operator()(const state_type&, westonrobot::SpinningModel::state_type&, double)’:
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/include/ranger_base/kinematics_model.hpp:90:37: warning: unused parameter ‘x’ [-Wunused-parameter]
+   90 |   void operator()(const state_type& x, state_type& xd, double) {
+      |                   ~~~~~~~~~~~~~~~~~~^
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp: In member function ‘double westonrobot::RangerROSMessenger::CalculateSteeringAngle(geometry_msgs::msg::Twist, double&)’:
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp:542:13: warning: variable ‘w’ set but not used [-Wunused-but-set-variable]
+  542 |   double l, w, phi_i, x;
+      |             ^
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp:542:23: warning: variable ‘x’ set but not used [-Wunused-but-set-variable]
+  542 |   double l, w, phi_i, x;
+      |                       ^
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp: In member function ‘void westonrobot::RangerROSMessenger::TwistCmdCallback(geometry_msgs::msg::Twist_<std::allocator<void> >::SharedPtr)’:
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp:449:7: warning: ‘steer_cmd’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+  449 |       if (steer_cmd > robot_params_.max_steer_angle_ackermann) {
+      |       ^~
+---
+Finished <<< ranger_base [12.9s]
+
+Summary: 1 package finished [13.1s]
+  1 package had stderr output: ranger_base

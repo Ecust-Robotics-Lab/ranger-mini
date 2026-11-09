@@ -1,0 +1,103 @@
+{
+  "converted_wheel_ahead_of_latest_recorded_clock": 0,
+  "converted_wheel_at_or_before_clock": 4200,
+  "age_range_ms": [
+    2.4603699999999997,
+    484.161696
+  ],
+  "clock_residual_range_ms": [
+    -2.3585,
+    7.675211999999999
+  ],
+  "ready_transitions": [
+    {
+      "record_ns": 1794210823992116995,
+      "ready": false
+    },
+    {
+      "record_ns": 1794210881199886092,
+      "ready": true
+    },
+    {
+      "record_ns": 1794210881611260163,
+      "ready": false
+    },
+    {
+      "record_ns": 1794210915998424385,
+      "ready": true
+    }
+  ],
+  "bridge_condition_counts": {
+    "odom_present_false_while_valid": 29,
+    "map_transform_false_while_valid": 44,
+    "time_aligned_false_while_valid": 42,
+    "innovation_unlocked_false_while_valid": 0
+  },
+  "all_active_graph_samples_single_tf": true,
+  "active_graph_samples": 60,
+  "zero_velocity_publishers_in_active_samples": true,
+  "first_valid_from_first_fast_seconds": 50.599950075,
+  "first_valid_after_recording_start_seconds": 50.843260144000006,
+  "loss_to_recovery_record_seconds": 33.578561868,
+  "private_state_changes": [
+    {
+      "record_ns": 1794210823890430798,
+      "state": 0,
+      "generation": 0,
+      "reason": "map_loaded_searching",
+      "age": -1.0
+    },
+    {
+      "record_ns": 1794210879588801559,
+      "state": 0,
+      "generation": 1,
+      "reason": "global_confirmed_handoff_requires_c1_verification",
+      "age": -1.0
+    },
+    {
+      "record_ns": 1794210881188398660,
+      "state": 1,
+      "generation": 1,
+      "reason": "map_match_confirmed",
+      "age": 0.291679375
+    },
+    {
+      "record_ns": 1794210882148494785,
+      "state": 2,
+      "generation": 1,
+      "reason": "not_converged",
+      "age": 0.251618648
+    },
+    {
+      "record_ns": 1794210882408917128,
+      "state": 3,
+      "generation": 1,
+      "reason": "confirmed_sample_or_stream_expired_requires_initial_pose",
+      "age": 0.511814121
+    },
+    {
+      "record_ns": 1794210914467721640,
+      "state": 3,
+      "generation": 2,
+      "reason": "global_confirmed_handoff_requires_c1_verification",
+      "age": 32.57074283
+    },
+    {
+      "record_ns": 1794210915209071209,
+      "state": 0,
+      "generation": 2,
+      "reason": "verifying_multiframe_motion_support",
+      "age": -1.0
+    },
+    {
+      "record_ns": 1794210915987478996,
+      "state": 1,
+      "generation": 2,
+      "reason": "map_match_confirmed",
+      "age": 0.390702392
+    }
+  ],
+  "raw_wheel_integrated_distance_m": 11.124049749597537,
+  "raw_wheel_max_speed_m_s": 0.4490000009536743,
+  "source_read_only": true
+}

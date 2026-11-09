@@ -1,0 +1,17 @@
+/tmp/ranger-rx-check-5xt4m2fx/check.cpp: In member function ‘void westonrobot::RangerROSMessenger::SetupSubscription()’:
+/tmp/ranger-rx-check-5xt4m2fx/check.cpp:199:64: error: cannot convert ‘std::string’ {aka ‘std::__cxx11::basic_string<char>’} to ‘const char*’
+  199 |   odom_pub_ = node_->create_publisher<nav_msgs::msg::Odometry>(odom_topic_name_, 10);
+      |                                                                ^~~~~~~~~~~~~~~~
+      |                                                                |
+      |                                                                std::string {aka std::__cxx11::basic_string<char>}
+/tmp/ranger-rx-check-5xt4m2fx/check.cpp:20:57: note:   initializing argument 1 of ‘std::shared_ptr<int> rclcpp::Node::create_publisher(const char*, int) [with T = int]’
+   20 |   template<class T>std::shared_ptr<int>create_publisher(const char*,int){return std::make_shared<int>(0);}
+      |                                                         ^~~~~~~~~~~
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/scripts/check_base_receive_only.py", line 91, in <module>
+    if __name__=='__main__':main()
+  File "/home/lab307/ranger_nav/scripts/check_base_receive_only.py", line 87, in main
+    subprocess.run(['g++','-std=c++14','-I'+str(REPO/'ranger_base/include'),str(p/'check.cpp'),'-o',str(p/'check')],check=True)
+  File "/usr/lib/python3.10/subprocess.py", line 526, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['g++', '-std=c++14', '-I/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/include', '/tmp/ranger-rx-check-5xt4m2fx/check.cpp', '-o', '/tmp/ranger-rx-check-5xt4m2fx/check']' returned non-zero exit status 1.

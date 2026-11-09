@@ -1,0 +1,138 @@
+{
+  "t_base_imu_xyz": [
+    0.0,
+    0.0,
+    0.556
+  ],
+  "t_base_imu_rpy": [
+    0.0,
+    0.0,
+    0.0
+  ],
+  "installation_evidence": "config/mid360/extrinsics_pending.yaml",
+  "base_imu_field_calibrated": false,
+  "base_link_origin_verified": false,
+  "reference_body_length_width_m": [
+    0.74,
+    0.52
+  ],
+  "stop_polygon_xy": [
+    [
+      0.39,
+      0.28
+    ],
+    [
+      0.39,
+      -0.28
+    ],
+    [
+      -0.39,
+      -0.28
+    ],
+    [
+      -0.39,
+      0.28
+    ]
+  ],
+  "costmaps": {
+    "global_costmap": {
+      "robot_radius": 0.1,
+      "reference_body_half_width_m": 0.26,
+      "circle_can_contain_reference_body": false
+    },
+    "local_costmap": {
+      "robot_radius": 0.1,
+      "reference_body_half_width_m": 0.26,
+      "circle_can_contain_reference_body": false
+    }
+  },
+  "geometry_consistent_for_navigation": false,
+  "source_files_sha256": {
+    "config/runtime.yaml": "7f434e1d7e9cced047070051a4aa342672e4351cf045b29e02a6f21e40fdabf6",
+    "ws_nav/src/ranger_navigation/config/nav2_params.yaml": "0b6299820c96790dbd47e5f9d3d770ef020e3f216966ad42aa78afb2bcbb5792",
+    "ws_nav/src/ranger_navigation/config/collision_monitor.yaml": "94e5a5f97b51446c6c5a2e7b5b6b57231ed9dfb5c02cdacd2a9d483fbb2a5bef",
+    "config/mid360/extrinsics_pending.yaml": "ad1406e8fb1cb337bc37dd863e1effa7f9e60f24d11effe52a34446bc4d09bc3"
+  },
+  "development_model": {
+    "schema_version": 1,
+    "robot": "ranger_mini_v2",
+    "base_link": {
+      "origin": "midpoint_between_axles_on_ground",
+      "axes": "x_forward_y_left_z_up",
+      "status": "engineering_convention_selected_by_user_authorization"
+    },
+    "body": {
+      "nominal_length_width_height_m": [
+        0.738,
+        0.5,
+        0.338
+      ],
+      "wheelbase_track_m": [
+        0.494,
+        0.364
+      ],
+      "reference_envelope_length_width_m": [
+        0.74,
+        0.52
+      ],
+      "footprint_xy": [
+        [
+          0.37,
+          0.26
+        ],
+        [
+          0.37,
+          -0.26
+        ],
+        [
+          -0.37,
+          -0.26
+        ],
+        [
+          -0.37,
+          0.26
+        ]
+      ]
+    },
+    "installation": {
+      "status": "APPROXIMATE_NOT_FIELD_CALIBRATED",
+      "user_statement_2026_11_06": "mid\u96f7\u8fbe\u8ddd\u79bb\u5e95\u76d8\u8f66\u5934\u7ea626cm",
+      "lidar_reference_assumed": "lidar_coordinate_origin",
+      "distance_from_front_edge_m": 0.26,
+      "t_base_lidar_xyz": [
+        0.109,
+        0.0,
+        0.6
+      ],
+      "t_base_lidar_rpy": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "t_base_imu_xyz": [
+        0.12,
+        0.02329,
+        0.55588
+      ],
+      "t_base_imu_rpy": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "base_imu_field_calibrated": false,
+      "assumptions": [
+        "front_distance_refers_to_sensor_origin",
+        "roof_centerline",
+        "height_0.60m_from_prior_statement",
+        "sensor_axes_aligned_with_base"
+      ]
+    },
+    "sources": {
+      "manual": "https://static.generation-robots.com/media/ranger-mini-user-manual-en.pdf",
+      "official_driver": "https://github.com/agilexrobotics/ranger_ros2/blob/humble/ranger_base/include/ranger_base/ranger_params.hpp",
+      "official_model_reviewed": "https://github.com/agilexrobotics/ugv_gazebo_sim/blob/master/ranger_mini/ranger_mini_v2/urdf/ranger_mini.xacro",
+      "imu_nominal": "config/mid360/extrinsics_pending.yaml"
+    },
+    "production_runtime_changed": false
+  }
+}

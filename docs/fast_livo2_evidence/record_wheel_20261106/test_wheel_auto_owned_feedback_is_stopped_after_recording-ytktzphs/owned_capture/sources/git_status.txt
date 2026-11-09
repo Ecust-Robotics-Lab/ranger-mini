@@ -1,0 +1,31 @@
+ M .gitignore
+ M AGENTS.md
+ M README.md
+ M config/mid360/extrinsics_pending.yaml
+ M docs/FAST_NAVIGATION_INTEGRATION_PLAN.md
+ M docs/HANDOFF.md
+ M docs/README.md
+ M docs/STATUS.md
+ M docs/fast_livo2_localizer_interfaces.md
+ M docs/fast_livo2_recording.md
+ M scripts/check_base_model_selection.py
+ M scripts/fast_livo2/record_session.py
+ M scripts/record_fast_livo2.sh
+ M tests/test_fast_livo_recording.py
+ M ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/fast_livo_localizer_adapter.py
+?? config/fast_livo2/navigation_prep.yaml
+?? docs/fast_livo2_evidence/navigation_prep_20261106/
+?? docs/fast_livo2_evidence/record_wheel_20261106/
+?? docs/fast_livo2_evidence/wheel_start_20261106/
+?? docs/fast_livo2_navigation_prep_report.md
+?? docs/wheel_start_report_20261106.md
+?? patches/ranger_ros2_recording_receive_only.patch
+?? scripts/bridge_fast_livo2_offline.sh
+?? scripts/build_base_recording.sh
+?? scripts/check_base_receive_only.py
+?? scripts/export_fast_livo2_nav_map.sh
+?? scripts/fast_livo2/navigation/
+?? scripts/fast_livo2/wheel_capture.py
+?? tests/test_fast_livo_navigation_map.py
+?? tests/test_fast_livo_navigation_ros.py
+?? tests/test_fast_livo_wheel_capture.py

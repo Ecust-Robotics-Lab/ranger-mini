@@ -1,0 +1,511 @@
+diff --git a/.gitignore b/.gitignore
+index 9fdea3a..3d3905c 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -85,5 +85,6 @@ docs/fast_livo2_evidence/**/*.db3
+ docs/fast_livo2_evidence/**/sources/*_hik_camera_trigger_driver_node
+ docs/fast_livo2_evidence/**/sources/*_timeshare_writer_node
+ docs/fast_livo2_evidence/**/sources/*_fastlivo_mapping
++docs/fast_livo2_evidence/**/sources/*_ranger_base_node
+ /ws_nav/c1_adapter_log/
+ /ws_nav/c2_adapter_log/
+diff --git a/AGENTS.md b/AGENTS.md
+index aeccf62..9c01554 100644
+--- a/AGENTS.md
++++ b/AGENTS.md
+@@ -47,6 +47,10 @@
+ 
+ ## 真机与测试
+ 
++- 2026-11-06更后续用户明确授权尝试CAN/底盘wheel启动，用户自行配置免密CAN并启用can0；Agent经审查后用原受管入口启动domain175/localhost的base会话，约50Hz wheel已验，检查结束时留运行，见`docs/wheel_start_report_20261106.md`。没有启动传感器/录包/导航或发速度。原始0x211显示vehicle异常2、待机0、完整故障0x00000200；旧SDK只读16位error_code使ROS显示0，旧控制模式枚举也与V2手册不符，运动就绪未通过。该次许可不继承为未来运动、周期控制心跳、自动重启或清除保护的授权；新操作先现查boot/PID与真实反馈。
++
++- 2026-11-06最新用户要求先完成导航前置软件、之后另行大改规划控制。本轮占据候选图与隔离`bridge_fast_livo2_offline.sh`、地图身份绑定、原公共TF桥接及名义传感器静态TF已交付，见`docs/fast_livo2_navigation_prep_report.md`，修改尚未提交。用户授权查Ranger Mini V2模型选合适base_link，已采用轴间中点地面投影，不再以原点未知阻塞软件；`config/fast_livo2/navigation_prep.yaml`的`T_base_imu=[0.120,0.02329,0.55588]`m/RPY0仅为估算，生产runtime不变。用户当前仅确认雷达距车头约26cm，没有当前FAST三融合＋wheel同录包、愿意补录。复用现有`--record-wheel`，不启动底盘驱动，不把旧包header重叠或合成TF通过当作真实同步/接车通过。规划控制方案按用户后续设计，不从旧计划自动继续Smac/MPPI。
++
+ - 2026-11-06后续已按用户指令完成自有检索v2、官方STD/Scan Context离线对照，及新282秒包同v2/PCL与GICP原速对照，见`docs/fast_livo2_retrieval_comparison_report.md`。在线入口默认自有v2，C1/C2入口默认small_gicp；旧v1/PCL可显式选择，B/生产默认不变。官方STD/SC仅用于独立benchmark，许可和参考标签限制见报告；不当作在线集成或完整真值/泛化验收。
+ 
+ - 2026-11-06后续用户已授权在线重定位软件/离线开发，首版见 `docs/fast_livo2_online_localization_report.md`，入口 `localize_fast_livo2.sh` 默认dry-run，使用隔离 `online_localization_install` 和既有在线派生前端。新282秒独立采集包有原速C2→C1功能证据，390秒同包仍有新鲜度失效/自动恢复；真机、公共wheel/TF、长期泛化和D未验。本阶段已按用户后续指令分组本地保存，未新增推送，见`docs/git_checkpoint_online_localization_20261106.md`；实物操作不从软件授权继承。
+diff --git a/config/mid360/extrinsics_pending.yaml b/config/mid360/extrinsics_pending.yaml
+index 8da89dc..ae78588 100644
+--- a/config/mid360/extrinsics_pending.yaml
++++ b/config/mid360/extrinsics_pending.yaml
+@@ -19,3 +19,7 @@ lidar_in_base_link:
+ # Do not copy t_LI into Lightning without checking its transform direction.
+ # IMU origin sits 44.12 mm BELOW the LiDAR origin (manual t_LI z=-0.04412),
+ # so IMU-origin height above ground = 0.60 - 0.04412 = 0.556 m when level.
++# 2026-11-06 newer user statement: Mid radar is about 26 cm from FRONT edge.
++# User authorizes a model-based engineering base_link origin for development.
++# See config/fast_livo2/navigation_prep.yaml for the isolated current estimate.
++# Historical rear-edge statement above is preserved, not combined with the new one.
+diff --git a/docs/FAST_NAVIGATION_INTEGRATION_PLAN.md b/docs/FAST_NAVIGATION_INTEGRATION_PLAN.md
+index 395257e..fda5bc9 100644
+--- a/docs/FAST_NAVIGATION_INTEGRATION_PLAN.md
++++ b/docs/FAST_NAVIGATION_INTEGRATION_PLAN.md
+@@ -1,37 +1,29 @@
+-# FAST 定位接入导航与首轮闭环计划
++# FAST 导航接入与规划控制前置计划
+ 
+-日期：2026-11-06。用户要求保存当前Git，并询问成熟导航系统下一步及是否开始规划控制。本文件是后续路线建议，本次只写计划；未实施公共桥接改造、硬件操作、CAN控制或导航运动。后续源码/离线实施及实物联调按用户实际指令推进。
++更新：2026-11-06。用户随后明确：规划控制算法准备大改，先完成前面的定位接车基础、地图和车体输入工作。本文件以该指令为准，早期“继续用Smac/MPPI调参”建议不再作为实施方向。现有生产链保留，后续算法与闭环按用户新设计推进。
+ 
+-## 当前判断
++## 当前结果
+ 
+-下一阶段应进入“定位接入导航与受控闭环联调”。现有Nav2、Smac Hybrid-A*、MPPI、motion_gate和Collision Monitor可复用，首先补齐定位/地图/车体接口，不重新开发整套规划控制算法。C1/C2目前只验证了私有定位与部分跨访问功能，新默认v2/KISS/GICP在新282秒包首次VALID22.315秒；真实wheel历元、公共TF、车体外参和长期泛化仍未验。
++[前置接入报告](fast_livo2_navigation_prep_report.md)记录本轮源码、命令、退出码和证据。已完成：
+ 
+-现有配置事实：
++1. 正式3D图→同map坐标系的5cm占据候选图，未知区保留、关键帧只变换一次，多观测融合减少临时残留，来源UUID/SHA绑定。
++2. 隔离受管地图服务＋既有C1适配＋公共TF桥接＋传感器静态TF；默认dry-run，不启动设备/控制。最新small_gicp C1及已知6DoF/wheel合成输入测试通过，真实同录输入仍待采集。
++3. 用户授权按Ranger Mini V2模型选取base_link工程原点，采用轴间中点的地面投影。根据车长738mm、雷达距车头约260mm及旧近似高度，估算T_base_imu.xyz=[0.120,0.02329,0.55588]m、RPY0。独立配置，不当作实测标定。
++4. 原包只读时间审查及生产几何一致性审查；复用已有--record-wheel录包选项，无需重写采集系统。
+ 
+-- `config/runtime.yaml`生产仍为Lightning与wheel；`T_base_imu`的平移`[0,0,0.556]`仍标记APPROXIMATE。
+-- `ws_nav/src/ranger_navigation/config/nav2_params.yaml`已选择Smac Hybrid/DUBIN、MPPI/Ackermann，规划/控制转弯半径0.60米，当前MPPI上限0.10m/s、禁倒车。
+-- 同文件两个costmap的实际`robot_radius`均为0.10米；其旧注释仍出现0.20米，Collision Monitor另外使用0.74×0.52米真实车体外形加边距的矩形。这是历史窄口试验配置，不能直接当作规划几何与真实外形已一致。下一阶段核对原点与包络，统一规划/控制/防撞的几何和版本，不在本次自动改写旧现场决定。
+-- FAST先验地图为三维定位归档；现有Nav2 map_server还需匹配同一地图坐标系的占据图及来源绑定。
++## 接下来按证据推进
+ 
+-## 实施顺序与每步交付
+-
+-| 顺序 | 工作 | 交付与验收重点 |
++| 顺序 | 工作 | 完成依据 |
+ | --- | --- | --- |
+-| 1 定位接车基础 | 核实雷达/前端与主机/wheel的真实时间关系；校核T_base_imu；复用已有私有定位适配器和唯一公共桥接 | 原采样时刻的map位姿与wheel历史可插值对应；map→odom→base_link及传感器静态TF完整、无争抢；断流/过期/重定位跳变状态可见。不能重打now或用latest-TF代替同步 |
+-| 2 导航地图与障碍输入 | 从正式优化地图生成平地占据图与yaml，记录分辨率/原点/高度语义/源manifest；接入实时障碍过滤与costmap | 定位与规划处于同一map；墙、门、桌椅等障碍可核验，未知区保留未知，不能把无点区域一律当空地；地图可加载、障碍可标记和合理清除 |
+-| 3 几何与运动约束 | 核实车体外形相对base_link原点、实际转向模式、速度反馈、转弯半径及制动行为；统一costmap footprint、Smac和MPPI约束 | 规划路径的车体扫掠包络可通行，控制器可跟随；保持现有Ackermann和前进模式先完成最小闭环。半径、速度参数按本机Humble实际版本核对 |
+-| 4 离线/只读联调 | 回放或模拟wheel/TF检查只作为软件验证；获对应授权后做真实只读定位、局部costmap和规划显示 | 输出路径及速度建议可检查，先不让算法接管底盘；初始化、取消、LOST、恢复与控制就绪语义一致。模拟wheel不得记作实车同步通过 |
+-| 5 低速单点闭环 | 获本次明确运动授权后，在开阔平地依次测试短直线、缓弯、停车和单目标到达 | 复用Smac＋MPPI＋门禁＋Collision Monitor；记录路径跟踪误差、目标误差、速度/转向响应、停车距离与定位年龄；障碍、失效与取消能停止，恢复后按明确策略重新允许任务 |
+-| 6 场景稳定性 | 再逐步加入窄门、走廊、动态行人、重启/重定位恢复及重复路线 | 多访问/不同起点结果与失败原因可复查，长期运行无持续积压，资源稳定；再决定是否增加倒车、精确终点朝向、多点任务等能力 |
+-
+-第1与第2步可并行开发软件，第3步复用已有底盘/安全配置进行一致性审查；通过后再集中调Smac/MPPI参数。第一轮不加入新的控制器、复杂恢复树、坡道/高程导航、在线前端恢复或语义导航。
+-
+-## 最小闭环和范围
+-
+-建议下一次软件阶段的目标是“FAST定位适配→同刻wheel公共TF→占据图/实时障碍→Nav2规划与控制输出的隔离联调”。不把“能在RViz看到路径”当作底盘已能可靠跟踪。已有参考安全链保留，定位失效时撤销运动就绪；重定位恢复的位姿变化先经桥接和就绪流程处理，不直接带着旧控制任务继续运动。
++| 1 当前同录输入 | 用户随后人工采集2–3分钟FAST三融合＋wheel，包含静止、直线、转弯、停车 | 8话题完整、wheel发布者/驱动模式可追溯、原header保留；不依靠独立两包拼接 |
++| 2 真实时间与定位接车 | 核对传感器/wheel历元、稳定偏移/漂移、延迟及相同采样时刻插值；校核名义杆臂 | 真实map→odom→base_link可观测，原戳不重打now，断流/过期/创新跳变按原机制处理；没有证据不伪造时间映射 |
++| 3 地图与车体复核 | 现场审查门口、未知区域、两处轨迹原点占用格与动态残留；确认车体外包络 | 候选图可加载不等于车体可通行；统一未来规划/控制/防撞几何。旧costmap半径0.10m不能包住0.74×0.52m车体，待新方案调整 |
++| 4 障碍输入接入 | 后续复用现有实时障碍过滤，确认FAST为PointCloud2时输入类型/字段与静态TF、时间有效 | 真实传感器障碍能进入计划使用的局部环境表示，正确标记/清除；本轮没有启动costmap或改写过滤器 |
++| 5 规划控制大改 | 根据用户新方案确定路径表示、运动学约束、局部控制、任务/失效策略与验收指标 | 不预设Smac/MPPI，不从旧方案直接启动或调参 |
++| 6 分阶段闭环 | 软件隔离输出检查后，获该次实物/运动授权，再做低速受控测试 | 分别验取消/停车、定位失效撤销就绪、转弯/制动和目标到达；模拟结果不记作实车通过 |
+ 
+-C2当前要求独立运动支持，初始化流程需明确人工辅助初值/受控采样与何时允许导航目标；本计划不自动驱动车辆寻找初始定位。长期负样本、独立真值与盲测访问逐步补齐，不要求先无限扩展检索算法才推进接口联调，也不以私有单包PASS代替这些验收。
++## 固定接口
+ 
+-## 参考与本机版本
++T_A_B将B中的点变到A。私有C1输出map系IMU位姿，适配为T_map_base=T_map_imu*inverse(T_base_imu)，桥接按同一个t计算T_map_odom(t)=T_map_base(t)*inverse(T_odom_base(t))。保留wheel历史插值、禁止外推/latest值拼接、唯一公共TF、创新失败锁定和原采样年龄门控。
+ 
+-[Nav2定位与地图官方说明](https://docs.nav2.org/rolling/configuration_and_development/first_time_robot_setup_guide/sensors/mapping_localization/)明确map→odom是导航基本要求；[Collision Monitor官方说明](https://docs.nav2.org/rolling/configuration_and_development/configuration_guide/core_servers/collision_monitor/configuring_collision_monitor_node/)说明独立传感器防撞监视与规划器/costmap职责。这里仅参考架构，配置参数继续以项目安装的ROS 2 Humble及本机源码为准，不照搬Rolling接口。
++Lightning/wheel仍为生产默认，Tag默认关闭；本轮不切换生产runtime。候选图不压平源3D图，不增加坡道/高程导航或在线前端恢复。C2全局初始化与C1跟踪仍分别验收，不自动驱动车辆寻找初始定位。无独立真值不报告绝对定位精度；负样本、长期泛化、真实Tag与D另列验收。
+diff --git a/docs/HANDOFF.md b/docs/HANDOFF.md
+index a5b4c5f..f9d6a81 100644
+--- a/docs/HANDOFF.md
++++ b/docs/HANDOFF.md
+@@ -6,10 +6,12 @@
+ 
+ 2026-11-06再后续：自有v2与官方STD/Scan Context已做离线同条件比较；同一新282秒包v2/PCL首VALID24.394秒、v2/GICP22.315秒。在线入口默认自有v2，C1/C2入口默认small_gicp。先读[本轮对照及默认切换](fast_livo2_retrieval_comparison_report.md)；参考标签为估计轨迹，GICP有短暂拒绝，无LOST。原390秒限制未重新验收，改动已本地保存、未新增推送。
+ 
+-下一阶段建议进入[定位接入导航与受控闭环](FAST_NAVIGATION_INTEGRATION_PLAN.md)：先真实时间/wheel/TF、占据图与车体几何，再复用Smac/MPPI。当前只完成规划，不从计划启动硬件或运动。
++2026-11-06最新：用户要求先做好导航前置工作，并表示规划控制随后大改。本轮已实现3D正式归档→5cm占据候选图、隔离受管地图/既有C1适配/公共TF桥接、占据图与C1地图身份绑定及传感器静态TF，8项针对性检查通过；见[前置接入报告](fast_livo2_navigation_prep_report.md)。入口`bridge_fast_livo2_offline.sh`默认dry-run、domain219，正式候选`outputs/fast-livo-demo-navigation-prep-20261106/navigation_map_final/`。用户授权按Ranger Mini V2模型选取工程base_link，采用轴间中点的地面投影；当前估算`T_base_imu=[0.120,0.02329,0.55588]`m、RPY0，独立于生产runtime。用户确认没有当前FAST＋wheel同录包，愿意重录；已有`--record-wheel`可用，同录用于查明当前真实时间关系，不伪造映射。本轮未开硬件、未提交/推送，修改留在工作树。计划已更新，不自动进入旧Smac/MPPI方案或实物运动。
+ 
+ ## 1. 本轮边界与快速阅读
+ 
++2026-11-06最新实物例外：用户随后明确授权尝试CAN/底盘wheel启动，并自行完成免密CAN配置。当前记录为base会话`run-qqesz8kq`、domain175/localhost、约50Hz wheel，检查结束时保留运行；Agent未开传感器/录包/导航或发速度。发现旧驱动V2故障解码截断及控制模式枚举不符，原始0x211显示异常2/待机0/故障`0x00000200`，不能按ROS error_code=0判运动就绪。读[本次启动检查](wheel_start_report_20261106.md)，再按boot/PID现查，不自动续开控制或清除保护。
++
+ 2026-11-05后续已按用户指令完成统一在线预建图的软件与离线范围，见[操作说明](fast_livo2_online_mapping.md)、[交付报告](fast_livo2_online_mapping_report.md)。最终原速390秒会话3900对、305KF/114接受回环，录制/封存/文件与共用读取器加载PASS；实物、连续新鲜度、长时和D仍待验。此前交接清理与7组本地提交见[本地检查点](local_git_checkpoint_20261105.md)。2026-11-06用户另行要求合理保存并上传Git，本阶段源码、配置、证据及交接已分组保存，见[Git检查点](git_checkpoint_20261106.md)。Agent未开实物设备。下一Agent先核对实际状态和未提交改动，不从历史计划自动续跑或开设备。
+ 
+ 依次阅读：
+diff --git a/docs/README.md b/docs/README.md
+index efaeea9..89bc51e 100644
+--- a/docs/README.md
++++ b/docs/README.md
+@@ -24,6 +24,10 @@
+ 
+ ## 最新实现与验证报告
+ 
++- [20261106当前wheel实物启动检查](wheel_start_report_20261106.md)：用户本次授权CAN/底盘启动，domain175约50Hz wheel可用；原始帧发现V2故障/模式解码差异，运动就绪未通过，未发速度或开导航。
++
++- [20261106导航前置接入](fast_livo2_navigation_prep_report.md)：正式3D图派生占据候选图、来源绑定、隔离地图/C1适配/同刻wheel公共TF与名义传感器TF；8项针对性软件检查通过，真实wheel同录包/同步待验。规划控制按用户后续大改方案。
++
+ - [20261106在线定位与重定位首轮交付](fast_livo2_online_localization_report.md)：统一私有入口、实时扫描调度、原速新282秒包无初值功能、390秒同包失效/恢复与限制；[操作](fast_livo2_online_localization.md)、[计划](FAST_LIVO2_ONLINE_LOCALIZATION_PLAN.md)。
+ 
+ - [20261106新查询包核验](fast_livo2_relocalization_visit01_capture_report.md)：正常录制282秒，后审查中断，原包只读补验PASS，现场保持。
+diff --git a/docs/STATUS.md b/docs/STATUS.md
+index 5c5af44..136c0bf 100644
+--- a/docs/STATUS.md
++++ b/docs/STATUS.md
+@@ -4,6 +4,10 @@
+ 
+ ## 当前配置与工作树
+ 
++2026-11-06再后续：用户明确要求尝试底盘/wheel启动并自行完成CAN免密配置；Agent已启动domain175/localhost的受管base会话`run-qqesz8kq`，约50Hz wheel可用，检查结束时保留运行。没有启动传感器/录包/Nav2或发送速度。原始CAN另发现`vehicle_state=2`、待机模式0、完整故障`0x00000200`（上位机通信故障位），旧ROS仅16位error_code错误显示0；运动就绪未通过，不能自动放行。先读[启动检查](wheel_start_report_20261106.md)，下次仍需现查会话boot/PID，旧实时状态不是未来存活证明。
++
++2026-11-06最新：用户决定后续大改规划控制，先完成导航前置接入。本轮已交付正式3D图的5cm占据候选图、隔离`bridge_fast_livo2_offline.sh`入口、地图UUID/SHA绑定、既有C1适配/同刻wheel公共TF及传感器静态TF；4项投影＋2项ROS＋2项既有回归通过。用户授权按Ranger Mini V2模型选择base_link原点，已采用轴间中点在地面的投影，估算`T_base_imu.xyz=[0.120,0.02329,0.55588]`，独立配置`config/fast_livo2/navigation_prep.yaml`，不是实测标定。没有当前FAST＋wheel同录包，真实时间/接车仍PARTIAL。详情见[前置接入报告](fast_livo2_navigation_prep_report.md)。本轮未开硬件/控制、未提交/推送；生产及规划控制参数保持。
++
+ 当前推荐的FAST在线重定位默认组合为：自有检索v2＋KISS完整六自由度粗配准＋small_gicp精配准＋C1确认/跟踪。用户再次要求设为默认后，已核验实际入口参数及现用二进制与默认短包检查时SHA一致；配置原已生效，无需重复修改。选择依据及SC对照边界见[报告](fast_livo2_retrieval_comparison_report.md)。
+ 
+ - 2026-11-06后续按用户指令完成[自有检索v2/STD/Scan Context对照及GICP切换](fast_livo2_retrieval_comparison_report.md)：新282秒包v2/PCL首VALID24.394秒、2579有效扫描，v2/GICP22.315秒、2590有效扫描；后者10个不同扫描短暂未收敛、无LOST/ERROR。在线默认v2检索，C1/C2入口默认small_gicp，PCL/v1可显式选择。检索区域参考来自估计轨迹，不是真值；SC在后段共同几何通过数更高，不能宣称v2全面胜出。改动已分组本地保存，未新增推送，见[检查点](git_checkpoint_online_localization_20261106.md)。
+@@ -56,8 +60,8 @@
+ 
+ ## 下一步与用户待办
+ 
+-本轮已完成在线预建图、私有在线定位及自有检索对照的软件/离线范围，已按用户指令分组本地保存。下一步建议按[导航接入计划](FAST_NAVIGATION_INTEGRATION_PLAN.md)先补真实时间/wheel/公共TF、导航占据图、车体外参与几何一致性，再复用现有Smac Hybrid-A*和MPPI做受控闭环；本次仅规划，硬件/运动仍按该次明确授权。独立盲测/负样本、真实Tag和D分别验收。
++在线预建图、私有在线定位及自有检索对照已按用户指令分组本地保存。随后用户要求先实施导航前置软件，本轮地图/桥接/名义几何已完成上述软件交付，修改尚未提交；[导航接入计划](FAST_NAVIGATION_INTEGRATION_PLAN.md)已更新。下一步用用户后续录制的当前FAST＋wheel包核查真实时间和外参，再接车复核。规划控制将按用户另行设计大改，不从旧计划自动延伸Smac/MPPI；独立盲测/负样本、真实Tag和D分别验收。
+ 
+-当前无需重新录同类包。后续新盲测访问、特定曝光/触发测量、整层地图和真实wheel/系统测试如确有需要，须说明具体目的并遵循该次硬件/运动授权。未获独立真值时不报告APE/RPE或绝对精度。
++本次明确缺少当前三传感器＋wheel同录包，用户愿意补录；复用现有`record_fast_livo2.sh --record-wheel`，用途和180秒命令见前置接入报告。该选项要求已有wheel发布者，不启动底盘驱动。Agent没有自动采集授权。未获独立真值时不报告APE/RPE或绝对精度。
+ 
+ 旧阶段的完整命令、许可、失败和资产记录见 [文档索引](README.md) 及带日期报告。本次精简当前入口，历史报告仍有复核用途，不按日期一刀切删除。
+diff --git a/docs/fast_livo2_localizer_interfaces.md b/docs/fast_livo2_localizer_interfaces.md
+index 6364b81..9dc9894 100644
+--- a/docs/fast_livo2_localizer_interfaces.md
++++ b/docs/fast_livo2_localizer_interfaces.md
+@@ -72,4 +72,6 @@ bash scripts/run_fast_livo2_localizer.sh --execute \
+ 
+ 公共桥接继续唯一发布 map→odom、odom→base_link，复用 wheel 原时刻历史插值、禁止外推和首次创新失败锁定。调用者在占用检查完成后提供同域合成 wheel；私有定位成功、桥接接纳分别记录，不能自动解除锁定。配置内 T_base_imu 仍是近似值，合成外参通过不等于实物标定通过。
+ 
++2026-11-06新增可选适配参数`expected_map_uuid`和`expected_manifest_sha256`，必须一同指定；绑定后，私有结果地图身份不符即ERROR且不更新已接受身份缓存。新增`scripts/bridge_fast_livo2_offline.sh`复用本适配器与桥接、Nav2地图服务及名义传感器静态TF，自动从占据候选图取对应3D源身份；默认dry-run、domain219/localhost、use_sim_time=true，不启动C1或硬件。操作及名义外参见[前置接入报告](fast_livo2_navigation_prep_report.md)。
++
+ 2026-11-06默认注册器增补：按用户要求在完成检索比较和同包GICP对照后，C1/C2入口默认small_gicp；可显式选择pcl_icp。独立几何、运动、歧义和新鲜度门槛保持；旧安装未重建，在线使用online_localization_install。结果与未收敛拒绝见[报告](fast_livo2_retrieval_comparison_report.md)。
+diff --git a/scripts/check_base_model_selection.py b/scripts/check_base_model_selection.py
+index e6e32d1..7c274fa 100644
+--- a/scripts/check_base_model_selection.py
++++ b/scripts/check_base_model_selection.py
+@@ -42,7 +42,7 @@ struct RangerROSMessenger {
+   std::shared_ptr<ParameterShim> node_ = std::make_shared<ParameterShim>();
+   std::string port_name_, robot_model_, odom_frame_, base_frame_, odom_topic_name_;
+   int update_rate_;
+-  bool publish_odom_tf_, parking_mode_;
++  bool publish_odom_tf_, parking_mode_, receive_only_;
+   RangerSubType robot_type_;
+   RobotParams robot_params_;
+   void LoadParameters();
+@@ -80,7 +80,7 @@ int main() {
+ def main():
+     current = (REPO / 'ranger_base/src/ranger_messenger.cpp').read_text()
+     original = subprocess.check_output(['git', '-C', str(REPO), 'show',
+-                                        'HEAD:ranger_base/src/ranger_messenger.cpp'], text=True)
++                                        'b6ea21a275ca5e7168130cc6470e61474681d679:ranger_base/src/ranger_messenger.cpp'], text=True)
+     with tempfile.TemporaryDirectory(prefix='base-model-test-') as temp:
+         folder = Path(temp)
+         assert check(original, folder, 'upstream') == 1, 'Regression must reproduce upstream V2 failure'
+diff --git a/scripts/fast_livo2/record_session.py b/scripts/fast_livo2/record_session.py
+index 90cfda7..08fea03 100644
+--- a/scripts/fast_livo2/record_session.py
++++ b/scripts/fast_livo2/record_session.py
+@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[2]
+ sys.path.insert(0, str(ROOT/'scripts'))
+ from session_manager import Component, JsonHealth, atomic_json, read_session, run_guarded, session_live, stop_session
+ from online_session import check_sensor_processes, sensor_environment, specs
++import wheel_capture
+ sys.path.insert(0, str(ROOT/'ws_nav/src/ranger_localization_bridge'))
+ from ranger_localization_bridge.runtime_config import resolve, validate_fast_livo_config
+ 
+@@ -77,7 +78,7 @@ def recorder_command(folder, topics):
+             str(ROOT/'config/mid360/bag_qos.yaml'), *topics]
+ 
+ 
+-def snapshot_sources(folder, cfg):
++def snapshot_sources(folder, cfg, wheel=None):
+     """Preserve exact bytes, including profile inheritance and local modifications."""
+     paths = {ROOT/'config/runtime.yaml', Path(cfg['RANGER_RUNTIME_CONFIG']),
+              ROOT/'config/fast_livo2/sources.lock.json', ROOT/'patches/fast_livo2_stage_a.patch',
+@@ -89,6 +90,9 @@ def snapshot_sources(folder, cfg):
+         paths.update(p for p in base.rglob('*') if p.is_file() and p.suffix in ('.yaml', '.json', '.rviz'))
+     paths.update(p for p in (ROOT/'scripts/fast_livo2').rglob('*.py'))
+     paths.add(ROOT/'scripts/record_fast_livo2.sh')
++    if wheel and wheel['source']=='owned_receive_only':
++        paths.update([wheel_capture.NODE, ROOT/'config/base_mini_v2.yaml',
++                      ROOT/'patches/ranger_ros2_recording_receive_only.patch',ROOT/'scripts/build_base_recording.sh'])
+     # Attribute the actual local synchronization implementation to this capture.
+     paths.update(ROOT/p for p in (
+         'ws_camera/src/timeshare_writer/src/timeshare_writer_node.cpp',
+@@ -147,7 +151,7 @@ class CaptureHealth(JsonHealth):
+             try:
+                 state = json.loads((self.path.parent/'state.json').read_text())
+                 names = {'probe': '输入检查', 'lidar': '雷达', 'writer': '同步时间',
+-                         'camera': '相机', 'frontend': '前端', 'capture': '录包器'}
++                         'camera': '相机', 'frontend': '前端', 'wheel': '底盘反馈', 'capture': '录包器'}
+                 waiting = tuple(names[name]+'='+info['state'] for name, info in state['components'].items()
+                                 if name in names and info['state'] != 'READY')
+                 now = time.monotonic()
+@@ -237,10 +241,21 @@ def parser():
+                    help='auto: RViz with DISPLAY, otherwise localhost Foxglove')
+     p.add_argument('--foxglove-port', type=int, default=8765)
+     p.add_argument('--min-free-gb', type=float, default=5)
+-    p.add_argument('--record-wheel', action='store_true', help='Require an existing wheel publisher; never starts a driver')
++    wheel=p.add_mutually_exclusive_group()
++    wheel.add_argument('--record-wheel',dest='record_wheel',action='store_true',default=True,
++                       help='Default: reuse wheel, or auto-start a receive-only driver for RC/manual recording')
++    wheel.add_argument('--no-wheel',dest='record_wheel',action='store_false',help='Sensor-only recording; no CAN or base access')
+     return p
+ 
+ 
++def with_wheel(components, wheel):
++    if wheel['source']!='owned_receive_only':return components
++    result=list(components)
++    result.append(Component('wheel',wheel.get('driver_command',wheel_capture.driver_command()),
++                            resource='base_control'))
++    return result
++
++
+ def main():
+     p = parser()
+     args = p.parse_args()
+@@ -276,7 +291,8 @@ def main():
+     if args.record_wheel:topics['/wheel/odom'] = 'nav_msgs/msg/Odometry'
+     folder = args.output.expanduser().absolute() if args.output else ROOT/'bags'/('fast-livo-'+args.label+'-NEW')
+     sensor_environment(cfg, folder/'sensor_assets')
+-    components = [] if attach else specs(cfg, args.visualization, args.foxglove_port)
++    wheel={'source':'owned_receive_only' if args.record_wheel else 'disabled'}
++    components = with_wheel([] if attach else specs(cfg, args.visualization, args.foxglove_port),wheel)
+     worker = [sys.executable, str(ROOT/'scripts/fast_livo2/record_worker.py'), '--folder', str(folder)]
+     if not args.execute:
+         print(json.dumps({'action': 'DRY-RUN', 'mode': 'attach' if attach else 'start-sensors',
+@@ -286,7 +302,10 @@ def main():
+             'recorder': recorder_command(folder, topics), 'components': [asdict(c) for c in components],
+             'visualization': 'existing session' if attach else args.visualization,
+             'requested_visualization': requested_visualization,
+-            'no_base_or_navigation': True, 'physical_sync_proven': False}, indent=2))
++            'wheel_policy':'auto-reuse-or-receive-only' if args.record_wheel else 'disabled',
++            'wheel_plan_note':'Execution reuses an existing healthy publisher instead of starting the planned wheel component.',
++            'no_base_or_navigation': not args.record_wheel,'no_base_control_or_navigation':True,
++            'physical_sync_proven': False}, indent=2))
+         return 0
+     if session_live(read_session(SESSION)[1]):raise RuntimeError('recorder already active; use --status/--stop')
+     if args.start_sensors and live:raise RuntimeError('preview already active; use --attach or stop it explicitly')
+@@ -298,6 +317,7 @@ def main():
+     if not attach:
+         check_sensor_processes()
+         for component in components:
++            if component.name=='wheel':continue  # execution may reuse an external publisher
+             executable = component.argv[0]
+             if executable.startswith('/') and not os.access(executable, os.X_OK):
+                 raise RuntimeError('missing executable: '+executable)
+@@ -305,11 +325,13 @@ def main():
+             p.error('RViz requires DISPLAY; use --visualization auto, foxglove or none')
+         if any(component.name == 'lidar' for component in components):
+             check_lidar_host_address(cfg)
++    if args.record_wheel:wheel=wheel_capture.prepare()
+     if args.output:folder.mkdir()
+     else:folder = Path(tempfile.mkdtemp(prefix='fast-livo-'+args.label+'-', dir=ROOT/'bags'))
+     print('CAPTURE_DIR='+str(folder), flush=True)
+     print('VISUALIZATION='+('existing session' if attach else args.visualization), flush=True)
+-    print('CAPTURE PREPARING（尚未录制）：等待雷达、相机和前端数据就绪。', flush=True)
++    print('WHEEL_SOURCE='+wheel['source'],flush=True)
++    print('CAPTURE PREPARING（尚未录制）：等待所需传感器、前端和wheel数据就绪。', flush=True)
+     (folder/'sensor_assets').mkdir()
+     sensor_environment(cfg, folder/'sensor_assets')
+     manifest = {'schema_version': 1, 'created_unix_ns': time.time_ns(), 'folder': str(folder),
+@@ -318,7 +340,8 @@ def main():
+         'domain': int(cfg['FAST_LIVO_ROS_DOMAIN_ID']), 'physical_sync_proven': False,
+         'visualization': args.visualization if not attach else 'existing',
+         'requested_visualization': requested_visualization,
+-        'no_base_or_navigation': True, 'source_files': snapshot_sources(folder, cfg)}
++        'wheel':wheel,'no_base_or_navigation':not args.record_wheel,'no_base_control_or_navigation':True,
++        'source_files': snapshot_sources(folder, cfg, wheel)}
+     source_run = preview_run if attach else None
+     sensor_dir = attached_assets(preview_run) if attach else folder/'sensor_assets'
+     if attach:
+@@ -333,9 +356,10 @@ def main():
+         state_env = json.loads((sensor_dir/'manifest.json').read_text())
+         if state_env['domain'] != manifest['domain']:raise RuntimeError('attached preview uses another ROS domain')
+     atomic_json(folder/'manifest.json', manifest)
+-    components = [] if attach else specs(cfg, args.visualization, args.foxglove_port)
++    components = with_wheel([] if attach else specs(cfg, args.visualization, args.foxglove_port),wheel)
+     worker = [sys.executable, str(ROOT/'scripts/fast_livo2/record_worker.py'), '--folder', str(folder)]
+-    components.append(Component('capture', worker, depends=() if attach else ('frontend',),
++    dependencies=(() if attach else ('frontend',))+(('wheel',) if wheel['source']=='owned_receive_only' else ())
++    components.append(Component('capture', worker, depends=dependencies,
+                                 resource='fast_livo_recorder'))
+     code = run_guarded(SESSION, components, health_factory=lambda path: CaptureHealth(path, folder),
+                        startup_timeout=90, fail_on_health_loss=True, health_loss_grace=2, cleanup_grace=40)
+diff --git a/scripts/record_fast_livo2.sh b/scripts/record_fast_livo2.sh
+index 90899f4..736c2e8 100644
+--- a/scripts/record_fast_livo2.sh
++++ b/scripts/record_fast_livo2.sh
+@@ -1,10 +1,11 @@
+ #!/usr/bin/env bash
+ # Records with its own sensors and FAST profile by default; --dry-run shows the plan.
+-# Never starts chassis control or Nav2.
++# Default wheel feedback auto-start is receive-only; never starts chassis control or Nav2.
+ set -e -o pipefail
+ project_root="$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")/.." && pwd)"
+ export PYTHONDONTWRITEBYTECODE=1
+ source /opt/ros/humble/setup.bash
+ source "$project_root/ws_livox/install/setup.bash"
+ source "$project_root/ws_camera/install/setup.bash"
++source "$project_root/ws_base/install/setup.bash"
+ exec /usr/bin/python3 "$project_root/scripts/fast_livo2/record_session.py" "$@"
+diff --git a/tests/test_fast_livo_recording.py b/tests/test_fast_livo_recording.py
+index 9e734a7..c391b28 100644
+--- a/tests/test_fast_livo_recording.py
++++ b/tests/test_fast_livo_recording.py
+@@ -81,6 +81,20 @@ def wait_until(predicate, timeout=30):
+     raise AssertionError('timed out waiting for synthetic capture')
+ 
+ 
++def publish_wheel(folder):
++    import rclpy
++    from nav_msgs.msg import Odometry
++    rclpy.init();node=rclpy.create_node('capture_synthetic_wheel_'+str(os.getpid()))
++    pub=node.create_publisher(Odometry,'/wheel/odom',10)
++    def tick():
++        m=Odometry();m.header.frame_id='odom';m.child_frame_id='base_link'
++        m.header.stamp=node.get_clock().now().to_msg();m.pose.pose.orientation.w=1.;pub.publish(m)
++    node.create_timer(.02,tick);(folder/'wheel_publisher_ready').touch()
++    try:rclpy.spin(node)
++    except KeyboardInterrupt:pass
++    finally:node.destroy_node();rclpy.shutdown()
++
++
+ class CaptureUnit(unittest.TestCase):
+     def test_defaults_execute_owned_capture_with_fast_profile_before_device_access(self):
+         with tempfile.TemporaryDirectory() as tmp:
+@@ -158,7 +172,7 @@ class CaptureUnit(unittest.TestCase):
+             output = Path(tmp)/'capture'
+             env = dict(os.environ, RANGER_CAPTURE_SESSION_ROOT=str(Path(tmp)/'sessions'), PYTHONDONTWRITEBYTECODE='1')
+             result = subprocess.run([sys.executable, __file__, '--fake-missing', stage, '--execute',
+-                                     '--start-sensors', '--visualization', 'none', '--output', str(output)],
++                                     '--start-sensors', '--no-wheel', '--visualization', 'none', '--output', str(output)],
+                                     env=env, text=True, capture_output=True, timeout=12)
+             self.assertEqual(result.returncode, 2, result.stdout+result.stderr)
+             self.assertIn('尚未录制', result.stdout)
+@@ -203,7 +217,7 @@ class CaptureUnit(unittest.TestCase):
+             env = dict(os.environ, DISPLAY='', RANGER_CAPTURE_SESSION_ROOT=tmp,
+                        PYTHONDONTWRITEBYTECODE='1')
+             p = subprocess.run([sys.executable, __file__, '--fake-owned',
+-                               '--visualization', 'rviz', '--output', str(output)],
++                               '--no-wheel', '--visualization', 'rviz', '--output', str(output)],
+                               env=env, capture_output=True, text=True)
+             self.assertEqual(p.returncode, 2)
+             self.assertIn('RViz requires DISPLAY', p.stderr)
+@@ -227,6 +241,10 @@ class CaptureUnit(unittest.TestCase):
+         self.assertIn('rviz', names)
+         self.assertIn('foxglove', names)
+         self.assertFalse({'base', 'navigation', 'bridge'} & set(names))
++        self.assertIn('wheel',names)
++        self.assertIn('/wheel/odom',plan['topics'])
++        wheel=next(c['argv'] for c in plan['components'] if c['name']=='wheel')
++        self.assertIn('receive_only:=true',wheel)
+         writer = next(c['argv'] for c in plan['components'] if c['name']=='writer')
+         self.assertIn('lidar_reliability:=reliable', writer)
+         self.assertIn('lidar_queue_depth:=5', writer)
+@@ -280,10 +298,10 @@ class CaptureROS(unittest.TestCase):
+         self.processes.append(p)
+         return p
+ 
+-    def record(self, seconds):
++    def record(self, seconds, wheel=False):
+         output = self.folder/'capture'
+         p = self.start(['bash', str(ROOT/'scripts/record_fast_livo2.sh'), '--execute', '--attach',
+-                        '--seconds', str(seconds), '--output', str(output), '--runtime-config', str(self.profile)], 'entry')
++                        *([] if wheel else ['--no-wheel']), '--seconds', str(seconds), '--output', str(output), '--runtime-config', str(self.profile)], 'entry')
+         return p, output
+ 
+     def ready(self, p, output):
+@@ -327,6 +345,20 @@ class CaptureROS(unittest.TestCase):
+         self.assertNotEqual(overwrite.returncode, 0)
+         self.assertTrue((output/'CAPTURE_COMPLETE').exists())
+ 
++    def test_wheel_auto_reuses_external_publisher_without_stopping_it(self):
++        wheel=self.start([sys.executable,__file__,'--publish-wheel',str(self.folder)],'wheel_publisher')
++        wait_until(lambda:(self.folder/'wheel_publisher_ready').exists())
++        p,output=self.record(2,wheel=True)
++        self.ready(p,output)
++        self.assertEqual(p.wait(timeout=45),0,(self.folder/'entry.log').read_text())
++        manifest=json.loads((output/'manifest.json').read_text())
++        self.assertEqual(manifest['wheel']['source'],'external')
++        self.assertIn('/wheel/odom',manifest['topics'])
++        audit=json.loads((output/'audit.json').read_text())
++        self.assertGreater(audit['topics']['/wheel/odom']['count'],20)
++        self.assertIsNone(wheel.poll());self.assertIsNone(self.source.poll())
++        self.assertNotIn('wheel',json.loads((output/'result.json').read_text())['session_state']['components'])
++
+     def test_ctrl_c_finalizes_and_keeps_external_preview(self):
+         p, output = self.record(60)
+         self.ready(p, output)
+@@ -356,12 +388,13 @@ class CaptureROS(unittest.TestCase):
+         self.assertFalse(output.exists())
+         self.assertIsNone(self.source.poll())
+ 
+-    def test_owned_synthetic_session_is_cleaned_after_finite_capture(self):
++    def owned_capture(self,wheel=False):
+         self.source.send_signal(signal.SIGINT)
+         self.source.wait(timeout=5)
+         output = self.folder/'owned_capture'
+         self.env['DISPLAY'] = ''
+-        p = self.start([sys.executable, __file__, '--fake-owned',
++        p = self.start([sys.executable, __file__, '--fake-owned-wheel' if wheel else '--fake-owned',
++            *([] if wheel else ['--no-wheel']),
+             '--seconds', '2', '--output', str(output),
+             '--runtime-config', str(self.profile)], 'owned_entry')
+         self.ready(p, output)
+@@ -373,6 +406,15 @@ class CaptureROS(unittest.TestCase):
+         self.assertEqual(result['session_state']['owned'], [])
+         from session_manager import same_process
+         self.assertFalse(same_process(result['session_state']['components']['frontend']['process']))
++        if wheel:
++            self.assertFalse(same_process(result['session_state']['components']['wheel']['process']))
++            self.assertGreater(json.loads((output/'audit.json').read_text())['topics']['/wheel/odom']['count'],20)
++
++    def test_owned_synthetic_session_is_cleaned_after_finite_capture(self):
++        self.owned_capture()
++
++    def test_wheel_auto_owned_feedback_is_stopped_after_recording(self):
++        self.owned_capture(wheel=True)
+ 
+     def test_recorder_crash_preserves_failure_and_external_session(self):
+         p, output = self.record(60)
+@@ -412,6 +454,7 @@ class CaptureROS(unittest.TestCase):
+ 
+ if __name__ == '__main__':
+     if len(sys.argv)>1 and sys.argv[1] == '--publish':publish(Path(sys.argv[2]))
++    elif len(sys.argv)>1 and sys.argv[1] == '--publish-wheel':publish_wheel(Path(sys.argv[2]))
+     elif len(sys.argv)>1 and sys.argv[1] == '--fake-missing':
+         stage = sys.argv[2]
+         del sys.argv[1:3]
+@@ -436,7 +479,8 @@ if __name__ == '__main__':
+         record_session.check_sensor_processes = lambda: None
+         record_session.check_lidar_host_address = lambda cfg: None
+         raise SystemExit(record_session.main())
+-    elif len(sys.argv)>1 and sys.argv[1] == '--fake-owned':
++    elif len(sys.argv)>1 and sys.argv[1] in ('--fake-owned','--fake-owned-wheel'):
++        owned_wheel=sys.argv[1]=='--fake-owned-wheel'
+         sys.argv.pop(1)
+         import record_session
+         from session_manager import Component
+@@ -446,5 +490,9 @@ if __name__ == '__main__':
+         record_session.specs = fake_specs
+         record_session.check_sensor_processes = lambda: None
+         record_session.check_lidar_host_address = lambda cfg: None
++        if owned_wheel:
++            record_session.wheel_capture.prepare=lambda:{'source':'owned_receive_only',
++                'synthetic':True,'driver_command':[sys.executable,__file__,'--publish-wheel',
++                                                 str(Path(os.environ['RANGER_LIVO_TIMESHARE']).parent)]}
+         raise SystemExit(record_session.main())
+     else:unittest.main(verbosity=2)
+diff --git a/ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/fast_livo_localizer_adapter.py b/ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/fast_livo_localizer_adapter.py
+index 558dfd5..65a02d2 100644
+--- a/ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/fast_livo_localizer_adapter.py
++++ b/ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/fast_livo_localizer_adapter.py
+@@ -39,6 +39,10 @@ class LocalizerAdapter(Node):
+             raise ValueError('C1 adapter is currently offline only: use_sim_time=true required')
+         self.max_age = float(d('sample_max_age', .5).value)
+         self.heartbeat_age = float(d('heartbeat_max_age', .5).value)
++        self.expected_map = str(d('expected_map_uuid', '').value)
++        self.expected_manifest = str(d('expected_manifest_sha256', '').value)
++        if bool(self.expected_map) != bool(self.expected_manifest):
++            raise ValueError('map UUID and manifest SHA must be bound together')
+         xyz = d('t_base_imu_xyz', [0., 0., .556]).value
+         rpy = d('t_base_imu_rpy', [0., 0., 0.]).value
+         if (len(xyz) != 3 or len(rpy) != 3 or not all(math.isfinite(v) for v in [*xyz, *rpy])
+@@ -64,6 +68,8 @@ class LocalizerAdapter(Node):
+             self.generation_floor = None
+         self.last_clock = now
+         self.error = validate_message(msg)
++        if self.expected_map and (msg.map_uuid != self.expected_map or msg.manifest_sha256 != self.expected_manifest):
++            self.error = 'C1 map differs from the bound navigation map'
+         identity = (msg.map_generation, msg.request_generation, msg.map_uuid, msg.manifest_sha256, msg.graph_version)
+         ns = msg.header.stamp.sec*10**9+msg.header.stamp.nanosec
+         if msg.session_id in self.retired_sessions:

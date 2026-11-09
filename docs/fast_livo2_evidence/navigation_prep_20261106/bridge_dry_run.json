@@ -1,0 +1,209 @@
+{
+  "action": "DRY-RUN",
+  "domain": 219,
+  "localhost_only": true,
+  "offline_only": true,
+  "requires": "same-sample-time C1 estimate, wheel odometry and /clock from offline inputs",
+  "hardware_started": false,
+  "physical_sync_verified": false,
+  "components": [
+    {
+      "name": "monitor",
+      "argv": [
+        "/usr/bin/python3",
+        "/home/lab307/ranger_nav/scripts/fast_livo2/navigation/monitor.py"
+      ],
+      "depends": [],
+      "requires": [],
+      "ready_key": "probe_live",
+      "critical": true,
+      "start_requires": [],
+      "resource": "",
+      "preflight_requires": null
+    },
+    {
+      "name": "map_server",
+      "argv": [
+        "/opt/ros/humble/lib/nav2_map_server/map_server",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true",
+        "-r",
+        "__node:=fast_livo_navigation_map",
+        "-p",
+        "yaml_filename:=/home/lab307/ranger_nav/outputs/fast-livo-demo-navigation-prep-20261106/navigation_map_final/map.yaml",
+        "-p",
+        "topic_name:=map",
+        "-p",
+        "frame_id:=map"
+      ],
+      "depends": [
+        "monitor"
+      ],
+      "requires": [],
+      "ready_key": "process",
+      "critical": true,
+      "start_requires": [],
+      "resource": "navigation_map",
+      "preflight_requires": null
+    },
+    {
+      "name": "map_lifecycle",
+      "argv": [
+        "/opt/ros/humble/lib/nav2_lifecycle_manager/lifecycle_manager",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true",
+        "-r",
+        "__node:=fast_livo_navigation_map_lifecycle",
+        "-p",
+        "autostart:=true",
+        "-p",
+        "node_names:=[fast_livo_navigation_map]"
+      ],
+      "depends": [
+        "map_server"
+      ],
+      "requires": [],
+      "ready_key": "map_ready",
+      "critical": true,
+      "start_requires": [],
+      "resource": "",
+      "preflight_requires": null
+    },
+    {
+      "name": "static_imu",
+      "argv": [
+        "/opt/ros/humble/lib/tf2_ros/static_transform_publisher",
+        "--x",
+        "0.12",
+        "--y",
+        "0.02329",
+        "--z",
+        "0.55588",
+        "--roll",
+        "0.0",
+        "--pitch",
+        "0.0",
+        "--yaw",
+        "0.0",
+        "--frame-id",
+        "base_link",
+        "--child-frame-id",
+        "fast_livo_imu",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true",
+        "-r",
+        "__node:=fast_livo_static_imu"
+      ],
+      "depends": [
+        "map_lifecycle"
+      ],
+      "requires": [],
+      "ready_key": "process",
+      "critical": true,
+      "start_requires": [],
+      "resource": "fast_livo_static_imu",
+      "preflight_requires": null
+    },
+    {
+      "name": "static_lidar",
+      "argv": [
+        "/opt/ros/humble/lib/tf2_ros/static_transform_publisher",
+        "--x",
+        "0.109",
+        "--y",
+        "0.0",
+        "--z",
+        "0.6",
+        "--roll",
+        "0.0",
+        "--pitch",
+        "0.0",
+        "--yaw",
+        "0.0",
+        "--frame-id",
+        "base_link",
+        "--child-frame-id",
+        "livox_frame",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true",
+        "-r",
+        "__node:=fast_livo_static_lidar"
+      ],
+      "depends": [
+        "map_lifecycle"
+      ],
+      "requires": [],
+      "ready_key": "process",
+      "critical": true,
+      "start_requires": [],
+      "resource": "fast_livo_static_lidar",
+      "preflight_requires": null
+    },
+    {
+      "name": "adapter",
+      "argv": [
+        "/usr/bin/python3",
+        "-m",
+        "ranger_localization_bridge.fast_livo_localizer_adapter",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true",
+        "-p",
+        "t_base_imu_xyz:=[0.12, 0.02329, 0.55588]",
+        "-p",
+        "t_base_imu_rpy:=[0.0, 0.0, 0.0]",
+        "-p",
+        "expected_map_uuid:=253f573d7a7eabbc363a225ab192cc14",
+        "-p",
+        "expected_manifest_sha256:=e81d4a05a8da6cf3c1badfc0a6171295020bec59e5615408796c92a85b49b247"
+      ],
+      "depends": [
+        "map_lifecycle"
+      ],
+      "requires": [],
+      "ready_key": "process",
+      "critical": true,
+      "start_requires": [],
+      "resource": "localization_backend",
+      "preflight_requires": null
+    },
+    {
+      "name": "bridge",
+      "argv": [
+        "/usr/bin/python3",
+        "-m",
+        "ranger_localization_bridge.bridge_node",
+        "--ros-args",
+        "-p",
+        "use_sim_time:=true",
+        "-p",
+        "adapter_backend:=external",
+        "-p",
+        "latch_on_innovation_failure:=true",
+        "-p",
+        "tf_max_age_s:=0.5",
+        "-p",
+        "odom_max_age_s:=0.5",
+        "-p",
+        "odom_history_s:=2.0",
+        "-p",
+        "odom_max_gap_s:=0.1",
+        "-p",
+        "heartbeat_max_age_s:=0.5"
+      ],
+      "depends": [
+        "adapter"
+      ],
+      "requires": [],
+      "ready_key": "bridge_alive",
+      "critical": true,
+      "start_requires": [],
+      "resource": "localization_bridge",
+      "preflight_requires": null
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "scope": "offline academic comparison only; not linked into C1/C2 runtime",
+  "repositories": [
+    {
+      "name": "STD",
+      "origin": "https://github.com/hku-mars/STD.git",
+      "commit": "6e5903cfa2aaed5ca3c9e7d21424eebcca7655bb",
+      "license": "GPL-2.0; README additionally limits free use to personal/academic and requests commercial negotiation",
+      "adaptation": "Remove ROS parameter/visualization wrappers and unused Ceres plane ICP; expose official candidate_selector for top-K. Descriptor and vote algorithm unchanged."
+    },
+    {
+      "name": "ScanContext",
+      "origin": "https://github.com/gisbi-kim/scancontext_tro.git",
+      "commit": "b463bb7159a883ae8c36b5825547299c5bbded26",
+      "license": "README declares CC-BY-NC-SA-4.0 for code; not assumed permissive/commercial",
+      "adaptation": "Remove unused ROS includes; allow frozen indoor radius. Use official descriptor and distance with fixed-map ring-key top10, no recent-frame exclusion."
+    }
+  ],
+  "transitive": "Existing system PCL/OpenCV/Ceres/Eigen/OpenMP/TBB and existing reviewed project backend/KISS prefixes; upstream nanoflann/KD adaptor/tictoc notices retained in local derived tree."
+}

@@ -1,0 +1,19 @@
+{
+  "auto_wheel_topology_pass": true,
+  "receive_only_and_tf_disabled": true,
+  "same_base_control_lock": true,
+  "no_test_children_remaining": true,
+  "production_runtime_sha256": "7f434e1d7e9cced047070051a4aa342672e4351cf045b29e02a6f21e40fdabf6",
+  "ast_passed": [
+    "scripts/fast_livo2/localizer/online_session.py",
+    "scripts/fast_livo2/navigation/audit_live_capture.py",
+    "tests/test_fast_livo_live_audit.py",
+    "tests/test_fast_livo_live_chain_ros.py"
+  ],
+  "source_sha256": {
+    "scripts/fast_livo2/localizer/online_session.py": "914ab325b13be0ba0e9b4372c822c8433dc2febc8df4729b0e76fc656410a985",
+    "scripts/fast_livo2/navigation/audit_live_capture.py": "f740cd89778f780e48ee2eaff8505178126666acea01bcd1160614073a0d5d78",
+    "tests/test_fast_livo_live_audit.py": "4d1f8bb88a4a052bb1e66017646608289795d7b8102259f30970c8adb1f5818f",
+    "tests/test_fast_livo_live_chain_ros.py": "c69e28c9f5c0a2b6d3418a0d2d86ca4e9c9393a8cc272552d855ca0b74e004e8"
+  }
+}

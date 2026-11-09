@@ -1,0 +1,26 @@
+{
+  "first_valid": {
+    "record_ns": 1794210056992343408,
+    "sample_ns": 1590193038600277662
+  },
+  "first_fast_sensor_ns": 1590192996200399875,
+  "first_valid_from_first_fast_seconds": 42.399877787,
+  "converted_wheel_ahead_of_latest_recorded_clock": 3167,
+  "converted_wheel_at_or_before_recorded_clock": 1599,
+  "ahead_max_ms": 20.331170999999998,
+  "clock_gate_simulation_releases": 4765,
+  "gate_simulation_future_releases": 0,
+  "raw_wheel_integrated_distance_m": 4.490819200335011,
+  "raw_wheel_max_speed_m_s": 0.47200000286102295,
+  "raw_wheel_yaw_min_max_rad": [
+    -3.1374370636533717,
+    3.140474733744115
+  ],
+  "bridge_condition_counts": {
+    "odom_present_false_while_valid": 1768,
+    "map_transform_false_while_valid": 1578,
+    "time_aligned_false_while_valid": 1398,
+    "innovation_unlocked_false_while_valid": 0
+  },
+  "note": "Recorded ordering and dead reckoning observations; no accuracy truth. Gate simulation is offline only."
+}

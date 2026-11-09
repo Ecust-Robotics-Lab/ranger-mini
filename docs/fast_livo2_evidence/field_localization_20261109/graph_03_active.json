@@ -1,0 +1,64 @@
+{
+  "ready": false,
+  "bridge": {
+    "backend_alive": "1",
+    "backend_valid": "1",
+    "innovation": "1",
+    "innovation_skipped": "1",
+    "innovation_unlocked": "1",
+    "loc_tf": "1",
+    "loc_tf_age_ok": "1",
+    "map_transform": "0",
+    "odom_age": "0",
+    "odom_present": "0",
+    "time_aligned": "1",
+    "backend_state": "1",
+    "backend_reason": "map_match_confirmed; map=253f573d7a7eabbc363a225ab192cc14; graph=419; session=8e9a4f80c5356f180d33c310ce192357; initial=global-d56157ac03615515505096dca9b6b25f; request_generation=1",
+    "alignment_reason": "interpolated",
+    "aligned_sample_time": "1590193043.300488",
+    "sample_time": "1590193043.300488"
+  },
+  "graph": {
+    "/cmd_vel": [],
+    "/base/safe_cmd_vel": [],
+    "/tf": [
+      {
+        "node": "ranger_localization_bridge",
+        "type": "tf2_msgs/msg/TFMessage"
+      },
+      {
+        "node": "ranger_base_node",
+        "type": "tf2_msgs/msg/TFMessage"
+      }
+    ],
+    "/tf_static": [
+      {
+        "node": "fast_livo_static_imu",
+        "type": "tf2_msgs/msg/TFMessage"
+      },
+      {
+        "node": "fast_livo_static_lidar",
+        "type": "tf2_msgs/msg/TFMessage"
+      }
+    ],
+    "/wheel/odom": [
+      {
+        "node": "ranger_base_node",
+        "type": "nav_msgs/msg/Odometry"
+      }
+    ],
+    "/fast_livo/navigation/wheel/odom": [
+      {
+        "node": "fast_livo_wheel_clock",
+        "type": "nav_msgs/msg/Odometry"
+      }
+    ],
+    "/fast_livo/localizer/estimate": [
+      {
+        "node": "ranger_fast_livo_localizer",
+        "type": "ranger_fast_livo_localizer/msg/LocalizerEstimate"
+      }
+    ]
+  },
+  "observed_monotonic": 6018.870677101
+}

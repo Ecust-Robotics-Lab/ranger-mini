@@ -1,0 +1,39 @@
+{
+  "raw_db_sha256": "dd3a84c771ac803df92702a3c2f43a28be6773d30947d0c922cc50551d227b1e",
+  "source_and_native_sha256": {
+    "ws_base/install_recording_rx/ranger_base/lib/ranger_base/ranger_base_node": "ae5f3f1ae633cc9b968c3c0e740810388423a4e7554d2b22c787d582c12ce069",
+    "ws_base/install/ranger_base/lib/ranger_base/ranger_base_node": "36c56486b018d87a785260710b770da25d91af613807d71d23bc7d33007f23f9",
+    "ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp": "4876705ed20f0d4035ebd9a191dda1df7485ddcecb380406077a238556b934a5",
+    "config/profiles/fast_livo2_frontend.yaml": "8be76fd52d79c53c418e6232cd52ac3b8f8d314a40455e343e97c7c2e601d15f",
+    "config/fast_livo2/navigation_prep.yaml": "1dd3290bdf878f80fd862e3c07ab28ceefccb99c06e8c1f1866587161f4a2991",
+    "patches/ranger_ros2_v2_feedback_sign.patch": "2b2d5456da18b890aa58edded0acaeafecffb9919ee7f5e1ea103c274fbf88c9",
+    "docs/fast_livo2_evidence/wheel_alignment_20261106/analysis.json": "45a6c395d72dec7063d20e6e6a5e5864fc38ea006aa5f5eb45476f64d6d34857"
+  },
+  "incremental_patch_replay_matches": true,
+  "python_ast_files": 7,
+  "sessions": {
+    "base": {
+      "live": false,
+      "state": "STOPPED"
+    },
+    "fast_livo_record": {
+      "live": false,
+      "state": "STOPPED"
+    },
+    "fast_livo_live": {
+      "live": false,
+      "state": "STOPPED"
+    },
+    "fast_livo_localizer": {
+      "live": false,
+      "state": "FAILED"
+    },
+    "fast_livo_navigation_prep": {
+      "live": false,
+      "state": "STOPPED"
+    }
+  },
+  "hardware_started_this_stage": false,
+  "user_authorized_working_extrinsics": true,
+  "physical_sync_verified": false
+}

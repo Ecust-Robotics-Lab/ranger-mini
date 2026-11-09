@@ -1,0 +1,38 @@
+LOCALIZATION_DIR=/home/lab307/ranger_nav/bags/fast-livo-localization-um88vo7b
+SESSION_DIR=/home/lab307/ranger_nav/.runtime/sessions/fast_livo_online_localization/run-58oo6bv3
+LOCALIZATION state=None valid=False waiting_inputs; processed=0 skipped=0 age=None
+LOCALIZATION state=0 valid=False map_loading; processed=0 skipped=0 age=-1.0
+LOCALIZATION state=0 valid=False map_loaded_searching; processed=0 skipped=0 age=-1.0
+LOCALIZATION state=2 valid=False input_epoch_or_age_mismatch; processed=0 skipped=0 age=-1.0
+WHEEL_CLOCK ready=False forwarded=0 residual_ns=2904131365 error=sensor/steady divergence exceeds tolerance
+LOCALIZATION state=2 valid=False input_epoch_or_age_mismatch; processed=0 skipped=0 age=-1.0
+WHEEL_CLOCK ready=False forwarded=0 residual_ns=2904131365 error=sensor/steady divergence exceeds tolerance
+LOCALIZATION state=2 valid=False input_epoch_or_age_mismatch; processed=0 skipped=0 age=-1.0
+WHEEL_CLOCK ready=False forwarded=0 residual_ns=2904131365 error=sensor/steady divergence exceeds tolerance
+LOCALIZATION state=2 valid=False input_epoch_or_age_mismatch; processed=0 skipped=0 age=-1.0
+WHEEL_CLOCK ready=False forwarded=0 residual_ns=2904131365 error=sensor/steady divergence exceeds tolerance
+{
+  "workflow_success": true,
+  "session_exit": 0,
+  "session_state": "STOPPED",
+  "recorder": {
+    "exit": 0,
+    "forced": false,
+    "requested_seconds": 90.0,
+    "elapsed_seconds": 37.94471342399993,
+    "stopped_by_signal": true,
+    "observed_messages": {
+      "/livox/lidar": 435,
+      "/livox/imu": 8980,
+      "/front/image_sync": 397,
+      "/front/image": 397,
+      "/front/camera_info": 397,
+      "/fast_livo/odometry": 386,
+      "/fast_livo/deskewed_imu": 386
+    }
+  },
+  "localization_acceptance": "NOT_EVALUATED",
+  "physical_sync": "PARTIAL",
+  "hardware_started": true,
+  "navigation_functional_result": "INCOMPLETE_OR_REJECTED"
+}

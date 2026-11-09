@@ -1,0 +1,51 @@
+{
+  "checks": [
+    {
+      "command": "python3 -m unittest discover -s tests -p test_fast_livo_navigation_map.py -v",
+      "exit_code": 0,
+      "tests": 4,
+      "log": "grid_tests_final.log"
+    },
+    {
+      "command": "python3 tests/test_fast_livo_navigation_ros.py",
+      "exit_code": 0,
+      "tests": 2,
+      "seconds": 10.889,
+      "log": "navigation_ros_static_tf.log",
+      "env": {
+        "ROS_DOMAIN_ID": "196",
+        "ROS_LOCALHOST_ONLY": "1",
+        "PYTHONPATH": "tests:scripts:ws_nav/src/ranger_localization_bridge (plus sourced environment)",
+        "sourced": [
+          "/opt/ros/humble/setup.bash",
+          "ws_nav/install/setup.bash",
+          "ws_fast_livo/online_localization_install/setup.bash"
+        ]
+      }
+    },
+    {
+      "command": "C1Ros: test_adapter_rejects_retired_sessions_and_future_stamp + test_initialization_external_base_and_same_time_bridge_latch (latest node, small_gicp launch override)",
+      "exit_code": 0,
+      "tests": 2,
+      "seconds": 5.684,
+      "log": "adapter_regression.log"
+    },
+    {
+      "command": "bash scripts/export_fast_livo2_nav_map.sh --archive outputs/fast-livo-demo-online-mapping-20261105/full_replay_12/map --identity-file outputs/fast-livo-demo-online-localization-20261106/visit01_auto_pcl_01/source_identity.json --output outputs/fast-livo-demo-navigation-prep-20261106/navigation_map_final --execute",
+      "exit_code": 0,
+      "log": "export_final.log"
+    },
+    {
+      "command": "bash scripts/record_fast_livo2.sh --seconds 180 --label wheel_alignment_visit01 --visualization none --min-free-gb 100 --record-wheel --dry-run",
+      "exit_code": 0,
+      "log": "record_wheel_dry_run.json"
+    },
+    {
+      "command": "bash scripts/bridge_fast_livo2_offline.sh --navigation-map outputs/fast-livo-demo-navigation-prep-20261106/navigation_map_final",
+      "exit_code": 0,
+      "log": "bridge_dry_run.json"
+    }
+  ],
+  "test_count_excludes_repeated_runs": 8,
+  "hardware_started": false
+}

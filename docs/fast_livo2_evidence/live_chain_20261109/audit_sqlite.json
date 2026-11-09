@@ -1,0 +1,36 @@
+{
+  "functional_result": "OBSERVED",
+  "physical_sync": "NOT_VALIDATED",
+  "absolute_accuracy": "NOT_VALIDATED",
+  "counts": {
+    "/wheel/odom": 1,
+    "/fast_livo/navigation/wheel/odom": 1,
+    "/fast_livo/navigation/clock_status": 1,
+    "/fast_livo/localizer/estimate": 1,
+    "/navigation_ready": 1,
+    "/tf": 1,
+    "/localization_health": 1
+  },
+  "missing_topics": [],
+  "private_states": {
+    "1": 1
+  },
+  "distinct_confirmed_samples": 1,
+  "ready_true_messages": 1,
+  "ready_transitions": [
+    true
+  ],
+  "clock_ready_messages": 1,
+  "clock_errors": [],
+  "innovation_latched": false,
+  "converted_wheel_regressions": 0,
+  "tf_edges": {
+    "map->odom": 1,
+    "odom->base_link": 1
+  },
+  "note": "Transitions alone do not establish fault injection or recovery acceptance; TF publisher uniqueness needs live graph evidence.",
+  "source_capture": "/tmp/tmpkn5trtn8",
+  "read_only": true,
+  "synthetic_serialized_fixture": true,
+  "source_stat_unchanged": true
+}

@@ -1,0 +1,73 @@
+Panels:
+- Class: rviz_common/Displays
+  Name: Displays
+- Class: rviz_common/Views
+  Name: Views
+Visualization Manager:
+  Class: ''
+  Global Options:
+    Background Color: 28; 30; 35
+    Fixed Frame: map
+    Frame Rate: 30
+  Displays:
+  - Class: rviz_default_plugins/Grid
+    Name: Grid
+    Enabled: true
+    Cell Size: 1
+    Plane Cell Count: 30
+    Color: 80; 80; 85
+  - Class: rviz_default_plugins/PointCloud2
+    Name: Optimized map (display sampling)
+    Enabled: true
+    Topic:
+      Value: /fast_livo/backend/view/map
+      Reliability Policy: Reliable
+      Durability Policy: Transient Local
+      Depth: 1
+    Size (Pixels): 3
+    Style: Points
+    Color Transformer: AxisColor
+    Axis: Z
+    Position Transformer: XYZ
+    Decay Time: 0
+  - Class: rviz_default_plugins/Path
+    Name: Optimized trajectory
+    Enabled: true
+    Topic:
+      Value: /fast_livo/backend/optimized_path
+      Reliability Policy: Reliable
+      Depth: 1
+    Color: 255; 80; 80
+    Line Style: Lines
+    Line Width: 0.045
+    Pose Style: None
+  - Class: rviz_default_plugins/MarkerArray
+    Name: Accepted loop constraints
+    Enabled: true
+    Marker Topic:
+      Value: /fast_livo/backend/view/loops
+      Reliability Policy: Reliable
+      Durability Policy: Transient Local
+      Depth: 1
+  Tools:
+  - Class: rviz_default_plugins/Interact
+  - Class: rviz_default_plugins/MoveCamera
+  - Class: rviz_default_plugins/Select
+  Views:
+    Current:
+      Class: rviz_default_plugins/Orbit
+      Distance: 10
+      Pitch: 0.6
+      Yaw: 0.8
+      Focal Point:
+        X: 0
+        Y: 0
+        Z: 0
+      Target Frame: map
+      Name: Current View
+  Value: true
+Window Geometry:
+  Width: 1400
+  Height: 900
+  X: 50
+  Y: 50

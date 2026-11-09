@@ -1,0 +1,32 @@
+# Isolated development estimate, 2026-11-06. Not a field calibration.
+schema_version: 1
+robot: ranger_mini_v2
+base_link:
+  origin: midpoint_between_axles_on_ground
+  axes: x_forward_y_left_z_up
+  status: engineering_convention_selected_by_user_authorization
+body:
+  nominal_length_width_height_m: [0.738, 0.500, 0.338]
+  wheelbase_track_m: [0.494, 0.364]
+  # Conservative existing outer envelope retained for later footprint review.
+  reference_envelope_length_width_m: [0.740, 0.520]
+  footprint_xy: [[0.37, 0.26], [0.37, -0.26], [-0.37, -0.26], [-0.37, 0.26]]
+installation:
+  status: APPROXIMATE_NOT_FIELD_CALIBRATED
+  user_statement_2026_11_06: mid雷达距离底盘车头约26cm
+  lidar_reference_assumed: lidar_coordinate_origin
+  distance_from_front_edge_m: 0.260
+  # x = 0.738/2 - 0.260. y/height/attitude reuse prior approximate statement.
+  t_base_lidar_xyz: [0.109, 0.0, 0.600]
+  t_base_lidar_rpy: [0.0, 0.0, 0.0]
+  # T_base_imu = T_base_lidar * T_lidar_imu (manufacturer nominal).
+  t_base_imu_xyz: [0.120, 0.02329, 0.55588]
+  t_base_imu_rpy: [0.0, 0.0, 0.0]
+  base_imu_field_calibrated: false
+  assumptions: [front_distance_refers_to_sensor_origin, roof_centerline, height_0.60m_from_prior_statement, sensor_axes_aligned_with_base]
+sources:
+  manual: https://static.generation-robots.com/media/ranger-mini-user-manual-en.pdf
+  official_driver: https://github.com/agilexrobotics/ranger_ros2/blob/humble/ranger_base/include/ranger_base/ranger_params.hpp
+  official_model_reviewed: https://github.com/agilexrobotics/ugv_gazebo_sim/blob/master/ranger_mini/ranger_mini_v2/urdf/ranger_mini.xacro
+  imu_nominal: config/mid360/extrinsics_pending.yaml
+production_runtime_changed: false

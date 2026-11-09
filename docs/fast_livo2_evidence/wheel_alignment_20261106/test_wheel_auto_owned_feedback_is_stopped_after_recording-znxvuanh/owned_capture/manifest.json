@@ -1,0 +1,547 @@
+{
+  "schema_version": 1,
+  "created_unix_ns": 1794204522034489627,
+  "folder": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/wheel_alignment_20261106/test_wheel_auto_owned_feedback_is_stopped_after_recording-znxvuanh/owned_capture",
+  "owns_sensors": true,
+  "mode": "start-sensors",
+  "seconds": 2.0,
+  "min_free_bytes": 5000000000,
+  "topics": {
+    "/livox/lidar": "sensor_msgs/msg/PointCloud2",
+    "/livox/imu": "sensor_msgs/msg/Imu",
+    "/front/image_sync": "sensor_msgs/msg/Image",
+    "/front/image": "sensor_msgs/msg/Image",
+    "/front/camera_info": "sensor_msgs/msg/CameraInfo",
+    "/fast_livo/odometry": "nav_msgs/msg/Odometry",
+    "/fast_livo/deskewed_imu": "sensor_msgs/msg/PointCloud2",
+    "/wheel/odom": "nav_msgs/msg/Odometry"
+  },
+  "domain": 189,
+  "physical_sync_proven": false,
+  "visualization": "foxglove",
+  "requested_visualization": "auto",
+  "wheel": {
+    "source": "owned_receive_only",
+    "synthetic": true,
+    "driver_command": [
+      "/usr/bin/python3",
+      "/home/lab307/ranger_nav/tests/test_fast_livo_recording.py",
+      "--publish-wheel",
+      "/home/lab307/ranger_nav/docs/fast_livo2_evidence/wheel_alignment_20261106/test_wheel_auto_owned_feedback_is_stopped_after_recording-znxvuanh/owned_capture/sensor_assets"
+    ]
+  },
+  "no_base_or_navigation": false,
+  "no_base_control_or_navigation": true,
+  "source_files": [
+    {
+      "source": "/home/lab307/ranger_nav/config/base_mini_v2.yaml",
+      "file": "sources/0_base_mini_v2.yaml",
+      "sha256": "1a8b916ccb2a49d4b2878175255cdf53c713aeb3e26022521cfa9062966e4249"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/apriltag_camera.json",
+      "file": "sources/1_apriltag_camera.json",
+      "sha256": "54af13d1316b85954514196e0bb16deada8c1a18ad55a9ca12a2daa761d9f0b1"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/apriltag_sizes.json",
+      "file": "sources/2_apriltag_sizes.json",
+      "sha256": "3b8facc4cb14c2eb3f73e05a9690364fcfb1c6f6dded8af74f89de6899310269"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/apriltag_sizes_capture_140mm.json",
+      "file": "sources/3_apriltag_sizes_capture_140mm.json",
+      "sha256": "5034066a336e9735761427b794324225e357f91b40a256e772abb71f7f1b4d6e"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/apriltag_sources.lock.json",
+      "file": "sources/4_apriltag_sources.lock.json",
+      "sha256": "cd719fc11850aa3d6f6e4034a936533d16c326603aa3ed809ea6f8fe7b06161f"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/backend.yaml",
+      "file": "sources/5_backend.yaml",
+      "sha256": "22d1eac223160ba5620e046e1deee7efa084bc77e5ab604ca3c098d9817407db"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/calibration_provenance.json",
+      "file": "sources/6_calibration_provenance.json",
+      "sha256": "f7fd48810eb3483bb9b6473229b3ded64e6fa997b9b554a1d94468c9f50b0e31"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/calibration_snapshot/camera_intrinsics.yaml",
+      "file": "sources/7_camera_intrinsics.yaml",
+      "sha256": "466cb1595c4d296f51e6cbe1011ddc1c5ba329b51f7b28053d0faede7ba8926f"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/calibration_snapshot/extrinsics.yaml",
+      "file": "sources/8_extrinsics.yaml",
+      "sha256": "3e0953b8577e4d58458c34f7ab198477f0611ac6eff2ec2e8165246f1adf1dc0"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/camera_live.yaml",
+      "file": "sources/9_camera_live.yaml",
+      "sha256": "2a0202023e685316deff5a00b36a69c13e6a5244e3f5999824f70e4f2919bf52"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/foxglove.yaml",
+      "file": "sources/10_foxglove.yaml",
+      "sha256": "9a639cd366b4c2301984ad4593157b72b6f8ad3947187963e758cb72e277b962"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/live.rviz",
+      "file": "sources/11_live.rviz",
+      "sha256": "c55eb1d8d5a28aff4a344c7c6f2e85da773b7523f7b6e66198095379c4f48d01"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/localization.rviz",
+      "file": "sources/12_localization.rviz",
+      "sha256": "1e874df81b3514292443b6bae690077769d5847063b2c6009aea53211da59110"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/localizer.yaml",
+      "file": "sources/13_localizer.yaml",
+      "sha256": "0dd256349c4808c3111c68a33fd6abcc59398f88167a492175d725c0e71dcadc"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/mapping.rviz",
+      "file": "sources/14_mapping.rviz",
+      "sha256": "dcf2f443289cbdf3c18913b55c384fa09fa1ab8eb2751400f5ce67081ea7c0ad"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/mapping_foxglove.yaml",
+      "file": "sources/15_mapping_foxglove.yaml",
+      "sha256": "0a59c877b3b7ee0536e030c077e702ced6c6244ee37b13e7e2ef1e70b2811eaa"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/mid360s_live.json",
+      "file": "sources/16_mid360s_live.json",
+      "sha256": "f98839dd786b279c828dd47bdf9823e2ba99528eee4f577d75864e2afc06dac8"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/navigation_prep.yaml",
+      "file": "sources/17_navigation_prep.yaml",
+      "sha256": "a4b2bb11b173123475c8df1066fc0710429ad4cfe66ea2cbcbfc9d5b1f46cb8f"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/ranger_mid360s_hik_trial.yaml",
+      "file": "sources/18_ranger_mid360s_hik_trial.yaml",
+      "sha256": "4451caf0463dcbf94ab7dcae1f7be3dd1adf3d90e05538841ce68491d08e1255"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/relocalization_sources.lock.json",
+      "file": "sources/19_relocalization_sources.lock.json",
+      "sha256": "e8fcd6de5f81e446a765c27a49dcecc545df05140422439785bb07b532f3ee47"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/relocalizer.yaml",
+      "file": "sources/20_relocalizer.yaml",
+      "sha256": "5a3fd7122d913010f6c4b5a6a1635a95bbd47060a07d1537458f51b508d2fdfb"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/retrieval_benchmark_sources.lock.json",
+      "file": "sources/21_retrieval_benchmark_sources.lock.json",
+      "sha256": "aa2a6ba02a759472b46de76b843e74f7d1d1cb79f11cb086bbe77e9c7d23a48a"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/fast_livo2/sources.lock.json",
+      "file": "sources/22_sources.lock.json",
+      "sha256": "8fb74d2eac073c645416fe5532ac902229c92df820f02d0bf43f57d9c1a2fd60"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/mid360/bag_qos.yaml",
+      "file": "sources/23_bag_qos.yaml",
+      "sha256": "46007cabab8d356d21c932f99334b6a204b74ef7ece6809bdea617d866486f88"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/profiles/fast_livo2_frontend.yaml",
+      "file": "sources/24_fast_livo2_frontend.yaml",
+      "sha256": "25488c6c21502a5caaf6f208863e7eacd3fb7f1adb92527d41ad5ffbe3eb52e6"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/profiles/lightning.yaml",
+      "file": "sources/25_lightning.yaml",
+      "sha256": "4888d0326bac525e9c64000f461746ac7e99e47d93e39dd4f8ed595ae8335dbf"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/config/runtime.yaml",
+      "file": "sources/26_runtime.yaml",
+      "sha256": "7f434e1d7e9cced047070051a4aa342672e4351cf045b29e02a6f21e40fdabf6"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/wheel_alignment_20261106/test_wheel_auto_owned_feedback_is_stopped_after_recording-znxvuanh/runtime.yaml",
+      "file": "sources/27_runtime.yaml",
+      "sha256": "c537848022d5c6f8fc47ca9d602abda5794df640b105263fc7d3dd22bd8a340a"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/patches/fast_livo2_stage_a.patch",
+      "file": "sources/28_fast_livo2_stage_a.patch",
+      "sha256": "8dc20b4ef91133cab3f6e9dc6f6bdbdda67a75d1deefa80ccfd233c4b1ce1e09"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/patches/ranger_ros2_recording_receive_only.patch",
+      "file": "sources/29_ranger_ros2_recording_receive_only.patch",
+      "sha256": "b85a7bfe605abcf2b201259f0e3b1461d0d74066d94cf18daa2ed723f941b776"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/patches/ranger_ros2_v2_feedback_sign.patch",
+      "file": "sources/30_ranger_ros2_v2_feedback_sign.patch",
+      "sha256": "2b2d5456da18b890aa58edded0acaeafecffb9919ee7f5e1ea103c274fbf88c9"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/build_base_recording.sh",
+      "file": "sources/31_build_base_recording.sh",
+      "sha256": "cd08320a4191b388672221d942e3b04e80f0065cceccf03cc0440f20760e9424"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/analyze_baseline.py",
+      "file": "sources/32_analyze_baseline.py",
+      "sha256": "f518235429fa56e77b7cac2b747e26bbb0e0370a5623e524ce68300014088d5a"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/audit_bag.py",
+      "file": "sources/33_audit_bag.py",
+      "sha256": "e35e810931d30adc39c8ab7d84a83a10d37aca91086c60ba4fdf4ccd5c9a2479"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/backend/analyze_motion.py",
+      "file": "sources/34_analyze_motion.py",
+      "sha256": "76ee1b2e67afeae9d1eb621f5bb5b47b1beb4f9a5d2119a1e1bdc96aca7a8a27"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/backend/audit_build.py",
+      "file": "sources/35_audit_build.py",
+      "sha256": "190f298bc8e79540feb29120126b8e6095329233083b7a82360c196d5b69c80b"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/backend/monitor.py",
+      "file": "sources/36_monitor.py",
+      "sha256": "b4e78d322d0be7fad097d3fd9512a7cdd2d4e8358e53359bad7434473f69737d"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/backend/run_checks.py",
+      "file": "sources/37_run_checks.py",
+      "sha256": "fc03502c8941e866d77cf80aa768d9c90e3c609e202cd2f87765da71e29c45f3"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/backend/session.py",
+      "file": "sources/38_session.py",
+      "sha256": "d17dac6575abca3660a19f69de73d09f13ea88c8a9f9219cff33b90271b8c1a4"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/backend/validate_motion.py",
+      "file": "sources/39_validate_motion.py",
+      "sha256": "f84a857370a6d26fb043827dac4b4093a459ff2f61c0ffa30b4d07554093ebcb"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/check_patch.py",
+      "file": "sources/40_check_patch.py",
+      "sha256": "56788355ac2569900d611aac70a12b228dbb856fdba461d54c44e492ec37fc6c"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/dds_smoke.py",
+      "file": "sources/41_dds_smoke.py",
+      "sha256": "096d5f628e5ac1f077329f5db970026e9ee5912b16d688707229b3e842d754d7"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/fetch_sources.py",
+      "file": "sources/42_fetch_sources.py",
+      "sha256": "ce7848713cab12d9c2edd0c4a2d81db9206795e6a0f7423bb095d72542d5d502"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/live_monitor.py",
+      "file": "sources/43_live_monitor.py",
+      "sha256": "bfa293810514fbe9dc675b7c464e5c1fc5e772a3eb4eee2a756701465a920f75"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/localizer/analyze_online.py",
+      "file": "sources/44_analyze_online.py",
+      "sha256": "f75af8f20f86bc6082929411fc846b701da88370e7dcf4cda66ff78f93851a0d"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/localizer/compatibility.py",
+      "file": "sources/45_compatibility.py",
+      "sha256": "598aea625127c5678c22d171ee12be80c2e2532af08514c0bc52422cd4909b2b"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/localizer/initialize_online.py",
+      "file": "sources/46_initialize_online.py",
+      "sha256": "5138917ee9748e0a5fa1607d72042f8b973e980c6a269048afa89124c1750dad"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/localizer/monitor.py",
+      "file": "sources/47_monitor.py",
+      "sha256": "9460ebbfadda56b61b415dea664535f1a76fb3d2453008f8d7420e23da6b7058"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/localizer/online_session.py",
+      "file": "sources/48_online_session.py",
+      "sha256": "ba206f5b0a70b35a99683cda675ea27a52839c22ca20e7428c1aa00b99795b02"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/localizer/run_checks.py",
+      "file": "sources/49_run_checks.py",
+      "sha256": "ca48a35f9df50befd26ccb012073494ae60a3d559fa900820249b6780ce89418"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/localizer/session.py",
+      "file": "sources/50_session.py",
+      "sha256": "2455ccb549b74bdfc3238f95d2a520274ccf4cc23c4fafbaaf2c9add0d0e4af5"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/localizer/validate_motion.py",
+      "file": "sources/51_validate_motion.py",
+      "sha256": "f21924af0634e0bc6a555a7ab644a0157213cfb9a54ada2193073315aab2c92c"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/localizer/view.py",
+      "file": "sources/52_view.py",
+      "sha256": "fef6d863c5521f45dd9ded12b8254b028bd8eb1e8f2bc9fa57b6acef8e567385"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/make_replay_view.py",
+      "file": "sources/53_make_replay_view.py",
+      "sha256": "45afc07c1afe2bc29c5a488da0ee56adf7f713672eedbd7fc94116639999390f"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/make_share_video.py",
+      "file": "sources/54_make_share_video.py",
+      "sha256": "7a1a3149f54bac47e31f82e6cb9e84c8bf5e42af647733a9608e7fd2edea7486"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/mapping_monitor.py",
+      "file": "sources/55_mapping_monitor.py",
+      "sha256": "50e6b70b580c06ce41a51e67f597678ea4711975215d1e4f16bad56b667cd592"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/mapping_replay.py",
+      "file": "sources/56_mapping_replay.py",
+      "sha256": "26226c8321701dfa113576b2ba05aca0116858878fb56133ded78ace4355409f"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/mapping_session.py",
+      "file": "sources/57_mapping_session.py",
+      "sha256": "9a212d3469118d99a64a4c2f052c8dac49df0147d4d1670bbf9f1e8ed4b7d8b4"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/navigation/analyze_wheel_alignment.py",
+      "file": "sources/58_analyze_wheel_alignment.py",
+      "sha256": "3d837cab397268b75f985cab5ac4ac3d8047edc6388bbe21ab194a1ab72785ad"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/navigation/asset.py",
+      "file": "sources/59_asset.py",
+      "sha256": "0650eb77e031158f5549dd62c41d0eb0edac883bfd36b549b0be812cfad119a9"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/navigation/audit_inputs.py",
+      "file": "sources/60_audit_inputs.py",
+      "sha256": "34f9ce58ed230ad5ad7ec5b961e078fffcde463b9ca34364e5ab41513bdcdf0d"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/navigation/export_map.py",
+      "file": "sources/61_export_map.py",
+      "sha256": "a29174e175b6cf04296e0ba1c8c44b697086f26a713c154477ddb9e9f81b546a"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/navigation/grid.py",
+      "file": "sources/62_grid.py",
+      "sha256": "1266a7c21c20723436898a65ea493b417ebb9cb8194b758c222c8cfb71e56a00"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/navigation/monitor.py",
+      "file": "sources/63_monitor.py",
+      "sha256": "711ffe0ae7cc138d0d74ef908af8bc22e791a13fc3467fc23e0f4d7a804759ba"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/navigation/session.py",
+      "file": "sources/64_session.py",
+      "sha256": "2a78d2521de7f0fed7e6a54722c332c1b5c9503f88fbd151469dc8d3f56e1f10"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/online_session.py",
+      "file": "sources/65_online_session.py",
+      "sha256": "8c10fd8805bd5eb8763b58de030fa07e9b491029e005db80efaee6cd7bc27b76"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/prepare_online_frontend.py",
+      "file": "sources/66_prepare_online_frontend.py",
+      "sha256": "28e4c1d26ed6f45264f1056357601961ed9fd8e0843e037dd38c50132ba851aa"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/record_session.py",
+      "file": "sources/67_record_session.py",
+      "sha256": "c4ea17d478c7fd5b8a089c6b78f38d006fdd95fbbf3a8c69053553a0a0d2b196"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/record_worker.py",
+      "file": "sources/68_record_worker.py",
+      "sha256": "c8b86810fe4fbfdd530af23ed44a13dcbaff03333f187ade1c1247f5cd05e43e"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/relocalization/build_kiss.py",
+      "file": "sources/69_build_kiss.py",
+      "sha256": "26f9480a3e80c0a6df39b147223dc7246ddd44502e545aafc2d5ee214e549d51"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/render_demo.py",
+      "file": "sources/70_render_demo.py",
+      "sha256": "b06585f8b9cb91345c4dd689fe91c650294f88c97eb2067087872eb65f52b2f7"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/retrieval_benchmark/plot.py",
+      "file": "sources/71_plot.py",
+      "sha256": "737673b2535d71296519a3a08d5601dec69afb0e6d370270012af3b54f6f3b35"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/retrieval_benchmark/prepare.py",
+      "file": "sources/72_prepare.py",
+      "sha256": "94eb712c674b753ed4e937aab088a8f725fd746f4f9480d808bab0ffb173f1f9"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/retrieval_benchmark/prepare_upstream.py",
+      "file": "sources/73_prepare_upstream.py",
+      "sha256": "e6f310be1ba163f3d77fe5d4e7a7d46604713507077a2f9e3a8765f70d9d84de"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/retrieval_benchmark/summarize.py",
+      "file": "sources/74_summarize.py",
+      "sha256": "14331fb864e62a7e65c5f2b0b309e99cab3e6a78c13cbd0bd3001a35f0c04cf1"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/tags/analyze_capture_consistency.py",
+      "file": "sources/75_analyze_capture_consistency.py",
+      "sha256": "a3eb8a5a4d59e525f9aaaa4297024ef30454fa84f599e51e878c003c9da12f4a"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/tags/analyze_fullbag.py",
+      "file": "sources/76_analyze_fullbag.py",
+      "sha256": "5cf477fa4a28f02d812a462663478d6998a0e496ab1748c4bbe5a7db2370a1f1"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/tags/analyze_imu_timing.py",
+      "file": "sources/77_analyze_imu_timing.py",
+      "sha256": "0ffdc13120694ab1c4f8dd32bfa7592163eabb359b842d8723be23417d25bc3e"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/tags/assess_landmark.py",
+      "file": "sources/78_assess_landmark.py",
+      "sha256": "5e0f979e4f0261162ad918ef52eb0fb26d426a6fedab9fb7847ff837036074a7"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/tags/audit_bag.py",
+      "file": "sources/79_audit_bag.py",
+      "sha256": "718968ff508d0f5722d8d981ac99731f2ed4c348294ebe5679f121fe8e3e23dc"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/tags/diagnose_c1_corrections.py",
+      "file": "sources/80_diagnose_c1_corrections.py",
+      "sha256": "19f41dccd67cb9c9436af53832511399675a2d4c8fe0c0b3fb64da0b3c289031"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/tags/diagnose_motion_geometry.py",
+      "file": "sources/81_diagnose_motion_geometry.py",
+      "sha256": "87a2befc1bd2fb4cbfaf27ac9fe48a3c58f4836707c45538ffcd697929bebfd3"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/tags/extract_bag.py",
+      "file": "sources/82_extract_bag.py",
+      "sha256": "c66cc4511e18f9537a2f0af75f08f6c0a51d84368b2b5821e34c0e7ecc419dd7"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/tags/run_checks.py",
+      "file": "sources/83_run_checks.py",
+      "sha256": "ebf7ee23c06d50cada3388b24c69b896bb21cb49a05f51d838957bb2a54a7287"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/tags/screen_capture.py",
+      "file": "sources/84_screen_capture.py",
+      "sha256": "4cfe43b7c84666a12d3e63857831a2e70299d9d858add5d21d01ac28ee17e214"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/tags/session.py",
+      "file": "sources/85_session.py",
+      "sha256": "e7cbeba0fd3dcb303d7ac71420554a09258f72066d56651bae84da0fd91b4486"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/test_timeshare_writer.py",
+      "file": "sources/86_test_timeshare_writer.py",
+      "sha256": "449bfe69c76197d08b7e6b8985d908f33d83195038fcecffae3b83ace6e543bc"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/validate_live.py",
+      "file": "sources/87_validate_live.py",
+      "sha256": "9bb04921287f8d8bc66fef20f7449902dbca4d80f1ebdd5e74b1e4da034b5a16"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/validate_online_mapping.py",
+      "file": "sources/88_validate_online_mapping.py",
+      "sha256": "7d99bdabce044bc5b70962bf9ed68d9410c926618d33cb7af2cfe9a700f76cfb"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/fast_livo2/wheel_capture.py",
+      "file": "sources/89_wheel_capture.py",
+      "sha256": "8774ebcecf8a708bbc8baaeb146c2b3b170964ab9dd1105c72c47b101a194798"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/scripts/record_fast_livo2.sh",
+      "file": "sources/90_record_fast_livo2.sh",
+      "sha256": "4c59ed2aceabc924db2a614017d1d9e89406442bbfb88a2b6fff5b139b591a6e"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/lib/ranger_base/ranger_base_node",
+      "file": "sources/91_ranger_base_node",
+      "sha256": "ae5f3f1ae633cc9b968c3c0e740810388423a4e7554d2b22c787d582c12ce069"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/include/ranger_base/ranger_messenger.hpp",
+      "file": "sources/92_ranger_messenger.hpp",
+      "sha256": "d24f571b58b892b5deb57e0f55604ef1a8fa7bc81b584ca4c0c68df9b586f807"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp",
+      "file": "sources/93_ranger_messenger.cpp",
+      "sha256": "4876705ed20f0d4035ebd9a191dda1df7485ddcecb380406077a238556b934a5"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/ws_camera/install/hik_camera_trigger_driver/lib/hik_camera_trigger_driver/hik_camera_trigger_driver_node",
+      "file": "sources/94_hik_camera_trigger_driver_node",
+      "sha256": "3829e9e157bcdffca2045541ce1aaed434ad77fe0829fb7c3ec9cb32a1043456"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/ws_camera/install/hik_camera_trigger_driver/share/hik_camera_trigger_driver/config/camera_info.yaml",
+      "file": "sources/95_camera_info.yaml",
+      "sha256": "3b8536bf5331cc7a07f98751dfa322c7c1f3f7fdc08a5e91272030735f475932"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/ws_camera/install/timeshare_writer/lib/timeshare_writer/timeshare_writer_node",
+      "file": "sources/96_timeshare_writer_node",
+      "sha256": "3595b4f0a88344f3dd0eec0ad61f53e195de9f6e44e9449953ceaee8ee85df16"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/ws_camera/src/hik_camera_trigger_driver/src/hik_camera_node.cpp",
+      "file": "sources/97_hik_camera_node.cpp",
+      "sha256": "451bc5add8cf2fdff7f2954fe361f2baa182bcb0c83dba06fc14eb2b52d81efa"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/ws_camera/src/timeshare_writer/CMakeLists.txt",
+      "file": "sources/98_CMakeLists.txt",
+      "sha256": "bf68cef0410198912a8768acc9597e0bd72e64179634f49db896613df2fda859"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/ws_camera/src/timeshare_writer/package.xml",
+      "file": "sources/99_package.xml",
+      "sha256": "d05346122000eb54ef95dc6692fee70bb38d92a970d8f2b009f5dca10bafc4dd"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/ws_camera/src/timeshare_writer/src/timeshare_writer_node.cpp",
+      "file": "sources/100_timeshare_writer_node.cpp",
+      "sha256": "ec2a8b4738e3c3eb38e8a79e3285777df95f93cf3a7b27f845635f2efdd5967e"
+    },
+    {
+      "source": "/home/lab307/ranger_nav/ws_fast_livo/install/fast_livo/lib/fast_livo/fastlivo_mapping",
+      "file": "sources/101_fastlivo_mapping",
+      "sha256": "dfcf5d4d54f7b81f573a000589527afa36f4dc71c5fe44df1c94f5bff9ae7b27"
+    }
+  ]
+}

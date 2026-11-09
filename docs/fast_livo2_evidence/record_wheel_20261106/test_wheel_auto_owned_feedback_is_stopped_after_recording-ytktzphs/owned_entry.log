@@ -1,0 +1,114 @@
+CAPTURE_DIR=/home/lab307/ranger_nav/docs/fast_livo2_evidence/record_wheel_20261106/test_wheel_auto_owned_feedback_is_stopped_after_recording-ytktzphs/owned_capture
+VISUALIZATION=foxglove
+WHEEL_SOURCE=owned_receive_only
+CAPTURE PREPARING（尚未录制）：等待所需传感器、前端和wheel数据就绪。
+SESSION_DIR=/home/lab307/ranger_nav/docs/fast_livo2_evidence/record_wheel_20261106/test_wheel_auto_owned_feedback_is_stopped_after_recording-ytktzphs/sessions/fast_livo_record/run-89q_xoe7
+CAPTURE PREFLIGHT /home/lab307/ranger_nav/docs/fast_livo2_evidence/record_wheel_20261106/test_wheel_auto_owned_feedback_is_stopped_after_recording-ytktzphs/owned_capture
+CAPTURE RECORDING /home/lab307/ranger_nav/docs/fast_livo2_evidence/record_wheel_20261106/test_wheel_auto_owned_feedback_is_stopped_after_recording-ytktzphs/owned_capture
+录制已就绪；先静止15秒，再开始人工采集动作。Ctrl+C 停录并归档。
+CAPTURE FINALIZING /home/lab307/ranger_nav/docs/fast_livo2_evidence/record_wheel_20261106/test_wheel_auto_owned_feedback_is_stopped_after_recording-ytktzphs/owned_capture
+{
+  "exit": 0,
+  "forced": false,
+  "requested_seconds": 2.0,
+  "elapsed_seconds": 2.010688518999814,
+  "stopped_by_signal": false,
+  "observed_messages": {
+    "/livox/lidar": 49,
+    "/livox/imu": 49,
+    "/front/image_sync": 49,
+    "/front/image": 49,
+    "/front/camera_info": 49,
+    "/fast_livo/odometry": 49,
+    "/fast_livo/deskewed_imu": 49,
+    "/wheel/odom": 124
+  },
+  "session_exit": 0,
+  "session_state": {
+    "run_directory": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/record_wheel_20261106/test_wheel_auto_owned_feedback_is_stopped_after_recording-ytktzphs/sessions/fast_livo_record/run-89q_xoe7",
+    "guardian": {
+      "pid": 23143,
+      "start_ticks": 1032063,
+      "ppid": 23130,
+      "state": "R",
+      "boot_id": "aa4657c7-68c6-4f44-a0f0-4bd959d6130f"
+    },
+    "owner": {
+      "pid": 23176,
+      "start_ticks": 1032079,
+      "ppid": 23143,
+      "state": "R",
+      "boot_id": "aa4657c7-68c6-4f44-a0f0-4bd959d6130f"
+    },
+    "state": "STOPPED",
+    "reason": "",
+    "owned": [],
+    "components": {
+      "frontend": {
+        "state": "READY",
+        "process": {
+          "pid": 23177,
+          "start_ticks": 1032079,
+          "ppid": 23176,
+          "state": "R",
+          "boot_id": "aa4657c7-68c6-4f44-a0f0-4bd959d6130f"
+        },
+        "argv": [
+          "/usr/bin/python3",
+          "/home/lab307/ranger_nav/tests/test_fast_livo_recording.py",
+          "--publish",
+          "/home/lab307/ranger_nav/docs/fast_livo2_evidence/record_wheel_20261106/test_wheel_auto_owned_feedback_is_stopped_after_recording-ytktzphs/owned_capture/sensor_assets"
+        ]
+      },
+      "wheel": {
+        "state": "READY",
+        "process": {
+          "pid": 23178,
+          "start_ticks": 1032079,
+          "ppid": 23176,
+          "state": "R",
+          "boot_id": "aa4657c7-68c6-4f44-a0f0-4bd959d6130f"
+        },
+        "argv": [
+          "/usr/bin/python3",
+          "/home/lab307/ranger_nav/tests/test_fast_livo_recording.py",
+          "--publish-wheel",
+          "/home/lab307/ranger_nav/docs/fast_livo2_evidence/record_wheel_20261106/test_wheel_auto_owned_feedback_is_stopped_after_recording-ytktzphs/owned_capture/sensor_assets"
+        ]
+      },
+      "capture": {
+        "state": "READY",
+        "process": {
+          "pid": 23179,
+          "start_ticks": 1032079,
+          "ppid": 23176,
+          "state": "R",
+          "boot_id": "aa4657c7-68c6-4f44-a0f0-4bd959d6130f"
+        },
+        "argv": [
+          "/usr/bin/python3",
+          "/home/lab307/ranger_nav/scripts/fast_livo2/record_worker.py",
+          "--folder",
+          "/home/lab307/ranger_nav/docs/fast_livo2_evidence/record_wheel_20261106/test_wheel_auto_owned_feedback_is_stopped_after_recording-ytktzphs/owned_capture"
+        ]
+      }
+    },
+    "updated_monotonic": 10323.699629297,
+    "guardian_cleanup_complete": true
+  },
+  "folder": "/home/lab307/ranger_nav/docs/fast_livo2_evidence/record_wheel_20261106/test_wheel_auto_owned_feedback_is_stopped_after_recording-ytktzphs/owned_capture",
+  "capture_complete": true,
+  "sync": {
+    "available": false
+  },
+  "quality": {
+    "data_checks": "PARTIAL",
+    "failures": [],
+    "warnings": [
+      "sync_csv_unavailable"
+    ],
+    "physical_sync": "PARTIAL",
+    "motion_mapping_accuracy": "NOT_EVALUATED",
+    "note": "Header equality is not physical synchronization; no APE/RPE or loop accuracy is inferred."
+  }
+}

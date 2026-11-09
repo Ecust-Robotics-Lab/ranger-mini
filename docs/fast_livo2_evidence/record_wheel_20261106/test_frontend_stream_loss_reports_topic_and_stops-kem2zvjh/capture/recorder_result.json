@@ -1,0 +1,15 @@
+{
+  "exit": 0,
+  "forced": false,
+  "requested_seconds": 60.0,
+  "error": "required input stream stalled for over 2 seconds: /fast_livo/odometry",
+  "observed_messages": {
+    "/livox/lidar": 48,
+    "/livox/imu": 47,
+    "/front/image_sync": 47,
+    "/front/image": 47,
+    "/front/camera_info": 47,
+    "/fast_livo/odometry": 4,
+    "/fast_livo/deskewed_imu": 47
+  }
+}

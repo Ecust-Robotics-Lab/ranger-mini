@@ -1,0 +1,67 @@
+{
+  "run_directory": "/home/lab307/ranger_nav/.runtime/sessions/fast_livo_localizer/run-_kj1xvfx",
+  "guardian": {
+    "pid": 3039,
+    "start_ticks": 93518,
+    "ppid": 3027,
+    "state": "R",
+    "boot_id": "dc7ccd75-a884-43af-921e-f285f18e2264"
+  },
+  "owner": {
+    "pid": 3077,
+    "start_ticks": 93767,
+    "ppid": 3039,
+    "state": "R",
+    "boot_id": "dc7ccd75-a884-43af-921e-f285f18e2264"
+  },
+  "state": "FAILED",
+  "reason": "RuntimeError: localizer exited -9; no automatic restart; scheduler exited 2; guardian cleanup",
+  "owned": [],
+  "components": {
+    "monitor": {
+      "state": "READY",
+      "process": {
+        "pid": 3078,
+        "start_ticks": 93768,
+        "ppid": 3077,
+        "state": "R",
+        "boot_id": "dc7ccd75-a884-43af-921e-f285f18e2264"
+      },
+      "argv": [
+        "/usr/bin/python3",
+        "/home/lab307/ranger_nav/scripts/fast_livo2/localizer/monitor.py"
+      ]
+    },
+    "localizer": {
+      "state": "EXITED",
+      "process": {
+        "pid": 3090,
+        "start_ticks": 93810,
+        "ppid": 3077,
+        "state": "D",
+        "boot_id": "dc7ccd75-a884-43af-921e-f285f18e2264"
+      },
+      "argv": [
+        "/home/lab307/ranger_nav/ws_fast_livo/backend_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node",
+        "--ros-args",
+        "--params-file",
+        "/home/lab307/ranger_nav/config/fast_livo2/localizer.yaml",
+        "-p",
+        "use_sim_time:=true",
+        "-p",
+        "registration:=small_gicp",
+        "-p",
+        "t_base_imu_xyz:=[0.11485917776401003, -0.023945937986232936, 0.5552533734244779]",
+        "-p",
+        "t_base_imu_rpy:=[0.0169366422492582, 0.3685116044554271, -3.1260938402392293]",
+        "-p",
+        "archive_path:=/home/lab307/ranger_nav/docs/fast_livo2_evidence/wheel_alignment_20261106/test_managed_process_failure_cleans_only_owned_children-adv0vx5r/map",
+        "-p",
+        "compatibility_path:=/home/lab307/ranger_nav/docs/fast_livo2_evidence/wheel_alignment_20261106/test_managed_process_failure_cleans_only_owned_children-adv0vx5r/map-compatibility.json"
+      ],
+      "exit_code": -9
+    }
+  },
+  "updated_monotonic": 938.597957236,
+  "guardian_cleanup_complete": true
+}

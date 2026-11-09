@@ -1,0 +1,15 @@
+LOCALIZATION_DIR=/home/lab307/ranger_nav/bags/fast-livo-localization-iqt9d470
+SESSION_DIR=/home/lab307/ranger_nav/.runtime/sessions/fast_livo_online_localization/run-hl243mhj
+LOCALIZATION state=None valid=False waiting_inputs; processed=0 skipped=0 age=None
+SESSION ERROR: RuntimeError: wheel exited 127; no automatic restart; logs: /home/lab307/ranger_nav/.runtime/sessions/fast_livo_online_localization/run-hl243mhj; stopping owned processes
+{
+  "workflow_success": false,
+  "session_exit": 2,
+  "session_state": "FAILED",
+  "recorder": {},
+  "localization_acceptance": "NOT_EVALUATED",
+  "physical_sync": "PARTIAL",
+  "hardware_started": true,
+  "navigation_functional_result": "AUDIT_ERROR",
+  "navigation_audit_error": "no finalized raw sqlite3 bag found"
+}

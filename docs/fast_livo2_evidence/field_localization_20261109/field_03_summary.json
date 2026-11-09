@@ -1,0 +1,17 @@
+{
+  "session_state": "STOPPED",
+  "cleanup_complete": true,
+  "owned": [],
+  "field_private_localization": "PASS: functionality only",
+  "public_tf_continuous_readiness": "PARTIAL: frequent future-wheel rejections",
+  "ready_transition_count": 296,
+  "distinct_confirmed_samples": 486,
+  "new_driver_sha256": "df58f4c6015c6c23145a75e4776dde7bcc170c4e52c53139d906b423163f63fa",
+  "source_sha256": {
+    "scripts/fast_livo2/navigation/wheel_clock_node.py": "f6d99e59eddeb88f87a47db1576995bfa805085da024d1e1d7e83ad509e3f8ae",
+    "patches/ranger_ros2_recording_receive_only.patch": "6721a821e7cea8fdbd79e7e1557a7dac2449042652f427e7bdb15372e1e614a9",
+    "scripts/check_base_receive_only.py": "9177b12a568cbc853cde47808ed20d2d45b14b82f4129e645d129aa9bc57b0e0"
+  },
+  "corrected_gate_field_retest_started": false,
+  "remaining_hardware_processes": []
+}

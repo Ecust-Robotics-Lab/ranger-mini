@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "kind": "offline_capture_clock_mapping",
+  "capture": "/home/lab307/ranger_nav/bags/fast-livo-wheel_alignment_visit01-pwr5lx7u",
+  "source_metadata_sha256": "a70142d33e31c748ea96674fb1ec93d90035d11f545ffb2fbeea7c99fa15e1c9",
+  "analysis_sha256": "45a6c395d72dec7063d20e6e6a5e5864fc38ea006aa5f5eb45476f64d6d34857",
+  "convention": "t_host_ns = t_sensor_ns + offset_ns",
+  "offset_ns": 203782752743349211,
+  "window_lag_spread_s": 0.019999999999999997,
+  "physical_sync_verified": false,
+  "offline_only": true,
+  "validity_scope": "this capture only; never reuse across device boots/sessions",
+  "original_headers_modified": false,
+  "range_policy": "wheel history brackets only; no extrapolation"
+}

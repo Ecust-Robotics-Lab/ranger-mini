@@ -62,21 +62,25 @@ rb::RegistrationResult Localizer::match(const Cloud& cloud,const Pose& predictio
   std::vector<rb::RegistrationResult> good;
   rb::RegistrationResult last;last.reason="not_converged";
   auto coarse_target=rb::downsample(*target,config_.coarse_resolution), coarse_source=rb::downsample(*source,config_.coarse_resolution);
+  auto evaluate=rb::prepare_evaluation(*target,*source,config_.registration);
+  auto fine_prepared=fine_->prepare(*target,*source);
+  auto coarse_prepared=initializing?coarse_->prepare(*coarse_target,*coarse_source):std::function<rb::RegistrationResult(const Pose&)>{};
+  check();
   for(const auto& seed:seeds) {
     check();Pose initial=seed;
     if(initializing) {
-      auto r=coarse_->align(*coarse_target,*coarse_source,seed);check();
+      auto r=coarse_prepared(seed);check();
       if(!r.converged || !rb::valid_pose(r.T_target_source)) {last=r;continue;}
       initial=r.T_target_source;
       initial.linear()=Eigen::Quaterniond(initial.linear()).normalized().toRotationMatrix();
     }
-    auto r=fine_->align(*target,*source,initial);check();
+    auto r=fine_prepared(initial);check();
     // PCL returns float matrices. After checking rigidity, retain an actual SO(3)
     // rotation so tiny float strain cannot accumulate through hundreds of predictions.
     // Independently re-evaluate the exact transform that will be accepted/output.
     if(r.converged && rb::valid_pose(r.T_target_source)) {
       r.T_target_source.linear()=Eigen::Quaterniond(r.T_target_source.linear()).normalized().toRotationMatrix();
-      rb::evaluate_registration(*target,*source,config_.registration,r);check();
+      evaluate(r);check();
     }
     last=r;
     if(r.accepted) good.push_back(r);
@@ -148,7 +152,7 @@ Result Localizer::process(int64_t stamp,uint64_t scan,const Pose& U,const Cloud&
   // timeout is relaxed, and any rejection still clears the support.
   bool probe_ambiguity=initializing;
   if(initializing && support_) {
-    bool baseline=(U.translation()-support_->U.translation()).norm()>=config_.confirmation_translation ||
+    bool baseline=initial_->stationary_verified || (U.translation()-support_->U.translation()).norm()>=config_.confirmation_translation ||
       rb::rotation_distance(U,support_->U)>=config_.confirmation_rotation;
     bool time=(stamp-support_->stamp)*1e-9>=config_.confirmation_time;
     probe_ambiguity=baseline&&time&&confirmations_+1>=config_.confirmation_frames;
@@ -179,13 +183,14 @@ Result Localizer::process(int64_t stamp,uint64_t scan,const Pose& U,const Cloud&
     recovering_=false;support_.reset();
   }
   if(initializing) {
+    result_.quality["stationary_global_verification"]=initial_->stationary_verified;
     Anchor now{stamp,matched.T_target_source,U};
     if(!support_) {support_=now;confirmations_=1;result_.reason="verifying_multiframe_motion_support";return result_;}
     Pose correction=now.X*now.U.inverse(), earlier=support_->X*support_->U.inverse();
     if((correction.translation()-earlier.translation()).norm()>config_.confirmation_consistency_translation ||
        rb::rotation_distance(correction,earlier)>config_.confirmation_consistency_rotation) return reject("inconsistent_initial_motion_support");
     ++confirmations_;
-    bool baseline=(U.translation()-support_->U.translation()).norm()>=config_.confirmation_translation || rb::rotation_distance(U,support_->U)>=config_.confirmation_rotation;
+    bool baseline=initial_->stationary_verified || (U.translation()-support_->U.translation()).norm()>=config_.confirmation_translation || rb::rotation_distance(U,support_->U)>=config_.confirmation_rotation;
     bool time=(stamp-support_->stamp)*1e-9>=config_.confirmation_time;
     if(confirmations_<config_.confirmation_frames || !baseline || !time) {result_.reason="verifying_multiframe_motion_support";return result_;}
   }

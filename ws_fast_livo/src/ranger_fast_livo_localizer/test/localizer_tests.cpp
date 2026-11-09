@@ -315,6 +315,40 @@ TEST_F(C2,IdenticalStaticCloudWithDriftingOdomCannotSupplyMotionBaseline) {
   for(int k=0;k<4;++k)r=global->process(10000000000LL+k*200000000LL,k,pose(.08*k,0,0,0,0,0),cloud,k*.2);
   EXPECT_FALSE(r.confirmed);EXPECT_EQ(r.reason,"verifying_insufficient_time_or_motion_baseline");
 }
+TEST_F(C2,StrongStationaryQueriesHandoffAndC1ConfirmsWithoutMotion) {
+  search.stationary_initialization=true;auto global=create();SearchResult r;
+  for(int k=0;k<12&&!r.confirmed;++k)r=step(*global,k,0.);
+  ASSERT_TRUE(r.confirmed)<<r.reason<<r.quality;ASSERT_TRUE(r.confirmed->stationary_verified);
+  Localizer tracker(map,config);tracker.initialize(*r.confirmed,3.);
+  Pose U=pose(100,-50,20,.1,-.4,.3)*relative;
+  auto first=tracker.process(r.confirmed->stamp,20,U,query(X*relative),3.1);EXPECT_FALSE(first.valid);
+  auto next=tracker.process(r.confirmed->stamp+300000000LL,21,U,query(X*relative),3.4);
+  EXPECT_TRUE(next.valid)<<next.reason<<next.quality;
+}
+TEST_F(C2,StationaryModeRejectsAliasesWrongGeometryAndOdomDrift) {
+  search.stationary_initialization=true;
+  auto wrong=create(true);SearchResult r;for(int k=0;k<10;++k)r=step(*wrong,k,0.);EXPECT_FALSE(r.confirmed);
+  auto drifting=create();relative=pose(0,0,0,.02,0,1.1);auto cloud=query(X*relative);
+  for(int k=0;k<10;++k) {r=drifting->process(10000000000LL+k*200000000LL,k,pose(.08*k,0,0,0,0,0),cloud,k*.2);EXPECT_FALSE(r.confirmed);}
+  auto copy=map->frames[0];copy.id=8;copy.scan_id=12;copy.X.translation().x()+=30;map->frames.push_back(copy);retriever->candidates.push_back({8,0.});
+  auto alias=create();for(int k=0;k<10;++k){r=step(*alias,k,0.);EXPECT_FALSE(r.confirmed);}EXPECT_EQ(r.reason,"global_ambiguous_places");
+}
+TEST_F(C2,StationaryResetDiscardsWindows) {
+  search.stationary_initialization=true;auto global=create();for(int k=0;k<5;++k)EXPECT_FALSE(step(*global,k,0.).confirmed);
+  global->reset();EXPECT_FALSE(step(*global,5,0.).confirmed);auto r=step(*global,6,0.);EXPECT_FALSE(r.confirmed);
+}
+TEST_F(C1,PreparedGicpPreservesMultipleSeedResults) {
+  auto cfg=config.registration;cfg.registration="small_gicp";cfg.registration_threads=1;
+  auto registration=rb::make_registration(cfg);auto target=rb::transformed(body,X);
+  auto prepared=registration->prepare(*target,body);
+  for(double dx:{-.3,0.,.3}) {
+    Pose seed=X;seed.translation().x()+=dx;
+    auto a=registration->align(*target,body,seed),b=prepared(seed);
+    EXPECT_EQ(a.accepted,b.accepted);EXPECT_EQ(a.reason,b.reason);
+    EXPECT_LT((a.T_target_source.matrix()-b.T_target_source.matrix()).norm(),1e-8);
+    EXPECT_NEAR(a.rmse,b.rmse,1e-9);
+  }
+}
 TEST_F(C2,WrongCoarseAndOutsideQueriesCannotHandoff) {
   auto wrong=create(true);step(*wrong,0);auto r=step(*wrong,1);EXPECT_FALSE(r.confirmed);EXPECT_EQ(r.reason,"global_no_geometric_match");
   auto outside=create();step(*outside,0,1.,true);r=step(*outside,1,1.,true);EXPECT_FALSE(r.confirmed);EXPECT_EQ(r.reason,"global_no_geometric_match");

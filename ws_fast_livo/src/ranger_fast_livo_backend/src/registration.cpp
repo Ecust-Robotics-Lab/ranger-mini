@@ -101,7 +101,17 @@ static bool finite_cloud(const Cloud& cloud) {
     });
 }
 
-void evaluate_registration(const Cloud& target, const Cloud& source, const Config& c, RegistrationResult& r) {
+std::function<void(RegistrationResult&)> prepare_evaluation(const Cloud& target,const Cloud& source,const Config& c) {
+  auto t = target.makeShared();
+  pcl::search::KdTree<Point>::Ptr tree(new pcl::search::KdTree<Point>);
+  tree->setInputCloud(t);
+  pcl::NormalEstimation<Point, pcl::Normal> estimator;
+  estimator.setInputCloud(t);
+  estimator.setSearchMethod(tree);
+  estimator.setKSearch(std::min<size_t>(15, target.size()));
+  pcl::PointCloud<pcl::Normal> normals;
+  if(target.size()>=c.min_correspondences) estimator.compute(normals);
+  return [tree,normals,&source,&target,c](RegistrationResult& r) {
   r.accepted = false;
   if (!r.converged) {
     r.reason = "not_converged";
@@ -115,15 +125,6 @@ void evaluate_registration(const Cloud& target, const Cloud& source, const Confi
     r.reason = "too_few_points";
     return;
   }
-  auto t = target.makeShared();
-  pcl::search::KdTree<Point>::Ptr tree(new pcl::search::KdTree<Point>);
-  tree->setInputCloud(t);
-  pcl::NormalEstimation<Point, pcl::Normal> estimator;
-  estimator.setInputCloud(t);
-  estimator.setSearchMethod(tree);
-  estimator.setKSearch(std::min<size_t>(15, target.size()));
-  pcl::PointCloud<pcl::Normal> normals;
-  estimator.compute(normals);
   Eigen::Matrix<double, 6, 6> H = Eigen::Matrix<double, 6, 6>::Zero();
   double sum = 0, lever = 0;
   auto aligned = transformed(source, r.T_target_source);
@@ -160,6 +161,11 @@ void evaluate_registration(const Cloud& target, const Cloud& source, const Confi
     r.reason = "geometry_valid";
     r.accepted = true;
   }
+  };
+}
+void evaluate_registration(const Cloud& target,const Cloud& source,const Config& c,RegistrationResult& r) {
+  if(!r.converged) {r.accepted=false;r.reason="not_converged";return;}
+  prepare_evaluation(target,source,c)(r);
 }
 class PclRegistration final : public Registration {
 public: explicit PclRegistration(Config c) : c_(c){
@@ -198,6 +204,34 @@ class SmallRegistration final : public Registration {
 public: explicit SmallRegistration(Config c) : c_(c){
   }
   RegistrationResult align(const Cloud& target, const Cloud& source, const Pose& initial) const override {
+    return legacy(target,source,initial);
+  }
+  std::function<RegistrationResult(const Pose&)> prepare(const Cloud& target,const Cloud& source) const override {
+    if(c_.registration!="small_gicp" || !finite_cloud(target) || !finite_cloud(source) || target.size()<c_.min_correspondences || source.size()<c_.min_correspondences)
+      return [this,&target,&source](const Pose& initial){RegistrationResult r;r.method=c_.registration;r.reason="invalid_input";
+        if(c_.registration!="small_gicp") return legacy(target,source,initial);
+        return r;};
+    std::vector<Eigen::Vector3d> t,s;
+    for(const auto& p:target)t.emplace_back(p.x,p.y,p.z);
+    for(const auto& p:source)s.emplace_back(p.x,p.y,p.z);
+    auto target_data=small_gicp::preprocess_points(t,c_.resolution,10,c_.registration_threads);
+    auto source_data=small_gicp::preprocess_points(s,c_.resolution,10,c_.registration_threads);
+    auto evaluator=prepare_evaluation(target,source,c_);
+    return [this,&target,&source,target_data,source_data,evaluator](const Pose& initial){
+      return solve(target,source,initial,[&](const small_gicp::RegistrationSetting& setting){
+        return small_gicp::align(*target_data.first,*source_data.first,*target_data.second,initial,setting);
+      },evaluator);
+    };
+  }
+  RegistrationResult legacy(const Cloud& target,const Cloud& source,const Pose& initial) const {
+    return solve(target,source,initial,[&](const small_gicp::RegistrationSetting& setting){
+      std::vector<Eigen::Vector3d> t,s;
+      for(const auto& p:target)t.emplace_back(p.x,p.y,p.z);
+      for(const auto& p:source)s.emplace_back(p.x,p.y,p.z);
+      return small_gicp::align(t,s,initial,setting);
+    });
+  }
+  template<class Solver> RegistrationResult solve(const Cloud& target,const Cloud& source,const Pose& initial,Solver solver,std::function<void(RegistrationResult&)> evaluator={}) const {
     RegistrationResult r;
     r.method = c_.registration;
     double start = steady_seconds();
@@ -206,9 +240,6 @@ public: explicit SmallRegistration(Config c) : c_(c){
       return r;
     }
     try {
-      std::vector<Eigen::Vector3d> t, s;
-      for (auto& p:target) t.emplace_back(p.x, p.y, p.z);
-      for (auto& p:source) s.emplace_back(p.x, p.y, p.z);
       small_gicp::RegistrationSetting setting;
       setting.type = c_.registration == "small_vgicp"?small_gicp::RegistrationSetting::VGICP:small_gicp::RegistrationSetting::GICP;
       setting.downsampling_resolution = c_.resolution;
@@ -218,7 +249,7 @@ public: explicit SmallRegistration(Config c) : c_(c){
       setting.max_iterations = c_.max_iterations;
       setting.translation_eps = 1e-4;
       setting.rotation_eps = 1e-4;
-      auto result = small_gicp::align(t, s, initial, setting);
+      auto result = solver(setting);
       r.T_target_source = result.T_target_source;
       r.converged = result.converged && result.H.allFinite() && std::isfinite(result.error);
       r.native_diagnostics = {{"num_inliers", result.num_inliers}, {"error", result.error}, {"iterations", result.iterations}, {"H_finite", result.H.allFinite()}, {"covariance_calibrated", false}};
@@ -228,7 +259,7 @@ public: explicit SmallRegistration(Config c) : c_(c){
         r.native_diagnostics["H_eigenvalues"] = values;
       }
       // The solver H is diagnostic, not a calibrated covariance. Use the same independent geometric gates as PCL.
-      evaluate_registration(target, source, c_, r);
+      if(evaluator)evaluator(r);else evaluate_registration(target, source, c_, r);
     }
     catch (const std::exception& e) {
       r.reason = std::string("registration_exception: ") + e.what();

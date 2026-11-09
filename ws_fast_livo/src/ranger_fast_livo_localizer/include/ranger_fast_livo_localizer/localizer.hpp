@@ -16,6 +16,7 @@ struct Config {
   void validate() const;
 };
 struct InitialPose {
+  bool stationary_verified=false; // Internal C2 evidence only; manual ROS requests never set this.
   Pose pose=Pose::Identity();
   Eigen::Matrix<double,6,6> covariance=Eigen::Matrix<double,6,6>::Zero();
   int64_t stamp=0;

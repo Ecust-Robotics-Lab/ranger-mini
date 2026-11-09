@@ -70,3 +70,9 @@ bash scripts/run_fast_livo2_relocalizer.sh --execute \
 2026-11-04 新增一次不同采集包的 [无初值功能试验](fast_livo2_cross_session_global_report.md)：1195对查询、936个VALID采样，无LOST/ERROR；场地覆盖与绝对位置未确认。离线评估工具支持 `--query-provenance` 绑定地图/native DB SHA，独立输入禁止同图推导初值；`--allow-recovery` 只调整试验结果如何容纳一次真实丢失后恢复，不改变节点门槛/锁。新日志额外保存 `T_map_imu` 和请求代际。真实Tag尚无VALID表不阻止纯LiDAR C2测试。
 
 2026-11-06检索增补：新增自有`radial_pair_multiscale_v2`（195维、平滑多尺度距离分布与Hellinger嵌入），`global_descriptor`控制索引绑定与比较；在线入口默认v2，旧v1索引/离线配置兼容。官方STD/Scan Context仅进入独立离线benchmark，不是在线插件。C1/C2入口默认注册器已按用户指令改为small_gicp，KISS全局粗配准保持。对照与限制见[报告](fast_livo2_retrieval_comparison_report.md)。
+
+### 2026-11-09 静止首次确认增量
+
+显式C2 overlay默认`global_stationary_initialization: true`（核心SearchConfig默认false，手动C1接口不变）。启用时每轮检查最多16检索候选，保持原全局地点歧义拒绝；静止分支额外要求重叠≥max(0.65,min_overlap+0.1)、RMSE≤min(0.12m,0.65×max_rmse)、归一化几何特征值比≥max(1e-4,3×degeneracy_ratio)，不同地点竞争解使用双倍歧义余量。至少3个互不重叠查询窗口、跨度≥1秒、FAST与地图运动均≤3cm/0.03rad，修正一致性≤5cm/0.03rad；任一支持窗口质量不足即不能用该组静止证据。原运动确认路径保留。
+
+通过后仅内部InitialPose带`stationary_verified`，C1仍做自己的多初值几何歧义检查和至少2帧/0.2秒确认，此内部证据只免除运动基线。ROS手动Initialize请求不能设置该标记。取消、切图、前端重置仍清除支持；Tag参与的候选不走此纯LiDAR静止分支。质量新增stationary_strong_geometry/evaluated_candidate_limit/confirmation_mode及global_stationary_initialization。top16并非穷举全图，同视角多帧也非独立视角证明，真实负样本与泛化仍须验收。

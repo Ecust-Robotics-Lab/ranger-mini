@@ -50,6 +50,7 @@ public:
     GLOBAL_DBL(budget_ms);GLOBAL_DBL(retry_seconds);GLOBAL_DBL(support_time);GLOBAL_DBL(support_translation);GLOBAL_DBL(support_rotation);
     GLOBAL_DBL(consistency_translation);GLOBAL_DBL(consistency_rotation);
 #undef GLOBAL_DBL
+    search_config_.stationary_initialization=declare_parameter<bool>("global_stationary_initialization",false);
     search_config_.validate();if(global_enabled_)(void)make_global_coarse(search_config_);
     tag_relocalization_=declare_parameter<bool>("enable_tag_relocalization",false);
     tag_monitor_=declare_parameter<bool>("enable_tag_monitor",false);
@@ -234,7 +235,7 @@ private:
       Json quality;try {quality=Json::parse(message.quality_json.empty()?"{}":message.quality_json);}catch(...) {quality=Json::object();}
       quality["pair_counters"]=pairs_.counters;quality["invalid_messages"]=invalid_;quality["queued_jobs"]=jobs_.size();quality["pair_bytes"]=pairs_.bytes();
       quality["inputs_ready"]=inputs_ready_;quality["map_loading"]=loading_;quality["public_tf_publisher"]=false;
-      quality["global_descriptor"]=search_config_.descriptor;quality["global_search_enabled"]=global_enabled_;quality["global_search_allowed"]=search_allowed_.load();
+      quality["global_stationary_initialization"]=search_config_.stationary_initialization;quality["global_descriptor"]=search_config_.descriptor;quality["global_search_enabled"]=global_enabled_;quality["global_search_allowed"]=search_allowed_.load();
       quality["online_scheduling"]=online_;quality["skipped_scans"]=skipped_scans_;
       quality["processed_scans"]=processed_scans_;quality["stale_results"]=stale_results_;
       quality["sample_age_seconds"]=message.last_confirmed_stamp_ns>0?(ros-message.last_confirmed_stamp_ns)*1e-9:-1.;

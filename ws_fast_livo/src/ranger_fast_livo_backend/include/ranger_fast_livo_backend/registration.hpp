@@ -6,6 +6,10 @@ class Registration {
 public:
   virtual ~Registration() = default;
   virtual RegistrationResult align(const Cloud& target, const Cloud& source, const Pose& initial) const = 0;
+  // Call-local immutable preprocessing. Clouds and registration must outlive the returned function.
+  virtual std::function<RegistrationResult(const Pose&)> prepare(const Cloud& target,const Cloud& source) const {
+    return [this,&target,&source](const Pose& initial){return align(target,source,initial);};
+  }
 };
 // Future C2 coarse aligners (e.g. KISS-Matcher) have no trusted initial pose.
 // Candidate retrieval remains a separate responsibility.
@@ -15,6 +19,7 @@ public:
   virtual RegistrationResult align(const Cloud& target, const Cloud& source) const = 0;
 };
 std::unique_ptr<Registration> make_registration(const Config& config);
+std::function<void(RegistrationResult&)> prepare_evaluation(const Cloud& target,const Cloud& source,const Config& config);
 void evaluate_registration(const Cloud& target, const Cloud& source, const Config& config, RegistrationResult& result);
 class CandidateSearch {
 public:

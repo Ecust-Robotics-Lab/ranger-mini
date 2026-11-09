@@ -77,3 +77,7 @@ bash scripts/run_fast_livo2_localizer.sh --execute \
 2026-11-06新增可选适配参数`expected_map_uuid`和`expected_manifest_sha256`，必须一同指定；绑定后，私有结果地图身份不符即ERROR且不更新已接受身份缓存。新增`scripts/bridge_fast_livo2_offline.sh`复用本适配器与桥接、Nav2地图服务及名义传感器静态TF，自动从占据候选图取对应3D源身份；默认dry-run、domain219/localhost、use_sim_time=true，不启动C1或硬件。操作及名义外参见[前置接入报告](fast_livo2_navigation_prep_report.md)。
 
 2026-11-06默认注册器增补：按用户要求在完成检索比较和同包GICP对照后，C1/C2入口默认small_gicp；可显式选择pcl_icp。独立几何、运动、歧义和新鲜度门槛保持；旧安装未重建，在线使用online_localization_install。结果与未收敛拒绝见[报告](fast_livo2_retrieval_comparison_report.md)。
+
+### 2026-11-09 初始化计算与静止交接
+
+C1单次match内复用small_gicp点云协方差/KD-tree及独立几何检查目标法向量/KD-tree；缓存作用域仅本次source/target，保留13初值及原几何/歧义门槛，不跨扫描或地图复用。B单次align行为不启用此预处理复用；共用几何检查公式保持。内部C2的stationary_verified证据允许C1免除运动基线，仍需其自身2帧、时间、一致性和完整多初值确认；手动初始化保持原规则。见当日首次定位优化报告。

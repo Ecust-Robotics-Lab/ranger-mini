@@ -11,6 +11,7 @@ struct SearchConfig {
   double budget_ms=10000., retry_seconds=.5, support_time=.25, support_translation=.15, support_rotation=.08;
   double consistency_translation=.3, consistency_rotation=.15;
   size_t support_queries=2;
+  bool stationary_initialization=false;
   void validate() const;
   Json index_parameters() const;
 };
@@ -52,7 +53,7 @@ public:
   void reset();
 private:
   struct Sample {int64_t stamp;uint64_t id;Pose U;Cloud::Ptr cloud;};
-  struct Support {int64_t stamp;Pose U,correction;std::set<uint64_t> scans;size_t count=1;std::set<std::string> tag_images;};
+  struct Support {int64_t stamp;Pose U,correction;std::set<uint64_t> scans;size_t count=1;std::set<std::string> tag_images;bool stationary_strong=false;};
   std::shared_ptr<const Archive> map_;
   Config tracking_;SearchConfig config_;
   SubmapProvider provider_;

@@ -3,6 +3,8 @@
 ranger_fast_livo_localizer:
   ros__parameters:
     global_search_enabled: true
+    # Three disjoint strong-geometry windows over >=1s; ambiguous places still need motion.
+    global_stationary_initialization: true
     global_candidates: 5
     global_maximum_points: 4000
     global_window_frames: 2

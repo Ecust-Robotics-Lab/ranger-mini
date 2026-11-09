@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT/'scripts'))
 from session_manager import Component, JsonHealth, atomic_json, read_session, run_guarded, session_live, stop_session
 from online_session import check_sensor_processes, sensor_environment, specs
+import wheel_capture
 sys.path.insert(0, str(ROOT/'ws_nav/src/ranger_localization_bridge'))
 from ranger_localization_bridge.runtime_config import resolve, validate_fast_livo_config
 
@@ -77,7 +78,7 @@ def recorder_command(folder, topics):
             str(ROOT/'config/mid360/bag_qos.yaml'), *topics]
 
 
-def snapshot_sources(folder, cfg):
+def snapshot_sources(folder, cfg, wheel=None):
     """Preserve exact bytes, including profile inheritance and local modifications."""
     paths = {ROOT/'config/runtime.yaml', Path(cfg['RANGER_RUNTIME_CONFIG']),
              ROOT/'config/fast_livo2/sources.lock.json', ROOT/'patches/fast_livo2_stage_a.patch',
@@ -89,6 +90,12 @@ def snapshot_sources(folder, cfg):
         paths.update(p for p in base.rglob('*') if p.is_file() and p.suffix in ('.yaml', '.json', '.rviz'))
     paths.update(p for p in (ROOT/'scripts/fast_livo2').rglob('*.py'))
     paths.add(ROOT/'scripts/record_fast_livo2.sh')
+    if wheel and wheel['source']=='owned_receive_only':
+        paths.update([wheel_capture.NODE, ROOT/'config/base_mini_v2.yaml',
+                      ROOT/'patches/ranger_ros2_recording_receive_only.patch',ROOT/'scripts/build_base_recording.sh',
+                      ROOT/'patches/ranger_ros2_v2_feedback_sign.patch',
+                      ROOT/'ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp',
+                      ROOT/'ws_base/src/ranger_ros2/ranger_base/include/ranger_base/ranger_messenger.hpp'])
     # Attribute the actual local synchronization implementation to this capture.
     paths.update(ROOT/p for p in (
         'ws_camera/src/timeshare_writer/src/timeshare_writer_node.cpp',
@@ -147,7 +154,7 @@ class CaptureHealth(JsonHealth):
             try:
                 state = json.loads((self.path.parent/'state.json').read_text())
                 names = {'probe': '输入检查', 'lidar': '雷达', 'writer': '同步时间',
-                         'camera': '相机', 'frontend': '前端', 'capture': '录包器'}
+                         'camera': '相机', 'frontend': '前端', 'wheel': '底盘反馈', 'capture': '录包器'}
                 waiting = tuple(names[name]+'='+info['state'] for name, info in state['components'].items()
                                 if name in names and info['state'] != 'READY')
                 now = time.monotonic()
@@ -237,8 +244,19 @@ def parser():
                    help='auto: RViz with DISPLAY, otherwise localhost Foxglove')
     p.add_argument('--foxglove-port', type=int, default=8765)
     p.add_argument('--min-free-gb', type=float, default=5)
-    p.add_argument('--record-wheel', action='store_true', help='Require an existing wheel publisher; never starts a driver')
+    wheel=p.add_mutually_exclusive_group()
+    wheel.add_argument('--record-wheel',dest='record_wheel',action='store_true',default=True,
+                       help='Default: reuse wheel, or auto-start a receive-only driver for RC/manual recording')
+    wheel.add_argument('--no-wheel',dest='record_wheel',action='store_false',help='Sensor-only recording; no CAN or base access')
     return p
+
+
+def with_wheel(components, wheel):
+    if wheel['source']!='owned_receive_only':return components
+    result=list(components)
+    result.append(Component('wheel',wheel.get('driver_command',wheel_capture.driver_command()),
+                            resource='base_control'))
+    return result
 
 
 def main():
@@ -276,7 +294,8 @@ def main():
     if args.record_wheel:topics['/wheel/odom'] = 'nav_msgs/msg/Odometry'
     folder = args.output.expanduser().absolute() if args.output else ROOT/'bags'/('fast-livo-'+args.label+'-NEW')
     sensor_environment(cfg, folder/'sensor_assets')
-    components = [] if attach else specs(cfg, args.visualization, args.foxglove_port)
+    wheel={'source':'owned_receive_only' if args.record_wheel else 'disabled'}
+    components = with_wheel([] if attach else specs(cfg, args.visualization, args.foxglove_port),wheel)
     worker = [sys.executable, str(ROOT/'scripts/fast_livo2/record_worker.py'), '--folder', str(folder)]
     if not args.execute:
         print(json.dumps({'action': 'DRY-RUN', 'mode': 'attach' if attach else 'start-sensors',
@@ -286,7 +305,10 @@ def main():
             'recorder': recorder_command(folder, topics), 'components': [asdict(c) for c in components],
             'visualization': 'existing session' if attach else args.visualization,
             'requested_visualization': requested_visualization,
-            'no_base_or_navigation': True, 'physical_sync_proven': False}, indent=2))
+            'wheel_policy':'auto-reuse-or-receive-only' if args.record_wheel else 'disabled',
+            'wheel_plan_note':'Execution reuses an existing healthy publisher instead of starting the planned wheel component.',
+            'no_base_or_navigation': not args.record_wheel,'no_base_control_or_navigation':True,
+            'physical_sync_proven': False}, indent=2))
         return 0
     if session_live(read_session(SESSION)[1]):raise RuntimeError('recorder already active; use --status/--stop')
     if args.start_sensors and live:raise RuntimeError('preview already active; use --attach or stop it explicitly')
@@ -298,6 +320,7 @@ def main():
     if not attach:
         check_sensor_processes()
         for component in components:
+            if component.name=='wheel':continue  # execution may reuse an external publisher
             executable = component.argv[0]
             if executable.startswith('/') and not os.access(executable, os.X_OK):
                 raise RuntimeError('missing executable: '+executable)
@@ -305,11 +328,13 @@ def main():
             p.error('RViz requires DISPLAY; use --visualization auto, foxglove or none')
         if any(component.name == 'lidar' for component in components):
             check_lidar_host_address(cfg)
+    if args.record_wheel:wheel=wheel_capture.prepare()
     if args.output:folder.mkdir()
     else:folder = Path(tempfile.mkdtemp(prefix='fast-livo-'+args.label+'-', dir=ROOT/'bags'))
     print('CAPTURE_DIR='+str(folder), flush=True)
     print('VISUALIZATION='+('existing session' if attach else args.visualization), flush=True)
-    print('CAPTURE PREPARING（尚未录制）：等待雷达、相机和前端数据就绪。', flush=True)
+    print('WHEEL_SOURCE='+wheel['source'],flush=True)
+    print('CAPTURE PREPARING（尚未录制）：等待所需传感器、前端和wheel数据就绪。', flush=True)
     (folder/'sensor_assets').mkdir()
     sensor_environment(cfg, folder/'sensor_assets')
     manifest = {'schema_version': 1, 'created_unix_ns': time.time_ns(), 'folder': str(folder),
@@ -318,7 +343,8 @@ def main():
         'domain': int(cfg['FAST_LIVO_ROS_DOMAIN_ID']), 'physical_sync_proven': False,
         'visualization': args.visualization if not attach else 'existing',
         'requested_visualization': requested_visualization,
-        'no_base_or_navigation': True, 'source_files': snapshot_sources(folder, cfg)}
+        'wheel':wheel,'no_base_or_navigation':not args.record_wheel,'no_base_control_or_navigation':True,
+        'source_files': snapshot_sources(folder, cfg, wheel)}
     source_run = preview_run if attach else None
     sensor_dir = attached_assets(preview_run) if attach else folder/'sensor_assets'
     if attach:
@@ -333,9 +359,10 @@ def main():
         state_env = json.loads((sensor_dir/'manifest.json').read_text())
         if state_env['domain'] != manifest['domain']:raise RuntimeError('attached preview uses another ROS domain')
     atomic_json(folder/'manifest.json', manifest)
-    components = [] if attach else specs(cfg, args.visualization, args.foxglove_port)
+    components = with_wheel([] if attach else specs(cfg, args.visualization, args.foxglove_port),wheel)
     worker = [sys.executable, str(ROOT/'scripts/fast_livo2/record_worker.py'), '--folder', str(folder)]
-    components.append(Component('capture', worker, depends=() if attach else ('frontend',),
+    dependencies=(() if attach else ('frontend',))+(('wheel',) if wheel['source']=='owned_receive_only' else ())
+    components.append(Component('capture', worker, depends=dependencies,
                                 resource='fast_livo_recorder'))
     code = run_guarded(SESSION, components, health_factory=lambda path: CaptureHealth(path, folder),
                        startup_timeout=90, fail_on_health_loss=True, health_loss_grace=2, cleanup_grace=40)

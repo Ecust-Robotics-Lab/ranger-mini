@@ -42,7 +42,7 @@ struct RangerROSMessenger {
   std::shared_ptr<ParameterShim> node_ = std::make_shared<ParameterShim>();
   std::string port_name_, robot_model_, odom_frame_, base_frame_, odom_topic_name_;
   int update_rate_;
-  bool publish_odom_tf_, parking_mode_;
+  bool publish_odom_tf_, parking_mode_, receive_only_;
   RangerSubType robot_type_;
   RobotParams robot_params_;
   void LoadParameters();
@@ -80,7 +80,7 @@ int main() {
 def main():
     current = (REPO / 'ranger_base/src/ranger_messenger.cpp').read_text()
     original = subprocess.check_output(['git', '-C', str(REPO), 'show',
-                                        'HEAD:ranger_base/src/ranger_messenger.cpp'], text=True)
+                                        'b6ea21a275ca5e7168130cc6470e61474681d679:ranger_base/src/ranger_messenger.cpp'], text=True)
     with tempfile.TemporaryDirectory(prefix='base-model-test-') as temp:
         folder = Path(temp)
         assert check(original, folder, 'upstream') == 1, 'Regression must reproduce upstream V2 failure'

@@ -81,6 +81,20 @@ def wait_until(predicate, timeout=30):
     raise AssertionError('timed out waiting for synthetic capture')
 
 
+def publish_wheel(folder):
+    import rclpy
+    from nav_msgs.msg import Odometry
+    rclpy.init();node=rclpy.create_node('capture_synthetic_wheel_'+str(os.getpid()))
+    pub=node.create_publisher(Odometry,'/wheel/odom',10)
+    def tick():
+        m=Odometry();m.header.frame_id='odom';m.child_frame_id='base_link'
+        m.header.stamp=node.get_clock().now().to_msg();m.pose.pose.orientation.w=1.;pub.publish(m)
+    node.create_timer(.02,tick);(folder/'wheel_publisher_ready').touch()
+    try:rclpy.spin(node)
+    except KeyboardInterrupt:pass
+    finally:node.destroy_node();rclpy.shutdown()
+
+
 class CaptureUnit(unittest.TestCase):
     def test_defaults_execute_owned_capture_with_fast_profile_before_device_access(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -158,7 +172,7 @@ class CaptureUnit(unittest.TestCase):
             output = Path(tmp)/'capture'
             env = dict(os.environ, RANGER_CAPTURE_SESSION_ROOT=str(Path(tmp)/'sessions'), PYTHONDONTWRITEBYTECODE='1')
             result = subprocess.run([sys.executable, __file__, '--fake-missing', stage, '--execute',
-                                     '--start-sensors', '--visualization', 'none', '--output', str(output)],
+                                     '--start-sensors', '--no-wheel', '--visualization', 'none', '--output', str(output)],
                                     env=env, text=True, capture_output=True, timeout=12)
             self.assertEqual(result.returncode, 2, result.stdout+result.stderr)
             self.assertIn('尚未录制', result.stdout)
@@ -203,7 +217,7 @@ class CaptureUnit(unittest.TestCase):
             env = dict(os.environ, DISPLAY='', RANGER_CAPTURE_SESSION_ROOT=tmp,
                        PYTHONDONTWRITEBYTECODE='1')
             p = subprocess.run([sys.executable, __file__, '--fake-owned',
-                               '--visualization', 'rviz', '--output', str(output)],
+                               '--no-wheel', '--visualization', 'rviz', '--output', str(output)],
                               env=env, capture_output=True, text=True)
             self.assertEqual(p.returncode, 2)
             self.assertIn('RViz requires DISPLAY', p.stderr)
@@ -227,6 +241,10 @@ class CaptureUnit(unittest.TestCase):
         self.assertIn('rviz', names)
         self.assertIn('foxglove', names)
         self.assertFalse({'base', 'navigation', 'bridge'} & set(names))
+        self.assertIn('wheel',names)
+        self.assertIn('/wheel/odom',plan['topics'])
+        wheel=next(c['argv'] for c in plan['components'] if c['name']=='wheel')
+        self.assertIn('receive_only:=true',wheel)
         writer = next(c['argv'] for c in plan['components'] if c['name']=='writer')
         self.assertIn('lidar_reliability:=reliable', writer)
         self.assertIn('lidar_queue_depth:=5', writer)
@@ -280,10 +298,10 @@ class CaptureROS(unittest.TestCase):
         self.processes.append(p)
         return p
 
-    def record(self, seconds):
+    def record(self, seconds, wheel=False):
         output = self.folder/'capture'
         p = self.start(['bash', str(ROOT/'scripts/record_fast_livo2.sh'), '--execute', '--attach',
-                        '--seconds', str(seconds), '--output', str(output), '--runtime-config', str(self.profile)], 'entry')
+                        *([] if wheel else ['--no-wheel']), '--seconds', str(seconds), '--output', str(output), '--runtime-config', str(self.profile)], 'entry')
         return p, output
 
     def ready(self, p, output):
@@ -327,6 +345,20 @@ class CaptureROS(unittest.TestCase):
         self.assertNotEqual(overwrite.returncode, 0)
         self.assertTrue((output/'CAPTURE_COMPLETE').exists())
 
+    def test_wheel_auto_reuses_external_publisher_without_stopping_it(self):
+        wheel=self.start([sys.executable,__file__,'--publish-wheel',str(self.folder)],'wheel_publisher')
+        wait_until(lambda:(self.folder/'wheel_publisher_ready').exists())
+        p,output=self.record(2,wheel=True)
+        self.ready(p,output)
+        self.assertEqual(p.wait(timeout=45),0,(self.folder/'entry.log').read_text())
+        manifest=json.loads((output/'manifest.json').read_text())
+        self.assertEqual(manifest['wheel']['source'],'external')
+        self.assertIn('/wheel/odom',manifest['topics'])
+        audit=json.loads((output/'audit.json').read_text())
+        self.assertGreater(audit['topics']['/wheel/odom']['count'],20)
+        self.assertIsNone(wheel.poll());self.assertIsNone(self.source.poll())
+        self.assertNotIn('wheel',json.loads((output/'result.json').read_text())['session_state']['components'])
+
     def test_ctrl_c_finalizes_and_keeps_external_preview(self):
         p, output = self.record(60)
         self.ready(p, output)
@@ -356,12 +388,13 @@ class CaptureROS(unittest.TestCase):
         self.assertFalse(output.exists())
         self.assertIsNone(self.source.poll())
 
-    def test_owned_synthetic_session_is_cleaned_after_finite_capture(self):
+    def owned_capture(self,wheel=False):
         self.source.send_signal(signal.SIGINT)
         self.source.wait(timeout=5)
         output = self.folder/'owned_capture'
         self.env['DISPLAY'] = ''
-        p = self.start([sys.executable, __file__, '--fake-owned',
+        p = self.start([sys.executable, __file__, '--fake-owned-wheel' if wheel else '--fake-owned',
+            *([] if wheel else ['--no-wheel']),
             '--seconds', '2', '--output', str(output),
             '--runtime-config', str(self.profile)], 'owned_entry')
         self.ready(p, output)
@@ -373,6 +406,15 @@ class CaptureROS(unittest.TestCase):
         self.assertEqual(result['session_state']['owned'], [])
         from session_manager import same_process
         self.assertFalse(same_process(result['session_state']['components']['frontend']['process']))
+        if wheel:
+            self.assertFalse(same_process(result['session_state']['components']['wheel']['process']))
+            self.assertGreater(json.loads((output/'audit.json').read_text())['topics']['/wheel/odom']['count'],20)
+
+    def test_owned_synthetic_session_is_cleaned_after_finite_capture(self):
+        self.owned_capture()
+
+    def test_wheel_auto_owned_feedback_is_stopped_after_recording(self):
+        self.owned_capture(wheel=True)
 
     def test_recorder_crash_preserves_failure_and_external_session(self):
         p, output = self.record(60)
@@ -412,6 +454,7 @@ class CaptureROS(unittest.TestCase):
 
 if __name__ == '__main__':
     if len(sys.argv)>1 and sys.argv[1] == '--publish':publish(Path(sys.argv[2]))
+    elif len(sys.argv)>1 and sys.argv[1] == '--publish-wheel':publish_wheel(Path(sys.argv[2]))
     elif len(sys.argv)>1 and sys.argv[1] == '--fake-missing':
         stage = sys.argv[2]
         del sys.argv[1:3]
@@ -436,7 +479,8 @@ if __name__ == '__main__':
         record_session.check_sensor_processes = lambda: None
         record_session.check_lidar_host_address = lambda cfg: None
         raise SystemExit(record_session.main())
-    elif len(sys.argv)>1 and sys.argv[1] == '--fake-owned':
+    elif len(sys.argv)>1 and sys.argv[1] in ('--fake-owned','--fake-owned-wheel'):
+        owned_wheel=sys.argv[1]=='--fake-owned-wheel'
         sys.argv.pop(1)
         import record_session
         from session_manager import Component
@@ -446,5 +490,9 @@ if __name__ == '__main__':
         record_session.specs = fake_specs
         record_session.check_sensor_processes = lambda: None
         record_session.check_lidar_host_address = lambda cfg: None
+        if owned_wheel:
+            record_session.wheel_capture.prepare=lambda:{'source':'owned_receive_only',
+                'synthetic':True,'driver_command':[sys.executable,__file__,'--publish-wheel',
+                                                 str(Path(os.environ['RANGER_LIVO_TIMESHARE']).parent)]}
         raise SystemExit(record_session.main())
     else:unittest.main(verbosity=2)

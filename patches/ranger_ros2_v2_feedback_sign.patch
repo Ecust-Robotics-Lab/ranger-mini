@@ -1,0 +1,12 @@
+--- a/ranger_base/src/ranger_messenger.cpp
++++ b/ranger_base/src/ranger_messenger.cpp
+@@ -316,6 +316,9 @@
+ 
+ void RangerROSMessenger::UpdateOdometry(double linear, double angular,
+                                         double angle, double dt) {
++  // Mini V2 feedback is right-positive; ROS body steering is left-positive.
++  // This is feedback conversion only. Command encoding is unchanged.
++  if (robot_type_ == RangerSubType::kRangerMiniV2) angle = -angle;
+   // update odometry calculations
+   if (motion_mode_ == MotionState::MOTION_MODE_DUAL_ACKERMAN) {
+     DualAckermanModel::state_type x = {position_x_, position_y_, theta_};

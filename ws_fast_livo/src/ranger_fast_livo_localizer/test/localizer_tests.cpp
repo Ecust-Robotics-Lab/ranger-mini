@@ -112,6 +112,37 @@ TEST_F(C1,SixDofInitializationTrackingAndOriginalStamp) {
   Pose next=pose(.25,.08,.04,.03,-.02,.05);result=loc.process(10400000000LL,2,next,query(X*next),.41);
   EXPECT_TRUE(result.valid)<<result.reason;EXPECT_LT((result.pose.matrix()-(X*next).matrix()).norm(),.01);
 }
+TEST_F(C1,ShortInterruptionRecoversStationaryWithTwoFreshGeometricFrames) {
+  Localizer loc(map,config);ASSERT_TRUE(initialize_track(loc).valid);
+  ASSERT_TRUE(loc.begin_recovery());EXPECT_FALSE(loc.result().valid);
+  Pose U=pose(.15,0,0,0,0,0);
+  auto a=loc.process(10900000000LL,2,U,query(X*U),.91);
+  EXPECT_FALSE(a.valid);EXPECT_FALSE(loc.needs_initialization());
+  auto b=loc.process(11000000000LL,3,U,query(X*U),1.01);
+  ASSERT_TRUE(b.valid)<<b.reason;EXPECT_EQ(b.stamp,11000000000LL);
+  EXPECT_LT((b.pose.matrix()-(X*U).matrix()).norm(),.01);
+}
+TEST_F(C1,RecoveryRejectsLongGapWrongGeometryAndResetPrior) {
+  Localizer loc(map,config);ASSERT_TRUE(initialize_track(loc).valid);
+  ASSERT_TRUE(loc.begin_recovery());Pose U=pose(.15,0,0,0,0,0);
+  auto a=loc.process(13000000000LL,2,U,query(X*U),3.01);
+  EXPECT_FALSE(a.valid);EXPECT_TRUE(loc.needs_initialization());
+  loc.reset_frontend();EXPECT_FALSE(loc.begin_recovery());
+  ASSERT_TRUE(initialize_track(loc).valid);ASSERT_TRUE(loc.begin_recovery());
+  auto wrong=*rb::transformed(body,pose(100,100,100));
+  a=loc.process(10900000000LL,2,U,wrong,.91);
+  EXPECT_FALSE(a.valid);EXPECT_TRUE(loc.needs_initialization());
+}
+TEST_F(C1,RecoveryRejectsLargeMotionAndCancelledWork) {
+  Localizer loc(map,config);ASSERT_TRUE(initialize_track(loc).valid);ASSERT_TRUE(loc.begin_recovery());
+  Pose U=pose(2,0,0,0,0,0);
+  EXPECT_FALSE(loc.process(10900000000LL,2,U,query(X*U),.91).valid);
+  EXPECT_TRUE(loc.needs_initialization());
+  loc.reset_frontend();ASSERT_TRUE(initialize_track(loc).valid);ASSERT_TRUE(loc.begin_recovery());
+  U=pose(.15,0,0,0,0,0);
+  EXPECT_FALSE(loc.process(10900000000LL,2,U,query(X*U),.91,[]{return true;}).valid);
+  EXPECT_TRUE(loc.needs_initialization());
+}
 TEST_F(C1,RejectWrongInitialAndCovariance) {
   Localizer loc(map,config);loc.initialize(initial(pose(100,100,100)),0.);
   auto result=loc.process(10000000000LL,0,Pose::Identity(),query(X),.01);EXPECT_FALSE(result.valid);EXPECT_EQ(result.state,0);

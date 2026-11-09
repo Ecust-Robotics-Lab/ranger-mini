@@ -1,0 +1,62 @@
+# Development candidate updated 2026-11-09 from same-capture motion; not field calibrated.
+schema_version: 1
+robot: ranger_mini_v2
+base_link:
+  origin: midpoint_between_axles_on_ground
+  axes: x_forward_y_left_z_up
+  status: engineering_convention_selected_by_user_authorization
+body:
+  nominal_length_width_height_m:
+  - 0.738
+  - 0.5
+  - 0.338
+  wheelbase_track_m:
+  - 0.494
+  - 0.364
+  reference_envelope_length_width_m:
+  - 0.74
+  - 0.52
+  footprint_xy:
+  - - 0.37
+    - 0.26
+  - - 0.37
+    - -0.26
+  - - -0.37
+    - -0.26
+  - - -0.37
+    - 0.26
+installation:
+  status: USER_AUTHORIZED_WORKING_ESTIMATE_NOT_FIELD_CALIBRATED
+  user_authorized_2026_11_09: true
+  user_statement_2026_11_06: mid雷达距离底盘车头约26cm
+  lidar_reference_assumed: lidar_coordinate_origin
+  distance_from_front_edge_m: 0.26
+  t_base_lidar_xyz:
+  - 0.109
+  - 0.0
+  - 0.6
+  t_base_lidar_rpy: &id001
+  - 0.0169366422492582
+  - 0.3685116044554271
+  - -3.1260938402392293
+  t_base_imu_xyz:
+  - 0.11485917776401003
+  - -0.023945937986232936
+  - 0.5552533734244779
+  t_base_imu_rpy: *id001
+  base_imu_field_calibrated: false
+  assumptions:
+  - planar_body_spin
+  - signed_wheel_vx_during_straight_motion
+  - IMU_LiDAR_nominal_aligned_axes
+  - lidar_origin_front_distance_0.260m
+  - lidar_height_0.600m_not_remeasured
+  motion_source_bag: bags/fast-livo-wheel_alignment_visit01-pwr5lx7u/raw
+  motion_source_db_sha256: dd3a84c771ac803df92702a3c2f43a28be6773d30947d0c922cc50551d227b1e
+sources:
+  manual: https://static.generation-robots.com/media/ranger-mini-user-manual-en.pdf
+  official_driver: https://github.com/agilexrobotics/ranger_ros2/blob/humble/ranger_base/include/ranger_base/ranger_params.hpp
+  official_model_reviewed: https://github.com/agilexrobotics/ugv_gazebo_sim/blob/master/ranger_mini/ranger_mini_v2/urdf/ranger_mini.xacro
+  imu_nominal: config/mid360/extrinsics_pending.yaml
+  motion_analysis: outputs/fast-livo-demo-wheel-alignment-20261106/analysis_20261109_split/analysis.json
+production_runtime_changed: false

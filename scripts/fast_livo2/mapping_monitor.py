@@ -18,6 +18,7 @@ from rosgraph_msgs.msg import Clock
 from diagnostic_msgs.msg import DiagnosticArray
 from ranger_fast_livo_backend.msg import BackendEstimate
 from session_manager import atomic_json
+from fast_livo2.navigation.live_clock import StartupAnchor
 
 
 class Monitor(Node):
@@ -32,6 +33,7 @@ class Monitor(Node):
         self.pairs, self.sample_ns = 0, None
         self.frames_ok, self.clock_error = True, ''
         self.anchor = None
+        self.startup_anchor = StartupAnchor() if localization and not replay else None
         self.backend, self.metrics, self.view = None, {}, {}
         self.backend_receipt = None
         self.receipt_time = None
@@ -81,10 +83,19 @@ class Monitor(Node):
             self.last[name]=entry.get('last_steady_ns',0)/1e9
         lidar=rows.get('/livox/lidar',{})
         if not self.replay and lidar.get('first_header_ns',0)>0:
-            if self.anchor is None:self.anchor=(lidar['first_header_ns'],lidar['first_steady_ns'])
-            expected=self.anchor[0]+lidar.get('last_steady_ns',0)-self.anchor[1]
-            if abs(lidar.get('last_header_ns',0)-expected)>2_000_000_000:
-                self.clock_error='sensor timestamp diverged from fixed steady-clock anchor by >2s'
+            if self.startup_anchor:
+                acquired=self.startup_anchor.observe(lidar,time.monotonic_ns())
+                if self.startup_anchor.error:self.clock_error=self.startup_anchor.error
+                if self.anchor is None and acquired:
+                    self.anchor=acquired
+                    atomic_json(self.folder/'clock_anchor.json', {'context':str(self.folder),
+                        'anchor':self.anchor,'source_anchor':self.startup_anchor.source_anchor,
+                        'startup_resets':self.startup_anchor.resets,'physical_sync_verified':False})
+            elif self.anchor is None:self.anchor=(lidar['first_header_ns'],lidar['first_steady_ns'])
+            if self.anchor:
+                expected=self.anchor[0]+lidar.get('last_steady_ns',0)-self.anchor[1]
+                if abs(lidar.get('last_header_ns',0)-expected)>2_000_000_000:
+                    self.clock_error='sensor timestamp diverged from fixed steady-clock anchor by >2s'
 
     def clock_tick(self):
         if self.anchor:

@@ -1,0 +1,285 @@
+--- a/src/hik_camera_node.cpp
++++ b/src/hik_camera_node.cpp
+@@ -1,6 +1,8 @@
+ #include <algorithm>
+ #include <atomic>
+ #include <chrono>
++#include <condition_variable>
++#include <deque>
+ #include <cmath>
+ #include <cctype>
+ #include <cstdint>
+@@ -24,6 +26,7 @@
+ #include <unistd.h>
+ 
+ #include "MvCameraControl.h"
++#include "frame_time_guard.hpp"
+ #include "camera_info_manager/camera_info_manager.h"
+ #include "image_transport/image_transport.hpp"
+ #include "rclcpp/logging.hpp"
+@@ -48,12 +51,14 @@
+         &HikCameraRos2DriverNode::dynamicParametersCallback, this,
+         std::placeholders::_1));
+ 
++    publish_thread_ = std::thread(&HikCameraRos2DriverNode::publishLoop, this);
+     capture_thread_ = std::thread(&HikCameraRos2DriverNode::captureLoop, this);
+   }
+ 
+   ~HikCameraRos2DriverNode() override
+   {
+     running_.store(false);
++    publish_condition_.notify_all();
+ 
+     // Stop grabbing before join so a blocking GetImageBuffer call can return.
+     {
+@@ -73,6 +78,7 @@
+       capture_thread_.join();
+     }
+ 
++    if(publish_thread_.joinable())publish_thread_.join();
+     closeCamera();
+     closeTimeshare();
+     closeSyncCsv();
+@@ -1582,10 +1588,40 @@
+     }
+   }
+ 
++  struct PublishFrame {
++    sensor_msgs::msg::Image image;
++    unsigned int number=0;
++    uint64_t device=0,epoch=0;
++    int64_t arrival=0,get_begin=0,convert_end=0,seq=0,scan=0;
++    int status=-1;
++  };
++  void publishLoop() {
++    uint64_t epoch=0;
++    while(running_.load() && rclcpp::ok()) {
++      PublishFrame frame;
++      {
++        std::unique_lock<std::mutex> lock(publish_mutex_);
++        publish_condition_.wait(lock,[this]{return !running_.load() || !publish_frames_.empty();});
++        if(!running_.load())return;
++        frame=std::move(publish_frames_.front());publish_frames_.pop_front();
++      }
++      if(frame.epoch!=epoch){frame_time_guard_=FrameTimeGuard{};epoch=frame.epoch;}
++      image_msg_=std::move(frame.image);dev_ts_ticks_=frame.device;
++      frame_arrival_ns_=frame.arrival;frame_get_begin_ns_=frame.get_begin;frame_convert_end_ns_=frame.convert_end;
++      camera_info_msg_.header=image_msg_.header;camera_info_msg_.width=image_msg_.width;camera_info_msg_.height=image_msg_.height;
++      frame_raw_begin_ns_=steadyClockNs();camera_pub_.publish(image_msg_,camera_info_msg_);frame_raw_end_ns_=steadyClockNs();
++      if(trigger_enable_)processSyncFrame(frame.number,frame.status,frame.seq,frame.scan);
++    }
++  }
++
+   void captureLoop()
+   {
+     RCLCPP_INFO(this->get_logger(), "Camera capture thread started");
+ 
++    sensor_msgs::msg::Image image_msg_;
++    image_msg_.header.frame_id=frame_id_;image_msg_.encoding="rgb8";
++    uint64_t dev_ts_ticks_=0;
++    int64_t frame_arrival_ns_=0,frame_get_begin_ns_=0,frame_convert_end_ns_=0;
+     int consecutive_timeouts = 0;
+     int consecutive_capture_errors = 0;
+     bool recovering_from_stream_loss = false;
+@@ -1611,6 +1647,7 @@
+ 
+       if (!camera_available) {
+         if (connectCameraOnce()) {
++          ++capture_epoch_;
+           if (recovering_from_stream_loss) {
+             RCLCPP_INFO(this->get_logger(), "Camera stream recovered successfully");
+           }
+@@ -1648,6 +1685,7 @@
+           continue;
+         }
+ 
++        frame_get_begin_ns_ = steadyClockNs();
+         get_ret = MV_CC_GetImageBuffer(
+           camera_handle_, &out_frame,
+           static_cast<unsigned int>(frame_timeout_ms_));
+@@ -1692,6 +1730,7 @@
+             }
+           }
+ 
++          frame_convert_end_ns_ = steadyClockNs();
+           // Release the SDK-owned source buffer before ROS publication.
+           free_ret = MV_CC_FreeImageBuffer(camera_handle_, &out_frame);
+         }
+@@ -1726,19 +1765,23 @@
+         }
+ 
+         consecutive_capture_errors = 0;
++        image_msg_.header.frame_id=frame_id_;image_msg_.encoding="rgb8";
+         image_msg_.header.stamp = this->now();
+         image_msg_.height = frame_height;
+         image_msg_.width = frame_width;
+         image_msg_.step = frame_width * 3U;
+ 
+-        camera_info_msg_.header = image_msg_.header;
+-        camera_info_msg_.width = frame_width;
+-        camera_info_msg_.height = frame_height;
+-        camera_pub_.publish(image_msg_, camera_info_msg_);
+-
+-        if (trigger_enable_) {
+-          processSyncFrame(frame_number);
+-        }
++        PublishFrame frame;
++        frame.image=std::move(image_msg_);frame.number=frame_number;frame.device=dev_ts_ticks_;
++        frame.arrival=frame_arrival_ns_;frame.get_begin=frame_get_begin_ns_;frame.convert_end=frame_convert_end_ns_;
++        frame.epoch=capture_epoch_;
++        if(trigger_enable_)frame.status=readTimeshareConsistent(frame.seq,frame.scan);
++        {
++          std::lock_guard<std::mutex> lock(publish_mutex_);
++          if(publish_frames_.size()>=2){publish_frames_.pop_front();++publish_dropped_;}
++          publish_frames_.push_back(std::move(frame));
++        }
++        publish_condition_.notify_one();
+ 
+         if (!first_frame_logged) {
+           RCLCPP_INFO(
+@@ -2131,13 +2174,13 @@
+ 
+   void openSyncCsv()
+   {
+-    if (sync_csv_path_.empty()) {
++    if (sync_csv_path_.empty() || sync_csv_.is_open()) {
+       return;
+     }
+     sync_csv_.open(sync_csv_path_, std::ios::out | std::ios::trunc);
+     if (sync_csv_.is_open()) {
+       sync_csv_ << "frame_id,dev_ts_ticks,arrival_ns,ts_seq,ts_low_ns,status,"
+-                   "publish_ns\n";
++                   "publish_ns,get_begin_ns,convert_end_ns,raw_begin_ns,raw_end_ns\n";
+       RCLCPP_INFO(
+         this->get_logger(), "sync CSV log: %s", sync_csv_path_.c_str());
+     } else {
+@@ -2179,31 +2222,27 @@
+     {
+       return -4;  // STALE (value not updated within timeout)
+     }
+-    if (last_used_low_ != 0 && value <= last_used_low_) {
+-      return -5;  // BACKWARD (cross-cycle suspect)
+-    }
+     return 0;
+   }
+ 
+-  void processSyncFrame(const unsigned int frame_number)
+-  {
+-    int64_t seq = 0;
+-    int64_t value = 0;
+-    const int status = readTimeshareConsistent(seq, value);
++  void processSyncFrame(const unsigned int frame_number, int status, int64_t seq, int64_t value)
++  {
++    if(status==0 && last_used_low_!=0 && value<=last_used_low_)status=-5;
++    if(status==0 && !frame_time_guard_.accept(dev_ts_ticks_,value))status=-6;
+     const char * status_name =
+       status == 0 ? "OK" :
+       status == -1 ? "NO_MAP" :
+       status == -2 ? "NO_WRITER" :
+       status == -3 ? "UNSTABLE" :
+-      status == -4 ? "STALE" : "BACKWARD";
++      status == -4 ? "STALE" : status == -6 ? "DEVICE_SCAN_MISMATCH" : "BACKWARD";
+     ++sync_total_;
+     if (status != 0) {
+-      ++sync_status_count_[status + 5];
++      if(status==-6)++sync_time_mismatch_;else ++sync_status_count_[status + 5];
+       if (sync_csv_.is_open()) {
+         sync_csv_ << frame_number << ',' << dev_ts_ticks_ << ','
+                   << frame_arrival_ns_ << ',' << seq << ',' << value << ','
+-                  << status_name << ",0\n";
+-        sync_csv_.flush();
++                  << status_name << ",0," << frame_get_begin_ns_ << "," << frame_convert_end_ns_ << "," << frame_raw_begin_ns_ << "," << frame_raw_end_ns_ << "\n";
++        if(sync_total_%50==0)sync_csv_.flush();
+       }
+       logSyncSummary(false);
+       return;
+@@ -2220,8 +2259,8 @@
+     if (sync_csv_.is_open()) {
+       sync_csv_ << frame_number << ',' << dev_ts_ticks_ << ','
+                 << frame_arrival_ns_ << ',' << seq << ',' << value << ','
+-                << status_name << ',' << pub_ns << '\n';
+-      sync_csv_.flush();
++                << status_name << ',' << pub_ns << ',' << frame_get_begin_ns_ << ',' << frame_convert_end_ns_ << ',' << frame_raw_begin_ns_ << ',' << frame_raw_end_ns_ << '\n';
++      if(sync_total_%50==0)sync_csv_.flush();
+     }
+     last_used_low_ = value;
+     last_pub_ns_ = pub_ns;
+@@ -2238,14 +2277,16 @@
+     RCLCPP_INFO(
+       this->get_logger(),
+       "sync summary: total=%llu ok=%llu no_map=%llu no_writer=%llu "
+-      "unstable=%llu stale=%llu backward=%llu",
++      "unstable=%llu stale=%llu backward=%llu device_scan_mismatch=%llu publish_queue_dropped=%llu",
+       static_cast<unsigned long long>(sync_total_),
+       static_cast<unsigned long long>(sync_status_count_[5]),
+       static_cast<unsigned long long>(sync_status_count_[4]),
+       static_cast<unsigned long long>(sync_status_count_[3]),
+       static_cast<unsigned long long>(sync_status_count_[2]),
+       static_cast<unsigned long long>(sync_status_count_[1]),
+-      static_cast<unsigned long long>(sync_status_count_[0]));
++      static_cast<unsigned long long>(sync_status_count_[0]),
++      static_cast<unsigned long long>(sync_time_mismatch_),
++      static_cast<unsigned long long>(publish_dropped_.load()));
+   }
+ 
+   TimeshareLayout * timeshare_map_ = nullptr;
+@@ -2257,6 +2298,9 @@
+   int64_t last_summary_ns_ = 0;
+   unsigned long long sync_total_ = 0;
+   unsigned long long sync_status_count_[6] = {0, 0, 0, 0, 0, 0};
++  FrameTimeGuard frame_time_guard_;
++  uint64_t sync_time_mismatch_=0;
++  int64_t frame_get_begin_ns_=0,frame_convert_end_ns_=0,frame_raw_begin_ns_=0,frame_raw_end_ns_=0;
+   uint64_t dev_ts_ticks_ = 0;
+   int64_t frame_arrival_ns_ = 0;
+   sensor_msgs::msg::Image sync_msg_;
+@@ -2332,7 +2376,12 @@
+   rclcpp::Publisher<sensor_msgs::msg::Image>::SharedPtr sync_pub_;
+ 
+   std::atomic<bool> running_{true};
+-  std::thread capture_thread_;
++  std::thread capture_thread_,publish_thread_;
++  std::mutex publish_mutex_;
++  std::condition_variable publish_condition_;
++  std::deque<PublishFrame> publish_frames_;
++  uint64_t capture_epoch_=0;
++  std::atomic<uint64_t> publish_dropped_{0};
+ };
+ }  // namespace hik_camera_ros2_driver
+ 
+--- /dev/null
++++ b/src/frame_time_guard.hpp
+@@ -0,0 +1,33 @@
++#pragma once
++#include <algorithm>
++#include <cmath>
++#include <cstdint>
++#include <vector>
++
++namespace hik_camera_ros2_driver {
++// Relative device/scan progress only. Does not calibrate exposure time or
++// replace the frontend's existing scan-phase compensation.
++class FrameTimeGuard {
++ public:
++  bool accept(uint64_t device, int64_t scan) {
++    if (!device || scan <= 0) return false;
++    if (!last_device_) { last_device_=device;last_scan_=scan;return true; }
++    if (device<=last_device_ || scan<=last_scan_) return false;
++    double ticks=double(device-last_device_), ns=double(scan-last_scan_);
++    if (ratios_.size()>=5) {
++      auto sorted=ratios_;std::sort(sorted.begin(),sorted.end());
++      if (std::abs(ns-ticks*sorted[sorted.size()/2])>35000000.) return false;
++    } else {
++      // Bootstrap from regular adjacent scan delivery only.
++      if(ns<70000000. || ns>130000000.) return false;
++    }
++    ratios_.push_back(ns/ticks);
++    if(ratios_.size()>15)ratios_.erase(ratios_.begin());
++    last_device_=device;last_scan_=scan;return true;
++  }
++ private:
++  uint64_t last_device_=0;
++  int64_t last_scan_=0;
++  std::vector<double> ratios_;
++};
++}

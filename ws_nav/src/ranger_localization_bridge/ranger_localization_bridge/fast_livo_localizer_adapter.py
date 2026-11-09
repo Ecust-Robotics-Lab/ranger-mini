@@ -39,6 +39,10 @@ class LocalizerAdapter(Node):
             raise ValueError('C1 adapter is currently offline only: use_sim_time=true required')
         self.max_age = float(d('sample_max_age', .5).value)
         self.heartbeat_age = float(d('heartbeat_max_age', .5).value)
+        self.expected_map = str(d('expected_map_uuid', '').value)
+        self.expected_manifest = str(d('expected_manifest_sha256', '').value)
+        if bool(self.expected_map) != bool(self.expected_manifest):
+            raise ValueError('map UUID and manifest SHA must be bound together')
         xyz = d('t_base_imu_xyz', [0., 0., .556]).value
         rpy = d('t_base_imu_rpy', [0., 0., 0.]).value
         if (len(xyz) != 3 or len(rpy) != 3 or not all(math.isfinite(v) for v in [*xyz, *rpy])
@@ -64,6 +68,8 @@ class LocalizerAdapter(Node):
             self.generation_floor = None
         self.last_clock = now
         self.error = validate_message(msg)
+        if self.expected_map and (msg.map_uuid != self.expected_map or msg.manifest_sha256 != self.expected_manifest):
+            self.error = 'C1 map differs from the bound navigation map'
         identity = (msg.map_generation, msg.request_generation, msg.map_uuid, msg.manifest_sha256, msg.graph_version)
         ns = msg.header.stamp.sec*10**9+msg.header.stamp.nanosec
         if msg.session_id in self.retired_sessions:

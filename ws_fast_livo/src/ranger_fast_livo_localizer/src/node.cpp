@@ -92,7 +92,7 @@ public:
   }
   ~LocalizerNode()override {{std::lock_guard<std::mutex> lock(mutex_);stopping_=true;++generation_;}condition_.notify_all();if(worker_.joinable())worker_.join();}
 private:
-  enum class Kind {Reset,Load,Initialize,Search,Scan};
+  enum class Kind {Reset,Recover,Load,Initialize,Search,Scan};
   struct Job {Kind kind=Kind::Reset;uint64_t generation=0,scan=0;rb::Pair pair;InitialPose initial;fs::path archive,declaration;std::string tag_context;std::vector<std::pair<double,std::string>> tag_batches;};
   Config config_;Compatibility compatibility_;ArchiveLimits limits_;Pose T_base_imu_;
   SearchConfig search_config_;bool global_enabled_=false;std::atomic<bool> search_allowed_{false};std::string index_path_;
@@ -109,7 +109,7 @@ private:
   rb::PairBuffer pairs_;std::shared_ptr<Archive> map_;std::unique_ptr<Localizer> core_;
   Estimate message_;std::string identity_;uint64_t scan_=0;
   double age_=.5,stream_timeout_=2.,last_discovery_=0,last_received_=0,request_started_=0;
-  bool online_=false;
+  bool online_=false,recovery_pending_=false;
   uint64_t skipped_scans_=0,processed_scans_=0,stale_results_=0;
   int64_t last_clock_=-1;size_t invalid_=0;
   std::map<std::string,std::pair<std::string,uint64_t>> load_ids_,init_ids_;
@@ -122,6 +122,7 @@ private:
   static bool request_id(const std::string& id) {return !id.empty() && id.size()<=128;}
   void enqueue(Job j) {jobs_.push_back(std::move(j));condition_.notify_one();}
   void clear_locked(const std::string& reason,bool frontend_reset) {
+    recovery_pending_=false;
     ++generation_;jobs_.clear();pairs_.clear();tag_inbox_.clear();message_.pose_valid=false;message_.state=0;message_.reason=reason;request_started_=0;lost_latched_=false;
     if(frontend_reset) {message_.session_id=rb::uuid();scan_=0;message_.header.stamp=builtin_interfaces::msg::Time{};message_.last_confirmed_stamp_ns=0;message_.latest_scan_stamp_ns=0;init_ids_.clear();search_ids_.clear();message_.initialization_request_id.clear();}
   }
@@ -222,7 +223,9 @@ private:
       }
       if((message_.state==1 || message_.state==2) && message_.last_confirmed_stamp_ns>0 && (now-last_received_>stream_timeout_ || ros-message_.last_confirmed_stamp_ns>int64_t(age_*1e9) || ros<message_.last_confirmed_stamp_ns-int64_t(age_*1e9))) {
         message_.state=3;message_.pose_valid=false;message_.reason="confirmed_sample_or_stream_expired_requires_initial_pose";
-        ++generation_;jobs_.clear();pairs_.clear();Job j;j.generation=generation_;enqueue(j);request_started_=0;lost_latched_=true;
+        ++generation_;jobs_.clear();pairs_.clear();Job j;j.generation=generation_;
+        recovery_pending_=global_enabled_&&search_allowed_;if(recovery_pending_)j.kind=Kind::Recover;
+        enqueue(j);request_started_=0;lost_latched_=true;
       }
       if(request_started_>0 && message_.state!=1 && now-request_started_>config_.initial_timeout) {
         clear_locked("initial_verification_timeout",false);Job j;j.generation=generation_;enqueue(j);
@@ -249,7 +252,16 @@ private:
   }
   void commit(const Result& result,uint64_t generation) {
     std::lock_guard<std::mutex> lock(mutex_);if(generation!=generation_) return;
-    if(lost_latched_) {message_.latest_scan_stamp_ns=result.latest_scan;message_.scan_id=result.scan;return;}
+    if(lost_latched_) {
+      auto ros=get_clock()->now().nanoseconds();
+      if(recovery_pending_ && result.valid && ros>0 && std::abs(ros-result.stamp)<=int64_t(age_*1e9)) {
+        lost_latched_=false;recovery_pending_=false;
+      } else {
+        message_.latest_scan_stamp_ns=result.latest_scan;message_.scan_id=result.scan;
+        if(recovery_pending_){message_.reason=result.reason;message_.quality_json=result.quality.dump();}
+        return;
+      }
+    }
     if(online_ && result.valid) {
       auto now=get_clock()->now().nanoseconds();
       if(now<=0 || std::abs(now-result.stamp)>int64_t(age_*1e9)) {
@@ -326,6 +338,9 @@ private:
           {std::lock_guard<std::mutex> lock(mutex_);if(cancelled())continue;map_=map;core_=std::move(core);loading_=false;place_index_=std::move(index);search_=std::move(search);
             message_.map_uuid=map->uuid;message_.manifest_sha256=map->manifest_sha;message_.graph_version=map->graph_version;
             message_.reason=global_enabled_&&search_allowed_?"map_loaded_searching":"map_loaded_waiting_initial_pose";message_.state=0;message_.pose_valid=false;message_.quality_json=Json({{"compatibility",map->compatibility}}).dump();}
+        } else if(job.kind==Kind::Recover) {
+          handoff_verify_={};if(search_)search_->reset();
+          if(core_ && !core_->begin_recovery())core_=std::make_unique<Localizer>(map_,config_);
         } else if(job.kind==Kind::Reset) {
           handoff_verify_={};
           if(map_) core_=std::make_unique<Localizer>(map_,config_);

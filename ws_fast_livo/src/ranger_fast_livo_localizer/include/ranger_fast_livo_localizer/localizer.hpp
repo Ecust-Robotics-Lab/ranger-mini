@@ -39,8 +39,9 @@ public:
   Result process(int64_t stamp,uint64_t scan,const Pose& local_imu,const Cloud& cloud,double steady,
                  const std::function<bool()>& cancelled=[] {return false;});
   Result expire(double steady);
+  bool begin_recovery();
   const Result& result()const {return result_;}
-  bool needs_initialization()const {return !initial_ && (!accepted_ || result_.state==3);}
+  bool needs_initialization()const {return !recovering_ && !initial_ && (!accepted_ || result_.state==3);}
   size_t cache_bytes()const {return provider_.cache_bytes();}
 private:
   struct Sample {int64_t stamp;Pose U;};
@@ -55,6 +56,8 @@ private:
   double initial_steady_=0,last_confirmed_steady_=0;
   size_t confirmations_=0,rejects_=0;
   Result result_;
+  bool recovering_=false;
+  size_t recovery_confirmations_=0;
   std::optional<Pose> history_pose(int64_t stamp)const;
   rb::RegistrationResult match(const Cloud& source,const Pose& prediction,int64_t stamp,bool initializing,bool probe_ambiguity,
                                const std::function<bool()>& cancelled);

@@ -19,3 +19,7 @@ lidar_in_base_link:
 # Do not copy t_LI into Lightning without checking its transform direction.
 # IMU origin sits 44.12 mm BELOW the LiDAR origin (manual t_LI z=-0.04412),
 # so IMU-origin height above ground = 0.60 - 0.04412 = 0.556 m when level.
+# 2026-11-06 newer user statement: Mid radar is about 26 cm from FRONT edge.
+# User authorizes a model-based engineering base_link origin for development.
+# See config/fast_livo2/navigation_prep.yaml for the isolated current estimate.
+# Historical rear-edge statement above is preserved, not combined with the new one.

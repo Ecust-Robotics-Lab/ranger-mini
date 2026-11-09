@@ -74,6 +74,7 @@ def main():
     action.add_argument('--status', action='store_true')
     action.add_argument('--stop', action='store_true')
     p.add_argument('--archive', type=Path)
+    p.add_argument('--runtime-config',default=str(ROOT/'config/profiles/fast_livo2_frontend.yaml'))
     p.add_argument('--compatibility', type=Path)
     p.add_argument('--identity-file', type=Path, help='Expected frontend source identities; does not attest physical accuracy')
     p.add_argument('--offline-bridge', action='store_true')
@@ -99,6 +100,7 @@ def main():
     if args.stop:
         return 0 if stop_session(directory) else 2
     os.environ.update(ROS_DOMAIN_ID=str(args.domain), ROS_LOCALHOST_ONLY='1', PYTHONDONTWRITEBYTECODE='1')
+    os.environ['RANGER_RUNTIME_CONFIG']=args.runtime_config
     os.environ['PYTHONPATH'] = str(ROOT/'ws_nav/src/ranger_localization_bridge')+':'+os.environ.get('PYTHONPATH', '')
     os.environ['LD_LIBRARY_PATH'] = str(ROOT/'ws_fast_livo/backend_deps/lib')+':'+os.environ.get('LD_LIBRARY_PATH', '')
     components = specs(args)

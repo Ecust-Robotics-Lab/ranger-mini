@@ -26,9 +26,11 @@ Localizer::Localizer(std::shared_ptr<const Archive> map,Config c):map_(std::move
   coarse_=rb::make_registration(coarse);
 }
 void Localizer::reset_frontend() {
+  recovering_=false;
   history_.clear();initial_.reset();accepted_.reset();support_.reset();confirmations_=rejects_=0;result_=Result{};
 }
 void Localizer::initialize(const InitialPose& i,double steady) {
+  recovering_=false;
   validate_initial(i);initial_=i;initial_steady_=steady;accepted_.reset();support_.reset();confirmations_=rejects_=0;
   result_=Result{};result_.reason=i.stamp==0?"waiting_next_pair_for_initial_pose":"waiting_initial_pose_history";
 }
@@ -104,6 +106,7 @@ Result Localizer::reject(const std::string& reason) {
   return result_;
 }
 Result Localizer::expire(double steady) {
+  if(recovering_) return result_;
   if(accepted_ && steady-last_confirmed_steady_>config_.lost_after) {
     result_.state=3;result_.valid=false;result_.reason="map_confirmation_expired_requires_initial_pose";initial_.reset();support_.reset();
   } else if(initial_ && !accepted_ && steady-initial_steady_>config_.initial_timeout) {
@@ -111,12 +114,23 @@ Result Localizer::expire(double steady) {
   }
   return result_;
 }
+bool Localizer::begin_recovery() {
+  if(!accepted_) return false;
+  recovering_=true;recovery_confirmations_=0;support_.reset();initial_.reset();
+  result_.valid=false;result_.state=3;result_.reason="local_recovery_waiting_fresh_geometry";
+  return true;
+}
 Result Localizer::process(int64_t stamp,uint64_t scan,const Pose& U,const Cloud& cloud,double steady,const std::function<bool()>& cancelled) {
   const double processing_started=rb::steady_seconds();
   if(stamp<=0 || !rb::valid_pose(U) || (!history_.empty() && stamp<=history_.back().stamp)) throw std::invalid_argument("nonmonotonic/invalid frontend sample");
   history_.push_back({stamp,U});while(history_.size()>config_.history_capacity || (history_.size()>1 && (stamp-history_.front().stamp)*1e-9>config_.history_seconds)) history_.pop_front();
   expire(steady);result_.latest_scan=stamp;result_.scan=scan;
-  if(result_.state==3 || (!initial_ && !accepted_)) return result_;
+  if(recovering_ && (stamp-accepted_->stamp>2000000000LL || stamp<=accepted_->stamp ||
+      (U.translation()-accepted_->U.translation()).norm()>config_.max_tracking_translation ||
+      rb::rotation_distance(U,accepted_->U)>config_.max_tracking_rotation)) {
+    recovering_=false;result_.reason="local_recovery_scope_exceeded";return result_;
+  }
+  if((result_.state==3 && !recovering_) || (!initial_ && !accepted_)) return result_;
   bool initializing=!accepted_;Pose prediction;
   if(initializing) {
     if(initial_->stamp==0) initial_->stamp=stamp;
@@ -141,13 +155,29 @@ Result Localizer::process(int64_t stamp,uint64_t scan,const Pose& U,const Cloud&
   }
   rb::RegistrationResult matched;
   try {matched=match(cloud,prediction,stamp,initializing,probe_ambiguity,cancelled);}
-  catch(const std::exception& e) {result_.quality={{"rejection",e.what()}};return reject(e.what());}
+  catch(const std::exception& e) {bool recovery=recovering_;recovering_=false;result_.quality={{"rejection",e.what()}};reject(e.what());if(recovery)result_.state=3;return result_;}
   result_.quality=matched.json();result_.quality["cache_bytes"]=provider_.cache_bytes();
   result_.quality["map_uuid"]=map_->uuid;result_.quality["graph_version"]=map_->graph_version;
   result_.quality["prediction"]=rb::pose_json(prediction);
-  if(!matched.accepted) return reject(matched.reason);
+  if(!matched.accepted) {bool recovery=recovering_;recovering_=false;reject(matched.reason);if(recovery)result_.state=3;return result_;}
   if(!initializing && ((matched.T_target_source.translation()-prediction.translation()).norm()>config_.max_tracking_translation ||
-      rb::rotation_distance(matched.T_target_source,prediction)>config_.max_tracking_rotation)) return reject("tracking_innovation_rejected");
+      rb::rotation_distance(matched.T_target_source,prediction)>config_.max_tracking_rotation)) {bool recovery=recovering_;recovering_=false;reject("tracking_innovation_rejected");if(recovery)result_.state=3;return result_;}
+  if(recovering_) {
+    result_.quality["local_recovery"]=true;
+    Anchor now{stamp,matched.T_target_source,U};
+    if(support_) {
+      Pose a=support_->X*support_->U.inverse(),b=now.X*now.U.inverse();
+      if((a.translation()-b.translation()).norm()>config_.confirmation_consistency_translation ||
+          rb::rotation_distance(a,b)>config_.confirmation_consistency_rotation) {
+        recovering_=false;reject("local_recovery_inconsistent_geometry");result_.state=3;return result_;
+      }
+    } else support_=now;
+    ++recovery_confirmations_;
+    if(recovery_confirmations_<2 || stamp-support_->stamp<100000000LL) {
+      result_.reason="local_recovery_verifying_fresh_frames";return result_;
+    }
+    recovering_=false;support_.reset();
+  }
   if(initializing) {
     Anchor now{stamp,matched.T_target_source,U};
     if(!support_) {support_=now;confirmations_=1;result_.reason="verifying_multiframe_motion_support";return result_;}

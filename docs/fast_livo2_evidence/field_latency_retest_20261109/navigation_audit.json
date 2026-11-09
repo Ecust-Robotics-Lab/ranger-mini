@@ -1,0 +1,43 @@
+{
+  "functional_result": "OBSERVED",
+  "physical_sync": "NOT_VALIDATED",
+  "absolute_accuracy": "NOT_VALIDATED",
+  "counts": {
+    "/navigation_ready": 11879,
+    "/localization_health": 11879,
+    "/fast_livo/navigation/clock_status": 967,
+    "/wheel/odom": 4822,
+    "/fast_livo/localizer/estimate": 4816,
+    "/fast_livo/navigation/wheel/odom": 4641,
+    "/tf": 7587
+  },
+  "missing_topics": [],
+  "private_states": {
+    "0": 1855,
+    "1": 2946,
+    "2": 15
+  },
+  "distinct_confirmed_samples": 591,
+  "ready_true_messages": 7365,
+  "ready_transitions": [
+    false,
+    true,
+    false,
+    true,
+    false,
+    true,
+    false,
+    true
+  ],
+  "clock_ready_messages": 928,
+  "clock_errors": [],
+  "innovation_latched": false,
+  "converted_wheel_regressions": 0,
+  "tf_edges": {
+    "odom->base_link": 4641,
+    "map->odom": 2946
+  },
+  "note": "Transitions alone do not establish fault injection or recovery acceptance; TF publisher uniqueness needs live graph evidence.",
+  "source_capture": "/home/lab307/ranger_nav/bags/fast-livo-localization-co968xa3",
+  "read_only": true
+}

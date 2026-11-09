@@ -1,0 +1,39 @@
+[
+  {
+    "pid": 12808,
+    "exe": "/home/lab307/ranger_nav/ws_fast_livo/online_localization_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node",
+    "cmdline": "/home/lab307/ranger_nav/ws_fast_livo/online_localization_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node --ros-args --params-file /home/lab307/ranger_nav/bags/fast-livo-localization-co968xa3/config/localizer.yaml --params-file /home/lab307/ranger_nav/bags/fast-livo-localization-co968xa3/config/relocalizer.yaml -p archive_path:=/home/lab307/ranger_nav/outputs/fast-livo-demo-online-mapping-20261105/full_replay_12/map -p use_sim_time:=true -p online_scheduling:=true -p registration:=small_gicp -p global_search_enabled:=true -p global_descriptor:=radial_pair_multiscale_v2 -p t_base_imu_xyz:=[0.11485917776401003, -0.023945937986232936, 0.5552533734244779] -p t_base_imu_rpy:=[0.0169366422492582, 0.3685116044554271, -3.1260938402392293] -p sensor_configuration_sha256:=2f73c5f2475d4e48e29fa8ff36af2bfe627cdb13f8607ee95e15807201cd4346 -p time_contract_sha256:=849fa5e4b3713bcf49ef08211c187d7e4a840e51977bb2f2ecf30eb1e5b0472b -p frontend_sources_sha256:=55feceb3ec5a48f6980bd86c4ce2fcfa7c48cc312c49c043683a585382e6582d ",
+    "maps": [
+      "7de5d6b56000-7de5d6b93000 r--p 00000000 103:02 39080659                  /home/lab307/ranger_nav/ws_fast_livo/online_localization_install/ranger_fast_livo_localizer/lib/libranger_localizer_core.so",
+      "7de5d6b93000-7de5d6c92000 r-xp 0003d000 103:02 39080659                  /home/lab307/ranger_nav/ws_fast_livo/online_localization_install/ranger_fast_livo_localizer/lib/libranger_localizer_core.so",
+      "7de5d6c92000-7de5d6cc7000 r--p 0013c000 103:02 39080659                  /home/lab307/ranger_nav/ws_fast_livo/online_localization_install/ranger_fast_livo_localizer/lib/libranger_localizer_core.so",
+      "7de5d6cc7000-7de5d6cc8000 ---p 00171000 103:02 39080659                  /home/lab307/ranger_nav/ws_fast_livo/online_localization_install/ranger_fast_livo_localizer/lib/libranger_localizer_core.so",
+      "7de5d6cc8000-7de5d6ccb000 r--p 00171000 103:02 39080659                  /home/lab307/ranger_nav/ws_fast_livo/online_localization_install/ranger_fast_livo_localizer/lib/libranger_localizer_core.so",
+      "7de5d6ccb000-7de5d6ccd000 rw-p 00174000 103:02 39080659                  /home/lab307/ranger_nav/ws_fast_livo/online_localization_install/ranger_fast_livo_localizer/lib/libranger_localizer_core.so"
+    ]
+  },
+  {
+    "pid": 12810,
+    "exe": "/home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/lib/ranger_base/ranger_base_node",
+    "cmdline": "/home/lab307/ranger_nav/ws_base/install_recording_rx/ranger_base/lib/ranger_base/ranger_base_node --ros-args --params-file /home/lab307/ranger_nav/config/base_mini_v2.yaml -p receive_only:=true -p publish_odom_tf:=false ",
+    "maps": []
+  },
+  {
+    "pid": 13026,
+    "exe": "/home/lab307/ranger_nav/ws_camera/latency_install/hik_camera_trigger_driver/lib/hik_camera_trigger_driver/hik_camera_trigger_driver_node",
+    "cmdline": "/home/lab307/ranger_nav/ws_camera/latency_install/hik_camera_trigger_driver/lib/hik_camera_trigger_driver/hik_camera_trigger_driver_node --ros-args --params-file /home/lab307/ranger_nav/bags/fast-livo-localization-co968xa3/config/camera_live.yaml -p timeshare_path:=/home/lab307/ranger_nav/bags/fast-livo-localization-co968xa3/sensor_assets/timeshare -p sync_csv_path:=/home/lab307/ranger_nav/bags/fast-livo-localization-co968xa3/sensor_assets/camera_sync.csv -r __node:=hik_camera_trigger ",
+    "maps": [
+      "78a9ee05f000-78a9ee07d000 r--p 00000000 103:02 38942224                  /home/lab307/ranger_nav/ws_camera/latency_install/hik_camera_trigger_driver/lib/libhik_camera_trigger_driver.so",
+      "78a9ee07d000-78a9ee0a7000 r-xp 0001e000 103:02 38942224                  /home/lab307/ranger_nav/ws_camera/latency_install/hik_camera_trigger_driver/lib/libhik_camera_trigger_driver.so",
+      "78a9ee0a7000-78a9ee0b5000 r--p 00048000 103:02 38942224                  /home/lab307/ranger_nav/ws_camera/latency_install/hik_camera_trigger_driver/lib/libhik_camera_trigger_driver.so",
+      "78a9ee0b5000-78a9ee0b7000 r--p 00055000 103:02 38942224                  /home/lab307/ranger_nav/ws_camera/latency_install/hik_camera_trigger_driver/lib/libhik_camera_trigger_driver.so",
+      "78a9ee0b7000-78a9ee0b9000 rw-p 00057000 103:02 38942224                  /home/lab307/ranger_nav/ws_camera/latency_install/hik_camera_trigger_driver/lib/libhik_camera_trigger_driver.so"
+    ]
+  },
+  {
+    "pid": 13067,
+    "exe": "/home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/lib/fast_livo/fastlivo_mapping",
+    "cmdline": "/home/lab307/ranger_nav/ws_fast_livo/online_frontend_install/fast_livo/lib/fast_livo/fastlivo_mapping --ros-args --params-file /home/lab307/ranger_nav/bags/fast-livo-localization-co968xa3/config/ranger_mid360s_hik_trial.yaml -p use_sim_time:=true --log-level warn ",
+    "maps": []
+  }
+]

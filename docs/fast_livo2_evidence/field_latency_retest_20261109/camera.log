@@ -1,0 +1,35 @@
+[INFO] [1794214087.655606098] [hik_camera_trigger]: Starting HikCameraRos2DriverNode
+[INFO] [1794214087.690206312] [hik_camera_trigger]: Image publisher QoS: topic=front/image, reliability=reliable, durability=volatile, depth=5
+[INFO] [1794214087.690452870] [hik_camera_trigger]: Sync image publisher enabled: topic=/front/image_sync reliability=reliable (lidar-domain stamps via timeshare)
+[INFO] [1794214087.690793741] [hik_camera_trigger]: camera calibration URL: package://hik_camera_trigger_driver/config/camera_info.yaml
+[INFO] [1794214087.691225034] [hik_camera_trigger]: Camera capture thread started
+[INFO] [1794214087.805213072] [hik_camera_trigger]: Matched target camera: SN=DB1216907, transport=USB3
+[INFO] [1794214089.029789194] [hik_camera_trigger]: Trigger profile applied: source=Line0, exposure=20000.0 us (requested 20000.0), gain=10.02 (requested 10.00)
+[INFO] [1794214089.029876211] [hik_camera_trigger]: timeshare mapped: /home/lab307/ranger_nav/bags/fast-livo-localization-co968xa3/sensor_assets/timeshare
+[INFO] [1794214089.029919480] [hik_camera_trigger]: sync CSV log: /home/lab307/ranger_nav/bags/fast-livo-localization-co968xa3/sensor_assets/camera_sync.csv
+[INFO] [1794214089.042337578] [hik_camera_trigger]: Camera connected and grabbing started: index=0, transport=USB3, SN=DB1216907
+[INFO] [1794214089.158711975] [hik_camera_trigger]: Publishing image: 1280x1024 RGB8, first frame=0, source_pixel=BayerGB8 (0x0108000A)
+[INFO] [1794214089.170156658] [hik_camera_trigger]: sync summary: total=1 ok=1 no_map=0 no_writer=0 unstable=0 stale=0 backward=0 device_scan_mismatch=0 publish_queue_dropped=0
+*******XOpenDisplay Fail ******* 
+[INFO] [1794214094.260602096] [hik_camera_trigger]: sync summary: total=52 ok=52 no_map=0 no_writer=0 unstable=0 stale=0 backward=0 device_scan_mismatch=0 publish_queue_dropped=0
+[INFO] [1794214099.358489796] [hik_camera_trigger]: sync summary: total=103 ok=103 no_map=0 no_writer=0 unstable=0 stale=0 backward=0 device_scan_mismatch=0 publish_queue_dropped=0
+[INFO] [1794214104.460114891] [hik_camera_trigger]: sync summary: total=154 ok=154 no_map=0 no_writer=0 unstable=0 stale=0 backward=0 device_scan_mismatch=0 publish_queue_dropped=0
+[INFO] [1794214109.559423477] [hik_camera_trigger]: sync summary: total=205 ok=205 no_map=0 no_writer=0 unstable=0 stale=0 backward=0 device_scan_mismatch=0 publish_queue_dropped=0
+[INFO] [1794214114.656968455] [hik_camera_trigger]: sync summary: total=256 ok=256 no_map=0 no_writer=0 unstable=0 stale=0 backward=0 device_scan_mismatch=0 publish_queue_dropped=0
+[INFO] [1794214119.657660911] [hik_camera_trigger]: sync summary: total=306 ok=306 no_map=0 no_writer=0 unstable=0 stale=0 backward=0 device_scan_mismatch=0 publish_queue_dropped=0
+[INFO] [1794214124.756186599] [hik_camera_trigger]: sync summary: total=357 ok=357 no_map=0 no_writer=0 unstable=0 stale=0 backward=0 device_scan_mismatch=0 publish_queue_dropped=0
+[INFO] [1794214129.756579148] [hik_camera_trigger]: sync summary: total=407 ok=407 no_map=0 no_writer=0 unstable=0 stale=0 backward=0 device_scan_mismatch=0 publish_queue_dropped=0
+[INFO] [1794214134.757152566] [hik_camera_trigger]: sync summary: total=457 ok=457 no_map=0 no_writer=0 unstable=0 stale=0 backward=0 device_scan_mismatch=0 publish_queue_dropped=0
+[INFO] [1794214139.757202231] [hik_camera_trigger]: sync summary: total=507 ok=507 no_map=0 no_writer=0 unstable=0 stale=0 backward=0 device_scan_mismatch=0 publish_queue_dropped=0
+[INFO] [1794214144.757448374] [hik_camera_trigger]: sync summary: total=557 ok=557 no_map=0 no_writer=0 unstable=0 stale=0 backward=0 device_scan_mismatch=0 publish_queue_dropped=0
+[INFO] [1794214149.856502022] [hik_camera_trigger]: sync summary: total=608 ok=608 no_map=0 no_writer=0 unstable=0 stale=0 backward=0 device_scan_mismatch=0 publish_queue_dropped=0
+[INFO] [1794214154.856639147] [hik_camera_trigger]: sync summary: total=658 ok=658 no_map=0 no_writer=0 unstable=0 stale=0 backward=0 device_scan_mismatch=0 publish_queue_dropped=0
+[INFO] [1794214159.857653614] [hik_camera_trigger]: sync summary: total=708 ok=708 no_map=0 no_writer=0 unstable=0 stale=0 backward=0 device_scan_mismatch=0 publish_queue_dropped=0
+[INFO] [1794214164.858361222] [hik_camera_trigger]: sync summary: total=758 ok=758 no_map=0 no_writer=0 unstable=0 stale=0 backward=0 device_scan_mismatch=0 publish_queue_dropped=0
+[INFO] [1794214169.858830854] [hik_camera_trigger]: sync summary: total=808 ok=808 no_map=0 no_writer=0 unstable=0 stale=0 backward=0 device_scan_mismatch=0 publish_queue_dropped=0
+[INFO] [1794214174.958198762] [hik_camera_trigger]: sync summary: total=859 ok=859 no_map=0 no_writer=0 unstable=0 stale=0 backward=0 device_scan_mismatch=0 publish_queue_dropped=0
+[INFO] [1794214180.057153345] [hik_camera_trigger]: sync summary: total=910 ok=910 no_map=0 no_writer=0 unstable=0 stale=0 backward=0 device_scan_mismatch=0 publish_queue_dropped=0
+[INFO] [1794214181.160092229] [rclcpp]: signal_handler(SIGINT/SIGTERM)
+[INFO] [1794214181.256926541] [hik_camera_trigger]: Camera capture thread stopped
+[INFO] [1794214181.270542737] [hik_camera_trigger]: sync summary: total=921 ok=921 no_map=0 no_writer=0 unstable=0 stale=0 backward=0 device_scan_mismatch=0 publish_queue_dropped=0
+[INFO] [1794214181.270563543] [hik_camera_trigger]: HikCameraRos2DriverNode destroyed

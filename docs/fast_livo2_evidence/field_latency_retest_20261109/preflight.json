@@ -1,0 +1,9 @@
+{
+  "boot_id": "dc7ccd75-a884-43af-921e-f285f18e2264",
+  "git_head": "694b8b6d463f07a340b2c66b6b5cab4dd2938668",
+  "git_status": "",
+  "can": "3: can0: <NOARP,UP,LOWER_UP,ECHO> mtu 16 qdisc pfifo_fast state UP mode DEFAULT group default qlen 10\n    link/can  promiscuity 0 minmtu 0 maxmtu 0 \n    can state ERROR-ACTIVE restart-ms 0 \n\t  bitrate 500000 sample-point 0.875 \n\t  tq 125 prop-seg 6 phase-seg1 7 phase-seg2 2 sjw 1\n\t  gs_usb: tseg1 1..16 tseg2 1..8 sjw 1..4 brp 1..1024 brp-inc 1\n\t  clock 48000000 \n\t  re-started bus-errors arbit-lost error-warn error-pass bus-off\n\t  0          0          0          0          0          0         numtxqueues 1 numrxqueues 1 gso_max_size 65536 gso_max_segs 65535 parentbus usb parentdev 1-11:1.0 \n    RX:  bytes packets errors dropped  missed   mcast           \n      33958950 4423224      0   54791       0       0 \n    TX:  bytes packets errors dropped carrier collsns           \n             0       0      0       0       0       0 \n",
+  "requested_seconds": 90,
+  "authorized_by": "用户：那再进行一次实机短测吧",
+  "scope": "sensor/frontend/C2/C1/public TF/receive-only wheel; user RC; no autonomous commands"
+}

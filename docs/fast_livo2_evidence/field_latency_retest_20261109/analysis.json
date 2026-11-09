@@ -1,0 +1,666 @@
+{
+  "capture": "/home/lab307/ranger_nav/bags/fast-livo-localization-co968xa3",
+  "read_only": true,
+  "counts": {
+    "/navigation_ready": 11879,
+    "/tf_static": 2,
+    "/localization_health": 11879,
+    "/localization/estimate": 6772,
+    "/fast_livo/navigation/wheel/odom": 4641,
+    "/fast_livo/navigation/clock_status": 967,
+    "/tf": 7587,
+    "/fast_livo/capture/input_receipts": 967,
+    "/clock": 4648,
+    "/wheel/odom": 4822,
+    "/fast_livo/localizer/estimate": 4816,
+    "/livox/imu": 18820,
+    "/livox/lidar": 941,
+    "/front/image": 921,
+    "/front/image_sync": 921,
+    "/front/camera_info": 921,
+    "/fast_livo/odometry": 903,
+    "/fast_livo/deskewed_imu": 903
+  },
+  "camera": {
+    "rows": 921,
+    "statuses": {
+      "OK": 921
+    },
+    "sdk_wait_ms": {
+      "count": 921,
+      "median": 97.114068,
+      "p95": 98.134536,
+      "maximum": 110.387968
+    },
+    "convert_ms": {
+      "count": 921,
+      "median": 2.860735,
+      "p95": 4.510357,
+      "maximum": 7.881115
+    },
+    "publish_queue_ms": {
+      "count": 921,
+      "median": 0.026831,
+      "p95": 0.14944,
+      "maximum": 0.303263
+    },
+    "raw_publish_ms": {
+      "count": 921,
+      "median": 0.835363,
+      "p95": 1.517524,
+      "maximum": 5.261487
+    },
+    "sync_after_raw_ms": {
+      "count": 921,
+      "median": 1.052603,
+      "p95": 2.252009,
+      "maximum": 6.106788
+    },
+    "get_return_interval_ms": {
+      "count": 920,
+      "median": 99.997473,
+      "p95": 100.185058,
+      "maximum": 101.097097
+    }
+  },
+  "states": {
+    "0": 1855,
+    "1": 2946,
+    "2": 15
+  },
+  "distinct_confirmed": 591,
+  "first_valid_from_first_fast_arrival_seconds": 30.99401757,
+  "first_valid_from_first_fast_sample_seconds": 30.700146198,
+  "first_valid_stamp": 1590192123000293016,
+  "max_arrival_gap_seconds": {
+    "/navigation_ready": 0.022127151,
+    "/localization_health": 0.022240195,
+    "/wheel/odom": 0.027645237,
+    "/fast_livo/localizer/estimate": 0.023737905,
+    "/clock": 0.023631765,
+    "/fast_livo/navigation/wheel/odom": 0.02316185,
+    "/fast_livo/odometry": 0.201075678
+  },
+  "ready_transitions": [
+    {
+      "t": 1794214084424236843,
+      "ready": false,
+      "health_before": {},
+      "health_after": {
+        "backend_alive": "0",
+        "backend_valid": "0",
+        "innovation": "1",
+        "innovation_skipped": "1",
+        "innovation_unlocked": "1",
+        "loc_tf": "1",
+        "loc_tf_age_ok": "0",
+        "map_transform": "0",
+        "odom_age": "0",
+        "odom_present": "0",
+        "time_aligned": "0",
+        "backend_state": "0",
+        "backend_reason": "map_loaded_searching; map=253f573d7a7eabbc363a225ab192cc14; graph=419; session=aa2414b396c35c5768b58516da8c0804; initial=; request_generation=0",
+        "alignment_reason": "no aligned localization",
+        "sample_time": "0.0"
+      }
+    },
+    {
+      "t": 1794214121954258991,
+      "ready": true,
+      "health_before": {
+        "backend_alive": "1",
+        "backend_valid": "1",
+        "innovation": "1",
+        "innovation_skipped": "1",
+        "innovation_unlocked": "1",
+        "loc_tf": "1",
+        "loc_tf_age_ok": "1",
+        "map_transform": "0",
+        "odom_age": "1",
+        "odom_present": "1",
+        "time_aligned": "1",
+        "backend_state": "1",
+        "backend_reason": "map_match_confirmed; map=253f573d7a7eabbc363a225ab192cc14; graph=419; session=aa2414b396c35c5768b58516da8c0804; initial=global-ae2f7dfd4ff101e03e2dc26075d3510b; request_generation=1",
+        "alignment_reason": "interpolated",
+        "aligned_sample_time": "1590192123.0002933",
+        "sample_time": "1590192123.000293"
+      }
+    },
+    {
+      "t": 1794214131724443092,
+      "ready": false,
+      "health_before": {
+        "backend_alive": "1",
+        "backend_valid": "1",
+        "innovation": "1",
+        "innovation_skipped": "0",
+        "innovation_unlocked": "1",
+        "loc_tf": "1",
+        "loc_tf_age_ok": "1",
+        "map_transform": "1",
+        "odom_age": "1",
+        "odom_present": "1",
+        "time_aligned": "1",
+        "backend_state": "1",
+        "backend_reason": "map_match_confirmed; map=253f573d7a7eabbc363a225ab192cc14; graph=419; session=aa2414b396c35c5768b58516da8c0804; initial=global-ae2f7dfd4ff101e03e2dc26075d3510b; request_generation=1",
+        "alignment_reason": "interpolated",
+        "aligned_sample_time": "1590192132.8000762",
+        "sample_time": "1590192132.800076"
+      },
+      "health_after": {
+        "backend_alive": "1",
+        "backend_valid": "0",
+        "innovation": "1",
+        "innovation_skipped": "0",
+        "innovation_unlocked": "1",
+        "loc_tf": "1",
+        "loc_tf_age_ok": "1",
+        "map_transform": "1",
+        "odom_age": "1",
+        "odom_present": "1",
+        "time_aligned": "1",
+        "backend_state": "2",
+        "backend_reason": "not_converged; map=253f573d7a7eabbc363a225ab192cc14; graph=419; session=aa2414b396c35c5768b58516da8c0804; initial=global-ae2f7dfd4ff101e03e2dc26075d3510b; request_generation=1",
+        "alignment_reason": "interpolated",
+        "aligned_sample_time": "1590192132.8000762",
+        "sample_time": "1590192132.800076"
+      }
+    },
+    {
+      "t": 1794214131844920716,
+      "ready": true,
+      "health_before": {
+        "backend_alive": "1",
+        "backend_valid": "0",
+        "innovation": "1",
+        "innovation_skipped": "0",
+        "innovation_unlocked": "1",
+        "loc_tf": "1",
+        "loc_tf_age_ok": "1",
+        "map_transform": "1",
+        "odom_age": "1",
+        "odom_present": "1",
+        "time_aligned": "1",
+        "backend_state": "2",
+        "backend_reason": "not_converged; map=253f573d7a7eabbc363a225ab192cc14; graph=419; session=aa2414b396c35c5768b58516da8c0804; initial=global-ae2f7dfd4ff101e03e2dc26075d3510b; request_generation=1",
+        "alignment_reason": "interpolated",
+        "aligned_sample_time": "1590192132.8000762",
+        "sample_time": "1590192132.800076"
+      }
+    },
+    {
+      "t": 1794214155304718052,
+      "ready": false,
+      "health_before": {
+        "backend_alive": "1",
+        "backend_valid": "1",
+        "innovation": "1",
+        "innovation_skipped": "0",
+        "innovation_unlocked": "1",
+        "loc_tf": "1",
+        "loc_tf_age_ok": "1",
+        "map_transform": "1",
+        "odom_age": "1",
+        "odom_present": "1",
+        "time_aligned": "1",
+        "backend_state": "1",
+        "backend_reason": "map_match_confirmed; map=253f573d7a7eabbc363a225ab192cc14; graph=419; session=aa2414b396c35c5768b58516da8c0804; initial=global-ae2f7dfd4ff101e03e2dc26075d3510b; request_generation=1",
+        "alignment_reason": "interpolated",
+        "aligned_sample_time": "1590192156.4000633",
+        "sample_time": "1590192156.4000633"
+      },
+      "health_after": {
+        "backend_alive": "1",
+        "backend_valid": "0",
+        "innovation": "1",
+        "innovation_skipped": "0",
+        "innovation_unlocked": "1",
+        "loc_tf": "1",
+        "loc_tf_age_ok": "1",
+        "map_transform": "1",
+        "odom_age": "1",
+        "odom_present": "1",
+        "time_aligned": "1",
+        "backend_state": "2",
+        "backend_reason": "not_converged; map=253f573d7a7eabbc363a225ab192cc14; graph=419; session=aa2414b396c35c5768b58516da8c0804; initial=global-ae2f7dfd4ff101e03e2dc26075d3510b; request_generation=1",
+        "alignment_reason": "interpolated",
+        "aligned_sample_time": "1590192156.4000633",
+        "sample_time": "1590192156.4000633"
+      }
+    },
+    {
+      "t": 1794214155424684228,
+      "ready": true,
+      "health_before": {
+        "backend_alive": "1",
+        "backend_valid": "0",
+        "innovation": "1",
+        "innovation_skipped": "0",
+        "innovation_unlocked": "1",
+        "loc_tf": "1",
+        "loc_tf_age_ok": "1",
+        "map_transform": "1",
+        "odom_age": "1",
+        "odom_present": "1",
+        "time_aligned": "1",
+        "backend_state": "2",
+        "backend_reason": "not_converged; map=253f573d7a7eabbc363a225ab192cc14; graph=419; session=aa2414b396c35c5768b58516da8c0804; initial=global-ae2f7dfd4ff101e03e2dc26075d3510b; request_generation=1",
+        "alignment_reason": "interpolated",
+        "aligned_sample_time": "1590192156.4000633",
+        "sample_time": "1590192156.4000633"
+      }
+    },
+    {
+      "t": 1794214156904613071,
+      "ready": false,
+      "health_before": {
+        "backend_alive": "1",
+        "backend_valid": "1",
+        "innovation": "1",
+        "innovation_skipped": "0",
+        "innovation_unlocked": "1",
+        "loc_tf": "1",
+        "loc_tf_age_ok": "1",
+        "map_transform": "1",
+        "odom_age": "1",
+        "odom_present": "1",
+        "time_aligned": "1",
+        "backend_state": "1",
+        "backend_reason": "map_match_confirmed; map=253f573d7a7eabbc363a225ab192cc14; graph=419; session=aa2414b396c35c5768b58516da8c0804; initial=global-ae2f7dfd4ff101e03e2dc26075d3510b; request_generation=1",
+        "alignment_reason": "interpolated",
+        "aligned_sample_time": "1590192158.0003939",
+        "sample_time": "1590192158.0003936"
+      },
+      "health_after": {
+        "backend_alive": "1",
+        "backend_valid": "0",
+        "innovation": "1",
+        "innovation_skipped": "0",
+        "innovation_unlocked": "1",
+        "loc_tf": "1",
+        "loc_tf_age_ok": "1",
+        "map_transform": "1",
+        "odom_age": "1",
+        "odom_present": "1",
+        "time_aligned": "1",
+        "backend_state": "2",
+        "backend_reason": "not_converged; map=253f573d7a7eabbc363a225ab192cc14; graph=419; session=aa2414b396c35c5768b58516da8c0804; initial=global-ae2f7dfd4ff101e03e2dc26075d3510b; request_generation=1",
+        "alignment_reason": "interpolated",
+        "aligned_sample_time": "1590192158.0003939",
+        "sample_time": "1590192158.0003936"
+      }
+    },
+    {
+      "t": 1794214156965135557,
+      "ready": true,
+      "health_before": {
+        "backend_alive": "1",
+        "backend_valid": "0",
+        "innovation": "1",
+        "innovation_skipped": "0",
+        "innovation_unlocked": "1",
+        "loc_tf": "1",
+        "loc_tf_age_ok": "1",
+        "map_transform": "1",
+        "odom_age": "1",
+        "odom_present": "1",
+        "time_aligned": "1",
+        "backend_state": "2",
+        "backend_reason": "not_converged; map=253f573d7a7eabbc363a225ab192cc14; graph=419; session=aa2414b396c35c5768b58516da8c0804; initial=global-ae2f7dfd4ff101e03e2dc26075d3510b; request_generation=1",
+        "alignment_reason": "interpolated",
+        "aligned_sample_time": "1590192158.0003939",
+        "sample_time": "1590192158.0003936"
+      }
+    }
+  ],
+  "post_ready_outages": [
+    {
+      "start": 1794214131724443092,
+      "duration_seconds": 0.120477624,
+      "health_before": {
+        "backend_alive": "1",
+        "backend_valid": "1",
+        "innovation": "1",
+        "innovation_skipped": "0",
+        "innovation_unlocked": "1",
+        "loc_tf": "1",
+        "loc_tf_age_ok": "1",
+        "map_transform": "1",
+        "odom_age": "1",
+        "odom_present": "1",
+        "time_aligned": "1",
+        "backend_state": "1",
+        "backend_reason": "map_match_confirmed; map=253f573d7a7eabbc363a225ab192cc14; graph=419; session=aa2414b396c35c5768b58516da8c0804; initial=global-ae2f7dfd4ff101e03e2dc26075d3510b; request_generation=1",
+        "alignment_reason": "interpolated",
+        "aligned_sample_time": "1590192132.8000762",
+        "sample_time": "1590192132.800076"
+      },
+      "health_after": {
+        "backend_alive": "1",
+        "backend_valid": "0",
+        "innovation": "1",
+        "innovation_skipped": "0",
+        "innovation_unlocked": "1",
+        "loc_tf": "1",
+        "loc_tf_age_ok": "1",
+        "map_transform": "1",
+        "odom_age": "1",
+        "odom_present": "1",
+        "time_aligned": "1",
+        "backend_state": "2",
+        "backend_reason": "not_converged; map=253f573d7a7eabbc363a225ab192cc14; graph=419; session=aa2414b396c35c5768b58516da8c0804; initial=global-ae2f7dfd4ff101e03e2dc26075d3510b; request_generation=1",
+        "alignment_reason": "interpolated",
+        "aligned_sample_time": "1590192132.8000762",
+        "sample_time": "1590192132.800076"
+      },
+      "private_changes_nearby": [
+        {
+          "t": 1794214131724025337,
+          "state": 2,
+          "reason": "not_converged",
+          "request_generation": 1,
+          "local_recovery": false
+        },
+        {
+          "t": 1794214131843960585,
+          "state": 1,
+          "reason": "map_match_confirmed",
+          "request_generation": 1,
+          "local_recovery": false
+        }
+      ]
+    },
+    {
+      "start": 1794214155304718052,
+      "duration_seconds": 0.119966176,
+      "health_before": {
+        "backend_alive": "1",
+        "backend_valid": "1",
+        "innovation": "1",
+        "innovation_skipped": "0",
+        "innovation_unlocked": "1",
+        "loc_tf": "1",
+        "loc_tf_age_ok": "1",
+        "map_transform": "1",
+        "odom_age": "1",
+        "odom_present": "1",
+        "time_aligned": "1",
+        "backend_state": "1",
+        "backend_reason": "map_match_confirmed; map=253f573d7a7eabbc363a225ab192cc14; graph=419; session=aa2414b396c35c5768b58516da8c0804; initial=global-ae2f7dfd4ff101e03e2dc26075d3510b; request_generation=1",
+        "alignment_reason": "interpolated",
+        "aligned_sample_time": "1590192156.4000633",
+        "sample_time": "1590192156.4000633"
+      },
+      "health_after": {
+        "backend_alive": "1",
+        "backend_valid": "0",
+        "innovation": "1",
+        "innovation_skipped": "0",
+        "innovation_unlocked": "1",
+        "loc_tf": "1",
+        "loc_tf_age_ok": "1",
+        "map_transform": "1",
+        "odom_age": "1",
+        "odom_present": "1",
+        "time_aligned": "1",
+        "backend_state": "2",
+        "backend_reason": "not_converged; map=253f573d7a7eabbc363a225ab192cc14; graph=419; session=aa2414b396c35c5768b58516da8c0804; initial=global-ae2f7dfd4ff101e03e2dc26075d3510b; request_generation=1",
+        "alignment_reason": "interpolated",
+        "aligned_sample_time": "1590192156.4000633",
+        "sample_time": "1590192156.4000633"
+      },
+      "private_changes_nearby": [
+        {
+          "t": 1794214155303991596,
+          "state": 2,
+          "reason": "not_converged",
+          "request_generation": 1,
+          "local_recovery": false
+        },
+        {
+          "t": 1794214155423815354,
+          "state": 1,
+          "reason": "map_match_confirmed",
+          "request_generation": 1,
+          "local_recovery": false
+        }
+      ]
+    },
+    {
+      "start": 1794214156904613071,
+      "duration_seconds": 0.060522486,
+      "health_before": {
+        "backend_alive": "1",
+        "backend_valid": "1",
+        "innovation": "1",
+        "innovation_skipped": "0",
+        "innovation_unlocked": "1",
+        "loc_tf": "1",
+        "loc_tf_age_ok": "1",
+        "map_transform": "1",
+        "odom_age": "1",
+        "odom_present": "1",
+        "time_aligned": "1",
+        "backend_state": "1",
+        "backend_reason": "map_match_confirmed; map=253f573d7a7eabbc363a225ab192cc14; graph=419; session=aa2414b396c35c5768b58516da8c0804; initial=global-ae2f7dfd4ff101e03e2dc26075d3510b; request_generation=1",
+        "alignment_reason": "interpolated",
+        "aligned_sample_time": "1590192158.0003939",
+        "sample_time": "1590192158.0003936"
+      },
+      "health_after": {
+        "backend_alive": "1",
+        "backend_valid": "0",
+        "innovation": "1",
+        "innovation_skipped": "0",
+        "innovation_unlocked": "1",
+        "loc_tf": "1",
+        "loc_tf_age_ok": "1",
+        "map_transform": "1",
+        "odom_age": "1",
+        "odom_present": "1",
+        "time_aligned": "1",
+        "backend_state": "2",
+        "backend_reason": "not_converged; map=253f573d7a7eabbc363a225ab192cc14; graph=419; session=aa2414b396c35c5768b58516da8c0804; initial=global-ae2f7dfd4ff101e03e2dc26075d3510b; request_generation=1",
+        "alignment_reason": "interpolated",
+        "aligned_sample_time": "1590192158.0003939",
+        "sample_time": "1590192158.0003936"
+      },
+      "private_changes_nearby": [
+        {
+          "t": 1794214156903891325,
+          "state": 2,
+          "reason": "not_converged",
+          "request_generation": 1,
+          "local_recovery": false
+        },
+        {
+          "t": 1794214156964007198,
+          "state": 1,
+          "reason": "map_match_confirmed",
+          "request_generation": 1,
+          "local_recovery": false
+        }
+      ]
+    }
+  ],
+  "estimate_changes": [
+    {
+      "t": 1794214084844033726,
+      "state": 0,
+      "reason": "map_loaded_searching",
+      "request_generation": 0,
+      "local_recovery": false
+    },
+    {
+      "t": 1794214091004053453,
+      "state": 0,
+      "reason": "searching_waiting_query_window",
+      "request_generation": 0,
+      "local_recovery": false
+    },
+    {
+      "t": 1794214091463943606,
+      "state": 0,
+      "reason": "verifying_wait_disjoint_query_scans",
+      "request_generation": 0,
+      "local_recovery": false
+    },
+    {
+      "t": 1794214091683833003,
+      "state": 0,
+      "reason": "verifying_insufficient_time_or_motion_baseline",
+      "request_generation": 0,
+      "local_recovery": false
+    },
+    {
+      "t": 1794214108664037901,
+      "state": 0,
+      "reason": "global_no_geometric_match",
+      "request_generation": 0,
+      "local_recovery": false
+    },
+    {
+      "t": 1794214108683617549,
+      "state": 0,
+      "reason": "retry_backoff",
+      "request_generation": 0,
+      "local_recovery": false
+    },
+    {
+      "t": 1794214109503782634,
+      "state": 0,
+      "reason": "verifying_wait_disjoint_query_scans",
+      "request_generation": 0,
+      "local_recovery": false
+    },
+    {
+      "t": 1794214109883878200,
+      "state": 0,
+      "reason": "verifying_insufficient_time_or_motion_baseline",
+      "request_generation": 0,
+      "local_recovery": false
+    },
+    {
+      "t": 1794214117223680108,
+      "state": 0,
+      "reason": "retry_backoff",
+      "request_generation": 0,
+      "local_recovery": false
+    },
+    {
+      "t": 1794214118064205729,
+      "state": 0,
+      "reason": "verifying_wait_disjoint_query_scans",
+      "request_generation": 0,
+      "local_recovery": false
+    },
+    {
+      "t": 1794214118364608921,
+      "state": 0,
+      "reason": "verifying_insufficient_time_or_motion_baseline",
+      "request_generation": 0,
+      "local_recovery": false
+    },
+    {
+      "t": 1794214118523875716,
+      "state": 0,
+      "reason": "retry_backoff",
+      "request_generation": 0,
+      "local_recovery": false
+    },
+    {
+      "t": 1794214119363863282,
+      "state": 0,
+      "reason": "verifying_wait_disjoint_query_scans",
+      "request_generation": 0,
+      "local_recovery": false
+    },
+    {
+      "t": 1794214119584067906,
+      "state": 0,
+      "reason": "verifying_insufficient_time_or_motion_baseline",
+      "request_generation": 0,
+      "local_recovery": false
+    },
+    {
+      "t": 1794214119704002142,
+      "state": 0,
+      "reason": "global_confirmed_handoff_requires_c1_verification",
+      "request_generation": 1,
+      "local_recovery": false
+    },
+    {
+      "t": 1794214120804071729,
+      "state": 0,
+      "reason": "verifying_multiframe_motion_support",
+      "request_generation": 1,
+      "local_recovery": false
+    },
+    {
+      "t": 1794214121863769572,
+      "state": 0,
+      "reason": "geometric_support_waiting_fresh_scan",
+      "request_generation": 1,
+      "local_recovery": false
+    },
+    {
+      "t": 1794214121943941786,
+      "state": 1,
+      "reason": "map_match_confirmed",
+      "request_generation": 1,
+      "local_recovery": false
+    },
+    {
+      "t": 1794214131724025337,
+      "state": 2,
+      "reason": "not_converged",
+      "request_generation": 1,
+      "local_recovery": false
+    },
+    {
+      "t": 1794214131843960585,
+      "state": 1,
+      "reason": "map_match_confirmed",
+      "request_generation": 1,
+      "local_recovery": false
+    },
+    {
+      "t": 1794214155303991596,
+      "state": 2,
+      "reason": "not_converged",
+      "request_generation": 1,
+      "local_recovery": false
+    },
+    {
+      "t": 1794214155423815354,
+      "state": 1,
+      "reason": "map_match_confirmed",
+      "request_generation": 1,
+      "local_recovery": false
+    },
+    {
+      "t": 1794214156903891325,
+      "state": 2,
+      "reason": "not_converged",
+      "request_generation": 1,
+      "local_recovery": false
+    },
+    {
+      "t": 1794214156964007198,
+      "state": 1,
+      "reason": "map_match_confirmed",
+      "request_generation": 1,
+      "local_recovery": false
+    }
+  ],
+  "future_wheel_against_recorded_clock": 0,
+  "private_valid_odom_absent": 0,
+  "observer_active_samples": 91,
+  "tf_endpoint_count_unique_all_observed": true,
+  "tf_identified_samples": 90,
+  "tf_unknown_samples": 1,
+  "tf_unique_all_observed": false,
+  "velocity_publishers_max": 0,
+  "wheel_integrated_path_m": 13.043432223252374,
+  "wheel_max_speed_mps": 0.5669999718666077
+}

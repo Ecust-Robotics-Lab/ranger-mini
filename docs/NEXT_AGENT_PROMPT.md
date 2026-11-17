@@ -1,40 +1,27 @@
-# 新 Agent 接手提示词
+2026-11-17最新Git保存：用户已授权并完成分段本地提交，检查点见docs/git_checkpoint_navigation_20261117.md，未推送。实车仍暂停，前端低延迟候选仍独立安装，正式来源兼容未验。下方历史“未提交”不表示当前Git状态；现查git log/status。
 
-更新：2026-11-09。下方可直接复制。此次只要求接手核对，后续实施和设备操作按新的明确指令执行。
+2026-11-17最新：用户要求减少数据延迟，已完成首轮软件优化/离线验证，实车保持暂停。先读docs/exact_mppi_input_latency_optimization_20261117.md及STATUS/HANDOFF顶部。前端LIO→VIO多等下一雷达包已复现，候选8400帧中5639帧可提前约100ms；仅在latency_frontend_install独立安装，正式入口仍用原online_frontend_install，勿绕过地图来源SHA。长段候选/原版重复都存在厘米差异，未证明精度等价。导航重复输入准备/覆盖合并优化已安装，81帧全点/网格一致，107回归/最终20相关检查及构建通过。新boot6c018ad9，没有设备或目标启动，运动许可不续用。
 
-```text
-请接手 /home/lab307/ranger_nav。先只读核对，简短汇报接手理解、现有成果、剩余问题和下一步，暂不继续实施或启动设备。
+2026-11-17最新：用户要求暂停实车并已停车；不自动续用设备/运动许可。先读docs/exact_mppi_ramp_corridor_attempt_20261117.md及STATUS/HANDOFF顶部。精朝向已成功，向门中心仅部分移动，仍未到坡面/走廊。主要证据指向输入延迟/250ms过期→高频暂停与代际重置，未证明覆盖坐标偏移；odom/map同戳回放均通过。当前整理讨论，不继续软件或实车执行。
 
-先读：AGENTS.md、docs/HANDOFF.md、docs/STATUS.md、docs/FAST_LIVO2_BACKEND_PLAN.md、docs/FAST_LIVO2_APRILTAG_PLAN.md。然后按当前重点读：
-1. docs/fast_livo2_failure_fix_report_20261109.md（最新修复、构建、验证与限制）
-2. docs/fast_livo2_failure_research_20261109.md（原因和解决方案）
-3. docs/fast_livo2_field_gate_acceptance_report_20261109.md（最新真实现场结果）
-4. docs/fast_livo2_field_retest_report_20261109.md
-5. docs/fast_livo2_live_chain_report_20261109.md、docs/fast_livo2_live_clock_report_20261109.md
-6. docs/fast_livo2_wheel_alignment_report_20261109.md、docs/fast_livo2_navigation_prep_report.md
-7. docs/git_checkpoint_handoff_20261109.md（本次分组本地保存）
-8. docs/handoff_cleanup_online_mapping_20261105.md（最近清理，仅为历史固定清单，禁止据此继续删除）
-还须先读 docs/fast_livo2_field_latency_retest_report_20261109.md：修复后已完成co968xa3的90.044秒实机测试，921相机同步帧全OK，591个不同有效确认，无LOST；3次60–120ms就绪撤销，局部恢复未触发，设备已清理，本次新证据/报告未提交。
-需要追溯时再按HANDOFF查旧报告，不直接执行历史命令。
+2026-11-16最新：先读docs/exact_mppi_door_retest_ramp_20261116.md。复位续测两段接近成功（估计67cm/42cm），转向仍未过，尚未出门，设备全停。SPIN GoalAngleCritic现60、其他模式12；87回归/10闭环及构建过，但实车无进展未解决。长停链是重规划后STOPPING遇短暂失效→OBSERVING，feedback_settling曾恢复，并非唯一根因。用户新增确认门口6cm/50cm下坡（约7°）；现有导航按平地，未自动做地形支持。记录俯仰中位0.26°、地面采样不连续，不能确认坡高，更不能把远处11–13cm低分位当坡高或自动改外参。新snwbprb6/d_pha29a封存包保留。旧结束位姿不可当当前就绪状态，下一次按当次指令及实际定位；不盲发全段目标。
 
-现查Git分支/完整HEAD/工作树、会话boot/PID和进程归属、配置、实际二进制/动态库、原包与地图。保护未提交修改及全部原包、地图、失败证据、标定和.runtime/backups。本次交接已分组本地提交，没有推送；不要自动提交、推送、清理或升级依赖。原包/地图/构建主要保存在本机，Git包含源码、配置、补丁、报告和可版本化证据，Git并非这些大资产的完整备份。
+2026-11-16此前门口实机：见docs/exact_mppi_office_corridor_live_20261116.md。DRIVE固定曲率/轮角确认及方向约束分项已完成，整圈仍PARTIAL。
 
-当前进展：在线预建图软件链路已打通，390秒真实包原速DDS验证3900对、305关键帧、114接受回环。正式地图为 outputs/fast-livo-demo-online-mapping-20261105/full_replay_12/map，UUID 253f573d7a7eabbc363a225ab192cc14。候选导航占据图为 outputs/fast-livo-demo-navigation-prep-20261106/navigation_map_final。在线定位默认自有三维距离分布v2→KISS全6DoF粗配准→small_gicp→C1，Tag关闭。保持三融合、正式img_time_offset=+0.1秒和初始重力对齐。
+2026-11-16巡航准备历史：见docs/exact_mppi_office_corridor_preparation_20261116.md；新office_corridor_preparation_20261116路线新增门外转向后倒车/平移返回办公室，8/8段、24/24静态检查通过，约40.39m。原6/7为历史候选。候选起点不是当前位姿；后续设备运动须当次授权，不直接自动发送整条路线。
 
-当前重点是在线定位连续性。修复前90秒实机包为 bags/fast-livo-localization-88k5eclm；修复前得到58个不同有效确认、首次定位距首FAST约50.6秒。4200派生wheel无领先已记录clock，60个运行图快照动态TF唯一。相机USB3交付积压约0.53秒，迟到540帧被赋予不对应的较新scan时间，随后4帧BACKWARD，FAST输出间隔约0.66秒，C1过期后约33.58秒全局恢复。失败搜索单轮中位约63ms，大量候选在KISS粗配准内点门槛被拒，不能把34秒全部归咎small_gicp耗时。
+2026-11-16最终覆盖说明：先读STATUS/HANDOFF最上方本日最终状态。CAN模式1已确认，静止定位8帧/12000点有效；覆盖2秒。短暂定位/输入失效暂停保留平移/旋转路线并撤销旧结果，恢复重验；LOST/会话/地图/跳时/遥控清路线。89回归与构建通过，最新60cm实车成功约8.6秒、零速18.3%、计划1次、峰值0.165m/s；0.30持续巡航/全走廊/独立速度标定仍未验。设备已停。用户自行移动过车辆，return_pause_fix零命令成功不算运动证据。详见docs/exact_mppi_speed_retest_20261116.md。
 
-最新两项修复（相机已做上述现场功能检查，局部恢复仍未现场触发）：
-- 相机取帧与发布/日志分线程、两帧有限队列、采集时保存scan快照、设备tick/scan相对进度检查、CSV分段计时和批量flush。原CSV重检拒绝540–543、544通过。
-- 仅显式C2在短时过期后保留已验证地点作为内部先验，以新鲜扫描局部几何重验；2秒/0.75m/0.35rad范围，至少两新采样/0.1秒一致，静止也可恢复。失败/超范围回全局搜索。旧候选不得当新有效修正，0.5秒新鲜度未放宽，独立C1人工初值语义保持。
-36项核心测试、7项针对性ROS测试通过；失效处真实记录点云可用两帧局部恢复。原包点云实验使用已接受位姿先验，不是完整原速重跑或实车恢复耗时。软件/离线PASS，实车连续就绪、SDK/USB最初停顿根因、物理同步和绝对精度仍PARTIAL。
+最新录包清理（2026-11-16）：用户要求只保留11月10日预建图原包。已执行，全项目实际录包数据仅剩bags/fast-livo-office_corridor_changed_20261110-s10xmu6g/raw/raw_0.db3。其他录包包括标定原始录包/回放/测试数据均已删除；地图、标定参数和结果、日志保留。可用约791GiB。所有设备已停止，不要沿用下文旧原包“仍存在”假设。删除完整清单见docs/cleanup_evidence_20261116/；未提交/推送。
 
-实际构建：C1/C2在 ws_fast_livo/online_localization_install；前端在 online_frontend_install。新相机在 ws_camera/latency_install，在线localize_fast_livo2.sh已指向它，原ws_camera/install保留。最新二进制/库完整SHA与依赖见 docs/fast_livo2_evidence/failure_fix_20261109/binary_hashes.json 及实施报告。新底盘只接收版本为 ws_base/install_recording_rx，接收角符号和关闭TF时的空发布端点已修；原安装保留。
+当前最新状态补充（2026-11-10提速阶段）：先读STATUS/HANDOFF最上方和变化场景实车报告最新章节。覆盖1.5秒，显式RANGER_NAV_MAX_SPEED=0.30；已修计算抖动重规划、无session故障误淘汰、末端微旋转等问题。最近实车零指令约26%但仍慢，末端/进展代价最终修改未获实车复验（C2连续未就绪，两次goal=null），当前设备均停止。不得宣称已完成提速或走廊往返。
 
-用户已授权先用约RPY=[1°,21°,-179°]的工作外参；准确当前XYZ/RPY从 config/fast_livo2/navigation_prep.yaml 和FAST profile读，不能退回历史零旋转或当作实测标定。公共桥接唯一发布map→odom、odom→base_link，同一采样时刻使用wheel历史插值；现有时间映射含未知接收偏差，不是物理同步标定。
+# 新上下文接手
 
-建议下一步：先复核上述改动和最新短测结果，分析首次全局搜索等待与三次局部几何拒绝；若需再验证现场局部恢复，先设计明确的短时故障场景。此次提示词不授权开设备；收到该次明确许可后才能启动相机/雷达/receive-only底盘。自动运动、速度、导航目标另须明确授权。历史设备已受管停止，但须按当前boot/PID核实，不能把旧快照当现状。不要因修复软件通过便宣称实车通过。
+先读 AGENTS.md、STATUS.md 顶部当前实车阶段、HANDOFF.md 和 [实车报告](exact_mppi_changed_scene_live_report_20261110.md)，再读EXACT计划与对应接口。旧报告中的未开设备、旧车头约-179°、旧地图门口堵塞均属历史快照。
 
-全局候选召回/长查询窗口和C1初始化预处理缓存尚未修改，按新证据决定优先级。用户准备另行大改规划控制，不自动继续旧Smac/MPPI方案。生产仍Lightning-LM、wheel和既有安全链。请用中文简洁汇报，开发偏快速、复用现有实现，避免过多防御性设计。
-```
+同一实施会话已获软件和本次实车授权，用户现场确认新正方向；独立新接手须核对最新消息与受管boot/PID，不默认复用设备许可。当前车头为相机镜头朝向端，雷达距此端约26cm；工作RPY约[1°,21°,0.9°]，精确值读配置，不恢复旧-179°或零倾角。SDK原生纵轴相反，由install_exact驱动统一转换；receive-only也必须使用同一新坐标二进制与显式receive_only=true，旧安装保留。
 
-最新追加：先读 docs/fast_livo2_initialization_optimization_report_20261109.md；本轮C2/C1静止确认和预处理复用已构建，原速离线同包29.820→2.800秒，另包4.220秒。40核心/21后端/9ROS通过，源码及报告尚未提交，全部测试已退出，未再启硬件；勿用历史“初始化缓存未实施”描述当前状态。
+新图UUID160f8572a77a61856cf87e43514be769，归档outputs/fast-livo-demo-changed-scene-20261110/mapping_replay_01/map，导航navigation_map_05。车头修正后候选camera_front路线6/7静态通过，最终回办公室恢复朝向仍搜索超时；不是实车路线成功。当前优先完成短单点与连续采样时延问题，不直接发送全程。用户正向实测约9.3cm已确认。
+
+全部修改未提交/推送。保留原bag、地图、失败日志、旧安装和.runtime/backups。生产runtime仍Lightning/wheel，Tag关闭，正式+100ms三融合，公共TF唯一、采样同刻、wheel不外推、定位/障碍过期停车和独立末端防撞不放宽。新源码/安装身份与所有本轮失败对照在实车报告及证据目录。当前任务不是重新选择算法或恢复旧Smac/MPPI调参。

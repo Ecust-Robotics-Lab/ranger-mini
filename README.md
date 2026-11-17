@@ -1,25 +1,21 @@
 # Ranger Mini 导航系统
 
-ROS 2 Humble / Ubuntu 22.04 / x86_64，实物为 **Ranger Mini V2 + Livox Mid-360S + 海康相机**。Lightning-LM 保持生产默认；FAST-LIVO2 三传感器前端、独立回环后端 B、C1先验定位与C2全局重定位已实现，已有不同采集包的离线功能对照；完整泛化、真值精度和实时接车仍待验。
+ROS2 Humble / Ubuntu22.04 / x86_64；实物Ranger Mini V2、Livox Mid-360S、海康USB3相机。更新：2026-11-10。
 
-**新上下文从 [交接指南](docs/HANDOFF.md) 开始**，再读 [当前状态](docs/STATUS.md)、[工程约束](AGENTS.md)、[后端与重定位计划](docs/FAST_LIVO2_BACKEND_PLAN.md)。全部文档见 [docs 索引](docs/README.md)。
-
-2026-11-05交接已更新，复制 [新Agent提示词](docs/NEXT_AGENT_PROMPT.md) 可快速接手。正式前端试验使用用户指定的 **+100ms**；新走廊包已完成完整三融合展示，原两90秒包固定+100ms对照及C1/C2评估仍待完成，历史+110ms结果保持原条件。在线预建图统一入口见[操作说明](docs/fast_livo2_online_mapping.md)，验证边界见对应报告。过时试录清理名单与保留理由见 [清理报告](docs/handoff_cleanup_20261105.md)。
-
-AprilTag 候选与地标增量已完成软件及离线检查，默认关闭；见 [细化计划](docs/FAST_LIVO2_APRILTAG_PLAN.md)、[接口与操作](docs/fast_livo2_apriltag_interfaces.md)、[交付报告](docs/fast_livo2_apriltag_report.md)。真实地标与跨访问性能仍待验，既有成果及在线建图已按用户指令分组保存，本次上传范围见[Git检查点](docs/git_checkpoint_20261106.md)。
+新上下文先读[HANDOFF](docs/HANDOFF.md)、[STATUS](docs/STATUS.md)、[AGENTS](AGENTS.md)，或复制[接手提示词](docs/NEXT_AGENT_PROMPT.md)。当前状态只在这些入口维护，历史报告保留当时条件。[完整索引](docs/README.md)。
 
 ## 当前能力
 
-| 模块 | 已有结果与边界 |
+| 模块 | 当前结果与边界 |
 | --- | --- |
-| 生产导航路线 | Lightning、轮速、公共定位桥接、Nav2、安全速度链已有实现；完整真机导航仍 PARTIAL |
-| 定位契约 | LocalizationEstimate 携带地图系车体位姿、原采样时刻和健康；按定位时刻插值轮速，唯一管理公共 TF |
-| FAST-LIVO2 | 保留LiDAR–IMU–Camera更新；已有真实运动重放、B/C1/C2与Tag软件检查；FAST会话未运行，其他现场会话状态见HANDOFF |
-| 配置切换 | mapping_backend 选择 Lightning / FAST-LIVO2 前端；localization_backend 独立选择 lightning / standard |
-| 标定与同步 | 已整合到本工程；v2 共享戳保护已修复，物理同步、几何标定与实时历元仍待验 |
-| 待验收 | C1/C2跨会话与真实负样本、同步/外参/真值、实时wheel与D接车；高程/坡道另立范围 |
+| 生产路线 | 定位默认仍Lightning/wheel；导航源码入口已替换SE(2)/EXACT-MPPI，复用FAST公共输入，原安装资产保留 |
+| FAST三融合/B建图 | 正式+100ms、重力对齐；390秒原速记录输入3900对、305KF/114接受回环及正式归档 |
+| FAST定位 | 自有v2→KISS全6DoF→small_gicp→C1；静止强几何初始化/预处理复用已交付，同包原速FAST输出回放29.820→2.800秒，另包4.220秒，非新实机成绩 |
+| wheel/TF | 同录包、工作外参、时间映射和同刻唯一公共TF已实现，有现场分项证据；物理同步/长时仍待验 |
+| 当前重点 | 上方办公室—走廊端点掉头—返回的实车准备；窄通道参数已离线验证，门口/制动/模式及真实全程仍待验 |
+| 其他限制 | 真实负样本、连续就绪、绝对精度、长时与D未全部验收；Tag默认关闭，无真实VALID表 |
 
-当前保留旧136.6秒建图包、140mm同步/转向/直行诊断包及固定回归基线；具体用途和当前局部图见[HANDOFF](docs/HANDOFF.md)。旧包的[建图演示视频](docs/fast_livo2_demo_20261028.md)和后续图片仅展示各自条件的结果，不代表真值精度或真实Tag辅助验收。standard是外部标准消息接口，不是另一套现成定位算法。
+源码/配置/证据已于2026-11-09上传，基线e8245fa，见[Git检查点](docs/git_checkpoint_initialization_upload_20261109.md)。2026-11-10交接文档整理及EXACT-MPPI实施均未提交；原bag、地图、标定、二进制和失败证据保留，见[清理记录](docs/handoff_cleanup_20261110.md)。历史设备状态不代表当前运行状态，不从文档自动开设备或执行控制。
 
 ## 目录与配置
 
@@ -41,7 +37,7 @@ bags/、maps/、docs/     数据、地图和验证证据
 
 正式标定根目录为 `calibration/`，`~/calibration` 仅是兼容链接；新入口已在临时无链接条件下通过离线验证。原相机驱动/SDK及用户修改保留。职责与清理范围见 [工程结构](docs/PROJECT_LAYOUT.md)、[整合报告](docs/consolidation_report.md)。
 
-本地原始图片/rosbag、SDK、第三方工作空间、构建与 .runtime 不进入主仓库。相机只纳入两个维护包源码。A/整合、C1、C2、重力对齐与净化文档已有提交，并纳入2026-11-06用户授权的上传范围；原始数据和本机部署仍须保留，远端副本不能代替当前工程；第三方完整 SHA/补丁来源见交接指南与版本锁。
+原始图片/rosbag、地图、SDK、第三方完整工作空间、构建与.runtime按既有忽略规则留在本机。Git保存源码、配置、补丁、报告及可版本化证据，不能代替完整本机资产备份；组件来源/版本与许可证见交接指南及版本锁。
 
 ## 统一入口
 
@@ -78,10 +74,10 @@ FAST在线先验地图定位/重定位使用 `localize_fast_livo2.sh`，默认dr
 Lightning 适配器 / 外部全局定位后端
     → /localization/estimate + /wheel/odom
     → 公共桥接：map→odom→base_link、/navigation_ready、/localization_health
-    → Nav2 → 仲裁/平滑/门禁/Collision Monitor → /base/safe_cmd_vel
+    → SE(2)全局路径/EXACT-MPPI → 仲裁/门禁/独立末端防撞 → /base/safe_cmd_vel
 ```
 
-公共桥接用同一机体、同一原采样时刻的位姿计算修正，缓存默认 2 s，禁止外推；前端/参考后端不得同时抢发公共 TF。定位失效撤销就绪。安装外参仍有近似值，实时传感器旧历元尚须处理，未将隔离 FAST 展示接为导航定位。详见 [定位契约](docs/localization_backend_contract.md)。
+公共桥接用同一机体、同一原采样时刻的位姿计算修正，缓存默认 2 s，禁止外推；前端/参考后端不得同时抢发公共 TF。定位失效撤销就绪。工作外参属于运动估计；FAST导航使用既有会话时间映射与原采样wheel插值。详见 [定位契约](docs/localization_backend_contract.md)。
 
 ## 构建与验证
 
@@ -92,15 +88,15 @@ bash scripts/build_camera_sync.sh --execute
 bash scripts/build_calibration.sh --execute
 bash scripts/build_fast_livo2.sh --execute
 bash scripts/build_fast_livo2_backend.sh --execute
-source /opt/ros/humble/setup.bash
-source ws_livox/install/setup.bash
-cd ws_nav
-PYTHONDONTWRITEBYTECODE=1 colcon build --packages-up-to ranger_navigation --executor sequential
+bash scripts/setup_exact_mppi.sh --execute
+bash scripts/build_exact_navigation.sh --execute
 ```
 
 这些是已有本机依赖下的构建入口，不是全新机器的一键安装程序。相机需要本地 Hik SDK；FAST 前端依赖在独立目录，来源与补丁见 [阶段 A](docs/fast_livo2_stage_a_report.md)。
 
-最新检查及其适用范围统一见 [STATUS](docs/STATUS.md)；旧整合与Nav2报告保留各自验证日期，不能据此宣称本轮全量复跑或实车验收通过。
+新导航见[计划](docs/EXACT_MPPI_NAVIGATION_PLAN.md)、[报告](docs/exact_mppi_implementation_report_20261110.md)、[接口](docs/exact_mppi_interfaces.md)。最新检查及其适用范围统一见 [STATUS](docs/STATUS.md)；旧整合与Nav2报告保留各自验证日期，不能据此宣称本轮全量复跑或实车验收通过。
+
+当前[实车准备](docs/EXACT_MPPI_FIELD_TEST.md)含可编辑路线图、standard/narrow参数、43话题录制与现场分项顺序；真实地图门内外两段仍未搜索通过，准备许可不构成设备或运动执行许可。
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 python3 tests/test_project_consolidation.py

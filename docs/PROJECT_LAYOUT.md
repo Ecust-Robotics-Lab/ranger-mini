@@ -1,8 +1,6 @@
 # 当前工程结构
 
-更新：2026-11-06。FAST-LIVO2 B/C1/C2、Tag及在线预建图已有软件/离线成果，Git保存与上传范围见[检查点](git_checkpoint_20261106.md)，真实Tag与D仍未验。本次只读核对FAST会话均不存活，历史field身份不属于本次启动，当前进程扫描未发现相关传感器/导航进程；最新会话、构建前缀、+100ms配置、原包/地图和清理状态见[HANDOFF](HANDOFF.md)。历史整合见[整合报告](consolidation_report.md)，定位入口见[C1](fast_livo2_localizer_interfaces.md)、[C2](fast_livo2_relocalizer_interfaces.md)。
-
-新上下文先读 [HANDOFF](HANDOFF.md)，下一步见 [后端/重定位计划](FAST_LIVO2_BACKEND_PLAN.md)，当前与历史文档分类见 [文档索引](README.md)。
+更新：2026-11-10。当前成果、设备状态核对和资产位置见[HANDOFF](HANDOFF.md)、[STATUS](STATUS.md)，新导航见[EXACT-MPPI计划](EXACT_MPPI_NAVIGATION_PLAN.md)和[接口](exact_mppi_interfaces.md)。目录索引不记录旧PID/会话存活快照；历史整合见[整合报告](consolidation_report.md)。
 
 ## 当前目录
 
@@ -57,7 +55,7 @@
 | FAST在线隔离构建 | build_fast_livo2_online.sh、prepare_online_frontend.py | 复用锁定依赖；I/O派生源码在online_frontend_source，保留原安装与vendor修改 |
 | 三传感器录包 | record_fast_livo2.sh | 默认执行、独立启动传感器及FAST profile；显式--dry-run预演、--attach接入预览，保留归档与录后审查，见[指南](fast_livo2_recording.md) |
 
-`mapping_backend` 与 `localization_backend` 分别选择前端/建图和全局定位。FAST 前端与 B 的连续局部里程计/回环建图不能作为先验地图定位后端；C1/C2 使用独立离线入口，不接管生产配置。配置解析器继续拒绝将局部前端冒充全局定位。`standard` 是既有外部标准定位输入接口。
+`mapping_backend` 与 `localization_backend` 分别选择前端/建图和全局定位。FAST 前端与 B 的连续局部里程计/回环建图不能作为先验地图定位后端；C1/C2已有独立在线入口和显式公共TF接入，不接管生产配置。配置解析器继续拒绝将局部前端冒充全局定位。`standard` 是既有外部标准定位输入接口。
 
 ## 资产保留边界
 
@@ -67,3 +65,5 @@
 - 不整体清空 build/install：Lightning 从 `ws_slam/build/lightning/bin/` 运行，部分旧相机部署链接指向 build。新增标定构建使用 integrated 目录。
 
 标定流程和同步源码已进入主仓库可跟踪范围，原始 bag/图片、SDK、第三方工作空间和编译产物继续由 Git 忽略。既有整合/标定源码与用户雷达证据已有本地提交；当前提交、工作树和本机资产状态统一见HANDOFF与实际Git。
+
+当前FAST在线定位入口`scripts/localize_fast_livo2.sh`，安装`ws_fast_livo/online_localization_install/`；相机`ws_camera/latency_install/`，receive-only底盘`ws_base/install_recording_rx/`。完整来源/哈希由HANDOFF指定的最新证据读取，不从旧安装目录猜版本。

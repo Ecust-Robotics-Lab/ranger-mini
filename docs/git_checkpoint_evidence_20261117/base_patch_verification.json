@@ -1,0 +1,29 @@
+{
+  "ranger_ros2": {
+    "head": "7b75bc2443a1d6cbd42cc3ef3059cf4897242072",
+    "patch_refreshed": true,
+    "different_files_before_refresh": [
+      "ranger_base/src/ranger_messenger.cpp"
+    ],
+    "postimage_sha256": {
+      "ranger_base/src/ranger_base_node.cpp": "274130ed28a0107dade85a0f7b75a4c18dd52f5dd6fb4fdd5edf85abd56c9f30",
+      "ranger_base/include/ranger_base/ranger_messenger.hpp": "17c1979afd9af3ce2d002b56eac307a8fc9097e569daa7342a9433e0566f3b15",
+      "ranger_base/src/ranger_messenger.cpp": "50f941ad83abd21784c629f8a7ed2868fcfcba500e6f899cfa11be07c62233f2",
+      "ranger_base/include/ranger_base/v2_command.hpp": "e7e50e7f530492112c32361f604aaa091da3177625e0da297710016d47d4885f"
+    },
+    "reconstruction": "PASS"
+  },
+  "ugv_sdk": {
+    "head": "e2f5764acc00a2e556cf3bdc3ea3b206fa326e5b",
+    "patch_refreshed": false,
+    "different_files_before_refresh": [],
+    "postimage_sha256": {
+      "src/async_port/async_can.cpp": "3b8ecb1f8ca98d7899a11ff45a13128a0a87f582bdc81ca97bb5d58639b28b41",
+      "include/ugv_sdk/details/robot_base/ranger_base.hpp": "4ce4dd4e1283f9399d5305e5951ab4f1b37bc932bcdc14c1f1e3f2cfce756e88",
+      "include/ugv_sdk/details/async_port/async_can.hpp": "be3a31f14aab9bb86a4b9fb21a41d573ccd4cf52168194e9ce16ea3856049381",
+      "include/ugv_sdk/details/robot_base/agilex_base.hpp": "f1095fca481edf2fc313d62808299e34c2a1096512ea4ac2240d85a8797ca372",
+      "include/ugv_sdk/details/interface/ranger_interface.hpp": "884287d56d1ba74bc37ba4b09eb9868b7ab9e8ff149068031663558c826ed1f9"
+    },
+    "reconstruction": "PASS"
+  }
+}

@@ -32,3 +32,7 @@ ws_nav/src/ranger_navigation/LICENSE.exact_mppi -whitespace
 patches/ranger_ros2_exact_v2_modes.patch -whitespace
 patches/ugv_sdk_exact_v2_modes.patch -whitespace
 patches/fast_livo2_finish_pending_vio.patch -whitespace
+
+# CSV evidence retains the writer's CRLF line endings.
+docs/fast_livo2_evidence/**/*.csv whitespace=cr-at-eol
+docs/exact_mppi_evidence/**/*.csv whitespace=cr-at-eol

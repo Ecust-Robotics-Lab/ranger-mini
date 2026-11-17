@@ -1,0 +1,272 @@
+{
+  "counts": {
+    "/localization/estimate": 1049,
+    "/navigation_ready": 1836,
+    "/fast_livo/navigation/wheel/odom": 712,
+    "/diagnostics": 715,
+    "/motion_state": 669,
+    "/system_state": 669,
+    "/base/safe_cmd_vel": 700,
+    "/navigation/safety_ready": 700,
+    "/ranger/motion_permitted": 700,
+    "/navigation/control_owner": 700,
+    "/navigation/state": 239
+  },
+  "topics": {
+    "/localization/estimate": {
+      "received_steady": 18489.449084229,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1590194944,
+            "nanosec": 600389242
+          },
+          "frame_id": "map"
+        },
+        "base_frame": "base_link",
+        "pose": {
+          "position": {
+            "x": 0.24938351577332651,
+            "y": 0.21522099241630083,
+            "z": -0.5551068259868259
+          },
+          "orientation": {
+            "x": 0.00704828616107201,
+            "y": -0.0011262498537818137,
+            "z": 0.9991202366242177,
+            "w": -0.041325609389650166
+          }
+        },
+        "state": 1,
+        "reason": "map_match_confirmed; map=160f8572a77a61856cf87e43514be769; graph=170; session=0c6801894fd7682a81a21380a3fd0a70; initial=global-8f971604c0a403341e36cde6b0b7fcb0; request_generation=1"
+      }
+    },
+    "/navigation_ready": {
+      "received_steady": 18489.449372604,
+      "message": {
+        "data": true
+      }
+    },
+    "/fast_livo/navigation/wheel/odom": {
+      "received_steady": 18489.423493083,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1590194944,
+            "nanosec": 813131280
+          },
+          "frame_id": "odom"
+        },
+        "child_frame_id": "base_link",
+        "pose": {
+          "pose": {
+            "position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "orientation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            }
+          },
+          "covariance": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "twist": {
+          "twist": {
+            "linear": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "angular": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            }
+          },
+          "covariance": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "/diagnostics": {
+      "received_steady": 18489.451949783,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1590194944,
+            "nanosec": 854226682
+          },
+          "frame_id": ""
+        },
+        "status": [
+          {
+            "level": "\u0001",
+            "name": "ranger_motion_gate",
+            "message": "permission_off",
+            "hardware_id": "",
+            "values": [
+              {
+                "key": "owner",
+                "value": "navigation"
+              },
+              {
+                "key": "mode",
+                "value": "1"
+              },
+              {
+                "key": "minimum_distance",
+                "value": "inf"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "/motion_state": {
+      "received_steady": 18489.450838542,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1794316454,
+            "nanosec": 508750279
+          },
+          "frame_id": ""
+        },
+        "motion_mode": 1
+      }
+    },
+    "/system_state": {
+      "received_steady": 18489.45102939,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1794316454,
+            "nanosec": 508625408
+          },
+          "frame_id": ""
+        },
+        "vehicle_state": 0,
+        "control_mode": 1,
+        "error_code": 0,
+        "battery_voltage": 49.79999923706055,
+        "motion_mode": 1
+      }
+    },
+    "/base/safe_cmd_vel": {
+      "received_steady": 18489.45137041,
+      "message": {
+        "linear": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "angular": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      }
+    },
+    "/navigation/safety_ready": {
+      "received_steady": 18489.451704643,
+      "message": {
+        "data": true
+      }
+    },
+    "/ranger/motion_permitted": {
+      "received_steady": 18489.451811524,
+      "message": {
+        "data": false
+      }
+    },
+    "/navigation/control_owner": {
+      "received_steady": 18489.451501077,
+      "message": {
+        "data": "navigation"
+      }
+    },
+    "/navigation/state": {
+      "received_steady": 18489.422442654,
+      "message": {
+        "data": "{\"state\": \"IDLE\", \"reason\": \"startup\", \"generation\": 0, \"worker\": {\"ready\": true, \"pid\": 66862, \"nonce\": \"ba5e6c5d760f4c57ae834f44d18aa63d\", \"devices\": [\"cuda:0\"], \"warmup_s\": {\"DRIVE\": 2.500772416999098, \"PARALLEL\": 2.1870257670016144, \"SPIN\": 2.147941178001929}}, \"inputs_valid\": false, \"input_reason\": \"sampling_stamp_stale_or_future\", \"metrics\": {}}"
+      }
+    }
+  }
+}

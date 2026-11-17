@@ -1,0 +1,23 @@
+.............................F.......................................... [ 80%]
+.................                                                        [100%]
+=================================== FAILURES ===================================
+____________ test_task_cancel_replacement_and_stale_plan_generation ____________
+
+    def test_task_cancel_replacement_and_stale_plan_generation():
+        t=Task();t.begin([1,0,0],1.);old=t.generation
+        t.cancel();assert t.state=='CANCELED'
+        assert not t.plan([],old,2.)
+        t.begin([0,1,0],3.);new=t.generation
+        assert new>old
+        assert not t.plan([],old,3.)
+        assert t.plan([Segment(Mode.PARALLEL,np.array([[0,0,0],[0,1,0]]))],new,3.)
+        t.tick([0,0,0],[0,0,0],1,False,'navigation',3.1)
+>       assert t.state=='WAITING' and t.generation>new and not t.segments
+E       AssertionError: assert ('PAUSED' == 'WAITING'
+E         - WAITING
+E         + PAUSED)
+
+tests/test_exact_navigation_core.py:165: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_exact_navigation_core.py::test_task_cancel_replacement_and_stale_plan_generation
+1 failed, 88 passed in 1.05s

@@ -1,0 +1,134 @@
+LOCALIZATION_DIR=/home/lab307/ranger_nav/bags/fast-livo-localization-v_gcl92d
+SESSION_DIR=/home/lab307/ranger_nav/.runtime/sessions/fast_livo_online_localization/run-yhuxpu5b
+LOCALIZATION state=None valid=False waiting_inputs; processed=0 skipped=0 age=None
+LOCALIZATION state=0 valid=False map_loading; processed=0 skipped=0 age=-1.0
+LOCALIZATION state=0 valid=False map_loaded_searching; processed=0 skipped=0 age=-1.0
+LOCALIZATION state=0 valid=False searching_waiting_query_window; processed=1 skipped=0 age=-1.0
+WHEEL_CLOCK ready=True forwarded=255 residual_ns=-1030886 error=None
+LOCALIZATION state=0 valid=False verifying_wait_disjoint_query_scans; processed=3 skipped=3 age=-1.0
+WHEEL_CLOCK ready=True forwarded=288 residual_ns=278963 error=None
+LOCALIZATION state=0 valid=False global_confirmed_handoff_requires_c1_verification; processed=7 skipped=17 age=-1.0
+WHEEL_CLOCK ready=True forwarded=369 residual_ns=-168320 error=None
+LOCALIZATION state=0 valid=False verifying_multiframe_motion_support; processed=8 skipped=17 age=-1.0
+WHEEL_CLOCK ready=True forwarded=384 residual_ns=505042 error=None
+LOCALIZATION state=3 valid=False confirmed_sample_or_stream_expired_requires_initial_pose; processed=9 skipped=18 age=0.573724914
+WHEEL_CLOCK ready=True forwarded=393 residual_ns=198374 error=None
+LOCALIZATION state=3 valid=False local_recovery_verifying_fresh_frames; processed=12 skipped=18 age=0.9737681010000001
+WHEEL_CLOCK ready=True forwarded=412 residual_ns=566581 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=14 skipped=18 age=0.273834334
+WHEEL_CLOCK ready=True forwarded=422 residual_ns=442143 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=114 skipped=18 age=0.27376728
+WHEEL_CLOCK ready=True forwarded=903 residual_ns=173921 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=216 skipped=18 age=0.273790436
+WHEEL_CLOCK ready=True forwarded=1384 residual_ns=342607 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=316 skipped=18 age=0.27389224700000003
+WHEEL_CLOCK ready=True forwarded=1865 residual_ns=413212 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=418 skipped=18 age=0.274260926
+WHEEL_CLOCK ready=True forwarded=2345 residual_ns=-96037 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=518 skipped=18 age=0.27428709300000004
+WHEEL_CLOCK ready=True forwarded=2822 residual_ns=-44601 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=618 skipped=18 age=0.274418893
+WHEEL_CLOCK ready=True forwarded=3303 residual_ns=-6902 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=720 skipped=18 age=0.27450598000000004
+WHEEL_CLOCK ready=True forwarded=3784 residual_ns=727511 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=820 skipped=18 age=0.27458166900000003
+WHEEL_CLOCK ready=True forwarded=4264 residual_ns=-337498 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=922 skipped=18 age=0.27439613300000004
+WHEEL_CLOCK ready=True forwarded=4741 residual_ns=-603062 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=1022 skipped=18 age=0.27476889600000004
+WHEEL_CLOCK ready=True forwarded=5222 residual_ns=559272 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=1122 skipped=18 age=0.274733534
+WHEEL_CLOCK ready=True forwarded=5703 residual_ns=-852707 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=1224 skipped=18 age=0.274597611
+WHEEL_CLOCK ready=True forwarded=6184 residual_ns=396597 error=None
+LOCALIZATION state=2 valid=False not_converged; processed=1250 skipped=18 age=0.37477903700000004
+WHEEL_CLOCK ready=True forwarded=6307 residual_ns=615572 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=1252 skipped=18 age=0.27475639
+WHEEL_CLOCK ready=True forwarded=6317 residual_ns=1340624 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=1352 skipped=18 age=0.275052629
+WHEEL_CLOCK ready=True forwarded=6798 residual_ns=631740 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=1452 skipped=18 age=0.27489303000000004
+WHEEL_CLOCK ready=True forwarded=7274 residual_ns=262362 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=1554 skipped=18 age=0.274796286
+WHEEL_CLOCK ready=True forwarded=7755 residual_ns=1288204 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=1654 skipped=18 age=0.275026049
+WHEEL_CLOCK ready=True forwarded=8236 residual_ns=629981 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=1754 skipped=18 age=0.275323339
+WHEEL_CLOCK ready=True forwarded=8712 residual_ns=824910 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=1854 skipped=18 age=0.275207451
+WHEEL_CLOCK ready=True forwarded=9188 residual_ns=-106263 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=1956 skipped=18 age=0.275690423
+WHEEL_CLOCK ready=True forwarded=9669 residual_ns=-141294 error=None
+LOCALIZATION state=2 valid=False not_converged; processed=2014 skipped=18 age=0.37568494700000005
+WHEEL_CLOCK ready=True forwarded=9945 residual_ns=91638 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=2016 skipped=18 age=0.275591574
+WHEEL_CLOCK ready=True forwarded=9950 residual_ns=-239134 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=2116 skipped=18 age=0.275673741
+WHEEL_CLOCK ready=True forwarded=10431 residual_ns=-246295 error=None
+LOCALIZATION state=2 valid=False not_converged; processed=2134 skipped=18 age=0.375571592
+WHEEL_CLOCK ready=True forwarded=10517 residual_ns=-381561 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=2136 skipped=18 age=0.275631516
+WHEEL_CLOCK ready=True forwarded=10526 residual_ns=1006738 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=2236 skipped=18 age=0.27565680600000003
+WHEEL_CLOCK ready=True forwarded=11003 residual_ns=1007091 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=2336 skipped=18 age=0.275729597
+WHEEL_CLOCK ready=True forwarded=11484 residual_ns=365866 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=2436 skipped=18 age=0.27598157500000003
+WHEEL_CLOCK ready=True forwarded=11960 residual_ns=582762 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=2538 skipped=18 age=0.275957131
+WHEEL_CLOCK ready=True forwarded=12441 residual_ns=888045 error=None
+LOCALIZATION state=2 valid=False not_converged; processed=2624 skipped=18 age=0.37589798100000005
+WHEEL_CLOCK ready=True forwarded=12850 residual_ns=343382 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=2626 skipped=18 age=0.276068437
+WHEEL_CLOCK ready=True forwarded=12860 residual_ns=558251 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=2726 skipped=18 age=0.27600736200000003
+WHEEL_CLOCK ready=True forwarded=13341 residual_ns=-77896 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=2826 skipped=18 age=0.27639009800000003
+WHEEL_CLOCK ready=True forwarded=13817 residual_ns=-30 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=2926 skipped=18 age=0.27636401
+WHEEL_CLOCK ready=True forwarded=14293 residual_ns=-287139 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=3026 skipped=18 age=0.276464141
+WHEEL_CLOCK ready=True forwarded=14769 residual_ns=-141542 error=None
+LOCALIZATION state=2 valid=False not_converged; processed=3108 skipped=18 age=0.37642237700000003
+WHEEL_CLOCK ready=True forwarded=15155 residual_ns=-109259 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=3110 skipped=18 age=0.276431246
+WHEEL_CLOCK ready=True forwarded=15164 residual_ns=-69056 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=3210 skipped=18 age=0.276462078
+WHEEL_CLOCK ready=True forwarded=15645 residual_ns=-412164 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=3312 skipped=18 age=0.277054754
+WHEEL_CLOCK ready=True forwarded=16126 residual_ns=-554432 error=None
+LOCALIZATION state=2 valid=False not_converged; processed=3328 skipped=18 age=0.377084113
+WHEEL_CLOCK ready=True forwarded=16203 residual_ns=-142137 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=3330 skipped=18 age=0.277154303
+WHEEL_CLOCK ready=True forwarded=16212 residual_ns=-618723 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=3430 skipped=18 age=0.277089191
+WHEEL_CLOCK ready=True forwarded=16688 residual_ns=-642350 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=3530 skipped=18 age=0.27724738600000004
+WHEEL_CLOCK ready=True forwarded=17169 residual_ns=-726942 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=3632 skipped=18 age=0.27721823900000003
+WHEEL_CLOCK ready=True forwarded=17650 residual_ns=-1519 error=None
+{
+  "workflow_success": true,
+  "session_exit": 0,
+  "session_state": "STOPPED",
+  "recorder": {
+    "exit": 0,
+    "forced": false,
+    "requested_seconds": 1800.0,
+    "elapsed_seconds": 368.9274622240009,
+    "stopped_by_signal": true,
+    "observed_messages": {
+      "/livox/lidar": 3772,
+      "/livox/imu": 75714,
+      "/front/image_sync": 3723,
+      "/front/image": 3723,
+      "/front/camera_info": 3723,
+      "/fast_livo/odometry": 3695,
+      "/fast_livo/deskewed_imu": 3695
+    }
+  },
+  "localization_acceptance": "NOT_EVALUATED",
+  "physical_sync": "PARTIAL",
+  "hardware_started": true,
+  "navigation_functional_result": "OBSERVED"
+}

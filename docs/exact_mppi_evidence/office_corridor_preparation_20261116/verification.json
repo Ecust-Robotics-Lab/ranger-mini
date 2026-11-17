@@ -1,0 +1,43 @@
+{
+  "checked_unix_s": 1794837656.4898345,
+  "head": "e8245fa80310a4e91b5d2eb303f33883bb965216",
+  "boot_id": "b62be450-225c-40c8-8a86-395c669b2cf8",
+  "static_legs": 8,
+  "static_mode_checks": 24,
+  "geometry_tests": {
+    "passed": 14,
+    "deselected": 4,
+    "exit_code": 0
+  },
+  "source_hashes_unchanged": true,
+  "route_review_image_inspected": true,
+  "hardware_started": false,
+  "commands_published": false,
+  "observed_device_processes": [],
+  "git_diff_check_exit": 0,
+  "files_sha256": {
+    "config/exact_mppi/office_corridor_preparation_20261116.yaml": "4659f1eb04279561b430acd8aab0dc125227c767df2715de80f3d16cedce96ec",
+    "docs/exact_mppi_office_corridor_preparation_20261116.md": "0595f1f1115d7425a164923eb23b8028d2cffdc3d549298cdda2bcd398a604db",
+    "docs/HANDOFF.md": "623b3faa1003ff1ad1f37b403fbd4299c28f113c5dc68b3e0507f35a339021a1",
+    "docs/STATUS.md": "6911a86e5a088ca8b37df20e9453d47e806b715e0c6758a48b04f0b717b57965",
+    "docs/NEXT_AGENT_PROMPT.md": "1cf544907e5caab1411d46082a331b0adb8dadfd82503622cd26e96b47c592d1",
+    "docs/EXACT_MPPI_FIELD_TEST.md": "b890b2ac5256dcbcd7900b5e321aabdec7634f1a150169019dee7d55b7d7e60d",
+    "outputs/exact-office-corridor-preparation-20261116/preparation.json": "8fae36e24e87971ab286edf56165f90393d420711813a919f247361c3d85fa5c",
+    "outputs/exact-office-corridor-preparation-20261116/index.html": "6d763571a0ea0adfa42acff0fb60a837e161c334f5c489cc7ebc7b648bab6748",
+    "outputs/exact-office-corridor-preparation-20261116/sources.json": "26d91f4c4655f68c0193df53dd22569eeb87e888c4080f3fa2a398a6a5f19ca6",
+    "outputs/exact-office-corridor-preparation-20261116/route_review.png": "2d66e39fac6c70b8c96aade71c12f300334ce6c0c6fd330e5dc6373322aa265a",
+    "outputs/exact-office-corridor-preparation-20261116/route.json": "0f68c37f2062d519d8724d2b2c896b1cace09c5144eb46a3f461bf1b59d94298",
+    "docs/exact_mppi_evidence/office_corridor_preparation_20261116/preparation.log": "5ee1664d840fff9e4cc39c2de1b9bec71b9d4f8db2fa3bfd46f0a78a670de8d2",
+    "docs/exact_mppi_evidence/office_corridor_preparation_20261116/geometry_regression.log": "2d251a67c3ab9e43fdf5b7aa00f05cc16710a916d9e93eeb19372de4978a2c97"
+  },
+  "commands": [
+    {
+      "command": "python3 scripts/prepare_exact_field_test.py --navigation-map outputs/fast-livo-demo-changed-scene-20261110/navigation_map_05 --route config/exact_mppi/office_corridor_preparation_20261116.yaml --clearance-profile narrow --output outputs/exact-office-corridor-preparation-20261116",
+      "completion": "OFFLINE_CANDIDATE_PASS in preparation.log"
+    },
+    {
+      "command": "python3 -m pytest -q tests/test_exact_field_preparation.py -k 'not launch'",
+      "exit_code": 0
+    }
+  ]
+}

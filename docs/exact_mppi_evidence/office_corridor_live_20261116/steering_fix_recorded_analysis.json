@@ -1,0 +1,3224 @@
+{
+  "bag": "/home/lab307/ranger_nav/bags/fast-livo-localization-fo3nvbdf",
+  "drive_nonzero_count": 631,
+  "drive_vx_abs_p50_p95_max": [
+    0.017373107373714447,
+    0.04659151844680309,
+    0.06387550383806229
+  ],
+  "requested_steering_deg_p5_p50_p95": [
+    -33.86934309592161,
+    -33.86934157265981,
+    -33.869340066167595
+  ],
+  "drive_steering_direction_changes": 0,
+  "drive_steering_jumps_gt_10deg": 0,
+  "spin_nonzero_count": 2718,
+  "spin_command_direction_changes": 18,
+  "spin_wz_abs_p50_p95_max": [
+    0.015092089772224426,
+    0.06337160617113113,
+    0.17650216817855835
+  ],
+  "mode_transitions": [
+    [
+      1794838590.348477,
+      0
+    ],
+    [
+      1794838635.2486339,
+      2
+    ],
+    [
+      1794838656.0084078,
+      0
+    ],
+    [
+      1794838665.288646,
+      2
+    ],
+    [
+      1794838700.7286673,
+      0
+    ],
+    [
+      1794838708.6884565,
+      2
+    ]
+  ],
+  "system_states": {
+    "(1, 0, 0)": 6823
+  },
+  "poses_first_last": [
+    [
+      1794838602.1865692,
+      1.8210366170601116,
+      0.4175541197665332,
+      0.30624100629547485
+    ],
+    [
+      1794838733.4625363,
+      2.019458969443962,
+      0.546016086794797,
+      0.6805644006681139
+    ]
+  ],
+  "last_command": [
+    1794838716.93877,
+    0.0,
+    0.0,
+    0.009018939919769764,
+    2
+  ],
+  "last_wheel": [
+    1794838733.4671724,
+    -0.0,
+    -0.0,
+    0.0
+  ],
+  "state_transitions": [
+    [
+      1794838606.2215364,
+      {
+        "state": "IDLE",
+        "reason": "startup",
+        "generation": 0,
+        "worker": {
+          "ready": false
+        },
+        "inputs_valid": false,
+        "input_reason": "missing_ready_wheel_estimate_map_or_frontend_locked",
+        "metrics": {}
+      }
+    ],
+    [
+      1794838630.763172,
+      {
+        "state": "PLANNING",
+        "reason": "new_goal",
+        "generation": 1,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {}
+      }
+    ],
+    [
+      1794838631.0431566,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 2,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {}
+      }
+    ],
+    [
+      1794838634.0534508,
+      {
+        "state": "BLOCKED",
+        "reason": "no_progress",
+        "generation": 2,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 56,
+          "compute_s": 0.023115926000173204,
+          "end_to_end_s": 0.052511672000036924,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838635.2010515,
+      {
+        "state": "SWITCHING",
+        "reason": "plan_accepted",
+        "generation": 3,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 56,
+          "compute_s": 0.023115926000173204,
+          "end_to_end_s": 0.052511672000036924,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838635.2542913,
+      {
+        "state": "EXECUTING",
+        "reason": "mode_confirmed",
+        "generation": 3,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 56,
+          "compute_s": 0.023115926000173204,
+          "end_to_end_s": 0.052511672000036924,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838635.3052776,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 3,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 59,
+          "compute_s": 0.01379365999946458,
+          "end_to_end_s": 0.044308587000159605,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838638.2602723,
+      {
+        "state": "BLOCKED",
+        "reason": "no_progress",
+        "generation": 3,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 113,
+          "compute_s": 0.010208141000475734,
+          "end_to_end_s": 0.023507814000367944,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838638.6803563,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 4,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 113,
+          "compute_s": 0.010208141000475734,
+          "end_to_end_s": 0.023507814000367944,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838639.183829,
+      {
+        "state": "EXECUTING",
+        "reason": "observation_resumed",
+        "generation": 5,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 122,
+          "compute_s": 0.029883953000535257,
+          "end_to_end_s": 0.05594513200048823,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838639.2362356,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 5,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 124,
+          "compute_s": 0.028852610999820172,
+          "end_to_end_s": 0.054818994000015664,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838640.5799086,
+      {
+        "state": "EXECUTING",
+        "reason": "observation_resumed",
+        "generation": 6,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 148,
+          "compute_s": 0.01574237700060621,
+          "end_to_end_s": 0.050705782000477484,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838640.6341944,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 6,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 150,
+          "compute_s": 0.012724637999781407,
+          "end_to_end_s": 0.031183419999251782,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838641.7539122,
+      {
+        "state": "BLOCKED",
+        "reason": "no_progress",
+        "generation": 6,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 170,
+          "compute_s": 0.010953037000035692,
+          "end_to_end_s": 0.021328754000023764,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838642.2488232,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 7,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 170,
+          "compute_s": 0.010953037000035692,
+          "end_to_end_s": 0.021328754000023764,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838645.178433,
+      {
+        "state": "EXECUTING",
+        "reason": "observation_resumed",
+        "generation": 8,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 225,
+          "compute_s": 0.011437226999987615,
+          "end_to_end_s": 0.03578379100054008,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838645.2298965,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 8,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 227,
+          "compute_s": 0.017328003000329772,
+          "end_to_end_s": 0.0339620869999635,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838645.3049967,
+      {
+        "state": "BLOCKED",
+        "reason": "no_progress",
+        "generation": 8,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 227,
+          "compute_s": 0.017328003000329772,
+          "end_to_end_s": 0.0339620869999635,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838645.6703131,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 9,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 230,
+          "compute_s": 0.01838353799939796,
+          "end_to_end_s": 0.0341752220001581,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838648.280146,
+      {
+        "state": "OBSERVING",
+        "reason": "revalidate_after_pause",
+        "generation": 10,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 277,
+          "compute_s": 0.017112402999373444,
+          "end_to_end_s": 0.06348712199996953,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838648.3341444,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 10,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 279,
+          "compute_s": 0.014258634000725579,
+          "end_to_end_s": 0.027981121999800962,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838648.6639593,
+      {
+        "state": "BLOCKED",
+        "reason": "no_progress",
+        "generation": 10,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 285,
+          "compute_s": 0.009455286999582313,
+          "end_to_end_s": 0.06430101200021454,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838648.9262516,
+      {
+        "state": "SWITCHING",
+        "reason": "plan_accepted",
+        "generation": 11,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 285,
+          "compute_s": 0.009455286999582313,
+          "end_to_end_s": 0.06430101200021454,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838648.97933,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 11,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 287,
+          "compute_s": 0.014077537000048324,
+          "end_to_end_s": 0.026410593999571574,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838649.5645473,
+      {
+        "state": "EXECUTING",
+        "reason": "observation_resumed",
+        "generation": 12,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 297,
+          "compute_s": 0.019756049000534404,
+          "end_to_end_s": 0.061977068000487634,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838649.6156716,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 12,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 299,
+          "compute_s": 0.02014781599973503,
+          "end_to_end_s": 0.034096166000381345,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838651.9752266,
+      {
+        "state": "BLOCKED",
+        "reason": "no_progress",
+        "generation": 12,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 342,
+          "compute_s": 0.010503798999707215,
+          "end_to_end_s": 0.022574922999410774,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838652.215525,
+      {
+        "state": "SWITCHING",
+        "reason": "plan_accepted",
+        "generation": 13,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 342,
+          "compute_s": 0.010503798999707215,
+          "end_to_end_s": 0.022574922999410774,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838652.2693913,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 13,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 342,
+          "compute_s": 0.010503798999707215,
+          "end_to_end_s": 0.022574922999410774,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838655.2904432,
+      {
+        "state": "BLOCKED",
+        "reason": "no_progress",
+        "generation": 13,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 399,
+          "compute_s": 0.012655687000005855,
+          "end_to_end_s": 0.03655692200027261,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838655.66977,
+      {
+        "state": "PLANNING",
+        "reason": "segment_start_pose_replan",
+        "generation": 15,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 399,
+          "compute_s": 0.012655687000005855,
+          "end_to_end_s": 0.03655692200027261,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838655.9989922,
+      {
+        "state": "SWITCHING",
+        "reason": "plan_accepted",
+        "generation": 16,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 399,
+          "compute_s": 0.012655687000005855,
+          "end_to_end_s": 0.03655692200027261,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838656.0531087,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 16,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 402,
+          "compute_s": 0.015910680000160937,
+          "end_to_end_s": 0.03217771100025857,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838656.1568594,
+      {
+        "state": "OBSERVING",
+        "reason": "revalidate_after_pause",
+        "generation": 17,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 403,
+          "compute_s": 0.016762838000431657,
+          "end_to_end_s": 0.05944118300067203,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838656.2098455,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 17,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 403,
+          "compute_s": 0.016762838000431657,
+          "end_to_end_s": 0.05944118300067203,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838656.5826457,
+      {
+        "state": "EXECUTING",
+        "reason": "observation_resumed",
+        "generation": 18,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 410,
+          "compute_s": 0.017952770000192686,
+          "end_to_end_s": 0.05444042199997057,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838656.6342993,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 18,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 412,
+          "compute_s": 0.02264508999996906,
+          "end_to_end_s": 0.04466782399958902,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838657.1860163,
+      {
+        "state": "EXECUTING",
+        "reason": "observation_resumed",
+        "generation": 19,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 421,
+          "compute_s": 0.0281357570002001,
+          "end_to_end_s": 0.0581940960000793,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838657.2360866,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 19,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 423,
+          "compute_s": 0.022694373999911477,
+          "end_to_end_s": 0.03976829499970336,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838658.860359,
+      {
+        "state": "BLOCKED",
+        "reason": "map_or_unknown_collision",
+        "generation": 19,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 453,
+          "compute_s": 0.02419715999985783,
+          "end_to_end_s": 0.0420659789997444,
+          "valid": false,
+          "validation_reason": "map_or_unknown_collision"
+        }
+      }
+    ],
+    [
+      1794838659.9508348,
+      {
+        "state": "PLANNING",
+        "reason": "segment_start_pose_replan",
+        "generation": 21,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 453,
+          "compute_s": 0.02419715999985783,
+          "end_to_end_s": 0.0420659789997444,
+          "valid": false,
+          "validation_reason": "map_or_unknown_collision"
+        }
+      }
+    ],
+    [
+      1794838660.98873,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 22,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 456,
+          "compute_s": 0.019035366000025533,
+          "end_to_end_s": 0.03253446599956078,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838662.3174832,
+      {
+        "state": "EXECUTING",
+        "reason": "observation_resumed",
+        "generation": 23,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 478,
+          "compute_s": 0.02354128600018157,
+          "end_to_end_s": 0.05486904100052925,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838662.3629594,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 23,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 480,
+          "compute_s": 0.02725355100028537,
+          "end_to_end_s": 0.07546202999947127,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838663.811092,
+      {
+        "state": "OBSERVING",
+        "reason": "revalidate_after_pause",
+        "generation": 24,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 505,
+          "compute_s": 0.017888569999740866,
+          "end_to_end_s": 0.06423237800026982,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838663.911139,
+      {
+        "state": "PLANNING",
+        "reason": "observation_resume_pose_changed",
+        "generation": 25,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 505,
+          "compute_s": 0.017888569999740866,
+          "end_to_end_s": 0.06423237800026982,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838665.2894714,
+      {
+        "state": "SWITCHING",
+        "reason": "plan_accepted",
+        "generation": 26,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 505,
+          "compute_s": 0.017888569999740866,
+          "end_to_end_s": 0.06423237800026982,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838665.3396914,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 26,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 508,
+          "compute_s": 0.011735103000319214,
+          "end_to_end_s": 0.02707689199996821,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838666.5760555,
+      {
+        "state": "EXECUTING",
+        "reason": "observation_resumed",
+        "generation": 27,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 530,
+          "compute_s": 0.034032094000394864,
+          "end_to_end_s": 0.05967362100000173,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838666.625767,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 27,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 532,
+          "compute_s": 0.01466934800009767,
+          "end_to_end_s": 0.027693911999449483,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838668.3548148,
+      {
+        "state": "BLOCKED",
+        "reason": "no_progress",
+        "generation": 27,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 563,
+          "compute_s": 0.011685518999911437,
+          "end_to_end_s": 0.021997488000124577,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838668.6387775,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 28,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 563,
+          "compute_s": 0.011685518999911437,
+          "end_to_end_s": 0.021997488000124577,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838669.7211134,
+      {
+        "state": "EXECUTING",
+        "reason": "observation_resumed",
+        "generation": 29,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 583,
+          "compute_s": 0.01193401399996219,
+          "end_to_end_s": 0.08456384600049205,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838669.7756748,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 29,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 585,
+          "compute_s": 0.020936746000188577,
+          "end_to_end_s": 0.04136818000006315,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838671.6171634,
+      {
+        "state": "BLOCKED",
+        "reason": "no_progress",
+        "generation": 29,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 618,
+          "compute_s": 0.011911659999896074,
+          "end_to_end_s": 0.024569949000579072,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838671.9066718,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 30,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 620,
+          "compute_s": 0.012959831999978633,
+          "end_to_end_s": 0.04050495499996032,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838672.7749844,
+      {
+        "state": "OBSERVING",
+        "reason": "revalidate_after_pause",
+        "generation": 31,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 635,
+          "compute_s": 0.019370517999959702,
+          "end_to_end_s": 0.06023440199987817,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838672.8254924,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 31,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 637,
+          "compute_s": 0.015617560999999114,
+          "end_to_end_s": 0.026814883000042755,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838675.058651,
+      {
+        "state": "BLOCKED",
+        "reason": "no_progress",
+        "generation": 31,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 678,
+          "compute_s": 0.015618094999808818,
+          "end_to_end_s": 0.026615480000145908,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838675.402047,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 32,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 680,
+          "compute_s": 0.012085811999895668,
+          "end_to_end_s": 0.03126871200038295,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838676.2312524,
+      {
+        "state": "PAUSED",
+        "reason": "inputs_invalid",
+        "generation": 33,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": false,
+        "input_reason": "sampling_stamp_stale_or_future:estimate:0.2596883773803711",
+        "metrics": {
+          "request_id": 695,
+          "compute_s": 0.015518163000706409,
+          "end_to_end_s": 0.05640875600056461,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838676.2849846,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 33,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 695,
+          "compute_s": 0.015518163000706409,
+          "end_to_end_s": 0.05640875600056461,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838677.4807262,
+      {
+        "state": "OBSERVING",
+        "reason": "revalidate_after_pause",
+        "generation": 34,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 717,
+          "compute_s": 0.010255768999741122,
+          "end_to_end_s": 0.053480063999813865,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838677.6028862,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 34,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 719,
+          "compute_s": 0.012849994000134757,
+          "end_to_end_s": 0.02698357200006285,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838678.4009635,
+      {
+        "state": "BLOCKED",
+        "reason": "no_progress",
+        "generation": 34,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 733,
+          "compute_s": 0.00949362499977724,
+          "end_to_end_s": 0.02172553800028254,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838678.8356495,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 35,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 735,
+          "compute_s": 0.016167491000487644,
+          "end_to_end_s": 0.033708746999764116,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838679.5776668,
+      {
+        "state": "EXECUTING",
+        "reason": "observation_resumed",
+        "generation": 36,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 747,
+          "compute_s": 0.033298584000476694,
+          "end_to_end_s": 0.06965011800002685,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838679.6348305,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 36,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 749,
+          "compute_s": 0.028323159999672498,
+          "end_to_end_s": 0.04186913200010167,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838682.2995782,
+      {
+        "state": "BLOCKED",
+        "reason": "no_progress",
+        "generation": 36,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 798,
+          "compute_s": 0.015529422999861708,
+          "end_to_end_s": 0.041322000000036496,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838682.6604173,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 37,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 798,
+          "compute_s": 0.015529422999861708,
+          "end_to_end_s": 0.041322000000036496,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838687.5013454,
+      {
+        "state": "BLOCKED",
+        "reason": "no_progress",
+        "generation": 37,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 888,
+          "compute_s": 0.012077274000148464,
+          "end_to_end_s": 0.05409124699963286,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838687.760576,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 38,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 888,
+          "compute_s": 0.012077274000148464,
+          "end_to_end_s": 0.05409124699963286,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838690.7716687,
+      {
+        "state": "BLOCKED",
+        "reason": "no_progress",
+        "generation": 38,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 945,
+          "compute_s": 0.009466241000154696,
+          "end_to_end_s": 0.025918555999851378,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838691.051588,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 39,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 945,
+          "compute_s": 0.009466241000154696,
+          "end_to_end_s": 0.025918555999851378,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838691.4861062,
+      {
+        "state": "EXECUTING",
+        "reason": "observation_resumed",
+        "generation": 40,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 953,
+          "compute_s": 0.018214966999948956,
+          "end_to_end_s": 0.06604352399972413,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838691.5413418,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 40,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 955,
+          "compute_s": 0.012090463999811618,
+          "end_to_end_s": 0.021814417999848956,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838696.281617,
+      {
+        "state": "EXECUTING",
+        "reason": "observation_resumed",
+        "generation": 41,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1042,
+          "compute_s": 0.015271930000380962,
+          "end_to_end_s": 0.05372442299994873,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838696.3356683,
+      {
+        "state": "BLOCKED",
+        "reason": "no_progress",
+        "generation": 41,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1042,
+          "compute_s": 0.015271930000380962,
+          "end_to_end_s": 0.05372442299994873,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838696.6028204,
+      {
+        "state": "SWITCHING",
+        "reason": "plan_accepted",
+        "generation": 42,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1042,
+          "compute_s": 0.015271930000380962,
+          "end_to_end_s": 0.05372442299994873,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838696.6557438,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 42,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1046,
+          "compute_s": 0.015257646999998542,
+          "end_to_end_s": 0.026929224000014074,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838699.2769697,
+      {
+        "state": "OBSERVING",
+        "reason": "revalidate_after_pause",
+        "generation": 43,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1093,
+          "compute_s": 0.012696396999672288,
+          "end_to_end_s": 0.042011145999822475,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838699.3306992,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 43,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1095,
+          "compute_s": 0.013753577000898076,
+          "end_to_end_s": 0.027043727999625844,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838699.5765035,
+      {
+        "state": "EXECUTING",
+        "reason": "observation_resumed",
+        "generation": 44,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1098,
+          "compute_s": 0.012847431999944092,
+          "end_to_end_s": 0.03442308000012417,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838699.6258554,
+      {
+        "state": "BLOCKED",
+        "reason": "no_progress",
+        "generation": 44,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1100,
+          "compute_s": 0.016892403999918315,
+          "end_to_end_s": 0.029686732000300253,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838699.860812,
+      {
+        "state": "SWITCHING",
+        "reason": "plan_accepted",
+        "generation": 45,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1100,
+          "compute_s": 0.016892403999918315,
+          "end_to_end_s": 0.029686732000300253,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838700.011005,
+      {
+        "state": "PLANNING",
+        "reason": "segment_start_pose_replan",
+        "generation": 46,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1100,
+          "compute_s": 0.016892403999918315,
+          "end_to_end_s": 0.029686732000300253,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838700.5057373,
+      {
+        "state": "SWITCHING",
+        "reason": "plan_accepted",
+        "generation": 47,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1100,
+          "compute_s": 0.016892403999918315,
+          "end_to_end_s": 0.029686732000300253,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838700.7608829,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 47,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1100,
+          "compute_s": 0.016892403999918315,
+          "end_to_end_s": 0.029686732000300253,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838700.8808355,
+      {
+        "state": "BLOCKED",
+        "reason": "feedback_drive_steering_transition",
+        "generation": 47,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1104,
+          "compute_s": 0.020090398999855097,
+          "end_to_end_s": 0.05617500700009259,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838701.275407,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 48,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1107,
+          "compute_s": 0.01840223099952709,
+          "end_to_end_s": 0.03245976400012296,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838702.3608015,
+      {
+        "state": "OBSERVING",
+        "reason": "revalidate_after_pause",
+        "generation": 49,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1126,
+          "compute_s": 0.015620083000612794,
+          "end_to_end_s": 0.06510296699980245,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838702.6287513,
+      {
+        "state": "PLANNING",
+        "reason": "observation_resume_pose_changed",
+        "generation": 50,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1126,
+          "compute_s": 0.015620083000612794,
+          "end_to_end_s": 0.06510296699980245,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838703.420952,
+      {
+        "state": "PLANNING",
+        "reason": "segment_start_pose_replan",
+        "generation": 52,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1126,
+          "compute_s": 0.015620083000612794,
+          "end_to_end_s": 0.06510296699980245,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838704.0593672,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 53,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1126,
+          "compute_s": 0.015620083000612794,
+          "end_to_end_s": 0.06510296699980245,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838707.5715783,
+      {
+        "state": "BLOCKED",
+        "reason": "map_or_unknown_collision",
+        "generation": 53,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1193,
+          "compute_s": 0.014399175000107789,
+          "end_to_end_s": 0.02489532399977179,
+          "valid": false,
+          "validation_reason": "map_or_unknown_collision"
+        }
+      }
+    ],
+    [
+      1794838708.661184,
+      {
+        "state": "SWITCHING",
+        "reason": "plan_accepted",
+        "generation": 54,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1193,
+          "compute_s": 0.014399175000107789,
+          "end_to_end_s": 0.02489532399977179,
+          "valid": false,
+          "validation_reason": "map_or_unknown_collision"
+        }
+      }
+    ],
+    [
+      1794838708.7265666,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 54,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1195,
+          "compute_s": 0.013157026999579102,
+          "end_to_end_s": 0.030074223000156053,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838711.7115562,
+      {
+        "state": "BLOCKED",
+        "reason": "no_progress",
+        "generation": 54,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1249,
+          "compute_s": 0.010399433000202407,
+          "end_to_end_s": 0.02300526900035038,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838711.971845,
+      {
+        "state": "SWITCHING",
+        "reason": "plan_accepted",
+        "generation": 55,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1249,
+          "compute_s": 0.010399433000202407,
+          "end_to_end_s": 0.02300526900035038,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838712.0338657,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 55,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1251,
+          "compute_s": 0.014866324000649911,
+          "end_to_end_s": 0.028279381000174908,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838712.9810638,
+      {
+        "state": "EXECUTING",
+        "reason": "observation_resumed",
+        "generation": 56,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1267,
+          "compute_s": 0.016244429999460408,
+          "end_to_end_s": 0.05950997400032065,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838713.0359735,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 56,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1269,
+          "compute_s": 0.01303652200022043,
+          "end_to_end_s": 0.027528299999175943,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838715.0363417,
+      {
+        "state": "BLOCKED",
+        "reason": "no_progress",
+        "generation": 56,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1305,
+          "compute_s": 0.01384162300018943,
+          "end_to_end_s": 0.02693850299965561,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838715.198938,
+      {
+        "state": "EXECUTING",
+        "reason": "mode_confirmed",
+        "generation": 57,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1305,
+          "compute_s": 0.01384162300018943,
+          "end_to_end_s": 0.02693850299965561,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ],
+    [
+      1794838715.2531388,
+      {
+        "state": "EXECUTING",
+        "reason": "tracking",
+        "generation": 57,
+        "worker": {
+          "ready": true,
+          "pid": 29264,
+          "nonce": "f8fd80f7be5847a89ac56cbbd6502466",
+          "devices": [
+            "cuda:0"
+          ],
+          "warmup_s": {
+            "DRIVE": 2.628143232000184,
+            "PARALLEL": 2.4528375090003465,
+            "SPIN": 2.3118929590000334
+          }
+        },
+        "inputs_valid": true,
+        "input_reason": "valid",
+        "metrics": {
+          "request_id": 1308,
+          "compute_s": 0.014484061000075599,
+          "end_to_end_s": 0.029530912999689463,
+          "valid": true,
+          "validation_reason": "valid"
+        }
+      }
+    ]
+  ],
+  "action_status_changes": [
+    [
+      1794838630.7285523,
+      [
+        [
+          "fb1d8d48e6db48aba4e5b272760bcd4a",
+          1
+        ]
+      ]
+    ],
+    [
+      1794838630.7285764,
+      [
+        [
+          "fb1d8d48e6db48aba4e5b272760bcd4a",
+          2
+        ]
+      ]
+    ]
+  ],
+  "note": "Steering inferred from exact V2BodyCommand conversion; actual wheel angle is not recorded. Different starting poses prevent strict A/B claims."
+}

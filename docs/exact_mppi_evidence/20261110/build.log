@@ -1,0 +1,1363 @@
+Starting >>> ranger_bringup
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/lab307/ranger_nav/ws_base/build_exact/ranger_bringup
+-- Install configuration: "RelWithDebInfo"
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_bringup/share/ranger_bringup//launch
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_bringup/share/ranger_bringup//launch/ranger_mini_v2.launch.py
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_bringup/share/ranger_bringup//launch/ranger_mini_v3.launch.py
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_bringup/share/ranger_bringup//launch/ranger_mini_v1.launch.py
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_bringup/share/ranger_bringup//launch/ranger.launch.py
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_bringup/share/ament_index/resource_index/package_run_dependencies/ranger_bringup
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_bringup/share/ament_index/resource_index/parent_prefix_path/ranger_bringup
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_bringup/share/ranger_bringup/environment/ament_prefix_path.sh
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_bringup/share/ranger_bringup/environment/ament_prefix_path.dsv
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_bringup/share/ranger_bringup/environment/path.sh
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_bringup/share/ranger_bringup/environment/path.dsv
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_bringup/share/ranger_bringup/local_setup.bash
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_bringup/share/ranger_bringup/local_setup.sh
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_bringup/share/ranger_bringup/local_setup.zsh
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_bringup/share/ranger_bringup/local_setup.dsv
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_bringup/share/ranger_bringup/package.dsv
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_bringup/share/ament_index/resource_index/packages/ranger_bringup
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_bringup/share/ranger_bringup/cmake/ranger_bringupConfig.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_bringup/share/ranger_bringup/cmake/ranger_bringupConfig-version.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_bringup/share/ranger_bringup/package.xml
+Finished <<< ranger_bringup [0.76s]
+Starting >>> ranger_msgs
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Found builtin_interfaces: 1.2.3 (/opt/ros/humble/share/builtin_interfaces/cmake)
+-- Found rosidl_generator_c: 3.1.9 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+-- Found rosidl_adapter: 3.1.9 (/opt/ros/humble/share/rosidl_adapter/cmake)
+-- Found rosidl_generator_cpp: 3.1.9 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rosidl_default_generators: 1.2.1 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+-- Found std_msgs: 4.9.2 (/opt/ros/humble/share/std_msgs/cmake)
+-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+-- Found PythonExtra: .so  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/lab307/ranger_nav/ws_base/build_exact/ranger_msgs
+[  1%] Generating C code for ROS interfaces
+[  2%] Generating Rust code for ROS interfaces
+[  4%] Generating C++ code for ROS interfaces
+[  4%] Built target ament_cmake_python_copy_ranger_msgs
+running egg_info
+creating ranger_msgs.egg-info
+writing ranger_msgs.egg-info/PKG-INFO
+writing dependency_links to ranger_msgs.egg-info/dependency_links.txt
+writing top-level names to ranger_msgs.egg-info/top_level.txt
+writing manifest file 'ranger_msgs.egg-info/SOURCES.txt'
+reading manifest file 'ranger_msgs.egg-info/SOURCES.txt'
+writing manifest file 'ranger_msgs.egg-info/SOURCES.txt'
+[  4%] Built target ament_cmake_python_build_ranger_msgs_egg
+[  4%] Built target ranger_msgs__rs
+[  4%] Built target ranger_msgs__cpp
+[  5%] Generating C++ type support dispatch for ROS interfaces
+[  6%] Generating C++ introspection for ROS interfaces
+[  8%] Generating C++ type support for eProsima Fast-RTPS
+[  9%] Building C object CMakeFiles/ranger_msgs__rosidl_generator_c.dir/rosidl_generator_c/ranger_msgs/msg/detail/actuator_state_array__functions.c.o
+[ 11%] Building C object CMakeFiles/ranger_msgs__rosidl_generator_c.dir/rosidl_generator_c/ranger_msgs/msg/detail/driver_state__functions.c.o
+[ 12%] Building C object CMakeFiles/ranger_msgs__rosidl_generator_c.dir/rosidl_generator_c/ranger_msgs/msg/detail/motor_state__functions.c.o
+[ 13%] Building C object CMakeFiles/ranger_msgs__rosidl_generator_c.dir/rosidl_generator_c/ranger_msgs/msg/detail/actuator_state__functions.c.o
+[ 15%] Building C object CMakeFiles/ranger_msgs__rosidl_generator_c.dir/rosidl_generator_c/ranger_msgs/msg/detail/motion_state__functions.c.o
+[ 16%] Building C object CMakeFiles/ranger_msgs__rosidl_generator_c.dir/rosidl_generator_c/ranger_msgs/msg/detail/system_state__functions.c.o
+[ 18%] Linking C shared library libranger_msgs__rosidl_generator_c.so
+[ 18%] Built target ranger_msgs__rosidl_generator_c
+[ 19%] Generating C introspection for ROS interfaces
+[ 22%] Generating C type support dispatch for ROS interfaces
+[ 22%] Generating C type support for eProsima Fast-RTPS
+[ 23%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ranger_msgs/msg/system_state__type_support.cpp.o
+[ 25%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ranger_msgs/msg/actuator_state__type_support.cpp.o
+[ 26%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ranger_msgs/msg/actuator_state_array__type_support.cpp.o
+[ 29%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ranger_msgs/msg/driver_state__type_support.cpp.o
+[ 29%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ranger_msgs/msg/motion_state__type_support.cpp.o
+[ 30%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ranger_msgs/msg/motor_state__type_support.cpp.o
+[ 31%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ranger_msgs/msg/detail/actuator_state_array__type_support.cpp.o
+[ 33%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ranger_msgs/msg/detail/actuator_state__type_support.cpp.o
+[ 34%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ranger_msgs/msg/detail/motor_state__type_support.cpp.o
+[ 36%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ranger_msgs/msg/detail/driver_state__type_support.cpp.o
+[ 37%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ranger_msgs/msg/detail/motion_state__type_support.cpp.o
+[ 38%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ranger_msgs/msg/detail/system_state__type_support.cpp.o
+[ 41%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ranger_msgs/msg/detail/dds_fastrtps/actuator_state__type_support.cpp.o
+[ 41%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ranger_msgs/msg/detail/dds_fastrtps/driver_state__type_support.cpp.o
+[ 43%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ranger_msgs/msg/detail/dds_fastrtps/motion_state__type_support.cpp.o
+[ 44%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ranger_msgs/msg/detail/dds_fastrtps/actuator_state_array__type_support.cpp.o
+[ 45%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ranger_msgs/msg/detail/dds_fastrtps/motor_state__type_support.cpp.o
+[ 47%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ranger_msgs/msg/detail/dds_fastrtps/system_state__type_support.cpp.o
+[ 48%] Building C object CMakeFiles/ranger_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ranger_msgs/msg/detail/actuator_state__type_support.c.o
+[ 51%] Building C object CMakeFiles/ranger_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ranger_msgs/msg/detail/driver_state__type_support.c.o
+[ 51%] Building C object CMakeFiles/ranger_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ranger_msgs/msg/detail/actuator_state_array__type_support.c.o
+[ 52%] Building C object CMakeFiles/ranger_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ranger_msgs/msg/detail/motion_state__type_support.c.o
+[ 54%] Building C object CMakeFiles/ranger_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ranger_msgs/msg/detail/motor_state__type_support.c.o
+[ 55%] Building C object CMakeFiles/ranger_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ranger_msgs/msg/detail/system_state__type_support.c.o
+[ 56%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/ranger_msgs/msg/actuator_state__type_support.cpp.o
+[ 58%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/ranger_msgs/msg/actuator_state_array__type_support.cpp.o
+[ 59%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/ranger_msgs/msg/motor_state__type_support.cpp.o
+[ 61%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/ranger_msgs/msg/motion_state__type_support.cpp.o
+[ 62%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/ranger_msgs/msg/system_state__type_support.cpp.o
+[ 63%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/ranger_msgs/msg/driver_state__type_support.cpp.o
+[ 65%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ranger_msgs/msg/detail/actuator_state__type_support_c.cpp.o
+[ 66%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ranger_msgs/msg/detail/actuator_state_array__type_support_c.cpp.o
+[ 69%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ranger_msgs/msg/detail/driver_state__type_support_c.cpp.o
+[ 69%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ranger_msgs/msg/detail/motion_state__type_support_c.cpp.o
+[ 70%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ranger_msgs/msg/detail/motor_state__type_support_c.cpp.o
+[ 72%] Building CXX object CMakeFiles/ranger_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ranger_msgs/msg/detail/system_state__type_support_c.cpp.o
+[ 73%] Linking CXX shared library libranger_msgs__rosidl_typesupport_c.so
+[ 75%] Linking C shared library libranger_msgs__rosidl_typesupport_introspection_c.so
+[ 75%] Built target ranger_msgs__rosidl_typesupport_introspection_c
+[ 75%] Built target ranger_msgs__rosidl_typesupport_c
+[ 76%] Linking CXX shared library libranger_msgs__rosidl_typesupport_cpp.so
+[ 76%] Built target ranger_msgs__rosidl_typesupport_cpp
+[ 77%] Linking CXX shared library libranger_msgs__rosidl_typesupport_fastrtps_c.so
+[ 79%] Linking CXX shared library libranger_msgs__rosidl_typesupport_introspection_cpp.so
+[ 80%] Linking CXX shared library libranger_msgs__rosidl_typesupport_fastrtps_cpp.so
+[ 80%] Built target ranger_msgs__rosidl_typesupport_introspection_cpp
+[ 80%] Built target ranger_msgs__rosidl_typesupport_fastrtps_c
+[ 80%] Built target ranger_msgs__rosidl_typesupport_fastrtps_cpp
+[ 80%] Built target ranger_msgs
+[ 81%] Generating Python code for ROS interfaces
+[ 81%] Built target ranger_msgs__py
+[ 83%] Building C object CMakeFiles/ranger_msgs__rosidl_generator_py.dir/rosidl_generator_py/ranger_msgs/msg/_actuator_state_s.c.o
+[ 84%] Building C object CMakeFiles/ranger_msgs__rosidl_generator_py.dir/rosidl_generator_py/ranger_msgs/msg/_driver_state_s.c.o
+[ 86%] Building C object CMakeFiles/ranger_msgs__rosidl_generator_py.dir/rosidl_generator_py/ranger_msgs/msg/_actuator_state_array_s.c.o
+[ 87%] Building C object CMakeFiles/ranger_msgs__rosidl_generator_py.dir/rosidl_generator_py/ranger_msgs/msg/_system_state_s.c.o
+[ 88%] Building C object CMakeFiles/ranger_msgs__rosidl_generator_py.dir/rosidl_generator_py/ranger_msgs/msg/_motion_state_s.c.o
+[ 90%] Building C object CMakeFiles/ranger_msgs__rosidl_generator_py.dir/rosidl_generator_py/ranger_msgs/msg/_motor_state_s.c.o
+[ 91%] Linking C shared library rosidl_generator_py/ranger_msgs/libranger_msgs__rosidl_generator_py.so
+[ 91%] Built target ranger_msgs__rosidl_generator_py
+[ 93%] Building C object CMakeFiles/ranger_msgs__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/ranger_msgs/_ranger_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o
+[ 94%] Building C object CMakeFiles/ranger_msgs__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/ranger_msgs/_ranger_msgs_s.ep.rosidl_typesupport_introspection_c.c.o
+[ 95%] Building C object CMakeFiles/ranger_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/ranger_msgs/_ranger_msgs_s.ep.rosidl_typesupport_c.c.o
+[ 97%] Linking C shared library rosidl_generator_py/ranger_msgs/ranger_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[ 98%] Linking C shared library rosidl_generator_py/ranger_msgs/ranger_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[100%] Linking C shared library rosidl_generator_py/ranger_msgs/ranger_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[100%] Built target ranger_msgs__rosidl_typesupport_c__pyext
+[100%] Built target ranger_msgs__rosidl_typesupport_introspection_c__pyext
+[100%] Built target ranger_msgs__rosidl_typesupport_fastrtps_c__pyext
+-- Install configuration: "RelWithDebInfo"
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ament_index/resource_index/rosidl_interfaces/ranger_msgs
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/driver_state.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state__struct.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state__functions.c
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motion_state__functions.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motor_state__functions.c
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motor_state__functions.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/driver_state__struct.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motion_state__struct.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/driver_state__functions.c
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/system_state__struct.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motion_state__type_support.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/driver_state__functions.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/system_state__functions.c
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/driver_state__type_support.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/system_state__type_support.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motor_state__type_support.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state_array__functions.c
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state_array__struct.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state__functions.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state__type_support.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motor_state__struct.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state_array__type_support.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/system_state__functions.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motion_state__functions.c
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state_array__functions.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/system_state.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/motion_state.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/rosidl_generator_c__visibility_control.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/actuator_state.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/actuator_state_array.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/motor_state.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/environment/library_path.sh
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/environment/library_path.dsv
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/lib/libranger_msgs__rosidl_generator_c.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/lib/libranger_msgs__rosidl_generator_c.so" to ""
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/system_state__rosidl_typesupport_fastrtps_c.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/driver_state__rosidl_typesupport_fastrtps_c.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motion_state__rosidl_typesupport_fastrtps_c.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state_array__rosidl_typesupport_fastrtps_c.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state__rosidl_typesupport_fastrtps_c.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motor_state__rosidl_typesupport_fastrtps_c.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/lib/libranger_msgs__rosidl_typesupport_fastrtps_c.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/lib/libranger_msgs__rosidl_typesupport_fastrtps_c.so" to ""
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state_array__traits.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/driver_state__struct.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/driver_state__builder.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/driver_state__traits.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motor_state__traits.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state_array__struct.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state_array__builder.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motor_state__struct.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/system_state__struct.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motion_state__traits.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/system_state__traits.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state_array__type_support.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motion_state__type_support.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state__traits.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state__struct.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state__builder.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/system_state__builder.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motion_state__builder.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/system_state__type_support.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motor_state__builder.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motor_state__type_support.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state__type_support.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/driver_state__type_support.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motion_state__struct.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/motor_state.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/motion_state.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/driver_state.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/actuator_state_array.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/actuator_state.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/rosidl_generator_cpp__visibility_control.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/system_state.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motion_state__rosidl_typesupport_fastrtps_cpp.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state_array__rosidl_typesupport_fastrtps_cpp.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/dds_fastrtps
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motor_state__rosidl_typesupport_fastrtps_cpp.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/system_state__rosidl_typesupport_fastrtps_cpp.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state__rosidl_typesupport_fastrtps_cpp.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/driver_state__rosidl_typesupport_fastrtps_cpp.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/lib/libranger_msgs__rosidl_typesupport_fastrtps_cpp.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/lib/libranger_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motor_state__type_support.c
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state_array__type_support.c
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motion_state__rosidl_typesupport_introspection_c.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motor_state__rosidl_typesupport_introspection_c.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motion_state__type_support.c
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state__type_support.c
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/driver_state__type_support.c
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/driver_state__rosidl_typesupport_introspection_c.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/system_state__rosidl_typesupport_introspection_c.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state__rosidl_typesupport_introspection_c.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/system_state__type_support.c
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state_array__rosidl_typesupport_introspection_c.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/lib/libranger_msgs__rosidl_typesupport_introspection_c.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/lib/libranger_msgs__rosidl_typesupport_introspection_c.so" to ""
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/lib/libranger_msgs__rosidl_typesupport_c.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/lib/libranger_msgs__rosidl_typesupport_c.so" to ""
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motion_state__type_support.cpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state__rosidl_typesupport_introspection_cpp.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state_array__rosidl_typesupport_introspection_cpp.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motion_state__rosidl_typesupport_introspection_cpp.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state_array__type_support.cpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motor_state__rosidl_typesupport_introspection_cpp.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/system_state__type_support.cpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/actuator_state__type_support.cpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/system_state__rosidl_typesupport_introspection_cpp.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/motor_state__type_support.cpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/driver_state__type_support.cpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/include/ranger_msgs/ranger_msgs/msg/detail/driver_state__rosidl_typesupport_introspection_cpp.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/lib/libranger_msgs__rosidl_typesupport_introspection_cpp.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/lib/libranger_msgs__rosidl_typesupport_introspection_cpp.so" to ""
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/lib/libranger_msgs__rosidl_typesupport_cpp.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/lib/libranger_msgs__rosidl_typesupport_cpp.so" to ""
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/environment/pythonpath.sh
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/environment/pythonpath.dsv
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs-0.0.1-py3.10.egg-info
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs-0.0.1-py3.10.egg-info/SOURCES.txt
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs-0.0.1-py3.10.egg-info/top_level.txt
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs-0.0.1-py3.10.egg-info/dependency_links.txt
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs-0.0.1-py3.10.egg-info/PKG-INFO
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/ranger_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/_ranger_msgs_s.ep.rosidl_typesupport_introspection_c.c
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/msg
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/msg/_driver_state_s.c
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/msg/_motion_state_s.c
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/msg/_motor_state_s.c
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/msg/_actuator_state_array_s.c
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/msg/_system_state_s.c
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/msg/_driver_state.py
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/msg/_system_state.py
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/msg/__init__.py
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/msg/_motor_state.py
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/msg/_actuator_state.py
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/msg/_actuator_state_array.py
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/msg/_actuator_state_s.c
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/msg/_motion_state.py
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/_ranger_msgs_s.ep.rosidl_typesupport_fastrtps_c.c
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/__init__.py
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/ranger_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/libranger_msgs__rosidl_generator_py.so
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/_ranger_msgs_s.ep.rosidl_typesupport_c.c
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/ranger_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+Listing '/home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs'...
+Compiling '/home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/__init__.py'...
+Listing '/home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/msg'...
+Compiling '/home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/msg/__init__.py'...
+Compiling '/home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/msg/_actuator_state.py'...
+Compiling '/home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/msg/_actuator_state_array.py'...
+Compiling '/home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/msg/_driver_state.py'...
+Compiling '/home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/msg/_motion_state.py'...
+Compiling '/home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/msg/_motor_state.py'...
+Compiling '/home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/msg/_system_state.py'...
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/ranger_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/ranger_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/ranger_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/ranger_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/ranger_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/local/lib/python3.10/dist-packages/ranger_msgs/ranger_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/lib/libranger_msgs__rosidl_generator_py.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/lib/libranger_msgs__rosidl_generator_py.so" to ""
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ament_index/resource_index/rust_packages/ranger_msgs
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/rust
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/rust/src
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/rust/src/msg
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/rust/src/msg/rmw.rs
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/rust/src/msg.rs
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/rust/src/lib.rs
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/rust/Cargo.toml
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/rust/build.rs
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/msg/ActuatorState.idl
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/msg/ActuatorStateArray.idl
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/msg/DriverState.idl
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/msg/MotionState.idl
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/msg/MotorState.idl
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/msg/SystemState.idl
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/msg/ActuatorState.msg
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/msg/ActuatorStateArray.msg
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/msg/DriverState.msg
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/msg/MotionState.msg
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/msg/MotorState.msg
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/msg/SystemState.msg
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ament_index/resource_index/package_run_dependencies/ranger_msgs
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ament_index/resource_index/parent_prefix_path/ranger_msgs
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/environment/ament_prefix_path.sh
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/environment/ament_prefix_path.dsv
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/environment/path.sh
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/environment/path.dsv
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/local_setup.bash
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/local_setup.sh
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/local_setup.zsh
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/local_setup.dsv
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/package.dsv
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ament_index/resource_index/packages/ranger_msgs
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/export_ranger_msgs__rosidl_generator_cExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/export_ranger_msgs__rosidl_generator_cExport-relwithdebinfo.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/export_ranger_msgs__rosidl_typesupport_fastrtps_cExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/export_ranger_msgs__rosidl_typesupport_fastrtps_cExport-relwithdebinfo.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/export_ranger_msgs__rosidl_generator_cppExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/export_ranger_msgs__rosidl_typesupport_fastrtps_cppExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/export_ranger_msgs__rosidl_typesupport_fastrtps_cppExport-relwithdebinfo.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/ranger_msgs__rosidl_typesupport_introspection_cExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/ranger_msgs__rosidl_typesupport_introspection_cExport-relwithdebinfo.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/ranger_msgs__rosidl_typesupport_cExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/ranger_msgs__rosidl_typesupport_cExport-relwithdebinfo.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/ranger_msgs__rosidl_typesupport_introspection_cppExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/ranger_msgs__rosidl_typesupport_introspection_cppExport-relwithdebinfo.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/ranger_msgs__rosidl_typesupport_cppExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/ranger_msgs__rosidl_typesupport_cppExport-relwithdebinfo.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/export_ranger_msgs__rosidl_generator_pyExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/export_ranger_msgs__rosidl_generator_pyExport-relwithdebinfo.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/rosidl_cmake-extras.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/ament_cmake_export_libraries-extras.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/ament_cmake_export_targets-extras.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/rosidl_cmake_aggregate_target-extras.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/ranger_msgsConfig.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake/ranger_msgsConfig-version.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/package.xml
+Finished <<< ranger_msgs [3.00s]
+Starting >>> ugv_sdk
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Build package with cmake
+-- Tests will not be built
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Project will be installed to /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk with 'make install'
+--  - To install LIB components to /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/lib
+--  - To install BIN components to /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/bin
+--  - To install INCLUDE components to /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include
+--  - To install CMAKE components to /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/share/cmake/ugv_sdk
+-- Configuring done
+-- Generating done
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    CATKIN_INSTALL_INTO_PREFIX_ROOT
+
+
+-- Build files have been written to: /home/lab307/ranger_nav/ws_base/build_exact/ugv_sdk
+[  3%] Building CXX object CMakeFiles/ugv_sdk.dir/src/utilities/protocol_detector.cpp.o
+[  6%] Building CXX object CMakeFiles/ugv_sdk.dir/src/mobile_robot/hunter_robot.cpp.o
+[ 10%] Building CXX object CMakeFiles/ugv_sdk.dir/src/async_port/async_serial.cpp.o
+[ 13%] Building CXX object CMakeFiles/ugv_sdk.dir/src/async_port/async_can.cpp.o
+[ 17%] Building CXX object CMakeFiles/ugv_sdk.dir/src/mobile_robot/bunker_robot.cpp.o
+[ 20%] Building CXX object CMakeFiles/ugv_sdk.dir/src/mobile_robot/scout_robot.cpp.o
+[ 24%] Building CXX object CMakeFiles/ugv_sdk.dir/src/mobile_robot/tracer_robot.cpp.o
+[ 27%] Building CXX object CMakeFiles/ugv_sdk.dir/src/protocol_v2/protocol_v2_parser.cpp.o
+[ 31%] Building CXX object CMakeFiles/ugv_sdk.dir/src/mobile_robot/titan_robot.cpp.o
+[ 34%] Building CXX object CMakeFiles/ugv_sdk.dir/src/mobile_robot/ranger_robot.cpp.o
+[ 37%] Building C object CMakeFiles/ugv_sdk.dir/src/protocol_v2/agilex_msg_parser_v2.c.o
+[ 41%] Building C object CMakeFiles/ugv_sdk.dir/src/protocol_v1/agilex_msg_parser_v1.c.o
+[ 44%] Linking CXX static library lib/libugv_sdk.a
+[ 44%] Built target ugv_sdk
+[ 48%] Building CXX object sample/scout_demo/CMakeFiles/demo_scout_robot.dir/scout_robot_demo.cpp.o
+[ 51%] Building CXX object sample/bunker_demo/CMakeFiles/demo_bunker_robot.dir/bunker_robot_demo.cpp.o
+[ 55%] Building CXX object sample/scout_demo/CMakeFiles/demo_scout_mini_omni_robot.dir/scout_mini_omni_demo.cpp.o
+[ 58%] Building CXX object sample/tracer_demo/CMakeFiles/demo_tracer_robot.dir/tracer_robot_demo.cpp.o
+[ 62%] Building CXX object sample/ranger_demo/CMakeFiles/demo_ranger_robot.dir/ranger_robot_demo.cpp.o
+[ 65%] Building CXX object sample/hunter_demo/CMakeFiles/demo_hunter_robot.dir/hunter_robot_demo.cpp.o
+[ 68%] Building CXX object sample/utils_demo/CMakeFiles/demo_protocol_detector.dir/demo_protocol_detector.cpp.o
+[ 72%] Building CXX object sample/utils_demo/CMakeFiles/demo_robot_version.dir/demo_robot_version.cpp.o
+/home/lab307/ranger_nav/ws_base/src/ugv_sdk/sample/tracer_demo/tracer_robot_demo.cpp: In function ‘int main(int, char**)’:
+/home/lab307/ranger_nav/ws_base/src/ugv_sdk/sample/tracer_demo/tracer_robot_demo.cpp:37:18: warning: ‘this’ pointer is null [-Wnonnull]
+   37 |   tracer->Connect(device_name);
+      |   ~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_base/src/ugv_sdk/sample/tracer_demo/tracer_robot_demo.cpp:38:30: warning: ‘this’ pointer is null [-Wnonnull]
+   38 |   tracer->EnableCommandedMode();
+      |   ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+/home/lab307/ranger_nav/ws_base/src/ugv_sdk/sample/tracer_demo/tracer_robot_demo.cpp:42:26: warning: ‘this’ pointer is null [-Wnonnull]
+   42 |   tracer->SetLightCommand(CONST_OFF, 0);
+      |   ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_base/src/ugv_sdk/sample/tracer_demo/tracer_robot_demo.cpp:45:26: warning: ‘this’ pointer is null [-Wnonnull]
+   45 |   tracer->SetLightCommand(CONST_ON, 0);
+      |   ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_base/src/ugv_sdk/sample/tracer_demo/tracer_robot_demo.cpp:48:26: warning: ‘this’ pointer is null [-Wnonnull]
+   48 |   tracer->SetLightCommand(BREATH, 0);
+      |   ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
+/home/lab307/ranger_nav/ws_base/src/ugv_sdk/sample/tracer_demo/tracer_robot_demo.cpp:51:26: warning: ‘this’ pointer is null [-Wnonnull]
+   51 |   tracer->SetLightCommand(CUSTOM, 30);
+      |   ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_base/src/ugv_sdk/sample/tracer_demo/tracer_robot_demo.cpp:55:26: warning: ‘this’ pointer is null [-Wnonnull]
+   55 |   tracer->SetLightCommand(CONST_OFF, 0);
+      |   ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_base/src/ugv_sdk/sample/tracer_demo/tracer_robot_demo.cpp:61:29: warning: ‘this’ pointer is null [-Wnonnull]
+   61 |     tracer->SetMotionCommand(1.0, 0.0);
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~
+/home/lab307/ranger_nav/ws_base/src/ugv_sdk/sample/tracer_demo/tracer_robot_demo.cpp:64:39: warning: ‘this’ pointer is null [-Wnonnull]
+   64 |     auto state = tracer->GetRobotState();
+      |                  ~~~~~~~~~~~~~~~~~~~~~^~
+[ 79%] Linking CXX executable ../../bin/demo_bunker_robot
+[ 79%] Linking CXX executable ../../bin/demo_tracer_robot
+[ 79%] Built target demo_tracer_robot
+[ 79%] Built target demo_bunker_robot
+[ 82%] Linking CXX executable ../../bin/demo_protocol_detector
+[ 86%] Linking CXX executable ../../bin/demo_robot_version
+[ 89%] Linking CXX executable ../../bin/demo_hunter_robot
+[ 93%] Linking CXX executable ../../bin/demo_scout_mini_omni_robot
+[ 96%] Linking CXX executable ../../bin/demo_scout_robot
+[ 96%] Built target demo_protocol_detector
+[ 96%] Built target demo_robot_version
+[ 96%] Built target demo_hunter_robot
+[ 96%] Built target demo_scout_mini_omni_robot
+[ 96%] Built target demo_scout_robot
+[100%] Linking CXX executable ../../bin/demo_ranger_robot
+[100%] Built target demo_ranger_robot
+-- Install configuration: "RelWithDebInfo"
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/lib/libugv_sdk.a
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/utilities
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/utilities/protocol_detector.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/mobile_robot
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/mobile_robot/titan_robot.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/mobile_robot/tracer_robot.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/mobile_robot/hunter_robot.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/mobile_robot/ranger_robot.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/mobile_robot/bunker_robot.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/mobile_robot/scout_robot.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/protocol_v1
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/protocol_v1/agilex_msg_parser_v1.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/protocol_v1/protocol_v1_parser.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/protocol_v1/robot_limits.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/async_port
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/async_port/ring_buffer.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/async_port/async_serial.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/async_port/async_can.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/robot_base
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/robot_base/ranger_base.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/robot_base/bunker_base.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/robot_base/agilex_base.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/robot_base/tracer_base.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/robot_base/hunter_base.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/robot_base/titan_base.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/robot_base/scout_base.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/protocol_v2
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/protocol_v2/protocol_v2_parser.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/parser_base.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/interface
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/interface/scout_interface.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/interface/tracer_interface.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/interface/titan_interface.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/interface/agilex_types.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/interface/ranger_interface.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/interface/hunter_interface.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/interface/bunker_interface.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/interface/agilex_message.h
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/include/ugv_sdk/details/interface/robot_common_interface.hpp
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/lib/cmake/ugv_sdk/ugv_sdkTargets.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/lib/cmake/ugv_sdk/ugv_sdkTargets-relwithdebinfo.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/lib/cmake/ugv_sdk/ugv_sdkConfig.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ugv_sdk/lib/cmake/ugv_sdk/ugv_sdkConfigVersion.cmake
+--- stderr: ugv_sdk
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    CATKIN_INSTALL_INTO_PREFIX_ROOT
+
+
+/home/lab307/ranger_nav/ws_base/src/ugv_sdk/sample/tracer_demo/tracer_robot_demo.cpp: In function ‘int main(int, char**)’:
+/home/lab307/ranger_nav/ws_base/src/ugv_sdk/sample/tracer_demo/tracer_robot_demo.cpp:37:18: warning: ‘this’ pointer is null [-Wnonnull]
+   37 |   tracer->Connect(device_name);
+      |   ~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_base/src/ugv_sdk/sample/tracer_demo/tracer_robot_demo.cpp:38:30: warning: ‘this’ pointer is null [-Wnonnull]
+   38 |   tracer->EnableCommandedMode();
+      |   ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+/home/lab307/ranger_nav/ws_base/src/ugv_sdk/sample/tracer_demo/tracer_robot_demo.cpp:42:26: warning: ‘this’ pointer is null [-Wnonnull]
+   42 |   tracer->SetLightCommand(CONST_OFF, 0);
+      |   ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_base/src/ugv_sdk/sample/tracer_demo/tracer_robot_demo.cpp:45:26: warning: ‘this’ pointer is null [-Wnonnull]
+   45 |   tracer->SetLightCommand(CONST_ON, 0);
+      |   ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_base/src/ugv_sdk/sample/tracer_demo/tracer_robot_demo.cpp:48:26: warning: ‘this’ pointer is null [-Wnonnull]
+   48 |   tracer->SetLightCommand(BREATH, 0);
+      |   ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~
+/home/lab307/ranger_nav/ws_base/src/ugv_sdk/sample/tracer_demo/tracer_robot_demo.cpp:51:26: warning: ‘this’ pointer is null [-Wnonnull]
+   51 |   tracer->SetLightCommand(CUSTOM, 30);
+      |   ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_base/src/ugv_sdk/sample/tracer_demo/tracer_robot_demo.cpp:55:26: warning: ‘this’ pointer is null [-Wnonnull]
+   55 |   tracer->SetLightCommand(CONST_OFF, 0);
+      |   ~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~
+/home/lab307/ranger_nav/ws_base/src/ugv_sdk/sample/tracer_demo/tracer_robot_demo.cpp:61:29: warning: ‘this’ pointer is null [-Wnonnull]
+   61 |     tracer->SetMotionCommand(1.0, 0.0);
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~
+/home/lab307/ranger_nav/ws_base/src/ugv_sdk/sample/tracer_demo/tracer_robot_demo.cpp:64:39: warning: ‘this’ pointer is null [-Wnonnull]
+   64 |     auto state = tracer->GetRobotState();
+      |                  ~~~~~~~~~~~~~~~~~~~~~^~
+---
+Finished <<< ugv_sdk [3.27s]
+Starting >>> ranger_base
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Found rclcpp: 16.0.19 (/opt/ros/humble/share/rclcpp/cmake)
+-- Found rosidl_generator_c: 3.1.9 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+-- Found rosidl_adapter: 3.1.9 (/opt/ros/humble/share/rosidl_adapter/cmake)
+-- Found rosidl_generator_cpp: 3.1.9 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found rmw_implementation_cmake: 6.1.3 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+-- Found rmw_fastrtps_cpp: 6.2.10 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+-- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+-- Found FastRTPS: /opt/ros/humble/include  
+-- Using RMW implementation 'rmw_fastrtps_cpp' as default
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Found geometry_msgs: 4.9.2 (/opt/ros/humble/share/geometry_msgs/cmake)
+-- Found nav_msgs: 4.9.2 (/opt/ros/humble/share/nav_msgs/cmake)
+-- Found sensor_msgs: 4.9.2 (/opt/ros/humble/share/sensor_msgs/cmake)
+-- Found tf2: 0.25.22 (/opt/ros/humble/share/tf2/cmake)
+-- Found tf2_ros: 0.25.22 (/opt/ros/humble/share/tf2_ros/cmake)
+-- Found ranger_msgs: 0.0.1 (/home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs/share/ranger_msgs/cmake)
+-- Found tf2_geometry_msgs: 0.25.22 (/opt/ros/humble/share/tf2_geometry_msgs/cmake)
+-- Found eigen3_cmake_module: 0.1.1 (/opt/ros/humble/share/eigen3_cmake_module/cmake)
+-- Found Eigen3: TRUE (found version "3.4.0") 
+-- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/lab307/ranger_nav/ws_base/build_exact/ranger_base
+[ 66%] Building CXX object CMakeFiles/ranger_base_node.dir/src/ranger_messenger.cpp.o
+[ 66%] Building CXX object CMakeFiles/ranger_base_node.dir/src/ranger_base_node.cpp.o
+In file included from /home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp:12:
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/include/ranger_base/kinematics_model.hpp: In member function ‘void westonrobot::SpinningModel::operator()(const state_type&, westonrobot::SpinningModel::state_type&, double)’:
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/include/ranger_base/kinematics_model.hpp:90:37: warning: unused parameter ‘x’ [-Wunused-parameter]
+   90 |   void operator()(const state_type& x, state_type& xd, double) {
+      |                   ~~~~~~~~~~~~~~~~~~^
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp: In member function ‘double westonrobot::RangerROSMessenger::CalculateSteeringAngle(geometry_msgs::msg::Twist, double&)’:
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp:608:13: warning: variable ‘w’ set but not used [-Wunused-but-set-variable]
+  608 |   double l, w, phi_i, x;
+      |             ^
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp:608:23: warning: variable ‘x’ set but not used [-Wunused-but-set-variable]
+  608 |   double l, w, phi_i, x;
+      |                       ^
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp: In member function ‘void westonrobot::RangerROSMessenger::TwistCmdCallback(geometry_msgs::msg::Twist_<std::allocator<void> >::SharedPtr)’:
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp:483:7: warning: ‘steer_cmd’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+  483 |       if (steer_cmd > robot_params_.max_steer_angle_ackermann) {
+      |       ^~
+[100%] Linking CXX executable ranger_base_node
+[100%] Built target ranger_base_node
+-- Install configuration: "RelWithDebInfo"
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_base/lib/ranger_base/ranger_base_node
+-- Set runtime path of "/home/lab307/ranger_nav/ws_base/install_exact/ranger_base/lib/ranger_base/ranger_base_node" to ""
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_base/share/ranger_base//launch
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_base/share/ranger_base//launch/ranger_mini_v2.launch.py
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_base/share/ranger_base//launch/ranger_mini_v3.launch.py
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_base/share/ranger_base//launch/ranger_mini_v1.launch.py
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_base/share/ranger_base//launch/ranger.launch.py
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_base/share/ranger_base//launch/include
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_base/share/ranger_base//launch/include/ranger_robot_base.launch.xml
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_base/share/ament_index/resource_index/package_run_dependencies/ranger_base
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_base/share/ament_index/resource_index/parent_prefix_path/ranger_base
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_base/share/ranger_base/environment/ament_prefix_path.sh
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_base/share/ranger_base/environment/ament_prefix_path.dsv
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_base/share/ranger_base/environment/path.sh
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_base/share/ranger_base/environment/path.dsv
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_base/share/ranger_base/local_setup.bash
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_base/share/ranger_base/local_setup.sh
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_base/share/ranger_base/local_setup.zsh
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_base/share/ranger_base/local_setup.dsv
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_base/share/ranger_base/package.dsv
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_base/share/ament_index/resource_index/packages/ranger_base
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_base/share/ranger_base/cmake/ranger_baseConfig.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_base/share/ranger_base/cmake/ranger_baseConfig-version.cmake
+-- Installing: /home/lab307/ranger_nav/ws_base/install_exact/ranger_base/share/ranger_base/package.xml
+--- stderr: ranger_base
+In file included from /home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp:12:
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/include/ranger_base/kinematics_model.hpp: In member function ‘void westonrobot::SpinningModel::operator()(const state_type&, westonrobot::SpinningModel::state_type&, double)’:
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/include/ranger_base/kinematics_model.hpp:90:37: warning: unused parameter ‘x’ [-Wunused-parameter]
+   90 |   void operator()(const state_type& x, state_type& xd, double) {
+      |                   ~~~~~~~~~~~~~~~~~~^
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp: In member function ‘double westonrobot::RangerROSMessenger::CalculateSteeringAngle(geometry_msgs::msg::Twist, double&)’:
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp:608:13: warning: variable ‘w’ set but not used [-Wunused-but-set-variable]
+  608 |   double l, w, phi_i, x;
+      |             ^
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp:608:23: warning: variable ‘x’ set but not used [-Wunused-but-set-variable]
+  608 |   double l, w, phi_i, x;
+      |                       ^
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp: In member function ‘void westonrobot::RangerROSMessenger::TwistCmdCallback(geometry_msgs::msg::Twist_<std::allocator<void> >::SharedPtr)’:
+/home/lab307/ranger_nav/ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp:483:7: warning: ‘steer_cmd’ may be used uninitialized in this function [-Wmaybe-uninitialized]
+  483 |       if (steer_cmd > robot_params_.max_steer_angle_ackermann) {
+      |       ^~
+---
+Finished <<< ranger_base [15.5s]
+
+Summary: 4 packages finished [22.8s]
+  2 packages had stderr output: ranger_base ugv_sdk
+Starting >>> ranger_localization_msgs
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Found rosidl_default_generators: 1.2.1 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Found rosidl_adapter: 3.1.9 (/opt/ros/humble/share/rosidl_adapter/cmake)
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found std_msgs: 4.9.2 (/opt/ros/humble/share/std_msgs/cmake)
+-- Found geometry_msgs: 4.9.2 (/opt/ros/humble/share/geometry_msgs/cmake)
+-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+-- Found PythonExtra: .so  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/lab307/ranger_nav/ws_nav/build_exact/ranger_localization_msgs
+[  3%] Generating C code for ROS interfaces
+[  6%] Generating Rust code for ROS interfaces
+[  9%] Generating C++ code for ROS interfaces
+[  9%] Built target ament_cmake_python_copy_ranger_localization_msgs
+running egg_info
+creating ranger_localization_msgs.egg-info
+writing ranger_localization_msgs.egg-info/PKG-INFO
+writing dependency_links to ranger_localization_msgs.egg-info/dependency_links.txt
+writing top-level names to ranger_localization_msgs.egg-info/top_level.txt
+writing manifest file 'ranger_localization_msgs.egg-info/SOURCES.txt'
+reading manifest file 'ranger_localization_msgs.egg-info/SOURCES.txt'
+writing manifest file 'ranger_localization_msgs.egg-info/SOURCES.txt'
+[  9%] Built target ranger_localization_msgs__rs
+[  9%] Built target ament_cmake_python_build_ranger_localization_msgs_egg
+[  9%] Built target ranger_localization_msgs__cpp
+[ 12%] Building C object CMakeFiles/ranger_localization_msgs__rosidl_generator_c.dir/rosidl_generator_c/ranger_localization_msgs/msg/detail/localization_estimate__functions.c.o
+[ 15%] Generating C++ type support for eProsima Fast-RTPS
+[ 18%] Generating C++ type support dispatch for ROS interfaces
+[ 21%] Generating C++ introspection for ROS interfaces
+[ 25%] Linking C shared library libranger_localization_msgs__rosidl_generator_c.so
+[ 25%] Built target ranger_localization_msgs__rosidl_generator_c
+[ 28%] Generating C type support for eProsima Fast-RTPS
+[ 34%] Generating C type support dispatch for ROS interfaces
+[ 34%] Generating C introspection for ROS interfaces
+[ 37%] Building CXX object CMakeFiles/ranger_localization_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ranger_localization_msgs/msg/localization_estimate__type_support.cpp.o
+[ 40%] Building CXX object CMakeFiles/ranger_localization_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ranger_localization_msgs/msg/detail/localization_estimate__type_support.cpp.o
+[ 43%] Building CXX object CMakeFiles/ranger_localization_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ranger_localization_msgs/msg/detail/dds_fastrtps/localization_estimate__type_support.cpp.o
+[ 46%] Building CXX object CMakeFiles/ranger_localization_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/ranger_localization_msgs/msg/localization_estimate__type_support.cpp.o
+[ 50%] Building C object CMakeFiles/ranger_localization_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ranger_localization_msgs/msg/detail/localization_estimate__type_support.c.o
+[ 53%] Building CXX object CMakeFiles/ranger_localization_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ranger_localization_msgs/msg/detail/localization_estimate__type_support_c.cpp.o
+[ 56%] Linking CXX shared library libranger_localization_msgs__rosidl_typesupport_c.so
+[ 59%] Linking CXX shared library libranger_localization_msgs__rosidl_typesupport_cpp.so
+[ 62%] Linking C shared library libranger_localization_msgs__rosidl_typesupport_introspection_c.so
+[ 62%] Built target ranger_localization_msgs__rosidl_typesupport_c
+[ 62%] Built target ranger_localization_msgs__rosidl_typesupport_introspection_c
+[ 62%] Built target ranger_localization_msgs__rosidl_typesupport_cpp
+[ 65%] Linking CXX shared library libranger_localization_msgs__rosidl_typesupport_introspection_cpp.so
+[ 68%] Linking CXX shared library libranger_localization_msgs__rosidl_typesupport_fastrtps_cpp.so
+[ 68%] Built target ranger_localization_msgs__rosidl_typesupport_introspection_cpp
+[ 71%] Linking CXX shared library libranger_localization_msgs__rosidl_typesupport_fastrtps_c.so
+[ 71%] Built target ranger_localization_msgs__rosidl_typesupport_fastrtps_cpp
+[ 71%] Built target ranger_localization_msgs__rosidl_typesupport_fastrtps_c
+[ 71%] Built target ranger_localization_msgs
+[ 75%] Generating Python code for ROS interfaces
+[ 75%] Built target ranger_localization_msgs__py
+[ 78%] Building C object CMakeFiles/ranger_localization_msgs__rosidl_generator_py.dir/rosidl_generator_py/ranger_localization_msgs/msg/_localization_estimate_s.c.o
+[ 81%] Linking C shared library rosidl_generator_py/ranger_localization_msgs/libranger_localization_msgs__rosidl_generator_py.so
+[ 81%] Built target ranger_localization_msgs__rosidl_generator_py
+[ 84%] Building C object CMakeFiles/ranger_localization_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/ranger_localization_msgs/_ranger_localization_msgs_s.ep.rosidl_typesupport_c.c.o
+[ 87%] Building C object CMakeFiles/ranger_localization_msgs__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/ranger_localization_msgs/_ranger_localization_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o
+[ 90%] Building C object CMakeFiles/ranger_localization_msgs__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/ranger_localization_msgs/_ranger_localization_msgs_s.ep.rosidl_typesupport_introspection_c.c.o
+[ 93%] Linking C shared library rosidl_generator_py/ranger_localization_msgs/ranger_localization_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[ 96%] Linking C shared library rosidl_generator_py/ranger_localization_msgs/ranger_localization_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[100%] Linking C shared library rosidl_generator_py/ranger_localization_msgs/ranger_localization_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[100%] Built target ranger_localization_msgs__rosidl_typesupport_c__pyext
+[100%] Built target ranger_localization_msgs__rosidl_typesupport_fastrtps_c__pyext
+[100%] Built target ranger_localization_msgs__rosidl_typesupport_introspection_c__pyext
+-- Install configuration: ""
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ament_index/resource_index/rosidl_interfaces/ranger_localization_msgs
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/detail
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/detail/localization_estimate__type_support.h
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/detail/localization_estimate__functions.c
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/detail/localization_estimate__struct.h
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/detail/localization_estimate__functions.h
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/localization_estimate.h
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/rosidl_generator_c__visibility_control.h
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/environment/library_path.sh
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/environment/library_path.dsv
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/lib/libranger_localization_msgs__rosidl_generator_c.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/lib/libranger_localization_msgs__rosidl_generator_c.so" to ""
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/detail
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/detail/localization_estimate__rosidl_typesupport_fastrtps_c.h
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/lib/libranger_localization_msgs__rosidl_typesupport_fastrtps_c.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/lib/libranger_localization_msgs__rosidl_typesupport_fastrtps_c.so" to ""
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/detail
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/detail/localization_estimate__rosidl_typesupport_introspection_c.h
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/detail/localization_estimate__type_support.c
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/lib/libranger_localization_msgs__rosidl_typesupport_introspection_c.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/lib/libranger_localization_msgs__rosidl_typesupport_introspection_c.so" to ""
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/lib/libranger_localization_msgs__rosidl_typesupport_c.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/lib/libranger_localization_msgs__rosidl_typesupport_c.so" to ""
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/detail
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/detail/localization_estimate__builder.hpp
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/detail/localization_estimate__type_support.hpp
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/detail/localization_estimate__traits.hpp
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/detail/localization_estimate__struct.hpp
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/localization_estimate.hpp
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/rosidl_generator_cpp__visibility_control.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/detail
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/detail/dds_fastrtps
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/detail/localization_estimate__rosidl_typesupport_fastrtps_cpp.hpp
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/lib/libranger_localization_msgs__rosidl_typesupport_fastrtps_cpp.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/lib/libranger_localization_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/detail
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/detail/localization_estimate__rosidl_typesupport_introspection_cpp.hpp
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/include/ranger_localization_msgs/ranger_localization_msgs/msg/detail/localization_estimate__type_support.cpp
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/lib/libranger_localization_msgs__rosidl_typesupport_introspection_cpp.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/lib/libranger_localization_msgs__rosidl_typesupport_introspection_cpp.so" to ""
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/lib/libranger_localization_msgs__rosidl_typesupport_cpp.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/lib/libranger_localization_msgs__rosidl_typesupport_cpp.so" to ""
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/environment/pythonpath.sh
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/environment/pythonpath.dsv
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs-0.1.0-py3.10.egg-info
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs-0.1.0-py3.10.egg-info/SOURCES.txt
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs-0.1.0-py3.10.egg-info/top_level.txt
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs-0.1.0-py3.10.egg-info/dependency_links.txt
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs-0.1.0-py3.10.egg-info/PKG-INFO
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs/_ranger_localization_msgs_s.ep.rosidl_typesupport_fastrtps_c.c
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs/msg
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs/msg/_localization_estimate.py
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs/msg/_localization_estimate_s.c
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs/msg/__init__.py
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs/_ranger_localization_msgs_s.ep.rosidl_typesupport_c.c
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs/libranger_localization_msgs__rosidl_generator_py.so
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs/_ranger_localization_msgs_s.ep.rosidl_typesupport_introspection_c.c
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs/ranger_localization_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs/__init__.py
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs/ranger_localization_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs/ranger_localization_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+Listing '/home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs'...
+Compiling '/home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs/__init__.py'...
+Listing '/home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs/msg'...
+Compiling '/home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs/msg/__init__.py'...
+Compiling '/home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs/msg/_localization_estimate.py'...
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs/ranger_localization_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs/ranger_localization_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs/ranger_localization_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs/ranger_localization_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs/ranger_localization_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/local/lib/python3.10/dist-packages/ranger_localization_msgs/ranger_localization_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/lib/libranger_localization_msgs__rosidl_generator_py.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/lib/libranger_localization_msgs__rosidl_generator_py.so" to ""
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ament_index/resource_index/rust_packages/ranger_localization_msgs
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/rust
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/rust/src
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/rust/src/msg
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/rust/src/msg/rmw.rs
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/rust/src/msg.rs
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/rust/src/lib.rs
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/rust/Cargo.toml
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/rust/build.rs
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/msg/LocalizationEstimate.idl
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/msg/LocalizationEstimate.msg
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ament_index/resource_index/package_run_dependencies/ranger_localization_msgs
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ament_index/resource_index/parent_prefix_path/ranger_localization_msgs
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/environment/ament_prefix_path.sh
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/environment/ament_prefix_path.dsv
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/environment/path.sh
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/environment/path.dsv
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/local_setup.bash
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/local_setup.sh
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/local_setup.zsh
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/local_setup.dsv
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/package.dsv
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ament_index/resource_index/packages/ranger_localization_msgs
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/export_ranger_localization_msgs__rosidl_generator_cExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/export_ranger_localization_msgs__rosidl_generator_cExport-noconfig.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/export_ranger_localization_msgs__rosidl_typesupport_fastrtps_cExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/export_ranger_localization_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/ranger_localization_msgs__rosidl_typesupport_introspection_cExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/ranger_localization_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/ranger_localization_msgs__rosidl_typesupport_cExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/ranger_localization_msgs__rosidl_typesupport_cExport-noconfig.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/export_ranger_localization_msgs__rosidl_generator_cppExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/export_ranger_localization_msgs__rosidl_typesupport_fastrtps_cppExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/export_ranger_localization_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/ranger_localization_msgs__rosidl_typesupport_introspection_cppExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/ranger_localization_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/ranger_localization_msgs__rosidl_typesupport_cppExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/ranger_localization_msgs__rosidl_typesupport_cppExport-noconfig.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/export_ranger_localization_msgs__rosidl_generator_pyExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/export_ranger_localization_msgs__rosidl_generator_pyExport-noconfig.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/rosidl_cmake-extras.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/ament_cmake_export_libraries-extras.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/ament_cmake_export_targets-extras.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/rosidl_cmake_aggregate_target-extras.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/ranger_localization_msgsConfig.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/cmake/ranger_localization_msgsConfig-version.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/package.xml
+Finished <<< ranger_localization_msgs [2.26s]
+Starting >>> ranger_navigation_msgs
+-- The C compiler identification is GNU 11.4.0
+-- The CXX compiler identification is GNU 11.4.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+-- Found rosidl_default_generators: 1.2.1 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Found rosidl_adapter: 3.1.9 (/opt/ros/humble/share/rosidl_adapter/cmake)
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found std_msgs: 4.9.2 (/opt/ros/humble/share/std_msgs/cmake)
+-- Found geometry_msgs: 4.9.2 (/opt/ros/humble/share/geometry_msgs/cmake)
+-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+-- Using PYTHON_EXECUTABLE: /usr/bin/python3
+-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+-- Found PythonExtra: .so  
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation_msgs
+[  2%] Generating C code for ROS interfaces
+[  5%] Generating C++ code for ROS interfaces
+[  7%] Generating Rust code for ROS interfaces
+[  7%] Built target ament_cmake_python_copy_ranger_navigation_msgs
+running egg_info
+creating ranger_navigation_msgs.egg-info
+writing ranger_navigation_msgs.egg-info/PKG-INFO
+writing dependency_links to ranger_navigation_msgs.egg-info/dependency_links.txt
+writing top-level names to ranger_navigation_msgs.egg-info/top_level.txt
+writing manifest file 'ranger_navigation_msgs.egg-info/SOURCES.txt'
+reading manifest file 'ranger_navigation_msgs.egg-info/SOURCES.txt'
+writing manifest file 'ranger_navigation_msgs.egg-info/SOURCES.txt'
+[  7%] Built target ament_cmake_python_build_ranger_navigation_msgs_egg
+[  7%] Built target ranger_navigation_msgs__rs
+[  7%] Built target ranger_navigation_msgs__cpp
+[ 10%] Building C object CMakeFiles/ranger_navigation_msgs__rosidl_generator_c.dir/rosidl_generator_c/ranger_navigation_msgs/msg/detail/observation__functions.c.o
+[ 12%] Building C object CMakeFiles/ranger_navigation_msgs__rosidl_generator_c.dir/rosidl_generator_c/ranger_navigation_msgs/msg/detail/control_command__functions.c.o
+[ 15%] Generating C++ introspection for ROS interfaces
+[ 17%] Generating C++ type support dispatch for ROS interfaces
+[ 20%] Generating C++ type support for eProsima Fast-RTPS
+[ 22%] Linking C shared library libranger_navigation_msgs__rosidl_generator_c.so
+[ 22%] Built target ranger_navigation_msgs__rosidl_generator_c
+[ 25%] Generating C introspection for ROS interfaces
+[ 27%] Generating C type support for eProsima Fast-RTPS
+[ 30%] Generating C type support dispatch for ROS interfaces
+[ 32%] Building CXX object CMakeFiles/ranger_navigation_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ranger_navigation_msgs/msg/observation__type_support.cpp.o
+[ 35%] Building CXX object CMakeFiles/ranger_navigation_msgs__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/ranger_navigation_msgs/msg/control_command__type_support.cpp.o
+[ 40%] Building CXX object CMakeFiles/ranger_navigation_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ranger_navigation_msgs/msg/detail/control_command__type_support.cpp.o
+[ 40%] Building CXX object CMakeFiles/ranger_navigation_msgs__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/ranger_navigation_msgs/msg/detail/observation__type_support.cpp.o
+[ 42%] Building CXX object CMakeFiles/ranger_navigation_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ranger_navigation_msgs/msg/detail/dds_fastrtps/control_command__type_support.cpp.o
+[ 45%] Building CXX object CMakeFiles/ranger_navigation_msgs__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/ranger_navigation_msgs/msg/detail/dds_fastrtps/observation__type_support.cpp.o
+[ 47%] Building CXX object CMakeFiles/ranger_navigation_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/ranger_navigation_msgs/msg/observation__type_support.cpp.o
+[ 50%] Building CXX object CMakeFiles/ranger_navigation_msgs__rosidl_typesupport_c.dir/rosidl_typesupport_c/ranger_navigation_msgs/msg/control_command__type_support.cpp.o
+[ 55%] Building C object CMakeFiles/ranger_navigation_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ranger_navigation_msgs/msg/detail/observation__type_support.c.o
+[ 55%] Building C object CMakeFiles/ranger_navigation_msgs__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/ranger_navigation_msgs/msg/detail/control_command__type_support.c.o
+[ 60%] Building CXX object CMakeFiles/ranger_navigation_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ranger_navigation_msgs/msg/detail/control_command__type_support_c.cpp.o
+[ 60%] Building CXX object CMakeFiles/ranger_navigation_msgs__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/ranger_navigation_msgs/msg/detail/observation__type_support_c.cpp.o
+[ 62%] Linking CXX shared library libranger_navigation_msgs__rosidl_typesupport_c.so
+[ 65%] Linking C shared library libranger_navigation_msgs__rosidl_typesupport_introspection_c.so
+[ 65%] Built target ranger_navigation_msgs__rosidl_typesupport_c
+[ 65%] Built target ranger_navigation_msgs__rosidl_typesupport_introspection_c
+[ 67%] Linking CXX shared library libranger_navigation_msgs__rosidl_typesupport_cpp.so
+[ 67%] Built target ranger_navigation_msgs__rosidl_typesupport_cpp
+[ 72%] Linking CXX shared library libranger_navigation_msgs__rosidl_typesupport_introspection_cpp.so
+[ 72%] Linking CXX shared library libranger_navigation_msgs__rosidl_typesupport_fastrtps_cpp.so
+[ 75%] Linking CXX shared library libranger_navigation_msgs__rosidl_typesupport_fastrtps_c.so
+[ 75%] Built target ranger_navigation_msgs__rosidl_typesupport_fastrtps_cpp
+[ 75%] Built target ranger_navigation_msgs__rosidl_typesupport_introspection_cpp
+[ 75%] Built target ranger_navigation_msgs__rosidl_typesupport_fastrtps_c
+[ 75%] Built target ranger_navigation_msgs
+[ 77%] Generating Python code for ROS interfaces
+[ 77%] Built target ranger_navigation_msgs__py
+[ 80%] Building C object CMakeFiles/ranger_navigation_msgs__rosidl_generator_py.dir/rosidl_generator_py/ranger_navigation_msgs/msg/_observation_s.c.o
+[ 82%] Building C object CMakeFiles/ranger_navigation_msgs__rosidl_generator_py.dir/rosidl_generator_py/ranger_navigation_msgs/msg/_control_command_s.c.o
+[ 85%] Linking C shared library rosidl_generator_py/ranger_navigation_msgs/libranger_navigation_msgs__rosidl_generator_py.so
+[ 85%] Built target ranger_navigation_msgs__rosidl_generator_py
+[ 90%] Building C object CMakeFiles/ranger_navigation_msgs__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/ranger_navigation_msgs/_ranger_navigation_msgs_s.ep.rosidl_typesupport_introspection_c.c.o
+[ 90%] Building C object CMakeFiles/ranger_navigation_msgs__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/ranger_navigation_msgs/_ranger_navigation_msgs_s.ep.rosidl_typesupport_c.c.o
+[ 92%] Building C object CMakeFiles/ranger_navigation_msgs__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/ranger_navigation_msgs/_ranger_navigation_msgs_s.ep.rosidl_typesupport_fastrtps_c.c.o
+[100%] Linking C shared library rosidl_generator_py/ranger_navigation_msgs/ranger_navigation_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[100%] Linking C shared library rosidl_generator_py/ranger_navigation_msgs/ranger_navigation_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[100%] Linking C shared library rosidl_generator_py/ranger_navigation_msgs/ranger_navigation_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[100%] Built target ranger_navigation_msgs__rosidl_typesupport_c__pyext
+[100%] Built target ranger_navigation_msgs__rosidl_typesupport_fastrtps_c__pyext
+[100%] Built target ranger_navigation_msgs__rosidl_typesupport_introspection_c__pyext
+-- Install configuration: ""
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ament_index/resource_index/rosidl_interfaces/ranger_navigation_msgs
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/observation__struct.h
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/observation__type_support.h
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/control_command__type_support.h
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/observation__functions.h
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/control_command__functions.h
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/control_command__struct.h
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/observation__functions.c
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/control_command__functions.c
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/observation.h
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/rosidl_generator_c__visibility_control.h
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/control_command.h
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/environment/library_path.sh
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/environment/library_path.dsv
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/lib/libranger_navigation_msgs__rosidl_generator_c.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/lib/libranger_navigation_msgs__rosidl_generator_c.so" to ""
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/control_command__rosidl_typesupport_fastrtps_c.h
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/observation__rosidl_typesupport_fastrtps_c.h
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/lib/libranger_navigation_msgs__rosidl_typesupport_fastrtps_c.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/lib/libranger_navigation_msgs__rosidl_typesupport_fastrtps_c.so" to ""
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/control_command__rosidl_typesupport_introspection_c.h
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/observation__rosidl_typesupport_introspection_c.h
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/control_command__type_support.c
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/observation__type_support.c
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/rosidl_typesupport_introspection_c__visibility_control.h
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/lib/libranger_navigation_msgs__rosidl_typesupport_introspection_c.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/lib/libranger_navigation_msgs__rosidl_typesupport_introspection_c.so" to ""
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/lib/libranger_navigation_msgs__rosidl_typesupport_c.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/lib/libranger_navigation_msgs__rosidl_typesupport_c.so" to ""
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/observation__struct.hpp
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/control_command__type_support.hpp
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/control_command__traits.hpp
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/observation__builder.hpp
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/observation__traits.hpp
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/control_command__struct.hpp
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/observation__type_support.hpp
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/control_command__builder.hpp
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/observation.hpp
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/rosidl_generator_cpp__visibility_control.hpp
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/control_command.hpp
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/control_command__rosidl_typesupport_fastrtps_cpp.hpp
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/observation__rosidl_typesupport_fastrtps_cpp.hpp
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/dds_fastrtps
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/lib/libranger_navigation_msgs__rosidl_typesupport_fastrtps_cpp.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/lib/libranger_navigation_msgs__rosidl_typesupport_fastrtps_cpp.so" to ""
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg
+-- Up-to-date: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/control_command__type_support.cpp
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/observation__rosidl_typesupport_introspection_cpp.hpp
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/observation__type_support.cpp
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/include/ranger_navigation_msgs/ranger_navigation_msgs/msg/detail/control_command__rosidl_typesupport_introspection_cpp.hpp
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/lib/libranger_navigation_msgs__rosidl_typesupport_introspection_cpp.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/lib/libranger_navigation_msgs__rosidl_typesupport_introspection_cpp.so" to ""
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/lib/libranger_navigation_msgs__rosidl_typesupport_cpp.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/lib/libranger_navigation_msgs__rosidl_typesupport_cpp.so" to ""
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/environment/pythonpath.sh
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/environment/pythonpath.dsv
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs-0.1.0-py3.10.egg-info
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs-0.1.0-py3.10.egg-info/SOURCES.txt
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs-0.1.0-py3.10.egg-info/top_level.txt
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs-0.1.0-py3.10.egg-info/dependency_links.txt
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs-0.1.0-py3.10.egg-info/PKG-INFO
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs/ranger_navigation_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs/ranger_navigation_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs/msg
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs/msg/_control_command_s.c
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs/msg/__init__.py
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs/msg/_observation.py
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs/msg/_control_command.py
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs/msg/_observation_s.c
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs/ranger_navigation_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs/_ranger_navigation_msgs_s.ep.rosidl_typesupport_fastrtps_c.c
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs/__init__.py
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs/_ranger_navigation_msgs_s.ep.rosidl_typesupport_introspection_c.c
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs/libranger_navigation_msgs__rosidl_generator_py.so
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs/_ranger_navigation_msgs_s.ep.rosidl_typesupport_c.c
+Listing '/home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs'...
+Compiling '/home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs/__init__.py'...
+Listing '/home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs/msg'...
+Compiling '/home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs/msg/__init__.py'...
+Compiling '/home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs/msg/_control_command.py'...
+Compiling '/home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs/msg/_observation.py'...
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs/ranger_navigation_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs/ranger_navigation_msgs_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs/ranger_navigation_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs/ranger_navigation_msgs_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs/ranger_navigation_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs/ranger_navigation_msgs_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/lib/libranger_navigation_msgs__rosidl_generator_py.so
+-- Set runtime path of "/home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/lib/libranger_navigation_msgs__rosidl_generator_py.so" to ""
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ament_index/resource_index/rust_packages/ranger_navigation_msgs
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/rust
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/rust/src
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/rust/src/msg
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/rust/src/msg/rmw.rs
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/rust/src/msg.rs
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/rust/src/lib.rs
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/rust/Cargo.toml
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/rust/build.rs
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/msg/Observation.idl
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/msg/ControlCommand.idl
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/msg/Observation.msg
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/msg/ControlCommand.msg
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ament_index/resource_index/package_run_dependencies/ranger_navigation_msgs
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ament_index/resource_index/parent_prefix_path/ranger_navigation_msgs
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/environment/ament_prefix_path.sh
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/environment/ament_prefix_path.dsv
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/environment/path.sh
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/environment/path.dsv
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/local_setup.bash
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/local_setup.sh
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/local_setup.zsh
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/local_setup.dsv
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/package.dsv
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ament_index/resource_index/packages/ranger_navigation_msgs
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/export_ranger_navigation_msgs__rosidl_generator_cExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/export_ranger_navigation_msgs__rosidl_generator_cExport-noconfig.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/export_ranger_navigation_msgs__rosidl_typesupport_fastrtps_cExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/export_ranger_navigation_msgs__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/ranger_navigation_msgs__rosidl_typesupport_introspection_cExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/ranger_navigation_msgs__rosidl_typesupport_introspection_cExport-noconfig.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/ranger_navigation_msgs__rosidl_typesupport_cExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/ranger_navigation_msgs__rosidl_typesupport_cExport-noconfig.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/export_ranger_navigation_msgs__rosidl_generator_cppExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/export_ranger_navigation_msgs__rosidl_typesupport_fastrtps_cppExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/export_ranger_navigation_msgs__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/ranger_navigation_msgs__rosidl_typesupport_introspection_cppExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/ranger_navigation_msgs__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/ranger_navigation_msgs__rosidl_typesupport_cppExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/ranger_navigation_msgs__rosidl_typesupport_cppExport-noconfig.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/export_ranger_navigation_msgs__rosidl_generator_pyExport.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/export_ranger_navigation_msgs__rosidl_generator_pyExport-noconfig.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/rosidl_cmake-extras.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/ament_cmake_export_dependencies-extras.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/ament_cmake_export_include_directories-extras.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/ament_cmake_export_libraries-extras.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/ament_cmake_export_targets-extras.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/rosidl_cmake_aggregate_target-extras.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/ranger_navigation_msgsConfig.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/cmake/ranger_navigation_msgsConfig-version.cmake
+-- Installing: /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/share/ranger_navigation_msgs/package.xml
+Finished <<< ranger_navigation_msgs [2.36s]
+Starting >>> ranger_localization_bridge
+running egg_info
+creating ../../build_exact/ranger_localization_bridge/ranger_localization_bridge.egg-info
+writing ../../build_exact/ranger_localization_bridge/ranger_localization_bridge.egg-info/PKG-INFO
+writing dependency_links to ../../build_exact/ranger_localization_bridge/ranger_localization_bridge.egg-info/dependency_links.txt
+writing entry points to ../../build_exact/ranger_localization_bridge/ranger_localization_bridge.egg-info/entry_points.txt
+writing requirements to ../../build_exact/ranger_localization_bridge/ranger_localization_bridge.egg-info/requires.txt
+writing top-level names to ../../build_exact/ranger_localization_bridge/ranger_localization_bridge.egg-info/top_level.txt
+writing manifest file '../../build_exact/ranger_localization_bridge/ranger_localization_bridge.egg-info/SOURCES.txt'
+reading manifest file '../../build_exact/ranger_localization_bridge/ranger_localization_bridge.egg-info/SOURCES.txt'
+writing manifest file '../../build_exact/ranger_localization_bridge/ranger_localization_bridge.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/lab307/ranger_nav/ws_nav/build_exact/ranger_localization_bridge/build
+creating /home/lab307/ranger_nav/ws_nav/build_exact/ranger_localization_bridge/build/lib
+creating /home/lab307/ranger_nav/ws_nav/build_exact/ranger_localization_bridge/build/lib/ranger_localization_bridge
+copying ranger_localization_bridge/fast_livo_localizer_adapter.py -> /home/lab307/ranger_nav/ws_nav/build_exact/ranger_localization_bridge/build/lib/ranger_localization_bridge
+copying ranger_localization_bridge/fast_livo_adapter.py -> /home/lab307/ranger_nav/ws_nav/build_exact/ranger_localization_bridge/build/lib/ranger_localization_bridge
+copying ranger_localization_bridge/geometry.py -> /home/lab307/ranger_nav/ws_nav/build_exact/ranger_localization_bridge/build/lib/ranger_localization_bridge
+copying ranger_localization_bridge/__init__.py -> /home/lab307/ranger_nav/ws_nav/build_exact/ranger_localization_bridge/build/lib/ranger_localization_bridge
+copying ranger_localization_bridge/alignment.py -> /home/lab307/ranger_nav/ws_nav/build_exact/ranger_localization_bridge/build/lib/ranger_localization_bridge
+copying ranger_localization_bridge/bridge_node.py -> /home/lab307/ranger_nav/ws_nav/build_exact/ranger_localization_bridge/build/lib/ranger_localization_bridge
+copying ranger_localization_bridge/runtime_config.py -> /home/lab307/ranger_nav/ws_nav/build_exact/ranger_localization_bridge/build/lib/ranger_localization_bridge
+copying ranger_localization_bridge/health.py -> /home/lab307/ranger_nav/ws_nav/build_exact/ranger_localization_bridge/build/lib/ranger_localization_bridge
+copying ranger_localization_bridge/lightning_adapter.py -> /home/lab307/ranger_nav/ws_nav/build_exact/ranger_localization_bridge/build/lib/ranger_localization_bridge
+running install
+running install_lib
+creating /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge
+copying /home/lab307/ranger_nav/ws_nav/build_exact/ranger_localization_bridge/build/lib/ranger_localization_bridge/fast_livo_localizer_adapter.py -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge
+copying /home/lab307/ranger_nav/ws_nav/build_exact/ranger_localization_bridge/build/lib/ranger_localization_bridge/fast_livo_adapter.py -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge
+copying /home/lab307/ranger_nav/ws_nav/build_exact/ranger_localization_bridge/build/lib/ranger_localization_bridge/geometry.py -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge
+copying /home/lab307/ranger_nav/ws_nav/build_exact/ranger_localization_bridge/build/lib/ranger_localization_bridge/__init__.py -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge
+copying /home/lab307/ranger_nav/ws_nav/build_exact/ranger_localization_bridge/build/lib/ranger_localization_bridge/alignment.py -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge
+copying /home/lab307/ranger_nav/ws_nav/build_exact/ranger_localization_bridge/build/lib/ranger_localization_bridge/bridge_node.py -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge
+copying /home/lab307/ranger_nav/ws_nav/build_exact/ranger_localization_bridge/build/lib/ranger_localization_bridge/runtime_config.py -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge
+copying /home/lab307/ranger_nav/ws_nav/build_exact/ranger_localization_bridge/build/lib/ranger_localization_bridge/health.py -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge
+copying /home/lab307/ranger_nav/ws_nav/build_exact/ranger_localization_bridge/build/lib/ranger_localization_bridge/lightning_adapter.py -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge
+byte-compiling /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge/fast_livo_localizer_adapter.py to fast_livo_localizer_adapter.cpython-310.pyc
+byte-compiling /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge/fast_livo_adapter.py to fast_livo_adapter.cpython-310.pyc
+byte-compiling /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge/geometry.py to geometry.cpython-310.pyc
+byte-compiling /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge/alignment.py to alignment.cpython-310.pyc
+byte-compiling /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge/bridge_node.py to bridge_node.cpython-310.pyc
+byte-compiling /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge/runtime_config.py to runtime_config.cpython-310.pyc
+byte-compiling /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge/health.py to health.cpython-310.pyc
+byte-compiling /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge/lightning_adapter.py to lightning_adapter.cpython-310.pyc
+running install_data
+creating /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/share/ament_index
+creating /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/share/ament_index/resource_index
+creating /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/share/ament_index/resource_index/packages
+copying resource/ranger_localization_bridge -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/share/ament_index/resource_index/packages
+copying package.xml -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/share/ranger_localization_bridge
+creating /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/share/ranger_localization_bridge/launch
+copying launch/loc_bridge.launch.py -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/share/ranger_localization_bridge/launch
+running install_egg_info
+Copying ../../build_exact/ranger_localization_bridge/ranger_localization_bridge.egg-info to /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/lib/python3.10/site-packages/ranger_localization_bridge-0.1.0-py3.10.egg-info
+running install_scripts
+Installing fast_livo_adapter script to /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/lib/ranger_localization_bridge
+Installing fast_livo_localizer_adapter script to /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/lib/ranger_localization_bridge
+Installing lightning_adapter script to /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/lib/ranger_localization_bridge
+Installing ranger_localization_bridge script to /home/lab307/ranger_nav/ws_nav/install_exact/ranger_localization_bridge/lib/ranger_localization_bridge
+writing list of installed files to '/home/lab307/ranger_nav/ws_nav/build_exact/ranger_localization_bridge/install.log'
+Finished <<< ranger_localization_bridge [0.43s]
+Starting >>> ranger_navigation
+running egg_info
+creating ../../build_exact/ranger_navigation/ranger_navigation.egg-info
+writing ../../build_exact/ranger_navigation/ranger_navigation.egg-info/PKG-INFO
+writing dependency_links to ../../build_exact/ranger_navigation/ranger_navigation.egg-info/dependency_links.txt
+writing entry points to ../../build_exact/ranger_navigation/ranger_navigation.egg-info/entry_points.txt
+writing requirements to ../../build_exact/ranger_navigation/ranger_navigation.egg-info/requires.txt
+writing top-level names to ../../build_exact/ranger_navigation/ranger_navigation.egg-info/top_level.txt
+writing manifest file '../../build_exact/ranger_navigation/ranger_navigation.egg-info/SOURCES.txt'
+reading manifest file '../../build_exact/ranger_navigation/ranger_navigation.egg-info/SOURCES.txt'
+adding license file 'LICENSE.exact_mppi'
+writing manifest file '../../build_exact/ranger_navigation/ranger_navigation.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build
+creating /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib
+creating /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation
+copying ranger_navigation/models.py -> /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation
+copying ranger_navigation/exact_controller.py -> /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation
+copying ranger_navigation/motion_gate.py -> /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation
+copying ranger_navigation/coordinator.py -> /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation
+copying ranger_navigation/obstacle_filter.py -> /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation
+copying ranger_navigation/geometry.py -> /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation
+copying ranger_navigation/worker.py -> /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation
+copying ranger_navigation/__init__.py -> /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation
+copying ranger_navigation/ros_utils.py -> /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation
+copying ranger_navigation/safety_core.py -> /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation
+copying ranger_navigation/safety_node.py -> /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation
+copying ranger_navigation/task.py -> /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation
+copying ranger_navigation/planner.py -> /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation
+copying ranger_navigation/obstacles.py -> /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation
+running install
+running install_lib
+creating /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation
+copying /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation/models.py -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation
+copying /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation/exact_controller.py -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation
+copying /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation/motion_gate.py -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation
+copying /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation/coordinator.py -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation
+copying /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation/obstacle_filter.py -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation
+copying /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation/geometry.py -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation
+copying /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation/worker.py -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation
+copying /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation/__init__.py -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation
+copying /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation/ros_utils.py -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation
+copying /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation/safety_core.py -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation
+copying /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation/safety_node.py -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation
+copying /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation/task.py -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation
+copying /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation/planner.py -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation
+copying /home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/build/lib/ranger_navigation/obstacles.py -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation
+byte-compiling /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/models.py to models.cpython-310.pyc
+byte-compiling /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/exact_controller.py to exact_controller.cpython-310.pyc
+byte-compiling /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/motion_gate.py to motion_gate.cpython-310.pyc
+byte-compiling /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/coordinator.py to coordinator.cpython-310.pyc
+byte-compiling /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/obstacle_filter.py to obstacle_filter.cpython-310.pyc
+byte-compiling /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/geometry.py to geometry.cpython-310.pyc
+byte-compiling /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/worker.py to worker.cpython-310.pyc
+byte-compiling /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/__init__.py to __init__.cpython-310.pyc
+byte-compiling /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/ros_utils.py to ros_utils.cpython-310.pyc
+byte-compiling /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/safety_core.py to safety_core.cpython-310.pyc
+byte-compiling /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/safety_node.py to safety_node.cpython-310.pyc
+byte-compiling /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/task.py to task.cpython-310.pyc
+byte-compiling /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/planner.py to planner.cpython-310.pyc
+byte-compiling /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation/obstacles.py to obstacles.cpython-310.pyc
+running install_data
+creating /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/share/ament_index
+creating /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/share/ament_index/resource_index
+creating /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/share/ament_index/resource_index/packages
+copying resource/ranger_navigation -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/share/ament_index/resource_index/packages
+copying package.xml -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/share/ranger_navigation
+creating /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/share/ranger_navigation/config
+copying config/obstacle_filter.yaml -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/share/ranger_navigation/config
+copying config/exact_navigation.yaml -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/share/ranger_navigation/config
+copying config/twist_mux.yaml -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/share/ranger_navigation/config
+copying config/collision_monitor.yaml -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/share/ranger_navigation/config
+copying config/motion_gate.yaml -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/share/ranger_navigation/config
+copying config/nav2_params.yaml -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/share/ranger_navigation/config
+creating /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/share/ranger_navigation/behavior_trees
+copying behavior_trees/single_point.xml -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/share/ranger_navigation/behavior_trees
+creating /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/share/ranger_navigation/launch
+copying launch/navigation.launch.py -> /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/share/ranger_navigation/launch
+running install_egg_info
+Copying ../../build_exact/ranger_navigation/ranger_navigation.egg-info to /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/python3.10/site-packages/ranger_navigation-0.1.0-py3.10.egg-info
+running install_scripts
+Installing motion_gate script to /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/ranger_navigation
+Installing obstacle_filter script to /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/ranger_navigation
+writing list of installed files to '/home/lab307/ranger_nav/ws_nav/build_exact/ranger_navigation/install.log'
+Finished <<< ranger_navigation [0.42s]
+
+Summary: 4 packages finished [5.63s]

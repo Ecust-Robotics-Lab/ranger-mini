@@ -1,0 +1,9 @@
+PASS closed_loop_standard_final 9
+PASS closed_loop_narrow_final 10
+PASS ROS narrow 19 {'p50': 26.020930999948177, 'p95': 35.57662919884024, 'p99': 40.711399679785245}
+PASS installed/source48, protected assets7, owned process cleanup
+PASS command evidence hashes 13
+EXPECTED PARTIAL real-map route 5/7; no field acceptance
+PASS dry-run capture43
+PASS CAN remains DOWN/STOPPED
+PASS git diff --check

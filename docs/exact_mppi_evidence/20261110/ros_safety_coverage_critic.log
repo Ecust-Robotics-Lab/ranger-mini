@@ -1,0 +1,11 @@
+PASS startup_permission_off
+PASS valid_trajectory_reaches_final_output
+PASS action_cancel_stops
+PASS goal_replacement_terminates_old_goal
+PASS lateral_goal_stops_and_succeeds
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_stage6_safety.py", line 204, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+  File "/home/lab307/ranger_nav/tests/test_stage6_safety.py", line 160, in main
+    assert f.result().status==4,json.dumps({'state':w.state,'pose':w.pose.tolist(),'action_status':f.result().status})
+AssertionError: {"state": {"state": "EXECUTING", "reason": "tracking", "generation": 30, "worker": {"ready": true, "pid": 22797, "nonce": "65da034459a14579b23089b763fa65ca", "devices": ["cuda:0"], "warmup_s": {"DRIVE": 2.176410964999377, "PARALLEL": 1.8131285649997153, "SPIN": 1.7978056519996244}}, "inputs_valid": true, "input_reason": "valid", "metrics": {"request_id": 226, "compute_s": 0.014169522000884172, "end_to_end_s": 0.03201046199956181, "valid": false, "validation_reason": "unobserved_sweep"}}, "pose": [0.01652728746814654, 0.4370853304018256, -0.5307005709700676], "action_status": 6}

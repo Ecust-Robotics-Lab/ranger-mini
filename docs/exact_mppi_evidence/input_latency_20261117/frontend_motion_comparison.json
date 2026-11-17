@@ -1,0 +1,56 @@
+{
+  "baseline": "docs/exact_mppi_evidence/input_latency_20261117/frontend_baseline_motion",
+  "candidate": "docs/exact_mppi_evidence/input_latency_20261117/frontend_candidate_motion",
+  "matched_frames": 8400,
+  "frames_released_earlier": 5639,
+  "frames_released_later": 0,
+  "release_advance_ms": {
+    "p50": 99.761697,
+    "p95": 101.41887635,
+    "p99": 102.02617618999999,
+    "max": 103.569327
+  },
+  "baseline_frames": 8401,
+  "candidate_frames": 8400,
+  "matched_native_messages": 16800,
+  "changed_native_messages": 15821,
+  "changed_native_examples": [
+    [
+      1590202402000225782,
+      "/fast_livo/deskewed_imu"
+    ],
+    [
+      1590202591500258207,
+      "/fast_livo/odometry"
+    ],
+    [
+      1590202532700362920,
+      "/fast_livo/odometry"
+    ],
+    [
+      1590202326800420999,
+      "/fast_livo/deskewed_imu"
+    ],
+    [
+      1590202460300439596,
+      "/fast_livo/odometry"
+    ]
+  ],
+  "serialized_bytes_differ": 16800,
+  "point_field_atol": 1e-07,
+  "note": "Release advance is the difference in recorded-input receipt times when each frame becomes executable in direct callback replay. Not measured live wall latency. Odometry messages compare exactly; all declared cloud fields compare at absolute tolerance 1e-7, excluding CDR/PCL padding.",
+  "input_receipt_release_interval_ms": {
+    "baseline": {
+      "p50": 99.82229799999999,
+      "p95": 200.8316304,
+      "p99": 201.42034786,
+      "max": 202.61083599999998
+    },
+    "candidate": {
+      "p50": 99.971937,
+      "p95": 101.4313293,
+      "p99": 102.03586489999999,
+      "max": 103.569327
+    }
+  }
+}

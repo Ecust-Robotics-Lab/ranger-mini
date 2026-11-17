@@ -1,0 +1,101 @@
+{
+  "clearance_profile": "narrow",
+  "profile": {
+    "clearance": 0.03,
+    "static_map_reserve": 0.01,
+    "visibility_reserve": 0.04,
+    "segment_yaw_tolerance": 0.03,
+    "prefer_parallel_in_narrow": true
+  },
+  "devices": [
+    "cuda:0"
+  ],
+  "warmup_seconds": {
+    "DRIVE": 2.146889210000154,
+    "PARALLEL": 1.842337898999176,
+    "SPIN": 1.8079996679989563
+  },
+  "benchmark_ms": {
+    "p50": 9.269919499274692,
+    "p95": 9.988985450127075,
+    "p99": 10.191793891117413
+  },
+  "rss_kib": 971828,
+  "scenarios": [
+    {
+      "name": "static_obstacle",
+      "pass": true,
+      "state": "SUCCEEDED",
+      "reason": "goal_reached_and_stopped",
+      "pose": [
+        1.4760512506986743,
+        -0.05307319345445194,
+        0.0
+      ],
+      "goal": [
+        1.5,
+        0,
+        0
+      ],
+      "simulated_seconds": 56.85,
+      "wall_seconds": 14.317745324000498,
+      "collided": false,
+      "segments": [
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        },
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        },
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        },
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        },
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        },
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        },
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        }
+      ]
+    },
+    {
+      "name": "narrow_corridor",
+      "pass": true,
+      "state": "SUCCEEDED",
+      "reason": "goal_reached_and_stopped",
+      "pose": [
+        1.441756067884853,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        1.5,
+        0,
+        0
+      ],
+      "simulated_seconds": 8.700000000000001,
+      "wall_seconds": 1.894168714999978,
+      "collided": false,
+      "segments": [
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        }
+      ]
+    }
+  ],
+  "pass": true
+}

@@ -1,0 +1,11 @@
+PASS startup_permission_off
+PASS valid_trajectory_reaches_final_output
+PASS action_cancel_stops
+PASS goal_replacement_terminates_old_goal
+PASS lateral_goal_stops_and_succeeds
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_stage6_safety.py", line 196, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+  File "/home/lab307/ranger_nav/tests/test_stage6_safety.py", line 153, in main
+    assert f.result().status==4,json.dumps({'state':w.state,'pose':w.pose.tolist(),'action_status':f.result().status})
+AssertionError: {"state": {"state": "FAILED", "reason": "blocked_timeout", "generation": 28, "worker": {"ready": true, "pid": 19435, "nonce": "7a0ad75dd8234f1dae9e1f418757f327", "devices": ["cuda:0"], "warmup_s": {"DRIVE": 1.9321621630001573, "PARALLEL": 1.588168665000012, "SPIN": 1.6815957300000264}}, "inputs_valid": true, "input_reason": "valid", "metrics": {"request_id": 265, "compute_s": 0.01885346099970775, "end_to_end_s": 0.031994414999644505, "valid": false}}, "pose": [0.0542932596159519, 0.4410005668025641, 0.36107018973328886], "action_status": 6}

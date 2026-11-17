@@ -1,0 +1,215 @@
+{
+  "counts": {
+    "/localization/estimate": 1013,
+    "/motion_state": 713,
+    "/system_state": 712,
+    "/diagnostics": 15,
+    "/fast_livo/navigation/wheel/odom": 690,
+    "/navigation_ready": 1605
+  },
+  "topics": {
+    "/localization/estimate": {
+      "received_steady": 8341.753096764,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1590202016,
+            "nanosec": 400425434
+          },
+          "frame_id": "map"
+        },
+        "base_frame": "base_link",
+        "pose": {
+          "position": {
+            "x": 1.867905947282785,
+            "y": 0.41228945091621483,
+            "z": -0.5790400241774538
+          },
+          "orientation": {
+            "x": -0.0020994625597178795,
+            "y": 0.001487021110601661,
+            "z": 0.3051215523587185,
+            "w": 0.9523099386814058
+          }
+        },
+        "state": 1,
+        "reason": "map_match_confirmed; map=160f8572a77a61856cf87e43514be769; graph=170; session=0f5be97bb1fce9306aa1583c0eaafe86; initial=global-b8d7f2a221cc9aad0be8d2acfdca4fa7; request_generation=1"
+      }
+    },
+    "/motion_state": {
+      "received_steady": 8341.771631659,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1794841442,
+            "nanosec": 833970460
+          },
+          "frame_id": ""
+        },
+        "motion_mode": 2
+      }
+    },
+    "/system_state": {
+      "received_steady": 8341.751825737,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1794841442,
+            "nanosec": 813075255
+          },
+          "frame_id": ""
+        },
+        "vehicle_state": 0,
+        "control_mode": 1,
+        "error_code": 0,
+        "battery_voltage": 49.5,
+        "motion_mode": 2
+      }
+    },
+    "/diagnostics": {
+      "received_steady": 8341.15986528,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1590202016,
+            "nanosec": 6620166
+          },
+          "frame_id": ""
+        },
+        "status": [
+          {
+            "level": "\u0000",
+            "name": "fast_livo_navigation_map_lifecycle: Nav2 Health",
+            "message": "Nav2 is active",
+            "hardware_id": "Nav2",
+            "values": []
+          }
+        ]
+      }
+    },
+    "/fast_livo/navigation/wheel/odom": {
+      "received_steady": 8341.739944651,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1590202016,
+            "nanosec": 566697487
+          },
+          "frame_id": "odom"
+        },
+        "child_frame_id": "base_link",
+        "pose": {
+          "pose": {
+            "position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "orientation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            }
+          },
+          "covariance": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "twist": {
+          "twist": {
+            "linear": {
+              "x": -0.0,
+              "y": -0.0,
+              "z": 0.0
+            },
+            "angular": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            }
+          },
+          "covariance": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "/navigation_ready": {
+      "received_steady": 8341.759859433,
+      "message": {
+        "data": true
+      }
+    }
+  }
+}

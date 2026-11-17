@@ -1,0 +1,37 @@
+{"goal": [-0.3651503095418591, -0.03837389327029861, 1.25977057926309], "goal_id": "5769098280364001b2c348b2d42b358a"}
+{"state": "OBSERVING", "reason": "guidance_unobserved", "inputs_valid": true, "input_reason": "valid", "metrics": {}}
+{"state": "OBSERVING", "reason": "guidance_unobserved", "inputs_valid": true, "input_reason": "valid", "metrics": {}}
+{"state": "FAILED", "reason": "no_progress_timeout", "inputs_valid": true, "input_reason": "valid", "metrics": {}}
+{
+  "name": "forward_060_coverage2",
+  "goal": [
+    -0.3651503095418591,
+    -0.03837389327029861,
+    1.25977057926309
+  ],
+  "result_status": 6,
+  "cancel": null,
+  "elapsed_s": 34.24902782899994,
+  "final_state": {
+    "state": "FAILED",
+    "reason": "no_progress_timeout",
+    "generation": 13,
+    "worker": {
+      "ready": true,
+      "pid": 13612,
+      "nonce": "5d18596ed675476bb19ffa6c8c2f9822",
+      "devices": [
+        "cuda:0"
+      ],
+      "warmup_s": {
+        "DRIVE": 2.5823217509998813,
+        "PARALLEL": 2.317516838999836,
+        "SPIN": 2.214388493000115
+      }
+    },
+    "inputs_valid": true,
+    "input_reason": "valid",
+    "metrics": {}
+  },
+  "note": "Real action test; localization/wheel are estimates, no external truth."
+}

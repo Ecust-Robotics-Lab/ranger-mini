@@ -1,0 +1,38 @@
+         68428 function calls (66028 primitive calls) in 0.014 seconds
+
+   Ordered by: cumulative time
+   List reduced from 77 to 20 due to restriction <20>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+      300    0.002    0.000    0.014    0.000 /home/lab307/ranger_nav/ws_nav/src/ranger_navigation/ranger_navigation/coordinator.py:386(tick)
+      300    0.001    0.000    0.006    0.000 /home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation_msgs/local/lib/python3.10/dist-packages/ranger_navigation_msgs/msg/_control_command.py:95(__init__)
+ 2700/300    0.002    0.000    0.004    0.000 /usr/lib/python3.10/copy.py:128(deepcopy)
+      300    0.001    0.000    0.004    0.000 /usr/lib/python3.10/copy.py:259(_reconstruct)
+      300    0.000    0.000    0.002    0.000 /opt/ros/humble/local/lib/python3.10/dist-packages/geometry_msgs/msg/_twist.py:76(__init__)
+      300    0.000    0.000    0.002    0.000 /usr/lib/python3.10/copy.py:210(_deepcopy_tuple)
+      300    0.000    0.000    0.002    0.000 /usr/lib/python3.10/copy.py:211(<listcomp>)
+      300    0.000    0.000    0.001    0.000 /opt/ros/humble/local/lib/python3.10/dist-packages/std_msgs/msg/_header.py:76(__init__)
+     3300    0.001    0.000    0.001    0.000 <frozen importlib._bootstrap>:1053(_handle_fromlist)
+      600    0.001    0.000    0.001    0.000 /opt/ros/humble/local/lib/python3.10/dist-packages/geometry_msgs/msg/_vector3.py:77(__init__)
+      300    0.000    0.000    0.001    0.000 /usr/lib/python3.10/copy.py:227(_deepcopy_dict)
+      300    0.000    0.000    0.001    0.000 /opt/ros/humble/local/lib/python3.10/dist-packages/builtin_interfaces/msg/_time.py:72(__init__)
+      600    0.000    0.000    0.001    0.000 /opt/ros/humble/local/lib/python3.10/dist-packages/std_msgs/msg/_header.py:129(stamp)
+    12001    0.000    0.000    0.000    0.000 {method 'get' of 'dict' objects}
+     1801    0.000    0.000    0.000    0.000 {built-in method builtins.all}
+    11704    0.000    0.000    0.000    0.000 {built-in method builtins.isinstance}
+      600    0.000    0.000    0.000    0.000 /usr/lib/python3.10/copy.py:264(<genexpr>)
+      900    0.000    0.000    0.000    0.000 /usr/lib/python3.10/copy.py:243(_keep_alive)
+     3601    0.000    0.000    0.000    0.000 {built-in method builtins.hasattr}
+      300    0.000    0.000    0.000    0.000 /opt/ros/humble/local/lib/python3.10/dist-packages/geometry_msgs/msg/_twist.py:130(linear)
+
+
+{
+  "iterations": 300,
+  "scenario": "Exact production tick with frozen real memory/path and busy asynchronous worker; no devices, publishers discarded",
+  "tick_ms": {
+    "p50": 0.04524249993664853,
+    "p95": 0.04788540020399523,
+    "p99": 0.05299133003973101,
+    "max": 0.14930699990145513
+  }
+}

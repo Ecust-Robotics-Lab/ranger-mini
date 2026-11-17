@@ -1,0 +1,288 @@
+{
+  "devices": [
+    "cuda:0"
+  ],
+  "warmup_seconds": {
+    "DRIVE": 2.242496949999804,
+    "PARALLEL": 2.097885466000662,
+    "SPIN": 1.8415670429994861
+  },
+  "benchmark_ms": {
+    "p50": 9.318749999692955,
+    "p95": 10.893312700318347,
+    "p99": 11.603632019978248
+  },
+  "rss_kib": 972212,
+  "scenarios": [
+    {
+      "name": "forward",
+      "pass": true,
+      "state": "SUCCEEDED",
+      "reason": "goal_reached_and_stopped",
+      "pose": [
+        0.9438284694093639,
+        0.00038016167503451825,
+        0.0006526576196392853
+      ],
+      "goal": [
+        1.0,
+        0,
+        0
+      ],
+      "simulated_seconds": 11.200000000000001,
+      "wall_seconds": 2.229912841999976,
+      "collided": false,
+      "segments": [
+        {
+          "mode": "DRIVE",
+          "reverse": false
+        },
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        }
+      ]
+    },
+    {
+      "name": "reverse",
+      "pass": true,
+      "state": "SUCCEEDED",
+      "reason": "goal_reached_and_stopped",
+      "pose": [
+        -0.6422047576634213,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -0.7,
+        0,
+        0
+      ],
+      "simulated_seconds": 6.15,
+      "wall_seconds": 1.1394568449995859,
+      "collided": false,
+      "segments": [
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        }
+      ]
+    },
+    {
+      "name": "lateral",
+      "pass": true,
+      "state": "SUCCEEDED",
+      "reason": "goal_reached_and_stopped",
+      "pose": [
+        0.0,
+        0.6438462057267316,
+        0.0
+      ],
+      "goal": [
+        0,
+        0.7,
+        0
+      ],
+      "simulated_seconds": 6.0,
+      "wall_seconds": 1.0990917509998326,
+      "collided": false,
+      "segments": [
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        }
+      ]
+    },
+    {
+      "name": "diagonal",
+      "pass": true,
+      "state": "SUCCEEDED",
+      "reason": "goal_reached_and_stopped",
+      "pose": [
+        0.6289761043160809,
+        0.5486351607843432,
+        0.05946959364518989
+      ],
+      "goal": [
+        0.6,
+        0.6,
+        0
+      ],
+      "simulated_seconds": 15.55,
+      "wall_seconds": 2.586827084000106,
+      "collided": false,
+      "segments": [
+        {
+          "mode": "DRIVE",
+          "reverse": false
+        },
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        },
+        {
+          "mode": "SPIN",
+          "reverse": false
+        }
+      ]
+    },
+    {
+      "name": "spin",
+      "pass": true,
+      "state": "SUCCEEDED",
+      "reason": "goal_reached_and_stopped",
+      "pose": [
+        0.0,
+        0.0,
+        1.5102170278551057
+      ],
+      "goal": [
+        0,
+        0,
+        1.57
+      ],
+      "simulated_seconds": 5.8500000000000005,
+      "wall_seconds": 0.6628453660005107,
+      "collided": false,
+      "segments": [
+        {
+          "mode": "SPIN",
+          "reverse": false
+        }
+      ]
+    },
+    {
+      "name": "left_turn",
+      "pass": true,
+      "state": "SUCCEEDED",
+      "reason": "goal_reached_and_stopped",
+      "pose": [
+        0.942281931352594,
+        0.5995755488600665,
+        1.515516955680141
+      ],
+      "goal": [
+        1.0,
+        0.6,
+        1.57
+      ],
+      "simulated_seconds": 15.65,
+      "wall_seconds": 2.7548949080000966,
+      "collided": false,
+      "segments": [
+        {
+          "mode": "DRIVE",
+          "reverse": false
+        },
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        },
+        {
+          "mode": "SPIN",
+          "reverse": false
+        }
+      ]
+    },
+    {
+      "name": "right_turn",
+      "pass": true,
+      "state": "SUCCEEDED",
+      "reason": "goal_reached_and_stopped",
+      "pose": [
+        0.9453921953829116,
+        -0.6217189706384789,
+        -1.5181097979568676
+      ],
+      "goal": [
+        1.0,
+        -0.6,
+        -1.57
+      ],
+      "simulated_seconds": 16.8,
+      "wall_seconds": 2.923618014000567,
+      "collided": false,
+      "segments": [
+        {
+          "mode": "DRIVE",
+          "reverse": false
+        },
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        },
+        {
+          "mode": "SPIN",
+          "reverse": false
+        }
+      ]
+    },
+    {
+      "name": "static_obstacle",
+      "pass": false,
+      "state": "FAILED",
+      "reason": "blocked_timeout",
+      "pose": [
+        0.04464062379436706,
+        -0.138637890098824,
+        -0.7088420292145656
+      ],
+      "goal": [
+        1.5,
+        0,
+        0
+      ],
+      "simulated_seconds": 40.050000000000004,
+      "wall_seconds": 8.660369218000596,
+      "collided": false,
+      "segments": [
+        {
+          "mode": "SPIN",
+          "reverse": false
+        },
+        {
+          "mode": "DRIVE",
+          "reverse": false
+        },
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        },
+        {
+          "mode": "SPIN",
+          "reverse": false
+        }
+      ]
+    },
+    {
+      "name": "door",
+      "pass": true,
+      "state": "SUCCEEDED",
+      "reason": "goal_reached_and_stopped",
+      "pose": [
+        1.4434701178146763,
+        0.001975826602487407,
+        -0.0009263161126682462
+      ],
+      "goal": [
+        1.5,
+        0,
+        0
+      ],
+      "simulated_seconds": 13.100000000000001,
+      "wall_seconds": 2.7782679720003216,
+      "collided": false,
+      "segments": [
+        {
+          "mode": "DRIVE",
+          "reverse": false
+        },
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        }
+      ]
+    }
+  ],
+  "pass": false
+}

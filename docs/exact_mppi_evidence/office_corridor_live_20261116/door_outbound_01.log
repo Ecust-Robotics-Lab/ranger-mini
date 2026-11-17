@@ -1,0 +1,45 @@
+{"goal": [3.23610189, 2.90897934, 0.0], "goal_id": "1fd17ff2dfe84b0b875e66128005604c"}
+{"state": "EXECUTING", "reason": "tracking", "inputs_valid": true, "input_reason": "valid", "metrics": {"request_id": 75, "compute_s": 0.01587874200049555, "end_to_end_s": 0.026813596000465623, "valid": true, "validation_reason": "valid"}}
+{"state": "EXECUTING", "reason": "tracking", "inputs_valid": true, "input_reason": "valid", "metrics": {"request_id": 138, "compute_s": 0.015273830999831262, "end_to_end_s": 0.02690013099982025, "valid": true, "validation_reason": "valid"}}
+{"state": "EXECUTING", "reason": "tracking", "inputs_valid": true, "input_reason": "valid", "metrics": {"request_id": 215, "compute_s": 0.012059169000167458, "end_to_end_s": 0.03342389900080889, "valid": true, "validation_reason": "valid"}}
+{"state": "EXECUTING", "reason": "tracking", "inputs_valid": true, "input_reason": "valid", "metrics": {"request_id": 296, "compute_s": 0.013065174999610463, "end_to_end_s": 0.04007207099948573, "valid": true, "validation_reason": "valid"}}
+{"state": "EXECUTING", "reason": "tracking", "inputs_valid": true, "input_reason": "valid", "metrics": {"request_id": 375, "compute_s": 0.009062440999514365, "end_to_end_s": 0.02227656100058084, "valid": true, "validation_reason": "valid"}}
+{
+  "name": "door_outbound_01",
+  "goal": [
+    3.23610189,
+    2.90897934,
+    0.0
+  ],
+  "result_status": 6,
+  "cancel": null,
+  "elapsed_s": 31.738239728000735,
+  "final_state": {
+    "state": "FAILED",
+    "reason": "no_progress_timeout",
+    "generation": 23,
+    "worker": {
+      "ready": true,
+      "pid": 24605,
+      "nonce": "f5680b1ae2014094ab8cb89beedcbf1e",
+      "devices": [
+        "cuda:0"
+      ],
+      "warmup_s": {
+        "DRIVE": 2.5428422240001964,
+        "PARALLEL": 2.3250064269996074,
+        "SPIN": 2.245414973000152
+      }
+    },
+    "inputs_valid": true,
+    "input_reason": "valid",
+    "metrics": {
+      "request_id": 452,
+      "compute_s": 0.010516086000279756,
+      "end_to_end_s": 0.022343600000567676,
+      "valid": true,
+      "validation_reason": "valid"
+    }
+  },
+  "note": "Real action test; localization/wheel are estimates, no external truth."
+}

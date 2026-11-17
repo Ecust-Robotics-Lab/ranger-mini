@@ -1,0 +1,272 @@
+{
+  "counts": {
+    "/localization/estimate": 1016,
+    "/navigation_ready": 1804,
+    "/base/safe_cmd_vel": 748,
+    "/ranger/motion_permitted": 748,
+    "/navigation/control_owner": 748,
+    "/navigation/safety_ready": 748,
+    "/diagnostics": 761,
+    "/navigation/state": 269,
+    "/motion_state": 677,
+    "/fast_livo/navigation/wheel/odom": 677,
+    "/system_state": 675
+  },
+  "topics": {
+    "/localization/estimate": {
+      "received_steady": 6660.053937237,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1590200334,
+            "nanosec": 800144433
+          },
+          "frame_id": "map"
+        },
+        "base_frame": "base_link",
+        "pose": {
+          "position": {
+            "x": 0.8438973979712918,
+            "y": 0.04606978279440275,
+            "z": -0.5633262665983644
+          },
+          "orientation": {
+            "x": -0.004618931360098072,
+            "y": 0.0014755720373287589,
+            "z": 0.008545180138767558,
+            "w": 0.9999517328634664
+          }
+        },
+        "state": 1,
+        "reason": "map_match_confirmed; map=160f8572a77a61856cf87e43514be769; graph=170; session=cbf42c0ae1c71cd14410a096f69d5fec; initial=global-e8ea0c8a79395c8647e1eb8465119158; request_generation=1"
+      }
+    },
+    "/navigation_ready": {
+      "received_steady": 6660.054221425,
+      "message": {
+        "data": true
+      }
+    },
+    "/base/safe_cmd_vel": {
+      "received_steady": 6660.061153306,
+      "message": {
+        "linear": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "angular": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      }
+    },
+    "/ranger/motion_permitted": {
+      "received_steady": 6660.062220787,
+      "message": {
+        "data": false
+      }
+    },
+    "/navigation/control_owner": {
+      "received_steady": 6660.061583061,
+      "message": {
+        "data": "navigation"
+      }
+    },
+    "/navigation/safety_ready": {
+      "received_steady": 6660.062014792,
+      "message": {
+        "data": true
+      }
+    },
+    "/diagnostics": {
+      "received_steady": 6660.062503645,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1590200334,
+            "nanosec": 913468331
+          },
+          "frame_id": ""
+        },
+        "status": [
+          {
+            "level": "\u0001",
+            "name": "ranger_motion_gate",
+            "message": "permission_off",
+            "hardware_id": "",
+            "values": [
+              {
+                "key": "owner",
+                "value": "navigation"
+              },
+              {
+                "key": "mode",
+                "value": "1"
+              },
+              {
+                "key": "minimum_distance",
+                "value": "inf"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "/navigation/state": {
+      "received_steady": 6660.035491875,
+      "message": {
+        "data": "{\"state\": \"IDLE\", \"reason\": \"startup\", \"generation\": 0, \"worker\": {\"ready\": true, \"pid\": 33624, \"nonce\": \"149a80f7c6cd4b4db89b475d1268927f\", \"devices\": [\"cuda:0\"], \"warmup_s\": {\"DRIVE\": 2.724191536000035, \"PARALLEL\": 2.3213744280001265, \"SPIN\": 2.25959075999981}}, \"inputs_valid\": true, \"input_reason\": \"valid\", \"metrics\": {}}"
+      }
+    },
+    "/motion_state": {
+      "received_steady": 6660.069507662,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1794839761,
+            "nanosec": 120263828
+          },
+          "frame_id": ""
+        },
+        "motion_mode": 1
+      }
+    },
+    "/fast_livo/navigation/wheel/odom": {
+      "received_steady": 6660.052576232,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1590200334,
+            "nanosec": 888168191
+          },
+          "frame_id": "odom"
+        },
+        "child_frame_id": "base_link",
+        "pose": {
+          "pose": {
+            "position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "orientation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            }
+          },
+          "covariance": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "twist": {
+          "twist": {
+            "linear": {
+              "x": -0.0,
+              "y": -0.0,
+              "z": 0.0
+            },
+            "angular": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            }
+          },
+          "covariance": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      }
+    },
+    "/system_state": {
+      "received_steady": 6660.049538497,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1794839761,
+            "nanosec": 99444029
+          },
+          "frame_id": ""
+        },
+        "vehicle_state": 0,
+        "control_mode": 1,
+        "error_code": 0,
+        "battery_voltage": 49.70000076293945,
+        "motion_mode": 1
+      }
+    }
+  }
+}

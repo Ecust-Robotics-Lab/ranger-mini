@@ -1,0 +1,312 @@
+{
+  "schema_version": 1,
+  "status": "PASS_DATA",
+  "accuracy_acceptance": "NOT_PREDEFINED",
+  "scope": "frontend and B online mapping; not C1/C2 relocalization",
+  "route_label": "synthetic_only",
+  "frontend_source": "raw_bag_odometry",
+  "physical_P0_return": "OPERATOR_CONFIRMED_NOT_INDEPENDENTLY_TRACKED",
+  "start_stationary_check": true,
+  "independent_distance_m": null,
+  "estimated_frontend_distance_m": 18.1,
+  "distance_estimate_spacing_m": 0.02,
+  "rate_basis": "estimated_frontend_distance",
+  "physical_sync_verified": false,
+  "base_extrinsic_field_calibrated": false,
+  "graph_version": 2,
+  "accepted_loop_events": 0,
+  "loop_factor_count": 0,
+  "archive_error": null,
+  "mapping_success": true,
+  "online_observer_messages": 281,
+  "online_fresh_unique_samples": 281,
+  "trajectories": {
+    "frontend": {
+      "start": {
+        "samples": 31,
+        "coverage": 1.0,
+        "maximum_gap_s": 0.1,
+        "valid": true,
+        "bounds_steady_ns": [
+          1000000000000,
+          1003000000000
+        ],
+        "position_xyz": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_rad": 0.0,
+        "position_span_m": 0.0,
+        "yaw_span_deg": 0.0,
+        "maximum_step_m": 0.0,
+        "maximum_step_deg": 0.0,
+        "jump_detected": false
+      },
+      "end": {
+        "immediate": {
+          "samples": 21,
+          "coverage": 1.0,
+          "maximum_gap_s": 0.1,
+          "valid": true,
+          "bounds_steady_ns": [
+            1013000000000,
+            1015000000000
+          ],
+          "position_xyz": [
+            0.1,
+            0.0,
+            0.0
+          ],
+          "yaw_rad": 0.02,
+          "position_span_m": 0.0,
+          "yaw_span_deg": 0.0,
+          "maximum_step_m": 0.0,
+          "maximum_step_deg": 0.0,
+          "jump_detected": false
+        },
+        "settled": {
+          "samples": 21,
+          "coverage": 1.0,
+          "maximum_gap_s": 0.1,
+          "valid": true,
+          "bounds_steady_ns": [
+            1023000000000,
+            1025000000000
+          ],
+          "position_xyz": [
+            0.1,
+            0.0,
+            0.0
+          ],
+          "yaw_rad": 0.02,
+          "position_span_m": 0.0,
+          "yaw_span_deg": 0.0,
+          "maximum_step_m": 0.0,
+          "maximum_step_deg": 0.0,
+          "jump_detected": false
+        }
+      },
+      "metrics": {
+        "immediate": {
+          "available": true,
+          "position_error_m": 0.1,
+          "yaw_error_deg": 1.1459155902616465,
+          "delta_xyz_m": [
+            0.1,
+            0.0,
+            0.0
+          ],
+          "relative_drift_rate_percent": null,
+          "estimated_relative_drift_rate_percent": 0.5524861878453038,
+          "window_jump_detected": false
+        },
+        "settled": {
+          "available": true,
+          "position_error_m": 0.1,
+          "yaw_error_deg": 1.1459155902616465,
+          "delta_xyz_m": [
+            0.1,
+            0.0,
+            0.0
+          ],
+          "relative_drift_rate_percent": null,
+          "estimated_relative_drift_rate_percent": 0.5524861878453038,
+          "window_jump_detected": false
+        }
+      }
+    },
+    "optimized_history": {
+      "start": {
+        "samples": 31,
+        "coverage": 1.0,
+        "maximum_gap_s": 0.1,
+        "valid": true,
+        "bounds_steady_ns": [
+          1000000000000,
+          1003000000000
+        ],
+        "position_xyz": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_rad": 0.0,
+        "position_span_m": 0.0,
+        "yaw_span_deg": 0.0,
+        "maximum_step_m": 0.0,
+        "maximum_step_deg": 0.0,
+        "jump_detected": false
+      },
+      "end": {
+        "immediate": {
+          "samples": 21,
+          "coverage": 1.0,
+          "maximum_gap_s": 0.1,
+          "valid": true,
+          "bounds_steady_ns": [
+            1013000000000,
+            1015000000000
+          ],
+          "position_xyz": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "yaw_rad": 3.469446951953614e-18,
+          "position_span_m": 0.0,
+          "yaw_span_deg": 0.0,
+          "maximum_step_m": 0.0,
+          "maximum_step_deg": 0.0,
+          "jump_detected": false
+        },
+        "settled": {
+          "samples": 21,
+          "coverage": 1.0,
+          "maximum_gap_s": 0.1,
+          "valid": true,
+          "bounds_steady_ns": [
+            1023000000000,
+            1025000000000
+          ],
+          "position_xyz": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "yaw_rad": 3.469446951953614e-18,
+          "position_span_m": 0.0,
+          "yaw_span_deg": 0.0,
+          "maximum_step_m": 0.0,
+          "maximum_step_deg": 0.0,
+          "jump_detected": false
+        }
+      },
+      "metrics": {
+        "immediate": {
+          "available": true,
+          "position_error_m": 0.0,
+          "yaw_error_deg": 1.987846675914698e-16,
+          "delta_xyz_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "relative_drift_rate_percent": null,
+          "estimated_relative_drift_rate_percent": 0.0,
+          "window_jump_detected": false
+        },
+        "settled": {
+          "available": true,
+          "position_error_m": 0.0,
+          "yaw_error_deg": 1.987846675914698e-16,
+          "delta_xyz_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "relative_drift_rate_percent": null,
+          "estimated_relative_drift_rate_percent": 0.0,
+          "window_jump_detected": false
+        }
+      }
+    },
+    "online_backend": {
+      "start": {
+        "samples": 30,
+        "coverage": 0.9666666666666667,
+        "maximum_gap_s": 0.1,
+        "valid": true,
+        "bounds_steady_ns": [
+          1000000000000,
+          1003000000000
+        ],
+        "position_xyz": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "yaw_rad": 0.0,
+        "position_span_m": 0.0,
+        "yaw_span_deg": 0.0,
+        "maximum_step_m": 0.0,
+        "maximum_step_deg": 0.0,
+        "jump_detected": false
+      },
+      "end": {
+        "immediate": {
+          "samples": 20,
+          "coverage": 0.95,
+          "maximum_gap_s": 0.1,
+          "valid": true,
+          "bounds_steady_ns": [
+            1013000000000,
+            1015000000000
+          ],
+          "position_xyz": [
+            0.1,
+            0.0,
+            0.0
+          ],
+          "yaw_rad": 0.02,
+          "position_span_m": 0.0,
+          "yaw_span_deg": 0.0,
+          "maximum_step_m": 0.0,
+          "maximum_step_deg": 0.0,
+          "jump_detected": false
+        },
+        "settled": {
+          "samples": 20,
+          "coverage": 0.95,
+          "maximum_gap_s": 0.1,
+          "valid": true,
+          "bounds_steady_ns": [
+            1023000000000,
+            1025000000000
+          ],
+          "position_xyz": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "yaw_rad": 0.0,
+          "position_span_m": 0.0,
+          "yaw_span_deg": 0.0,
+          "maximum_step_m": 0.0,
+          "maximum_step_deg": 0.0,
+          "jump_detected": false
+        }
+      },
+      "metrics": {
+        "immediate": {
+          "available": true,
+          "position_error_m": 0.1,
+          "yaw_error_deg": 1.1459155902616465,
+          "delta_xyz_m": [
+            0.1,
+            0.0,
+            0.0
+          ],
+          "relative_drift_rate_percent": null,
+          "estimated_relative_drift_rate_percent": 0.5524861878453038,
+          "window_jump_detected": false
+        },
+        "settled": {
+          "available": true,
+          "position_error_m": 0.0,
+          "yaw_error_deg": 0.0,
+          "delta_xyz_m": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "relative_drift_rate_percent": null,
+          "estimated_relative_drift_rate_percent": 0.0,
+          "window_jump_detected": false
+        }
+      }
+    }
+  },
+  "online_route_sample_coverage": 0.989010989010989,
+  "online_longest_route_sample_gap_s": 0.1
+}

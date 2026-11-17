@@ -1,0 +1,33 @@
+.F.....F................................................................ [ 98%]
+.                                                                        [100%]
+=================================== FAILURES ===================================
+__________ test_imu_translation_respects_same_physical_front_distance __________
+
+    def test_imu_translation_respects_same_physical_front_distance():
+        d=yaml.safe_load((ROOT/'config/fast_livo2/navigation_prep.yaml').read_text())
+        _,Rbi,tbi=load_geometry(ROOT/'config/fast_livo2/navigation_prep.yaml')
+        ins=d['installation']
+>       assert np.isclose(ins['t_base_lidar_xyz'][0],d['body']['reference_envelope_length_width_m'][0]/2-.26)
+E       assert False
+E        +  where False = <function isclose at 0x74f5081d4dc0>(0.109, ((0.74 / 2) - 0.26))
+E        +    where <function isclose at 0x74f5081d4dc0> = np.isclose
+
+tests/test_exact_physical_front.py:27: AssertionError
+_____________ test_shared_geometry_has_actual_rotated_installation _____________
+
+    def test_shared_geometry_has_actual_rotated_installation():
+        body,r,t=load_geometry(ROOT/'config/fast_livo2/navigation_prep.yaml')
+        assert np.allclose(body.half,[.37,.26])
+>       assert np.linalg.norm(r-np.eye(3))>2.
+E       AssertionError: assert 0.5190100435366986 > 2.0
+E        +  where 0.5190100435366986 = <function norm at 0x74f5082c51b0>((array([[ 0.9327525 , -0.00939595,  0.36039491],\n       [ 0.01445771,  0.99983104, -0.01135173],\n       [-0.36022736,  0.01579884,  0.93273075]]) - array([[1., 0., 0.],\n       [0., 1., 0.],\n       [0., 0., 1.]])))
+E        +    where <function norm at 0x74f5082c51b0> = <module 'numpy.linalg' from '/usr/lib/python3/dist-packages/numpy/linalg/__init__.py'>.norm
+E        +      where <module 'numpy.linalg' from '/usr/lib/python3/dist-packages/numpy/linalg/__init__.py'> = np.linalg
+E        +    and   array([[1., 0., 0.],\n       [0., 1., 0.],\n       [0., 0., 1.]]) = <function eye at 0x74f5082917e0>(3)
+E        +      where <function eye at 0x74f5082917e0> = np.eye
+
+tests/test_exact_navigation_core.py:39: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_exact_physical_front.py::test_imu_translation_respects_same_physical_front_distance
+FAILED tests/test_exact_navigation_core.py::test_shared_geometry_has_actual_rotated_installation
+2 failed, 71 passed in 0.93s

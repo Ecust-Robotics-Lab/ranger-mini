@@ -1,0 +1,34 @@
+{"goal": [0.6511509507829192, 0.16623958802844035, 0.07812222513608005], "goal_id": "05891bf8597b4c45a17d312b3f3a1f8d"}
+{
+  "name": "return_pause_fix",
+  "goal": [
+    0.6511509507829192,
+    0.16623958802844035,
+    0.07812222513608005
+  ],
+  "result_status": 4,
+  "cancel": null,
+  "elapsed_s": 4.646273447000112,
+  "final_state": {
+    "state": "SUCCEEDED",
+    "reason": "goal_reached_and_stopped",
+    "generation": 2,
+    "worker": {
+      "ready": true,
+      "pid": 20841,
+      "nonce": "1f6a15ae09e441b398b4b162d7d6167a",
+      "devices": [
+        "cuda:0"
+      ],
+      "warmup_s": {
+        "DRIVE": 2.562109882999721,
+        "PARALLEL": 2.2984372579999217,
+        "SPIN": 2.191989702999763
+      }
+    },
+    "inputs_valid": true,
+    "input_reason": "valid",
+    "metrics": {}
+  },
+  "note": "Real action test; localization/wheel are estimates, no external truth."
+}

@@ -1,0 +1,46 @@
+LOCALIZATION_DIR=/home/lab307/ranger_nav/bags/fast-livo-localization-z0p1qay8
+SESSION_DIR=/home/lab307/ranger_nav/.runtime/sessions/fast_livo_online_localization/run-pih7dqki
+LOCALIZATION state=None valid=False waiting_inputs; processed=0 skipped=0 age=None
+LOCALIZATION state=0 valid=False map_loading; processed=0 skipped=0 age=-1.0
+LOCALIZATION state=0 valid=False map_loaded_searching; processed=0 skipped=0 age=-1.0
+LOCALIZATION state=0 valid=False searching_waiting_query_window; processed=1 skipped=0 age=-1.0
+WHEEL_CLOCK ready=True forwarded=277 residual_ns=-1941807 error=None
+LOCALIZATION state=0 valid=False verifying_wait_disjoint_query_scans; processed=3 skipped=4 age=-1.0
+WHEEL_CLOCK ready=True forwarded=315 residual_ns=-486903 error=None
+LOCALIZATION state=0 valid=False global_confirmed_handoff_requires_c1_verification; processed=7 skipped=9 age=-1.0
+WHEEL_CLOCK ready=True forwarded=363 residual_ns=-597883 error=None
+LOCALIZATION state=0 valid=False verifying_multiframe_motion_support; processed=8 skipped=11 age=-1.0
+WHEEL_CLOCK ready=True forwarded=372 residual_ns=75296 error=None
+LOCALIZATION state=3 valid=False confirmed_sample_or_stream_expired_requires_initial_pose; processed=10 skipped=11 age=0.574713055
+WHEEL_CLOCK ready=True forwarded=382 residual_ns=-344716 error=None
+LOCALIZATION state=3 valid=False local_recovery_verifying_fresh_frames; processed=11 skipped=11 age=0.7748846290000001
+WHEEL_CLOCK ready=True forwarded=391 residual_ns=-182144 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=13 skipped=11 age=0.274577518
+WHEEL_CLOCK ready=True forwarded=401 residual_ns=-426881 error=None
+LOCALIZATION state=1 valid=True map_match_confirmed; processed=113 skipped=11 age=0.274695483
+WHEEL_CLOCK ready=True forwarded=882 residual_ns=-296407 error=None
+SESSION ERROR: RuntimeError: capture exited 2; no automatic restart; logs: /home/lab307/ranger_nav/.runtime/sessions/fast_livo_online_localization/run-pih7dqki; stopping owned processes
+{
+  "workflow_success": false,
+  "session_exit": 2,
+  "session_state": "FAILED",
+  "recorder": {
+    "exit": 0,
+    "forced": false,
+    "requested_seconds": 1800.0,
+    "error": "recorder subscription readiness timeout or interrupted startup",
+    "observed_messages": {
+      "/livox/lidar": 237,
+      "/livox/imu": 5020,
+      "/front/image_sync": 188,
+      "/front/image": 188,
+      "/front/camera_info": 188,
+      "/fast_livo/odometry": 152,
+      "/fast_livo/deskewed_imu": 152
+    }
+  },
+  "localization_acceptance": "NOT_EVALUATED",
+  "physical_sync": "PARTIAL",
+  "hardware_started": true,
+  "navigation_functional_result": "OBSERVED"
+}

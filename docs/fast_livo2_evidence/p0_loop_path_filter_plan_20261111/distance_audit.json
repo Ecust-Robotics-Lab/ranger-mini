@@ -1,0 +1,203 @@
+{
+  "distance_definition": "sum of 3D translation chords between consecutive raw U_local_imu keyframes; approximate odometry-chain length, not independently measured route length",
+  "scope": "only candidates logged by the old backend after its original search/diversification/budget; counts are not predictions of a new replay",
+  "threshold_comparison": "reject when chain_path_m < threshold_m; equality allowed",
+  "thresholds_m": [
+    0,
+    3,
+    5,
+    10
+  ],
+  "trials": [
+    {
+      "trial": "trial_01_attempt_01",
+      "manifest_sha256": "43a4219ab8f14fc5628d1fe8ef3e65eaa4e066e092165ce2422f3aa5e8311f2e",
+      "keyframe_chain_total_m": 28.68854453078905,
+      "keyframes": 100,
+      "logged_candidates": {
+        "count": 84,
+        "quantiles_m": {
+          "minimum": 1.2599724727695119,
+          "p25": 2.7752316871082368,
+          "median": 24.185271387686598,
+          "p75": 25.68158487869144,
+          "maximum": 28.68854453078905
+        },
+        "below_threshold_counts": {
+          "0": 0,
+          "3": 22,
+          "5": 23,
+          "10": 27
+        }
+      },
+      "accepted_events": {
+        "count": 52,
+        "quantiles_m": {
+          "minimum": 8.308626340084938,
+          "p25": 19.593114824823147,
+          "median": 24.383539613120227,
+          "p75": 26.047133038253588,
+          "maximum": 28.68854453078905
+        },
+        "below_threshold_counts": {
+          "0": 0,
+          "3": 0,
+          "5": 0,
+          "10": 4
+        }
+      }
+    },
+    {
+      "trial": "trial_02_attempt_01",
+      "manifest_sha256": "c6162f28d5c55ede38dc2aaf9b23cf5f106356751e6bb0bee47dc8778a29b51b",
+      "keyframe_chain_total_m": 21.28727496191483,
+      "keyframes": 128,
+      "logged_candidates": {
+        "count": 127,
+        "quantiles_m": {
+          "minimum": 0.9082825252614093,
+          "p25": 4.930049964838017,
+          "median": 11.955020575751984,
+          "p75": 17.223545842596955,
+          "maximum": 21.28727496191483
+        },
+        "below_threshold_counts": {
+          "0": 0,
+          "3": 13,
+          "5": 34,
+          "10": 52
+        }
+      },
+      "accepted_events": {
+        "count": 31,
+        "quantiles_m": {
+          "minimum": 0.9082825252614093,
+          "p25": 11.836919943308956,
+          "median": 19.58973965082605,
+          "p75": 20.844984056792836,
+          "maximum": 21.28727496191483
+        },
+        "below_threshold_counts": {
+          "0": 0,
+          "3": 4,
+          "5": 5,
+          "10": 7
+        }
+      }
+    },
+    {
+      "trial": "trial_03_attempt_01",
+      "manifest_sha256": "75b16478c29531070b84a8688f0bbed699e96704463e96638c178fd84092592d",
+      "keyframe_chain_total_m": 29.862167884309365,
+      "keyframes": 106,
+      "logged_candidates": {
+        "count": 178,
+        "quantiles_m": {
+          "minimum": 4.723745682394682,
+          "p25": 9.225968812547864,
+          "median": 19.368854364862077,
+          "p75": 26.732334551007146,
+          "maximum": 29.810515893571463
+        },
+        "below_threshold_counts": {
+          "0": 0,
+          "3": 0,
+          "5": 5,
+          "10": 51
+        }
+      },
+      "accepted_events": {
+        "count": 50,
+        "quantiles_m": {
+          "minimum": 4.889793917033434,
+          "p25": 9.373066159054458,
+          "median": 13.348730378653954,
+          "p75": 29.107572177048546,
+          "maximum": 29.810515893571463
+        },
+        "below_threshold_counts": {
+          "0": 0,
+          "3": 0,
+          "5": 2,
+          "10": 18
+        }
+      }
+    },
+    {
+      "trial": "trial_04_attempt_01",
+      "manifest_sha256": "6a9b819bda3079db7665aaae7f6a19afef66f5819187a9f69dd6fe1a03191254",
+      "keyframe_chain_total_m": 36.53907763678777,
+      "keyframes": 110,
+      "logged_candidates": {
+        "count": 75,
+        "quantiles_m": {
+          "minimum": 2.907234939905994,
+          "p25": 8.425109226425125,
+          "median": 27.91309196200226,
+          "p75": 30.895297385435914,
+          "maximum": 36.53907763678777
+        },
+        "below_threshold_counts": {
+          "0": 0,
+          "3": 1,
+          "5": 16,
+          "10": 19
+        }
+      },
+      "accepted_events": {
+        "count": 56,
+        "quantiles_m": {
+          "minimum": 11.64209521110742,
+          "p25": 23.347316040829654,
+          "median": 30.039552905008808,
+          "p75": 33.26141776741665,
+          "maximum": 36.53907763678777
+        },
+        "below_threshold_counts": {
+          "0": 0,
+          "3": 0,
+          "5": 0,
+          "10": 0
+        }
+      }
+    },
+    {
+      "trial": "trial_05_attempt_01",
+      "manifest_sha256": "2c6d721f31ad09e835c6cb1858f6ec13e6b408c351bb8da4465fa7971b09b05c",
+      "keyframe_chain_total_m": 33.35392112565469,
+      "keyframes": 86,
+      "logged_candidates": {
+        "count": 86,
+        "quantiles_m": {
+          "minimum": 4.38138753758512,
+          "p25": 12.466484028472186,
+          "median": 25.024875878707338,
+          "p75": 30.472968640653676,
+          "maximum": 33.35392112565469
+        },
+        "below_threshold_counts": {
+          "0": 0,
+          "3": 0,
+          "5": 3,
+          "10": 20
+        }
+      },
+      "accepted_events": {
+        "count": 44,
+        "quantiles_m": {
+          "minimum": 6.395321764750371,
+          "p25": 17.838364327864838,
+          "median": 26.7768909436262,
+          "p75": 31.343856018111858,
+          "maximum": 33.296911686503684
+        },
+        "below_threshold_counts": {
+          "0": 0,
+          "3": 0,
+          "5": 0,
+          "10": 3
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{"goal": [-0.3657917458913239, -0.0409555869413164, 1.2606286857457467], "goal_id": "1c9f3a9a36734891994956803ffe68d7"}
+{"state": "OBSERVING", "reason": "guidance_unobserved", "inputs_valid": true, "input_reason": "valid", "metrics": {}}
+{"state": "OBSERVING", "reason": "guidance_unobserved", "inputs_valid": true, "input_reason": "valid", "metrics": {}}
+{"state": "OBSERVING", "reason": "guidance_unobserved", "inputs_valid": true, "input_reason": "valid", "metrics": {}}
+{
+  "name": "forward_060_window8",
+  "goal": [
+    -0.3657917458913239,
+    -0.0409555869413164,
+    1.2606286857457467
+  ],
+  "result_status": 6,
+  "cancel": null,
+  "elapsed_s": 18.461234311999988,
+  "final_state": {
+    "state": "FAILED",
+    "reason": "no_progress_timeout",
+    "generation": 26,
+    "worker": {
+      "ready": true,
+      "pid": 11050,
+      "nonce": "5101ca4d823a4e6c82c67ef461a11995",
+      "devices": [
+        "cuda:0"
+      ],
+      "warmup_s": {
+        "DRIVE": 2.7139666409998426,
+        "PARALLEL": 2.36066629700008,
+        "SPIN": 2.316766285000085
+      }
+    },
+    "inputs_valid": true,
+    "input_reason": "valid",
+    "metrics": {}
+  },
+  "note": "Real action test; localization/wheel are estimates, no external truth."
+}

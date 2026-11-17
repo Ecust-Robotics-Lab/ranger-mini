@@ -1,0 +1,21 @@
+{
+  "baseline": "docs/exact_mppi_evidence/input_latency_20261117/frontend_baseline_replay",
+  "candidate": "docs/exact_mppi_evidence/input_latency_20261117/frontend_candidate_replay",
+  "matched_frames": 300,
+  "frames_released_earlier": 201,
+  "frames_released_later": 0,
+  "release_advance_ms": {
+    "p50": 99.71847149999999,
+    "p95": 100.96819935,
+    "p99": 101.66934095999999,
+    "max": 102.236639
+  },
+  "baseline_frames": 300,
+  "candidate_frames": 300,
+  "matched_native_messages": 600,
+  "changed_native_messages": 0,
+  "changed_native_examples": [],
+  "serialized_bytes_differ": 600,
+  "point_field_atol": 1e-07,
+  "note": "Release advance is the difference in recorded-input receipt times when each frame becomes executable in direct callback replay. Not measured live wall latency. Odometry messages compare exactly; all declared cloud fields compare at absolute tolerance 1e-7, excluding CDR/PCL padding."
+}

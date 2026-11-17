@@ -1,0 +1,61 @@
+CLIENT_READY
+{"goal": [1.96, 0.3, 1.570796327], "goal_id": "284f0b143d6741abab0b7d024f494ef0"}
+{"state": "EXECUTING", "reason": "tracking", "inputs_valid": true, "input_reason": "valid", "segment_index": 0, "segment_mode": 1, "segment_target": [1.96, 0.3, 0.613339335843611], "metrics": {"request_id": 120, "compute_s": 0.019090475001576124, "end_to_end_s": 0.03914915700079291, "valid": true, "validation_reason": "valid"}}
+{"state": "EXECUTING", "reason": "tracking", "inputs_valid": true, "input_reason": "valid", "segment_index": 0, "segment_mode": 1, "segment_target": [1.96, 0.3, 0.6112192634823037], "metrics": {"request_id": 207, "compute_s": 0.010978995998812024, "end_to_end_s": 0.03308599399861123, "valid": true, "validation_reason": "valid"}}
+{"state": "STOPPING", "reason": "segment_end", "inputs_valid": true, "input_reason": "valid", "segment_index": 0, "segment_mode": 1, "segment_target": [1.96, 0.3, 0.6100058548567349], "metrics": {"request_id": 280, "compute_s": 0.016319072999976925, "end_to_end_s": 0.02748851100113825, "valid": true, "validation_reason": "valid"}}
+{"state": "EXECUTING", "reason": "tracking", "inputs_valid": true, "input_reason": "valid", "segment_index": 1, "segment_mode": 2, "segment_target": [1.96, 0.3, 1.570796327], "metrics": {"request_id": 368, "compute_s": 0.009916992999933427, "end_to_end_s": 0.02029023400064034, "valid": true, "validation_reason": "valid"}}
+{"state": "EXECUTING", "reason": "tracking", "inputs_valid": true, "input_reason": "valid", "segment_index": 1, "segment_mode": 2, "segment_target": [1.96, 0.3, 1.570796327], "metrics": {"request_id": 456, "compute_s": 0.009503874998699757, "end_to_end_s": 0.02061227199919813, "valid": true, "validation_reason": "valid"}}
+{"state": "EXECUTING", "reason": "tracking", "inputs_valid": true, "input_reason": "valid", "segment_index": 1, "segment_mode": 2, "segment_target": [1.96, 0.3, 1.570796327], "metrics": {"request_id": 545, "compute_s": 0.0168320329994458, "end_to_end_s": 0.039250368001376046, "valid": true, "validation_reason": "valid"}}
+{"state": "EXECUTING", "reason": "tracking", "inputs_valid": true, "input_reason": "valid", "segment_index": 1, "segment_mode": 2, "segment_target": [1.96, 0.3, 1.570796327], "metrics": {"request_id": 633, "compute_s": 0.009799620000194409, "end_to_end_s": 0.02394074800031376, "valid": true, "validation_reason": "valid"}}
+{"state": "EXECUTING", "reason": "tracking", "inputs_valid": true, "input_reason": "valid", "segment_index": 1, "segment_mode": 2, "segment_target": [1.96, 0.3, 1.570796327], "metrics": {"request_id": 722, "compute_s": 0.009536672001559054, "end_to_end_s": 0.021458941000673804, "valid": true, "validation_reason": "valid"}}
+{"state": "EXECUTING", "reason": "tracking", "inputs_valid": true, "input_reason": "valid", "segment_index": 1, "segment_mode": 2, "segment_target": [1.96, 0.3, 1.570796327], "metrics": {"request_id": 815, "compute_s": 0.009563224999510567, "end_to_end_s": 0.021190990000832244, "valid": true, "validation_reason": "valid"}}
+{"state": "EXECUTING", "reason": "observation_resumed", "inputs_valid": true, "input_reason": "valid", "segment_index": 1, "segment_mode": 2, "segment_target": [1.96, 0.3, 1.570796327], "metrics": {"request_id": 907, "compute_s": 0.027932527000302798, "end_to_end_s": 0.04143242300051497, "valid": true, "validation_reason": "valid"}}
+{"state": "EXECUTING", "reason": "tracking", "inputs_valid": true, "input_reason": "valid", "segment_index": 1, "segment_mode": 2, "segment_target": [1.96, 0.3, 1.570796327], "metrics": {"request_id": 998, "compute_s": 0.011133503998280503, "end_to_end_s": 0.06910294400040584, "valid": true, "validation_reason": "valid"}}
+{
+  "name": "clear_corner_and_align",
+  "error": null,
+  "goal": [
+    1.96,
+    0.3,
+    1.570796327
+  ],
+  "result_status": 4,
+  "cancel": null,
+  "elapsed_s": 58.7199501469986,
+  "final_state": {
+    "state": "SUCCEEDED",
+    "reason": "goal_reached_and_stopped",
+    "generation": 61,
+    "worker": {
+      "ready": true,
+      "pid": 40372,
+      "nonce": "cafbe3588847470daf1b2db0f13a2bed",
+      "devices": [
+        "cuda:0"
+      ],
+      "warmup_s": {
+        "DRIVE": 2.5320777449996967,
+        "PARALLEL": 2.2703821620016242,
+        "SPIN": 2.2003121500001726
+      }
+    },
+    "inputs_valid": true,
+    "input_reason": "valid",
+    "metrics": {
+      "request_id": 1005,
+      "compute_s": 0.018283409999639844,
+      "end_to_end_s": 0.03138392000073509,
+      "valid": true,
+      "validation_reason": "valid"
+    },
+    "segment_index": 1,
+    "segment_count": 2,
+    "segment_mode": 2,
+    "segment_target": [
+      1.96,
+      0.3,
+      1.570796327
+    ]
+  },
+  "note": "Real action test; localization/wheel are estimates, no external truth."
+}

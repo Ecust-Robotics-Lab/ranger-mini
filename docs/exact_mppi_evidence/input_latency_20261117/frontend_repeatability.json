@@ -1,0 +1,35 @@
+{
+  "baseline_repeat": {
+    "matched_frames": 8401,
+    "position_difference_m": {
+      "p50": 0.004112704624433536,
+      "p95": 0.009799178727604982,
+      "max": 0.0415759204852405,
+      "final": 0.006153861553732747
+    },
+    "rotation_difference_rad": {
+      "p50": 0.000981960206610009,
+      "p95": 0.004232405446313619,
+      "max": 0.0081947839790232,
+      "final": 0.002652210458314109
+    },
+    "first_position_difference_gt_1e_7_frame": 489
+  },
+  "candidate": {
+    "matched_frames": 8400,
+    "position_difference_m": {
+      "p50": 0.0031851098780688644,
+      "p95": 0.009371035900727876,
+      "max": 0.04316450506120974,
+      "final": 0.009031529290747766
+    },
+    "rotation_difference_rad": {
+      "p50": 0.0016078835769887329,
+      "p95": 0.0030173352089978584,
+      "max": 0.009244558583641713,
+      "final": 0.0005127561010035717
+    },
+    "first_position_difference_gt_1e_7_frame": 489
+  },
+  "limitations": "Pairwise replay differences only; baseline repeat also differs. Does not establish physical accuracy, unique nondeterminism cause, or full frontend equivalence."
+}

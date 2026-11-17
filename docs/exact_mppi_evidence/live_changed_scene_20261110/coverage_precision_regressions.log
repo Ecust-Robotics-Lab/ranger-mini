@@ -1,0 +1,21 @@
+.............................................................F...        [100%]
+=================================== FAILURES ===================================
+_________ test_neighbor_return_does_not_hide_a_cell_outside_its_sector _________
+
+    def test_neighbor_return_does_not_hide_a_cell_outside_its_sector():
+        # This 5cm cell spans only azimuth sectors 90 and 91. A short return in
+        # sector 92 formerly hid it through adjacent-sector dilation.
+        point=[1.275,.025,0.]
+        legacy=visibility(180,1,92)
+        precise=visibility(180,0,92)
+        assert not legacy.covers(point,legacy.body,0.)
+>       assert precise.covers(point,precise.body,0.)
+E       assert False
+E        +  where False = <bound method ObstacleMemory.covers of <ranger_navigation.obstacles.ObstacleMemory object at 0x7e549918b160>>([1.275, 0.025, 0.0], Body(length=0.01, width=0.01, clearance=0.04, sensor_origin_xy=(0.0, 0.0), sensor_origin_z=0.6), 0.0)
+E        +    where <bound method ObstacleMemory.covers of <ranger_navigation.obstacles.ObstacleMemory object at 0x7e549918b160>> = <ranger_navigation.obstacles.ObstacleMemory object at 0x7e549918b160>.covers
+E        +    and   Body(length=0.01, width=0.01, clearance=0.04, sensor_origin_xy=(0.0, 0.0), sensor_origin_z=0.6) = <ranger_navigation.obstacles.ObstacleMemory object at 0x7e549918b160>.body
+
+tests/test_exact_visibility_precision.py:27: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_exact_visibility_precision.py::test_neighbor_return_does_not_hide_a_cell_outside_its_sector
+1 failed, 64 passed in 0.85s

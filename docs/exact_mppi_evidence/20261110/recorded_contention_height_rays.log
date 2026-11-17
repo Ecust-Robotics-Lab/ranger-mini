@@ -1,0 +1,30 @@
+{
+  "query_contract": "recorded clouds and same-capture interpolated wheel poses; explicitly stationary optimizer queries, no commands published",
+  "warmup_s": {
+    "DRIVE": 2.140679031000218,
+    "PARALLEL": 1.8328638129996762,
+    "SPIN": 1.7987946119992557
+  },
+  "compute_ms": {
+    "p50": 10.986410000441538,
+    "p95": 15.268827799627616,
+    "p99": 17.49494463991141,
+    "max": 21.32688799974858
+  },
+  "optimizer_plus_independent_validation_ms": {
+    "p50": 12.359588000435906,
+    "p95": 22.653078800067302,
+    "p99": 25.11200692049897,
+    "max": 29.965284000354586
+  },
+  "accepted_stationary_queries": 150,
+  "rejected_stationary_queries": 207,
+  "queries_while_real_three_fusion_frontend_alive": 357,
+  "rejection_reasons": {
+    "no_valid_trajectory": 207
+  },
+  "timing_target_met": true,
+  "performance_target_pass": true,
+  "hardware_started": false,
+  "physical_sync_verified": false
+}

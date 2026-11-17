@@ -1,0 +1,88 @@
+{
+  "pass": true,
+  "results": [
+    {
+      "name": "startup_permission_off",
+      "pass": true
+    },
+    {
+      "name": "valid_trajectory_reaches_final_output",
+      "pass": true
+    },
+    {
+      "name": "action_cancel_stops",
+      "pass": true
+    },
+    {
+      "name": "goal_replacement_terminates_old_goal",
+      "pass": true
+    },
+    {
+      "name": "lateral_goal_stops_and_succeeds",
+      "pass": true
+    },
+    {
+      "name": "dynamic_blockage_stops_replans_and_goes_around",
+      "pass": true
+    },
+    {
+      "name": "fresh_but_unconfirmed_mode_times_out",
+      "pass": true
+    },
+    {
+      "name": "unreachable_goal_reports_blocked_failure",
+      "pass": true
+    },
+    {
+      "name": "cloud_loss",
+      "pass": true
+    },
+    {
+      "name": "wheel_loss",
+      "pass": true
+    },
+    {
+      "name": "mode_loss",
+      "pass": true
+    },
+    {
+      "name": "system_loss",
+      "pass": true
+    },
+    {
+      "name": "tf_loss",
+      "pass": true
+    },
+    {
+      "name": "localization_withdrawal",
+      "pass": true
+    },
+    {
+      "name": "soft_estop",
+      "pass": true
+    },
+    {
+      "name": "teleop_owns_velocity_and_mode",
+      "pass": true
+    },
+    {
+      "name": "rc_takeover",
+      "pass": true
+    },
+    {
+      "name": "blocked_worker_independent_stop",
+      "pass": true
+    },
+    {
+      "name": "worker_exit_stop",
+      "pass": true
+    }
+  ],
+  "control_end_to_end_ms": {
+    "p50": 26.843730499876983,
+    "p95": 38.69502169959559,
+    "p99": 47.62937837004756
+  },
+  "logs": "/home/lab307/ranger_nav/.runtime/exact-ros-fzwtxxpk",
+  "hardware_started": false
+}

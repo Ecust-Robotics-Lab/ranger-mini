@@ -1,0 +1,205 @@
+[
+  {
+    "command": "bash scripts/build_exact_navigation.sh --execute",
+    "exit_code": 0,
+    "result": "PASS",
+    "evidence": [
+      "docs/exact_mppi_evidence/20261110/build_delivery.log"
+    ],
+    "evidence_sha256": {
+      "docs/exact_mppi_evidence/20261110/build_delivery.log": "06d810e77ab763d4589081ba5f73adda42e5e9755f0b39f16ddb0cb3a96102b3"
+    }
+  },
+  {
+    "command": "source ws_base/install_exact/setup.bash; source ws_nav/install_exact/setup.bash; PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONPATH=\"$PWD/ws_nav/src/ranger_navigation:$PWD/ws_nav/src/ranger_localization_bridge:$PYTHONPATH\" JAX_PLATFORMS=cpu .runtime/exact_mppi_venv/bin/python3 -m pytest -q tests/test_exact_navigation_core.py tests/test_exact_optimizer.py tests/test_stage6_gate_unit.py tests/test_architecture_contract.py tests/test_fast_livo_navigation_map.py tests/test_session_manager.py tests/test_project_consolidation.py",
+    "exit_code": 0,
+    "result": "PASS",
+    "evidence": [
+      "docs/exact_mppi_evidence/20261110/software_regressions_delivery.log"
+    ],
+    "note": "94 passed, 25 subtests passed",
+    "evidence_sha256": {
+      "docs/exact_mppi_evidence/20261110/software_regressions_delivery.log": "910e6da34e9950b7737715a76695482134fcc61f1cd1a5a4a2d2b63cc27edb89"
+    }
+  },
+  {
+    "command": "JAX_PLATFORMS=cuda XLA_PYTHON_CLIENT_PREALLOCATE=false .runtime/exact_mppi_venv/bin/python3 scripts/validate_exact_mppi.py --output docs/exact_mppi_evidence/20261110/closed_loop_actual_mode.json",
+    "exit_code": 0,
+    "result": "PASS",
+    "evidence": [
+      "docs/exact_mppi_evidence/20261110/closed_loop_actual_mode.log",
+      "docs/exact_mppi_evidence/20261110/closed_loop_actual_mode.json"
+    ],
+    "note": "9/9 simulated closed-loop scenarios, no hardware",
+    "evidence_sha256": {
+      "docs/exact_mppi_evidence/20261110/closed_loop_actual_mode.log": "441350cb1c17cfd6f9e4f899271be4798c401630eef9d3215440da82415c96a3",
+      "docs/exact_mppi_evidence/20261110/closed_loop_actual_mode.json": "12c2e11b067a14d44965577ce63dc0be306bddce4b5716d4a1074c50cbe392fc"
+    }
+  },
+  {
+    "command": "source ws_base/install_exact/setup.bash; source ws_nav/install_exact/setup.bash; python3 tests/test_stage6_safety.py",
+    "exit_code": 0,
+    "result": "PASS",
+    "evidence": [
+      "docs/exact_mppi_evidence/20261110/ros_safety_actual_mode.log",
+      "docs/exact_mppi_evidence/20261110/ros_safety.json"
+    ],
+    "note": "19/19; synthetic domain231/localhost only. Final source also includes a separately unit-tested legacy mode3 startup fallback; supported-mode execution is unchanged.",
+    "evidence_sha256": {
+      "docs/exact_mppi_evidence/20261110/ros_safety_actual_mode.log": "c5daf35b8863e79fa1a54591397a4f918bd9fe74992350d0c8f0e0dbda9eecec",
+      "docs/exact_mppi_evidence/20261110/ros_safety.json": "fb34fc8115682327e7a882af89e60533883c2d58b2527b03637a148b01f25d9d"
+    }
+  },
+  {
+    "command": "source ws_base/install_exact/setup.bash; source ws_nav/install_exact/setup.bash; .runtime/exact_mppi_venv/bin/python3 scripts/benchmark_exact_recorded.py --extract-only --output docs/exact_mppi_evidence/20261110/recorded_height_rays",
+    "exit_code": 0,
+    "result": "PASS",
+    "evidence": [
+      "docs/exact_mppi_evidence/20261110/recorded_height_rays_extract.log",
+      "docs/exact_mppi_evidence/20261110/recorded_height_rays/extraction.json"
+    ],
+    "evidence_sha256": {
+      "docs/exact_mppi_evidence/20261110/recorded_height_rays_extract.log": "2eb26c757d6904240e03769e8bde6e024d0ee2d089dceb00919e961a8e661e8c",
+      "docs/exact_mppi_evidence/20261110/recorded_height_rays/extraction.json": "c6ff980b2dd59f1a0b828ff3ad497b2ef8ea7f8042d7f3b30708f4af455b5799"
+    }
+  },
+  {
+    "command": "source ws_base/install_exact/setup.bash; source ws_nav/install_exact/setup.bash; JAX_PLATFORMS=cuda XLA_PYTHON_CLIENT_PREALLOCATE=false .runtime/exact_mppi_venv/bin/python3 scripts/benchmark_exact_recorded.py --contention --reuse-extraction docs/exact_mppi_evidence/20261110/recorded_height_rays/extraction.json --output docs/exact_mppi_evidence/20261110/recorded_contention_height_rays",
+    "exit_code": 0,
+    "result": "PASS",
+    "evidence": [
+      "docs/exact_mppi_evidence/20261110/recorded_contention_height_rays.log",
+      "docs/exact_mppi_evidence/20261110/recorded_contention_height_rays/report.json"
+    ],
+    "note": "357 stationary queries while real offline three-fusion frontend alive; 150 accepted,207 rejected. Not a navigation success rate.",
+    "evidence_sha256": {
+      "docs/exact_mppi_evidence/20261110/recorded_contention_height_rays.log": "0ae118d3f6dadb80c7c28d09cc83dea151920b8ecf06ecf61b082af96cdd5787",
+      "docs/exact_mppi_evidence/20261110/recorded_contention_height_rays/report.json": "da4459e89e6ebe31358d1609e9933804f497b04c01233beed14902fa0dcfe9a7"
+    }
+  },
+  {
+    "command": "python3 scripts/check_exact_v2_lifecycle.py",
+    "exit_code": 0,
+    "result": "PASS",
+    "evidence": [
+      "docs/exact_mppi_evidence/20261110/v2_lifecycle_final.log"
+    ],
+    "evidence_sha256": {
+      "docs/exact_mppi_evidence/20261110/v2_lifecycle_final.log": "154847b5eaa2bad5e569fcbc0e2ec655ed60614d3f6fcdcf071cd5f261377f91"
+    }
+  },
+  {
+    "command": "python3 scripts/check_base_receive_only.py",
+    "exit_code": 0,
+    "result": "PASS",
+    "evidence": [
+      "docs/exact_mppi_evidence/20261110/receive_only_final.log"
+    ],
+    "evidence_sha256": {
+      "docs/exact_mppi_evidence/20261110/receive_only_final.log": "3d20e398ebc956a0961a1430af5c4ef4e632a1ff4a6f0f970e3c68338b8808f6"
+    }
+  },
+  {
+    "command": "python3 scripts/check_base_feedback_sign.py",
+    "exit_code": 0,
+    "result": "PASS",
+    "evidence": [
+      "docs/exact_mppi_evidence/20261110/feedback_sign_final.log"
+    ],
+    "evidence_sha256": {
+      "docs/exact_mppi_evidence/20261110/feedback_sign_final.log": "b14e0e747e73789c39fa57bb0cb134d72231b28cbe5c933cc710c523064821b5"
+    }
+  },
+  {
+    "command": "g++ -std=c++14 -Iws_base/src/ranger_ros2/ranger_base/include scripts/check_exact_v2_commands.cpp -o .runtime/exact_v2_commands_final; .runtime/exact_v2_commands_final",
+    "exit_code": 0,
+    "result": "PASS",
+    "evidence": [
+      "docs/exact_mppi_evidence/20261110/v2_commands_final.log"
+    ],
+    "evidence_sha256": {
+      "docs/exact_mppi_evidence/20261110/v2_commands_final.log": "37d5da25aa6da26ec0749abdbed93d613e5c46de001e1a99d4a0553e0a8bc51b"
+    }
+  },
+  {
+    "command": "source ws_base/install_exact/setup.bash; source ws_nav/install_exact/setup.bash; ros2 launch ranger_navigation navigation.launch.py",
+    "exit_code": 0,
+    "result": "PASS",
+    "evidence": [
+      "docs/exact_mppi_evidence/20261110/launch_dry_run_verified.log"
+    ],
+    "evidence_sha256": {
+      "docs/exact_mppi_evidence/20261110/launch_dry_run_verified.log": "abc4f7d4daef448a1ba8dcf113453629ec92bea3af98266e273ec81aba5aa318"
+    }
+  },
+  {
+    "command": "bash scripts/run_navigation.sh",
+    "exit_code": 0,
+    "result": "PASS",
+    "evidence": [
+      "docs/exact_mppi_evidence/20261110/session_dry_run_verified.log"
+    ],
+    "evidence_sha256": {
+      "docs/exact_mppi_evidence/20261110/session_dry_run_verified.log": "30e7948b9274661c5b3773b8a9972f7be971c051c2595ecb0bd3a8f9d971ea0b"
+    }
+  },
+  {
+    "command": ".runtime/exact_mppi_venv/bin/python3 -m pip check",
+    "exit_code": 0,
+    "result": "PASS",
+    "evidence": [
+      "docs/exact_mppi_evidence/20261110/dependency_consistency.log"
+    ],
+    "evidence_sha256": {
+      "docs/exact_mppi_evidence/20261110/dependency_consistency.log": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+    }
+  },
+  {
+    "command": "patch -p1 on protected preimages; compare resulting bytes with actual nested repository sources",
+    "exit_code": 0,
+    "result": "PASS",
+    "evidence": [
+      "docs/exact_mppi_evidence/20261110/patch_reproduction.json"
+    ],
+    "evidence_sha256": {
+      "docs/exact_mppi_evidence/20261110/patch_reproduction.json": "cc2859ddc38dd8636df2bb2adf4ab352eff5ca4fa4a252e45304f8fc24ae12b3"
+    }
+  },
+  {
+    "command": "Verify source/installed Python bytes, upstream lock, protected baseline asset SHA256, actual binary/library identity",
+    "exit_code": 0,
+    "result": "PASS",
+    "evidence": [
+      "docs/exact_mppi_evidence/20261110/final_identity.json"
+    ],
+    "evidence_sha256": {
+      "docs/exact_mppi_evidence/20261110/final_identity.json": "6d120e4e7fa5adb16cdd0601452d958026169ae933b017019846030edf24b692"
+    }
+  },
+  {
+    "command": "mokutil --test-key /var/lib/shim-signed/mok/MOK.der",
+    "exit_code": 1,
+    "result": "PARTIAL",
+    "evidence": [
+      "docs/exact_mppi_evidence/20261110/gpu_final.txt"
+    ],
+    "note": "Printed already enrolled, but non-root kernel trusted-keyring access failed. GPU/CUDA and SecureBoot verified independently; no privilege change or re-enrollment requested.",
+    "evidence_sha256": {
+      "docs/exact_mppi_evidence/20261110/gpu_final.txt": "07d6cd5d4b0dd19bf9a1887ccd58be6e5ef8d68772f43449732b22e692527993"
+    }
+  },
+  {
+    "command": "Initial delivery audit: look for direct safety_node import in generated motion_gate wrapper",
+    "exit_code": 1,
+    "result": "INVALID_CHECK",
+    "note": "setuptools wrapper resolves entry_points metadata instead of importing the implementation by name. Corrected audit checks the actual installed metadata; no source change."
+  },
+  {
+    "command": "Delivery audit: evidence counts, source/install identity, protected assets, latency, obsolete file absence and installed entry_points metadata",
+    "exit_code": 0,
+    "result": "PASS",
+    "evidence": [
+      "docs/exact_mppi_evidence/20261110/delivery_audit.log"
+    ]
+  }
+]

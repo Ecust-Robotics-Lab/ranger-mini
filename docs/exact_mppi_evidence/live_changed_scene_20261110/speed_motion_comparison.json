@@ -1,0 +1,74 @@
+[
+  {
+    "name": "goal_camera_forward_continuity",
+    "status": 4,
+    "action_seconds": 21.867925484999432,
+    "zero_fraction": 0.2696526508226691,
+    "mean_command_mps": 0.012890489223912678,
+    "nonzero_p50_p95_max": [
+      0.012517714843586004,
+      0.04874636582672258,
+      0.06552585377527678
+    ],
+    "net_estimated_translation": 0.25808615866807166,
+    "accepted_plans": 6,
+    "final_command": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "final_feedback": [
+      -0.0,
+      -0.0,
+      0.0
+    ]
+  },
+  {
+    "name": "goal_camera_forward_speed_session_fixed",
+    "status": 5,
+    "action_seconds": 30.058838674998697,
+    "zero_fraction": 0.6846307385229541,
+    "mean_command_mps": 0.008376138583345849,
+    "nonzero_p50_p95_max": [
+      0.014955081173009796,
+      0.06086439406200306,
+      0.07720849759644936
+    ],
+    "net_estimated_translation": 0.22542385975236842,
+    "accepted_plans": 11,
+    "final_command": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "final_feedback": [
+      -0.0,
+      -0.0,
+      0.0
+    ]
+  },
+  {
+    "name": "goal_camera_forward_speed_gap_fixed",
+    "status": 5,
+    "action_seconds": 30.0519340940009,
+    "zero_fraction": 0.26147704590818366,
+    "mean_command_mps": 0.009463847626321105,
+    "nonzero_p50_p95_max": [
+      0.009449770049091068,
+      0.033906034951007226,
+      0.061969101713176204
+    ],
+    "net_estimated_translation": 0.25065049858928556,
+    "accepted_plans": 6,
+    "final_command": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "final_feedback": [
+      -0.0,
+      0.0,
+      0.0
+    ]
+  }
+]

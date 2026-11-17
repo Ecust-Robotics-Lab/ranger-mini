@@ -1,0 +1,52 @@
+CLIENT_READY
+{"goal": [1.873710945, 0.384182078, 0.818546912], "goal_id": "2a8ca59ef91a4003a6fcee08efd7bb48"}
+{"state": "EXECUTING", "reason": "tracking", "inputs_valid": true, "input_reason": "valid", "metrics": {"request_id": 653, "compute_s": 0.013991199999509263, "end_to_end_s": 0.028351470999950834, "valid": true, "validation_reason": "valid"}}
+{"state": "EXECUTING", "reason": "tracking", "inputs_valid": true, "input_reason": "valid", "metrics": {"request_id": 718, "compute_s": 0.012695737999820267, "end_to_end_s": 0.03589085899966449, "valid": true, "validation_reason": "valid"}}
+{"state": "EXECUTING", "reason": "tracking", "inputs_valid": true, "input_reason": "valid", "metrics": {"request_id": 790, "compute_s": 0.012642861000131234, "end_to_end_s": 0.06125082500057033, "valid": true, "validation_reason": "valid"}}
+{"state": "EXECUTING", "reason": "tracking", "inputs_valid": true, "input_reason": "valid", "metrics": {"request_id": 876, "compute_s": 0.010497594000298704, "end_to_end_s": 0.027584251000007498, "valid": true, "validation_reason": "valid"}}
+{"state": "EXECUTING", "reason": "tracking", "inputs_valid": true, "input_reason": "valid", "metrics": {"request_id": 926, "compute_s": 0.012885389999610197, "end_to_end_s": 0.03029318999961106, "valid": true, "validation_reason": "valid"}}
+{"state": "STOPPING", "reason": "segment_end", "inputs_valid": true, "input_reason": "valid", "metrics": {"request_id": 1005, "compute_s": 0.009463647999837121, "end_to_end_s": 0.022377209000296716, "valid": true, "validation_reason": "valid"}}
+{"state": "STOPPING", "reason": "segment_end", "inputs_valid": true, "input_reason": "valid", "metrics": {"request_id": 1085, "compute_s": 0.009651696999753767, "end_to_end_s": 0.021572351999566308, "valid": true, "validation_reason": "valid"}}
+{
+  "name": "turn_toward_door_01",
+  "error": null,
+  "goal": [
+    1.873710945,
+    0.384182078,
+    0.818546912
+  ],
+  "result_status": 5,
+  "cancel": {
+    "return_code": 0,
+    "count": 1
+  },
+  "elapsed_s": 43.10326337600054,
+  "final_state": {
+    "state": "CANCELED",
+    "reason": "canceled",
+    "generation": 54,
+    "worker": {
+      "ready": true,
+      "pid": 33624,
+      "nonce": "149a80f7c6cd4b4db89b475d1268927f",
+      "devices": [
+        "cuda:0"
+      ],
+      "warmup_s": {
+        "DRIVE": 2.724191536000035,
+        "PARALLEL": 2.3213744280001265,
+        "SPIN": 2.25959075999981
+      }
+    },
+    "inputs_valid": true,
+    "input_reason": "valid",
+    "metrics": {
+      "request_id": 1156,
+      "compute_s": 0.01054429100076959,
+      "end_to_end_s": 0.042148200000156066,
+      "valid": true,
+      "validation_reason": "valid"
+    }
+  },
+  "note": "Real action test; localization/wheel are estimates, no external truth."
+}

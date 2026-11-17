@@ -1,0 +1,215 @@
+{
+  "counts": {
+    "/system_state": 675,
+    "/motion_state": 675,
+    "/localization/estimate": 914,
+    "/diagnostics": 14,
+    "/navigation_ready": 1560,
+    "/fast_livo/navigation/wheel/odom": 621
+  },
+  "topics": {
+    "/system_state": {
+      "received_steady": 2038.407766295,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1794835139,
+            "nanosec": 472904061
+          },
+          "frame_id": ""
+        },
+        "vehicle_state": 0,
+        "control_mode": 3,
+        "error_code": 0,
+        "battery_voltage": 49.79999923706055,
+        "motion_mode": 0
+      }
+    },
+    "/motion_state": {
+      "received_steady": 2038.407495649,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1794835139,
+            "nanosec": 473012888
+          },
+          "frame_id": ""
+        },
+        "motion_mode": 0
+      }
+    },
+    "/localization/estimate": {
+      "received_steady": 2038.418590247,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1590195713,
+            "nanosec": 100254774
+          },
+          "frame_id": "map"
+        },
+        "base_frame": "base_link",
+        "pose": {
+          "position": {
+            "x": 0.1774914971647299,
+            "y": 0.11611212357830486,
+            "z": -0.5545202062547866
+          },
+          "orientation": {
+            "x": -0.006368689401614065,
+            "y": 0.004759347650153763,
+            "z": 0.04015245109309007,
+            "w": 0.9991619333603877
+          }
+        },
+        "state": 1,
+        "reason": "map_match_confirmed; map=160f8572a77a61856cf87e43514be769; graph=170; session=f5c2a66c25c3bffb8440f4922f9bd708; initial=global-1a746bab0c2f0803847e668ff6592726; request_generation=1"
+      }
+    },
+    "/diagnostics": {
+      "received_steady": 2038.150136761,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1590195713,
+            "nanosec": 6192189
+          },
+          "frame_id": ""
+        },
+        "status": [
+          {
+            "level": "\u0000",
+            "name": "fast_livo_navigation_map_lifecycle: Nav2 Health",
+            "message": "Nav2 is active",
+            "hardware_id": "Nav2",
+            "values": []
+          }
+        ]
+      }
+    },
+    "/navigation_ready": {
+      "received_steady": 2038.410721447,
+      "message": {
+        "data": false
+      }
+    },
+    "/fast_livo/navigation/wheel/odom": {
+      "received_steady": 2038.410116264,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1590195713,
+            "nanosec": 235944123
+          },
+          "frame_id": "odom"
+        },
+        "child_frame_id": "base_link",
+        "pose": {
+          "pose": {
+            "position": {
+              "x": 0.9387930004398323,
+              "y": 0.4455387713699955,
+              "z": 0.0
+            },
+            "orientation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.5503829357868555,
+              "w": 0.8349123450965629
+            }
+          },
+          "covariance": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "twist": {
+          "twist": {
+            "linear": {
+              "x": -0.0,
+              "y": -0.0,
+              "z": 0.0
+            },
+            "angular": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            }
+          },
+          "covariance": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      }
+    }
+  }
+}

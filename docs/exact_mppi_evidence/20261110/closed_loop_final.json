@@ -1,0 +1,300 @@
+{
+  "devices": [
+    "cuda:0"
+  ],
+  "warmup_seconds": {
+    "DRIVE": 2.0477246999998897,
+    "PARALLEL": 1.761747517999538,
+    "SPIN": 1.7589756229999693
+  },
+  "benchmark_ms": {
+    "p50": 9.452076999878045,
+    "p95": 10.552942600043025,
+    "p99": 16.275668519328956
+  },
+  "rss_kib": 965188,
+  "scenarios": [
+    {
+      "name": "forward",
+      "pass": true,
+      "state": "SUCCEEDED",
+      "reason": "goal_reached_and_stopped",
+      "pose": [
+        0.9438284694093639,
+        0.00038016167503451825,
+        0.0006526576196392853
+      ],
+      "goal": [
+        1.0,
+        0,
+        0
+      ],
+      "simulated_seconds": 11.200000000000001,
+      "wall_seconds": 2.2819640070001697,
+      "collided": false,
+      "segments": [
+        {
+          "mode": "DRIVE",
+          "reverse": false
+        },
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        }
+      ]
+    },
+    {
+      "name": "reverse",
+      "pass": true,
+      "state": "SUCCEEDED",
+      "reason": "goal_reached_and_stopped",
+      "pose": [
+        -0.6422047576634213,
+        0.0,
+        0.0
+      ],
+      "goal": [
+        -0.7,
+        0,
+        0
+      ],
+      "simulated_seconds": 6.15,
+      "wall_seconds": 1.1661716670005262,
+      "collided": false,
+      "segments": [
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        }
+      ]
+    },
+    {
+      "name": "lateral",
+      "pass": true,
+      "state": "SUCCEEDED",
+      "reason": "goal_reached_and_stopped",
+      "pose": [
+        0.0,
+        0.6438462057267316,
+        0.0
+      ],
+      "goal": [
+        0,
+        0.7,
+        0
+      ],
+      "simulated_seconds": 6.0,
+      "wall_seconds": 1.1542978960005712,
+      "collided": false,
+      "segments": [
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        }
+      ]
+    },
+    {
+      "name": "diagonal",
+      "pass": true,
+      "state": "SUCCEEDED",
+      "reason": "goal_reached_and_stopped",
+      "pose": [
+        0.6289761043160809,
+        0.5486351607843432,
+        0.05946959364518989
+      ],
+      "goal": [
+        0.6,
+        0.6,
+        0
+      ],
+      "simulated_seconds": 15.55,
+      "wall_seconds": 2.6355674890000955,
+      "collided": false,
+      "segments": [
+        {
+          "mode": "DRIVE",
+          "reverse": false
+        },
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        },
+        {
+          "mode": "SPIN",
+          "reverse": false
+        }
+      ]
+    },
+    {
+      "name": "spin",
+      "pass": true,
+      "state": "SUCCEEDED",
+      "reason": "goal_reached_and_stopped",
+      "pose": [
+        0.0,
+        0.0,
+        1.5102170278551057
+      ],
+      "goal": [
+        0,
+        0,
+        1.57
+      ],
+      "simulated_seconds": 5.8500000000000005,
+      "wall_seconds": 0.6712998190005237,
+      "collided": false,
+      "segments": [
+        {
+          "mode": "SPIN",
+          "reverse": false
+        }
+      ]
+    },
+    {
+      "name": "left_turn",
+      "pass": true,
+      "state": "SUCCEEDED",
+      "reason": "goal_reached_and_stopped",
+      "pose": [
+        0.942281931352594,
+        0.5995755488600665,
+        1.515516955680141
+      ],
+      "goal": [
+        1.0,
+        0.6,
+        1.57
+      ],
+      "simulated_seconds": 15.65,
+      "wall_seconds": 2.7787768030002553,
+      "collided": false,
+      "segments": [
+        {
+          "mode": "DRIVE",
+          "reverse": false
+        },
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        },
+        {
+          "mode": "SPIN",
+          "reverse": false
+        }
+      ]
+    },
+    {
+      "name": "right_turn",
+      "pass": true,
+      "state": "SUCCEEDED",
+      "reason": "goal_reached_and_stopped",
+      "pose": [
+        0.9453921953829116,
+        -0.6217189706384789,
+        -1.5181097979568676
+      ],
+      "goal": [
+        1.0,
+        -0.6,
+        -1.57
+      ],
+      "simulated_seconds": 16.8,
+      "wall_seconds": 3.021189248000155,
+      "collided": false,
+      "segments": [
+        {
+          "mode": "DRIVE",
+          "reverse": false
+        },
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        },
+        {
+          "mode": "SPIN",
+          "reverse": false
+        }
+      ]
+    },
+    {
+      "name": "static_obstacle",
+      "pass": true,
+      "state": "SUCCEEDED",
+      "reason": "goal_reached_and_stopped",
+      "pose": [
+        1.499349410762079,
+        -0.05942485757805116,
+        0.0
+      ],
+      "goal": [
+        1.5,
+        0,
+        0
+      ],
+      "simulated_seconds": 40.7,
+      "wall_seconds": 9.421510988000591,
+      "collided": false,
+      "segments": [
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        },
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        },
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        },
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        },
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        },
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        },
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        }
+      ]
+    },
+    {
+      "name": "door",
+      "pass": true,
+      "state": "SUCCEEDED",
+      "reason": "goal_reached_and_stopped",
+      "pose": [
+        1.4434701178146763,
+        0.001975826602487407,
+        -0.0009263161126682462
+      ],
+      "goal": [
+        1.5,
+        0,
+        0
+      ],
+      "simulated_seconds": 13.100000000000001,
+      "wall_seconds": 2.836497207999855,
+      "collided": false,
+      "segments": [
+        {
+          "mode": "DRIVE",
+          "reverse": false
+        },
+        {
+          "mode": "PARALLEL",
+          "reverse": false
+        }
+      ]
+    }
+  ],
+  "pass": true
+}

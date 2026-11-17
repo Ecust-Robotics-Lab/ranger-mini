@@ -1,0 +1,1865 @@
+{
+  "reasons": {
+    "map_loaded_searching": 352,
+    "searching_waiting_query_window": 13,
+    "retry_backoff": 7869,
+    "global_no_geometric_match": 36,
+    "verifying_independent_motion_support": 2,
+    "verifying_wait_disjoint_query_scans": 283,
+    "verifying_insufficient_time_or_motion_baseline": 58
+  },
+  "attempt_details": {
+    "global_no_geometric_match": {
+      "cache_bytes": 3359904,
+      "candidates": [
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.6060868411835758,
+                0.8324468946958437,
+                0.22572560970878192
+              ],
+              "xyzw": [
+                0.2710312727305144,
+                0.003782413226433091,
+                -0.7680812033494774,
+                0.5801542963845746
+              ]
+            },
+            "converged": true,
+            "correspondences": 5,
+            "elapsed_ms": 19.33714299997291,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 20,
+              "translation_inliers": 5,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 117,
+          "retrieval_distance": 0.04179598152448209
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.5911665678769948,
+                0.681167396904787,
+                0.38123468318597875
+              ],
+              "xyzw": [
+                0.267640801595462,
+                -0.0367315713307257,
+                -0.7683509999957364,
+                0.5802205906329646
+              ]
+            },
+            "converged": true,
+            "correspondences": 13,
+            "elapsed_ms": 15.587095999990197,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 18,
+              "translation_inliers": 13,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 116,
+          "retrieval_distance": 0.0433537989565493
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.4664538338560456,
+                0.4298455024971324,
+                0.2632366139679479
+              ],
+              "xyzw": [
+                0.29379971616256684,
+                -0.012156632809856004,
+                -0.7972389507984856,
+                0.5272039438312767
+              ]
+            },
+            "converged": true,
+            "correspondences": 5,
+            "elapsed_ms": 12.385819000030551,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 18,
+              "translation_inliers": 5,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 118,
+          "retrieval_distance": 0.04915261839722513
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.8921536050671243,
+                0.5851084121112995,
+                0.10294874544308036
+              ],
+              "xyzw": [
+                -0.3441683835225114,
+                -0.009419716453979684,
+                0.8556332543657335,
+                -0.3864597349646302
+              ]
+            },
+            "converged": true,
+            "correspondences": 14,
+            "elapsed_ms": 9.274131999973179,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 18,
+              "translation_inliers": 14,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 119,
+          "retrieval_distance": 0.05605465550856692
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.8509024899175842,
+                0.5088298838561452,
+                0.38258422478713855
+              ],
+              "xyzw": [
+                -0.32963375620388385,
+                -0.043330548488254184,
+                0.8934883714566539,
+                -0.30189829481194813
+              ]
+            },
+            "converged": false,
+            "correspondences": 0,
+            "elapsed_ms": 9.233671999993476,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {},
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 120,
+          "retrieval_distance": 0.061920004294784656
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.9054746358156226,
+                -0.1181552676652949,
+                0.318816997226619
+              ],
+              "xyzw": [
+                -0.35094385188332694,
+                0.0182317565520634,
+                0.9169506503663292,
+                -0.18896433703502297
+              ]
+            },
+            "converged": true,
+            "correspondences": 14,
+            "elapsed_ms": 9.173145999966437,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 25,
+              "translation_inliers": 14,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 121,
+          "retrieval_distance": 0.06252434457941204
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.8656650241963019,
+                1.0133953840869951,
+                0.42543478517777333
+              ],
+              "xyzw": [
+                0.2980556608267047,
+                0.007512622913063849,
+                -0.7785413516512764,
+                0.5522497146356224
+              ]
+            },
+            "converged": true,
+            "correspondences": 5,
+            "elapsed_ms": 9.51289300002145,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 8,
+              "translation_inliers": 5,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 115,
+          "retrieval_distance": 0.0749359027984441
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.7095322922948184,
+                -0.25409945822009383,
+                0.26339518867463957
+              ],
+              "xyzw": [
+                -0.3215192266820203,
+                0.013802355640833744,
+                0.9418418025801997,
+                -0.09679308221686073
+              ]
+            },
+            "converged": true,
+            "correspondences": 19,
+            "elapsed_ms": 10.141030999989198,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 31,
+              "translation_inliers": 19,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 122,
+          "retrieval_distance": 0.0758572762357586
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                -0.5660805961358583,
+                -0.5529513203375507,
+                -0.2622242863313823
+              ],
+              "xyzw": [
+                -0.23247284687032554,
+                -0.010371967141998601,
+                0.5829042763679407,
+                0.7785058781779228
+              ]
+            },
+            "converged": true,
+            "correspondences": 11,
+            "elapsed_ms": 9.698167999999896,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 14,
+              "translation_inliers": 11,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 1,
+          "retrieval_distance": 0.08514897494161743
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.6336572152177657,
+                -0.6969571567262897,
+                0.3084541718621141
+              ],
+              "xyzw": [
+                -0.3366515123677675,
+                0.0011341687472558408,
+                0.9325238604136954,
+                0.1306281847109827
+              ]
+            },
+            "converged": true,
+            "correspondences": 11,
+            "elapsed_ms": 10.029264000024796,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 11,
+              "translation_inliers": 11,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 124,
+          "retrieval_distance": 0.08744581967564075
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.6722975728602532,
+                -0.8476867325202112,
+                0.16727929819220083
+              ],
+              "xyzw": [
+                -0.3514834965556508,
+                0.03290906979246962,
+                0.9031072743022188,
+                0.2444863920074592
+              ]
+            },
+            "converged": true,
+            "correspondences": 14,
+            "elapsed_ms": 9.29068699997515,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 28,
+              "translation_inliers": 14,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 125,
+          "retrieval_distance": 0.08792501980349023
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                -1.0289899703341647,
+                -1.0002615831628845,
+                -0.22768535134477058
+              ],
+              "xyzw": [
+                -0.31462376661864516,
+                0.01088532075594217,
+                0.8086832468240082,
+                0.4969152861171783
+              ]
+            },
+            "converged": true,
+            "correspondences": 2,
+            "elapsed_ms": 10.07016199997679,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 16,
+              "translation_inliers": 2,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 130,
+          "retrieval_distance": 0.08797094252311304
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                -0.461907310389203,
+                -0.6919573277154604,
+                -0.14347900151435475
+              ],
+              "xyzw": [
+                -0.2137952649471081,
+                -0.0018854611570773032,
+                0.520512805352819,
+                0.8266525565109925
+              ]
+            },
+            "converged": true,
+            "correspondences": 11,
+            "elapsed_ms": 9.04967100001386,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 9,
+              "translation_inliers": 11,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 0,
+          "retrieval_distance": 0.08923906566083097
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.7687926680747318,
+                -0.49180831963069166,
+                0.28857129083419825
+              ],
+              "xyzw": [
+                -0.36100963836689814,
+                0.012692875172088613,
+                0.9324731504698937,
+                -0.0021807289648896463
+              ]
+            },
+            "converged": true,
+            "correspondences": 19,
+            "elapsed_ms": 9.024123000017426,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 23,
+              "translation_inliers": 19,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 123,
+          "retrieval_distance": 0.09037814283376382
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.06452895090067867,
+                -1.0111488518976381,
+                0.1214297767815309
+              ],
+              "xyzw": [
+                -0.30752832772353267,
+                0.024139695831873073,
+                0.8591071437401963,
+                0.40838525721097463
+              ]
+            },
+            "converged": true,
+            "correspondences": 20,
+            "elapsed_ms": 9.234349999985625,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 24,
+              "translation_inliers": 20,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 127,
+          "retrieval_distance": 0.09386852093189198
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                1.389487049865112,
+                0.6701733273288072,
+                0.4258735188222697
+              ],
+              "xyzw": [
+                0.24945372737059326,
+                -0.009149465003618911,
+                -0.7222846062769894,
+                0.6449760249236864
+              ]
+            },
+            "converged": true,
+            "correspondences": 10,
+            "elapsed_ms": 10.5132630000071,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 18,
+              "translation_inliers": 10,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 114,
+          "retrieval_distance": 0.09396445554143286
+        }
+      ],
+      "elapsed_ms": 193.78093699998544,
+      "global_descriptor": "radial_pair_multiscale_v2",
+      "global_search_allowed": true,
+      "global_search_enabled": true,
+      "global_stationary_initialization": true,
+      "graph_version": 170,
+      "inputs_ready": true,
+      "invalid_messages": 0,
+      "map_loading": false,
+      "map_uuid": "160f8572a77a61856cf87e43514be769",
+      "online_scheduling": true,
+      "pair_bytes": 0,
+      "pair_counters": {},
+      "processed_scans": 1780,
+      "public_tf_publisher": false,
+      "query_points": 4000,
+      "query_scan_ids": [
+        1795,
+        1796
+      ],
+      "query_stamp_ns": 1590194010600186586,
+      "queued_jobs": 1,
+      "sample_age_seconds": -1.0,
+      "skipped_scans": 17,
+      "source_manifest_sha256": "93628bcf34742e8fbdb1f08afa9501f44aaa1f9dab4d9ef2c80914b7a62fc105",
+      "stale_results": 0,
+      "tag_candidates": [],
+      "tag_input_dropped": 0
+    },
+    "verifying_independent_motion_support": {
+      "cache_bytes": 3359904,
+      "candidates": [
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.6405227398793846,
+                0.6815950258318483,
+                0.2297527359651457
+              ],
+              "xyzw": [
+                0.28126570541389345,
+                -0.013663808369391342,
+                -0.7764600432788263,
+                0.5637487955555318
+              ]
+            },
+            "converged": true,
+            "correspondences": 19,
+            "elapsed_ms": 14.767962999997053,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 26,
+              "translation_inliers": 19,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 117,
+          "retrieval_distance": 0.04601807129639128
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.5218052652928293,
+                0.8180415825562174,
+                0.15772000818813794
+              ],
+              "xyzw": [
+                0.27766978179258417,
+                -0.003685965224063779,
+                -0.7661991306812361,
+                0.5795039241307555
+              ]
+            },
+            "converged": true,
+            "correspondences": 16,
+            "elapsed_ms": 15.486314000042967,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 25,
+              "translation_inliers": 16,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 116,
+          "retrieval_distance": 0.04617720340081491
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.7546019715173655,
+                0.6001758377170013,
+                0.31858624178517553
+              ],
+              "xyzw": [
+                -0.28965444953778174,
+                -0.02070734384500955,
+                0.8186248388702032,
+                -0.49550467097554474
+              ]
+            },
+            "converged": true,
+            "correspondences": 17,
+            "elapsed_ms": 13.163879999979144,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 22,
+              "translation_inliers": 17,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 118,
+          "retrieval_distance": 0.053546146012536565
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.6698527921244061,
+                0.4263428496624051,
+                0.27216962816125306
+              ],
+              "xyzw": [
+                -0.31181113577646125,
+                -0.002425719860471166,
+                0.8606488030609984,
+                -0.40255629330395826
+              ]
+            },
+            "converged": true,
+            "correspondences": 12,
+            "elapsed_ms": 9.209166000005098,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 15,
+              "translation_inliers": 12,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 119,
+          "retrieval_distance": 0.0586101060758352
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                2.0806133734394496,
+                -1.9784031621412144,
+                1.0193054793522975
+              ],
+              "xyzw": [
+                0.4327999346990838,
+                -0.2257877050635474,
+                -0.7014688031896764,
+                0.5192741539093282
+              ]
+            },
+            "converged": false,
+            "correspondences": 0,
+            "elapsed_ms": 9.487831000001279,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {},
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 120,
+          "retrieval_distance": 0.06549751532290882
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.858133276636728,
+                0.021163004774972728,
+                0.29248677696722186
+              ],
+              "xyzw": [
+                -0.3371884472858747,
+                0.00817512811049238,
+                0.9193673942231766,
+                -0.20248632728311372
+              ]
+            },
+            "converged": true,
+            "correspondences": 36,
+            "elapsed_ms": 10.254979000023923,
+            "geometrically_accepted": true,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 43,
+              "translation_inliers": 36,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_hypothesis_requires_fine_validation",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "fine": {
+            "T_target_source": {
+              "xyz": [
+                -0.544551172813026,
+                -0.6004446295054768,
+                0.02385431870475888
+              ],
+              "xyzw": [
+                -0.10736526819539875,
+                0.14883552104284778,
+                0.6111079137978453,
+                0.7699790935829878
+              ]
+            },
+            "converged": true,
+            "correspondences": 3644,
+            "elapsed_ms": 26.839735999999448,
+            "geometrically_accepted": true,
+            "method": "small_gicp",
+            "native_diagnostics": {
+              "H_eigenvalues": [
+                93925.67125897326,
+                114269.0981220406,
+                321498.5126181723,
+                899873.0216882456,
+                2644473.876019522,
+                3620408.19102344
+              ],
+              "H_finite": true,
+              "covariance_calibrated": false,
+              "error": 77.28199728079356,
+              "iterations": 3,
+              "num_inliers": 2871
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.24674495988488893,
+            "reason": "geometry_valid",
+            "rmse_m": 0.1263670692184796,
+            "source_overlap": 0.911
+          },
+          "keyframe": 121,
+          "retrieval_distance": 0.0671572239429726,
+          "target_keyframe_ids": [
+            121,
+            120,
+            122,
+            123,
+            119,
+            118,
+            124,
+            117
+          ]
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.5817899110325311,
+                -0.2572871588420004,
+                0.14239151984856996
+              ],
+              "xyzw": [
+                -0.28930729731132404,
+                0.012215352337749218,
+                0.9525384053194698,
+                -0.09392901192455645
+              ]
+            },
+            "converged": true,
+            "correspondences": 11,
+            "elapsed_ms": 10.367359999975179,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 23,
+              "translation_inliers": 11,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 122,
+          "retrieval_distance": 0.08281505939816737
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                1.0332830078062298,
+                0.6490126515850161,
+                0.8130671931664429
+              ],
+              "xyzw": [
+                0.27142012384152797,
+                -0.061275902702108975,
+                -0.7549490710302208,
+                0.5938251260030158
+              ]
+            },
+            "converged": true,
+            "correspondences": 9,
+            "elapsed_ms": 9.544192999953793,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 16,
+              "translation_inliers": 9,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 115,
+          "retrieval_distance": 0.08463326434150988
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.33601107269707126,
+                -0.5431743397620417,
+                0.560456902525142
+              ],
+              "xyzw": [
+                -0.2947843570967687,
+                0.022290380573420386,
+                0.9485147930391167,
+                0.11368821016666096
+              ]
+            },
+            "converged": true,
+            "correspondences": 2,
+            "elapsed_ms": 9.295053000016651,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 17,
+              "translation_inliers": 2,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 124,
+          "retrieval_distance": 0.09562169045576008
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.4795714811180785,
+                -0.7931481890435494,
+                0.1814923959221138
+              ],
+              "xyzw": [
+                -0.34850287858908535,
+                0.0040110410180773035,
+                0.9117996280969314,
+                0.2171430251409661
+              ]
+            },
+            "converged": true,
+            "correspondences": 30,
+            "elapsed_ms": 10.562213000014253,
+            "geometrically_accepted": true,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 48,
+              "translation_inliers": 30,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_hypothesis_requires_fine_validation",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "fine": {
+            "T_target_source": {
+              "xyz": [
+                -0.546089162936542,
+                -0.5975871436111402,
+                0.02168458602520873
+              ],
+              "xyzw": [
+                -0.1070441880982566,
+                0.1495083960258447,
+                0.6109414818692789,
+                0.770025510644637
+              ]
+            },
+            "converged": true,
+            "correspondences": 3709,
+            "elapsed_ms": 20.505229999969288,
+            "geometrically_accepted": true,
+            "method": "small_gicp",
+            "native_diagnostics": {
+              "H_eigenvalues": [
+                94407.48601808978,
+                115996.18445271504,
+                349608.8056760246,
+                941126.0910750021,
+                2692867.4067190834,
+                3752553.7720226445
+              ],
+              "H_finite": true,
+              "covariance_calibrated": false,
+              "error": 79.3322143291609,
+              "iterations": 3,
+              "num_inliers": 2935
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.24927177469399378,
+            "reason": "geometry_valid",
+            "rmse_m": 0.12584775108372995,
+            "source_overlap": 0.92725
+          },
+          "keyframe": 125,
+          "retrieval_distance": 0.09736782212237839,
+          "target_keyframe_ids": [
+            125,
+            124,
+            126,
+            123,
+            127,
+            128,
+            122,
+            121
+          ]
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                -0.4957914768510786,
+                -0.6816826834078745,
+                -0.2788457515235468
+              ],
+              "xyzw": [
+                -0.2409137022851208,
+                0.018832338286057914,
+                0.5897747203399969,
+                0.7705658377671788
+              ]
+            },
+            "converged": true,
+            "correspondences": 15,
+            "elapsed_ms": 9.835842000029515,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 20,
+              "translation_inliers": 15,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 1,
+          "retrieval_distance": 0.09769589788475608
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                -0.5234202841848173,
+                -0.8242756105562361,
+                0.07474448281632598
+              ],
+              "xyzw": [
+                -0.22927681677168896,
+                0.0011021104974378536,
+                0.698184963112034,
+                0.6782099114048251
+              ]
+            },
+            "converged": true,
+            "correspondences": 10,
+            "elapsed_ms": 10.848292999980913,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 15,
+              "translation_inliers": 10,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 130,
+          "retrieval_distance": 0.09897820167752414
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.5479170746627888,
+                -0.5332040334641457,
+                0.1389590587579906
+              ],
+              "xyzw": [
+                -0.32260294292221914,
+                0.014862570600511712,
+                0.9463072465755508,
+                0.014458225744124389
+              ]
+            },
+            "converged": true,
+            "correspondences": 11,
+            "elapsed_ms": 9.610645999998724,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 26,
+              "translation_inliers": 11,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 123,
+          "retrieval_distance": 0.09969077922464482
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                -0.5004900149233306,
+                -0.653214677119377,
+                -0.1619146181357548
+              ],
+              "xyzw": [
+                -0.22519042642336373,
+                0.01370686337126743,
+                0.6085600798873312,
+                0.7607601612277749
+              ]
+            },
+            "converged": true,
+            "correspondences": 11,
+            "elapsed_ms": 10.605103999978382,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 14,
+              "translation_inliers": 11,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 0,
+          "retrieval_distance": 0.10002283790745502
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.05382695644842264,
+                -1.0170851306801698,
+                0.04427788889948836
+              ],
+              "xyzw": [
+                -0.3184949194014781,
+                0.015655818267768542,
+                0.857695278872685,
+                0.4033295058253485
+              ]
+            },
+            "converged": true,
+            "correspondences": 15,
+            "elapsed_ms": 9.33387700001731,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 29,
+              "translation_inliers": 15,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 127,
+          "retrieval_distance": 0.1031698062377926
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                1.2953468566957698,
+                0.7444372931957004,
+                0.4801216170193204
+              ],
+              "xyzw": [
+                0.2705958279532409,
+                -0.014554339505474441,
+                -0.7270444956229563,
+                0.6308505135768863
+              ]
+            },
+            "converged": true,
+            "correspondences": 14,
+            "elapsed_ms": 9.215341000015087,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 14,
+              "translation_inliers": 14,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 114,
+          "retrieval_distance": 0.105888471153894
+        }
+      ],
+      "elapsed_ms": 274.11126800001284,
+      "evaluated_candidate_limit": 16,
+      "global_descriptor": "radial_pair_multiscale_v2",
+      "global_search_allowed": true,
+      "global_search_enabled": true,
+      "global_stationary_initialization": true,
+      "graph_version": 170,
+      "inputs_ready": true,
+      "invalid_messages": 0,
+      "map_loading": false,
+      "map_uuid": "160f8572a77a61856cf87e43514be769",
+      "online_scheduling": true,
+      "pair_bytes": 0,
+      "pair_counters": {},
+      "processed_scans": 1395,
+      "public_tf_publisher": false,
+      "query_points": 4000,
+      "query_scan_ids": [
+        1407,
+        1408
+      ],
+      "query_stamp_ns": 1590193971800292968,
+      "queued_jobs": 1,
+      "sample_age_seconds": -1.0,
+      "skipped_scans": 14,
+      "source_manifest_sha256": "93628bcf34742e8fbdb1f08afa9501f44aaa1f9dab4d9ef2c80914b7a62fc105",
+      "stale_results": 0,
+      "stationary_strong_geometry": false,
+      "tag_candidates": [],
+      "tag_input_dropped": 0,
+      "verified_pose": {
+        "xyz": [
+          -0.546089162936542,
+          -0.5975871436111402,
+          0.02168458602520873
+        ],
+        "xyzw": [
+          -0.1070441880982566,
+          0.1495083960258447,
+          0.6109414818692789,
+          0.770025510644637
+        ]
+      }
+    },
+    "verifying_insufficient_time_or_motion_baseline": {
+      "cache_bytes": 3359904,
+      "candidates": [
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.5956258252903782,
+                0.712968073750506,
+                0.20279018881656272
+              ],
+              "xyzw": [
+                0.2896148053955906,
+                -0.020513300497434554,
+                -0.7623385232204168,
+                0.5783964427730257
+              ]
+            },
+            "converged": true,
+            "correspondences": 16,
+            "elapsed_ms": 9.680975999970087,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 20,
+              "translation_inliers": 16,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 117,
+          "retrieval_distance": 0.038665179523335556
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.5822728113256124,
+                0.7381463760757805,
+                0.12474142745979812
+              ],
+              "xyzw": [
+                0.27449196781412016,
+                -0.006538358679881017,
+                -0.7313262354534038,
+                0.6243183056813713
+              ]
+            },
+            "converged": true,
+            "correspondences": 5,
+            "elapsed_ms": 9.285040000008848,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 29,
+              "translation_inliers": 5,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 116,
+          "retrieval_distance": 0.040356062399876796
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.8439218659739337,
+                0.7190213377847119,
+                0.32463588891243567
+              ],
+              "xyzw": [
+                -0.2967031182779274,
+                0.003874753992098493,
+                0.8355653102207397,
+                -0.4623665842612052
+              ]
+            },
+            "converged": true,
+            "correspondences": 2,
+            "elapsed_ms": 9.844956999984333,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 11,
+              "translation_inliers": 2,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 118,
+          "retrieval_distance": 0.04692840521241629
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.7078089658850067,
+                0.4881348816809648,
+                0.307603641976742
+              ],
+              "xyzw": [
+                -0.2993738805014014,
+                -0.0015523112371211931,
+                0.865001110920158,
+                -0.40267350063078217
+              ]
+            },
+            "converged": true,
+            "correspondences": 13,
+            "elapsed_ms": 9.335935000024165,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 20,
+              "translation_inliers": 13,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 119,
+          "retrieval_distance": 0.052363367306711144
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.8825092748038514,
+                0.14394479635416602,
+                0.26877395856631653
+              ],
+              "xyzw": [
+                -0.3354082103664273,
+                0.013874906730721516,
+                0.8895787000130392,
+                -0.3097717802917428
+              ]
+            },
+            "converged": true,
+            "correspondences": 10,
+            "elapsed_ms": 9.897136999995837,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 18,
+              "translation_inliers": 10,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 120,
+          "retrieval_distance": 0.058454286470248265
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.7607033542646892,
+                -0.010683723230206563,
+                0.37936624045247935
+              ],
+              "xyzw": [
+                -0.3179043098914599,
+                0.004209689624011901,
+                0.9260144846796543,
+                -0.20350995658487664
+              ]
+            },
+            "converged": true,
+            "correspondences": 22,
+            "elapsed_ms": 9.73526200004926,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 36,
+              "translation_inliers": 22,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 121,
+          "retrieval_distance": 0.0588692488039564
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.8343796512580635,
+                -0.24219773441524217,
+                0.37790891882602384
+              ],
+              "xyzw": [
+                -0.34492444660831584,
+                0.004287862474387191,
+                0.935134347700878,
+                -0.08082383384498285
+              ]
+            },
+            "converged": true,
+            "correspondences": 35,
+            "elapsed_ms": 10.165916999994806,
+            "geometrically_accepted": true,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 42,
+              "translation_inliers": 35,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_hypothesis_requires_fine_validation",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "fine": {
+            "T_target_source": {
+              "xyz": [
+                -0.5457979587732666,
+                -0.6006984498954803,
+                0.021065916818280333
+              ],
+              "xyzw": [
+                -0.10724305466786217,
+                0.14922219611189344,
+                0.6111973416884928,
+                0.7698502925413288
+              ]
+            },
+            "converged": true,
+            "correspondences": 3653,
+            "elapsed_ms": 18.711144000008062,
+            "geometrically_accepted": true,
+            "method": "small_gicp",
+            "native_diagnostics": {
+              "H_eigenvalues": [
+                82809.93889421932,
+                112981.46405344893,
+                312725.4809569499,
+                929951.2300650374,
+                2729831.747047504,
+                3526932.13133872
+              ],
+              "H_finite": true,
+              "covariance_calibrated": false,
+              "error": 114.96777297072299,
+              "iterations": 4,
+              "num_inliers": 2818
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.24818631512289702,
+            "reason": "geometry_valid",
+            "rmse_m": 0.12511745480512426,
+            "source_overlap": 0.91325
+          },
+          "keyframe": 122,
+          "retrieval_distance": 0.07120821335244645,
+          "target_keyframe_ids": [
+            122,
+            123,
+            121,
+            124,
+            120,
+            125,
+            119,
+            126
+          ]
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                1.0176906254753106,
+                0.8714170876082419,
+                0.39386163522975465
+              ],
+              "xyzw": [
+                0.30100077410213544,
+                -0.002802321288768278,
+                -0.7613557299373891,
+                0.5742195864621962
+              ]
+            },
+            "converged": true,
+            "correspondences": 14,
+            "elapsed_ms": 9.849103999954423,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 25,
+              "translation_inliers": 14,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 115,
+          "retrieval_distance": 0.07192319693172165
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.5894069310213278,
+                -0.784767302632362,
+                0.18227928028885662
+              ],
+              "xyzw": [
+                -0.3423117127060782,
+                0.027512228333380764,
+                0.9326751825430318,
+                0.11037559741485252
+              ]
+            },
+            "converged": true,
+            "correspondences": 12,
+            "elapsed_ms": 9.513481999988471,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 14,
+              "translation_inliers": 12,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 124,
+          "retrieval_distance": 0.08147934742786066
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                -0.5364429966836766,
+                -0.5926338133274905,
+                -0.22241896397929514
+              ],
+              "xyzw": [
+                -0.22843106178075734,
+                0.0033008235228512454,
+                0.580858786459971,
+                0.7812883109134787
+              ]
+            },
+            "converged": true,
+            "correspondences": 20,
+            "elapsed_ms": 10.14109999999846,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 28,
+              "translation_inliers": 20,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 1,
+          "retrieval_distance": 0.08347514354247104
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.4928042983328524,
+                -0.7435761171298141,
+                0.22019239780670086
+              ],
+              "xyzw": [
+                -0.33940403007487263,
+                0.005801666106245239,
+                0.9147618726612424,
+                0.21904785176902272
+              ]
+            },
+            "converged": true,
+            "correspondences": 23,
+            "elapsed_ms": 10.330205999991904,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 37,
+              "translation_inliers": 23,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 125,
+          "retrieval_distance": 0.08371531106890248
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.7642562928292866,
+                -0.45495998447655944,
+                0.28171829268701604
+              ],
+              "xyzw": [
+                -0.36466849111589517,
+                0.006320529618930156,
+                0.9310438615811786,
+                0.011587506401285875
+              ]
+            },
+            "converged": true,
+            "correspondences": 17,
+            "elapsed_ms": 12.047195000036481,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 15,
+              "translation_inliers": 17,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 123,
+          "retrieval_distance": 0.08551178908697886
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                -0.45093319105882856,
+                -0.9327785500640697,
+                -0.057696473826897215
+              ],
+              "xyzw": [
+                -0.26217840653698143,
+                -0.006810119449546793,
+                0.6978821876598896,
+                0.6664657212234243
+              ]
+            },
+            "converged": true,
+            "correspondences": 12,
+            "elapsed_ms": 10.157882999976664,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 19,
+              "translation_inliers": 12,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 130,
+          "retrieval_distance": 0.08623796327315432
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                -0.5251364397935143,
+                -0.5829074980378152,
+                -0.1604563620543916
+              ],
+              "xyzw": [
+                -0.22453296826567698,
+                0.0040072362332873035,
+                0.5798791521452277,
+                0.7831405091852337
+              ]
+            },
+            "converged": true,
+            "correspondences": 21,
+            "elapsed_ms": 10.018958999978622,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 27,
+              "translation_inliers": 21,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 0,
+          "retrieval_distance": 0.08750414560910329
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                1.2254704137664396,
+                0.7947862461655701,
+                0.6080761258170448
+              ],
+              "xyzw": [
+                0.2392396944149261,
+                0.005308624493554796,
+                -0.7586682131521232,
+                0.6059362420872382
+              ]
+            },
+            "converged": true,
+            "correspondences": 16,
+            "elapsed_ms": 9.679210000001603,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 19,
+              "translation_inliers": 16,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 114,
+          "retrieval_distance": 0.08980049743967077
+        },
+        {
+          "coarse": {
+            "T_target_source": {
+              "xyz": [
+                0.16636668092706727,
+                -0.9478452093879053,
+                0.08951797845398259
+              ],
+              "xyzw": [
+                -0.32800940421497876,
+                0.005871929151864129,
+                0.8436146750793244,
+                0.42507602988803794
+              ]
+            },
+            "converged": true,
+            "correspondences": 25,
+            "elapsed_ms": 9.582682999962344,
+            "geometrically_accepted": false,
+            "method": "kiss_matcher_full6d",
+            "native_diagnostics": {
+              "rotation_inliers": 35,
+              "translation_inliers": 25,
+              "use_quatro": false
+            },
+            "normalized_plane_hessian_eigen_ratio": 0.0,
+            "reason": "coarse_not_converged_or_low_inliers",
+            "rmse_m": 0.0,
+            "source_overlap": 0.0
+          },
+          "keyframe": 127,
+          "retrieval_distance": 0.09051621309700188
+        }
+      ],
+      "elapsed_ms": 209.45631500001127,
+      "evaluated_candidate_limit": 16,
+      "global_descriptor": "radial_pair_multiscale_v2",
+      "global_search_allowed": true,
+      "global_search_enabled": true,
+      "global_stationary_initialization": true,
+      "graph_version": 170,
+      "inputs_ready": true,
+      "invalid_messages": 0,
+      "map_loading": false,
+      "map_uuid": "160f8572a77a61856cf87e43514be769",
+      "online_scheduling": true,
+      "pair_bytes": 0,
+      "pair_counters": {},
+      "processed_scans": 1836,
+      "public_tf_publisher": false,
+      "query_points": 4000,
+      "query_scan_ids": [
+        1851,
+        1852
+      ],
+      "query_stamp_ns": 1590194016200428485,
+      "queued_jobs": 2,
+      "sample_age_seconds": -1.0,
+      "skipped_scans": 19,
+      "source_manifest_sha256": "93628bcf34742e8fbdb1f08afa9501f44aaa1f9dab4d9ef2c80914b7a62fc105",
+      "stale_results": 0,
+      "stationary_strong_geometry": false,
+      "tag_candidates": [],
+      "tag_input_dropped": 0,
+      "verified_pose": {
+        "xyz": [
+          -0.5457979587732666,
+          -0.6006984498954803,
+          0.021065916818280333
+        ],
+        "xyzw": [
+          -0.10724305466786217,
+          0.14922219611189344,
+          0.6111973416884928,
+          0.7698502925413288
+        ]
+      }
+    }
+  }
+}

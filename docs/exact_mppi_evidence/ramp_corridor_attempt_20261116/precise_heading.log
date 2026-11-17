@@ -1,0 +1,51 @@
+CLIENT_READY
+{"goal": [1.897, 0.375, 1.570796327], "goal_id": "c9525113aa314bb5b374ea19332ca5e2"}
+{"state": "EXECUTING", "reason": "tracking", "inputs_valid": true, "input_reason": "valid", "segment_index": 1, "segment_mode": 2, "segment_target": [1.897, 0.375, 1.570796327], "metrics": {"request_id": 84, "compute_s": 0.015039759999126545, "end_to_end_s": 0.057857382000293, "valid": true, "validation_reason": "valid"}}
+{
+  "name": "precise_heading",
+  "error": null,
+  "goal": [
+    1.897,
+    0.375,
+    1.570796327
+  ],
+  "result_status": 4,
+  "cancel": null,
+  "elapsed_s": 10.490509556000688,
+  "final_state": {
+    "state": "SUCCEEDED",
+    "reason": "goal_reached_and_stopped",
+    "generation": 16,
+    "worker": {
+      "ready": true,
+      "pid": 41380,
+      "nonce": "310d6ad226674c95aa89ef699cf6ecd3",
+      "devices": [
+        "cuda:0"
+      ],
+      "warmup_s": {
+        "DRIVE": 2.5910877699989214,
+        "PARALLEL": 2.319849573999818,
+        "SPIN": 2.22273975600001
+      }
+    },
+    "inputs_valid": true,
+    "input_reason": "valid",
+    "metrics": {
+      "request_id": 112,
+      "compute_s": 0.014980029000071227,
+      "end_to_end_s": 0.041890872998919804,
+      "valid": true,
+      "validation_reason": "valid"
+    },
+    "segment_index": 1,
+    "segment_count": 2,
+    "segment_mode": 2,
+    "segment_target": [
+      1.897,
+      0.375,
+      1.570796327
+    ]
+  },
+  "note": "Real action test; localization/wheel are estimates, no external truth."
+}

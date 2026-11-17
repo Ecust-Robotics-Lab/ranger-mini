@@ -1,0 +1,34 @@
+Starting >>> ranger_navigation
+--- stderr: ranger_navigation
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/colcon_core/executor/__init__.py", line 91, in __call__
+    rc = await self.task(*args, **kwargs)
+  File "/usr/lib/python3/dist-packages/colcon_core/task/__init__.py", line 120, in __call__
+    return await task_method(*args, **kwargs)
+  File "/usr/lib/python3/dist-packages/colcon_ros/task/ament_python/build.py", line 54, in build
+    data_files = get_data_files_mapping(
+  File "/usr/lib/python3/dist-packages/colcon_core/task/python/__init__.py", line 42, in get_data_files_mapping
+    assert not os.path.isabs(source), \
+AssertionError: 'data_files' must be relative, '/home/lab307/ranger_nav/config/fast_livo2/navigation_prep.yaml' is absolute
+---[0.265s] ERROR:colcon.colcon_core.executor.sequential:Exception in job execution 'ranger_navigation': 'data_files' must be relative, '/home/lab307/ranger_nav/config/fast_livo2/navigation_prep.yaml' is absolute
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/colcon_core/executor/sequential.py", line 50, in execute
+    loop.run_until_complete(future)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/usr/lib/python3/dist-packages/colcon_core/executor/__init__.py", line 91, in __call__
+    rc = await self.task(*args, **kwargs)
+  File "/usr/lib/python3/dist-packages/colcon_core/task/__init__.py", line 120, in __call__
+    return await task_method(*args, **kwargs)
+  File "/usr/lib/python3/dist-packages/colcon_ros/task/ament_python/build.py", line 54, in build
+    data_files = get_data_files_mapping(
+  File "/usr/lib/python3/dist-packages/colcon_core/task/python/__init__.py", line 42, in get_data_files_mapping
+    assert not os.path.isabs(source), \
+AssertionError: 'data_files' must be relative, '/home/lab307/ranger_nav/config/fast_livo2/navigation_prep.yaml' is absolute
+
+
+Failed   <<< ranger_navigation [0.12s, exited with code 1]
+
+Summary: 0 packages finished [0.23s]
+  1 package failed: ranger_navigation
+  1 package had stderr output: ranger_navigation

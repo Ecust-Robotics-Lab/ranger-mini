@@ -1,0 +1,80 @@
+{
+  "bag": "/home/lab307/ranger_nav/bags/fast-livo-office_corridor_changed_20261110-s10xmu6g",
+  "capture_complete": true,
+  "quality": {
+    "data_checks": "PASS",
+    "failures": [],
+    "warnings": [],
+    "physical_sync": "PARTIAL",
+    "motion_mapping_accuracy": "NOT_EVALUATED",
+    "note": "Header equality is not physical synchronization; no APE/RPE or loop accuracy is inferred."
+  },
+  "sync": {
+    "available": true,
+    "source": "/home/lab307/ranger_nav/bags/fast-livo-office_corridor_changed_20261110-s10xmu6g/sensor_assets/camera_sync.csv",
+    "status_counts": {
+      "OK": 2094
+    },
+    "hardware_frame_id_missing": 0,
+    "hardware_frame_id_nonincreasing": 0,
+    "scope": "entire sensor session; may include time outside this recording",
+    "physical_sync_proven": false
+  },
+  "stored_motion_summaries": {
+    "/fast_livo/odometry": {
+      "stored_count": 2067,
+      "first_stamp_ns": 1590192268800468921,
+      "last_stamp_ns": 1590192475400122165,
+      "path_length_xy_m": 43.75960958426148,
+      "position_min_xyz": [
+        -0.037263972066450636,
+        -0.0050945849942528815,
+        -0.26788326581923494
+      ],
+      "position_max_xyz": [
+        18.612907877276207,
+        3.0395093952626717,
+        0.007858000222313971
+      ],
+      "start_xyz": [
+        0.0023252514831597817,
+        0.0009440794993219844,
+        0.0005197014998814253
+      ],
+      "end_xyz": [
+        0.15382991031625773,
+        0.21915069313546418,
+        -0.003165501272370834
+      ],
+      "estimated_start_end_xy_m": 0.2656459822445768
+    },
+    "/wheel/odom": {
+      "stored_count": 10332,
+      "first_stamp_ns": 1794313778512207048,
+      "last_stamp_ns": 1794313985132158927,
+      "path_length_xy_m": 41.0586145512055,
+      "position_min_xyz": [
+        -18.639204601141397,
+        -3.000584376641482,
+        0.0
+      ],
+      "position_max_xyz": [
+        0.0,
+        2.14012296988451,
+        0.0
+      ],
+      "start_xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "end_xyz": [
+        -0.43179557687447445,
+        2.1393630331544267,
+        0.0
+      ],
+      "estimated_start_end_xy_m": 2.1825035184017616
+    }
+  },
+  "note": "Frontend/wheel paths are separate estimated coordinates; no absolute accuracy or same-epoch alignment is inferred."
+}

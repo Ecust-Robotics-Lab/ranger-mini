@@ -1,0 +1,45 @@
+CLIENT_READY
+{"goal": [1.871404363, 0.415636827, 0.98], "goal_id": "0e175b2d47204ec9bcb03f24dfe41c98"}
+{"state": "STOPPING", "reason": "segment_end", "inputs_valid": true, "input_reason": "valid", "metrics": {"request_id": 56, "compute_s": 0.010681182000553235, "end_to_end_s": 0.019968667999819445, "valid": true, "validation_reason": "valid"}}
+{"state": "STOPPING", "reason": "segment_end", "inputs_valid": true, "input_reason": "valid", "metrics": {"request_id": 56, "compute_s": 0.010681182000553235, "end_to_end_s": 0.019968667999819445, "valid": true, "validation_reason": "valid"}}
+{"state": "FAILED", "reason": "no_progress_timeout", "inputs_valid": true, "input_reason": "valid", "metrics": {"request_id": 56, "compute_s": 0.010681182000553235, "end_to_end_s": 0.019968667999819445, "valid": true, "validation_reason": "valid"}}
+{
+  "name": "turn_tracking_fix_01",
+  "error": null,
+  "goal": [
+    1.871404363,
+    0.415636827,
+    0.98
+  ],
+  "result_status": 6,
+  "cancel": null,
+  "elapsed_s": 19.980242765000185,
+  "final_state": {
+    "state": "FAILED",
+    "reason": "no_progress_timeout",
+    "generation": 6,
+    "worker": {
+      "ready": true,
+      "pid": 37297,
+      "nonce": "b95b4181412048a3b477356f6ca67e7d",
+      "devices": [
+        "cuda:0"
+      ],
+      "warmup_s": {
+        "DRIVE": 2.536575756000275,
+        "PARALLEL": 2.2295672999998715,
+        "SPIN": 2.244483264000337
+      }
+    },
+    "inputs_valid": true,
+    "input_reason": "valid",
+    "metrics": {
+      "request_id": 56,
+      "compute_s": 0.010681182000553235,
+      "end_to_end_s": 0.019968667999819445,
+      "valid": true,
+      "validation_reason": "valid"
+    }
+  },
+  "note": "Real action test; localization/wheel are estimates, no external truth."
+}

@@ -1,0 +1,38 @@
+{
+  "counts": {
+    "/motion_state": 713,
+    "/system_state": 712
+  },
+  "topics": {
+    "/motion_state": {
+      "received_steady": 17104.602534685,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1794315069,
+            "nanosec": 654457523
+          },
+          "frame_id": ""
+        },
+        "motion_mode": 0
+      }
+    },
+    "/system_state": {
+      "received_steady": 17104.583230863,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1794315069,
+            "nanosec": 633566935
+          },
+          "frame_id": ""
+        },
+        "vehicle_state": 2,
+        "control_mode": 3,
+        "error_code": 0,
+        "battery_voltage": 50.0,
+        "motion_mode": 0
+      }
+    }
+  }
+}

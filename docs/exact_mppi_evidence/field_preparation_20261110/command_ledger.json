@@ -1,0 +1,121 @@
+{
+  "schema_version": 1,
+  "hardware_started": false,
+  "physical_commands_published": false,
+  "notes": [
+    "Exit zero for map preparation does not mean route accepted; 5/7 static legs passed.",
+    "Full pytest in JAX environment has two launch skips (missing lark); system ROS run covers them.",
+    "Isolated ROS mocks publish control into localhost/domain231 only, without physical interfaces.",
+    "Earlier trial failures and original 20261110 evidence are preserved."
+  ],
+  "commands": [
+    {
+      "name": "build_final",
+      "command": "bash scripts/build_exact_navigation.sh --execute",
+      "exit_code": 0,
+      "files_sha256": {
+        "build_final.log": "eb61899e4be2b71b1b5402cc76c09320ba06ebc40c2afe888985efe87851ab94"
+      }
+    },
+    {
+      "name": "regressions_final",
+      "command": "source /opt/ros/humble/setup.bash; source ws_base/install_exact/setup.bash; source ws_nav/install_exact/setup.bash; PYTEST_DISABLE_PLUGIN_AUTOLOAD=1 PYTHONPATH=\"$PWD/ws_nav/src/ranger_navigation:$PWD/ws_nav/src/ranger_localization_bridge:$PYTHONPATH\" JAX_PLATFORMS=cpu .runtime/exact_mppi_venv/bin/python3 -m pytest -q -rs tests/test_exact_navigation_core.py tests/test_exact_optimizer.py tests/test_exact_field_preparation.py tests/test_stage6_gate_unit.py tests/test_architecture_contract.py tests/test_fast_livo_navigation_map.py tests/test_session_manager.py tests/test_project_consolidation.py",
+      "exit_code": 0,
+      "files_sha256": {
+        "regressions_final.log": "f56859f77e3dc436233f2616ba3ed81aad37c386d1af9340c9d6770d0e110913"
+      }
+    },
+    {
+      "name": "field_launch_final",
+      "command": "source /opt/ros/humble/setup.bash; source ws_base/install_exact/setup.bash; source ws_nav/install_exact/setup.bash; python3 -m pytest -q tests/test_exact_field_preparation.py",
+      "exit_code": 0,
+      "files_sha256": {
+        "field_launch_final.log": "bb42f0eec486f8f1d3c88a38cc85346fa3377db51f893913af6a7ebca181c011"
+      }
+    },
+    {
+      "name": "closed_loop_standard_final",
+      "command": "JAX_PLATFORMS=cuda XLA_PYTHON_CLIENT_PREALLOCATE=false .runtime/exact_mppi_venv/bin/python3 scripts/validate_exact_mppi.py --output docs/exact_mppi_evidence/field_preparation_20261110/closed_loop_standard_final.json",
+      "exit_code": 0,
+      "files_sha256": {
+        "closed_loop_standard_final.log": "0fad82683484c6f7760148200b8d4f1d8f78f59496928e3c2fee6c750d28370b",
+        "closed_loop_standard_final.json": "6e0059897c9154e107c8c3ebe05bd5d341622f446b3b1092d38f6bdd5bec5671"
+      }
+    },
+    {
+      "name": "closed_loop_narrow_final",
+      "command": "JAX_PLATFORMS=cuda XLA_PYTHON_CLIENT_PREALLOCATE=false .runtime/exact_mppi_venv/bin/python3 scripts/validate_exact_mppi.py --clearance-profile narrow --output docs/exact_mppi_evidence/field_preparation_20261110/closed_loop_narrow_final.json",
+      "exit_code": 0,
+      "files_sha256": {
+        "closed_loop_narrow_final.log": "11330d18c31c4f32a326f8d6e1f98559bdf4c8c32b52cbd7b9fdc890d160ec3b",
+        "closed_loop_narrow_final.json": "8edf189f861ac1a7d31c45b7e184fe633019e335f76f774d2032ed576e8d9fe1"
+      }
+    },
+    {
+      "name": "ros_narrow",
+      "command": "source /opt/ros/humble/setup.bash; source ws_base/install_exact/setup.bash; source ws_nav/install_exact/setup.bash; python3 tests/test_stage6_safety.py --clearance-profile narrow --evidence-directory docs/exact_mppi_evidence/field_preparation_20261110/ros_narrow",
+      "exit_code": 0,
+      "files_sha256": {
+        "ros_narrow.log": "c5daf35b8863e79fa1a54591397a4f918bd9fe74992350d0c8f0e0dbda9eecec",
+        "ros_narrow/ros_safety.json": "f6041e1f98454c6717bf6fbc9f43b205f95acc0d898e6a8e042549ec01f11db3"
+      }
+    },
+    {
+      "name": "map_narrow_final",
+      "command": "python3 -u scripts/prepare_exact_field_test.py --clearance-profile narrow --output outputs/exact-field-preparation-narrow-final-20261110",
+      "exit_code": 0,
+      "files_sha256": {
+        "map_narrow_final.log": "6376d4520c3d1746dcd91aac75c496cc80ef1a35ac2d2560d155a48df4f3359d"
+      }
+    },
+    {
+      "name": "navigation_dry_run",
+      "command": "ROS_DOMAIN_ID=215 ROS_LOCALHOST_ONLY=1 RANGER_CLEARANCE_PROFILE=narrow bash scripts/run_navigation.sh",
+      "exit_code": 0,
+      "files_sha256": {
+        "navigation_dry_run_final.json": "bc91cc19175987b2e204a5406acfb5e8af31b4386cd8972c1f6ab45067ab0eb0"
+      }
+    },
+    {
+      "name": "localization_dry_run",
+      "command": "bash scripts/localize_fast_livo2.sh --archive outputs/fast-livo-demo-online-mapping-20261105/full_replay_12/map --public-tf --navigation-map outputs/fast-livo-demo-navigation-prep-20261106/navigation_map_final --record-navigation --visualization rviz --seconds 1800 --domain 215",
+      "exit_code": 0,
+      "files_sha256": {
+        "localization_dry_run_final.json": "e298e0be44fedc69c9b8ff03c2fbfb7da41327cc732f64fbed9df9873f411bbb"
+      }
+    },
+    {
+      "name": "base_dry_run",
+      "command": "ROS_DOMAIN_ID=215 ROS_LOCALHOST_ONLY=1 python3 scripts/robot_session.py base --plan",
+      "exit_code": 0,
+      "files_sha256": {
+        "base_dry_run.json": "e3691a63d7bb6337b66f4e155a824399cf0b389282da6cd9904b58bfb3dc5ea2"
+      }
+    },
+    {
+      "name": "desktop_open",
+      "command": "xdg-open /home/lab307/ranger_nav/outputs/exact-field-preparation-narrow-final-20261110/index.html",
+      "exit_code": 0,
+      "files_sha256": {
+        "desktop_open_final.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "browser",
+      "command": "Firefox headless, exact argv/exit in browser_check.json",
+      "exit_code": 0,
+      "files_sha256": {
+        "browser_check.json": "bf9c2e9e547640a36d475ccb0d4c877de63e719d23b9f68f4b3e08d7e0b55deb",
+        "browser_check.log": "81a54c682707292b95ac940dd3b8264fa1138c3ef9a5835cecac7d633a5651b2"
+      }
+    },
+    {
+      "name": "identity",
+      "command": "Read-only source/install/map identity audit; details delivery_identity.json",
+      "exit_code": 0,
+      "files_sha256": {
+        "delivery_identity.json": "b3a98041f08c9a4da4d35b99b50b2271efeff91742ffd515cb72fefddbca4dca"
+      }
+    }
+  ]
+}

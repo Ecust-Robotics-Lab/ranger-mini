@@ -1,0 +1,49 @@
+{
+  "checked_unix_s": 1794839309.4505994,
+  "boot_id": "b62be450-225c-40c8-8a86-395c669b2cf8",
+  "head": "e8245fa80310a4e91b5d2eb303f33883bb965216",
+  "source_sha256": {
+    "ws_nav/src/ranger_navigation/ranger_navigation/exact_controller.py": "d280888a28a5fa21083c9ee4e49febc45a0d02b81b8147f5a2356a7a8636d69d",
+    "ws_nav/src/ranger_navigation/ranger_navigation/planner.py": "c2f673cd3f9bc8a4fdbb72ff02d70357b7c554c3163ed1e97e683ef13e3678f2",
+    "ws_nav/src/ranger_navigation/ranger_navigation/task.py": "680c14857ebb3454224450c27fc922dd4369a11896017828ed665a144c04dbee",
+    "ws_nav/src/ranger_navigation/ranger_navigation/coordinator.py": "df7ae7e68caefeea925c87e6cb4dc9887a69fc69ac9847102c0053a8235c856d",
+    "ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp": "50f941ad83abd21784c629f8a7ed2868fcfcba500e6f899cfa11be07c62233f2",
+    "scripts/check_exact_v2_lifecycle.py": "078612e071de230527d5e424f01f2c9cfeeafd4ecd021b3ca124a2ecd7f2f2fa",
+    "tests/test_exact_drive_steering.py": "86ac762257c50686e3db7276b3d0988493127a1450f9e668ac53e464397c63bf",
+    "tests/test_exact_pause_resume.py": "ac21dae1b2f9d63ac77d680220a6d2caca916ed9c6a2eae62f7e15cc19c5c8bb",
+    "config/fast_livo2/navigation_prep.yaml": "1ce9adfbd9ea51c653c623b71e42ee65df1dde3f1d4aad88e98bbcc3d56d0af1"
+  },
+  "installed_source_matches": {
+    "exact_controller.py": true,
+    "planner.py": true,
+    "task.py": true,
+    "coordinator.py": true
+  },
+  "observed_device_processes": [],
+  "sessions": {
+    ".runtime/sessions/navigation/run-2gijvf9o/state.json": "STOPPED",
+    ".runtime/sessions/base/run-z4gwv41f/state.json": "STOPPED",
+    ".runtime/sessions/fast_livo_online_localization/run-imhln0lx/state.json": "STOPPED"
+  },
+  "regressions_passed": 87,
+  "launch_tests_deselected": 4,
+  "closed_loop_scenarios_passed": 10,
+  "full_corridor_field_acceptance": "PARTIAL",
+  "field_starting_poses_differ": true,
+  "last_live_goal": "door_direction_fix_01",
+  "last_live_goal_status": 5,
+  "last_live_goal_final_twist": [
+    0,
+    0,
+    0
+  ],
+  "last_live_goal_final_wheel_twist": [
+    0,
+    0,
+    0
+  ],
+  "feedback_settling_live_acceptance": "NOT_RETESTED",
+  "report_sha256": "2637c1738eebad29f2d9a1243c00d10d541eba4d7d899f9c8bd481a74f2c94d5",
+  "user_repositioned_after_run": true,
+  "historical_final_pose_is_current": false
+}

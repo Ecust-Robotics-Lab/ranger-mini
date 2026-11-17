@@ -1,0 +1,51 @@
+CLIENT_READY
+{"goal": [2.15, 0.6, 1.570796327], "goal_id": "3d111e508510497dbb5af9d2d9783bd9"}
+{"state": "OBSERVING", "reason": "revalidate_after_pause", "inputs_valid": true, "input_reason": "valid", "segment_index": 0, "segment_mode": 1, "segment_target": [2.15, 0.6, 1.571239902458677], "metrics": {"request_id": 196, "compute_s": 0.022442463001425494, "end_to_end_s": 0.06811786700018274, "valid": true, "validation_reason": "valid"}}
+{"state": "EXECUTING", "reason": "tracking", "inputs_valid": true, "input_reason": "valid", "segment_index": 0, "segment_mode": 1, "segment_target": [2.15, 0.6, 1.5703988416741392], "metrics": {"request_id": 252, "compute_s": 0.017458406000514515, "end_to_end_s": 0.10743188200103759, "valid": true, "validation_reason": "valid"}}
+{"state": "EXECUTING", "reason": "tracking", "inputs_valid": true, "input_reason": "valid", "segment_index": 0, "segment_mode": 1, "segment_target": [2.15, 0.6, 1.5710324537383382], "metrics": {"request_id": 285, "compute_s": 0.013218734000474797, "end_to_end_s": 0.10905611199996201, "valid": true, "validation_reason": "valid"}}
+{"state": "EXECUTING", "reason": "tracking", "inputs_valid": true, "input_reason": "valid", "segment_index": 0, "segment_mode": 1, "segment_target": [2.15, 0.6, 1.5707034838269065], "metrics": {"request_id": 305, "compute_s": 0.020985314999052207, "end_to_end_s": 0.10687178999978642, "valid": true, "validation_reason": "valid"}}
+{"state": "EXECUTING", "reason": "tracking", "inputs_valid": true, "input_reason": "valid", "segment_index": 0, "segment_mode": 1, "segment_target": [2.15, 0.6, 1.5703885143166154], "metrics": {"request_id": 387, "compute_s": 0.0175786590007192, "end_to_end_s": 0.05729292199976044, "valid": true, "validation_reason": "valid"}}
+{
+  "name": "door_center_step",
+  "error": null,
+  "goal": [
+    2.15,
+    0.6,
+    1.570796327
+  ],
+  "result_status": 6,
+  "cancel": null,
+  "elapsed_s": 32.14964053699987,
+  "final_state": {
+    "state": "FAILED",
+    "reason": "no_progress_timeout",
+    "generation": 104,
+    "worker": {
+      "ready": true,
+      "pid": 41380,
+      "nonce": "310d6ad226674c95aa89ef699cf6ecd3",
+      "devices": [
+        "cuda:0"
+      ],
+      "warmup_s": {
+        "DRIVE": 2.5910877699989214,
+        "PARALLEL": 2.319849573999818,
+        "SPIN": 2.22273975600001
+      }
+    },
+    "inputs_valid": true,
+    "input_reason": "valid",
+    "metrics": {
+      "request_id": 429,
+      "compute_s": 0.022392374001356075,
+      "end_to_end_s": 0.0614879849999852,
+      "valid": true,
+      "validation_reason": "valid"
+    },
+    "segment_index": 0,
+    "segment_count": 0,
+    "segment_mode": null,
+    "segment_target": null
+  },
+  "note": "Real action test; localization/wheel are estimates, no external truth."
+}

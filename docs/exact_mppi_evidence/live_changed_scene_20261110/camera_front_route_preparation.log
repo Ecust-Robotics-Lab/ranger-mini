@@ -1,0 +1,8 @@
+office_start -> door_outside: PASS static_map_swept_body_validated
+door_outside -> corridor_out: PASS static_map_swept_body_validated
+corridor_out -> turn_position: PASS static_map_swept_body_validated
+turn_position -> turn_complete: PASS static_map_swept_body_validated
+turn_complete -> corridor_return: PASS static_map_swept_body_validated
+corridor_return -> door_return: PASS static_map_swept_body_validated
+door_return -> office_return: PARTIAL search_budget_exceeded
+{"status": "PARTIAL", "output": "outputs/exact-field-preparation-camera-front-20261110", "hardware_started": false, "commands_published": false}

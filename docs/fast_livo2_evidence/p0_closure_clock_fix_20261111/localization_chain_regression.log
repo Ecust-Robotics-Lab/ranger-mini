@@ -1,0 +1,34 @@
+test_conversion_tf_loss_recovery_and_clock_fault (test_fast_livo_live_chain_ros.LiveChain) ... wheel clock {'ready': True, 'error': None, 'context': '/tmp/tmpvqzqbm6c', 'anchor': (1590000001100517694, 3541267927071), 'host_minus_steady_ns': 1794384818230379462, 'residual_ns': 0, 'source_anchor': (1589999997100000000, 3540167409377), 'tolerance_ns': 100000000, 'physical_sync_verified': False, 'method': 'fixed lidar receipt anchor plus host/steady offset; transport bias unmeasured'}
+ready tail []
+FAIL
+
+======================================================================
+FAIL: test_conversion_tf_loss_recovery_and_clock_fault (test_fast_livo_live_chain_ros.LiveChain)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_live_chain_ros.py", line 63, in test_conversion_tf_loss_recovery_and_clock_fault
+    self.assertTrue(ready and ready[-1],ready[-10:])
+AssertionError: [] is not true : []
+
+----------------------------------------------------------------------
+Ran 1 test in 3.056s
+
+FAILED (failures=1)
+bridge_node.log Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/lab307/ranger_nav/ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/bridge_node.py", line 18, in <module>
+    from ranger_localization_msgs.msg import LocalizationEstimate
+ModuleNotFoundError: No module named 'ranger_localization_msgs'
+
+fast_livo_localizer_adapter.log Traceback (most recent call last):
+  File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/lab307/ranger_nav/ws_nav/src/ranger_localization_bridge/ranger_localization_bridge/fast_livo_localizer_adapter.py", line 9, in <module>
+    from ranger_localization_msgs.msg import LocalizationEstimate
+ModuleNotFoundError: No module named 'ranger_localization_msgs'
+

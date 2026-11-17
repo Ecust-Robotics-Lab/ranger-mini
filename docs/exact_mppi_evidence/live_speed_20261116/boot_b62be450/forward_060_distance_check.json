@@ -1,0 +1,30 @@
+{
+  "command": {
+    "integrated_body_xy_m": [
+      0.5018637669624925,
+      0.0006469255537621416
+    ],
+    "integrated_path_m": 0.5027662296612017,
+    "moving_velocity_p50_p95": [
+      0.025997147239999303,
+      0.08700900827912855
+    ]
+  },
+  "wheel": {
+    "integrated_body_xy_m": [
+      0.44383525087236336,
+      0.0004715720861070143
+    ],
+    "integrated_path_m": 0.4465779803972136,
+    "moving_velocity_p50_p95": [
+      0.03700000047683716,
+      0.08880000114440914
+    ]
+  },
+  "localization_net_xy_m": [
+    0.46984697207904985,
+    0.045789594929726146
+  ],
+  "localization_net_m": 0.47207294370222047,
+  "note": "Receipt-steady-time integration over complete action plus stopped padding; unknown transport bias. Localization is not independent ground truth."
+}

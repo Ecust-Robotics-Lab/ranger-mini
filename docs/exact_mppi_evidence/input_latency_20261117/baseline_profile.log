@@ -1,0 +1,34 @@
+         213546 function calls (203730 primitive calls) in 0.731 seconds
+
+   Ordered by: cumulative time
+   List reduced from 268 to 25 due to restriction <25>
+
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+       81    0.046    0.001    0.673    0.008 /home/lab307/ranger_nav/ws_nav/src/ranger_navigation/ranger_navigation/obstacles.py:40(update)
+       81    0.205    0.003    0.559    0.007 /home/lab307/ranger_nav/ws_nav/src/ranger_navigation/ranger_navigation/obstacles.py:155(_build_visibility_grid)
+      162    0.074    0.000    0.168    0.001 /home/lab307/ranger_nav/ws_nav/src/ranger_navigation/ranger_navigation/obstacles.py:230(sector_minimum)
+     3320    0.132    0.000    0.132    0.000 {method 'reduce' of 'numpy.ufunc' objects}
+11492/6637    0.016    0.000    0.118    0.000 {built-in method numpy.core._multiarray_umath.implement_array_function}
+      163    0.001    0.000    0.057    0.000 /usr/lib/python3/dist-packages/numpy/lib/npyio.py:233(__getitem__)
+      810    0.000    0.000    0.048    0.000 {method 'max' of 'numpy.ndarray' objects}
+      810    0.000    0.000    0.048    0.000 /usr/lib/python3/dist-packages/numpy/core/_methods.py:38(_amax)
+      163    0.001    0.000    0.048    0.000 /usr/lib/python3/dist-packages/numpy/lib/format.py:699(read_array)
+      243    0.002    0.000    0.045    0.000 /home/lab307/ranger_nav/ws_nav/src/ranger_navigation/ranger_navigation/planner.py:33(__init__)
+      243    0.003    0.000    0.041    0.000 /usr/lib/python3/dist-packages/scipy/ndimage/_morphology.py:2133(distance_transform_edt)
+      486    0.000    0.000    0.035    0.000 {method 'min' of 'numpy.ndarray' objects}
+      486    0.000    0.000    0.034    0.000 /usr/lib/python3/dist-packages/numpy/core/_methods.py:42(_amin)
+      566    0.000    0.000    0.033    0.000 <__array_function__ internals>:2(norm)
+      566    0.009    0.000    0.032    0.000 /usr/lib/python3/dist-packages/numpy/linalg/linalg.py:2363(norm)
+      243    0.032    0.000    0.032    0.000 {built-in method scipy.ndimage._nd_image.euclidean_feature_transform}
+      404    0.028    0.000    0.028    0.000 /home/lab307/ranger_nav/ws_nav/src/ranger_navigation/ranger_navigation/obstacles.py:37(bins)
+      815    0.001    0.000    0.028    0.000 /usr/lib/python3.10/zipfile.py:921(read)
+      407    0.001    0.000    0.027    0.000 /usr/lib/python3.10/zipfile.py:1003(_read1)
+      652    0.001    0.000    0.025    0.000 /usr/lib/python3/dist-packages/numpy/lib/format.py:893(_read_bytes)
+     2185    0.022    0.000    0.022    0.000 {built-in method numpy.asarray}
+      729    0.022    0.000    0.022    0.000 {method 'at' of 'numpy.ufunc' objects}
+     1457    0.001    0.000    0.021    0.000 /usr/lib/python3/dist-packages/numpy/core/fromnumeric.py:51(_wrapfunc)
+     1376    0.000    0.000    0.021    0.000 <__array_function__ internals>:2(nonzero)
+      407    0.020    0.000    0.020    0.000 {method 'decompress' of 'zlib.Decompress' objects}
+
+
+frames 81 update_ms [ 9.299427   9.481387   9.9308732 10.068358 ]

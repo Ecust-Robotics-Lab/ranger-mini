@@ -1,0 +1,272 @@
+{
+  "counts": {
+    "/base/safe_cmd_vel": 738,
+    "/navigation/control_owner": 738,
+    "/navigation/safety_ready": 738,
+    "/ranger/motion_permitted": 738,
+    "/diagnostics": 751,
+    "/navigation/state": 264,
+    "/motion_state": 682,
+    "/system_state": 682,
+    "/localization/estimate": 916,
+    "/navigation_ready": 1479,
+    "/fast_livo/navigation/wheel/odom": 585
+  },
+  "topics": {
+    "/base/safe_cmd_vel": {
+      "received_steady": 23568.057594976,
+      "message": {
+        "linear": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        },
+        "angular": {
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0
+        }
+      }
+    },
+    "/navigation/control_owner": {
+      "received_steady": 23568.058437784,
+      "message": {
+        "data": "navigation"
+      }
+    },
+    "/navigation/safety_ready": {
+      "received_steady": 23568.058028888,
+      "message": {
+        "data": true
+      }
+    },
+    "/ranger/motion_permitted": {
+      "received_steady": 23568.058238204,
+      "message": {
+        "data": false
+      }
+    },
+    "/diagnostics": {
+      "received_steady": 23568.058702389,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1590200023,
+            "nanosec": 456489496
+          },
+          "frame_id": ""
+        },
+        "status": [
+          {
+            "level": "\u0001",
+            "name": "ranger_motion_gate",
+            "message": "permission_off",
+            "hardware_id": "",
+            "values": [
+              {
+                "key": "owner",
+                "value": "navigation"
+              },
+              {
+                "key": "mode",
+                "value": "2"
+              },
+              {
+                "key": "minimum_distance",
+                "value": "inf"
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "/navigation/state": {
+      "received_steady": 23568.070337265,
+      "message": {
+        "data": "{\"state\": \"IDLE\", \"reason\": \"startup\", \"generation\": 0, \"worker\": {\"ready\": true, \"pid\": 98761, \"nonce\": \"d3b8ecb156a94de5948bd5eafc785097\", \"devices\": [\"cuda:0\"], \"warmup_s\": {\"DRIVE\": 2.568084094000369, \"PARALLEL\": 2.423194995000813, \"SPIN\": 2.345015806000447}}, \"inputs_valid\": false, \"input_reason\": \"estimate_receipt_stale\", \"metrics\": {}}"
+      }
+    },
+    "/motion_state": {
+      "received_steady": 23568.066426255,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1794321533,
+            "nanosec": 120721831
+          },
+          "frame_id": ""
+        },
+        "motion_mode": 2
+      }
+    },
+    "/system_state": {
+      "received_steady": 23568.066661534,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1794321533,
+            "nanosec": 120444131
+          },
+          "frame_id": ""
+        },
+        "vehicle_state": 0,
+        "control_mode": 1,
+        "error_code": 0,
+        "battery_voltage": 49.599998474121094,
+        "motion_mode": 2
+      }
+    },
+    "/localization/estimate": {
+      "received_steady": 23568.064937608,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1590200023,
+            "nanosec": 400029182
+          },
+          "frame_id": "map"
+        },
+        "base_frame": "base_link",
+        "pose": {
+          "position": {
+            "x": 0.6531990396730998,
+            "y": 0.23171951648937336,
+            "z": -0.559672318283996
+          },
+          "orientation": {
+            "x": 0.0015458763968056247,
+            "y": 0.003104197751282327,
+            "z": 0.04625911010966194,
+            "w": 0.9989234550026088
+          }
+        },
+        "state": 1,
+        "reason": "map_match_confirmed; map=160f8572a77a61856cf87e43514be769; graph=170; session=01b98aec281d3bd76545f9de4e7ad1b5; initial=global-48dfdc45fd4dfd31eb2b3d0ee21c8c32; request_generation=1"
+      }
+    },
+    "/navigation_ready": {
+      "received_steady": 23568.065346289,
+      "message": {
+        "data": true
+      }
+    },
+    "/fast_livo/navigation/wheel/odom": {
+      "received_steady": 23568.062931491,
+      "message": {
+        "header": {
+          "stamp": {
+            "sec": 1590200023,
+            "nanosec": 448148427
+          },
+          "frame_id": "odom"
+        },
+        "child_frame_id": "base_link",
+        "pose": {
+          "pose": {
+            "position": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            },
+            "orientation": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0,
+              "w": 1.0
+            }
+          },
+          "covariance": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        },
+        "twist": {
+          "twist": {
+            "linear": {
+              "x": -0.0,
+              "y": -0.0,
+              "z": 0.0
+            },
+            "angular": {
+              "x": 0.0,
+              "y": 0.0,
+              "z": 0.0
+            }
+          },
+          "covariance": [
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ]
+        }
+      }
+    }
+  }
+}

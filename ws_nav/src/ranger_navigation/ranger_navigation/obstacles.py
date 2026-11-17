@@ -187,23 +187,18 @@ class ObstacleMemory:
             # Raw frames retain original sample times; a derived union is never
             # stored back into history or allowed to refresh its own expiry.
             for frame_stamp,observer,old in self._visibility_history:
-                iy,ix = np.nonzero((cells<0)|(control_cells<0))
-                if not len(ix):
-                    break
-                local = np.column_stack((ix,iy))*resolution+np.array([-extent+resolution/2]*2)
-                c,s = math.cos(self.visibility_pose[2]),math.sin(self.visibility_pose[2])
-                world = local@np.array([[c,s],[-s,c]])+self.visibility_pose[:2]
-                c,s = math.cos(observer[2]),math.sin(observer[2])
-                relative = (world-observer[:2])@np.array([[c,-s],[s,c]])
-                # All stored grids share odom-aligned cell boundaries. Integer
-                # index translation avoids boundary-roundoff erosion in SAT.
-                old_indices = np.rint((relative-old.origin[:2])/resolution-.5).astype(int)
-                valid = (old_indices[:,0]>=0)&(old_indices[:,0]<80)&(old_indices[:,1]>=0)&(old_indices[:,1]<80)
-                known = np.zeros(len(relative),dtype=bool)
-                known[valid] = old.cells[old_indices[valid,1],old_indices[valid,0]]==0
-                cells[iy[known],ix[known]] = 0
+                # Internal history is always on the same odom-aligned lattice
+                # (zero yaw, origins snapped to resolution). Merge overlapping
+                # slices exactly; no per-cell world transform is required.
+                dx,dy = np.rint((self.visibility_pose[:2]-observer[:2])/resolution).astype(int)
+                x0,x1 = max(0,-dx),min(80,80-dx)
+                y0,y1 = max(0,-dy),min(80,80-dy)
+                if x1<=x0 or y1<=y0:
+                    continue
+                known = old.cells[y0+dy:y1+dy,x0+dx:x1+dx]==0
+                cells[y0:y1,x0:x1][known] = 0
                 if self.control_memory>0 and self.last_stamp-frame_stamp<=self.control_memory:
-                    control_cells[iy[known],ix[known]] = 0
+                    control_cells[y0:y1,x0:x1][known] = 0
             self._visibility_history.append((self.last_stamp,self.visibility_pose.copy(),current))
         # A newly observed/remembered obstacle immediately revokes old free
         # evidence behind it. Dilate each voxel's angular footprint; checking

@@ -72,3 +72,82 @@ def test_fault_without_session_does_not_retire_active_localizer():
     Coordinator.on_estimate(node,replacement)
     Coordinator.on_estimate(node,recovered)
     assert node.estimate is replacement and 'active' in node.retired_loc
+
+
+def scheduler_harness(monkeypatch):
+    import ranger_navigation.coordinator as module
+    from ranger_navigation.models import Mode,Limits
+    from ranger_navigation.planner import Segment,Grid
+    from ranger_navigation.task import Task
+    clock=[100.]
+    monkeypatch.setattr(module.time,'monotonic',lambda:clock[0])
+    segment=Segment(Mode.PARALLEL,np.array([[0.,0.,0.],[.5,0.,0.]]))
+    sent=[];submitted=[];sampled=[];polls=[]
+    task=SimpleNamespace(state='EXECUTING',reason='tracking',index=0,segments=[segment],generation=1,
+                         goal=np.array([.5,0.,0.]),TERMINAL=Task.TERMINAL,tick=lambda *args:segment)
+    def hold(reason='guidance_unobserved'):task.state,task.reason='OBSERVING',reason
+    task.hold_observation=hold
+    memory=SimpleNamespace(last_stamp=9.9,visibility_pose=np.zeros(3),
+                           points=lambda:np.empty((0,2)),sampled=lambda n:(sampled.append(n) or np.empty((0,2))),
+                           control_grid=Grid(np.zeros((80,80)),.05,(-2.,-2.,0.)))
+    class Harness:
+        tick=Coordinator.tick
+        now=lambda self:10.
+        process_cloud=lambda self:None
+        sample=lambda self,now:(np.zeros(3),np.zeros(3),np.zeros(3))
+    h=Harness();h.worker=SimpleNamespace(pending={'kind':'control'},status=lambda:{'ready':True},
+                        poll=lambda:(polls.append(clock[0]) or None),submit=lambda *args,**kw:(submitted.append((args,kw)) or True))
+    h.task=task;h.memory=memory;h.body=Body();h.limits=Limits();h.grid=memory.control_grid
+    h.last_clock=None;h.last_path_check=(9.9,1,0);h.command=None
+    h.last_plan=h.last_control=h.last_state_publish=-1e9
+    h.actual_mode=Mode.PARALLEL;h.owner='navigation';h.reference_wheel=wheel(9.98)
+    h.session='offline';h.metrics={};h.goal_handle=None;h.input_reason='valid';h.static_reserve=.01
+    pub=SimpleNamespace(publish=lambda m:sent.append(m))
+    for name in ['command_pub','velocity_pub','state_pub','local_pub','minimum_pub','path_pub']:setattr(h,name,pub)
+    return h,clock,sent,submitted,sampled,polls
+
+
+def test_busy_worker_does_not_prepare_inputs_but_still_polls_and_withdraws(monkeypatch):
+    h,clock,sent,submitted,sampled,polls=scheduler_harness(monkeypatch)
+    h.tick()
+    assert polls and sent and not submitted and not sampled
+    h.sample=lambda now:None
+    h.command=object()
+    clock[0]+=.005;h.tick()
+    assert h.command is None and not sent[-2].valid and len(polls)==2
+
+
+def test_available_worker_prepares_one_control_at_twenty_hertz(monkeypatch):
+    h,clock,sent,submitted,sampled,polls=scheduler_harness(monkeypatch)
+    h.worker.pending=None
+    h.tick()
+    assert len(submitted)==len(sampled)==1 and submitted[0][0][0]=='control'
+    clock[0]+=.005;h.tick()
+    assert len(submitted)==len(sampled)==1 and len(polls)==2
+    clock[0]+=.05;h.tick()
+    assert len(submitted)==len(sampled)==2
+
+
+def test_missing_coverage_rechecks_at_control_rate_without_sampling_obstacles(monkeypatch):
+    h,clock,sent,submitted,sampled,polls=scheduler_harness(monkeypatch)
+    h.worker.pending=None;checks=[]
+    h.memory.control_grid.free=lambda *args:(checks.append(clock[0]) and False)
+    h.tick()
+    count=len(checks)
+    assert count and h.task.state=='OBSERVING' and not sampled and not submitted
+    clock[0]+=.005;h.tick()
+    assert len(checks)==count and len(polls)==2
+    clock[0]+=.05;h.tick()
+    assert len(checks)>count and not sampled
+
+
+def test_feedback_rate_limit_does_not_delay_cancel_result(monkeypatch):
+    h,clock,sent,submitted,sampled,polls=scheduler_harness(monkeypatch)
+    feedback=[];finished=[]
+    h.goal_handle=SimpleNamespace(publish_feedback=lambda m:feedback.append(m))
+    h.finish=lambda state:finished.append(state)
+    h.tick();clock[0]+=.005;h.tick()
+    assert len(feedback)==1
+    h.task.state='CANCELED'
+    clock[0]+=.005;h.tick()
+    assert finished==['CANCELED'] and len(feedback)==1

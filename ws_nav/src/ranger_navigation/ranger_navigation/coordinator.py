@@ -87,6 +87,7 @@ class Coordinator(Node):
         self.command,self.last_clock,self.last_plan = None,None,-1e9
         self.last_control = self.last_state_publish = -1e9
         self.metrics = {}
+        self.input_timing = {}
         self.goal_handle,self.result_future = None,None
         self.goal_futures = {}
         self.expected_map = str(d('expected_map_uuid','').value)
@@ -273,6 +274,7 @@ class Coordinator(Node):
                 del self.clouds[ns]
                 continue
             msg = self.clouds.pop(ns)
+            started = time.monotonic()
             try:
                 xyz = cloud_xyz(msg)
                 okay = self.memory.update(xyz,self.r_imu,self.t_imu,[*pose.t[:2],pose.yaw()],ns*1e-9)
@@ -289,6 +291,8 @@ class Coordinator(Node):
                 out.observed_cells = self.memory._visible_grid.cells.astype(np.int8).ravel().tolist()
                 self.cloud_received,self.cloud_stamp = time.monotonic(),msg.header.stamp
             self.obs_pub.publish(out)
+            self.input_timing = dict(observation_build_publish_ms=(time.monotonic()-started)*1000.,
+                                     observation_sample_age_ms=(self.now()-ns*1e-9)*1000.)
 
     def goal(self,request):
         try:
@@ -480,8 +484,7 @@ class Coordinator(Node):
             # Include input alignment/cloud conversion and path checks in the
             # control-cycle measurement, not only JAX and result validation.
             control_cycle_started = cycle_started
-            points = transform2(self.memory.sampled(512),correction)
-            if self.task.state in ('PLANNING','BLOCKED') and now-self.last_plan>.5:
+            if self.worker.pending is None and self.task.state in ('PLANNING','BLOCKED') and now-self.last_plan>.5:
                 self.command = None
                 if self.worker.submit('plan',self.task.generation,dict(cells=self.grid.cells,pose=pose,goal=self.task.goal,
                         points=transform2(self.memory.points(),correction),visibility_cells=self.memory.control_grid.cells,
@@ -489,7 +492,13 @@ class Coordinator(Node):
                         dict(resolution=self.grid.resolution,origin=self.grid.origin.tolist(),actual_mode=self.actual_mode,
                              global_visibility=self.global_visibility),budget=5.1):
                     self.last_plan = now
-            elif segment is not None and self.task.state in ('EXECUTING','OBSERVING') and now-self.last_control>=.05:
+            elif (self.worker.pending is None and segment is not None
+                    and self.task.state in ('EXECUTING','OBSERVING') and now-self.last_control>=.05):
+                # Preparation can be much more expensive than polling. Run it
+                # at the control rate, including when coverage is insufficient;
+                # a busy worker cannot accept another input anyway. Keep result
+                # polling, input withdrawal and zero output on the 5ms timer.
+                self.last_control = now
                 path = densify(segment.poses,self.body,.025)
                 nearest = int(np.argmin(np.linalg.norm(path[:,:2]-pose[:2],axis=1)+.15*np.abs(wrap(path[:,2]-pose[2]))))
                 c,s = math.cos(correction[2]),math.sin(correction[2])
@@ -534,12 +543,13 @@ class Coordinator(Node):
                                     self.task.state,self.task.reason='EXECUTING','observation_resumed'
                             else:
                                 self.task.state,self.task.reason='EXECUTING','observation_resumed'
-                if path is not None and self.worker.submit('control',self.task.generation,dict(pose=pose,speed=speed,path=path,points=points,
+                if path is not None:
+                    points = transform2(self.memory.sampled(512),correction)
+                    self.worker.submit('control',self.task.generation,dict(pose=pose,speed=speed,path=path,points=points,
                         visibility_cells=self.memory.control_grid.cells,
                         observer_pose=np.array([*transform2(self.memory.visibility_pose[None,:2],correction)[0],self.memory.visibility_pose[2]+correction[2]])),
                         dict(mode=int(segment.mode),segment=self.task.index,sample_stamp=stamp_s(self.reference_wheel.header.stamp),
-                             input_started=control_cycle_started,sample_stamp_ns=stamp_ns(self.reference_wheel.header.stamp)),budget=.1):
-                    self.last_control = now
+                             input_started=control_cycle_started,sample_stamp_ns=stamp_ns(self.reference_wheel.header.stamp)),budget=.1)
         out = ControlCommand()
         out.session_id,out.generation,out.reason = self.session,self.task.generation,self.task.reason
         out.header.frame_id = 'base_link'
@@ -555,9 +565,11 @@ class Coordinator(Node):
                 out.header.stamp.sec,out.header.stamp.nanosec = divmod(ns,10**9)
         self.command_pub.publish(out)
         self.velocity_pub.publish(out.twist)
-        if now-self.last_state_publish>=.05:
+        publish_state = now-self.last_state_publish>=.05
+        if publish_state:
             self.state_pub.publish(String(data=json.dumps(dict(state=self.task.state,reason=self.task.reason,
                                       generation=self.task.generation,worker=status,inputs_valid=healthy,input_reason=self.input_reason,metrics=self.metrics,
+                                      input_timing=getattr(self,'input_timing',{}),
                                       segment_index=self.task.index,segment_count=len(self.task.segments),
                                       segment_mode=(int(self.task.segments[self.task.index].mode) if self.task.index<len(self.task.segments) else None),
                                       segment_target=(self.task.segments[self.task.index].poses[-1].tolist() if self.task.index<len(self.task.segments) else None)))))
@@ -567,7 +579,7 @@ class Coordinator(Node):
         if self.goal_handle is not None:
             if self.task.state in Task.TERMINAL:
                 self.finish(self.task.state)
-            elif sample is not None:
+            elif sample is not None and publish_state:
                 feedback = NavigateToPose.Feedback()
                 feedback.current_pose = path_msg([sample[0]],self.reference_wheel.header.stamp).poses[0]
                 feedback.distance_remaining = float(np.linalg.norm(sample[0][:2]-self.task.goal[:2]))

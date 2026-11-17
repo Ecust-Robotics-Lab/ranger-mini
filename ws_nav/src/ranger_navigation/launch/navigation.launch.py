@@ -1,110 +1,91 @@
-"""Stage 6 single-point navigation bringup. Default is DRY-RUN.
+"""EXACT-MPPI single-point navigation. Dry-run; requires existing FAST/TF/wheel.
 
-Actual start requires execute:=true AND control_authorized:=true (fresh,
-per AGENTS.md the authorization does not survive process restarts). Even when
-started, the chain outputs zeros until /ranger/motion_enable is set true on
-ranger_motion_gate.
-
-Expected environment: field_session (lidar, base driver, localization, bridge)
-already running. This launch never starts the chassis driver itself.
-
-Velocity chain (nothing after collision_monitor):
-  controller_server -> /cmd_vel_nav -> twist_mux -> /cmd_vel_mux
-  -> velocity_smoother -> /cmd_vel_gated_in -> ranger_motion_gate
-  -> /cmd_vel_after_gate -> collision_monitor -> /base/safe_cmd_vel
+No chassis, CAN or sensors are started here. The final safety process owns
+/base/safe_cmd_vel and starts unarmed. JAX/planning runs in a separate process.
 """
 from pathlib import Path
-
+import importlib.util
+import os
+import yaml
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument, LogInfo, OpaqueFunction
+from launch.actions import DeclareLaunchArgument,LogInfo,OpaqueFunction
 from launch.substitutions import LaunchConfiguration
 from launch_ros.actions import Node
 
 
+def project_root():
+    for start in (Path.cwd(),Path(__file__).resolve()):
+        for p in (start,*start.parents):
+            if (p/'config/fast_livo2/navigation_prep.yaml').is_file():
+                return p
+    raise RuntimeError('set project_root to the Ranger project checkout')
+
+
 def prepare(context):
-    if LaunchConfiguration('execute').perform(context) != 'true':
-        return [LogInfo(msg='DRY-RUN navigation stack. Components that would start: '
-                       'map_server, planner_server(Smac Hybrid-A*), controller_server(MPPI), '
-                       'bt_navigator(single_point.xml, no recovery), velocity_smoother, '
-                       'twist_mux, ranger_motion_gate, ranger_obstacle_filter, '
-                       'collision_monitor. Chain output: /base/safe_cmd_vel (zeros until '
-                       'motion_enable). Re-run with execute:=true control_authorized:=true.')]
-    if LaunchConfiguration('control_authorized').perform(context) != 'true':
-        raise RuntimeError('This start requires fresh explicit control authorization.')
-
+    if LaunchConfiguration('execute').perform(context)!='true':
+        return [LogInfo(msg='DRY-RUN: EXACT-MPPI coordinator + independent arbitration/gate/collision monitor. '
+                        'Reuses FAST localization, map, wheel and TF; no devices started; motion initially disabled.')]
+    if LaunchConfiguration('control_authorized').perform(context)!='true':
+        raise RuntimeError('This navigation start requires fresh explicit control authorization.')
+    root=Path(LaunchConfiguration('project_root').perform(context)).resolve()
+    map_yaml=Path(LaunchConfiguration('map_yaml').perform(context)).resolve()
+    # Reuse the existing map/source integrity verifier, without modifying assets.
+    spec=importlib.util.spec_from_file_location('fast_navigation_asset',root/'scripts/fast_livo2/navigation/asset.py')
+    asset=importlib.util.module_from_spec(spec);spec.loader.exec_module(asset)
+    manifest=asset.load_map(map_yaml.parent)
     from ament_index_python.packages import get_package_share_directory
-    share = Path(get_package_share_directory('ranger_navigation'))
-
-    map_yaml = LaunchConfiguration('map_yaml').perform(context)
-    if not Path(map_yaml).exists():
-        raise RuntimeError(f'map file not found: {map_yaml}')
-
-    nav_params = str(share / 'config' / 'nav2_params.yaml')
-    cm_params = str(share / 'config' / 'collision_monitor.yaml')
-    mux_params = str(share / 'config' / 'twist_mux.yaml')
-    gate_params = str(share / 'config' / 'motion_gate.yaml')
-    filt_params = str(share / 'config' / 'obstacle_filter.yaml')
-    bt_xml = str(share / 'behavior_trees' / 'single_point.xml')
-
-    common = {'output': 'screen', 'respawn': False, 'emulate_tty': True}
-
-    nodes = [
-        # -- plain nodes (not lifecycle managed) ----------------------------
-        Node(package='ranger_navigation', executable='obstacle_filter',
-             name='ranger_obstacle_filter',
-             parameters=[filt_params,
-                         {'input_type': __import__('os').environ.get(
-                             'RANGER_FILTER_INPUT', 'custom')}],
-             remappings=[('cloud_in', '/livox/lidar'),
-                         ('obstacles_out', '/livox/obstacles')], **common),
-        Node(package='ranger_navigation', executable='motion_gate',
-             name='ranger_motion_gate', parameters=[gate_params],
-             remappings=[('cmd_vel_in', '/cmd_vel_gated_in'),
-                         ('cmd_vel_out', '/cmd_vel_after_gate'),
-                         ('motion_enable', '/ranger/motion_enable'),
-                         ('soft_estop', '/ranger/soft_estop'),
-                         ('motion_permitted', '/ranger/motion_permitted'),
-                         # 监视过滤器输出（与 CM/局部代价地图同源）：过滤器死亡时
-                         # 门禁立即阻断，而不是被上游原始云蒙蔽（对抗审查 major）
-                         ('obstacle_cloud', '/livox/obstacles')], **common),
-        Node(package='twist_mux', executable='twist_mux', name='twist_mux',
-             parameters=[mux_params], remappings=[('cmd_vel_out', '/cmd_vel_mux')], **common),
-        Node(package='nav2_velocity_smoother', executable='velocity_smoother',
-             name='velocity_smoother', parameters=[nav_params],
-             remappings=[('cmd_vel', '/cmd_vel_mux'),
-                         ('cmd_vel_smoothed', '/cmd_vel_gated_in')], **common),
-        Node(package='nav2_collision_monitor', executable='collision_monitor',
-             name='collision_monitor', parameters=[cm_params], **common),
-        # -- lifecycle nodes (managed below) --------------------------------
-        Node(package='nav2_map_server', executable='map_server', name='map_server',
-             parameters=[nav_params, {'yaml_filename': map_yaml}], **common),
-        Node(package='nav2_planner', executable='planner_server', name='planner_server',
-             parameters=[nav_params], **common),
-        Node(package='nav2_controller', executable='controller_server', name='controller_server',
-             parameters=[nav_params], remappings=[('cmd_vel', '/cmd_vel_nav')], **common),
-        Node(package='nav2_bt_navigator', executable='bt_navigator', name='bt_navigator',
-             parameters=[nav_params, {'default_nav_to_pose_bt_xml': bt_xml,
-                                      'default_nav_through_poses_bt_xml': bt_xml}], **common),
-        Node(package='nav2_lifecycle_manager', executable='lifecycle_manager',
-             name='lifecycle_manager_navigation',
-             parameters=[{'use_sim_time': False,
-                          'autostart': True,
-                          # collision_monitor 放首位：多节点并发启动时 manager 的
-                          # get_state 与 on_configure 存在竞态（复现见 06 证据），
-                          # 安静期先配置最安全关键的节点
-                          'node_names': ['collision_monitor', 'map_server', 'planner_server',
-                                         'controller_server', 'bt_navigator',
-                                         'velocity_smoother']}], **common),
-    ]
+    share=Path(get_package_share_directory('ranger_navigation'))
+    cfg=yaml.safe_load((share/'config/exact_navigation.yaml').read_text())
+    profile=cfg['clearance_profiles'][LaunchConfiguration('clearance_profile').perform(context)]
+    limits=cfg['real_vehicle_first_test'] if LaunchConfiguration('low_speed').perform(context)=='true' else cfg['motion']
+    requested_speed=float(LaunchConfiguration('max_speed',default='0').perform(context))
+    if not 0 <= requested_speed <= float(cfg['motion']['max_speed']):
+        raise RuntimeError('max_speed must be between 0 (profile default) and configured motion limit')
+    common={'use_sim_time':LaunchConfiguration('use_sim_time').perform(context)=='true',
+            'geometry_config':str(root/'config/fast_livo2/navigation_prep.yaml'),
+            'wheel_topic':LaunchConfiguration('wheel_topic').perform(context),
+            'clearance':float(profile['clearance']),
+            'max_speed':requested_speed or float(limits['max_speed']),'max_yaw_rate':float(limits['max_yaw_rate'])}
+    common.update({k:float(cfg['motion'][k]) for k in ('acceleration','yaw_acceleration','min_radius')})
+    optimizer=Path(LaunchConfiguration('optimizer_python').perform(context))
+    if not optimizer.is_file():
+        raise RuntimeError('missing project-local JAX environment: '+str(optimizer))
+    nodes=[Node(package='ranger_navigation',executable='exact_navigation',name='ranger_exact_navigation',
+                parameters=[common,{'optimizer_python':str(optimizer),'compute_backend':cfg['compute']['backend'],
+                    'static_map_reserve':float(profile['static_map_reserve']),
+                    'visibility_reserve':float(profile['visibility_reserve']),
+                    'segment_yaw_tolerance':float(profile['segment_yaw_tolerance']),
+                    'goal_position_tolerance':float(LaunchConfiguration('goal_position_tolerance',default='.15').perform(context)),
+                    'goal_yaw_tolerance':float(LaunchConfiguration('goal_yaw_tolerance',default='.15').perform(context)),
+                    'prefer_parallel_in_narrow':bool(profile['prefer_parallel_in_narrow']),
+                    'samples':cfg['compute']['samples'],'expected_map_uuid':manifest['map_uuid'],
+                    **cfg['observation'],
+                    'expected_manifest_sha256':manifest['source_manifest_sha256'],
+                    'session_root':str(root/'.runtime/exact_navigation'),'map_yaml':str(map_yaml)}],output='screen'),
+           Node(package='ranger_navigation',executable='motion_gate',name='ranger_motion_gate',
+                parameters=[common],output='screen')]
+    if LaunchConfiguration('start_map_server').perform(context)=='true':
+        nodes += [Node(package='nav2_map_server',executable='map_server',name='exact_navigation_map',
+                       parameters=[{'use_sim_time':common['use_sim_time'],'yaml_filename':str(map_yaml)}],output='screen'),
+                  Node(package='nav2_lifecycle_manager',executable='lifecycle_manager',name='exact_map_lifecycle',
+                       parameters=[{'use_sim_time':common['use_sim_time'],'autostart':True,'node_names':['exact_navigation_map']}],output='screen')]
     return nodes
 
 
 def generate_launch_description():
-    from ranger_localization_bridge.runtime_config import resolve
-    default_map = resolve()['MAP_YAML']
+    root=project_root()
     return LaunchDescription([
-        DeclareLaunchArgument('execute', default_value='false', choices=['false', 'true']),
-        DeclareLaunchArgument('control_authorized', default_value='false'),
-        DeclareLaunchArgument('map_yaml', default_value=default_map),
-        OpaqueFunction(function=prepare),
-    ])
+        DeclareLaunchArgument('execute',default_value='false',choices=['false','true']),
+        DeclareLaunchArgument('control_authorized',default_value='false',choices=['false','true']),
+        DeclareLaunchArgument('project_root',default_value=str(root)),
+        DeclareLaunchArgument('map_yaml',default_value=str(root/'outputs/fast-livo-demo-navigation-prep-20261106/navigation_map_final/map.yaml')),
+        DeclareLaunchArgument('optimizer_python',default_value=str(root/'.runtime/exact_mppi_venv/bin/python3')),
+        DeclareLaunchArgument('wheel_topic',default_value='/fast_livo/navigation/wheel/odom'),
+        DeclareLaunchArgument('use_sim_time',default_value='true',choices=['false','true']),
+        DeclareLaunchArgument('start_map_server',default_value='false',choices=['false','true']),
+        DeclareLaunchArgument('low_speed',default_value='true',choices=['false','true']),
+        DeclareLaunchArgument('max_speed',default_value='0'),
+        DeclareLaunchArgument('goal_position_tolerance',default_value='.15'),
+        DeclareLaunchArgument('goal_yaw_tolerance',default_value='.15'),
+        DeclareLaunchArgument('clearance_profile',default_value='standard',choices=['standard','narrow']),
+        OpaqueFunction(function=prepare)])

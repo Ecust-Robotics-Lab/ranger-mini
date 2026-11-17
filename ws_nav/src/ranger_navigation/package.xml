@@ -4,18 +4,28 @@
   <name>ranger_navigation</name>
   <exec_depend>ranger_localization_bridge</exec_depend>
   <version>0.1.0</version>
-  <description>Stage 6 flat single-point navigation: Nav2 integration config, velocity safety chain (twist_mux -> velocity_smoother -> motion gate -> collision_monitor -> /base/safe_cmd_vel), obstacle cloud filter, and launch entry.</description>
+  <description>SE(2)/EXACT-MPPI single-point navigation with explicit V2 modes and independent arbitration, safety gate and collision monitor.</description>
   <maintainer email="lab307@example.invalid">ranger_nav</maintainer>
   <license>Apache-2.0</license>
+  <license>GPL-3.0</license>
 
   <exec_depend>rclpy</exec_depend>
+  <exec_depend>nav_msgs</exec_depend>
+  <exec_depend>tf2_ros</exec_depend>
+  <exec_depend>ranger_msgs</exec_depend>
+  <exec_depend>ranger_navigation_msgs</exec_depend>
+  <exec_depend>ranger_localization_msgs</exec_depend>
+  <exec_depend>nav2_map_server</exec_depend>
+  <exec_depend>nav2_lifecycle_manager</exec_depend>
+  <exec_depend>python3-numpy</exec_depend>
+  <exec_depend>python3-scipy</exec_depend>
+  <exec_depend>python3-yaml</exec_depend>
+  <exec_depend>python3-pil</exec_depend>
   <exec_depend>geometry_msgs</exec_depend>
   <exec_depend>sensor_msgs</exec_depend>
   <exec_depend>std_msgs</exec_depend>
   <exec_depend>diagnostic_msgs</exec_depend>
-  <exec_depend>nav2_common</exec_depend>
   <exec_depend>nav2_msgs</exec_depend>
-  <exec_depend>nav2_simple_commander</exec_depend>
   <exec_depend>launch</exec_depend>
   <exec_depend>launch_ros</exec_depend>
 

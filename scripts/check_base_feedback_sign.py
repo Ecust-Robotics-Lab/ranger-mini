@@ -27,6 +27,7 @@ struct RangerROSMessenger {
   RangerSubType robot_type_=RangerSubType::kRangerMiniV2;
   struct {double wheelbase=.494,track=.364;}robot_params_;
   int motion_mode_=0;double position_x_=0,position_y_=0,theta_=0;
+  double v2_feedback_steering_sign_=-1.;bool v2_sdk_front_opposite_base_=false;
   void UpdateOdometry(double,double,double,double);
   double ConvertInnerAngleToCentral(double);
 };
@@ -40,6 +41,12 @@ int main(){
   RangerROSMessenger spin;spin.motion_mode_=2;spin.UpdateOdometry(0.,.5,.2,.1);assert(std::abs(spin.theta_-.05)<1e-12);
   RangerROSMessenger parallel;parallel.motion_mode_=1;parallel.UpdateOdometry(.4,0.,-.2,.1);assert(parallel.position_y_>0 && parallel.theta_==0);
   RangerROSMessenger other;other.robot_type_=RangerROSMessenger::RangerSubType::kRangerMiniV3;other.UpdateOdometry(.4,0.,.2,.1);assert(other.theta_>0);
+  RangerROSMessenger camera;camera.v2_feedback_steering_sign_=1.;camera.v2_sdk_front_opposite_base_=true;
+  camera.UpdateOdometry(.4,0.,.2,.1);assert(camera.position_x_<0 && camera.theta_>0);
+  RangerROSMessenger camera_left;camera_left.motion_mode_=1;camera_left.v2_feedback_steering_sign_=1.;camera_left.v2_sdk_front_opposite_base_=true;
+  camera_left.UpdateOdometry(.4,0.,M_PI/2,.1);assert(camera_left.position_y_<0);
+  RangerROSMessenger camera_spin;camera_spin.motion_mode_=2;camera_spin.v2_sdk_front_opposite_base_=true;
+  camera_spin.UpdateOdometry(0.,.5,0.,.1);assert(std::abs(camera_spin.theta_-.05)<1e-12);
   std::cout<<"PASS: V2 right/left/reverse, spin preserved, parallel feedback, other variant preserved (6 cases)\n";
 }
 '''

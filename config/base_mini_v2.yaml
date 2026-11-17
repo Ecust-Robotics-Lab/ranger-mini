@@ -8,3 +8,8 @@ ranger_base_node:
     base_frame: base_link
     odom_topic_name: /wheel/odom
     publish_odom_tf: false
+    # 2026-11-10 physical CAN trace: command +1570 mrad -> feedback +1569 mrad.
+    # Keep odometry and preposition confirmation in this measured convention.
+    v2_feedback_steering_sign: 1.0
+    # Physical body +X is camera-facing; native chassis +X is the opposite end.
+    v2_sdk_front_opposite_base: true

@@ -3,8 +3,8 @@
 # The FAST frontend and B mapping backend are not prior-map localizers.
 extends: config/runtime.yaml
 mapping_backend: fast_livo2
-# User-authorized working body/IMU estimate, 2026-11-09. Not field calibrated.
+# User-confirmed camera-facing body front, 2026-11-10; working tilt/XYZ, not a new field calibration.
 # Matches config/fast_livo2/navigation_prep.yaml; production runtime.yaml is unchanged.
 localization:
-  t_base_imu_xyz: [0.11485917776401003, -0.023945937986232936, 0.5552533734244779]
-  t_base_imu_rpy: [0.0169366422492582, 0.3685116044554271, -3.1260938402392293]
+  t_base_imu_xyz: [0.10314082223598997, 0.02394593798623294, 0.5552533734244779]
+  t_base_imu_rpy: [0.0169366422492582, 0.3685116044554271, 0.0154988133505638]

@@ -96,6 +96,18 @@ def publish_wheel(folder):
 
 
 class CaptureUnit(unittest.TestCase):
+    def test_owned_camera_reuses_verified_latency_executable_and_library(self):
+        from record_session import capture_specs, sensor_environment, CAMERA_PREFIX
+        from ranger_localization_bridge.runtime_config import resolve
+        with tempfile.TemporaryDirectory() as tmp, patch.dict(os.environ):
+            os.environ['RANGER_RUNTIME_CONFIG']=str(ROOT/'config/profiles/fast_livo2_frontend.yaml')
+            cfg=resolve(ROOT);sensor_environment(cfg,Path(tmp))
+            components=capture_specs(cfg,'none',8765)
+            camera=next(c for c in components if c.name=='camera')
+            self.assertIn(str(CAMERA_PREFIX/'lib/hik_camera_trigger_driver/hik_camera_trigger_driver_node'),camera.argv)
+            self.assertTrue(os.environ['LD_LIBRARY_PATH'].startswith(str(CAMERA_PREFIX/'lib')+':'))
+            self.assertEqual(camera.depends,('writer',))
+
     def test_defaults_execute_owned_capture_with_fast_profile_before_device_access(self):
         with tempfile.TemporaryDirectory() as tmp:
             output = Path(tmp)/'capture'

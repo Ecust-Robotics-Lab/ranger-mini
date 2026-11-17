@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>办公室—走廊往返 · 实车前路线复核</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#101827;color:#e5edf6;font:15px system-ui,sans-serif}header{padding:18px 24px;border-bottom:1px solid #344054}h1{font-size:23px;margin:0 0 8px}p{line-height:1.6;margin:8px 0}.layout{display:grid;grid-template-columns:minmax(430px,1fr) 390px;gap:18px;padding:18px}canvas{background:#cacaca;width:100%;height:76vh;border-radius:9px;touch-action:none}.panel{background:#1b283b;padding:16px;border-radius:9px}button,select{background:#2c435e;color:white;border:1px solid #55718e;border-radius:5px;padding:9px;margin:4px}button{cursor:pointer}.warn{color:#ffbb69}.good{color:#6be6a1}.bad{color:#ff8f88}table{width:100%;border-collapse:collapse;font-size:13px}td,th{border-bottom:1px solid #3a4a60;padding:7px 3px;text-align:left}pre{white-space:pre-wrap;word-break:break-all;font-size:12px}.small{font-size:13px;color:#b7c7d9}@media(max-width:900px){.layout{grid-template-columns:1fr}canvas{height:70vh}}
+</style>
+<header><h1>办公室 → 走廊端点掉头 → 回办公室</h1><p class="warn">离线准备与点位复核。当前出发点是候选值，不是实车当前位置。绿色：静态规划及独立车体扫掠检查通过；红色虚线：尚未找到路线，不可执行。</p></header>
+<main class="layout"><section><canvas id="map"></canvas><p id="cursor" class="small">坐标：map / 米。白色为地图自由格，灰色为未知，黑色为占用。蓝色为 0.74 × 0.52m 车体。</p></section>
+<aside class="panel"><p id="summary"></p><button id="overview">往返全览</button><button id="door">办公室 / 门口</button><button id="end">走廊端点</button><button id="full">完整地图</button>
+<p>候选点位 <select id="point"></select></p><p id="pose"></p>
+<label><input type="checkbox" id="edit"> 修改候选点位</label><p class="small">勾选后：左键设置位置，右键设置该点朝向。出发点修改会同步最后的返回点。修改后必须重新运行离线规划，旧绿色路径立即失效。</p>
+<label><input type="checkbox" id="confirmed"> 我已核对这些点位在现场的含义</label><br><button id="export">导出候选路线 JSON</button>
+<p id="changed" class="warn"></p><table><thead><tr><th>路段</th><th>离线结果</th></tr></thead><tbody id="legs"></tbody></table>
+<p class="small">仅静态地图通过不能证明当前障碍、实时观察覆盖、定位或制动通过。此页面没有 ROS、底盘接口，不发送目标或速度。</p><details><summary>地图身份与复现</summary><pre id="identity"></pre><p class="small">导出后将 JSON 交给准备脚本的 --route 参数，使用新的 --output 目录复核。现场认可不是设备或运动授权。</p></details></aside></main>
+<script id="data" type="application/json">__FIELD_DATA__</script>
+<script>
+'use strict';
+const D=JSON.parse(document.getElementById('data').textContent),R=structuredClone(D.route),C=document.getElementById('map'),ctx=C.getContext('2d'),img=new Image();
+const $=id=>document.getElementById(id),views=D.views||{overview:[-5,6,-24,3],door:[-.5,4.8,-4.5,1.5],end:[-3,5,-24,-18]};let dirty=false,box=[...views.overview],vp;if(D.wide)C.style.height='48vh';
+function fit(){const r=C.getBoundingClientRect(),d=devicePixelRatio||1;C.width=Math.round(r.width*d);C.height=Math.round(r.height*d);ctx.setTransform(d,0,0,d,0,0);const s=Math.min(r.width/(box[1]-box[0]),r.height/(box[3]-box[2]));vp={s,x:(r.width-s*(box[1]-box[0]))/2,y:(r.height-s*(box[3]-box[2]))/2,w:r.width,h:r.height};draw();}
+const xy=(x,y)=>[vp.x+(x-box[0])*vp.s,vp.y+(box[3]-y)*vp.s];
+function line(path,color,dash=[]){ctx.beginPath();path.forEach((p,i)=>{const q=xy(p[0],p[1]);i?ctx.lineTo(...q):ctx.moveTo(...q)});ctx.strokeStyle=color;ctx.lineWidth=2;ctx.setLineDash(dash);ctx.stroke();ctx.setLineDash([]);}
+function draw(){if(!vp)return;ctx.fillStyle='#cacaca';ctx.fillRect(0,0,vp.w,vp.h);if(img.complete&&img.naturalWidth){const e=D.extent,a=xy(e[0],e[3]),b=xy(e[1],e[2]);ctx.imageSmoothingEnabled=false;ctx.drawImage(img,...a,b[0]-a[0],b[1]-a[1]);}
+ for(let x=Math.ceil(box[0]);x<box[1];x++){line([[x,box[2]],[x,box[3]]],'#88909b38');const p=xy(x,box[3]);ctx.fillStyle='#364559';ctx.font='11px system-ui';ctx.fillText(x,p[0]+3,p[1]+15);}
+ for(let y=Math.ceil(box[2]);y<box[3];y++){line([[box[0],y],[box[1],y]],'#88909b38');const p=xy(box[0],y);ctx.fillStyle='#364559';ctx.fillText(y,p[0]+2,p[1]-3);}
+ if(!dirty){for(const l of D.report.legs)line(l.accepted?l.path:[l.start,l.goal],l.accepted?'#04864d':'#df4940',l.accepted?[]:[5,5]);}
+ R.waypoints.forEach((p,i)=>{const [x,y,a]=p.pose,c=Math.cos(a),s=Math.sin(a),[len,wid]=D.body;const poly=[[len/2,wid/2],[len/2,-wid/2],[-len/2,-wid/2],[-len/2,wid/2]].map(([u,v])=>[x+c*u-s*v,y+s*u+c*v]);poly.push(poly[0]);line(poly,i===Number($('point').value)?'#1069ca':'#2789c5');line([[x,y],[x+c*.6,y+s*.6]],'#1069ca');const q=xy(x,y);ctx.fillStyle='#174da4';ctx.beginPath();ctx.arc(...q,3.5,0,Math.PI*2);ctx.fill();ctx.font='bold 13px system-ui';ctx.fillText(String(i),q[0]+7,q[1]-7);});}
+function show(){const p=R.waypoints[Number($('point').value)];$('pose').textContent=`${p.pose[0].toFixed(3)}m, ${p.pose[1].toFixed(3)}m, ${(p.pose[2]*180/Math.PI).toFixed(1)}°`;draw();}
+R.waypoints.forEach((p,i)=>{const o=document.createElement('option');o.value=i;o.textContent=`${i} · ${p.label||p.name}`;$('point').appendChild(o)});
+$('summary').textContent=`${D.report.clearance_profile||'旧基线'} 参数：静态检查 ${D.report.legs.filter(l=>l.accepted).length} / ${D.report.legs.length} 路段通过；整条实车路线尚未验收。`;
+for(const [i,l] of D.report.legs.entries()){const tr=document.createElement('tr'),a=document.createElement('td'),b=document.createElement('td');a.textContent=`${i} → ${i+1}`;b.textContent=l.accepted?'PASS':l.reason;b.className=l.accepted?'good':'bad';tr.append(a,b);$('legs').appendChild(tr);}
+$('identity').textContent=`UUID: ${D.manifest.map_uuid}\n3D manifest SHA: ${D.manifest.source_manifest_sha256}\n图像 SHA: ${D.manifest.map_image_sha256}\n采样地图分辨率: ${D.manifest.resolution}m\n未启动设备；未发布指令。`;
+$('overview').onclick=()=>{box=[...views.overview];fit()};$('door').onclick=()=>{box=[...views.door];fit()};$('end').onclick=()=>{box=[...views.end];fit()};$('full').onclick=()=>{box=[...D.extent];fit()};$('point').onchange=show;
+function modify(e,heading){if(!$('edit').checked)return;const rect=C.getBoundingClientRect(),x=box[0]+(e.clientX-rect.left-vp.x)/vp.s,y=box[3]-(e.clientY-rect.top-vp.y)/vp.s,p=R.waypoints[Number($('point').value)];if(heading)p.pose[2]=Math.atan2(y-p.pose[1],x-p.pose[0]);else p.pose=[x,y,p.pose[2]];const i=Number($('point').value);if(i===0)R.waypoints.at(-1).pose=[...p.pose];if(i===R.waypoints.length-1)R.waypoints[0].pose=[...p.pose];dirty=true;$('confirmed').checked=false;$('changed').textContent='点位已修改，原规划全部失效。请导出后重新离线复核。';show();}
+C.onclick=e=>modify(e,false);C.oncontextmenu=e=>{e.preventDefault();modify(e,true)};C.onmousemove=e=>{const r=C.getBoundingClientRect();$('cursor').textContent=`map x=${(box[0]+(e.clientX-r.left-vp.x)/vp.s).toFixed(2)}m, y=${(box[3]-(e.clientY-r.top-vp.y)/vp.s).toFixed(2)}m · 白=自由，灰=未知，黑=占用`;};
+$('export').onclick=()=>{R.human_confirmed=$('confirmed').checked;R.reviewed_map_image_sha256=D.manifest.map_image_sha256;const url=URL.createObjectURL(new Blob([JSON.stringify(R,null,2)],{type:'application/json'})),a=document.createElement('a');a.href=url;a.download='office_corridor_route.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000)};
+img.onload=fit;img.src=D.image;window.onresize=fit;show();fit();
+</script></html>

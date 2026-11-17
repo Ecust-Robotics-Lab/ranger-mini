@@ -30,7 +30,9 @@ def enabled(env, name, default='1'):
 
 
 def build_components(mode, cfg, env):
-    specs = [Component('probe', ros_command(['python3', ROOT/'scripts/session_probe.py']), ready_key='probe_live')]
+    lidar_type = 'none' if mode=='base' else ('pointcloud2' if mode=='navigation' else 'custom')
+    specs = [Component('probe', ros_command(['python3', ROOT/'scripts/session_probe.py',
+                        '--lidar-type',lidar_type]), ready_key='probe_live')]
     if mode in ['field', 'lidar'] and (mode == 'lidar' or enabled(env, 'ENABLE_LIDAR')):
         specs.append(Component('lidar', ros_command(['python3', ROOT/'scripts/start_mid360.py',
             '--execute', '--seconds', cfg['LIDAR_SECONDS']], [str(ROOT/'scripts/slam_env.sh')]),
@@ -38,7 +40,7 @@ def build_components(mode, cfg, env):
     if mode in ['field', 'base'] and (mode == 'base' or enabled(env, 'ENABLE_BASE')):
         specs.append(Component('base', ros_command(['ros2', 'launch', ROOT/'config/base_mini_v2.launch.py',
             'execute:=true', 'confirmed_model:=ranger_mini_v2', 'control_authorized:=true'],
-            ['/opt/ros/humble/setup.bash', str(ROOT/'ws_base/install/local_setup.bash')]),
+            ['/opt/ros/humble/setup.bash', str(ROOT/'ws_base/install_exact/local_setup.bash')]),
             depends=('probe',), ready_key='odom', start_requires=('odom_unclaimed',), resource='base_control'))
     auxiliary = mode == 'aux' or (mode == 'field' and enabled(env, 'ENABLE_AUX'))
     if auxiliary:
@@ -84,9 +86,19 @@ def build_components(mode, cfg, env):
             requires=('odom',), ready_key='localization', start_requires=('bridge_unclaimed',),
             resource='localization_bridge'))
     if mode == 'navigation':
+        nav_map=env.get('RANGER_NAVIGATION_MAP',str(ROOT/'outputs/fast-livo-demo-navigation-prep-20261106/navigation_map_final/map.yaml'))
+        clearance_profile = env.get('RANGER_CLEARANCE_PROFILE', 'standard')
+        if clearance_profile not in ('standard', 'narrow'):
+            raise ValueError('RANGER_CLEARANCE_PROFILE must be standard or narrow')
         specs.append(Component('navigation', ros_command(['ros2', 'launch', 'ranger_navigation',
-            'navigation.launch.py', 'execute:=true', 'control_authorized:=true', 'map_yaml:='+cfg['MAP_YAML']]),
-            depends=('probe',), requires=('localization', 'lidar', 'sensor_tf'), ready_key='navigation',
+            'navigation.launch.py', 'execute:=true', 'control_authorized:=true',
+            'project_root:='+str(ROOT),'map_yaml:='+nav_map,'clearance_profile:='+clearance_profile,
+            'max_speed:='+env.get('RANGER_NAV_MAX_SPEED','0'),
+            'goal_position_tolerance:='+env.get('RANGER_NAV_GOAL_POSITION_TOLERANCE','.15'),
+            'goal_yaw_tolerance:='+env.get('RANGER_NAV_GOAL_YAW_TOLERANCE','.15')],
+            ['/opt/ros/humble/setup.bash', str(ROOT/'ws_base/install_exact/setup.bash'),
+             str(ROOT/'ws_nav/install_exact/setup.bash')]),
+            depends=('probe',), requires=('localization', 'fast_navigation_inputs'), ready_key='navigation',
             start_requires=('nav_unclaimed',), resource='navigation'))
     return specs
 
@@ -123,9 +135,12 @@ def main():
         specs = build_components(args.mode, cfg, os.environ)
         controls_base = any(c.name == 'base' for c in specs)
         if not args.execute:
-            print(json.dumps({'action': 'DRY-RUN', 'session': args.mode,
+            plan = {'action': 'DRY-RUN', 'session': args.mode,
                 'requires_fresh_control_authorization': controls_base or args.mode == 'navigation',
-                'map_bundle': cfg['MAP_BUNDLE'], 'components': [asdict(c) for c in specs]},
+                'map_bundle': cfg['MAP_BUNDLE'], 'components': [asdict(c) for c in specs]}
+            if args.mode=='navigation':
+                plan['navigation_map'] = os.environ.get('RANGER_NAVIGATION_MAP',str(ROOT/'outputs/fast-livo-demo-navigation-prep-20261106/navigation_map_final/map.yaml'))
+            print(json.dumps(plan,
                 ensure_ascii=False, indent=2))
             return 0
         if (controls_base or args.mode == 'navigation') and not args.control_authorized:

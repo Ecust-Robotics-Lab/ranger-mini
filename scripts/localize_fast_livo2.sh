@@ -10,6 +10,10 @@ if [[ " $* " == *" --auto-wheel "* ]]; then
   source "$root/ws_base/install_recording_rx/setup.bash"
 fi
 source "$root/ws_nav/install/setup.bash"
+if [[ " $* " == *" --record-navigation "* ]]; then
+  source "$root/ws_base/install_exact/setup.bash"
+  source "$root/ws_nav/install_exact/setup.bash"
+fi
 source "$root/ws_fast_livo/online_install/setup.bash"
 if [[ -f "$root/ws_fast_livo/online_localization_install/setup.bash" ]]; then
   source "$root/ws_fast_livo/online_localization_install/setup.bash"

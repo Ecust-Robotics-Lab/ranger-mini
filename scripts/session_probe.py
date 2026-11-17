@@ -11,7 +11,7 @@ from rclpy.node import Node
 from rclpy.qos import qos_profile_sensor_data
 from lifecycle_msgs.srv import GetState
 from nav_msgs.msg import Odometry
-from std_msgs.msg import Bool
+from std_msgs.msg import Bool, String
 from sensor_msgs.msg import Imu, PointCloud2
 from livox_ros_driver2.msg import CustomMsg
 import tf2_ros
@@ -20,7 +20,7 @@ from session_manager import atomic_json
 
 
 class Probe(Node):
-    def __init__(self, output):
+    def __init__(self, output, lidar_type='custom'):
         super().__init__('ranger_session_probe_'+str(os.getpid()))
         self.output = output
         self.seen = {}
@@ -31,18 +31,31 @@ class Probe(Node):
         self.buffer = tf2_ros.Buffer()
         self.listener = tf2_ros.TransformListener(self.buffer, self)
         # Raw serialized clouds avoid converting every point to Python objects.
-        self.create_subscription(CustomMsg, '/livox/lidar', lambda _: self.mark('cloud'),
-                                 qos_profile_sensor_data, raw=True)
+        if lidar_type != 'none':
+            self.create_subscription(PointCloud2 if lidar_type=='pointcloud2' else CustomMsg,
+                                     '/livox/lidar', lambda _: self.mark('cloud'),
+                                     qos_profile_sensor_data, raw=True)
         self.create_subscription(Imu, '/livox/imu', lambda _: self.mark('imu'), qos_profile_sensor_data)
         self.create_subscription(Odometry, '/wheel/odom', self.odom, 10)
         self.create_subscription(Bool, '/navigation_ready', self.on_ready, 10)
         self.create_subscription(Bool, '/ranger/motion_permitted', lambda _: self.mark('gate'), 10)
         self.create_subscription(PointCloud2, '/livox/obstacles', lambda _: self.mark('obstacles'), 10, raw=True)
-        names = ['collision_monitor', 'map_server', 'planner_server', 'controller_server',
-                 'bt_navigator', 'velocity_smoother']
+        self.nav_status = {}
+        self.create_subscription(String, '/navigation/state', self.on_navigation, 10)
+        self.create_subscription(PointCloud2, '/fast_livo/deskewed_imu', lambda _: self.mark('fast_cloud'), 2, raw=True)
+        self.create_subscription(Odometry, '/fast_livo/odometry', lambda _: self.mark('fast_odom'), 10)
+        self.create_subscription(Odometry, '/fast_livo/navigation/wheel/odom', lambda _: self.mark('mapped_wheel'), 10)
+        names = []
         self.lifecycle_clients = {name: self.create_client(GetState, '/'+name+'/get_state') for name in names}
         self.pending, self.states = {}, {}
         self.create_timer(.2, self.tick)
+
+    def on_navigation(self, msg):
+        try:
+            self.nav_status = json.loads(msg.data)
+            self.mark("navigation")
+        except ValueError:
+            self.nav_status = {}
 
     def mark(self, name):
         self.seen[name] = time.monotonic()
@@ -79,7 +92,8 @@ class Probe(Node):
         topics = ['/livox/lidar', '/livox/imu', '/wheel/odom', '/localization/estimate',
                   '/navigation_ready', '/lightning/loc_status', '/lightning/loc_confidence',
                   '/base/safe_cmd_vel', '/cmd_vel_after_gate', '/cmd_vel_gated_in',
-                  '/cmd_vel_mux', '/cmd_vel_nav', '/map', '/livox/obstacles', '/ranger/motion_permitted']
+                  '/cmd_vel_mux', '/cmd_vel_nav', '/map', '/livox/obstacles', '/ranger/motion_permitted',
+                  '/navigation/control', '/navigation/observation']
         publishers = {topic: self.count_publishers(topic) for topic in topics}
         native, sensor_tf = False, False
         try:
@@ -108,14 +122,13 @@ class Probe(Node):
             'bridge_unclaimed': publishers['/navigation_ready'] == 0 and
                 (os.environ.get('LOCALIZATION_BACKEND') == 'standard' or publishers['/localization/estimate'] == 0),
             'nav_unclaimed': all(publishers[t] == 0 for t in ['/base/safe_cmd_vel',
-                '/cmd_vel_after_gate', '/cmd_vel_gated_in', '/cmd_vel_mux', '/cmd_vel_nav', '/map', '/livox/obstacles', '/ranger/motion_permitted']),
+                '/cmd_vel_after_gate', '/cmd_vel_nav', '/navigation/control', '/navigation/observation', '/ranger/motion_permitted']),
             'map_unclaimed': publishers['/map'] == 0,
-            'navigation': all(n in self.states and self.states[n][0] == 3 and
-                              now-self.states[n][1] < 2. for n in self.lifecycle_clients) and
-                              publishers['/base/safe_cmd_vel'] == publishers['/map'] == 1 and
-                              self.fresh('gate', .5) and self.fresh('obstacles') and
-                              all(publishers[t] == 1 for t in ['/cmd_vel_after_gate',
-                                  '/cmd_vel_gated_in', '/cmd_vel_mux', '/livox/obstacles']),
+            'fast_navigation_inputs': self.fresh('fast_cloud', .5) and self.fresh('fast_odom', .5)
+                and self.fresh('mapped_wheel', .5) and publishers['/map'] == 1,
+            'navigation': self.fresh('navigation', .5) and self.nav_status.get('worker',{}).get('ready',False)
+                and self.fresh('gate', .5) and publishers['/base/safe_cmd_vel'] == 1
+                and publishers['/navigation/control'] == publishers['/navigation/observation'] == 1,
         }
         atomic_json(self.output, {'monotonic': now, 'checks': checks, 'publishers': publishers,
                                   'lifecycle_states': self.states})
@@ -124,11 +137,12 @@ class Probe(Node):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--output', type=Path, default=os.environ.get('RANGER_SESSION_HEALTH_FILE'))
+    parser.add_argument('--lidar-type',choices=('custom','pointcloud2','none'),default='custom')
     args = parser.parse_args()
     if args.output is None:
         parser.error('--output or RANGER_SESSION_HEALTH_FILE is required')
     rclpy.init()
-    node = Probe(args.output)
+    node = Probe(args.output,args.lidar_type)
     try:
         rclpy.spin(node)
     except (KeyboardInterrupt, rclpy.executors.ExternalShutdownException):

@@ -2,6 +2,7 @@
 import json
 from pathlib import Path
 import subprocess
+import yaml
 
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, LogInfo, OpaqueFunction
@@ -27,10 +28,13 @@ def prepare(context):
             can.get('state') != 'ERROR-ACTIVE' or
             not can.get('bittiming', {}).get('bitrate')):
         raise RuntimeError('can0 must already be UP/ERROR-ACTIVE with known bitrate.')
+    motion = yaml.safe_load((Path(__file__).parent.parent / "ws_nav/src/ranger_navigation/config/exact_navigation.yaml").read_text())["motion"]
     return [Node(
         package='ranger_base', executable='ranger_base_node',
         name='ranger_base_node', output='screen', respawn=False,
-        parameters=[str(Path(__file__).with_name('base_mini_v2.yaml'))],
+        parameters=[str(Path(__file__).with_name('base_mini_v2.yaml')),
+                    {'nav_max_speed':motion['max_speed'], 'nav_max_yaw_rate':motion['max_yaw_rate'],
+                     'nav_min_radius':motion['min_radius']}],
         remappings=[('/cmd_vel', '/base/safe_cmd_vel')],
     )]
 

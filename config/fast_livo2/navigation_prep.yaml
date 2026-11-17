@@ -1,10 +1,10 @@
-# Development candidate updated 2026-11-09 from same-capture motion; not field calibrated.
 schema_version: 1
 robot: ranger_mini_v2
 base_link:
   origin: midpoint_between_axles_on_ground
   axes: x_forward_y_left_z_up
   status: engineering_convention_selected_by_user_authorization
+  physical_front: camera_lens_facing_end_confirmed_by_user_2026_11_10
 body:
   nominal_length_width_height_m:
   - 0.738
@@ -38,10 +38,10 @@ installation:
   t_base_lidar_rpy: &id001
   - 0.0169366422492582
   - 0.3685116044554271
-  - -3.1260938402392293
+  - 0.0154988133505638
   t_base_imu_xyz:
-  - 0.11485917776401003
-  - -0.023945937986232936
+  - 0.10314082223598997
+  - 0.02394593798623294
   - 0.5552533734244779
   t_base_imu_rpy: *id001
   base_imu_field_calibrated: false
@@ -53,6 +53,12 @@ installation:
   - lidar_height_0.600m_not_remeasured
   motion_source_bag: bags/fast-livo-wheel_alignment_visit01-pwr5lx7u/raw
   motion_source_db_sha256: dd3a84c771ac803df92702a3c2f43a28be6773d30947d0c922cc50551d227b1e
+  physical_front_confirmed_2026_11_10: camera optical facing end; lidar origin 0.26m
+    from same front edge
+  working_estimate_update_2026_11_10: rotate working yaw by pi to camera-facing body
+    +X; retain measured front distance and height; recompute IMU translation once
+  previous_motion_front_assumption: SDK positive longitudinal direction is opposite
+    the user physical front; previous 2026-11-09 yaw convention superseded
 sources:
   manual: https://static.generation-robots.com/media/ranger-mini-user-manual-en.pdf
   official_driver: https://github.com/agilexrobotics/ranger_ros2/blob/humble/ranger_base/include/ranger_base/ranger_params.hpp

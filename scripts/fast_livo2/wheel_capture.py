@@ -6,7 +6,9 @@ import subprocess
 import time
 
 ROOT=Path(__file__).resolve().parents[2]
-NODE=ROOT/'ws_base/install_recording_rx/ranger_base/lib/ranger_base/ranger_base_node'
+# Same reviewed binary in receive-only mode; honors the camera-facing body
+# frame and measured feedback convention. Historical RX installation retained.
+NODE=ROOT/'ws_base/install_exact/ranger_base/lib/ranger_base/ranger_base_node'
 
 
 def driver_command():
@@ -82,7 +84,7 @@ def prepare():
     result=discover()
     if result['source']=='owned_receive_only':
         check_other_drivers()
-        if not os.access(NODE,os.X_OK):raise RuntimeError('缺少录包只接收驱动；先执行 bash scripts/build_base_recording.sh --execute')
+        if not os.access(NODE,os.X_OK):raise RuntimeError('缺少当前车体坐标驱动；先执行 bash scripts/build_exact_navigation.sh --execute')
         result['can']=prepare_can(can_state())
         result['driver_command']=driver_command()
     return result

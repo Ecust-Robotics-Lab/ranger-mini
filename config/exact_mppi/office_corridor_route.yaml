@@ -1,0 +1,18 @@
+# Review candidate only. Coordinates are map-frame body poses, not live poses.
+schema_version: 1
+name: office_corridor_return
+frame: map
+intent: upper_office_to_corridor_end_turn_and_return
+human_confirmed: false
+map_uuid: 253f573d7a7eabbc363a225ab192cc14
+source_manifest_sha256: e81d4a05a8da6cf3c1badfc0a6171295020bec59e5615408796c92a85b49b247
+waypoints:
+  - {name: office_start_candidate, label: 办公室候选出发位, pose: [0.6, 0.0, 0.0]}
+  - {name: door_outside, label: 门外候选点, pose: [3.2, -3.2, -1.5707963267948966]}
+  - {name: corridor_out, label: 走廊去程, pose: [3.0, -12.0, -1.5707963267948966]}
+  # This is before the mapped end bend; actual endpoint requires field review.
+  - {name: turn_position, label: 走廊端部弯口前候选位, pose: [3.0, -20.0, -1.5707963267948966]}
+  - {name: turn_complete, label: 停稳掉头, pose: [3.0, -20.0, 1.5707963267948966]}
+  - {name: corridor_return, label: 走廊返程, pose: [3.0, -12.0, 1.5707963267948966]}
+  - {name: door_return, label: 返程门外, pose: [3.2, -3.2, 1.5707963267948966]}
+  - {name: office_return, label: 回办公室原位, pose: [0.6, 0.0, 0.0]}

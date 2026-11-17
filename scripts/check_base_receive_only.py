@@ -29,6 +29,7 @@ def main():
 #include "ranger_base/ranger_params.hpp"
 #define RCLCPP_INFO(...) ((void)0)
 #define RCLCPP_ERROR(...) ((void)0)
+namespace std_msgs { namespace msg { struct UInt8 {}; } }
 namespace geometry_msgs { namespace msg { struct Twist {}; } }
 namespace ranger_msgs { namespace msg { using SystemState=int; using MotionState=int; using ActuatorStateArray=int; } }
 namespace nav_msgs { namespace msg { using Odometry=int; } }
@@ -58,12 +59,14 @@ struct RangerROSMessenger {
   rclcpp::Node::SharedPtr node_;std::shared_ptr<RangerRobot> robot_;
   RangerSubType robot_type_;RobotParams robot_params_;
   std::string port_name_,robot_model_,odom_frame_,base_frame_,odom_topic_name_;
-  int update_rate_;bool publish_odom_tf_,receive_only_,parking_mode_;
-  std::shared_ptr<int> system_state_pub_,motion_state_pub_,actuator_state_pub_,odom_pub_,battery_state_pub_,motion_cmd_sub_;
+  int update_rate_;bool publish_odom_tf_,receive_only_,parking_mode_,v2_sdk_front_opposite_base_;
+  double nav_max_speed_,nav_max_yaw_rate_,nav_min_radius_,v2_feedback_steering_sign_;
+  std::shared_ptr<int> system_state_pub_,motion_state_pub_,actuator_state_pub_,odom_pub_,battery_state_pub_,motion_cmd_sub_,mode_cmd_sub_;
   std::shared_ptr<tf2_ros::TransformBroadcaster>tf_broadcaster_;
   RangerROSMessenger(rclcpp::Node::SharedPtr&);~RangerROSMessenger();
   void LoadParameters();void SetupSubscription();
   void TwistCmdCallback(std::shared_ptr<geometry_msgs::msg::Twist>){}
+  void ModeCmdCallback(std::shared_ptr<std_msgs::msg::UInt8>){}
 };
 ''' + '\n'.join(method(source,name) for name in [
         'RangerROSMessenger::RangerROSMessenger(', 'RangerROSMessenger::~RangerROSMessenger()',
@@ -73,7 +76,7 @@ int main(){
   using namespace westonrobot;
   for(bool rx:{false,true}){
     enables=stops=0;auto node=std::make_shared<rclcpp::Node>();node->rx=rx;
-    {RangerROSMessenger m(node);assert(enables==(rx?0:1));assert(node->subscriptions==(rx?0:1));assert(node->tf_creations==0);}
+    {RangerROSMessenger m(node);assert(enables==(rx?0:1));assert(node->subscriptions==(rx?0:2));assert(node->tf_creations==0);}
     assert(stops==(rx?0:1));
     std::cout<<(rx?"receive-only: no mode request, command subscriber or exit command":"control default unchanged")<<" PASS\n";
   }

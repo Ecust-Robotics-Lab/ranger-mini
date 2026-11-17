@@ -1,0 +1,364 @@
+--- a/ranger_base/include/ranger_base/ranger_messenger.hpp
++++ b/ranger_base/include/ranger_base/ranger_messenger.hpp
+@@ -27,6 +27,7 @@
+ #include <tf2_ros/transform_broadcaster.h>
+ #include <tf2_geometry_msgs/tf2_geometry_msgs.hpp>
+ #include <sensor_msgs/msg/battery_state.hpp>
++#include <std_msgs/msg/u_int8.hpp>
+ 
+ //third libaray inclue
+ #include "ugv_sdk/details/robot_base/ranger_base.hpp"
+@@ -74,6 +75,9 @@
+   void PublishStateToROS();
+   void PublishSimStateToROS(double linear, double angular);
+   void TwistCmdCallback(geometry_msgs::msg::Twist::SharedPtr msg);
++  void ModeCmdCallback(std_msgs::msg::UInt8::SharedPtr msg);
++  void CommandWatchdog();
++  bool V2FeedbackReady() const;
+   double CalculateSteeringAngle(geometry_msgs::msg::Twist msg, double& radius);
+   void UpdateOdometry(double linear, double angular, double angle, double dt);
+   geometry_msgs::msg::Quaternion createQuaternionMsgFromYaw(double yaw);
+@@ -98,6 +102,13 @@
+   int update_rate_;
+   bool publish_odom_tf_;
+   bool receive_only_;
++  double nav_max_speed_=.30, nav_max_yaw_rate_=.50, nav_min_radius_=.55;
++  uint8_t requested_mode_=255;
++  double last_steering_=0.;
++  double v2_feedback_steering_sign_=-1.;
++  bool v2_sdk_front_opposite_base_=false;
++  SdkTimePoint last_cmd_{}, last_mode_request_{}, stopped_since_{};
++  SdkTimePoint last_motion_published_{}, last_mode_published_{}, last_system_published_{};
+ 
+   uint8_t motion_mode_ = 0;
+   bool parking_mode_;
+@@ -109,6 +120,7 @@
+   rclcpp::Publisher<sensor_msgs::msg::BatteryState>::SharedPtr battery_state_pub_;
+ 
+   rclcpp::Subscription<geometry_msgs::msg::Twist>::SharedPtr motion_cmd_sub_;
++  rclcpp::Subscription<std_msgs::msg::UInt8>::SharedPtr mode_cmd_sub_;
+ 
+   std::shared_ptr<tf2_ros::TransformBroadcaster> tf_broadcaster_;
+ 
+--- /dev/null
++++ b/ranger_base/include/ranger_base/v2_command.hpp
+@@ -0,0 +1,39 @@
++// V2 body-twist / SDK packet conversion. No ROS, I/O or implicit mode changes.
++#ifndef RANGER_BASE_V2_COMMAND_HPP
++#define RANGER_BASE_V2_COMMAND_HPP
++#include <cmath>
++#include <algorithm>
++namespace westonrobot {
++struct V2Command { bool valid; double speed, steering, angular; };
++inline V2Command V2BodyCommand(double vx, double vy, double wz, unsigned mode,
++                              double max_speed=.30, double max_yaw=.50,
++                              double min_radius=.55, bool native_front_opposite=false) {
++  // User body +X points toward the camera-facing physical front. Some
++  // installations put that end opposite the chassis SDK longitudinal axis.
++  if (native_front_opposite) {vx=-vx;vy=-vy;}
++  if (!std::isfinite(vx) || !std::isfinite(vy) || !std::isfinite(wz) ||
++      std::hypot(vx,vy)>max_speed+1e-6 || std::abs(wz)>max_yaw+1e-6 || mode>2)
++    return {false,0,0,0};
++  if (std::abs(vx)+std::abs(vy)+std::abs(wz)<1e-9) return {true,0,0,0};
++  if (mode==0) {
++    if (std::abs(vy)>1e-6 || std::abs(wz)>std::abs(vx)/min_radius+1e-6 || std::abs(vx)<1e-9)
++      return {false,0,0,0};
++    // Dual Ackermann: body vx = wheel speed*cos(phi), wz=2*speed*sin(phi)/L.
++    const double L=.494, track=.364;
++    const double phi=std::atan(wz*L/(2*vx));
++    const double a=std::abs(phi);
++    const double inner=std::copysign(std::atan2(L*std::sin(a), L*std::cos(a)-track*std::sin(a)),phi);
++    if (std::abs(inner)>.6981+1e-6) return {false,0,0,0};
++    return {true,vx/std::cos(phi),inner,0};
++  }
++  if (mode==1) {
++    if (std::abs(wz)>1e-6) return {false,0,0,0};
++    if (std::abs(vx)<1e-9) return {true,vy,M_PI/2,0};
++    const double sign=vx<0?-1.:1.;
++    return {true,sign*std::hypot(vx,vy),std::atan2(sign*vy,sign*vx),0};
++  }
++  if (std::abs(vx)+std::abs(vy)>1e-6) return {false,0,0,0};
++  return {true,0,0,wz};
++}
++}  // namespace westonrobot
++#endif
+--- a/ranger_base/src/ranger_messenger.cpp
++++ b/ranger_base/src/ranger_messenger.cpp
+@@ -10,6 +10,7 @@
+ #include "ranger_base/ranger_messenger.hpp"
+ 
+ #include "ranger_base/kinematics_model.hpp"
++#include "ranger_base/v2_command.hpp"
+ 
+ using namespace rclcpp;
+ using namespace ranger_msgs::msg;
+@@ -60,6 +61,7 @@
+   while (rclcpp::ok()) {
+     PublishStateToROS();
+     rclcpp::spin_some(node_);
++    CommandWatchdog();
+     rate.sleep();
+   }
+ }
+@@ -74,6 +76,13 @@
+   odom_topic_name_ = node_->declare_parameter<std::string>("odom_topic_name", "odom");
+   publish_odom_tf_ = node_->declare_parameter<bool>("publish_odom_tf",false);
+   receive_only_ = node_->declare_parameter<bool>("receive_only", false);
++  nav_max_speed_ = node_->declare_parameter<double>("nav_max_speed", .30);
++  nav_max_yaw_rate_ = node_->declare_parameter<double>("nav_max_yaw_rate", .50);
++  nav_min_radius_ = node_->declare_parameter<double>("nav_min_radius", .55);
++  v2_feedback_steering_sign_ = node_->declare_parameter<double>("v2_feedback_steering_sign", -1.);
++  v2_sdk_front_opposite_base_ = node_->declare_parameter<bool>("v2_sdk_front_opposite_base", false);
++  if (v2_feedback_steering_sign_ != -1. && v2_feedback_steering_sign_ != 1.)
++    throw std::invalid_argument("v2_feedback_steering_sign must be -1 or +1");
+   if (receive_only_ && publish_odom_tf_) {
+     throw std::invalid_argument("receive_only requires publish_odom_tf=false");
+   }
+@@ -177,6 +186,8 @@
+   if (!receive_only_) motion_cmd_sub_ = node_->create_subscription<geometry_msgs::msg::Twist>(
+       "/cmd_vel", 5, std::bind(&RangerROSMessenger::TwistCmdCallback, this, std::placeholders::_1)
+       );
++  if (!receive_only_) mode_cmd_sub_ = node_->create_subscription<std_msgs::msg::UInt8>(
++      "/base/motion_mode_request", 1, std::bind(&RangerROSMessenger::ModeCmdCallback, this, std::placeholders::_1));
+   if (publish_odom_tf_) tf_broadcaster_ = std::make_shared<tf2_ros::TransformBroadcaster>(node_);
+ }
+ 
+@@ -193,44 +204,49 @@
+   auto state = robot_->GetRobotState();
+   auto actuator_state = robot_->GetActuatorState();
+ 
+-  if (state.time_stamp == SdkTimePoint{} ||
+-      SdkClock::now() - state.time_stamp > std::chrono::milliseconds(250)) {
+-    last_time_ = current_time_;
+-    return;  // Never relabel missing/stale feedback as a new observation.
+-  }
+-  motion_mode_ = state.motion_mode_state.motion_mode;
+-
+-  // update odometry
+-  {
+-    double dt = (current_time_ - last_time_).seconds();
+-    UpdateOdometry(state.motion_state.linear_velocity,
+-                   state.motion_state.angular_velocity,
+-                   state.motion_state.steering_angle, dt);
+-    last_time_ = current_time_;
+-  }
+-
+-  // publish system state
+-  {
+-    ranger_msgs::msg::SystemState system_msg;
+-    system_msg.header.stamp = current_time_;
+-    system_msg.vehicle_state = state.system_state.vehicle_state;
+-    system_msg.control_mode = state.system_state.control_mode;
+-    system_msg.error_code = state.system_state.error_code;
+-    system_msg.battery_voltage = state.system_state.battery_voltage;
+-    system_msg.motion_mode = state.motion_mode_state.motion_mode;
+-
+-    system_state_pub_->publish(system_msg);
+-  }
+-
+-  // publish motion mode
+-  {
+-    motion_mode_ = state.motion_mode_state.motion_mode;
+-
+-    ranger_msgs::msg::MotionState motion_msg;
+-    motion_msg.header.stamp = current_time_;
+-    motion_msg.motion_mode = state.motion_mode_state.motion_mode;
+-
+-    motion_state_pub_->publish(motion_msg);
++  const auto now = SdkClock::now();
++  const auto fresh = [now](SdkTimePoint t) {
++    return t != SdkTimePoint{} && now-t <= std::chrono::milliseconds(250);
++  };
++  // Header denotes each original CAN frame receive time, not polling time.
++  const auto stamp = [this,now](SdkTimePoint t) {
++    return current_time_ - rclcpp::Duration::from_nanoseconds(
++        std::chrono::duration_cast<std::chrono::nanoseconds>(now-t).count());
++  };
++  if (fresh(state.system_stamp) && state.system_stamp!=last_system_published_) {
++    ranger_msgs::msg::SystemState m;
++    m.header.stamp=stamp(state.system_stamp);
++    m.vehicle_state=state.system_state.vehicle_state;
++    m.control_mode=state.system_state.control_mode;
++    m.error_code=state.system_state.error_code;
++    m.battery_voltage=state.system_state.battery_voltage;
++    m.motion_mode=state.motion_mode_state.motion_mode;
++    system_state_pub_->publish(m);
++    last_system_published_=state.system_stamp;
++  }
++  if (fresh(state.mode_stamp) && state.mode_stamp!=last_mode_published_) {
++    motion_mode_=state.motion_mode_state.motion_mode;
++    ranger_msgs::msg::MotionState m;
++    m.header.stamp=stamp(state.mode_stamp);
++    m.motion_mode=motion_mode_;
++    motion_state_pub_->publish(m);
++    last_mode_published_=state.mode_stamp;
++  }
++  if (!fresh(state.motion_stamp) || !fresh(state.mode_stamp)) {
++    stopped_since_=SdkTimePoint{};
++    return;
++  }
++  const bool stopped = std::abs(state.motion_state.linear_velocity)<.015 &&
++                       std::abs(state.motion_state.angular_velocity)<.025;
++  if (!stopped) stopped_since_=SdkTimePoint{};
++  else if (stopped_since_==SdkTimePoint{}) stopped_since_=now;
++  if (state.motion_stamp!=last_motion_published_) {
++    const double dt = last_motion_published_==SdkTimePoint{} ? 0. :
++        std::chrono::duration<double>(state.motion_stamp-last_motion_published_).count();
++    last_motion_published_=state.motion_stamp;
++    current_time_=stamp(state.motion_stamp);
++    if (dt>0. && dt<=.25) UpdateOdometry(state.motion_state.linear_velocity,
++        state.motion_state.angular_velocity,state.motion_state.steering_angle,dt);
+   }
+ 
+   // publish actuator state
+@@ -316,12 +332,16 @@
+ 
+ void RangerROSMessenger::UpdateOdometry(double linear, double angular,
+                                         double angle, double dt) {
+-  // Mini V2 feedback is right-positive; ROS body steering is left-positive.
+-  // This is feedback conversion only. Command encoding is unchanged.
+-  if (robot_type_ == RangerSubType::kRangerMiniV2) angle = -angle;
++  // Feedback convention is firmware dependent. Use the same configured
++  // conversion as steering confirmation; command encoding is unchanged.
++  if (robot_type_ == RangerSubType::kRangerMiniV2) angle *= v2_feedback_steering_sign_;
++  // Integrate native kinematics with the native longitudinal axis expressed in
++  // the canonical body frame. A 180deg body-frame change preserves yaw rate.
++  const double heading_offset = robot_type_ == RangerSubType::kRangerMiniV2 &&
++      v2_sdk_front_opposite_base_ ? M_PI : 0.;
+   // update odometry calculations
+   if (motion_mode_ == MotionState::MOTION_MODE_DUAL_ACKERMAN) {
+-    DualAckermanModel::state_type x = {position_x_, position_y_, theta_};
++    DualAckermanModel::state_type x = {position_x_, position_y_, theta_+heading_offset};
+     DualAckermanModel::control_type u;
+     u.v = linear;
+     u.phi = ConvertInnerAngleToCentral(angle);
+@@ -332,10 +352,10 @@
+     //std::cout<<" steer: "<<angle<<" central: "<<u.phi<<std::endl;
+     position_x_ = x[0];
+     position_y_ = x[1];
+-    theta_ = x[2];
++    theta_ = x[2]-heading_offset;
+   } else if (motion_mode_ == MotionState::MOTION_MODE_PARALLEL ||
+              motion_mode_ == MotionState::MOTION_MODE_SIDE_SLIP) {
+-    ParallelModel::state_type x = {position_x_, position_y_, theta_};
++    ParallelModel::state_type x = {position_x_, position_y_, theta_+heading_offset};
+     ParallelModel::control_type u;
+     u.v = linear;
+     if (motion_mode_ == MotionState::MOTION_MODE_SIDE_SLIP) {
+@@ -349,9 +369,9 @@
+ 
+     position_x_ = x[0];
+     position_y_ = x[1];
+-    theta_ = x[2];
++    theta_ = x[2]-heading_offset;
+   } else if (motion_mode_ == MotionState::MOTION_MODE_SPINNING) {
+-    SpinningModel::state_type x = {position_x_, position_y_, theta_};
++    SpinningModel::state_type x = {position_x_, position_y_, theta_+heading_offset};
+     SpinningModel::control_type u;
+     u.w = angular;
+ 
+@@ -361,7 +381,7 @@
+ 
+     position_x_ = x[0];
+     position_y_ = x[1];
+-    theta_ = x[2];
++    theta_ = x[2]-heading_offset;
+   }
+ 
+   // update odometry topics
+@@ -379,7 +399,7 @@
+   odom_msg.pose.pose.orientation = odom_quat;
+ 
+   if (motion_mode_ == MotionState::MOTION_MODE_DUAL_ACKERMAN) {
+-    odom_msg.twist.twist.linear.x = linear;
++    odom_msg.twist.twist.linear.x = linear * std::cos(ConvertInnerAngleToCentral(angle));
+     odom_msg.twist.twist.linear.y = 0.0;
+     odom_msg.twist.twist.angular.z =
+         2 * linear * std::sin(ConvertInnerAngleToCentral(angle)) /
+@@ -401,6 +421,10 @@
+     odom_msg.twist.twist.angular.z = angular;
+   }
+ 
++  if (heading_offset!=0.) {
++    odom_msg.twist.twist.linear.x *= -1.;
++    odom_msg.twist.twist.linear.y *= -1.;
++  }
+   odom_pub_->publish(odom_msg);
+ 
+   // // publish tf transformation
+@@ -420,6 +444,36 @@
+ }
+ 
+ void RangerROSMessenger::TwistCmdCallback(geometry_msgs::msg::Twist::SharedPtr msg) {
++  if (receive_only_) return;
++  if (robot_type_ == RangerSubType::kRangerMiniV2) {
++    last_cmd_=SdkClock::now();
++    const auto command=V2BodyCommand(msg->linear.x,msg->linear.y,msg->angular.z,
++        requested_mode_,nav_max_speed_,nav_max_yaw_rate_,nav_min_radius_,v2_sdk_front_opposite_base_);
++    if (!command.valid || !V2FeedbackReady() || requested_mode_!=motion_mode_ ||
++        last_cmd_-last_mode_request_>std::chrono::milliseconds(250)) {
++      robot_->SetMotionCommand(0.,last_steering_,0.);
++      return;
++    }
++    if (std::abs(command.speed)+std::abs(command.angular)<1e-9) {
++      robot_->SetMotionCommand(0.,last_steering_,0.);
++      return;  // A zero never requests another mode or changes wheel orientation.
++    }
++    if (requested_mode_==0 || requested_mode_==1) {
++      const auto feedback=robot_->GetRobotState();
++      const double measured=v2_feedback_steering_sign_*feedback.motion_state.steering_angle;
++      if (std::abs(std::remainder(measured-command.steering,2*M_PI))>.03) {
++        // Pre-position drive/parallel wheels at zero speed. Resume only on a new,
++        // fresh measured steering angle, never after an assumed fixed delay.
++        robot_->SetMotionCommand(0.,command.steering,0.);
++        last_steering_=command.steering;
++        return;
++      }
++    }
++    last_steering_=command.steering;
++    robot_->SetMotionCommand(command.speed,command.steering,command.angular);
++    return;
++  }
++
+   double steer_cmd;
+   double radius;
+ 
+@@ -523,6 +577,38 @@
+ }
+ 
+ 
++bool RangerROSMessenger::V2FeedbackReady() const {
++  const auto s=robot_->GetRobotState();
++  const auto now=SdkClock::now();
++  for (auto t : {s.system_stamp,s.motion_stamp,s.mode_stamp}) {
++    if (t==SdkTimePoint{} || now-t>std::chrono::milliseconds(250)) return false;
++  }
++  return s.system_state.control_mode==1 && s.system_state.vehicle_state==0 && s.system_state.error_code==0;
++}
++
++void RangerROSMessenger::ModeCmdCallback(std_msgs::msg::UInt8::SharedPtr msg) {
++  if (receive_only_ || robot_type_!=RangerSubType::kRangerMiniV2 || msg->data>2 || !V2FeedbackReady()) return;
++  const auto now=SdkClock::now();
++  if (msg->data==requested_mode_ && msg->data==motion_mode_) {
++    last_mode_request_=now;
++    return;
++  }
++  if (stopped_since_==SdkTimePoint{} || now-stopped_since_<std::chrono::milliseconds(500)) return;
++  requested_mode_=msg->data;
++  last_mode_request_=now;
++  robot_->SetMotionCommand(0.,last_steering_,0.);
++  if (motion_mode_!=requested_mode_) robot_->SetMotionMode(requested_mode_);
++  // motion_mode_ is assigned exclusively from actual feedback for V2.
++}
++
++void RangerROSMessenger::CommandWatchdog() {
++  if (receive_only_ || !robot_ || robot_type_!=RangerSubType::kRangerMiniV2) return;
++  const auto now=SdkClock::now();
++  if (last_cmd_==SdkTimePoint{} || now-last_cmd_>std::chrono::milliseconds(100) || !V2FeedbackReady())
++    robot_->SetMotionCommand(0.,last_steering_,0.);
++}
++
++
+ geometry_msgs::msg::Quaternion RangerROSMessenger::createQuaternionMsgFromYaw(double yaw) {
+     tf2::Quaternion q;
+     q.setRPY(0, 0, yaw);

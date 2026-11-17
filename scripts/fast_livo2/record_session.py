@@ -19,7 +19,7 @@ import time
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT/'scripts'))
 from session_manager import Component, JsonHealth, atomic_json, read_session, run_guarded, session_live, stop_session
-from online_session import check_sensor_processes, sensor_environment, specs
+from online_session import check_sensor_processes, sensor_environment as original_sensor_environment, specs
 import wheel_capture
 sys.path.insert(0, str(ROOT/'ws_nav/src/ranger_localization_bridge'))
 from ranger_localization_bridge.runtime_config import resolve, validate_fast_livo_config
@@ -35,6 +35,24 @@ TOPICS = {
 }
 SESSION_ROOT = Path(os.environ.get('RANGER_CAPTURE_SESSION_ROOT', ROOT/'.runtime/sessions'))
 SESSION = SESSION_ROOT/'fast_livo_record'
+CAMERA_PREFIX = ROOT/'ws_camera/latency_install/hik_camera_trigger_driver'
+
+
+def sensor_environment(cfg, share_dir):
+    original_sensor_environment(cfg, share_dir)
+    # Use the already-built finite-queue camera library with its executable.
+    # Keep the original MVS SDK search paths and installation assets intact.
+    os.environ['LD_LIBRARY_PATH'] = str(CAMERA_PREFIX/'lib')+':'+os.environ.get('LD_LIBRARY_PATH', '')
+
+
+def capture_specs(cfg, visualization, foxglove_port):
+    components = specs(cfg, visualization, foxglove_port)
+    old = str(ROOT/'ws_camera/install/hik_camera_trigger_driver/lib/hik_camera_trigger_driver/hik_camera_trigger_driver_node')
+    new = str(CAMERA_PREFIX/'lib/hik_camera_trigger_driver/hik_camera_trigger_driver_node')
+    for c in components:
+        if c.name == 'camera':
+            c.argv = [new if a == old else a for a in c.argv]
+    return components
 
 
 def check_lidar_host_address(cfg):
@@ -73,9 +91,13 @@ def input_problems(topics, publishers, counts):
 
 
 def recorder_command(folder, topics):
+    # Explicit action feedback/status names are hidden ROS topics. Include
+    # them only when requested; this never changes the explicit topic list.
+    hidden = ['--include-hidden-topics'] if any(
+        part.startswith('_') for topic in topics for part in topic.split('/') if part) else []
     return ['ros2', 'bag', 'record', '-s', 'sqlite3', '-o', str(folder/'raw'),
             '--max-cache-size', '268435456', '--qos-profile-overrides-path',
-            str(ROOT/'config/mid360/bag_qos.yaml'), *topics]
+            str(ROOT/'config/mid360/bag_qos.yaml'), *hidden, *topics]
 
 
 def snapshot_sources(folder, cfg, wheel=None):
@@ -93,6 +115,8 @@ def snapshot_sources(folder, cfg, wheel=None):
     if wheel and wheel['source']=='owned_receive_only':
         paths.update([wheel_capture.NODE, ROOT/'config/base_mini_v2.yaml',
                       ROOT/'patches/ranger_ros2_recording_receive_only.patch',ROOT/'scripts/build_base_recording.sh',
+                      ROOT/'patches/ranger_ros2_exact_v2_modes.patch',ROOT/'config/exact_mppi/sources.lock.json',
+                      ROOT/'scripts/build_exact_navigation.sh',
                       ROOT/'patches/ranger_ros2_v2_feedback_sign.patch',
                       ROOT/'ws_base/src/ranger_ros2/ranger_base/src/ranger_messenger.cpp',
                       ROOT/'ws_base/src/ranger_ros2/ranger_base/include/ranger_base/ranger_messenger.hpp'])
@@ -105,6 +129,9 @@ def snapshot_sources(folder, cfg, wheel=None):
         'ws_camera/install/timeshare_writer/lib/timeshare_writer/timeshare_writer_node',
         'ws_camera/install/hik_camera_trigger_driver/lib/hik_camera_trigger_driver/hik_camera_trigger_driver_node',
         'ws_fast_livo/install/fast_livo/lib/fast_livo/fastlivo_mapping'))
+    paths.update([CAMERA_PREFIX/'lib/hik_camera_trigger_driver/hik_camera_trigger_driver_node',
+                  CAMERA_PREFIX/'lib/libhik_camera_trigger_driver.so',
+                  ROOT/'ws_camera/src/hik_camera_trigger_driver/src/frame_time_guard.hpp'])
     files = []
     dest = folder/'sources'
     dest.mkdir()
@@ -295,7 +322,7 @@ def main():
     folder = args.output.expanduser().absolute() if args.output else ROOT/'bags'/('fast-livo-'+args.label+'-NEW')
     sensor_environment(cfg, folder/'sensor_assets')
     wheel={'source':'owned_receive_only' if args.record_wheel else 'disabled'}
-    components = with_wheel([] if attach else specs(cfg, args.visualization, args.foxglove_port),wheel)
+    components = with_wheel([] if attach else capture_specs(cfg, args.visualization, args.foxglove_port),wheel)
     worker = [sys.executable, str(ROOT/'scripts/fast_livo2/record_worker.py'), '--folder', str(folder)]
     if not args.execute:
         print(json.dumps({'action': 'DRY-RUN', 'mode': 'attach' if attach else 'start-sensors',
@@ -359,7 +386,7 @@ def main():
         state_env = json.loads((sensor_dir/'manifest.json').read_text())
         if state_env['domain'] != manifest['domain']:raise RuntimeError('attached preview uses another ROS domain')
     atomic_json(folder/'manifest.json', manifest)
-    components = with_wheel([] if attach else specs(cfg, args.visualization, args.foxglove_port),wheel)
+    components = with_wheel([] if attach else capture_specs(cfg, args.visualization, args.foxglove_port),wheel)
     worker = [sys.executable, str(ROOT/'scripts/fast_livo2/record_worker.py'), '--folder', str(folder)]
     dependencies=(() if attach else ('frontend',))+(('wheel',) if wheel['source']=='owned_receive_only' else ())
     components.append(Component('capture', worker, depends=dependencies,

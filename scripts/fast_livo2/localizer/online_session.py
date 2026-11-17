@@ -55,10 +55,10 @@ def components(cfg, args, folder, identity):
         if c.name == 'probe': c.argv.append('--localization')
         if c.name == 'camera':
             c.argv = [str(CAMERA_NODE) if a.endswith('/hik_camera_trigger_driver_node') else a for a in c.argv]
-        if c.name == 'frontend':
-            c.argv = [a.replace('use_sim_time:=false', 'use_sim_time:=true') for a in c.argv]
         if c.name == 'rviz':
-            c.argv[c.argv.index('-d')+1] = str(ROOT/'config/fast_livo2/localization.rviz')
+            view = ('config/exact_mppi/field_navigation.rviz' if getattr(args, 'record_navigation', False)
+                    else 'config/fast_livo2/localization.rviz')
+            c.argv[c.argv.index('-d')+1] = str(ROOT/view)
     if args.visualization == 'rviz':
         from session_manager import Component
         result.append(Component('view', [sys.executable, str(ROOT/'scripts/fast_livo2/localizer/view.py'),
@@ -138,7 +138,27 @@ def parser():
     p.add_argument('--public-tf', action='store_true', help='consume existing same-domain host-clock wheel; no chassis startup')
     p.add_argument('--navigation-map', type=Path)
     p.add_argument('--auto-wheel', action='store_true', help='with --public-tf, reuse wheel or start the recording receive-only driver')
+    p.add_argument('--record-navigation', action='store_true',
+                   help='with --public-tf, additionally record navigation/action/safety/raw chassis evidence; starts no navigation or control')
     return p
+
+
+def record_topics(args):
+    topics = [*mapping.required_topics(args), '/fast_livo/localizer/estimate',
+              '/fast_livo/capture/input_receipts', '/clock']
+    if args.public_tf:
+        topics += ['/wheel/odom', '/fast_livo/navigation/wheel/odom', '/fast_livo/navigation/clock_status',
+                   '/localization/estimate', '/localization_health', '/navigation_ready', '/tf', '/tf_static']
+    if args.record_navigation:
+        topics += ['/map', '/plan', '/navigation/prediction', '/navigation/state',
+                   '/navigation/control', '/navigation/observation', '/navigation/minimum_distance',
+                   '/navigation/control_owner', '/navigation/actual_mode', '/navigation/safety_ready',
+                   '/cmd_vel_nav', '/cmd_vel_after_gate', '/base/safe_cmd_vel', '/base/motion_mode_request',
+                   '/motion_state', '/system_state', '/diagnostics', '/ranger/motion_enable',
+                   '/ranger/motion_permitted', '/ranger/soft_estop', '/teleop/control',
+                   '/teleop/cmd_vel', '/teleop/motion_mode',
+                   '/navigate_to_pose/_action/status', '/navigate_to_pose/_action/feedback']
+    return list(dict.fromkeys(topics))
 
 
 def main():
@@ -153,6 +173,7 @@ def main():
     if args.stop: return 0 if stop_session(SESSION, timeout=90) else 2
     if not args.archive: p.error('--archive is required')
     if args.auto_wheel and not args.public_tf: p.error('--auto-wheel requires --public-tf')
+    if args.record_navigation and not args.public_tf: p.error('--record-navigation requires --public-tf')
     if args.public_tf:
         if args.replay_view: p.error('--public-tf requires live receipts; use the dedicated offline wheel replay for bags')
         if not args.navigation_map: p.error('--public-tf requires --navigation-map')
@@ -183,7 +204,8 @@ def main():
     if not args.execute:
         print(json.dumps({'action': 'DRY-RUN', 'output': str(folder), 'mode': args.mode,
             'hardware_started': False, 'would_start_sensors': not bool(args.replay_view),
-            'public_tf': args.public_tf, 'components': [asdict(c) for c in components(cfg, args, folder, identity)]}, indent=2)); return 0
+            'public_tf': args.public_tf, 'record_topics': record_topics(args),
+            'components': [asdict(c) for c in components(cfg, args, folder, identity)]}, indent=2)); return 0
     if not args.replay_view and not CAMERA_NODE.is_file():
         raise RuntimeError('build latency camera first: bash scripts/build_fast_livo2_camera_latency.sh --execute')
     if session_live(read_session(SESSION)[1]): raise RuntimeError('online localization already active')
@@ -239,13 +261,11 @@ def main():
     if loader.returncode: raise RuntimeError('map identity/integrity validation failed; see '+str(folder/'archive_loader.log'))
     mapping.environment(cfg, folder)
     os.environ['LD_LIBRARY_PATH'] = str(CAMERA_PREFIX/'lib')+':'+str(PREFIX/'lib')+':'+os.environ.get('LD_LIBRARY_PATH', '')
-    record_topics = [*mapping.required_topics(args), '/fast_livo/localizer/estimate', '/fast_livo/capture/input_receipts', '/clock']
-    if args.public_tf:
-        record_topics += ['/wheel/odom','/fast_livo/navigation/wheel/odom','/fast_livo/navigation/clock_status',
-                          '/localization/estimate','/localization_health','/navigation_ready','/tf','/tf_static']
+    topics_to_record = record_topics(args)
     atomic_json(folder/'manifest.json', {'schema_version': 1, 'kind': 'online_localization_capture',
         'folder': str(folder), 'seconds': args.seconds, 'mode': args.mode, 'domain': args.domain,
-        'topics': mapping.required_topics(args), 'record_topics': record_topics,
+        'topics': mapping.required_topics(args), 'record_topics': topics_to_record,
+        'record_navigation': args.record_navigation,
         'min_free_bytes': int(args.min_free_gb*1e9), 'managed_finalization': True,
         'preflight_timeout': 90, 'source_files': source_files,
         'replay_view': str(args.replay_view.resolve()) if args.replay_view else None,
@@ -260,7 +280,12 @@ def main():
             ROOT/'ws_fast_livo/src/ranger_fast_livo_localizer/src/node.cpp', Path(__file__),
             *([ROOT/'scripts/fast_livo2/navigation/live_clock.py',
                ROOT/'scripts/fast_livo2/navigation/wheel_clock_node.py',
-               args.navigation_map/'manifest.json'] if args.public_tf else [])]}})
+               args.navigation_map/'manifest.json'] if args.public_tf else []),
+            *([ROOT/'config/exact_mppi/field_navigation.rviz',
+               ROOT/'ws_nav/src/ranger_navigation/config/exact_navigation.yaml',
+               ROOT/'ws_base/install_exact/ranger_base/lib/ranger_base/ranger_base_node',
+               *sorted((ROOT/'ws_nav/src/ranger_navigation/ranger_navigation').glob('*.py'))]
+               if args.record_navigation else [])]}})
     print('LOCALIZATION_DIR='+str(folder), flush=True)
     try:
         code = run_guarded(SESSION, components(cfg, args, folder, identity),

@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "repository": "https://github.com/caseypen/EXACT-mppi",
+  "commit": "bdc5456938a54267408f2b15870b00ff4e91c58f",
+  "detached": true,
+  "license": "GPL-3.0",
+  "copied_component": "EXACT_MPPI_core/exact_mppi/mppi_jax",
+  "files": {
+    "__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "controller.py": "7b52866e9a9911d2661e5f039beaeb5bcc9feb3126fc66cd8f28c0dcc411f0fa",
+    "critic_manager.py": "7ee1edc2fca4ec5f2fd9fbef8f38a075b0e5ffb5fb7c8fba7c1cbeebb3a54c2d",
+    "critics/__init__.py": "76cea6dc6fdf4eae2e28190b76d1a6fc966cb713af186f8b4c5679174496d1b3",
+    "critics/contraint_critic.py": "29272b2d71c4bcb3d9a89fa52da0096eea0569bb3ac62d8ed55b4aba90dcf16e",
+    "critics/critic_data.py": "4c50339182529905535e1d6a2d58949449794a9240ebd4ad7479d786a1a2925a",
+    "critics/goal_angle_critic.py": "a2cc1e75d152631b814177240071188cc306fb5bfb9207039932190a23411873",
+    "critics/goal_critic.py": "fb384ba64eb78cd0fd6918bef6fea4a7b598e34febe9564021bed474cead9ac1",
+    "critics/obstacles_critic.py": "f3bcdeaf806e99905be9d81524a513277c788f4fb5204f691be1df4f16ec53b9",
+    "critics/path_align_critic.py": "c2fffc55c569c6ec6c6231948d944a7c4283f0be61c4541434a0e0cceea5f83c",
+    "critics/path_angle_critic.py": "3613aacb4823597db9507ee6ad1da7d2522de340c6310469b4aded83e906ade0",
+    "critics/path_follow_critic.py": "ef9f4f0bc15a7e32e12e4a8237109f1303f678cb6a49e9d7495a084fa7eb4ca7",
+    "critics/prefer_forward_critic.py": "10f20829ae1ddcb9892e724b71b9fb8ccc9d3d33bc12aeed977d3a7d0cf81970",
+    "critics/twirling_critic.py": "b0c3c02a52e21baf08ed538e9c7fca39d65e4fe2d541575a1f60649ad11200ec",
+    "critics/velocity_deadband_critic.py": "96243ceafce468b30fab079dd2c6af103df8e4b14abc2cd5b4eedd228413feff",
+    "logger.py": "9254772e67b3fb899028e4ebbd03aec064ac05a03c50b4c5d2b293bb7a859175",
+    "models/__init__.py": "ae6516094430980d092022da003e36146fbe4441a861f31d75c62c6ae35aaeb2",
+    "models/constraints.py": "07cae4c21dd5f78f0860bcc39d83b4106e1fa11b82b1f1cdc959d110a7adb2cb",
+    "models/control_sequence.py": "0688b2b1ef94b1836641bc1b5e8948c64b2aa30868873d275b0ea59ed0ea16dd",
+    "models/footprint.py": "90f3003b9043ada3e665e0833204e40ac6d7f0b9377ea8505f663f882e4d7f5a",
+    "models/optimizer_settings.py": "fbf1098b03824fbe45d7392bcce5ccc725f7928ed7ac233090fd6151a1e45d0b",
+    "models/path.py": "078f1de721a3d77080ceca87b11cd8ef618a5607a61821b148b70dcb2f5916ed",
+    "models/state.py": "4cc80492b539fbd36f0917811b2726420e50c74e324ac04f1375bb61abb4599c",
+    "models/trajectories.py": "d687dd3b1fa052b473949749670fc829be6d14864542ca0a382a38ce09bfb4b0",
+    "motion_models.py": "58f69a918f3a892c61ca3d328832462fc919ea3a9864d8c59be40a9764a6f543",
+    "optimal_trajectory_validator.py": "49dc086947aac596ec50d273246c592a6141e577811b0303a4fe7e8e7bba491c",
+    "optimizer.py": "755eae897db9adbd4855b6bfa1a868244e05f90568899b166b66a018252dca69",
+    "rangerminiv3.py": "3941e7a8b522dd0f6ec2a44d1b3aa65ce23960927dec5115ec3e8b01f00d90bc",
+    "tools/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "tools/point_flow_distance.py": "d1ef78eb5b1583d2e91649142ee0f27664d700fdaf3d16d0f05f8c09b1be208b",
+    "tools/signed_distance.py": "7196d307fe598dc3c8be5c2e169ed4c396351f327eac50ba255fe0247603f3bc",
+    "tools/signed_distance_polygon.py": "5e0d369d75d567c917f483b94a9190327595986b660f47cc29db667950cb54eb",
+    "tools/utils.py": "17d60df9ea5cd302ff3ecd092e0936060fb2b6fe3812f61431872fbfef94bf6a"
+  },
+  "base_sources": {
+    "ranger_ros2": "7b75bc2443a1d6cbd42cc3ef3059cf4897242072",
+    "ugv_sdk": "e2f5764acc00a2e556cf3bdc3ea3b206fa326e5b"
+  },
+  "patches": [
+    "patches/ranger_ros2_exact_v2_modes.patch",
+    "patches/ugv_sdk_exact_v2_modes.patch"
+  ],
+  "base_patch_prerequisites": {
+    "ranger_ros2": [
+      "patches/ranger_ros2_stage2_test.patch",
+      "patches/ranger_ros2_humble_v2_model.patch",
+      "patches/ranger_ros2_recording_receive_only.patch",
+      "patches/ranger_ros2_v2_feedback_sign.patch"
+    ],
+    "ugv_sdk": [
+      "patches/ugv_sdk_stage2_transport.patch"
+    ]
+  },
+  "patch_sha256": {
+    "patches/ranger_ros2_exact_v2_modes.patch": "9856cd51801ff8c374a045fed1fac937319651404316a4ccbf855fa71cbce3d6",
+    "patches/ugv_sdk_exact_v2_modes.patch": "6675beb2d68d3ff9038830e837d52c5325afca7be081938537f370322628cbbf"
+  },
+  "patch_preimages": {
+    "ranger_ros2": {
+      "ranger_base/src/ranger_messenger.cpp": "8336758a1e354ade8e06dec5c8f13f8318d11533569a0667fce9f7e7a6cf4128",
+      "ranger_base/include/ranger_base/ranger_messenger.hpp": "d24f571b58b892b5deb57e0f55604ef1a8fa7bc81b584ca4c0c68df9b586f807"
+    },
+    "ugv_sdk": {
+      "include/ugv_sdk/details/robot_base/agilex_base.hpp": "a0b2567d5d9aa0e7baaa06dfe2a41f284166959533981d5c52f597b40c316d27",
+      "include/ugv_sdk/details/robot_base/ranger_base.hpp": "1d1090811d3f9af77d374c3f07d96a35cbb15755aa1094a5c22a72f3c97a1445",
+      "include/ugv_sdk/details/interface/ranger_interface.hpp": "86f5decfc6d6a3bf4bfbe6c0377639aed05b8aeedda52c0be9dcd943c0261edb"
+    }
+  }
+}

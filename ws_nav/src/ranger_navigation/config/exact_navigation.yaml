@@ -1,0 +1,31 @@
+# Shared engineering limits; live brake/mode timing remains to be measured.
+geometry:
+  clearance: 0.04
+  static_map_reserve: 0.04
+# Explicit launch choice; physical body, voxel error and sweep bound unchanged.
+clearance_profiles:
+  standard: {clearance: 0.04, static_map_reserve: 0.04, visibility_reserve: 0.10, segment_yaw_tolerance: 0.06, prefer_parallel_in_narrow: false}
+  narrow: {clearance: 0.03, static_map_reserve: 0.01, visibility_reserve: 0.04, segment_yaw_tolerance: 0.03, prefer_parallel_in_narrow: true}
+motion:
+  max_speed: 0.30
+  max_yaw_rate: 0.50
+  acceleration: 0.30
+  yaw_acceleration: 0.50
+  min_radius: 0.55
+real_vehicle_first_test:
+  max_speed: 0.10
+  max_yaw_rate: 0.20
+compute:
+  backend: gpu
+  samples: 256
+  time_steps: 60
+  model_dt: 0.05
+  result_deadline: 0.10
+observation:
+  # Field choice authorized 2026-11-10: remove adjacent-sector dilation;
+  # global guidance uses the known map and retained obstacles. Actual local
+  # trajectories and braking remain constrained to measured coverage.
+  visibility_sectors: 180
+  visibility_angular_guard: 0
+  visibility_control_memory: 2.0
+  global_visibility: false

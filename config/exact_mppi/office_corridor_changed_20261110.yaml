@@ -1,0 +1,58 @@
+schema_version: 1
+name: office_corridor_changed_20261110
+frame: map
+intent: changed_scene_office_corridor_end_turn_return
+human_confirmed: false
+map_uuid: 160f8572a77a61856cf87e43514be769
+source_manifest_sha256: 93628bcf34742e8fbdb1f08afa9501f44aaa1f9dab4d9ef2c80914b7a62fc105
+candidate_pose_basis: new optimized map and recorded body trajectory; not current
+  live localization; no old-map transform assumed
+waypoints:
+- name: office_start
+  label: 办公室记录起点候选
+  pose:
+  - 0.11204023290724671
+  - -0.017818709221286234
+  - 3.1254426488826685
+- name: door_outside
+  label: 出入口外侧候选
+  pose:
+  - 3.23610189
+  - 2.90897934
+  - 0.0
+- name: corridor_out
+  label: 走廊去程
+  pose:
+  - 10.0
+  - 2.25
+  - 0.0
+- name: turn_position
+  label: 记录折返区域候选
+  pose:
+  - 18.3
+  - 2.0
+  - 0.0
+- name: turn_complete
+  label: 停稳掉头
+  pose:
+  - 18.3
+  - 2.0
+  - 3.141592653589793
+- name: corridor_return
+  label: 走廊返程
+  pose:
+  - 10.0
+  - 2.25
+  - 3.141592653589793
+- name: door_return
+  label: 返程出入口外侧
+  pose:
+  - 3.23610189
+  - 2.90897934
+  - 3.141592653589793
+- name: office_return
+  label: 返回记录起点
+  pose:
+  - 0.11204023290724671
+  - -0.017818709221286234
+  - 3.1254426488826685

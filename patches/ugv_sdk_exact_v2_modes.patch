@@ -1,0 +1,66 @@
+--- a/include/ugv_sdk/details/robot_base/agilex_base.hpp
++++ b/include/ugv_sdk/details/robot_base/agilex_base.hpp
+@@ -25,6 +25,7 @@
+ namespace westonrobot {
+ struct CoreStateMsgGroup {
+   SdkTimePoint time_stamp;
++  SdkTimePoint system_stamp{}, motion_stamp{}, mode_stamp{};
+ 
+   SystemStateMessage system_state;
+   MotionStateMessage motion_state;
+@@ -290,12 +291,14 @@
+       case AgxMsgSystemState: {
+         //   std::cout << "system status feedback received" << std::endl;
+         core_state_msgs_.time_stamp = SdkClock::now();
++        core_state_msgs_.system_stamp = core_state_msgs_.time_stamp;
+         core_state_msgs_.system_state = status_msg.body.system_state_msg;
+         break;
+       }
+       case AgxMsgMotionState: {
+         // std::cout << "motion control feedback received" << std::endl;
+         core_state_msgs_.time_stamp = SdkClock::now();
++        core_state_msgs_.motion_stamp = core_state_msgs_.time_stamp;
+         core_state_msgs_.motion_state = status_msg.body.motion_state_msg;
+         break;
+       }
+@@ -308,6 +311,7 @@
+       case AgxMsgMotionModeState: {
+         // std::cout << "motion mode feedback received" << std::endl;
+         core_state_msgs_.time_stamp = SdkClock::now();
++        core_state_msgs_.mode_stamp = core_state_msgs_.time_stamp;
+         core_state_msgs_.motion_mode_state =
+             status_msg.body.motion_mode_state_msg;
+         break;
+--- a/include/ugv_sdk/details/robot_base/ranger_base.hpp
++++ b/include/ugv_sdk/details/robot_base/ranger_base.hpp
+@@ -47,6 +47,9 @@
+  
+      RangerCoreState ranger_state;
+      ranger_state.time_stamp = state.time_stamp;
++     ranger_state.system_stamp = state.system_stamp;
++     ranger_state.motion_stamp = state.motion_stamp;
++     ranger_state.mode_stamp = state.mode_stamp;
+      ranger_state.system_state = state.system_state;
+      ranger_state.motion_state = state.motion_state;
+      ranger_state.light_state = state.light_state;
+@@ -160,6 +163,9 @@
+  
+      RangerCoreState ranger_state;
+      ranger_state.time_stamp = state.time_stamp;
++     ranger_state.system_stamp = state.system_stamp;
++     ranger_state.motion_stamp = state.motion_stamp;
++     ranger_state.mode_stamp = state.mode_stamp;
+      ranger_state.system_state = state.system_state;
+  
+      ranger_state.light_state = state.light_state;
+--- a/include/ugv_sdk/details/interface/ranger_interface.hpp
++++ b/include/ugv_sdk/details/interface/ranger_interface.hpp
+@@ -17,6 +17,8 @@
+ 
+ namespace westonrobot {
+ struct RangerCoreState {
++  // Per-frame receive times: unrelated CAN traffic cannot refresh mode/motion.
++  SdkTimePoint system_stamp{}, motion_stamp{}, mode_stamp{};
+   // system state
+   SdkTimePoint time_stamp;
+ 

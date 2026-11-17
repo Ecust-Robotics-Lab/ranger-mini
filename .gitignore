@@ -70,6 +70,8 @@ calibration/**/*.mcap
 
 # Locally rendered presentation videos and frontend replay artifacts.
 /outputs/fast-livo-demo-*/
+/outputs/exact-mppi-visualization-*/
+/outputs/exact-field-preparation-*/
 /outputs/fast-livo-backend-validation-*/
 /outputs/fast-livo-c1-*/
 /outputs/fast-livo-gravity-*/
@@ -88,3 +90,23 @@ docs/fast_livo2_evidence/**/sources/*_fastlivo_mapping
 docs/fast_livo2_evidence/**/sources/*_ranger_base_node
 /ws_nav/c1_adapter_log/
 /ws_nav/c2_adapter_log/
+
+# EXACT-MPPI isolated build/install prefixes; sources and evidence are versioned.
+/ws_nav/build_exact/
+/ws_nav/install_exact/
+/ws_nav/log_exact/
+
+# Generated maps, presentation assets and experiment install trees stay local.
+/outputs/
+/experiments/**/install*/
+
+# EXACT evidence summaries are versioned; raw scan payloads/profiles stay local.
+docs/exact_mppi_evidence/**/*.db3
+docs/exact_mppi_evidence/**/*.pcd
+docs/exact_mppi_evidence/**/*.cdr
+docs/exact_mppi_evidence/**/*.prof
+docs/exact_mppi_evidence/**/*_clouds.npz
+docs/exact_mppi_evidence/**/replay_frames.npz
+docs/exact_mppi_evidence/input_latency_20261117/frontend_*_motion.log
+docs/exact_mppi_evidence/input_latency_20261117/frontend_baseline_repeat.log
+docs/exact_mppi_evidence/input_latency_20261117/frontend_baseline_debug_before_repeat/

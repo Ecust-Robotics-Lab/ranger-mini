@@ -23,3 +23,12 @@ docs/fast_livo2_evidence/stage_c2_20261028/localizer_core_flags.make -whitespace
 patches/hik_camera_live_latency.patch -whitespace
 docs/fast_livo2_evidence/**/sources/** -whitespace
 docs/fast_livo2_evidence/**/*.patch -whitespace
+
+# Preserve exact navigation evidence and upstream/patch context verbatim.
+docs/exact_mppi_evidence/**/*.log -whitespace
+docs/exact_mppi_evidence/**/*.txt -whitespace
+ws_nav/src/ranger_navigation/exact_mppi/** -whitespace
+ws_nav/src/ranger_navigation/LICENSE.exact_mppi -whitespace
+patches/ranger_ros2_exact_v2_modes.patch -whitespace
+patches/ugv_sdk_exact_v2_modes.patch -whitespace
+patches/fast_livo2_finish_pending_vio.patch -whitespace

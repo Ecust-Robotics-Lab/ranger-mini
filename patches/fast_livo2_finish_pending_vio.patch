@@ -1,0 +1,27 @@
+--- a/src/LIVMapper.cpp
++++ b/src/LIVMapper.cpp
+@@ -988,9 +988,13 @@
+ 
+ bool LIVMapper::sync_packages(LidarMeasureGroup &meas)
+ {
+-  if (lid_raw_data_buffer.empty() && lidar_en) return false;
++  // LIO has already synchronized this image and its IMU interval. Finish
++  // that same frame's visual update without waiting for the next raw scan.
++  // New LIO intervals still require all original sensor availability checks.
++  const bool pending_vio = slam_mode_ == LIVO && meas.lio_vio_flg == LIO;
+   if (img_buffer.empty() && img_en) return false;
+-  if (imu_buffer.empty() && imu_en) return false;
++  if (!pending_vio && lid_raw_data_buffer.empty() && lidar_en) return false;
++  if (!pending_vio && imu_buffer.empty() && imu_en) return false;
+ 
+   switch (slam_mode_)
+   {
+@@ -1153,7 +1157,7 @@
+       meas.lio_vio_flg = VIO;
+       // printf("[ Data Cut ] VIO \n");
+       meas.measures.clear();
+-      double imu_time = stamp2Sec(imu_buffer.front()->header.stamp);
++      // No new IMU sample is consumed by this already synchronized VIO step.
+ 
+       struct MeasureGroup m;
+       m.vio_time = img_capture_time;

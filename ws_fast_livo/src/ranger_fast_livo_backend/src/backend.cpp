@@ -89,6 +89,25 @@ Cloud::Ptr Backend::submap(const Snapshot& s, uint64_t i, uint64_t j, MatchTask&
 bool Backend::detect_loops(){
   auto s = snapshot();
   uint64_t j = s.frames.size() - 1;
+  // Bounded audit of the new single-variable filter, before diversification.
+  if (config_.min_loop_odom_path_m > 0) {
+    std::vector<double> path(s.frames.size(),0.);
+    for(size_t k=1;k<s.frames.size();++k) path[k]=path[k-1]+(s.frames[k].U.translation()-s.frames[k-1].U.translation()).norm();
+    Json rejected=Json::array();size_t count=0,eligible=0;
+    const auto& q=s.frames[j];
+    for(const auto& f:s.frames) {
+      if(f.id>=q.id||q.id-f.id<=config_.exclude_ids||q.stamp_ns-f.stamp_ns<=int64_t(config_.exclude_time*1e9))continue;
+      Eigen::Vector3d d=f.X.translation()-q.X.translation();
+      double distance=config_.horizontal_search?d.head<2>().norm():d.norm();
+      if(distance>config_.search_radius||(config_.horizontal_search&&std::abs(d.z())>config_.height_threshold))continue;
+      ++eligible;
+      if(path[j]-path[f.id]<config_.min_loop_odom_path_m) {
+        ++count;if(rejected.size()<128)rejected.push_back({{"i",f.id},{"stamp_ns",f.stamp_ns},{"odom_path_m",path[j]-path[f.id]}});
+      }
+    }
+    log({{"event","path_candidate_filter"},{"j",j},{"stamp_ns",q.stamp_ns},{"threshold_m",config_.min_loop_odom_path_m},
+         {"range_candidates",eligible},{"filtered_count",count},{"reason","short_odom_path"},{"rejected",rejected},{"audit_truncated",count>rejected.size()}});
+  }
   auto candidates = search_->find(s, j);
   if(tag_config_&&tag_history_.count(j)&&j>=next_tag_keyframe_){
     std::vector<Candidate> additional;

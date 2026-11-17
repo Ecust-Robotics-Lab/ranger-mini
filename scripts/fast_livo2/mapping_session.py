@@ -155,9 +155,12 @@ def components(cfg, args, folder):
     else:
         sensors = sensor_specs(cfg, 'none')
         sensors = [c for c in sensors if c.name != 'probe']
-        next(c for c in sensors if c.name == 'frontend').start_requires += ('backend_listening',)
+        next(c for c in sensors if c.name == 'frontend').start_requires += ('backend_listening', 'clock_ready')
         next(c for c in sensors if c.name == 'frontend').preflight_requires = ('frontend_unclaimed',)
         next(c for c in sensors if c.name == 'frontend').argv[0] = str(FRONTEND)
+        next(c for c in sensors if c.name == 'frontend').argv = [
+            a.replace('use_sim_time:=false', 'use_sim_time:=true')
+            for a in next(c for c in sensors if c.name == 'frontend').argv]
         next(c for c in sensors if c.name == 'lidar').start_requires += ('clock_unclaimed',)
         next(c for c in sensors if c.name == 'lidar').depends = ('receipts',)
         result = [probe, backend, receipts, capture, *sensors]

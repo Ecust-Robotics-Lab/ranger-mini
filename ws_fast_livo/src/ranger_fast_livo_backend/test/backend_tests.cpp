@@ -566,3 +566,41 @@ TEST(Archive, WriteFailureCannotCommitSuccessMarker) {
   EXPECT_FALSE(fs::exists(t.path / "limited/COMMITTED"));
   for (auto& entry:fs::directory_iterator(t.path)) if (entry.path().filename().string().find("limited.partial-") == 0) EXPECT_FALSE(fs::exists(entry.path() / "COMMITTED"));
 }
+
+static Snapshot path_fixture(std::initializer_list<double> positions) {
+  Snapshot s; size_t id=0;
+  for(double x:positions) {Keyframe f;f.id=id;f.stamp_ns=int64_t(id)*100000000000LL;f.U=pose(x);f.X=pose(0);s.frames.push_back(f);++id;}
+  return s;
+}
+static Config path_config(double threshold) {
+  Config c;c.exclude_ids=1;c.exclude_time=1.;c.search_radius=100.;c.max_candidates=1;c.min_loop_odom_path_m=threshold;return c;
+}
+TEST(PathFilter, RejectShortPathAndRefillBeforeBudget) {
+  auto s=path_fixture({0,9,9.5,10});s.frames[0].X=pose(1);
+  EXPECT_EQ(PositionSearch(path_config(0)).find(s,3).at(0).id,1u);
+  EXPECT_EQ(PositionSearch(path_config(5)).find(s,3).at(0).id,0u);
+}
+TEST(PathFilter, LongReturnAtSamePositionAndBoundaryAllowed) {
+  auto s=path_fixture({0,5,10,0});auto c=path_config(20);
+  ASSERT_EQ(PositionSearch(c).find(s,3).size(),1u);
+  EXPECT_EQ(PositionSearch(c).find(s,3)[0].id,0u);
+  c.min_loop_odom_path_m=20.01;EXPECT_TRUE(PositionSearch(c).find(s,3).empty());
+}
+TEST(PathFilter, WaitingAndPureRotationDoNotCreateTranslation) {
+  auto s=path_fixture({0,0,0,0});s.frames[2].U=pose(0,0,0,0,0,1.);
+  EXPECT_TRUE(PositionSearch(path_config(3)).find(s,3).empty());
+  EXPECT_FALSE(PositionSearch(path_config(0)).find(s,3).empty());
+}
+TEST(PathFilter, OptimizedCoordinatesAndNewSessionDoNotChangeRawDistance) {
+  auto s=path_fixture({0,5,10,0});auto c=path_config(19);
+  auto before=PositionSearch(c).find(s,3);
+  for(auto& f:s.frames) f.X=pose(42,5,-7);
+  EXPECT_EQ(before.at(0).id,PositionSearch(c).find(s,3).at(0).id);
+  s=path_fixture({0,.1,.2,.3});EXPECT_TRUE(PositionSearch(c).find(s,3).empty());
+}
+TEST(PathFilter, InvalidConfigurationRejected) {
+  for(double value:{-1.,std::numeric_limits<double>::infinity(),std::numeric_limits<double>::quiet_NaN()}) {
+    auto c=path_config(value);EXPECT_THROW(c.validate(),std::invalid_argument);
+  }
+  EXPECT_NO_THROW(path_config(0).validate());
+}

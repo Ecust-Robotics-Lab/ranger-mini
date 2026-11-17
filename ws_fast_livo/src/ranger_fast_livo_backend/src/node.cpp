@@ -49,6 +49,7 @@ public:
     PARAM(support_consistency_translation);
     PARAM(support_consistency_rotation);
     PARAM(odom_translation_sigma);
+    PARAM(min_loop_odom_path_m);
     PARAM(odom_rotation_sigma);
     PARAM(loop_translation_sigma);
     PARAM(loop_rotation_sigma);

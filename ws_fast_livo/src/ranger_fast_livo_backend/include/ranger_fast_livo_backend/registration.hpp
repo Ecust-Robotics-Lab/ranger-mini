@@ -19,6 +19,11 @@ public:
   virtual RegistrationResult align(const Cloud& target, const Cloud& source) const = 0;
 };
 std::unique_ptr<Registration> make_registration(const Config& config);
+// Reuse the exact same independent geometry evaluator for solver acceptance
+// and the caller's normalized-transform recheck. Keeps Registration's ABI.
+std::function<RegistrationResult(const Pose&)> prepare_registration(
+    const Registration& registration,const Cloud& target,const Cloud& source,
+    std::function<void(RegistrationResult&)> evaluator);
 std::function<void(RegistrationResult&)> prepare_evaluation(const Cloud& target,const Cloud& source,const Config& config);
 void evaluate_registration(const Cloud& target, const Cloud& source, const Config& config, RegistrationResult& result);
 class CandidateSearch {

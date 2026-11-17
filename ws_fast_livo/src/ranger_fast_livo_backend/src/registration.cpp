@@ -2,6 +2,7 @@
 #include <pcl/registration/icp.h>
 #include <pcl/filters/voxel_grid.h>
 #include <pcl/features/normal_3d.h>
+#include <pcl/features/normal_3d_omp.h>
 #include <pcl/common/transforms.h>
 #include <small_gicp/registration/registration_helper.hpp>
 #include <Eigen/Eigenvalues>
@@ -33,6 +34,7 @@ Json pose_json(const Pose& t){
   return {{"xyz", {t.translation().x(), t.translation().y(), t.translation().z()}}, {"xyzw", {q.x(), q.y(), q.z(), q.w()}}};
 }
 void Config::validate() const {
+  if (!std::isfinite(min_loop_odom_path_m) || min_loop_odom_path_m < 0) throw std::invalid_argument("min_loop_odom_path_m must be finite and nonnegative");
   if (!std::isfinite(candidate_budget_ms) || candidate_budget_ms <= 0) throw std::invalid_argument("candidate time budget");
   if (!std::isfinite(ambiguity_separation) || ambiguity_separation <= 0) throw std::invalid_argument("ambiguity separation");
   for (double x:{key_translation, key_rotation, key_time, key_min_time, time_min_translation, time_min_rotation, resolution, search_radius, height_threshold, exclude_time, correspondence_distance, min_overlap, max_rmse, degeneracy_ratio, ambiguity_rmse, ambiguity_overlap, large_translation, large_rotation, support_translation, support_rotation, support_time, support_consistency_translation, support_consistency_rotation, odom_translation_sigma, odom_rotation_sigma, loop_translation_sigma, loop_rotation_sigma, huber})
@@ -59,6 +61,7 @@ Json Config::json() const {
   VALUE(horizontal_search);
   VALUE(gravity_aligned);
   VALUE(exclude_time);
+  VALUE(min_loop_odom_path_m);
   VALUE(exclude_ids);
   VALUE(max_candidates);
   VALUE(submap_half);
@@ -105,7 +108,7 @@ std::function<void(RegistrationResult&)> prepare_evaluation(const Cloud& target,
   auto t = target.makeShared();
   pcl::search::KdTree<Point>::Ptr tree(new pcl::search::KdTree<Point>);
   tree->setInputCloud(t);
-  pcl::NormalEstimation<Point, pcl::Normal> estimator;
+  pcl::NormalEstimationOMP<Point, pcl::Normal> estimator(c.registration_threads);
   estimator.setInputCloud(t);
   estimator.setSearchMethod(tree);
   estimator.setKSearch(std::min<size_t>(15, target.size()));
@@ -207,6 +210,10 @@ public: explicit SmallRegistration(Config c) : c_(c){
     return legacy(target,source,initial);
   }
   std::function<RegistrationResult(const Pose&)> prepare(const Cloud& target,const Cloud& source) const override {
+    return prepare_shared(target,source,{});
+  }
+  std::function<RegistrationResult(const Pose&)> prepare_shared(const Cloud& target,const Cloud& source,
+      std::function<void(RegistrationResult&)> evaluator) const {
     if(c_.registration!="small_gicp" || !finite_cloud(target) || !finite_cloud(source) || target.size()<c_.min_correspondences || source.size()<c_.min_correspondences)
       return [this,&target,&source](const Pose& initial){RegistrationResult r;r.method=c_.registration;r.reason="invalid_input";
         if(c_.registration!="small_gicp") return legacy(target,source,initial);
@@ -216,7 +223,7 @@ public: explicit SmallRegistration(Config c) : c_(c){
     for(const auto& p:source)s.emplace_back(p.x,p.y,p.z);
     auto target_data=small_gicp::preprocess_points(t,c_.resolution,10,c_.registration_threads);
     auto source_data=small_gicp::preprocess_points(s,c_.resolution,10,c_.registration_threads);
-    auto evaluator=prepare_evaluation(target,source,c_);
+    if(!evaluator)evaluator=prepare_evaluation(target,source,c_);
     return [this,&target,&source,target_data,source_data,evaluator](const Pose& initial){
       return solve(target,source,initial,[&](const small_gicp::RegistrationSetting& setting){
         return small_gicp::align(*target_data.first,*source_data.first,*target_data.second,initial,setting);
@@ -269,6 +276,13 @@ public: explicit SmallRegistration(Config c) : c_(c){
   }
 private: Config c_;
 };
+std::function<RegistrationResult(const Pose&)> prepare_registration(
+    const Registration& registration,const Cloud& target,const Cloud& source,
+    std::function<void(RegistrationResult&)> evaluator) {
+  if(auto small=dynamic_cast<const SmallRegistration*>(&registration))
+    return small->prepare_shared(target,source,std::move(evaluator));
+  return registration.prepare(target,source);
+}
 std::unique_ptr<Registration> make_registration(const Config& c){
   c.validate();
   if (c.registration == "pcl_icp") return std::make_unique<PclRegistration>(c);
@@ -278,8 +292,14 @@ std::vector<Candidate> PositionSearch::find(const Snapshot& s, uint64_t query) c
   if (query >= s.frames.size()) throw std::out_of_range("candidate query");
   std::vector<Candidate> out;
   const auto& q = s.frames[query];
+  std::vector<double> path(s.frames.size(), 0.);
+  if (config_.min_loop_odom_path_m > 0) {
+    for (size_t k=1; k<s.frames.size(); ++k)
+      path[k]=path[k-1]+(s.frames[k].U.translation()-s.frames[k-1].U.translation()).norm();
+  }
   for (const auto& f:s.frames) {
     if (f.id >= q.id || q.id - f.id <= config_.exclude_ids || q.stamp_ns - f.stamp_ns <= int64_t(config_.exclude_time * 1e9)) continue;
+    if (config_.min_loop_odom_path_m > 0 && path[query]-path[f.id] < config_.min_loop_odom_path_m) continue;
     Eigen::Vector3d d = f.X.translation() - q.X.translation();
     double distance = config_.horizontal_search?d.head<2>().norm():d.norm();
     if (distance > config_.search_radius || (config_.horizontal_search && std::abs(d.z()) > config_.height_threshold)) continue;

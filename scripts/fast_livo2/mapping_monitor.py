@@ -33,7 +33,12 @@ class Monitor(Node):
         self.pairs, self.sample_ns = 0, None
         self.frames_ok, self.clock_error = True, ''
         self.anchor = None
-        self.startup_anchor = StartupAnchor() if localization and not replay else None
+        self.startup_anchor = StartupAnchor() if not replay else None
+        self.backend_clock_ns = None
+        # Both mapping and localization consume the same sensor-relative clock.
+        # Steady timers below keep startup/health independent of ROS clock readiness.
+        from rclpy.parameter import Parameter
+        self.set_parameters([Parameter('use_sim_time', value=True)])
         self.backend, self.metrics, self.view = None, {}, {}
         self.backend_receipt = None
         self.receipt_time = None
@@ -44,8 +49,6 @@ class Monitor(Node):
         self.create_subscription(PointCloud2, '/fast_livo/deskewed_imu', self.cloud, output_qos)
         if localization:
             from ranger_fast_livo_localizer.msg import LocalizerEstimate
-            from rclpy.parameter import Parameter
-            self.set_parameters([Parameter('use_sim_time', value=True)])
             self.create_subscription(LocalizerEstimate, '/fast_livo/localizer/estimate', self.estimate, 10)
         else:
             self.create_subscription(BackendEstimate, '/fast_livo/backend/estimate', self.estimate, 10)
@@ -83,15 +86,13 @@ class Monitor(Node):
             self.last[name]=entry.get('last_steady_ns',0)/1e9
         lidar=rows.get('/livox/lidar',{})
         if not self.replay and lidar.get('first_header_ns',0)>0:
-            if self.startup_anchor:
-                acquired=self.startup_anchor.observe(lidar,time.monotonic_ns())
-                if self.startup_anchor.error:self.clock_error=self.startup_anchor.error
-                if self.anchor is None and acquired:
-                    self.anchor=acquired
-                    atomic_json(self.folder/'clock_anchor.json', {'context':str(self.folder),
-                        'anchor':self.anchor,'source_anchor':self.startup_anchor.source_anchor,
-                        'startup_resets':self.startup_anchor.resets,'physical_sync_verified':False})
-            elif self.anchor is None:self.anchor=(lidar['first_header_ns'],lidar['first_steady_ns'])
+            acquired=self.startup_anchor.observe(lidar,time.monotonic_ns())
+            if self.startup_anchor.error:self.clock_error=self.startup_anchor.error
+            if self.anchor is None and acquired:
+                self.anchor=acquired
+                atomic_json(self.folder/'clock_anchor.json', {'context':str(self.folder),
+                    'anchor':self.anchor,'source_anchor':self.startup_anchor.source_anchor,
+                    'startup_resets':self.startup_anchor.resets,'physical_sync_verified':False})
             if self.anchor:
                 expected=self.anchor[0]+lidar.get('last_steady_ns',0)-self.anchor[1]
                 if abs(lidar.get('last_header_ns',0)-expected)>2_000_000_000:
@@ -143,6 +144,7 @@ class Monitor(Node):
                         'processed_scans', 'stale_results', 'sample_age_seconds', 'elapsed_ms')}})+'\n')
 
     def diagnostics(self, message):
+        self.backend_clock_ns = self.stamp(message)
         for status in message.status:
             for value in status.values:
                 if value.key == 'metrics': self.metrics = json.loads(value.value)
@@ -160,9 +162,18 @@ class Monitor(Node):
         input_loss = self.metrics.get('invalid_messages', 0) or any(counters.get(k, 0) for k in
             ('full_complete', 'cloud_byte_budget_rejected', 'capacity_evicted_unpaired', 'unpaired_timeout'))
         backend_ready = backend_ready and not input_loss
+        clock_now_ns = self.get_clock().now().nanoseconds
+        clock_ready = bool(self.anchor and not self.clock_error and
+            abs(clock_now_ns-(self.anchor[0]+time.monotonic_ns()-self.anchor[1])) < 500_000_000)
+        # For B, wait for the consumer's diagnostic stamp to acknowledge /clock,
+        # before permitting the frontend to send its first paired sample.
+        if not self.localization:
+            clock_ready = bool(clock_ready and self.backend_clock_ns and
+                               abs(clock_now_ns-self.backend_clock_ns) < 500_000_000)
         checks = {'probe_live': now-self.started > 2 and not self.clock_error, 'lidar': alive('lidar') and alive('imu'),
             'camera': alive('camera'), 'frontend': alive('paired') and self.pairs >= 3 and self.frames_ok,
             'backend_ready': backend_ready, 'clock_ok': not self.clock_error,
+            'clock_ready': clock_ready,
             'backend_listening': any(e.node_name == ('ranger_fast_livo_localizer' if self.localization else 'ranger_fast_livo_backend') for e in
                 self.get_subscriptions_info_by_topic('/fast_livo/deskewed_imu'))}
         if self.localization:
@@ -193,7 +204,9 @@ class Monitor(Node):
             'frontend_backend_lag_seconds': ((self.sample_ns-self.backend['stamp_ns'])/1e9
                 if self.sample_ns is not None and self.backend and self.backend['pose_valid'] else None),
             'clock': {'mode': 'replay_clock' if self.replay else 'fixed_lidar_header_steady_anchor',
-                'anchor': self.anchor, 'error': self.clock_error, 'physical_host_sync_proven': False}}
+                'anchor': self.anchor, 'error': self.clock_error, 'physical_host_sync_proven': False,
+                'ready': clock_ready,
+                'startup_resets': self.startup_anchor.resets if self.startup_anchor else 0}}
         atomic_json(self.output, state)
         atomic_json(self.folder/('localization_health.json' if self.localization else 'mapping_health.json'), state)
 

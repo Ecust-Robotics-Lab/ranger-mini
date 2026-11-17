@@ -41,6 +41,7 @@ struct Config {
   double odom_translation_sigma = .05, odom_rotation_sigma = .02;
   double loop_translation_sigma = .1, loop_rotation_sigma = .05, huber = 1.345;
   double candidate_budget_ms = 1000.;
+  double min_loop_odom_path_m = 0.;  // Raw keyframe-chain distance; zero disables filtering.
   size_t exclude_ids = 20, max_candidates = 5, submap_half = 3, min_correspondences = 30;
   size_t cache_bytes = 128 * 1024 * 1024, max_keyframes = 100000, max_submap_points = 300000;
   int max_iterations = 50, registration_threads = 1;

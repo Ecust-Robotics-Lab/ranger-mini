@@ -6,8 +6,8 @@ ranger_fast_livo_localizer:
     # Three disjoint strong-geometry windows over >=1s; ambiguous places still need motion.
     global_stationary_initialization: true
     global_candidates: 5
-    global_maximum_points: 4000
-    global_window_frames: 2
+    global_maximum_points: 12000
+    global_window_frames: 8
     global_maximum_index_frames: 10000
     global_resolution: 0.2
     global_window_seconds: 1.0

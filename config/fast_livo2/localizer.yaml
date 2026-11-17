@@ -3,6 +3,7 @@ ranger_fast_livo_localizer:
   ros__parameters:
     use_sim_time: true
     registration: small_gicp
+    registration_threads: 4
     resolution: 0.15
     coarse_resolution: 0.3
     correspondence_distance: 0.5

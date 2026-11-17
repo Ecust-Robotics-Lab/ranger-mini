@@ -341,12 +341,18 @@ TEST_F(C1,PreparedGicpPreservesMultipleSeedResults) {
   auto cfg=config.registration;cfg.registration="small_gicp";cfg.registration_threads=1;
   auto registration=rb::make_registration(cfg);auto target=rb::transformed(body,X);
   auto prepared=registration->prepare(*target,body);
+  auto evaluation=rb::prepare_evaluation(*target,body,cfg);
+  auto shared=rb::prepare_registration(*registration,*target,body,evaluation);
   for(double dx:{-.3,0.,.3}) {
     Pose seed=X;seed.translation().x()+=dx;
     auto a=registration->align(*target,body,seed),b=prepared(seed);
     EXPECT_EQ(a.accepted,b.accepted);EXPECT_EQ(a.reason,b.reason);
     EXPECT_LT((a.T_target_source.matrix()-b.T_target_source.matrix()).norm(),1e-8);
     EXPECT_NEAR(a.rmse,b.rmse,1e-9);
+    auto c=shared(seed);
+    EXPECT_EQ(a.accepted,c.accepted);EXPECT_EQ(a.reason,c.reason);
+    EXPECT_LT((a.T_target_source.matrix()-c.T_target_source.matrix()).norm(),1e-8);
+    EXPECT_NEAR(a.rmse,c.rmse,1e-9);
   }
 }
 TEST_F(C2,WrongCoarseAndOutsideQueriesCannotHandoff) {

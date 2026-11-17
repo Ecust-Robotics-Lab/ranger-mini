@@ -61,9 +61,15 @@ rb::RegistrationResult Localizer::match(const Cloud& cloud,const Pose& predictio
   }
   std::vector<rb::RegistrationResult> good;
   rb::RegistrationResult last;last.reason="not_converged";
-  auto coarse_target=rb::downsample(*target,config_.coarse_resolution), coarse_source=rb::downsample(*source,config_.coarse_resolution);
   auto evaluate=rb::prepare_evaluation(*target,*source,config_.registration);
-  auto fine_prepared=fine_->prepare(*target,*source);
+  auto fine_prepared=rb::prepare_registration(*fine_,*target,*source,evaluate);
+  // Coarse clouds are needed only during initialization. Keep them alive for
+  // all seeds while avoiding two unused voxel filters on every tracking scan.
+  Cloud::Ptr coarse_target,coarse_source;
+  if(initializing) {
+    coarse_target=rb::downsample(*target,config_.coarse_resolution);
+    coarse_source=rb::downsample(*source,config_.coarse_resolution);
+  }
   auto coarse_prepared=initializing?coarse_->prepare(*coarse_target,*coarse_source):std::function<rb::RegistrationResult(const Pose&)>{};
   check();
   for(const auto& seed:seeds) {

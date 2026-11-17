@@ -38,6 +38,7 @@ public:
 #undef REG
     config_.registration.registration=declare_parameter<std::string>("registration","small_gicp");
     config_.registration.max_iterations=declare_parameter<int>("max_iterations",50);
+    config_.registration.registration_threads=declare_parameter<int>("registration_threads",1);
     config_.exclude_identical_stamp=declare_parameter<bool>("exclude_identical_stamp",true);config_.validate();
     global_enabled_=declare_parameter<bool>("global_search_enabled",false);search_allowed_=global_enabled_;
     index_path_=declare_parameter<std::string>("global_index_path","");
@@ -70,6 +71,9 @@ public:
     }
     age_=declare_parameter<double>("sample_max_age",.5);stream_timeout_=declare_parameter<double>("stream_timeout",2.);
     online_=declare_parameter<bool>("online_scheduling",false);
+    // Frontend publishes strict monotonic pairs. Online commit needs no
+    // artificial reorder hold; late/duplicate pairs remain rejected.
+    pairs_=rb::PairBuffer(32,.25,online_?0.:.02);
     if(!std::isfinite(age_) || !std::isfinite(stream_timeout_) || age_<=0 || stream_timeout_<=0) throw std::invalid_argument("invalid age limits");
     auto xyz=declare_parameter<std::vector<double>>("t_base_imu_xyz",{0.,0.,.556});
     auto rpy=declare_parameter<std::vector<double>>("t_base_imu_rpy",{0.,0.,0.});
@@ -87,7 +91,7 @@ public:
     load_=create_service<Load>("/fast_livo/localizer/load_map",[this](std::shared_ptr<Load::Request> req,std::shared_ptr<Load::Response> res){load_request(*req,*res);});
     init_=create_service<Init>("/fast_livo/localizer/initialize",[this](std::shared_ptr<Init::Request> req,std::shared_ptr<Init::Response> res){initialize_request(*req,*res);});
     search_service_=create_service<Search>("/fast_livo/localizer/relocalize",[this](std::shared_ptr<Search::Request> req,std::shared_ptr<Search::Response> res){search_request(*req,*res);});
-    timer_=create_wall_timer(std::chrono::milliseconds(20),[this]{tick();});
+    timer_=create_wall_timer(std::chrono::milliseconds(5),[this]{tick();});
     if(!archive.empty()) {Load::Request req;req.request_id="startup-map";req.archive_path=archive;req.compatibility_path=declaration;Load::Response res;load_request(req,res);}
     worker_=std::thread([this]{work();});
   }
@@ -113,6 +117,10 @@ private:
   bool online_=false,recovery_pending_=false;
   uint64_t skipped_scans_=0,processed_scans_=0,stale_results_=0;
   int64_t last_clock_=-1;size_t invalid_=0;
+  double last_publish_=0;
+  int64_t published_stamp_=-1;
+  std::string published_reason_;
+  uint8_t published_state_=255;
   std::map<std::string,std::pair<std::string,uint64_t>> load_ids_,init_ids_;
   std::map<std::string,std::pair<bool,uint64_t>> search_ids_;
   std::thread worker_;rclcpp::TimerBase::SharedPtr timer_;
@@ -232,6 +240,12 @@ private:
         clear_locked("initial_verification_timeout",false);Job j;j.generation=generation_;enqueue(j);
       }
       message=message_;
+      // Poll pairing/results promptly without multiplying unchanged heartbeat
+      // traffic. A new pose or health transition is published on this tick.
+      const auto stamp=rb::stamp_ns(message.header.stamp);
+      if(now-last_publish_<.02 && stamp==published_stamp_ &&
+          message.state==published_state_ && message.reason==published_reason_)return;
+      last_publish_=now;published_stamp_=stamp;published_state_=message.state;published_reason_=message.reason;
       Json quality;try {quality=Json::parse(message.quality_json.empty()?"{}":message.quality_json);}catch(...) {quality=Json::object();}
       quality["pair_counters"]=pairs_.counters;quality["invalid_messages"]=invalid_;quality["queued_jobs"]=jobs_.size();quality["pair_bytes"]=pairs_.bytes();
       quality["inputs_ready"]=inputs_ready_;quality["map_loading"]=loading_;quality["public_tf_publisher"]=false;

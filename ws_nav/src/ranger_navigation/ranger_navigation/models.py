@@ -19,7 +19,7 @@ class Limits:
     acceleration: float = .30
     yaw_acceleration: float = .50
     min_radius: float = .55
-    stop_linear: float = .015
+    stop_linear: float = .05
     stop_angular: float = .025
     stop_dwell: float = .5
     switch_timeout: float = 3.

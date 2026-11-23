@@ -53,8 +53,8 @@ def read_route(path, manifest):
     return data
 
 
-def check_leg(grid, body, limits, start, goal, start_mode=Mode.DRIVE, budget=5., static_reserve=.04, prefer_parallel_in_narrow=False):
-    planner = Planner(body=body, limits=limits, timeout=budget, static_reserve=static_reserve,
+def check_leg(grid, body, limits, start, goal, start_mode=Mode.DRIVE, budget=5., static_reserve=.04, prefer_parallel_in_narrow=False,static_clearance=None):
+    planner = Planner(body=body, limits=limits, timeout=budget, static_reserve=static_reserve,static_clearance=static_clearance,
                       prefer_parallel_in_narrow=prefer_parallel_in_narrow)
     began = time.monotonic()
     report = {'start': list(start), 'goal': list(goal), 'budget_s': budget,
@@ -64,7 +64,7 @@ def check_leg(grid, body, limits, start, goal, start_mode=Mode.DRIVE, budget=5.,
         path = np.vstack([s.poses for s in segments]) if segments else np.array([start, goal])
         okay, _, reason = validate_sweep(path, np.empty((0, 2)), body, grid=grid,
                                          margin=body.clearance+.04,
-                                         map_margin=body.clearance+static_reserve)
+                                         map_margin=planner.map_clearance)
         if not okay:
             raise NoPath('independent_validation:'+reason)
         report.update(accepted=True, reason='static_map_swept_body_validated', path=path.tolist(),
@@ -196,7 +196,7 @@ def main():
         # All supported initial feedback modes are checked: later replanning
         # must use the actual mode, not the mode assumed by this review.
         variants = [check_leg(grid, body, limits, a['pose'], b['pose'], mode,
-                              static_reserve=profile['static_map_reserve'],
+                              static_reserve=profile['static_map_reserve'],static_clearance=profile.get('static_map_clearance'),
                               prefer_parallel_in_narrow=profile['prefer_parallel_in_narrow']) for mode in Mode]
         accepted = all(v['accepted'] for v in variants)
         representative = next((v for v in variants if not v['accepted']), variants[0]).copy()

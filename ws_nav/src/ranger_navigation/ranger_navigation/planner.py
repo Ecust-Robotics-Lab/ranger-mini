@@ -9,10 +9,13 @@ from scipy.ndimage import distance_transform_edt
 from scipy.spatial import cKDTree
 from .geometry import Body, wrap, integrate, densify, validate_sweep
 from .models import Mode, Limits
+from .coverage_policy import CoveragePolicy
 
 
 class NoPath(RuntimeError):
-    pass
+    def __init__(self,reason,details=None):
+        super().__init__(reason)
+        self.details = details or {}
 
 
 class Grid:
@@ -41,6 +44,7 @@ class Grid:
         self.distance = distance_transform_edt(~self.blocked)*self.resolution
         self.local_visibility = None
         self.guidance_visibility_reserve = .10
+        self.coverage_policy=CoveragePolicy()
         self.dynamic_points,self.dynamic_tree = np.empty((0,2)),None
 
     def with_obstacles(self, points):
@@ -81,14 +85,13 @@ class Grid:
                 xy = (np.asarray(pose)[:2]-observer[:2])@np.array([[c,-s],[s,c]])
                 # Reserve observed space around guidance for sensor viewpoint
                 # changes while executing/stopping, beyond physical clearance.
-                return visible._free_cells([*xy,pose[2]-observer[2]],body,
-                                           body.clearance+self.guidance_visibility_reserve)
+                return visible.covered([*xy,pose[2]-observer[2]],body,self.coverage_policy)
         return True
 
-    def _free_cells(self, pose, body=Body(), margin=None):
+    def _free_cells(self, pose, body=Body(), margin=None,check_dynamic=True):
         margin = body.clearance if margin is None else margin
         x,y,yaw = pose
-        if self.dynamic_tree is not None:
+        if check_dynamic and self.dynamic_tree is not None:
             point_margin = body.clearance+.04+.015
             near = self.dynamic_tree.query_ball_point([x,y],body.radius+point_margin)
             if near and np.min(body.distances(pose,self.dynamic_points[near]))<point_margin:
@@ -118,6 +121,52 @@ class Grid:
                    &(np.abs(-s*dx+c*dy)<=half[1]+r*(abs(c)+abs(s))))
         return not np.any(overlap)
 
+    def coverage_report(self,pose,body,policy):
+        """Check separate interior and edge allowances for the observed grid.
+
+        This does not modify the grid or make an unknown global-map cell free.
+        With boundary tolerance disabled, any protected intersection counts
+        toward the protected allowance. Known obstacles always block.
+        """
+        def intersected(margin,contained=False):
+            x,y,yaw=pose;half=body.half+margin;c,s=math.cos(yaw),math.sin(yaw)
+            extent=np.array([abs(c)*half[0]+abs(s)*half[1],abs(s)*half[0]+abs(c)*half[1]])
+            lo=np.floor((np.array([x,y])-extent-self.origin[:2])/self.resolution).astype(int)
+            hi=np.floor((np.array([x,y])+extent-self.origin[:2])/self.resolution).astype(int)
+            h,w=self.cells.shape
+            if np.any(lo<0) or hi[0]>=w or hi[1]>=h:return None
+            iy,ix=np.nonzero(self.blocked[lo[1]:hi[1]+1,lo[0]:hi[0]+1])
+            dx=(ix+lo[0]+.5)*self.resolution+self.origin[0]-x
+            dy=(iy+lo[1]+.5)*self.resolution+self.origin[1]-y;r=self.resolution/2
+            overlap=((np.abs(dx)<=extent[0]+r)&(np.abs(dy)<=extent[1]+r)&
+                     (np.abs(c*dx+s*dy)<=half[0]+r*(abs(c)+abs(s)))&
+                     (np.abs(-s*dx+c*dy)<=half[1]+r*(abs(c)+abs(s))))
+            if contained:
+                # A 5cm cell touching the rectangle's edge is a boundary
+                # uncertainty, not a whole missing interior observation.
+                overlap &= ((np.abs(c*dx+s*dy)+r*(abs(c)+abs(s))<=half[0])&
+                            (np.abs(-s*dx+c*dy)+r*(abs(c)+abs(s))<=half[1]))
+            return self.cells[iy[overlap]+lo[1],ix[overlap]+lo[0]]
+        report=dict(accepted=False,total_margin_m=policy.total_margin,protected_margin_m=policy.protected_margin,
+                    unknown_cell_budget=policy.unknown_cell_budget,allow_boundary_unknowns=policy.allow_boundary_unknowns,
+                    protected_unknown_cell_budget=policy.protected_unknown_cell_budget,
+                    unknown_edge_cells=0,unknown_protected_cells=0,reason='coverage_outside_grid')
+        outer=intersected(policy.total_margin)
+        if outer is None:return report
+        if np.any(outer>=50):report['reason']='coverage_known_obstacle';return report
+        inner=intersected(policy.protected_margin,contained=policy.allow_boundary_unknowns)
+        if inner is None:return report
+        protected = int(np.count_nonzero(inner < 0))
+        edge = int(np.count_nonzero(outer < 0)) - protected
+        report.update(unknown_edge_cells=edge,unknown_protected_cells=protected)
+        report['reason']=('coverage_body_unobserved' if protected > policy.protected_unknown_cell_budget else
+                          'coverage_edge_budget_exceeded' if edge > policy.unknown_cell_budget else 'coverage_valid')
+        report['accepted']=report['reason']=='coverage_valid'
+        return report
+
+    def covered(self,pose,body,policy):
+        return self.coverage_report(pose,body,policy)['accepted']
+
 
 @dataclass
 class Segment:
@@ -126,7 +175,7 @@ class Segment:
     reverse: bool = False
 
 
-def reanchor_parallel(segment,pose,body,grid,points,static_reserve):
+def reanchor_parallel(segment,pose,body,grid,points,static_reserve,static_clearance=None):
     """Choose a fixed wheel axis at rest and independently validate its sweep.
 
     Localization noise must not force a whole new search while steering is
@@ -141,7 +190,8 @@ def reanchor_parallel(segment,pose,body,grid,points,static_reserve):
     target[2]=pose[2]
     path=np.array([pose,target])
     okay,_,_=validate_sweep(path,points,body,grid=grid,
-                           margin=body.clearance+.04,map_margin=body.clearance+static_reserve)
+                           margin=body.clearance+.04,
+                           map_margin=body.clearance+static_reserve if static_clearance is None else static_clearance)
     return Segment(Mode.PARALLEL,path,segment.reverse) if okay else None
 
 
@@ -160,13 +210,16 @@ def parallel_anchor_close(segment,pose):
 
 class Planner:
     def __init__(self, body=Body(), limits=Limits(), bins=32, step=.15,
-                 max_expansions=50000, timeout=5., static_reserve=.04, prefer_parallel_in_narrow=False):
+                 max_expansions=50000, timeout=5., static_reserve=.04, prefer_parallel_in_narrow=False,static_clearance=None):
         self.body,self.limits = body,limits
         self.bins,self.step = bins,step
         self.max_expansions,self.timeout = max_expansions,timeout
         if not np.isfinite(static_reserve) or not 0 <= static_reserve <= .10:
             raise ValueError('static map reserve must be finite and in [0, .10]m')
         self.static_reserve = float(static_reserve)
+        self.map_clearance = self.body.clearance+self.static_reserve if static_clearance is None else float(static_clearance)
+        if not np.isfinite(self.map_clearance) or not 0<=self.map_clearance<=.2:
+            raise ValueError('static clearance must be finite and in [0, .2]m')
         self.prefer_parallel_in_narrow = bool(prefer_parallel_in_narrow)
         self.expansions = 0
 
@@ -179,7 +232,7 @@ class Planner:
         step = min(.015,grid.resolution/3)
         # Static map reserve is configurable independently of point uncertainty;
         # dynamic voxel uncertainty is checked once in the separate point layer.
-        return all(grid.free(p,self.body,self.body.clearance+self.static_reserve+step)
+        return all(grid.free(p,self.body,self.map_clearance+step)
                    for p in densify(poses,self.body,step))
 
     def primitives(self,p):
@@ -203,9 +256,23 @@ class Planner:
         start,goal = np.array(start,dtype=float),np.array(goal,dtype=float)
         if not np.isfinite([start,goal]).all():
             raise NoPath('nonfinite_start_or_goal')
-        margin = self.body.clearance+self.static_reserve+.015
-        if not grid.free(start,self.body,margin) or not grid.free(goal,self.body,margin):
-            raise NoPath('start_or_goal_occupied_or_unknown')
+        margin = self.map_clearance+.015
+        endpoints = {}
+        for name,pose in (('start',start),('goal',goal)):
+            physical_static = grid._free_cells(pose,self.body,0.,check_dynamic=False)
+            static = grid._free_cells(pose,self.body,margin,check_dynamic=False)
+            dynamic = grid.dynamic_tree is None or not any(
+                self.body.distances(pose,grid.dynamic_points)<self.body.clearance+.04+.015)
+            free = grid.free(pose,self.body,margin)
+            reason = ('static_collision_or_unknown' if not physical_static else
+                      'static_clearance_insufficient' if not static else
+                      'live_obstacle_collision' if not dynamic else
+                      'unobserved' if not free else None)
+            endpoints[name] = dict(pose=pose.tolist(),free=bool(free),static_free=bool(static),
+                physical_static_free=bool(physical_static),dynamic_free=bool(dynamic),
+                static_margin_m=margin,reason=(name+'_'+reason if reason else None))
+        if not all(x['free'] for x in endpoints.values()):
+            raise NoPath(next(x['reason'] for x in endpoints.values() if not x['free']),endpoints)
         # An exact, swept connection is independent of lattice length/yaw bins.
         # A clear 30cm fixed-heading request needs one fixed steering axis,
         # rather than a drive primitive followed by a short side-step/spin.
@@ -255,7 +322,7 @@ class Planner:
                     ix,iy = np.floor((q[:2]-grid.origin[:2])/grid.resolution).astype(int)
                     h,w = grid.cells.shape
                     if (0<=ix<w and 0<=iy<h and
-                            grid.distance[iy,ix]<self.body.radius+self.body.clearance+self.static_reserve+.015):
+                            grid.distance[iy,ix]<self.body.radius+self.map_clearance+.015):
                         # Fixed-steering translation holds body yaw in a narrow
                         # straight passage. Curved drive is still available,
                         # but has higher cost where small yaw errors use up

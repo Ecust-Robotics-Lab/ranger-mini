@@ -102,7 +102,7 @@ def test_navigation_recording_topics_are_optional_and_do_not_become_required_inp
     assert '--include-hidden-topics' not in recorder_command(Path('/tmp/unused'), online.record_topics(args))
 
 
-@pytest.mark.parametrize('profile,clearance,reserve,visible', [('standard',.04,.04,.10), ('narrow',.03,.01,.04)])
+@pytest.mark.parametrize('profile,clearance,reserve,visible', [('standard',.04,.0,.10), ('narrow',.03,.01,.04)])
 @pytest.mark.parametrize('requested_speed',[0.,.30])
 def test_launch_profile_reaches_both_processes_with_same_physical_limits(monkeypatch, profile, clearance, reserve, visible,requested_speed):
     import importlib.util
@@ -110,15 +110,14 @@ def test_launch_profile_reaches_both_processes_with_same_physical_limits(monkeyp
     spec = importlib.util.spec_from_file_location('field_launch', ROOT/'ws_nav/src/ranger_navigation/launch/navigation.launch.py')
     module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
     monkeypatch.setattr(module, 'Node', lambda **kwargs: kwargs)
-    import ament_index_python.packages
-    monkeypatch.setattr(ament_index_python.packages, 'get_package_share_directory',
-                        lambda name: str(ROOT/'ws_nav/src/ranger_navigation'))
     context = launch.LaunchContext()
     context.launch_configurations.update(execute='true', control_authorized='true', project_root=str(ROOT),
         map_yaml=str(ROOT/'outputs/fast-livo-demo-navigation-prep-20261106/navigation_map_final/map.yaml'),
         optimizer_python=str(ROOT/'.runtime/exact_mppi_venv/bin/python3'), wheel_topic='/fast_livo/navigation/wheel/odom',
         use_sim_time='true', low_speed='true', start_map_server='false', clearance_profile=profile)
     nodes = module.prepare(context)  # Node factory is mocked; no ROS process starts.
+    configured_coverage = yaml.safe_load(
+        (ROOT/'ws_nav/src/ranger_navigation/config/exact_navigation.yaml').read_text())['coverage']
     if requested_speed:
         context.launch_configurations['max_speed']=str(requested_speed)
         nodes=module.prepare(context)
@@ -128,13 +127,17 @@ def test_launch_profile_reaches_both_processes_with_same_physical_limits(monkeyp
         assert common['clearance'] == clearance
         assert common['max_speed'] == (requested_speed or .1) and common['max_yaw_rate'] == .2
         assert common['geometry_config'] == str(ROOT/'config/fast_livo2/navigation_prep.yaml')
+        for key, value in configured_coverage.items():
+            assert common[f'coverage_{key}'] == value
     assert nodes[0]['parameters'][1]['static_map_reserve'] == reserve
+    assert nodes[0]['parameters'][1]['static_map_clearance']==.01
     assert nodes[0]['parameters'][1]['visibility_reserve'] == visible
     assert nodes[0]['parameters'][1]['prefer_parallel_in_narrow'] == (profile=='narrow')
 
 
 def test_worker_receives_explicit_narrow_profile_without_starting_process(monkeypatch, tmp_path):
     from ranger_navigation.worker import WorkerClient
+    from ranger_navigation.coverage_policy import CoveragePolicy
     import ranger_navigation.worker as worker
     seen = []
     class MockProcess:
@@ -142,12 +145,64 @@ def test_worker_receives_explicit_narrow_profile_without_starting_process(monkey
         def poll(self): return 0
     monkeypatch.setattr(worker.subprocess, 'Popen', MockProcess)
     client = WorkerClient(tmp_path, sys.executable, ROOT/'config/fast_livo2/navigation_prep.yaml',
-                          clearance=.03, static_reserve=.01, visibility_reserve=.04,prefer_parallel_in_narrow=True)
+                          clearance=.03, static_reserve=.01, visibility_reserve=.04,prefer_parallel_in_narrow=True,
+                          coverage_policy=CoveragePolicy(.035,.02,4,False,protected_unknown_cell_budget=2))
     client.close()
     cmd = seen[0]
-    for key, value in [('--clearance','0.03'), ('--static-reserve','0.01'), ('--visibility-reserve','0.04')]:
+    for key, value in [('--clearance','0.03'), ('--static-reserve','0.01'), ('--visibility-reserve','0.04'),
+                       ('--coverage-margin','0.035'),('--coverage-protected-margin','0.02'),('--coverage-unknown-budget','4'),
+                       ('--coverage-protected-unknown-budget','2'),
+                       ('--coverage-boundary-unknowns','false')]:
         assert cmd[cmd.index(key)+1] == value
     assert '--prefer-parallel-in-narrow' in cmd
+
+
+@pytest.mark.parametrize('coverage,valid',[
+    ({'total_margin':.035,'protected_margin':.02,'unknown_cell_budget':4,'allow_boundary_unknowns':False,
+      'protected_unknown_cell_budget':2},True),
+    ({'total_margin':.025,'protected_margin':.015,'unknown_cell_budget':0},True),
+    ({'total_margin':.025,'protected_margin':.015,'unknown_cell_budget':2.5},False),
+    ({'total_margin':.025,'protected_margin':.015,'unknown_cell_budget':17},False),
+    ({'total_margin':.025,'protected_margin':.015,'unknown_cell_budget':-1},False),
+    ({'total_margin':.01,'protected_margin':.015,'unknown_cell_budget':8},False),
+    ({'total_margin':.025,'protected_margin':.015,'unknown_cell_budget':8,'allow_boundary_unknowns':'yes'},False),
+    ({'protected_unknown_cell_budget':-1},False),
+    ({'protected_unknown_cell_budget':17},False),
+    ({'protected_unknown_cell_budget':True},False),
+])
+def test_editable_yaml_reaches_both_nodes_or_rejects_before_start(monkeypatch,tmp_path,coverage,valid):
+    import importlib.util
+    launch=pytest.importorskip('launch')
+    spec=importlib.util.spec_from_file_location('yaml_launch',ROOT/'ws_nav/src/ranger_navigation/launch/navigation.launch.py')
+    module=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)
+    declared=next(action for action in module.generate_launch_description().entities
+                  if getattr(action,'name',None)=='low_speed')
+    assert ''.join(part.perform(launch.LaunchContext()) for part in declared.default_value)=='false'
+    nodes=[]
+    def node(**kwargs):nodes.append(kwargs);return kwargs
+    monkeypatch.setattr(module,'Node',node)
+    config=yaml.safe_load((ROOT/'ws_nav/src/ranger_navigation/config/exact_navigation.yaml').read_text())
+    config['coverage']=coverage;path=tmp_path/'navigation.yaml';path.write_text(yaml.safe_dump(config))
+    config['motion'].update(max_speed=.24,max_yaw_rate=.35)
+    path.write_text(yaml.safe_dump(config))
+    context=launch.LaunchContext()
+    context.launch_configurations.update(execute='true',control_authorized='true',project_root=str(ROOT),
+        navigation_config=str(path),map_yaml=str(ROOT/'outputs/fast-livo-demo-navigation-prep-20261106/navigation_map_final/map.yaml'),
+        optimizer_python=str(ROOT/'.runtime/exact_mppi_venv/bin/python3'),wheel_topic='/fast_livo/navigation/wheel/odom',
+        use_sim_time='true',start_map_server='false',clearance_profile='standard')
+    if not valid:
+        with pytest.raises(ValueError,match='coverage'):module.prepare(context)
+        assert not nodes
+        return
+    assert len(module.prepare(context))==2
+    for node in nodes:
+        params=node['parameters'][0]
+        assert params['coverage_total_margin']==coverage['total_margin']
+        assert params['coverage_protected_margin']==coverage['protected_margin']
+        assert params['coverage_unknown_cell_budget']==coverage['unknown_cell_budget']
+        assert params['coverage_protected_unknown_cell_budget']==coverage.get('protected_unknown_cell_budget',0)
+        assert params['max_speed']==.24 and params['max_yaw_rate']==.35
+        assert params['coverage_allow_boundary_unknowns']==coverage.get('allow_boundary_unknowns',True)
 
 
 @pytest.mark.parametrize('mode,error', [(0,[0.,0.,.02]), (0,[.01,0.,0.]), (1,[0.,0.,.02])])

@@ -21,6 +21,7 @@ def main():
     structs=header[header.index('  struct RobotParams'):header.index(' public:')]
     code=r'''
 #include <memory>
+#include <cmath>
 #include <string>
 #include <functional>
 #include <stdexcept>
@@ -29,7 +30,7 @@ def main():
 #include "ranger_base/ranger_params.hpp"
 #define RCLCPP_INFO(...) ((void)0)
 #define RCLCPP_ERROR(...) ((void)0)
-namespace std_msgs { namespace msg { struct UInt8 {}; } }
+namespace std_msgs { namespace msg { struct UInt8 {}; struct String {}; } }
 namespace geometry_msgs { namespace msg { struct Twist {}; } }
 namespace ranger_msgs { namespace msg { using SystemState=int; using MotionState=int; using ActuatorStateArray=int; } }
 namespace nav_msgs { namespace msg { using Odometry=int; } }
@@ -61,7 +62,8 @@ struct RangerROSMessenger {
   std::string port_name_,robot_model_,odom_frame_,base_frame_,odom_topic_name_;
   int update_rate_;bool publish_odom_tf_,receive_only_,parking_mode_,v2_sdk_front_opposite_base_;
   double nav_max_speed_,nav_max_yaw_rate_,nav_min_radius_,v2_feedback_steering_sign_;
-  std::shared_ptr<int> system_state_pub_,motion_state_pub_,actuator_state_pub_,odom_pub_,battery_state_pub_,motion_cmd_sub_,mode_cmd_sub_;
+  double nav_stop_linear_,nav_stop_angular_,nav_stop_dwell_;
+  std::shared_ptr<int> system_state_pub_,motion_state_pub_,actuator_state_pub_,odom_pub_,battery_state_pub_,execution_pub_,motion_cmd_sub_,mode_cmd_sub_;
   std::shared_ptr<tf2_ros::TransformBroadcaster>tf_broadcaster_;
   RangerROSMessenger(rclcpp::Node::SharedPtr&);~RangerROSMessenger();
   void LoadParameters();void SetupSubscription();

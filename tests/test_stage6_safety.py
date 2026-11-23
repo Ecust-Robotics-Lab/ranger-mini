@@ -39,7 +39,7 @@ class World(Node):
   self.can=True;self.soft=False;self.enabled=False;self.teleop=False
   self.reject_switch=False;self.obstacles_world=np.empty((0,2));self.metrics=[];self.metrics_seen=set()
   self.collided=False
-  self.gate_reason='startup';self.trace=[]
+  self.gate_reason='startup';self.trace=[];self.execution_session='synthetic-driver'
   self.clock=0;self.step=0
   self.body,self.r,self.t=load_geometry(ROOT/'config/fast_livo2/navigation_prep.yaml')
   self.wheel=self.create_publisher(Odometry,'/fast_livo/navigation/wheel/odom',10)
@@ -49,6 +49,7 @@ class World(Node):
   self.mode=self.create_publisher(MotionState,'/motion_state',10)
   self.est=self.create_publisher(LocalizationEstimate,'/localization/estimate',10)
   self.readypub=self.create_publisher(Bool,'/navigation_ready',10)
+  self.execution_pub=self.create_publisher(String,'/base/execution_state',2)
   self.permission=self.create_publisher(Bool,'/ranger/motion_enable',1)
   self.estop=self.create_publisher(Bool,'/ranger/soft_estop',1)
   self.manual=self.create_publisher(Twist,'/teleop/cmd_vel',1)
@@ -108,6 +109,10 @@ class World(Node):
    m=SystemState();m.header.stamp=stamp;m.control_mode=1 if self.can else 0;m.vehicle_state=0;self.system.publish(m)
   if self.mode_on:
    m=MotionState();m.header.stamp=stamp;m.motion_mode=self.actual_mode;self.mode.publish(m)
+  self.execution_pub.publish(String(data=json.dumps(dict(schema_version=1,session=self.execution_session,
+   host_stamp_ns=time.time_ns(),requested_body=self.velocity.tolist(),submitted_sdk=[float(np.linalg.norm(self.velocity[:2])),0.,float(self.velocity[2])],
+   feedback_ready=self.can,receive_only=False,mode=self.actual_mode,reason='tracking' if np.linalg.norm(self.velocity)>0 else 'zero_command',
+   command_age_s=.02,submission_age_s=.02,feedback_age_s=.02,mode_age_s=.02,system_age_s=.02))))
   estimate=LocalizationEstimate();estimate.header.frame_id='map';estimate.base_frame='base_link';estimate.header.stamp=stamp
   estimate.pose=wheel.pose.pose;estimate.state=estimate.VALID;estimate.reason='session=synthetic; map=synthetic'
   self.est.publish(estimate);self.readypub.publish(Bool(data=self.ready))
@@ -163,6 +168,11 @@ def main():
   check('valid_trajectory_reaches_final_output',lambda:None)
   f=h.cancel_goal_async();w.wait(f.done);t=time.monotonic();w.spin(.6)
   check('action_cancel_stops',lambda:w.stopped_after(t,.15))
+  w.execution_session='synthetic-driver-restarted';w.spin(.2)
+  restart_goal=w.goal(w.pose[0]+.3,w.pose[1]);w.arm(True);t=time.monotonic();w.spin(.4)
+  check('driver_restart_requires_new_enable_edge',lambda:w.stopped_after(t,.1))
+  restart_cancel=restart_goal.cancel_goal_async();w.wait(restart_cancel.done)
+  w.arm(False);w.arm(True)
   old=w.goal(w.pose[0]+1.,w.pose[1]);old_result=old.get_result_async()
   new=w.goal(w.pose[0],w.pose[1]+.5);w.wait(old_result.done)
   check('goal_replacement_terminates_old_goal',lambda:None)

@@ -33,11 +33,15 @@ def prepare(context):
     spec=importlib.util.spec_from_file_location('fast_navigation_asset',root/'scripts/fast_livo2/navigation/asset.py')
     asset=importlib.util.module_from_spec(spec);spec.loader.exec_module(asset)
     manifest=asset.load_map(map_yaml.parent)
-    from ament_index_python.packages import get_package_share_directory
-    share=Path(get_package_share_directory('ranger_navigation'))
-    cfg=yaml.safe_load((share/'config/exact_navigation.yaml').read_text())
+    # Read the editable project file on every new navigation session. The
+    # installed share copy is a build snapshot and must not hide YAML edits.
+    config_path=Path(LaunchConfiguration('navigation_config',default=str(
+        root/'ws_nav/src/ranger_navigation/config/exact_navigation.yaml')).perform(context)).resolve()
+    cfg=yaml.safe_load(config_path.read_text())
+    from ranger_navigation.coverage_policy import CoveragePolicy
+    coverage=CoveragePolicy(**cfg['coverage'])
     profile=cfg['clearance_profiles'][LaunchConfiguration('clearance_profile').perform(context)]
-    limits=cfg['real_vehicle_first_test'] if LaunchConfiguration('low_speed').perform(context)=='true' else cfg['motion']
+    limits=cfg['real_vehicle_first_test'] if LaunchConfiguration('low_speed',default='false').perform(context)=='true' else cfg['motion']
     requested_speed=float(LaunchConfiguration('max_speed',default='0').perform(context))
     if not 0 <= requested_speed <= float(cfg['motion']['max_speed']):
         raise RuntimeError('max_speed must be between 0 (profile default) and configured motion limit')
@@ -46,13 +50,20 @@ def prepare(context):
             'wheel_topic':LaunchConfiguration('wheel_topic').perform(context),
             'clearance':float(profile['clearance']),
             'max_speed':requested_speed or float(limits['max_speed']),'max_yaw_rate':float(limits['max_yaw_rate'])}
-    common.update({k:float(cfg['motion'][k]) for k in ('acceleration','yaw_acceleration','min_radius')})
+    common.update({k:float(cfg['motion'][k]) for k in ('acceleration','yaw_acceleration','min_radius','stop_linear','stop_angular','stop_dwell')})
+    common.update({k:float(v) for k,v in cfg['timing'].items()})
+    common.update(coverage_total_margin=float(coverage.total_margin),
+                  coverage_protected_margin=float(coverage.protected_margin),
+                  coverage_unknown_cell_budget=coverage.unknown_cell_budget,
+                  coverage_protected_unknown_cell_budget=coverage.protected_unknown_cell_budget,
+                  coverage_allow_boundary_unknowns=coverage.allow_boundary_unknowns)
     optimizer=Path(LaunchConfiguration('optimizer_python').perform(context))
     if not optimizer.is_file():
         raise RuntimeError('missing project-local JAX environment: '+str(optimizer))
     nodes=[Node(package='ranger_navigation',executable='exact_navigation',name='ranger_exact_navigation',
                 parameters=[common,{'optimizer_python':str(optimizer),'compute_backend':cfg['compute']['backend'],
                     'static_map_reserve':float(profile['static_map_reserve']),
+                    'static_map_clearance':float(profile['static_map_clearance']),
                     'visibility_reserve':float(profile['visibility_reserve']),
                     'segment_yaw_tolerance':float(profile['segment_yaw_tolerance']),
                     'goal_position_tolerance':float(LaunchConfiguration('goal_position_tolerance',default='.15').perform(context)),
@@ -78,12 +89,14 @@ def generate_launch_description():
         DeclareLaunchArgument('execute',default_value='false',choices=['false','true']),
         DeclareLaunchArgument('control_authorized',default_value='false',choices=['false','true']),
         DeclareLaunchArgument('project_root',default_value=str(root)),
+        DeclareLaunchArgument('navigation_config',default_value=[LaunchConfiguration('project_root'),
+            '/ws_nav/src/ranger_navigation/config/exact_navigation.yaml']),
         DeclareLaunchArgument('map_yaml',default_value=str(root/'outputs/fast-livo-demo-navigation-prep-20261106/navigation_map_final/map.yaml')),
         DeclareLaunchArgument('optimizer_python',default_value=str(root/'.runtime/exact_mppi_venv/bin/python3')),
         DeclareLaunchArgument('wheel_topic',default_value='/fast_livo/navigation/wheel/odom'),
         DeclareLaunchArgument('use_sim_time',default_value='true',choices=['false','true']),
         DeclareLaunchArgument('start_map_server',default_value='false',choices=['false','true']),
-        DeclareLaunchArgument('low_speed',default_value='true',choices=['false','true']),
+        DeclareLaunchArgument('low_speed',default_value='false',choices=['false','true']),
         DeclareLaunchArgument('max_speed',default_value='0'),
         DeclareLaunchArgument('goal_position_tolerance',default_value='.15'),
         DeclareLaunchArgument('goal_yaw_tolerance',default_value='.15'),

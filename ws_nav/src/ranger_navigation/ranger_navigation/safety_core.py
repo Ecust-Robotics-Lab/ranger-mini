@@ -2,10 +2,12 @@
 import numpy as np
 from .geometry import Body,validate_sweep
 from .models import Limits,feasible,stopped,rollout,braking_commands
+from .coverage_policy import CoveragePolicy
 
 
 class Safety:
-    def __init__(self,body=Body(),limits=Limits()):
+    def __init__(self,body=Body(),limits=Limits(),coverage_policy=CoveragePolicy()):
+        self.coverage_policy=coverage_policy
         self.body,self.limits = body,limits
         self.enabled,self.estop,self.ready = False,False,False
         self.inputs = {}
@@ -20,8 +22,9 @@ class Safety:
     def feed(self,name,stamp,now):
         self.inputs[name] = stamp,now
 
-    def command(self,owner,velocity,mode,sample,now,valid=True):
-        self.commands[owner] = (np.asarray(velocity,dtype=float),mode,sample,now,valid)
+    def command(self,owner,velocity,mode,sample,now,valid=True,deadline=None):
+        self.commands[owner] = (np.asarray(velocity,dtype=float),mode,sample,now,valid,
+                                now+.1 if deadline is None else deadline)
 
     def fresh(self,name,sample_now,steady_now,age):
         if name not in self.inputs:
@@ -56,7 +59,8 @@ class Safety:
                 self.switch_since = None
                 return zero,None
         cmd = self.commands.get(self.owner)
-        if cmd is None or not cmd[4] or not (0<=now-cmd[3]<=.10 and 0<=sample_now-cmd[2]<=.25):
+        if cmd is None or not cmd[4] or not (0<=now-cmd[3]<=.10 and 0<=sample_now-cmd[2]<=.25
+                                           and np.isfinite(cmd[5]) and now<=cmd[5]<=now+.1):
             self.reason = 'command_expired_or_invalid'
             return zero,None
         velocity,mode,*_ = cmd
@@ -100,7 +104,7 @@ class Safety:
         poses = rollout(self.pose,controls,.05)
         okay,minimum,reason = validate_sweep(poses,self.obstacles,self.body,
                                             coverage=self.coverage,
-                                            margin=self.body.clearance+.04)
+                                            margin=self.body.clearance+.04,coverage_margin=self.coverage_policy.total_margin)
         if not okay:
             self.reason = 'collision_monitor:'+reason
             return np.zeros(3),minimum

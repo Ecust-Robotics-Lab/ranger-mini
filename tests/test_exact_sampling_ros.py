@@ -43,6 +43,7 @@ def test_future_wheel_does_not_hide_recent_exact_tf_sample():
         def now(self):return self.clock
         def invalidate(self,*args):raise AssertionError('unexpected invalidation')
     h=Harness();h.clock=10.;h.ready=h.safety_ready=True;h.front_locked=False
+    h.localization_sample_max_age=.4;h.localization_receipt_max_age=.25
     h.wheel=new;h.wheel_samples=[old,new];h.grid=object();h.expected_map=''
     h.estimate=LocalizationEstimate();h.estimate.state=h.estimate.VALID;h.estimate.header.frame_id='map';h.estimate.base_frame='base_link';h.estimate.header.stamp.sec=9;h.estimate.header.stamp.nanosec=900_000_000
     for key in ('ready','wheel','cloud','estimate','owner','actual_mode','safety'):
@@ -54,6 +55,21 @@ def test_future_wheel_does_not_hide_recent_exact_tf_sample():
     # Keeping history must not extend its validity after the original bound.
     h.clock=10.4
     assert h.sample(now) is None
+
+
+def test_pose_age_400ms_does_not_relax_observation_or_receipt():
+    now=time.monotonic();transform=TransformStamped();transform.transform.rotation.w=1.
+    h=SimpleNamespace(ready=True,safety_ready=True,front_locked=False,grid=object(),expected_map='',
+        now=lambda:10.,localization_sample_max_age=.4,localization_receipt_max_age=.25)
+    h.wheel=wheel(9.99);h.wheel_samples=[h.wheel]
+    h.estimate=LocalizationEstimate();h.estimate.state=1;h.estimate.header.frame_id='map';h.estimate.base_frame='base_link'
+    h.estimate.header.stamp.sec=9;h.estimate.header.stamp.nanosec=650_000_000
+    h.memory=SimpleNamespace(error=None,last_stamp=9.9);h.buffer=SimpleNamespace(lookup_transform=lambda *a:transform)
+    for name in ('ready','wheel','cloud','estimate','owner','actual_mode','safety'):setattr(h,name+'_received',now)
+    assert Coordinator.sample(h,now) is not None
+    h.memory.last_stamp=9.7;assert Coordinator.sample(h,now) is None
+    h.memory.last_stamp=9.9;h.estimate_received=now-.251;assert Coordinator.sample(h,now) is None
+    h.estimate_received=now;h.estimate.header.stamp.nanosec=599_000_000;assert Coordinator.sample(h,now) is None
 
 
 def test_fault_without_session_does_not_retire_active_localizer():
@@ -83,8 +99,8 @@ def scheduler_harness(monkeypatch):
     monkeypatch.setattr(module.time,'monotonic',lambda:clock[0])
     segment=Segment(Mode.PARALLEL,np.array([[0.,0.,0.],[.5,0.,0.]]))
     sent=[];submitted=[];sampled=[];polls=[]
-    task=SimpleNamespace(state='EXECUTING',reason='tracking',index=0,segments=[segment],generation=1,
-                         goal=np.array([.5,0.,0.]),TERMINAL=Task.TERMINAL,tick=lambda *args:segment)
+    task=SimpleNamespace(state='EXECUTING',reason='tracking',index=0,segments=[segment],generation=1,history_generation=1,
+                         goal=np.array([.5,0.,0.]),TERMINAL=Task.TERMINAL,tick=lambda *args:segment,failure_cause=None)
     def hold(reason='guidance_unobserved'):task.state,task.reason='OBSERVING',reason
     task.hold_observation=hold
     memory=SimpleNamespace(last_stamp=9.9,visibility_pose=np.zeros(3),
@@ -101,7 +117,13 @@ def scheduler_harness(monkeypatch):
     h.last_clock=None;h.last_path_check=(9.9,1,0);h.command=None
     h.last_plan=h.last_control=h.last_state_publish=-1e9
     h.actual_mode=Mode.PARALLEL;h.owner='navigation';h.reference_wheel=wheel(9.98)
+    from ranger_navigation.execution import ExecutionFeedback
+    h.execution=ExecutionFeedback();h.accepted_request_id=None
     h.session='offline';h.metrics={};h.goal_handle=None;h.input_reason='valid';h.static_reserve=.01
+    h.planning_failure=None
+    h.static_map_clearance=.01
+    from ranger_navigation.coverage_policy import CoveragePolicy
+    h.coverage_policy=CoveragePolicy()
     pub=SimpleNamespace(publish=lambda m:sent.append(m))
     for name in ['command_pub','velocity_pub','state_pub','local_pub','minimum_pub','path_pub']:setattr(h,name,pub)
     return h,clock,sent,submitted,sampled,polls
@@ -131,7 +153,10 @@ def test_available_worker_prepares_one_control_at_twenty_hertz(monkeypatch):
 def test_missing_coverage_rechecks_at_control_rate_without_sampling_obstacles(monkeypatch):
     h,clock,sent,submitted,sampled,polls=scheduler_harness(monkeypatch)
     h.worker.pending=None;checks=[]
-    h.memory.control_grid.free=lambda *args:(checks.append(clock[0]) and False)
+    def missing_coverage(*args):
+        checks.append(clock[0])
+        return {'accepted':False,'unknown_protected_cells':1,'reason':'coverage_body_unobserved'}
+    h.memory.control_grid.coverage_report=missing_coverage
     h.tick()
     count=len(checks)
     assert count and h.task.state=='OBSERVING' and not sampled and not submitted
@@ -151,3 +176,47 @@ def test_feedback_rate_limit_does_not_delay_cancel_result(monkeypatch):
     h.task.state='CANCELED'
     clock[0]+=.005;h.tick()
     assert finished==['CANCELED'] and len(feedback)==1
+
+
+def test_observation_resume_revalidates_coasting_velocity_without_stop(monkeypatch):
+    h,clock,sent,submitted,sampled,polls=scheduler_harness(monkeypatch)
+    h.worker.pending=None;h.task.state='OBSERVING'
+    h.sample=lambda now:(np.array([.1,0,0]),np.array([.08,0,0]),np.zeros(3))
+    h.tick()
+    assert h.task.state=='EXECUTING' and len(submitted)==1
+    np.testing.assert_array_equal(submitted[0][0][2]['speed'],[.08,0,0])
+    # A new solve is requested; no old velocity is replayed before its result.
+    controls=[m for m in sent if hasattr(m,'valid_until_steady')]
+    assert controls and controls[-1].twist.linear.x==0
+
+
+def test_old_generation_result_never_becomes_an_acknowledged_command(monkeypatch):
+    h,clock,sent,submitted,sampled,polls=scheduler_harness(monkeypatch)
+    h.worker.poll=lambda:({'generation':0,'kind':'control','id':99},{})
+    h.tick()
+    assert h.command is None and h.accepted_request_id is None
+
+
+def test_compute_gap_can_only_keep_a_command_with_its_original_deadline(monkeypatch):
+    h,clock,sent,submitted,sampled,polls=scheduler_harness(monkeypatch)
+    original=({'generation':1,'id':11,'submitted':99.95},np.array([.01,0,0]),9_980_000_000)
+    h.command=original
+    h.worker.poll=lambda:({'generation':1,'kind':'control','error':'worker_timeout'},{})
+    h.tick()
+    assert h.command is original and h.task.state=='EXECUTING'
+    controls=[m for m in sent if hasattr(m,'valid_until_steady')]
+    assert abs(controls[-1].valid_until_steady-100.05)<1e-8
+    clock[0]=100.06;h.tick()
+    assert h.command is None and h.task.state=='OBSERVING'
+    assert [m for m in sent if hasattr(m,'valid_until_steady')][-1].twist.linear.x==0
+
+
+def test_nonfinite_actual_velocity_withdraws_independent_gate_wheel_input():
+    from ranger_navigation.safety_node import SafetyNode
+    from ranger_navigation.safety_core import Safety
+    core=Safety();core.feed('wheel',10.,10.)
+    node=SimpleNamespace(core=core)
+    message=wheel(10.);message.header.frame_id='odom';message.child_frame_id='base_link'
+    message.twist.twist.linear.x=float('nan')
+    SafetyNode.wheel(node,message)
+    assert 'wheel' not in core.inputs

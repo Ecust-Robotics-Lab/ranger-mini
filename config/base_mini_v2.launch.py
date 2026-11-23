@@ -34,7 +34,9 @@ def prepare(context):
         name='ranger_base_node', output='screen', respawn=False,
         parameters=[str(Path(__file__).with_name('base_mini_v2.yaml')),
                     {'nav_max_speed':motion['max_speed'], 'nav_max_yaw_rate':motion['max_yaw_rate'],
-                     'nav_min_radius':motion['min_radius']}],
+                     'nav_min_radius':motion['min_radius'],
+                     'nav_stop_linear':motion['stop_linear'],'nav_stop_angular':motion['stop_angular'],
+                     'nav_stop_dwell':motion['stop_dwell']}],
         remappings=[('/cmd_vel', '/base/safe_cmd_vel')],
     )]
 

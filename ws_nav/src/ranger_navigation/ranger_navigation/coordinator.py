@@ -20,14 +20,19 @@ from nav_msgs.msg import Odometry,OccupancyGrid,Path as PathMsg
 from nav2_msgs.action import NavigateToPose
 from sensor_msgs.msg import PointCloud2
 from std_msgs.msg import Bool,String,UInt8,Float32
+from std_srvs.srv import Trigger
 from ranger_localization_msgs.msg import LocalizationEstimate
-from ranger_navigation_msgs.msg import Observation,ControlCommand
+from ranger_navigation_msgs.msg import Observation,LeasedControlCommand as ControlCommand
 from ranger_msgs.msg import MotionState
 from ranger_localization_bridge.alignment import PoseHistory
 from ranger_localization_bridge.geometry import SE3
 import tf2_ros
 from .geometry import load_geometry,validate_sweep,wrap,densify
 from .models import Limits,Mode,rollout,braking_commands,stopped
+from .execution import ExecutionFeedback
+from .recovery import resume_reason,command_live
+from .coverage_policy import CoveragePolicy
+from .guidance import observed_prefix
 from .obstacles import ObstacleMemory
 from .planner import Grid,Segment,reanchor_parallel,parallel_anchor_close
 from .task import Task
@@ -54,7 +59,21 @@ class Coordinator(Node):
         d = self.declare_parameter
         geometry = str(d('geometry_config','').value)
         self.body,self.r_imu,self.t_imu = load_geometry(geometry,float(d('clearance',.04).value))
+        self.coverage_policy=CoveragePolicy(float(d('coverage_total_margin',.025).value),
+            float(d('coverage_protected_margin',.015).value),int(d('coverage_unknown_cell_budget',8).value),
+            bool(d('coverage_allow_boundary_unknowns',True).value),
+            protected_unknown_cell_budget=d('coverage_protected_unknown_cell_budget',0).value)
         self.static_reserve = float(d('static_map_reserve',.04).value)
+        configured_static_clearance = float(d('static_map_clearance',-1.).value)
+        self.static_map_clearance = (self.body.clearance+self.static_reserve if configured_static_clearance==-1.
+                                     else configured_static_clearance)
+        if not np.isfinite(self.static_map_clearance) or not 0<=self.static_map_clearance<=.2:
+            raise ValueError('invalid static map clearance')
+        self.localization_sample_max_age = float(d('localization_sample_max_age',.4).value)
+        self.localization_receipt_max_age = float(d('localization_receipt_max_age',.25).value)
+        if not .25<=self.localization_sample_max_age<=.5 or not 0<self.localization_receipt_max_age<=.25:
+            raise ValueError('invalid localization freshness limits')
+        self.planning_failure = None
         if not np.isfinite(self.static_reserve) or not 0 <= self.static_reserve <= .10:
             raise ValueError('static_map_reserve must be finite and in [0, .10]m')
         self.visibility_reserve = float(d('visibility_reserve',.10).value)
@@ -64,8 +83,11 @@ class Coordinator(Node):
             raise ValueError('visibility_reserve must be finite and in [.015, .20]m')
         self.limits = Limits(speed=float(d('max_speed',.30).value),yaw_rate=float(d('max_yaw_rate',.50).value),
                              acceleration=float(d('acceleration',.30).value),yaw_acceleration=float(d('yaw_acceleration',.50).value),
-                             min_radius=float(d('min_radius',.55).value))
+                             min_radius=float(d('min_radius',.55).value),
+                             stop_linear=float(d('stop_linear',.05).value),stop_angular=float(d('stop_angular',.025).value),
+                             stop_dwell=float(d('stop_dwell',.5).value))
         self.memory,self.history,self.task = ObstacleMemory(self.body,
+            coverage_policy=self.coverage_policy,
             sectors=int(d('visibility_sectors',180).value),
             angular_guard=int(d('visibility_angular_guard',1).value),
             control_memory=float(d('visibility_control_memory',0.).value)),PoseHistory(),Task(
@@ -88,6 +110,9 @@ class Coordinator(Node):
         self.last_control = self.last_state_publish = -1e9
         self.metrics = {}
         self.input_timing = {}
+        self.execution = ExecutionFeedback()
+        self.accepted_request_id = None
+        self.gate_execution = None
         self.goal_handle,self.result_future = None,None
         self.goal_futures = {}
         self.expected_map = str(d('expected_map_uuid','').value)
@@ -101,8 +126,11 @@ class Coordinator(Node):
                                    d('compute_backend','gpu').value,int(d('samples',256).value),
                                    {'speed':self.limits.speed,'yaw_rate':self.limits.yaw_rate,
                                     'acceleration':self.limits.acceleration,'yaw_acceleration':self.limits.yaw_acceleration,
-                                    'min_radius':self.limits.min_radius},clearance=self.body.clearance,
+                                    'min_radius':self.limits.min_radius,'stop_linear':self.limits.stop_linear,
+                                    'stop_angular':self.limits.stop_angular,'stop_dwell':self.limits.stop_dwell},clearance=self.body.clearance,
                                    static_reserve=self.static_reserve,visibility_reserve=self.visibility_reserve,
+                                   static_clearance=self.static_map_clearance,
+                                   coverage_policy=self.coverage_policy,
                                    prefer_parallel_in_narrow=self.prefer_parallel_in_narrow)
         self.buffer = tf2_ros.Buffer()
         self.listener = tf2_ros.TransformListener(self.buffer,self)
@@ -114,18 +142,23 @@ class Coordinator(Node):
         self.create_subscription(String,'/navigation/control_owner',self.on_owner,10)
         self.create_subscription(MotionState,'/motion_state',self.on_mode,10)
         self.create_subscription(Bool,'/navigation/safety_ready',self.on_safety,10)
+        self.create_subscription(String,'/base/execution_state',self.on_execution,2)
+        self.create_subscription(String,'/navigation/execution',self.on_gate_execution,2)
         map_qos = QoSProfile(depth=1,durability=DurabilityPolicy.TRANSIENT_LOCAL,reliability=ReliabilityPolicy.RELIABLE)
         self.create_subscription(OccupancyGrid,'/map',self.on_map,map_qos)
         self.obs_pub = self.create_publisher(Observation,'/navigation/observation',2)
         self.command_pub = self.create_publisher(ControlCommand,'/navigation/control',1)
         self.velocity_pub = self.create_publisher(Twist,'/cmd_vel_nav',1)
         self.path_pub = self.create_publisher(PathMsg,'/plan',1)
+        # Read-only route metadata for the browser; published only on a new plan.
+        self.route_pub = self.create_publisher(String,'/navigation/route',1)
         self.local_pub = self.create_publisher(PathMsg,'/navigation/prediction',1)
         self.state_pub = self.create_publisher(String,'/navigation/state',1)
         self.minimum_pub = self.create_publisher(Float32,'/navigation/minimum_distance',1)
         self.action = ActionServer(self,NavigateToPose,'navigate_to_pose',execute_callback=self.execute,
                                   goal_callback=self.goal,cancel_callback=self.cancel,
                                   handle_accepted_callback=self.accepted)
+        self.reset_service = self.create_service(Trigger,'/navigation/reset',self.reset_navigation)
         # Poll asynchronously at 200Hz; submit optimization at 20Hz. A 50ms
         # result-poll period alone would consume the entire latency target.
         self.create_timer(.005,self.tick,clock=Clock(clock_type=ClockType.STEADY_TIME))
@@ -156,6 +189,20 @@ class Coordinator(Node):
 
     def on_safety(self,m):
         self.safety_ready,self.safety_received = bool(m.data),time.monotonic()
+
+    def on_execution(self,m):
+        result = self.execution.update(m.data,time.time(),time.monotonic())
+        if result=='session_changed':
+            self.invalidate('chassis_session_changed')
+
+    def on_gate_execution(self,m):
+        try:
+            value = json.loads(m.data)
+            if value['schema_version']!=1 or not 0<=self.now()-value['sample_stamp_ns']*1e-9<=.25:
+                return
+            self.gate_execution = value
+        except (KeyError,ValueError,TypeError):
+            pass
 
     def on_ready(self,m):
         if self.ready and not m.data:
@@ -295,6 +342,7 @@ class Coordinator(Node):
                                      observation_sample_age_ms=(self.now()-ns*1e-9)*1000.)
 
     def goal(self,request):
+        if self.task.state=='RESETTING':return GoalResponse.REJECT
         try:
             p = pose2(request.pose.pose)
             if request.pose.header.frame_id!='map' or not np.isfinite(p).all() or request.behavior_tree:
@@ -319,6 +367,7 @@ class Coordinator(Node):
         self.goal_handle,self.result_future = None,None
 
     def accepted(self,handle):
+        self.planning_failure = None
         if self.goal_handle is not None:
             self.finish('REPLACED')
         self.command = None
@@ -343,12 +392,35 @@ class Coordinator(Node):
             self.command = None
         return CancelResponse.ACCEPT
 
+    def reset_navigation(self,request,response):
+        # The client must first cancel its own action. Never abort an unrelated
+        # active goal that arrived before the reset request was processed.
+        if self.goal_handle is not None and self.goal_handle.is_active:
+            response.success=False;response.message='active_goal_must_be_canceled_first';return response
+        self.command = None
+        self.task.reset()
+        self.reset_started = time.monotonic()
+        self.finish('CANCELED')
+        self.accepted_request_id = None
+        self.planning_failure = None
+        self.metrics = {}
+        self.last_plan = self.last_control = self.last_state_publish = -1e9
+        self.last_path_check = None
+        previous_nonce=self.worker.nonce
+        self.worker.restart()
+        stamp=self.get_clock().now().to_msg()
+        self.path_pub.publish(path_msg([],stamp));self.local_pub.publish(path_msg([],stamp))
+        self.route_pub.publish(String(data=json.dumps(dict(schema_version=1,frame='map',map_uuid=self.expected_map,
+            history_generation=self.task.history_generation,segments=[]))))
+        response.success=True;response.message=json.dumps(dict(generation=self.task.generation,previous_worker_nonce=previous_nonce));return response
+
     def sample(self,now):
         self.input_reason = "missing_ready_wheel_estimate_map_or_frontend_locked"
         if not self.ready or not self.safety_ready or self.wheel is None or self.estimate is None or self.grid is None or self.front_locked:
             return None
         for name,received in (("ready",self.ready_received),("wheel",self.wheel_received),("cloud",self.cloud_received),("estimate",self.estimate_received),("owner",self.owner_received),("mode",self.actual_mode_received),("safety",self.safety_received)):
-            if received is None or not 0<=now-received<=.25:
+            limit = self.localization_receipt_max_age if name=='estimate' else .25
+            if received is None or not 0<=now-received<=limit:
                 self.input_reason = name+"_receipt_stale"
                 return None
         sample_now = self.now()
@@ -360,7 +432,8 @@ class Coordinator(Node):
             return None
         self.input_reason = "sampling_stamp_stale_or_future"
         for name,stamp in (("estimate",stamp_s(self.estimate.header.stamp)),("observation",self.memory.last_stamp)):
-            if stamp is None or not 0<=sample_now-stamp<=.25:
+            limit = self.localization_sample_max_age if name=='estimate' else .25
+            if stamp is None or not 0<=sample_now-stamp<=limit:
                 self.input_reason += ":"+name+":"+str(None if stamp is None else sample_now-stamp)
                 return None
         self.input_reason = "same_sample_tf_unavailable"
@@ -401,6 +474,11 @@ class Coordinator(Node):
         now = time.monotonic()
         sample = self.sample(now)
         status = self.worker.status()
+        if self.task.state=='RESETTING':
+            if status.get('ready'):
+                self.task.state,self.task.reason = 'IDLE','planning_control_reset'
+            elif status.get('error'):
+                self.task.state,self.task.reason = 'FAILED',status['error']
         healthy = sample is not None and status.get('ready',False)
         if status.get('error')=='worker_exited' and self.task.goal is not None and self.task.state not in Task.TERMINAL:
             self.task.invalidate('worker_exited','FAILED')
@@ -410,11 +488,12 @@ class Coordinator(Node):
             error=sample[0]-candidate.poses[0]
             if candidate.mode==Mode.PARALLEL and (np.linalg.norm(error[:2])>.003 or abs(wrap(error[2]))>.003):
                 anchored=reanchor_parallel(candidate,sample[0],self.body,self.grid,
-                    transform2(self.memory.points(),sample[2]),self.static_reserve)
+                    transform2(self.memory.points(),sample[2]),self.static_reserve,static_clearance=self.static_map_clearance)
                 if anchored is not None:
                     self.task.segments[self.task.index]=anchored
         segment = self.task.tick(*(sample[:2] if sample is not None else (np.zeros(3),np.zeros(3))),
-                                 self.actual_mode,healthy,self.owner,now)
+                                 self.actual_mode,healthy,self.owner,now,
+                                 self.execution.waiting(now,self.actual_mode) if self.actual_mode is not None else False)
         if segment is not None:
             check_id = (self.memory.last_stamp,self.task.generation,self.task.index)
             if getattr(self,'last_path_check',None)!=check_id:
@@ -436,21 +515,35 @@ class Coordinator(Node):
             meta,arrays = result
             if meta['generation']==self.task.generation and healthy:
                 if meta.get('error'):
-                    self.command = None
+                    if meta['kind']=='plan':
+                        self.planning_failure = dict(reason=meta['error'],details=meta.get('error_details',{}))
                     if meta['kind']=='control' and meta['error'] in ('worker_timeout','result_deadline_exceeded'):
-                        self.task.hold_observation('control_compute_gap')
+                        # An independently validated command keeps its original
+                        # lease while a new solve is pending/late. No heartbeat
+                        # or retry may extend that lease or the sample age.
+                        if not command_live(self.command,self.task.generation,now,sample_now):
+                            self.command = None
+                            self.task.hold_observation('control_compute_gap')
                     elif meta['kind']=='control' and meta['error'] in (
                             'feedback_drive_steering_transition','feedback_does_not_match_mode',
                             'acceleration_constraint_failure'):
                         # A measured transition residual needs a stopped,
                         # freshly validated rollout, not a different route.
+                        self.command = None
                         self.task.hold_observation('feedback_settling')
                     else:
+                        self.command = None
                         self.task.block(meta['error'],now)
                 elif meta['kind']=='plan':
+                    self.planning_failure = None
                     segments = [Segment(Mode(s['mode']),arrays['segment_'+str(i)],s['reverse']) for i,s in enumerate(meta['segments'])]
                     self.task.plan(segments,meta['generation'],now)
                     self.path_pub.publish(path_msg(np.vstack([s.poses for s in segments]) if segments else [sample[0]],self.reference_wheel.header.stamp))
+                    self.route_pub.publish(String(data=json.dumps(dict(
+                        schema_version=1,frame='map',map_uuid=self.expected_map,
+                        history_generation=self.task.history_generation,
+                        sample_stamp_ns=stamp_ns(self.reference_wheel.header.stamp),
+                        segments=[dict(mode=int(s.mode),reverse=s.reverse,poses=s.poses.tolist()) for s in segments]))))
                 elif segment is not None and self.task.state=='EXECUTING':
                     pose,speed,correction = sample
                     def coverage(p,b,margin):
@@ -462,13 +555,15 @@ class Coordinator(Node):
                     tail = rollout(trajectory[-1],braking_commands(arrays['controls'][-1],self.limits),.05)
                     okay,minimum,reason = validate_sweep(np.vstack((trajectory,tail[1:])),points,self.body,
                                                         self.grid,coverage,margin=self.body.clearance+.04,
-                                                        map_margin=self.body.clearance+self.static_reserve)
+                                                        map_margin=self.static_map_clearance,coverage_margin=self.coverage_policy.total_margin)
                     elapsed = time.monotonic()-meta.get('input_started',meta['submitted'])
-                    self.metrics = dict(request_id=meta['id'],compute_s=meta.get('compute_s'),end_to_end_s=elapsed,valid=okay,validation_reason=reason)
+                    self.metrics = dict(request_id=meta['id'],compute_s=meta.get('compute_s'),end_to_end_s=elapsed,valid=okay,validation_reason=reason,
+                                        history=meta.get('history',{}))
                     if elapsed>.1:
                         okay,reason = False,'validation_deadline_exceeded'
                     if okay:
                         self.command = meta,arrays['command'],meta['sample_stamp_ns']
+                        self.accepted_request_id = meta['id']
                         prediction_stamp = copy.deepcopy(self.reference_wheel.header.stamp)
                         prediction_stamp.sec,prediction_stamp.nanosec = divmod(meta['sample_stamp_ns'],10**9)
                         self.local_pub.publish(path_msg(trajectory,prediction_stamp))
@@ -500,32 +595,21 @@ class Coordinator(Node):
                 # polling, input withdrawal and zero output on the 5ms timer.
                 self.last_control = now
                 path = densify(segment.poses,self.body,.025)
-                nearest = int(np.argmin(np.linalg.norm(path[:,:2]-pose[:2],axis=1)+.15*np.abs(wrap(path[:,2]-pose[2]))))
-                c,s = math.cos(correction[2]),math.sin(correction[2])
-                known_end = nearest
-                distance = 0.
-                for i in range(nearest,len(path)):
-                    if i>nearest:
-                        distance += np.linalg.norm(path[i,:2]-path[i-1,:2])
-                    if distance>.75:
-                        break
-                    xy = (path[i,:2]-correction[:2])@np.array([[c,-s],[s,c]])-self.memory.visibility_pose[:2]
-                    if not self.memory.control_grid.free([*xy,path[i,2]-correction[2]],self.body,self.body.clearance+.015):
-                        break
-                    known_end = i
-                if known_end<=nearest and nearest<len(path)-1:
+                path,self.coverage_diagnostic=observed_prefix(path,pose,correction,self.memory.visibility_pose,
+                    self.memory.control_grid,self.body,self.coverage_policy)
+                if path is None:
                     self.task.hold_observation()
                     self.command = None
                     path = None
                 else:
                     # Keep the original segment start to preserve its fixed
                     # parallel steering axis, then let the optimizer trim it.
-                    path = path[:known_end+1]
                     if self.task.state=='OBSERVING':
-                        # The route is still valid, but restart only at rest
-                        # with the same confirmed chassis mode. The new control
-                        # request uses measured velocity and full validation.
-                        if not stopped(speed,self.limits) or self.actual_mode!=segment.mode:
+                        # Same-mode, on-route motion can be revalidated directly
+                        # from measured speed. A mode/axis change still needs a
+                        # stop; no old command is resumed before a fresh solve.
+                        resume = resume_reason(segment,pose,speed,self.actual_mode,self.body,self.limits)
+                        if resume.startswith('awaiting_'):
                             path = None
                         else:
                             error=pose-segment.poses[0]
@@ -549,18 +633,24 @@ class Coordinator(Node):
                         visibility_cells=self.memory.control_grid.cells,
                         observer_pose=np.array([*transform2(self.memory.visibility_pose[None,:2],correction)[0],self.memory.visibility_pose[2]+correction[2]])),
                         dict(mode=int(segment.mode),segment=self.task.index,sample_stamp=stamp_s(self.reference_wheel.header.stamp),
-                             input_started=control_cycle_started,sample_stamp_ns=stamp_ns(self.reference_wheel.header.stamp)),budget=.1)
+                             input_started=control_cycle_started,sample_stamp_ns=stamp_ns(self.reference_wheel.header.stamp),
+                             history_generation=self.task.history_generation,accepted_request_id=self.accepted_request_id,
+                             execution_ready=self.execution.ready(now,segment.mode),
+                             steering_wait=self.execution.waiting(now,segment.mode)),budget=.1)
         out = ControlCommand()
         out.session_id,out.generation,out.reason = self.session,self.task.generation,self.task.reason
         out.header.frame_id = 'base_link'
         out.header.stamp = copy.deepcopy(self.reference_wheel.header.stamp) if self.reference_wheel is not None else self.get_clock().now().to_msg()
+        out.valid_until_steady = now+.1
         if self.task.index<len(self.task.segments):
             out.mode = int(self.task.segments[self.task.index].mode)
         out.valid = bool(healthy and self.owner=='navigation' and self.task.state in ('EXECUTING','SWITCHING','STOPPING','OBSERVING'))
         if out.valid and self.command is not None:
             meta,velocity,original_stamp = self.command
-            if meta['generation']==self.task.generation and now-meta['submitted']<=.1:
+            if command_live(self.command,self.task.generation,now,sample_now):
                 out.twist = twist_msg(velocity)
+                out.request_id = meta['id']
+                out.valid_until_steady = meta['submitted']+.1
                 ns = original_stamp
                 out.header.stamp.sec,out.header.stamp.nanosec = divmod(ns,10**9)
         self.command_pub.publish(out)
@@ -569,7 +659,15 @@ class Coordinator(Node):
         if publish_state:
             self.state_pub.publish(String(data=json.dumps(dict(state=self.task.state,reason=self.task.reason,
                                       generation=self.task.generation,worker=status,inputs_valid=healthy,input_reason=self.input_reason,metrics=self.metrics,
+                                      failure_cause=self.task.failure_cause,planning_failure=self.planning_failure,
+                                      reset_started_steady=(getattr(self,'reset_started',None) if self.task.state=='RESETTING' else None),
+                                      coverage_diagnostic=getattr(self,'coverage_diagnostic',None),
+                                      control_limits={'max_speed':self.limits.speed,'max_yaw_rate':self.limits.yaw_rate},
                                       input_timing=getattr(self,'input_timing',{}),
+                                      history_generation=self.task.history_generation,execution=self.execution.snapshot(now),
+                                      gate_execution=getattr(self,'gate_execution',None),
+                                      gate_execution_fresh=bool(getattr(self,'gate_execution',None) and
+                                          0<=sample_now-self.gate_execution['sample_stamp_ns']*1e-9<=.25),
                                       segment_index=self.task.index,segment_count=len(self.task.segments),
                                       segment_mode=(int(self.task.segments[self.task.index].mode) if self.task.index<len(self.task.segments) else None),
                                       segment_target=(self.task.segments[self.task.index].poses[-1].tolist() if self.task.index<len(self.task.segments) else None)))))

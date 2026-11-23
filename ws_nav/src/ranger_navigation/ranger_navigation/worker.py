@@ -12,6 +12,7 @@ import subprocess
 import time
 import uuid
 import numpy as np
+from .coverage_policy import CoveragePolicy
 
 
 def save(path,meta,arrays=None):
@@ -28,7 +29,7 @@ def read(path):
 
 
 class WorkerClient:
-    def __init__(self,folder,python,geometry,backend='gpu',samples=256,limits=None,clearance=.04,static_reserve=.04,visibility_reserve=.10,prefer_parallel_in_narrow=False):
+    def __init__(self,folder,python,geometry,backend='gpu',samples=256,limits=None,clearance=.04,static_reserve=.04,visibility_reserve=.10,prefer_parallel_in_narrow=False,static_clearance=None,coverage_policy=CoveragePolicy()):
         self.folder = Path(folder)
         self.folder.mkdir(parents=True,exist_ok=True)
         self.nonce,self.sequence,self.pending = uuid.uuid4().hex,0,None
@@ -38,14 +39,39 @@ class WorkerClient:
         env = dict(os.environ,XLA_PYTHON_CLIENT_PREALLOCATE='false',JAX_PLATFORMS='cuda' if backend=='gpu' else backend)
         source = str(Path(__file__).resolve().parents[1])
         env['PYTHONPATH'] = source+os.pathsep+env.get('PYTHONPATH','')
-        self.process = subprocess.Popen([str(python),'-m','ranger_navigation.worker',
+        self.argv = [str(python),'-m','ranger_navigation.worker',
             '--folder',str(self.folder),'--geometry',str(geometry),'--nonce',self.nonce,
             '--samples',str(samples),'--limits',json.dumps(limits or {}),'--clearance',str(clearance),
             '--static-reserve',str(static_reserve),'--visibility-reserve',str(visibility_reserve),
-            *(['--prefer-parallel-in-narrow'] if prefer_parallel_in_narrow else [])],
-            env=env,stdout=self.log,stderr=subprocess.STDOUT)
+            '--coverage-margin',str(coverage_policy.total_margin),'--coverage-protected-margin',str(coverage_policy.protected_margin),
+            '--coverage-unknown-budget',str(coverage_policy.unknown_cell_budget),
+            '--coverage-protected-unknown-budget',str(coverage_policy.protected_unknown_cell_budget),
+            '--coverage-boundary-unknowns',str(coverage_policy.allow_boundary_unknowns).lower(),
+            *(['--static-clearance',str(static_clearance)] if static_clearance is not None else []),
+            *(['--prefer-parallel-in-narrow'] if prefer_parallel_in_narrow else [])]
+        self.env,self.restarting,self.restart_started,self.restart_killed = env,False,None,False
+        self.process = subprocess.Popen(self.argv,env=self.env,stdout=self.log,stderr=subprocess.STDOUT)
+
+    def restart(self):
+        """Revoke mailboxes immediately; retire only our compute child without waiting."""
+        if self.restarting:return
+        self.pending = None
+        self.restarting,self.restart_started,self.restart_killed = True,time.monotonic(),False
+        if self.process.poll() is None:self.process.terminate()
 
     def status(self):
+        if self.restarting:
+            if self.process.poll() is None:
+                if time.monotonic()-self.restart_started>=2. and not self.restart_killed:
+                    self.process.kill();self.restart_killed = True
+                return {'ready':False,'resetting':True,'stage':'stopping_compute'}
+            self.nonce,self.sequence,self.result_identity = uuid.uuid4().hex,0,None
+            self.argv[self.argv.index('--nonce')+1] = self.nonce
+            try:self.process = subprocess.Popen(self.argv,env=self.env,stdout=self.log,stderr=subprocess.STDOUT)
+            except OSError as error:
+                self.restarting = False
+                return {'ready':False,'error':'worker_restart_failed','reason':str(error)}
+            self.restarting = False
         if self.process.poll() is not None:
             return {'ready':False,'error':'worker_exited','exit':self.process.returncode}
         try:
@@ -92,6 +118,7 @@ class WorkerClient:
         return None
 
     def close(self):
+        self.restarting = False
         if self.process.poll() is None:
             self.process.terminate()
             try:
@@ -107,13 +134,21 @@ def run(args):
     from .models import Limits
     from .planner import Planner,Grid
     from .exact_controller import ExactController
+    from .control_history import ControlHistory
     import jax
     folder = Path(args.folder)
     body,_,_ = load_geometry(args.geometry,args.clearance)
     limits = Limits(**json.loads(args.limits))
-    controller = ExactController(body,limits,samples=args.samples,visibility_reserve=args.visibility_reserve)
+    coverage_policy=CoveragePolicy(args.coverage_margin,args.coverage_protected_margin,args.coverage_unknown_budget,
+                                   args.coverage_boundary_unknowns=='true',
+                                   protected_unknown_cell_budget=args.coverage_protected_unknown_budget)
+    controller = ExactController(body,limits,samples=args.samples,visibility_reserve=args.visibility_reserve,coverage_policy=coverage_policy)
     warmup = controller.prewarm()
-    status = dict(ready=True,pid=os.getpid(),nonce=args.nonce,devices=[str(d) for d in jax.devices()],warmup_s=warmup)
+    history = ControlHistory()
+    history_resets = 0
+    cold_starts = 0
+    status = dict(ready=True,pid=os.getpid(),nonce=args.nonce,devices=[str(d) for d in jax.devices()],warmup_s=warmup,
+                  coverage_policy=vars(coverage_policy))
     tmp = folder/'status.tmp'
     tmp.write_text(json.dumps(status))
     tmp.replace(folder/'status.json')
@@ -141,9 +176,10 @@ def run(args):
                 raise RuntimeError('request_expired_before_compute')
             if meta['kind']=='plan':
                 planner = Planner(body,limits,timeout=min(5.,meta['budget']),static_reserve=args.static_reserve,
-                                  prefer_parallel_in_narrow=args.prefer_parallel_in_narrow)
+                                  prefer_parallel_in_narrow=args.prefer_parallel_in_narrow,static_clearance=args.static_clearance)
                 grid = Grid(arrays['cells'],meta['resolution'],meta['origin']).with_obstacles(arrays['points'])
                 grid.guidance_visibility_reserve = args.visibility_reserve
+                grid.coverage_policy=coverage_policy
                 if 'visibility_cells' in arrays and meta.get('global_visibility',True):
                     visible = Grid(arrays['visibility_cells'],.05,(-2.,-2.,0.))
                     grid.local_visibility = (visible,arrays['observer_pose'],arrays['pose'],.8)
@@ -151,14 +187,23 @@ def run(args):
                 meta['segments'] = [{'mode':int(s.mode),'reverse':s.reverse} for s in segments]
                 output = {'segment_'+str(i):s.poses for i,s in enumerate(segments)}
             else:
-                token = (meta['generation'],meta['mode'],meta['segment'])
+                token = (meta.get('history_generation',meta['generation']),meta['mode'],meta['segment'])
                 if token!=identity:
                     controller.reset(token)
+                    history.reset()
+                    history_resets += 1
                     identity = token
                 visibility = (arrays['visibility_cells'],arrays['observer_pose']) if 'visibility_cells' in arrays else None
-                output = controller.compute(arrays['pose'],arrays['speed'],arrays['path'],meta['mode'],arrays['points'],visibility)
+                seed = history.select(meta.get('accepted_request_id'),meta['sample_stamp'],arrays['pose'],
+                                      meta.get('execution_ready',False),meta.get('steering_wait',False))
+                if seed is None:cold_starts += 1
+                meta['history'] = dict(history.diagnostic,route_resets=history_resets,cold_starts=cold_starts)
+                output = controller.compute(arrays['pose'],arrays['speed'],arrays['path'],meta['mode'],arrays['points'],visibility,
+                                            warm_start=seed,reset_history=seed is None,advance_history=False)
+                history.remember(meta['id'],meta['sample_stamp'],output['controls'],output['trajectory'])
         except Exception as error:
             meta['error'] = str(error)
+            meta['error_details'] = getattr(error,'details',{})
         meta['compute_s'] = time.monotonic()-began
         save(folder/'result.npz',meta,output)
 
@@ -172,7 +217,13 @@ def main():
     p.add_argument('--limits',default='{}')
     p.add_argument('--clearance',type=float,default=.04)
     p.add_argument('--static-reserve',type=float,default=.04)
+    p.add_argument('--static-clearance',type=float)
     p.add_argument('--visibility-reserve',type=float,default=.10)
+    p.add_argument('--coverage-margin',type=float,default=.025)
+    p.add_argument('--coverage-protected-margin',type=float,default=.015)
+    p.add_argument('--coverage-unknown-budget',type=int,default=8)
+    p.add_argument('--coverage-protected-unknown-budget',type=int,default=0)
+    p.add_argument('--coverage-boundary-unknowns',choices=('true','false'),default='true')
     p.add_argument('--prefer-parallel-in-narrow',action='store_true')
     run(p.parse_args())
 

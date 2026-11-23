@@ -84,7 +84,7 @@ def densify(poses, body, step=.015):
     return np.asarray(rows)
 
 
-def validate_sweep(poses, points, body, grid=None, coverage=None, margin=None, map_margin=None):
+def validate_sweep(poses, points, body, grid=None, coverage=None, margin=None, map_margin=None,coverage_margin=None):
     """Conservative inter-sample bound: footprint motion <= step, then add step.
 
     Used after optimization on the actual command rollout and braking tail.
@@ -99,7 +99,7 @@ def validate_sweep(poses, points, body, grid=None, coverage=None, margin=None, m
             return False, minimum, 'map_or_unknown_collision'
         # Coverage cells already represent their complete area. Point-voxel
         # uncertainty belongs to the point SDF, not a second coverage inflation.
-        if coverage is not None and not coverage(p, body, body.clearance+step):
+        if coverage is not None and not coverage(p, body, body.clearance+step if coverage_margin is None else coverage_margin):
             return False, minimum, 'unobserved_sweep'
         ds = body.distances(p, points)
         if len(ds):

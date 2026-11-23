@@ -18,6 +18,9 @@ class Task:
         self.goal_position_tolerance=float(goal_position_tolerance)
         self.goal_yaw_tolerance=float(goal_yaw_tolerance)
         self.generation = 0
+        self.history_generation = 0
+        self.steering_wait_elapsed = 0.
+        self.steering_wait_active = False
         self.state,self.reason = 'IDLE','startup'
         self.goal,self.segments = None,[]
         self.index = 0
@@ -27,9 +30,13 @@ class Task:
         self.progress_tick = None
         self.progress_active = False
         self.pause_since = None
+        self.last_progress_review = None
+        self.failure_cause = None
 
     def invalidate(self,reason,state='WAITING'):
         self.generation += 1
+        self.history_generation += 1
+        self.steering_wait_elapsed,self.steering_wait_active = 0.,False
         self.state,self.reason = state,reason
         self.segments,self.index = [],0
         self.stopped_since = self.switch_since = None
@@ -46,12 +53,13 @@ class Task:
                 self.invalidate(reason)
             return
         if self.state!='PAUSED':
-            self.generation += 1  # revoke every pending result and control history
+            self.generation += 1  # revoke results/output; retain route candidate history
             self.pause_since = now
             self.stopped_since = None
         self.state,self.reason = 'PAUSED',reason
 
     def begin(self,goal,now):
+        self.failure_cause = None
         self.goal = np.asarray(goal,dtype=float)
         self.invalidate('new_goal','PLANNING')
         self.blocked_since,self.last_progress = None,now
@@ -59,14 +67,26 @@ class Task:
         self.stall_elapsed = 0.
         self.progress_tick = now
         self.progress_active = False
+        self.last_progress_review = now
 
     def cancel(self):
         self.invalidate('canceled','CANCELED')
+
+    def reset(self):
+        self.invalidate('operator_reset','RESETTING')
+        self.goal = None
+        self.failure_cause = None
+        self.last_progress = self.progress_pose = self.progress_tick = self.last_progress_review = None
+        self.stall_elapsed = 0.
+        self.progress_active = False
 
     def plan(self,segments,generation,now):
         if generation!=self.generation or self.state in self.TERMINAL:
             return False
         self.generation += 1  # accepted route is a new optimizer-history generation
+        self.failure_cause = None
+        self.history_generation += 1
+        self.steering_wait_elapsed,self.steering_wait_active = 0.,False
         self.segments,self.index = segments,0
         self.state,self.reason = 'SWITCHING','plan_accepted'
         self.switch_since = now
@@ -77,6 +97,7 @@ class Task:
             return
         if self.blocked_since is None:
             self.blocked_since = now
+        self.failure_cause = reason
         self.state,self.reason = 'BLOCKED',reason
         if now-self.blocked_since>=15.:
             self.invalidate('blocked_timeout','FAILED')
@@ -85,13 +106,22 @@ class Task:
         if self.state not in self.TERMINAL:
             self.state,self.reason = 'OBSERVING',reason
 
-    def tick(self,pose,speed,actual_mode,healthy,owner,now):
+    def tick(self,pose,speed,actual_mode,healthy,owner,now,steering_wait=False):
         if self.goal is None or self.state in self.TERMINAL:
             return None
         # This budget belongs to the goal, not an individual planning attempt.
         # Replanning/mode confirmation must not indefinitely renew a stalled
         # task. Exclude intervals without valid autonomous control ownership.
-        active = healthy and owner=='navigation'
+        waiting = bool(steering_wait and healthy and owner=='navigation')
+        delta = max(0.,now-self.progress_tick) if self.progress_tick is not None else 0.
+        if waiting and self.steering_wait_active:
+            self.steering_wait_elapsed += delta
+            if self.last_progress is not None:self.last_progress += delta
+        self.steering_wait_active = waiting
+        if waiting and self.steering_wait_elapsed>=self.limits.switch_timeout:
+            self.invalidate('steering_execution_timeout','FAILED')
+            return None
+        active = healthy and owner=='navigation' and not waiting
         if active and self.progress_active and self.progress_tick is not None:
             self.stall_elapsed += max(0.,now-self.progress_tick)
         self.progress_tick,self.progress_active = now,active
@@ -120,14 +150,21 @@ class Task:
             self.progress_pose,self.last_progress = np.array(pose),now
             self.blocked_since = None
             self.stall_elapsed = 0.
+            self.steering_wait_elapsed = 0.
+            self.last_progress_review = now
         elif self.stall_elapsed>=15.:
             self.invalidate('no_progress_timeout','FAILED')
             return None
         if self.state in ('PLANNING','BLOCKED'):
             return None
-        if now-self.last_progress>3. and self.state=='EXECUTING' and not spin:
-            self.block('no_progress',now)
-            return None
+        if now-self.last_progress>3. and self.state=='EXECUTING' and not spin and not waiting:
+            if self.last_progress_review is None or now-self.last_progress_review>=3.:
+                # No measured progress alone does not establish a blocked route.
+                # Recheck execution/coverage from current feedback; the path
+                # collision guard still triggers replanning on real blockage.
+                self.generation += 1
+                self.last_progress_review = now
+                self.hold_observation('execution_progress_recheck')
         if self.index>=len(self.segments):
             reached = (np.linalg.norm(np.asarray(pose)[:2]-self.goal[:2])<=self.goal_position_tolerance
                        and abs(wrap(pose[2]-self.goal[2]))<=self.goal_yaw_tolerance)
@@ -164,6 +201,7 @@ class Task:
                         self.state,self.reason = 'SUCCEEDED','goal_reached_and_stopped'
                         return None
                     self.index += 1
+                    self.steering_wait_elapsed,self.steering_wait_active = 0.,False
                     self.stopped_since = None
                     self.switch_since = now
                     self.state = 'SWITCHING'

@@ -17,6 +17,7 @@ from exact_mppi.mppi_jax.models.state import State
 from exact_mppi.mppi_jax.optimal_trajectory_validator import ValidationResult
 from .geometry import Body, wrap, densify
 from .models import Mode, Limits, feasible, rollout, braking_commands
+from .coverage_policy import CoveragePolicy
 
 
 @jax.tree_util.register_dataclass
@@ -32,10 +33,14 @@ class V2State(State):
 
 class VisibilityCritics:
     """Keep raw-point EXACT costs; add the observed-space feasibility cost."""
-    def __init__(self,upstream,body,visibility_reserve=.10):
+    def __init__(self,upstream,body,visibility_reserve=.10,coverage_policy=CoveragePolicy()):
         self.upstream = upstream
-        self.half = jnp.asarray(body.half+body.clearance+.015,dtype=jnp.float32)
-        self.reserve_half = jnp.asarray(body.half+body.clearance+visibility_reserve,dtype=jnp.float32)
+        self.half = jnp.asarray(body.half+coverage_policy.total_margin,dtype=jnp.float32)
+        self.protected_half = jnp.asarray(body.half+coverage_policy.protected_margin,dtype=jnp.float32)
+        self.unknown_budget=coverage_policy.unknown_cell_budget
+        self.protected_unknown_budget = coverage_policy.protected_unknown_cell_budget
+        self.allow_boundary_unknowns=coverage_policy.allow_boundary_unknowns
+        self.reserve_half = jnp.asarray(body.half+max(visibility_reserve,coverage_policy.total_margin),dtype=jnp.float32)
         radius = math.ceil(float(np.linalg.norm(np.asarray(self.reserve_half)))/.05)+1
         x,y = np.meshgrid(np.arange(-radius,radius+1),np.arange(-radius,radius+1))
         self.offsets = jnp.asarray(np.column_stack((x.ravel(),y.ravel())),dtype=jnp.int32)
@@ -50,7 +55,9 @@ class VisibilityCritics:
             yaw = tr.yaws-observer[2]
             ix = jnp.floor((x+2.)/.05).astype(jnp.int32)[...,None]+self.offsets[:,0]
             iy = jnp.floor((y+2.)/.05).astype(jnp.int32)[...,None]+self.offsets[:,1]
-            unknown = (ix<0)|(ix>=80)|(iy<0)|(iy>=80)|(data.state.coverage_cells[jnp.clip(iy,0,79),jnp.clip(ix,0,79)]<0)
+            outside = (ix<0)|(ix>=80)|(iy<0)|(iy>=80)
+            values=data.state.coverage_cells[jnp.clip(iy,0,79),jnp.clip(ix,0,79)]
+            unknown = outside|(values<0)
             dx,dy = (ix+.5)*.05-2.-x[...,None],(iy+.5)*.05-2.-y[...,None]
             c,s = jnp.cos(yaw)[...,None],jnp.sin(yaw)[...,None]
             ac,ass = jnp.abs(c),jnp.abs(s)
@@ -59,12 +66,25 @@ class VisibilityCritics:
                        &(jnp.abs(dy)<=ass*self.half[0]+ac*self.half[1]+.025)
                        &(jnp.abs(c*dx+s*dy)<=self.half[0]+.025*(ac+ass))
                        &(jnp.abs(-s*dx+c*dy)<=self.half[1]+.025*(ac+ass)))
-            collided = jnp.any(unknown&overlap,axis=(1,2))
+            protected=((jnp.abs(dx)<=ac*self.protected_half[0]+ass*self.protected_half[1]+.025)
+                       &(jnp.abs(dy)<=ass*self.protected_half[0]+ac*self.protected_half[1]+.025)
+                       &(jnp.abs(c*dx+s*dy)<=self.protected_half[0]+.025*(ac+ass))
+                       &(jnp.abs(-s*dx+c*dy)<=self.protected_half[1]+.025*(ac+ass)))
+            if self.allow_boundary_unknowns:
+                protected &= ((jnp.abs(c*dx+s*dy)+.025*(ac+ass)<=self.protected_half[0])&
+                              (jnp.abs(-s*dx+c*dy)+.025*(ac+ass)<=self.protected_half[1]))
+            protected_unknown = jnp.sum(unknown & protected & overlap, axis=2)
+            edge_unknown = jnp.sum(unknown & overlap & ~protected, axis=2)
+            collided=(jnp.any(protected_unknown > self.protected_unknown_budget, axis=1)|
+                      jnp.any(edge_unknown > self.unknown_budget, axis=1)|
+                      jnp.any((outside|(values>=50))&overlap,axis=(1,2)))
             reserve = ((jnp.abs(dx)<=ac*self.reserve_half[0]+ass*self.reserve_half[1]+.025)
                        &(jnp.abs(dy)<=ass*self.reserve_half[0]+ac*self.reserve_half[1]+.025)
                        &(jnp.abs(c*dx+s*dy)<=self.reserve_half[0]+.025*(ac+ass))
                        &(jnp.abs(-s*dx+c*dy)<=self.reserve_half[1]+.025*(ac+ass)))
-            near_unknown = jnp.mean(jnp.any(unknown&reserve,axis=2),axis=1)
+            reserve_edge_unknown = jnp.sum(unknown & reserve & ~protected, axis=2)
+            near_unknown=jnp.mean(jnp.maximum(reserve_edge_unknown-self.unknown_budget,0)/
+                                  jnp.maximum(jnp.sum(reserve,axis=2),1),axis=1)
             return jnp.where(collided,1e6,120.*near_unknown),jnp.all(collided)
         extra,all_blocked = jax.lax.cond(data.state.coverage_enabled,visibility,
                                         lambda _: (jnp.zeros_like(costs),jnp.array(False)),None)
@@ -146,7 +166,7 @@ def _integrate(controls, pose, dt):
 
 
 class V2Optimizer(Optimizer):
-    def __init__(self, mode, limits=Limits(), body=Body(), samples=256, steps=60, dt=.05, visibility_reserve=.10):
+    def __init__(self, mode, limits=Limits(), body=Body(), samples=256, steps=60, dt=.05, visibility_reserve=.10,coverage_policy=CoveragePolicy()):
         self.mode,self.limits,self.body = Mode(mode),limits,body
         super().__init__(motion_model='omni', model_dt=dt,time_steps=steps,batch_size=samples,
                          vx_max=limits.speed,vx_min=-limits.speed,vy_max=limits.speed,wz_max=limits.yaw_rate,
@@ -167,7 +187,7 @@ class V2Optimizer(Optimizer):
                          TrajectoryValidator={'collision_lookahead_time':steps*dt,
                                               'collision_margin_distance':body.clearance+.04+.015})
         self.settings_ = replace(self.settings_,shift_control_sequence=False)
-        self.critic_manager_ = VisibilityCritics(self.critic_manager_,body,visibility_reserve)
+        self.critic_manager_ = VisibilityCritics(self.critic_manager_,body,visibility_reserve,coverage_policy)
 
     def updataStateVelocities(self,state):
         controls = jnp.stack((state.cvx,state.cvy,state.cwz),axis=-1)
@@ -218,11 +238,11 @@ class V2Optimizer(Optimizer):
 
 
 class ExactController:
-    def __init__(self,body=Body(),limits=Limits(),max_points=512,samples=256,steps=60,visibility_reserve=.10):
+    def __init__(self,body=Body(),limits=Limits(),max_points=512,samples=256,steps=60,visibility_reserve=.10,coverage_policy=CoveragePolicy()):
         if not np.isfinite(visibility_reserve) or not .015 <= visibility_reserve <= .20:
             raise ValueError('visibility reserve must be finite and in [.015, .20]m')
         self.body,self.limits,self.max_points,self.steps = body,limits,max_points,steps
-        self.optimizers = {m:V2Optimizer(m,limits,body,samples,steps,visibility_reserve=visibility_reserve) for m in Mode}
+        self.optimizers = {m:V2Optimizer(m,limits,body,samples,steps,visibility_reserve=visibility_reserve,coverage_policy=coverage_policy) for m in Mode}
         self.footprint = Rectangles(centers=jnp.zeros((1,2)),halfs=jnp.asarray(body.half[None,:]))
         self.identity = None
         self.seeded = set()
@@ -244,8 +264,11 @@ class ExactController:
         self.reset()
         return times
 
-    def compute(self,pose,speed,path,mode,points,visibility=None):
+    def compute(self,pose,speed,path,mode,points,visibility=None,warm_start=None,reset_history=False,advance_history=True):
         opt = self.optimizers[Mode(mode)]
+        if reset_history:
+            opt.reset()
+            self.seeded.discard(Mode(mode))
         path = np.asarray(path,dtype=np.float32).reshape(-1,3)
         if not len(path) or not np.isfinite(path).all() or not np.isfinite([pose,speed]).all():
             raise ValueError('invalid_optimizer_input')
@@ -345,7 +368,15 @@ class ExactController:
                         coverage_enabled=jnp.asarray(visibility is not None),reference_controls=jnp.asarray(reference),
                         drive_constraint=jnp.asarray(drive_constraint))
         data = replace(data,state=state)
-        if Mode(mode) not in self.seeded and mode in (Mode.DRIVE,Mode.PARALLEL,Mode.SPIN):
+        if warm_start is not None:
+            warm_start=np.asarray(warm_start,dtype=np.float32)
+            if warm_start.shape!=(self.steps,3) or not np.isfinite(warm_start).all():
+                raise ValueError('invalid_warm_start')
+            nominal=_project(jnp.asarray(warm_start),jnp.asarray(speed),Mode(mode),
+                             self.limits,.05,jnp.asarray(direction),jnp.asarray(drive_constraint))
+            opt.control_sequence_=ControlSequence(vx=nominal[:,0],vy=nominal[:,1],wz=nominal[:,2])
+            self.seeded.add(Mode(mode))
+        elif Mode(mode) not in self.seeded and mode in (Mode.DRIVE,Mode.PARALLEL,Mode.SPIN):
             # Center the first batch on a model-feasible guidance rollout,
             # rather than averaging predominantly symmetric zero-centered
             # noise after each pause. Braking remains an explicit candidate;
@@ -364,7 +395,7 @@ class ExactController:
             raise RuntimeError('no_valid_trajectory')
         # Preserve the entire sequence until validation; command is its first
         # sample. Shift only the warm-start, with no post-validation smoothing.
-        opt.control_sequence_ = opt.shiftControlSequence(sequence)
+        opt.control_sequence_ = opt.shiftControlSequence(sequence) if advance_history else sequence
         if not all(feasible(v,mode,self.limits) for v in controls):
             raise RuntimeError('mode_constraint_failure')
         differences=np.diff(np.vstack((speed,controls)),axis=0)

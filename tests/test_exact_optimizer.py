@@ -15,17 +15,21 @@ import jax.numpy as jnp
 def test_narrow_visibility_keeps_full_body_and_hard_coverage_checks():
     from ranger_navigation.planner import Grid
     from ranger_navigation.geometry import validate_sweep
+    from ranger_navigation.coverage_policy import CoveragePolicy
+    policy=CoveragePolicy()
     body=Body(clearance=.03)
     controller=ExactController(body,samples=128,visibility_reserve=.04)
     cells=np.full((80,80),-1,dtype=np.int16);cells[33:46,:]=0
     pose=np.array([0.,-.025,0.]);path=np.linspace(pose,[.4,-.025,0.],60)
     result=controller.compute(pose,np.zeros(3),path,Mode.PARALLEL,np.empty((0,2)),(cells,np.zeros(3)))
     grid=Grid(cells,.05,(-2.,-2.,0.))
-    assert validate_sweep(result['trajectory'],[],body,coverage=lambda p,b,m:grid.free(p,b,m))[0]
+    assert validate_sweep(result['trajectory'],[],body,coverage=lambda p,b,m:grid.covered(p,b,policy),
+                          coverage_margin=policy.total_margin)[0]
     assert result['trajectory'][-1,0]>.01
     critic=controller.optimizers[Mode.PARALLEL].critic_manager_
-    assert np.allclose(np.array(critic.half),body.half+.03+.015)
-    assert np.allclose(np.array(critic.reserve_half),body.half+.03+.04)
+    assert np.allclose(np.array(critic.half),body.half+.025)
+    assert np.allclose(np.array(critic.protected_half),body.half+.015)
+    assert np.allclose(np.array(critic.reserve_half),body.half+.04)
 
 
 def test_upstream_signed_distance_agrees_with_independent_geometry():

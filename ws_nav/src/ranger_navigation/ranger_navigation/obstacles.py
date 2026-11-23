@@ -7,11 +7,13 @@ import math
 import numpy as np
 from .geometry import Body
 from .planner import Grid
+from .coverage_policy import CoveragePolicy
 
 
 class ObstacleMemory:
     def __init__(self, body=Body(), voxel=.05, sectors=180, retention=2.,
-                 max_cells=30000, min_height=.10, max_height=.80, max_range=8., angular_guard=1, control_memory=0.):
+                 max_cells=30000, min_height=.10, max_height=.80, max_range=8., angular_guard=1, control_memory=0.,coverage_policy=CoveragePolicy()):
+        self.coverage_policy=coverage_policy
         if sectors<90 or sectors>720 or angular_guard not in (0,1):
             raise ValueError('invalid visibility angular configuration')
         self.body,self.voxel,self.sectors = body,voxel,sectors
@@ -140,9 +142,12 @@ class ObstacleMemory:
         observer = self.visibility_pose
         c,s = math.cos(observer[2]),math.sin(observer[2])
         rel = (np.asarray(pose[:2])-observer[:2])@np.array([[c,-s],[s,c]])
-        # Grid SAT checks every cell intersected by the *whole* rectangle.
-        # The physical margin is applied once, avoiding double voxel inflation.
-        return self._visible_grid.free([*rel,pose[2]-observer[2]],body,margin)
+        # Coverage has its own total envelope; collision/voxel margins must not
+        # inflate it again. Explicit smaller probes remain strict geometry queries.
+        relative=[*rel,pose[2]-observer[2]]
+        if margin<self.coverage_policy.total_margin:
+            return self._visible_grid.free(relative,body,margin)
+        return self._visible_grid.covered(relative,body,self.coverage_policy)
 
     def set_visibility(self,pose,ranges,cells=None):
         self.pose,self.ranges,self.error = np.asarray(pose),np.asarray(ranges),None

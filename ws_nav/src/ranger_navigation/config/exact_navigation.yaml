@@ -1,18 +1,35 @@
 # Shared engineering limits; live brake/mode timing remains to be measured.
 geometry:
   clearance: 0.04
-  static_map_reserve: 0.04
+  static_map_reserve: 0.0
+  static_map_clearance: 0.01 # + 0.015m swept bound = 0.025m total; live clearance is separate.
+timing:
+  localization_sample_max_age: 0.40
+  localization_receipt_max_age: 0.25
+coverage:
+  # 可直接编辑本项目文件，新启动的导航会话读取；无需重新构建。
+  # 单位为米；这是实时观测覆盖参数，静态图/障碍点碰撞净空分别配置。
+  total_margin: 0.015 # 覆盖总外扩（含扫掠界），范围[protected_margin, 0.10]。
+  protected_margin: 0.015 # 车体外的保护范围，至少0.015，且不超过total_margin。
+  unknown_cell_budget: 16 # 每个位姿允许的边界未知格数，整数0–16。
+  protected_unknown_cell_budget: 6 # 每个位姿允许的保护范围内未知格数，整数0–16。
+  allow_boundary_unknowns: true # true仅将完全落入保护范围的格计入内部额度；false计入所有与保护范围相交的格。
 # Explicit launch choice; physical body, voxel error and sweep bound unchanged.
 clearance_profiles:
-  standard: {clearance: 0.04, static_map_reserve: 0.04, visibility_reserve: 0.10, segment_yaw_tolerance: 0.06, prefer_parallel_in_narrow: false}
-  narrow: {clearance: 0.03, static_map_reserve: 0.01, visibility_reserve: 0.04, segment_yaw_tolerance: 0.03, prefer_parallel_in_narrow: true}
+  standard: {clearance: 0.04, static_map_reserve: 0.0, static_map_clearance: 0.01, visibility_reserve: 0.10, segment_yaw_tolerance: 0.06, prefer_parallel_in_narrow: false}
+  narrow: {clearance: 0.03, static_map_reserve: 0.01, static_map_clearance: 0.01, visibility_reserve: 0.04, segment_yaw_tolerance: 0.03, prefer_parallel_in_narrow: true}
 motion:
-  max_speed: 0.30
-  max_yaw_rate: 0.50
-  acceleration: 0.30
-  yaw_acceleration: 0.50
-  min_radius: 0.55
+  max_speed: 0.50 # m/s，正式导航/工作台默认的平移速度上限。
+  max_yaw_rate: 0.80 # rad/s，正式导航/工作台默认的旋转速度上限。
+  acceleration: 0.40
+  yaw_acceleration: 0.60
+  min_radius: 0.48
+  # User choice 2026-11-17; raw odometry and collision geometry unchanged.
+  stop_linear: 0.05
+  stop_angular: 0.025
+  stop_dwell: 0.5
 real_vehicle_first_test:
+  # 仅显式 low_speed:=true 时采用，不再是正式入口默认档。
   max_speed: 0.10
   max_yaw_rate: 0.20
 compute:

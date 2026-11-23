@@ -17,6 +17,7 @@ from livox_ros_driver2.msg import CustomMsg
 import tf2_ros
 
 from session_manager import atomic_json
+from navigation_health import navigation_compute_available
 
 
 class Probe(Node):
@@ -126,7 +127,7 @@ class Probe(Node):
             'map_unclaimed': publishers['/map'] == 0,
             'fast_navigation_inputs': self.fresh('fast_cloud', .5) and self.fresh('fast_odom', .5)
                 and self.fresh('mapped_wheel', .5) and publishers['/map'] == 1,
-            'navigation': self.fresh('navigation', .5) and self.nav_status.get('worker',{}).get('ready',False)
+            'navigation': self.fresh('navigation', .5) and navigation_compute_available(self.nav_status,now)
                 and self.fresh('gate', .5) and publishers['/base/safe_cmd_vel'] == 1
                 and publishers['/navigation/control'] == publishers['/navigation/observation'] == 1,
         }

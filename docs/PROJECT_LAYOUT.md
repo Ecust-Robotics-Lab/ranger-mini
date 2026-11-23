@@ -60,10 +60,9 @@
 ## 资产保留边界
 
 - 原始录包、正式基线、地图、失败证据、源码与回退备份保留；历史删除清单和迁移完整性记录见整合报告，不将旧磁盘容量当作当前容量。
-- 2026-11-05按用户当次明确指令删除的3份过时试录、3空目录和6处缓存是本次例外，具体名单/哈希见[清理报告](handoff_cleanup_20261105.md)；未删除当前+100ms对照所需原包、任何地图或唯一失败证据，不继承为后续任意删除许可。
 - vendor 中前端、B和可选C2的实际依赖按各自sources.lock固定；审查仓库也保留，不将“参考过”当作已集成，也不将不同提交误认为重复目录。
 - 不整体清空 build/install：Lightning 从 `ws_slam/build/lightning/bin/` 运行，部分旧相机部署链接指向 build。新增标定构建使用 integrated 目录。
 
-标定流程和同步源码已进入主仓库可跟踪范围，原始 bag/图片、SDK、第三方工作空间和编译产物继续由 Git 忽略。既有整合/标定源码与用户雷达证据已有本地提交；当前提交、工作树和本机资产状态统一见HANDOFF与实际Git。
+标定流程和同步源码已进入主仓库可跟踪范围，原始 bag/图片、SDK、第三方工作空间和编译产物继续由 Git 忽略。当前提交、工作树和本机资产状态见 [HANDOFF](HANDOFF.md) 与实际 Git。
 
-当前FAST在线定位入口`scripts/localize_fast_livo2.sh`，安装`ws_fast_livo/online_localization_install/`；相机`ws_camera/latency_install/`，receive-only底盘`ws_base/install_recording_rx/`。完整来源/哈希由HANDOFF指定的最新证据读取，不从旧安装目录猜版本。
+正式 FAST、定位、相机、底盘和导航安装前缀集中列于 [HANDOFF](HANDOFF.md)。录包的 receive-only 使用 `ws_base/install_exact`。

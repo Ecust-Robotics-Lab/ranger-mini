@@ -1,25 +1,13 @@
 # 文档入口
 
-更新：2026-11-10。当前状态只从HANDOFF/STATUS读取，带日期报告保留当时条件，不从旧报告的“下一步/未提交/未实测”自动续跑。
-
-## 当前接手与计划
-
 | 文档 | 用途 |
 | --- | --- |
-| [HANDOFF](HANDOFF.md)、[STATUS](STATUS.md)、[AGENTS](../AGENTS.md) | 当前成果、真实限制、安装/资产及操作约束 |
-| [可复制新Agent提示词](NEXT_AGENT_PROMPT.md)、[文档清理](handoff_cleanup_20261110.md) | 本次快速接手、过时内容去除范围 |
-| [规划控制前置计划](FAST_NAVIGATION_INTEGRATION_PLAN.md) | 历史输入准备和闭环顺序；具体算法已采用EXACT-MPPI计划 |
-| [EXACT-MPPI计划](EXACT_MPPI_NAVIGATION_PLAN.md)、[实现/验收报告](exact_mppi_implementation_report_20261110.md)、[接口与复现](exact_mppi_interfaces.md) | 新导航源码入口、GPU、软件验证与真实验收边界 |
-| [办公室—走廊实车准备](EXACT_MPPI_FIELD_TEST.md) | 候选路线、窄通道参数、地图门口缺项、分阶段实测与43话题录制 |
-| [静态1.5cm与门口诊断](exact_mppi_static_margin_report_20261110.md) | 请求裕量对照、独立几何阻断、旧3D证据和重录前最少核对 |
-| [首次定位优化](fast_livo2_initialization_optimization_report_20261109.md) | 已实现静止确认/预处理复用，2.800/4.220秒是回放成绩 |
-| [最新实机](fast_livo2_field_latency_retest_report_20261109.md)、[相机/恢复实现](fast_livo2_failure_fix_report_20261109.md) | 现场连续就绪限制与已实现修复 |
-| [最新Git检查点](git_checkpoint_initialization_upload_20261109.md) | 已上传源码基线e8245fa；之后文档变更见工作树 |
-| [总计划](FAST_LIVO2_BACKEND_PLAN.md)、[Tag计划](FAST_LIVO2_APRILTAG_PLAN.md) | 设计/验收要求，完成度以STATUS为准 |
-| [前端](fast_livo2_interfaces.md)、[B](fast_livo2_backend_interfaces.md)、[C1](fast_livo2_localizer_interfaces.md)、[C2](fast_livo2_relocalizer_interfaces.md) | 数据、坐标、时间、定位接口 |
-| [在线建图](fast_livo2_online_mapping.md)、[在线定位](fast_livo2_online_localization.md)、[录包](fast_livo2_recording.md) | 当前专用入口；执行须相应授权 |
-| [PROJECT_LAYOUT](PROJECT_LAYOUT.md)、[根README](../README.md)、[受管会话](managed_sessions.md) | 目录、分派和会话生命周期 |
-| [标定](../calibration/README.md)、[公共定位契约](localization_backend_contract.md) | 标定来源、同刻TF和公共接口 |
+| [接手指南](HANDOFF.md)、[当前状态](STATUS.md)、[工程约束](../AGENTS.md)、[接手提示词](NEXT_AGENT_PROMPT.md) | 部署入口、运行参数、验收与接手 |
+| [工作台](../workbench/README.md)、[实车准备](EXACT_MPPI_FIELD_TEST.md) | 操作、记录与现场验收 |
+| [FAST-LIVO2 总计划](FAST_LIVO2_BACKEND_PLAN.md)、[EXACT-MPPI 计划](EXACT_MPPI_NAVIGATION_PLAN.md)、[Tag 计划](FAST_LIVO2_APRILTAG_PLAN.md) | 设计与验收范围 |
+| [前端](fast_livo2_interfaces.md)、[B](fast_livo2_backend_interfaces.md)、[C1](fast_livo2_localizer_interfaces.md)、[C2](fast_livo2_relocalizer_interfaces.md)、[导航](exact_mppi_interfaces.md) | 接口、数据、坐标与时间 |
+| [在线建图](fast_livo2_online_mapping.md)、[在线定位](fast_livo2_online_localization.md)、[录包](fast_livo2_recording.md) | 专用入口 |
+| [工程结构](PROJECT_LAYOUT.md)、[受管会话](managed_sessions.md)、[标定](../calibration/README.md)、[公共定位契约](localization_backend_contract.md) | 部署、标定和会话生命周期 |
 
 ## 历史实现报告（内容描述生成时条件）
 

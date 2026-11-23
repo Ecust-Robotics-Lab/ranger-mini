@@ -1,61 +1,30 @@
 # Ranger 导航工程约束
 
-更新：2026-11-10。新上下文先读[HANDOFF](docs/HANDOFF.md)、[STATUS](docs/STATUS.md)，再读[总计划](docs/FAST_LIVO2_BACKEND_PLAN.md)。当前状态以这两份入口为准，带日期报告保留历史事实；历史计划、命令和设备许可不自动续用。
-
-## 2026-11-17 正式入口替换（最新）
-
-- 后续用户要求解决后角少量未知与直线慢：默认coverage.allow_boundary_unknowns=true，部分接触保护矩形边界的格共用unknown_cell_budget=8额度，完整内部未知仍拒绝；false恢复严格“任意保护相交必拒”。总外扩2.5cm保持，无后方整块豁免、不改格值，点障碍/全车预测/制动保持。正式low_speed默认false，直接读项目YAML motion.max_speed=.30/max_yaw_rate=.50；显式true仍保留首次低速档，网页显示实际进程上限。见`docs/workbench_boundary_speed_report_20261117.md`，正式nav已构建，模拟峰值0.290m/s不是实车成绩；本条覆盖下一条旧“车体+1.5cm必须观测/仅外1cm”的严格模式描述。无设备/实车运动，新实车仍PARTIAL。
-- 实时观测覆盖另已统一总2.5cm，含扫掠，不叠加body.clearance；车体+1.5cm必须观测，仅最外1cm带最多8未知格，已知障碍/越界不豁免、不改格值。路径前段/JAX/独立验证/门禁同源，点障碍净空及体素项单独保持。见`docs/workbench_coverage_policy_report_20261117.md`；正式nav已构建，仅软件/记录反事实/隔离ROS，未操作实车，状态仍PARTIAL。
-- 用户明确要求已完成优化直接替换旧版。FAST预览/录制/建图/在线定位与工作台默认已选`ws_fast_livo/latency_frontend_install`，由`config/fast_livo2/active_frontend.lock.json`锁实际二进制与源码；旧安装资产保留，不恢复旧运行入口。旧地图使用绑定UUID/manifest及新旧来源的`frontend_timing_upgrade`侧车声明，传感器/时间契约仍严格一致，不能冒充旧来源或用offline声明绕过。三融合/+100ms/外参不变。
-- 用户最新指定定位采样400ms、静态总裕量2.5cm（1cm静态净空+1.5cm扫掠界）；wheel/实时障碍/反馈和100ms租约各自期限保持。全规划/预览/最终验证已统一，实时净空独立。当前报告`docs/workbench_goal_latency_frontend_report_20261117.md`及STATUS/HANDOFF顶部覆盖下方旧250ms、5.5/9.5cm和“前端未切正式”快照。设备均已停止，本轮未代启或运动，新实车仍PARTIAL；不自动提交推送。
+新上下文先读 [HANDOFF](docs/HANDOFF.md) 与 [STATUS](docs/STATUS.md)，涉及设计时再读 [总计划](docs/FAST_LIVO2_BACKEND_PLAN.md)。当前运行状态按实际 Git、配置、二进制、boot/PID 与会话归属确认。带日期的独立报告记录历史证据。
 
 ## 范围与授权
 
-- 项目`/home/lab307/ranger_nav`。先核对Git、实际源码/参数/二进制、boot/PID与会话归属、原包/地图；保护未提交工作，优先复用。
-- 用户已授权[EXACT-MPPI计划](docs/EXACT_MPPI_NAVIGATION_PLAN.md)的软件实施、构建与离线验证；新全局SE(2)/EXACT-MPPI及独立安全链已替换源码导航入口，当前验收见[报告](docs/exact_mppi_implementation_report_20261110.md)。不恢复旧Smac/Nav2 MPPI调参分支。最新定位优化已实现并上传，见[报告](docs/fast_livo2_initialization_optimization_report_20261109.md)、[Git检查点](docs/git_checkpoint_initialization_upload_20261109.md)。同一实施会话可继续已授权的软件工作；独立新接手先核对当前状态与剩余项。
-- 明确授权实施后，在范围内自主完成源码、构建及离线验证，避免过多防御性设计；不用缺独立包或外参精测阻塞可完成的软件工作，缺的真实验收如实标PARTIAL。
-- 设备启动、底盘/CAN控制、非零速度、导航目标及重启须该次明确授权。重启不继承运动许可，receive-only启动也属于设备操作；不自动开设备寻找初值。计划不构成许可。
-- 当前实车目标已确认：图上方办公室出发，沿长走廊到端点掉头返回；用户要求准备并允许适当减小规划额外裕量。已新增窄通道参数、地图复核与录制入口，见[实车准备](docs/EXACT_MPPI_FIELD_TEST.md)。变化场景新包s10xmu6g已完成，新图UUID160f8572a77a61856cf87e43514be769。用户本次明确授权实车测试，后又确认相机朝向是车头、同侧雷达距离约26cm，并现场确认修正后的正速度确实前进。修正车头后的候选路线6/7静态通过，最终回办公室恢复朝向仍搜索超时；不能直接发完整路线。当前结果与授权历史见docs/exact_mppi_changed_scene_live_report_20261110.md，新独立接手仍须现查状态与当次许可。
-- 不自动提交/推送；历史保存和上传指令已完成，不授权未来操作。阶段结束更新STATUS和报告，记录命令、退出码、文件、证据、PASS/PARTIAL及最少人工待办。
+- 项目 `/home/lab307/ranger_nav`。可在已有软件授权内实施、构建及离线验证 [EXACT-MPPI 计划](docs/EXACT_MPPI_NAVIGATION_PLAN.md)。使用 SE(2)/EXACT-MPPI 及独立安全链，防止混入旧规划控制器。
+- 启动设备（含 receive-only）、底盘/CAN 控制、实车目标、非零速度及重启需要该次明确授权。计划、文档及历史许可不自动继承。确认会话归属后只管理本次自有进程，不按进程名全局清理或自动重启。
+- 软件验收及真实验收分开记录。离线 ROS 用隔离 domain 和 localhost，不连接底盘。真实验收结论使用现场证据，无外部真值时不宣称绝对精度、APE/RPE 或实测制动距离。阶段结束更新 STATUS 和报告，保存命令、退出码、证据与 PASS/PARTIAL。
+- 提交/推送须有用户授权。避免 reset/clean 或覆盖未提交修改。原包、地图、标定、失败证据、旧安装和 `.runtime/backups/` 受保护。
 
-## 资产、依赖与组织
+## 有效配置与资产
 
-- 禁止reset/clean、覆盖未提交修改；不删除工作空间、原bag、标定、地图、失败证据或`.runtime/backups/`。历史两次清理的固定名单不授权继续删除；见`docs/handoff_cleanup_20261105.md`、`docs/handoff_cleanup_online_mapping_20261105.md`。最新仅文档去陈旧记录见`docs/handoff_cleanup_20261110.md`。
-- Git不是原bag/地图/二进制的完整备份。Lightning从build/bin启动，部署可能是链接，清理前核对运行依赖。用户原雷达文档和`docs/03_evidence/driver-*`保持原证据，不混无关修改。
-- 工作空间ws_base/ws_livox/ws_camera/ws_slam/ws_fast_livo/ws_nav；参考源码`vendor/fast_livo2_review/`，锁`config/fast_livo2/sources.lock.json`，补丁`patches/`。核对完整SHA/分支/DETACHED、实际补丁和逐组件许可证；参考不等于集成，元数据不等于授权。新增依赖优先项目内前缀。
-- `calibration/`是正式目录，`~/calibration`仅兼容链接；新入口不依赖旧路径。相机同步维护于`ws_camera/src/hik_camera_trigger_driver`、`timeshare_writer`，原驱动/SDK及用户修改保留。
-- 不擅自升级系统、ROS、CUDA、Eigen/PCL、网络或驱动。本轮用户额外授权RTX5060驱动/CUDA，用户已安装580-open并完成MOK；项目内JAX CUDA12已实测可用，不重复安装或自行重启。改系统/网络先保存原值和回退；sudo正常授权，不索取记录密码或绕过权限。
+- 通用 `config/runtime.yaml` 默认 Lightning/wheel、terrain disabled。工作台和显式 FAST 入口使用 FAST-LIVO2，FAST 前端/B 建图与 C1/C2 先验定位职责独立。保持 LiDAR–IMU–Camera 三融合。
+- 正式 FAST 前端由 `config/fast_livo2/active_frontend.lock.json` 锁定。旧地图使用绑定 UUID、manifest 和前端来源的 `frontend_timing_upgrade` 声明，并满足原传感器/时间契约。不得用离线兼容声明绕过在线校验。
+- 启动时读取项目导航 YAML。实时覆盖边界与内部未知格分别计数，全车预测及制动检查使用同一策略。已知障碍与越界直接拒绝。静态总裕量、实时点障碍净空和体素误差按各自配置执行。
+- 参考源码位于 `vendor/fast_livo2_review/`，核对 `config/fast_livo2/sources.lock.json`、`config/exact_mppi/sources.lock.json`、完整 SHA、补丁及许可证。Git 只保存可版本化内容，部署可能依赖本地构建和软链接。
+- `calibration/` 是正式标定目录，`~/calibration` 仅作兼容。相机同步维护在 `ws_camera/src/hik_camera_trigger_driver`、`timeshare_writer`。
+- 依赖优先使用项目内前缀。系统、ROS、CUDA、Eigen、PCL、网络和驱动的变更需要相应授权及可回退方案。sudo 使用正常权限流程，不记录密码或绕过权限。
 
-## 硬件、默认与当前能力
+## 时间、坐标与控制
 
-- 已核实Ubuntu22.04、ROS2 Humble、x86_64、Python3.10；换机重新核实。实物Ranger Mini V2、Livox Mid-360S、海康USB3相机，雷达外触发；IP/SN读当前配置/运行结果。
-- 生产`config/runtime.yaml`仍Lightning建图/定位、wheel连续里程计、terrain disabled；源码导航入口已改为复用FAST公共输入的EXACT-MPPI，原Nav2安装资产保留但新入口不启动旧规划控制器。前端选择和全局定位选择独立，FAST前端/B建图后端不能冒充先验地图定位器。
-- FAST定位默认自有v2检索→KISS完整6DoF→small_gicp→同一C1跟踪。显式C2可全局初始化/恢复；独立手动C1初值仍需几何/运动确认，LOST须新初值。缺完整来源身份的旧B归档须显式离线兼容声明，不改原档。
-- 显式C2 overlay开启强几何静止初始化，保留地点歧义拒绝和C1独立确认；预处理仅本次查询复用。原速记录输入2.800/4.220秒不等于实机耗时；40核心/21后端/9ROS通过，真实负样本泛化、连续就绪、长时与D仍PARTIAL。
-- 相机线程/有限队列/迟到检测已实现；在线定位用`ws_camera/latency_install`，原安装保留。C2短时局部恢复已实现（2秒/.75m/.35rad、两新帧/.1秒），软件和记录点云通过，实机恢复尚未触发验收。最新实机co968xa3：90.044秒、921同步OK、591不同有效确认、无LOST，3次60–120ms就绪撤销；USB旧停顿未复现不等于根因已唯一证实。
-- 保持LiDAR–IMU–Camera三融合，关闭图像或静态验证不能代替三融合运动；同包功能不能代替跨会话泛化/真值验收。PGO/定位不反馈前端滤波器或视觉地图，不自动实施在线前端恢复、高程/坡道。
-- Tag默认关闭、独立时间未确认、无真实VALID地标表，真实Tag恢复/回环未验；主体软件已完成。用户已确认tag36h11:1、实测黑边140mm、跨两新包固定且安装不变，不重复询问；旧155mm实例分开保留。计划见`docs/FAST_LIVO2_APRILTAG_PLAN.md`。
-
-## 时间、坐标与接口
-
-- 读`docs/fast_livo2_interfaces.md`及B/C1/C2接口。输入严格同戳`/fast_livo/odometry`与`/fast_livo/deskewed_imu`：VIO后IMU参考点、去畸变单区间机体系云；LiDAR–IMU外参只应用一次。
-- 统一T_A_B将B点变到A；累计世界云不能当body云。地图逐关键帧按各自优化位姿重建，每点只变换一次；单一全局刚体修正不等于历史图优化。
-- 正式`img_time_offset=+0.1s`是用户明确选择；不改原bag/驱动header，不追认历史0/+110ms结果，不重复补偿。复制scan戳不证明物理同步，+100ms不等于曝光中心实测；共享读写v2已实现，不重复修已完成项。Tag时间独立，不给修正后的位姿再加偏移。
-- 当前前端初始重力对齐、世界+Z朝上；20261028旧图未对齐，20261104 +110ms新局部图及正式+100ms图逐资产区别，不混坐标系、不默认压平或锁roll/pitch。
-- base_link为轴间中点地面投影。11月10日用户确认相机镜头朝向为车头、雷达距同端约26cm，原SDK前向与此相反。工作外参更新为约RPY=[1°,21°,0.9°]，保留倾角、按同一实测距离重算XYZ；驱动v2_sdk_front_opposite_base=true统一指令/反馈，正向9.3cm微测经用户现场确认。精确XYZ/RPY以`config/fast_livo2/navigation_prep.yaml`/FAST profile为准；是运动估计，不是实测标定，勿退回历史零旋转。FAST＋wheel同录包pwr5lx7u已取得且核验，不再按“无同录包”阻塞。
-- 公共桥接唯一发布map→odom、odom→base_link，底盘原生TF与前端native_tf关闭。T_map_base=T_map_imu×inverse(T_base_imu)；T_map_odom(t)=T_map_base(t)×inverse(T_odom_base(t))，必须同机体同原采样时刻，wheel历史插值，不外推、不latest-TF拼接、不减两个最新到达值。
-- 原sensor历元与host/wheel不能直接拼；离线用header-clock/模拟时钟，在线每会话receipt/steady映射含未知接收偏差，不当物理标定；不重打now，心跳不刷新位姿采样时间。跳时/偏差锁定须新会话。
-- 失败撤销就绪，不发布未验证修正，创新拒绝不污染已接受缓存。B离线桥首次创新失败锁定，须显式重开；私有PGO可继续。初始化、退化、丢失、恢复可观测；旧异步/跨会话结果不能污染新估计。
-
-## 2026-11-17 控制恢复软件更新
-
-- 已实现控制代际/路线历史分离、最终验证ACK候选按实测进展复用、同模式余速重验、固定100ms自主指令租约及执行链观察；见`docs/exact_mppi_control_recovery_20261117.md`。自主消息为`LeasedControlCommand`，旧`ControlCommand`保留历史包/遥控，base/nav已一起构建；驱动会话更换需enable=false→true，不能沿用连续true。148回归、31后续相关GPU、38生命周期及ROS20故障项通过（有重叠），合成2m失效注入对照约10.08秒成功不是实车成绩；P95约43.29ms仍高于40ms初始目标。
-- 本轮仅软件/离线，实车仍暂停，前端低延迟候选未切正式来源；bb41832之后是新未提交工作，保护代码/补丁/证据，不自动提交推送。
-
-## 操作与测试
-
-- 自动入口通常默认dry-run。专用`record_fast_livo2.sh`默认执行、独立传感器/FAST profile、默认录wheel；`--dry-run`仅计划，`--attach`显式借用预览，`--no-wheel`关闭wheel。默认行为不等于Agent自动开设备许可。
-- 录包wheel有新鲜源则复用；没有则受管自启`ws_base/install_exact`并显式receive_only=true（保留原install_recording_rx历史资产，避免旧坐标wheel混入），receive-only不请求模式、不订速度、不退出发零速。已授权固定免密CAN命令由正常权限调用；不擅改系统授权。已有源不代停，自启源随会话清理。
-- 按boot/PID身份核对现有会话，禁止全局按进程名杀，不抢占、不自动重启。FAST会话结束不代表整机设备全停；旧PID/CAN故障/运行状态只属旧快照。
-- 审查底盘控制模式副作用，“未发速度”不等于无副作用。底盘运动执行尚未随新规划方案验收；旧故障解码与V2反馈问题见历史报告，不按旧快照判断当前故障。
-- 离线ROS隔离domain/localhost，不连接底盘；只跑相关检查。无真值不编APE/RPE、绝对精度或检测器排名；软件/模拟/记录回放不得称为实车结果。
+- `/fast_livo/odometry` 与 `/fast_livo/deskewed_imu` 严格整纳秒同戳，分别为 VIO 后 IMU 位姿及单区间 IMU 系去畸变云。LiDAR–IMU 外参只应用一次。前端世界 +Z 朝上，地图按各关键帧优化后的位姿重建。
+- `T_A_B` 将 B 系点变换到 A 系。正式图像偏移 `img_time_offset=+0.1s`，保留原始 header，禁止重复补偿。扫描戳共享仅证明写戳关系，物理曝光相位须独立验证。Tag 时间单独处理。
+- `base_link` 是轴间中点的地面投影，相机镜头朝向为车头，雷达原点距同端约 26 cm。工作外参取 `config/fast_livo2/navigation_prep.yaml` / FAST profile。V2 的 `v2_sdk_front_opposite_base=true` 同时处理指令与反馈方向。
+- 唯一公共桥接发布 map→odom、odom→base_link。底盘原生 TF 与前端 native_tf 关闭。用同机体的原始采样时刻计算 `T_map_base=T_map_imu×inverse(T_base_imu)` 和 `T_map_odom(t)=T_map_base(t)×inverse(T_odom_base(t))`。wheel 只允许历史内插，禁止外推和 latest-TF 拼接。
+- 传感器与 host/wheel 历元分开。离线用 header-clock/模拟时钟，在线用每会话 receipt/steady 映射。心跳不刷新样本时刻，跳时或偏差锁定需新会话。拒绝的定位与旧异步结果不得写入已接受缓存，失败撤销就绪。
+- C2 自动初始化保留地点歧义拒绝和 C1 独立确认。手动 C1 保留几何/运动确认，LOST 后需要新初值。Tag 默认关闭，缺少匹配地图的有效地标或时间依据时不放行 Tag 恢复。
+- 自主 `LeasedControlCommand` 使用固定 100ms 租约，驱动换会话需新的 enable=false→true 边沿。只用最终验证 ACK 的轨迹作预测初值，按实测进展推进。输入失效撤销输出，恢复必须重验。
+- `record_fast_livo2.sh` 默认执行，多数其他入口默认 dry-run。录包复用新鲜 wheel 源，否则经授权受管启动 `ws_base/install_exact` 的 receive-only 模式。receive-only 不请求模式、不接收速度，退出不发零速。已有外部源不代停，设备操作始终按本次授权。

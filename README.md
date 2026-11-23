@@ -1,21 +1,8 @@
 # Ranger Mini 导航系统
 
-ROS2 Humble / Ubuntu22.04 / x86_64；实物Ranger Mini V2、Livox Mid-360S、海康USB3相机。更新：2026-11-10。
+工控机运行 ROS 2 Humble / Ubuntu 22.04，车载设备为 Ranger Mini V2、Livox Mid-360S 与海康 USB3 外触发相机。专用导航工作台使用 FAST-LIVO2 三融合定位、SE(2) 全局搜索、EXACT-MPPI 和独立安全门禁。通用 runtime 的默认定位为 Lightning/wheel。
 
-新上下文先读[HANDOFF](docs/HANDOFF.md)、[STATUS](docs/STATUS.md)、[AGENTS](AGENTS.md)，或复制[接手提示词](docs/NEXT_AGENT_PROMPT.md)。当前状态只在这些入口维护，历史报告保留当时条件。[完整索引](docs/README.md)。
-
-## 当前能力
-
-| 模块 | 当前结果与边界 |
-| --- | --- |
-| 生产路线 | 定位默认仍Lightning/wheel；导航源码入口已替换SE(2)/EXACT-MPPI，复用FAST公共输入，原安装资产保留 |
-| FAST三融合/B建图 | 正式+100ms、重力对齐；390秒原速记录输入3900对、305KF/114接受回环及正式归档 |
-| FAST定位 | 自有v2→KISS全6DoF→small_gicp→C1；静止强几何初始化/预处理复用已交付，同包原速FAST输出回放29.820→2.800秒，另包4.220秒，非新实机成绩 |
-| wheel/TF | 同录包、工作外参、时间映射和同刻唯一公共TF已实现，有现场分项证据；物理同步/长时仍待验 |
-| 当前重点 | 上方办公室—走廊端点掉头—返回的实车准备；窄通道参数已离线验证，门口/制动/模式及真实全程仍待验 |
-| 其他限制 | 真实负样本、连续就绪、绝对精度、长时与D未全部验收；Tag默认关闭，无真实VALID表 |
-
-源码/配置/证据已于2026-11-09上传，基线e8245fa，见[Git检查点](docs/git_checkpoint_initialization_upload_20261109.md)。2026-11-10交接文档整理及EXACT-MPPI实施均未提交；原bag、地图、标定、二进制和失败证据保留，见[清理记录](docs/handoff_cleanup_20261110.md)。历史设备状态不代表当前运行状态，不从文档自动开设备或执行控制。
+新对话可复制[接手提示词](docs/NEXT_AGENT_PROMPT.md)。运行入口和地图资产见[接手指南](docs/HANDOFF.md)，项目配置与验收见[当前状态](docs/STATUS.md)，操作约束见[AGENTS](AGENTS.md)，网页操作见[工作台说明](workbench/README.md)。
 
 ## 目录与配置
 
@@ -60,13 +47,13 @@ bash scripts/map_fast_livo2.sh --dry-run
 
 上述其他入口实际执行须显式 `--execute`，online会打开相应实物，不能从默认dry-run推断获准测试。专用 `record_fast_livo2.sh` 按用户指令默认录制并自行启动传感器和只接收wheel反馈，默认使用FAST profile；查看计划须加 `--dry-run`。会接管控制的底盘/导航入口仍必须有该次用户授权及 `--control-authorized`，录包receive-only分支不接管控制；运动许可不跨重启，不自动恢复运动。完整流程见 [受管会话说明](docs/managed_sessions.md)。相机内参、外参和同步的入口/依赖见 [标定说明](calibration/README.md)。
 
-FAST-LIVO2 前端与 B 不能设为先验地图定位后端；C1/C2 使用独立离线入口，未接管生产 runtime。FAST 局部世界系不等于 wheel odom。输入输出的参考点与时钟见 [前端接口](docs/fast_livo2_interfaces.md) 和 [C1 契约](docs/fast_livo2_localizer_interfaces.md)。
+FAST-LIVO2 前端与 B 不能设为先验地图定位后端；C1/C2 使用专用在线或离线入口。FAST 局部世界系不等于 wheel odom。输入输出的参考点与时钟见 [前端接口](docs/fast_livo2_interfaces.md) 和 [C1 契约](docs/fast_livo2_localizer_interfaces.md)。
 
 三传感器运动采集使用 `record_fast_livo2.sh`，默认执行、独立启动传感器并读取 `config/profiles/fast_livo2_frontend.yaml`；现默认同时录wheel，已有发布者则复用，否则启用CAN并自启不接管遥控器的receive-only驱动，`--no-wheel`关闭；`--attach`才接入已有预览，支持完整归档和定时/中断收尾。`run_fast_livo2_live.sh --visualization rviz|foxglove|both|none`选择显示，Foxglove经SSH隧道访问本机只读Bridge。命令和验证见[录包指南](docs/fast_livo2_recording.md)、[自动wheel报告](docs/fast_livo2_recording_wheel_report.md)。
 
 正式FAST在线预建图使用 `map_fast_livo2.sh --execute`，在一个会话中运行三融合、B回环、优化地图显示、原始/去畸变数据录制及停止封存。`run_mapping.sh online` 选择FAST profile时也转到该入口；Lightning默认不变。单独录包入口现也保存去畸变云，但不启动回环后端。新入口默认dry-run，详细命令、时间契约与地图目录见[在线预建图](docs/fast_livo2_online_mapping.md)。
 
-FAST在线先验地图定位/重定位使用 `localize_fast_livo2.sh`，默认dry-run，支持auto/manual与无设备原速重放；软件/离线首版及新282秒独立访问功能结果见[报告](docs/fast_livo2_online_localization_report.md)，命令见[指南](docs/fast_livo2_online_localization.md)。它使用同一C1/C2与独立安装，不接管生产Lightning或公共TF。
+FAST在线先验地图定位/重定位使用 `localize_fast_livo2.sh`，默认dry-run，支持auto/manual与无设备原速重放；可通过 `--public-tf` 接入独立公共桥接，详见[指南](docs/fast_livo2_online_localization.md)。
 
 ## 公共定位与 TF
 
@@ -96,7 +83,7 @@ bash scripts/build_exact_navigation.sh --execute
 
 新导航见[计划](docs/EXACT_MPPI_NAVIGATION_PLAN.md)、[报告](docs/exact_mppi_implementation_report_20261110.md)、[接口](docs/exact_mppi_interfaces.md)。最新检查及其适用范围统一见 [STATUS](docs/STATUS.md)；旧整合与Nav2报告保留各自验证日期，不能据此宣称本轮全量复跑或实车验收通过。
 
-当前[实车准备](docs/EXACT_MPPI_FIELD_TEST.md)含可编辑路线图、standard/narrow参数、43话题录制与现场分项顺序；真实地图门内外两段仍未搜索通过，准备许可不构成设备或运动执行许可。
+[实车准备](docs/EXACT_MPPI_FIELD_TEST.md)列出候选路线复核、记录方法和分项验收顺序。
 
 ```bash
 PYTHONDONTWRITEBYTECODE=1 python3 tests/test_project_consolidation.py

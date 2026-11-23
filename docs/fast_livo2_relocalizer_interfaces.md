@@ -1,8 +1,6 @@
-# C2 离线全局重定位接口
+# C2 全局重定位接口
 
-2026-11-06增补：显式[在线定位入口](fast_livo2_online_localization.md)已复用本C2确认与C1跟踪链，实现原速输入的有界调度和过期结果抑制，私有服务/消息不变。生产默认及本页旧离线入口保持，实际新包功能结果和未验范围见[首轮报告](fast_livo2_online_localization_report.md)。
-
-更新：2026-10-29。C2 在既有 `ranger_fast_livo_localizer` 内向 C1 提供确认后的初值；C1 继续负责精确初始化和持续定位。默认 C1 配置关闭全局搜索，生产 runtime 继续 Lightning。本阶段没有硬件、前端恢复或导航授权。
+C2 在 `ranger_fast_livo_localizer` 内向 C1 提供确认后的初值。C1 负责独立确认与持续定位。[在线定位入口](fast_livo2_online_localization.md)和工作台使用同一链路。手动 C1 配置关闭自动全局搜索。
 
 ## 数据与地图
 
@@ -57,24 +55,22 @@ bash scripts/run_fast_livo2_relocalizer.sh --execute \
 
 确认后用原采样戳向 C1 初始化，请求 ID 为 `global-*`，提升初始化请求代际，先继续几何/运动验证，再由 C1 发布 VALID。候选或服务受理不会直接产生 VALID。LOST 搜索期间保持无效；心跳不刷新最后确认戳，失败不改已接受位姿缓存。
 
-公共适配仍须显式 `--offline-bridge`，不变更已有 TF 所有权、同刻 wheel 插值、禁止外推和首次创新失败锁定。C2 成功不解除公共锁定，须显式重开公共联调会话。
+在线定位用 `--public-tf` 接入公共适配，离线复现用 `--offline-bridge`。两者沿用既有 TF 所有权及同刻 wheel 插值，外推不允许。若公共桥接因创新拒绝而锁定，C2 成功后仍须重开对应会话。
 
 ## 默认资源与限制
 
-默认最多 5 个候选；合并 2 帧，最多 4000 查询点；窗口跨度不超过 1 s/3 m/1 rad。每次尝试墙钟预算 10 s，失败完成后退避 0.5 s。需要 2 个独立支持查询、至少 0.25 s 及 0.15 m 或 0.08 rad 的前端和地图运动基线。参数在 `config/fast_livo2/relocalizer.yaml`。
+显式 C2 配置 [relocalizer.yaml](../config/fast_livo2/relocalizer.yaml) 使用 8 帧和最多 12000 个查询点，时间窗口至多 1 秒。运动确认与强几何静止确认各有独立判据，具体门槛由对应配置与下文契约说明。
 
 索引最多 10000 关键帧（可配置且有硬上限），目标子图沿用 C1 的最多 8 帧/100000 点。C1 与 C2 各自有 128 MiB LRU，并非进程总内存上限；另有索引、查询、工作队列、配准器临时内存。求解器内部不能硬中断；每层返回后重新检查预算/代际，超时拒绝整次尝试，不能选取此前最好候选凑成功。
 
-这是受检索数量和几何可辨识性限制的离线实现，不保证所有环境召回或消歧。实际证据与未完成项见 [C2 报告](fast_livo2_stage_c2_report.md)，跨会话、真值精度与实时接车仍 PARTIAL。
+跨会话泛化、真值精度及持续现场定位验收见 [STATUS](STATUS.md)。离线评估的 `--query-provenance` 绑定独立输入与地图身份，`--allow-recovery` 只调整评估报告如何处理实际丢失后的恢复。
 
-2026-11-04 新增一次不同采集包的 [无初值功能试验](fast_livo2_cross_session_global_report.md)：1195对查询、936个VALID采样，无LOST/ERROR；场地覆盖与绝对位置未确认。离线评估工具支持 `--query-provenance` 绑定地图/native DB SHA，独立输入禁止同图推导初值；`--allow-recovery` 只调整试验结果如何容纳一次真实丢失后恢复，不改变节点门槛/锁。新日志额外保存 `T_map_imu` 和请求代际。真实Tag尚无VALID表不阻止纯LiDAR C2测试。
+在线使用自有`radial_pair_multiscale_v2`（195维、平滑多尺度距离分布与Hellinger嵌入），`global_descriptor`控制索引绑定与比较；在线入口默认v2，旧v1索引/离线配置兼容。官方STD/Scan Context仅进入独立离线benchmark，不是在线插件。C1/C2入口默认注册器已按用户指令改为small_gicp，KISS全局粗配准保持。对照与限制见[报告](fast_livo2_retrieval_comparison_report.md)。
 
-2026-11-06检索增补：新增自有`radial_pair_multiscale_v2`（195维、平滑多尺度距离分布与Hellinger嵌入），`global_descriptor`控制索引绑定与比较；在线入口默认v2，旧v1索引/离线配置兼容。官方STD/Scan Context仅进入独立离线benchmark，不是在线插件。C1/C2入口默认注册器已按用户指令改为small_gicp，KISS全局粗配准保持。对照与限制见[报告](fast_livo2_retrieval_comparison_report.md)。
-
-### 2026-11-09 静止首次确认增量
+### 静止确认
 
 显式C2 overlay默认`global_stationary_initialization: true`（核心SearchConfig默认false，手动C1接口不变）。启用时每轮检查最多16检索候选，保持原全局地点歧义拒绝；静止分支额外要求重叠≥max(0.65,min_overlap+0.1)、RMSE≤min(0.12m,0.65×max_rmse)、归一化几何特征值比≥max(1e-4,3×degeneracy_ratio)，不同地点竞争解使用双倍歧义余量。至少3个互不重叠查询窗口、跨度≥1秒、FAST与地图运动均≤3cm/0.03rad，修正一致性≤5cm/0.03rad；任一支持窗口质量不足即不能用该组静止证据。原运动确认路径保留。
 
 通过后仅内部InitialPose带`stationary_verified`，C1仍做自己的多初值几何歧义检查和至少2帧/0.2秒确认，此内部证据只免除运动基线。ROS手动Initialize请求不能设置该标记。取消、切图、前端重置仍清除支持；Tag参与的候选不走此纯LiDAR静止分支。质量新增stationary_strong_geometry/evaluated_candidate_limit/confirmation_mode及global_stationary_initialization。top16并非穷举全图，同视角多帧也非独立视角证明，真实负样本与泛化仍须验收。
 
-2026-11-17确认恢复：弱首候选不会永久禁止后续静止确认；首个新强窗口重建支持，旧弱证据不计数。已有强锚点遇到弱窗口时不计数，后续仍须满足与原强锚点的一致性及独立scan ID。阈值、3组/1秒和C1复验不变。新增`searching_geometric_registration`中间遥测，以及`verifying_stationary_support_restarted`、`verifying_wait_strong_stationary_geometry`原因；质量增加query_window_*、support_queries/elapsed_s/anchor_strong、odom/map/correction差和best_rmse_m/stationary_max_rmse_m。这些阶段均不产生有效控制位姿。见[报告](workbench_static_confirmation_report_20261117.md)。
+静止确认时，首个新强窗口重建支持，旧弱证据不计数。已有强锚点遇到弱窗口时不计数，后续仍须满足与原强锚点的一致性及独立scan ID。阈值、3组/1秒和C1复验不变。新增`searching_geometric_registration`中间遥测，以及`verifying_stationary_support_restarted`、`verifying_wait_strong_stationary_geometry`原因；质量增加query_window_*、support_queries/elapsed_s/anchor_strong、odom/map/correction差和best_rmse_m/stationary_max_rmse_m。这些阶段均不产生有效控制位姿。见[报告](workbench_static_confirmation_report_20261117.md)。

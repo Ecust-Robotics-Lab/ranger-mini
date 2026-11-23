@@ -1,22 +1,22 @@
 # FAST-LIVO2 在线先验地图定位与重定位
 
-日期：2026-11-06。这是私有在线定位入口，复用现有C1/C2与三融合前端。默认dry-run；软件与离线结果见[交付报告](fast_livo2_online_localization_report.md)，计划见[实施计划](FAST_LIVO2_ONLINE_LOCALIZATION_PLAN.md)。生产仍为Lightning/wheel；本入口不启动B建图、底盘、Nav2或公共TF。
+本入口运行 FAST-LIVO2 三融合与 C1/C2 地图定位，默认 dry-run。显式 `--public-tf` 接入公共导航接口。`--auto-wheel` 可受管启动 receive-only 底盘，需要当次设备授权。工作台正式入口及地图见 [接手指南](HANDOFF.md)。
 
 ## 构建与入口
 
 ```bash
 cd /home/lab307/ranger_nav
 bash scripts/build_fast_livo2_online_localization.sh --execute
-bash scripts/localize_fast_livo2.sh --archive outputs/fast-livo-demo-online-mapping-20261105/full_replay_12/map
+bash scripts/localize_fast_livo2.sh --archive outputs/fast-livo-demo-changed-scene-20261110/mapping_replay_01/map
 ```
 
-构建复用已有 `online_install` 后端、项目内GTSAM/small_gicp/KISS前缀，C1/C2安装到 `online_localization_install`，不替换原安装。前端继续使用 `online_frontend_install` 的I/O派生版本。默认auto、自有多尺度v2检索、small_gicp、domain215/localhost、900秒、磁盘保留20GB；正式+100ms、重力对齐开启、Tag关闭。`--registration pcl_icp`显式回到PCL；`--descriptor radial_pair_distribution_v1`选择旧检索基线。切换顺序、同条件比较和限制见[检索/GICP报告](fast_livo2_retrieval_comparison_report.md)。
+构建复用已有 `online_install` 后端、项目内GTSAM/small_gicp/KISS前缀，C1/C2安装到 `online_localization_install`，不替换原安装。前端使用 `latency_frontend_install`，按 [active_frontend.lock.json](../config/fast_livo2/active_frontend.lock.json) 校验。默认auto、自有多尺度v2检索、small_gicp、domain215/localhost、900秒、磁盘保留20GB；正式+100ms、重力对齐开启、Tag关闭。`--registration pcl_icp`显式回到PCL；`--descriptor radial_pair_distribution_v1`选择旧检索基线。切换顺序、同条件比较和限制见[检索/GICP报告](fast_livo2_retrieval_comparison_report.md)。
 
 无设备原速重放：
 
 ```bash
 bash scripts/localize_fast_livo2.sh --execute \
-  --archive outputs/fast-livo-demo-online-mapping-20261105/full_replay_12/map \
+  --archive outputs/fast-livo-demo-changed-scene-20261110/mapping_replay_01/map \
   --replay-view /ABS/AUDITED_HEADER_CLOCK_VIEW \
   --output /ABS/EXISTING_PARENT/NEW_RESULT \
   --visualization none --seconds 400
@@ -49,7 +49,7 @@ XYZ/RPY需替换为实际初值。helper从当前结果读取地图/会话身份
 
 ## 调度、显示与记录
 
-新参数 `online_scheduling`默认false，旧离线行为保持。新入口显式启用：只保留最新两对待处理完整扫描，保留正在处理任务及原控制代际；跳过扫描累计可观察。旧扫描的几何结果不直接对外发布有效位姿，等待新扫描验证；0.5秒采样新鲜度与原几何/多帧/歧义门槛不放宽。求解器仍为软预算，库内不能硬中断。
+在线入口使用有界调度。跟踪阶段合并积压的完整扫描，建立 C2 查询窗口时保留所需的扫描。工作台显示窗口进度和确认原因。拒绝或过期的几何结果不刷新有效位姿。配准求解器执行软预算，库内无法硬中断。独立启动诊断可区分相机未出首帧与同步图像未就绪。
 
 `quality_json`新增online_scheduling、skipped_scans、processed_scans、stale_results、sample_age_seconds。终端显示状态/reason、处理/跳帧及位姿年龄。`--visualization rviz`使用map固定系，显示只读静态地图与已确认轨迹；无DISPLAY时默认none，不影响定位。
 
@@ -60,4 +60,4 @@ PYTHONDONTWRITEBYTECODE=1 python3 scripts/fast_livo2/localizer/analyze_online.py
   /ABS/RESULT /ABS/NEW_SUMMARY.json
 ```
 
-来源身份从当前查询前端实际配置/程序计算，并用共用读取器核对地图；不会复制地图身份冒充查询配置。实物私有时钟仍为雷达header/steady锚点，不等于wheel/主机同步。定位不回灌前端，公共桥接、真实wheel和导航接入继续单独验收。
+来源身份从当前查询前端实际配置/程序计算，并用共用读取器核对地图；不会复制地图身份冒充查询配置。实物私有时钟仍为雷达header/steady锚点，不等于wheel/主机同步。定位不回灌前端。公共桥接进行同会话 wheel 时间映射和同刻 TF 计算。

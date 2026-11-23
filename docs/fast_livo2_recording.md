@@ -70,7 +70,7 @@ bash scripts/record_fast_livo2.sh --seconds 900 --label corridor_classroom_map01
 | `/fast_livo/deskewed_imu` | PointCloud2，与上述位姿严格同戳的去畸变IMU机体系区间云 |
 | `/wheel/odom` | 默认启用；底盘反馈积分的Odometry，odom/base_link、原主机header |
 
-默认自动记录`/wheel/odom`，`--record-wheel`保留为显式兼容选项；`--no-wheel`才关闭。缺少wheel时检查跨ROS域的底盘进程，发现已有驱动则拒绝重复启动；否则需要已构建`ws_base/install_recording_rx`。can0已为500k/ERROR-ACTIVE时不改配置；DOWN时用固定免密`sudo -n /usr/sbin/ip link set can0 up type can bitrate 500000`启用，没有权限则报错。自启驱动为receive_only、TF关闭；已有wheel发布者只复用、不改变其模式。新鲜度/坐标系/类型/QoS不符时拒绝，不替换已有节点。保留原header/逐点时间，录包器使用主机存储时间，不使用`--use-sim-time`；不处理传感器与wheel历元差异。新包回放仍需有依据的派生时间视图，不能修改原始包。
+默认自动记录`/wheel/odom`，`--record-wheel`保留为显式兼容选项；`--no-wheel`才关闭。缺少wheel时检查跨ROS域的底盘进程，发现已有驱动则拒绝重复启动；否则需要已构建`ws_base/install_exact`。can0已为500k/ERROR-ACTIVE时不改配置；DOWN时用固定免密`sudo -n /usr/sbin/ip link set can0 up type can bitrate 500000`启用，没有权限则报错。自启驱动为receive_only、TF关闭；已有wheel发布者只复用、不改变其模式。新鲜度/坐标系/类型/QoS不符时拒绝，不替换已有节点。保留原header/逐点时间，录包器使用主机存储时间，不使用`--use-sim-time`；不处理传感器与wheel历元差异。新包回放仍需有依据的派生时间视图，不能修改原始包。
 
 录前检查每个话题恰好一个发布者、消息类型、RELIABLE QoS及实际收流；等待录包器订阅就绪。录中检测发布者消失/GID改变/重复发布者、数据断流与磁盘空间，失败保存部分结果并停止，不自动重启。复用原会话设备占用检查、资源租约和精确进程身份清理。
 
@@ -80,7 +80,7 @@ bash scripts/record_fast_livo2.sh --seconds 900 --label corridor_classroom_map01
 
 - `raw/`、`record.log`、实际录制命令、录前发布者/GID信息、录包器进程身份。
 - `sources/`：配置、标定配置、脚本、锁文件和补丁的原始字节与SHA256；Git HEAD、工作树状态和tracked diff。
-- `sources/` 另含 writer/相机源码与实际二进制；2026-11-04 起也归档实际前端 `fastlivo_mapping` 二进制，防止仅靠配置追认源码版本。`subscriptions_before.json` 保存录前订阅端 QoS/GID，`graph_before.json` 保持原发布端格式。
+- `sources/` 另含 writer/相机源码与实际二进制；同时归档实际前端 `fastlivo_mapping` 二进制，防止仅靠配置追认源码版本。`subscriptions_before.json` 保存录前订阅端 QoS/GID，`graph_before.json` 保持原发布端格式。
 - `session_logs/`：本次受管会话、设备日志、相机/时间writer CSV。不复制仍可能活动的共享内存文件。
 - `manifest.json`、`recorder_result.json`、`audit.json`、`result.json`；完整收尾且必需数据检查通过时才生成 `CAPTURE_COMPLETE`。
 - `manifest.wheel`记录disabled/external/owned_receive_only、已有发布者身份或自启命令及CAN前后配置；自启时另归档实际wheel二进制、驱动源码和增量补丁。结束只清理本次拥有的进程。

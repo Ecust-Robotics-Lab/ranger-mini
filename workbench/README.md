@@ -19,7 +19,7 @@ bash scripts/run_navigation_workbench.sh --execute --lan
 
 本机打开 http://127.0.0.1:8080，远程浏览器打开 `http://工控机局域网IP:8080`。`--lan` 只绑定 HTTP，不改网络、防火墙或 DDS。浏览器输入 `.runtime/navigation_workbench/access.key` 中的密钥（权限 0600）；可在工控机本地查看该文件。部署限可信局域网，不配置公网转发。
 
-默认入口 dry-run。网页“启动底盘、传感器与导航”会请求 CAN 控制及启动设备，须操作者当次确认现场允许；本轮软件实施没有代点该按钮。点击启动后先检查 USB-CAN：复用已有 500kbit/s、ERROR-ACTIVE 接口；若 can0 尚未启用，复用项目已授权的固定 `sudo -n /usr/sbin/ip link set can0 up type can bitrate 500000` 命令，记录启动前后状态及回退命令。已有接口参数异常时拒绝自动重置；权限不足时显示具体错误，不在网页索取 sudo 密码。普通网页服务启动和演示模式不执行此操作。纯电脑控制时可从上电起保持遥控器关闭：原驱动启动会发送 CAN 模式请求，工作台等待新鲜的正常系统反馈 `control_mode=1` 后继续。无需每次开遥控器或拨 SWB。遥控器开启时优先级仍更高；要同时保留遥控器开启，SWB 最上方才是 CAN 指令档，工作台不会反复请求覆盖遥控接管。网页“底盘控制档”显示实际反馈，不能以软件请求已发出代替确认。按钮执行单点时才使能运动。默认速度和净空来自原导航配置，不由网页暗中放宽。
+默认入口 dry-run。网页“启动底盘、传感器与导航”会请求 CAN 控制及启动设备，须由操作者确认当次现场条件。点击启动后先检查 USB-CAN：复用已有 500kbit/s、ERROR-ACTIVE 接口；若 can0 尚未启用，复用项目已授权的固定 `sudo -n /usr/sbin/ip link set can0 up type can bitrate 500000` 命令，记录启动前后状态及回退命令。已有接口参数异常时拒绝自动重置；权限不足时显示具体错误，不在网页索取 sudo 密码。普通网页服务启动和演示模式不执行此操作。纯电脑控制时可从上电起保持遥控器关闭：原驱动启动会发送 CAN 模式请求，工作台等待新鲜的正常系统反馈 `control_mode=1` 后继续。无需每次开遥控器或拨 SWB。遥控器开启时优先级仍更高；要同时保留遥控器开启，SWB 最上方才是 CAN 指令档，工作台不会反复请求覆盖遥控接管。网页“底盘控制档”显示实际反馈，不能以软件请求已发出代替确认。按钮执行单点时才使能运动。默认速度和净空来自原导航配置，不由网页暗中放宽。
 
 ```bash
 bash scripts/run_navigation_workbench.sh --status
@@ -44,7 +44,7 @@ bash scripts/run_navigation_workbench.sh --execute --attach --lan
 
 ## 接口
 
-`/api/v1/login`、`maps`、`maps/{id}/image`、`presets`、`presets/import`、`presets/export`、`snapshot`、`events` (WebSocket)、`previews`、`jobs/{id}`、`session/start`、`session/stop`、`goals`、`goals/cancel`、`recordings`、`recordings/start`、`recordings/stop`、`replays/import`、`replays/{id}?time=秒`。
+`/api/v1/login`、`maps`、`maps/{id}/image`、`presets`、`presets/import`、`presets/export`、`snapshot`、`events` (WebSocket)、`previews`、`jobs/{id}`、`session/start`、`session/stop`、`goals`、`goals/cancel`、`navigation/reset`、`recordings`、`recordings/start`、`recordings/stop`、`replays/import`、`replays/{id}?time=秒`。
 
 所有 API 需要 cookie 认证（登录除外）；POST 使用 JSON 和相同 Origin。设备/任务写请求带 `view:live`、`session_id`、唯一 `request_id`，目标还带 `map_id`、`pose:[x,y,yaw弧度]`。替换显式 `replace:true`；取消带 `task_id`。会话启动带 `map_id`、`profile:standard|narrow`。回放以只读 API 返回，不连接 ROS graph。
 
@@ -62,21 +62,12 @@ PLAYWRIGHT_BROWSERS_PATH="$PWD/.runtime/workbench_browsers" .runtime/navigation_
 ROS 合成检查需要 source Humble、Livox、FAST、nav/base exact 前缀，设置 `ROS_DOMAIN_ID=228 ROS_LOCALHOST_ONLY=1` 后运行 `.runtime/navigation_workbench_venv/bin/python -m unittest tests/test_navigation_workbench_ros.py -v`。测试不连接底盘，不启动传感器，Action 由合成节点提供。报告与截图见 `docs/navigation_workbench_report_20261117.md`。
 
 
-2026-11-17 用户指定的停稳参数统一位于 `ws_nav/src/ranger_navigation/config/exact_navigation.yaml` 的 motion：线速度范数≤0.05m/s、角速度≤0.025rad/s，连续0.5秒。导航、独立门禁、V2底盘模式切换及网页使用同一组参数；没有将原始轮速/里程计强制归零。网页优先使用原始 `/wheel/odom` 及 host 采样时刻显示停稳，不依赖定位/传感器时钟；过期反馈显示等待新数据。历史轻量记录没有参数字段时保留原记录语义。
+停稳参数统一位于 `ws_nav/src/ranger_navigation/config/exact_navigation.yaml` 的 motion：线速度范数≤0.05m/s、角速度≤0.025rad/s，连续0.5秒。导航、独立门禁、V2底盘模式切换及网页使用同一组参数；没有将原始轮速/里程计强制归零。网页优先使用原始 `/wheel/odom` 及 host 采样时刻显示停稳，不依赖定位/传感器时钟；过期反馈显示等待新数据。历史轻量记录没有参数字段时保留原记录语义。
 
 
 ## 观测覆盖的 YAML 调节
 
-编辑项目文件 `ws_nav/src/ranger_navigation/config/exact_navigation.yaml`：
-
-```yaml
-coverage:
-  total_margin: 0.025       # 米；覆盖总外扩，已含扫掠余量
-  protected_margin: 0.015   # 车体外的保护范围，单位米
-  unknown_cell_budget: 8   # 每个位姿允许的边界未知格总数，0表示严格检查
-  protected_unknown_cell_budget: 0 # 每个位姿允许的保护范围未知格数
-  allow_boundary_unknowns: true # true仅将完整进入保护范围的格计为内部格
-```
+编辑项目文件 [exact_navigation.yaml](../ws_nav/src/ranger_navigation/config/exact_navigation.yaml) 的 `coverage` 段。当前配置见 [STATUS](../docs/STATUS.md)。
 
 `total_margin`可在`protected_margin`到0.10m之间调节，`protected_margin`至少为0.015m。两种未知格额度独立计算，分别接受0–16的整数。`allow_boundary_unknowns: true` 时，完整落入保护范围的未知格计入内部额度，其他与覆盖轮廓相交的未知格计入边界额度。设为 `false` 时，所有与保护范围相交的未知格都计入内部额度，因此内部额度为0时会拒绝任意保护范围相交。已知障碍和越界会拒绝本次检查。静态地图净空和实时障碍点碰撞裕量各自配置。
 
@@ -85,6 +76,6 @@ coverage:
 
 ## 正式速度上限
 
-正式工作台与导航默认直接读取上述项目YAML的`motion.max_speed`（当前0.30m/s）和`motion.max_yaw_rate`（当前0.50rad/s）；不再默认采用首次实车低速档。`motion.acceleration`/`yaw_acceleration`仍控制加速度。修改后新启动导航会话加载，无需重新构建，运行中不热改。网页“实际导航上限”显示当前导航进程回报的值，历史记录缺字段时显示等待参数。
+正式工作台与导航默认直接读取上述项目YAML的`motion.max_speed` 和 `motion.max_yaw_rate`。`motion.acceleration`/`yaw_acceleration`仍控制加速度。修改后新启动导航会话加载，无需重新构建，运行中不热改。网页“实际导航上限”显示当前导航进程回报的值，历史记录缺字段时显示等待参数。
 
 显式ROS参数`low_speed:=true`可采用`real_vehicle_first_test`档（当前0.10m/s、0.20rad/s）；若显式指定CLI `max_speed`，不得超过YAML motion上限。上限是规划与安全约束，不是保证每时刻恒速；接近目标、障碍、模式/轮角切换和实际反馈可能降低速度。设备及实车运动仍按当次授权。

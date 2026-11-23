@@ -1,5 +1,11 @@
 # EXACT-MPPI 导航接口与复现
 
+2026-11-17后续边界/速度更新：默认`coverage.allow_boundary_unknowns=true`，部分相交保护边界的未知格与外缘格共用unknown_cell_budget总额度，完整落入保护矩形的未知格仍拒绝；false恢复旧“任意保护相交必拒”。不改格值，不按前后半区豁免；2.5cm/点障碍检查保持。正式low_speed默认false，默认上限读取YAML motion.max_speed/max_yaw_rate，显式true用real_vehicle_first_test。`/navigation/state.control_limits`回报实际上限，网页显示。见[报告](workbench_boundary_speed_report_20261117.md)；本段覆盖下方旧边界规则及默认低速快照。
+
+2026-11-17覆盖口径更新：静态地图总2.5cm保持；实时观测覆盖也统一总2.5cm（已含扫掠），不叠加body.clearance。`coverage={total_margin:0.025,protected_margin:0.015,unknown_cell_budget:8}`同时传至协调器/GPU/独立验证/末端门禁。完整车体+1.5cm必须观测，仅最外1cm带容忍≤8未知格，已知障碍/越界不豁免，不改格值。点障碍净空/体素误差单独保持。`/navigation/state.coverage_diagnostic`包含current/blocked/checked_distance_m及具体原因/格数/米单位外扩；worker状态回报coverage_policy。见[报告](workbench_coverage_policy_report_20261117.md)，覆盖相关历史“净空+1.5cm”被本段替代。
+
+2026-11-17新增`/navigation/reset`（std_srvs/Trigger）：调用者须先取消自有活动Action；服务拒绝活动目标。接受后清除目标/路线/确认历史并重建独立计算子进程，发布RESETTING及reset_started_steady，完成后IDLE。工作台等待新generation/worker nonce且READY后确认；不改定位/观测，不使能运动，不自动重发目标。受管计算健康仅对35秒内显式重置保留初始化条件，其他健康/权限门限不变。见[报告](workbench_navigation_reset_report_20261117.md)。
+
 更新：2026-11-10。软件实施范围、实测与剩余限制见[报告](exact_mppi_implementation_report_20261110.md)，设计基准见[计划](EXACT_MPPI_NAVIGATION_PLAN.md)。本文件中的启动示例不构成设备或运动许可。
 
 ## 结构与安装
@@ -38,7 +44,7 @@ ros2 launch ranger_navigation navigation.launch.py
 | `/map` | 占据图，未知禁止通过；数组、分辨率、原点核对绑定地图资产 |
 | `/localization/estimate`、`/navigation_ready` | 标准定位及就绪，原位姿采样时间有效；地图 UUID 必须与启动绑定值一致 |
 | `/motion_state`、`/system_state` | 原始底盘模式/状态反馈，各自采样新鲜度独立；请求受理不能刷新模式反馈 |
-| `/navigation/control` | `ControlCommand`，原参考采样戳、会话、任务代际、明确模式与速度的原子消息 |
+| `/navigation/control` | `LeasedControlCommand`，原参考采样戳、会话、控制代际、request_id、固定steady到期时刻、明确模式与速度 |
 | `/cmd_vel_nav` | 保留导航 Twist 观察接口；底盘不能绕过门禁订阅此话题 |
 | `/base/safe_cmd_vel` | 独立安全进程的最终 Twist；后面没有通用阿克曼裁剪或平滑器 |
 | `/base/motion_mode_request` | UInt8，0双阿克曼行驶、1固定转向平移、2原地旋转；请求不代表实际完成 |
@@ -46,7 +52,9 @@ ros2 launch ranger_navigation navigation.launch.py
 | `/ranger/motion_enable`、`/ranger/soft_estop` | Bool，启动默认未使能；独立门禁检查，不自动恢复跨会话运动许可 |
 | `/plan`、`/navigation/prediction` | Path，map坐标全局路径与已验证局部预测，保留原参考采样戳 |
 | `/navigation/observation` | Observation，odom障碍全量体素、观察网格在odom的位姿、180扇区距离、80×80观察网格 |
-| `/navigation/state` | JSON String：状态、停车/失败原因、代际、输入健康、worker状态、请求耗时 |
+| `/navigation/state` | JSON String：状态、停车/失败原因、控制与历史代际、输入健康、worker状态、请求耗时、历史复用及执行链观察 |
+| `/navigation/execution` | String JSON：请求、门禁放行、末端防撞后速度与测量速度；含请求编号、原采样戳及原steady截止时刻 |
+| `/base/execution_state` | String JSON：驱动会话、机体请求、SDK提交三元组、转向/模式/反馈拒绝/看门狗原因及各原反馈年龄；SDK提交不等于CAN送达或实测速度 |
 | `/navigation/minimum_distance` | Float32，已验证预测轨迹至实际矩形的最小点距离 |
 | `/navigation/control_owner`、`/navigation/actual_mode` | 当前控制权和模式观察值；协调器新鲜度依据原始 MotionState，不依据心跳 |
 | `/navigation/safety_ready`、`/ranger/motion_permitted`、`/diagnostics` | 独立输入健康、运动许可及末端拦截原因 |
@@ -80,3 +88,29 @@ ros2 launch ranger_navigation navigation.launch.py
 上文0.10m为标准档，窄档的额外观察空间预留为0.04m；两者硬覆盖检查都保留“真实车体+所选净空+0.015m扫掠界限”。
 
 前端/定位会话切换、定位跳变、wheel/ROS时间回退、遥控接管都撤销旧轨迹和工作进程代际。worker每个结果匹配进程nonce、任务代际、请求ID和steady deadline；跨目标迟到结果丢弃。公共TF仍只有既有桥接发布，本导航不发布map→odom或odom→base_link。
+
+
+## 2026-11-17 短暂失效恢复与执行历史
+
+控制`generation`撤销过期/跨暂停结果；独立`history_generation`只在新目标、重新规划或硬失效时更新。暂停不直接销毁候选，但只有协调器最终几何验证确认的request_id能成为历史；新结果仍须属于当前控制代际。历史最多保留1秒，仅用作求解初值；推进不超过原采样时间差及实测位姿进展，驱动对轮角等待不推进，反馈缺失/过期、位姿偏离或换路线时不用历史。重新按当前反馈速度、当前运动段投影，再做全部约束/碰撞验证。
+
+输入失效仍撤销输出，不增加250ms门限。恢复后，同一实际模式、在原路线及原转向轴上、速度符合模式的车辆可从实测余速重新求解，不强制先刹到零。模式/转向轴改变仍需停稳。3秒无进展先撤销旧结果并重验当前执行，不单凭此触发全局重搜；真实路径受阻仍重规划，15秒持续无进展仍失败。明确驱动对轮角等待单独累计有效等待，3秒超时失败，不冒充位移进展。
+
+自主消息改用独立的`LeasedControlCommand`，保留原`ControlCommand`用于旧包解码及遥控接口。协调器、独立门禁和消息包必须一起重建；旧消息不能驱动新自主入口。非零指令的`valid_until_steady`固定为原请求提交时间+100ms，重复发布不续租；零速/模式请求可发布新的零速租约。steady来自同机本次boot，不是传感器时间；原采样戳仍单独检查。驱动会话更换后门禁锁定，必须先收到motion_enable=false、再true才重新使能，连续true心跳不会恢复运动。
+
+执行观察数据不替代原wheel/定位/TF及安全检查。门禁报告和驱动报告保留各自时刻，SDK指令与request_id通过记录时间/速度链核对，不声称CAN逐包ACK或物理执行已确认。录包入口额外收录两条执行话题和消息定义。软件验收与真实边界见[恢复优化报告](exact_mppi_control_recovery_20261117.md)。
+
+
+## 2026-11-17 导航工作台只读分段路径
+
+新增 `/navigation/route`（std_msgs/String JSON），在接受新全局计划时发布；不参与控制、许可或规划决策。schema_version=1，frame=map，携带 map_uuid、history_generation、原 sample_stamp_ns 和 segments（mode、reverse、poses[x,y,yaw]）。浏览器只有在路线历史代际与当前导航状态一致时按行驶/平移/旋转着色；旧包无该消息时使用原 `/plan`，不推断未记录的运动模式。录包入口追加该话题，旧话题保持兼容。
+
+工作台通过原 NavigateToPose 和 motion_enable 进行自有任务管理；不提供速度或模式直通接口。连续定位由显式 `--continuous` 移除有限 recorder，保留原 CLI 默认有限采集行为。使用和验收见 [工作台说明](../workbench/README.md)、[工作台报告](navigation_workbench_report_20261117.md)。
+
+
+## 2026-11-17 用户指定停稳阈值 0.05m/s
+
+用户要求线速度停稳阈值改为0.05m/s。motion.stop_linear=0.05、stop_angular=0.025、stop_dwell=0.5由正式exact_navigation.yaml传给协调器/门禁和base_mini_v2.launch的nav_stop_*；Limits默认同步。底盘仍只凭新鲜实际反馈和连续停稳切换模式，不改变原始twist、命令租约、几何裕量或输入有效期。网页使用原始host-clock wheel反馈显示；历史无motion_limits字段记录保持其已有结果，不重写原记录。
+# 2026-11-17 工作台续修参数
+
+用户最新指定：定位原采样年龄400ms，接收断流250ms；wheel/障碍/指令独立期限保持。标准与窄通道的静态地图总裕量均为2.5cm（static_map_clearance=1cm+1.5cm扫掠界），与实时body.clearance独立。正式规划、预览、重锚定和最终轨迹验证显式传同一值。任务状态增加failure_cause/planning_failure以保留起终点分层拒绝原因。见[报告](workbench_goal_latency_frontend_report_20261117.md)；下方旧250ms/净空值为对应历史接口记录。

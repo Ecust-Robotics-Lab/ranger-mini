@@ -1,3 +1,27 @@
+# 复制到新对话
+
+> 请接手 `/home/lab307/ranger_nav`，分支 `refactor/pluggable-navigation`。先读 `AGENTS.md`、`docs/HANDOFF.md` 和 `docs/STATUS.md` 最新小节，再查 `docs/FAST_LIVO2_BACKEND_PLAN.md`。核对本机 Git、实际 YAML、安装来源和当前受管会话，以最新日志为准。
+>
+> 项目是 Ranger Mini V2 的 FAST-LIVO2 三融合定位与 EXACT-MPPI 导航。正式工作台见 `workbench/README.md`，正式前端由 `config/fast_livo2/active_frontend.lock.json` 锁定，导航运行参数从 `ws_nav/src/ranger_navigation/config/exact_navigation.yaml` 读取。用最近会话的 worker 状态确认参数实际加载，改 YAML 后需新建会话。保持现有 +100 ms 图像偏移、坐标约定和安全门禁。
+>
+> 2026-11-23 交接时，YAML 为平移上限 0.50 m/s、旋转上限 0.80 rad/s、`min_radius: 0.48`、覆盖总外扩和保护范围各 0.015 m、边界未知格额度 16、内部额度 6。0.25 m 弧线曾被 V2 转角限制拒绝，驱动模型下限约 0.4764 m。相机若 USB3 已打开却持续 `MV_E_NODATA`，优先检查外同步信号和 Line0，并对照雷达 `time_type`。最新现场记录有成功单点，也有失败和取消，完整办公室出门、走廊掉头回返仍为 PARTIAL。详见 HANDOFF 最新小节。
+>
+> 先给我简短接手摘要，再按我的下一条指令推进。开设备、CAN、实车目标、非零速度和重启均需当次明确授权。按 boot 和 PID 核对归属，保护原包、地图、标定、安装资产及未提交修改。用隔离 ROS 做离线验证，现场结论以实际记录为准。底盘两套嵌套仓库通过 `config/exact_mppi/sources.lock.json` 中的锁定源码和补丁重建。Git 保存的是源码及精选验证记录，原始资产仍在工控机。
+
+## 历史接手记录
+
+2026-11-17最新：后角边界格容忍与速度档已修，见docs/workbench_boundary_speed_report_20261117.md及STATUS/HANDOFF顶部。新增coverage.allow_boundary_unknowns=true（部分接触保护边界的格共用8格额度，完整内部未知仍拒绝；false恢复严格），总2.5cm/点障碍保持，无整块后方豁免。正式low_speed默认false，默认读YAML motion .30m/s/.50rad/s，网页显示实际进程上限；改值需新导航会话。87核心/49GPU/后续25参数/65工作台/6隔离ROS/5浏览器通过（有重叠），模拟峰值0.290m/s非实车；正式nav已构建，最后用户会话均无存活，未操作设备/实车目标或速度、未提交推送。旧“仅外1cm/保护任意相交必拒”和“默认首次低速档”由本条覆盖。
+
+2026-11-17最新：实时观测覆盖已统一总2.5cm（含扫掠），修复此前仅静态图2.5cm、覆盖仍5.5cm的遗漏。车体+1.5cm必须观测，仅最外1cm带最多8未知格，点障碍净空/体素项保持；前段/JAX/独立验证/门禁一致，网页显示原因/格数/25mm。正式nav已构建，61核心/58GPU相关/18系统ROS/20相关/65工作台/5隔离实际协调器+GPU+门禁/浏览器通过（有重叠），记录失败输入非零候选和制动复核通过，不是实车运动。见docs/workbench_coverage_policy_report_20261117.md及STATUS/HANDOFF顶部。用户会话已停后安装，Agent未启设备/CAN/实车目标或速度；需正常启动自有会话加载，新实车仍PARTIAL，无提交推送。
+
+2026-11-17最新：已新增独立“重置规划控制”，失败/无有效定位可结束自有目标、清旧规划/历史、重建仅自有计算子进程；不重启设备/定位、不自动发目标。受管35秒显式预热条件修复1秒误停，运动权限保持。70/67/2GPU/7ROS及实际GPU+协调器+guardian、浏览器通过，正式nav已构建，见docs/workbench_navigation_reset_report_20261117.md及STATUS/HANDOFF顶部。实车仍PARTIAL，无提交推送。
+
+2026-11-17最新：用户已明确要求直接应用此前优化，并最终将静态总裕量指定2.5cm。正式FAST各入口已用低延迟前端（active_frontend.lock.json），旧地图走精确来源迁移声明，定位采样400ms、实时链期限保持；见docs/workbench_goal_latency_frontend_report_20261117.md及STATUS/HANDOFF顶部。109/65/46及隔离ROS/浏览器/真实地图加载通过；四受管会话均STOPPED，Agent未启设备或运动；新实车仍PARTIAL。下方“前端候选未切正式”仅历史。
+
+2026-11-17最新：工作台7/8匹配阶段显示及静止确认弱证据锁定已修，见docs/workbench_static_confirmation_report_20261117.md、STATUS/HANDOFF顶部。45核心/59工作台/4隔离ROS/浏览器通过，正式localizer已构建；现场尚待用户重启工作台后显式加载复验，设备当前均停，Agent未启动或移动。旧日志不足以证明现场唯一根因，新增支持计数与位姿差诊断已保存。0.05停稳保持，无提交推送。
+
+2026-11-17最新软件：用户要求执行恢复/历史/实际执行反馈优化，见docs/exact_mppi_control_recovery_20261117.md及STATUS/HANDOFF顶部。generation与history_generation分离；只有最终验证ACK的轨迹作warm-start，按实测进展推进，同模式可余速重验。新LeasedControlCommand固定原100ms期限，旧ControlCommand不变；新增执行观察和驱动会话重启enable边沿。base/nav已安装，补丁可重建；148回归、后续31相关GPU、38生命周期、ROS20故障项及单次A/B仿真通过。实车仍暂停，前端低延迟候选未切换。当前是bb41832之后的新未提交工作，禁止reset/覆盖；此前9次保存不涵盖本轮代码。
+
 2026-11-17最新Git保存：用户已授权并完成分段本地提交，检查点见docs/git_checkpoint_navigation_20261117.md，未推送。实车仍暂停，前端低延迟候选仍独立安装，正式来源兼容未验。下方历史“未提交”不表示当前Git状态；现查git log/status。
 
 2026-11-17最新：用户要求减少数据延迟，已完成首轮软件优化/离线验证，实车保持暂停。先读docs/exact_mppi_input_latency_optimization_20261117.md及STATUS/HANDOFF顶部。前端LIO→VIO多等下一雷达包已复现，候选8400帧中5639帧可提前约100ms；仅在latency_frontend_install独立安装，正式入口仍用原online_frontend_install，勿绕过地图来源SHA。长段候选/原版重复都存在厘米差异，未证明精度等价。导航重复输入准备/覆盖合并优化已安装，81帧全点/网格一致，107回归/最终20相关检查及构建通过。新boot6c018ad9，没有设备或目标启动，运动许可不续用。

@@ -2,6 +2,13 @@
 
 更新：2026-11-10。新上下文先读[HANDOFF](docs/HANDOFF.md)、[STATUS](docs/STATUS.md)，再读[总计划](docs/FAST_LIVO2_BACKEND_PLAN.md)。当前状态以这两份入口为准，带日期报告保留历史事实；历史计划、命令和设备许可不自动续用。
 
+## 2026-11-17 正式入口替换（最新）
+
+- 后续用户要求解决后角少量未知与直线慢：默认coverage.allow_boundary_unknowns=true，部分接触保护矩形边界的格共用unknown_cell_budget=8额度，完整内部未知仍拒绝；false恢复严格“任意保护相交必拒”。总外扩2.5cm保持，无后方整块豁免、不改格值，点障碍/全车预测/制动保持。正式low_speed默认false，直接读项目YAML motion.max_speed=.30/max_yaw_rate=.50；显式true仍保留首次低速档，网页显示实际进程上限。见`docs/workbench_boundary_speed_report_20261117.md`，正式nav已构建，模拟峰值0.290m/s不是实车成绩；本条覆盖下一条旧“车体+1.5cm必须观测/仅外1cm”的严格模式描述。无设备/实车运动，新实车仍PARTIAL。
+- 实时观测覆盖另已统一总2.5cm，含扫掠，不叠加body.clearance；车体+1.5cm必须观测，仅最外1cm带最多8未知格，已知障碍/越界不豁免、不改格值。路径前段/JAX/独立验证/门禁同源，点障碍净空及体素项单独保持。见`docs/workbench_coverage_policy_report_20261117.md`；正式nav已构建，仅软件/记录反事实/隔离ROS，未操作实车，状态仍PARTIAL。
+- 用户明确要求已完成优化直接替换旧版。FAST预览/录制/建图/在线定位与工作台默认已选`ws_fast_livo/latency_frontend_install`，由`config/fast_livo2/active_frontend.lock.json`锁实际二进制与源码；旧安装资产保留，不恢复旧运行入口。旧地图使用绑定UUID/manifest及新旧来源的`frontend_timing_upgrade`侧车声明，传感器/时间契约仍严格一致，不能冒充旧来源或用offline声明绕过。三融合/+100ms/外参不变。
+- 用户最新指定定位采样400ms、静态总裕量2.5cm（1cm静态净空+1.5cm扫掠界）；wheel/实时障碍/反馈和100ms租约各自期限保持。全规划/预览/最终验证已统一，实时净空独立。当前报告`docs/workbench_goal_latency_frontend_report_20261117.md`及STATUS/HANDOFF顶部覆盖下方旧250ms、5.5/9.5cm和“前端未切正式”快照。设备均已停止，本轮未代启或运动，新实车仍PARTIAL；不自动提交推送。
+
 ## 范围与授权
 
 - 项目`/home/lab307/ranger_nav`。先核对Git、实际源码/参数/二进制、boot/PID与会话归属、原包/地图；保护未提交工作，优先复用。
@@ -39,6 +46,11 @@
 - 公共桥接唯一发布map→odom、odom→base_link，底盘原生TF与前端native_tf关闭。T_map_base=T_map_imu×inverse(T_base_imu)；T_map_odom(t)=T_map_base(t)×inverse(T_odom_base(t))，必须同机体同原采样时刻，wheel历史插值，不外推、不latest-TF拼接、不减两个最新到达值。
 - 原sensor历元与host/wheel不能直接拼；离线用header-clock/模拟时钟，在线每会话receipt/steady映射含未知接收偏差，不当物理标定；不重打now，心跳不刷新位姿采样时间。跳时/偏差锁定须新会话。
 - 失败撤销就绪，不发布未验证修正，创新拒绝不污染已接受缓存。B离线桥首次创新失败锁定，须显式重开；私有PGO可继续。初始化、退化、丢失、恢复可观测；旧异步/跨会话结果不能污染新估计。
+
+## 2026-11-17 控制恢复软件更新
+
+- 已实现控制代际/路线历史分离、最终验证ACK候选按实测进展复用、同模式余速重验、固定100ms自主指令租约及执行链观察；见`docs/exact_mppi_control_recovery_20261117.md`。自主消息为`LeasedControlCommand`，旧`ControlCommand`保留历史包/遥控，base/nav已一起构建；驱动会话更换需enable=false→true，不能沿用连续true。148回归、31后续相关GPU、38生命周期及ROS20故障项通过（有重叠），合成2m失效注入对照约10.08秒成功不是实车成绩；P95约43.29ms仍高于40ms初始目标。
+- 本轮仅软件/离线，实车仍暂停，前端低延迟候选未切正式来源；bb41832之后是新未提交工作，保护代码/补丁/证据，不自动提交推送。
 
 ## 操作与测试
 

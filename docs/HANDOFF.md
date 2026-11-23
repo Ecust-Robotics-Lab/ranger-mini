@@ -1,5 +1,98 @@
 # 新 Agent 接手指南
 
+## 2026-11-23 分段保存与现场接手
+
+用户要求结束本轮工作，按功能提交并上传现有代码。可复制的提示词见 [NEXT_AGENT_PROMPT](NEXT_AGENT_PROMPT.md)。分支为 `refactor/pluggable-navigation`，提交分为导航/V2 底盘、FAST 定位、工作台、验证证据和交接。上传前远端基点为 `e8245fa80310a4e91b5d2eb303f33883bb965216`。实际远端 HEAD 以 `git ls-remote origin refs/heads/refactor/pluggable-navigation` 为准。
+
+本次只读核对发现导航和定位桥接安装的 Python 源码分别 17、9 个文件与工作树一致。正式 FAST 前端为 `ws_fast_livo/latency_frontend_install`，相机为 `ws_camera/latency_install`，定位为 `ws_fast_livo/online_localization_install`，导航与底盘为各自的 `install_exact`。正式地图 UUID `160f8572a77a61856cf87e43514be769`，占据图 `outputs/fast-livo-demo-changed-scene-20261110/navigation_map_05`，定位档案 `outputs/fast-livo-demo-changed-scene-20261110/mapping_replay_01/map`。原地图、录包、运行数据库、密钥及安装资产在工控机保留。
+
+当前项目 YAML 为 `min_radius: 0.48`、速度 0.50m/s 和 0.80rad/s、停稳线速度 0.05m/s、定位采样/接收 400/250ms、实时覆盖总外扩/保护各 0.015m、边界/内部额度 16/6。运行参数以项目文件及新会话回报为准，安装目录的 YAML 可能是构建快照。最近 worker `run-xmm9byz_` 确认了 16/6。11月18日的 189 个约 0.007m/s 行驶样本对应半径 0.25m，SDK 提交为零。V2 转角上限对应理论最小半径约 0.4764m，本轮保存用户已设的 0.48，源码尚无自动抬升半径的保护。
+
+最近现场记录 `.runtime/navigation_workbench/records/live-41843270f2fb45fc81a3c41443de148f/events.sqlite3` 有走廊方向的单点成功，也有失败和取消。完整办公室出门、走廊掉头回返仍为 PARTIAL。相机无首帧的排查见 [相机报告](workbench_camera_startup_report_20261118.md)。本机 boot `44806031-386f-449d-9e74-e406fa59ae59` 上未发现存活受管会话，最近 workbench/navigation/base/localization 均为 STOPPED。现场权限另取。
+
+本轮跑了 49 项核心/配置、66 项工作台/前端身份、40 项 CUDA/导航相关测试，全部退出 0。两套底盘嵌套仓库按锁定 HEAD、前置补丁和 EXACT 增量核对，应用后各 3 个文件与实际源码逐字节一致，因此在主仓库保存补丁。当前工作树和 Git 远端用 `git status -sb`、`git log -5 --oneline`、`git ls-remote` 核验。旧报告里的“未提交/未推送”仅指写报告时的状态。
+
+## 2026-11-18 保护范围未知格独立额度
+
+用户要求独立计数。项目 YAML 新增 `coverage.protected_unknown_cell_budget: 0`，0–16整数，边界继续读 `unknown_cell_budget: 16`。内部额度0保留旧行为。若关闭 `allow_boundary_unknowns`，所有触及保护框的格归入保护计数。正式 nav 已构建并核对，工作台显示两组额度。新会话加载，GPU 重置不重新读取 YAML。软件 PASS，实车 PARTIAL。[报告](workbench_protected_coverage_report_20261118.md)
+
+## 2026-11-18 相机外触发启动无帧
+
+最新 run-0fxc91ct 的海康 USB3/Line0 成功开机抓图但 SDK 0 首帧，12次超时重连均未恢复出图。近期15会话中5个无图像均雷达 `time_type=0`，10个有图像均为2。先核对外部 PPS/时间源及 Line0 输入，证据未定位到具体线路。已增加工作台/独立定位诊断和回归，66项通过。原相机二进制、触发设置、三融合就绪门槛照常使用。定位/底盘已退出，用户工作台仍运行，下一次启动工作台加载新提示。现场恢复 PARTIAL。[报告](workbench_camera_startup_report_20261118.md)
+
+## 2026-11-17：后角边界未知格与默认速度档（最新）
+
+用户最近自行测试有2成功/2失败，记录live-3f7387…；后续仍被保护范围1～4未知格拒绝，8格额度原先只管最外1cm。新增`coverage.allow_boundary_unknowns=true`：部分接触保护边界的格共用8格额度，完整落入保护矩形的未知格仍拒绝；false恢复旧严格方式。总2.5cm不变，未固定豁免后方、未改格值，已知障碍/越界及全车预测/制动/点障碍检查保持。下方“保护范围任意相交必拒/仅外1cm额度”是旧严格模式。
+
+同时发现正式launch默认low_speed=true将速度限0.10m/s，最新直线非零请求中位0.081m/s。默认已改false，直接读取项目YAML motion.max_speed=.30、max_yaw_rate=.50；显式低速档仍保留。网页新增实际导航上限，参数仍新会话加载/GPU reset不重读。见[报告](workbench_boundary_speed_report_20261117.md)。87核心/49GPU/后续25参数/65工作台、6项隔离实际协调器+GPU+门禁及5浏览器检查通过（有重叠）；模拟直线安全输出峰值约0.290m/s，断流/取消仍停，不是实车成绩。正式nav已构建，最后无存活受管会话，Agent未启设备/CAN/实车目标或速度，未提交推送。新实车高速度连续运动/停车/完整往返仍PARTIAL。
+
+## 2026-11-17：实时覆盖总外扩2.5cm与边缘未知格（最新）
+
+后续已开放项目YAML直接调节：`ws_nav/src/ranger_navigation/config/exact_navigation.yaml`的coverage.total_margin/protected_margin/unknown_cell_budget；默认2.5cm/1.5cm/8保持，启动前校验，同值传两节点/GPU。正式launch改为每次新会话直接读项目文件，改值无需构建；重置GPU不重读，需新导航会话。30相关检查与独立构建通过，正式share已备份后原子更新，见报告末节及coverage_yaml证据。用户随后要求停止，现查工作台/base/FAST前端定位/navigation均STOPPED且无存活归属进程及相关残留，没有代重启；此快照覆盖先前运行状态。
+
+用户指出少量未知格过于保守，并要求总外扩2.5cm。此前只改静态图，实时覆盖仍4cm+1.5cm=5.5cm；保存输入被车体外侧4格拦在优化前。现在路径前段/JAX/独立全量扫掠制动/末端门禁统一CoveragePolicy：总2.5cm（已含扫掠），车体+1.5cm必须观测，仅外侧1cm带最多8未知格；已知障碍/越界不豁免、不改未知格。实时点障碍净空/体素项单独保持，不能称所有碰撞裕量均2.5cm。网页显示具体格数和25mm。
+
+见[报告](workbench_coverage_policy_report_20261117.md)及[对照图](workbench_evidence/20261117/coverage_margin/coverage_comparison.png)。61核心、58 GPU/恢复相关（4个launch跳过另在系统ROS18项全跑）、20相关、65工作台、5项真实协调器/GPU/门禁隔离ROS及浏览器通过，部分重叠。保存实车输入反事实给出非零且全量障碍/制动复核通过的候选，不是实车移动。正式nav已构建，确认用户会话已停止后才安装；Agent未启设备/CAN/实车目标/速度。用户下次正常启动工作台和网页自有会话加载；新实车仍PARTIAL，无提交推送，原资产/未提交工作保护。
+
+## 2026-11-17：失败后独立重置规划控制（最新）
+
+用户指出单点失败后无法停止旧规划并重启规划控制。旧任务实际已FAILED、零输出；旧UI终态禁用取消且缺独立reset入口，不能据此称计算挂死。已新增“重置规划控制”与允许列表API：撤销使能、按Action协议取消自有目标、清除目标/路线/历史、非阻塞重建仅自有GPU子进程，确认新generation/nonce+READY/IDLE后等待新目标。定位/传感器/记录保留，失败/无有效定位也可请求重置，不自动恢复运动。活动外部目标拒绝，重置中禁止新目标，失败可重试、停止会话可中断。
+
+同步修正受管会话1秒健康宽限会误杀JIT预热：只对35秒内显式RESETTING、无worker错误保留初始化条件，定位/输入/消息新鲜度等检查不变，运动许可独立。70工作台、67导航/恢复/门禁、2真实GPU重置、7ROS工作台、真实协调器+GPU+guardian与浏览器通过；正式导航已构建，未操作设备或实车目标。见[重置报告](workbench_navigation_reset_report_20261117.md)。0.4秒/静态2.5cm/正式低延迟前端保持，更新需用户重新启动工作台及自有会话加载。实车重置/再次导航仍PARTIAL，无提交推送，原资产/失败证据保护。
+
+## 2026-11-17：正式低延迟前端、400ms定位与静态2.5cm（最新）
+
+用户明确要求将此前优化直接替换旧版，并最终指定静态总裕量2.5cm。已将FAST预览/录制/建图/在线定位及工作台默认切到latency_frontend_install，实际二进制80450133…、新来源49d9cd5a…；active_frontend.lock.json逐文件锁定。旧地图UUID/manifest不改，精确父版本+相同传感器/时间的frontend_timing_upgrade侧车声明由C++独立核验，无声明拒绝，不用offline兼容绕过。正式三融合、+100ms、外参及旧资产保留。之前“前端候选未切正式”在本节之后已不适用。
+
+定位原采样年龄统一400ms，接收/轮速/障碍期限与100ms租约保持；静态净空1cm+扫掠1.5cm=2.5cm，规划/预览/重锚定/最终验证同源，与实时净空独立。页面ROS批处理修复20话题负载下回调更新P95约234→17ms；具体起终点失败原因保留。原两目标均无路径/零速度，第二份请求证明起点旧9.5cm裕量过大、目标实时点进入车体。现在静态路线通过，但不能把目标实时障碍当作已解决。
+
+见[报告](workbench_goal_latency_frontend_report_20261117.md)。109导航/恢复/安全等、65工作台/来源、46定位核心、5隔离ROS工作台、1隔离静止C2→C1、实际前端sync/13原生及浏览器通过；正式nav/localizer已构建，源/安装核对通过，真实地图迁移通过。四受管会话已STOPPED，Agent没有开设备/CAN/目标/速度；用户下次正常启动工作台并网页显式启动即加载全部新配置，不需额外开关。新的现场单点/连续定位/坡道/完整往返仍PARTIAL，无提交推送，原资产及未提交工作保护。
+
+## 2026-11-17：工作台7/8显示与静止确认恢复（最新）
+
+用户新会话已凑齐8帧并完成多次匹配，未就绪实际停在确认阶段；匹配期间旧7/8显示没有更新。已修首个弱候选/中途弱查询永久锁死静止确认的源码缺陷：从新强窗口1组重建，弱查询不计数、不污染强锚点；3组独立强窗口/1秒、位姿一致性与C1复验不放宽。新增8/8匹配阶段、确认计数/质量原因及逐样本支持/位姿差诊断。现场旧日志不含完整锚点字段，不能断言唯一根因。
+
+见[报告](workbench_static_confirmation_report_20261117.md)。正式online_localization_install已构建，45定位核心、59工作台/CAN、4隔离ROS（含8帧静止C2→C1，3组/1.6秒采样跨度）、浏览器及Monitor落盘检查通过；是软件/合成结果，现场静止初始化仍PARTIAL。用户会话已STOPPED，Agent未开设备/操作CAN/发目标或速度，结束再次核对四受管会话均不存活。用户重新运行工作台再网页显式启动加载新版；不需要为了软件缺陷先移动。0.05停稳参数保持；无提交推送，原资产/失败记录及其他未提交工作保留。
+
+## 2026-11-17：重复启动与用户指定0.05停稳阈值（最新）
+
+用户报告重复启动navigation等待超时与静止时停稳显示，并明确要求线速度停稳阈值改为0.05m/s。日志证明导航节点根本未启动：localization=false，C2一直等8帧查询窗口。已修在线2帧coalescing误用于C2的饥饿：收集C2时保留所需8帧、跟踪仍2帧；8帧/1秒/12k点与几何/C1有效性保持。工作台显式等新定位并显示窗口进度，再起导航，超时明确归因；清理旧进程引用与任务观察，双循环启停模拟通过。
+
+0.05m/s已统一配置并传至导航/worker/门禁/底盘/网页；角速度0.025及停稳0.5秒、原数据期限不变。不归零原轮速，网页优先原始host wheel避免依赖定位时钟。记录首次会话轮速P50 .007/P95 .021/max .023m/s，SDK非零快照0；其他失败会话轮速全0。58工作台/CAN、41定位核心、31恢复、69任务门禁、4ROS任务、3在线定位及浏览器/SDK mock/构建通过。见[报告](workbench_restart_stop_report_20261117.md)及workbench_evidence/20261117/restart_and_stop/。无实车复验，不自动重启/发目标，实际重复定位/停稳仍PARTIAL；已构建更新需用户重启工作台加载。无提交推送，原资产与未提交工作保留。
+
+结束只读检查：用户已停止workbench run-0m24tul0，base/定位/导航会话均不存活，Agent没有代停或重启。现在可直接启动新版网页服务；新停稳参数与定位器构建已核对源码/安装及补丁SHA。
+
+
+## 2026-11-17：电脑独立请求 CAN 控制，遥控器可保持关闭（最新）
+
+用户希望不再每次开启遥控器/拨SWB。已核对 V2 官方协议：未连接遥控器时上电待机，电脑可发0x421模式请求进入CAN；遥控器开启时更高优先级。现有非receive-only驱动启动已调用EnableCommandedMode，不需要新增强制抢占或放宽V2FeedbackReady。此前将“必须开遥控器”作为普遍条件不准确，已更正。
+
+工作台新增新鲜原始SystemState的CAN/健康确认，显式启动底盘后等control_mode=1再继续，目标接受也核对此反馈；遥控3/待机0/异常/过期不放行，不循环抢遥控控制权。网页新增底盘控制档，明确CAN/电脑、遥控优先、待机。48工作台+5CAN共53离线检查、4隔离ROS与独立HTTP/浏览器模拟通过。证据computer_control/，报告追加节；无真实CAN/设备/目标操作，无自动服务重启，遥控器关闭的实际固件接管仍PARTIAL。
+
+只读现查：用户已停止原工作台run-lzokbvwj（STOPPED），base/定位/navigation均无存活受管会话。下方“工作台仍运行”是上一快照。软件更新需用户重新运行 `bash scripts/run_navigation_workbench.sh --execute --lan` 后显式点击启动；只开服务不启设备。普通SDK请求仍按实际反馈，不自动清故障，不改变急停/遥控接管优先级。无提交推送。
+
+
+## 2026-11-17：工作台 CAN 前置初始化与失败反馈修复（最新）
+
+用户在正式网页点击启动，两次请求到达任务所有者，但 base 启动失败并已受管退出；原日志明确 can0 must already be UP/ERROR-ACTIVE with known bitrate，实查 can0 flags 无 UP、state STOPPED、operstate DOWN。当前工作台 run-lzokbvwj 仍运行、会话 FAILED、task=null；传感器/定位/导航没有因此启动。用户随后询问遥控器/SWB：V2说明书确认遥控器开启后 SWB 最上方是 CAN 指令档；这是底盘控制权，与 Linux can0 行政启用分开。
+
+已修软件：显式 session.start 才复用 wheel_capture 的外部驱动检查与固定 sudo -n CAN 500k 启用命令；保存 before/after/rollback 信息，已有 UP 参数异常拒绝重置。新增 CAN/底盘/定位/导航阶段及组件进度，嵌套 launch 真正错误透传到持久红色提示，修改请求后清快照缓存。43 工作台+5既有CAN检查共48通过，浏览器故障/进度模拟通过；没有执行真实 ip up、重启服务、设备重试或目标。证据见 workbench_evidence/20261117/startup_fix/，报告见 navigation_workbench_report_20261117.md 最后追加节。
+
+当前运行进程没有热更新，需要用户原终端 Ctrl+C 后重新运行 `bash scripts/run_navigation_workbench.sh --execute --lan`，再在页面显式启动；不自动重启或代发请求。保留原有工作树、包/地图/失败证据，无提交推送。
+
+
+## 2026-11-17：前端导航工作台 v1
+
+用户要求实施已确认计划，软件已完成，见[工作台报告](navigation_workbench_report_20261117.md)、[使用说明](../workbench/README.md)、[计划](NAVIGATION_WORKBENCH_PLAN.md)。工控机本地/局域网浏览器，2D 正式地图、公共机体定位、单点目标/预设、静态扫掠预览、全局/局部/执行估计轨迹、模式/速度/年龄/原因、受管会话、轻量记录及真实包回放。浏览器断开继续当前目标；任务由独立工控机进程持有，独立 watchdog 在所有者故障时撤销使能。新增只读 /navigation/route；连续定位显式 --continuous 与原始录制分离，原 CLI 默认有限采集保留。37 工作台检查、4 隔离 DDS/Action（含关闭网页后目标只执行一次）、31 相关导航回归、4 包构建及浏览器通过；合成 GPU 加 3 个真实回放客户端 P95 增量约0.24ms，不是三融合整链成绩。现有 u622df4n 原包离线索引356541条消息，无队列丢帧。
+
+启动：`bash scripts/run_navigation_workbench.sh --demo --execute` 只看真实地图/已有回放；正式 ROS 服务用 `--execute --lan`，本命令不启动设备，网页按钮才申请启动自有底盘/传感器/定位/导航。密钥在 `.runtime/navigation_workbench/access.key`，HTTP默认8080；默认不带execute仍dry-run。测试网页服务已停止；没有启动真实设备/CAN或发实车目标。实车仍暂停，完整会话/原始录包/远程控制器及三融合竞争/长时验收 PARTIAL，坡道和往返未通过状态不变。原未提交恢复优化、地图/原包/标定/证据保留，没有提交推送。
+
+
+## 2026-11-17：恢复接续、历史复用与执行反馈（最新软件）
+
+用户要求执行三项优化，已实施并离线验证，实车仍暂停。见[恢复优化报告](exact_mppi_control_recovery_20261117.md)。控制generation撤销输出、history_generation标识路线；只将最终验证确认的候选按实测进展对齐，1秒历史上限不延长输入期限。同模式、在原轴/路径上可从余速重验接续；3秒无进展先重验执行，真实堵路才重规划，15秒无进展仍失败，轮角等待单独3秒超时。新增LeasedControlCommand带固定steady截止时刻，旧ControlCommand保留解码/遥控；新增门禁/驱动执行观察，SDK提交不冒充实测运动。驱动换会话需新enable=false→true。148项回归、后续31相关GPU检查、38录包/生命周期检查、实际SDK mock及隔离ROS20故障项通过（部分重叠）。一次60ms周期失效的2m理想仿真：旧版30秒未完成，新版约10.08秒成功；不是实车成绩。base/nav已构建安装，补丁逐文件重建核对；源码基点bb41832，本轮未提交推送。低延迟前端仍独立，地图/定位门限不放宽，完整出门/坡道/往返仍PARTIAL。
+
+
 ## 2026-11-17：分段本地Git保存（最新）
 
 用户要求将当前更改分段保存；已按实验/定位、导航与V2模式、导航延迟、前端候选、证据及历史清理分组本地提交，最后补本次报告和交接入口。见[Git检查点](git_checkpoint_navigation_20261117.md)。没有推送/设备/运动。导航延迟优化已安装，前端候选仍独立、正式定位入口不切换；完整实车仍PARTIAL。底盘增量补丁已补齐并逐文件重建核对，源码保持现状。大包/地图/二进制仍本地保留，不把Git视为完整资产备份。下方“未提交推送”属于对应阶段历史记录，提交状态以本节及实际git log为准。

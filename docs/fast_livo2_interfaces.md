@@ -1,5 +1,7 @@
 # 阶段 A 前端接口、时间与后续 TF
 
+2026-11-17正式前端更新：FAST受管入口默认使用latency_frontend_install，pending-VIO不再等待额外raw雷达/IMU；三融合、VIO后同戳IMU位姿/单区间云、+100ms及外参保持。实际来源重新计算，旧地图用精确绑定的frontend_timing_upgrade侧车声明，不改原归档。公共导航定位采样期限按用户要求400ms；其他数据期限独立。见[替换报告](workbench_goal_latency_frontend_report_20261117.md)。
+
 更新：2026-11-04，已含在线同步保护、初始重力对齐及用户指定的 +100 ms 图像相位修正。适用于锁定前端加 `patches/fast_livo2_stage_a.patch`；不是未修改的上游接口说明。当前同步源码为 `ws_camera/src/{hik_camera_trigger_driver,timeshare_writer}`，标定在 `calibration/`，接手见 [HANDOFF](HANDOFF.md)。
 
 ## 当前输入

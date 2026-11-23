@@ -101,6 +101,30 @@ TEST_F(C1,RejectDuplicateJsonKeysAndIdentityOverride) {
   auto c=read_json_bounded(compatibility.declaration,1000000);c["source_manifest_sha256"]=std::string(64,'a');rb::write_json(compatibility.declaration,c);
   EXPECT_THROW(Archive::load(map->root,{},compatibility),std::exception);
 }
+TEST_F(C1,FrontendTimingUpgradeRequiresExactMapSensorTimeAndEvidence) {
+  const std::string sensor(64,'a'),time(64,'b'),old_frontend(64,'c'),new_frontend(64,'d');
+  remanifest([&](Json& m){m["provenance"]["sensor_configuration_sha256"]=sensor;
+    m["provenance"]["time_contract_sha256"]=time;m["provenance"]["frontend_sources_sha256"]=old_frontend;});
+  Compatibility next;next.sensor_configuration_sha256=sensor;next.time_contract_sha256=time;next.frontend_sources_sha256=new_frontend;
+  EXPECT_THROW(Archive::load(map->root,{},next),std::exception);
+  next.frontend_upgrade=root/"frontend-upgrade.json";
+  Json upgrade={{"schema_version",1},{"mode","frontend_timing_upgrade"},{"change_kind","finish_pending_vio_without_extra_scan"},
+    {"source_manifest_sha256",rb::sha256(map->root/"manifest.json")},{"map_uuid",map->uuid},
+    {"sensor_configuration_sha256",sensor},{"time_contract_sha256",time},
+    {"from_frontend_sources_sha256",old_frontend},{"to_frontend_sources_sha256",new_frontend},
+    {"physical_sync_validated",false},{"absolute_accuracy_validated",false},{"limitations",{"synthetic test, not physical accuracy"}},
+    {"evidence_files_sha256",{{(root/"evidence.json").string(),rb::sha256(root/"evidence.json")}}}};
+  rb::write_json(next.frontend_upgrade,upgrade);
+  auto loaded=Archive::load(map->root,{},next);EXPECT_EQ(loaded->compatibility.at("mode"),"frontend_timing_upgrade");
+  for(const auto& key:{"source_manifest_sha256","sensor_configuration_sha256","time_contract_sha256","from_frontend_sources_sha256","to_frontend_sources_sha256","map_uuid"}) {
+    Json bad=upgrade;bad[key]=std::string(64,'e');rb::write_json(next.frontend_upgrade,bad);
+    EXPECT_THROW(Archive::load(map->root,{},next),std::exception)<<key;
+  }
+  rb::write_json(next.frontend_upgrade,upgrade);next.declaration=compatibility.declaration;
+  EXPECT_THROW(Archive::load(map->root,{},next),std::exception);next.declaration.clear();
+  std::ofstream(root/"evidence.json",std::ios::app)<<"changed";
+  EXPECT_THROW(Archive::load(map->root,{},next),std::exception);
+}
 TEST_F(C1,DerivedIndexIsBoundAndNeverOverwrites) {
   auto dest=root/"derived-index";map->write_index(dest);auto j=read_json_bounded(dest/"manifest.json",1000000);
   EXPECT_EQ(j["source_manifest_sha256"],map->manifest_sha);EXPECT_EQ(j["map_uuid"],map->uuid);
@@ -265,6 +289,14 @@ protected:
     auto cloud=query(X*relative);if(outside)for(auto& p:cloud)p.x+=100;
     return global.process(10000000000LL+k*200000000LL,k,large_odom*relative,cloud,k*.2);
   }
+  SearchResult stationary_quality_step(Relocalizer& global,int k,bool weak) {
+    relative=pose(0,0,0,.02,0,1.1);auto cloud=query(X*relative);
+    if(weak) {
+      std::mt19937 rng(1234);std::normal_distribution<float> noise(0,.03);
+      for(auto& p:cloud){p.x+=noise(rng);p.y+=noise(rng);p.z+=noise(rng);}
+    }
+    return global.process(10000000000LL+k*200000000LL,k,pose(100,-50,20,.1,-.4,.3)*relative,cloud,k*.2);
+  }
 };
 TEST_F(C2,IndexRoundTripHashBindingAndNoOverwrite) {
   auto index=PlaceIndex::build(map,search);auto dest=root/"c2-index";index->save(dest);
@@ -324,6 +356,60 @@ TEST_F(C2,StrongStationaryQueriesHandoffAndC1ConfirmsWithoutMotion) {
   auto first=tracker.process(r.confirmed->stamp,20,U,query(X*relative),3.1);EXPECT_FALSE(first.valid);
   auto next=tracker.process(r.confirmed->stamp+300000000LL,21,U,query(X*relative),3.4);
   EXPECT_TRUE(next.valid)<<next.reason<<next.quality;
+}
+TEST_F(C2,WeakFirstMatchCannotLatchStationaryInitializationOff) {
+  search.stationary_initialization=true;auto global=create();SearchResult r;
+  for(int k=0;k<2;++k)r=stationary_quality_step(*global,k,true);
+  ASSERT_EQ(r.reason,"verifying_independent_motion_support")<<r.quality;
+  ASSERT_FALSE(r.quality.at("stationary_strong_geometry").get<bool>());
+  ASSERT_GT(r.quality.at("best_rmse_m").get<double>(),r.quality.at("stationary_max_rmse_m").get<double>());
+  for(int k=2;k<4;++k)r=stationary_quality_step(*global,k,false);
+  ASSERT_EQ(r.reason,"verifying_stationary_support_restarted")<<r.quality;
+  EXPECT_FALSE(r.confirmed);EXPECT_EQ(r.quality.at("support_queries"),1);
+  const auto first_strong=r.quality.at("query_stamp_ns").get<int64_t>();
+  for(int k=4;k<14&&!r.confirmed;++k)r=stationary_quality_step(*global,k,false);
+  ASSERT_TRUE(r.confirmed)<<r.reason<<r.quality;EXPECT_TRUE(r.confirmed->stationary_verified);
+  EXPECT_GE(r.confirmed->stamp-first_strong,1000000000LL);
+  EXPECT_GE(r.quality.at("confirmed_support_queries").get<size_t>(),3U);
+  const auto ids=r.quality.at("independent_scan_ids").get<std::set<uint64_t>>();
+  EXPECT_EQ(ids.count(0),0U);EXPECT_EQ(ids.count(1),0U);
+}
+TEST_F(C2,WeakIntermediateQueryIsNotCountedAndStrongEvidenceCanResume) {
+  search.stationary_initialization=true;auto global=create();SearchResult r;
+  for(int k=0;k<2;++k)r=stationary_quality_step(*global,k,false);
+  ASSERT_EQ(r.quality.at("support_queries"),1);
+  for(int k=2;k<4;++k)r=stationary_quality_step(*global,k,true);
+  ASSERT_EQ(r.reason,"verifying_wait_strong_stationary_geometry")<<r.quality;
+  EXPECT_EQ(r.quality.at("support_queries"),1);EXPECT_TRUE(r.quality.at("support_anchor_strong").get<bool>());
+  bool resumed=false;
+  for(int k=4;k<6;++k) {
+    r=stationary_quality_step(*global,k,false);ASSERT_FALSE(r.confirmed);
+    if(r.quality.contains("support_queries")) {EXPECT_EQ(r.quality.at("support_queries"),2)<<r.quality;resumed=true;}
+  }
+  ASSERT_TRUE(resumed);
+  for(int k=6;k<14&&!r.confirmed;++k)r=stationary_quality_step(*global,k,false);
+  ASSERT_TRUE(r.confirmed)<<r.reason<<r.quality;
+  const auto ids=r.quality.at("independent_scan_ids").get<std::set<uint64_t>>();
+  // A later strong rolling window may legitimately include the last weak scan;
+  // the rejected weak window (2,3) itself must never have been counted.
+  EXPECT_FALSE(ids.count(2)&&ids.count(3));
+}
+TEST_F(C2,WeakStationaryGeometryNeverBecomesStrongByWaiting) {
+  search.stationary_initialization=true;auto global=create();SearchResult r;
+  for(int k=0;k<14;++k) {r=stationary_quality_step(*global,k,true);EXPECT_FALSE(r.confirmed);}
+  EXPECT_EQ(r.reason,"verifying_wait_strong_stationary_geometry");
+}
+TEST_F(C2,RegistrationProgressHasFullWindowAndCannotHandoffCancelledWork) {
+  auto global=create();relative=pose(0,0,0,.02,0,1.1);auto cloud=query(X*relative);
+  bool cancel=false;size_t progress_count=0;
+  auto progress=[&](const SearchResult& p) {
+    ++progress_count;EXPECT_EQ(p.reason,"searching_geometric_registration");EXPECT_FALSE(p.confirmed);
+    EXPECT_EQ(p.quality.at("query_window_frames"),search.window_frames);cancel=true;
+  };
+  auto r=global->process(10000000000LL,0,relative,cloud,0.,[&]{return cancel;},{},progress);
+  EXPECT_EQ(progress_count,0U);EXPECT_FALSE(r.confirmed);
+  r=global->process(10200000000LL,1,relative,cloud,.2,[&]{return cancel;},{},progress);
+  EXPECT_EQ(progress_count,1U);EXPECT_FALSE(r.confirmed);EXPECT_EQ(r.reason,"cancelled_generation");
 }
 TEST_F(C2,StationaryModeRejectsAliasesWrongGeometryAndOdomDrift) {
   search.stationary_initialization=true;
@@ -409,4 +495,31 @@ TEST_F(C2,RealKissUnknownFullSixDofReturnsTotalTargetFromSource) {
   EXPECT_FALSE(coarse->align(Cloud{},source).accepted);
 }
 #endif
+}
+
+
+TEST_F(C2,OnlineBurstsKeepEightFrameQueryWithoutRelaxingEvidence) {
+  search.window_frames=8;search.maximum_points=12000;search.window_seconds=1.;
+  search.stationary_initialization=true;
+  auto simulate=[&](size_t capacity) {
+    auto global=create();SearchResult result;bool attempted=false;
+    for(int batch=0;batch<8 && !result.confirmed;++batch) {
+      std::deque<int> queue;
+      for(int k=batch*4;k<(batch+1)*4;++k){while(queue.size()>=capacity)queue.pop_front();queue.push_back(k);}
+      for(int k:queue) {
+        relative=pose(0,0,0,.02,0,1.1);
+        Pose U=pose(100,-50,20,.1,-.4,.3)*relative;
+        result=global->process(10000000000LL+k*100000000LL,k,U,query(X*relative),k*.1);
+        attempted=attempted||result.quality.contains("candidates");
+      }
+    }
+    return std::make_pair(attempted,result);
+  };
+  auto old=simulate(2);EXPECT_FALSE(old.first);EXPECT_FALSE(old.second.confirmed);
+  EXPECT_EQ(old.second.reason,"searching_waiting_query_window");
+  EXPECT_LT(old.second.quality.at("query_window_frames").get<size_t>(),8U);
+  auto current=simulate(online_scan_capacity(true,search.window_frames));
+  EXPECT_TRUE(current.first);ASSERT_TRUE(current.second.confirmed)<<current.second.reason<<current.second.quality;
+  EXPECT_TRUE(current.second.confirmed->stationary_verified);
+  EXPECT_EQ(online_scan_capacity(false,8),2U); // Tracking remains latest-scan oriented.
 }

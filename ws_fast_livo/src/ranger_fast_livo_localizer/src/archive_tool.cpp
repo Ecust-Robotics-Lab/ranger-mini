@@ -9,6 +9,7 @@ int main(int argc,char** argv) {
       std::string option=argv[k],value=argv[k+1];
       if(option=="--archive") root=value;
       else if(option=="--compatibility") c.declaration=value;
+      else if(option=="--frontend-upgrade") c.frontend_upgrade=value;
       else if(option=="--identity-file") {
         auto identity=read_json_bounded(value,1024*1024);
         if(identity.at("schema_version")!=1)throw std::invalid_argument("unsupported identity schema");

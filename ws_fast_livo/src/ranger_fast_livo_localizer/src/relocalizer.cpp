@@ -12,7 +12,7 @@ void Relocalizer::reset() {window_.clear();support_.reset();next_attempt_=0;next
 SearchResult Relocalizer::reject(std::string reason,double steady,Json quality) {
   support_.reset();next_attempt_=steady+config_.retry_seconds;return {std::move(reason),std::move(quality),std::nullopt};
 }
-SearchResult Relocalizer::process(int64_t stamp,uint64_t scan,const Pose& U,const Cloud& cloud,double steady,const std::function<bool()>& cancelled,const std::vector<rb::tags::Prior>& priors) {
+SearchResult Relocalizer::process(int64_t stamp,uint64_t scan,const Pose& U,const Cloud& cloud,double steady,const std::function<bool()>& cancelled,const std::vector<rb::tags::Prior>& priors,const std::function<void(const SearchResult&)>& progress) {
   const double start=rb::steady_seconds();
   auto completed_steady=[&] {return steady+(rb::steady_seconds()-start);};
   auto check=[&] {if(cancelled())throw std::runtime_error("cancelled_generation");
@@ -26,11 +26,18 @@ SearchResult Relocalizer::process(int64_t stamp,uint64_t scan,const Pose& U,cons
     while(window_.size()>config_.window_frames||(window_.size()>1&&((stamp-window_.front().stamp)*1e-9>config_.window_seconds||
         (U.translation()-window_.front().U.translation()).norm()>config_.window_translation||rb::rotation_distance(U,window_.front().U)>config_.window_rotation)))window_.pop_front();
     if(steady<next_attempt_)return {"retry_backoff",{{"retry_after_seconds",next_attempt_-steady}},std::nullopt};
-    if(window_.size()<config_.window_frames)return {};
+    Json window_quality={{"query_window_frames",window_.size()},{"query_window_required_frames",config_.window_frames},
+       {"query_window_span_s",(stamp-window_.front().stamp)*1e-9},
+       {"query_window_max_seconds",config_.window_seconds}};
+    if(window_.size()<config_.window_frames)return {"searching_waiting_query_window",window_quality,std::nullopt};
     std::set<uint64_t> ids;for(const auto& s:window_)ids.insert(s.id);
-    if(support_)for(auto id:ids)if(support_->scans.count(id))return {"verifying_wait_disjoint_query_scans",{{"query_scan_ids",ids}},std::nullopt};
+    window_quality["query_scan_ids"]=ids;window_quality["query_stamp_ns"]=stamp;
+    if(support_)for(auto id:ids)if(support_->scans.count(id))return {"verifying_wait_disjoint_query_scans",window_quality,std::nullopt};
     Cloud query;
     for(const auto& s:window_)query+=*rb::transformed(*s.cloud,U.inverse()*s.U);
+    window_quality["query_points"]=query.size();
+    // This is telemetry only: no pose or readiness is granted before C2/C1 verification.
+    check();if(progress)progress({"searching_geometric_registration",window_quality,std::nullopt});check();
     const size_t candidate_limit=config_.stationary_initialization?16:config_.candidates;
     auto candidates=index_->query(query,candidate_limit);check();
     if(candidates.size()>candidate_limit)return reject("invalid_candidates",completed_steady());
@@ -88,6 +95,7 @@ SearchResult Relocalizer::process(int64_t stamp,uint64_t scan,const Pose& U,cons
     Json quality={{"candidates",diagnostics},{"tag_candidates",tag_diagnostics},{"query_scan_ids",ids},{"query_stamp_ns",stamp},{"query_points",query.size()},
       {"map_uuid",map_->uuid},{"graph_version",map_->graph_version},{"source_manifest_sha256",map_->manifest_sha},
       {"elapsed_ms",(rb::steady_seconds()-start)*1000},{"cache_bytes",provider_.cache_bytes()}};
+    quality.update(window_quality);
     if(matches.empty())return reject("global_no_geometric_match",completed_steady(),quality);
     std::sort(matches.begin(),matches.end(),[](const auto& a,const auto& b){return a.rmse<b.rmse;});const auto& best=matches.front();
     for(size_t k=1;k<matches.size();++k) {
@@ -109,13 +117,17 @@ SearchResult Relocalizer::process(int64_t stamp,uint64_t scan,const Pose& U,cons
           other.overlap>=best.overlap-2*tracking_.registration.ambiguity_overlap) strong=false;
     }
     quality["stationary_strong_geometry"]=strong;quality["evaluated_candidate_limit"]=candidate_limit;
+    quality["best_rmse_m"]=best.rmse;quality["best_overlap"]=best.overlap;
+    quality["stationary_max_rmse_m"]=std::min(.12,tracking_.registration.max_rmse*.65);
     Pose correction=best.T_target_source*U.inverse();quality["verified_pose"]=rb::pose_json(best.T_target_source);
     std::string tag_image;
     if(best.native_diagnostics.contains("tag_evidence"))tag_image=best.native_diagnostics.at("tag_evidence").value("image_id",best.native_diagnostics.at("tag_evidence").value("observation_id",""));
     if(best.native_diagnostics.contains("tag_evidence"))quality["selected_tag_evidence"]=best.native_diagnostics.at("tag_evidence");
-    if(!support_) {
-      support_=Support{stamp,U,correction,ids,1,{},strong};if(!tag_image.empty())support_->tag_images.insert(tag_image);return {"verifying_independent_motion_support",quality,std::nullopt};
-    }
+    auto anchor=[&] {
+      support_=Support{stamp,U,correction,ids,1,{},strong};if(!tag_image.empty())support_->tag_images.insert(tag_image);
+      quality["support_queries"]=1;quality["support_elapsed_s"]=0.;quality["support_anchor_strong"]=strong;
+    };
+    if(!support_) {anchor();return {strong?"verifying_stationary_geometry":"verifying_independent_motion_support",quality,std::nullopt};}
     if(!tag_image.empty()&&support_->tag_images.count(tag_image))return {"verifying_wait_independent_tag_image",quality,std::nullopt};
     if((support_->correction.translation()-correction.translation()).norm()>config_.consistency_translation||rb::rotation_distance(support_->correction,correction)>config_.consistency_rotation)
       return reject("global_inconsistent_motion_support",completed_steady(),quality);
@@ -124,14 +136,31 @@ SearchResult Relocalizer::process(int64_t stamp,uint64_t scan,const Pose& U,cons
     bool map_motion=(best.T_target_source.translation()-earlier_pose.translation()).norm()>=config_.support_translation||
       rb::rotation_distance(best.T_target_source,earlier_pose)>=config_.support_rotation;
     bool time=(stamp-support_->stamp)*1e-9>=config_.support_time;
+    quality["support_queries"]=support_->count;quality["support_elapsed_s"]=(stamp-support_->stamp)*1e-9;
+    quality["support_anchor_strong"]=support_->stationary_strong;
+    quality["support_odom_translation_m"]=(U.translation()-support_->U.translation()).norm();
+    quality["support_odom_rotation_rad"]=rb::rotation_distance(U,support_->U);
+    quality["support_map_translation_m"]=(best.T_target_source.translation()-earlier_pose.translation()).norm();
+    quality["support_map_rotation_rad"]=rb::rotation_distance(best.T_target_source,earlier_pose);
+    quality["support_correction_translation_m"]=(correction.translation()-support_->correction.translation()).norm();
+    quality["support_correction_rotation_rad"]=rb::rotation_distance(correction,support_->correction);
+    quality["support_motion_baseline"]=motion&&map_motion;
+    // A weak first hypothesis cannot permanently disable static initialization.
+    // Start at ONE fresh strong window, discarding the weak window's counts/IDs.
+    // Keep a real motion baseline when both odometry and map geometry support it.
+    if(strong&&!support_->stationary_strong&&!(motion&&map_motion)) {
+      anchor();return {"verifying_stationary_support_restarted",quality,std::nullopt};
+    }
     const bool stationary=strong && support_->stationary_strong &&
       (U.translation()-support_->U.translation()).norm()<=.03 && rb::rotation_distance(U,support_->U)<=.03 &&
       (best.T_target_source.translation()-earlier_pose.translation()).norm()<=.03 && rb::rotation_distance(best.T_target_source,earlier_pose)<=.03 &&
       (correction.translation()-support_->correction.translation()).norm()<=.05 && rb::rotation_distance(correction,support_->correction)<=.03;
-    support_->stationary_strong=support_->stationary_strong&&strong;
+    // A weak query supplies no static evidence, but does not poison the anchor.
+    // Only mutually consistent strong windows reach the static counter below.
     if(((!motion||!map_motion) && !stationary) || !time)
-      return {"verifying_insufficient_time_or_motion_baseline",quality,std::nullopt};
+      return {config_.stationary_initialization&&!strong&&!(motion&&map_motion)?"verifying_wait_strong_stationary_geometry":"verifying_insufficient_time_or_motion_baseline",quality,std::nullopt};
     ++support_->count;support_->scans.insert(ids.begin(),ids.end());
+    quality["support_queries"]=support_->count;
     if(!tag_image.empty())support_->tag_images.insert(tag_image);
     bool static_confirmed=stationary && support_->count>=3 && (stamp-support_->stamp)*1e-9>=1.;
     if((!motion||!map_motion) && !static_confirmed)

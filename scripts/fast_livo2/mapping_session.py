@@ -29,8 +29,9 @@ SESSION = ROOT/'.runtime/sessions/fast_livo_mapping'
 PREFIX = ROOT/'ws_fast_livo/online_install'
 BACKEND = PREFIX/'ranger_fast_livo_backend/lib/ranger_fast_livo_backend/backend_node'
 RECEIPTS = PREFIX/'ranger_fast_livo_backend/lib/ranger_fast_livo_backend/receipt_probe'
-FRONTEND_SOURCE = ROOT/'ws_fast_livo/online_frontend_source'
-FRONTEND = ROOT/'ws_fast_livo/online_frontend_install/fast_livo/lib/fast_livo/fastlivo_mapping'
+FRONTEND_SOURCE = ROOT/'ws_fast_livo/latency_frontend_candidate_source'
+FRONTEND = ROOT/'ws_fast_livo/latency_frontend_install/fast_livo/lib/fast_livo/fastlivo_mapping'
+FRONTEND_MANIFEST = FRONTEND_SOURCE/'latency_source_manifest.json'
 REQUIRED_TOPICS = {**TOPICS, '/fast_livo/deskewed_imu': 'sensor_msgs/msg/PointCloud2'}
 EXTRA_TOPICS = ['/fast_livo/backend/estimate', '/fast_livo/backend/health',
                 '/fast_livo/backend/optimized_path', '/fast_livo/backend/view/status',
@@ -91,8 +92,12 @@ def load(path, default=None):
     except (OSError, ValueError): return default
 
 
-def frontend_identity(cfg):
+def frontend_identity(cfg,legacy=False):
     """The existing map identity, computed from the actual query frontend."""
+    if not legacy:
+        from fast_livo2.frontend_upgrade import verify_active_frontend
+        verify_active_frontend()
+    binary=ROOT/'ws_fast_livo/online_frontend_install/fast_livo/lib/fast_livo/fastlivo_mapping' if legacy else FRONTEND
     frontend = yaml.safe_load(Path(cfg['FAST_LIVO_CONFIG']).read_text())['/**']['ros__parameters']
     definitions = {
         'sensor_configuration_sha256': {'schema': 1, 'extrin_calib': frontend['extrin_calib'],
@@ -102,10 +107,13 @@ def frontend_identity(cfg):
         'time_contract_sha256': {'schema': 1, 'time_offset': frontend['time_offset'],
             'pose': 'VIO-corrected IMU', 'cloud': 'same-stamp deskewed IMU interval',
             'raw_header_rewritten': False},
-        'frontend_sources_sha256': {'schema': 1, 'binary_sha256': sha(FRONTEND),
+        'frontend_sources_sha256': {'schema': 1, 'binary_sha256': sha(binary),
             'sources_lock_sha256': sha(ROOT/'config/fast_livo2/sources.lock.json'),
             'patch_sha256': sha(ROOT/'patches/fast_livo2_stage_a.patch'),
             'online_io_patch_sha256': sha(ROOT/'patches/fast_livo2_online_io.patch')}}
+    if not legacy:
+        definitions['frontend_sources_sha256'].update(latency_patch_sha256=sha(ROOT/'patches/fast_livo2_finish_pending_vio.patch'),
+            source_manifest_sha256=sha(FRONTEND_MANIFEST))
     return {'schema_version': 1, **{key: hashlib.sha256(json.dumps(value,
         sort_keys=True, separators=(',', ':')).encode()).hexdigest() for key, value in definitions.items()},
         'definitions': definitions, 'physical_sync_validated': False}
@@ -391,7 +399,7 @@ def main():
     source_files = snapshot_sources(folder, cfg)
     shutil.copy2(FRONTEND, folder/'sources/online_fastlivo_mapping')
     source_files.append({'source': str(FRONTEND), 'file': 'sources/online_fastlivo_mapping', 'sha256': sha(FRONTEND)})
-    shutil.copy2(FRONTEND_SOURCE/'online_source_manifest.json', folder/'sources/online_source_manifest.json')
+    shutil.copy2(FRONTEND_MANIFEST, folder/'sources/latency_source_manifest.json')
     for key in ('FAST_LIVO_CONFIG', 'FAST_LIVO_CAMERA_CONFIG', 'FAST_LIVO_LIDAR_CONFIG'):
         source = Path(cfg[key]); destination = folder/'config'/source.name
         shutil.copy2(source, destination); cfg[key] = str(destination)
@@ -416,7 +424,8 @@ def main():
     source_paths = list((ROOT/'ws_fast_livo/src/ranger_fast_livo_backend').rglob('*.cpp'))
     source_paths += list((ROOT/'ws_fast_livo/src/ranger_fast_livo_backend').rglob('*.hpp'))
     source_paths += list((ROOT/'scripts/fast_livo2').glob('mapping*.py'))
-    source_paths += [FRONTEND_SOURCE/'online_source_manifest.json', ROOT/'patches/fast_livo2_online_io.patch']
+    source_paths += [FRONTEND_MANIFEST, ROOT/'patches/fast_livo2_online_io.patch',
+                     ROOT/'patches/fast_livo2_finish_pending_vio.patch', ROOT/'config/fast_livo2/active_frontend.lock.json']
     provenance = {'source_data_id': str(folder), 'frontend_gravity_aligned': True,
         'gravity_alignment_evidence': 'owned frontend configured gravity_align_en=true; physical accuracy unverified',
         'physical_sync': 'PARTIAL', 'img_time_offset_seconds': .1, 'tag_enabled': False,

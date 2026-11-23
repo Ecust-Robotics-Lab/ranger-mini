@@ -2,8 +2,13 @@
 #include "localizer.hpp"
 #include <ranger_fast_livo_backend/tags.hpp>
 #include <set>
+#include <algorithm>
 
 namespace ranger_localizer {
+// Tracking coalesces old scans, but C2 must first acquire a complete query.
+inline size_t online_scan_capacity(bool collecting_query,size_t query_frames) {
+  return collecting_query?std::max(size_t(2),query_frames):size_t(2);
+}
 struct SearchConfig {
   std::string descriptor="radial_pair_distribution_v1";
   size_t candidates=5, maximum_points=4000, window_frames=2, maximum_index_frames=10000;
@@ -49,7 +54,8 @@ public:
   Relocalizer(std::shared_ptr<const Archive> map,Config tracking,SearchConfig config,
     std::shared_ptr<const PlaceRetriever> index,std::unique_ptr<rb::CoarseRegistration> coarse);
   SearchResult process(int64_t stamp,uint64_t scan,const Pose& U,const Cloud& cloud,double steady,
-    const std::function<bool()>& cancelled=[] {return false;},const std::vector<rb::tags::Prior>& priors={});
+    const std::function<bool()>& cancelled=[] {return false;},const std::vector<rb::tags::Prior>& priors={},
+    const std::function<void(const SearchResult&)>& progress={});
   void reset();
 private:
   struct Sample {int64_t stamp;uint64_t id;Pose U;Cloud::Ptr cloud;};

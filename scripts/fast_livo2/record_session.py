@@ -128,7 +128,10 @@ def snapshot_sources(folder, cfg, wheel=None):
         'ws_camera/src/hik_camera_trigger_driver/src/hik_camera_node.cpp',
         'ws_camera/install/timeshare_writer/lib/timeshare_writer/timeshare_writer_node',
         'ws_camera/install/hik_camera_trigger_driver/lib/hik_camera_trigger_driver/hik_camera_trigger_driver_node',
-        'ws_fast_livo/install/fast_livo/lib/fast_livo/fastlivo_mapping'))
+        'ws_fast_livo/latency_frontend_install/fast_livo/lib/fast_livo/fastlivo_mapping',
+        'ws_fast_livo/latency_frontend_candidate_source/latency_source_manifest.json',
+        'config/fast_livo2/active_frontend.lock.json',
+        'patches/fast_livo2_finish_pending_vio.patch'))
     paths.update([CAMERA_PREFIX/'lib/hik_camera_trigger_driver/hik_camera_trigger_driver_node',
                   CAMERA_PREFIX/'lib/libhik_camera_trigger_driver.so',
                   ROOT/'ws_camera/src/hik_camera_trigger_driver/src/frame_time_guard.hpp'])

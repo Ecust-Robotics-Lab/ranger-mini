@@ -16,6 +16,8 @@ from ranger_localization_bridge.runtime_config import resolve,validate_fast_livo
 
 
 def specs(cfg, visualization='rviz', foxglove_port=8765):
+    from fast_livo2.frontend_upgrade import verify_active_frontend
+    active=verify_active_frontend()
     share=Path(os.environ['RANGER_LIVO_TIMESHARE'])
     cal=ROOT/'ws_camera'
     lidar=ROOT/'ws_livox/install/livox_ros_driver2/lib/livox_ros_driver2/livox_ros_driver2_node'
@@ -36,7 +38,7 @@ def specs(cfg, visualization='rviz', foxglove_port=8765):
         '-p','timeshare_path:='+str(share),'-p','sync_csv_path:='+str(share.parent/'camera_sync.csv'),
         '-r','__node:=hik_camera_trigger'],depends=('writer',),requires=('writer',),ready_key='camera',
         start_requires=('camera_unclaimed',),resource='hik_camera'),
-      Component('frontend',[str(ROOT/'ws_fast_livo/install/fast_livo/lib/fast_livo/fastlivo_mapping'),
+      Component('frontend',[str(ROOT/active['binary']),
         '--ros-args','--params-file',cfg['FAST_LIVO_CONFIG'],
         '-p','use_sim_time:=false','--log-level','warn'],depends=('camera',),requires=('lidar','camera'),
         ready_key='frontend',start_requires=('frontend_unclaimed',),resource='fast_livo_frontend')]

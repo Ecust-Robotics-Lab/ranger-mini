@@ -141,7 +141,15 @@ class Monitor(Node):
                 handle.write(json.dumps({**self.backend, 'received_steady': self.backend_receipt,
                     'clock_ns': self.get_clock().now().nanoseconds,
                     'metrics': {k: self.metrics.get(k) for k in ('queued_jobs', 'skipped_scans',
-                        'processed_scans', 'stale_results', 'sample_age_seconds', 'elapsed_ms')}})+'\n')
+                        'processed_scans', 'stale_results', 'sample_age_seconds', 'elapsed_ms',
+                        'query_window_frames', 'query_window_required_frames', 'query_window_span_s',
+                        'query_scan_ids', 'query_stamp_ns', 'stationary_strong_geometry',
+                        'best_rmse_m', 'best_overlap', 'stationary_max_rmse_m', 'verified_pose',
+                        'support_anchor_strong', 'support_queries', 'support_elapsed_s',
+                        'support_odom_translation_m', 'support_odom_rotation_rad',
+                        'support_map_translation_m', 'support_map_rotation_rad',
+                        'support_correction_translation_m', 'support_correction_rotation_rad',
+                        'support_motion_baseline', 'confirmation_mode', 'method', 'native_diagnostics')}})+'\n')
 
     def diagnostics(self, message):
         self.backend_clock_ns = self.stamp(message)

@@ -41,6 +41,7 @@ public:
     config_.registration.registration_threads=declare_parameter<int>("registration_threads",1);
     config_.exclude_identical_stamp=declare_parameter<bool>("exclude_identical_stamp",true);config_.validate();
     global_enabled_=declare_parameter<bool>("global_search_enabled",false);search_allowed_=global_enabled_;
+    collecting_global_query_=global_enabled_;
     index_path_=declare_parameter<std::string>("global_index_path","");
     search_config_.descriptor=declare_parameter<std::string>("global_descriptor",search_config_.descriptor);
 #define GLOBAL_SIZE(x) {auto n=declare_parameter<int64_t>("global_" #x,search_config_.x);if(n<1)throw std::invalid_argument("global_" #x);search_config_.x=size_t(n);}
@@ -83,6 +84,7 @@ public:
     compatibility_.sensor_configuration_sha256=declare_parameter<std::string>("sensor_configuration_sha256","");
     compatibility_.time_contract_sha256=declare_parameter<std::string>("time_contract_sha256","");
     compatibility_.frontend_sources_sha256=declare_parameter<std::string>("frontend_sources_sha256","");
+    compatibility_.frontend_upgrade=declare_parameter<std::string>("frontend_upgrade_path","");
     auto archive=declare_parameter<std::string>("archive_path","");auto declaration=declare_parameter<std::string>("compatibility_path","");
     message_.header.frame_id="map";message_.imu_frame="fast_livo_imu";message_.session_id=rb::uuid();message_.reason="waiting_map";
     publisher_=create_publisher<Estimate>("/fast_livo/localizer/estimate",10);
@@ -101,6 +103,7 @@ private:
   struct Job {Kind kind=Kind::Reset;uint64_t generation=0,scan=0;rb::Pair pair;InitialPose initial;fs::path archive,declaration;std::string tag_context;std::vector<std::pair<double,std::string>> tag_batches;};
   Config config_;Compatibility compatibility_;ArchiveLimits limits_;Pose T_base_imu_;
   SearchConfig search_config_;bool global_enabled_=false;std::atomic<bool> search_allowed_{false};std::string index_path_;
+  std::atomic<bool> collecting_global_query_{false};
   std::shared_ptr<PlaceIndex> place_index_;std::unique_ptr<Relocalizer> search_;
   bool tag_relocalization_=false,tag_monitor_=false;std::string tag_landmarks_path_,tag_reason_;
   std::optional<rb::tags::Config> tag_config_;std::optional<rb::tags::Map> tag_map_;
@@ -220,7 +223,8 @@ private:
         for(auto& pair:pairs_.drain(now,available)) {
           if(online_) {
             size_t pending=0;for(const auto& j:jobs_)if(j.kind==Kind::Scan)++pending;
-            while(pending>=2) {
+            const size_t capacity=online_scan_capacity(collecting_global_query_.load(),search_config_.window_frames);
+            while(pending>=capacity) {
               auto old=std::find_if(jobs_.begin(),jobs_.end(),[](const Job& j){return j.kind==Kind::Scan;});
               bytes-=old->pair.cloud->data.size();jobs_.erase(old);--pending;++skipped_scans_;
             }
@@ -292,7 +296,12 @@ private:
     if(result.valid) request_started_=0;
   }
   void process_search(Job& job,const Cloud& cloud,const Pose& U,int64_t stamp,const std::function<bool()>& cancelled,const std::vector<rb::tags::Prior>& priors) {
-    auto result=search_->process(stamp,job.scan,U,cloud,rb::steady_seconds(),cancelled,priors);
+    auto progress=[&](const SearchResult& result) {
+      std::lock_guard<std::mutex> lock(mutex_);if(cancelled())return;
+      message_.pose_valid=false;message_.reason=result.reason;message_.state=lost_latched_?3:0;
+      message_.latest_scan_stamp_ns=stamp;message_.scan_id=job.scan;message_.quality_json=result.quality.dump();
+    };
+    auto result=search_->process(stamp,job.scan,U,cloud,rb::steady_seconds(),cancelled,priors,progress);
     if(tag_config_){result.quality["tag_status"]=tag_reason_;result.quality["tag_buffer"]=tag_buffer_->diagnostics();}
     {
       std::lock_guard<std::mutex> lock(mutex_);if(cancelled())return;
@@ -375,7 +384,8 @@ private:
               rb::tags::require(rb::steady_seconds()-received<=tag_config_->maximum_wait,"consumer_queue_expired");tag_buffer_->push(Json::parse(text),job.tag_context);
             }catch(const std::exception& e){tag_reason_=e.what();}
             attached=tag_buffer_->take(stamp,U);if(tag_map_&&tag_relocalization_)priors=rb::tags::priors(*tag_map_,attached,*tag_config_);}
-          if(search_&&search_allowed_&&core_->needs_initialization())process_search(job,*cloud,U,stamp,cancelled,priors);
+          collecting_global_query_=search_&&search_allowed_&&core_->needs_initialization();
+          if(collecting_global_query_)process_search(job,*cloud,U,stamp,cancelled,priors);
           else {auto result=core_->process(stamp,job.scan,U,*cloud,rb::steady_seconds(),cancelled);
             if(result.valid&&handoff_verify_){Json visual;if(!handoff_verify_(result.pose,U,visual)){
                 core_=std::make_unique<Localizer>(map_,config_);if(search_)search_->reset();result.valid=false;result.state=0;result.reason="tag_handoff_c1_visual_inconsistent";
@@ -387,6 +397,7 @@ private:
               record_tags(result,U,job,attached);
             }catch(const std::exception& e){tag_recording_=false;result.quality["tag_record_disabled"]=e.what();}
             commit(result,job.generation);}
+          collecting_global_query_=search_&&search_allowed_&&core_->needs_initialization();
           {std::lock_guard<std::mutex> lock(mutex_);++processed_scans_;}
         }
       } catch(const std::exception& e) {

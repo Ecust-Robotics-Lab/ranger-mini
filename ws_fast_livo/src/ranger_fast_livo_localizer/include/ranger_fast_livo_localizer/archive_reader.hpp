@@ -14,6 +14,7 @@ struct ArchiveLimits {
 };
 struct Compatibility {
   fs::path declaration;
+  fs::path frontend_upgrade;
   // Empty expected identities never silently attest a map. Use a bound offline declaration.
   std::string sensor_configuration_sha256, time_contract_sha256, frontend_sources_sha256;
 };

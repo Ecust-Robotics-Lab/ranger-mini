@@ -20,6 +20,7 @@ ROOT = Path(__file__).resolve().parents[3]
 sys.path[:0] = [str(ROOT/'scripts/fast_livo2'), str(ROOT/'scripts'),
                str(ROOT/'ws_nav/src/ranger_localization_bridge')]
 import mapping_session as mapping
+from camera_startup import camera_startup_detail
 from session_manager import JsonHealth, atomic_json, read_session, session_live, run_guarded, stop_session
 from ranger_localization_bridge.runtime_config import resolve, validate_fast_livo_config
 
@@ -34,6 +35,10 @@ IDENTITIES = ('sensor_configuration_sha256', 'time_contract_sha256', 'frontend_s
 def components(cfg, args, folder, identity):
     # Keep transport, devices, discovery checks and process resources identical.
     result = mapping.components(cfg, args, folder)
+    # Workbench sessions outlive optional raw recordings. Legacy finite captures
+    # retain their recorder, readiness checks and managed completion unchanged.
+    if getattr(args, 'continuous', False):
+        result = [c for c in result if c.name != 'capture']
     localizer = next(c for c in result if c.name == 'backend')
     localizer.name = 'localizer'
     config_root = folder/'config' if (folder/'config/localizer.yaml').exists() else ROOT/'config/fast_livo2'
@@ -48,6 +53,8 @@ def components(cfg, args, folder, identity):
                        '-p', 't_base_imu_rpy:='+cfg['T_BASE_IMU_RPY']]
     for key in IDENTITIES:
         localizer.argv += ['-p', key+':='+identity[key]]
+    if getattr(args,'frontend_upgrade',None):
+        localizer.argv += ['-p','frontend_upgrade_path:='+str(args.frontend_upgrade)]
     localizer.ready_key = 'localizer_alive'
     localizer.critical = True
     for c in result:
@@ -110,6 +117,12 @@ class Health(JsonHealth):
                   f'{phase}; processed={metrics.get("processed_scans", 0)} '
                   f'skipped={metrics.get("skipped_scans", 0)} age={metrics.get("sample_age_seconds")}', flush=True)
             self.previous, self.last_print = phase, now
+            # The map can already be loaded while the camera has produced no
+            # frames. Report that input failure separately from C2 search.
+            state = mapping.load(self.path.parent/'state.json', {})
+            detail = camera_startup_detail(self.path.parent, state.get('components', {}))
+            if detail:
+                print(f'CAMERA_STARTUP {detail}', flush=True)
             wheel = mapping.load(self.folder/'wheel_clock.json', {})
             if wheel:
                 print(f'WHEEL_CLOCK ready={wheel.get("ready")} forwarded={wheel.get("forwarded")} '
@@ -130,6 +143,8 @@ def parser():
     p.add_argument('--replay-view', type=Path)
     p.add_argument('--output', type=Path)
     p.add_argument('--seconds', type=float, default=900.)
+    p.add_argument('--continuous', action='store_true',
+                   help='managed localization without a finite recorder; explicit stop required')
     p.add_argument('--domain', type=int, default=215)
     p.add_argument('--min-free-gb', type=float, default=20.)
     p.add_argument('--registration', choices=('pcl_icp', 'small_gicp'), default='small_gicp')
@@ -150,8 +165,9 @@ def record_topics(args):
         topics += ['/wheel/odom', '/fast_livo/navigation/wheel/odom', '/fast_livo/navigation/clock_status',
                    '/localization/estimate', '/localization_health', '/navigation_ready', '/tf', '/tf_static']
     if args.record_navigation:
-        topics += ['/map', '/plan', '/navigation/prediction', '/navigation/state',
+        topics += ['/map', '/plan', '/navigation/route', '/navigation/prediction', '/navigation/state',
                    '/navigation/control', '/navigation/observation', '/navigation/minimum_distance',
+                   '/navigation/execution', '/base/execution_state',
                    '/navigation/control_owner', '/navigation/actual_mode', '/navigation/safety_ready',
                    '/cmd_vel_nav', '/cmd_vel_after_gate', '/base/safe_cmd_vel', '/base/motion_mode_request',
                    '/motion_state', '/system_state', '/diagnostics', '/ranger/motion_enable',
@@ -201,6 +217,8 @@ def main():
     mapping.environment(cfg, folder)
     os.environ['LD_LIBRARY_PATH'] = str(CAMERA_PREFIX/'lib')+':'+str(PREFIX/'lib')+':'+os.environ.get('LD_LIBRARY_PATH', '')
     identity = mapping.frontend_identity(cfg)
+    from fast_livo2.frontend_upgrade import declaration
+    args.frontend_upgrade=declaration(args.archive,identity,mapping.frontend_identity(cfg,legacy=True),persist=args.execute)
     if not args.execute:
         print(json.dumps({'action': 'DRY-RUN', 'output': str(folder), 'mode': args.mode,
             'hardware_started': False, 'would_start_sensors': not bool(args.replay_view),
@@ -255,15 +273,20 @@ def main():
     if args.public_tf:
         shutil.copy2(ROOT/'config/fast_livo2/navigation_prep.yaml', folder/'config/navigation_prep.yaml')
     atomic_json(folder/'source_identity.json', identity)
+    if args.frontend_upgrade:
+        shutil.copy2(args.frontend_upgrade,folder/'config/frontend_upgrade.json')
+        args.frontend_upgrade=folder/'config/frontend_upgrade.json'
     loader = subprocess.run([str(PREFIX/'lib/ranger_fast_livo_localizer/archive_tool'), '--archive',
-        str(args.archive.resolve()), '--identity-file', str(folder/'source_identity.json')], capture_output=True, text=True)
+        str(args.archive.resolve()), '--identity-file', str(folder/'source_identity.json'),
+        *(['--frontend-upgrade',str(args.frontend_upgrade)] if args.frontend_upgrade else [])], capture_output=True, text=True)
     (folder/'archive_loader.log').write_text(loader.stdout+loader.stderr)
     if loader.returncode: raise RuntimeError('map identity/integrity validation failed; see '+str(folder/'archive_loader.log'))
     mapping.environment(cfg, folder)
     os.environ['LD_LIBRARY_PATH'] = str(CAMERA_PREFIX/'lib')+':'+str(PREFIX/'lib')+':'+os.environ.get('LD_LIBRARY_PATH', '')
     topics_to_record = record_topics(args)
     atomic_json(folder/'manifest.json', {'schema_version': 1, 'kind': 'online_localization_capture',
-        'folder': str(folder), 'seconds': args.seconds, 'mode': args.mode, 'domain': args.domain,
+        'folder': str(folder), 'seconds': None if args.continuous else args.seconds,
+        'continuous': args.continuous, 'mode': args.mode, 'domain': args.domain,
         'topics': mapping.required_topics(args), 'record_topics': topics_to_record,
         'record_navigation': args.record_navigation,
         'min_free_bytes': int(args.min_free_gb*1e9), 'managed_finalization': True,
@@ -278,10 +301,12 @@ def main():
         'files_sha256': {str(f): mapping.sha(f) for f in [NODE, mapping.FRONTEND,
             PREFIX/'lib/libranger_localizer_core.so', *list((folder/'config').iterdir()),
             ROOT/'ws_fast_livo/src/ranger_fast_livo_localizer/src/node.cpp', Path(__file__),
+            ROOT/'scripts/fast_livo2/camera_startup.py',
             *([ROOT/'scripts/fast_livo2/navigation/live_clock.py',
                ROOT/'scripts/fast_livo2/navigation/wheel_clock_node.py',
                args.navigation_map/'manifest.json'] if args.public_tf else []),
             *([ROOT/'config/exact_mppi/field_navigation.rviz',
+               *sorted((ROOT/'ws_nav/src/ranger_navigation_msgs/msg').glob('*.msg')),
                ROOT/'ws_nav/src/ranger_navigation/config/exact_navigation.yaml',
                ROOT/'ws_base/install_exact/ranger_base/lib/ranger_base/ranger_base_node',
                *sorted((ROOT/'ws_nav/src/ranger_navigation/ranger_navigation').glob('*.py'))]
@@ -297,11 +322,12 @@ def main():
     run, state = read_session(SESSION)
     mapping.archive_logs(folder, run, run, folder/'sensor_assets', True)
     recorder = mapping.load(folder/'recorder_result.json', {})
-    result = {'workflow_success': code == 0 and recorder.get('exit') == 0 and not recorder.get('error'),
+    result = {'workflow_success': code == 0 and (args.continuous or
+                  (recorder.get('exit') == 0 and not recorder.get('error'))),
         'session_exit': code, 'session_state': state.get('state'), 'recorder': recorder,
         'localization_acceptance': 'NOT_EVALUATED', 'physical_sync': 'PARTIAL',
         'hardware_started': not bool(args.replay_view)}
-    if args.public_tf:
+    if args.public_tf and not args.continuous:
         from fast_livo2.navigation.audit_live_capture import audit
         try:
             summary = audit(folder)
@@ -311,7 +337,7 @@ def main():
             result['navigation_functional_result'] = 'AUDIT_ERROR'
             result['navigation_audit_error'] = str(exc)
     atomic_json(folder/'localization_result.json', result)
-    success = result['workflow_success'] and (not args.public_tf or result.get('navigation_functional_result') == 'OBSERVED')
+    success = result['workflow_success'] and (args.continuous or not args.public_tf or result.get('navigation_functional_result') == 'OBSERVED')
     print(json.dumps(result, indent=2)); return 0 if success else 2
 
 

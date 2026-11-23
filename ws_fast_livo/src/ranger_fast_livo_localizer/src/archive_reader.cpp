@@ -113,7 +113,30 @@ std::shared_ptr<Archive> Archive::load(const fs::path& requested,const ArchiveLi
        {"sensor_configuration_sha256",c.sensor_configuration_sha256},{"time_contract_sha256",c.time_contract_sha256},{"frontend_sources_sha256",c.frontend_sources_sha256}}) {
     identities=identities && digest(item.second) && a->provenance.value(item.first,"")==item.second;
   }
-  if(!c.declaration.empty()) {
+  if(!c.frontend_upgrade.empty()) {
+    require(c.declaration.empty(),"frontend upgrade cannot override offline compatibility");
+    a->compatibility=read_json_bounded(c.frontend_upgrade,1024*1024);
+    const auto& u=a->compatibility;
+    require(u.at("schema_version")==1 && u.at("mode")=="frontend_timing_upgrade" &&
+      u.at("change_kind")=="finish_pending_vio_without_extra_scan" &&
+      digest(u.at("from_frontend_sources_sha256").get<std::string>()) &&
+      u.at("source_manifest_sha256")==a->manifest_sha && u.at("map_uuid")==a->uuid &&
+      digest(c.sensor_configuration_sha256) && digest(c.time_contract_sha256) && digest(c.frontend_sources_sha256) &&
+      a->provenance.value("sensor_configuration_sha256","")==c.sensor_configuration_sha256 &&
+      a->provenance.value("time_contract_sha256","")==c.time_contract_sha256 &&
+      u.at("sensor_configuration_sha256")==c.sensor_configuration_sha256 &&
+      u.at("time_contract_sha256")==c.time_contract_sha256 &&
+      u.at("from_frontend_sources_sha256")==a->provenance.value("frontend_sources_sha256","") &&
+      u.at("to_frontend_sources_sha256")==c.frontend_sources_sha256 &&
+      u.at("physical_sync_validated")==false && u.at("absolute_accuracy_validated")==false &&
+      u.at("limitations").is_array() && !u.at("limitations").empty(),"unbound/incompatible frontend timing upgrade");
+    const auto& evidence=u.at("evidence_files_sha256");
+    require(evidence.is_object()&&!evidence.empty()&&evidence.size()<=256,"missing frontend upgrade evidence");
+    for(auto it=evidence.begin();it!=evidence.end();++it) {
+      fs::path p(it.key());require(p.is_absolute()&&digest(it.value().get<std::string>())&&fs::is_regular_file(p)&&
+        fs::file_size(p)<=l.file_bytes&&rb::sha256(p)==it.value(),"frontend upgrade evidence SHA mismatch");
+    }
+  } else if(!c.declaration.empty()) {
     a->compatibility=read_json_bounded(c.declaration,1024*1024);
     require(a->compatibility.at("schema_version")==1 && a->compatibility.at("mode")=="offline_experiment" &&
             a->compatibility.at("source_manifest_sha256")==a->manifest_sha &&

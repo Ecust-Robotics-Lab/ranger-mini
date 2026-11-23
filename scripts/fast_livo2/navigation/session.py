@@ -20,6 +20,7 @@ SESSION=ROOT/'.runtime/sessions/fast_livo_navigation_prep'
 
 def components(folder,geometry):
     manifest=load_map(folder);cfg=resolve(ROOT)
+    timing=yaml.safe_load((ROOT/'ws_nav/src/ranger_navigation/config/exact_navigation.yaml').read_text())['timing']
     install=yaml.safe_load(Path(geometry).read_text())['installation']
     extrinsics=['-p','t_base_imu_xyz:='+json.dumps(install['t_base_imu_xyz']),
                 '-p','t_base_imu_rpy:='+json.dumps(install['t_base_imu_rpy'])]
@@ -27,7 +28,8 @@ def components(folder,geometry):
     bounds=[]
     for key,param in [('TF_MAX_AGE_S','tf_max_age_s'),('ODOM_MAX_AGE_S','odom_max_age_s'),
                       ('ODOM_HISTORY_S','odom_history_s'),('ODOM_MAX_GAP_S','odom_max_gap_s'),('HEARTBEAT_MAX_AGE_S','heartbeat_max_age_s')]:
-        bounds+=['-p',param+':='+cfg[key]]
+        value=str(timing['localization_sample_max_age']) if key=='TF_MAX_AGE_S' else cfg[key]
+        bounds+=['-p',param+':='+value]
     specs=[Component('monitor',[sys.executable,str(Path(__file__).with_name('monitor.py'))],ready_key='probe_live'),
         Component('map_server',['/opt/ros/humble/lib/nav2_map_server/map_server',*common,
             '-r','__node:=fast_livo_navigation_map','-p','yaml_filename:='+str(Path(folder).resolve()/'map.yaml'),
@@ -44,6 +46,8 @@ def components(folder,geometry):
             '--frame-id','base_link','--child-frame-id',frame,*common,'-r','__node:=fast_livo_static_'+key],
             depends=('map_lifecycle',),resource='fast_livo_static_'+key))
     specs += [Component('adapter',[sys.executable,'-m','ranger_localization_bridge.fast_livo_localizer_adapter',*common,*extrinsics,
+            '-p','sample_max_age:='+str(timing['localization_sample_max_age']),
+            '-p','heartbeat_max_age:='+str(timing['localization_receipt_max_age']),
             '-p','expected_map_uuid:='+manifest['map_uuid'],'-p','expected_manifest_sha256:='+manifest['source_manifest_sha256']],
             depends=('map_lifecycle',),resource='localization_backend'),
         Component('bridge',[sys.executable,'-m','ranger_localization_bridge.bridge_node',*common,

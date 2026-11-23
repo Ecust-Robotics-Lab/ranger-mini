@@ -1,0 +1,48 @@
+..F...................................F..............ssss.....           [100%]
+=================================== FAILURES ===================================
+_______ test_narrow_visibility_keeps_full_body_and_hard_coverage_checks ________
+
+    def test_narrow_visibility_keeps_full_body_and_hard_coverage_checks():
+        from ranger_navigation.planner import Grid
+        from ranger_navigation.geometry import validate_sweep
+        body=Body(clearance=.03)
+        controller=ExactController(body,samples=128,visibility_reserve=.04)
+        cells=np.full((80,80),-1,dtype=np.int16);cells[33:46,:]=0
+        pose=np.array([0.,-.025,0.]);path=np.linspace(pose,[.4,-.025,0.],60)
+        result=controller.compute(pose,np.zeros(3),path,Mode.PARALLEL,np.empty((0,2)),(cells,np.zeros(3)))
+        grid=Grid(cells,.05,(-2.,-2.,0.))
+        assert validate_sweep(result['trajectory'],[],body,coverage=lambda p,b,m:grid.free(p,b,m))[0]
+        assert result['trajectory'][-1,0]>.01
+        critic=controller.optimizers[Mode.PARALLEL].critic_manager_
+>       assert np.allclose(np.array(critic.half),body.half+.03+.015)
+E       assert False
+E        +  where False = <function allclose at 0x703efb8a6430>(array([0.395, 0.285], dtype=float32), ((array([0.37, 0.26]) + 0.03) + 0.015))
+E        +    where <function allclose at 0x703efb8a6430> = np.allclose
+E        +    and   array([0.395, 0.285], dtype=float32) = <built-in function array>(Array([0.395, 0.285], dtype=float32))
+E        +      where <built-in function array> = np.array
+E        +      and   Array([0.395, 0.285], dtype=float32) = <ranger_navigation.exact_controller.VisibilityCritics object at 0x703e52392aa0>.half
+E        +    and   array([0.37, 0.26]) = Body(length=0.74, width=0.52, clearance=0.03, sensor_origin_xy=(0.0, 0.0), sensor_origin_z=0.6).half
+
+tests/test_exact_optimizer.py:27: AssertionError
+----------------------------- Captured stderr call -----------------------------
+[[35mMPPI[0m] [32mINFO[0m: [32mOptimizer reset[0m
+[[35mMPPI[0m] [32mINFO[0m: [32mOptimizer reset[0m
+[[35mMPPI[0m] [32mINFO[0m: [32mOptimizer reset[0m
+__ test_missing_coverage_rechecks_at_control_rate_without_sampling_obstacles ___
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x703e46fc4a00>
+
+    def test_missing_coverage_rechecks_at_control_rate_without_sampling_obstacles(monkeypatch):
+        h,clock,sent,submitted,sampled,polls=scheduler_harness(monkeypatch)
+        h.worker.pending=None;checks=[]
+        h.memory.control_grid.free=lambda *args:(checks.append(clock[0]) and False)
+        h.tick()
+        count=len(checks)
+>       assert count and h.task.state=='OBSERVING' and not sampled and not submitted
+E       assert (0)
+
+tests/test_exact_sampling_ros.py:159: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_exact_optimizer.py::test_narrow_visibility_keeps_full_body_and_hard_coverage_checks
+FAILED tests/test_exact_sampling_ros.py::test_missing_coverage_rechecks_at_control_rate_without_sampling_obstacles
+2 failed, 56 passed, 4 skipped in 16.75s

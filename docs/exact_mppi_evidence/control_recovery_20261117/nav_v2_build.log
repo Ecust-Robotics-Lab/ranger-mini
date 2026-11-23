@@ -1,0 +1,30 @@
+WARNING: Package name "Global-LVBA" does not follow the naming conventions. It should start with a lower case letter and only contain lower case letters, digits, underscores, and dashes.
+Starting >>> ranger_navigation_msgs
+Finished <<< ranger_navigation_msgs [2.78s]
+Starting >>> ranger_navigation
+[6.844s] WARNING:colcon.colcon_core.shell:The following packages are in the workspace but haven't been built:
+- nav2_common
+- ranger_msgs
+- nav2_msgs
+- nav2_util
+- nav2_lifecycle_manager
+- nav2_map_server
+They are being used from the following locations instead:
+- /opt/ros/humble
+- /home/lab307/ranger_nav/ws_base/install_exact/ranger_msgs
+- /opt/ros/humble
+- /opt/ros/humble
+- /opt/ros/humble
+- /opt/ros/humble
+To suppress this warning ignore these packages in the workspace:
+--packages-ignore nav2_common ranger_msgs nav2_msgs nav2_util nav2_lifecycle_manager nav2_map_server
+[6.844s] ERROR:colcon.colcon_ros.task.ament_python.build:Failed to find the following files:
+- /home/lab307/ranger_nav/install_exact/ranger_localization_msgs/share/ranger_localization_msgs/package.sh
+- /home/lab307/ranger_nav/install_exact/ranger_localization_bridge/share/ranger_localization_bridge/package.sh
+Check that the following packages have been built:
+- ranger_localization_msgs
+- ranger_localization_bridge
+Failed   <<< ranger_navigation [0.00s, exited with code 1]
+
+Summary: 1 package finished [6.81s]
+  1 package failed: ranger_navigation

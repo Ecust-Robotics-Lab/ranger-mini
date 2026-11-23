@@ -1,0 +1,55 @@
+test_burst_coalesces_complete_pairs_and_keeps_fresh_output (test_fast_livo_online_localization_ros.OnlineRos) ... FAIL
+test_clock_advance_revokes_pose_and_manual_requires_new_initial (test_fast_livo_online_localization_ros.OnlineRos) ... FAIL
+test_slow_initial_evidence_cannot_publish_old_pose (test_fast_livo_online_localization_ros.OnlineRos) ... FAIL
+test_online_eight_frame_static_search_then_independent_c1 (test_workbench_static_localization_ros.StaticStartupRos) ... FAIL
+
+======================================================================
+FAIL: test_burst_coalesces_complete_pairs_and_keeps_fresh_output (test_fast_livo_online_localization_ros.OnlineRos)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_online_localization_ros.py", line 44, in test_burst_coalesces_complete_pairs_and_keeps_fresh_output
+    self.launch(); self.valid()
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_online_localization_ros.py", line 31, in launch
+    self.wait(lambda: self.private and self.private[-1].map_uuid and
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 144, in wait
+    self.fail('Timeout; '+str(self.directory)+'; last='+str([(m.state, m.reason) for m in self.private[-3:]]))
+AssertionError: Timeout; /home/lab307/ranger_nav/docs/workbench_evidence/20261117/static_confirmation/ros/test_burst_coalesces_complete_pairs_and_keeps_fresh_output-5_mpjb_2; last=[]
+
+======================================================================
+FAIL: test_clock_advance_revokes_pose_and_manual_requires_new_initial (test_fast_livo_online_localization_ros.OnlineRos)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_online_localization_ros.py", line 60, in test_clock_advance_revokes_pose_and_manual_requires_new_initial
+    self.launch(); self.valid()
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_online_localization_ros.py", line 31, in launch
+    self.wait(lambda: self.private and self.private[-1].map_uuid and
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 144, in wait
+    self.fail('Timeout; '+str(self.directory)+'; last='+str([(m.state, m.reason) for m in self.private[-3:]]))
+AssertionError: Timeout; /home/lab307/ranger_nav/docs/workbench_evidence/20261117/static_confirmation/ros/test_clock_advance_revokes_pose_and_manual_requires_new_initial-4fzh1yu8; last=[]
+
+======================================================================
+FAIL: test_slow_initial_evidence_cannot_publish_old_pose (test_fast_livo_online_localization_ros.OnlineRos)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_online_localization_ros.py", line 68, in test_slow_initial_evidence_cannot_publish_old_pose
+    self.launch(); response, _ = self.initialize(); self.assertTrue(response.accepted)
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_online_localization_ros.py", line 31, in launch
+    self.wait(lambda: self.private and self.private[-1].map_uuid and
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 144, in wait
+    self.fail('Timeout; '+str(self.directory)+'; last='+str([(m.state, m.reason) for m in self.private[-3:]]))
+AssertionError: Timeout; /home/lab307/ranger_nav/docs/workbench_evidence/20261117/static_confirmation/ros/test_slow_initial_evidence_cannot_publish_old_pose-waitlv_e; last=[]
+
+======================================================================
+FAIL: test_online_eight_frame_static_search_then_independent_c1 (test_workbench_static_localization_ros.StaticStartupRos)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/test_workbench_static_localization_ros.py", line 27, in test_online_eight_frame_static_search_then_independent_c1
+    self.wait(lambda:self.private and self.private[-1].map_uuid and json.loads(self.private[-1].quality_json).get('inputs_ready'))
+  File "/home/lab307/ranger_nav/tests/test_fast_livo_localizer_ros.py", line 144, in wait
+    self.fail('Timeout; '+str(self.directory)+'; last='+str([(m.state, m.reason) for m in self.private[-3:]]))
+AssertionError: Timeout; /home/lab307/ranger_nav/docs/workbench_evidence/20261117/static_confirmation/ros/test_online_eight_frame_static_search_then_independent_c1-2yoec6zm; last=[]
+
+----------------------------------------------------------------------
+Ran 4 tests in 40.213s
+
+FAILED (failures=4)

@@ -1,0 +1,28 @@
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/check_workbench_coverage_browser.py", line 53, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/lab307/ranger_nav/tests/check_workbench_coverage_browser.py", line 41, in main
+    await page.wait_for_function("document.querySelector('#taskReason').textContent.includes('边缘未知格超过容许数量')")
+  File "/home/lab307/ranger_nav/.runtime/navigation_workbench_venv/lib/python3.10/site-packages/playwright/async_api/_generated.py", line 21150, in wait_for_function
+    await self._impl_obj.wait_for_function(
+  File "/home/lab307/ranger_nav/.runtime/navigation_workbench_venv/lib/python3.10/site-packages/playwright/_impl/page.py", line 1609, in wait_for_function
+    return await self._main_frame.wait_for_function(
+  File "/home/lab307/ranger_nav/.runtime/navigation_workbench_venv/lib/python3.10/site-packages/playwright/_impl/frame.py", line 1209, in wait_for_function
+    result = await self._channel.waitForFunction(
+  File "/home/lab307/ranger_nav/.runtime/navigation_workbench_venv/lib/python3.10/site-packages/playwright/_impl/channel_owner.py", line 398, in _mapped
+    return mapper(await awaitable)
+  File "/home/lab307/ranger_nav/.runtime/navigation_workbench_venv/lib/python3.10/site-packages/playwright/_impl/channel_owner.py", line 387, in finish
+    raise e from None
+  File "/home/lab307/ranger_nav/.runtime/navigation_workbench_venv/lib/python3.10/site-packages/playwright/_impl/channel_owner.py", line 352, in finish
+    result = await zone.run_async(lambda: awaitable)
+  File "/home/lab307/ranger_nav/.runtime/navigation_workbench_venv/lib/python3.10/site-packages/playwright/_impl/utils/zones.py", line 58, in run_async
+    return await func()
+playwright._impl._errors.Error: Page.wait_for_function: EvalError: Evaluating a string as JavaScript violates the following Content Security Policy directive because 'unsafe-eval' is not an allowed source of script: script-src 'self'".
+
+    at eval (<anonymous>)
+    at predicate (eval at evaluate (:370:30), <anonymous>:4:60)
+    at next (eval at evaluate (:370:30), <anonymous>:29:33)

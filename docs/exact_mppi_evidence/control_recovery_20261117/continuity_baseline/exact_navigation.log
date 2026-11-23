@@ -1,0 +1,16 @@
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/ws_nav/install_exact/ranger_navigation/lib/ranger_navigation/exact_navigation", line 33, in <module>
+    sys.exit(load_entry_point('ranger-navigation==0.1.0', 'console_scripts', 'exact_navigation')())
+  File "/home/lab307/ranger_nav/.runtime/backups/control_recovery_20261117/baseline_python/ranger_navigation/coordinator.py", line 597, in main
+    rclpy.spin(node)
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/__init__.py", line 229, in spin
+    executor.spin_once()
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/executors.py", line 808, in spin_once
+    self._spin_once_impl(timeout_sec)
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/executors.py", line 797, in _spin_once_impl
+    handler, entity, node = self.wait_for_ready_callbacks(timeout_sec=timeout_sec)
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/executors.py", line 780, in wait_for_ready_callbacks
+    return next(self._cb_iter)
+  File "/opt/ros/humble/local/lib/python3.10/dist-packages/rclpy/executors.py", line 653, in _wait_for_ready_callbacks
+    wait_set = _rclpy.WaitSet(
+rclpy._rclpy_pybind11.RCLError: failed to initialize wait set: the given context is not valid, either rcl_init() was not called or rcl_shutdown() was called., at ./src/rcl/wait.c:130

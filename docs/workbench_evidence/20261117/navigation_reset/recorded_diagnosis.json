@@ -1,0 +1,91 @@
+{
+  "source": "/home/lab307/ranger_nav/.runtime/navigation_workbench/records/live-0e9da78bf0ab4b6898f7cb28484d9f46/events.sqlite3",
+  "events": [
+    {
+      "kind": "session_start",
+      "time_ns": 1794905473829816767,
+      "session_id": "0e9da78bf0ab4b6898f7cb28484d9f46"
+    },
+    {
+      "kind": "can_ready",
+      "time_ns": 1794905473841949813,
+      "enabled": false
+    },
+    {
+      "kind": "session_ready",
+      "time_ns": 1794905507882427319
+    },
+    {
+      "kind": "goal",
+      "time_ns": 1794905512687440116,
+      "task_id": "0b689093b7c94765b1e8a33791ee6da9",
+      "pose": [
+        1.827,
+        0.527,
+        0.8691739674931762
+      ]
+    },
+    {
+      "kind": "task_result",
+      "time_ns": 1794905527902196104,
+      "task_id": "0b689093b7c94765b1e8a33791ee6da9",
+      "status": "FAILED",
+      "reason": "start_live_obstacle_collision"
+    },
+    {
+      "kind": "session_stop",
+      "time_ns": 1794905672365961378
+    }
+  ],
+  "sessions": {
+    "navigation_workbench": {
+      "directory": "/home/lab307/ranger_nav/.runtime/sessions/navigation_workbench/run-uhaw6p0l",
+      "live": false,
+      "state": "STOPPED",
+      "guardian": {
+        "pid": 51699,
+        "start_ticks": 2299302,
+        "ppid": 33752,
+        "state": "R",
+        "boot_id": "6c018ad9-9443-435b-aa93-3a471f85d7de"
+      }
+    },
+    "base": {
+      "directory": "/home/lab307/ranger_nav/.runtime/sessions/base/run-7ofpq22t",
+      "live": false,
+      "state": "STOPPED",
+      "guardian": {
+        "pid": 51794,
+        "start_ticks": 2300671,
+        "ppid": 51760,
+        "state": "R",
+        "boot_id": "6c018ad9-9443-435b-aa93-3a471f85d7de"
+      }
+    },
+    "navigation": {
+      "directory": "/home/lab307/ranger_nav/.runtime/sessions/navigation/run-kgh1ofk4",
+      "live": false,
+      "state": "STOPPED",
+      "guardian": {
+        "pid": 52326,
+        "start_ticks": 2302988,
+        "ppid": 51760,
+        "state": "R",
+        "boot_id": "6c018ad9-9443-435b-aa93-3a471f85d7de"
+      }
+    },
+    "fast_livo_online_localization": {
+      "directory": "/home/lab307/ranger_nav/.runtime/sessions/fast_livo_online_localization/run-ksvbzsht",
+      "live": false,
+      "state": "STOPPED",
+      "guardian": {
+        "pid": 51857,
+        "start_ticks": 2300813,
+        "ppid": 51760,
+        "state": "R",
+        "boot_id": "6c018ad9-9443-435b-aa93-3a471f85d7de"
+      }
+    }
+  },
+  "limitations": "Old UI had terminal cancel disabled and no reset entry. No reset clicks existed; not evidence of a compute hang."
+}

@@ -1,0 +1,69 @@
+[[35mMPPI[0m] [32mINFO[0m: [32mOptimizer reset[0m
+[[35mMPPI[0m] [32mINFO[0m: [32mOptimizer reset[0m
+[[35mMPPI[0m] [32mINFO[0m: [32mOptimizer reset[0m
+[[35mMPPI[0m] [32mINFO[0m: [32mOptimizer reset[0m
+[[35mMPPI[0m] [32mINFO[0m: [32mOptimizer reset[0m
+[[35mMPPI[0m] [32mINFO[0m: [32mOptimizer reset[0m
+{
+  "passed": true,
+  "kind": "recorded_input_counterfactual_not_live",
+  "initial_velocity_assumption": [
+    0,
+    0,
+    0
+  ],
+  "basis": "stationary wheel/zero commands in this recorded task; no robot command sent",
+  "old": {
+    "current": {
+      "accepted": false,
+      "total_margin_m": 0.055,
+      "protected_margin_m": 0.055,
+      "unknown_cell_budget": 0,
+      "unknown_edge_cells": 0,
+      "unknown_protected_cells": 4,
+      "reason": "coverage_body_unobserved"
+    },
+    "blocked": {
+      "accepted": false,
+      "total_margin_m": 0.055,
+      "protected_margin_m": 0.055,
+      "unknown_cell_budget": 0,
+      "unknown_edge_cells": 0,
+      "unknown_protected_cells": 4,
+      "reason": "coverage_body_unobserved",
+      "path_index": 0,
+      "distance_m": 0.0
+    },
+    "checked_distance_m": 0.0
+  },
+  "new": {
+    "current": {
+      "accepted": true,
+      "total_margin_m": 0.025,
+      "protected_margin_m": 0.015,
+      "unknown_cell_budget": 8,
+      "unknown_edge_cells": 0,
+      "unknown_protected_cells": 0,
+      "reason": "coverage_valid"
+    },
+    "blocked": null,
+    "checked_distance_m": 0.7387877451949215
+  },
+  "command": [
+    0.014710094779729843,
+    0.0024047771003097296,
+    0.0
+  ],
+  "prefix_length_m": 0.7387877451949216,
+  "independent_full_points_and_braking_validation": {
+    "passed": true,
+    "reason": "valid",
+    "minimum_distance_m": 0.1650000000000001
+  },
+  "compute_seconds": 0.015643386002921034,
+  "warmup_seconds": {
+    "DRIVE": 2.2545240840008773,
+    "PARALLEL": 1.976376957998582,
+    "SPIN": 1.9845930310002586
+  }
+}

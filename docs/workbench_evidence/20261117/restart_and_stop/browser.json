@@ -1,0 +1,13 @@
+{
+  "pass": true,
+  "mock_transport_no_device_requests": true,
+  "console_errors": [],
+  "checks": [
+    "localization_window_progress",
+    "navigation_disabled_until_localized",
+    "raw_023_speed_preserved",
+    "005_stop_limit",
+    "051_reports_motion",
+    "stale_feedback_unknown"
+  ]
+}

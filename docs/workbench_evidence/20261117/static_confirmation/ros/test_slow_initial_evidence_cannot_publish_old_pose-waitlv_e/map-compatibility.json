@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "mode": "offline_experiment",
+  "source_manifest_sha256": "f8454bf85f00766a9b969aeb5092d2e2bd2a9bc934f9e4bccae7026abf66e4a9",
+  "physical_sync_validated": false,
+  "absolute_accuracy_validated": false,
+  "limitations": [
+    "Historical archive lacks complete attested sensor/calibration/source identity.",
+    "Referenced evidence is traceability, not physical calibration validation.",
+    "Same-capture localization is a function test; no independent-session or accuracy claim."
+  ],
+  "evidence_files_sha256": {
+    "/home/lab307/ranger_nav/docs/workbench_evidence/20261117/static_confirmation/ros/test_slow_initial_evidence_cannot_publish_old_pose-waitlv_e/map/manifest.json": "f8454bf85f00766a9b969aeb5092d2e2bd2a9bc934f9e4bccae7026abf66e4a9"
+  }
+}

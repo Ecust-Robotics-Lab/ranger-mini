@@ -1,0 +1,45 @@
+test_invalid_pose_keeps_last_confirmed_body (tests.test_navigation_workbench.AdditionalContracts) ... ok
+test_nonfinite_telemetry_can_be_json_encoded (tests.test_navigation_workbench.AdditionalContracts) ... ok
+test_segment_rollover_and_cross_segment_seek (tests.test_navigation_workbench.AdditionalContracts) ... ok
+test_unconfirmed_initial_pose_is_hidden (tests.test_navigation_workbench.AdditionalContracts) ... ok
+test_watchdog_only_revokes_owned_active_task (tests.test_navigation_workbench.AdditionalContracts) ... ok
+test_exact_map_and_single_preset (tests.test_navigation_workbench.CoreTests) ... ok
+test_finite_goal (tests.test_navigation_workbench.CoreTests) ... ok
+test_identity_and_validity_break_path (tests.test_navigation_workbench.CoreTests) ... ok
+test_journal_seek_order_and_finalization (tests.test_navigation_workbench.CoreTests) ... ok
+test_receipt_expiry (tests.test_navigation_workbench.CoreTests) ... ok
+test_recording_fault_does_not_block (tests.test_navigation_workbench.CoreTests) ... ok
+test_stale_sample_heartbeat_does_not_refresh (tests.test_navigation_workbench.CoreTests) ... ok
+test_time_rollback_breaks_path (tests.test_navigation_workbench.CoreTests) ... ok
+test_wrong_map_and_wrong_base_never_valid (tests.test_navigation_workbench.CoreTests) ... ok
+test_environment_expiry_does_not_refresh_observed_free (tests.test_navigation_workbench.FeedbackContracts) ... ok
+test_optional_raw_worker_confirms_writes_and_finalizes (tests.test_navigation_workbench.FeedbackContracts) ... ok
+test_stationarity_requires_original_samples_and_dwell (tests.test_navigation_workbench.FeedbackContracts) ... ok
+test_zero_quaternion_cannot_show_confirmed_pose (tests.test_navigation_workbench.FeedbackContracts) ... ok
+test_auth_and_origin (tests.test_navigation_workbench.HTTPTests) ... /home/lab307/ranger_nav/workbench/server.py:149: NotAppKeyWarning: It is recommended to use web.AppKey instances for keys.
+https://docs.aiohttp.org/en/stable/web_advanced.html#application-s-config
+  app=web.Application(middlewares=[auth],client_max_size=256_000);app['api']=api
+ok
+test_empty_replay_returns_error (tests.test_navigation_workbench.HTTPTests) ... ok
+test_no_arbitrary_command_endpoint (tests.test_navigation_workbench.HTTPTests) ... ok
+test_path_escape_and_unknown_replay (tests.test_navigation_workbench.HTTPTests) ... ok
+test_server_restart_cookie_stays_valid (tests.test_navigation_workbench.HTTPTests) ... ok
+test_static_map_and_headers (tests.test_navigation_workbench.HTTPTests) ... ok
+test_observe_only_shutdown_does_not_publish_stop (tests.test_navigation_workbench.LifecycleContracts) ... ok
+test_owned_process_stops_without_touching_foreign (tests.test_navigation_workbench.LifecycleContracts) ... ok
+test_stale_cancel_cannot_affect_new_task (tests.test_navigation_workbench.LifecycleContracts) ... ok
+test_cancel_then_feedback_not_assumed (tests.test_navigation_workbench.OwnerTests) ... ok
+test_conflicting_idempotency_key_rejected (tests.test_navigation_workbench.OwnerTests) ... ok
+test_demo_cannot_start_hardware (tests.test_navigation_workbench.OwnerTests) ... ok
+test_idempotent_goal_no_repeat (tests.test_navigation_workbench.OwnerTests) ... ok
+test_old_session_cannot_submit (tests.test_navigation_workbench.OwnerTests) ... ok
+test_replacement_late_old_result_cannot_disable_new (tests.test_navigation_workbench.OwnerTests) ... ok
+test_replay_is_readonly (tests.test_navigation_workbench.OwnerTests) ... ok
+test_result_disables_and_browser_reads_have_no_effect (tests.test_navigation_workbench.OwnerTests) ... ok
+test_stale_pose_cannot_execute (tests.test_navigation_workbench.OwnerTests) ... ok
+test_start_does_not_take_foreign_session (tests.test_navigation_workbench.OwnerTests) ... ok
+
+----------------------------------------------------------------------
+Ran 37 tests in 1.261s
+
+OK

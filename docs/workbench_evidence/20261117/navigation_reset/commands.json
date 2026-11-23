@@ -1,0 +1,47 @@
+[
+  {
+    "command": "source /opt/ros/humble/setup.bash\nsource /home/lab307/ranger_nav/ws_base/install_exact/setup.bash\ncolcon --log-base log_exact build --build-base build_exact --install-base install_exact --packages-select ranger_navigation --executor sequential",
+    "cwd": "/home/lab307/ranger_nav/ws_nav",
+    "exit": 0,
+    "log": "navigation_build_final.log"
+  },
+  {
+    "command": ".runtime/navigation_workbench_venv/bin/python -m unittest tests/test_navigation_workbench_reset.py tests/test_navigation_workbench.py tests/test_fast_livo_frontend_upgrade.py tests/test_fast_livo_wheel_capture.py -v",
+    "exit": 0,
+    "log": "workbench_final_tests.log",
+    "passed": 70
+  },
+  {
+    "command": "source /opt/ros/humble/setup.bash\nsource ws_base/install_exact/setup.bash\nsource ws_nav/install_exact/setup.bash\nPYTEST_DISABLE_PLUGIN_AUTOLOAD=1 .runtime/exact_mppi_venv/bin/python -m pytest tests/test_exact_navigation_reset.py tests/test_exact_control_recovery.py tests/test_exact_warm_start.py tests/test_exact_sampling_ros.py tests/test_exact_pause_resume.py tests/test_exact_progress_persistence.py tests/test_exact_endpoint_diagnostics.py tests/test_stage6_gate_unit.py -q",
+    "exit": 0,
+    "log": "navigation_final_tests.log",
+    "passed": 67
+  },
+  {
+    "command": "source /opt/ros/humble/setup.bash\nsource ws_base/install_exact/setup.bash\nsource ws_nav/install_exact/setup.bash\nPYTEST_DISABLE_PLUGIN_AUTOLOAD=1 .runtime/exact_mppi_venv/bin/python -m pytest tests/test_exact_worker_reset.py -q",
+    "exit": 0,
+    "log": "worker_reset_tests.log",
+    "passed": 2
+  },
+  {
+    "command": "source /opt/ros/humble/setup.bash\nsource ws_base/install_exact/setup.bash\nsource ws_nav/install_exact/setup.bash\nsource ws_livox/install/setup.bash\nROS_DOMAIN_ID=228 ROS_LOCALHOST_ONLY=1 .runtime/navigation_workbench_venv/bin/python -m unittest tests/test_navigation_workbench_ros.py -v",
+    "exit": 0,
+    "log": "workbench_ros.log",
+    "passed": 7
+  },
+  {
+    "command": "source /opt/ros/humble/setup.bash\nsource ws_base/install_exact/setup.bash\nsource ws_nav/install_exact/setup.bash\nROS_DOMAIN_ID=227 ROS_LOCALHOST_ONLY=1 /usr/bin/python3 tests/check_exact_navigation_reset_ros.py --managed-final",
+    "exit": 0,
+    "log": "managed_ros_final_check.log",
+    "result": "managed_ros_final/result.json"
+  },
+  {
+    "command": "PLAYWRIGHT_BROWSERS_PATH=\"$PWD/.runtime/workbench_browsers\" .runtime/navigation_workbench_venv/bin/python tests/check_workbench_reset_browser.py",
+    "exit": 0,
+    "log": "browser_final.log"
+  },
+  {
+    "command": "git diff --check",
+    "exit": 0
+  }
+]

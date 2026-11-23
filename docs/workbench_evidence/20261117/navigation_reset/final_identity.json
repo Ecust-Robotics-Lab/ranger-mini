@@ -1,0 +1,97 @@
+{
+  "git_head": "bb418321ea139503242bcc5d975906896c808714",
+  "boot_id": "6c018ad9-9443-435b-aa93-3a471f85d7de",
+  "sessions": {
+    "navigation_workbench": {
+      "directory": "/home/lab307/ranger_nav/.runtime/sessions/navigation_workbench/run-uhaw6p0l",
+      "state": "STOPPED",
+      "live": false,
+      "guardian": {
+        "pid": 51699,
+        "start_ticks": 2299302,
+        "ppid": 33752,
+        "state": "R",
+        "boot_id": "6c018ad9-9443-435b-aa93-3a471f85d7de"
+      },
+      "cleanup_complete": true
+    },
+    "base": {
+      "directory": "/home/lab307/ranger_nav/.runtime/sessions/base/run-7ofpq22t",
+      "state": "STOPPED",
+      "live": false,
+      "guardian": {
+        "pid": 51794,
+        "start_ticks": 2300671,
+        "ppid": 51760,
+        "state": "R",
+        "boot_id": "6c018ad9-9443-435b-aa93-3a471f85d7de"
+      },
+      "cleanup_complete": true
+    },
+    "navigation": {
+      "directory": "/home/lab307/ranger_nav/.runtime/sessions/navigation/run-kgh1ofk4",
+      "state": "STOPPED",
+      "live": false,
+      "guardian": {
+        "pid": 52326,
+        "start_ticks": 2302988,
+        "ppid": 51760,
+        "state": "R",
+        "boot_id": "6c018ad9-9443-435b-aa93-3a471f85d7de"
+      },
+      "cleanup_complete": true
+    },
+    "fast_livo_online_localization": {
+      "directory": "/home/lab307/ranger_nav/.runtime/sessions/fast_livo_online_localization/run-ksvbzsht",
+      "state": "STOPPED",
+      "live": false,
+      "guardian": {
+        "pid": 51857,
+        "start_ticks": 2300813,
+        "ppid": 51760,
+        "state": "R",
+        "boot_id": "6c018ad9-9443-435b-aa93-3a471f85d7de"
+      },
+      "cleanup_complete": true
+    }
+  },
+  "isolated_tests": {
+    "managed_ros": {
+      "state": "STOPPED",
+      "live": false,
+      "owned": [],
+      "cleanup_complete": true
+    },
+    "managed_ros_final": {
+      "state": "STOPPED",
+      "live": false,
+      "owned": [],
+      "cleanup_complete": true
+    }
+  },
+  "installed_matches_source": {
+    "task.py": true,
+    "worker.py": true,
+    "coordinator.py": true,
+    "package.xml": true,
+    "config/exact_navigation.yaml": true
+  },
+  "active_frontend_verified": true,
+  "no_robot_device_or_motion_operations": true,
+  "sha256": {
+    "workbench/core.py": "a2f8ea0329f62a32560db0a6fab8f0a262401ebc9d7bc9da103454517ed6ae21",
+    "workbench/daemon.py": "4f8536e535d6a384b2b898b16cabe3a9c997b7d09c6949ed83f1176a8b2d9e5e",
+    "workbench/ros_bridge.py": "6487076033879940fb73fce4b8ed49041e8bd0ebaef1144f267643d184213adb",
+    "workbench/server.py": "39298a4ebc29b3f4fdce6010bfd1ba56c6ed9f0d94378d9280a0ca39e32ba27d",
+    "scripts/session_probe.py": "11105ca2a7ff801e417892442b517d6af52a571f5cd87c0c8f25a9606568e891",
+    "scripts/navigation_health.py": "5f316a338a2c7f7d9c0e4c30f88cb913348cba2e676f6dfc6d753605835abbee",
+    "ws_nav/src/ranger_navigation/ranger_navigation/task.py": "9df7046e57fc4513d8a3ce7b7601bc5e198c9435d605b8ba4869327cdc31f4ec",
+    "ws_nav/src/ranger_navigation/ranger_navigation/worker.py": "8519d41130eacbe595997b4a609830c3f0db039a3cbd82c9f86545d72b565574",
+    "ws_nav/src/ranger_navigation/ranger_navigation/coordinator.py": "6d97380c14b7d134b9c167b0f5ea4f2b69d93f359ff36b0fd7102eace6d7dca6",
+    "workbench/web/index.html": "d21e891f265c15518eda0afd5e3ceef911bc2a4caef5209651d4ce46c45f45f5",
+    "workbench/web/app.js": "088b302cb8f1a14e88b57097b61e8a08fdf2b7ac23f4ef7d09766beadf4d7285",
+    "ws_nav/src/ranger_navigation/package.xml": "3e94e60543ff28115994fcc3cff98cb6d431ee792969f551cd8729c7f1a632a1",
+    "ws_nav/src/ranger_navigation/config/exact_navigation.yaml": "adfd6b7b3d422dce7b30d33e80fbd33c475b01149677f3cdeb5e5acc843edd81",
+    "config/fast_livo2/active_frontend.lock.json": "b5a5a90668b6b85bd360467141f1becb153ba39442a71a69bf870ecf2fad144f"
+  }
+}

@@ -1,0 +1,151 @@
+{
+  "session": {
+    "id": "5c0dab6481d64ea287a8e7e55f4aa795",
+    "state": "FAILED",
+    "map_id": "6908c26386d28dfa",
+    "profile": "standard",
+    "reason": "base 启动退出 2"
+  },
+  "task": null,
+  "events": [
+    {
+      "kind": "session_start",
+      "time_ns": 1794898213616960310,
+      "session_id": "ae5b3df2af7346c2995961565bc80096"
+    },
+    {
+      "kind": "session_failure",
+      "time_ns": 1794898215023886504,
+      "reason": "base 启动退出 2"
+    },
+    {
+      "kind": "session_stop",
+      "time_ns": 1794898215024118712
+    },
+    {
+      "kind": "session_start",
+      "time_ns": 1794898259228956231,
+      "session_id": "5c0dab6481d64ea287a8e7e55f4aa795"
+    },
+    {
+      "kind": "session_failure",
+      "time_ns": 1794898260638541877,
+      "reason": "base 启动退出 2"
+    },
+    {
+      "kind": "session_stop",
+      "time_ns": 1794898260638775880
+    }
+  ],
+  "base_state": {
+    "run_directory": "/home/lab307/ranger_nav/.runtime/sessions/base/run-4vuxtpfq",
+    "guardian": {
+      "pid": 34567,
+      "start_ticks": 1579210,
+      "ppid": 34370,
+      "state": "R",
+      "boot_id": "6c018ad9-9443-435b-aa93-3a471f85d7de"
+    },
+    "owner": {
+      "pid": 34568,
+      "start_ticks": 1579216,
+      "ppid": 34567,
+      "state": "R",
+      "boot_id": "6c018ad9-9443-435b-aa93-3a471f85d7de"
+    },
+    "state": "FAILED",
+    "reason": "RuntimeError: base exited 1; no automatic restart; scheduler exited 2; guardian cleanup",
+    "owned": [],
+    "components": {
+      "probe": {
+        "state": "READY",
+        "process": {
+          "pid": 34569,
+          "start_ticks": 1579216,
+          "ppid": 34568,
+          "state": "R",
+          "boot_id": "6c018ad9-9443-435b-aa93-3a471f85d7de"
+        },
+        "argv": [
+          "bash",
+          "-c",
+          "source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_livox/install/setup.bash && source /home/lab307/ranger_nav/ws_nav/install/setup.bash && exec python3 /home/lab307/ranger_nav/scripts/session_probe.py --lidar-type none"
+        ]
+      },
+      "base": {
+        "state": "EXITED",
+        "process": {
+          "pid": 34604,
+          "start_ticks": 1579293,
+          "ppid": 34568,
+          "state": "R",
+          "boot_id": "6c018ad9-9443-435b-aa93-3a471f85d7de"
+        },
+        "argv": [
+          "bash",
+          "-c",
+          "source /opt/ros/humble/setup.bash && source /home/lab307/ranger_nav/ws_base/install_exact/local_setup.bash && exec ros2 launch /home/lab307/ranger_nav/config/base_mini_v2.launch.py execute:=true confirmed_model:=ranger_mini_v2 control_authorized:=true"
+        ],
+        "exit_code": 1
+      }
+    },
+    "updated_monotonic": 15793.40918961,
+    "guardian_cleanup_complete": true
+  },
+  "base_run": "/home/lab307/ranger_nav/.runtime/sessions/base/run-4vuxtpfq",
+  "base_log": "[INFO] [launch]: All log files can be found below /home/lab307/ranger_nav/.runtime/sessions/base/run-4vuxtpfq/ros_logs/2026-11-17-14-51-00-298840-lab307-Thunderobot-MIX-G2-34604\n[INFO] [launch]: Default logging verbosity is set to INFO\n[ERROR] [launch]: Caught exception in launch (see debug for traceback): can0 must already be UP/ERROR-ACTIVE with known bitrate.\n",
+  "can_before": [
+    {
+      "ifindex": 3,
+      "ifname": "can0",
+      "flags": [
+        "NOARP",
+        "ECHO"
+      ],
+      "mtu": 16,
+      "qdisc": "noop",
+      "operstate": "DOWN",
+      "linkmode": "DEFAULT",
+      "group": "default",
+      "txqlen": 10,
+      "link_type": "can",
+      "promiscuity": 0,
+      "min_mtu": 0,
+      "max_mtu": 0,
+      "linkinfo": {
+        "info_kind": "can",
+        "info_data": {
+          "state": "STOPPED",
+          "restart_ms": 0,
+          "bittiming_const": {
+            "name": "gs_usb",
+            "tseg1": {
+              "min": 1,
+              "max": 16
+            },
+            "tseg2": {
+              "min": 1,
+              "max": 8
+            },
+            "sjw": {
+              "min": 1,
+              "max": 4
+            },
+            "brp": {
+              "min": 1,
+              "max": 1024
+            },
+            "brp_inc": 1
+          },
+          "clock": 48000000
+        }
+      },
+      "num_tx_queues": 1,
+      "num_rx_queues": 1,
+      "gso_max_size": 65536,
+      "gso_max_segs": 65535,
+      "parentbus": "usb",
+      "parentdev": "1-11:1.0"
+    }
+  ]
+}

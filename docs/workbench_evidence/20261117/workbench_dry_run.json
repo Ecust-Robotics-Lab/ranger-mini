@@ -1,0 +1,55 @@
+{
+  "action": "DRY-RUN",
+  "hardware_started": false,
+  "components": [
+    {
+      "name": "owner",
+      "argv": [
+        "/usr/bin/python3",
+        "-m",
+        "workbench.daemon",
+        "--socket",
+        "/home/lab307/ranger_nav/.runtime/navigation_workbench/owner.sock",
+        "--data",
+        "/home/lab307/ranger_nav/.runtime/navigation_workbench",
+        "--demo",
+        "--map",
+        "/home/lab307/ranger_nav/outputs/fast-livo-demo-changed-scene-20261110/navigation_map_05"
+      ],
+      "depends": [],
+      "requires": [],
+      "ready_key": "process",
+      "critical": true,
+      "start_requires": [],
+      "resource": "navigation_workbench",
+      "preflight_requires": null
+    },
+    {
+      "name": "http",
+      "argv": [
+        "/home/lab307/ranger_nav/.runtime/navigation_workbench_venv/bin/python",
+        "-m",
+        "workbench.server",
+        "--socket",
+        "/home/lab307/ranger_nav/.runtime/navigation_workbench/owner.sock",
+        "--data",
+        "/home/lab307/ranger_nav/.runtime/navigation_workbench",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8080",
+        "--map",
+        "/home/lab307/ranger_nav/outputs/fast-livo-demo-changed-scene-20261110/navigation_map_05"
+      ],
+      "depends": [
+        "owner"
+      ],
+      "requires": [],
+      "ready_key": "process",
+      "critical": false,
+      "start_requires": [],
+      "resource": "",
+      "preflight_requires": null
+    }
+  ]
+}

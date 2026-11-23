@@ -1,0 +1,70 @@
+test_invalid_pose_keeps_last_confirmed_body (tests.test_navigation_workbench.AdditionalContracts) ... ok
+test_nonfinite_telemetry_can_be_json_encoded (tests.test_navigation_workbench.AdditionalContracts) ... ok
+test_segment_rollover_and_cross_segment_seek (tests.test_navigation_workbench.AdditionalContracts) ... ok
+test_unconfirmed_initial_pose_is_hidden (tests.test_navigation_workbench.AdditionalContracts) ... ok
+test_watchdog_only_revokes_owned_active_task (tests.test_navigation_workbench.AdditionalContracts) ... ok
+test_computer_control_needs_no_remote_topic_or_switch_flag (tests.test_navigation_workbench.ComputerControlTests) ... ok
+test_fault_and_standby_are_not_computer_permission (tests.test_navigation_workbench.ComputerControlTests) ... ok
+test_goal_does_not_override_rc_or_standby (tests.test_navigation_workbench.ComputerControlTests) ... ok
+test_old_original_feedback_cannot_confirm_mode (tests.test_navigation_workbench.ComputerControlTests) ... ok
+test_rc_priority_is_preserved_without_mode_retries (tests.test_navigation_workbench.ComputerControlTests) ... ok
+test_400ms_pose_bound_keeps_receipt_future_and_backend_gates (tests.test_navigation_workbench.CoreTests) ... ok
+test_exact_map_and_single_preset (tests.test_navigation_workbench.CoreTests) ... ok
+test_finite_goal (tests.test_navigation_workbench.CoreTests) ... ok
+test_identity_and_validity_break_path (tests.test_navigation_workbench.CoreTests) ... ok
+test_journal_seek_order_and_finalization (tests.test_navigation_workbench.CoreTests) ... ok
+test_localization_phase_reports_matching_and_confirmation_requirements (tests.test_navigation_workbench.CoreTests) ... ok
+test_receipt_expiry (tests.test_navigation_workbench.CoreTests) ... ok
+test_recording_fault_does_not_block (tests.test_navigation_workbench.CoreTests) ... ok
+test_stale_sample_heartbeat_does_not_refresh (tests.test_navigation_workbench.CoreTests) ... ok
+test_time_rollback_breaks_path (tests.test_navigation_workbench.CoreTests) ... ok
+test_wrong_map_and_wrong_base_never_valid (tests.test_navigation_workbench.CoreTests) ... ok
+test_environment_expiry_does_not_refresh_observed_free (tests.test_navigation_workbench.FeedbackContracts) ... ok
+test_optional_raw_worker_confirms_writes_and_finalizes (tests.test_navigation_workbench.FeedbackContracts) ... ok
+test_stationarity_requires_original_samples_and_dwell (tests.test_navigation_workbench.FeedbackContracts) ... ok
+test_zero_quaternion_cannot_show_confirmed_pose (tests.test_navigation_workbench.FeedbackContracts) ... ok
+test_auth_and_origin (tests.test_navigation_workbench.HTTPTests) ... /home/lab307/ranger_nav/workbench/server.py:152: NotAppKeyWarning: It is recommended to use web.AppKey instances for keys.
+https://docs.aiohttp.org/en/stable/web_advanced.html#application-s-config
+  app=web.Application(middlewares=[auth],client_max_size=256_000);app['api']=api
+Executing <Task pending name='Task-16' coro=<IsolatedAsyncioTestCase._asyncioLoopRunner() running at /usr/lib/python3.10/unittest/async_case.py:101> created at /usr/lib/python3.10/unittest/async_case.py:117> took 0.114 seconds
+ok
+test_empty_replay_returns_error (tests.test_navigation_workbench.HTTPTests) ... ok
+test_no_arbitrary_command_endpoint (tests.test_navigation_workbench.HTTPTests) ... ok
+test_path_escape_and_unknown_replay (tests.test_navigation_workbench.HTTPTests) ... ok
+test_server_restart_cookie_stays_valid (tests.test_navigation_workbench.HTTPTests) ... ok
+test_static_map_and_headers (tests.test_navigation_workbench.HTTPTests) ... ok
+test_observe_only_shutdown_does_not_publish_stop (tests.test_navigation_workbench.LifecycleContracts) ... ok
+test_owned_process_stops_without_touching_foreign (tests.test_navigation_workbench.LifecycleContracts) ... ok
+test_stale_cancel_cannot_affect_new_task (tests.test_navigation_workbench.LifecycleContracts) ... ok
+test_cancel_then_feedback_not_assumed (tests.test_navigation_workbench.OwnerTests) ... ok
+test_conflicting_idempotency_key_rejected (tests.test_navigation_workbench.OwnerTests) ... ok
+test_demo_cannot_start_hardware (tests.test_navigation_workbench.OwnerTests) ... ok
+test_failed_task_keeps_planner_cause_instead_of_only_stall (tests.test_navigation_workbench.OwnerTests) ... ok
+test_idempotent_goal_no_repeat (tests.test_navigation_workbench.OwnerTests) ... ok
+test_old_session_cannot_submit (tests.test_navigation_workbench.OwnerTests) ... ok
+test_replacement_late_old_result_cannot_disable_new (tests.test_navigation_workbench.OwnerTests) ... ok
+test_replay_is_readonly (tests.test_navigation_workbench.OwnerTests) ... ok
+test_result_disables_and_browser_reads_have_no_effect (tests.test_navigation_workbench.OwnerTests) ... ok
+test_stale_pose_cannot_execute (tests.test_navigation_workbench.OwnerTests) ... ok
+test_start_does_not_take_foreign_session (tests.test_navigation_workbench.OwnerTests) ... ok
+test_linear_threshold_does_not_relax_rotation_or_dwell (tests.test_navigation_workbench.RestartAndStopTests) ... ok
+test_localization_wait_reports_true_cause_and_never_launches_navigation (tests.test_navigation_workbench.RestartAndStopTests) ... ok
+test_raw_wheel_stop_is_independent_of_sensor_clock (tests.test_navigation_workbench.RestartAndStopTests) ... ok
+test_repeated_lifecycle_has_new_identity_and_no_old_task (tests.test_navigation_workbench.RestartAndStopTests) ... ok
+test_stop_boundaries_and_raw_wheel_staleness (tests.test_navigation_workbench.RestartAndStopTests) ... ok
+test_can_failure_never_starts_chassis_and_keeps_reason (tests.test_navigation_workbench.StartupFeedbackTests) ... ok
+test_can_setup_precedes_chassis_and_records_original_state (tests.test_navigation_workbench.StartupFeedbackTests) ... ok
+test_canceled_can_preparation_never_starts_chassis (tests.test_navigation_workbench.StartupFeedbackTests) ... ok
+test_existing_driver_prevents_can_preparation (tests.test_navigation_workbench.StartupFeedbackTests) ... ok
+test_foreign_session_prevents_can_side_effect (tests.test_navigation_workbench.StartupFeedbackTests) ... ok
+test_nested_launch_error_is_exposed (tests.test_navigation_workbench.StartupFeedbackTests) ... ok
+test_default_driver_is_receive_only (tests.test_fast_livo_wheel_capture.WheelTests) ... ok
+test_down_can_uses_only_exact_approved_noninteractive_command (tests.test_fast_livo_wheel_capture.WheelTests) ... ok
+test_external_feedback_reused_and_stale_never_replaced (tests.test_fast_livo_wheel_capture.WheelTests) ... ok
+test_external_source_does_not_touch_can_or_other_sessions (tests.test_fast_livo_wheel_capture.WheelTests) ... ok
+test_up_can_preserved_and_wrong_bitrate_refused (tests.test_fast_livo_wheel_capture.WheelTests) ... ok
+
+----------------------------------------------------------------------
+Ran 61 tests in 2.249s
+
+OK

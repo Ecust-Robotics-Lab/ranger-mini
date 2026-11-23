@@ -1,0 +1,30 @@
+Traceback (most recent call last):
+  File "/home/lab307/ranger_nav/tests/check_workbench_coverage_browser.py", line 53, in <module>
+    asyncio.run(main())
+  File "/usr/lib/python3.10/asyncio/runners.py", line 44, in run
+    return loop.run_until_complete(main)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "/home/lab307/ranger_nav/tests/check_workbench_coverage_browser.py", line 28, in main
+    browser=await p.chromium.launch(headless=True)
+  File "/home/lab307/ranger_nav/.runtime/navigation_workbench_venv/lib/python3.10/site-packages/playwright/async_api/_generated.py", line 4185, in launch
+    await self._impl_obj.launch(
+  File "/home/lab307/ranger_nav/.runtime/navigation_workbench_venv/lib/python3.10/site-packages/playwright/_impl/channel_owner.py", line 387, in finish
+    raise e from None
+  File "/home/lab307/ranger_nav/.runtime/navigation_workbench_venv/lib/python3.10/site-packages/playwright/_impl/channel_owner.py", line 352, in finish
+    result = await zone.run_async(lambda: awaitable)
+  File "/home/lab307/ranger_nav/.runtime/navigation_workbench_venv/lib/python3.10/site-packages/playwright/_impl/utils/zones.py", line 58, in run_async
+    return await func()
+  File "/home/lab307/ranger_nav/.runtime/navigation_workbench_venv/lib/python3.10/site-packages/playwright/_impl/browser_type.py", line 176, in launch
+    await self._channel.launch(
+  File "/home/lab307/ranger_nav/.runtime/navigation_workbench_venv/lib/python3.10/site-packages/playwright/_impl/channel_owner.py", line 398, in _mapped
+    return mapper(await awaitable)
+playwright._impl._errors.Error: BrowserType.launch: Executable doesn't exist at /home/lab307/.cache/ms-playwright/chromium_headless_shell-1255/chrome-headless-shell-linux64/chrome-headless-shell
+╔════════════════════════════════════════════════════════════╗
+║ Looks like Playwright was just installed or updated.       ║
+║ Please run the following command to download new browsers: ║
+║                                                            ║
+║     playwright install                                     ║
+║                                                            ║
+║ <3 Playwright Team                                         ║
+╚════════════════════════════════════════════════════════════╝

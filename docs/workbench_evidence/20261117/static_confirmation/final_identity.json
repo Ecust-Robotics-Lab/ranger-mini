@@ -1,0 +1,72 @@
+{
+  "git_head": "bb418321ea139503242bcc5d975906896c808714",
+  "boot_id": "6c018ad9-9443-435b-aa93-3a471f85d7de",
+  "sessions": {
+    "navigation_workbench": {
+      "run_directory": "/home/lab307/ranger_nav/.runtime/sessions/navigation_workbench/run-jf8gf38n",
+      "state": "STOPPED",
+      "live": false,
+      "guardian": {
+        "pid": 42588,
+        "start_ticks": 1973038,
+        "ppid": 33752,
+        "state": "R",
+        "boot_id": "6c018ad9-9443-435b-aa93-3a471f85d7de"
+      },
+      "guardian_cleanup_complete": true
+    },
+    "base": {
+      "run_directory": "/home/lab307/ranger_nav/.runtime/sessions/base/run-b8ie_p7u",
+      "state": "STOPPED",
+      "live": false,
+      "guardian": {
+        "pid": 42679,
+        "start_ticks": 1973786,
+        "ppid": 42649,
+        "state": "R",
+        "boot_id": "6c018ad9-9443-435b-aa93-3a471f85d7de"
+      },
+      "guardian_cleanup_complete": true
+    },
+    "navigation": {
+      "run_directory": "/home/lab307/ranger_nav/.runtime/sessions/navigation/run-wcsv33wp",
+      "state": "FAILED",
+      "live": false,
+      "guardian": {
+        "pid": 38957,
+        "start_ticks": 1754560,
+        "ppid": 37792,
+        "state": "R",
+        "boot_id": "6c018ad9-9443-435b-aa93-3a471f85d7de"
+      },
+      "guardian_cleanup_complete": true
+    },
+    "fast_livo_online_localization": {
+      "run_directory": "/home/lab307/ranger_nav/.runtime/sessions/fast_livo_online_localization/run-wzus6nsa",
+      "state": "STOPPED",
+      "live": false,
+      "guardian": {
+        "pid": 42742,
+        "start_ticks": 1973927,
+        "ppid": 42649,
+        "state": "R",
+        "boot_id": "6c018ad9-9443-435b-aa93-3a471f85d7de"
+      },
+      "guardian_cleanup_complete": true
+    }
+  },
+  "sha256": {
+    "ws_fast_livo/src/ranger_fast_livo_localizer/src/relocalizer.cpp": "a98c18f79fcf14e8fa0eacfed91db3e4d0a6a23767afddaea71dab172a7c20b7",
+    "ws_fast_livo/src/ranger_fast_livo_localizer/src/node.cpp": "5b72fcfff3f1a90c23b15afc24f8bc261528f52cc02d84e4bd181503b862637e",
+    "ws_fast_livo/src/ranger_fast_livo_localizer/include/ranger_fast_livo_localizer/relocalizer.hpp": "9a8db7c9486da326f2abde5062b7ed8132cc3aec86fee2580f6ad5745533a3c4",
+    "ws_fast_livo/src/ranger_fast_livo_localizer/test/localizer_tests.cpp": "6e71e6b224154ebeebbff0521942aa998a3f3c0d8e860eb94ff6b1b3b335e1f9",
+    "ws_fast_livo/online_localization_install/ranger_fast_livo_localizer/lib/libranger_localizer_core.so": "3be7bf9aaa007c1ab33c21c581b3c8276f468eb00ddcad516ccc03dd1a19b731",
+    "ws_fast_livo/online_localization_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node": "82fb951e23d22a749645728b6c22efd3943298e3364e9ff2af3713d05933c367",
+    "workbench/daemon.py": "5ca8a10c2c4a1404c7548b0464948a9d771f9b70369d5d539680a083a22f6633",
+    "scripts/fast_livo2/mapping_monitor.py": "d0fbc13e775cfd4dca3b62c4e940c16e075a821bbf3e83dee24cf85e5375895c",
+    "config/fast_livo2/relocalizer.yaml": "9943575293f16e39137fc624c0e4353f943d6495b9fe579adbbe188ced70bd46",
+    "config/fast_livo2/localizer.yaml": "dac429d1071367846a8ac2bee25dd56181f9bbb413f22a6767b6798a15eb4dd9"
+  },
+  "no_hardware_operations_by_agent": true,
+  "installed_header_matches_source": true
+}

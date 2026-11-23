@@ -1,0 +1,157 @@
+{
+  "monotonic": 20954.918386952,
+  "checks": {
+    "probe_live": true,
+    "lidar": true,
+    "camera": true,
+    "frontend": true,
+    "backend_ready": true,
+    "clock_ok": true,
+    "clock_ready": true,
+    "backend_listening": true,
+    "localizer_alive": true,
+    "receipt_probe_live": true,
+    "lidar_unclaimed": false,
+    "camera_unclaimed": false,
+    "frontend_unclaimed": false,
+    "receipts_unclaimed": false,
+    "backend_unclaimed": false,
+    "clock_unclaimed": true,
+    "frontend_subscribed": true,
+    "writer": true,
+    "capture_recording": false
+  },
+  "counts": {
+    "lidar": 1882,
+    "imu": 37920,
+    "camera": 1840,
+    "paired": 1811
+  },
+  "paired_frames": 1811,
+  "sample_ns": 1590197324500181436,
+  "backend": {
+    "session_id": "737c30c46a28902ab35e2b28fc9e4766",
+    "state": 1,
+    "reason": "map_match_confirmed",
+    "pose_valid": true,
+    "stamp_ns": 1590197324400341510,
+    "graph_version": 170,
+    "scan_id": 1809,
+    "loop_event_id": 0,
+    "map_uuid": "160f8572a77a61856cf87e43514be769",
+    "request_id": "global-79f1f55a5c9dfda4b81de717561d53ad",
+    "pose": {
+      "xyz": [
+        -0.7557876241355572,
+        -0.9089740139215526,
+        0.023657646485287256
+      ],
+      "xyzw": [
+        -0.12035313270568632,
+        0.13557133242178196,
+        0.6891193715739539,
+        0.7016053228096472
+      ]
+    }
+  },
+  "backend_alive": true,
+  "backend_metrics": {
+    "T_target_source": {
+      "xyz": [
+        -0.7557876241355572,
+        -0.9089740139215526,
+        0.023657646485287256
+      ],
+      "xyzw": [
+        -0.12035313270568632,
+        0.13557133242178196,
+        0.6891193715739539,
+        0.7016053228096472
+      ]
+    },
+    "cache_bytes": 790816,
+    "converged": true,
+    "correspondences": 3035,
+    "elapsed_ms": 25.819028000114486,
+    "geometrically_accepted": true,
+    "global_descriptor": "radial_pair_multiscale_v2",
+    "global_search_allowed": true,
+    "global_search_enabled": true,
+    "global_stationary_initialization": true,
+    "graph_version": 170,
+    "inputs_ready": true,
+    "invalid_messages": 0,
+    "map_loading": false,
+    "map_uuid": "160f8572a77a61856cf87e43514be769",
+    "method": "small_gicp",
+    "native_diagnostics": {
+      "H_eigenvalues": [
+        89326.86127953226,
+        121648.72674631121,
+        394081.07668934617,
+        770055.2227122709,
+        2160219.0435566735,
+        3027299.144494025
+      ],
+      "H_finite": true,
+      "accepted_hypotheses": 1,
+      "covariance_calibrated": false,
+      "error": 146.83675502011778,
+      "initial_ambiguity_probe": false,
+      "iterations": 2,
+      "local_hypotheses": 1,
+      "num_inliers": 3027,
+      "target_keyframe_ids": [
+        0,
+        1,
+        120,
+        118,
+        121,
+        119,
+        122,
+        117
+      ],
+      "target_points": 24713
+    },
+    "normalized_plane_hessian_eigen_ratio": 0.25506094016694886,
+    "online_scheduling": true,
+    "pair_bytes": 0,
+    "pair_counters": {},
+    "prediction": {
+      "xyz": [
+        -0.7626096444969915,
+        -0.9075154635811704,
+        0.02534524407066182
+      ],
+      "xyzw": [
+        -0.12034553370449215,
+        0.1351000652360284,
+        0.6895043010277477,
+        0.7013192880242485
+      ]
+    },
+    "processed_scans": 1795,
+    "public_tf_publisher": false,
+    "queued_jobs": 0,
+    "reason": "geometry_valid",
+    "rmse_m": 0.12013013455227861,
+    "sample_age_seconds": 0.216208894,
+    "skipped_scans": 15,
+    "source_overlap": 0.969029374201788,
+    "stale_results": 1,
+    "tag_input_dropped": 0
+  },
+  "view": {},
+  "frontend_backend_lag_seconds": 0.099839926,
+  "clock": {
+    "mode": "fixed_lidar_header_steady_anchor",
+    "anchor": [
+      1590197138000444890,
+      20768282668513
+    ],
+    "error": "",
+    "physical_host_sync_proven": false,
+    "ready": true,
+    "startup_resets": 1
+  }
+}

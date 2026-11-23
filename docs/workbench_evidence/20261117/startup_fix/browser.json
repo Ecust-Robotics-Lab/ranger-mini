@@ -1,0 +1,12 @@
+{
+  "pass": true,
+  "console_errors": [],
+  "transport": "mocked; no session.start requests",
+  "checks": [
+    "persistent_failure_alert",
+    "retry_available",
+    "navigation_disabled",
+    "component_progress",
+    "no_duplicate_start_while_starting"
+  ]
+}

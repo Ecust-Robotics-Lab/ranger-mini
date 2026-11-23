@@ -1,0 +1,41 @@
+[
+  {
+    "command": "bash scripts/build_fast_livo2_online_localization.sh --execute",
+    "log": "localizer_build_final.log",
+    "exit_code": 0
+  },
+  {
+    "command": "LD_LIBRARY_PATH=\"$PWD/ws_fast_livo/backend_deps/lib:$PWD/ws_fast_livo/relocalization_deps/lib:${LD_LIBRARY_PATH:-}\" ws_fast_livo/online_localization_build/ranger_fast_livo_localizer/localizer_tests --gtest_output=xml:docs/workbench_evidence/20261117/static_confirmation/localizer_tests.xml",
+    "log": "localizer_tests.log",
+    "exit_code": 0,
+    "tests_passed": 45
+  },
+  {
+    "command": ".runtime/navigation_workbench_venv/bin/python -m unittest tests/test_navigation_workbench.py tests/test_fast_livo_wheel_capture.py -v",
+    "log": "workbench_tests.log",
+    "exit_code": 0,
+    "tests_passed": 59
+  },
+  {
+    "command": "source /opt/ros/humble/setup.bash\nsource ws_livox/install/setup.bash\nsource ws_fast_livo/online_install/setup.bash\nsource ws_fast_livo/online_localization_install/setup.bash\nsource ws_nav/install_exact/setup.bash\nexport LD_LIBRARY_PATH=\"$PWD/ws_fast_livo/backend_deps/lib:$PWD/ws_fast_livo/relocalization_deps/lib:${LD_LIBRARY_PATH:-}\"\nexport ROS_LOCALHOST_ONLY=1\nsource ws_base/install_exact/setup.bash\n/usr/bin/python3 - <<'PYCODE'\nimport sys,os,unittest\nfrom pathlib import Path\nsys.path.insert(0,str(Path.cwd()/'tests'))\nimport test_fast_livo_online_localization_ros as online\nimport test_workbench_static_localization_ros as static\nonline.c1.EVIDENCE=Path.cwd()/'docs/workbench_evidence/20261117/static_confirmation/ros'\nos.environ['ROS_DOMAIN_ID']='229'\nsuite=unittest.TestSuite([unittest.defaultTestLoader.loadTestsFromTestCase(online.OnlineRos),unittest.defaultTestLoader.loadTestsFromTestCase(static.StaticStartupRos)])\nresult=unittest.TextTestRunner(verbosity=2).run(suite)\nraise SystemExit(not result.wasSuccessful())\nPYCODE",
+    "log": "localization_ros.log",
+    "exit_code": 0,
+    "tests_passed": 4
+  },
+  {
+    "command": "source /opt/ros/humble/setup.bash\nsource ws_livox/install/setup.bash\nsource ws_fast_livo/online_install/setup.bash\nsource ws_fast_livo/online_localization_install/setup.bash\nsource ws_nav/install_exact/setup.bash\nexport LD_LIBRARY_PATH=\"$PWD/ws_fast_livo/backend_deps/lib:$PWD/ws_fast_livo/relocalization_deps/lib:${LD_LIBRARY_PATH:-}\"\nexport ROS_LOCALHOST_ONLY=1\nPYTHONPATH=\"$PWD/tests:$PWD/scripts:${PYTHONPATH:-}\" /usr/bin/python3 -m unittest test_workbench_static_localization_ros -v",
+    "log": "static_ros_monitor.log",
+    "exit_code": 0,
+    "tests_passed": 1,
+    "overlaps_previous": true
+  },
+  {
+    "command": "PLAYWRIGHT_BROWSERS_PATH=$PWD/.runtime/workbench_browsers .runtime/navigation_workbench_venv/bin/python tests/check_workbench_localization_browser.py",
+    "log": "browser.log",
+    "exit_code": 0
+  },
+  {
+    "command": "git diff --check",
+    "exit_code": 0
+  }
+]

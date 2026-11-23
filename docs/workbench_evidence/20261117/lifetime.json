@@ -1,0 +1,38 @@
+{
+  "exit_code": 0,
+  "hardware_started": false,
+  "finite_components": [
+    "probe",
+    "localizer",
+    "receipts",
+    "capture",
+    "lidar",
+    "writer",
+    "camera",
+    "frontend",
+    "wheel_clock",
+    "map_server",
+    "map_lifecycle",
+    "static_imu",
+    "static_lidar",
+    "adapter",
+    "bridge"
+  ],
+  "continuous_components": [
+    "probe",
+    "localizer",
+    "receipts",
+    "lidar",
+    "writer",
+    "camera",
+    "frontend",
+    "wheel_clock",
+    "map_server",
+    "map_lifecycle",
+    "static_imu",
+    "static_lidar",
+    "adapter",
+    "bridge"
+  ],
+  "removed_only_finite_recorder": true
+}

@@ -1,0 +1,88 @@
+{
+  "head": "bb418321ea139503242bcc5d975906896c808714",
+  "status": " M AGENTS.md\n M config/exact_mppi/sources.lock.json\n M docs/HANDOFF.md\n M docs/NEXT_AGENT_PROMPT.md\n M docs/STATUS.md\n M docs/exact_mppi_interfaces.md\n M patches/ranger_ros2_exact_v2_modes.patch\n M scripts/check_base_receive_only.py\n M scripts/check_exact_v2_lifecycle.py\n M scripts/fast_livo2/localizer/online_session.py\n M tests/test_exact_sampling_ros.py\n M tests/test_stage6_safety.py\n M ws_nav/src/ranger_navigation/ranger_navigation/coordinator.py\n M ws_nav/src/ranger_navigation/ranger_navigation/exact_controller.py\n M ws_nav/src/ranger_navigation/ranger_navigation/safety_core.py\n M ws_nav/src/ranger_navigation/ranger_navigation/safety_node.py\n M ws_nav/src/ranger_navigation/ranger_navigation/task.py\n M ws_nav/src/ranger_navigation/ranger_navigation/worker.py\n M ws_nav/src/ranger_navigation_msgs/CMakeLists.txt\n?? docs/NAVIGATION_WORKBENCH_PLAN.md\n?? docs/exact_mppi_control_recovery_20261117.md\n?? docs/exact_mppi_evidence/control_recovery_20261117/\n?? docs/navigation_workbench_report_20261117.md\n?? docs/workbench_evidence/\n?? scripts/run_navigation_workbench.sh\n?? scripts/setup_navigation_workbench.sh\n?? tests/benchmark_navigation_workbench.py\n?? tests/check_navigation_workbench_browser.py\n?? tests/test_exact_control_recovery.py\n?? tests/test_exact_warm_start.py\n?? tests/test_navigation_workbench.py\n?? tests/test_navigation_workbench_ros.py\n?? workbench/\n?? ws_nav/src/ranger_navigation/ranger_navigation/control_history.py\n?? ws_nav/src/ranger_navigation/ranger_navigation/execution.py\n?? ws_nav/src/ranger_navigation/ranger_navigation/recovery.py\n?? ws_nav/src/ranger_navigation_msgs/msg/LeasedControlCommand.msg\n",
+  "expected_existing_edits": [
+    "docs/HANDOFF.md",
+    "docs/STATUS.md",
+    "docs/exact_mppi_interfaces.md",
+    "scripts/fast_livo2/localizer/online_session.py",
+    "ws_nav/src/ranger_navigation/ranger_navigation/coordinator.py"
+  ],
+  "other_preexisting_changes_preserved": true,
+  "committed": false,
+  "pushed": false,
+  "workbench_session_live": false,
+  "workbench_last_run": "/home/lab307/ranger_nav/.runtime/sessions/navigation_workbench/run-efnw1pp0",
+  "identity": {
+    "boot_id": "6c018ad9-9443-435b-aa93-3a471f85d7de",
+    "free_bytes": 516513107968,
+    "observed_processes": [],
+    "read_only_commands": [
+      {
+        "argv": [
+          "git",
+          "rev-parse",
+          "HEAD"
+        ],
+        "exit_code": 0,
+        "stdout": "bb418321ea139503242bcc5d975906896c808714\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "git",
+          "status",
+          "--short"
+        ],
+        "exit_code": 0,
+        "stdout": " M AGENTS.md\n M config/exact_mppi/sources.lock.json\n M docs/HANDOFF.md\n M docs/NEXT_AGENT_PROMPT.md\n M docs/STATUS.md\n M docs/exact_mppi_interfaces.md\n M patches/ranger_ros2_exact_v2_modes.patch\n M scripts/check_base_receive_only.py\n M scripts/check_exact_v2_lifecycle.py\n M scripts/fast_livo2/localizer/online_session.py\n M tests/test_exact_sampling_ros.py\n M tests/test_stage6_safety.py\n M ws_nav/src/ranger_navigation/ranger_navigation/coordinator.py\n M ws_nav/src/ranger_navigation/ranger_navigation/exact_controller.py\n M ws_nav/src/ranger_navigation/ranger_navigation/safety_core.py\n M ws_nav/src/ranger_navigation/ranger_navigation/safety_node.py\n M ws_nav/src/ranger_navigation/ranger_navigation/task.py\n M ws_nav/src/ranger_navigation/ranger_navigation/worker.py\n M ws_nav/src/ranger_navigation_msgs/CMakeLists.txt\n?? docs/NAVIGATION_WORKBENCH_PLAN.md\n?? docs/exact_mppi_control_recovery_20261117.md\n?? docs/exact_mppi_evidence/control_recovery_20261117/\n?? docs/navigation_workbench_report_20261117.md\n?? docs/workbench_evidence/\n?? scripts/run_navigation_workbench.sh\n?? scripts/setup_navigation_workbench.sh\n?? tests/benchmark_navigation_workbench.py\n?? tests/check_navigation_workbench_browser.py\n?? tests/test_exact_control_recovery.py\n?? tests/test_exact_warm_start.py\n?? tests/test_navigation_workbench.py\n?? tests/test_navigation_workbench_ros.py\n?? workbench/\n?? ws_nav/src/ranger_navigation/ranger_navigation/control_history.py\n?? ws_nav/src/ranger_navigation/ranger_navigation/execution.py\n?? ws_nav/src/ranger_navigation/ranger_navigation/recovery.py\n?? ws_nav/src/ranger_navigation_msgs/msg/LeasedControlCommand.msg\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "ip",
+          "-json",
+          "-details",
+          "link",
+          "show",
+          "can0"
+        ],
+        "exit_code": 0,
+        "stdout": "[{\"ifindex\":3,\"ifname\":\"can0\",\"flags\":[\"NOARP\",\"ECHO\"],\"mtu\":16,\"qdisc\":\"noop\",\"operstate\":\"DOWN\",\"linkmode\":\"DEFAULT\",\"group\":\"default\",\"txqlen\":10,\"link_type\":\"can\",\"promiscuity\":0,\"min_mtu\":0,\"max_mtu\":0,\"linkinfo\":{\"info_kind\":\"can\",\"info_data\":{\"state\":\"STOPPED\",\"restart_ms\":0,\"bittiming_const\":{\"name\":\"gs_usb\",\"tseg1\":{\"min\":1,\"max\":16},\"tseg2\":{\"min\":1,\"max\":8},\"sjw\":{\"min\":1,\"max\":4},\"brp\":{\"min\":1,\"max\":1024},\"brp_inc\":1},\"clock\":48000000}},\"num_tx_queues\":1,\"num_rx_queues\":1,\"gso_max_size\":65536,\"gso_max_segs\":65535,\"parentbus\":\"usb\",\"parentdev\":\"1-11:1.0\"}]\n",
+        "stderr": ""
+      },
+      {
+        "argv": [
+          "nvidia-smi",
+          "--query-gpu=name,driver_version,memory.total",
+          "--format=csv,noheader"
+        ],
+        "exit_code": 0,
+        "stdout": "NVIDIA GeForce RTX 5060 Laptop GPU, 580.178.04, 8151 MiB\n",
+        "stderr": ""
+      }
+    ]
+  },
+  "workbench_source_sha256": {
+    "workbench/watchdog.py": "c006800c4d8f1eba813735366c104d186396d563aa43e8e493842e20925f9d5c",
+    "workbench/launch.py": "690e9c038c32a3cbc4996ddf498a44e09afbdb0d95eabab5676f0c2bb2085813",
+    "workbench/requirements.lock.txt": "c7b3aa22cd115651b937d0f49a8e39c5b60b325c3dff419d778bf97612438496",
+    "workbench/__init__.py": "1faea86e785a7147a367f555712f6840150b40a829e0e53131e986825f1e166c",
+    "workbench/daemon.py": "130ed56a4a0e2765e498583f7df5b5c44a266bd849fc802ae5b859c7702f704c",
+    "workbench/THIRD_PARTY_NOTICES.md": "53ad97e3b35a0cac8a14f2c31a0dec6c69c0130aa8b09d6245b9092ef6b29086",
+    "workbench/preview.py": "cbecc4bdb85e2201a161c0a854a74cd9e2b28a35d7c95c2d6cd50cb8ef76b4ea",
+    "workbench/README.md": "ec5e050ca3877ed7239d226d9449a6bb7fa9acd30cb16c8629b421c6ca796427",
+    "workbench/server.py": "9605221cd6fc450c4118e8eef061a80d7ac94b5cf484a29ee41580fd545ac2f4",
+    "workbench/requirements.dev.lock.txt": "fa33d8314d62e34bdef48fa1c44140f15f61cf3e91c038e8b06d5f6a35b556f7",
+    "workbench/core.py": "ef6c9c10edcb7c97bff58b2d2f94228dda00d254d49cb7e29dec300af610c3ad",
+    "workbench/raw_record.py": "fc44bbb1a4f5c4d22fcdd9d420ff3ba544e4c6e23da8dbdbbeef91dfb183e101",
+    "workbench/import_bag.py": "6592f8d3f0e105a47b3a198b21534bbaf67da1a90cea2c3063000115fdf1ab5c",
+    "workbench/ros_bridge.py": "5e7305601dce58beab988c1b89ab440bb59ad0a691b13f359addcde288c19b80",
+    "workbench/transforms.py": "1f644e76ebb2b86d6b5f06f9a11debfd1d60108877c16aff3a14a832dfd264b1",
+    "workbench/web/style.css": "48ce3af657c0985bdeb29f5115e606b06c0ae675db43eee15f98cce9f500aeda",
+    "workbench/web/map.js": "1b5fcf402f25f8fac62dc72008338d2e4598416aa5efa8e756c8dd45b1787d3b",
+    "workbench/web/index.html": "6b042fda01f4badf0ddd4b7da7d02fe7cab391b2ef39630260909fee8db80cd5",
+    "workbench/web/app.js": "98dfa1277fe2a6af2329f878b06389d5b20c4fc92d03ab3d619f2411c1fc7cf7"
+  },
+  "installed_coordinator_sha256": "fd84a222b133e2384f9fed9eaa2cb873416bf0946a50cd5aa42451f73a129218"
+}

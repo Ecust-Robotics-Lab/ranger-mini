@@ -1,0 +1,88 @@
+{
+  "git_head": "bb418321ea139503242bcc5d975906896c808714",
+  "boot_id": "6c018ad9-9443-435b-aa93-3a471f85d7de",
+  "sessions": {
+    "navigation_workbench": {
+      "directory": "/home/lab307/ranger_nav/.runtime/sessions/navigation_workbench/run-n2gjboq9",
+      "state": "STOPPED",
+      "live": false,
+      "guardian": {
+        "pid": 45012,
+        "start_ticks": 2074999,
+        "ppid": 33752,
+        "state": "R",
+        "boot_id": "6c018ad9-9443-435b-aa93-3a471f85d7de"
+      },
+      "cleanup_complete": true
+    },
+    "base": {
+      "directory": "/home/lab307/ranger_nav/.runtime/sessions/base/run-ujwxjitd",
+      "state": "STOPPED",
+      "live": false,
+      "guardian": {
+        "pid": 45103,
+        "start_ticks": 2075717,
+        "ppid": 45073,
+        "state": "R",
+        "boot_id": "6c018ad9-9443-435b-aa93-3a471f85d7de"
+      },
+      "cleanup_complete": true
+    },
+    "navigation": {
+      "directory": "/home/lab307/ranger_nav/.runtime/sessions/navigation/run-vidudp9a",
+      "state": "STOPPED",
+      "live": false,
+      "guardian": {
+        "pid": 45612,
+        "start_ticks": 2077991,
+        "ppid": 45073,
+        "state": "R",
+        "boot_id": "6c018ad9-9443-435b-aa93-3a471f85d7de"
+      },
+      "cleanup_complete": true
+    },
+    "fast_livo_online_localization": {
+      "directory": "/home/lab307/ranger_nav/.runtime/sessions/fast_livo_online_localization/run-a3n9m1e9",
+      "state": "STOPPED",
+      "live": false,
+      "guardian": {
+        "pid": 45166,
+        "start_ticks": 2075858,
+        "ppid": 45073,
+        "state": "R",
+        "boot_id": "6c018ad9-9443-435b-aa93-3a471f85d7de"
+      },
+      "cleanup_complete": true
+    }
+  },
+  "installed_matches_source": {
+    "coordinator": true,
+    "planner": true,
+    "task": true,
+    "worker": true,
+    "configuration": true,
+    "archive_header": true
+  },
+  "active_frontend_verified": true,
+  "sha256": {
+    "workbench/core.py": "a2f8ea0329f62a32560db0a6fab8f0a262401ebc9d7bc9da103454517ed6ae21",
+    "workbench/ros_bridge.py": "adfff8bdea21b59281b9d54b14d9d77d9f6607f8b8b28a57a6ab93fa2d34eca2",
+    "workbench/daemon.py": "3da4c9fe0912588107d2f00cc9c70ea88391a69766c7741a72684f9e686e8836",
+    "workbench/preview.py": "f506f4a8761b2edee9acc253943b79b4bbf70dbfe2eddda288a52a3c9f0a21d8",
+    "scripts/fast_livo2/mapping_session.py": "69e9e231368bb54ac59df2e029f3f1132b62b35f7a41b3aa35754c3ac474768e",
+    "scripts/fast_livo2/online_session.py": "8537f0495367f1fd27061225788223749862c091d1ca1fb65b44d30dc6999f34",
+    "scripts/fast_livo2/record_session.py": "3d13cc5df409cdd96205cdfe344575f8be1edfccce0b7ca47ffff4cf2b1a9959",
+    "scripts/fast_livo2/frontend_upgrade.py": "297ccf314d29c45a5f190ee6df073490830dd0335a0b6d7bb0020304ac71bebc",
+    "scripts/fast_livo2/localizer/online_session.py": "8f9204fb3195b62049ebbfb456ab34bcf3218f31ac9168e82706bf56e7584a3b",
+    "scripts/fast_livo2/navigation/session.py": "3cc0bbf4e69ab09233397d18d87a7376fa2a071d1f35dd63c6a219608807683c",
+    "scripts/prepare_exact_field_test.py": "b7d4b8ebb873265931ecf11e329f2262b2ee301f720a862ceb0ef94140242a08",
+    "config/fast_livo2/active_frontend.lock.json": "b5a5a90668b6b85bd360467141f1becb153ba39442a71a69bf870ecf2fad144f",
+    "ws_nav/src/ranger_navigation/config/exact_navigation.yaml": "adfd6b7b3d422dce7b30d33e80fbd33c475b01149677f3cdeb5e5acc843edd81",
+    "ws_fast_livo/online_localization_install/ranger_fast_livo_localizer/lib/libranger_localizer_core.so": "5f7452b0f855d0c8bf2c2aecf1c77dfed67ba4e65d2c118e4342eaf01d9638f7",
+    "ws_fast_livo/online_localization_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node": "2446a67f20bd0b4f7d046ca2fa1dd7aac57ba1a6dea9f2278ef90bc08a486b8b",
+    "ws_fast_livo/latency_frontend_install/fast_livo/lib/fast_livo/fastlivo_mapping": "8045013396eff08db06ff8cb38fdbdbf3207b83e1cede129d3bb465064a246fd",
+    "outputs/fast-livo-demo-changed-scene-20261110/mapping_replay_01/map/manifest.json": "93628bcf34742e8fbdb1f08afa9501f44aaa1f9dab4d9ef2c80914b7a62fc105",
+    "outputs/fast-livo-demo-changed-scene-20261110/navigation_map_05/manifest.json": "dc03205ec00d5dfc5b42441bc57dd8a584493bbf86f21cd43ed33dc8c4410f2e"
+  },
+  "no_hardware_or_motion_by_agent": true
+}

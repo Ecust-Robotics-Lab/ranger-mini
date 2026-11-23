@@ -1,0 +1,74 @@
+{
+  "head": "bb418321ea139503242bcc5d975906896c808714",
+  "boot_id": "6c018ad9-9443-435b-aa93-3a471f85d7de",
+  "files": [
+    {
+      "file": "coverage_policy.py",
+      "sha256": "6b2b2854b80bb3f0290989f3933b7e67029dd3dacabeef7ff4b29ae521f0d437",
+      "match": true
+    },
+    {
+      "file": "planner.py",
+      "sha256": "8da2a28cc7fafb6f110f1627e00d85e2269f4e6ba722c85aa5e2b167e8d7c55e",
+      "match": true
+    },
+    {
+      "file": "exact_controller.py",
+      "sha256": "a4f4da84ad04630741e3da90dacd99ca60310c16ef816017202c603475a6ca55",
+      "match": true
+    },
+    {
+      "file": "coordinator.py",
+      "sha256": "d192f7f41d3c981eb082a5a7c9c4bbb758276724a4e13fdaad3c18ba67d1966a",
+      "match": true
+    },
+    {
+      "file": "geometry.py",
+      "sha256": "20c12241af35dcd03078a4ebcf9130def140b746291bb275bfdff7331296bed5",
+      "match": true
+    },
+    {
+      "file": "guidance.py",
+      "sha256": "afd26dfc79d3c178f88d79a3983b8b69926495146aa4bc077d000d9d7d1ae839",
+      "match": true
+    },
+    {
+      "file": "obstacles.py",
+      "sha256": "17372ceb7e3f06c69d8e4fa79470fbee551c27473d1e34f96b0fa66b1fb7bd01",
+      "match": true
+    },
+    {
+      "file": "safety_core.py",
+      "sha256": "d9a3df499e4e621f7dd5bcd632bdbbf53a73878fc8b5388f0d4faf276e40ef06",
+      "match": true
+    },
+    {
+      "file": "safety_node.py",
+      "sha256": "ad78102cd236e1d91e0260d5f46ce17b66d8f72ebf860b695c5eddd0554d7846",
+      "match": true
+    },
+    {
+      "file": "worker.py",
+      "sha256": "236f303a6cca4d38b6c107cb7a2124e86a939a86c5d717a18234fa9bff41b6d0",
+      "match": true
+    },
+    {
+      "file": "launch/navigation.launch.py",
+      "sha256": "8203b6cd31acf9949c1be54c19d1c5e1ebe9388fc69b5735d81733875d5e1e40",
+      "match": true
+    },
+    {
+      "file": "config/exact_navigation.yaml",
+      "sha256": "687469e47315fb01ed1c58026e9cd7eb43d1a38a0d35bbdfb991cedc83da1a8f",
+      "match": true
+    }
+  ],
+  "default_speed_limit": 0.3,
+  "default_yaw_limit": 0.5,
+  "default_boundary_tolerance": true,
+  "live_sessions": [],
+  "navigation_or_compute_processes": [],
+  "agent_started_devices": false,
+  "agent_sent_live_commands": false,
+  "frontend_lock_sha256": "b5a5a90668b6b85bd360467141f1becb153ba39442a71a69bf870ecf2fad144f"
+}

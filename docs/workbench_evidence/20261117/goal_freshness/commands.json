@@ -1,0 +1,80 @@
+[
+  {
+    "command": "bash scripts/build_fast_livo2_online_localization.sh --execute",
+    "log": "localizer_build.log",
+    "exit": 0
+  },
+  {
+    "command": "source /opt/ros/humble/setup.bash; source /home/lab307/ranger_nav/ws_base/install_exact/setup.bash; colcon --log-base log_exact build --build-base build_exact --install-base install_exact --packages-select ranger_localization_msgs ranger_localization_bridge ranger_navigation_msgs ranger_navigation --executor sequential --event-handlers console_direct+ --cmake-args -DBUILD_TESTING=OFF",
+    "cwd": "/home/lab307/ranger_nav/ws_nav",
+    "log": "navigation_build_25mm.log",
+    "exit": 0
+  },
+  {
+    "command": "source /opt/ros/humble/setup.bash\nsource ws_base/install_exact/setup.bash\nsource ws_nav/install_exact/setup.bash\nPYTEST_DISABLE_PLUGIN_AUTOLOAD=1 .runtime/exact_mppi_venv/bin/python -m pytest tests/test_exact_endpoint_diagnostics.py tests/test_exact_navigation_core.py tests/test_exact_pause_resume.py tests/test_exact_progress_persistence.py tests/test_stage6_gate_unit.py tests/test_exact_sampling_ros.py tests/test_exact_control_recovery.py tests/test_exact_warm_start.py tests/test_fast_livo_latency_comparison.py tests/test_exact_input_latency_audit.py -q",
+    "log": "navigation_25mm_tests.log",
+    "exit": 0,
+    "passed": 109
+  },
+  {
+    "command": ".runtime/navigation_workbench_venv/bin/python -m unittest tests/test_fast_livo_frontend_upgrade.py tests/test_navigation_workbench.py tests/test_fast_livo_wheel_capture.py -v",
+    "log": "workbench_upgrade_final.log",
+    "exit": 0,
+    "passed": 65
+  },
+  {
+    "command": "LD_LIBRARY_PATH=\"$PWD/ws_fast_livo/backend_deps/lib:$PWD/ws_fast_livo/relocalization_deps/lib:${LD_LIBRARY_PATH:-}\" ws_fast_livo/online_localization_build/ranger_fast_livo_localizer/localizer_tests --gtest_output=xml:docs/workbench_evidence/20261117/goal_freshness/localizer_tests.xml",
+    "log": "localizer_tests.log",
+    "exit": 0,
+    "passed": 46
+  },
+  {
+    "command": "source /opt/ros/humble/setup.bash\nsource ws_base/install_exact/setup.bash\nsource ws_nav/install_exact/setup.bash\nsource ws_livox/install/setup.bash\nsource ws_fast_livo/online_install/setup.bash\nsource ws_fast_livo/online_localization_install/setup.bash\nROS_DOMAIN_ID=228 ROS_LOCALHOST_ONLY=1 .runtime/navigation_workbench_venv/bin/python -m unittest tests/test_navigation_workbench_ros.py -v",
+    "log": "workbench_ros.log",
+    "exit": 0,
+    "passed": 5
+  },
+  {
+    "command": "source /opt/ros/humble/setup.bash\nsource ws_base/install_exact/setup.bash\nsource ws_nav/install_exact/setup.bash\nsource ws_livox/install/setup.bash\nsource ws_fast_livo/online_install/setup.bash\nsource ws_fast_livo/online_localization_install/setup.bash\nexport LD_LIBRARY_PATH=\"$PWD/ws_fast_livo/backend_deps/lib:$PWD/ws_fast_livo/relocalization_deps/lib:${LD_LIBRARY_PATH:-}\"\nPYTHONPATH=\"$PWD/tests:$PWD/scripts:${PYTHONPATH:-}\" ROS_LOCALHOST_ONLY=1 /usr/bin/python3 -m unittest test_workbench_static_localization_ros -v",
+    "log": "static_localization_ros.log",
+    "exit": 0,
+    "passed": 1
+  },
+  {
+    "command": "source /opt/ros/humble/setup.bash\nsource ws_livox/install/setup.bash\nLD_LIBRARY_PATH=\"$PWD/ws_fast_livo/deps_install/lib:${LD_LIBRARY_PATH:-}\" ROS_DOMAIN_ID=229 ROS_LOCALHOST_ONLY=1 ws_fast_livo/latency_frontend_candidate_build/latency_sync_checks --ros-args --params-file config/fast_livo2/ranger_mid360s_hik_trial.yaml -p test.expect_next_scan_wait:=false",
+    "log": "frontend_sync_configured.log",
+    "exit": 0
+  },
+  {
+    "command": "ws_fast_livo/latency_frontend_candidate_build/ranger_livo_checks",
+    "log": "frontend_native.log",
+    "exit": 0,
+    "passed": 13
+  },
+  {
+    "command": "source ROS Humble/Livox/FAST online+localization setup; project backend_deps/lib:relocalization_deps/lib in LD_LIBRARY_PATH; .runtime/navigation_workbench_venv/bin/python docs/workbench_evidence/20261117/goal_freshness/verify_map_upgrade.py",
+    "log": "real_map_upgrade.log",
+    "exit": 0,
+    "expected_without_declaration_exit": 2
+  },
+  {
+    "command": "bash scripts/localize_fast_livo2.sh --archive outputs/fast-livo-demo-changed-scene-20261110/mapping_replay_01/map --public-tf --navigation-map outputs/fast-livo-demo-changed-scene-20261110/navigation_map_05 --continuous --visualization none",
+    "log": "formal_entry_dry_run.json",
+    "exit": 0,
+    "hardware_started": false
+  },
+  {
+    "command": "PLAYWRIGHT_BROWSERS_PATH=\"$PWD/.runtime/workbench_browsers\" .runtime/navigation_workbench_venv/bin/python tests/check_workbench_goal_freshness_browser.py",
+    "log": "browser.log",
+    "exit": 0
+  },
+  {
+    "command": ".runtime/navigation_workbench_venv/bin/python docs/workbench_evidence/20261117/goal_freshness/plot_endpoint_review.py",
+    "log": "plot_25mm.log",
+    "exit": 0
+  },
+  {
+    "command": "git diff --check",
+    "exit": 0
+  }
+]

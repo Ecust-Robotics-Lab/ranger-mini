@@ -1,0 +1,43 @@
+{
+  "pass": true,
+  "hardware_started": false,
+  "coordinator_pid_unchanged": 56453,
+  "old_worker": {
+    "ready": true,
+    "pid": 56500,
+    "nonce": "50fc4cf3942e415b9d55e92c647ff5ea",
+    "devices": [
+      "cuda:0"
+    ],
+    "warmup_s": {
+      "DRIVE": 2.332424828000512,
+      "PARALLEL": 2.0252372329996433,
+      "SPIN": 1.998914332001732
+    }
+  },
+  "new_worker": {
+    "ready": true,
+    "pid": 57418,
+    "nonce": "adf071dd107342389529b9064c823c47",
+    "devices": [
+      "cuda:0"
+    ],
+    "warmup_s": {
+      "DRIVE": 2.1855185860003985,
+      "PARALLEL": 1.965233620001527,
+      "SPIN": 1.9318577800004277
+    }
+  },
+  "commands_all_invalid_and_zero": true,
+  "bounded_managed_reset_health": true,
+  "actual_guardian_with_one_second_loss_grace": true,
+  "checks": [
+    "actual_gpu_restart",
+    "reset_phase_visible",
+    "reject_goal_during_reset",
+    "accept_goal_after_reset",
+    "refuse_reset_with_active_goal",
+    "cancel_while_inputs_invalid",
+    "no_device_publishers"
+  ]
+}

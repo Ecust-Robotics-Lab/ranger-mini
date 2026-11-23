@@ -1,0 +1,17 @@
+{
+  "pass": true,
+  "synthetic_static_no_hardware": true,
+  "query_window_frames": 8,
+  "support_queries": 3,
+  "support_elapsed_s": 1.6,
+  "phases": [
+    "global_confirmed_handoff_requires_c1_verification",
+    "map_loaded_searching",
+    "map_match_confirmed",
+    "searching_geometric_registration",
+    "searching_waiting_query_window",
+    "verifying_multiframe_motion_support",
+    "verifying_stationary_geometry",
+    "verifying_wait_disjoint_query_scans"
+  ]
+}

@@ -1,0 +1,78 @@
+.........F.F......                                                       [100%]
+=================================== FAILURES ===================================
+_ test_launch_profile_reaches_both_processes_with_same_physical_limits[0.0-standard-0.04-0.04-0.1] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x75e421f986a0>
+profile = 'standard', clearance = 0.04, reserve = 0.04, visible = 0.1
+requested_speed = 0.0
+
+    @pytest.mark.parametrize('profile,clearance,reserve,visible', [('standard',.04,.04,.10), ('narrow',.03,.01,.04)])
+    @pytest.mark.parametrize('requested_speed',[0.,.30])
+    def test_launch_profile_reaches_both_processes_with_same_physical_limits(monkeypatch, profile, clearance, reserve, visible,requested_speed):
+        import importlib.util
+        launch = pytest.importorskip('launch')
+        spec = importlib.util.spec_from_file_location('field_launch', ROOT/'ws_nav/src/ranger_navigation/launch/navigation.launch.py')
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        monkeypatch.setattr(module, 'Node', lambda **kwargs: kwargs)
+        import ament_index_python.packages
+        monkeypatch.setattr(ament_index_python.packages, 'get_package_share_directory',
+                            lambda name: str(ROOT/'ws_nav/src/ranger_navigation'))
+        context = launch.LaunchContext()
+        context.launch_configurations.update(execute='true', control_authorized='true', project_root=str(ROOT),
+            map_yaml=str(ROOT/'outputs/fast-livo-demo-navigation-prep-20261106/navigation_map_final/map.yaml'),
+            optimizer_python=str(ROOT/'.runtime/exact_mppi_venv/bin/python3'), wheel_topic='/fast_livo/navigation/wheel/odom',
+            use_sim_time='true', low_speed='true', start_map_server='false', clearance_profile=profile)
+        nodes = module.prepare(context)  # Node factory is mocked; no ROS process starts.
+        if requested_speed:
+            context.launch_configurations['max_speed']=str(requested_speed)
+            nodes=module.prepare(context)
+        assert len(nodes) == 2
+        for node in nodes:
+            common = node['parameters'][0]
+            assert common['clearance'] == clearance
+            assert common['max_speed'] == (requested_speed or .1) and common['max_yaw_rate'] == .2
+            assert common['geometry_config'] == str(ROOT/'config/fast_livo2/navigation_prep.yaml')
+>       assert nodes[0]['parameters'][1]['static_map_reserve'] == reserve
+E       assert 0.0 == 0.04
+
+tests/test_exact_field_preparation.py:131: AssertionError
+_ test_launch_profile_reaches_both_processes_with_same_physical_limits[0.3-standard-0.04-0.04-0.1] _
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x75e4214ebca0>
+profile = 'standard', clearance = 0.04, reserve = 0.04, visible = 0.1
+requested_speed = 0.3
+
+    @pytest.mark.parametrize('profile,clearance,reserve,visible', [('standard',.04,.04,.10), ('narrow',.03,.01,.04)])
+    @pytest.mark.parametrize('requested_speed',[0.,.30])
+    def test_launch_profile_reaches_both_processes_with_same_physical_limits(monkeypatch, profile, clearance, reserve, visible,requested_speed):
+        import importlib.util
+        launch = pytest.importorskip('launch')
+        spec = importlib.util.spec_from_file_location('field_launch', ROOT/'ws_nav/src/ranger_navigation/launch/navigation.launch.py')
+        module = importlib.util.module_from_spec(spec); spec.loader.exec_module(module)
+        monkeypatch.setattr(module, 'Node', lambda **kwargs: kwargs)
+        import ament_index_python.packages
+        monkeypatch.setattr(ament_index_python.packages, 'get_package_share_directory',
+                            lambda name: str(ROOT/'ws_nav/src/ranger_navigation'))
+        context = launch.LaunchContext()
+        context.launch_configurations.update(execute='true', control_authorized='true', project_root=str(ROOT),
+            map_yaml=str(ROOT/'outputs/fast-livo-demo-navigation-prep-20261106/navigation_map_final/map.yaml'),
+            optimizer_python=str(ROOT/'.runtime/exact_mppi_venv/bin/python3'), wheel_topic='/fast_livo/navigation/wheel/odom',
+            use_sim_time='true', low_speed='true', start_map_server='false', clearance_profile=profile)
+        nodes = module.prepare(context)  # Node factory is mocked; no ROS process starts.
+        if requested_speed:
+            context.launch_configurations['max_speed']=str(requested_speed)
+            nodes=module.prepare(context)
+        assert len(nodes) == 2
+        for node in nodes:
+            common = node['parameters'][0]
+            assert common['clearance'] == clearance
+            assert common['max_speed'] == (requested_speed or .1) and common['max_yaw_rate'] == .2
+            assert common['geometry_config'] == str(ROOT/'config/fast_livo2/navigation_prep.yaml')
+>       assert nodes[0]['parameters'][1]['static_map_reserve'] == reserve
+E       assert 0.0 == 0.04
+
+tests/test_exact_field_preparation.py:131: AssertionError
+=========================== short test summary info ============================
+FAILED tests/test_exact_field_preparation.py::test_launch_profile_reaches_both_processes_with_same_physical_limits[0.0-standard-0.04-0.04-0.1]
+FAILED tests/test_exact_field_preparation.py::test_launch_profile_reaches_both_processes_with_same_physical_limits[0.3-standard-0.04-0.04-0.1]
+2 failed, 16 passed in 0.33s

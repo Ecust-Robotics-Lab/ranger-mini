@@ -1,0 +1,1437 @@
+{
+  "monotonic": 19874.873573523,
+  "checks": {
+    "probe_live": true,
+    "lidar": true,
+    "camera": true,
+    "frontend": true,
+    "backend_ready": false,
+    "clock_ok": true,
+    "clock_ready": true,
+    "backend_listening": true,
+    "localizer_alive": true,
+    "receipt_probe_live": true,
+    "lidar_unclaimed": false,
+    "camera_unclaimed": false,
+    "frontend_unclaimed": false,
+    "receipts_unclaimed": false,
+    "backend_unclaimed": false,
+    "clock_unclaimed": true,
+    "frontend_subscribed": true,
+    "writer": true,
+    "capture_recording": false
+  },
+  "counts": {
+    "lidar": 1267,
+    "imu": 25630,
+    "camera": 1224,
+    "paired": 1205
+  },
+  "paired_frames": 1205,
+  "sample_ns": 1590196244500437498,
+  "backend": {
+    "session_id": "ae12be0974f78f60e2a62f73ce93300f",
+    "state": 0,
+    "reason": "verifying_insufficient_time_or_motion_baseline",
+    "pose_valid": false,
+    "stamp_ns": 0,
+    "graph_version": 170,
+    "scan_id": 1186,
+    "loop_event_id": 0,
+    "map_uuid": "160f8572a77a61856cf87e43514be769",
+    "request_id": "",
+    "pose": {
+      "xyz": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "xyzw": [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    }
+  },
+  "backend_alive": true,
+  "backend_metrics": {
+    "cache_bytes": 3272832,
+    "candidates": [
+      {
+        "coarse": {
+          "T_target_source": {
+            "xyz": [
+              0.8095179999748957,
+              0.8903906646592316,
+              0.2686056970791179
+            ],
+            "xyzw": [
+              0.24913924685259842,
+              -0.02049647029292425,
+              -0.7204656262189061,
+              0.6468684656251616
+            ]
+          },
+          "converged": true,
+          "correspondences": 31,
+          "elapsed_ms": 15.33268700222834,
+          "geometrically_accepted": true,
+          "method": "kiss_matcher_full6d",
+          "native_diagnostics": {
+            "rotation_inliers": 64,
+            "translation_inliers": 31,
+            "use_quatro": false
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.0,
+          "reason": "coarse_hypothesis_requires_fine_validation",
+          "rmse_m": 0.0,
+          "source_overlap": 0.0
+        },
+        "fine": {
+          "T_target_source": {
+            "xyz": [
+              -0.7442344280564659,
+              -0.9150714886168985,
+              0.029260289530736575
+            ],
+            "xyzw": [
+              -0.12048555462056579,
+              0.1358919244284552,
+              0.689579792726799,
+              0.7010679891891876
+            ]
+          },
+          "converged": true,
+          "correspondences": 11118,
+          "elapsed_ms": 25.531119001243496,
+          "geometrically_accepted": true,
+          "method": "small_gicp",
+          "native_diagnostics": {
+            "H_eigenvalues": [
+              165851.64817501817,
+              199995.95072266727,
+              547862.2760439882,
+              1443914.0423051973,
+              3879934.847691691,
+              6586750.949606095
+            ],
+            "H_finite": true,
+            "covariance_calibrated": false,
+            "error": 141.87856279103983,
+            "iterations": 3,
+            "num_inliers": 4724
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.24405143772034615,
+          "reason": "geometry_valid",
+          "rmse_m": 0.12980464369647327,
+          "source_overlap": 0.9265
+        },
+        "keyframe": 117,
+        "retrieval_distance": 0.04648859458995666,
+        "target_keyframe_ids": [
+          117,
+          116,
+          118,
+          119,
+          120,
+          121,
+          122,
+          123
+        ]
+      },
+      {
+        "coarse": {
+          "T_target_source": {
+            "xyz": [
+              0.7488858929176471,
+              0.9849094179150527,
+              0.28661428227598335
+            ],
+            "xyzw": [
+              0.2499917537257698,
+              -0.011181233005436894,
+              -0.6889466805920432,
+              0.6802437610142391
+            ]
+          },
+          "converged": true,
+          "correspondences": 49,
+          "elapsed_ms": 15.552921999187674,
+          "geometrically_accepted": true,
+          "method": "kiss_matcher_full6d",
+          "native_diagnostics": {
+            "rotation_inliers": 67,
+            "translation_inliers": 49,
+            "use_quatro": false
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.0,
+          "reason": "coarse_hypothesis_requires_fine_validation",
+          "rmse_m": 0.0,
+          "source_overlap": 0.0
+        },
+        "fine": {
+          "T_target_source": {
+            "xyz": [
+              -0.7442258529016079,
+              -0.9150000727158537,
+              0.029251799832937842
+            ],
+            "xyzw": [
+              -0.1204837592479465,
+              0.135890441086222,
+              0.6895806373276504,
+              0.7010677545014223
+            ]
+          },
+          "converged": true,
+          "correspondences": 11118,
+          "elapsed_ms": 24.25536200098577,
+          "geometrically_accepted": true,
+          "method": "small_gicp",
+          "native_diagnostics": {
+            "H_eigenvalues": [
+              165853.4294134293,
+              200287.4372249668,
+              548199.976742057,
+              1443142.6942596051,
+              3878340.302094743,
+              6587886.235349766
+            ],
+            "H_finite": true,
+            "covariance_calibrated": false,
+            "error": 142.13053290289218,
+            "iterations": 2,
+            "num_inliers": 4725
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.24406591619695575,
+          "reason": "geometry_valid",
+          "rmse_m": 0.12980698103834853,
+          "source_overlap": 0.9265
+        },
+        "keyframe": 116,
+        "retrieval_distance": 0.046585826005532724,
+        "target_keyframe_ids": [
+          116,
+          117,
+          118,
+          119,
+          120,
+          121,
+          122,
+          123
+        ]
+      },
+      {
+        "coarse": {
+          "T_target_source": {
+            "xyz": [
+              0.9462778069516556,
+              0.8459247344209605,
+              0.32674241832184064
+            ],
+            "xyzw": [
+              0.29519333152020666,
+              0.0032918776012645402,
+              -0.75837074767948,
+              0.5811401462916892
+            ]
+          },
+          "converged": true,
+          "correspondences": 47,
+          "elapsed_ms": 15.925324001727859,
+          "geometrically_accepted": true,
+          "method": "kiss_matcher_full6d",
+          "native_diagnostics": {
+            "rotation_inliers": 58,
+            "translation_inliers": 47,
+            "use_quatro": false
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.0,
+          "reason": "coarse_hypothesis_requires_fine_validation",
+          "rmse_m": 0.0,
+          "source_overlap": 0.0
+        },
+        "fine": {
+          "T_target_source": {
+            "xyz": [
+              -0.74423375487669,
+              -0.9149640835976315,
+              0.029241003207151027
+            ],
+            "xyzw": [
+              -0.12048775115704607,
+              0.1358893316450274,
+              0.6895837709555532,
+              0.7010642011976539
+            ]
+          },
+          "converged": true,
+          "correspondences": 11118,
+          "elapsed_ms": 25.08805699835648,
+          "geometrically_accepted": true,
+          "method": "small_gicp",
+          "native_diagnostics": {
+            "H_eigenvalues": [
+              166005.10018071835,
+              200056.21262169885,
+              548413.9075935928,
+              1442707.4308633988,
+              3879407.782189285,
+              6592691.414653279
+            ],
+            "H_finite": true,
+            "covariance_calibrated": false,
+            "error": 142.16842214740882,
+            "iterations": 3,
+            "num_inliers": 4725
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.24405052198952734,
+          "reason": "geometry_valid",
+          "rmse_m": 0.12980860848313538,
+          "source_overlap": 0.9265
+        },
+        "keyframe": 118,
+        "retrieval_distance": 0.05481948015296593,
+        "target_keyframe_ids": [
+          118,
+          119,
+          117,
+          116,
+          120,
+          121,
+          122,
+          123
+        ]
+      },
+      {
+        "coarse": {
+          "T_target_source": {
+            "xyz": [
+              1.0800658306001285,
+              0.5551565352940253,
+              0.4219213707724969
+            ],
+            "xyzw": [
+              -0.3004092947465925,
+              0.00293776706205679,
+              0.8165962971340499,
+              -0.4928652073960004
+            ]
+          },
+          "converged": true,
+          "correspondences": 48,
+          "elapsed_ms": 15.929886998492293,
+          "geometrically_accepted": true,
+          "method": "kiss_matcher_full6d",
+          "native_diagnostics": {
+            "rotation_inliers": 58,
+            "translation_inliers": 48,
+            "use_quatro": false
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.0,
+          "reason": "coarse_hypothesis_requires_fine_validation",
+          "rmse_m": 0.0,
+          "source_overlap": 0.0
+        },
+        "fine": {
+          "T_target_source": {
+            "xyz": [
+              -0.7442106651702814,
+              -0.9150333007612402,
+              0.029258145435693564
+            ],
+            "xyzw": [
+              -0.12048465210459862,
+              0.13589186105529746,
+              0.6895786721776409,
+              0.701069258763985
+            ]
+          },
+          "converged": true,
+          "correspondences": 11118,
+          "elapsed_ms": 24.985310003103223,
+          "geometrically_accepted": true,
+          "method": "small_gicp",
+          "native_diagnostics": {
+            "H_eigenvalues": [
+              165896.75509320255,
+              200065.18504891742,
+              547893.0566086948,
+              1443363.66901034,
+              3878828.0401756987,
+              6586965.236434388
+            ],
+            "H_finite": true,
+            "covariance_calibrated": false,
+            "error": 141.92904646463703,
+            "iterations": 2,
+            "num_inliers": 4724
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.2440470897463046,
+          "reason": "geometry_valid",
+          "rmse_m": 0.12980658302674059,
+          "source_overlap": 0.9265
+        },
+        "keyframe": 119,
+        "retrieval_distance": 0.059093892632990495,
+        "target_keyframe_ids": [
+          119,
+          118,
+          117,
+          120,
+          116,
+          121,
+          122,
+          123
+        ]
+      },
+      {
+        "coarse": {
+          "T_target_source": {
+            "xyz": [
+              1.11201386371945,
+              0.2168460755159456,
+              0.44833055793635035
+            ],
+            "xyzw": [
+              -0.3209695845326518,
+              0.008907718271475839,
+              0.8603685596803557,
+              -0.39580944894441694
+            ]
+          },
+          "converged": true,
+          "correspondences": 43,
+          "elapsed_ms": 15.352821999840671,
+          "geometrically_accepted": true,
+          "method": "kiss_matcher_full6d",
+          "native_diagnostics": {
+            "rotation_inliers": 48,
+            "translation_inliers": 43,
+            "use_quatro": false
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.0,
+          "reason": "coarse_hypothesis_requires_fine_validation",
+          "rmse_m": 0.0,
+          "source_overlap": 0.0
+        },
+        "fine": {
+          "T_target_source": {
+            "xyz": [
+              -0.744231544230968,
+              -0.9150376093612196,
+              0.02925975875568973
+            ],
+            "xyzw": [
+              -0.12048575915177463,
+              0.13589072849011943,
+              0.6895834986641537,
+              0.7010645406252911
+            ]
+          },
+          "converged": true,
+          "correspondences": 11118,
+          "elapsed_ms": 23.93773599760607,
+          "geometrically_accepted": true,
+          "method": "small_gicp",
+          "native_diagnostics": {
+            "H_eigenvalues": [
+              166145.60613823397,
+              199700.56466732416,
+              547917.3239820242,
+              1444092.7408303043,
+              3880308.368455409,
+              6586563.373283407
+            ],
+            "H_finite": true,
+            "covariance_calibrated": false,
+            "error": 142.0501610367314,
+            "iterations": 3,
+            "num_inliers": 4724
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.2440504230526083,
+          "reason": "geometry_valid",
+          "rmse_m": 0.12980463793485364,
+          "source_overlap": 0.9265
+        },
+        "keyframe": 120,
+        "retrieval_distance": 0.062437552849131446,
+        "target_keyframe_ids": [
+          120,
+          121,
+          119,
+          118,
+          122,
+          117,
+          123,
+          116
+        ]
+      },
+      {
+        "coarse": {
+          "T_target_source": {
+            "xyz": [
+              1.2125412034184468,
+              0.03923149017954257,
+              0.4645906668426852
+            ],
+            "xyzw": [
+              -0.3421120456136867,
+              0.004798162162868844,
+              0.890874661319744,
+              -0.29879535422142844
+            ]
+          },
+          "converged": true,
+          "correspondences": 60,
+          "elapsed_ms": 15.704004999861354,
+          "geometrically_accepted": true,
+          "method": "kiss_matcher_full6d",
+          "native_diagnostics": {
+            "rotation_inliers": 79,
+            "translation_inliers": 60,
+            "use_quatro": false
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.0,
+          "reason": "coarse_hypothesis_requires_fine_validation",
+          "rmse_m": 0.0,
+          "source_overlap": 0.0
+        },
+        "fine": {
+          "T_target_source": {
+            "xyz": [
+              -0.7456808669748862,
+              -0.9153983359533907,
+              0.02849394945197812
+            ],
+            "xyzw": [
+              -0.120545294777379,
+              0.1359110241156337,
+              0.6898121442513908,
+              0.7008253927150278
+            ]
+          },
+          "converged": true,
+          "correspondences": 11182,
+          "elapsed_ms": 24.346406000404386,
+          "geometrically_accepted": true,
+          "method": "small_gicp",
+          "native_diagnostics": {
+            "H_eigenvalues": [
+              166781.95528721082,
+              202410.79932660135,
+              549698.0534690404,
+              1476686.1422591389,
+              3877892.8724673796,
+              6610214.0046088975
+            ],
+            "H_finite": true,
+            "covariance_calibrated": false,
+            "error": 226.59384328995836,
+            "iterations": 3,
+            "num_inliers": 4749
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.24014808896816872,
+          "reason": "geometry_valid",
+          "rmse_m": 0.12827052717677256,
+          "source_overlap": 0.9318333333333333
+        },
+        "keyframe": 121,
+        "retrieval_distance": 0.07027559730723927,
+        "target_keyframe_ids": [
+          121,
+          120,
+          122,
+          123,
+          119,
+          118,
+          124,
+          117
+        ]
+      },
+      {
+        "coarse": {
+          "T_target_source": {
+            "xyz": [
+              1.1746462103426503,
+              -0.31998912431376614,
+              0.4370855798077828
+            ],
+            "xyzw": [
+              -0.35224734045553335,
+              0.009894440993501768,
+              0.9154219995322832,
+              -0.19449029269283935
+            ]
+          },
+          "converged": true,
+          "correspondences": 58,
+          "elapsed_ms": 15.075041999807581,
+          "geometrically_accepted": true,
+          "method": "kiss_matcher_full6d",
+          "native_diagnostics": {
+            "rotation_inliers": 73,
+            "translation_inliers": 58,
+            "use_quatro": false
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.0,
+          "reason": "coarse_hypothesis_requires_fine_validation",
+          "rmse_m": 0.0,
+          "source_overlap": 0.0
+        },
+        "fine": {
+          "T_target_source": {
+            "xyz": [
+              -0.749093811179735,
+              -0.9142095727407489,
+              0.02724019780796284
+            ],
+            "xyzw": [
+              -0.12029215045755863,
+              0.13620308523036884,
+              0.6900205210439823,
+              0.700607021553607
+            ]
+          },
+          "converged": true,
+          "correspondences": 11126,
+          "elapsed_ms": 25.35067999997409,
+          "geometrically_accepted": true,
+          "method": "small_gicp",
+          "native_diagnostics": {
+            "H_eigenvalues": [
+              168799.55787377246,
+              200680.8913756716,
+              541059.7775663004,
+              1478021.2796376324,
+              3874873.389130951,
+              6648288.4233878
+            ],
+            "H_finite": true,
+            "covariance_calibrated": false,
+            "error": 321.88853175005056,
+            "iterations": 3,
+            "num_inliers": 4762
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.24185835093940422,
+          "reason": "geometry_valid",
+          "rmse_m": 0.13122331899102452,
+          "source_overlap": 0.9271666666666667
+        },
+        "keyframe": 122,
+        "retrieval_distance": 0.08822202489691502,
+        "target_keyframe_ids": [
+          122,
+          123,
+          121,
+          124,
+          120,
+          125,
+          119,
+          126
+        ]
+      },
+      {
+        "coarse": {
+          "T_target_source": {
+            "xyz": [
+              1.201100307415999,
+              0.9783800023902567,
+              0.387599528988566
+            ],
+            "xyzw": [
+              0.2512729805263172,
+              -0.020155293019063734,
+              -0.6919724593379218,
+              0.6764833840816528
+            ]
+          },
+          "converged": true,
+          "correspondences": 34,
+          "elapsed_ms": 16.030037997552427,
+          "geometrically_accepted": true,
+          "method": "kiss_matcher_full6d",
+          "native_diagnostics": {
+            "rotation_inliers": 41,
+            "translation_inliers": 34,
+            "use_quatro": false
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.0,
+          "reason": "coarse_hypothesis_requires_fine_validation",
+          "rmse_m": 0.0,
+          "source_overlap": 0.0
+        },
+        "fine": {
+          "T_target_source": {
+            "xyz": [
+              -0.7526342539620516,
+              -0.9048642062024974,
+              0.02492214759845106
+            ],
+            "xyzw": [
+              -0.11966610128695888,
+              0.13573133297993178,
+              0.6893360826125032,
+              0.7014790051446433
+            ]
+          },
+          "converged": true,
+          "correspondences": 11687,
+          "elapsed_ms": 26.65257999979076,
+          "geometrically_accepted": true,
+          "method": "small_gicp",
+          "native_diagnostics": {
+            "H_eigenvalues": [
+              169186.27437162134,
+              194804.41410276163,
+              556757.3751243957,
+              1508588.8287071763,
+              3453585.0517644905,
+              5842989.988893019
+            ],
+            "H_finite": true,
+            "covariance_calibrated": false,
+            "error": 226.18014616201506,
+            "iterations": 4,
+            "num_inliers": 4963
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.24305898790724922,
+          "reason": "geometry_valid",
+          "rmse_m": 0.12608502109624978,
+          "source_overlap": 0.9739166666666667
+        },
+        "keyframe": 115,
+        "retrieval_distance": 0.08877567693952114,
+        "target_keyframe_ids": [
+          115,
+          2,
+          131,
+          129,
+          132,
+          130,
+          128,
+          127
+        ]
+      },
+      {
+        "coarse": {
+          "T_target_source": {
+            "xyz": [
+              0.9401843208885501,
+              -0.85102040072063,
+              0.33135341139600727
+            ],
+            "xyzw": [
+              -0.36201005727494273,
+              0.01115397796500859,
+              0.9320171542043345,
+              0.012974262067743679
+            ]
+          },
+          "converged": true,
+          "correspondences": 38,
+          "elapsed_ms": 17.32222200007527,
+          "geometrically_accepted": true,
+          "method": "kiss_matcher_full6d",
+          "native_diagnostics": {
+            "rotation_inliers": 47,
+            "translation_inliers": 38,
+            "use_quatro": false
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.0,
+          "reason": "coarse_hypothesis_requires_fine_validation",
+          "rmse_m": 0.0,
+          "source_overlap": 0.0
+        },
+        "fine": {
+          "T_target_source": {
+            "xyz": [
+              -0.7489711480973451,
+              -0.9129141269193071,
+              0.027323758547423065
+            ],
+            "xyzw": [
+              -0.12024858414686268,
+              0.1364116358839622,
+              0.6900414644162364,
+              0.7005532963254347
+            ]
+          },
+          "converged": true,
+          "correspondences": 11157,
+          "elapsed_ms": 29.394351000519237,
+          "geometrically_accepted": true,
+          "method": "small_gicp",
+          "native_diagnostics": {
+            "H_eigenvalues": [
+              169786.1027912042,
+              201536.61024731857,
+              560112.040305973,
+              1555102.3976794719,
+              3899647.5709794043,
+              6622106.367354257
+            ],
+            "H_finite": true,
+            "covariance_calibrated": false,
+            "error": 267.9825484233232,
+            "iterations": 3,
+            "num_inliers": 4793
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.23878151370425504,
+          "reason": "geometry_valid",
+          "rmse_m": 0.135558279578803,
+          "source_overlap": 0.92975
+        },
+        "keyframe": 124,
+        "retrieval_distance": 0.10822399270498603,
+        "target_keyframe_ids": [
+          124,
+          125,
+          123,
+          122,
+          126,
+          127,
+          121,
+          128
+        ]
+      },
+      {
+        "coarse": {
+          "T_target_source": {
+            "xyz": [
+              1.0905143944995686,
+              -0.629986381763295,
+              0.4133703009711184
+            ],
+            "xyzw": [
+              -0.3584600576989809,
+              0.013269891285303278,
+              0.9283573180318823,
+              -0.0973806298827958
+            ]
+          },
+          "converged": true,
+          "correspondences": 38,
+          "elapsed_ms": 15.621939000993734,
+          "geometrically_accepted": true,
+          "method": "kiss_matcher_full6d",
+          "native_diagnostics": {
+            "rotation_inliers": 61,
+            "translation_inliers": 38,
+            "use_quatro": false
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.0,
+          "reason": "coarse_hypothesis_requires_fine_validation",
+          "rmse_m": 0.0,
+          "source_overlap": 0.0
+        },
+        "fine": {
+          "T_target_source": {
+            "xyz": [
+              -0.748737580024392,
+              -0.913183430101005,
+              0.027463983265749215
+            ],
+            "xyzw": [
+              -0.12031085605910782,
+              0.13639716732295531,
+              0.6899147768799577,
+              0.7006701872516602
+            ]
+          },
+          "converged": true,
+          "correspondences": 11115,
+          "elapsed_ms": 30.300615999294678,
+          "geometrically_accepted": true,
+          "method": "small_gicp",
+          "native_diagnostics": {
+            "H_eigenvalues": [
+              169318.48859838207,
+              202134.9264002463,
+              551627.7009214924,
+              1558602.840417863,
+              3864955.947465287,
+              6635345.0644200975
+            ],
+            "H_finite": true,
+            "covariance_calibrated": false,
+            "error": 269.66616241968177,
+            "iterations": 2,
+            "num_inliers": 4767
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.23708461719799961,
+          "reason": "geometry_valid",
+          "rmse_m": 0.13272806261702894,
+          "source_overlap": 0.92625
+        },
+        "keyframe": 123,
+        "retrieval_distance": 0.11285387002965894,
+        "target_keyframe_ids": [
+          123,
+          122,
+          124,
+          125,
+          121,
+          120,
+          126,
+          127
+        ]
+      },
+      {
+        "coarse": {
+          "T_target_source": {
+            "xyz": [
+              0.6688459336293203,
+              -1.0289068081192339,
+              0.2524032511838665
+            ],
+            "xyzw": [
+              -0.342269130224176,
+              0.0076957591523678865,
+              0.9321836008438181,
+              0.11758550975570142
+            ]
+          },
+          "converged": true,
+          "correspondences": 60,
+          "elapsed_ms": 14.999734998127678,
+          "geometrically_accepted": true,
+          "method": "kiss_matcher_full6d",
+          "native_diagnostics": {
+            "rotation_inliers": 72,
+            "translation_inliers": 60,
+            "use_quatro": false
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.0,
+          "reason": "coarse_hypothesis_requires_fine_validation",
+          "rmse_m": 0.0,
+          "source_overlap": 0.0
+        },
+        "fine": {
+          "T_target_source": {
+            "xyz": [
+              -0.7489901488191381,
+              -0.9129063713905582,
+              0.02732327499881499
+            ],
+            "xyzw": [
+              -0.12024996004987977,
+              0.13641542125968237,
+              0.690041607243627,
+              0.700552182369863
+            ]
+          },
+          "converged": true,
+          "correspondences": 11157,
+          "elapsed_ms": 25.363593998918077,
+          "geometrically_accepted": true,
+          "method": "small_gicp",
+          "native_diagnostics": {
+            "H_eigenvalues": [
+              169787.20384848566,
+              201544.63494015264,
+              560102.7558588266,
+              1555303.882642776,
+              3898977.507823429,
+              6621985.79156353
+            ],
+            "H_finite": true,
+            "covariance_calibrated": false,
+            "error": 267.888960473006,
+            "iterations": 3,
+            "num_inliers": 4793
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.23877460430037667,
+          "reason": "geometry_valid",
+          "rmse_m": 0.1355606920638454,
+          "source_overlap": 0.92975
+        },
+        "keyframe": 125,
+        "retrieval_distance": 0.11290422218510009,
+        "target_keyframe_ids": [
+          125,
+          124,
+          126,
+          123,
+          127,
+          128,
+          122,
+          121
+        ]
+      },
+      {
+        "coarse": {
+          "T_target_source": {
+            "xyz": [
+              0.2589640947219362,
+              -1.3667891816564146,
+              0.1504764235892178
+            ],
+            "xyzw": [
+              -0.34151923287406005,
+              0.008512742618267543,
+              0.8833152817951557,
+              0.32100819263279434
+            ]
+          },
+          "converged": true,
+          "correspondences": 45,
+          "elapsed_ms": 16.51877900076215,
+          "geometrically_accepted": true,
+          "method": "kiss_matcher_full6d",
+          "native_diagnostics": {
+            "rotation_inliers": 60,
+            "translation_inliers": 45,
+            "use_quatro": false
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.0,
+          "reason": "coarse_hypothesis_requires_fine_validation",
+          "rmse_m": 0.0,
+          "source_overlap": 0.0
+        },
+        "fine": {
+          "T_target_source": {
+            "xyz": [
+              -0.7488551942415551,
+              -0.9100803853212718,
+              0.026768894484155283
+            ],
+            "xyzw": [
+              -0.11987795882767463,
+              0.1366805468947629,
+              0.689839001115832,
+              0.7007637659207059
+            ]
+          },
+          "converged": true,
+          "correspondences": 11117,
+          "elapsed_ms": 28.63037299903226,
+          "geometrically_accepted": true,
+          "method": "small_gicp",
+          "native_diagnostics": {
+            "H_eigenvalues": [
+              171301.00536603923,
+              196128.9599564376,
+              556817.5613935889,
+              1563624.1324939597,
+              3895967.4548195777,
+              6526552.134091568
+            ],
+            "H_finite": true,
+            "covariance_calibrated": false,
+            "error": 175.30390808495082,
+            "iterations": 3,
+            "num_inliers": 4797
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.25094053087152673,
+          "reason": "geometry_valid",
+          "rmse_m": 0.13280523180231918,
+          "source_overlap": 0.9264166666666667
+        },
+        "keyframe": 127,
+        "retrieval_distance": 0.11456751770821226,
+        "target_keyframe_ids": [
+          127,
+          128,
+          126,
+          125,
+          129,
+          130,
+          124,
+          123
+        ]
+      },
+      {
+        "coarse": {
+          "T_target_source": {
+            "xyz": [
+              -0.4916404597759959,
+              -1.3493030345279133,
+              -0.1744239152766219
+            ],
+            "xyzw": [
+              -0.2887673045308327,
+              0.017429969854019466,
+              0.7547031714958897,
+              0.5888401845313641
+            ]
+          },
+          "converged": true,
+          "correspondences": 31,
+          "elapsed_ms": 14.751321999938227,
+          "geometrically_accepted": true,
+          "method": "kiss_matcher_full6d",
+          "native_diagnostics": {
+            "rotation_inliers": 39,
+            "translation_inliers": 31,
+            "use_quatro": false
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.0,
+          "reason": "coarse_hypothesis_requires_fine_validation",
+          "rmse_m": 0.0,
+          "source_overlap": 0.0
+        },
+        "fine": {
+          "T_target_source": {
+            "xyz": [
+              -0.7514786074967603,
+              -0.9075293545579952,
+              0.023088766895762544
+            ],
+            "xyzw": [
+              -0.11977187922674239,
+              0.13670585425246526,
+              0.689644491193692,
+              0.7009683888206315
+            ]
+          },
+          "converged": true,
+          "correspondences": 10992,
+          "elapsed_ms": 27.387008001824142,
+          "geometrically_accepted": true,
+          "method": "small_gicp",
+          "native_diagnostics": {
+            "H_eigenvalues": [
+              166856.47688978718,
+              191110.57504487902,
+              526157.0112323693,
+              1481088.4994891551,
+              3776280.978648509,
+              6004700.87343341
+            ],
+            "H_finite": true,
+            "covariance_calibrated": false,
+            "error": 177.18797224588945,
+            "iterations": 3,
+            "num_inliers": 4741
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.24960832937179336,
+          "reason": "geometry_valid",
+          "rmse_m": 0.13788603975452132,
+          "source_overlap": 0.916
+        },
+        "keyframe": 130,
+        "retrieval_distance": 0.1188391469765959,
+        "target_keyframe_ids": [
+          130,
+          129,
+          128,
+          131,
+          127,
+          132,
+          126,
+          125
+        ]
+      },
+      {
+        "coarse": {
+          "T_target_source": {
+            "xyz": [
+              1.4817923289032389,
+              1.0765805033266835,
+              0.5511916339812544
+            ],
+            "xyzw": [
+              0.24467502253263695,
+              -0.008108575762981497,
+              -0.6739423475123559,
+              0.6970438268697922
+            ]
+          },
+          "converged": true,
+          "correspondences": 37,
+          "elapsed_ms": 17.460924998886185,
+          "geometrically_accepted": true,
+          "method": "kiss_matcher_full6d",
+          "native_diagnostics": {
+            "rotation_inliers": 48,
+            "translation_inliers": 37,
+            "use_quatro": false
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.0,
+          "reason": "coarse_hypothesis_requires_fine_validation",
+          "rmse_m": 0.0,
+          "source_overlap": 0.0
+        },
+        "fine": {
+          "T_target_source": {
+            "xyz": [
+              -0.7464799847589066,
+              -0.9058904057380193,
+              0.021981812986243063
+            ],
+            "xyzw": [
+              -0.11950739370367686,
+              0.13455788630308402,
+              0.688558965234673,
+              0.7024946330604649
+            ]
+          },
+          "converged": true,
+          "correspondences": 11812,
+          "elapsed_ms": 26.730993999080965,
+          "geometrically_accepted": true,
+          "method": "small_gicp",
+          "native_diagnostics": {
+            "H_eigenvalues": [
+              172805.2219852245,
+              185053.71717887884,
+              593091.3226619285,
+              1492649.0541235288,
+              3395751.3091001534,
+              5967624.655683422
+            ],
+            "H_finite": true,
+            "covariance_calibrated": false,
+            "error": 190.45651647859572,
+            "iterations": 3,
+            "num_inliers": 5016
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.24668705277543107,
+          "reason": "geometry_valid",
+          "rmse_m": 0.1161031067881966,
+          "source_overlap": 0.9843333333333333
+        },
+        "keyframe": 114,
+        "retrieval_distance": 0.11886782833657866,
+        "target_keyframe_ids": [
+          114,
+          3,
+          115,
+          2,
+          113,
+          4,
+          112,
+          131
+        ]
+      },
+      {
+        "coarse": {
+          "T_target_source": {
+            "xyz": [
+              0.5484641335651499,
+              -1.2221674740480337,
+              0.23955659298422394
+            ],
+            "xyzw": [
+              -0.3550758032793334,
+              0.008021790391296645,
+              0.9091343257530015,
+              0.21755827389940752
+            ]
+          },
+          "converged": true,
+          "correspondences": 45,
+          "elapsed_ms": 16.87524099907023,
+          "geometrically_accepted": true,
+          "method": "kiss_matcher_full6d",
+          "native_diagnostics": {
+            "rotation_inliers": 53,
+            "translation_inliers": 45,
+            "use_quatro": false
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.0,
+          "reason": "coarse_hypothesis_requires_fine_validation",
+          "rmse_m": 0.0,
+          "source_overlap": 0.0
+        },
+        "fine": {
+          "T_target_source": {
+            "xyz": [
+              -0.7488110302774094,
+              -0.9101552791539756,
+              0.026765448238227473
+            ],
+            "xyzw": [
+              -0.11987826848365059,
+              0.13667471396767783,
+              0.6898464804347578,
+              0.7007574878222798
+            ]
+          },
+          "converged": true,
+          "correspondences": 11117,
+          "elapsed_ms": 25.90770900133066,
+          "geometrically_accepted": true,
+          "method": "small_gicp",
+          "native_diagnostics": {
+            "H_eigenvalues": [
+              171856.54681098036,
+              196531.86738614,
+              556980.7211296055,
+              1570295.149751528,
+              3898383.969244418,
+              6527345.758964872
+            ],
+            "H_finite": true,
+            "covariance_calibrated": false,
+            "error": 175.38870769787218,
+            "iterations": 3,
+            "num_inliers": 4797
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.25094929063003546,
+          "reason": "geometry_valid",
+          "rmse_m": 0.13279892168701612,
+          "source_overlap": 0.9264166666666667
+        },
+        "keyframe": 126,
+        "retrieval_distance": 0.12171127349568195,
+        "target_keyframe_ids": [
+          126,
+          125,
+          127,
+          128,
+          124,
+          123,
+          130,
+          129
+        ]
+      },
+      {
+        "coarse": {
+          "T_target_source": {
+            "xyz": [
+              -0.6691346478198243,
+              -0.8506569268880866,
+              -0.23135483364138423
+            ],
+            "xyzw": [
+              -0.24587386176704817,
+              -0.0011435297562666386,
+              0.6580925561042165,
+              0.711659275243198
+            ]
+          },
+          "converged": true,
+          "correspondences": 34,
+          "elapsed_ms": 15.076340001542121,
+          "geometrically_accepted": true,
+          "method": "kiss_matcher_full6d",
+          "native_diagnostics": {
+            "rotation_inliers": 52,
+            "translation_inliers": 34,
+            "use_quatro": false
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.0,
+          "reason": "coarse_hypothesis_requires_fine_validation",
+          "rmse_m": 0.0,
+          "source_overlap": 0.0
+        },
+        "fine": {
+          "T_target_source": {
+            "xyz": [
+              -0.7506808729722328,
+              -0.9124987087596873,
+              0.022795402854758975
+            ],
+            "xyzw": [
+              -0.12007455340529778,
+              0.13540231058431998,
+              0.6889992403418889,
+              0.7018036496921671
+            ]
+          },
+          "converged": true,
+          "correspondences": 11696,
+          "elapsed_ms": 26.2592390026839,
+          "geometrically_accepted": true,
+          "method": "small_gicp",
+          "native_diagnostics": {
+            "H_eigenvalues": [
+              170485.65835936082,
+              185715.05816127363,
+              561955.5128046082,
+              1487588.632415438,
+              3393704.606132739,
+              5781192.466210043
+            ],
+            "H_finite": true,
+            "covariance_calibrated": false,
+            "error": 229.44741417206785,
+            "iterations": 3,
+            "num_inliers": 4975
+          },
+          "normalized_plane_hessian_eigen_ratio": 0.24769040848908933,
+          "reason": "geometry_valid",
+          "rmse_m": 0.12432434532701639,
+          "source_overlap": 0.9746666666666667
+        },
+        "keyframe": 0,
+        "retrieval_distance": 0.12428773800989046,
+        "target_keyframe_ids": [
+          0,
+          1,
+          122,
+          120,
+          121,
+          123,
+          124,
+          119
+        ]
+      }
+    ],
+    "elapsed_ms": 1011.6347180010052,
+    "evaluated_candidate_limit": 16,
+    "global_descriptor": "radial_pair_multiscale_v2",
+    "global_search_allowed": true,
+    "global_search_enabled": true,
+    "global_stationary_initialization": true,
+    "graph_version": 170,
+    "inputs_ready": true,
+    "invalid_messages": 0,
+    "map_loading": false,
+    "map_uuid": "160f8572a77a61856cf87e43514be769",
+    "online_scheduling": true,
+    "pair_bytes": 0,
+    "pair_counters": {},
+    "processed_scans": 583,
+    "public_tf_publisher": false,
+    "query_points": 12000,
+    "query_scan_ids": [
+      1179,
+      1180,
+      1181,
+      1182,
+      1183,
+      1184,
+      1185,
+      1186
+    ],
+    "query_stamp_ns": 1590196242700407743,
+    "queued_jobs": 8,
+    "sample_age_seconds": -1.0,
+    "skipped_scans": 612,
+    "source_manifest_sha256": "93628bcf34742e8fbdb1f08afa9501f44aaa1f9dab4d9ef2c80914b7a62fc105",
+    "stale_results": 0,
+    "stationary_strong_geometry": true,
+    "tag_candidates": [],
+    "tag_input_dropped": 0,
+    "verified_pose": {
+      "xyz": [
+        -0.7464799847589066,
+        -0.9058904057380193,
+        0.021981812986243063
+      ],
+      "xyzw": [
+        -0.11950739370367686,
+        0.13455788630308402,
+        0.688558965234673,
+        0.7024946330604649
+      ]
+    }
+  },
+  "view": {},
+  "frontend_backend_lag_seconds": null,
+  "clock": {
+    "mode": "fixed_lidar_header_steady_anchor",
+    "anchor": [
+      1590196119500185800,
+      19749765706560
+    ],
+    "error": "",
+    "physical_host_sync_proven": false,
+    "ready": true,
+    "startup_resets": 2
+  }
+}

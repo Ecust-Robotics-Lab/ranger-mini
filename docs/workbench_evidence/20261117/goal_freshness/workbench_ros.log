@@ -1,0 +1,20 @@
+test_action_lifecycle_and_idempotence (tests.test_navigation_workbench_ros.TransportTests) ... Executing <Task pending name='Task-1' coro=<IsolatedAsyncioTestCase._asyncioLoopRunner() running at /usr/lib/python3.10/unittest/async_case.py:101> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.10/asyncio/base_events.py:429> created at /usr/lib/python3.10/unittest/async_case.py:117> took 0.303 seconds
+Executing <Task pending name='Task-1' coro=<IsolatedAsyncioTestCase._asyncioLoopRunner() running at /usr/lib/python3.10/unittest/async_case.py:95> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.10/asyncio/base_events.py:429> created at /usr/lib/python3.10/unittest/async_case.py:117> took 0.120 seconds
+ok
+test_bounded_callback_drain_keeps_observer_fresh_under_topic_load (tests.test_navigation_workbench_ros.TransportTests) ... Executing <Task pending name='Task-5' coro=<IsolatedAsyncioTestCase._asyncioLoopRunner() running at /usr/lib/python3.10/unittest/async_case.py:95> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.10/asyncio/base_events.py:429> created at /usr/lib/python3.10/unittest/async_case.py:117> took 0.121 seconds
+ok
+test_cancel_uses_real_action_protocol (tests.test_navigation_workbench_ros.TransportTests) ... Executing <Task pending name='Task-9' coro=<IsolatedAsyncioTestCase._asyncioLoopRunner() running at /usr/lib/python3.10/unittest/async_case.py:95> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.10/asyncio/base_events.py:429> created at /usr/lib/python3.10/unittest/async_case.py:117> took 0.120 seconds
+ok
+test_http_disconnect_keeps_single_robot_goal (tests.test_navigation_workbench_ros.TransportTests) ... /home/lab307/ranger_nav/workbench/server.py:152: NotAppKeyWarning: It is recommended to use web.AppKey instances for keys.
+https://docs.aiohttp.org/en/stable/web_advanced.html#application-s-config
+  app=web.Application(middlewares=[auth],client_max_size=256_000);app['api']=api
+Executing <Task pending name='Task-13' coro=<IsolatedAsyncioTestCase._asyncioLoopRunner() running at /usr/lib/python3.10/unittest/async_case.py:95> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.10/asyncio/base_events.py:429> created at /usr/lib/python3.10/unittest/async_case.py:117> took 0.131 seconds
+ok
+test_independent_watchdog_revokes_dead_owner (tests.test_navigation_workbench_ros.TransportTests) ... Executing <Task pending name='Task-795' coro=<IsolatedAsyncioTestCase._asyncioLoopRunner() running at /usr/lib/python3.10/unittest/async_case.py:95> wait_for=<Future pending cb=[Task.task_wakeup()] created at /usr/lib/python3.10/asyncio/base_events.py:429> created at /usr/lib/python3.10/unittest/async_case.py:117> took 0.128 seconds
+ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 22.451s
+
+OK
+observer_callback_load_p95_ms {'one_per_tick': 233.69362759999999, 'bounded_batch': 16.8629743, 'topics': 20}

@@ -53,55 +53,15 @@ def validate_fast_livo_config(path):
         raise ValueError('FAST-LIVO2 profile must retain LiDAR-IMU-camera fusion')
 
 
-def resolve(root=None, environ=None):
-    env = dict(os.environ if environ is None else environ)
-    # Convert the old raw launch-argument string to validated typed overrides.
-    # Unknown arguments previously disappeared silently inside roslaunch.
-    legacy_keys = {'t_base_imu_xyz', 't_base_imu_rpy', 'min_confidence',
-                   'tf_max_age_s', 'odom_max_age_s', 'odom_history_s', 'odom_max_gap_s', 'heartbeat_max_age_s',
-                   'status_max_age_s', 'confidence_max_age_s', 'loc_child_frame'}
-    for argument in shlex.split(env.get('BRIDGE_EXTRA_ARGS', '')):
-        key, sep, value = argument.partition(':=')
-        if not sep or key not in legacy_keys:
-            raise ValueError(f'unsupported BRIDGE_EXTRA_ARGS entry: {argument}')
-        env[key.upper()] = value
-    root = Path(root) if root is not None else project_root()
-    runtime_path = path_at(root, env.get('RANGER_RUNTIME_CONFIG', 'config/runtime.yaml'))
-    cfg = load_runtime(root, runtime_path)
-    if cfg['schema_version'] != 1:
-        raise ValueError('unsupported runtime schema')
-    supported = {'robot': ['ranger_mini_v2'], 'odometry_backend': ['wheel'],
-                 'localization_backend': ['lightning', 'standard'],
-                 'mapping_backend': ['lightning', 'fast_livo2'], 'terrain_backend': ['disabled']}
-    for key, choices in supported.items():
-        if cfg[key] not in choices:
-            if key == 'localization_backend' and cfg[key] == 'fast_livo2':
-                raise ValueError('FAST-LIVO2 is a local frontend only: prior-map global localization is not implemented; use mapping_backend: fast_livo2')
-            raise ValueError(f'unsupported {key}: {cfg[key]}')
-    mapping = cfg.get('mapping', {})
-    if not isinstance(mapping, dict) or any(not isinstance(mapping.get(k, {}), dict) for k in ('lightning', 'fast_livo2')):
-        raise ValueError('mapping backend configuration must be a mapping')
-    light = mapping.get('lightning', {})
-    fast = mapping.get('fast_livo2', {})
-    mapping_paths = {
-        'LIGHTNING_MAPPING_CONFIG': light.get('config', 'config/slam/ranger_mid360s.yaml'),
-        'FAST_LIVO_CONFIG': fast.get('config', 'config/fast_livo2/ranger_mid360s_hik_trial.yaml'),
-        'FAST_LIVO_CAMERA_CONFIG': fast.get('camera_config', 'config/fast_livo2/camera_live.yaml'),
-        'FAST_LIVO_LIDAR_CONFIG': fast.get('lidar_config', 'config/fast_livo2/mid360s_live.json'),
-        'FAST_LIVO_RVIZ_CONFIG': fast.get('rviz_config', 'config/fast_livo2/live.rviz'),
-    }
-    mapping_paths = {k:str(path_at(root,v)) for k,v in mapping_paths.items()}
-    required = ['LIGHTNING_MAPPING_CONFIG'] if cfg['mapping_backend'] == 'lightning' else list(mapping_paths)[1:]
-    for key in required:
-        if not Path(mapping_paths[key]).is_file():
-            raise ValueError(f'missing mapping configuration: {key}')
-    domain = fast.get('ros_domain_id', 175)
-    localhost = fast.get('localhost_only', True)
-    if type(domain) is not int or not 0 <= domain <= 232 or type(localhost) is not bool:
-        raise ValueError('invalid FAST-LIVO2 ROS domain/localhost configuration')
-    if cfg['mapping_backend'] == 'fast_livo2':
-        validate_fast_livo_config(mapping_paths['FAST_LIVO_CONFIG'])
-    bundle_path = path_at(root, env.get('MAP_BUNDLE', cfg['map_bundle']))
+def resolve_map_bundle(root, cfg, env):
+    source = env.get('MAP_BUNDLE', cfg.get('map_bundle'))
+    if source is None:
+        if cfg['localization_backend'] == 'lightning':
+            raise ValueError('Lightning localization requires a map bundle')
+        if any(key in env for key in ('LOC_CONFIG', 'MAP_YAML', 'MAP_DIR')):
+            raise ValueError('map overrides require an explicit MAP_BUNDLE')
+        return {}
+    bundle_path = path_at(root, source)
     bundle = yaml.safe_load(bundle_path.read_text())
     if bundle['schema_version'] != 1 or bundle['frame'] != 'map':
         raise ValueError('unsupported map bundle schema/frame')
@@ -134,6 +94,63 @@ def resolve(root=None, environ=None):
                           ('MAP_DIR', paths['navigation_map'].parent)]:
         if key in env and path_at(root, env[key]) != expected:
             raise ValueError(f'{key} conflicts with map bundle; select MAP_BUNDLE instead')
+    return {
+        'MAP_BUNDLE': str(bundle_path), 'LOC_CONFIG': str(paths['localization_config']),
+        'MAP_YAML': str(paths['navigation_map']), 'MAP_DIR': str(paths['navigation_map'].parent),
+    }
+
+
+def resolve(root=None, environ=None):
+    env = dict(os.environ if environ is None else environ)
+    # Convert the old raw launch-argument string to validated typed overrides.
+    # Unknown arguments previously disappeared silently inside roslaunch.
+    legacy_keys = {'t_base_imu_xyz', 't_base_imu_rpy', 'min_confidence',
+                   'tf_max_age_s', 'odom_max_age_s', 'odom_history_s', 'odom_max_gap_s', 'heartbeat_max_age_s',
+                   'status_max_age_s', 'confidence_max_age_s', 'loc_child_frame'}
+    for argument in shlex.split(env.get('BRIDGE_EXTRA_ARGS', '')):
+        key, sep, value = argument.partition(':=')
+        if not sep or key not in legacy_keys:
+            raise ValueError(f'unsupported BRIDGE_EXTRA_ARGS entry: {argument}')
+        env[key.upper()] = value
+    root = Path(root) if root is not None else project_root()
+    runtime_path = path_at(root, env.get('RANGER_RUNTIME_CONFIG', 'config/runtime.yaml'))
+    cfg = load_runtime(root, runtime_path)
+    if cfg['schema_version'] != 1:
+        raise ValueError('unsupported runtime schema')
+    supported = {'robot': ['ranger_mini_v2'], 'odometry_backend': ['wheel'],
+                 'localization_backend': ['lightning', 'standard'],
+                 'mapping_backend': ['lightning', 'fast_livo2'], 'terrain_backend': ['disabled']}
+    for key, choices in supported.items():
+        if cfg[key] not in choices:
+            if key == 'localization_backend' and cfg[key] == 'fast_livo2':
+                raise ValueError('use localization_backend: standard for FAST C1/C2 prior-map localization')
+            raise ValueError(f'unsupported {key}: {cfg[key]}')
+    mapping = cfg.get('mapping', {})
+    if not isinstance(mapping, dict) or any(not isinstance(mapping.get(k, {}), dict) for k in ('lightning', 'fast_livo2')):
+        raise ValueError('mapping backend configuration must be a mapping')
+    light = mapping.get('lightning', {})
+    fast = mapping.get('fast_livo2', {})
+    mapping_paths = {
+        'FAST_LIVO_CONFIG': fast.get('config', 'config/fast_livo2/ranger_mid360s_hik_trial.yaml'),
+        'FAST_LIVO_CAMERA_CONFIG': fast.get('camera_config', 'config/fast_livo2/camera_live.yaml'),
+        'FAST_LIVO_LIDAR_CONFIG': fast.get('lidar_config', 'config/fast_livo2/mid360s_live.json'),
+        'FAST_LIVO_RVIZ_CONFIG': fast.get('rviz_config', 'config/fast_livo2/live.rviz'),
+    }
+    required = tuple(mapping_paths)
+    if cfg['mapping_backend'] == 'lightning':
+        mapping_paths['LIGHTNING_MAPPING_CONFIG'] = light.get('config', 'config/slam/ranger_mid360s.yaml')
+        required = ('LIGHTNING_MAPPING_CONFIG',)
+    mapping_paths = {k:str(path_at(root,v)) for k,v in mapping_paths.items()}
+    for key in required:
+        if not Path(mapping_paths[key]).is_file():
+            raise ValueError(f'missing mapping configuration: {key}')
+    domain = fast.get('ros_domain_id', 175)
+    localhost = fast.get('localhost_only', True)
+    if type(domain) is not int or not 0 <= domain <= 232 or type(localhost) is not bool:
+        raise ValueError('invalid FAST-LIVO2 ROS domain/localhost configuration')
+    if cfg['mapping_backend'] == 'fast_livo2':
+        validate_fast_livo_config(mapping_paths['FAST_LIVO_CONFIG'])
+    map_values = resolve_map_bundle(root, cfg, env)
     loc = dict(cfg['localization'])
     loc.setdefault('odom_history_s', 2.0)
     loc.setdefault('odom_max_gap_s', 0.1)
@@ -142,9 +159,7 @@ def resolve(root=None, environ=None):
         if not math.isfinite(float(loc[key])) or float(loc[key]) <= 0:
             raise ValueError(f'{key} must be finite and positive')
     values = {
-        'RANGER_RUNTIME_CONFIG': str(runtime_path), 'MAP_BUNDLE': str(bundle_path),
-        'LOC_CONFIG': str(paths['localization_config']),
-        'MAP_YAML': str(paths['navigation_map']), 'MAP_DIR': str(paths['navigation_map'].parent),
+        'RANGER_RUNTIME_CONFIG': str(runtime_path), **map_values,
         'LOCALIZATION_BACKEND': cfg['localization_backend'],
         'MAPPING_BACKEND': cfg['mapping_backend'], **mapping_paths,
         'FAST_LIVO_ROS_DOMAIN_ID': str(domain), 'FAST_LIVO_LOCALHOST_ONLY': '1' if localhost else '0',
@@ -157,7 +172,7 @@ def resolve(root=None, environ=None):
         'T_BASE_IMU_XYZ': json.dumps(loc['t_base_imu_xyz']),
         'T_BASE_IMU_RPY': json.dumps(loc['t_base_imu_rpy']),
         'LIDAR_SECONDS': str(cfg['session']['lidar_seconds']),
-        'LOC_CHILD_FRAME': env.get('LOC_CHILD_FRAME', env.get('TF_CHILD', loc.get('native_pose_frame', 'lightning_imu_pose'))),
+        'LOC_CHILD_FRAME': env.get('LOC_CHILD_FRAME', env.get('TF_CHILD', loc.get('native_pose_frame', 'fast_livo_imu_pose'))),
         'BRIDGE_EXTRA_ARGS': '',  # overrides above have already been consumed
     }
     pose = cfg['session']['initial_pose']

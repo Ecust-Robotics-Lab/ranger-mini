@@ -1,3 +1,13 @@
 extends: config/runtime.yaml
 mapping_backend: lightning
 localization_backend: lightning
+map_bundle: config/maps/field_20260928.yaml
+mapping:
+  lightning:
+    config: config/slam/ranger_mid360s.yaml
+localization:
+  native_pose_frame: lightning_imu_pose
+  t_base_imu_xyz: [0.0, 0.0, 0.556]  # Historical approximation for the baseline
+  t_base_imu_rpy: [0.0, 0.0, 0.0]
+session:
+  initial_pose: [-0.85, -0.31, 0.0, 0.0, 0.0, -0.951, 0.309]

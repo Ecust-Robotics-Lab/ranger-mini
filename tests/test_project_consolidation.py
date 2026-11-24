@@ -28,14 +28,15 @@ class BackendRouting(unittest.TestCase):
     def profile(self, path):
         return resolve(ROOT, {'RANGER_RUNTIME_CONFIG': str(path)})
 
-    def test_production_defaults_unchanged(self):
+    def test_fast_defaults_have_no_lightning_map_dependency(self):
         default = resolve(ROOT, {})
         fast = self.profile('config/profiles/fast_livo2_frontend.yaml')
-        self.assertEqual(default['MAPPING_BACKEND'], 'lightning')
-        self.assertEqual(default['LOCALIZATION_BACKEND'], 'lightning')
-        self.assertEqual(fast['MAPPING_BACKEND'], 'fast_livo2')
-        for key in ('LOC_CONFIG', 'MAP_YAML', 'MAP_BUNDLE', 'LOCALIZATION_BACKEND', 'LOC_CHILD_FRAME'):
-            self.assertEqual(default[key], fast[key], key)
+        self.assertEqual(default['MAPPING_BACKEND'], 'fast_livo2')
+        self.assertEqual(default['LOCALIZATION_BACKEND'], 'standard')
+        for key in ('LOC_CONFIG', 'MAP_YAML', 'MAP_BUNDLE', 'MAP_DIR', 'LIGHTNING_MAPPING_CONFIG'):
+            self.assertNotIn(key, default)
+        self.assertEqual({k: v for k, v in default.items() if k != 'RANGER_RUNTIME_CONFIG'},
+                         {k: v for k, v in fast.items() if k != 'RANGER_RUNTIME_CONFIG'})
 
     def test_routes_both_modes_to_correct_existing_entry(self):
         runner = module('mapping_session_test', ROOT/'scripts/mapping_session.py')
@@ -94,7 +95,7 @@ class BackendRouting(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             profile = Path(tmp)/'bad.yaml'
             profile.write_text('extends: config/runtime.yaml\nlocalization_backend: fast_livo2\n')
-            with self.assertRaisesRegex(ValueError, 'prior-map global localization is not implemented'):
+            with self.assertRaisesRegex(ValueError, 'use localization_backend: standard'):
                 self.profile(profile)
 
     def test_direct_fast_entry_cannot_bypass_fusion_check(self):
@@ -109,10 +110,25 @@ class BackendRouting(unittest.TestCase):
             self.assertIn('fusion',p.stderr)
 
     def test_real_cli_defaults_to_dry_run(self):
-        for profile in ('lightning.yaml', 'fast_livo2_frontend.yaml'):
-            p = subprocess.run(['bash',str(ROOT/'scripts/run_mapping.sh'),'--runtime-config',
-                'config/profiles/'+profile], check=True,capture_output=True,text=True)
-            self.assertEqual(json.loads(p.stdout)['action'], 'DRY-RUN')
+        for args, backend in (([], 'fast_livo2'),
+                              (['--runtime-config', 'config/profiles/lightning.yaml'], 'lightning')):
+            p = subprocess.run(['bash', str(ROOT/'scripts/run_mapping.sh'), *args],
+                               check=True, capture_output=True, text=True)
+            plan = json.loads(p.stdout)
+            self.assertEqual(plan['action'], 'DRY-RUN')
+            self.assertEqual(plan['mapping_backend'], backend)
+
+    def test_legacy_field_requires_explicit_lightning_profile(self):
+        entrypoint = ['bash', str(ROOT/'scripts/field_session.sh')]
+        env = dict(os.environ, RANGER_RUNTIME_CONFIG='config/runtime.yaml', ENABLE_LOC='1')
+        default = subprocess.run(entrypoint, env=env, capture_output=True, text=True)
+        self.assertEqual(default.returncode, 2)
+        self.assertIn('localize_fast_livo2.sh', default.stderr)
+        env['RANGER_RUNTIME_CONFIG'] = 'config/profiles/lightning.yaml'
+        baseline = subprocess.run(entrypoint, env=env, capture_output=True, text=True, check=True)
+        plan = json.loads(baseline.stdout)
+        self.assertEqual(plan['action'], 'DRY-RUN')
+        self.assertIn('localization', {component['name'] for component in plan['components']})
 
 
 class CalibrationRelocation(unittest.TestCase):

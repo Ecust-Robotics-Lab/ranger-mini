@@ -30,7 +30,7 @@ class LocalizationBridge(Node):
         d = self.declare_parameter
         # Legacy direct invocation composes the adapter in main(). The launch
         # wrapper uses separate processes and explicitly selects external.
-        self.adapter_backend = d('adapter_backend', 'lightning').value
+        self.adapter_backend = d('adapter_backend', 'external').value
         if self.adapter_backend not in ['lightning', 'external']:
             raise ValueError('adapter_backend must be lightning or external')
         self.map_frame = d('map_frame', 'map').value

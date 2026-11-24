@@ -27,8 +27,11 @@ import tf2_ros
 
 
 class RuntimeTests(unittest.TestCase):
+    def lightning(self, env=None):
+        return resolve(ROOT, {'RANGER_RUNTIME_CONFIG': 'config/profiles/lightning.yaml', **(env or {})})
+
     def test_map_pair_and_seed_override(self):
-        cfg = resolve(ROOT, {'INIT_X': '1.25'})
+        cfg = self.lightning({'INIT_X': '1.25'})
         self.assertEqual(Path(cfg['MAP_YAML']).parent, Path(cfg['MAP_DIR']))
         self.assertIn('2lx5kkho', cfg['LOC_CONFIG'] if '2lx5kkho' in cfg['LOC_CONFIG'] else
                       yaml.safe_load(Path(cfg['LOC_CONFIG']).read_text())['system']['map_path'])
@@ -37,7 +40,7 @@ class RuntimeTests(unittest.TestCase):
 
     def test_conflicting_legacy_map_rejected(self):
         with self.assertRaisesRegex(ValueError, 'conflicts'):
-            resolve(ROOT, {'MAP_DIR': 'maps/lightning-offline-suej7qsz/data/new_map'})
+            self.lightning({'MAP_DIR': 'maps/lightning-offline-suej7qsz/data/new_map'})
 
     def test_invalid_overrides_rejected(self):
         for env in [{'TF_MAX_AGE_S': 'nan'}, {'INIT_X': '$(touch /tmp/never)'},
@@ -51,7 +54,7 @@ class RuntimeTests(unittest.TestCase):
                     {'TF_CHILD': 'imu_link'}, {'LOC_CHILD_FRAME': 'base_link'}]:
             with self.subTest(env=env), self.assertRaises(ValueError):
                 resolve(ROOT, env)
-        cfg=resolve(ROOT, {})
+        cfg=self.lightning()
         self.assertEqual(cfg['LOC_CHILD_FRAME'],'lightning_imu_pose')
 
     def test_legacy_arguments_are_validated(self):
@@ -71,7 +74,7 @@ class RuntimeTests(unittest.TestCase):
                 bad = dict(bundle, **change)
                 path.write_text(yaml.safe_dump(bad))
                 with self.assertRaisesRegex(ValueError, 'mismatch|different native map'):
-                    resolve(ROOT, {'MAP_BUNDLE': str(path)})
+                    self.lightning({'MAP_BUNDLE': str(path)})
 
     def test_map_provenance_mismatch_rejected(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -79,7 +82,7 @@ class RuntimeTests(unittest.TestCase):
             bundle['navigation_map'] = 'maps/lightning-offline-suej7qsz/data/new_map/map.yaml'
             path = Path(tmp)/'bundle.yaml'; path.write_text(yaml.safe_dump(bundle))
             with self.assertRaisesRegex(ValueError, 'provenance'):
-                resolve(ROOT, {'MAP_BUNDLE': str(path)})
+                self.lightning({'MAP_BUNDLE': str(path)})
 
     def test_safe_shell_roundtrip(self):
         # Exercise actual resolver output through bash with a quoted config path.
@@ -160,9 +163,9 @@ class ExternalContractTests(unittest.TestCase):
         rclpy.init()
         with tempfile.TemporaryDirectory() as tmp:
             log=open(Path(tmp)/'bridge.log','w')
-            proc=subprocess.Popen([sys.executable,'-m','ranger_localization_bridge.bridge_node',
-                '--ros-args','-p','adapter_backend:=external'],stdout=log,stderr=subprocess.STDOUT,
-                start_new_session=True)
+            proc = subprocess.Popen(
+                [sys.executable, '-m', 'ranger_localization_bridge.bridge_node'],
+                stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
             node=ExternalWorld()
             try:
                 self.assertTrue(wait_for(node,lambda:node.true_count>=5,12),'external backend never ready')

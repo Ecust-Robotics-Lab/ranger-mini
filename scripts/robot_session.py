@@ -30,6 +30,10 @@ def enabled(env, name, default='1'):
 
 
 def build_components(mode, cfg, env):
+    native_localization = mode == 'field' and enabled(env, 'ENABLE_LOC')
+    if native_localization and cfg['LOCALIZATION_BACKEND'] != 'lightning':
+        raise ValueError('for FAST localization use the navigation workbench or localize_fast_livo2.sh; '
+                         'for the Lightning baseline select RANGER_RUNTIME_CONFIG=config/profiles/lightning.yaml')
     lidar_type = 'none' if mode=='base' else ('pointcloud2' if mode=='navigation' else 'custom')
     specs = [Component('probe', ros_command(['python3', ROOT/'scripts/session_probe.py',
                         '--lidar-type',lidar_type]), ready_key='probe_live')]
@@ -56,6 +60,8 @@ def build_components(mode, cfg, env):
             '--frame-id', 'imu_link', '--child-frame-id', 'livox_frame']),
             depends=('sensor_mount',), ready_key='sensor_tf', resource='sensor_tf'))
         if enabled(env, 'ENABLE_MAP_PUB', '0'):
+            if 'MAP_DIR' not in cfg:
+                raise ValueError('ENABLE_MAP_PUB requires a map bundle')
             specs.append(Component('visual_map', ros_command(['python3', ROOT/'scripts/publish_loc_map.py',
                 '--map-dir', cfg['MAP_DIR']]), depends=('probe',), critical=False,
                 start_requires=('map_unclaimed',), resource='map_publisher'))
@@ -66,7 +72,7 @@ def build_components(mode, cfg, env):
             specs.append(Component('foxglove', ros_command(['ros2', 'launch', 'foxglove_bridge',
                 'foxglove_bridge_launch.xml']), depends=('probe',), critical=False, resource='foxglove'))
     names = {c.name for c in specs}
-    if mode == 'field' and enabled(env, 'ENABLE_LOC') and cfg['LOCALIZATION_BACKEND'] == 'lightning':
+    if native_localization:
         command = [ROOT/'ws_slam/build/lightning/bin/run_loc_online', '--config='+cfg['LOC_CONFIG'],
                    '--tf_child='+cfg['LOC_CHILD_FRAME']]
         command += ['--'+name.lower()+'='+cfg[name] for name in
@@ -76,11 +82,18 @@ def build_components(mode, cfg, env):
             ready_key='native_localization', start_requires=('native_unclaimed',), resource='native_localization'))
     names = {c.name for c in specs}
     if mode == 'field' and enabled(env, 'ENABLE_BRIDGE'):
-        command = ['ros2', 'launch', 'ranger_localization_bridge', 'loc_bridge.launch.py',
-                   'localization_backend:='+cfg['LOCALIZATION_BACKEND']]
-        command += [key.lower()+':='+cfg[key] for key in ['T_BASE_IMU_XYZ', 'T_BASE_IMU_RPY',
-            'LOC_CHILD_FRAME', 'MIN_CONFIDENCE', 'TF_MAX_AGE_S', 'ODOM_MAX_AGE_S', 'ODOM_HISTORY_S', 'ODOM_MAX_GAP_S',
-            'HEARTBEAT_MAX_AGE_S', 'STATUS_MAX_AGE_S', 'CONFIDENCE_MAX_AGE_S']]
+        keys = ('TF_MAX_AGE_S', 'ODOM_MAX_AGE_S', 'ODOM_HISTORY_S', 'ODOM_MAX_GAP_S', 'HEARTBEAT_MAX_AGE_S')
+        if cfg['LOCALIZATION_BACKEND'] == 'lightning':
+            command = ['ros2', 'launch', 'ranger_localization_bridge', 'loc_bridge.launch.py',
+                       'localization_backend:=lightning']
+            keys += ('T_BASE_IMU_XYZ', 'T_BASE_IMU_RPY', 'LOC_CHILD_FRAME', 'MIN_CONFIDENCE',
+                     'STATUS_MAX_AGE_S', 'CONFIDENCE_MAX_AGE_S')
+            command += [key.lower()+':='+cfg[key] for key in keys]
+        else:
+            command = ['ros2', 'run', 'ranger_localization_bridge', 'ranger_localization_bridge',
+                       '--ros-args', '-p', 'adapter_backend:=external']
+            for key in keys:
+                command += ['-p', key.lower()+':='+cfg[key]]
         specs.append(Component('bridge', ros_command(command),
             depends=('probe',)+tuple(n for n in ['base','localization'] if n in names),
             requires=('odom',), ready_key='localization', start_requires=('bridge_unclaimed',),
@@ -137,7 +150,7 @@ def main():
         if not args.execute:
             plan = {'action': 'DRY-RUN', 'session': args.mode,
                 'requires_fresh_control_authorization': controls_base or args.mode == 'navigation',
-                'map_bundle': cfg['MAP_BUNDLE'], 'components': [asdict(c) for c in specs]}
+                'map_bundle': cfg.get('MAP_BUNDLE'), 'components': [asdict(c) for c in specs]}
             if args.mode=='navigation':
                 plan['navigation_map'] = os.environ.get('RANGER_NAVIGATION_MAP',str(ROOT/'outputs/fast-livo-demo-navigation-prep-20261106/navigation_map_final/map.yaml'))
             print(json.dumps(plan,

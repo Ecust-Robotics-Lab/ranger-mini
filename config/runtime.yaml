@@ -3,15 +3,12 @@ schema_version: 1
 robot: ranger_mini_v2
 sensors: mid360s_camera
 odometry_backend: wheel
-localization_backend: lightning
-mapping_backend: lightning
+localization_backend: standard
+mapping_backend: fast_livo2
 terrain_backend: disabled
-map_bundle: config/maps/field_20260928.yaml
-# Mapping/frontend selection is independent of global localization.
-# FAST-LIVO2 currently provides a LiDAR-IMU-camera frontend, not prior-map localization.
+# FAST C1/C2 publishes the standard localization interface. The online
+# localization session validates the selected FAST archive and navigation map.
 mapping:
-  lightning:
-    config: config/slam/ranger_mid360s.yaml
   fast_livo2:
     config: config/fast_livo2/ranger_mid360s_hik_trial.yaml
     camera_config: config/fast_livo2/camera_live.yaml
@@ -20,7 +17,7 @@ mapping:
     ros_domain_id: 175
     localhost_only: true
 localization:
-  native_pose_frame: lightning_imu_pose  # algorithm pose, not a physical sensor frame
+  native_pose_frame: fast_livo_imu_pose
   tf_max_age_s: 0.5  # preserve the previously effective threshold
   odom_max_age_s: 0.5
   odom_history_s: 2.0
@@ -29,8 +26,9 @@ localization:
   status_max_age_s: 10.0
   confidence_max_age_s: 1.0
   min_confidence: 1.0
-  t_base_imu_xyz: [0.0, 0.0, 0.556]  # APPROXIMATE, not field calibrated
-  t_base_imu_rpy: [0.0, 0.0, 0.0]
+  # Working extrinsics from config/fast_livo2/navigation_prep.yaml.
+  t_base_imu_xyz: [0.10314082223598997, 0.02394593798623294, 0.5552533734244779]
+  t_base_imu_rpy: [0.0169366422492582, 0.3685116044554271, 0.0154988133505638]
 session:
   lidar_seconds: 3600
-  initial_pose: [-0.85, -0.31, 0.0, 0.0, 0.0, -0.951, 0.309]
+  initial_pose: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0]

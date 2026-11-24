@@ -76,7 +76,10 @@ def main():
         import sys
         sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'ws_nav/src/ranger_localization_bridge'))
         from ranger_localization_bridge.runtime_config import resolve
-        args.map_dir = Path(resolve()['MAP_DIR'])
+        map_dir = resolve().get('MAP_DIR')
+        if map_dir is None:
+            ap.error('specify --map-dir or select a runtime profile with a map bundle')
+        args.map_dir = Path(map_dir)
     rclpy.init()
     node = MapPublisher(args.map_dir.resolve())
     try:

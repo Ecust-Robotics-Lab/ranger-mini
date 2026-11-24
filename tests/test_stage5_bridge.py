@@ -13,6 +13,7 @@ after adversarial review; the v1 checks were shown vacuous).
 """
 import math
 import os
+from pathlib import Path
 import sys
 import time
 
@@ -212,6 +213,7 @@ def test_ros():
     pkg = os.path.join(os.path.dirname(__file__), "..",
                        "ws_nav/src/ranger_localization_bridge")
     env = dict(os.environ)
+    env["RANGER_RUNTIME_CONFIG"] = str(Path(__file__).resolve().parents[1] / "config/profiles/lightning.yaml")
     env["PYTHONPATH"] = pkg + os.pathsep + env.get("PYTHONPATH", "")
     bridge_proc = subprocess.Popen(
         ['ros2', 'launch', 'ranger_localization_bridge', 'loc_bridge.launch.py',

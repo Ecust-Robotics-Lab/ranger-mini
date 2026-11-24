@@ -99,6 +99,9 @@ docs/fast_livo2_evidence/**/sources/*_ranger_base_node
 # Generated maps, presentation assets and experiment install trees stay local.
 /outputs/
 /experiments/**/install*/
+/experiments/fast_livo2_backend_ablation/build*/
+/experiments/fast_livo2_backend_ablation/results/
+/experiments/fast_livo2_p0_closure/runs/
 
 # EXACT evidence summaries are versioned; raw scan payloads/profiles stay local.
 docs/exact_mppi_evidence/**/*.db3

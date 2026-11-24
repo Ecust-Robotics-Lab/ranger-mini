@@ -1,6 +1,6 @@
 # 受管会话与时间对齐
 
-更新：2026-10-26。公共机制沿用批次 3，适用于 `refactor/pluggable-navigation`。默认导航/定位仍为 Lightning；FAST-LIVO2 三融合展示已有独立受管入口，当前已停止。其运行记录见 [在线报告](fast_livo2_online_report.md)，统一建图入口见 [整合报告](consolidation_report.md)。下面描述公共代码与离线验证，不能代替真机导航验收。
+导航工作台默认使用 FAST-LIVO2 和 C1/C2 定位。以下说明覆盖共用会话管理及显式选择的 Lightning 对比入口。工作台的操作与验收见 [工作台说明](../workbench/README.md)。
 
 2026-10-27新增 [FAST三传感器录包](fast_livo2_recording.md)：独立 `fast_livo_record` 会话复用本管理器及设备资源锁。自行启动的设备随录包清理；接入已有 `fast_livo_live` 预览时仅清理录包进程，归档来源会话状态与日志。只读Foxglove Bridge是可选显示组件，不启动公共TF或控制。`RANGER_CAPTURE_SESSION_ROOT`仅用于明确的会话根目录覆盖；隔离合成测试仍同时指定独立ROS domain。
 
@@ -45,7 +45,7 @@ LOC_CHILD_FRAME（旧 TF_CHILD 兼容名）可选其他私有帧，但不允许 
 入口统一为只读计划默认值：
 
 ```bash
-bash scripts/field_session.sh
+RANGER_RUNTIME_CONFIG=config/profiles/lightning.yaml bash scripts/field_session.sh
 bash scripts/run_navigation.sh
 bash scripts/field_aux.sh
 bash scripts/start_base_only.sh
@@ -57,12 +57,10 @@ bash scripts/start_lidar_only.sh
 实际执行现在是**前台受管会话**，不再创建多个终端标签页或静默 nohup。含底盘的现场会话和导航会话要求该次测试的明确授权，并显式传入 --control-authorized；此参数不存成下次启动许可，也不触发 motion_enable。以下命令仅供已经获得该次真机测试授权的操作员使用：
 
 ```bash
-bash scripts/field_session.sh --execute --control-authorized
-# 在另一终端，定位及传感链健康后：
-bash scripts/run_navigation.sh --execute --control-authorized
+RANGER_RUNTIME_CONFIG=config/profiles/lightning.yaml bash scripts/field_session.sh --execute --control-authorized
 ```
 
-新导航进程的门禁默认无运动许可；后续使能与目标操作仍遵守原逐次授权流程。程序不发送运动使能，也不自动恢复进程。雷达/可视化等原有入口使用--execute；专用 `record_fast_livo2.sh` 已按2026-11-05用户指令默认执行并自行启动传感器，仅预演须显式--dry-run，已有预览须--attach，见[录包指南](fast_livo2_recording.md)。本批自动测试仅在隔离domain中使用合成传感器及不带底盘的配置。
+FAST 导航需要同源 FAST 定位与实时障碍输入，现场从工作台启动。Lightning 现场会话供独立定位对比。导航的运动使能与目标操作须取得当次授权。雷达和可视化入口使用 `--execute`。专用录包入口默认执行，预演须显式加 `--dry-run`，接入已有预览使用 `--attach`。 [录包指南](fast_livo2_recording.md)
 
 查看/停止本次会话：
 

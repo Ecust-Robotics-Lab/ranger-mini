@@ -65,7 +65,7 @@ bash scripts/run_fast_livo2_relocalizer.sh --execute \
 
 跨会话泛化、真值精度及持续现场定位验收见 [STATUS](STATUS.md)。离线评估的 `--query-provenance` 绑定独立输入与地图身份，`--allow-recovery` 只调整评估报告如何处理实际丢失后的恢复。
 
-在线使用自有`radial_pair_multiscale_v2`（195维、平滑多尺度距离分布与Hellinger嵌入），`global_descriptor`控制索引绑定与比较；在线入口默认v2，旧v1索引/离线配置兼容。官方STD/Scan Context仅进入独立离线benchmark，不是在线插件。C1/C2入口默认注册器已按用户指令改为small_gicp，KISS全局粗配准保持。对照与限制见[报告](fast_livo2_retrieval_comparison_report.md)。
+在线使用自有`radial_pair_multiscale_v2`（195维、平滑多尺度距离分布与Hellinger嵌入），`global_descriptor`控制索引绑定与比较；在线入口默认v2，旧v1索引/离线配置兼容。官方STD/Scan Context仅进入独立离线benchmark，不是在线插件。C1/C2入口默认注册器已按用户指令改为small_gicp，KISS全局粗配准保持。对照与限制见报告。
 
 ### 静止确认
 
@@ -73,4 +73,4 @@ bash scripts/run_fast_livo2_relocalizer.sh --execute \
 
 通过后仅内部InitialPose带`stationary_verified`，C1仍做自己的多初值几何歧义检查和至少2帧/0.2秒确认，此内部证据只免除运动基线。ROS手动Initialize请求不能设置该标记。取消、切图、前端重置仍清除支持；Tag参与的候选不走此纯LiDAR静止分支。质量新增stationary_strong_geometry/evaluated_candidate_limit/confirmation_mode及global_stationary_initialization。top16并非穷举全图，同视角多帧也非独立视角证明，真实负样本与泛化仍须验收。
 
-静止确认时，首个新强窗口重建支持，旧弱证据不计数。已有强锚点遇到弱窗口时不计数，后续仍须满足与原强锚点的一致性及独立scan ID。阈值、3组/1秒和C1复验不变。新增`searching_geometric_registration`中间遥测，以及`verifying_stationary_support_restarted`、`verifying_wait_strong_stationary_geometry`原因；质量增加query_window_*、support_queries/elapsed_s/anchor_strong、odom/map/correction差和best_rmse_m/stationary_max_rmse_m。这些阶段均不产生有效控制位姿。见[报告](workbench_static_confirmation_report_20261117.md)。
+静止确认时，首个新强窗口重建支持，旧弱证据不计数。已有强锚点遇到弱窗口时不计数，后续仍须满足与原强锚点的一致性及独立scan ID。阈值、3组/1秒和C1复验不变。新增`searching_geometric_registration`中间遥测，以及`verifying_stationary_support_restarted`、`verifying_wait_strong_stationary_geometry`原因；质量增加query_window_*、support_queries/elapsed_s/anchor_strong、odom/map/correction差和best_rmse_m/stationary_max_rmse_m。这些阶段均不产生有效控制位姿。见报告。

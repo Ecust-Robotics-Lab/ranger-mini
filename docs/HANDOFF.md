@@ -7,6 +7,7 @@
 | 用途 | 路径 |
 | --- | --- |
 | 导航工作台与操作说明 | [workbench/README.md](../workbench/README.md) |
+| 通用 FAST 默认与 Lightning 对比配置 | [runtime.yaml](../config/runtime.yaml)、[lightning.yaml](../config/profiles/lightning.yaml) |
 | 导航实际运行参数 | [exact_navigation.yaml](../ws_nav/src/ranger_navigation/config/exact_navigation.yaml) |
 | 车体与工作外参 | [navigation_prep.yaml](../config/fast_livo2/navigation_prep.yaml) |
 | FAST 前端及来源锁 | `ws_fast_livo/latency_frontend_install`，[active_frontend.lock.json](../config/fast_livo2/active_frontend.lock.json) |
@@ -19,7 +20,7 @@
 
 正式启动时从项目 YAML 读取参数。修改后需新建导航会话，运行中不热改。工作台的“重置规划控制”仅重建计算子进程并清理任务状态。工作台默认加载低延迟 FAST 前端，旧地图通过绑定 UUID、manifest 和新旧来源的 `frontend_timing_upgrade` 声明校验。
 
-底盘的 `ranger_ros2` 和 `ugv_sdk` 是嵌套仓库。用 [EXACT-MPPI 来源锁](../config/exact_mppi/sources.lock.json) 指定的 HEAD、前置补丁与增量补丁重建。本地原包、地图、标定、安装目录、运行数据库、密钥及备份由工控机保存。
+底盘的 `ranger_ros2` 和 `ugv_sdk` 是嵌套仓库。运行依赖部分安装前缀与源码/构建目录间的本机软链接。用 [EXACT-MPPI 来源锁](../config/exact_mppi/sources.lock.json) 指定的 HEAD、前置补丁与增量补丁重建。本地原包、地图、标定、安装目录、运行数据库、密钥及备份由工控机保存。
 
 ## 接手时先核对
 
@@ -31,8 +32,8 @@
 ## 仍需现场核实的问题
 
 - **整段回返**。以最近工作台记录 `live-41843270f2fb45fc81a3c41443de148f` 为参考。已有走廊方向的单点成功，下一步需按授权逐项完成门口、停转与完整回返。路线及验收分段见 [实车计划](EXACT_MPPI_FIELD_TEST.md)。
-- **相机无首帧**。USB3 打开、Line0 抓图成功后若持续 `MV_E_NODATA`，检查外部同步源供电、雷达 PPS 输入和相机触发线。对照雷达 `time_type`、SDK 首帧、同步图像计数。具体线路故障尚未实测确认。 [相机排查](workbench_camera_startup_report_20261118.md)
+- **相机无首帧**。USB3 打开、Line0 抓图成功后若持续 `MV_E_NODATA`，检查外部同步源供电、雷达 PPS 输入和相机触发线。对照雷达 `time_type`、SDK 首帧、同步图像计数。具体线路故障尚未实测确认。
 - **近零速度请求未执行**。先算行驶段的 `abs(vx / wz)`。现有 V2 驱动模型的最小半径约 0.4764 m，源码尚无自动抬升半径的保护。若 SDK 已提交非零且轮速仍长期近零，再分模式测量起步死区。已知软件拒绝样本曾由超限转角触发，通用低速死区尚未标定。
-- **连续定位与制动**。用现场原采样戳和日志复核短暂定位失效、恢复、较高速度下停车。估计位姿和模拟模型不足以给出绝对精度或真实制动距离。 [控制恢复](exact_mppi_control_recovery_20261117.md)
+- **连续定位与制动**。用现场原采样戳和日志复核短暂定位失效、恢复、较高速度下停车。估计位姿和模拟模型不足以给出绝对精度或真实制动距离。
 
 按模块查询 [导航接口](exact_mppi_interfaces.md)、[前端接口](fast_livo2_interfaces.md)、[B 后端](fast_livo2_backend_interfaces.md)、[C1](fast_livo2_localizer_interfaces.md)、[C2](fast_livo2_relocalizer_interfaces.md) 或 [文档索引](README.md)。

@@ -2,7 +2,7 @@
 """Stage 5 offline localization validation runner (dry-run by default).
 
 Runs Lightning run_loc_offline against an accepted map experiment and a bag.
-Writes evidence under docs/05_evidence/loc-offline-<id>/ (manifest, config
+Writes evidence under .runtime/validation/lightning/loc-offline-<id>/ (manifest, config
 snapshot, run.log, result.json). Does not start any driver, does not touch the
 map directory (config must keep save_dyn_when_quit=false; the runner verifies).
 """
@@ -15,7 +15,7 @@ import time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-EVIDENCE = ROOT / "docs/05_evidence"
+EVIDENCE = ROOT / ".runtime/validation/lightning"
 EXE = ROOT / "ws_slam/build/lightning/bin/run_loc_offline"
 
 
@@ -66,7 +66,7 @@ def main() -> int:
     if not args.execute:
         return 0
 
-    EVIDENCE.mkdir(exist_ok=True)
+    EVIDENCE.mkdir(parents=True, exist_ok=True)
     exp = Path(tempfile.mkdtemp(prefix="loc-offline-", dir=EVIDENCE))
     (exp / "data").mkdir()
     cfg_copy = exp / "config.yaml"

@@ -15,7 +15,6 @@ import time
 import numpy as np
 
 ROOT = Path(__file__).resolve().parents[1]
-EVIDENCE = ROOT/'docs/exact_mppi_evidence/20261110'
 NAMES = {'forward':'前进','reverse':'倒车','lateral':'横移','diagonal':'斜行',
          'spin':'原地旋转','left_turn':'左转','right_turn':'右转',
          'static_obstacle':'静态绕障','door':'窄门通过'}
@@ -38,7 +37,7 @@ def export_recorded(folder):
     from exact_mppi.mppi_jax.logger import logger
     logger.setLevel(40)
     inputs = ROOT/'.runtime/exact_recorded_inputs.npz'
-    provenance = json.loads((EVIDENCE/'recorded_height_rays/extraction.json').read_text())
+    provenance = json.loads(inputs.with_suffix('.json').read_text())
     if sha(inputs)!=provenance['inputs_sha256']:
         raise RuntimeError('recorded input identity changed; do not substitute a different capture')
     body,_,_ = load_geometry(ROOT/'config/fast_livo2/navigation_prep.yaml')
@@ -217,8 +216,7 @@ def render(folder):
     plt.close(fig)
     simulation_animation(folder,selected['static_obstacle'],plt)
     payload = {'recorded':recorded,'simulation':sim,'names':NAMES,
-        'recorded_default':frames.index(accepted),
-        'historical_benchmark':json.loads((EVIDENCE/'recorded_contention_height_rays/report.json').read_text())}
+        'recorded_default':frames.index(accepted)}
     template = (ROOT/'scripts/exact_mppi_visualization.html').read_text()
     html = template.replace('__EVIDENCE_PAYLOAD__',json.dumps(payload,separators=(',',':')).replace('</','<\\/'))
     (folder/'index.html').write_text(html)

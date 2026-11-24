@@ -15,7 +15,7 @@ from fast_livo2.navigation.live_clock import StartupAnchor
 
 class MappingStartupTests(unittest.TestCase):
     def test_real_startup_receipts_do_not_lock_first_burst(self):
-        path = ROOT/'docs/fast_livo2_evidence/p0_closure_clock_fix_20261111/failed_startup_receipts.json'
+        path = ROOT/'tests/fixtures/failed_startup_receipts.json'
         rows = json.loads(path.read_text())
         with tempfile.TemporaryDirectory() as tmp:
             obj = SimpleNamespace(folder=Path(tmp), replay=False, localization=False,

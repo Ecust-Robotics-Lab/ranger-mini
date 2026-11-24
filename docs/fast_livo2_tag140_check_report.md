@@ -68,7 +68,7 @@ PYTHONDONTWRITEBYTECODE=1 /usr/bin/time -v python3 -u \
 
 全命令耗时 28.98 s，峰值 RSS 219484 KiB；detector 处理时延中位数/P95 为 33.30/39.78 ms，属于离线资源记录。输出为 summary、593 行帧记录、556 行观测/双解/局部关联和 3 张原图。本轮是数据筛查，没有增加算法单元测试；复用此前检测与时间工具的已有测试，不能把此前测试数当成本轮重跑。
 
-证据：[summary](fast_livo2_evidence/apriltag_tag140_check_20261029/summary.json)、[成功日志](fast_livo2_evidence/apriltag_tag140_check_20261029/screen.log)、[首轮失败](fast_livo2_evidence/apriltag_tag140_check_20261029/first_attempt.log)、[实际包审查](fast_livo2_evidence/apriltag_tag140_check_20261029/capture_audit.json)、[最终核对](fast_livo2_evidence/apriltag_tag140_check_20261029/verification.json)。完整输出在 [本机目录](../outputs/fast-livo-apriltag-tag140-check-20261029-v2/summary.json)。
+证据：summary、成功日志、首轮失败、实际包审查、最终核对。完整输出在 [本机目录](../outputs/fast-livo-apriltag-tag140-check-20261029-v2/summary.json)。
 
 ## 5 状态与后续
 

@@ -1,7 +1,0 @@
-/home/lab307/ranger_nav/workbench/server.py:152: NotAppKeyWarning: It is recommended to use web.AppKey instances for keys.
-https://docs.aiohttp.org/en/stable/web_advanced.html#application-s-config
-  app=web.Application(middlewares=[auth],client_max_size=256_000);app['api']=api
-----------------------------------------------------------------------
-Ran 66 tests in 2.607s
-
-OK

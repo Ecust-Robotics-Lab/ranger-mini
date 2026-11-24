@@ -8,7 +8,7 @@ from workbench.server import application
 
 async def main():
     parser=argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--evidence-directory',type=Path,default=ROOT/'docs/workbench_evidence/20261117/coverage_margin')
+    parser.add_argument('--evidence-directory',type=Path,default=ROOT/'tests/fixtures/coverage_margin')
     out=parser.parse_args().evidence_directory;out.mkdir(parents=True,exist_ok=True)
     with tempfile.TemporaryDirectory(prefix='coverage-browser-',dir=ROOT/'.runtime') as folder:
         app=application(Path(folder)/'unused.sock',folder)

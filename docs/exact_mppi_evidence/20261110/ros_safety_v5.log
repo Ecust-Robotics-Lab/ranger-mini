@@ -1,9 +1,0 @@
-PASS startup_permission_off
-Traceback (most recent call last):
-  File "/home/lab307/ranger_nav/tests/test_stage6_safety.py", line 173, in <module>
-    if __name__=='__main__':raise SystemExit(main())
-  File "/home/lab307/ranger_nav/tests/test_stage6_safety.py", line 130, in main
-    w.arm(True);w.wait(lambda:any(np.linalg.norm(v)>.003 for t,v in w.commands[-5:]),10.)
-  File "/home/lab307/ranger_nav/tests/test_stage6_safety.py", line 102, in wait
-    raise AssertionError('timeout; state='+json.dumps(self.state))
-AssertionError: timeout; state={"state": "PLANNING", "reason": "recheck_after_pause", "generation": 112, "worker": {"ready": true, "pid": 13153, "nonce": "7f0947a7f9d14092ad82b92cfeedaadc", "devices": ["cuda:0"], "warmup_s": {"DRIVE": 1.941515729999992, "PARALLEL": 1.6169245280002542, "SPIN": 1.6883866460002537}}, "inputs_valid": true, "metrics": {}}

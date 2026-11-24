@@ -5,7 +5,7 @@ from pathlib import Path
 import sys
 from playwright.async_api import async_playwright
 ROOT=Path(__file__).resolve().parents[1]
-EVIDENCE=ROOT/'docs/workbench_evidence/20261117'
+EVIDENCE=ROOT/'.runtime/validation/workbench'
 
 async def main():
  async with async_playwright() as p:
@@ -30,6 +30,7 @@ async def main():
    await page.fill(k,v);await page.locator(k).dispatch_event('change')
   await page.click('#preview');await page.wait_for_function("()=>document.querySelector('#preview').disabled===false",timeout=20000)
   preview=await page.locator('#previewResult').text_content();assert '静态扫掠通过' in preview,preview
+  EVIDENCE.mkdir(parents=True, exist_ok=True)
   await page.screenshot(path=str(EVIDENCE/'desktop.png'),full_page=True)
   await page.set_viewport_size({'width':820,'height':1180});await page.screenshot(path=str(EVIDENCE/'tablet.png'),full_page=True)
   await page.set_viewport_size({'width':390,'height':844});await page.screenshot(path=str(EVIDENCE/'mobile.png'),full_page=True)

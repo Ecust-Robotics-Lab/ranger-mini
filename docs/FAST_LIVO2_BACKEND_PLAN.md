@@ -43,7 +43,7 @@ C1 预测：X_pred(t) = X_a_accepted × inverse(U_a) × U(t)
 
 ## 3. 参考项目、借鉴范围与版本许可
 
-以下是固定版本的历史审查与选型，不声称核对了上游最新版本。构建来源见 [sources.lock.json](../config/fast_livo2/sources.lock.json)，参考审查见 [B reference_audit](fast_livo2_evidence/stage_b_20261026/reference_audit.json)、[A 源码审查](fast_livo2_source_review.md)。参考审查项不全部属于构建依赖。
+以下是固定版本的历史审查与选型，不声称核对了上游最新版本。构建来源见 [sources.lock.json](../config/fast_livo2/sources.lock.json)，参考审查见 B reference_audit、A 源码审查。参考审查项不全部属于构建依赖。
 
 | 项目与来源 | 当前角色 | 具体借鉴与边界 |
 | --- | --- | --- |
@@ -82,7 +82,7 @@ C1 预测：X_pred(t) = X_a_accepted × inverse(U_a) × U(t)
 
 许可与依赖要求：
 
-C2 可选构建锁另见 `config/fast_livo2/relocalization_sources.lock.json`：KISS→ROBIN→PMC 包含 GPLv3+，不是纯 MIT 依赖链；固定 SHA、生成的本地依赖投影和保留许可详见 C2 报告。
+C2 可选构建锁另见 `config/fast_livo2/relocalization_sources.lock.json`：KISS→ROBIN→PMC 包含 GPLv3+，不是纯 MIT 依赖链。
 
 - SimplePGO 对应包 MIT、small_gicp MIT、GTSAM BSD 及其单独许可组件；KISS-Matcher 根 MIT 仅为已审查范围的观察。保留 [THIRD_PARTY_NOTICES](../ws_fast_livo/src/ranger_fast_livo_backend/THIRD_PARTY_NOTICES.md) 和必要授权文本。
 - SC-A-LOAM 已审查树中 package.xml 写 BSD，但未发现根 LICENSE；复用具体文件前必须完成组件核对，不宣称整个仓库许可已解决。
@@ -97,7 +97,7 @@ GTSAM 固定提交同时对应 4.2/4.2.0 标签，数字版本 4.2.0、显示串
 
 ### C1-0 工程结构与最小构建
 
-本节保留 C1 任务与验收要求。自有 `ranger_fast_livo_localizer` 已落地，复用 B 导出的核心库；实现接口见 [C1 契约](fast_livo2_localizer_interfaces.md)，实际证据见 [C1 报告](fast_livo2_stage_c1_report.md)。vendor 原版 localizer 不等于本项目实现。
+本节保留 C1 任务与验收要求。自有 `ranger_fast_livo_localizer` 已落地，复用 B 导出的核心库；实现接口见 [C1 契约](fast_livo2_localizer_interfaces.md)。vendor 原版 localizer 不等于本项目实现。
 
 包位于 `ws_fast_livo/src/ranger_fast_livo_localizer`，负责只读地图、初始化、跟踪和私有诊断。复用 B 的输入检查、配准和数学约定；B 核心库补齐可链接导出，不复制整套实现，也不让 Lightning 依赖 FAST 专用消息才能启动。
 
@@ -170,11 +170,11 @@ LOST 后由操作员重新给定初值并完成确认，本阶段不暗中增加
 
 ## 5. C2：无人工初值全局重定位
 
-2026-11-06后续：按用户指令实现自有多尺度v2并与固定官方STD/Scan Context做独立离线比较，随后对照并默认small_gicp，见[对照报告](fast_livo2_retrieval_comparison_report.md)。在线入口默认v2；STD/SC未成为在线插件，单访问估计参考不等于真值排名或完整C2-4通过。
+2026-11-06后续：按用户指令实现自有多尺度v2并与固定官方STD/Scan Context做独立离线比较，随后对照并默认small_gicp。在线入口默认v2；STD/SC未成为在线插件，单访问估计参考不等于真值排名或完整C2-4通过。
 
-本节源码、构建、合成与同包功能检查已交付，实际代码/命令/证据见 [C2 报告](fast_livo2_stage_c2_report.md) 和 [契约](fast_livo2_relocalizer_interfaces.md)。这不表示 C2-0 至 C2-4 全部验收完成：C2-4 跨会话、真实负样本及真实条件验证仍 PARTIAL，不以同包功能代替。
+本节源码、构建、合成与同包功能检查已交付，接口见 [契约](fast_livo2_relocalizer_interfaces.md)。这不表示 C2-0 至 C2-4 全部验收完成：C2-4 跨会话、真实负样本及真实条件验证仍 PARTIAL，不以同包功能代替。
 
-2026-11-04 后续：[独立包 C2 功能试验](fast_livo2_cross_session_global_report.md)已实际执行。旧 B 图配新 120 秒采集的查询，无人工初值、Tag 关闭；1195 对完整处理，约 25.90 秒首次 VALID，之后 936 有效，无 LOST/ERROR。场地覆盖和正确位置尚待确认，缺少独立真值与真实负样本，C2-4 仍 PARTIAL。纯 LiDAR 候选 C2 可以继续测试，不把 Tag 时间/地标尚未通过设为整个 C2 的前置条件。
+2026-11-04 后续：独立包 C2 功能试验已实际执行。旧 B 图配新 120 秒采集的查询，无人工初值、Tag 关闭；1195 对完整处理，约 25.90 秒首次 VALID，之后 936 有效，无 LOST/ERROR。场地覆盖和正确位置尚待确认，缺少独立真值与真实负样本，C2-4 仍 PARTIAL。纯 LiDAR 候选 C2 可以继续测试，不把 Tag 时间/地标尚未通过设为整个 C2 的前置条件。
 
 前置：C1 可在新进程加载地图、验证给定初值并持续跟踪，私有状态和失效处理稳定。C2 向 C1 提交确认后的初始化，不再复制一套跟踪后端。
 

@@ -10,7 +10,7 @@ bash scripts/build_fast_livo2_online_localization.sh --execute
 bash scripts/localize_fast_livo2.sh --archive outputs/fast-livo-demo-changed-scene-20261110/mapping_replay_01/map
 ```
 
-构建复用已有 `online_install` 后端、项目内GTSAM/small_gicp/KISS前缀，C1/C2安装到 `online_localization_install`，不替换原安装。前端使用 `latency_frontend_install`，按 [active_frontend.lock.json](../config/fast_livo2/active_frontend.lock.json) 校验。默认auto、自有多尺度v2检索、small_gicp、domain215/localhost、900秒、磁盘保留20GB；正式+100ms、重力对齐开启、Tag关闭。`--registration pcl_icp`显式回到PCL；`--descriptor radial_pair_distribution_v1`选择旧检索基线。切换顺序、同条件比较和限制见[检索/GICP报告](fast_livo2_retrieval_comparison_report.md)。
+构建复用已有 `online_install` 后端、项目内GTSAM/small_gicp/KISS前缀，C1/C2安装到 `online_localization_install`，不替换原安装。前端使用 `latency_frontend_install`，按 [active_frontend.lock.json](../config/fast_livo2/active_frontend.lock.json) 校验。默认auto、自有多尺度v2检索、small_gicp、domain215/localhost、900秒、磁盘保留20GB；正式+100ms、重力对齐开启、Tag关闭。`--registration pcl_icp`显式回到PCL；`--descriptor radial_pair_distribution_v1`选择旧检索基线。切换顺序、同条件比较和限制见检索/GICP报告。
 
 无设备原速重放：
 

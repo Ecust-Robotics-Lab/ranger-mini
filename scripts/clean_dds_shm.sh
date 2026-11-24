@@ -2,8 +2,7 @@
 # Fast DDS 共享内存残留清理（阶段 6 运维发现）
 #
 # 背景：被 SIGKILL 的 ROS 2 进程会在 /dev/shm 留下 fastrtps_* 段，并使 DDS 图
-# 出现永不超时的幽灵端点（阶段 6 测试证据 docs/06_evidence/safety-r4rz4zmi 等：
-# 泄漏端点 + 残段导致跨轮次图污染与异常数据）。本脚本在"确认没有活 ROS 进程"
+# 出现跨会话残留端点和异常数据。本脚本在"确认没有活 ROS 进程"
 # 的前提下安全清理这些残留段。
 #
 # 用法: bash scripts/clean_dds_shm.sh [--force]

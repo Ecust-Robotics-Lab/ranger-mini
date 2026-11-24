@@ -18,7 +18,7 @@ def main():
     parser.add_argument('--execute', action='store_true')
     parser.add_argument('--group', choices=['tag', 'regression', 'all'], default='all')
     args = parser.parse_args()
-    evidence = ROOT/'docs/fast_livo2_evidence/apriltag_20261029'
+    evidence = ROOT/'.runtime/validation/fast_livo2/apriltag_20261029'
     commands = []
     if args.group in ['tag', 'all']:
         for package, binary in [('ranger_fast_livo_backend', 'tag_tests'), ('ranger_fast_livo_backend', 'tag_detector_tests'),
@@ -38,6 +38,7 @@ def main():
     if not args.execute:
         print(json.dumps({'action': 'DRY-RUN', 'hardware_started': False, 'commands': commands}, indent=2))
         return 0
+    evidence.mkdir(parents=True, exist_ok=True)
     directory = Path(tempfile.mkdtemp(prefix='acceptance-', dir=evidence)).resolve()
     env = dict(os.environ)
     env.update(PYTHONDONTWRITEBYTECODE='1', ROS_LOCALHOST_ONLY='1', OMP_NUM_THREADS='1', OPENBLAS_NUM_THREADS='1',

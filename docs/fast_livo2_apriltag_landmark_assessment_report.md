@@ -6,7 +6,7 @@
 
 ## 1 输入与方法
 
-复用 [全包提取](fast_livo2_apriltag_fullbag_report.md) 的 1367 帧结果，其中 14 次 Tag 观测集中在约 1.700 s。保留全部 28 支有效单帧假设；原包本轮无需再次读取或回放。固定性声明保存为 [用户声明](fast_livo2_evidence/apriltag_landmark_assessment_20261029/fixedness_declaration.json)，属于用户部署信息，不是独立计量结果。
+复用 [全包提取](fast_livo2_apriltag_fullbag_report.md) 的 1367 帧结果，其中 14 次 Tag 观测集中在约 1.700 s。保留全部 28 支有效单帧假设；原包本轮无需再次读取或回放。固定性声明保存为 用户声明，属于用户部署信息，不是独立计量结果。
 
 本轮复用已有 PCL/GICP 两套 C1 的 `result.json`、`samples.jsonl`，没有重新启动定位节点。它们绑定同一个旧 `native_frames` 数据库，SHA256 为 `2eecd2c75e0c33eac80cda41f043f4c8ebe6bd5c089da06e6018b40deeaf62b4`。使用全包提取中的 `replay_odometry.jsonl`，不混入原包在线 odometry 或新重力对齐轨迹。
 
@@ -48,7 +48,7 @@ T_M_F_observation = T_M_C(tc) * T_C_F(tc)
 
 单帧各自求 pose 时残差较小，不代表沿轨迹能得到一个跨帧一致的固定地标。两模式位置接近但法向显著不同，不能把姿态平均成“唯一地标”。当前运动支持规则计得 3 组（平移或旋转），仅按 0.15 m 平移间隔则只有 1 组；这说明转动不等于获得足够平移视差，该计数也不是独立访问数。0.15 m、姿态聚类阈值及像素门槛都是本次诊断/现有初始配置，不是普适验收标准。
 
-![固定地标留出帧检查与时偏敏感性](fast_livo2_evidence/apriltag_landmark_assessment_20261029/assessment.png)
+固定地标留出帧检查与时偏敏感性
 
 ## 3 时偏敏感性
 
@@ -77,9 +77,9 @@ PYTHONDONTWRITEBYTECODE=1 python3 \
   docs/fast_livo2_evidence/apriltag_landmark_assessment_20261029/plot_assessment.py
 ```
 
-[6 项测试](../tests/test_fast_livo_tag_assessment.py)覆盖：大历元、非交换旋转/平移/杆臂及不同采样时间；不健康/错图/缺局部位姿拒绝；地图修正跳变与禁止外推；独立 Brown 投影真值的训练/留出恢复；矛盾留出帧拒绝；镜像模式隔离和同图去重。测试日志在 [tests.log](fast_livo2_evidence/apriltag_landmark_assessment_20261029/tests.log)，评估日志在 [assessment.log](fast_livo2_evidence/apriltag_landmark_assessment_20261029/assessment.log)。评估进程耗时 1.80 s，峰值 RSS 187412 KiB，是本次小型诊断资源记录。既有 123 项及全包 4 项属于此前通过证据，本轮没有冒充重跑。
+[6 项测试](../tests/test_fast_livo_tag_assessment.py)覆盖：大历元、非交换旋转/平移/杆臂及不同采样时间；不健康/错图/缺局部位姿拒绝；地图修正跳变与禁止外推；独立 Brown 投影真值的训练/留出恢复；矛盾留出帧拒绝；镜像模式隔离和同图去重。测试日志在 tests.log，评估日志在 assessment.log。评估进程耗时 1.80 s，峰值 RSS 187412 KiB，是本次小型诊断资源记录。既有 123 项及全包 4 项属于此前通过证据，本轮没有冒充重跑。
 
-[最终核对](fast_livo2_evidence/apriltag_landmark_assessment_20261029/verification.json)记录输入地图/C1 SHA、配置未变、dry-run 不落盘、Python 语法、文档链接与 `git diff --check` 通过。受管预览已 STOPPED；C1/C2 为此前故障测试遗留 FAILED，三者均 `live=false, owned=[]`，本轮没有重启。
+最终核对记录输入地图/C1 SHA、配置未变、dry-run 不落盘、Python 语法、文档链接与 `git diff --check` 通过。受管预览已 STOPPED；C1/C2 为此前故障测试遗留 FAILED，三者均 `live=false, owned=[]`，本轮没有重启。
 
 ## 5 交付状态与下一步
 
@@ -96,4 +96,4 @@ PYTHONDONTWRITEBYTECODE=1 python3 \
 3. 在 Tag 清晰可见时，从左/中/右、近/远多个位置慢速观察，获得数十厘米至约米级的实际相机平移、适度斜视和短暂停留，减少运动模糊；这是采集设计建议，不是通用质量阈值。避免只在约 2 m 处原地转动后迅速离开画面。
 4. 登记和验证分成两次独立访问/包。登记访问建立候选并通过固定性、模式和回投验证；第二次重新接近、改变位置/朝向，用于独立恢复评测。无需预先承诺成功率或绝对精度。
 
-本轮停在离线评估边界，不启动这些采集动作。完整候选姿态、角点来源、逐帧 C1 支持和分支误差见 [本机输出](../outputs/fast-livo-apriltag-landmark-assessment-20261029/assessment.json)；可随 Git 保存的摘要和图表位于 [证据目录](fast_livo2_evidence/apriltag_landmark_assessment_20261029/assessment.json)。
+本轮停在离线评估边界，不启动这些采集动作。完整候选姿态、角点来源、逐帧 C1 支持和分支误差见 [本机输出](../outputs/fast-livo-apriltag-landmark-assessment-20261029/assessment.json)；可随 Git 保存的摘要和图表位于 证据目录。

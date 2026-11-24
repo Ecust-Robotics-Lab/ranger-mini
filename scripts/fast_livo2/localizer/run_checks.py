@@ -34,7 +34,8 @@ def main():
     if not args.execute:
         print(json.dumps({'action': 'DRY-RUN', 'hardware_started': False, 'commands': commands}, indent=2))
         return 0
-    evidence = ROOT/'docs/fast_livo2_evidence/stage_c1_20261028'
+    evidence = ROOT/'.runtime/validation/fast_livo2/stage_c1_20261028'
+    evidence.mkdir(parents=True, exist_ok=True)
     directory = Path(tempfile.mkdtemp(prefix='acceptance-', dir=evidence))
     env = dict(os.environ)
     env.update(PYTHONDONTWRITEBYTECODE='1', OMP_NUM_THREADS='1', OPENBLAS_NUM_THREADS='1', ROS_LOCALHOST_ONLY='1', ROS_DOMAIN_ID='196')

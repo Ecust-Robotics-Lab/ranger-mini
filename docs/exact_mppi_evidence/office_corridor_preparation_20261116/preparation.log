@@ -1,9 +1,0 @@
-office_start -> door_outside: PASS static_map_swept_body_validated
-door_outside -> corridor_out: PASS static_map_swept_body_validated
-corridor_out -> turn_position: PASS static_map_swept_body_validated
-turn_position -> turn_complete: PASS static_map_swept_body_validated
-turn_complete -> corridor_return: PASS static_map_swept_body_validated
-corridor_return -> door_return: PASS static_map_swept_body_validated
-door_return -> door_return_align: PASS static_map_swept_body_validated
-door_return_align -> office_return: PASS static_map_swept_body_validated
-{"status": "OFFLINE_CANDIDATE_PASS", "output": "outputs/exact-office-corridor-preparation-20261116", "hardware_started": false, "commands_published": false}

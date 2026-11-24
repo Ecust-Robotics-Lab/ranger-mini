@@ -1,8 +1,8 @@
 # Ranger 导航工作台
 
-单点失败后可点击“重置规划控制”：先结束自有目标，清除旧路线/优化历史并重新初始化规划控制；定位、传感器与记录继续运行。等待就绪后再执行目标。该按钮在失败或定位暂时无效时也可用；“取消并停车”结束活动目标，“停止自有会话”停止整套自有设备。见[重置报告](../docs/workbench_navigation_reset_report_20261117.md)。
+单点失败后可点击“重置规划控制”：先结束自有目标，清除旧路线/优化历史并重新初始化规划控制；定位、传感器与记录继续运行。等待就绪后再执行目标。该按钮在失败或定位暂时无效时也可用；“取消并停车”结束活动目标，“停止自有会话”停止整套自有设备。
 
-当前正式入口默认加载低延迟三融合前端，无需额外优化开关；页面会在启动就绪后显示已加载。定位原采样期限400ms、接收期限250ms，静态总裕量2.5cm与实时避障净空独立。旧地图通过精确版本迁移校验，原资产不改；详见[本轮报告](../docs/workbench_goal_latency_frontend_report_20261117.md)。软件更新后需重新运行工作台并在网页显式启动加载，单独启动网页不启设备。
+当前正式入口默认加载低延迟三融合前端，无需额外优化开关；页面会在启动就绪后显示已加载。定位原采样期限400ms、接收期限250ms，静态总裕量2.5cm与实时避障净空独立。旧地图通过精确版本迁移校验，原资产不改。软件更新后需重新运行工作台并在网页显式启动加载，单独启动网页不启设备。
 
 本地服务，局域网浏览器访问。EXACT-MPPI/定位算法及安全门禁沿用现有实现；前端不是坡道、出门或巡航验收的替代。
 
@@ -59,7 +59,7 @@ HTTP↔任务所有者使用权限 0600 的本地 Unix socket。查看代码的�
 PLAYWRIGHT_BROWSERS_PATH="$PWD/.runtime/workbench_browsers" .runtime/navigation_workbench_venv/bin/python -m playwright install chromium
 ```
 
-ROS 合成检查需要 source Humble、Livox、FAST、nav/base exact 前缀，设置 `ROS_DOMAIN_ID=228 ROS_LOCALHOST_ONLY=1` 后运行 `.runtime/navigation_workbench_venv/bin/python -m unittest tests/test_navigation_workbench_ros.py -v`。测试不连接底盘，不启动传感器，Action 由合成节点提供。报告与截图见 `docs/navigation_workbench_report_20261117.md`。
+ROS 合成检查需要 source Humble、Livox、FAST、nav/base exact 前缀，设置 `ROS_DOMAIN_ID=228 ROS_LOCALHOST_ONLY=1` 后运行 `.runtime/navigation_workbench_venv/bin/python -m unittest tests/test_navigation_workbench_ros.py -v`。测试不连接底盘，不启动传感器，Action 由合成节点提供。浏览器检查的输出保存在 `.runtime/validation/workbench/`。
 
 
 停稳参数统一位于 `ws_nav/src/ranger_navigation/config/exact_navigation.yaml` 的 motion：线速度范数≤0.05m/s、角速度≤0.025rad/s，连续0.5秒。导航、独立门禁、V2底盘模式切换及网页使用同一组参数；没有将原始轮速/里程计强制归零。网页优先使用原始 `/wheel/odom` 及 host 采样时刻显示停稳，不依赖定位/传感器时钟；过期反馈显示等待新数据。历史轻量记录没有参数字段时保留原记录语义。

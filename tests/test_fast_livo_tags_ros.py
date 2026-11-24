@@ -16,7 +16,7 @@ from ranger_fast_livo_localizer.srv import Relocalize
 from rclpy.qos import QoSProfile, DurabilityPolicy, qos_profile_sensor_data
 
 ROOT = c1.ROOT
-c1.EVIDENCE = Path(os.environ.get('RANGER_TAG_TEST_EVIDENCE', str(ROOT/'docs/fast_livo2_evidence/apriltag_20261029/ros'))).resolve()
+c1.EVIDENCE = Path(os.environ.get('RANGER_TAG_TEST_EVIDENCE', str(ROOT/'.runtime/validation/fast_livo2/apriltag_20261029/ros'))).resolve()
 c1.EVIDENCE.mkdir(parents=True, exist_ok=True)
 
 

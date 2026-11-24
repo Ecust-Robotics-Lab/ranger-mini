@@ -37,7 +37,8 @@ def main():
         return 0
     env = dict(os.environ, PYTHONDONTWRITEBYTECODE='1', ROS_LOCALHOST_ONLY='1', OMP_NUM_THREADS='1')
     env['LD_LIBRARY_PATH'] = ':'.join([str(ROOT/'ws_fast_livo/backend_deps/lib'), str(ROOT/'ws_fast_livo/deps_install/lib'), env.get('LD_LIBRARY_PATH', '')])
-    parent = ROOT/'docs/fast_livo2_evidence/stage_b_20261026'
+    parent = ROOT/'.runtime/validation/fast_livo2/stage_b_20261026'
+    parent.mkdir(parents=True, exist_ok=True)
     directory = Path(tempfile.mkdtemp(prefix='acceptance-', dir=parent))
     cases[1][1].append('--gtest_output=xml:'+str(directory/'cpp.xml'))
     chain_data = ROOT/'bags'/('stage-b-'+directory.name)

@@ -47,5 +47,7 @@ def main():
  after=measure()
  if sum(counts)<3 or errors:raise RuntimeError('回放负载未实际运行: '+str((counts,errors)))
  result={'workload':'synthetic 256x60 GPU + 512 points; 3 recorded-bag replay clients at 5Hz each','baseline_ms':baseline,'baseline_after_ms':after,'with_clients_ms':loaded,'p95_increment_ms':loaded['p95']-(baseline['p95']+after['p95'])/2,'http_requests':sum(counts),'errors':errors,'real_three_fusion_end_to_end':'PARTIAL'}
- (ROOT/'docs/workbench_evidence/20261117/performance.json').write_text(json.dumps(result,indent=2));print(json.dumps(result))
+ out = ROOT/'.runtime/validation/workbench'
+ out.mkdir(parents=True, exist_ok=True)
+ (out/'performance.json').write_text(json.dumps(result,indent=2));print(json.dumps(result))
 if __name__=='__main__':main()

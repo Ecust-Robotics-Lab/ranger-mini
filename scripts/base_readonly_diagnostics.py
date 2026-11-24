@@ -26,7 +26,9 @@ def main():
         print('DRY-RUN: read can0 state before/after; execute', command)
         print('No CAN configuration, transmitted CAN commands, or ROS nodes.')
         return 0
-    destination = Path(tempfile.mkdtemp(prefix='can-', dir=root / 'docs/02_evidence'))
+    log_dir = root / '.runtime/validation/base'
+    log_dir.mkdir(parents=True, exist_ok=True)
+    destination = Path(tempfile.mkdtemp(prefix='can-', dir=log_dir))
     results = []
     def run(label, cmd):
         with (destination / (label + '.log')).open('x') as out:

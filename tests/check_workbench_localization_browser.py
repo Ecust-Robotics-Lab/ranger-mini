@@ -35,7 +35,8 @@ async def main():
     phase('verifying_wait_strong_stationary_geometry',{'best_rmse_m':.13,'stationary_max_rmse_m':.12})
     sockets[0].send(json.dumps(s));await page.wait_for_timeout(120)
     assert '0.130m' in await page.locator('#sessionReason').text_content();assert not errors,errors
-    out=ROOT/'docs/workbench_evidence/20261117/static_confirmation'
+    out=ROOT/'.runtime/validation/workbench/static_confirmation'
+    out.mkdir(parents=True, exist_ok=True)
     await page.screenshot(path=str(out/'ui.png'),full_page=True)
     (out/'browser.json').write_text(json.dumps({'pass':True,'console_errors':errors,'no_device_requests':True,
        'checks':['7_to_8_matching_phase','fresh_strong_anchor_count','weak_geometry_reason','goals_disabled_during_search']},indent=2)+'\n')

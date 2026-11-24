@@ -31,7 +31,8 @@ export LD_LIBRARY_PATH="$project_root/ws_fast_livo/deps_install/lib:${LD_LIBRARY
 export ROS_LOCALHOST_ONLY="$FAST_LIVO_LOCALHOST_ONLY"
 export ROS_DOMAIN_ID="$FAST_LIVO_ROS_DOMAIN_ID"
 export OMP_NUM_THREADS=4
-run_dir="$(mktemp -d "$project_root/docs/fast_livo2_evidence/replay-XXXXXXXX")"
+mkdir -p "$project_root/.runtime/validation/fast_livo2"
+run_dir="$(mktemp -d "$project_root/.runtime/validation/fast_livo2/replay-XXXXXXXX")"
 data_dir="$(mktemp -d "$project_root/bags/fast-livo2-baseline-XXXXXXXX")"
 export ROS_LOG_DIR="$run_dir/ros"
 mkdir -p "$ROS_LOG_DIR"

@@ -7,7 +7,7 @@
 ## 1 输入、版本与边界
 
 - 新包为 0.140 m 的 tag36h11:1；旧包 0.155 m、旧地图/轨迹均未参与计算。
-- 新标签固定性为本轮用户声明，保存在 [fixedness_declaration.json](fast_livo2_evidence/apriltag_tag140_consistency_20261029/fixedness_declaration.json)。用户随后确认相机与雷达刚性固定、安装位置自标定后未改变，140 mm 为打印后实测黑色外边界尺寸，追加保存于 [setup_declaration.json](fast_livo2_evidence/apriltag_tag140_consistency_20261029/setup_declaration.json)。这是用户提供的实物信息，不是本分析独立计量；原分析输入及其 SHA 保持不变。
+- 新标签固定性为本轮用户声明，保存在 fixedness_declaration.json。用户随后确认相机与雷达刚性固定、安装位置自标定后未改变，140 mm 为打印后实测黑色外边界尺寸，追加保存于 setup_declaration.json。这是用户提供的实物信息，不是本分析独立计量；原分析输入及其 SHA 保持不变。
 - 读取录制时归档的相机 K/D、T_IMU_Camera 和 provenance；没有使用事后参数重解释历史图像。原图域为 raw/plumb_bob，保留全部两支假设。
 - 原包 SHA256 在分析前后均为 `190637437b9cd7cb8e27ca4cda3168cc59a6af11c425334bf12b44a330432479`。SQLite 使用只读/query_only。所有新输出写入独立目录。
 - 本次原生前端是新重力对齐会话，只在自己的连续局部坐标 O 内分析。没有输出地图 M 的位姿或拼接旧地图，没有 C1 全局定位质量证据。
@@ -50,7 +50,7 @@ T_C_F_pred(tc) = inverse(C(tc)) * F_fixed
 
 时间诊断定义 `t_effective=t_header+offset`。从实际 header 中位周期 99.84 ms 推得 ±199.68 ms、步长 24.96 ms 的 17 个偏移，不从旧记录硬编码补偿。每次使用同一前端会话的包围插值/SLERP，保留 150 ms 最大间隔和禁止外推。
 
-556 次观测在零时偏下有 552 次可关联；17 个偏移均有合法支持的共同集合为 **528 帧**，所有偏移使用同一集合，避免可用帧变化影响比较。样本选择及被使用的原图索引保存在 [split.json](fast_livo2_evidence/apriltag_tag140_consistency_20261029/split.json)。
+556 次观测在零时偏下有 552 次可关联；17 个偏移均有合法支持的共同集合为 **528 帧**，所有偏移使用同一集合，避免可用帧变化影响比较。样本选择及被使用的原图索引保存在 split.json。
 
 以 5 秒为时间块，块号模 3 等于 2 的内部帧作为留出；每块两端各排除 0.5 秒的训练/留出用途，训练帧最小间隔 0.5 秒。得到 **56 个训练帧、112 个留出帧**。边界帧仍计入全共同集合检查，没有静默删除残差差的帧。这是一次访问内部的时间留出，仍不代表独立访问。
 
@@ -75,7 +75,7 @@ T_C_F_pred(tc) = inverse(C(tc)) * F_fixed
 
 用户已确认安装保持刚性且未改变、打印后实测边长为 140 mm，因此不再把安装后来变动或仅使用生成页面尺寸当作待确认原因。原试验标定准确性、曝光参考点、前端轨迹误差与图像运动模糊仍可能共同影响结果。本包的轨迹也使用过这些图像，不能视为独立外部真值；不应仅根据曲线就更改某个参数。
 
-![同步与固定地标一致性](fast_livo2_evidence/apriltag_tag140_consistency_20261029/timing_and_consistency.png)
+同步与固定地标一致性
 
 ### 4.1 原因判断：证据强度与排查优先级
 
@@ -88,7 +88,7 @@ T_C_F_pred(tc) = inverse(C(tc)) * F_fixed
 
 ## 5 实施、命令和证据
 
-新增 [analyze_capture_consistency.py](../scripts/fast_livo2/tags/analyze_capture_consistency.py)，默认 dry-run、拒绝覆盖输出；只输出诊断 JSON，不是地图或时间映射格式。变更前备份/基线在 [baseline.json](fast_livo2_evidence/apriltag_tag140_consistency_20261029/baseline.json)。HEAD 仍为 `acffa879cc8d52330276089cd3df83ad6a43f112`。
+新增 [analyze_capture_consistency.py](../scripts/fast_livo2/tags/analyze_capture_consistency.py)，默认 dry-run、拒绝覆盖输出；只输出诊断 JSON，不是地图或时间映射格式。变更前备份/基线在 baseline.json。HEAD 仍为 `acffa879cc8d52330276089cd3df83ad6a43f112`。
 
 实际执行，均退出 0：
 
@@ -107,11 +107,11 @@ PYTHONDONTWRITEBYTECODE=1 python3 \
   docs/fast_livo2_evidence/apriltag_tag140_consistency_20261029/post_analysis.py
 ```
 
-新增 [5 项测试](../tests/test_fast_livo_tag_consistency.py)：writer 漏扫描导致重复共享戳；大历元下时间块隔离/边界清除/降采样；独立 Brown 投影及负深度；固定 Tag 恢复与矛盾留出拒绝；非匀速转弯加杆臂下已知时偏的正负方向。日志为 [tests.log](fast_livo2_evidence/apriltag_tag140_consistency_20261029/tests.log)，没有把先前测试冒充重跑。
+新增 [5 项测试](../tests/test_fast_livo_tag_consistency.py)：writer 漏扫描导致重复共享戳；大历元下时间块隔离/边界清除/降采样；独立 Brown 投影及负深度；固定 Tag 恢复与矛盾留出拒绝；非匀速转弯加杆臂下已知时偏的正负方向。日志为 tests.log，没有把先前测试冒充重跑。
 
-分析命令耗时 6.78 s，峰值 RSS 208172 KiB；[完整日志](fast_livo2_evidence/apriltag_tag140_consistency_20261029/analysis.log)。[摘要](fast_livo2_evidence/apriltag_tag140_consistency_20261029/summary.json)、[逐异常对应](fast_livo2_evidence/apriltag_tag140_consistency_20261029/timing.json)、[残差分层](fast_livo2_evidence/apriltag_tag140_consistency_20261029/residual_stratification.json)及零/训练最低偏移的逐帧误差已归档。全部 17 个偏移的逐帧输出保留在本机 `outputs/fast-livo-apriltag-tag140-consistency-20261029/`。
+分析命令耗时 6.78 s，峰值 RSS 208172 KiB；完整日志。摘要、逐异常对应、残差分层及零/训练最低偏移的逐帧误差已归档。全部 17 个偏移的逐帧输出保留在本机 `outputs/fast-livo-apriltag-tag140-consistency-20261029/`。
 
-补充声明后的收尾核查见 [verification.json](fast_livo2_evidence/apriltag_tag140_consistency_20261029/verification.json)：只做语法、dry-run、来源/配置摘要、外参转换及文档检查；上述 5 项测试沿用实际执行日志，没有将文档更新称为重跑测试。
+补充声明后的收尾核查见 verification.json：只做语法、dry-run、来源/配置摘要、外参转换及文档检查；上述 5 项测试沿用实际执行日志，没有将文档更新称为重跑测试。
 
 ## 6 交付状态与后续顺序
 

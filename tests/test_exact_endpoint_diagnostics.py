@@ -11,7 +11,7 @@ from ranger_navigation.geometry import Body,validate_sweep
 from ranger_navigation.task import Task
 
 def test_recorded_endpoint_failure_explains_both_ends_after_clearance_change():
-    path=ROOT/'docs/workbench_evidence/20261117/goal_freshness/original_request.npz'
+    path=ROOT/'tests/fixtures/goal_freshness/original_request.npz'
     with np.load(path,allow_pickle=False) as data:
         meta=json.loads(str(data['meta']));grid=Grid(data['cells'],meta['resolution'],meta['origin']).with_obstacles(data['points'])
         start,goal=data['pose'],data['goal']

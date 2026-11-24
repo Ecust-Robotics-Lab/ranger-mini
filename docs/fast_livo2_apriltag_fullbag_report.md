@@ -102,7 +102,7 @@ python3 scripts/fast_livo2/tags/analyze_fullbag.py --execute \
 - [观测与双解](../outputs/fast-livo-apriltag-fullbag-20261029/observations.jsonl)：14 次观测的角点、两支位姿、质量和条件性局部变换。
 - [相邻假设组合](../outputs/fast-livo-apriltag-fullbag-20261029/hypothesis_transitions.jsonl)：保留全部分支组合，不预选分支。
 - [图表](../outputs/fast-livo-apriltag-fullbag-analysis-20261029/overview.png)、[分析摘要](../outputs/fast-livo-apriltag-fullbag-analysis-20261029/analysis.json)、[CSV 质量表](../outputs/fast-livo-apriltag-fullbag-analysis-20261029/hypothesis_quality.csv)。
-- [专项测试日志](fast_livo2_evidence/apriltag_fullbag_20261029/test_fullbag.log)。
+- 专项测试日志。
 
 ## 6 验收与后续
 

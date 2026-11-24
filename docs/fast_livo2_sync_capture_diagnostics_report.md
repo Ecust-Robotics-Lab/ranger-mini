@@ -24,7 +24,7 @@ CSV 原前五列保持，新增 `callback_system_ns`、`dds_source_ns`、`dds_re
 
 ## 2 合成证据与实际命令
 
-证据目录：[sync_capture_diagnostics_20261029](fast_livo2_evidence/sync_capture_diagnostics_20261029/)。最终 [大消息对照](fast_livo2_evidence/sync_capture_diagnostics_20261029/delivery-comparison.json)每组单独进程、相同 600000 字节合成消息、队列深度 5、localhost/domain 178，负载批次的消息不重发；小消息探针只确认批次前后通路可用。没有接入真实 topic 或设备。
+证据目录：sync_capture_diagnostics_20261029。最终 大消息对照每组单独进程、相同 600000 字节合成消息、队列深度 5、localhost/domain 178，负载批次的消息不重发；小消息探针只确认批次前后通路可用。没有接入真实 topic 或设备。
 
 | 合成条件 | BEST_EFFORT 收到/发送 | RELIABLE 收到/发送 |
 | --- | --- | --- |
@@ -62,12 +62,12 @@ bash scripts/record_fast_livo2.sh --start-sensors --seconds 120 \
   --label tag140_sync_diag_02 --visualization foxglove
 ```
 
-- [最终构建](fast_livo2_evidence/sync_capture_diagnostics_20261029/build-final.log)：1 包，退出 0。
-- [交付诊断测试](fast_livo2_evidence/sync_capture_diagnostics_20261029/delivery-tests-acceptance-v2.log)：7/7，13.840 s，退出 0。停顿测试只向自建合成 writer 发 SIGSTOP/SIGCONT，确认延迟可见且原扫描戳不改；不操作设备进程。
-- [既有共享协议测试](fast_livo2_evidence/sync_capture_diagnostics_20261029/seqlock-test.log)：1 个检查脚本，5976 个一致快照；重复 writer 拒绝且不截断共享文件；退出 0。
-- [录包回归](fast_livo2_evidence/sync_capture_diagnostics_20261029/recording-tests-final.log)：4/4，8.818 s，退出 0；ROS 部分隔离 domain 189。
-- [用户命令的 dry-run](fast_livo2_evidence/sync_capture_diagnostics_20261029/capture-dry-run.json)：退出 0，没有 `--execute`，未生成真实录包或打开设备。
-- [收尾核查](fast_livo2_evidence/sync_capture_diagnostics_20261029/verification.json)：源码/二进制 SHA、6 个 Python 文件语法、文档链接、配置原字节与原包 stat 核查通过；两真实受管会话均 STOPPED、live=false、owned=[]。
+- 最终构建：1 包，退出 0。
+- 交付诊断测试：7/7，13.840 s，退出 0。停顿测试只向自建合成 writer 发 SIGSTOP/SIGCONT，确认延迟可见且原扫描戳不改；不操作设备进程。
+- 既有共享协议测试：1 个检查脚本，5976 个一致快照；重复 writer 拒绝且不截断共享文件；退出 0。
+- 录包回归：4/4，8.818 s，退出 0；ROS 部分隔离 domain 189。
+- 用户命令的 dry-run：退出 0，没有 `--execute`，未生成真实录包或打开设备。
+- 收尾核查：源码/二进制 SHA、6 个 Python 文件语法、文档链接、配置原字节与原包 stat 核查通过；两真实受管会话均 STOPPED、live=false、owned=[]。
 
 失败证据保留：首次编译的变量遮蔽和日志计数类型问题已修正；新测试曾使用非法数字开头 topic、错误地等待 BEST_EFFORT 必须送达末帧，以及单次发现探针丢失，均在测试夹具中修正，负载批次没有补发或删除丢失记录。首次录包回归与另一个 domain 的合成 writer 并行，跨 domain 设备占用检查正确拒绝启动；改为顺序执行后通过，没有放宽保护规则。初次日志及目录均保留，只有上列最终日志代表通过结果。
 
@@ -84,4 +84,4 @@ bash scripts/record_fast_livo2.sh --start-sensors --seconds 120 \
 
 **未实施**：实际录制/驾驶、相机曝光或时间补偿调整、全局 Tag 地图、C1/C2/B 新验收、提交/推送。
 
-改动前源码、入口、文档及旧 writer 二进制在 [baseline.json](fast_livo2_evidence/sync_capture_diagnostics_20261029/baseline.json)所指备份。必要时仅回退本报告列出的 writer 和启动参数变更，保留本轮其他未提交成果；不恢复或覆盖原包。节点仍支持显式 `lidar_reliability:=best_effort` 用于隔离对照，受管入口固定显式 reliable，不建议为消除报错自动降级。
+改动前源码、入口、文档及旧 writer 二进制在 baseline.json所指备份。必要时仅回退本报告列出的 writer 和启动参数变更，保留本轮其他未提交成果；不恢复或覆盖原包。节点仍支持显式 `lidar_reliability:=best_effort` 用于隔离对照，受管入口固定显式 reliable，不建议为消除报错自动降级。

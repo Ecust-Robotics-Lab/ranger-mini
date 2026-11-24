@@ -33,7 +33,7 @@ def assess(samples, initial='initial'):
     return context['result']
 
 
-recording = root / 'docs/02_evidence/ros-motion-mp69pbm2/can_frames.jsonl'
+recording = root / 'tests/fixtures/post_exit_can_frames.jsonl'
 samples = []
 for line in recording.read_text().splitlines():
     frame = json.loads(line)

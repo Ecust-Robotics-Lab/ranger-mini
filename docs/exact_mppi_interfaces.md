@@ -88,13 +88,13 @@ ros2 launch ranger_navigation navigation.launch.py
 
 自主消息改用独立的`LeasedControlCommand`，保留原`ControlCommand`用于旧包解码及遥控接口。协调器、独立门禁和消息包必须一起重建；旧消息不能驱动新自主入口。非零指令的`valid_until_steady`固定为原请求提交时间+100ms，重复发布不续租；零速/模式请求可发布新的零速租约。steady来自同机本次boot，不是传感器时间；原采样戳仍单独检查。驱动会话更换后门禁锁定，必须先收到motion_enable=false、再true才重新使能，连续true心跳不会恢复运动。
 
-执行观察数据不替代原wheel/定位/TF及安全检查。门禁报告和驱动报告保留各自时刻，SDK指令与request_id通过记录时间/速度链核对，不声称CAN逐包ACK或物理执行已确认。录包入口额外收录两条执行话题和消息定义。软件验收与真实边界见[恢复优化报告](exact_mppi_control_recovery_20261117.md)。
+执行观察数据不替代原wheel/定位/TF及安全检查。门禁报告和驱动报告保留各自时刻，SDK指令与request_id通过记录时间/速度链核对，不声称CAN逐包ACK或物理执行已确认。录包入口额外收录两条执行话题和消息定义。验收状态见 [STATUS](STATUS.md)。
 
 
 ## 工作台与规划重置
 
 `/navigation/route`（std_msgs/String JSON），在接受新全局计划时发布；不参与控制、许可或规划决策。schema_version=1，frame=map，携带 map_uuid、history_generation、原 sample_stamp_ns 和 segments（mode、reverse、poses[x,y,yaw]）。浏览器只有在路线历史代际与当前导航状态一致时按行驶/平移/旋转着色；旧包无该消息时使用原 `/plan`，不推断未记录的运动模式。录包入口追加该话题，旧话题保持兼容。
 
-工作台通过原 NavigateToPose 和 motion_enable 进行自有任务管理；不提供速度或模式直通接口。连续定位由显式 `--continuous` 移除有限 recorder，保留原 CLI 默认有限采集行为。使用和验收见 [工作台说明](../workbench/README.md)、[工作台报告](navigation_workbench_report_20261117.md)。
+工作台通过原 NavigateToPose 和 motion_enable 进行自有任务管理；不提供速度或模式直通接口。连续定位由显式 `--continuous` 移除有限 recorder，保留原 CLI 默认有限采集行为。使用和验收见 [工作台说明](../workbench/README.md)。
 
 `/navigation/reset`（std_srvs/Trigger）要求先取消活动 Action。服务清理旧目标、路线和历史，并重建独立计算子进程。工作台等待新 generation、worker nonce、READY 和 IDLE，定位、传感器及现有记录继续运行。受管健康检查允许 35 秒显式重置预热。任务和终态原因通过 `/navigation/state` 的 `failure_cause` 与 `planning_failure` 查询。新会话加载 YAML，重置沿用会话的配置。

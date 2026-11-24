@@ -24,12 +24,14 @@ async def main():
     assert '4/8' in await page.locator('#sessionReason').text_content();assert '4/8' in await page.locator('#sessionProgress').text_content()
     assert await page.locator('#execute').is_disabled();assert '已停稳' in await page.locator('#stationary').text_content()
     assert await page.locator('#measuredSpeed').text_content()=='0.023'
-    await page.screenshot(path=str(ROOT/'docs/workbench_evidence/20261117/restart_and_stop/ui.png'),full_page=True)
+    out = ROOT/'.runtime/validation/workbench/restart_and_stop'
+    out.mkdir(parents=True, exist_ok=True)
+    await page.screenshot(path=str(out/'ui.png'),full_page=True)
     s['feedback_stopped']=False;s['topics']['/wheel/odom']['twist']['twist']['linear']['x']=.051;sockets[0].send(json.dumps(s));await page.wait_for_timeout(120)
     assert '仍有运动' in await page.locator('#stationary').text_content()
     s['topic_receipt_age_ms']['/wheel/odom']=300;sockets[0].send(json.dumps(s));await page.wait_for_timeout(120)
     assert '等待新鲜反馈' in await page.locator('#stationary').text_content();assert not errors,errors
-    (ROOT/'docs/workbench_evidence/20261117/restart_and_stop/browser.json').write_text(json.dumps({'pass':True,'mock_transport_no_device_requests':True,'console_errors':errors,'checks':['localization_window_progress','navigation_disabled_until_localized','raw_023_speed_preserved','005_stop_limit','051_reports_motion','stale_feedback_unknown']},indent=2))
+    (out/'browser.json').write_text(json.dumps({'pass':True,'mock_transport_no_device_requests':True,'console_errors':errors,'checks':['localization_window_progress','navigation_disabled_until_localized','raw_023_speed_preserved','005_stop_limit','051_reports_motion','stale_feedback_unknown']},indent=2))
     await browser.close();print('Restart/stop UI PASS; no device request')
   finally:await server.close()
 asyncio.run(main())

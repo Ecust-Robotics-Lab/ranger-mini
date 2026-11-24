@@ -26,7 +26,7 @@ async def main():
     assert '遥控器优先' in await page.locator('#chassisControl').text_content();assert await page.locator('#execute').is_disabled()
     snapshot['topics']['/system_state']['control_mode']=0;sockets[0].send(json.dumps(snapshot));await page.wait_for_timeout(100)
     assert '待机' in await page.locator('#chassisControl').text_content();assert await page.locator('#execute').is_disabled();assert not errors,errors
-    evidence=ROOT/'docs/workbench_evidence/20261117/computer_control';evidence.mkdir(exist_ok=True,parents=True)
+    evidence=ROOT/'.runtime/validation/workbench/computer_control';evidence.mkdir(exist_ok=True,parents=True)
     await page.screenshot(path=str(evidence/'ui.png'),full_page=True)
     (evidence/'browser.json').write_text(json.dumps({'pass':True,'no_remote_required':True,'CAN_feedback_enables_goal_button':True,'RC_and_standby_disable_goal_button':True,'console_errors':errors,'mock_transport_no_hardware_requests':True},indent=2))
     await browser.close();print('Computer-control display PASS; mock transport, no hardware request')

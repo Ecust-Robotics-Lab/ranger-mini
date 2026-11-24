@@ -122,7 +122,7 @@ def main():
     shutil.copy2(cfg_path,exp/'config.yaml')
     shutil.copy2(ROOT/'config/mid360/extrinsics_pending.yaml',exp/'extrinsics.yaml')
     for name in ['source_versions.json','dependencies.json']:
-        if (ROOT/'docs/04_evidence'/name).exists():shutil.copy2(ROOT/'docs/04_evidence'/name,exp/name)
+        if (ROOT/'config/lightning'/name).exists():shutil.copy2(ROOT/'config/lightning'/name,exp/name)
     (exp/'patches').mkdir()
     for p in (ROOT/'patches').glob('stage4*'):shutil.copy2(p,exp/'patches'/p.name)
     cmd=[str(exe),'--config='+str(exp/'config.yaml')]

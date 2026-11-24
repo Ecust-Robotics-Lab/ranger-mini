@@ -6,8 +6,8 @@ import time
 import unittest
 import test_fast_livo_localizer_ros as c1
 
-c1.EVIDENCE = c1.ROOT/'docs/fast_livo2_evidence/online_localization_20261106/ros_checks'
-c1.EVIDENCE.mkdir(exist_ok=True)
+c1.EVIDENCE = c1.ROOT/'.runtime/validation/fast_livo2/online_localization_20261106/ros_checks'
+c1.EVIDENCE.mkdir(parents=True, exist_ok=True)
 c1.EXECUTABLE = c1.ROOT/'ws_fast_livo/online_localization_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node'
 
 

@@ -17,7 +17,7 @@ from ranger_localization_bridge.geometry import se3_from_tf_msg
 import rclpy
 
 ROOT=fixture.ROOT
-EVIDENCE=ROOT/'docs/fast_livo2_evidence/navigation_prep_20261106'
+EVIDENCE=ROOT/'.runtime/validation/fast_livo2/navigation_prep_20261106'
 fixture.EVIDENCE=EVIDENCE
 fixture.EXECUTABLE=ROOT/'ws_fast_livo/online_localization_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node'
 sys.path.insert(0,str(ROOT/'scripts/fast_livo2/navigation'))

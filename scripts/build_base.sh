@@ -18,7 +18,8 @@ export CPLUS_INCLUDE_PATH="$project_root/vendor/base_deps/root/usr/include"
 export PYTHONNOUSERSITE=1
 export CMAKE_BUILD_PARALLEL_LEVEL=4
 cd "$project_root/ws_base"
-build_log=$(mktemp "$project_root/docs/02_evidence/build-XXXXXXXX.log")
+mkdir -p "$project_root/.runtime/validation/base"
+build_log=$(mktemp "$project_root/.runtime/validation/base/build-XXXXXXXX.log")
 echo "Build log: $build_log"
 set +e
 colcon build --executor sequential \

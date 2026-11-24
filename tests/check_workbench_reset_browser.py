@@ -31,7 +31,8 @@ async def main():
     await page.wait_for_selector('#login',state='hidden')
     assert await page.locator('#cancel').is_disabled();assert await page.locator('#execute').is_disabled()
     assert await page.locator('#resetNavigation').is_enabled()
-    out=ROOT/'docs/workbench_evidence/20261117/navigation_reset'
+    out=ROOT/'.runtime/validation/workbench/navigation_reset'
+    out.mkdir(parents=True, exist_ok=True)
     await page.screenshot(path=str(out/'failed_reset_enabled.png'),full_page=True)
     await page.click('#resetNavigation');await page.wait_for_timeout(220)
     assert calls==['navigation.reset'];assert await page.locator('#resetNavigation').is_disabled()

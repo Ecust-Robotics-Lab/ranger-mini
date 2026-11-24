@@ -6,13 +6,13 @@ ROOT=Path(__file__).resolve().parents[1]
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 def main():
     ap=argparse.ArgumentParser(description=__doc__);ap.add_argument('--execute',action='store_true');a=ap.parse_args()
-    records=json.loads((ROOT/'docs/04_evidence/dependencies.json').read_text())
+    records=json.loads((ROOT/'config/lightning/dependencies.json').read_text())
     entries=[]
     for rec in records:
         if 'file' not in rec:continue
         meta=dict(x.split(': ',1) for x in rec['metadata'].splitlines())
         entries.append((meta['Package']+'='+meta['Version'],Path(rec['file']).name,rec['sha256']))
-    unwind=json.loads((ROOT/'docs/04_evidence/unwind_runtime.json').read_text())
+    unwind=json.loads((ROOT/'config/lightning/unwind_runtime.json').read_text())
     entries.append(('libunwind8=1.3.2-2build2.1','libunwind8_1.3.2-2build2.1_amd64.deb',unwind['sha256']))
     print(json.dumps({'dry_run':not a.execute,'packages':[x[0] for x in entries],'parallel':2,'prefix':str(ROOT/'ws_slam/deps')},indent=2))
     if not a.execute:return
@@ -39,6 +39,6 @@ def main():
             for name in z.namelist():
                 if not (d/'src'/name).resolve().is_relative_to((d/'src').resolve()):raise RuntimeError('Unsafe zip path')
             z.extractall(d/'src')
-    for rec in json.loads((ROOT/'docs/04_evidence/pangolin_commands.json').read_text()):
+    for rec in json.loads((ROOT/'config/lightning/pangolin_commands.json').read_text()):
         subprocess.run(rec['command'],cwd=ROOT,check=True)
 if __name__=='__main__':main()

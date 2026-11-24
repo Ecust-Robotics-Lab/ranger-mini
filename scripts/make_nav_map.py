@@ -4,7 +4,7 @@
 背景：建图起点 (0,0) 附近存在距中心 0.177 m 的占据像元——建图时机器人本体
 就覆盖该位置，物理上不可能是真实障碍（近体/地面泄漏点），但经 costmap 膨胀
 （内切半径环）会把起点判为致死，Smac 拒绝规划（"Starting point in lethal
-space"，证据 docs/06_evidence/safety-15ege02f）。本脚本在副本中清除起点
+space"）。本脚本在副本中清除起点
 --radius 米内的占据像元；原图 map.pgm/map.yaml 保持不变。
 
 用法:

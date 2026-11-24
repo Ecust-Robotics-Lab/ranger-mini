@@ -15,7 +15,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def module(name,path):
     spec=importlib.util.spec_from_file_location(name,ROOT/path);out=importlib.util.module_from_spec(spec);spec.loader.exec_module(out);return out
 evaluation=module('global_evaluation','scripts/fast_livo2/localizer/validate_motion.py')
-calibration=module('hole_check','docs/fast_livo2_evidence/c2_cross_session_20261104/check_calibration.py')
+calibration=module('hole_check','scripts/fast_livo2/localizer/check_calibration.py')
 
 
 class Provenance(unittest.TestCase):

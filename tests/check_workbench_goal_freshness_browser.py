@@ -32,7 +32,8 @@ async def main():
     assert '低延迟三融合' in await page.locator('#sessionReason').text_content()
     await page.fill('#goalX','1.985');await page.fill('#goalY','0.624');await page.fill('#goalYaw','23.2')
     await page.locator('#goalYaw').dispatch_event('change')
-    out=ROOT/'docs/workbench_evidence/20261117/goal_freshness'
+    out=ROOT/'.runtime/validation/workbench/goal_freshness'
+    out.mkdir(parents=True, exist_ok=True)
     await page.screenshot(path=str(out/'ui.png'),full_page=True)
     s['localization'].update(valid=False,state=2);sockets[0].send(json.dumps(s));await page.wait_for_timeout(120)
     assert '几何匹配暂退化' in await page.locator('#localization').text_content();assert await page.locator('#execute').is_disabled()

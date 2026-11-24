@@ -8,7 +8,7 @@ import unittest
 import test_fast_livo_localizer_ros as c1
 
 c1.EXECUTABLE=c1.ROOT/'ws_fast_livo/online_localization_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node'
-c1.EVIDENCE=Path(os.environ.get('RANGER_LOCALIZER_TEST_EVIDENCE',str(c1.ROOT/'docs/workbench_evidence/20261117/static_confirmation/ros')))
+c1.EVIDENCE=Path(os.environ.get('RANGER_LOCALIZER_TEST_EVIDENCE',str(c1.ROOT/'.runtime/validation/workbench/static_confirmation/ros')))
 c1.EVIDENCE.mkdir(exist_ok=True,parents=True)
 
 class StaticStartupRos(unittest.TestCase):

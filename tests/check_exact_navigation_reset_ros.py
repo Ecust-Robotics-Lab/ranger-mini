@@ -16,7 +16,7 @@ sys.path.insert(0,str(ROOT/'scripts'))
 from navigation_health import navigation_compute_available
 from session_manager import read_session,atomic_json
 managed='--managed' in sys.argv or '--managed-final' in sys.argv
-out=ROOT/'docs/workbench_evidence/20261117/navigation_reset'/('managed_ros_final' if '--managed-final' in sys.argv else 'managed_ros' if managed else 'actual_ros');out.mkdir(exist_ok=True)
+out=ROOT/'.runtime/validation/workbench/navigation_reset'/('managed_ros_final' if '--managed-final' in sys.argv else 'managed_ros' if managed else 'actual_ros');out.mkdir(exist_ok=True)
 rclpy.init();node=rclpy.create_node('synthetic_navigation_reset_check')
 clock=node.create_publisher(Clock,'/clock',10);states=[];controls=[];velocities=[];reset_health=[]
 def state_message(message):

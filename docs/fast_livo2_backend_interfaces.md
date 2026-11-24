@@ -1,7 +1,7 @@
 # FAST-LIVO2 阶段 B 后端契约
 
 更新：2026-10-29。实现位于 `ws_fast_livo/src/ranger_fast_livo_backend`。
-本页描述 B 接口。后续 2026-10-28 已完成单份真实运动包的后端离线验证，见 [运动报告](fast_livo2_stage_b_motion_report.md)；独立精度/泛化仍未验收。先验地图定位由独立 [C1](fast_livo2_localizer_interfaces.md) 实现，不改变 B 的建图角色。
+本页描述 B 接口。后续 2026-10-28 已完成单份真实运动包的后端离线验证，见 运动报告；独立精度/泛化仍未验收。先验地图定位由独立 [C1](fast_livo2_localizer_interfaces.md) 实现，不改变 B 的建图角色。
 
 ## 输入、时刻与坐标
 
@@ -19,7 +19,7 @@
 
 ## 图、候选与配准
 
-B 保留前端传入的 FAST 局部原点、轴和 yaw，首帧先验为 `X_0=U_0`，不额外平面化姿态。新前端试验配置已启用 `gravity_align_en=true`；已有 B 归档由关闭对齐的会话生成，不能追认其重力方向。每份新图须绑定自身来源和对齐证据，见 [重力报告](fast_livo2_gravity_alignment_report.md)。默认使用 3D 距离检索；XY/独立高度模式还要求 gravity 标志和 metadata 中的重力对齐证据。重力因子未实施、默认无此额外信息。
+B 保留前端传入的 FAST 局部原点、轴和 yaw，首帧先验为 `X_0=U_0`，不额外平面化姿态。新前端试验配置已启用 `gravity_align_en=true`；已有 B 归档由关闭对齐的会话生成，不能追认其重力方向。每份新图须绑定自身来源和对齐证据。默认使用 3D 距离检索；XY/独立高度模式还要求 gravity 标志和 metadata 中的重力对齐证据。重力因子未实施、默认无此额外信息。
 
 ```text
 相邻观测 Z_ij = inverse(U_i) × U_j

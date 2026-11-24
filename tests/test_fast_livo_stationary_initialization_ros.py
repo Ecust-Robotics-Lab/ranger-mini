@@ -4,7 +4,7 @@ import json
 import unittest
 import test_fast_livo_relocalizer_ros as c2
 c1=c2.c1
-c1.EVIDENCE=c1.ROOT/'docs/fast_livo2_evidence/initialization_optimization_20261109/ros'
+c1.EVIDENCE=c1.ROOT/'.runtime/validation/fast_livo2/initialization_optimization_20261109/ros'
 c1.EVIDENCE.mkdir(parents=True,exist_ok=True)
 c1.EXECUTABLE=c1.ROOT/'ws_fast_livo/online_localization_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node'
 

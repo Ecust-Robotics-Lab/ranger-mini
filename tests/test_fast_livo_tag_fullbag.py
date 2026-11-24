@@ -16,7 +16,7 @@ path = ROOT/'scripts/fast_livo2/tags/extract_bag.py'
 spec = importlib.util.spec_from_file_location('tag_fullbag', path)
 module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)
-EVIDENCE = ROOT/'docs/fast_livo2_evidence/apriltag_fullbag_20261029'
+EVIDENCE = ROOT/'.runtime/validation/fast_livo2/apriltag_fullbag_20261029'
 TOOL = ROOT/'ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/tag_image_tool'
 CONFIG = ROOT/'config/fast_livo2/apriltag_camera.json'
 
@@ -53,6 +53,7 @@ class PoseAssociation(unittest.TestCase):
 
 class DetectorStream(unittest.TestCase):
     def setUp(self):
+        EVIDENCE.mkdir(parents=True, exist_ok=True)
         self.directory = Path(tempfile.mkdtemp(prefix=self._testMethodName+'-', dir=EVIDENCE))
         self.command = [str(TOOL), '--stream', str(CONFIG), 'tag36h11', '{"1":0.155}']
 

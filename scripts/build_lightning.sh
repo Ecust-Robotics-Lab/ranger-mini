@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Prerequisite: pinned project-local dependencies; see docs/04_evidence/*.json.
+# Prerequisite: pinned project-local dependencies; see config/lightning/*.json.
 set -eo pipefail
 source "$(dirname -- "${BASH_SOURCE[0]}")/slam_env.sh"
 if [[ "${1:-}" != --execute ]]; then

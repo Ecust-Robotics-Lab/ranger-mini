@@ -33,7 +33,7 @@ from ranger_fast_livo_localizer.msg import LocalizerEstimate
 from ranger_fast_livo_localizer.srv import LoadMap, Initialize
 import tf2_ros
 
-EVIDENCE = Path(os.environ.get('RANGER_LOCALIZER_TEST_EVIDENCE', str(ROOT/'docs/fast_livo2_evidence/stage_c1_20261028')))
+EVIDENCE = Path(os.environ.get('RANGER_LOCALIZER_TEST_EVIDENCE', str(ROOT/'.runtime/validation/fast_livo2/stage_c1_20261028')))
 EXECUTABLE = ROOT/'ws_fast_livo/backend_install/ranger_fast_livo_localizer/lib/ranger_fast_livo_localizer/localizer_node'
 
 
@@ -84,6 +84,7 @@ def write_fixture(path, world, X):
 
 class C1Ros(unittest.TestCase):
     def setUp(self):
+        EVIDENCE.mkdir(parents=True, exist_ok=True)
         self.directory = Path(tempfile.mkdtemp(prefix=self._testMethodName+'-', dir=EVIDENCE))
         self.ns = 1000*10**9
         self.start_ns = self.ns

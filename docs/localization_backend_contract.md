@@ -45,7 +45,7 @@ launch 参数 `localization_backend:=lightning` 启动独立 Lightning 适配器
 
 状态事件有效期默认 10 s，置信度有效期 1 s，位姿最大年龄 0.5 s。10 s 状态有效期现在只有一套实现；修复了旧看门狗硬编码 1 s 的不一致。默认 0.5 s 保留此前实际生效值，不自动扩大到历史命令里未生效的 1.5 s。
 
-原 `ros2 launch ranger_localization_bridge loc_bridge.launch.py` 继续可用，阈值显式转交到两个进程。直接调用 `ranger_localization_bridge` 可执行文件或 `python -m ...bridge_node` 时，默认在同一进程组合 Lightning 适配器以兼容旧用法；公共桥接的独立调用使用 ROS 参数 `adapter_backend:=external`。
+`ros2 launch ranger_localization_bridge loc_bridge.launch.py` 根据 runtime 配置选择后端。选用 `config/profiles/lightning.yaml` 时，阈值分别传给适配器和桥接进程。直接调用 `ranger_localization_bridge` 或 `python -m ...bridge_node` 时默认接收标准定位消息。旧单进程调用可显式设置 ROS 参数 `adapter_backend:=lightning`。
 
 受管入口使用固定 base_link→imu_link→livox_frame 物理链；Lightning 改用私有算法帧，避免 imu_link 有两个父节点。固定外参仍为原近似值，不构成精确标定通过。旧外部启动流程不得继续把 map→imu_link 与新的物理链同时发布。
 

@@ -10,8 +10,8 @@ driver=$root/ws_livox/src/livox_ros_driver2
 [[ $(git -C "$sdk" rev-parse HEAD) == 08f523c930b2f0ba1e98a6afaa8d7476bf479908 ]]
 [[ $(git -C "$driver" rev-parse HEAD) == 4a1def929e5b59c7a8122d19fce6efba581ce9f7 ]]
 if [[ -f "$driver/package.xml" ]]; then cmp "$driver/package.xml" "$driver/package_ROS2.xml"; else cp "$driver/package_ROS2.xml" "$driver/package.xml"; fi
-mkdir -p "$root/docs/03_evidence"
-log=$(mktemp "$root/docs/03_evidence/build-XXXXXXXX.log")
+mkdir -p "$root/.runtime/validation/lidar"
+log=$(mktemp "$root/.runtime/validation/lidar/build-XXXXXXXX.log")
 exec > >(tee "$log") 2>&1
 trap 'rc=$?; echo "BUILD_EXIT=$rc"' EXIT
 echo "LOG=$log"

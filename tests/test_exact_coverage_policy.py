@@ -11,7 +11,7 @@ from ranger_navigation.guidance import observed_prefix
 from ranger_navigation.obstacles import ObstacleMemory
 
 def recorded():
-    folder=ROOT/'docs/workbench_evidence/20261117/coverage_margin'
+    folder=ROOT/'tests/fixtures/coverage_margin'
     with np.load(folder/'original_request.npz',allow_pickle=False) as a:
         pose=a['pose'];observer=a['observer_pose'];grid=Grid(a['visibility_cells'],.05,(-2,-2,0.));points=a['points']
     with np.load(folder/'original_result.npz',allow_pickle=False) as a:path=a['segment_0']
@@ -67,7 +67,7 @@ def test_partial_boundary_cells_share_quota_but_deep_unknown_never_does():
     assert grid.coverage_report([0,0,0],body,CoveragePolicy())['reason']=='coverage_edge_budget_exceeded'
 
 def test_latest_recorded_corner_boundary_no_longer_deadlocks():
-    folder=ROOT/'docs/workbench_evidence/20261117/coverage_speed'
+    folder=ROOT/'tests/fixtures/coverage_speed'
     with np.load(folder/'recorded_boundary_fixture.npz') as data:
         grid=Grid(data['cells'],.05,(-2,-2,0));pose=data['pose']
     assert not grid.covered(pose,Body(),CoveragePolicy(allow_boundary_unknowns=False))

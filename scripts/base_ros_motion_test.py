@@ -62,7 +62,9 @@ def main():
     from rosidl_runtime_py.convert import message_to_ordereddict
 
     root = Path(__file__).resolve().parents[1]
-    folder = Path(tempfile.mkdtemp(prefix='ros-motion-', dir=root / 'docs/02_evidence'))
+    log_dir = root / '.runtime/validation/base'
+    log_dir.mkdir(parents=True, exist_ok=True)
+    folder = Path(tempfile.mkdtemp(prefix='ros-motion-', dir=log_dir))
     print(f'LOG_DIR={folder}', flush=True)
     result = {'start': datetime.datetime.now().astimezone().isoformat(),
               'authorized_scope': 'one driver start; static checks' +

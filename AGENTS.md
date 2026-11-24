@@ -11,7 +11,7 @@
 
 ## 有效配置与资产
 
-- 通用 `config/runtime.yaml` 默认 Lightning/wheel、terrain disabled。工作台和显式 FAST 入口使用 FAST-LIVO2，FAST 前端/B 建图与 C1/C2 先验定位职责独立。保持 LiDAR–IMU–Camera 三融合。
+- 通用 `config/runtime.yaml` 默认 FAST-LIVO2、wheel、terrain disabled。C1/C2 通过 standard 接口发布先验地图定位，前端与 B 建图职责独立。保持 LiDAR–IMU–Camera 三融合。Lightning 是显式选择的对比基线，使用 `config/profiles/lightning.yaml`。
 - 正式 FAST 前端由 `config/fast_livo2/active_frontend.lock.json` 锁定。旧地图使用绑定 UUID、manifest 和前端来源的 `frontend_timing_upgrade` 声明，并满足原传感器/时间契约。不得用离线兼容声明绕过在线校验。
 - 启动时读取项目导航 YAML。实时覆盖边界与内部未知格分别计数，全车预测及制动检查使用同一策略。已知障碍与越界直接拒绝。静态总裕量、实时点障碍净空和体素误差按各自配置执行。
 - 参考源码位于 `vendor/fast_livo2_review/`，核对 `config/fast_livo2/sources.lock.json`、`config/exact_mppi/sources.lock.json`、完整 SHA、补丁及许可证。Git 只保存可版本化内容，部署可能依赖本地构建和软链接。

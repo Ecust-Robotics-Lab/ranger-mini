@@ -7,7 +7,7 @@ import unittest
 import test_fast_livo_localizer_ros as c1
 from ranger_fast_livo_localizer.srv import Relocalize
 
-c1.EVIDENCE = c1.ROOT/'docs/fast_livo2_evidence/stage_c2_20261028'
+c1.EVIDENCE = c1.ROOT/'.runtime/validation/fast_livo2/stage_c2_20261028'
 
 
 class C2Ros(unittest.TestCase):

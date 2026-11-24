@@ -30,7 +30,9 @@ def main():
             s=socket.socket(socket.AF_INET,socket.SOCK_DGRAM);checks.append(s);s.bind(('0.0.0.0',port))
     finally:
         for s in checks:s.close()
-    folder=pathlib.Path(tempfile.mkdtemp(prefix='driver-',dir=ROOT/'docs/03_evidence'))
+    log_dir = ROOT/'.runtime/validation/lidar'
+    log_dir.mkdir(parents=True, exist_ok=True)
+    folder = pathlib.Path(tempfile.mkdtemp(prefix='driver-', dir=log_dir))
     (folder/'config.json').write_bytes(cfg.read_bytes())
     (folder/'command.json').write_text(json.dumps(cmd,indent=2))
     print('LOG_DIR='+str(folder),flush=True)

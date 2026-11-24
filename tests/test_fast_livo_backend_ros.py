@@ -30,7 +30,7 @@ from ranger_fast_livo_backend.srv import ExportSnapshot
 from ranger_localization_bridge.geometry import SE3, rpy_to_quat, quat_rotate, se3_from_tf_msg
 import tf2_ros
 
-EVIDENCE = ROOT/'docs/fast_livo2_evidence/stage_b_20261026'
+EVIDENCE = ROOT/'.runtime/validation/fast_livo2/stage_b_20261026'
 EXECUTABLE = ROOT/'ws_fast_livo/backend_install/ranger_fast_livo_backend/lib/ranger_fast_livo_backend/backend_node'
 
 
@@ -66,6 +66,7 @@ class RosBackendTests(unittest.TestCase):
         self.node.create_subscription(LocalizationEstimate, '/localization/estimate', lambda m: self.standard.append(m), 100)
         self.buffer = tf2_ros.Buffer(); self.listener = tf2_ros.TransformListener(self.buffer, self.node)
         self.processes = []
+        EVIDENCE.mkdir(parents=True, exist_ok=True)
         self.directory = Path(tempfile.mkdtemp(prefix=self._testMethodName+'-', dir=EVIDENCE))
 
     def on_private(self, message):
